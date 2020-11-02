@@ -325,9 +325,11 @@ class AdvancedFreePlayerStart(Screen):
                         else:
                             printDEBUG('Deleting files "%s/%s"*' % (self.filelist.getCurrentDirectory(),selection[0][:-4]))
                             os.system('rm -rf "%s/%s"*' % (self.filelist.getCurrentDirectory(),selection[0][:-4]))
+                if self["filelist"].getSelectedIndex() > 0:
+                    self["filelist"].up()
+            self.GetCoverTimer.stop()
             self["filelist"].refresh()
             self.buttonsNames()
-            self.GetCoverTimer.stop()
             self.GetCoverTimer.start(self.ShowDelay,False)
             return
         
@@ -402,9 +404,19 @@ class AdvancedFreePlayerStart(Screen):
         def EndPlayer():
             if lastOPLIsetting is not None:
                 config.subtitles.pango_autoturnon.value = lastOPLIsetting
+            
+            if not os.path.exists(self.openmovie):
+                self.openmovie = ''
+                self.opensubtitle = ''
+                self.setCover('hideCover')
+                self.setDescription('')
+                if self["filelist"].getSelectedIndex() > 0:
+                    self["filelist"].up()
+            
+            self.GetCoverTimer.stop()
             self["filelist"].refresh()
-            self.openmovie = ''
-            self.opensubtitle = ''
+            self.buttonsNames()
+            self.GetCoverTimer.start(self.ShowDelay,False)
 
         if not os.path.exists(self.opensubtitle) and not self.opensubtitle.startswith("http://"):
             self.opensubtitle = ""
@@ -759,7 +771,7 @@ class AdvancedFreePlayerStart(Screen):
             self.GetCoverTimer.start(self.ShowDelay,False)
             return
         #wybrano katalog
-        if self["filelist"].getSelection()[1] == True and not self["filelist"].getSelection()[0] is None: # isDir
+        if not self["filelist"].getSelection() is None and self["filelist"].getSelection()[1] == True and not self["filelist"].getSelection()[0] is None: # isDir
             self.setDescription('')
             self.setCover('hideCover')
             # do zmiany nazwy, dla katalogu podajemy cala nazwe
