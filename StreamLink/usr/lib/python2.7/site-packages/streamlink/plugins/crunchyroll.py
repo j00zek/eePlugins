@@ -1,10 +1,9 @@
-import argparse
 import datetime
-import re
 import logging
+import re
 from uuid import uuid4
 
-from streamlink.plugin import Plugin, PluginError, PluginArguments, PluginArgument
+from streamlink.plugin import Plugin, PluginArgument, PluginArguments, PluginError
 from streamlink.plugin.api import validate
 from streamlink.stream import HLSStream
 
@@ -287,12 +286,6 @@ class Crunchyroll(Plugin):
             Note: The session ID will be overwritten if authentication is used
             and the session ID does not match the account.
             """
-        ),
-        # Deprecated, uses the general locale setting
-        PluginArgument(
-            "locale",
-            metavar="LOCALE",
-            help=argparse.SUPPRESS
         )
     )
 

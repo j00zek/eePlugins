@@ -36,9 +36,11 @@ class lookcam(Plugin):
         log.trace("Responce:\n %s" % res.text)
         log.debug("Cookies:\n %s" % cookiesToString(res.cookies))
         self.url = self._url2_re.search(res.text).group(1)
+        if not self.url.startswith('http'):
+            self.url = 'https://lookcam.live' + self.url
         res = self.session.http.get(self.url)
-        log.trace("Responce:\n %s" % res.text)
-        log.debug("Cookies:\n %s" % cookiesToString(res.cookies))
+        log.trace("Responce2:\n %s" % res.text)
+        log.debug("Cookies2:\n %s" % cookiesToString(res.cookies))
         try:
             address = self._addr_re.search(res.text).group(1)
             log.debug("Found address: %s" % address)
