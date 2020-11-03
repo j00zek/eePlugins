@@ -6,8 +6,12 @@ from Components.Converter.Converter import Converter
 from Components.Element import cached
 
 DBG = False
-if DBG: from Components.j00zekComponents import j00zekDEBUG
-
+if DBG: 
+    from Components.j00zekComponents import j00zekDEBUG
+    checkDelay = 60000 #check once a minute for tests
+else:
+    checkDelay = 86400000 #check once a day 86400000 = 1000ms * 60 * 60 * 24
+    
 class j00zekOPKGupgradeCheck(Converter, object):
     def __init__(self, arg):
         Converter.__init__(self, arg)
@@ -19,8 +23,7 @@ class j00zekOPKGupgradeCheck(Converter, object):
         self.container.dataAvail.append(self.dataAvail)
         self.checkTimer = eTimer()
         self.checkTimer.callback.append(self.checkOPKG)
-        if DBG: self.checkTimer.start(60000) #check once a minute for tests
-        else: self.checkTimer.start(86400000) #check once a day 86400000 = 1000ms * 60 * 60 * 24
+        self.checkTimer.start(60000, True) #initial check after a minute from init
 
     @cached
     def getBoolean(self):
@@ -31,6 +34,8 @@ class j00zekOPKGupgradeCheck(Converter, object):
     
     def checkOPKG(self):
         if DBG: j00zekDEBUG('[j00zekOPKGupgradeCheck:checkOPKG] >>>')
+        self.checkTimer.stop()
+        self.checkTimer.start(checkDelay)
         self.retstr = ''
         cmd=[]
         cmd.append('opkg update > /dev/null')
