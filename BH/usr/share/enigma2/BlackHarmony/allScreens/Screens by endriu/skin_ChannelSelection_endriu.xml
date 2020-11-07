@@ -4,11 +4,11 @@
   
   <!--nazwa bukietu,programu i podgląd-->
   
-  <widget backgroundColor="black" font="Roboto_HD; 40" foregroundColor="yellow" halign="center" valign="center" position="40,10" render="j00zekLabel" size="1030,95" source="Title" transparent="1" />
+  <widget backgroundColor="black" font="Roboto_HD; 38" foregroundColor="yellow" halign="center" valign="center" position="40,10" render="j00zekLabel" size="1030,95" source="Title" transparent="1" />
   <widget source="session.CurrentService" render="j00zekLabel" backgroundColor="background" foregroundColor="#00ff6215" position="1080,46" size="110,35" font="Regular; 30" halign="left" transparent="1" zPosition="3">
       <convert type="j00zekModServiceName2">%s</convert>
     </widget>
-  <widget backgroundColor="background" font="Roboto_HD; 40" foregroundColor="#000090e6" halign="center" position="1198,35" render="j00zekLabel" size="682,50" source="ServiceEvent" transparent="1" zPosition="5">
+  <widget backgroundColor="background" font="Roboto_HD; 38" foregroundColor="#000090e6" halign="center" valign="center" position="1198,15" render="j00zekLabel" size="680,85" source="ServiceEvent" transparent="1" zPosition="5">
       <convert type="ServiceName">Name</convert>
     </widget>
 	<eLabel backgroundColor="linie"  position="1135,122" size="725,2" zPosition="4" />
@@ -86,7 +86,7 @@
     <convert type="j00zekShareBlinkingClock" />
     <convert type="ConditionalShowHide">Blink</convert>
     </widget>
-  <widget source="global.CurrentTime" render="Label" position="1772,985" size="60,60" font="LCD; 60" halign="center" backgroundColor="black" transparent="1" foregroundColor="#66CCCC">
+  <widget source="global.CurrentTime" render="Label" position="1772,985" size="65,60" font="LCD; 60" halign="center" backgroundColor="black" transparent="1" foregroundColor="#66CCCC">
     <convert type="ClockToText">Format:%M</convert>
     </widget>	
   <widget source="global.CurrentTime" render="Label" position="1840,993" size="45,35" font="LCD; 35" halign="left" backgroundColor="black" transparent="1" >

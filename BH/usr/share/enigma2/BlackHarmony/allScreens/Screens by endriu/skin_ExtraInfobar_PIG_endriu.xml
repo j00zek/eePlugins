@@ -75,7 +75,7 @@
 	<eLabel backgroundColor="linie"  position="56,571" size="2,402" zPosition="4" />
 	<eLabel backgroundColor="linie"  position="765,571" size="2,402" zPosition="4" />
 	  
-  <widget source="session.CurrentService" render="Label" position="16,1005" size="760,50" font="HD_Thin; 42"   noWrap="1" backgroundColor="black" transparent="1" halign="center" valign="center">
+  <widget source="session.CurrentService" render="j00zekLabel" position="25,989" size="975,76" font="HD_Thin; 38" noWrap="0" backgroundColor="black" transparent="1" halign="center" valign="center">
     <convert type="j00zekModExtraTuner">ServiceNumberName</convert>
     </widget>  
 	
@@ -248,14 +248,14 @@
   <widget backgroundColor="black" font="LCD; 35" foregroundColor="lemon" position="1535,1010" render="Label" size="155,50" source="global.CurrentTime" halign="right" transparent="1">
       <convert type="ClockToText">Format:%d.%m.%Y</convert>
       </widget>
-  <widget source="global.CurrentTime" render="Label" position="1710,985" size="60,60" font="LCD; 60" halign="center" backgroundColor="black" transparent="1" foregroundColor="#66CCCC">
+  <widget source="global.CurrentTime" render="Label" position="1710,985" size="65,60" font="LCD; 60" halign="center" backgroundColor="black" transparent="1" foregroundColor="#66CCCC">
     <convert type="ClockToText">Format:%H</convert>
     </widget>
   <widget source="global.CurrentTime" render="FixedLabel" text=":" font="Regular;30" position="1768,1011" size="12,30" halign="center" valign="center" zPosition="3" foregroundColor="#66CCCC" transparent="1">
     <convert type="j00zekShareBlinkingClock" />
     <convert type="ConditionalShowHide">Blink</convert>
     </widget>
-  <widget source="global.CurrentTime" render="Label" position="1780,985" size="60,60" font="LCD; 60" halign="center" backgroundColor="black" transparent="1" foregroundColor="#66CCCC">
+  <widget source="global.CurrentTime" render="Label" position="1780,985" size="65,60" font="LCD; 60" halign="center" backgroundColor="black" transparent="1" foregroundColor="#66CCCC">
     <convert type="ClockToText">Format:%M</convert>
     </widget>	
   <widget source="global.CurrentTime" render="Label" position="1845,993" size="45,35" font="LCD; 35" halign="left" backgroundColor="black" transparent="1" >
