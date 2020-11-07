@@ -1,6 +1,6 @@
 #NAME IPTV Webcams
-#SERVICE 1:64:14:0:0:0:0:0:0:0::Aktualizacja: endriu 14.10.20 (thx.rappek)
-#DESCRIPTION Aktualizacja: endriu 14.10.20 (thx.rappek)
+#SERVICE 1:64:14:0:0:0:0:0:0:0::Aktualizacja: endriu 05.11.20 (thx.rappek)
+#DESCRIPTION Aktualizacja: endriu 05.11.20 (thx.rappek)
 #SERVICE 1:64:0:0:0:0:0:0:0:0::EUROPA
 #DESCRIPTION EUROPA
 #SERVICE 1:64:18:0:0:0:0:0:0:0::Albania (AL)
@@ -2589,6 +2589,8 @@
 #DESCRIPTION N825 Nettelhorsterweg, Lochem (YT)
 #SERVICE 1:64:22:0:0:0:0:0:0:0::Irlandia (IRL)
 #DESCRIPTION Irlandia (IRL)
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/JCHM000000F6:IRL - Aran Islands Hotel
+#DESCRIPTION IRL - Aran Islands Hotel
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//camsecure.co/HLS/loveachill.m3u8:IRL - Achill - Keel Beach
 #DESCRIPTION IRL - Achill - Keel Beach
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//g0.ipcamlive.com/player/player.php?alias=5a1d51f573740:IRL - Ballina - Ridge Pool
@@ -3417,6 +3419,8 @@
 #DESCRIPTION PT - Azory - Santa Maria - Vila Do Porto
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/GoSUUWLP_bo:PT - Azory - São Miguel - Feteiras (YT)
 #DESCRIPTION PT - Azory - São Miguel - Feteiras (YT)
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-surfline-pt-baleal:PT - Baleal - Surf
+#DESCRIPTION PT - Baleal - Surf
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//video-auth1.iol.pt%3a1935/beachcam/costacaparicacds/chunks.m3u8:PT - Caparica
 #DESCRIPTION PT - Caparica
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//video-auth1.iol.pt%3a1935/beachcam/carcavelos/chunks.m3u8:PT - Carcavelos - Plaża
@@ -3555,6 +3559,8 @@
 #DESCRIPTION PT - Praia Do Guincho Norte
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//webcam-hd.fr/webcam?id=116&camera=praia-do-guincho-sul:PT - Praia Do Guincho Sul
 #DESCRIPTION PT - Praia Do Guincho Sul
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-surfline-pt-praiagrande:PT - Praia Grande - Surf
+#DESCRIPTION PT - Praia Grande - Surf
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//webcam-hd.fr/webcam?id=114&camera=praia-grande-sul:PT - Praia Grande Sul
 #DESCRIPTION PT - Praia Grande Sul
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//video-auth1.iol.pt/beachcam/bcmafraribeira/chunks.m3u8:PT - Ribeira d'Ilhas - Plaża
@@ -3577,6 +3583,8 @@
 #DESCRIPTION PT - Santa Cruz
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//webcam-hd.fr/webcam?id=120&camera=santo-amaro:PT - Santo Amaro
 #DESCRIPTION PT - Santo Amaro
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-surfline-pt-santoamaro:PT - Santo Amaro - Auto Pan
+#DESCRIPTION PT - Santo Amaro - Auto Pan
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//webcam-hd.fr/webcam?id=138&camera=senhora-da-rocha:PT - Senhora da Rocha
 #DESCRIPTION PT - Senhora da Rocha
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//webcam-hd.fr/webcam?id=103&camera=supertubos-peniche:PT - Supertubos Péniche
@@ -5357,10 +5365,20 @@
 #DESCRIPTION GB - Bude - Plaża
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//camsecure.co/HLS/bo1.m3u8:GB - Burnham Overy - River Burn
 #DESCRIPTION GB - Burnham Overy - River Burn
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/PXRL00000903:GB - Bude - Aspect Holidays
+#DESCRIPTION GB - Bude - Aspect Holidays
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/ZJKB000009E9:GB - Carbis Bay Holidays - Porthmeor Beach
+#DESCRIPTION GB - Carbis Bay Holidays - Porthmeor Beach
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/BRSK00000A0C:GB - Carbis Bay Holidays - Carbis Bay Beach
+#DESCRIPTION GB - Carbis Bay Holidays - Carbis Bay Beach
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//stream-eu1-bravo.dropcam.com/nexus_aac/36f529218066407dbd9917bfb7525254/chunklist_w278178075.m3u8?public=UUcFjlDGIk:GB - Camberley - Blackbushe Airport
 #DESCRIPTION GB - Camberley - Blackbushe Airport
 #SERVICE 1:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.skylinewebcams.com/webcam/united-kingdom/wales/cardiff/cardiff.html:GB - Cardiff - St. Mary Street
 #DESCRIPTION GB - Cardiff - St. Mary Street
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/GVGX000009A3:GB - Classic Cottages - Ryde - Appley Beach
+#DESCRIPTION GB - Classic Cottages - Ryde - Appley Beach
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/CCAN000009A8:GB - Classic Cottages - Freshwater
+#DESCRIPTION GB - Classic Cottages - Freshwater
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/lZ1aRKKn4nQ:GB - Dawlish - Marine Parade (YT)
 #DESCRIPTION GB - Dawlish - Marine Parade (YT)
 #SERVICE 1:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.skylinewebcams.com/webcam/united-kingdom/england/deal/deal.html:GB - Deal - Molo
@@ -5371,12 +5389,22 @@
 #DESCRIPTION GB - Dover - Plaża
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//g0.ipcamlive.com/player/player.php?alias=dymchurchbeach:GB - Dymchurch - Plaża
 #DESCRIPTION GB - Dymchurch - Plaża
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/RKNK000009C1:GB - Falmouth - Harbour
+#DESCRIPTION GB - Falmouth - Harbour
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/XTKN00000A70:GB - Falmouth - Maritime Museum 2
+#DESCRIPTION GB - Falmouth - Maritime Museum 2
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/MNCJ00000A6B:GB - Falmouth - Maritime Museum
+#DESCRIPTION GB - Falmouth - Maritime Museum
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//camsecure.co/HLS/felix.m3u8:GB - Felixstowed - South Beach
 #DESCRIPTION GB - Felixstowed - South Beach
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//camsecure.co/HLS/felix2.m3u8:GB - Felixstowed - North Beach
 #DESCRIPTION GB - Felixstowed - North Beach
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/nd50--ao6n4:GB - Folkestone - Port (YT)
 #DESCRIPTION GB - Folkestone - Port (YT)
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/IFWE00000A02:GB - Gower - Mumbles Webcam at 730 Rocks AirBnB
+#DESCRIPTION GB - Gower - Mumbles Webcam at 730 Rocks AirBnB
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/FLZT00000A07:GB - Gower - Langland
+#DESCRIPTION GB - Gower - Langland
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//cams.cdn-surfline.com/cdn-int/uk-gwithian/chunklist.m3u8:GB - Gwithian - Sunset Surf
 #DESCRIPTION GB - Gwithian - Sunset Surf
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/c3Rn8FktXjQ:GB - Hastings - Molo (YT)
@@ -5415,6 +5443,8 @@
 #DESCRIPTION GB - Looe - Rzeka Looe
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/rBwTRW4z6I0:GB - Lyme Regis - Port (YT)
 #DESCRIPTION GB - Lyme Regis - Port (YT)
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/LVFR000009B7:GB - Lyme Regis
+#DESCRIPTION GB - Lyme Regis
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/Yx2rgSF4SIs:GB - Manchester - Salford Quays (YT)
 #DESCRIPTION GB - Manchester - Salford Quays (YT)
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//130.88.230.220%3a1935/live/media.amp.stream/chunklist_w1052905931.m3u8:GB - Manchester - Uniwersytet
@@ -5439,12 +5469,16 @@
 #DESCRIPTION GB - Oxford - Broad street (YT)
 #SERVICE 1:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.skylinewebcams.com/webcam/united-kingdom/england/oxford/oxford-high-street.html:GB - Oksford - High Street
 #DESCRIPTION GB - Oksford - High Street
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/XHFG00000999:GB - Padstow
+#DESCRIPTION GB - Padstow
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//camsecure.co/HLS/broadsands.m3u8:GB - Paignton - Broadsands Beach
 #DESCRIPTION GB - Paignton - Broadsands Beach
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//camsecure.co/HLS/cwsports.m3u8:GB - Pentewan - Plaża
 #DESCRIPTION GB - Pentewan - Plaża
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//camsecure.co/HLS/pzsc2.m3u8:GB - Penzance - Port
 #DESCRIPTION GB - Penzance - Port
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/QQJB00000A98:GB - Penzance - Promenade
+#DESCRIPTION GB - Penzance - Promenade
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//cams.cdn-surfline.com/cdn-int/uk-perranporth/chunklist.m3u8:GB - Perranporth - Plaża 2
 #DESCRIPTION GB - Perranporth - Plaża 2
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//g0.ipcamlive.com/player/player.php?alias=victoriasrestaurant:GB - Pitlochry
@@ -5461,8 +5495,12 @@
 #DESCRIPTION GB - Poole - Panorama
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//edge04.hdontap.com/ingest03-hd3/havenhotel_fjbhotels.stream/chunklist_w1585817675.m3u8:GB - Poole - Panorama 2
 #DESCRIPTION GB - Poole - Panorama 2
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/ZCCR00000994:GB - Porthleven
+#DESCRIPTION GB - Porthleven
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/a9B_rxYsji0:GB - Porthcawl - Latarnia morska (YT)
 #DESCRIPTION GB - Porthcawl - Latarnia morska (YT)
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/FBGO000008C7:GB - Portsmouth - Olympic Harbour
+#DESCRIPTION GB - Portsmouth - Olympic Harbour
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//camsecure.co/HLS/portmeirion2.m3u8:GB - Portmeirion - Battery Square
 #DESCRIPTION GB - Portmeirion - Battery Square
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//camsecure.co/HLS/portmeirion3.m3u8:GB - Portmeirion - Hotel
@@ -5489,20 +5527,32 @@
 #DESCRIPTION GB - Robin Hood's Bay 3
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//uk2.streamcaster.io/playlist.m3u8?stream=7B686F2C-3399-4E20-9D7D-951397E8E831&token=5f3a719b4d839:GB - Rock - Rzeka Camel
 #DESCRIPTION GB - Rock - Rzeka Camel
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/UGSO00000B1F:GB - Rhossili - The Wormshead Hotel
+#DESCRIPTION GB - Rhossili - The Wormshead Hotel
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/s7hega58ZPk:GB - Saundersfoot - Plaża (YT)
 #DESCRIPTION GB - Saundersfoot - Plaża (YT)
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/QQAY000009C6:GB - Sennen - Beach
+#DESCRIPTION GB - Sennen - Beach
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//143.167.1.98%3a1935/SheffieldPeregrineWebcast/Perch.stream/chunklist_w2038970171.m3u8:GB - Sheffield - Peregrines
 #DESCRIPTION GB - Sheffield - Peregrines
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//camsecure.co/HLS/sbragg.m3u8:GB - Skelton-in-Cleveland - Skelton Green
 #DESCRIPTION GB - Skelton-in-Cleveland - Skelton Green
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//camsecure.co/HLS/stant.m3u8:GB - St Anthony-in-Meneage - Gillan Creek
 #DESCRIPTION GB - St Anthony-in-Meneage - Gillan Creek
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/XNQT0000099E:GB - St Ives Harbour
+#DESCRIPTION GB - St Ives Harbour
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/AIDC000009AD:GB - St Ives Harbour - Classic Cottages
+#DESCRIPTION GB - St Ives Harbour - Classic Cottages
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/RPRZ0000098A:GB - St Ives - Porthmeor beach
+#DESCRIPTION GB - St Ives - Porthmeor beach
 #SERVICE 1:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.skylinewebcams.com/webcam/united-kingdom/england/st-ives/st-ives.html:GB - St Ives - Harbour Beach
 #DESCRIPTION GB - St Ives - Harbour Beach
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//camsecure.co/HLS/stives1.m3u8:GB - St Ives - Panorama portu
 #DESCRIPTION GB - St Ives - Panorama portu
 #SERVICE 1:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.skylinewebcams.com/webcam/united-kingdom/england/st-ives/porthmeor-beach.html:GB - St Ives - Plaża Porthgwidden
 #DESCRIPTION GB - St Ives - Plaża Porthgwidden
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/PVUO0000098F:GB - St Michael's Mount
+#DESCRIPTION GB - St Michael's Mount
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.skylinewebcams.com/webcam/united-kingdom/england/torquay/torquay.html:GB - Torquay - Marina
 #DESCRIPTION GB - Torquay - Marina
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//camsecure.uk/HLS/watchet.m3u8:GB - Watchet - Pomnik marynarza
@@ -6645,6 +6695,8 @@
 #DESCRIPTION CA - Churchill - Zorza polarna (YT)
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/world/canada/alberta/edmonton/?cam=edmonton:CA - Edmonton - Downtown
 #DESCRIPTION CA - Edmonton - Downtown
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/EILE00000480:CA - Guelph - Market Square
+#DESCRIPTION CA - Guelph - Market Square
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//stream3.novascotiawebcams.com/live/westin_1152x720/chunklist_w193559063_DVR.m3u8:CA - Halifax - Pier 21
 #DESCRIPTION CA - Halifax - Pier 21
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/yK5ntRdD1X8:CA - Hanson Island - Rubbing Beach (YT)
@@ -6661,6 +6713,16 @@
 #DESCRIPTION CA - Kamloops - Columbia Street & 3rd Avenue
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//tccmediasvr.kamloops.ca/bridge-webcam/_definst_/construction10.stream/chunklist_w813765135.m3u8:CA - Kamloops - Lansdowne at 3rd Ave
 #DESCRIPTION CA - Kamloops - Lansdowne at 3rd Ave
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/ZISK000007EB:CA - Kingston - Breakwater Park Pier
+#DESCRIPTION CA - Kingston - Breakwater Park Pier
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/SNNG000007DC:CA - Kingston - Breakwater Park Pier 2
+#DESCRIPTION CA - Kingston - Breakwater Park Pier 2
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/JPAO000007F0:CA - Kingston - Breakwater Park Pier 3
+#DESCRIPTION CA - Kingston - Breakwater Park Pier 3
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/YYOS00000071:CA - Kingston City
+#DESCRIPTION CA - Kingston City
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/BHCF000008CC:CA - Kingston - Confederation Park
+#DESCRIPTION CA - Kingston - Confederation Park
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//edge02.hdontap.com/ingest03-hd3/water_tower_securcom.stream/chunklist_w1786191387.m3u8:CA - Lethbridge - Panorama
 #DESCRIPTION CA - Lethbridge - Panorama
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//b10.hdrelay.com/camera/CID_DXUS000000A6/relay/chunklist_w1048815463.m3u8:CA - Lethbridge - Whoop-Up Drive
@@ -6669,6 +6731,8 @@
 #DESCRIPTION CA - Mont Tremblant Ski Resort (YT)
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/v5qKwjDMOdM:CA - Most Konfederacji (YT)
 #DESCRIPTION CA - Most Konfederacji (YT)
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/PZPP0000043A:CA - Nanaimo - Airport
+#DESCRIPTION CA - Nanaimo - Airport
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/pfwlDxqQbr:CA - Orangeville - Broadway (YT)
 #DESCRIPTION CA - Orangeville - Broadway (YT)
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//g1.ipcamlive.com/player/player.php?alias=watermark1:CA - Osoyoos - Watermark Beach Resort Hotel
@@ -6721,6 +6785,16 @@
 #DESCRIPTION CA - Vancouver - False Creek, Burrard Street Bridge (YT)
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//58f14b372a413.streamlock.net%3a444/marinedrive1/marinedrive1.stream/chunklist_w2047143349.m3u8:CA - Vancouver - Marine Drive Golf Club
 #DESCRIPTION CA - Vancouver - Marine Drive Golf Club
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/JOMM000002B8:CA - Vancouver - Granville Bridge
+#DESCRIPTION CA - Vancouver - Granville Bridge
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/YBLM00000045:CA - Vancouver - Grouse Mountain
+#DESCRIPTION CA - Vancouver - Grouse Mountain
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/TZAJ000006A1:CA - Vancouver - Grouse Mountain - Bear Pond Cam
+#DESCRIPTION CA - Vancouver - Grouse Mountain - Bear Pond Cam
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/LCTK0000070A:CA - Vancouver - Grouse Mountain - Front of Bear Den
+#DESCRIPTION CA - Vancouver - Grouse Mountain - Front of Bear Den
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/SRJT00000B8D:CA - Vancouver - Grouse Mountain - Outpost Camera
+#DESCRIPTION CA - Vancouver - Grouse Mountain - Outpost Camera
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/DgDmYIK-6pc:CA - Victoria - Johnson Street Bridge (YT)
 #DESCRIPTION CA - Victoria - Johnson Street Bridge (YT)
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//tccmediasvr.kamloops.ca/bridge-webcam/_definst_/construction15.stream/chunklist_w221347584.m3u8:CA - West Victoria & Seymour Street
@@ -6887,6 +6961,8 @@
 #DESCRIPTION US-AK - Anchorage - Alaska Airmen 2
 #SERVICE 1:64:0:0:0:0:0:0:0:0::Arizona (US-AZ)
 #DESCRIPTION Arizona (US-AZ)
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/PVPU00000349:US-AZ - Pinetop - Country Club
+#DESCRIPTION US-AZ - Pinetop - Country Club
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//videos-3.earthcam.com/fecnetwork/8620.flv/chunklist_w1047755454.m3u8:US-AZ - Sedona - Red Rock Country
 #DESCRIPTION US-AZ - Sedona - Red Rock Country
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//edge02.hdontap.com/ingest03-hd3/elephant-exhibit_rpz.stream/chunklist_w1021068369.m3u8:US-AZ - Tucson - Reid Park Zoo
@@ -7029,6 +7105,10 @@
 #DESCRIPTION US-CA - Newport - Beach Surf
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//edge07.nginx.hdontap.com/ho3/waterfront_swellmagnet.stream/chunklist.m3u8:US-CA - Newport - Huntington Beach
 #DESCRIPTION US-CA - Newport - Huntington Beach
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/UUWJ0000006E:US-CA - Novato - Marin Country Club Tennis
+#DESCRIPTION US-CA - Novato - Marin Country Club Tennis
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/PGUS00000B0B:US-CA - Olympic Valley - Squaw Valley Ski Resort - Base Area
+#DESCRIPTION US-CA - Olympic Valley - Squaw Valley Ski Resort - Base Area
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/zYi_5AF6B2A:US-CA - Pacifica - Pacifica Municipal Pier (YT)
 #DESCRIPTION US-CA - Pacifica - Pacifica Municipal Pier (YT)
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/G_GvJqITbOM:US-CA - Pacifica - Sharp Park Beach (YT)
@@ -7049,6 +7129,8 @@
 #DESCRIPTION US-CA - Placerville - Main St
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//2-fss-2.streamhoster.com/pl_126/202594-1354526-1/chunklist.m3u8:US-CA - Pollock Pines - Pony Express Trail
 #DESCRIPTION US-CA - Pollock Pines - Pony Express Trail
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/MWDU00000290:US-CA - Royal Oaks - Elkhorn Slough Foundation
+#DESCRIPTION US-CA - Royal Oaks - Elkhorn Slough Foundation
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/2c7NV66YzKA:US-CA - San Clemente (YT)
 #DESCRIPTION US-CA - San Clemente (YT)
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//cams.cdn-surfline.com/cdn-wc/wc-sanclementesb/chunklist.m3u8:US-CA - San Clemente - State Beach
@@ -7097,18 +7179,24 @@
 #DESCRIPTION US-CA - San Diego - San Diego Bay
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//edge02.hdontap.com/ingest03-hd3/lodge-ptz_evanshotels.stream/chunklist_w1513970553.m3u8:US-CA - San Diego - Torrey Pines Golf Course
 #DESCRIPTION US-CA - San Diego - Torrey Pines Golf Course
-#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/nkJlGiE_1wE:US-CA -San Francisco - Castro Street (YT)
-#DESCRIPTION US-CA -San Francisco - Castro Street (YT)
-#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/pUX2dRbf0z4:US-CA -San Francisco - Castro Street 2 (YT)
-#DESCRIPTION US-CA -San Francisco - Castro Street 2 (YT)
-#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/CW1CWVC-x8w:US-CA -San Francisco - Castro Street 3 (YT)
-#DESCRIPTION US-CA -San Francisco - Castro Street 3 (YT)
-#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/5AiPYaDjWEM:US-CA -San Francisco - Castro Street 4 (YT)
-#DESCRIPTION US-CA -San Francisco - Castro Street 4 (YT)
-#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/california/sanfrancisco/?cam=sanfranciscoskyline:US-CA -San Francisco - Panorama
-#DESCRIPTION US-CA -San Francisco - Panorama
-#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/california/sanfrancisco/?cam=rowingclub:US-CA -San Francisco - South End Rowing Club
-#DESCRIPTION US-CA -San Francisco - South End Rowing Club
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/nkJlGiE_1wE:US-CA - San Francisco - Castro Street (YT)
+#DESCRIPTION US-CA - San Francisco - Castro Street (YT)
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/pUX2dRbf0z4:US-CA - San Francisco - Castro Street 2 (YT)
+#DESCRIPTION US-CA - San Francisco - Castro Street 2 (YT)
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/CW1CWVC-x8w:US-CA - San Francisco - Castro Street 3 (YT)
+#DESCRIPTION US-CA - San Francisco - Castro Street 3 (YT)
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/5AiPYaDjWEM:US-CA - San Francisco - Castro Street 4 (YT)
+#DESCRIPTION US-CA - San Francisco - Castro Street 4 (YT)
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/california/sanfrancisco/?cam=sanfranciscoskyline:US-CA - San Francisco - Panorama
+#DESCRIPTION US-CA - San Francisco - Panorama
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/california/sanfrancisco/?cam=rowingclub:US-CA - San Francisco - South End Rowing Club
+#DESCRIPTION US-CA - San Francisco - South End Rowing Club
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/KCAJ00000746:US-CA - Santa Monica - Wheel @ Pacific Park
+#DESCRIPTION US-CA - Santa Monica - Wheel @ Pacific Park
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/IKDY0000074B:US-CA - Santa Monica - See the Pier @ Pacific Park
+#DESCRIPTION US-CA - Santa Monica - See the Pier @ Pacific Park
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/KWPX00000741:US-CA - Santa Monica - View the Park @ Pacific Park
+#DESCRIPTION US-CA - Santa Monica - View the Park @ Pacific Park
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//cams.cdn-surfline.com/cdn-wc/wc-baywoodbeach/chunklist.m3u8:US-CA - San Luis Obispo - Baywood
 #DESCRIPTION US-CA - San Luis Obispo - Baywood
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//cams.cdn-surfline.com/cdn-wc/wc-avilabeach/chunklist.m3u8:US-CA - San Luis Obispo - Oceano
@@ -7209,6 +7297,12 @@
 #DESCRIPTION US-FL - Destin - St Thomas At Silver Shells (YT)
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//b10.hdrelay.com/camera/fe4340da-f9c6-4071-bb60-bd13cf4b3abc/relay/chunklist_w701105387.m3u8:US-FL - Destin - The Crab Trab
 #DESCRIPTION US-FL - Destin - The Crab Trab
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/YRDO00000A34:US-FL - Edison Beach House
+#DESCRIPTION US-FL - Edison Beach House
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/NMVK00000A2F:US-FL - Estero Blvd - GullWing/Pointe Estero
+#DESCRIPTION US-FL - Estero Blvd - GullWing/Pointe Estero
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/UUYK000008FE:US-FL - Estero Blvd -  Diamond Head Beach Resort
+#DESCRIPTION US-FL - Estero Blvd -  Diamond Head Beach Resort
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/4YFHDjig1hc:US-FL - Fort Lauderdale - Alamy Andrews Avenue Bridge
 #DESCRIPTION US-FL - Fort Lauderdale - Alamy Andrews Avenue Bridge
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/1Q0mCqww_po:US-FL - Fort Lauderdale - Downtown (YT)
@@ -7319,6 +7413,10 @@
 #DESCRIPTION US-FL - Marathon - Sombrero Beach
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//cdn3.wowza.com/1/SFpTMEh2NHBldGli/dlpXWUpB/hls/p30br5bv/1152/chunklist.m3u8:US-FL - Marathon - Tranquility Bay
 #DESCRIPTION US-FL - Marathon - Tranquility Bay
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/QOJX000000E2:US-FL - Marco Island - Marriott Beach Resort - Kane
+#DESCRIPTION US-FL - Marco Island - Marriott Beach Resort - Kane
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/YDYN000000EC:US-FL - Marco Island - JW Marriott  Beach Resort - NBC-2 Beach
+#DESCRIPTION US-FL - Marco Island - JW Marriott  Beach Resort - NBC-2 Beach
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/florida/miamiandthebeaches/?cam=miamibeach7:US-FL - Miami - Biscayne Bay, Downtown, South Beach, Calle Ocho
 #DESCRIPTION US-FL - Miami - Biscayne Bay, Downtown, South Beach, Calle Ocho
 #SERVICE 4097:0:0:B4B2:7F4F:EC:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/xuoy96nMcUk:US-FL - Miami - Port (YT)
@@ -7359,6 +7457,8 @@
 #DESCRIPTION US-FL - Palm Beach - The Breakers
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//5ed7b8fd7bf40.streamlock.net%3a444/barefootonthebay/barefootonthebaycam/playlist.m3u8:US-FL - Panama City - St. Andrew's Bay
 #DESCRIPTION US-FL - Panama City - St. Andrew's Bay
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/WQUW00000286:US-FL - Panama City Beach - Harpoon Harry's
+#DESCRIPTION US-FL - Panama City Beach - Harpoon Harry's
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//5ed7b8fd7bf40.streamlock.net%3a444/holidayinnpcbbeach/holidayinnpcbbeachcam/chunklist_w535500040.m3u8:US-FL - Panama City Beach
 #DESCRIPTION US-FL - Panama City Beach
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//g1.ipcamlive.com/player/player.php?alias=59b06d035419c&autoplay=true:US-FL - Panama City Beach 2
@@ -7531,6 +7631,8 @@
 #DESCRIPTION US-DE - Dover - Bayhealth Hospital (YT)
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//58bdb48e25cf1.streamlock.net%3a19350/live/vcde001.stream/chunklist_w100634666.m3u8:US-DE - Fenwick Island - Little Assawoman Bay
 #DESCRIPTION US-DE - Fenwick Island - Little Assawoman Bay
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/LQLF00000A84:US-DE - Henlopen Acres - Town - Marina N
+#DESCRIPTION US-DE - Henlopen Acres - Town - Marina N
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/t6D09UIPgcI:US-DE - Lewes - West Bay Park (YT)
 #DESCRIPTION US-DE - Lewes - West Bay Park (YT)
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//58bdb48e25cf1.streamlock.net%3a19350/live/vcde010.stream/chunklist_w1620395876.m3u8:US-DE - Long Neck - Paradise Bar & Grille
@@ -7543,6 +7645,18 @@
 #DESCRIPTION US-DE - Wilmington - Panorama
 #SERVICE 1:64:0:0:0:0:0:0:0:0::Hawaje (US-HI)
 #DESCRIPTION Hawaje (US-HI)
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/ZOZA00000539:US-HI - Grand Wailea - A Waldorf Astoria Resort
+#DESCRIPTION US-HI - Grand Wailea - A Waldorf Astoria Resort
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/LKOU000004E4:US-HI - Hanalei Colony Resort
+#DESCRIPTION US-HI - Hanalei Colony Resort
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/MGNN0000001E:US-HI - Hawaii - Beach Cam
+#DESCRIPTION US-HI - Hawaii - Beach Cam
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/BBRT00000058:US-HI - Hawaii - Sheraton Princess Kaiulani
+#DESCRIPTION US-HI - Hawaii - Sheraton Princess Kaiulani
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/BFWA000002E5:US-HI - Hawaii - Keauhou Bay
+#DESCRIPTION US-HI - Hawaii - Keauhou Bay
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/DHUH00000548:US-HI - Hawaii - Westin Hapuna Beach Resort
+#DESCRIPTION US-HI - Hawaii - Westin Hapuna Beach Resort
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/y6ew34X8P7Q:US-HI - Honolulu - Elks Lodge (YT)
 #DESCRIPTION US-HI - Honolulu - Elks Lodge (YT)
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/vO7tYmdzZjM:US-HI - Honolulu - Zoo (YT)
@@ -7553,12 +7667,24 @@
 #DESCRIPTION US-HI - Honolulu - Sans Souci Beach (YT)
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/eFkjUPXM87I:US-HI - Honolulu - Waikiki Aquarium (YT)
 #DESCRIPTION US-HI - Honolulu - Waikiki Aquarium (YT)
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/TOYN00000089:US-HI - Honolulu - Hilton Hawaiian Village
+#DESCRIPTION US-HI - Honolulu - Hilton Hawaiian Village
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/HCOU00000057:US-HI - Honolulu - Sheraton Waikiki
+#DESCRIPTION US-HI - Honolulu - Sheraton Waikiki
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/IBQS00000079:US-HI - Honolulu - Kahala Resort
+#DESCRIPTION US-HI - Honolulu - Kahala Resort
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/JDPN00000665:US-HI - Honolulu - Moana Surfrider, A Westin Resort & Spa
+#DESCRIPTION US-HI - Honolulu - Moana Surfrider, A Westin Resort & Spa
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/PPRU0000022C:US-HI - Honolulu - Ward Village
+#DESCRIPTION US-HI - Honolulu - Ward Village
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/wnNrd-VjLsQ:US-HI - Kahuku - Turtle Bay East (YT)
 #DESCRIPTION US-HI - Kahuku - Turtle Bay East (YT)
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/DY5RYp4sxYc:US-HI - Kahuku - Turtle Bay West (YT)
 #DESCRIPTION US-HI - Kahuku - Turtle Bay West (YT)
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/TlFjn8lN1Vk:US-HI - Kailua-Kona - Royal Kona Resort (YT)
 #DESCRIPTION US-HI - Kailua-Kona - Royal Kona Resort (YT)
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/NUWJ0000005D:US-HI - Kailua-Kona - Sheraton Kona Resort & Spa at Keauhou Bay
+#DESCRIPTION US-HI - Kailua-Kona - Sheraton Kona Resort & Spa at Keauhou Bay
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//b10.hdrelay.com/camera/97769e90-aa50-4f6c-b39b-c5aaea6a194b/relay/chunklist_w949214886.m3u8:US-HI - Kapolei - Ko Olina Golf Club
 #DESCRIPTION US-HI - Kapolei - Ko Olina Golf Club
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/kxWJ74URMqQ:US-HI - Kauai - Poipu Bay Golf Course (UY)
@@ -7571,6 +7697,14 @@
 #DESCRIPTION US-HI - Kihei - Hawaiian Islands Humpback Whale
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//stream-ue1-bravo.dropcam.com/nexus_aac/4ac1ab56816140849f00b732195248c6/chunklist_w353817601.m3u8?public=U6LJopkCLH:US-HI - Kihei - The Shores of Maui
 #DESCRIPTION US-HI - Kihei - The Shores of Maui
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/URLS0000008F:US-HI - Koloa - Whaler's Cove in Poipu - West Coastline View
+#DESCRIPTION US-HI - Koloa - Whaler's Cove in Poipu - West Coastline View
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/NYRM000000AF:US-HI - Koloa - Whaler's Cove in Poipu - East Coastline View
+#DESCRIPTION US-HI - Koloa - Whaler's Cove in Poipu - East Coastline View
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/NLUJ0000095D:US-HI - Lahaina - Napili Kai
+#DESCRIPTION US-HI - Lahaina - Napili Kai
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/DLDO00000064:US-HI - Lahaina - Plantation Course at Kapalua
+#DESCRIPTION US-HI - Lahaina - Plantation Course at Kapalua
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//stream-ue1-bravo.dropcam.com/nexus_aac/d5076d126c2b445a85c652f49e83e47e/chunklist_w1740204899.m3u8?public=WwbSNWdQ5W:US-HI - Lanikeha, Kaanapali - Domy na wynajem
 #DESCRIPTION US-HI - Lanikeha, Kaanapali - Domy na wynajem
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//stream-us1-alfa.dropcam.com/nexus_aac/8f4d046394d845a1b85b3d5b7b762539/chunklist_w1652561613.m3u8?public=bzWCDHXJP8:US-HI - Lanikeha, Kaanapali - Domy na wynajem 2
@@ -7587,12 +7721,44 @@
 #DESCRIPTION US-HI - Maui - Lahaina - Royal Lahaina Resort (YT)
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//58f14b372a413.streamlock.net%3a444/sugarbeach1/sugarbeach1.stream/chunklist_w850403892.m3u8:US-HI - Maui - Sugar Beach Resort
 #DESCRIPTION US-HI - Maui - Sugar Beach Resort
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/AJSF00000033:US-HI - Maui - BLUESMITHS - Sunset
+#DESCRIPTION US-HI - Maui - BLUESMITHS - Sunset
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/YRCN0000001F:US-HI - Maui - Eldorado - Main Roof
+#DESCRIPTION US-HI - Maui - Eldorado - Main Roof
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/RYYD00000020:US-HI - Maui - Eldorado - Beach Cabana
+#DESCRIPTION US-HI - Maui - Eldorado - Beach Cabana
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/00005A62:US-HI - Maui - Kai
+#DESCRIPTION US-HI - Maui - Kai
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/BVYH000003B8:US-HI - Maui - Ocean Center
+#DESCRIPTION US-HI - Maui - Ocean Center
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/FCHW000002C2:US-HI - Maui - Second Wind
+#DESCRIPTION US-HI - Maui - Second Wind
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/PUYX0000005C:US-HI - Maui - Sheraton Resort & Spa
+#DESCRIPTION US-HI - Maui - Sheraton Resort & Spa
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/OQOD000004FD:US-HI - Maui - Ocean Center - Underwater Cam
+#DESCRIPTION US-HI - Maui - Ocean Center - Underwater Cam
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/GQRS00000091:US-HI - Maui - Wailea Beach Resort - Marriott
+#DESCRIPTION US-HI - Maui - Wailea Beach Resort - Marriott
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/JSHH00000031:US-HI - Maui - Paia Bay
+#DESCRIPTION US-HI - Maui - Paia Bay
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/QCRG0000071E:US-HI - Nalu - Adventure Pool - longest resort waterslides
+#DESCRIPTION US-HI - Nalu - Adventure Pool - longest resort waterslides
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/00000008:US-HI - Napili - Sunset Beach Front Resort
+#DESCRIPTION US-HI - Napili - Sunset Beach Front Resort
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//cams.cdn-surfline.com/cdn-wc/hi-turtlebaywest/chunklist.m3u8:US-HI - Oʻahu - Kahuku - Turtle Bay
 #DESCRIPTION US-HI - Oʻahu - Kahuku - Turtle Bay
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//cams.cdn-surfline.com/cdn-wc/hi-turtlebayeast/chunklist.m3u8:US-HI - Oʻahu - Kahuku - Turtle Bay 2
 #DESCRIPTION US-HI - Oʻahu - Kahuku - Turtle Bay 2
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/hawaii/bigisland/waikoloa/?cam=waikoloa:US-HI - Waikoloa
 #DESCRIPTION US-HI - Waikoloa
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/MLXV000000AE:US-HI - Waikoloa Beach Marriott Resort & Spa
+#DESCRIPTION US-HI - Waikoloa Beach Marriott Resort & Spa
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/XAPZ00000B1A:US-HI - Wailea Golf Gold & Emerald
+#DESCRIPTION US-HI - Wailea Golf Gold & Emerald
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/TOED00000714:US-HI - Wailea - Vacation Rentals
+#DESCRIPTION US-HI - Wailea - Vacation Rentals
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/TXXQ00000056:US-HI - Waikiki - The Royal Hawaiian, a Luxury Collection Resort
+#DESCRIPTION US-HI - Waikiki - The Royal Hawaiian, a Luxury Collection Resort
 #SERVICE 1:64:0:0:0:0:0:0:0:0::Idaho (US-ID)
 #DESCRIPTION Idaho (US-ID)
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/iMJ2GZWS29U:US-ID - Driggs - Teton Valley (YT)
@@ -7621,6 +7787,8 @@
 #DESCRIPTION US-IN - Crawfordsville - The Marie Canine Plaza (YT)
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//587001e38b9df.streamlock.net%3a4443/live/campuscam.stream/chunklist_w1378335548.m3u8:US-IN - Goshen - Schrock Plaza
 #DESCRIPTION US-IN - Goshen - Schrock Plaza
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/LWIY00000705:US-IN - Santa Claus - Splash
+#DESCRIPTION US-IN - Santa Claus - Splash
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/indiana/notredame/?cam=notredame:US-IN - University of Notre Dame - Panorama
 #DESCRIPTION US-IN - University of Notre Dame - Panorama
 #SERVICE 1:64:0:0:0:0:0:0:0:0::Iowa (US-IA)
@@ -7675,6 +7843,8 @@
 #DESCRIPTION US-SC - Myrtle Beach - Breakers Sailfish Resort
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//5ed7b8fd7bf40.streamlock.net%3a444/seacaptainshouse/seacaptainshousecam/chunklist_w618812263.m3u8:US-SC - Myrtle Beach - Sea Captain's House
 #DESCRIPTION US-SC - Myrtle Beach - Sea Captain's House
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/FOSV000007A0:US-SC - Myrtle Beach - Seaside Resorts - Grand Shores
+#DESCRIPTION US-SC - Myrtle Beach - Seaside Resorts - Grand Shores
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//5ed7b8fd7bf40.streamlock.net%3a444/caribbeanresortskipjacks/caribbeanresortcam1/chunklist_w1746898818.m3u8:US-SC - Myrtle Beach - Caribbean Resort Skipjack's
 #DESCRIPTION US-SC - Myrtle Beach - Caribbean Resort Skipjack's
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//5ed7b8fd7bf40.streamlock.net%3a444/DeadDogSaloonCam3/deaddog3/chunklist_w1553207114.m3u8:US-SC - Myrtle Beach - MarshWalk at Dead Dog Saloon
@@ -7983,6 +8153,20 @@
 #DESCRIPTION US-MD - Ocean City - Sunset Grille
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//livestream.fullcityservers.com%3a8081/parkplace.live/boardwalk.stream/chunks.m3u8:US-MD - Ocean City - The Boardwalk
 #DESCRIPTION US-MD - Ocean City - The Boardwalk
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-oceanic556:US-MD - Ocean City - Oceanic Fishing Pier Looking Towards Bait Station
+#DESCRIPTION US-MD - Ocean City - Oceanic Fishing Pier Looking Towards Bait Station
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-oceanic557:US-MD - Ocean City - Oceanic Fishing Pier Looking at Pier End
+#DESCRIPTION US-MD - Ocean City - Oceanic Fishing Pier Looking at Pier End
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-oceanic558:US-MD - Ocean City - Oceanic Fishing Pier Skyline of OCMD
+#DESCRIPTION US-MD - Ocean City - Oceanic Fishing Pier Skyline of OCMD
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-oceanic559:US-MD - Ocean City - Oceanic Fishing Pier Looking South at Pier End
+#DESCRIPTION US-MD - Ocean City - Oceanic Fishing Pier Looking South at Pier End
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-oceanic560:US-MD - Ocean City - Oceanic Fishing Pier Looking North towards town
+#DESCRIPTION US-MD - Ocean City - Oceanic Fishing Pier Looking North towards town
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-oceanic561:US-MD - Ocean City - Oceanic Fishing Pier End Looking Southwest
+#DESCRIPTION US-MD - Ocean City - Oceanic Fishing Pier End Looking Southwest
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-oceanic562:US-MD - Ocean City - Oceanic Fishing Pier End Looking Northwest
+#DESCRIPTION US-MD - Ocean City - Oceanic Fishing Pier End Looking Northwest
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//55507e0501d25.streamlock.net/live/wispresort.stream/chunklist_w1064538258.m3u8:US-MD - Wisp Ski Resort
 #DESCRIPTION US-MD - Wisp Ski Resort
 #SERVICE 1:64:0:0:0:0:0:0:0:0::Massachusetts (US-MA)
@@ -7995,6 +8179,8 @@
 #DESCRIPTION US-MA - Boston - Charles River (YT)
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/kiTsX3vPHhE:US-MA - Boston - Harbor (YT)
 #DESCRIPTION US-MA - Boston - Harbor (YT)
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/KPWH00000B4C:US-MA - Boston - Harbor View
+#DESCRIPTION US-MA - Boston - Harbor View
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/iRrphAnLzIg:US-MA - Boston - MA LIVE west (YT)
 #DESCRIPTION US-MA - Boston - MA LIVE west (YT)
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/QB4j8aMPKo4:US-MA - Cape Cod - North Falmouth - Old Silver Beach (YT)
@@ -8003,6 +8189,10 @@
 #DESCRIPTION US-MA - Chatham - Chatham Square
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//ipcamlive.com/player/player.php?alias=57f2843a9a31d&autoplay=1&token=cebf7115&debug=0:US-MA - Chatham - Chatham Square 2
 #DESCRIPTION US-MA - Chatham - Chatham Square 2
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/GPFM00000B74:US-MA - Marblehead - Corinthian Yacht Club
+#DESCRIPTION US-MA - Marblehead - Corinthian Yacht Club
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/EUIB00000B79:US-MA - Marblehead - Corinthian Yacht Club - North
+#DESCRIPTION US-MA - Marblehead - Corinthian Yacht Club - North
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/CHd0z44hTQc:US-MA - Martha’s Vineyard - Vineyard Haven (YT)
 #DESCRIPTION US-MA - Martha’s Vineyard - Vineyard Haven (YT)
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/Y0BRntF3178:US-MA - Martha’s Vineyard - Ocean View (YT)
@@ -8129,6 +8319,8 @@
 #DESCRIPTION Montana (US-MT)
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//stream-uc2-bravo.dropcam.com/nexus_aac/32669b34520841dabe8cdefc7281fc94/chunklist_w1442153601.m3u8?public=XypFXeGWYR:US-MT - Augusta - Main Street
 #DESCRIPTION US-MT - Augusta - Main Street
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/XFFQ00000155:US-MT - American Bank - Big Sky
+#DESCRIPTION US-MT - American Bank - Big Sky
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/YImAkvMlu8E:US-MT - Big Sky Resort - Ramcharger 8 (YT)
 #DESCRIPTION US-MT - Big Sky Resort - Ramcharger 8 (YT)
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/yJ8gTLaEyAg:US-MT - Big Sky Resort - Swift Current (YT)
@@ -8151,10 +8343,14 @@
 #DESCRIPTION US-MT - Hamilton - Ravalli County Airport
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//s-primevideo.sinclairstoryline.com/KECI_Kalispell/magazine/live.m3u8?primary:US-MT - Kalispell
 #DESCRIPTION US-MT - Kalispell
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/NFPM000001C8:US-MT - Livingston
+#DESCRIPTION US-MT - Livingston
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//www.milescitylive.com%3a1936/live/mainstreet.stream/chunklist_w1652132418.m3u8:US-MT - Miles City - Main St.
 #DESCRIPTION US-MT - Miles City - Main St.
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//s-primevideo.sinclairstoryline.com/KECI_Weather/magazine/live.m3u8?primary:US-MT - Missoula
 #DESCRIPTION US-MT - Missoula
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/UTNK0000017D:US-MT - Whitefish
+#DESCRIPTION US-MT - Whitefish
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//56cdb389b57ec.streamlock.net%3a1935/nps/faithful.stream/chunklist_w1231314860.m3u8:US-MT - Yellowstone National Park - Old Faithful
 #DESCRIPTION US-MT - Yellowstone National Park - Old Faithful
 #SERVICE 1:64:0:0:0:0:0:0:0:0::Nevada (US-NV)
@@ -8179,6 +8375,12 @@
 #DESCRIPTION US-NH - Henniker - Pats Peak Ski Area
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//stream-uc2-delta.dropcam.com/nexus_aac/ae12ff8b9af54914b6e0f191cc16263f/chunklist_w1787625707.m3u8?public=SP7tWc24MW:US-NH - Milford - Union Square
 #DESCRIPTION US-NH - Milford - Union Square
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/XILH000008F4:US-NH - Mount Washington - ZipTour
+#DESCRIPTION US-NH - Mount Washington - ZipTour
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/VOOW000008F9:US-NH - Mount Washington - Alpine Lodge
+#DESCRIPTION US-NH - Mount Washington - Alpine Lodge
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/COAR00000B24:US-NH - Mount Washington - Nordic
+#DESCRIPTION US-NH - Mount Washington - Nordic
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//stream-us1-charlie.dropcam.com/nexus_aac/5c12d09ef707497fbc44ce8f4c46cd7b/chunklist_w1552974414.m3u8?public=FNZjHqe5UH:US-NH - New Castle - Sea Marina - Office West view
 #DESCRIPTION US-NH - New Castle - Sea Marina - Office West view
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//stream-uc2-charlie.dropcam.com/nexus_aac/d1ab5bade61f44e3965bd6e2ecc4257f/chunklist_w813190782.m3u8?public=Xdnh04yZPL:US-NH - New Castle - Sea Marina - Fuel dock West view
@@ -8189,26 +8391,352 @@
 #DESCRIPTION New Jersey (US-NJ)
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newjersey/atlantichighlands/?cam=atlantichighlands:US-NJ - Atlantic Highlands - Port
 #DESCRIPTION US-NJ - Atlantic Highlands - Port
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-gardenspier553:US-NJ - Atlantic City - Gardens Pier Surf
+#DESCRIPTION US-NJ - Atlantic City - Gardens Pier Surf
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-gardenspier555:US-NJ - Atlantic City - Gardens Pier Showboat & Boardwalk
+#DESCRIPTION US-NJ - Atlantic City - Gardens Pier Showboat & Boardwalk
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-gardenspier556:US-NJ - Atlantic City - Gardens Pier Beach
+#DESCRIPTION US-NJ - Atlantic City - Gardens Pier Beach
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-gardenspier557:US-NJ - Atlantic City - Gardens Pier Beach & Steel Pier
+#DESCRIPTION US-NJ - Atlantic City - Gardens Pier Beach & Steel Pier
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-surfstadium554:US-NJ - Atlantic City - Surf Stadium Field Wide
+#DESCRIPTION US-NJ - Atlantic City - Surf Stadium Field Wide
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-surfstadium555:US-NJ - Atlantic City - Surf Stadium Field Pitcher and Catcher
+#DESCRIPTION US-NJ - Atlantic City - Surf Stadium Field Pitcher and Catcher
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-surfstadium556:US-NJ - Atlantic City - Surf Stadium Field 3rd Base Side
+#DESCRIPTION US-NJ - Atlantic City - Surf Stadium Field 3rd Base Side
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-surfstadium557:US-NJ - Atlantic City - Surf Stadium Field 1st Base Side
+#DESCRIPTION US-NJ - Atlantic City - Surf Stadium Field 1st Base Side
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-absecon555:US-NJ - Atlantic City - Absecon Lighthouse Looking Northeast towards Brigantine
+#DESCRIPTION US-NJ - Atlantic City - Absecon Lighthouse Looking Northeast towards Brigantine
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-absecon569:US-NJ - Atlantic City - Absecon Lighthouse Looking North with Fresnel Lens
+#DESCRIPTION US-NJ - Atlantic City - Absecon Lighthouse Looking North with Fresnel Lens
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-absecon556:US-NJ - Atlantic City - Absecon Lighthouse Looking Southeast towards Revel Casino
+#DESCRIPTION US-NJ - Atlantic City - Absecon Lighthouse Looking Southeast towards Revel Casino
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-absecon557:US-NJ - Atlantic City - Absecon Lighthouse Looking East towards The Ocean
+#DESCRIPTION US-NJ - Atlantic City - Absecon Lighthouse Looking East towards The Ocean
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-absecon558:US-NJ - Atlantic City - Absecon Lighthouse Looking West towards Borgata and Golden Nugget
+#DESCRIPTION US-NJ - Atlantic City - Absecon Lighthouse Looking West towards Borgata and Golden Nugget
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-absecon559:US-NJ - Atlantic City - Absecon Lighthouse Looking South towards uptown AC
+#DESCRIPTION US-NJ - Atlantic City - Absecon Lighthouse Looking South towards uptown AC
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-acinlet554:US-NJ - Atlantic City - Inlet PTZ
+#DESCRIPTION US-NJ - Atlantic City - Inlet PTZ
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-goldennugget575:US-NJ - Atlantic City - Golden Nugget - from the marina looking towards the casino
+#DESCRIPTION US-NJ - Atlantic City - Golden Nugget - from the marina looking towards the casino
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-goldennugget576:US-NJ - Atlantic City - Golden Nugget - from the marina looking towards Northeast
+#DESCRIPTION US-NJ - Atlantic City - Golden Nugget - from the marina looking towards Northeast
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-goldennugget1024:US-NJ - Atlantic City - Golden Nugget - from the marina PTZ Pano
+#DESCRIPTION US-NJ - Atlantic City - Golden Nugget - from the marina PTZ Pano
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-acaquarium554:US-NJ - Atlantic City - AC Aquarium Main Tank
+#DESCRIPTION US-NJ - Atlantic City - AC Aquarium Main Tank
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-acaquarium559:US-NJ - Atlantic City - AC Aquarium Widows Walk South View
+#DESCRIPTION US-NJ - Atlantic City - AC Aquarium Widows Walk South View
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-acaquarium562:US-NJ - Atlantic City - AC Aquarium Ray Tank
+#DESCRIPTION US-NJ - Atlantic City - AC Aquarium Ray Tank
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-acaquarium560:US-NJ - Atlantic City - AC Aquarium Widows Walk West View
+#DESCRIPTION US-NJ - Atlantic City - AC Aquarium Widows Walk West View
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-goldennugget564:US-NJ - Atlantic City - Golden Nugget Closeup looking East
+#DESCRIPTION US-NJ - Atlantic City - Golden Nugget Closeup looking East
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-goldennugget565:US-NJ - Atlantic City - Golden Nugget Looking East Wide
+#DESCRIPTION US-NJ - Atlantic City - Golden Nugget Looking East Wide
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-goldennugget571:US-NJ - Atlantic City - Golden Nugget Casino View of the Brigantine Cove
+#DESCRIPTION US-NJ - Atlantic City - Golden Nugget Casino View of the Brigantine Cove
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-goldennugget572:US-NJ - Atlantic City - Golden Nugget view of transient slips
+#DESCRIPTION US-NJ - Atlantic City - Golden Nugget view of transient slips
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-lbi555:US-NJ - Beach Haven - LBI 75th Street (East Lavenia) beach north
+#DESCRIPTION US-NJ - Beach Haven - LBI 75th Street (East Lavenia) beach north
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-lbi556:US-NJ - Beach Haven - LBI 75th Street (East Lavenia) Beach looking south
+#DESCRIPTION US-NJ - Beach Haven - LBI 75th Street (East Lavenia) Beach looking south
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-lbi557:US-NJ - Beach Haven - LBI 75th Street (East Lavenia) Beach looking east
+#DESCRIPTION US-NJ - Beach Haven - LBI 75th Street (East Lavenia) Beach looking east
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-lbicauseway554:US-NJ - Beach Haven - RE/MAX Causeway Auto Pan Cam East
+#DESCRIPTION US-NJ - Beach Haven - RE/MAX Causeway Auto Pan Cam East
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-lbicauseway556:US-NJ - Beach Haven - RE/MAX Causeway Traffic In East
+#DESCRIPTION US-NJ - Beach Haven - RE/MAX Causeway Traffic In East
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-lbicauseway557:US-NJ - Beach Haven - RE/MAX Cam of RE/MAX and Dunkin Donuts
+#DESCRIPTION US-NJ - Beach Haven - RE/MAX Cam of RE/MAX and Dunkin Donuts
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//wms-prod-1.wetmet.net/live/207-09-01/chunks.m3u8:US-NJ - Cape May - Plaża
 #DESCRIPTION US-NJ - Cape May - Plaża
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-capemaychannel7:US-NJ - Cape May - Corithian Yacht Club North
+#DESCRIPTION US-NJ - Cape May - Corithian Yacht Club North
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-capemaychannel8:US-NJ - Cape May - Corithian Yacht Club South
+#DESCRIPTION US-NJ - Cape May - Corithian Yacht Club South
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-capemayhenrys555:US-NJ - Cape May - Henrys Cape May Looking South on Mall
+#DESCRIPTION US-NJ - Cape May - Henrys Cape May Looking South on Mall
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-capemayhenrys556:US-NJ - Cape May - Henrys Cape May Looking North on Mall
+#DESCRIPTION US-NJ - Cape May - Henrys Cape May Looking North on Mall
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-capemaycove556:US-NJ - Cape May - Pavilion and Beach Road
+#DESCRIPTION US-NJ - Cape May - Pavilion and Beach Road
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-capemaybeach:US-NJ - Cape May - The Cove (Beachview)
+#DESCRIPTION US-NJ - Cape May - The Cove (Beachview)
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-capemaypzt:US-NJ - Cape May - The Cove (Light House Views)
+#DESCRIPTION US-NJ - Cape May - The Cove (Light House Views)
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-capemaycove555:US-NJ - Cape May - The Cove PTZ
+#DESCRIPTION US-NJ - Cape May - The Cove PTZ
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-sunsetgrill555:US-NJ - Cape May Point - Sunset Grill Looking Southwest
+#DESCRIPTION US-NJ - Cape May Point - Sunset Grill Looking Southwest
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-sunsetgrill556:US-NJ - Cape May Point - Sunset Grill Looking West
+#DESCRIPTION US-NJ - Cape May Point - Sunset Grill Looking West
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-battleshipnj570:US-NJ - Camden - Battleship New Jersey Looking at Bridge from Bow of Ship (wide)
+#DESCRIPTION US-NJ - Camden - Battleship New Jersey Looking at Bridge from Bow of Ship (wide)
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-battleshipnj571:US-NJ - Camden - Battleship New Jersey Looking East 180 Degree view the Delaware River and Philly Skyline
+#DESCRIPTION US-NJ - Camden - Battleship New Jersey Looking East 180 Degree view the Delaware River and Philly Skyline
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-battleshipnj572:US-NJ - Camden - Battleship New Jersey Looking From the Navigation Bridge (180 degrees)
+#DESCRIPTION US-NJ - Camden - Battleship New Jersey Looking From the Navigation Bridge (180 degrees)
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-battleshipnj573:US-NJ - Camden - Battleship New Jersey Looking From the Navigation Bridge Number 62
+#DESCRIPTION US-NJ - Camden - Battleship New Jersey Looking From the Navigation Bridge Number 62
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-battleshipnj574:US-NJ - Camden - Battleship New Jersey Looking From the bow of the ship towards Ben Franklin Bridge (fireworks)
+#DESCRIPTION US-NJ - Camden - Battleship New Jersey Looking From the bow of the ship towards Ben Franklin Bridge (fireworks)
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-battleshipnj575:US-NJ - Camden - Battleship New Jersey Looking From the bow of the ship PTZ
+#DESCRIPTION US-NJ - Camden - Battleship New Jersey Looking From the bow of the ship PTZ
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-battleshipnj599:US-NJ - Camden - Battleship New Jersey Closeup of Bow and Philly Skyline
+#DESCRIPTION US-NJ - Camden - Battleship New Jersey Closeup of Bow and Philly Skyline
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-battleshipnj559:US-NJ - Camden - Battleship New Jersey Looking East Wide
+#DESCRIPTION US-NJ - Camden - Battleship New Jersey Looking East Wide
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-battleshipnj560:US-NJ - Camden - Battleship New Jersey View of Philly Skyline and Penns Landing
+#DESCRIPTION US-NJ - Camden - Battleship New Jersey View of Philly Skyline and Penns Landing
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-battleshipnj561:US-NJ - Camden - Battleship New Jersey View of Moshulu, Penns Landing and Philly Skyline
+#DESCRIPTION US-NJ - Camden - Battleship New Jersey View of Moshulu, Penns Landing and Philly Skyline
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-battleshipnj562:US-NJ - Camden - Battleship New Jersey View of the Ben Franklin Bridge
+#DESCRIPTION US-NJ - Camden - Battleship New Jersey View of the Ben Franklin Bridge
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-battleshipnj563:US-NJ - Camden - Battleship New Jersey View of Penns Landing, Hilton and Philly Skyline
+#DESCRIPTION US-NJ - Camden - Battleship New Jersey View of Penns Landing, Hilton and Philly Skyline
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-battleshipnj564:US-NJ - Camden - Battleship New Jersey View of Visitor Center, Susquehanna Cank Center and Camden Skyline
+#DESCRIPTION US-NJ - Camden - Battleship New Jersey View of Visitor Center, Susquehanna Cank Center and Camden Skyline
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-battleshipnj565:US-NJ - Camden - Battleship New Jersey View of Ben Franklin Bridge from Bow
+#DESCRIPTION US-NJ - Camden - Battleship New Jersey View of Ben Franklin Bridge from Bow
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-battleshipnj566:US-NJ - Camden - Battleship New Jersey Bridge View from Bow of Ship
+#DESCRIPTION US-NJ - Camden - Battleship New Jersey Bridge View from Bow of Ship
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-battleshipnj558:US-NJ - Camden - Battleship New Jersey Walkway and Ship
+#DESCRIPTION US-NJ - Camden - Battleship New Jersey Walkway and Ship
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-battleshipnj555:US-NJ - Camden - Battleship New Jersey Auto Pan Cam
+#DESCRIPTION US-NJ - Camden - Battleship New Jersey Auto Pan Cam
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-battleshipnj556:US-NJ - Camden - Battleship New Jersey Bow of Ship Entire Ship
+#DESCRIPTION US-NJ - Camden - Battleship New Jersey Bow of Ship Entire Ship
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-battleshipnj557:US-NJ - Camden - Battleship New Jersey Bow and Philly Skyline
+#DESCRIPTION US-NJ - Camden - Battleship New Jersey Bow and Philly Skyline
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/Nrpp0gXFAKc:US-NJ - Fort Lee - George Washington Bridge (YT)
 #DESCRIPTION US-NJ - Fort Lee - George Washington Bridge (YT)
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//5a5f765a4fcc2.streamlock.net%3a1936/live/squan.stream/chunklist_w1095502734.m3u8:US-NJ - Manasquan - Plaża
 #DESCRIPTION US-NJ - Manasquan - Plaża
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-9600555:US-NJ - Margate - 9600 Atlantic Looking Southwest
+#DESCRIPTION US-NJ - Margate - 9600 Atlantic Looking Southwest
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-9600557:US-NJ - Margate - 9600 Atlantic Looking North towards AC
+#DESCRIPTION US-NJ - Margate - 9600 Atlantic Looking North towards AC
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-9600558:US-NJ - Margate - 9600 Atlantic Looking South towards OC
+#DESCRIPTION US-NJ - Margate - 9600 Atlantic Looking South towards OC
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-9600559:US-NJ - Margate - 9600 Atlantic Looking West (Sunsets)
+#DESCRIPTION US-NJ - Margate - 9600 Atlantic Looking West (Sunsets)
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-9600560:US-NJ - Margate - 9600 Atlantic Looking East (Sunrise)
+#DESCRIPTION US-NJ - Margate - 9600 Atlantic Looking East (Sunrise)
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-margatedairy:US-NJ - Margate - Dairy Bar
+#DESCRIPTION US-NJ - Margate - Dairy Bar
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-margatepier:US-NJ - Margate - Fishing Pier
+#DESCRIPTION US-NJ - Margate - Fishing Pier
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-margatepiernorth:US-NJ - Margate - Fishing Pier Looking North
+#DESCRIPTION US-NJ - Margate - Fishing Pier Looking North
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-margatepiersouth:US-NJ - Margate - Fishing Pier Looking South
+#DESCRIPTION US-NJ - Margate - Fishing Pier Looking South
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-margatepier555:US-NJ - Margate - Fishing Pier Beach South
+#DESCRIPTION US-NJ - Margate - Fishing Pier Beach South
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-margatepier556:US-NJ - Margate - Fishing Pier Beach and Surf North
+#DESCRIPTION US-NJ - Margate - Fishing Pier Beach and Surf North
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-margatepier557:US-NJ - Margate - Fishing Pier Sunset
+#DESCRIPTION US-NJ - Margate - Fishing Pier Sunset
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-margatepier558:US-NJ - Margate - Fishing Pier Sunrise
+#DESCRIPTION US-NJ - Margate - Fishing Pier Sunrise
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-margatepier559:US-NJ - Margate - Fishing Pier Beach North
+#DESCRIPTION US-NJ - Margate - Fishing Pier Beach North
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-logcabin554:US-NJ - Margate - Log Cabin Sunset
+#DESCRIPTION US-NJ - Margate - Log Cabin Sunset
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-margatepierptz:US-NJ - Margate - Fishing Pier PTZ
+#DESCRIPTION US-NJ - Margate - Fishing Pier PTZ
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-margatepierpan:US-NJ - Margate - Fishing Pier Auto Pan
+#DESCRIPTION US-NJ - Margate - Fishing Pier Auto Pan
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//wms-prod-1.wetmet.net/live/207-07-01/chunks.m3u8:US-NJ - Ocean City - Deptak
 #DESCRIPTION US-NJ - Ocean City - Deptak
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-56thstreet555:US-NJ - Ocean City - 56th Street Beach Looking East
+#DESCRIPTION US-NJ - Ocean City - 56th Street Beach Looking East
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-56thstreet557:US-NJ - Ocean City - 56th Street Beach Looking South
+#DESCRIPTION US-NJ - Ocean City - 56th Street Beach Looking South
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-56thstreet554:US-NJ - Ocean City - 56th Street Beach Auto Pan
+#DESCRIPTION US-NJ - Ocean City - 56th Street Beach Auto Pan
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-9magnolia554:US-NJ - Ocean City - Magnolia Court Doorbell
+#DESCRIPTION US-NJ - Ocean City - Magnolia Court Doorbell
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-30thstreet:US-NJ - Ocean City - 30th Street Beach
+#DESCRIPTION US-NJ - Ocean City - 30th Street Beach
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-30thstreetpzt:US-NJ - Ocean City - 30th Street Beach PZT
+#DESCRIPTION US-NJ - Ocean City - 30th Street Beach PZT
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-14thstreetpierpzt:US-NJ - Ocean City - 14th Street Fishing Pier PZT
+#DESCRIPTION US-NJ - Ocean City - 14th Street Fishing Pier PZT
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-14thstreetpiersouth1:US-NJ - Ocean City - 14th Street Beach Looking South Towards Port-O-Call
+#DESCRIPTION US-NJ - Ocean City - 14th Street Beach Looking South Towards Port-O-Call
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-14thstreetpiersouth2:US-NJ - Ocean City - 14th Street Beach Looking South Towards Chelsea Surf Beach
+#DESCRIPTION US-NJ - Ocean City - 14th Street Beach Looking South Towards Chelsea Surf Beach
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-14thstreetpiernorth4:US-NJ - Ocean City - 14th Street Beach Looking North Towards Beach
+#DESCRIPTION US-NJ - Ocean City - 14th Street Beach Looking North Towards Beach
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-14thstreetpier:US-NJ - Ocean City - 14th Street Fishing Pier
+#DESCRIPTION US-NJ - Ocean City - 14th Street Fishing Pier
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-14thstreetpierbob:US-NJ - Ocean City - Bobs Grill
+#DESCRIPTION US-NJ - Ocean City - Bobs Grill
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-doubleshot-bridge-cam:US-NJ - Ocean City - Double Shot Cam 9th Street Bridge
+#DESCRIPTION US-NJ - Ocean City - Double Shot Cam 9th Street Bridge
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-playland554:US-NJ - Ocean City - Playland Boardwalk South Wide
+#DESCRIPTION US-NJ - Ocean City - Playland Boardwalk South Wide
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-playland555:US-NJ - Ocean City - Playland Boardwalk South Zoomed
+#DESCRIPTION US-NJ - Ocean City - Playland Boardwalk South Zoomed
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-playland556:US-NJ - Ocean City - Playland Beach
+#DESCRIPTION US-NJ - Ocean City - Playland Beach
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-playland557:US-NJ - Ocean City - Playland Boardwalk North
+#DESCRIPTION US-NJ - Ocean City - Playland Boardwalk North
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-playland568:US-NJ - Ocean City - Playland Boardwalk Beach
+#DESCRIPTION US-NJ - Ocean City - Playland Boardwalk Beach
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-playland567:US-NJ - Ocean City - Playland Boardwalk Beach Auto Pan
+#DESCRIPTION US-NJ - Ocean City - Playland Boardwalk Beach Auto Pan
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-oceancity9thboardwalk:US-NJ - Ocean City - 9th and Boardwalk
+#DESCRIPTION US-NJ - Ocean City - 9th and Boardwalk
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-oceancity9thboardwalkbeach:US-NJ - Ocean City - 9th Street Beach and Boardwalk
+#DESCRIPTION US-NJ - Ocean City - 9th Street Beach and Boardwalk
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-oceancity9thbeach:US-NJ - Ocean City - 9th Street Beach
+#DESCRIPTION US-NJ - Ocean City - 9th Street Beach
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-oceancity9thboardwalknorth:US-NJ - Ocean City - 9th Street Boardwalk North
+#DESCRIPTION US-NJ - Ocean City - 9th Street Boardwalk North
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-oceancity9thboardwalkcurlys:US-NJ - Ocean City - 9th Street Boardwalk Curly Fries
+#DESCRIPTION US-NJ - Ocean City - 9th Street Boardwalk Curly Fries
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-oceancity9thboardwalkcolony:US-NJ - Ocean City - 9th Street Boardwalk Colony Food Court
+#DESCRIPTION US-NJ - Ocean City - 9th Street Boardwalk Colony Food Court
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-hollywood554:US-NJ - Ocean City - Hollywood Arcade Boardwalk South
+#DESCRIPTION US-NJ - Ocean City - Hollywood Arcade Boardwalk South
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-hollywood555:US-NJ - Ocean City - Hollywood Arcade Boardwalk North
+#DESCRIPTION US-NJ - Ocean City - Hollywood Arcade Boardwalk North
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-hollywood556:US-NJ - Ocean City - Hollywood Arcade Boardwalk Music Pier
+#DESCRIPTION US-NJ - Ocean City - Hollywood Arcade Boardwalk Music Pier
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-hollywood1024:US-NJ - Ocean City - Hollywood Arcade Boardwalk Auto Pan
+#DESCRIPTION US-NJ - Ocean City - Hollywood Arcade Boardwalk Auto Pan
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-sifting554:US-NJ - Ocean City - Jesse Real Estate
+#DESCRIPTION US-NJ - Ocean City - Jesse Real Estate
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-sifting555:US-NJ - Ocean City - Post Office
+#DESCRIPTION US-NJ - Ocean City - Post Office
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-801asbury:US-NJ - Ocean City - Asbury Avenue PTZ
+#DESCRIPTION US-NJ - Ocean City - Asbury Avenue PTZ
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-801asbury559:US-NJ - Ocean City - Asbury Avenue PTZ 2
+#DESCRIPTION US-NJ - Ocean City - Asbury Avenue PTZ 2
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-801asbury555:US-NJ - Ocean City - Asbury Avenue (Island Gypsy)
+#DESCRIPTION US-NJ - Ocean City - Asbury Avenue (Island Gypsy)
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-801asbury556:US-NJ - Ocean City - Asbury Avenue Skycam East
+#DESCRIPTION US-NJ - Ocean City - Asbury Avenue Skycam East
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-801asbury557:US-NJ - Ocean City - Asbury Avenue 8th Street and Bridge
+#DESCRIPTION US-NJ - Ocean City - Asbury Avenue 8th Street and Bridge
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-801asbury558:US-NJ - Ocean City - Asbury Avenue Looking South
+#DESCRIPTION US-NJ - Ocean City - Asbury Avenue Looking South
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-801asbury560:US-NJ - Ocean City - Asbury Avenue Skycam West
+#DESCRIPTION US-NJ - Ocean City - Asbury Avenue Skycam West
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-801asbury581:US-NJ - Ocean City - Asbury Avenue Looking North
+#DESCRIPTION US-NJ - Ocean City - Asbury Avenue Looking North
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-801asbury1024:US-NJ - Ocean City - Asbury Avenue Auto Pan Cam looking North
+#DESCRIPTION US-NJ - Ocean City - Asbury Avenue Auto Pan Cam looking North
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-3237bay554:US-NJ - Ocean City - Birdfeed (Karmnik)
+#DESCRIPTION US-NJ - Ocean City - Birdfeed (Karmnik)
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-gardens-plaza-3rd-street-beach-and-boardwalk:US-NJ - Ocean City - Gardens Plaza 3rd Street Beach and Boardwalk
+#DESCRIPTION US-NJ - Ocean City - Gardens Plaza 3rd Street Beach and Boardwalk
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-gardens-plaza-skycam:US-NJ - Ocean City - Gardens Plaza 3rd Skycam
+#DESCRIPTION US-NJ - Ocean City - Gardens Plaza 3rd Skycam
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-gardens-plaza-skycam-2:US-NJ - Ocean City - Gardens Plaza 3rd Skycam 2
+#DESCRIPTION US-NJ - Ocean City - Gardens Plaza 3rd Skycam 2
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-wetandwild554:US-NJ - Ocean City - Wet and Wild - Wide Shot Looking East
+#DESCRIPTION US-NJ - Ocean City - Wet and Wild - Wide Shot Looking East
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-wetandwild555:US-NJ - Ocean City - Wet and Wild - Bridge
+#DESCRIPTION US-NJ - Ocean City - Wet and Wild - Bridge
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-wetandwild556:US-NJ - Ocean City - Wet and Wild - Speed Boat and Dock End
+#DESCRIPTION US-NJ - Ocean City - Wet and Wild - Speed Boat and Dock End
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-wetandwild1024:US-NJ - Ocean City - Wet and Wild - Jet Skis and Boat Docks
+#DESCRIPTION US-NJ - Ocean City - Wet and Wild - Jet Skis and Boat Docks
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newjersey/paterson/?cam=patersonfalls:US-NJ - Paterson - Great Falls
 #DESCRIPTION US-NJ - Paterson - Great Falls
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//stream-uc2-bravo.dropcam.com/nexus_aac/3fd540d89d234001bc953ff6a5303a8e/chunklist_w863186990.m3u8?public=dCd4cm9iqX:US-NJ - Point Pleasant Beach - Jenkinson’s Beach
 #DESCRIPTION US-NJ - Point Pleasant Beach - Jenkinson’s Beach
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-sounds555:US-NJ - Sea Isle City - 58th Street Bay View of Inland Waterway
+#DESCRIPTION US-NJ - Sea Isle City - 58th Street Bay View of Inland Waterway
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-sounds554:US-NJ - Sea Isle City - 58th Street Bay View Looking Southwest
+#DESCRIPTION US-NJ - Sea Isle City - 58th Street Bay View Looking Southwest
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-seashell560:US-NJ - Sea Isle City - Sea Shell Condos Skycam West
+#DESCRIPTION US-NJ - Sea Isle City - Sea Shell Condos Skycam West
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-seashell561:US-NJ - Sea Isle City - Sea Shell Condos Skycam North
+#DESCRIPTION US-NJ - Sea Isle City - Sea Shell Condos Skycam North
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-seashell562:US-NJ - Sea Isle City - Sea Shell Condos Skycam East
+#DESCRIPTION US-NJ - Sea Isle City - Sea Shell Condos Skycam East
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-seashell563:US-NJ - Sea Isle City - Sea Shell Condos Gazebo & Theater
+#DESCRIPTION US-NJ - Sea Isle City - Sea Shell Condos Gazebo & Theater
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-seashell564:US-NJ - Sea Isle City - Sea Shell Condos JFK
+#DESCRIPTION US-NJ - Sea Isle City - Sea Shell Condos JFK
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-spinnaker554:US-NJ - Sea Isle City - Spinnaker Condos Skycam West
+#DESCRIPTION US-NJ - Sea Isle City - Spinnaker Condos Skycam West
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-spinnaker555:US-NJ - Sea Isle City - Spinnaker Condos Skycam East
+#DESCRIPTION US-NJ - Sea Isle City - Spinnaker Condos Skycam East
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-spinnaker556:US-NJ - Sea Isle City - Spinnaker Condos Skycam North
+#DESCRIPTION US-NJ - Sea Isle City - Spinnaker Condos Skycam North
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-spinnaker557:US-NJ - Sea Isle City - Spinnaker Condos South
+#DESCRIPTION US-NJ - Sea Isle City - Spinnaker Condos South
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-spinnaker558:US-NJ - Sea Isle City - Spinnaker Condos North
+#DESCRIPTION US-NJ - Sea Isle City - Spinnaker Condos North
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-seaisle557:US-NJ - Sea Isle City - 34th Street Promenade
+#DESCRIPTION US-NJ - Sea Isle City - 34th Street Promenade
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-seaisle555:US-NJ - Sea Isle City - 34th Street Beach
+#DESCRIPTION US-NJ - Sea Isle City - 34th Street Beach
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-seaisle556:US-NJ - Sea Isle City - 34th Street Promenade Cam Looking North
+#DESCRIPTION US-NJ - Sea Isle City - 34th Street Promenade Cam Looking North
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newjersey/seasideheights/?cam=seasideheights:US-NJ - Seaside Heights
 #DESCRIPTION US-NJ - Seaside Heights
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newjersey/seasidepark/?cam=seasidepark:US-NJ - Seaside Park
 #DESCRIPTION US-NJ - Seaside Park
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-somerspointjfk562:US-NJ - Somers Point - High Bank Park looking East Towards Bridge and Ocean City
+#DESCRIPTION US-NJ - Somers Point - High Bank Park looking East Towards Bridge and Ocean City
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-somerspointjfk563:US-NJ - Somers Point - High Bank looking East Towards Bridge and Ocean City
+#DESCRIPTION US-NJ - Somers Point - High Bank looking East Towards Bridge and Ocean City
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-somerspointjfk584:US-NJ - Somers Point - High Bank Auto Pan Cam
+#DESCRIPTION US-NJ - Somers Point - High Bank Auto Pan Cam
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-wetlands556:US-NJ - Stone Harbor - The Wetlands Institute Wetlands Overwalk and Stone Harbor Bay
+#DESCRIPTION US-NJ - Stone Harbor - The Wetlands Institute Wetlands Overwalk and Stone Harbor Bay
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-wetlands557:US-NJ - Stone Harbor - The Wetlands Institute Looking West
+#DESCRIPTION US-NJ - Stone Harbor - The Wetlands Institute Looking West
+#SERVICE 1:64:0:0:0:0:0:0:0:0::US-NJ - Strathmere
+#DESCRIPTION US-NJ - Strathmere
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-sherman554:US-NJ - Strathmere - Sherman Beach and Surf
+#DESCRIPTION US-NJ - Strathmere - Sherman Beach and Surf
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-sherman555:US-NJ - Strathmere - Sherman Beach Looking South
+#DESCRIPTION US-NJ - Strathmere - Sherman Beach Looking South
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-sherman556:US-NJ - Strathmere - Sherman Beach Looking North
+#DESCRIPTION US-NJ - Strathmere - Sherman Beach Looking North
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newjersey/wildwood/?cam=wildwood:US-NJ - Wildwood - Boardwalk
 #DESCRIPTION US-NJ - Wildwood - Boardwalk
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//wms-prod-1.wetmet.net/live/207-08-01/chunks.m3u8:US-NJ - Wildwood - Raging Waters Water Park
 #DESCRIPTION US-NJ - Wildwood - Raging Waters Water Park
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-icona555:US-NJ - Wildwood - Hotel Icona Skycam Looking South
+#DESCRIPTION US-NJ - Wildwood - Hotel Icona Skycam Looking South
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-icona556:US-NJ - Wildwood - Hotel Icona Beach Skycam Looking at Icona Beach Bar
+#DESCRIPTION US-NJ - Wildwood - Hotel Icona Beach Skycam Looking at Icona Beach Bar
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-icona557:US-NJ - Wildwood - Hotel Icona Beach Skycam Surfcam
+#DESCRIPTION US-NJ - Wildwood - Hotel Icona Beach Skycam Surfcam
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-wwnj554:US-NJ - Wildwood - Convention Center PTZ Slingshot
+#DESCRIPTION US-NJ - Wildwood - Convention Center PTZ Slingshot
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-wwnj556:US-NJ - Wildwood - Convention Center Mini PTZ
+#DESCRIPTION US-NJ - Wildwood - Convention Center Mini PTZ
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-wwnj558:US-NJ - Wildwood - Convention Center Fixed Cam North
+#DESCRIPTION US-NJ - Wildwood - Convention Center Fixed Cam North
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-wwnj555:US-NJ - Wildwood - Convention Center PTZ Coaster
+#DESCRIPTION US-NJ - Wildwood - Convention Center PTZ Coaster
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-spicer559:US-NJ - Wildwood - Spicer Avenue Beach PTZ North
+#DESCRIPTION US-NJ - Wildwood - Spicer Avenue Beach PTZ North
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-spicer560:US-NJ - Wildwood - Spicer Avenue Beach South East
+#DESCRIPTION US-NJ - Wildwood - Spicer Avenue Beach South East
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-spicer561:US-NJ - Wildwood - Spicer Avenue Beach North East
+#DESCRIPTION US-NJ - Wildwood - Spicer Avenue Beach North East
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-spicer562:US-NJ - Wildwood - Spicer Avenue Boardwalk PTZ
+#DESCRIPTION US-NJ - Wildwood - Spicer Avenue Boardwalk PTZ
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-spicer563:US-NJ - Wildwood - Spicer Avenue Boardwalk North Hot Spot
+#DESCRIPTION US-NJ - Wildwood - Spicer Avenue Boardwalk North Hot Spot
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-spicer564:US-NJ - Wildwood - Spicer Avenue Boardwalk South
+#DESCRIPTION US-NJ - Wildwood - Spicer Avenue Boardwalk South
 #SERVICE 1:64:0:0:0:0:0:0:0:0::Nowy Jork (US-NY)
 #DESCRIPTION Nowy Jork (US-NY)
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//wms-prod-2.wetmet.net/live/225-05-01/chunks.m3u8:US-NY - Albany - Downtown
@@ -8455,6 +8983,76 @@
 #DESCRIPTION US-PA - Palmerton - Blue Mountain Ski Area 4
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//wms-prod-2.wetmet.net/live/230-05-01/chunks.m3u8:US-PA - Palmerton - Blue Mountain Ski Area 5
 #DESCRIPTION US-PA - Palmerton - Blue Mountain Ski Area 5
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-dibruno565:US-PA - Philadelphia - Pronto Pole Cam Looking at Piazza
+#DESCRIPTION US-PA - Philadelphia - Pronto Pole Cam Looking at Piazza
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-dibruno566:US-PA - Philadelphia - Pronto Pole Cam Looking South on 9th Street
+#DESCRIPTION US-PA - Philadelphia - Pronto Pole Cam Looking South on 9th Street
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-dibruno567:US-PA - Philadelphia - Pronto Pole Cam Looking North on 9th Street
+#DESCRIPTION US-PA - Philadelphia - Pronto Pole Cam Looking North on 9th Street
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-anthonys554:US-PA - Philadelphia - Anthonys Italian Coffee House - 9th Street South
+#DESCRIPTION US-PA - Philadelphia - Anthonys Italian Coffee House - 9th Street South
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-anthonys555:US-PA - Philadelphia - Anthonys Italian Coffee House - 9th Street North
+#DESCRIPTION US-PA - Philadelphia - Anthonys Italian Coffee House - 9th Street North
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-anthonys556:US-PA - Philadelphia - Anthonys Italian Coffee House - 9th Street South
+#DESCRIPTION US-PA - Philadelphia - Anthonys Italian Coffee House - 9th Street South
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-anthonys557:US-PA - Philadelphia - Anthonys Italian Coffee House - Storefront
+#DESCRIPTION US-PA - Philadelphia - Anthonys Italian Coffee House - Storefront
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-dockside554:US-PA - Philadelphia - Dockside Condos USS New Jersey View
+#DESCRIPTION US-PA - Philadelphia - Dockside Condos USS New Jersey View
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-dockside555:US-PA - Philadelphia - Dockside Condos Ben Franklin Bride (closeup)
+#DESCRIPTION US-PA - Philadelphia - Dockside Condos Ben Franklin Bride (closeup)
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-dockside556:US-PA - Philadelphia - Dockside Condos Penns Landing and Ben Franklin View
+#DESCRIPTION US-PA - Philadelphia - Dockside Condos Penns Landing and Ben Franklin View
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-dockside557:US-PA - Philadelphia - Dockside Condos Penns Landing Auto Pan
+#DESCRIPTION US-PA - Philadelphia - Dockside Condos Penns Landing Auto Pan
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-dockside558:US-PA - Philadelphia - Dockside Condos City Skyline
+#DESCRIPTION US-PA - Philadelphia - Dockside Condos City Skyline
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-docksidesouth554:US-PA - Philadelphia - Dockside Condos Walt Whitman Bridge
+#DESCRIPTION US-PA - Philadelphia - Dockside Condos Walt Whitman Bridge
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-docksidesouth555:US-PA - Philadelphia - Dockside Condos South Wide River and Camden
+#DESCRIPTION US-PA - Philadelphia - Dockside Condos South Wide River and Camden
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-docksidesouth556:US-PA - Philadelphia - Dockside Condos Southwest Wide Skyline
+#DESCRIPTION US-PA - Philadelphia - Dockside Condos Southwest Wide Skyline
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-docksidesouth557:US-PA - Philadelphia - Dockside Condos South View of Philly Heliport
+#DESCRIPTION US-PA - Philadelphia - Dockside Condos South View of Philly Heliport
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-docksidesouth558:US-PA - Philadelphia - Dockside Condos South View
+#DESCRIPTION US-PA - Philadelphia - Dockside Condos South View
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-igloo555:US-PA - Philadelphia - The Igloo - Storefront
+#DESCRIPTION US-PA - Philadelphia - The Igloo - Storefront
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-igloo556:US-PA - Philadelphia - The Igloo - Sidewalk North
+#DESCRIPTION US-PA - Philadelphia - The Igloo - Sidewalk North
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-igloo557:US-PA - Philadelphia - The Igloo - Triangle South
+#DESCRIPTION US-PA - Philadelphia - The Igloo - Triangle South
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-igloo558:US-PA - Philadelphia - The Igloo - Triangle West
+#DESCRIPTION US-PA - Philadelphia - The Igloo - Triangle West
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-igloo559:US-PA - Philadelphia - The Igloo - Triangle North
+#DESCRIPTION US-PA - Philadelphia - The Igloo - Triangle North
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-philly1:US-PA - Philadelphia - Skyline West
+#DESCRIPTION US-PA - Philadelphia - Skyline West
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-philly2:US-PA - Philadelphia - Skyline South (zoomed)
+#DESCRIPTION US-PA - Philadelphia - Skyline South (zoomed)
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-philly3:US-PA - Philadelphia - West (zoomed)
+#DESCRIPTION US-PA - Philadelphia - West (zoomed)
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-philly4:US-PA - Philadelphia - West Walnut Street
+#DESCRIPTION US-PA - Philadelphia - West Walnut Street
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-philly5:US-PA - Philadelphia - West Sunsets
+#DESCRIPTION US-PA - Philadelphia - West Sunsets
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-philly6:US-PA - Philadelphia - West Philly and FMC Tower
+#DESCRIPTION US-PA - Philadelphia - West Philly and FMC Tower
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-philly7:US-PA - Philadelphia - Skyline South (wide)
+#DESCRIPTION US-PA - Philadelphia - Skyline South (wide)
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-libertyone554:US-PA - Philadelphia - Liberty One Observation Deck 180 Degree
+#DESCRIPTION US-PA - Philadelphia - Liberty One Observation Deck 180 Degree
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-libertyone555:US-PA - Philadelphia - Liberty One Observation Deck West Lounge
+#DESCRIPTION US-PA - Philadelphia - Liberty One Observation Deck West Lounge
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-libertyone556:US-PA - Philadelphia - Liberty One Observation Deck views west towards Schuylkill River
+#DESCRIPTION US-PA - Philadelphia - Liberty One Observation Deck views west towards Schuylkill River
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-libertyone557:US-PA - Philadelphia - Liberty One Observation Deck views northwest
+#DESCRIPTION US-PA - Philadelphia - Liberty One Observation Deck views northwest
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-libertyone559:US-PA - Philadelphia - Liberty One Observation Deck views southeast towards Liberty Two & Delaware River
+#DESCRIPTION US-PA - Philadelphia - Liberty One Observation Deck views southeast towards Liberty Two & Delaware River
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//attheshore.com/livecam-libertyone560:US-PA - Philadelphia - Liberty One Observation Deck views east towards City Hall & Ben Franklin Bridge
+#DESCRIPTION US-PA - Philadelphia - Liberty One Observation Deck views east towards City Hall & Ben Franklin Bridge
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/pennsylvania/pittsburgh/warhol/?cam=warhol_figmentstream:US-PA - Pittsburgh - St. John Chrysostom Church
 #DESCRIPTION US-PA - Pittsburgh - St. John Chrysostom Church
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/pennsylvania/pittsburgh/?cam=pittsburgh:US-PA - Pittsburgh - Skyline
@@ -8509,6 +9107,8 @@
 #DESCRIPTION US-TX - Bolivar Beach - PEast Galveston Bay
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//58f14b372a413.streamlock.net%3a444/coastaloutdoorssunrisebeach/coastaloutdoorssunrisebeach.stream/chunklist_w855313474.m3u8:US-TX - Bolivar Beach - Sunrise Beach
 #DESCRIPTION US-TX - Bolivar Beach - Sunrise Beach
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/BHYP000002DB:US-TX - City of Corpus Christi - Ellis Beach
+#DESCRIPTION US-TX - City of Corpus Christi - Ellis Beach
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/texas/dallas/dealeyplaza/?cam=dealeyplaza:US-TX - Dallas - Dealey Plaza
 #DESCRIPTION US-TX - Dallas - Dealey Plaza
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/texas/dallas/gasmonkey/?cam=gmgarage:US-TX - Dallas - Gas Monkey Garage
@@ -8519,6 +9119,8 @@
 #DESCRIPTION US-TX - Dallas - Port lotniczy Dallas-Fort Worth
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/texas/dallas/reuniontower/?cam=reuniontower:US-TX - Dallas - Reunion Tower
 #DESCRIPTION US-TX - Dallas - Reunion Tower
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/BQUM000000BA:US-TX - Galveston Island, Tourism & Marketing - Pyramid
+#DESCRIPTION US-TX - Galveston Island, Tourism & Marketing - Pyramid
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//eu-all6.secdn.net/computerwiz-live/play/stage/chunklist_w1008742777.m3u8:US-TX - Houston - Discovery Green Park
 #DESCRIPTION US-TX - Houston - Discovery Green Park
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//computerwiz-hls.secdn.net/computerwiz-live/play/fountain/chunklist_w290153899.m3u8:US-TX - Houston - Discovery Green Park 2
@@ -8541,10 +9143,18 @@
 #DESCRIPTION US-TX - Snyder - College Ave
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/rCnl4IZOPe0:US-TX - South Padre Island - SpaceX Boca Chica (YT)
 #DESCRIPTION US-TX - South Padre Island - SpaceX Boca Chica (YT)
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/BIJQ00000061:US-TX - South Padre Island - Isla Grand Beach Resort
+#DESCRIPTION US-TX - South Padre Island - Isla Grand Beach Resort
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/QqgSVV36wNI:US-TX - South Padre Island - Beach (YT)
 #DESCRIPTION US-TX - South Padre Island - Beach (YT)
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/texas/southlake/?cam=southlake:US-TX - Southlake - Town Square
 #DESCRIPTION US-TX - Southlake - Town Square
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/VMWC00000CD2:US-TX - Texas City - Dike
+#DESCRIPTION US-TX - Texas City - Dike
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/HGXC00000CCD:US-TX - Texas City - Skyline
+#DESCRIPTION US-TX - Texas City - Skyline
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/XCLW000002D1:US-TX - Whitecap - Beach Access
+#DESCRIPTION US-TX - Whitecap - Beach Access
 #SERVICE 1:64:0:0:0:0:0:0:0:0::Tennessee (US-TN)
 #DESCRIPTION Tennessee (US-TN)
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:https%3a//55507e0501d25.streamlock.net/live/bristol.stream/chunklist_w1537965480.m3u8:US-TN - Bristol - State St.
@@ -9195,6 +9805,8 @@
 #DESCRIPTION CY - Larnaka - Plaża
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/_V4Y6CseUsQ:CY - Limassol - Trilogy Limassol Seafront (YT)
 #DESCRIPTION CY - Limassol - Trilogy Limassol Seafront (YT)
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/YPIZ00000647:CY - Sunset View Home
+#DESCRIPTION CY - Sunset View Home
 #SERVICE 1:64:0:0:0:0:0:0:0:0::Filipiny (PH)
 #DESCRIPTION Filipiny (PH)
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.skylinewebcams.com/webcam/philippines/mimaropa/palawan/el-nido.html:PH - Palawan - El Nido
@@ -9667,7 +10279,7 @@
 #DESCRIPTION TR - Konya - SİLLE KAVŞAĞI
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//konya.sehirkameralari.com/live/594b8b7dbd75b/playlist.m3u8:TR - Konya - Türk Yıldızları Parkı
 #DESCRIPTION TR - Konya - Türk Yıldızları Parkı
-#SERVICE 4097:0:0:0:0:0C:0:0:0:0:http%3a//konya.sehirkameralari.com/live/56a9e456dee18/playlist.m3u8:TR - Konya - ALAADDİN CADDESİ 2
+#SERVICE 4097:0:0:0:0:C:0:0:0:0:http%3a//konya.sehirkameralari.com/live/56a9e456dee18/playlist.m3u8:TR - Konya - ALAADDİN CADDESİ 2
 #DESCRIPTION TR - Konya - ALAADDİN CADDESİ 2
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//konya.sehirkameralari.com/live/52f8ac9765db4/playlist.m3u8:TR - Konya - MEVLANA - ÜÇLER KAVŞAĞI
 #DESCRIPTION TR - Konya - MEVLANA - ÜÇLER KAVŞAĞI
@@ -9799,7 +10411,7 @@
 #DESCRIPTION NASA TV Media channel (YT)
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.youtube.com/watch?v=21X5lGlDOfg:NASA TV (YT)
 #DESCRIPTION NASA TV (YT)
-#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.youtube.com/watch?v=EEIk7gwjgIM:ISS Earth views I (YT)
+#SERVICE 4097:0:0:FC21:A6DA:EC:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.youtube.com/watch?v=EEIk7gwjgIM:ISS Earth views I (YT)
 #DESCRIPTION ISS Earth views I (YT)
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.youtube.com/watch?v=XBPjVzSoepo:ISS Earth views II (YT)
 #DESCRIPTION ISS Earth views II (YT)
@@ -9823,6 +10435,8 @@
 #DESCRIPTION GB - Minehead - Stacja kolejowa
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//maybach.railcam.co.uk%3a8080/Corfe_14435/tracks-v1/mono.m3u8:GB - Mirlees - Corfe Castle
 #DESCRIPTION GB - Mirlees - Corfe Castle
+#SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.ozolio.com/explore/NCDF000008EF:GB - Mousehole
+#DESCRIPTION GB - Mousehole
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//paxman.railcam.co.uk%3a8080/Horton_37275/tracks-v1a1/index.m3u8:GB - Ribblehead - Horton railway
 #DESCRIPTION GB - Ribblehead - Horton railway
 #SERVICE 4097:0:0:0:0:0:0:0:0:0:http%3a//maybach.railcam.co.uk%3a8080/Ribblehead_station/tracks-v1a1/mono.m3u8:GB - Ribblehead - Station

@@ -16,6 +16,7 @@ from Screens.Setup import SetupSummary
 
 config.plugins.streamlinksrv = ConfigSubsection()
 config.plugins.streamlinksrv.installBouquet = NoSave(ConfigNothing())
+config.plugins.streamlinksrv.generateBouquet = NoSave(ConfigNothing())
 
 config.plugins.streamlinksrv.enabled = ConfigYesNo(default = False)
 config.plugins.streamlinksrv.logLevel = ConfigSelection(default = "info", choices = [("none", _("none")),
@@ -120,6 +121,14 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                 Mlist.append(getConfigListEntry(_("Press OK to remove: %s") % f , config.plugins.streamlinksrv.installBouquet))
             else:
                 Mlist.append(getConfigListEntry(_("Press OK to add: %s") % f , config.plugins.streamlinksrv.installBouquet))
+        for f in sorted(os.listdir("/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/plugins"), key=str.lower):
+            if f.startswith('generate_') and f.endswith('.py'):
+                bname = f[9:-3]
+                if os.path.exists('/etc/enigma2/%s' % bname):
+                    Mlist.append(getConfigListEntry(_("Press OK to remove: %s") % bname , config.plugins.streamlinksrv.installBouquet))
+                else:
+                    Mlist.append(getConfigListEntry(_("Press OK to create: %s") % bname , config.plugins.streamlinksrv.generateBouquet))
+                
         Mlist.append(getConfigListEntry(""))
         Mlist.append(getConfigListEntry('\c00289496' + _("*** %s configuration ***") % 'pilot.wp.pl'))
         Mlist.append(getConfigListEntry(_("Username:"), config.plugins.streamlinksrv.WPusername))
@@ -303,7 +312,24 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                 elif currItem == config.plugins.streamlinksrv.remoteE2bouquet:
                     from StreamingChannelConverter import StreamingChannelFromServerScreen
                     session.openWithCallback(self.doNothing, StreamingChannelFromServerScreen) 
+                elif currItem == config.plugins.streamlinksrv.generateBouquet:
+                    self.DBGlog('currItem == config.plugins.streamlinksrv.generateBouquet')
+                    bouquetFileName = currInfo.split(': ')[1].strip()
+                    self.doAction = ('generate_%s.py' % bouquetFileName, '/etc/enigma2/%s' % bouquetFileName, 'anonymous','nopassword')
+                    self["config"].list = self.buildList()
                 elif currItem == config.plugins.streamlinksrv.installBouquet:
+                    self.DBGlog('currItem == config.plugins.streamlinksrv.installBouquet')
+                    #clean bouquets.tv from non existing files
+                    f = ''
+                    for line in open('/etc/enigma2/bouquets.tv','r'):
+                        if 'FROM BOUQUET' in line:
+                            fname = line.split('FROM BOUQUET')[1].strip().split('"')[1].strip()
+                            if os.path.exists('/etc/enigma2/%s' % fname):
+                                f += line
+                        else:
+                            f += line
+                    open('/etc/enigma2/bouquets.tv','w').write(f)
+                    #wybrany bukiet
                     bouquetFileName = currInfo.split(': ')[1].strip()
                     if os.path.exists('/etc/enigma2/%s' % bouquetFileName):
                         self.DBGlog('/etc/enigma2/%s' % bouquetFileName)
