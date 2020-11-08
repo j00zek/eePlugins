@@ -28,19 +28,21 @@ def getList( retList, WebContent, reFindString ): #getList([], nowContent, '<spa
             retList.append(i)
     return retList
 
-def _generate_E2bouquet(bouquet_name, file_name, frameWork = "4097"):
-    doLog('Generuje bukiet %s z frameWork %s do pliku %s ...' % (bouquet_name,frameWork,file_name), 'w')
-
+def generate_E2bouquet(bouquet_name, file_name, frameWork, streamlinkURL):
+    doLog('Generuje bukiet %s do pliku %s ...' % (bouquet_name,file_name), 'w')
+    
+    mainURL = 'https://limehd.tv/'
     #get channels list
     import requests
-    response = requests.get('https://limehd.tv/')
+    response = requests.get(mainURL)
     
     webPage = response.content
     webPage = clearContent( webPage, '<ul class="inner channels-data">', '</ul>' )
     channelsRecords = getList([], webPage, '<li (.*?)</li>') # returns each channel data as one item
     channelsList = []
     for channel in channelsRecords:
-        getList(channelsList, channel, "href=\"/([^\"]*)\".*Player\.online[^']*'([^']+)'")
+        #getList(channelsList, channel, "href=\"/([^\"]*)\".*Player\.online[^']*'([^']+)'")
+        getList(channelsList, channel, "href=\"/([^\"]*)\".*img alt=\"([^\"]*)\"")
 
     #generate bouquet
 
@@ -49,11 +51,12 @@ def _generate_E2bouquet(bouquet_name, file_name, frameWork = "4097"):
     data = '#NAME %s aktualizacja %s\n' % (bouquet_name, date.today().strftime("%d-%m-%Y"))
     for item in channelsList:
         title=item[0]
-        url=item[1].replace(':','%3a')
+        info=item[1]
         Reference = '%s:0:1:0:0:0:0:0:0:0' % frameWork
-        'data += '#SERVICE %s:%s%s%s:%s\n' % (ServiceID, streamlinkURL, params['video_url'].replace(':','%3a') , title)
-        data += '#SERVICE %s:%s:%s\n' % (Reference, url, title)
-        data += '#DESCRIPTION %s\n' % (title)
+        #data += '#SERVICE %s:%s%s%s:%s\n' % (ServiceID, streamlinkURL, params['video_url'].replace(':','%3a') , title)
+        #data += '#SERVICE %s:%s:%s\n' % (Reference, url, title)
+        data += '#SERVICE %s:%s%s%s:%s (%s)\n' % (Reference, streamlinkURL, mainURL.replace(':','%3a'), title, title, info)
+        data += '#DESCRIPTION %s (%s)\n' % (title, info)
 
     with open(file_name, 'w') as f:
         f.write(data.encode('utf-8'))
@@ -68,9 +71,15 @@ def _generate_E2bouquet(bouquet_name, file_name, frameWork = "4097"):
         f += '#SERVICE 1:7:1:0:0:0:0:0:0:0:FROM BOUQUET "%s" ORDER BY bouquet\n' % os.path.basename(file_name)
         open('/etc/enigma2/bouquets.tv','w').write(f)
 
-if __name__ == '__main__' and len(sys.argv) >=5:
-    filename = sys.argv[1]
-    bname = filename.replace('/etc/enigma2/','').replace('userbouquet.','')[:-3]
-    streamlinkURL = 'http%3a//127.0.0.1%3a' + sys.argv[4] + '/'
-    frameWork = sys.argv[5]
-    _generate_E2bouquet(bname, filename, frameWork)
+if __name__ == '__main__':
+    if len(sys.argv) >=5:
+        filename        = sys.argv[1]
+        streamlinkURL   = 'http%3a//127.0.0.1%3a' + sys.argv[4] + '/'
+        frameWork       = sys.argv[5]
+    else:
+        filename        = '/etc/enigma2/userbouquet.LimeTV.tv'
+        streamlinkURL   = 'http%3a//127.0.0.1%3a8088/'
+        frameWork       =  "4097"
+
+    bname = filename.replace('/etc/enigma2/','').replace('userbouquet.','')[:-3] + ' (%s)' % frameWork
+    generate_E2bouquet(bname, filename, frameWork, streamlinkURL)
