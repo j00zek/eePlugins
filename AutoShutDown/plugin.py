@@ -414,13 +414,16 @@ class AutoShutDownConfiguration(Screen, ConfigListScreen):
             self.close()
 
     def cancel(self):
-        if self["config"].isChanged():
-            self.session.openWithCallback(self.cancelConfirm, MessageBox, _("Really close without saving settings?"), MessageBox.TYPE_YESNO, default = False)
-        else:
-            for x in self["config"].list:
-                if len(x) >= 2:
-                    x[1].cancel()
-            self.close(False,self.session)
+        try:
+            if self["config"].isChanged():
+              self.session.openWithCallback(self.cancelConfirm, MessageBox, _("Really close without saving settings?"), MessageBox.TYPE_YESNO, default = False)
+            else:
+                for x in self["config"].list:
+                    if len(x) >= 2:
+                        x[1].cancel()
+        except Exception:
+            pass
+        self.close(False,self.session)
 
     def cancelConfirm(self, result):
         if result is None or result is False:
