@@ -32,6 +32,9 @@ config.plugins.streamlinksrv.ClearLogFile = ConfigEnableDisable(default = True)
 config.plugins.streamlinksrv.logPath = ConfigSelection(default = "/tmp", choices = [("/home/root", "/home/root"), ("/tmp", "/tmp"), ("/hdd", "/hdd"), ])
 config.plugins.streamlinksrv.PortNumber = ConfigSelection(default = "8088", choices = [("8088", "8088"), ("88", "88"), ])
 config.plugins.streamlinksrv.bufferPath = ConfigText(default = "/tmp")
+config.plugins.streamlinksrv.EPGserver = ConfigEnableDisable(default = False)
+config.plugins.streamlinksrv.Recorder = ConfigEnableDisable(default = False)
+
 # pilot.wp.pl
 config.plugins.streamlinksrv.WPusername = ConfigText()
 config.plugins.streamlinksrv.WPpassword = ConfigPassword()
@@ -163,7 +166,8 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         Mlist.append(getConfigListEntry(_("Clear log on each start:"), config.plugins.streamlinksrv.ClearLogFile))
         Mlist.append(getConfigListEntry(_("Save log file in:"), config.plugins.streamlinksrv.logPath))
         Mlist.append(getConfigListEntry(_("Buffer path:"), config.plugins.streamlinksrv.bufferPath))
-
+        Mlist.append(getConfigListEntry(_("EPGimport mode:"), config.plugins.streamlinksrv.EPGserver))
+        Mlist.append(getConfigListEntry(_("Recorder mode:"), config.plugins.streamlinksrv.Recorder))
         
         Mlist.append(getConfigListEntry(""))
         Mlist.append(getConfigListEntry('\c00289496' + _("*** /etc/streamlink/config ***")))

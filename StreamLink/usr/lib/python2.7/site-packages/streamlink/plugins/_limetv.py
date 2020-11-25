@@ -19,7 +19,6 @@ class PLUGINNAME(Plugin):
     #http://mhd.iptv2022.com/p/ytCAXCtghN74zVnP6hlPtw,1604901016/streaming/lime-man/324/vm2w/playlist.m3u8
     
     _url_re = re.compile(r"https?://limehd.tv/")
-    _playlist_re = re.compile(r'myPlayer\.src\({"src":"([^"]+)"')
 
     @classmethod
     def can_handle_url(cls, url):
@@ -31,8 +30,17 @@ class PLUGINNAME(Plugin):
         res = self.session.http.get(self.url)
         #log.debug(res.text)
         
+        myName = self.url.rsplit("limehd.tv/")[1].replace("/","")
+        searchesList = ['myPlayer\.src\({"src":"([^"]+)"' , 
+                        "'(http:[^']*streaming[^']*%s[^']*)'" % myName ,
+                        ]
+        for searchRegEx in searchesList:
+            searchRet = re.search(searchRegEx, res.text)
+            if searchRet:
+                break
+        
         try:
-            address = self._playlist_re.search(res.text).group(1)
+            address = searchRet.group(1)
             address = address.replace('\/','/')
             log.debug("Found address: %s" % address)
         except Exception as e:

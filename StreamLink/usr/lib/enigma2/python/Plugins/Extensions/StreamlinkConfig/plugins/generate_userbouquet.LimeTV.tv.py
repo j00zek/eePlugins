@@ -52,11 +52,12 @@ def generate_E2bouquet(bouquet_name, file_name, frameWork, streamlinkURL):
     for item in channelsList:
         title=item[0]
         info=item[1]
-        Reference = '%s:0:1:0:0:0:0:0:0:0' % frameWork
-        #data += '#SERVICE %s:%s%s%s:%s\n' % (ServiceID, streamlinkURL, params['video_url'].replace(':','%3a') , title)
-        #data += '#SERVICE %s:%s:%s\n' % (Reference, url, title)
-        data += '#SERVICE %s:%s%s%s:%s (%s)\n' % (Reference, streamlinkURL, mainURL.replace(':','%3a'), title, title, info)
-        data += '#DESCRIPTION %s (%s)\n' % (title, info)
+        if not 'closed-channel' in info:
+            Reference = '%s:0:1:0:0:0:0:0:0:0' % frameWork
+            #data += '#SERVICE %s:%s%s%s:%s\n' % (ServiceID, streamlinkURL, params['video_url'].replace(':','%3a') , title)
+            #data += '#SERVICE %s:%s:%s\n' % (Reference, url, title)
+            data += '#SERVICE %s:%s%s%s:%s (%s)\n' % (Reference, streamlinkURL, mainURL.replace(':','%3a'), title, title, info)
+            data += '#DESCRIPTION %s (%s)\n' % (title, info)
 
     with open(file_name, 'w') as f:
         f.write(data.encode('utf-8'))
