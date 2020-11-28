@@ -28,3 +28,10 @@ if [ `cat $dst/streamlink_cli/main.py|grep -c '#j00zek_patch 1'` -lt 1 ];then
   echo "patching streamlink_cli/main.py ..."
   sed -i 's/\(from socks import __version__ as socks_version\)/\n#j00zek_patch 1\ntry: \1\nexcept Exception: from websocket import __version__ as socks_version\n/' $dst/streamlink_cli/main.py
 fi
+
+#chwilowo
+#rm -f /DuckboxDisk/github/eePlugins/StreamLink/usr/lib/python2.7/site-packages/streamlink/plugins/funimationnow*
+#rm -f /DuckboxDisk/github/eePlugins/StreamLink/usr/lib/python2.7/site-packages/streamlink/plugins/pluzz*
+#rm -f /DuckboxDisk/github/eePlugins/StreamLink/usr/lib/python2.7/site-packages/streamlink/plugins/svtplay*
+#rm -f /DuckboxDisk/github/eePlugins/StreamLink/usr/lib/python2.7/site-packages/streamlink/plugins/vimeo*
+#rm -f /DuckboxDisk/github/eePlugins/StreamLink/usr/lib/python2.7/site-packages/streamlink/plugins/rtve*
