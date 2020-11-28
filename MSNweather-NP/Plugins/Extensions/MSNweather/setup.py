@@ -259,7 +259,7 @@ class MSNWeatherEntryConfigScreen(ConfigListScreen, Screen):
             getConfigListEntry(_("Geo Latitude"), self.current.geolatitude),
             getConfigListEntry(_("Geo Longitude"), self.current.geolongitude),
             getConfigListEntry(_("thingSpeak meteo channel ID"), self.current.thingSpeakChannelID),
-            getConfigListEntry(_("Airly sensor ID"), self.current.airlyID),
+            getConfigListEntry(_("Airly ibstallation ID (OK)"), self.current.airlyID),
             getConfigListEntry(_("Location in www.foreca.com/<this part>"), self.current.Fcity),
         ]
 
@@ -269,7 +269,40 @@ class MSNWeatherEntryConfigScreen(ConfigListScreen, Screen):
         curIndex = self["config"].getCurrentIndex()
         currItemCfg = self["config"].list[curIndex][1]
         currItemNam = self["config"].list[curIndex][0]
-        self.session.openWithCallback(self.keyOKret, VirtualKeyBoard, title= currItemNam, text = currItemCfg.value)
+        if currItemCfg == self.current.airlyID:
+            try:
+                float(self.current.geolatitude.value)
+                float(self.current.geolongitude.value)
+            except Exception:
+                from Screens.MessageBox import MessageBox
+                self.session.openWithCallback(self.doNothing, MessageBox, _("Set proper latitude and longitude!!!"), MessageBox.TYPE_INFO, timeout=10)
+                return
+            if config.plugins.WeatherPlugin.airlyAPIKEY.value == '':
+                infoTXT = _("Set airly API key using one of the following methods:\n")
+                infoTXT += _("global plugin settings\n")
+                infoTXT += _("/hdd/User_Configs/airlyAPIKEY file\n")
+                infoTXT += _("/etc/enigma2/Airly/api.txt file\n")
+                from Screens.MessageBox import MessageBox
+                self.session.openWithCallback(self.doNothing, MessageBox, infoTXT, MessageBox.TYPE_INFO, timeout=10)
+                return
+            from Screens.ChoiceBox import ChoiceBox
+            InstList = []
+            if currItemCfg.value != '':
+                InstList.append(('%s: %s' % (currItemCfg.value, _('Current selection')), currItemCfg.value))
+            self.session.openWithCallback(self.AirlyinstallationIDret, ChoiceBox, title = _("Select Airly installation ID"), list = InstList)
+            return
+        else:
+            self.session.openWithCallback(self.keyOKret, VirtualKeyBoard, title= currItemNam, text = currItemCfg.value)
+            return
+        
+    def doNothing(self, ret = None):
+        pass
+    
+    def AirlyinstallationIDret(self, retVal):
+        if not retVal is None:
+            curIndex = self["config"].getCurrentIndex()
+            currItemCfg = self["config"].list[curIndex][1]
+            currItemCfg.value = retVal[1]
         
     def keyOKret(self, retVal):
         if not retVal is None:
@@ -508,16 +541,13 @@ class MSNWeatherConfiguration(Screen, ConfigListScreen):
         ConfigList = []
         ConfigList.append(getConfigListEntry('\c00289496' + _("*** Basic settings ***"), config.plugins.WeatherPlugin.FakeEntry))
         ConfigList.append(getConfigListEntry(_("Airly API key:"), config.plugins.WeatherPlugin.airlyAPIKEY))
+        ConfigList.append(getConfigListEntry(_("Sensors priority:"), config.plugins.WeatherPlugin.SensorsPriority))
         ConfigList.append(getConfigListEntry(_("Icons type:"), config.plugins.WeatherPlugin.IconsType))
         ConfigList.append(getConfigListEntry(_("Icons scaling engine:"), config.plugins.WeatherPlugin.ScalePicType))
         ConfigList.append(getConfigListEntry(_("Build histograms:"), config.plugins.WeatherPlugin.BuildHistograms))
         if config.plugins.WeatherPlugin.BuildHistograms.value:
             ConfigList.append(getConfigListEntry(_("Period:"), config.plugins.WeatherPlugin.HistoryPeriod))
 
-        #ConfigList.append(getConfigListEntry(""))
-        #ConfigList.append(getConfigListEntry('\c00289496' + _("*** Integration with Airly plugin ***")))
-        #ConfigList.append(getConfigListEntry(_("Get current data from:"), config.plugins.WeatherPlugin.CurrentValuesSource))
-        
         ConfigList.append(getConfigListEntry(""))
         ConfigList.append(getConfigListEntry('\c00289496' + _("*** Home air condition ***")))
         ConfigList.append(getConfigListEntry(_("1st AC system:"), config.plugins.WeatherPlugin.AC1))
@@ -530,8 +560,6 @@ class MSNWeatherConfiguration(Screen, ConfigListScreen):
             ConfigList.append(getConfigListEntry('- ' + _("IP address:"), config.plugins.WeatherPlugin.AC2_IP))
             ConfigList.append(getConfigListEntry('- ' + _("Port:"), config.plugins.WeatherPlugin.AC2_PORT))
             ConfigList.append(getConfigListEntry('- ' + _("Description:"), config.plugins.WeatherPlugin.AC2inf))
-        if config.plugins.WeatherPlugin.AC1.value != 'off' or config.plugins.WeatherPlugin.AC2.value != 'off':
-            ConfigList.append(getConfigListEntry(_("Use A/C outside temp sensor instead of MSN:"), config.plugins.WeatherPlugin.ACuseTempSensor))
 
         ConfigList.append(getConfigListEntry(""))
         ConfigList.append(getConfigListEntry('\c00289496' + _("*** Debuging options ***")))

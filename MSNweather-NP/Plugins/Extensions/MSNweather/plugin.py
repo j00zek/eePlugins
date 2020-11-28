@@ -61,9 +61,15 @@ config.plugins.WeatherPlugin.ScalePicType = ConfigSelection(choices = [ ("self.i
                                                             default = "self.instance.setScale")
 
 config.plugins.WeatherPlugin.BuildHistograms = ConfigEnableDisable(default = False)
-config.plugins.WeatherPlugin.CurrentValuesSource = ConfigSelection(choices = [ ("msn", _("MSN service")), ("airly", _("Airly service")) , ("msnarly", _("MSN or Airly depending which latest"))], default = "msn")
 
-config.plugins.WeatherPlugin.ACuseTempSensor = ConfigYesNo(default = False)
+config.plugins.WeatherPlugin.SensorsPriority = ConfigSelection(choices = [ ("AcTsAirlyMsn", _("AcTsAirlyMsn")),
+                                                                           ("AcAirlyTsMsn", _("AcAirlyTsMsn")),
+                                                                           ("AirlyTsAcMsn", _("AirlyTsAcMsn")),
+                                                                           ("TsAirlyAcMsn", _("TsAirlyAcMsn")),
+                                                                         ],
+                                                                default = "AcTsAirlyMsn"
+                                                               )
+
 config.plugins.WeatherPlugin.AC1 = ConfigSelection(choices = [ ("off", _("not installed")), ("daikin", _("Daikin Air Conditioner")) , ("samsung", _("Samsung Air Conditioner"))], default = "off")
 config.plugins.WeatherPlugin.AC1_IP = ConfigIP(default = [0,0,0,0])
 config.plugins.WeatherPlugin.AC1_PORT = ConfigInteger(default = 80,limits=(80,999))
