@@ -20,10 +20,10 @@
  <widget backgroundColor="black" font="Regular; 22" foregroundColor="#000090e6" render="Label" position="178,27" size="140,23" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1">
     <convert type="j00zekMSNWeather">winddisplay</convert>
   </widget>
- <widget backgroundColor="black" font="Regular; 22" foregroundColor="white" render="Label" position="178,54" size="40,23" source="session.j00zekMSNWeather" zPosition="3" valign="center" halign="right" transparent="1">
+ <widget backgroundColor="black" font="Regular; 22" foregroundColor="white" render="Label" position="178,54" size="50,23" source="session.j00zekMSNWeather" zPosition="3" valign="center" halign="right" transparent="1">
     <convert type="j00zekMSNWeather">humidity</convert>
   </widget>
- <eLabel text="%" position="225,54" size="30,23" backgroundColor="black" transparent="1" font="Regular; 22" valign="center"  foregroundColor="white" />
+ <eLabel text="%" position="235,54" size="30,23" backgroundColor="black" transparent="1" font="Regular; 22" valign="center"  foregroundColor="white" />
   
   <!--słońce-->
   
