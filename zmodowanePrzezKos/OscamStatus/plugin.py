@@ -13,7 +13,7 @@ from Components.Sources.List import List
 from Components.Sources.StaticText import StaticText
 from Components.MultiContent import MultiContentEntryText, MultiContentEntryPixmapAlphaBlend, MultiContentEntryPixmapAlphaTest
 from Tools.Directories import fileExists, resolveFilename, SCOPE_CURRENT_PLUGIN
-from enigma import ePicLoad, eTimer, getDesktop, eListboxPythonMultiContent, gFont, RT_HALIGN_LEFT, RT_HALIGN_RIGHT, RT_HALIGN_CENTER, RT_VALIGN_CENTER, RT_WRAP, BT_SCALE, BT_KEEP_ASPECT_RATIO, ePythonMessagePump, ePoint
+from enigma import ePicLoad, eTimer, getDesktop, eListboxPythonMultiContent, gFont, RT_HALIGN_LEFT, RT_HALIGN_RIGHT, RT_HALIGN_CENTER, RT_VALIGN_CENTER, RT_WRAP, ePythonMessagePump, ePoint
 from Tools.LoadPixmap import LoadPixmap
 try:
     from Components.Renderer.Picon import getPiconName

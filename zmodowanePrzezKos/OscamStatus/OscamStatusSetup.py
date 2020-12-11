@@ -17,7 +17,7 @@ from Components.config import ConfigInteger
 from Components.config import ConfigPassword
 from Components.config import ConfigSubsection
 from Components.config import getConfigListEntry
-from enigma import eListboxPythonMultiContent, eListbox, getDesktop, gFont, RT_HALIGN_LEFT, RT_HALIGN_RIGHT, RT_HALIGN_CENTER, RT_VALIGN_CENTER, RT_WRAP, BT_SCALE, BT_KEEP_ASPECT_RATIO, ePoint, eSize, eRect, loadPNG
+from enigma import eListboxPythonMultiContent, eListbox, getDesktop, gFont, RT_HALIGN_LEFT, RT_HALIGN_RIGHT, RT_HALIGN_CENTER, RT_VALIGN_CENTER, RT_WRAP, ePoint, eSize, eRect, loadPNG
 from Tools.LoadPixmap import LoadPixmap
 from Tools.Directories import resolveFilename, SCOPE_CURRENT_PLUGIN, SCOPE_SKIN
 import re, os.path
