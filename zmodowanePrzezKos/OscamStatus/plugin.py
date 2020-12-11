@@ -1216,8 +1216,8 @@ class ReaderstatsScreen(DownloadXMLScreen):
                     psw = 50
                     psh = 30
                     if FULLHD:
-                        psw = 110
-                        psh = 55
+                        psw = 50
+                        psh = 30
                     self.picon.setPara((psw,
                      psh,
                      1,
@@ -1528,8 +1528,8 @@ class StatusDataScreen(DownloadXMLScreen):
                             psw = 50
                             psh = 30
                             if FULLHD:
-                                psw = 110
-                                psh = 55
+                                psw = 50
+                                psh = 30
                             self.picon.setPara((psw,
                              psh,
                              1,
@@ -1562,8 +1562,8 @@ class StatusDataScreen(DownloadXMLScreen):
                             psw = 50
                             psh = 30
                             if FULLHD:
-                                psw = 110
-                                psh = 55
+                                psw = 50
+                                psh = 30
                             self.picon.setPara((psw,
                              psh,
                              1,
@@ -1597,13 +1597,13 @@ class StatusDataScreen(DownloadXMLScreen):
                     idle = elapsedTime(c.idle, '%02d:%02d:%02d')
                 if c.type == 'r' or c.type == 'p':
                     if USEPICONS.value:
-                        picon = getPicon(c.protocol)
+                        picon = getPicon(c.service)
                         if picon != '':
                             psw = 50
                             psh = 30
                             if FULLHD:
-                                psw = 110
-                                psh = 55
+                                psw = 50
+                                psh = 30
                             self.picon.setPara((psw,
                              psh,
                              1,
