@@ -7,7 +7,6 @@ import time
 from Source import Source
     
 class fakeSourcesMSNWaether(Source):
-
     def __init__(self): Source.__init__(self)
     def callbackAllIconsDownloaded(self): pass
     def getCity(self): return _("n/a")
@@ -31,11 +30,11 @@ class fakeSourcesMSNWaether(Source):
     def destroy(self): Source.destroy(self)
     def getWebCurrentItems(self): return {}
     def getIconPath(self): return ''
-
+    def dictWeather(self, treePath = None): return {}
+    
 try:
     from Components.Sources.MSNWeatherNP import MSNWeatherNP as j00zekMSNWeather
-except Exception:
-    try:
-        from Components.Sources.MSNWeatherFHR import MSNWeatherFHR as j00zekMSNWeather
-    except Exception:
-        j00zekMSNWeather = fakeSourcesMSNWaether 
+    open("/tmp/j00zekMSNWeather.log", "w").write('j00zekMSNWeather imported')
+except Exception as e:
+    j00zekMSNWeather = fakeSourcesMSNWaether
+    open("/tmp/j00zekMSNWeather.txt", "w").write('%s\n' % str(e))

@@ -29,7 +29,7 @@ class j00zekSun(Converter, object):
         else:
             self.type = self.UNKNOWN
         try:
-            config.plugins.WeatherPlugin.currEntry.addNotifier(self.setLocation, initial_call=True) 
+            config.plugins.MSNweatherNP.currEntry.addNotifier(self.setLocation, initial_call=True) 
         except Exception, e:
             if DBG: j00zekDEBUG("[j00zekSun:__init__] >>> Exception: '%s'" % str(e))
 
@@ -37,9 +37,9 @@ class j00zekSun(Converter, object):
         global Position
         if DBG: j00zekDEBUG("[j00zekSun:setLocation]")
         try:
-            currEntry = int(config.plugins.WeatherPlugin.currEntry.value)
-            Position['latitude'] = float(config.plugins.WeatherPlugin.Entry[currEntry].geolatitude.value)
-            Position['longitude'] = float(config.plugins.WeatherPlugin.Entry[currEntry].geolongitude.value)
+            currEntry = int(config.plugins.MSNweatherNP.currEntry.value)
+            Position['latitude'] = float(config.plugins.MSNweatherNP.Entry[currEntry].geolatitude.value)
+            Position['longitude'] = float(config.plugins.MSNweatherNP.Entry[currEntry].geolongitude.value)
         except Exception, e:
             if DBG: j00zekDEBUG("[j00zekSun:setLocation] >>> Exception: '%s'" % str(e))
         if DBG: j00zekDEBUG("[j00zekSun:setLocation] latitude='%s' , longitude='%s'" % (Position['latitude'],Position['longitude']))

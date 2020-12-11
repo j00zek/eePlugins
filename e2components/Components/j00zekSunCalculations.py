@@ -135,8 +135,8 @@ class geo():
         if self.DBG: print('[geo:__init__] >>>')
         try:
             from Components.config import config
-            geo.Position['latitude'] = float(config.plugins.WeatherPlugin.Entry[0].geolatitude.value)
-            geo.Position['longitude'] = float(config.plugins.WeatherPlugin.Entry[0].geolongitude.value)
+            geo.Position['latitude'] = float(config.plugins.MSNweatherNP.Entry[0].geolatitude.value)
+            geo.Position['longitude'] = float(config.plugins.MSNweatherNP.Entry[0].geolongitude.value)
             if self.DBG: print("[self:getPosition] configured latitude=%s, longitude=%s" % (geo.Position['latitude'],geo.Position['longitude']))
         except Exception, e:
             if self.DBG: print("[self:getPosition] >>> Error getting configured data: '%s'" % str(e))

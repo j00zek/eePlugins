@@ -16,10 +16,16 @@ def Hex2strColor(rgb):
     out += "%s" % chr(0x30 + (rgb >> i & 0x0F))
   return "\c%s" % out
 
-clr={'Y':       Hex2strColor(0x00ffcc00), #yellow
-     'R':       Hex2strColor(0x00FF3333), #red
-     'G':       Hex2strColor(0x0066FF33), #green
-     'B':       Hex2strColor(0x0033ccff), #blue
-     'O':       Hex2strColor(0x00ffcc00), #orange
-     'Gray':    Hex2strColor(0x00e6e6e6)  #gray
+clr={'Y':           Hex2strColor(0x00ffcc00), #yellow
+     'R':           Hex2strColor(0x00FF3333), #red
+     'G':           Hex2strColor(0x0066FF33), #green
+     'B':           Hex2strColor(0x0033ccff), #blue
+     'O':           Hex2strColor(0x00ffcc00), #orange
+     'Gray':        Hex2strColor(0x00e6e6e6),
+     'VeryGood':    Hex2strColor(0x00009900),
+     'Good':        Hex2strColor(0x0099FF33),
+     'Moderate':    Hex2strColor(0x00FFFF00),
+     'satisfactory':Hex2strColor(0x00FF6600),
+     'Bad':         Hex2strColor(0x00FF0000),
+     'VeryBad':     Hex2strColor(0x00990000),
   }
