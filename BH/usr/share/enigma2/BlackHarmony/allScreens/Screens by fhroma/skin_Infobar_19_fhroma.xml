@@ -114,7 +114,7 @@
       <convert type="j00zekTranslator">Pressure:</convert>
     </widget>
     <widget source="session.j00zekMSNWeather" render="Label" position="1720,815" size="142,25" font="Regular;19" zPosition="1" halign="right" valign="center" foregroundColor="lemon" backgroundColor="background" transparent="1" noWrap="1">
-      <convert type="MSNWeatherWebCurrent">barometrValue</convert>
+      <convert type="j00zekMSNWeatherWebCurrent">barometrValue</convert>
     </widget>
     <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="1637,840" size="128,128" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
       <convert type="j00zekMSNWeather">weathericon,current</convert>

@@ -286,10 +286,10 @@
     <!-- Week 2 -->
 	 <ePixmap position="1010,415" size="70,28" pixmap="BlackHarmony/weather_icons/temp_high_low1.png" alphatest="blend" zPosition="22" />
 	  <widget noWrap="1" backgroundColor="black" font="HD_Thin; 24" render="Label" position="930,378" size="225,35" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1" foregroundColor="pastel">
-      <convert type="MSNWeatherWebDaily">Record=0,date</convert>
+      <convert type="j00zekMSNWeather">DailyRecord=0,date</convert>
     </widget>
 	<widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="970,453" size="150,150" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
-        <convert type="MSNWeatherWebDaily">Record=0</convert>
+        <convert type="j00zekMSNWeather">DailyRecord=0</convert>
     </widget>
 	   <widget noWrap="1" foregroundColor="pastel" backgroundColor="background" font="HD_Thin; 23" render="Label" position="950,415" size="75,35" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1">
       <convert type="j00zekMSNWeather">temperature_high,day1</convert>
@@ -303,10 +303,10 @@
 	
 	 <ePixmap position="1190,415" size="70,28" pixmap="BlackHarmony/weather_icons/temp_high_low1.png" alphatest="blend" zPosition="22" />
        <widget noWrap="1" backgroundColor="black" font="HD_Thin; 24" render="Label" position="1110,378" size="225,35" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1" foregroundColor="pastel">
-      <convert type="MSNWeatherWebDaily">Record=1,date</convert>
+      <convert type="j00zekMSNWeather">DailyRecord=1,date</convert>
     </widget>
 	    <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="1150,453" size="150,150" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
-      <convert type="MSNWeatherWebDaily">Record=1</convert>
+      <convert type="j00zekMSNWeather">DailyRecord=1</convert>
     </widget>
  
 	    <widget noWrap="1" foregroundColor="pastel" backgroundColor="background" font="HD_Thin; 23" render="Label" position="1130,415" size="75,35" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1">
@@ -321,11 +321,11 @@
 	 <ePixmap position="1370,415" size="70,28" pixmap="BlackHarmony/weather_icons/temp_high_low1.png" alphatest="blend" zPosition="22" />
    
     <widget noWrap="1" backgroundColor="black" font="HD_Thin; 24" render="Label" position="1290,378" size="225,35" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1" foregroundColor="pastel">
-      <convert type="MSNWeatherWebDaily">Record=2,date</convert>
+      <convert type="j00zekMSNWeather">DailyRecord=2,date</convert>
     </widget>
 
     <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="1330,453" size="150,150" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
-      <convert type="MSNWeatherWebDaily">Record=2</convert>
+      <convert type="j00zekMSNWeather">DailyRecord=2</convert>
     </widget>
     <widget noWrap="1" foregroundColor="pastel" backgroundColor="background" font="HD_Thin; 23" render="Label" position="1310,415" size="75,35" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1">
       <convert type="j00zekMSNWeather">temperature_high,day3</convert>
@@ -339,11 +339,11 @@
 	 <ePixmap position="1550,415" size="70,28" pixmap="BlackHarmony/weather_icons/temp_high_low1.png" alphatest="blend" zPosition="22" />
   
 	    <widget noWrap="1" backgroundColor="black" font="HD_Thin; 24" render="Label" position="1470,378" size="225,35" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1" foregroundColor="pastel">
-      <convert type="MSNWeatherWebDaily">Record=3,date</convert>
+      <convert type="j00zekMSNWeather">DailyRecord=3,date</convert>
     </widget>
 	
     <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="1510,453" size="150,150" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
-      <convert type="MSNWeatherWebDaily">Record=3</convert>
+      <convert type="j00zekMSNWeather">DailyRecord=3</convert>
     </widget>
 	
 	   <widget noWrap="1" foregroundColor="pastel" backgroundColor="background" font="HD_Thin; 23" render="Label" position="1490,415" size="75,35" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1">
@@ -424,7 +424,7 @@
 
    
     <widget source="session.j00zekMSNWeather" render="Label" position="1570,615" size="290,30" font="Regular;22" zPosition="2" halign="right" valign="center" foregroundColor="lemon" backgroundColor="background" transparent="1" noWrap="1">
-      <convert type="MSNWeatherWebCurrent">Barometr</convert>
+      <convert type="j00zekMSNWeatherWebCurrent">Barometr</convert>
   </widget>
     <widget source="session.CurrentService" render="j00zekLabel" position="1080,595" size="255,28" font="Roboto_HD; 24" backgroundColor="black" foregroundColor="green" halign="left" transparent="1">
       <convert type="j00zekTranslator">Name-day:</convert>

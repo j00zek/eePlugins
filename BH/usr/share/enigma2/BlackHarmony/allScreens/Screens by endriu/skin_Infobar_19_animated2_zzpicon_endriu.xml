@@ -112,7 +112,7 @@
       <convert type="j00zekMSNWeather">weathericon,current</convert>
     </widget>
     <widget noWrap="1" backgroundColor="black" font="Roboto_HD; 30" render="Label" position="1765,905" size="100,35" source="session.j00zekMSNWeather" zPosition="3" halign="right" transparent="1" valign="top">
-      <convert type="j00zekMSNWeather">temperature_current</convert>
+      <convert type="j00zekMSNWeather">RUN|['currentData']['temperature']['valInfo']</convert>
     </widget>
     
 	<!-- wykorzystanie glowic dostepnych w tunerze-->
@@ -249,7 +249,7 @@
         </widget>
 
     <widget noWrap="1" backgroundColor="black" font="Roboto_HD; 30" render="Label" position="1787,985" size="90,35" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1" foregroundColor="podsw" valign="top">
-      <convert type="j00zekMSNWeather">feelslike</convert>
+      <convert type="j00zekMSNWeather">RUN|['currentData']['feelslike']['valInfo']</convert>
     </widget>
    
    <widget source="session.CurrentService" render="Label" font="Roboto_HD; 18" foregroundColor="light_yellow" halign="center" position="1762,945" size="120,44"  transparent="1" zPosition="2" valign="center" backgroundColor="black" >
@@ -257,7 +257,7 @@
         </widget>
 	<eLabel backgroundColor="green" position="505,937" size="1120,4" transparent="0" zPosition="2" foregroundColor="black" />
     <widget source="session.j00zekMSNWeather" render="Label" position="1725,1012" size="142,30" font="Regular;18" zPosition="2" halign="right" valign="center" foregroundColor="lemon" backgroundColor="background" transparent="1" noWrap="1">
-  <convert type="MSNWeatherWebCurrent">barometrValue</convert>
+  <convert type="j00zekMSNWeather">RUN|['currentData']['pressure']['valInfo']</convert>
 </widget>
     <widget source="global.CurrentTime" render="Label" position="1820,791" size="48,26" font="Regular; 21" valign="top" halign="left" backgroundColor="black" zPosition="8" transparent="1" foregroundColor="blue">
       <convert type="ClockToText">Format: :%S</convert>

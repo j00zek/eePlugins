@@ -196,47 +196,41 @@
       <convert type="j00zekMSNWeather">weathericon,current</convert>
     </widget>
   <widget noWrap="1" backgroundColor="black" font="Regular; 30" render="Label" position="1700,625" size="130,35" source="session.j00zekMSNWeather" zPosition="3" halign="right" transparent="1" foregroundColor="lemon" >
-      <convert type="j00zekMSNWeather">temperature_current</convert>
+      <convert type="j00zekMSNWeather">RUN|['currentData']['temperature']['valInfo']</convert>
     </widget>
 	<ePixmap pixmap="BlackHarmony/weather_icons/wiatr.png" position="1676,671" size="30,30" zPosition="3" transparent="1" alphatest="blend" />
   <ePixmap pixmap="BlackHarmony/weather_icons/deszcz.png" position="1676,721" size="28,30" zPosition="4" transparent="1" alphatest="blend" />
   
-  <widget backgroundColor="black" font="Regular; 30" foregroundColor="#000090e6" render="Label" position="1731,671" size="140,35" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1">
-    <convert type="j00zekMSNWeather">winddisplay</convert>
+  <widget backgroundColor="black" font="Regular; 30" foregroundColor="#000090e6" render="j00zekLabel" position="1710,671" size="166,35" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1">
+    <convert type="j00zekMSNWeather">RUN|['currentData']['winddisplay']['valInfo']</convert>
       </widget>
-  <widget backgroundColor="black" font="Regular; 30" foregroundColor="white" render="Label" position="1720,721" size="55,35" source="session.j00zekMSNWeather" zPosition="3" halign="right" transparent="1">
-    <convert type="j00zekMSNWeather">humidity</convert>
+  <widget backgroundColor="black" font="Regular; 30" foregroundColor="white" render="Label" position="1720,721" size="100,35" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1">
+    <convert type="j00zekMSNWeather">RUN|['currentData']['humidity']['valInfo']</convert>
        </widget>
-  <eLabel text="%" position="1780,721" size="35,35" backgroundColor="black" transparent="1" font="Regular; 30"  />
+  
   <widget source="session.CurrentService" render="Label" font="Regular; 27" foregroundColor="light_yellow" halign="left" position="1497,780" size="355,35"  transparent="1" zPosition="2" backgroundColor="black" >
     <convert type="j00zekTranslator">Felt temperature</convert>
        </widget>
    <widget noWrap="1" backgroundColor="black" font="Regular; 27" render="Label" position="1497,780" size="355,35" source="session.j00zekMSNWeather" zPosition="3" halign="right" transparent="1" foregroundColor="podsw" >
-      <convert type="j00zekMSNWeather">feelslike</convert>
+      <convert type="j00zekMSNWeather">RUN|['currentData']['feelslike']['valInfo']</convert>
        </widget> 
    <widget source="session.CurrentService" render="Label" font="Regular; 27" foregroundColor="green" halign="left" position="1497,816" size="355,35"  transparent="1" zPosition="2" backgroundColor="black" >
      <convert type="j00zekTranslator">Pressure</convert>
         </widget>
 	<widget source="session.j00zekMSNWeather" render="Label" position="1497,816" size="355,35" font="Regular;27" zPosition="2" halign="right" foregroundColor="lemon" backgroundColor="background" transparent="1" noWrap="1">
-     <convert type="MSNWeatherWebCurrent">barometrValue</convert>
+     <convert type="j00zekMSNWeather">RUN|['currentData']['pressure']['valInfo']</convert>
      </widget>
 	
   <!--airly-->
   
- 	<widget position="1505,868" size="100,100" source="session.CurrentService" render="j00zekABTCAirlyPixmap" alphatest="blend" transparent="1" zPosition="9">
-        <convert type="j00zekModABTCAirlyWidget">indexBackPNG</convert>
+ 	<widget position="1505,868" size="325,35" source="session.j00zekMSNWeather" render="Label" font="Regular; 26" foregroundColor="foreground" backgroundColor="background" halign="center" valign="center" noWrap="1" transparent="1" zPosition="10">
+        <convert type="j00zekMSNWeather">RUN|['currentData']['pm25']['name']| - |['currentData']['pm25']['valInfo']</convert>
     </widget>
-    <widget position="1505,868" size="100,100" source="session.CurrentService" render="Label" font="Roboto_HD; 34" foregroundColor="foreground" backgroundColor="background" halign="center" valign="center" noWrap="1" transparent="1" zPosition="10">
-        <convert type="j00zekModABTCAirlyWidget">caqi</convert>
-     </widget>
-    <widget position="1636,868" size="225,35" source="session.CurrentService" render="Label" font="Regular; 26" foregroundColor="foreground" backgroundColor="background" halign="left" valign="center" noWrap="1" transparent="1" zPosition="10">
-        <convert type="j00zekModABTCAirlyWidget">pm25</convert>
+    <widget position="1505,902" size="325,35" source="session.j00zekMSNWeather" render="Label" font="Regular; 26" foregroundColor="foreground" backgroundColor="background" halign="center" valign="center" noWrap="1" transparent="1" zPosition="10">
+        <convert type="j00zekMSNWeather">RUN|['currentData']['pm10']['name']| - |['currentData']['pm10']['valInfo']</convert>
     </widget>
-    <widget position="1636,902" size="225,35" source="session.CurrentService" render="Label" font="Regular; 26" foregroundColor="foreground" backgroundColor="background" halign="left" valign="center" noWrap="1" transparent="1" zPosition="10">
-        <convert type="j00zekModABTCAirlyWidget">pm10</convert>
-    </widget>
-    <widget position="1636,935" size="225,35" source="session.CurrentService" render="Label" font="Regular; 26" foregroundColor="foreground" backgroundColor="background" halign="left" valign="center" noWrap="1" transparent="1" zPosition="10">
-        <convert type="j00zekModABTCAirlyWidget">pm1</convert>
+    <widget position="1505,935" size="325,35" source="session.j00zekMSNWeather" render="Label" font="Regular; 26" foregroundColor="foreground" backgroundColor="background" halign="center" valign="center" noWrap="1" transparent="1" zPosition="10">
+        <convert type="j00zekMSNWeather">RUN|['currentData']['pm1']['name']| - |['currentData']['pm1']['valInfo']</convert>
    </widget>
 
 <!--data, godzina-->

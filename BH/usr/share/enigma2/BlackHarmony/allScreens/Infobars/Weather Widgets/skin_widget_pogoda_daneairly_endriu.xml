@@ -11,25 +11,21 @@
  <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="50,0" size="80,80" source="session.j00zekMSNWeather" transparent="1" zPosition="2">
       <convert type="j00zekMSNWeather">weathericon,current</convert>
     </widget>
- <widget noWrap="1" backgroundColor="black" font="Regular; 22" render="Label" position="180,0" size="100,23" source="session.j00zekMSNWeather" zPosition="3" halign="right" transparent="1" foregroundColor="lemon" valign="center">
-      <convert type="j00zekModABTCAirlyWidget">temp</convert>
+ <widget noWrap="1" backgroundColor="black" foregroundColor="lemon" font="Regular; 22" render="Label" position="180,0" size="100,23" source="session.j00zekMSNWeather" zPosition="3" halign="right" valign="center" transparent="1">
+      <convert type="j00zekMSNWeather">RUN|['currentData']['temperature']['valInfo']</convert>
     </widget>
  <ePixmap pixmap="BlackHarmony/weather_icons/wiatr.png" position="141,24" size="30,30" zPosition="3" transparent="1" alphatest="blend" />
  <ePixmap pixmap="BlackHarmony/weather_icons/humidity_outdoor.png" position="141,56" size="25,25" zPosition="4" transparent="1" alphatest="blend" />
   
  <widget backgroundColor="black" font="Regular; 22" foregroundColor="#000090e6" render="Label" position="178,27" size="192,30" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1">
-    <convert type="j00zekModABTCAirlyWidget">wind</convert>
+    <convert type="j00zekMSNWeather">RUN|['currentData']['winddisplay']['valInfo']</convert>
   </widget>
- <widget backgroundColor="black" font="Regular; 22" foregroundColor="#000090e6" render="Label" position="178,27" size="192,30" source="session.j00zekMSNWeather" zPosition="3" halign="right" transparent="1">
-    <convert type="j00zekModABTCAirlyWidget">windbearing</convert>
-  </widget>
-  
  <widget backgroundColor="black" font="Regular; 22" foregroundColor="white" render="Label" position="173,54" size="197,30" source="session.j00zekMSNWeather" zPosition="3" valign="center" halign="left" transparent="1">
-    <convert type="j00zekModABTCAirlyWidget">hum</convert>
+    <convert type="j00zekMSNWeather">RUN|['currentData']['humidity']['valInfo']</convert>
   </widget>
   <ePixmap pixmap="BlackHarmony/weather_icons/barometr.png" position="240,58" size="25,25" zPosition="4" transparent="1" alphatest="blend" />
   <widget backgroundColor="black" font="Regular; 22" foregroundColor="white" render="Label" position="173,54" size="197,30" source="session.j00zekMSNWeather" zPosition="3" valign="center" halign="right" transparent="1">
-    <convert type="j00zekModABTCAirlyWidget">pres</convert>
+    <convert type="j00zekMSNWeather">RUN|['currentData']['pressure']['valInfo']</convert>
   </widget>
  
  <!--słońce-->
@@ -60,24 +56,19 @@
   <!--airly--> 
 	
 	<eLabel position="798,16" size="1,51" backgroundColor="linie" />
-	<widget position="810,28" size="50,50" source="session.CurrentService" render="j00zekABTCAirlyPixmap" alphatest="blend" transparent="1" zPosition="9">
-        <convert type="j00zekModABTCAirlyWidget">indexBackPNG</convert>
+	
+    <widget position="810,3" size="555,26" source="session.j00zekMSNWeather" render="j00zekLabel" font="Regular; 22"  backgroundColor="background" halign="left" valign="center" noWrap="0" transparent="1" zPosition="10">
+        <convert type="j00zekMSNWeather">RUN|['currentData']['pm25']['name']|-|['currentData']['pm25']['valInfo']</convert>
     </widget>
-    <widget position="810,28" size="50,50" source="session.CurrentService" render="Label" font="Roboto_HD; 25"  backgroundColor="background" halign="center" valign="center" noWrap="1" transparent="1" zPosition="10">
-        <convert type="j00zekModABTCAirlyWidget">caqi</convert>
-     </widget>
-    <widget position="810,3" size="555,26" source="session.CurrentService" render="j00zekLabel" font="Regular; 22"  backgroundColor="background" foregroundColor="lemon" halign="left" valign="center" noWrap="0" transparent="1" zPosition="10">
-        <convert type="j00zekModABTCAirlyWidget">pm25</convert>
+    <widget position="810,3" size="555,26" source="session.j00zekMSNWeather" render="j00zekLabel" font="Regular; 22"  backgroundColor="background" halign="center" valign="center" noWrap="0" transparent="1" zPosition="10">
+        <convert type="j00zekMSNWeather">RUN|['currentData']['pm10']['name']|-|['currentData']['pm10']['valInfo']</convert>
     </widget>
-    <widget position="810,3" size="555,26" source="session.CurrentService" render="j00zekLabel" font="Regular; 22"  backgroundColor="background" foregroundColor="lemon" halign="center" valign="center" noWrap="0" transparent="1" zPosition="10">
-        <convert type="j00zekModABTCAirlyWidget">pm10</convert>
-    </widget>
-   <widget position="810,3" size="555,26" source="session.CurrentService" render="j00zekLabel" font="Regular; 22"  backgroundColor="background" foregroundColor="lemon" halign="right" valign="center" noWrap="0" transparent="1" zPosition="10">
-        <convert type="j00zekModABTCAirlyWidget">pm1</convert>
+   <widget position="810,3" size="555,26" source="session.j00zekMSNWeather" render="j00zekLabel" font="Regular; 22"  backgroundColor="background" halign="right" valign="center" noWrap="0" transparent="1" zPosition="10">
+        <convert type="j00zekMSNWeather">RUN|['currentData']['pm1']['name']|-|['currentData']['pm1']['valInfo']</convert>
     </widget>
    
-	<widget position="868,29" size="504,52" source="session.CurrentService" render="j00zekLabel" font="Regular; 25" foregroundColor="#000090e6" backgroundColor="background" halign="center" valign="center" noWrap="0" transparent="1" zPosition="10">
-        <convert type="j00zekModABTCAirlyWidget">ldesc</convert>
+	<widget position="804,29" size="563,52" source="session.j00zekMSNWeather" render="j00zekLabel" font="Regular; 25" backgroundColor="background" halign="center" valign="center" noWrap="0" transparent="1" zPosition="10">
+        <convert type="j00zekMSNWeather">RUN|['currentData']['airlyAdvice']</convert>
     </widget>
    
    <!--imieniny--> 
@@ -94,17 +85,17 @@
  
  <eLabel position="1597,6" size="2,73" backgroundColor="linie" />
 	<widget alphatest="blend" position="1601,5" render="j00zekMSNWeatherPixmap" size="80,80" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
-      <convert type="j00zekMSNWeatherWebDaily">Record=1</convert>
+      <convert type="j00zekMSNWeather">DailyRecord=1</convert>
     </widget>
  <widget source="session.CurrentService" render="Label" position="1700,5" size="175,30" font="Regular; 25" backgroundColor="black" valign="center" halign="left" transparent="1" foregroundColor="lemon"  >
     <convert type="j00zekTranslator">Tomorrow</convert>
     </widget>
  <ePixmap pixmap="BlackHarmony/weather_icons/temp_high_low2.png" position="1745,42" size="70,28" zPosition="3" transparent="1" alphatest="blend" />
  <widget backgroundColor="black" font="Regular; 22" valign="center" halign="center" noWrap="1" position="1680,42" render="Label" size="70,30" source="session.j00zekMSNWeather" transparent="1" zPosition="3">
-    <convert type="j00zekMSNWeather">temperature_high,day2</convert>
+    <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=1']['temp_high']|C</convert>
   </widget>
  <widget backgroundColor="black" font="Regular; 22" valign="center" halign="center" noWrap="1" position="1810,42" render="Label" size="70,30" source="session.j00zekMSNWeather" transparent="1" zPosition="3">
-    <convert type="j00zekMSNWeather">temperature_low,day2</convert>
+    <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=1']['temp_low']|C</convert>
 	</widget>
   
 </screen>

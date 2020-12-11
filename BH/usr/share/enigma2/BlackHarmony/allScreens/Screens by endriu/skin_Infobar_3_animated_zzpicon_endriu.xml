@@ -102,7 +102,7 @@
     <convert type="j00zekMSNWeather">weathericon,current</convert>
   </widget>
   <widget noWrap="1" backgroundColor="black" font="HD_Thin; 34" render="Label" position="1785,900" size="85,40" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1" foregroundColor="lemon">
-    <convert type="j00zekMSNWeather">temperature_current</convert>
+    <convert type="j00zekMSNWeather">RUN|['currentData']['temperature']['valInfo']</convert>
   </widget>
     <!-- wykorzystanie glowic dostepnych w tunerze-->
    <widget source="session.FrontendInfo" render="Label" position="865,844" size="260,49" zPosition="3" font="Roboto_HD;22" halign="center" valign="center" backgroundColor="black" transparent="1">
