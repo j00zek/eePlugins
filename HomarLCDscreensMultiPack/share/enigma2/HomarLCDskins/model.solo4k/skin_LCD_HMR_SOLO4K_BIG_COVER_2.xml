@@ -116,10 +116,10 @@ options="movetype=running,startpoint=0,direction=left,steptime=20,repeat=0,start
  </widget>
  <ePixmap pixmap="HomarLCDskins/weather/temp1.png" position="250,150" size="70,30" zPosition="3" transparent="1" alphatest="blend" />
  <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="245,60" size="100,100" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
- <convert type="MSNWeatherWebDaily">Record=0</convert>
+ <convert type="j00zekMSNWeather">DailyRecord=0</convert>
  </widget>
  <widget noWrap="1" backgroundColor="background" font="VFD;31" render="Label" position="225,30" size="150,50" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1" foregroundColor="foreground">
- <convert type="MSNWeatherWebDaily">Record=0,date</convert>
+ <convert type="j00zekMSNWeather">DailyRecord=0,date</convert>
  </widget>
  <!--   Tomorrow   -->
  <widget noWrap="1" backgroundColor="background" font="VFD;34" render="Label" position="300,176" size="145,50" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1" valign="top">
@@ -130,10 +130,10 @@ options="movetype=running,startpoint=0,direction=left,steptime=20,repeat=0,start
  </widget>
  <ePixmap pixmap="HomarLCDskins/weather/temp1.png" position="370,150" size="70,30" zPosition="3" transparent="1" alphatest="blend" />
  <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="370,60" size="100,100" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
- <convert type="MSNWeatherWebDaily">Record=1</convert>
+ <convert type="j00zekMSNWeather">DailyRecord=1</convert>
  </widget>
  <widget noWrap="1" backgroundColor="background" font="VFD;31" render="Label" position="345,30" size="150,50" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1" foregroundColor="foreground">
- <convert type="MSNWeatherWebDaily">Record=1,date</convert>
+ <convert type="j00zekMSNWeather">DailyRecord=1,date</convert>
  </widget>
  </screen>
 

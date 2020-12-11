@@ -52,7 +52,7 @@ alphatest="blend" zPosition="1" >
         <convert type="j00zekModABTCAirlyWidget">caqi</convert>
     </widget>
   <widget source="session.j00zekMSNWeather" render="Label" position="120,320" size="350,62" font="VFD3;60" halign="left" transparent="1" >
-            <convert type="MSNWeatherWebCurrent">barometrValue</convert>
+            <convert type="j00zekMSNWeatherWebCurrent">barometrValue</convert>
    </widget>
   <widget source="session.j00zekMSNWeather"  render="Label" position="410,250" size="120,62" font="VFD3;60" halign="left" transparent="1" >
  		<convert type="j00zekMSNWeather">humidity</convert>
@@ -205,10 +205,10 @@ options="movetype=running,startpoint=0,direction=left,steptime=20,repeat=0,start
   </widget>
 <ePixmap pixmap="HomarLCDskins/weather/temp.png" position="375,230" size="270,70" zPosition="3" transparent="1" alphatest="blend" />
    <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="275,140" size="115,115" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
-      <convert type="MSNWeatherWebDaily">Record=0</convert>
+      <convert type="j00zekMSNWeather">DailyRecord=0</convert>
     </widget>
    <widget noWrap="1"  font="VFD;45" render="Label" position="275,60" size="250,50" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1" foregroundColor="foreground">
-      <convert type="MSNWeatherWebDaily">Record=0,date</convert>
+      <convert type="j00zekMSNWeather">DailyRecord=0,date</convert>
   </widget>
 <!--   Tomorrow   -->
 <widget noWrap="1"  font="VFD;50" render="Label" position="645,190" size="145,50" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1" valign="top">
@@ -219,10 +219,10 @@ options="movetype=running,startpoint=0,direction=left,steptime=20,repeat=0,start
   </widget>
 <ePixmap pixmap="HomarLCDskins/weather/temp.png" position="635,230" size="270,70" zPosition="3" transparent="1" alphatest="blend" />
    <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="535,140" size="115,115" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
-      <convert type="MSNWeatherWebDaily">Record=1</convert>
+      <convert type="j00zekMSNWeather">DailyRecord=1</convert>
     </widget>
    <widget noWrap="1"  font="VFD;45" render="Label" position="535,60" size="250,50" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1" foregroundColor="foreground">
-      <convert type="MSNWeatherWebDaily">Record=1,date</convert>
+      <convert type="j00zekMSNWeather">DailyRecord=1,date</convert>
   </widget>
 </screen>
 
