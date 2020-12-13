@@ -324,7 +324,7 @@
 <!--HOURLY DATA-->
     <ePixmap pixmap="BlackHarmony/gfx/line.png" position="420,455" size="1200,2" zPosition="3" transparent="1" alphatest="blend"/>
     <widget position="100,440" size="350,30" zPosition="3" halign="left" valign="top" render="Label" source="session.j00zekMSNWeather" font="Roboto_HD; 24" transparent="1" foregroundColor="green">
-      <convert type="j00zekMSNWeatherWebhourly">title</convert>
+      <convert type="j00zekMSNWeather">RUN|[hourlyData][title]</convert>
     </widget>
     <!-- h0 -->
     <widget position="90,470" size="150,190" zPosition="3" halign="center" valign="top" render="Label" source="session.j00zekMSNWeather" font="Roboto_HD; 22" transparent="1" backgroundColor="black">

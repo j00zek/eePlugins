@@ -184,12 +184,21 @@ do
     sed -i 's;buttons/blue.png;buttons/key_blue.png;g' "$F"
   fi
 #wtyczka pogodowa
-  if [ `grep -c 'type="j00zekMSNWeatherWebDaily">Record' < "$F"` -gt 0 ];then
-    sed -i 's;type="j00zekMSNWeatherWebDaily">Record;type="j00zekMSNWeather">DailyRecord;g' "$F"
+#  if [ `grep -c 'type="j00zekMSNWeatherWebDaily">Record' < "$F"` -gt 0 ];then
+#    sed -i 's;type="j00zekMSNWeatherWebDaily">Record;type="j00zekMSNWeather">DailyRecord;g' "$F"
+#  fi
+#  if [ `grep -c 'type="j00zekMSNWeatherWebhourly">Record' < "$F"` -gt 0 ];then
+#    sed -i 's;type="j00zekMSNWeatherWebhourly">Record;type="j00zekMSNWeather">HourlyRecord;g' "$F"
+#  fi
+#  if [ `grep -c 'type="j00zekMSNWeatherWebhourly">title<' < "$F"` -gt 0 ];then
+#    sed -i "s;type=\"j00zekMSNWeatherWebhourly\">title<;type=\"j00zekMSNWeather\">RUN|['hourlyData']['title']<;g" "$F"
+#  fi
+  if [ `grep -c 'type="j00zekMSNWeatherWebCurrent">barometrValue' < "$F"` -gt 0 ];then
+    sed -i "s;type=\"j00zekMSNWeatherWebCurrent\">barometrValue;type=\"j00zekMSNWeather\">RUN|['currentData']['pressure']['val']|hPa;g" "$F"
   fi
-  if [ `grep -c 'type="j00zekMSNWeatherWebhourly">Record' < "$F"` -gt 0 ];then
-    sed -i 's;type="j00zekMSNWeatherWebhourly">Record;type="j00zekMSNWeather">HourlyRecord;g' "$F"
-  fi
+#  if [ `grep -c 'type="j00zekMSNWeatherWebhourly">Record' < "$F"` -gt 0 ];then
+#    sed -i 's;type="j00zekMSNWeatherWebhourly">Record;type="j00zekMSNWeather">RUN|[\'currentData\'][\'pressure\'][\'val\'];g' "$F"
+#  fi
 
 done
 exit 0

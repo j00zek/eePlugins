@@ -88,7 +88,7 @@
      <eLabel text="%" position="880,619" size="30,25" backgroundColor="black" transparent="1" font="Roboto_HD; 21" foregroundColor="white" halign="right" />
 
      <widget source="session.j00zekMSNWeather" render="Label" position="1110,619" size="290,30" font="Roboto_HD;21" zPosition="2" halign="left" valign="center" backgroundColor="background" transparent="1" noWrap="1">
-      <convert type="j00zekMSNWeatherWebCurrent">barometrValue</convert>
+      <convert type="j00zekMSNWeather">RUN|['currentData']['pressure']['val']|hPa</convert>
      </widget> 
      <eLabel font="Roboto_HD; 22" foregroundColor="green" halign="center" name="new eLabel" position="980,619" size="125,30" text="Ciśnienie :" transparent="1" zPosition="2" valign="center" backgroundColor="black" /> 
    
