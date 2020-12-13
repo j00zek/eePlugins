@@ -58,14 +58,6 @@ find $myDir -iname skin_LCD_*.xml|while read f; do
   sed -i 's;render="FlipClock";render="HomarFlipClock";g' "$f"
   sed -i 's;render="RollerCharLCDLong";render="HomarRollerCharLCDLong";g' "$f"
   sed -i 's;source="parent.RdsDecoder";source="parent.HomarRdsDecoder";g' "$f"
-  #wtyczka pogodowa
-  if [ `grep -c 'type="j00zekMSNWeatherWebDaily">Record' < "$F"` -gt 0 ];then
-    sed -i 's;type="j00zekMSNWeatherWebDaily">Record;type="j00zekMSNWeather">DailyRecord;g' "$F"
-  fi
-  if [ `grep -c 'type="j00zekMSNWeatherWebhourly">Record' < "$F"` -gt 0 ];then
-    sed -i 's;type="j00zekMSNWeatherWebhourly">Record;type="j00zekMSNWeather">HourlyRecord;g' "$F"
-  fi
-
 done
 
 echo "Homar Skins: modyfikacja komponentów wewnątrz xml-i zgodnie ze zmianami w BlackHarmony"

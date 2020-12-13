@@ -156,7 +156,7 @@ options="movetype=running,startpoint=0,direction=left,steptime=70,repeat=0,start
 <ePixmap pixmap="HomarLCDskins/weather/thermo.png" position="220,30" size="33,100" zPosition="3" transparent="1" alphatest="blend" />
 <ePixmap pixmap="HomarLCDskins/weather/thermo2.png" position="220,140" size="33,100" zPosition="3" transparent="1" alphatest="blend" />
 <widget source="session.j00zekMSNWeather" render="Label" position="410,200" size="355,62" font="VFD;60" halign="right" transparent="1" >
-  <convert type="j00zekMSNWeatherWebCurrent">barometrValue</convert>
+  <convert type="j00zekMSNWeather">RUN|['currentData']['pressure']['val']|hPa</convert>
 </widget>
 <ePixmap pixmap="HomarLCDskins/weather/barometer.png" position="420,200" size="100,100" zPosition="3" transparent="1" alphatest="blend" />
 <widget source="session.j00zekMSNWeather"  render="Label" position="470,40" size="120,62" font="VFD;60" halign="right" transparent="1" >

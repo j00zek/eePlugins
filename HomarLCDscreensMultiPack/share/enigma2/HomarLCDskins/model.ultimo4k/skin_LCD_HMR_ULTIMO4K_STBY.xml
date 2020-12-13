@@ -52,7 +52,7 @@ alphatest="blend" zPosition="1" >
         <convert type="j00zekModABTCAirlyWidget">caqi</convert>
     </widget>
   <widget source="session.j00zekMSNWeather" render="Label" position="120,320" size="350,62" font="VFD3;60" halign="left" transparent="1" >
-            <convert type="j00zekMSNWeatherWebCurrent">barometrValue</convert>
+            <convert type="j00zekMSNWeather">RUN|['currentData']['pressure']['val']|hPa</convert>
    </widget>
   <widget source="session.j00zekMSNWeather"  render="Label" position="410,250" size="120,62" font="VFD3;60" halign="left" transparent="1" >
  		<convert type="j00zekMSNWeather">humidity</convert>
