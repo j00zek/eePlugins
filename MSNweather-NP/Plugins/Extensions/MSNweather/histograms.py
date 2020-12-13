@@ -69,7 +69,7 @@ class MSNweatherHistograms(Screen):
         
         self.setTitle(_("What happened in weather during last %s hours?") % ( self.maxItems))
         self['TitlePressure'] = Label(_('Pressure'))
-        self['TitleTemperature'] = Label(clr['R'] + _('Temperature') + clr['Y'] + ' | ' + clr['B'] + _('Feelng temperature'))
+        self['TitleTemperature'] = Label(clr['R'] + _('Temperature') + clr['Y'] + ' | ' + clr['B'] + _('Feeling temperature'))
 
         self.currTime = int(time.time())
         i = 0
@@ -97,19 +97,19 @@ class MSNweatherHistograms(Screen):
         self.onLayoutFinish.append(self.startRun)
     
     def DEBUG(self, myFUNC = '' , myText = '' ):
-        if config.plugins.WeatherPlugin.DebugMSNweatherHistograms.value:
+        if config.plugins.MSNweatherNP.DebugMSNweatherHistograms.value:
             from Plugins.Extensions.MSNweather.debug import printDEBUG
             printDEBUG( myFUNC , myText )
 
     def getTemperature(self, record): #Temperatura odczuwalna=-7\xc2
         try:
-            return int(record[2].split('=')[1].replace('\xc2','').replace('\xB0','').strip())
+            return int(record[2].split('=')[1].strip())
         except Exception:
             return None
     
     def getPressure(self, record): #Barometr=1012.00 mbar
         try:
-            return int(record[4].split('=')[1].replace('.00','').replace('mbar','').strip())
+            return int(record[4].split('=')[1].strip())
         except Exception:
             return None
     
@@ -128,8 +128,8 @@ class MSNweatherHistograms(Screen):
     #EPOC|getCurrTemperature|Wiatr=NW 39 km/h|getPressure|Wilgotnosc=78%|getCurrTemperature|skyCode=13|observationtime=18:00:00|getIcon
     def startRun(self):
         self.DEBUG('MSNweatherHistograms(Screen).startRun >>>')
-        minPressure = 9999
-        maxPressure = 99
+        minPressure = 1000
+        maxPressure = 1020
         diffPressure = 0
         stepPressure = 1
         minTemp = 99
@@ -148,7 +148,9 @@ class MSNweatherHistograms(Screen):
                             #pressure
                             pressure = self.getPressure(record)
                             if pressure is not None:
-                                if minPressure > pressure: minPressure = pressure
+                                if minPressure > pressure:
+                                    minPressure = pressure
+                                    maxPressure = minPressure + 20
                                 if maxPressure < pressure: maxPressure = pressure
                             #temperature
                             temp = self.getTemperature(record)

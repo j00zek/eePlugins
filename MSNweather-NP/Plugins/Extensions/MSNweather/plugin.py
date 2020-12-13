@@ -25,8 +25,10 @@ from Components.config import ConfigSubsection, ConfigSubList, ConfigInteger, co
 #from Components.Pixmap import Pixmap
 from Components.j00zekAccellPixmap import j00zekAccellPixmap
 from Components.Label import Label
+from Components.Sources.List import List
 from Components.Sources.StaticText import StaticText
-from debug import printDEBUG
+from debug import printDEBUG, clearLogs
+from enigma import eTimer
 from getWeather import getWeather
 from Plugins.Plugin import PluginDescriptor
 #from datetime import datetime, timedelta
@@ -40,14 +42,32 @@ from Tools.LoadPixmap import LoadPixmap
 from version import Version
 import time, os
 
-DBG = False
+DBG = True
 
-config.plugins.WeatherPlugin = ConfigSubsection()
-config.plugins.WeatherPlugin.entrycount =  ConfigInteger(0)
-config.plugins.WeatherPlugin.currEntry =  NoSave(ConfigInteger(0))
-config.plugins.WeatherPlugin.callbacksCount =  NoSave(ConfigInteger(0))
-config.plugins.WeatherPlugin.FakeEntry = NoSave(ConfigNothing())
-config.plugins.WeatherPlugin.Entry = ConfigSubList()
+config.plugins.MSNweatherNP = ConfigSubsection()
+config.plugins.MSNweatherNP.FakeEntry = NoSave(ConfigNothing())
+
+config.plugins.MSNweatherNP.SensorsPriority = ConfigSelection(choices = [ ("TsAirlyMsn", _("TsAirlyMsn")),
+                                                                           ("AirlyTsMsn", _("AirlyTsMsn")),
+                                                                           ("MsnAirlyTs", _("MsnAirlyTs")),
+                                                                           ("MsnTsAirly", _("MsnTsAirly")),
+                                                                         ],
+                                                                default = "MsnTsAirly"
+                                                               )
+
+config.plugins.MSNweatherNP.BuildHistograms = ConfigEnableDisable(default = False)
+
+if os.path.exists('/hdd/User_Configs/airlyAPIKEY'):
+    config.plugins.MSNweatherNP.airlyAPIKEY = ConfigText(default = open('/hdd/User_Configs/airlyAPIKEY', 'r').readline().strip(), visible_width = 100, fixed_size = False)
+elif os.path.exists('/etc/enigma2/Airly/api.txt'):
+    config.plugins.MSNweatherNP.airlyAPIKEY = ConfigText(default = open('/etc/enigma2/Airly/api.txt', 'r').readline().strip(), visible_width = 100, fixed_size = False)
+else:
+    config.plugins.MSNweatherNP.airlyAPIKEY = ConfigText(default = "", visible_width = 100, fixed_size = False)
+
+config.plugins.MSNweatherNP.entrycount =  ConfigInteger(0)
+config.plugins.MSNweatherNP.currEntry =  NoSave(ConfigInteger(0))
+config.plugins.MSNweatherNP.callbacksCount =  NoSave(ConfigInteger(0))
+config.plugins.MSNweatherNP.Entry = ConfigSubList()
 
 availableOptions = [("serviceIcons", _("MSN service icons"))]
 if os.path.exists(os.path.dirname(resolveFilename(SCOPE_SKIN, config.skin.primary_skin.value)) + '/weather_icons/'):
@@ -55,64 +75,44 @@ if os.path.exists(os.path.dirname(resolveFilename(SCOPE_SKIN, config.skin.primar
 if os.path.exists('/usr/share/enigma2/animatedWeatherIcons'):
     availableOptions.append(("animIcons", _("animated Icons")))
 
-config.plugins.WeatherPlugin.IconsType = ConfigSelection(choices = availableOptions, default = "serviceIcons")
-config.plugins.WeatherPlugin.ScalePicType = ConfigSelection(choices = [ ("self.instance.setScale", _("internal E2")),
+config.plugins.MSNweatherNP.IconsType = ConfigSelection(choices = availableOptions, default = "serviceIcons")
+config.plugins.MSNweatherNP.ScalePicType = ConfigSelection(choices = [ ("self.instance.setScale", _("internal E2")),
                                                                         ("ePicLoad", _("ePicLoad (E.g. Vu+ org)")) ],
                                                             default = "self.instance.setScale")
 
-config.plugins.WeatherPlugin.BuildHistograms = ConfigEnableDisable(default = False)
-
-config.plugins.WeatherPlugin.SensorsPriority = ConfigSelection(choices = [ ("AcTsAirlyMsn", _("AcTsAirlyMsn")),
-                                                                           ("AcAirlyTsMsn", _("AcAirlyTsMsn")),
-                                                                           ("AirlyTsAcMsn", _("AirlyTsAcMsn")),
-                                                                           ("TsAirlyAcMsn", _("TsAirlyAcMsn")),
-                                                                         ],
-                                                                default = "AcTsAirlyMsn"
-                                                               )
-
-config.plugins.WeatherPlugin.AC1 = ConfigSelection(choices = [ ("off", _("not installed")), ("daikin", _("Daikin Air Conditioner")) , ("samsung", _("Samsung Air Conditioner"))], default = "off")
-config.plugins.WeatherPlugin.AC1_IP = ConfigIP(default = [0,0,0,0])
-config.plugins.WeatherPlugin.AC1_PORT = ConfigInteger(default = 80,limits=(80,999))
-config.plugins.WeatherPlugin.AC1inf = ConfigText(default = _("AC in the living room"), visible_width = 100, fixed_size = False)
-config.plugins.WeatherPlugin.AC2 = ConfigSelection(choices = [ ("off", _("not installed")), ("daikin", _("Daikin Air Conditioner")) , ("samsung", _("Samsung Air Conditioner"))], default = "off")
-config.plugins.WeatherPlugin.AC2_IP = ConfigIP(default = [0,0,0,0])
-config.plugins.WeatherPlugin.AC2_PORT = ConfigInteger(default = 80,limits=(80,999))
-config.plugins.WeatherPlugin.AC2inf = ConfigText(default = _("AC in the bedroom"), visible_width = 100, fixed_size = False)
+config.plugins.MSNweatherNP.AC1 = ConfigSelection(choices = [ ("off", _("not installed")), ("daikin", _("Daikin Air Conditioner")) , ("samsung", _("Samsung Air Conditioner"))], default = "off")
+config.plugins.MSNweatherNP.AC1_IP = ConfigIP(default = [0,0,0,0])
+config.plugins.MSNweatherNP.AC1_PORT = ConfigInteger(default = 80,limits=(80,999))
+config.plugins.MSNweatherNP.AC1inf = ConfigText(default = _("AC in the living room"), visible_width = 100, fixed_size = False)
+config.plugins.MSNweatherNP.AC2 = ConfigSelection(choices = [ ("off", _("not installed")), ("daikin", _("Daikin Air Conditioner")) , ("samsung", _("Samsung Air Conditioner"))], default = "off")
+config.plugins.MSNweatherNP.AC2_IP = ConfigIP(default = [0,0,0,0])
+config.plugins.MSNweatherNP.AC2_PORT = ConfigInteger(default = 80,limits=(80,999))
+config.plugins.MSNweatherNP.AC2inf = ConfigText(default = _("AC in the bedroom"), visible_width = 100, fixed_size = False)
 
 
-if os.path.exists('/hdd/User_Configs/airlyAPIKEY'):
-    config.plugins.WeatherPlugin.airlyAPIKEY = ConfigText(default = open('/hdd/User_Configs/airlyAPIKEY', 'r').readline().strip(), visible_width = 100, fixed_size = False)
-elif os.path.exists('/etc/enigma2/Airly/api.txt'):
-    config.plugins.WeatherPlugin.airlyAPIKEY = ConfigText(default = open('/etc/enigma2/Airly/api.txt', 'r').readline().strip(), visible_width = 100, fixed_size = False)
-else:
-    config.plugins.WeatherPlugin.airlyAPIKEY = ConfigText(default = "", visible_width = 100, fixed_size = False)
+config.plugins.MSNweatherNP.DebugEnabled = ConfigEnableDisable(default = False)
+config.plugins.MSNweatherNP.DebugSize = ConfigSelection(choices = [ ("10000", "10KB"), ("100000", "100KB"), ("1000000", "1MB"), ], default = "10000")
 
-config.plugins.WeatherPlugin.DebugEnabled = ConfigEnableDisable(default = False)
-config.plugins.WeatherPlugin.DebugSize = ConfigSelection(choices = [ ("10000", "10KB"), ("100000", "100KB"), ("1000000", "1MB"), ], default = "10000")
+config.plugins.MSNweatherNP.DebugWeatherMSNupdater = ConfigEnableDisable(default = False)
+config.plugins.MSNweatherNP.DebugMSNWeatherSource = ConfigEnableDisable(default = False)
+config.plugins.MSNweatherNP.DebugMSNWeatherConverter = ConfigEnableDisable(default = False)
 
-config.plugins.WeatherPlugin.DebugWeatherMSNupdater = ConfigEnableDisable(default = False)
-config.plugins.WeatherPlugin.DebugMSNWeatherSource = ConfigEnableDisable(default = False)
-config.plugins.WeatherPlugin.DebugMSNWeatherConverter = ConfigEnableDisable(default = False)
+config.plugins.MSNweatherNP.DebugMSNWeatherPixmapRenderer = ConfigEnableDisable(default = False)
 
-config.plugins.WeatherPlugin.DebugMSNWeatherPixmapRenderer = ConfigEnableDisable(default = False)
+config.plugins.MSNweatherNP.DebugMSNWeatherThingSpeakConverter = ConfigEnableDisable(default = False)
+config.plugins.MSNweatherNP.DebugMSNWeatherWebCurrentConverter = ConfigEnableDisable(default = False)
+config.plugins.MSNweatherNP.DebugMSNWeatherWebhourlyConverter = ConfigEnableDisable(default = False)
+config.plugins.MSNweatherNP.DebugMSNWeatherWebDailyConverter = ConfigEnableDisable(default = False)
 
-config.plugins.WeatherPlugin.DebugMSNWeatherThingSpeakConverter = ConfigEnableDisable(default = False)
-config.plugins.WeatherPlugin.DebugMSNWeatherWebCurrentConverter = ConfigEnableDisable(default = False)
-config.plugins.WeatherPlugin.DebugMSNWeatherWebhourlyConverter = ConfigEnableDisable(default = False)
-config.plugins.WeatherPlugin.DebugMSNWeatherWebDailyConverter = ConfigEnableDisable(default = False)
+config.plugins.MSNweatherNP.DebugGetWeatherBasic = ConfigEnableDisable(default = False)
+config.plugins.MSNweatherNP.DebugGetWeatherXML = ConfigEnableDisable(default = False)
+config.plugins.MSNweatherNP.DebugGetWeatherWEB = ConfigEnableDisable(default = False)
+config.plugins.MSNweatherNP.DebugGetWeatherTS = ConfigEnableDisable(default = False)
+config.plugins.MSNweatherNP.DebugGetWeatherFULL = ConfigEnableDisable(default = False)
+config.plugins.MSNweatherNP.DebugMSNweatherHistograms = ConfigEnableDisable(default = False)
+config.plugins.MSNweatherNP.DebugMSNweatherMaps = ConfigEnableDisable(default = True)
 
-config.plugins.WeatherPlugin.DebugGetWeatherBasic = ConfigEnableDisable(default = False)
-config.plugins.WeatherPlugin.DebugGetWeatherXML = ConfigEnableDisable(default = False)
-config.plugins.WeatherPlugin.DebugGetWeatherWEB = ConfigEnableDisable(default = False)
-config.plugins.WeatherPlugin.DebugGetWeatherTS = ConfigEnableDisable(default = False)
-config.plugins.WeatherPlugin.DebugGetWeatherFULL = ConfigEnableDisable(default = False)
-config.plugins.WeatherPlugin.DebugMSNweatherHistograms = ConfigEnableDisable(default = False)
-config.plugins.WeatherPlugin.DebugMSNweatherMaps = ConfigEnableDisable(default = True)
-
-config.plugins.WeatherPlugin.HistoryPeriod = ConfigSelection(choices = [ ("86400", _("Last 24h")), ("43200", _("Last 12h")), ("21600", _("Last 6h")), ("10800", _("Last 3h")), ("3600", _("Last hour")), ], default = "43200")
-
-printDEBUG('INIT', ' MSNweather NP plugin %s' % Version)
-printDEBUG('config.plugins.WeatherPlugin.IconsType = "%s"' % config.plugins.WeatherPlugin.IconsType.value)
+config.plugins.MSNweatherNP.HistoryPeriod = ConfigSelection(choices = [ ("86400", _("Last 24h")), ("43200", _("Last 12h")), ("21600", _("Last 6h")), ("10800", _("Last 3h")), ("3600", _("Last hour")), ], default = "43200")
 
 initConfig()
 
@@ -126,10 +126,13 @@ except Exception as e:
     printDEBUG('Exception: %s' % str(e))
 
 def main(session,**kwargs):
-    session.open(MSNweather)
+    clearLogs()
+    printDEBUG('INIT', ' MSNweather NP plugin %s' % Version)
+    printDEBUG('config.plugins.MSNweatherNP.IconsType = "%s"' % config.plugins.MSNweatherNP.IconsType.value)
+    session.open(MSNweatherNP)
 
 def sessionstart(session, **kwargs):
-    session.screen["MSNWeather"] = getWeather()
+    session.screen["MSNweatherNP"] = getWeather()
 
 def Plugins(**kwargs):
     list = [
@@ -138,43 +141,9 @@ def Plugins(**kwargs):
     ]
     return list
 
-class MSNweather(Screen):
-    skin = """
-        <screen name="MSNweather" position="center,center" size="664,340" title="MSN weather NP">
-            <widget render="Label" source="caption" position="10,20" zPosition="1" size="600,28" font="Regular;24" transparent="1"/>
-            <widget render="Label" source="observationtime" position="374,45" zPosition="1" size="280,20" font="Regular;14" transparent="1" halign="right" />
-            <widget render="Label" source="observationpoint" position="204,65" zPosition="1" size="450,40" font="Regular;14" transparent="1" halign="right" />
-            <widget name="currenticon" position="10,95" zPosition="1" size="55,45" alphatest="blend"/>
-            <widget render="Label" source="currentTemp" position="90,95" zPosition="1" size="100,23" font="Regular;22" transparent="1"/>
-            <widget render="Label" source="feelsliketemp" position="90,120" zPosition="1" size="155,40" font="Regular;14" transparent="1"/>
-            <widget render="Label" source="condition" position="270,95" zPosition="1" size="300,20" font="Regular;18" transparent="1"/>
-            <widget render="Label" source="wind_condition" position="270,115" zPosition="1" size="300,20" font="Regular;18" transparent="1"/>
-            <widget render="Label" source="humidity" position="270,135" zPosition="1" size="300,20" font="Regular;18" valign="bottom" transparent="1"/>
-            
-            <ePixmap pixmap="skin_default/buttons/red.png" position="0,300" size="35,27" alphatest="on" />
-            <widget name="key_red" position="40,300" size="150,35" font="Roboto_HD; 24" backgroundColor="black" transparent="1"/>
-            
-            <ePixmap pixmap="skin_default/buttons/green.png" position="160,300" size="140,40" alphatest="on" />
-            <widget name="key_green" position="40,300" size="150,35" font="Roboto_HD; 24" backgroundColor="black" transparent="1"/>
-
-            <ePixmap pixmap="skin_default/buttons/yellow.png" position="330,300" size="140,40" alphatest="on" />
-            <widget name="key_yellow" position="40,300" size="150,35" font="Roboto_HD; 24" backgroundColor="black" transparent="1"/>
-
-            <ePixmap pixmap="skin_default/buttons/blue.png" position="490,300" size="140,40" alphatest="on" />
-            <widget name="key_blue" position="40,300" size="150,35" font="Roboto_HD; 24" backgroundColor="black" transparent="1"/>
-
-            <widget source="session.CurrentService" render="Label" position="10,295" zPosition="1" size="140,40" font="Regular;20" halign="center" valign="center" backgroundColor="#9f1313" transparent="1" >
-              <convert type="j00zekTranslator">Close</convert>
-            </widget>
-            <widget source="session.CurrentService" render="Label" position="190,295" zPosition="1" size="140,40" font="Regular;20" halign="center" valign="center" backgroundColor="#1f771f" transparent="1" >
-              <convert type="j00zekTranslator">Show Maps</convert>
-            </widget>
-            <widget source="session.CurrentService" render="Label" position="370,295" zPosition="1" size="180,40" font="Regular;20" halign="center" valign="center" backgroundColor="#a08500" transparent="1" >
-              <convert type="j00zekTranslator">Show Histograms</convert>
-            </widget>
-        </screen>"""
-    
+class MSNweatherNP(Screen):
     def __init__(self, session):
+        self.skin = open("/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/skinMSNweatherNP.xml",'r').read()
         Screen.__init__(self, session)
         self.title = _("MSN weather NP @j00zek %s" % Version)
         self.setTitle(_("MSN weather NP @j00zek %s") % Version) 
@@ -189,31 +158,45 @@ class MSNweather(Screen):
             "keyGreen": self.keyGreen,
             "keyYellow": self.keyYellow,
             "keyBlue": self.keyBlue,
+            "current_up": self.current_up,
+            "current_down": self.current_down,
+            "hourly_up": self.hourly_up,
+            "hourly_down": self.hourly_down,
+            "daily_up": self.daily_up,
+            "daily_down": self.daily_down,
         }, -1)
 
         self["statustext"] = StaticText()
         self["currenticon"] = j00zekAccellPixmap()
         self["caption"] = StaticText()
-        self["currentTemp"] = StaticText()
-        self["condition"] = StaticText()
-        self["wind_condition"] = StaticText()
-        self["humidity"] = StaticText()
-        self["observationtime"] = StaticText()
+        self["currentData_weathericon"] = StaticText()
+        self["currentData_temperature"] = StaticText()
+        self["currentData_skytext"] = StaticText()
+        self["currentData_observationtime"] = StaticText()
         self["observationpoint"] = StaticText()
-        self["feelsliketemp"] = StaticText()
+        self["currentData_airlyInfo"] = StaticText()
+        self["currentData_airlyAdvice"] = StaticText()
+        self["currentData_infoList"] = List()
+        self["dailyData_infoList"] = List()
+        self["hourlyData_infoList"] = List()
+        self["currentData_WeatherinfoList"] = List()
+        self["currentData_WeatherinfoList"].list = []
+        self["currentData_infoList"].list = []
+        self["dailyData_infoList"].list = []
+        self["hourlyData_infoList"].list = []
 
-        self["key_red"] = Label(config.plugins.WeatherPlugin.AC1inf.value)
-        self["key_green"] = Label(config.plugins.WeatherPlugin.AC2inf.value)
+        self["key_red"] = Label(config.plugins.MSNweatherNP.AC1inf.value)
+        self["key_green"] = Label(config.plugins.MSNweatherNP.AC2inf.value)
         self["key_yellow"] = Label(_("Show Histograms"))
         self["key_blue"] = Label(_("Show Maps"))
 
         self.weatherPluginEntryIndex = -1
         self.weatherPluginEntry = None
         try:
-            config.plugins.WeatherPlugin.currEntry.value = 0
-            self.weatherPluginEntryCount = config.plugins.WeatherPlugin.entrycount.value
+            config.plugins.MSNweatherNP.currEntry.value = 0
+            self.weatherPluginEntryCount = config.plugins.MSNweatherNP.entrycount.value
             if self.weatherPluginEntryCount >= 1:
-                self.weatherPluginEntry = config.plugins.WeatherPlugin.Entry[0]
+                self.weatherPluginEntry = config.plugins.MSNweatherNP.Entry[0]
                 self.weatherPluginEntryIndex = 1
         except Exception as e:
             printDEBUG('MSNweather.__init__', ' Exception %s' % str(e))
@@ -222,15 +205,47 @@ class MSNweather(Screen):
         self.webSite = ""
         
         self.weatherData = None
-        self.onLayoutFinish.append(self.startRun)
+
         self.onClose.append(self.__onClose)
+        #self.onLayoutFinish.append(self.__onLayoutFinish)
+        self.onShown.append(self.__onShown)
         
     def __onClose(self):
         if self.weatherData is not None:
             self.weatherData.cancel()
             self.weatherData = None
-        
+    
+    def __onShown(self):
+        self.startDelay = eTimer()
+        self.startDelay.callback.append(self.startRun)
+        self.startDelay.start(50, True)
+            
+    def current_up(self):
+        try: self["currentData_infoList"].pageUp()
+        except Exception: pass
+    
+    def current_down(self):
+        try: self["currentData_infoList"].pageDown()
+        except Exception: pass
+    
+    def hourly_up(self):
+        try: self["hourlyData_infoList"].pageUp()
+        except Exception: pass
+    
+    def hourly_down(self):
+        try: self["hourlyData_infoList"].pageDown()
+        except Exception: pass
+    
+    def daily_up(self):
+        try: self["dailyData_infoList"].pageUp()
+        except Exception: pass
+    
+    def daily_down(self):
+        try: self["dailyData_infoList"].pageDown()
+        except Exception: pass
+
     def startRun(self):
+        self.startDelay.stop()
         if self.weatherPluginEntry is not None:
             self["statustext"].text = _("Getting weather information...")
             if self.weatherData is not None:
@@ -243,7 +258,10 @@ class MSNweather(Screen):
                                             self.weatherPluginEntry.weatherSearchFullName.value,
                                             self.weatherPluginEntry.thingSpeakChannelID.value,
                                             self.weatherPluginEntry.Fcity.value,
+                                            self.weatherPluginEntry.Fmeteo.value,
                                             self.weatherPluginEntry.airlyID.value,
+                                            self.weatherPluginEntry.geolatitude.value,
+                                            self.weatherPluginEntry.geolongitude.value,
                                             self.getWeatherDataCallback,
                                             None) #self.showIcon)
         else:
@@ -266,22 +284,26 @@ class MSNweather(Screen):
             self.setItem()
 
     def setItem(self):
-        self.weatherPluginEntry = config.plugins.WeatherPlugin.Entry[self.weatherPluginEntryIndex-1]
-        config.plugins.WeatherPlugin.currEntry.value = self.weatherPluginEntryIndex-1
+        self.weatherPluginEntry = config.plugins.MSNweatherNP.Entry[self.weatherPluginEntryIndex-1]
+        config.plugins.MSNweatherNP.currEntry.value = self.weatherPluginEntryIndex-1
         self.clearFields()
         self.startRun()
 
     def clearFields(self):
         self["caption"].text = ""
-        self["currentTemp"].text = ""
-        self["condition"].text = ""
-        self["wind_condition"].text = ""
-        self["humidity"].text = ""
-        self["observationtime"].text = ""
+        self["currentData_temperature"].text = ""
+        self["currentData_skytext"].text = ""
+        self["currentData_observationtime"].text = ""
         self["observationpoint"].text = ""
-        self["feelsliketemp"].text = ""
         self["currenticon"].hide()
         self.webSite = ""
+        self["currentData_infoList"].list = []
+        self["dailyData_infoList"].list = []
+        self["hourlyData_infoList"].list = []
+        self["currentData_airlyInfo"].text = ""
+        self["currentData_WeatherinfoList"].list = []
+        self["currentData_airlyInfo"].text = ""
+        self["currentData_airlyAdvice"].text = ""
 
     def showIcon(self,index, filename):
         self["currenticon"].updateIcon(filename)
@@ -296,45 +318,18 @@ class MSNweather(Screen):
                 if DBG: printDEBUG('MSNWeatherPlugin(Screen).refreshWeatherMSNComp self.weatherData is None =  no WeatherMSNComp update!!!')
         else:
             if DBG: printDEBUG('MSNWeatherPlugin(Screen)/refreshWeatherMSNComp WeatherMSNComp is None - nothing to update!!!')
-    
-    def getWeatherDataCallback(self, result, errortext):
-        self["statustext"].text = ""
-        if result == getWeather.ERROR:
-            if DBG: printDEBUG('MSNWeatherPlugin(Screen)getWeatherDataCallback result == getWeather.ERROR')
-            self.error(errortext)
-        else:
-            if DBG: printDEBUG('getWeatherDataCallback result == %s' % result)
-            self["caption"].text = self.weatherData.city
-            self.webSite = self.weatherData.url
-            #current data
-            item = self.weatherData.weatherItems.get('-1', None)
-            if item is not None:
-                self["currentTemp"].text = "%s°%s" % (item.temperature, self.weatherData.degreetype)
-                self["condition"].text = item.skytext
-                self["humidity"].text = _("Humidity: %s %%") % item.humidity
-                self["wind_condition"].text = item.winddisplay
-                c =  time.strptime(item.observationtime, "%H:%M:%S")
-                self["observationtime"].text = _("Observation time: %s") %  time.strftime("%H:%M",c)
-                self["observationpoint"].text = _("Observation point: %s") % item.observationpoint
-                self["feelsliketemp"].text = _("Feels like %s") % item.feelslike + "°" +  self.weatherData.degreetype
-                if DBG: printDEBUG('getWeatherDataCallback item.skytext == %s' % item.skytext)
-                self.showIcon( -1, item.iconFilename)
-        
-        if WeatherMSNComp is not None:
-            if DBG: printDEBUG('getWeatherDataCallback invoking WeatherMSNComp.updateWeather')
-            WeatherMSNComp.updateWeather(self.weatherData, result, errortext) #update data source
 
     def config(self):
         self.session.openWithCallback(self.setupFinished, MSNWeatherEntriesListConfigScreen)
 
     def setupFinished(self, index, entry = None):
-        self.weatherPluginEntryCount = config.plugins.WeatherPlugin.entrycount.value
+        self.weatherPluginEntryCount = config.plugins.MSNweatherNP.entrycount.value
         if self.weatherPluginEntryCount >= 1:
             if entry is not None:
                 self.weatherPluginEntry = entry
                 self.weatherPluginEntryIndex = index + 1
             if self.weatherPluginEntry is None:
-                self.weatherPluginEntry = config.plugins.WeatherPlugin.Entry[0]
+                self.weatherPluginEntry = config.plugins.MSNweatherNP.Entry[0]
                 self.weatherPluginEntryIndex = 1
         else:
             self.weatherPluginEntry = None
@@ -356,34 +351,140 @@ class MSNweather(Screen):
 
     def keyBlue(self): #ShowMaps
         from maps import MSNweatherMaps
-        self.session.open(MSNweatherMaps)
+        self.session.open(MSNweatherMaps, self.weatherPluginEntry.Fcity.value,)
 
     def keyRed(self): #
-        if config.plugins.WeatherPlugin.AC1inf.value == '':
+        if config.plugins.MSNweatherNP.AC1inf.value == '':
             return
-        elif config.plugins.WeatherPlugin.AC1inf.value in ('Close', 'Anuluj'):
+        elif config.plugins.MSNweatherNP.AC1inf.value in ('Close', 'Anuluj'):
             self.close()
-        elif config.plugins.WeatherPlugin.AC1.value == 'off': #"daikin" "samsung"
+        elif config.plugins.MSNweatherNP.AC1.value == 'off': #"daikin" "samsung"
             self.session.openWithCallback(self.doNothing,MessageBox, _("A/C type not set!"), MessageBox.TYPE_WARNING, timeout = 5)
-        elif config.plugins.WeatherPlugin.AC1_IP.value == [0,0,0,0]:
+        elif config.plugins.MSNweatherNP.AC1_IP.value == [0,0,0,0]:
             self.session.openWithCallback(self.doNothing,MessageBox, _("A/C IP address not set!"), MessageBox.TYPE_WARNING, timeout = 5)
-        elif config.plugins.WeatherPlugin.AC1.value == 'daikin':
+        elif config.plugins.MSNweatherNP.AC1.value == 'daikin':
             from aircon_Controller_daikin import DaikinController
-            self.session.openWithCallback(self.doNothing, DaikinController, config.plugins.WeatherPlugin.AC1_IP.value, config.plugins.WeatherPlugin.AC1_PORT.value, config.plugins.WeatherPlugin.AC1inf.value)
-        elif config.plugins.WeatherPlugin.AC1.value == 'samsung':
+            self.session.openWithCallback(self.doNothing, DaikinController, config.plugins.MSNweatherNP.AC1_IP.value, config.plugins.MSNweatherNP.AC1_PORT.value, config.plugins.MSNweatherNP.AC1inf.value)
+        elif config.plugins.MSNweatherNP.AC1.value == 'samsung':
             from aircon_Controller_samsung import SamsungController
-            self.session.openWithCallback(self.doNothing, SamsungController, config.plugins.WeatherPlugin.AC1_IP.value, config.plugins.WeatherPlugin.AC1_PORT.value, config.plugins.WeatherPlugin.AC1inf.value)
+            self.session.openWithCallback(self.doNothing, SamsungController, config.plugins.MSNweatherNP.AC1_IP.value, config.plugins.MSNweatherNP.AC1_PORT.value, config.plugins.MSNweatherNP.AC1inf.value)
 
     def keyGreen(self): #
-        if config.plugins.WeatherPlugin.AC2inf.value == '':  
+        if config.plugins.MSNweatherNP.AC2inf.value == '':  
             return
-        elif config.plugins.WeatherPlugin.AC2.value == 'off': #"daikin" "samsung"
+        elif config.plugins.MSNweatherNP.AC2.value == 'off': #"daikin" "samsung"
             self.session.openWithCallback(self.doNothing,MessageBox, _("A/C type not set!"), MessageBox.TYPE_WARNING, timeout = 5)
-        elif config.plugins.WeatherPlugin.AC2_IP.value == [0,0,0,0]:
+        elif config.plugins.MSNweatherNP.AC2_IP.value == [0,0,0,0]:
             self.session.openWithCallback(self.doNothing,MessageBox, _("A/C IP address not set!"), MessageBox.TYPE_WARNING, timeout = 5)
-        elif config.plugins.WeatherPlugin.AC2.value == 'daikin':
+        elif config.plugins.MSNweatherNP.AC2.value == 'daikin':
             from aircon_Controller_daikin import DaikinController
-            self.session.openWithCallback(self.doNothing, DaikinController, config.plugins.WeatherPlugin.AC2_IP.value, config.plugins.WeatherPlugin.AC2_PORT.value, config.plugins.WeatherPlugin.AC2inf.value)
-        elif config.plugins.WeatherPlugin.AC2.value == 'samsung':
+            self.session.openWithCallback(self.doNothing, DaikinController, config.plugins.MSNweatherNP.AC2_IP.value, config.plugins.MSNweatherNP.AC2_PORT.value, config.plugins.MSNweatherNP.AC2inf.value)
+        elif config.plugins.MSNweatherNP.AC2.value == 'samsung':
             from aircon_Controller_samsung import SamsungController
-            self.session.openWithCallback(self.doNothing, SamsungController, config.plugins.WeatherPlugin.AC2_IP.value, config.plugins.WeatherPlugin.AC2_PORT.value, config.plugins.WeatherPlugin.AC2inf.value)
+            self.session.openWithCallback(self.doNothing, SamsungController, config.plugins.MSNweatherNP.AC2_IP.value, config.plugins.MSNweatherNP.AC2_PORT.value, config.plugins.MSNweatherNP.AC2inf.value)
+    
+    def getWeatherDataCallback(self, result, errortext):
+        self["statustext"].text = ""
+        if result == getWeather.ERROR:
+            if DBG: printDEBUG('MSNWeatherPlugin(Screen)getWeatherDataCallback result == getWeather.ERROR')
+            self.error(errortext)
+        else:
+            if DBG: printDEBUG('getWeatherDataCallback result == %s' % result)
+            self["caption"].text = self.weatherData.city
+            self.webSite = self.weatherData.url
+            #current data
+            item = self.weatherData.weatherItems.get('-1', None)
+            if item is not None:
+                self["currentData_temperature"].text = str(item.dictWeather['currentData']['temperature']['valInfo']) #"%s°%s" % (item.temperature, self.weatherData.degreetype)
+                alert = str(item.dictWeather['currentData']['alert']['valInfo'])
+                if alert == '':
+                    self["currentData_skytext"].text = item.skytext
+                else:
+                    self["currentData_skytext"].text = '%s\n%s' % (item.skytext, alert)
+                    
+                c =  time.strptime(item.observationtime, "%H:%M:%S")
+                self["currentData_observationtime"].text = _("Actualization time: %s") %  time.strftime("%H:%M",c)
+                self["observationpoint"].text = _("Observation point: %s") % item.observationpoint
+                if DBG: printDEBUG('getWeatherDataCallback item.skytext == %s' % item.skytext)
+                self.showIcon( -1, item.iconFilename)
+                
+                #self["currentData_weathericon"] = item.iconFilename
+                
+                #populate currentData_infoList
+                tmpDict = item.dictWeather['currentData']
+                self["currentData_airlyInfo"].text = str(tmpDict.get('airlyInfo', ""))
+                self["currentData_airlyAdvice"].text = str(tmpDict.get('airlyAdvice', ""))
+                tmpList = []
+                tmpListWeather = []
+                for key in tmpDict:
+                    valDict = tmpDict[key]
+                    if isinstance(valDict,dict):
+                        inList = valDict.get('inList', False)
+                        if key in ('dew_point_temp','feelslike','humidity','pressure','visibility','winddisplay'):
+                            tmpListWeather.append((str(valDict['name']),str(valDict['valInfo'])))
+                        elif inList:
+                            try:
+                                tmpList.append((str(valDict['name']),str(valDict['valInfo'])))
+                            except Exception:
+                                pass
+                try: tmpList.sort(key=lambda t : tuple(str(t[0]).lower()))
+                except Exception: tmpList.sort()
+                self["currentData_infoList"].list = tmpList
+                try: tmpListWeather.sort(key=lambda t : tuple(str(t[0]).lower()))
+                except Exception: tmpListWeather.sort()
+                self["currentData_WeatherinfoList"].list = tmpListWeather
+                
+                #populate hourlyData_infoList
+                self["hourlyData_infoList"].list = []
+                tmpDict = item.dictWeather['hourlyData']
+                tmpList = []
+                index = 0
+                if DBG: printDEBUG('populate hourlyData_infoList')
+                pngH = LoadPixmap(cached=True, path='/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/humidity_icon.png')
+                pngT = LoadPixmap(cached=True, path='/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/temperature_icon.png')
+                while index < len(tmpDict.keys()):
+                    try:
+                        record = tmpDict['Record=%s' % index]
+                        index += 1
+                    except Exception as e:
+                        break
+                    iconfilename = str(record['imgfilename'])
+                    if DBG: printDEBUG('record = %s\n' % str(record))
+                    if iconfilename.endswith('.png'):
+                        png = LoadPixmap(cached=True, path=iconfilename)
+                        tmpList.append(( png, '%s:00' % str(record['time']) ,
+                                              str(record['temperature']), 
+                                              str(record['rainprecip']),
+                                              str(record['skytext']),
+                                              pngT, pngH ))
+                self["hourlyData_infoList"].list = tmpList
+                
+                #populate dailyData_infoList
+                self["dailyData_infoList"].list = []
+                tmpDict = item.dictWeather['dailyData']
+                tmpList = []
+                index = 0
+                if DBG: printDEBUG('populate dailyData_infoList')
+                while index < len(tmpDict.keys()):
+                    try:
+                        record = tmpDict['Record=%s' % index]
+                        index += 1
+                    except Exception as e:
+                        if DBG: printDEBUG('record=%s exception: %s\n' % (index,str(e)))
+                        break
+                    iconfilename = str(record['imgfilename'])
+                    if DBG: printDEBUG('record = %s\n' % str(record))
+                    if iconfilename.endswith('.png'):
+                        png = LoadPixmap(cached=True, path=iconfilename)
+                        tmpList.append(( png, '%s, %s' % (str(record['weekday']), str(record['monthday'])) ,
+                                              str(record['temp_high']), 
+                                              str(record['temp_low']),
+                                              str(record['rainprecip']),
+                                              str(record['forecast'])
+                                        ))
+                self["dailyData_infoList"].list = tmpList
+
+                
+        if WeatherMSNComp is not None:
+            if DBG: printDEBUG('getWeatherDataCallback invoking WeatherMSNComp.updateWeather')
+            WeatherMSNComp.updateWeather(self.weatherData, result, errortext) #update data source

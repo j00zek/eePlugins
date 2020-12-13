@@ -23,7 +23,12 @@
 from Components.config import config
 from Components.Converter.Converter import Converter
 from Components.Element import cached
+from Components.j00zekModHex2strColor import Hex2strColor
+from Plugins.Extensions.MSNweather.__init__ import _
 from os import path
+import datetime
+
+DBG=False # for quick debugs
 
 class MSNWeatherNP(Converter, object):
 
@@ -60,14 +65,21 @@ class MSNWeatherNP(Converter, object):
     CODE = 30
     PATH = 31
     FULLDATE = 32
+    WEATHERDICT = 33
+    DAILYDICT = 34
+    HOURLYDICT = 35
+    CURRENTDICT = 36
 
     def __init__(self, type):
         Converter.__init__(self, type)
         self.index = None
         self.mode = None
+        self.mode2 = ''
         self.path = None
         self.extension = None
         self.indexTXT = None
+        self.dictWeather = {}
+        self.dictWeatherRUNs = []
         if type == "city": self.mode = self.CITY
         elif type == "observationtime": self.mode = self.OBSERVATIONTIME
         elif type == "observationpoint": self.mode = self.OBSERVATIONPOINT
@@ -75,6 +87,27 @@ class MSNWeatherNP(Converter, object):
         elif type == "feelslike": self.mode = self.FEELSLIKE
         elif type == "humidity": self.mode = self.HUMIDITY
         elif type == "winddisplay": self.mode = self.WINDDISPLAY
+        elif type.startswith("DailyRecord="):
+            self.mode = self.DAILYDICT
+            self.mode2 = type.replace('Daily','')
+        elif type.startswith("HourlyRecord="):
+            self.mode = self.HOURLYDICT
+            self.mode2 = type.replace('Hourly','')
+        elif type.startswith("Current"):
+            self.mode = self.CURRENTDICT
+            self.mode2 = type.replace('Current','')
+        elif type.startswith("RUN|"):
+            try:
+                self.dictWeatherRUNs = type.split('|')
+                self.dictWeatherRUNs.pop(0)
+                if len(self.dictWeatherRUNs) > 0:
+                    self.mode = self.WEATHERDICT
+                    for n, cmd in enumerate(self.dictWeatherRUNs):
+                        #self.EXCEPTIONDEBUG('cmd= |%s|' % cmd)
+                        if cmd.startswith("0x"):
+                            self.dictWeatherRUNs[n] = Hex2strColor(int(cmd, 16))
+            except Exception as e:
+                self.EXCEPTIONDEBUG('Exception enumarating RUN %s' % str(e))
         else:
             if type.find("weathericon") != -1: self.mode = self.ICON
             elif type.find("temperature_high") != -1: self.mode = self.TEMPERATURE_HEIGH
@@ -100,7 +133,7 @@ class MSNWeatherNP(Converter, object):
             
     def DEBUG(self, myFUNC = '' , myText = '' ):
         try:
-            if config.plugins.WeatherPlugin.DebugMSNWeatherConverter.value:
+            if DBG or config.plugins.MSNweatherNP.DebugMSNWeatherConverter.value:
                 from Plugins.Extensions.MSNweather.debug import printDEBUG
                 printDEBUG( myFUNC , myText , 'MSNWeatherConverter.log' )
         except Exception:
@@ -159,6 +192,69 @@ class MSNWeatherNP(Converter, object):
             retText = self.source.getDate(self.index)
         elif self.mode == self.FULLDATE and self.index is not None:
             retText = self.source.getFullDate(self.index)
+        elif self.mode == self.WEATHERDICT:
+            try:
+                for cmd in self.dictWeatherRUNs:
+                    #self.EXCEPTIONDEBUG('cmd= ,%s,' % cmd)
+                    if cmd.startswith("['"):
+                        #self.EXCEPTIONDEBUG('running: %s' % cmd)
+                        retText += self.source.dictWeather(cmd)
+                    else:
+                        retText += cmd
+            except Exception as e:
+                self.EXCEPTIONDEBUG('Exception %s running cmd %s' % (str(e), cmd))
+        elif self.mode == self.DAILYDICT:
+            try:
+                mode2 = self.mode2.split(',')
+                self.DEBUG('DAILYDICT','len(mode) =%s' % str(len(mode2)))
+                if len(mode2) >= 2:
+                    dictTree = "['dailyData']"
+                    record = mode2[0]
+                    #self.DEBUG('DAILYDICT ','record: %s' % str(record))
+                    item =  mode2[1]
+                    #self.DEBUG('DAILYDICT ','item: %s' % str(item))
+                    day = int(record.split('=')[1])
+                    Month = _((datetime.date.today() + datetime.timedelta(days=day)).strftime("%b"))
+                    dictTree += "['%s']" % record
+                    recordDict = self.source.dictWeather(dictTree)
+                    #self.DEBUG('DAILYDICT ','recordDict:%s' % str(recordDict))
+                    if item ==  'date':
+                        weekday = recordDict['weekday']
+                        monthday = recordDict['monthday']
+                        retText = str('%s. %s %s' % (weekday, monthday, Month))
+                    elif item ==  'info':
+                        temp_high = recordDict['temp_high']
+                        temp_low = recordDict['temp_low']
+                        rainprecip = recordDict['rainprecip']
+                        skytext = recordDict['skytext']
+                        retText = str('%s/ %s/ %s\n%s' % (temp_high, temp_low, rainprecip, skytext))
+                    elif item in ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9'):
+                        retText = str('%s' % recordDict[int(item)].strip())
+            except Exception as e:
+                self.EXCEPTIONDEBUG('DAILYDICT ','Exception %s' % str(e))
+        elif self.mode == self.HOURLYDICT:
+            try:
+                mode2 =  self.mode2.split(',')
+                self.DEBUG('getText(HOURLYDICT)','mode:%s, len(%s)' % (str(mode2),len(mode2)))
+                dictTree = "['hourlyData']"
+                record = mode2[0]
+                self.DEBUG('getText(HOURLYDICT) ','record: %s' % str(record))
+                dictTree += "['%s']" % record
+                recordDict = self.source.dictWeather(dictTree)
+                self.DEBUG('getText(HOURLYDICT) ','recordDict:%s' % str(recordDict))
+                if len(mode2) == 1:
+                    time = recordDict['time']
+                    skytext = recordDict['skytext']
+                    temperature = recordDict['temperature']
+                    rainprecip = recordDict['rainprecip']
+                    retText = str('%s\n\n\n%s\nTemp. %s\nOpady %s' % (time, skytext, temperature, rainprecip))
+                else:
+                    item =  mode2[1]
+                    if item in ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9'):
+                        retText = str('%s' % recordDict[int(item)].strip())
+            except Exception as e:
+                self.EXCEPTIONDEBUG('getText(HOURLYDICT) ','Exception %s' % str(e))
+        
         return str(retText)
     
     text = property(getText)
@@ -180,6 +276,40 @@ class MSNWeatherNP(Converter, object):
                     retVal = retVal + ".png"
                 if len(retVal) <= 6:
                     retVal = self.source.getIconPath() + retVal
+        elif self.mode == self.DAILYDICT:
+            try:
+                mode2 = self.mode2
+                #self.DEBUG('DAILYDICT','mode2: %s' % str(mode2))
+                dictTree = "['dailyData']"
+                dictTree += "['%s']" % mode2
+                recordDict = self.source.dictWeather(dictTree)
+                #self.DEBUG('DAILYDICT ','recordDict:%s' % str(recordDict))
+                if config.plugins.MSNweatherNP.IconsType.value != "serviceIcons":
+                    iconFileName = recordDict['iconfilename'].strip()
+                    #self.DEBUG('DAILYDICT ','iconFileName:%s' % str(iconFileName))
+                    if iconFileName.endswith('.png') and path.exists(iconFileName):
+                        return str(iconFileName)
+                #service icons or not found
+                iconFileName = recordDict['imgfilename'].strip()
+            except Exception as e:
+                self.EXCEPTIONDEBUG('DAILYDICT ','Exception %s' % str(e))
+        elif self.mode == self.HOURLYDICT:
+            try:
+                mode2 = self.mode2
+                self.DEBUG('HOURLYDICT','mode2: %s' % str(mode2))
+                dictTree = "['hourlyData']"
+                dictTree += "['%s']" % mode2
+                recordDict = self.source.dictWeather(dictTree)
+                self.DEBUG('HOURLYDICT ','recordDict:%s' % str(recordDict))
+                if config.plugins.MSNweatherNP.IconsType.value != "serviceIcons":
+                    iconFileName = recordDict['iconfilename'].strip()
+                    self.DEBUG('HOURLYDICT ','iconFileName:%s' % str(iconFileName))
+                    if iconFileName.endswith('.png') and path.exists(iconFileName):
+                        return str(iconFileName)
+                #service icons or not found
+                iconFileName = recordDict['imgfilename'].strip()
+            except Exception as e:
+                self.EXCEPTIONDEBUG('HOURLYDICT ','Exception %s' % str(e))
         
         self.DEBUG('\t Finally converter returns for index "%s" than icon is "%s"' % (self.index,retVal))
         return str(retVal)

@@ -44,7 +44,7 @@ class MSNWeatherPixmapNP(Renderer):
         self.timer = eTimer()
         self.timer.callback.append(self.timerEvent)
         self.pngAnimPath='/usr/share/enigma2/animatedWeatherIcons'
-        if config.plugins.WeatherPlugin.ScalePicType.value == "self.instance.setScale":
+        if config.plugins.MSNweatherNP.ScalePicType.value == "self.instance.setScale":
             self.ePicLoadScale = False
         else:
             self.ePicLoadScale = True
@@ -59,7 +59,7 @@ class MSNWeatherPixmapNP(Renderer):
         printDEBUG( myFUNC , myText , 'MSNWeatherPixmapRenderer.log' )
             
     def DEBUG(self, myFUNC = '' , myText = '' ):
-        if config.plugins.WeatherPlugin.DebugMSNWeatherPixmapRenderer.value:
+        if config.plugins.MSNweatherNP.DebugMSNWeatherPixmapRenderer.value:
             from Plugins.Extensions.MSNweather.debug import printDEBUG
             printDEBUG( myFUNC , myText , 'MSNWeatherPixmapRenderer.log' )
     
@@ -100,10 +100,16 @@ class MSNWeatherPixmapNP(Renderer):
             if self.instance:
                 if self.ePicLoadScale == False:
                     self.instance.setScale(1)
-                self.updateIcon(self.source.iconfilename)
-                
+                try:
+                    self.updateIcon(self.source.iconfilename)
+                except Exception:
+                    try:
+                        self.updateIcon(self.source.text)
+                    except Exception as e:
+                        self.EXCEPTIONDEBUG('Exception in changed(): %s' % str(e))
+                    
     def doAnimation(self, pngAnimPath):
-        if config.plugins.WeatherPlugin.IconsType.value == 'animIcons' and os.path.exists(pngAnimPath):
+        if config.plugins.MSNweatherNP.IconsType.value == 'animIcons' and os.path.exists(pngAnimPath):
             self.DEBUG('doAnimation(pngAnimPath=%s) returns True' % pngAnimPath)
             return True
         else:

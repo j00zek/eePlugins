@@ -45,28 +45,37 @@ if DBG: from debug import printDEBUG
 def initWeatherPluginEntryConfig(i=0):
     s = ConfigSubsection()
     s.city = ConfigText(default = "Warszawa", visible_width = 100, fixed_size = False)
+    if s.city.value == 'Warszawa' and os.path.exists('/hdd/User_Configs/city.%s' % i):
+        s.city.value = open('/hdd/User_Configs/city.%s' % i, 'r').readline().strip()
     s.degreetype = ConfigSelection(choices = [("C", _("metric system")), ("F", _("imperial system"))], default = "C")
     s.weatherlocationcode = ConfigText(default = "", visible_width = 100, fixed_size = False)
     s.geolatitude = ConfigText(default = "auto", visible_width = 100, fixed_size = False)
     s.geolongitude = ConfigText(default = "auto", visible_width = 100, fixed_size = False)
     s.weatherSearchFullName = ConfigText(default = "", visible_width = 100, fixed_size = False)
-    #thingspeak
-    if os.path.exists('/hdd/User_Configs/thingSpeakChannelID.%s' % i):
-        s.thingSpeakChannelID = ConfigText(default = open('/hdd/User_Configs/thingSpeakChannelID.%s' % i, 'r').readline().strip(), visible_width = 100, fixed_size = False)
-    else:
-        s.thingSpeakChannelID = ConfigText(default = "", visible_width = 100, fixed_size = False)
-    #airly
-    if os.path.exists('/hdd/User_Configs/airlyID.%s' % i):
-        s.airlyID = ConfigText(default = open('/hdd/User_Configs/airlyID.%s' % i, 'r').readline().strip(), visible_width = 100, fixed_size = False)
-    else:
-        s.airlyID = ConfigText(default = '', visible_width = 100, fixed_size = False)
 
-    s.Fcity =  ConfigText(default = "Poland/Warsaw", visible_width = 100, fixed_size = False)
-    config.plugins.WeatherPlugin.Entry.append(s)
+    #thingspeak
+    s.thingSpeakChannelID = ConfigText(default = "", visible_width = 100, fixed_size = False)
+    if s.thingSpeakChannelID.value == '' and os.path.exists('/hdd/User_Configs/thingSpeakChannelID.%s' % i):
+        s.thingSpeakChannelID.value = open('/hdd/User_Configs/thingSpeakChannelID.%s' % i, 'r').readline().strip()
+
+    #airly
+    s.airlyID = ConfigText(default = '', visible_width = 100, fixed_size = False)
+    if s.airlyID.value == '' and os.path.exists('/hdd/User_Configs/airlyID.%s' % i):
+        s.airlyID.value = open('/hdd/User_Configs/airlyID.%s' % i, 'r').readline().strip()
+
+    s.Fcity =  ConfigText(default = '', visible_width = 100, fixed_size = False)
+    s.Fmeteo =  ConfigText(default = '', visible_width = 100, fixed_size = False)
+
+    if s.Fcity.value == '' and os.path.exists('/hdd/User_Configs/Fcity.%s' % i):
+        s.Fcity.value = open('/hdd/User_Configs/Fcity.%s' % i, 'r').readline().strip()
+    if s.Fmeteo.value == '' and os.path.exists('/hdd/User_Configs/Fmeteo.%s' % i):
+        s.Fmeteo.value = open('/hdd/User_Configs/Fmeteo.%s' % i, 'r').readline().strip()
+
+    config.plugins.MSNweatherNP.Entry.append(s)
     return s
 
 def initConfig():
-    count = config.plugins.WeatherPlugin.entrycount.value
+    count = config.plugins.MSNweatherNP.entrycount.value
     if count != 0:
         i = 0
         while i < count:
@@ -124,7 +133,11 @@ class MSNWeatherEntriesListConfigScreen(Screen):
         self.session.openWithCallback(self.updateList,MSNWeatherConfiguration)
 
     def keyGreen(self):
-        self.session.openWithCallback(self.updateList,MSNWeatherEntryConfigScreen,None)
+        try:
+            selIDXs = self["entrylist"].getListSize()
+        except Exception as e:
+            selIDXs = None
+        self.session.openWithCallback(self.updateList,MSNWeatherEntryConfigScreen, None, None, selIDXs)
 
     def keyOK(self):
         try:sel = self["entrylist"].l.getCurrentSelection()[0]
@@ -132,11 +145,15 @@ class MSNWeatherEntriesListConfigScreen(Screen):
         self.close(self["entrylist"].getCurrentIndex(), sel)
 
     def keyYellow(self):
-        try:sel = self["entrylist"].l.getCurrentSelection()[0]
-        except: sel = None
+        try:
+            sel = self["entrylist"].l.getCurrentSelection()[0]
+            selIDX = self["entrylist"].getCurrentIndex()
+            selIDXs = self["entrylist"].getListSize()
+        except:
+            sel = None
         if sel is None:
             return
-        self.session.openWithCallback(self.updateList,MSNWeatherEntryConfigScreen,sel)
+        self.session.openWithCallback(self.updateList,MSNWeatherEntryConfigScreen, sel, selIDX, selIDXs)
 
     def keyDelete(self):
         try:sel = self["entrylist"].l.getCurrentSelection()[0]
@@ -149,11 +166,11 @@ class MSNWeatherEntriesListConfigScreen(Screen):
         if not result:
             return
         sel = self["entrylist"].l.getCurrentSelection()[0]
-        config.plugins.WeatherPlugin.entrycount.value -= 1
-        config.plugins.WeatherPlugin.entrycount.save()
-        config.plugins.WeatherPlugin.Entry.remove(sel)
-        config.plugins.WeatherPlugin.Entry.save()
-        config.plugins.WeatherPlugin.save()
+        config.plugins.MSNweatherNP.entrycount.value -= 1
+        config.plugins.MSNweatherNP.entrycount.save()
+        config.plugins.MSNweatherNP.Entry.remove(sel)
+        config.plugins.MSNweatherNP.Entry.save()
+        config.plugins.MSNweatherNP.save()
         configfile.save()
         self.updateList()
 
@@ -201,7 +218,7 @@ class WeatherEntryList(MenuList):
 
     def buildList(self):
         list = []
-        for c in config.plugins.WeatherPlugin.Entry:
+        for c in config.plugins.MSNweatherNP.Entry:
             res = [
                 c,
                 (eListboxPythonMultiContent.TYPE_TEXT, self.DimText0[0], self.DimText0[1], self.DimText0[2], self.DimText0[3], self.DimText0[4], RT_HALIGN_LEFT|RT_VALIGN_CENTER, str(c.city.value)),
@@ -211,7 +228,10 @@ class WeatherEntryList(MenuList):
         self.list = list
         self.l.setList(list)
         self.moveToIndex(0)
-
+        
+    def getListSize(self):
+        return len(self.list)
+    
 class MSNWeatherEntryConfigScreen(ConfigListScreen, Screen):
     skin = """
         <screen name="MSNWeatherPluginEntryConfigScreen" position="center,center" size="550,400">
@@ -226,7 +246,7 @@ class MSNWeatherEntryConfigScreen(ConfigListScreen, Screen):
             <widget source="key_blue" render="Label" position="420,10" zPosition="5" size="140,40" valign="center" halign="center" font="Regular;21" transparent="1" foregroundColor="white" shadowColor="black" shadowOffset="-1,-1" />
         </screen>"""
 
-    def __init__(self, session, entry):
+    def __init__(self, session, entry, selIDX, selIDXs):
         Screen.__init__(self, session)
         self.title = _("WeatherPlugin: Edit Entry")
         self["actions"] = ActionMap(["SetupActions", "ColorActions"],
@@ -244,12 +264,26 @@ class MSNWeatherEntryConfigScreen(ConfigListScreen, Screen):
         self["key_blue"] = StaticText(_("Delete"))
         self["key_yellow"] = StaticText(_("Search Code"))
 
+        self.selIDX = selIDX
+        self.selIDXs = selIDXs
+        
         if entry is None:
             self.newmode = 1
-            self.current = initWeatherPluginEntryConfig()
+            if self.selIDXs is None:
+                self.current = initWeatherPluginEntryConfig()
+            else:
+                self.current = initWeatherPluginEntryConfig(self.selIDXs)
         else:
             self.newmode = 0
             self.current = entry
+
+        if not self.selIDX is None:
+            if self.current.Fcity.value == '' and os.path.exists('/hdd/User_Configs/Fcity.%s' % self.selIDX):
+                self.current.Fcity.value = open('/hdd/User_Configs/Fcity.%s' % self.selIDX, 'r').readline().strip()
+            if self.current.Fmeteo.value == '' and os.path.exists('/hdd/User_Configs/Fmeteo.%s' % self.selIDX):
+                self.current.Fmeteo.value = open('/hdd/User_Configs/Fmeteo.%s' % self.selIDX, 'r').readline().strip()
+            if self.current.thingSpeakChannelID.value == '' and os.path.exists('/hdd/User_Configs/thingSpeakChannelID.%s' % self.selIDX):
+                self.current.thingSpeakChannelID.value = open('/hdd/User_Configs/thingSpeakChannelID.%s' % self.selIDX, 'r').readline().strip()
 
         cfglist = [
             getConfigListEntry(_("City"), self.current.city),
@@ -259,8 +293,9 @@ class MSNWeatherEntryConfigScreen(ConfigListScreen, Screen):
             getConfigListEntry(_("Geo Latitude"), self.current.geolatitude),
             getConfigListEntry(_("Geo Longitude"), self.current.geolongitude),
             getConfigListEntry(_("thingSpeak meteo channel ID"), self.current.thingSpeakChannelID),
-            getConfigListEntry(_("Airly ibstallation ID (OK)"), self.current.airlyID),
-            getConfigListEntry(_("Location in www.foreca.com/<this part>"), self.current.Fcity),
+            getConfigListEntry(_("Airly installation ID (OK)"), self.current.airlyID),
+            getConfigListEntry(_("Meteogram for www.foreca.net/<this part>"), self.current.Fcity),
+            getConfigListEntry(_("Location in www.foreca.com/<this part>"), self.current.Fmeteo),
         ]
 
         ConfigListScreen.__init__(self, cfglist, session)
@@ -277,7 +312,7 @@ class MSNWeatherEntryConfigScreen(ConfigListScreen, Screen):
                 from Screens.MessageBox import MessageBox
                 self.session.openWithCallback(self.doNothing, MessageBox, _("Set proper latitude and longitude!!!"), MessageBox.TYPE_INFO, timeout=10)
                 return
-            if config.plugins.WeatherPlugin.airlyAPIKEY.value == '':
+            if config.plugins.MSNweatherNP.airlyAPIKEY.value == '':
                 infoTXT = _("Set airly API key using one of the following methods:\n")
                 infoTXT += _("global plugin settings\n")
                 infoTXT += _("/hdd/User_Configs/airlyAPIKEY file\n")
@@ -285,11 +320,10 @@ class MSNWeatherEntryConfigScreen(ConfigListScreen, Screen):
                 from Screens.MessageBox import MessageBox
                 self.session.openWithCallback(self.doNothing, MessageBox, infoTXT, MessageBox.TYPE_INFO, timeout=10)
                 return
-            from Screens.ChoiceBox import ChoiceBox
-            InstList = []
-            if currItemCfg.value != '':
-                InstList.append(('%s: %s' % (currItemCfg.value, _('Current selection')), currItemCfg.value))
-            self.session.openWithCallback(self.AirlyinstallationIDret, ChoiceBox, title = _("Select Airly installation ID"), list = InstList)
+            InstList = self.Airlyinstallations(currItemCfg.value)
+            if len(InstList) > 0:
+                from Screens.ChoiceBox import ChoiceBox
+                self.session.openWithCallback(self.AirlyinstallationIDret, ChoiceBox, title = _("10 closest Airly installations"), list = InstList)
             return
         else:
             self.session.openWithCallback(self.keyOKret, VirtualKeyBoard, title= currItemNam, text = currItemCfg.value)
@@ -298,8 +332,56 @@ class MSNWeatherEntryConfigScreen(ConfigListScreen, Screen):
     def doNothing(self, ret = None):
         pass
     
+    def Airlyinstallations(self, currentAirlyID):
+        InstList = []
+        if currentAirlyID != '':
+            InstList.append(('%s:\t%s' % (currentAirlyID, _('Current selection')), currentAirlyID))
+        #pobieranie danych
+        try:
+            import urllib, urllib2
+            opener = urllib2.build_opener()
+            opener.addheaders = [('User-agent', 'Mozilla/5.0')]
+            opener.addheaders = [('Accept', 'application/json')]
+            opener.addheaders = [('Accept-Language', 'en')]
+            opener.addheaders = [('apikey', config.plugins.MSNweatherNP.airlyAPIKEY.value)]
+            request = urllib2.Request('https://airapi.airly.eu/v2/installations/nearest?lat=%s&lng=%s&maxDistanceKM=10&maxResults=10' % (self.current.geolatitude.value, self.current.geolongitude.value))
+            webContent = opener.open(request).read()
+            webContent = urllib.unquote(webContent)
+            #analiza przygotowane danych
+            import json
+            json_data = json.dumps(json.loads(webContent), indent=4, ensure_ascii=False)
+            open("/tmp/.MSNdata/airly_installations.json", "w").write('%s\n' % json_data)
+            installations = json.loads(webContent.decode('utf-8'))
+            for inst in installations:
+                try:
+                    myID = str(inst['id'])
+                    myAddress = inst['address']
+                    try:
+                        myCity = myAddress['city'].encode('utf-8', 'ignore')
+                    except Exception:
+                        myCity = ''
+                    try:
+                        myStreet = myAddress['street'].encode('utf-8', 'ignore')
+                    except Exception:
+                        myStreet = ''
+                    try:
+                        myCountry = myAddress['country'].encode('utf-8', 'ignore')
+                    except Exception:
+                        myCountry = ''
+                    myItem = '%s:\t%s, %s %s' % (myID, myCity, myStreet, myCountry)
+                    InstList.append((myItem, myID))
+                except Exception:
+                    pass
+        except Exception as e:
+            from Screens.MessageBox import MessageBox
+            self.session.openWithCallback(self.doNothing, MessageBox, _("Exception: \n%s") % str(e), MessageBox.TYPE_INFO, timeout=10)
+            return []
+        
+        return InstList
+        
     def AirlyinstallationIDret(self, retVal):
         if not retVal is None:
+            os.system('rm -f /tmp/.MSNdata/airlyInfo_*.json') #po zmianie instalacji czyœcimy info o niej
             curIndex = self["config"].getCurrentIndex()
             currItemCfg = self["config"].list[curIndex][1]
             currItemCfg.value = retVal[1]
@@ -325,10 +407,10 @@ class MSNWeatherEntryConfigScreen(ConfigListScreen, Screen):
     def keySave(self):
         if self.current.city.value != "" and self.current.weatherlocationcode.value != "":
             if self.newmode == 1:
-                config.plugins.WeatherPlugin.entrycount.value = config.plugins.WeatherPlugin.entrycount.value + 1
-                config.plugins.WeatherPlugin.entrycount.save()
+                config.plugins.MSNweatherNP.entrycount.value = config.plugins.MSNweatherNP.entrycount.value + 1
+                config.plugins.MSNweatherNP.entrycount.save()
             ConfigListScreen.keySave(self)
-            config.plugins.WeatherPlugin.save()
+            config.plugins.MSNweatherNP.save()
             configfile.save()
             self.close()
         else:
@@ -339,7 +421,7 @@ class MSNWeatherEntryConfigScreen(ConfigListScreen, Screen):
 
     def keyCancel(self):
         if self.newmode == 1:
-            config.plugins.WeatherPlugin.Entry.remove(self.current)
+            config.plugins.MSNweatherNP.Entry.remove(self.current)
         ConfigListScreen.cancelConfirm(self, True)
 
     def keyDelete(self):
@@ -351,11 +433,11 @@ class MSNWeatherEntryConfigScreen(ConfigListScreen, Screen):
     def deleteConfirm(self, result):
         if not result:
             return
-        config.plugins.WeatherPlugin.entrycount.value = config.plugins.WeatherPlugin.entrycount.value - 1
-        config.plugins.WeatherPlugin.entrycount.save()
-        config.plugins.WeatherPlugin.Entry.remove(self.current)
-        config.plugins.WeatherPlugin.Entry.save()
-        config.plugins.WeatherPlugin.save()
+        config.plugins.MSNweatherNP.entrycount.value = config.plugins.MSNweatherNP.entrycount.value - 1
+        config.plugins.MSNweatherNP.entrycount.save()
+        config.plugins.MSNweatherNP.Entry.remove(self.current)
+        config.plugins.MSNweatherNP.Entry.save()
+        config.plugins.MSNweatherNP.save()
         configfile.save()
         self.close()
         
@@ -385,6 +467,10 @@ class MSNWeatherEntryConfigScreen(ConfigListScreen, Screen):
             self.current.weatherSearchFullName.value = result[2]
             self.current.geolatitude.value = result[3].replace(',','.')
             self.current.geolongitude.value = result[4].replace(',','.')
+            self.current.geolongitude.value = result[4].replace(',','.')
+            self.current.geolongitude.value = result[4].replace(',','.')
+            if self.current.weatherlocationcode.value.startswith('wc:PL'): 
+                self.current.Fcity.value =  "Poland/Warsaw"
     
 class MSNWeatherSearch(Screen):
     skin = """
@@ -534,54 +620,47 @@ class MSNWeatherConfiguration(Screen, ConfigListScreen):
         self.keyRightLeftActions()
             
     def keyRightLeftActions(self):
-        if self["config"].getCurrent()[1] == config.plugins.WeatherPlugin.DebugEnabled:
+        if self["config"].getCurrent()[1] == config.plugins.MSNweatherNP.DebugEnabled:
             self.runSetup()
             
     def runSetup(self):
         ConfigList = []
-        ConfigList.append(getConfigListEntry('\c00289496' + _("*** Basic settings ***"), config.plugins.WeatherPlugin.FakeEntry))
-        ConfigList.append(getConfigListEntry(_("Airly API key:"), config.plugins.WeatherPlugin.airlyAPIKEY))
-        ConfigList.append(getConfigListEntry(_("Sensors priority:"), config.plugins.WeatherPlugin.SensorsPriority))
-        ConfigList.append(getConfigListEntry(_("Icons type:"), config.plugins.WeatherPlugin.IconsType))
-        ConfigList.append(getConfigListEntry(_("Icons scaling engine:"), config.plugins.WeatherPlugin.ScalePicType))
-        ConfigList.append(getConfigListEntry(_("Build histograms:"), config.plugins.WeatherPlugin.BuildHistograms))
-        if config.plugins.WeatherPlugin.BuildHistograms.value:
-            ConfigList.append(getConfigListEntry(_("Period:"), config.plugins.WeatherPlugin.HistoryPeriod))
+        ConfigList.append(getConfigListEntry('\c00289496' + _("*** Basic settings ***"), config.plugins.MSNweatherNP.FakeEntry))
+        ConfigList.append(getConfigListEntry(_("Airly API key:"), config.plugins.MSNweatherNP.airlyAPIKEY))
+        ConfigList.append(getConfigListEntry(_("Sensors priority:"), config.plugins.MSNweatherNP.SensorsPriority))
+        ConfigList.append(getConfigListEntry(_("Icons type:"), config.plugins.MSNweatherNP.IconsType))
+        ConfigList.append(getConfigListEntry(_("Icons scaling engine:"), config.plugins.MSNweatherNP.ScalePicType))
+        ConfigList.append(getConfigListEntry(_("Build histograms:"), config.plugins.MSNweatherNP.BuildHistograms))
+        if config.plugins.MSNweatherNP.BuildHistograms.value:
+            ConfigList.append(getConfigListEntry(_("Period:"), config.plugins.MSNweatherNP.HistoryPeriod))
 
         ConfigList.append(getConfigListEntry(""))
         ConfigList.append(getConfigListEntry('\c00289496' + _("*** Home air condition ***")))
-        ConfigList.append(getConfigListEntry(_("1st AC system:"), config.plugins.WeatherPlugin.AC1))
-        if config.plugins.WeatherPlugin.AC1.value != 'off':
-            ConfigList.append(getConfigListEntry('- ' + _("IP address:"), config.plugins.WeatherPlugin.AC1_IP))
-            ConfigList.append(getConfigListEntry('- ' + _("Port:"), config.plugins.WeatherPlugin.AC1_PORT))
-            ConfigList.append(getConfigListEntry('- ' + _("Description:"), config.plugins.WeatherPlugin.AC1inf))
-        ConfigList.append(getConfigListEntry(_("2nd AC system:"), config.plugins.WeatherPlugin.AC2))
-        if config.plugins.WeatherPlugin.AC2.value != 'off':
-            ConfigList.append(getConfigListEntry('- ' + _("IP address:"), config.plugins.WeatherPlugin.AC2_IP))
-            ConfigList.append(getConfigListEntry('- ' + _("Port:"), config.plugins.WeatherPlugin.AC2_PORT))
-            ConfigList.append(getConfigListEntry('- ' + _("Description:"), config.plugins.WeatherPlugin.AC2inf))
+        ConfigList.append(getConfigListEntry(_("1st AC system:"), config.plugins.MSNweatherNP.AC1))
+        if config.plugins.MSNweatherNP.AC1.value != 'off':
+            ConfigList.append(getConfigListEntry('- ' + _("IP address:"), config.plugins.MSNweatherNP.AC1_IP))
+            ConfigList.append(getConfigListEntry('- ' + _("Port:"), config.plugins.MSNweatherNP.AC1_PORT))
+            ConfigList.append(getConfigListEntry('- ' + _("Description:"), config.plugins.MSNweatherNP.AC1inf))
+        ConfigList.append(getConfigListEntry(_("2nd AC system:"), config.plugins.MSNweatherNP.AC2))
+        if config.plugins.MSNweatherNP.AC2.value != 'off':
+            ConfigList.append(getConfigListEntry('- ' + _("IP address:"), config.plugins.MSNweatherNP.AC2_IP))
+            ConfigList.append(getConfigListEntry('- ' + _("Port:"), config.plugins.MSNweatherNP.AC2_PORT))
+            ConfigList.append(getConfigListEntry('- ' + _("Description:"), config.plugins.MSNweatherNP.AC2inf))
 
         ConfigList.append(getConfigListEntry(""))
         ConfigList.append(getConfigListEntry('\c00289496' + _("*** Debuging options ***")))
-        ConfigList.append(getConfigListEntry(_("Debug (require restart):"), config.plugins.WeatherPlugin.DebugEnabled))
-        if config.plugins.WeatherPlugin.DebugEnabled.value:
-            ConfigList.append(getConfigListEntry(_("Debug log file size:"), config.plugins.WeatherPlugin.DebugSize))
-            ConfigList.append(getConfigListEntry("> MSNWeather(Source):", config.plugins.WeatherPlugin.DebugMSNWeatherSource))
-            ConfigList.append(getConfigListEntry("> MSNWeather(Converter):", config.plugins.WeatherPlugin.DebugMSNWeatherConverter))
-            ConfigList.append(getConfigListEntry("> MSNWeatherThingSpeak(Converter):", config.plugins.WeatherPlugin.DebugMSNWeatherThingSpeakConverter))
-            ConfigList.append(getConfigListEntry("> MSNWeatherWebCurrent(Converter):", config.plugins.WeatherPlugin.DebugMSNWeatherWebCurrentConverter))
-            ConfigList.append(getConfigListEntry("> MSNWeatherWebhourly(Converter):", config.plugins.WeatherPlugin.DebugMSNWeatherWebhourlyConverter))
-            ConfigList.append(getConfigListEntry("> MSNWeatherWebDaily(Converter):", config.plugins.WeatherPlugin.DebugMSNWeatherWebDailyConverter))
-            ConfigList.append(getConfigListEntry("> MSNWeatherPixmap(Renderer):", config.plugins.WeatherPlugin.DebugMSNWeatherPixmapRenderer))
-            ConfigList.append(getConfigListEntry("> WeatherMSN updater:", config.plugins.WeatherPlugin.DebugWeatherMSNupdater))
-            ConfigList.append(getConfigListEntry("> getWeather basic:", config.plugins.WeatherPlugin.DebugGetWeatherBasic))
-            ConfigList.append(getConfigListEntry("> getWeather xml component:", config.plugins.WeatherPlugin.DebugGetWeatherXML))
-            ConfigList.append(getConfigListEntry("> getWeather web component:", config.plugins.WeatherPlugin.DebugGetWeatherWEB))
-            ConfigList.append(getConfigListEntry("> getWeather thingSpeak component:", config.plugins.WeatherPlugin.DebugGetWeatherTS))
-            ConfigList.append(getConfigListEntry("> getWeather raw data:", config.plugins.WeatherPlugin.DebugGetWeatherFULL))
-            ConfigList.append(getConfigListEntry("> MSNweatherHistograms:", config.plugins.WeatherPlugin.DebugMSNweatherHistograms))
-            ConfigList.append(getConfigListEntry("> MSNweatherMaps:", config.plugins.WeatherPlugin.DebugMSNweatherHistograms))
-            #ConfigList.append(getConfigListEntry("> :", config.plugins.WeatherPlugin.))
+        ConfigList.append(getConfigListEntry(_("Debug (require restart):"), config.plugins.MSNweatherNP.DebugEnabled))
+        if config.plugins.MSNweatherNP.DebugEnabled.value:
+            ConfigList.append(getConfigListEntry(_("Debug log file size:"), config.plugins.MSNweatherNP.DebugSize))
+            ConfigList.append(getConfigListEntry("> MSNWeather(Source):", config.plugins.MSNweatherNP.DebugMSNWeatherSource))
+            ConfigList.append(getConfigListEntry("> MSNWeather(Converter):", config.plugins.MSNweatherNP.DebugMSNWeatherConverter))
+            ConfigList.append(getConfigListEntry("> MSNWeatherPixmap(Renderer):", config.plugins.MSNweatherNP.DebugMSNWeatherPixmapRenderer))
+            ConfigList.append(getConfigListEntry("> WeatherMSN updater:", config.plugins.MSNweatherNP.DebugWeatherMSNupdater))
+            ConfigList.append(getConfigListEntry("> getWeather basic:", config.plugins.MSNweatherNP.DebugGetWeatherBasic))
+            ConfigList.append(getConfigListEntry("> getWeather raw data:", config.plugins.MSNweatherNP.DebugGetWeatherFULL))
+            ConfigList.append(getConfigListEntry("> MSNweatherHistograms:", config.plugins.MSNweatherNP.DebugMSNweatherHistograms))
+            ConfigList.append(getConfigListEntry("> MSNweatherMaps:", config.plugins.MSNweatherNP.DebugMSNweatherHistograms))
+            #ConfigList.append(getConfigListEntry("> :", config.plugins.MSNweatherNP.))
         try:
             self["config"].list = ConfigList
             self["config"].setList(ConfigList)

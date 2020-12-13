@@ -39,7 +39,7 @@ class WeatherMSN:
         printDEBUG( myFUNC , myText )
             
     def DEBUG(self, myFUNC = '' , myText = '' ):
-        if config.plugins.WeatherPlugin.DebugWeatherMSNupdater.value:
+        if config.plugins.MSNweatherNP.DebugWeatherMSNupdater.value:
             from Plugins.Extensions.MSNweather.debug import printDEBUG
             printDEBUG( myFUNC , myText )
     
