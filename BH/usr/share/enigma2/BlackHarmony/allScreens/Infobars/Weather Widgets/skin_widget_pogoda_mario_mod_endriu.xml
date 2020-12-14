@@ -18,7 +18,7 @@
    <ePixmap alphatest="blend" pixmap="BlackHarmony/weather_icons/deszcz.png" position="1420,107" size="28,30" transparent="1" zPosition="4" />
    <ePixmap pixmap="BlackHarmony/weather_icons/barometr.png" position="1420,140" size="25,25" zPosition="4" transparent="1" alphatest="blend" />
    <widget backgroundColor="black" font="Roboto_HD; 22" foregroundColor="white" halign="left" position="1453,77" render="j00zekLabel" size="140,25" source="session.j00zekMSNWeather" transparent="1" zPosition="3">
-   <convert type="j00zekMSNWeather">RUN|['currentData']['winddisplay']['valInfo']</convert>
+   <convert type="j00zekMSNWeather">RUN|['currentData']['wind_speed']['valInfo']</convert>
    </widget>
    <widget backgroundColor="black" font="Roboto_HD; 22" foregroundColor="white" halign="left" position="1453,110" render="Label" size="140,25" source="session.j00zekMSNWeather" transparent="1" zPosition="3">
    <convert type="j00zekMSNWeather">RUN|['currentData']['humidity']['valInfo']</convert>

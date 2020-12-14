@@ -20,7 +20,7 @@
     <widget source="session.j00zekMSNWeather" render="j00zekMSNWeatherPixmap" alphatest="blend" position="243,212" size="128,128" transparent="1" zPosition="5">
       <convert type="j00zekMSNWeather">weathericon,current</convert>
     </widget>
-    <widget source="currentData_temperature" render="Label" font="Roboto_HD; 40" position="370,244" size="100,45" backgroundColor="black" zPosition="3" transparent="1" valign="center" foregroundColor="light_yellow"/>
+    <widget source="currentData_temperature" render="Label" font="Roboto_HD; 40" position="370,244" size="140,45" backgroundColor="black" zPosition="3" transparent="1" valign="center" foregroundColor="light_yellow"/>
     <widget source="currentData_skytext"     render="j00zekModRunningText" position="120,340" size="400,60" font="HD_Thin; 26" halign="center" valign="center" transparent="1" backgroundColor="black"/>
 <!-- top second from left -->
 	<widget source="currentData_WeatherinfoList" render="Listbox" position="620,247" size="400,180" scrollbarMode="showOnDemand" transparent="1" backgroundColor="black">

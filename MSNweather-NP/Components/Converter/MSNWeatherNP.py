@@ -69,6 +69,7 @@ class MSNWeatherNP(Converter, object):
     DAILYDICT = 34
     HOURLYDICT = 35
     CURRENTDICT = 36
+    METEOGRAM = 37
 
     def __init__(self, type):
         Converter.__init__(self, type)
@@ -87,6 +88,8 @@ class MSNWeatherNP(Converter, object):
         elif type == "feelslike": self.mode = self.FEELSLIKE
         elif type == "humidity": self.mode = self.HUMIDITY
         elif type == "winddisplay": self.mode = self.WINDDISPLAY
+        elif type.startswith("METEOGRAM"):
+            self.mode = self.METEOGRAM
         elif type.startswith("DailyRecord="):
             self.mode = self.DAILYDICT
             self.mode2 = type.replace('Daily','')
@@ -310,7 +313,8 @@ class MSNWeatherNP(Converter, object):
                 iconFileName = recordDict['imgfilename'].strip()
             except Exception as e:
                 self.EXCEPTIONDEBUG('HOURLYDICT ','Exception %s' % str(e))
-        
+        elif self.mode == self.METEOGRAM:
+            return '/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/meteogram.png'
         self.DEBUG('\t Finally converter returns for index "%s" than icon is "%s"' % (self.index,retVal))
         return str(retVal)
             

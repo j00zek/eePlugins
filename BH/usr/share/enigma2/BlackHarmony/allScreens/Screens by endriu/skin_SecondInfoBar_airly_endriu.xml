@@ -364,7 +364,7 @@
   <ePixmap alphatest="blend" pixmap="BlackHarmony/weather_icons/deszcz.png" position="70,626" size="30,30" transparent="1" zPosition="4" />
   
   <widget backgroundColor="black" font="Regular; 21" foregroundColor="white" halign="left" position="105,590" render="j00zekLabel" size="120,25" source="session.j00zekMSNWeather" transparent="1" zPosition="3">
-    <convert type="j00zekMSNWeather">RUN|['currentData']['winddisplay']['valInfo']</convert>
+    <convert type="j00zekMSNWeather">RUN|['currentData']['wind_speed']['valInfo']</convert>
   </widget>
   <widget backgroundColor="black" font="Regular; 21" foregroundColor="white" halign="left" position="110,628" render="Label" size="60,25" source="session.j00zekMSNWeather" transparent="1" zPosition="3">
     <convert type="j00zekMSNWeather">RUN|['currentData']['humidity']['valInfo']</convert>

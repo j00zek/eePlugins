@@ -396,11 +396,7 @@ class MSNweatherNP(Screen):
             item = self.weatherData.weatherItems.get('-1', None)
             if item is not None:
                 self["currentData_temperature"].text = str(item.dictWeather['currentData']['temperature']['valInfo']) #"%s°%s" % (item.temperature, self.weatherData.degreetype)
-                alert = str(item.dictWeather['currentData']['alert']['valInfo'])
-                if alert == '':
-                    self["currentData_skytext"].text = item.skytext
-                else:
-                    self["currentData_skytext"].text = '%s\n%s' % (item.skytext, alert)
+                self["currentData_skytext"].text = item.skytext
                     
                 c =  time.strptime(item.observationtime, "%H:%M:%S")
                 self["currentData_observationtime"].text = _("Actualization time: %s") %  time.strftime("%H:%M",c)
@@ -413,14 +409,18 @@ class MSNweatherNP(Screen):
                 #populate currentData_infoList
                 tmpDict = item.dictWeather['currentData']
                 self["currentData_airlyInfo"].text = str(tmpDict.get('airlyInfo', ""))
-                self["currentData_airlyAdvice"].text = str(tmpDict.get('airlyAdvice', ""))
+                alert = str(tmpDict['alert']['valInfo'])
+                if alert == '':
+                    self["currentData_airlyAdvice"].text = str(tmpDict.get('airlyAdvice', ""))
+                else:
+                    self["currentData_airlyAdvice"].text = alert
                 tmpList = []
                 tmpListWeather = []
                 for key in tmpDict:
                     valDict = tmpDict[key]
                     if isinstance(valDict,dict):
                         inList = valDict.get('inList', False)
-                        if key in ('dew_point_temp','feelslike','humidity','pressure','visibility','winddisplay'):
+                        if key in ('dew_point_temp','feelslike','humidity','pressure','visibility','wind_speed'):
                             tmpListWeather.append((str(valDict['name']),str(valDict['valInfo'])))
                         elif inList:
                             try:

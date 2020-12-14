@@ -147,12 +147,14 @@ if [ 1 -eq `grep -c objectTypes < /usr/lib/enigma2/python/skin.pyo` ];then
   sed -i 's/\(^.*objectTypes="key_blue,StaticText".*\)\( zPosition="1"\)/\1 zPosition="2"/g' /usr/share/enigma2/BlackHarmony/skin.xml
 fi
 #czyszczenie zlych linkow
+echo "BH - Czyszczenie zlych linkow..."
 find -L /usr/share/enigma2/BlackHarmony/allScreens/ChannelSelections -name *.xml -type l -exec  rm {} +
 find -L /usr/share/enigma2/BlackHarmony/allScreens/Infobars -name *.xml -type l -exec  rm {} +
 find -L /usr/share/enigma2/BlackHarmony/allScreens/Secondinfobars -name *.xml -type l -exec  rm {} +
 find -L /usr/share/enigma2/BlackHarmony/allScreens/Volume -name *.xml -type l -exec  rm {} +
 find -L /usr/share/enigma2/BlackHarmony/allScreens/Messageboxes -name *.xml -type l -exec  rm {} +
 #tworzenie linkow w strukturze drzewa
+echo "BH - #tworzenie linkow typu ChannelSelections..."
 find /usr/share/enigma2/BlackHarmony/allScreens -iname skin_channelselection_*.xml|while read f; do
   #echo "$f"
   if [ `echo "$f"|grep -c '/ChannelSelections/'` -eq 0 ]; then
@@ -161,6 +163,7 @@ find /usr/share/enigma2/BlackHarmony/allScreens -iname skin_channelselection_*.x
     ln -sf "$f" "$f2"
   fi
 done
+echo "BH - #tworzenie linkow typu Infobar..."
 find /usr/share/enigma2/BlackHarmony/allScreens -iname skin_infobar_*.xml|while read f; do
   #echo "$f"
   if [ `echo "$f"|grep -c '/Infobars/'` -eq 0 ]; then
@@ -169,6 +172,7 @@ find /usr/share/enigma2/BlackHarmony/allScreens -iname skin_infobar_*.xml|while 
     ln -sf "$f" "$f2"
   fi
 done
+echo "BH - #tworzenie linkow typu Secondinfobar..."
 find /usr/share/enigma2/BlackHarmony/allScreens -iname skin_secondinfobar_*.xml|while read f; do
   #echo "$f"
   if [ `echo "$f"|grep -c '/Secondinfobars/'` -eq 0 ]; then
@@ -177,7 +181,7 @@ find /usr/share/enigma2/BlackHarmony/allScreens -iname skin_secondinfobar_*.xml|
     ln -sf "$f" "$f2"
   fi
 done
-sync
+echo "BH - #tworzenie linkow typu Volume..."
 find /usr/share/enigma2/BlackHarmony/allScreens -iname skin_volume_*.xml|while read f; do
   #echo "$f"
   if [ `echo "$f"|grep -c '/Volume/'` -eq 0 ]; then
@@ -186,7 +190,7 @@ find /usr/share/enigma2/BlackHarmony/allScreens -iname skin_volume_*.xml|while r
     ln -sf "$f" "$f2"
   fi
 done
-sync
+echo "BH - #tworzenie linkow typu Messageboxe..."
 find /usr/share/enigma2/BlackHarmony/allScreens -iname skin_*Messagebox_*.xml|while read f; do
   #echo "$f"
   if [ `echo "$f"|grep -c '/Messageboxes/'` -eq 0 ]; then
@@ -199,6 +203,7 @@ sync
 #bing image if not exists
 [ -e /usr/share/enigma2/BlackHarmony/icons/BingPicOfTheDay.jpg ] || /usr/lib/enigma2/python/Components/j00zekBING.py
 #deleting skin_user when his components modified
+echo "BH - #sprawdzanie, czy komponenty wykorzystane w mySkin/skin_user_BlackHarmony.xml zostały zaktualizowane..."
 if [ -e /usr/share/enigma2/BlackHarmony/mySkin/skin_user_BlackHarmony.xml ];then
   UserSkinDate=`date -r /usr/share/enigma2/BlackHarmony/mySkin/skin_user_BlackHarmony.xml +"%s"`
   find /usr/share/enigma2/BlackHarmony/UserSkin_Selections/ -iname skin_*.xml|while read f; do
@@ -217,6 +222,7 @@ if [ -e /usr/share/enigma2/BlackHarmony/mySkin/skin_user_BlackHarmony.xml ];then
     fi
   done
 fi
+echo "BH - #sprawdzanie, czy komponenty wykorzystane w enigma2/skin_user_BlackHarmony.xml zostały zaktualizowane..."
 if [ -e /etc/enigma2/skin_user_BlackHarmony.xml ];then
   UserSkinDate=`date -r /etc/enigma2/skin_user_BlackHarmony.xml +"%s"`
   find /usr/share/enigma2/BlackHarmony/UserSkin_Selections/ -iname skin_*.xml|while read f; do
@@ -233,6 +239,7 @@ if [ -e /etc/enigma2/skin_user_BlackHarmony.xml ];then
     fi
   done
 fi
+echo "BH - #sprawdzanie, czy komponenty wykorzystane w enigma2/skin_user.xml zostały zaktualizowane..."
 if [ -e /etc/enigma2/skin_user.xml ];then
   UserSkinDate=`date -r /etc/enigma2/skin_user.xml +"%s"`
   find /usr/share/enigma2/BlackHarmony/UserSkin_Selections/ -iname skin_*.xml|while read f; do
