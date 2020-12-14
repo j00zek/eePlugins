@@ -626,6 +626,7 @@ class MSNWeatherConfiguration(Screen, ConfigListScreen):
     def runSetup(self):
         ConfigList = []
         ConfigList.append(getConfigListEntry('\c00289496' + _("*** Basic settings ***"), config.plugins.MSNweatherNP.FakeEntry))
+        ConfigList.append(getConfigListEntry(_("Data presented (if now defined in skin):"), config.plugins.MSNweatherNP.skinOrientation))
         ConfigList.append(getConfigListEntry(_("Airly API key:"), config.plugins.MSNweatherNP.airlyAPIKEY))
         ConfigList.append(getConfigListEntry(_("Sensors priority:"), config.plugins.MSNweatherNP.SensorsPriority))
         ConfigList.append(getConfigListEntry(_("Icons type:"), config.plugins.MSNweatherNP.IconsType))

@@ -47,6 +47,11 @@ DBG = True
 config.plugins.MSNweatherNP = ConfigSubsection()
 config.plugins.MSNweatherNP.FakeEntry = NoSave(ConfigNothing())
 
+config.plugins.MSNweatherNP.skinOrientation = ConfigSelection(choices = [ ("skinMSNweatherNP-vertical.xml", _("Vertically")),
+                                                                           ("skin_MSNweatherNP-horizontal.xml", _("Horizontally")),
+                                                                         ],
+                                                                default = "skinMSNweatherNP-vertical.xml"
+                                                               )
 config.plugins.MSNweatherNP.SensorsPriority = ConfigSelection(choices = [ ("TsAirlyMsn", _("TsAirlyMsn")),
                                                                            ("AirlyTsMsn", _("AirlyTsMsn")),
                                                                            ("MsnAirlyTs", _("MsnAirlyTs")),
@@ -143,7 +148,7 @@ def Plugins(**kwargs):
 
 class MSNweatherNP(Screen):
     def __init__(self, session):
-        self.skin = open("/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/skinMSNweatherNP.xml",'r').read()
+        self.skin = open("/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/%s" % config.plugins.MSNweatherNP.skinOrientation.value,'r').read()
         Screen.__init__(self, session)
         self.title = _("MSN weather NP @j00zek %s" % Version)
         self.setTitle(_("MSN weather NP @j00zek %s") % Version) 
@@ -408,10 +413,10 @@ class MSNweatherNP(Screen):
                 
                 #populate currentData_infoList
                 tmpDict = item.dictWeather['currentData']
-                self["currentData_airlyInfo"].text = str(tmpDict.get('airlyInfo', ""))
+                self["currentData_airlyInfo"].text = str(tmpDict.get('airlyIndex', {}).get('info', ""))
                 alert = str(tmpDict['alert']['valInfo'])
                 if alert == '':
-                    self["currentData_airlyAdvice"].text = str(tmpDict.get('airlyAdvice', ""))
+                    self["currentData_airlyAdvice"].text = str(tmpDict.get('airlyIndex', {}).get('advice', ""))
                 else:
                     self["currentData_airlyAdvice"].text = alert
                 tmpList = []

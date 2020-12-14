@@ -314,7 +314,17 @@ class MSNWeatherNP(Converter, object):
             except Exception as e:
                 self.EXCEPTIONDEBUG('HOURLYDICT ','Exception %s' % str(e))
         elif self.mode == self.METEOGRAM:
-            return '/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/meteogram.png'
+            retVal = '/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/meteogram.png'
+        elif self.mode == self.WEATHERDICT:
+            try:
+                for cmd in self.dictWeatherRUNs:
+                    self.DEBUG('cmd= |%s|' % cmd)
+                    if cmd.startswith("['"):
+                        self.DEBUG('running: |%s|' % cmd)
+                        retVal = str(self.source.dictWeather(cmd))
+                        self.DEBUG('received: |%s|' % retVal)
+            except Exception as e:
+                self.EXCEPTIONDEBUG('Exception %s running cmd %s' % (str(e), cmd))
         self.DEBUG('\t Finally converter returns for index "%s" than icon is "%s"' % (self.index,retVal))
         return str(retVal)
             
