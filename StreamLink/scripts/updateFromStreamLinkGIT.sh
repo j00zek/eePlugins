@@ -2,7 +2,10 @@ echo "refreshing streamlink git"
 SRCpath=/DuckboxDisk/github/streamlink-27-BILLY2011-SOURCE
 cd $SRCpath
 git pull
-
+echo $?
+#cd /DuckboxDisk/github/
+#rm -rf /DuckboxDisk/github/streamlink-27-BILLY2011-SOURCE
+#git clone https://github.com/Billy2011/streamlink-27.git $SRCpath
 echo "copying..."
 
 src=$SRCpath/src
