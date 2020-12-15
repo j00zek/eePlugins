@@ -99,7 +99,7 @@ class MSNWeatherNP(Converter, object):
         elif type.startswith("Current"):
             self.mode = self.CURRENTDICT
             self.mode2 = type.replace('Current','')
-        elif type.startswith("RUN|"):
+        elif type.startswith("RUN|") or type.startswith("GET|"):
             try:
                 self.dictWeatherRUNs = type.split('|')
                 self.dictWeatherRUNs.pop(0)
