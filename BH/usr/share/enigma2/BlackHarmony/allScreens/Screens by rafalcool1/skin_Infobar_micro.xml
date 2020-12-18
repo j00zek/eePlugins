@@ -17,7 +17,7 @@
   <convert type="j00zekMSNWeather">weathericon,current</convert>
 </widget>
 <widget noWrap="1" backgroundColor="black" font="HD_Thin; 24" render="Label" position="409,900" size="60,26" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1">
-  <convert type="j00zekMSNWeather">temperature_current</convert>
+  <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
 </widget>
 </screen>
 </skin>

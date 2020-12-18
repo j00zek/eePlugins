@@ -51,7 +51,10 @@
 	<!--pogoda dalej-->
    
    <eLabel position="1308,193" size="537,2" backgroundColor="linie" />
-   <eLabel backgroundColor="black" font="HD_Thin; 21" foregroundColor="light_yellow" halign="center" position="1307,198" size="140,25" text="Jutro" transparent="1" />
+   
+   <widget source="session.CurrentService" render="Label" position="1307,198" size="140,25" font="HD_Thin; 21" backgroundColor="black" halign="center" transparent="1" foregroundColor="light_yellow"  >
+    <convert type="j00zekTranslator">Tomorrow</convert>
+    </widget>
    
    <ePixmap alphatest="blend" pixmap="BlackHarmony/weather_icons/temp+.png" position="1285,237" size="20,50" transparent="1" zPosition="3" />
    <widget backgroundColor="black" font="Roboto_HD; 21" halign="center" position="1307,233" render="Label" size="140,30" source="session.j00zekMSNWeather" transparent="1" valign="center" zPosition="3">
@@ -63,7 +66,11 @@
    </widget>
    
    <eLabel position="1564,198" size="2,82" backgroundColor="linie" />
-   <eLabel backgroundColor="black" font="HD_Thin; 21" foregroundColor="light_yellow" halign="center" position="1605,198" size="140,25" text="Pojutrze" transparent="1" />
+   
+   <widget source="session.CurrentService" render="Label" position="1605,198" size="140,25" font="HD_Thin; 21" backgroundColor="black" halign="center" transparent="1" foregroundColor="light_yellow"  >
+    <convert type="j00zekTranslator">Day after tomorrow</convert>
+    </widget>
+   
    <ePixmap alphatest="blend" pixmap="BlackHarmony/weather_icons/temp+.png" position="1584,234" size="20,50" transparent="1" zPosition="3" />
    <widget backgroundColor="black" font="Roboto_HD; 21" halign="center" position="1605,233" render="Label" size="140,30" source="session.j00zekMSNWeather" transparent="1" valign="center" zPosition="3">
    <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=2']['temp_high']|C|     |['dailyData']['Record=2']['temp_low']|C</convert>

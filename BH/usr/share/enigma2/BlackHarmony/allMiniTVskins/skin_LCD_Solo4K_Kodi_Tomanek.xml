@@ -296,7 +296,7 @@ options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=0,start
 <screen name="LCDWetterStandbyTemplate">
  
  <widget  source="session.j00zekMSNWeather" position="255,20" size="150,90" font="VFD;90" render="Label" halign="right" valign="center" foregroundColor="#fff000" backgroundColor="background" noWrap="1" transparent="1" zPosition="1">
- 		<convert type="j00zekMSNWeather">temperature_current</convert>
+ 		<convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
  </widget>
  <!--
  <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="75,20" size="120,120" source="session.j00zekMSNWeather" transparent="1" zPosition="1">

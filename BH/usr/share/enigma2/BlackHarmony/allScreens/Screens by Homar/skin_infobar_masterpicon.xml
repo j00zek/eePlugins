@@ -43,7 +43,7 @@
       <convert type="j00zekMSNWeather">weathericon,current</convert>
     </widget>
     <widget noWrap="1" backgroundColor="black" font="HD_Thin; 30" render="Label" position="127,779" size="100,35" source="session.j00zekMSNWeather" zPosition="3" halign="right" transparent="1" valign="top">
-      <convert type="j00zekMSNWeather">temperature_current</convert>
+      <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
     </widget>
     <eLabel font="HD_Thin; 12" foregroundColor="yellow" halign="center" name="new eLabel" position="132,813" size="90,36" text="temperatura odczuwalna" transparent="1" zPosition="2" valign="center" backgroundColor="black" />
     <widget noWrap="1" backgroundColor="black" font="HD_Thin; 30" render="Label" position="117,849" size="90,35" source="session.j00zekMSNWeather" zPosition="3" halign="right" transparent="1" foregroundColor="white" valign="top">

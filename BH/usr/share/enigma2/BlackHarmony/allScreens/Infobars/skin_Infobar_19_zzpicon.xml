@@ -99,7 +99,7 @@
       <convert type="j00zekMSNWeather">weathericon,current</convert>
     </widget>
     <widget noWrap="1" backgroundColor="black" font="HD_Thin; 30" render="Label" position="1765,823" size="100,35" source="session.j00zekMSNWeather" zPosition="3" halign="right" transparent="1" valign="top">
-      <convert type="j00zekMSNWeather">temperature_current</convert>
+      <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
     </widget>
     <eLabel text="A" position="903,796" zPosition="1" size="20,25" font="Roboto_HD; 22" halign="center" foregroundColor="white" backgroundColor="black" transparent="1" />
     <eLabel text="B" position="928,796" zPosition="1" size="20,25" font="Roboto_HD; 22" halign="center" foregroundColor="white" backgroundColor="black" transparent="1" />

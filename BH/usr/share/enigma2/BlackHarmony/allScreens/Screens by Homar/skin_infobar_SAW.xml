@@ -186,7 +186,7 @@
 </widget>
 
 <widget noWrap="1" backgroundColor="black" font="HD_Thin; 30" render="Label" position="1633,894" size="100,35" source="session.j00zekMSNWeather" zPosition="3" halign="right" transparent="1" valign="top">
-  <convert type="j00zekMSNWeather">temperature_current</convert>
+  <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
 </widget>
 
 

@@ -348,7 +348,7 @@
     <convert type="j00zekMSNWeather">temperature_low,day2</convert>
   </widget>
   <widget noWrap="1" backgroundColor="background" font="HD_Thin; 30" render="Label" position="84,594" size="80,47" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1" foregroundColor="light_yellow">
-    <convert type="j00zekMSNWeather">temperature_current</convert>
+    <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
   </widget>
   <widget font="HD_Thin; 22" halign="center" position="1417,601" render="Label" size="470,25" source="session.CurrentService" zPosition="1" transparent="1" backgroundColor="black" foregroundColor="green">
     <convert type="j00zekModBoxInfo">Uptime</convert>

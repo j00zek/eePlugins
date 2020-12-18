@@ -34,7 +34,7 @@
     </widget>
     <eLabel position="1654,40" size="1,60" backgroundColor="linie" foregroundColor="grey" />
     <widget noWrap="1" backgroundColor="background" font="HD_Thin; 42" render="Label" position="1200,48" size="97,48" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1" foregroundColor="lemon">
-      <convert type="j00zekMSNWeather">temperature_current</convert>
+      <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
     </widget>
   </screen>
 </skin>

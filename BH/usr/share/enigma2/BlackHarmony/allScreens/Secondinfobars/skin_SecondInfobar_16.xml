@@ -290,7 +290,7 @@
       <convert type="j00zekModEmuName">camd</convert>
   </widget>  
     <widget noWrap="1" backgroundColor="black" font="HD_Thin; 30" render="Label" position="1311,798" size="115,45" source="session.j00zekMSNWeather" zPosition="3" halign="right" transparent="1" valign="top">
-      <convert type="j00zekMSNWeather">temperature_current</convert>
+      <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
     </widget>
     <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="1445,798" size="45,45" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
       <convert type="j00zekMSNWeather">weathericon,current</convert>

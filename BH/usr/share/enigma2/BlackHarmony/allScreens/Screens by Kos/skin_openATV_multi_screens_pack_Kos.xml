@@ -54,18 +54,18 @@
     <convert type="j00zekMSNWeather">weathericon,current</convert>
   </widget>
   <widget noWrap="1" font="HD_Thin; 24" render="Label" position="215,728" size="110,30" source="session.j00zekMSNWeather" zPosition="3" halign="center"  foregroundColor="lemon" backgroundColor="black" transparent="1">
-    <convert type="j00zekMSNWeather">temperature_current</convert>
+    <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
   </widget>
   <widget noWrap="1" font="HD_Thin; 24" render="Label" position="239,796" size="400,32" source="session.j00zekMSNWeather" zPosition="3" halign="left" foregroundColor="white" backgroundColor="black" transparent="1">
     <convert type="j00zekMSNWeather">temperature_text,current</convert>
   </widget>
   <eLabel text="maks." name="new eLabel" position="335,728" size="80,30" font="HD_Thin; 24" halign="left" foregroundColor="white" backgroundColor="black" transparent="1"/>
   <widget noWrap="1" font="HD_Thin; 24" render="Label" position="409,728" size="70,30" source="session.j00zekMSNWeather" zPosition="3" halign="left" foregroundColor="yellow" backgroundColor="black" transparent="1">
-    <convert type="j00zekMSNWeather">temperature_high,day1</convert>
+    <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=0']['temp_high']|C</convert>
   </widget>
   <eLabel text="min." name="new eLabel" position="495,728" size="63,30" font="HD_Thin; 24" halign="left" foregroundColor="white" backgroundColor="black" transparent="1"/>
   <widget noWrap="1" font="HD_Thin; 24" render="Label" position="553,728" size="70,30" source="session.j00zekMSNWeather" zPosition="3" halign="left" foregroundColor="blue" backgroundColor="black" transparent="1">
-    <convert type="j00zekMSNWeather">temperature_low,day1</convert>
+    <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=0']['temp_low']|C</convert>
   </widget>
   <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="50,871" size="35,27" alphatest="blend" />
   <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="350,871" size="35,27" alphatest="blend" />
@@ -177,18 +177,18 @@
       <convert type="j00zekMSNWeather">weathericon,current</convert>
     </widget>
     <widget noWrap="1" font="HD_Thin; 24" render="Label" position="515,1020" size="110,30" source="session.j00zekMSNWeather" zPosition="3" halign="center"  foregroundColor="lemon" backgroundColor="black" transparent="1">
-    <convert type="j00zekMSNWeather">temperature_current</convert>
+    <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
     </widget>
     <widget noWrap="1" font="HD_Thin; 24" render="Label" position="239,1020" size="400,32" source="session.j00zekMSNWeather" zPosition="3" halign="left" foregroundColor="white" backgroundColor="black" transparent="1">
       <convert type="j00zekMSNWeather">temperature_text,current</convert>
     </widget>
     <eLabel text="maks." name="new eLabel" position="635,1020" size="80,30" font="HD_Thin; 24" halign="left" foregroundColor="white" backgroundColor="black" transparent="1"/>
     <widget noWrap="1" font="HD_Thin; 24" render="Label" position="709,1020" size="70,30" source="session.j00zekMSNWeather" zPosition="3" halign="left" foregroundColor="yellow" backgroundColor="black" transparent="1">
-      <convert type="j00zekMSNWeather">temperature_high,day1</convert>
+      <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=0']['temp_high']|C</convert>
     </widget>
     <eLabel text="min." name="new eLabel" position="795,1020" size="63,30" font="HD_Thin; 24" halign="left" foregroundColor="white" backgroundColor="black" transparent="1"/>
     <widget noWrap="1" font="HD_Thin; 24" render="Label" position="853,1020" size="70,30" source="session.j00zekMSNWeather" zPosition="3" halign="left" foregroundColor="blue" backgroundColor="black" transparent="1">
-      <convert type="j00zekMSNWeather">temperature_low,day1</convert>
+      <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=0']['temp_low']|C</convert>
     </widget>
   </screen>
   <screen name="ChannelSelection_PIG" position="center,center" size="1920,1080" title=" " flags="wfNoBorder" backgroundColor="transparent">
@@ -1651,18 +1651,18 @@ self.instance.resize(eSize(*wsize))
       <convert type="j00zekMSNWeather">weathericon,current</convert>
     </widget>
     <widget noWrap="1" font="HD_Thin; 24" render="Label" position="1215,830" size="110,30" source="session.j00zekMSNWeather" zPosition="3" halign="center"  foregroundColor="lemon" backgroundColor="black" transparent="1">
-      <convert type="j00zekMSNWeather">temperature_current</convert>
+      <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
     </widget>
     <widget noWrap="1" font="HD_Thin; 24" render="Label" position="1259,898" size="400,32" source="session.j00zekMSNWeather" zPosition="3" halign="left" foregroundColor="white" backgroundColor="black" transparent="1">
       <convert type="j00zekMSNWeather">temperature_text,current</convert>
     </widget>
     <eLabel text="maks." name="new eLabel" position="1335,830" size="80,30" font="HD_Thin; 24" halign="left" foregroundColor="white" backgroundColor="black" transparent="1"/>
     <widget noWrap="1" font="HD_Thin; 24" render="Label" position="1409,830" size="70,30" source="session.j00zekMSNWeather" zPosition="3" halign="left" foregroundColor="yellow" backgroundColor="black" transparent="1">
-      <convert type="j00zekMSNWeather">temperature_high,day1</convert>
+      <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=0']['temp_high']|C</convert>
     </widget>
     <eLabel text="min." name="new eLabel" position="1495,830" size="63,30" font="HD_Thin; 24" halign="left" foregroundColor="white" backgroundColor="black" transparent="1"/>
     <widget noWrap="1" font="HD_Thin; 24" render="Label" position="1553,830" size="70,30" source="session.j00zekMSNWeather" zPosition="3" halign="left" foregroundColor="blue" backgroundColor="black" transparent="1">
-      <convert type="j00zekMSNWeather">temperature_low,day1</convert>
+      <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=0']['temp_low']|C</convert>
     </widget>
     <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="110,991" size="35,27" alphatest="blend"/>
     <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="400,991" size="35,27" alphatest="blend"/>

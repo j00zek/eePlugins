@@ -173,7 +173,7 @@
       <convert type="j00zekMSNWeather">weathericon,current</convert>
     </widget>
     <widget noWrap="1" backgroundColor="black" font="HD_Thin; 24" render="Label" position="1487,777" size="60,26" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1">
-      <convert type="j00zekMSNWeather">temperature_current</convert>
+      <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
     </widget>
     <!-- wykorzystanie glowic -->
         <widget source="session.FrontendInfo" render="Label" position="1416,850" size="92,25" zPosition="3" font="Roboto_HD;22" halign="left" transparent="1" noWrap="1" >
@@ -471,7 +471,7 @@
       <convert type="j00zekMSNWeather">weathericon,current</convert>
     </widget>
     <widget noWrap="1" backgroundColor="black" font="HD_Thin; 24" render="Label" position="1487,777" size="60,26" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1">
-      <convert type="j00zekMSNWeather">temperature_current</convert>
+      <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
     </widget>
     <!-- wykorzystanie glowic -->
         <widget source="session.FrontendInfo" render="Label" position="1416,850" size="92,25" zPosition="3" font="Roboto_HD;22" halign="left" transparent="1" noWrap="1" >
@@ -636,18 +636,18 @@
       <convert type="j00zekMSNWeather">weathericon,current</convert>
     </widget>
     <widget noWrap="1" backgroundColor="background" font="HD_Thin; 24" render="Label" position="215,735" size="110,30" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1" foregroundColor="lemon">
-      <convert type="j00zekMSNWeather">temperature_current</convert>
+      <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
     </widget>
     <widget noWrap="1" backgroundColor="background" font="HD_Thin; 24" render="Label" position="240,801" size="400,32" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1">
       <convert type="j00zekMSNWeather">temperature_text,current</convert>
     </widget>
     <eLabel name="new eLabel" position="335,735" size="80,30" font="HD_Thin; 24" foregroundColor="white" backgroundColor="black" transparent="1" halign="left" text="maks."/>
     <widget noWrap="1" backgroundColor="black" font="HD_Thin; 24" render="Label" position="409,735" size="70,30" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1" foregroundColor="yellow">
-      <convert type="j00zekMSNWeather">temperature_high,day1</convert>
+      <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=0']['temp_high']|C</convert>
     </widget>
     <eLabel name="new eLabel" position="495,735" size="63,30" font="HD_Thin; 24" foregroundColor="white" backgroundColor="black" transparent="1" halign="left" text="min."/>
     <widget noWrap="1" backgroundColor="black" font="HD_Thin; 24" render="Label" position="553,735" size="70,30" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1" foregroundColor="blue">
-      <convert type="j00zekMSNWeather">temperature_low,day1</convert>
+      <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=0']['temp_low']|C</convert>
     </widget>
   </screen>
   <screen name="MoviePlayer" position="center,center" size="1920,1080" title="InfoBar" flags="wfNoBorder" backgroundColor="transparent">
@@ -6940,18 +6940,18 @@
       <convert type="j00zekMSNWeather">weathericon,current</convert>
     </widget>
     <widget noWrap="1" backgroundColor="background" font="HD_Thin; 24" render="Label" position="215,735" size="110,30" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1" foregroundColor="lemon">
-      <convert type="j00zekMSNWeather">temperature_current</convert>
+      <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
     </widget>
     <widget noWrap="1" backgroundColor="background" font="HD_Thin; 24" render="Label" position="240,801" size="400,32" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1">
       <convert type="j00zekMSNWeather">temperature_text,current</convert>
     </widget>
     <eLabel name="new eLabel" position="335,735" size="80,30" font="HD_Thin; 24" foregroundColor="white" backgroundColor="black" transparent="1" halign="left" text="maks."/>
     <widget noWrap="1" backgroundColor="black" font="HD_Thin; 24" render="Label" position="409,735" size="70,30" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1" foregroundColor="yellow">
-      <convert type="j00zekMSNWeather">temperature_high,day1</convert>
+      <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=0']['temp_high']|C</convert>
     </widget>
     <eLabel name="new eLabel" position="495,735" size="63,30" font="HD_Thin; 24" foregroundColor="white" backgroundColor="black" transparent="1" halign="left" text="min."/>
     <widget noWrap="1" backgroundColor="black" font="HD_Thin; 24" render="Label" position="553,735" size="70,30" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1" foregroundColor="blue">
-      <convert type="j00zekMSNWeather">temperature_low,day1</convert>
+      <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=0']['temp_low']|C</convert>
     </widget>
   </screen>
   <screen name="menu_harddisk" position="70,75" size="1920,1080" title="YYY" flags="wfNoBorder" NoAnimationAfter="1" backgroundColor="transparent">
@@ -9777,18 +9777,18 @@ self.instance.move(ePoint(orgpos.x() + (orgwidth - newwidth)/2,orgpos.y()))
       <convert type="j00zekMSNWeather">weathericon,current</convert>
     </widget>
     <widget noWrap="1" font="HD_Thin; 24" render="Label" position="515,1020" size="110,30" source="session.j00zekMSNWeather" zPosition="3" halign="center"  foregroundColor="lemon" backgroundColor="black" transparent="1">
-    <convert type="j00zekMSNWeather">temperature_current</convert>
+    <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
     </widget>
     <widget noWrap="1" font="HD_Thin; 24" render="Label" position="239,1020" size="400,32" source="session.j00zekMSNWeather" zPosition="3" halign="left" foregroundColor="white" backgroundColor="black" transparent="1">
       <convert type="j00zekMSNWeather">temperature_text,current</convert>
     </widget>
     <eLabel text="maks." name="new eLabel" position="635,1020" size="80,30" font="HD_Thin; 24" halign="left" foregroundColor="white" backgroundColor="black" transparent="1"/>
     <widget noWrap="1" font="HD_Thin; 24" render="Label" position="709,1020" size="70,30" source="session.j00zekMSNWeather" zPosition="3" halign="left" foregroundColor="yellow" backgroundColor="black" transparent="1">
-      <convert type="j00zekMSNWeather">temperature_high,day1</convert>
+      <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=0']['temp_high']|C</convert>
     </widget>
     <eLabel text="min." name="new eLabel" position="795,1020" size="63,30" font="HD_Thin; 24" halign="left" foregroundColor="white" backgroundColor="black" transparent="1"/>
     <widget noWrap="1" font="HD_Thin; 24" render="Label" position="853,1020" size="70,30" source="session.j00zekMSNWeather" zPosition="3" halign="left" foregroundColor="blue" backgroundColor="black" transparent="1">
-      <convert type="j00zekMSNWeather">temperature_low,day1</convert>
+      <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=0']['temp_low']|C</convert>
     </widget>
   </screen>
 <!-- Foreca plugin screens by fhroma -->

@@ -142,7 +142,7 @@
     <convert type="j00zekMSNWeather">weathericon,current</convert>
   </widget>
   <widget noWrap="1" backgroundColor="black" font="RegularLCD;95"  render="Label" position="55,240" size="150,100" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1" foregroundColor="#C1EA02">
-    <convert type="j00zekMSNWeather">temperature_current</convert>
+    <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
   </widget>
 		
 		
@@ -400,7 +400,7 @@
 	<screen name="MSNWeatherPlugin_summary" position="0,0" size="800,480">
 		<widget source="parent.Title" render="Label" position="20,20" foregroundColor="#00cc99" size="720,80" font="RegularLCD;70" halign="center" valign="center" />
 		<widget source="session.j00zekMSNWeather" noWrap="1" font="RegularLCD;95" render="Label" position="420,160" size="300,100" transparent="1" zPosition="8" halign="center" foregroundColor="#e5b243" >
-			<convert type="j00zekMSNWeather">temperature_current</convert>
+			<convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
 		</widget>
 		<widget render="j00zekMSNWeatherPixmap" position="20,140" size="360,200" source="session.j00zekMSNWeather" transparent="1" zPosition="8"  >
 			  <convert type="j00zekMSNWeather">weathericon,current,/usr/share/enigma2/BlackHarmony/weather_icons/,png</convert>

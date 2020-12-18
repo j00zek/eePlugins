@@ -292,11 +292,11 @@
         <convert type="j00zekMSNWeather">DailyRecord=0</convert>
     </widget>
 	   <widget noWrap="1" foregroundColor="pastel" backgroundColor="background" font="HD_Thin; 23" render="Label" position="950,415" size="75,35" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1">
-      <convert type="j00zekMSNWeather">temperature_high,day1</convert>
+      <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=0']['temp_high']|C</convert>
     </widget>
   
     <widget noWrap="1" foregroundColor="blue" backgroundColor="background" font="HD_Thin; 23" render="Label" position="1070,415" size="75,35" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1">
-      <convert type="j00zekMSNWeather">temperature_low,day1</convert>
+      <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=0']['temp_low']|C</convert>
     </widget>
 	
 	
@@ -377,7 +377,7 @@
       <convert type="j00zekMSNWeather">weathericon,current,/usr/share/enigma2/BlackHarmony/weather_icons/,png</convert>
     </widget>
     <widget noWrap="1" backgroundColor="black" font="HD_Thin; 38" render="Label" position="1265,98" size="201,60" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1" foregroundColor="lemon">
-      <convert type="j00zekMSNWeather">temperature_current</convert>
+      <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
     </widget>
     <widget noWrap="1" backgroundColor="background" font="HD_Thin; 28" render="Label" position="1265,158" size="600,50" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1">
       <convert type="j00zekMSNWeather">temperature_text,current</convert>

@@ -325,7 +325,7 @@
 	<!-- LCD screen STANDBY -->
 	<screen name="StandbySummary" position="0,0" size="480,320">
         <widget position="320,5" size="150,50" font="FdLcD;50" noWrap="1" foregroundColor="#ccffff" backgroundColor="#000000" render="Label" source="session.j00zekMSNWeather" zPosition="3" halign="right" transparent="1">
-            <convert type="j00zekMSNWeather">temperature_current</convert>
+            <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
         </widget>
 		<widget backgroundColor="#000000" font="FdLcD;140" foregroundColor="white" halign="center" position="0,85" render="Label" size="480,155" source="global.CurrentTime" transparent="0" zPosition="2">
 			<convert type="ClockToText">Format:%-H:%M</convert>

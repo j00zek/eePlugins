@@ -234,7 +234,7 @@
   </widget>
   <!--       POGODA              -->
   <widget backgroundColor="background" font="HD_Thin; 26" halign="right" noWrap="1" position="931,798" render="Label" size="70,40" source="session.j00zekMSNWeather" transparent="1" zPosition="3">
-    <convert type="j00zekMSNWeather">temperature_current</convert>
+    <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
   </widget>
   <widget alphatest="blend" position="1017,783" render="j00zekMSNWeatherPixmap" size="70,70" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
     <convert type="j00zekMSNWeather">weathericon,current</convert>

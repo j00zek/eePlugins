@@ -15,7 +15,7 @@
     </widget>
   <ePixmap pixmap="BlackHarmony/weather_icons/wiatr.png" position="1490,45" size="30,30" zPosition="3" transparent="1" alphatest="blend" />
   <widget backgroundColor="black" font="Roboto_HD; 21" foregroundColor="white" render="j00zekLabel" position="1530,45" size="125,25" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1">
-    <convert type="j00zekMSNWeather">RUN|['currentData']['winddisplay']['valInfo']</convert>
+    <convert type="j00zekMSNWeather">RUN|['currentData']['wind_speed']['valInfo']</convert>
   </widget>
   
   <ePixmap pixmap="BlackHarmony/weather_icons/deszcz.png" position="1380,80" size="28,30" zPosition="4" transparent="1" alphatest="blend" />
@@ -28,10 +28,7 @@
     <convert type="j00zekMSNWeather">RUN|['currentData']['pressure']['valInfo']</convert>
   </widget>
   
-  
-  
-  
- <!--jutro-->
+  <!--jutro-->
  
   <eLabel position="1654,40" size="1,60" backgroundColor="linie" foregroundColor="grey" />
   <widget source="session.CurrentService" render="Label" position="1770,20" size="65,25" font="Roboto_HD; 21" backgroundColor="black" halign="center" transparent="1" foregroundColor="lemon"  >

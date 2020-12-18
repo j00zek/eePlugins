@@ -289,8 +289,7 @@
  <widget backgroundColor="background" font="Roboto_HD; 22" halign="left" noWrap="1" position="1155,930" render="Label" size="70,25" source="session.CurrentService" transparent="1">
     <convert type="j00zekModFanTempInfo">TempInfo</convert>
   </widget>
-  <!--<eLabel text="Pogoda teraz :" backgroundColor="black" font="Roboto_HD; 23" foregroundColor="lemon" halign="center" position="1680,805" size="200,28"  transparent="1" />-->
-	<widget source="session.CurrentService" render="Label"  backgroundColor="black" font="Roboto_HD; 23" foregroundColor="lemon" halign="center" position="1680,805" size="200,28"  transparent="1" >
+  <widget source="session.CurrentService" render="Label"  backgroundColor="black" font="Roboto_HD; 23" foregroundColor="lemon" halign="center" position="1680,805" size="200,28"  transparent="1" >
           <convert type="j00zekTranslator">Weather now</convert>
         </widget>
     <widget alphatest="blend" position="1540,798" render="j00zekMSNWeatherPixmap" size="146,146" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
@@ -399,17 +398,24 @@
    
  <!--airly--> 
 	
-	<widget position="870,565" size="330,35" source="session.j00zekMSNWeather" render="Label" font="HD_Thin; 25" backgroundColor="background" halign="left" valign="center" noWrap="1" transparent="1" zPosition="10">
+	<widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="845,580" size="75,75" source="session.j00zekMSNWeather" transparent="1" zPosition="3">
+        <convert type="j00zekMSNWeather">RUN|['currentData']['airlyIndex']['iconfilename']</convert>
+    </widget>
+	<widget backgroundColor="black" font="Roboto_HD; 35" render="Label" position="845,580" size="75,75" source="session.j00zekMSNWeather" zPosition="5" halign="center" valign="center" transparent="1">
+    <convert type="j00zekMSNWeather">RUN|['currentData']['airlyIndex']['val']</convert>
+     </widget>
+	
+	<widget position="937,565" size="250,30" source="session.j00zekMSNWeather" render="j00zekLabel" font="HD_Thin; 25" backgroundColor="background" halign="left" valign="center" noWrap="1" transparent="1" zPosition="10">
         <convert type="j00zekMSNWeather">RUN|['currentData']['pm25']['name']| - |['currentData']['pm25']['valInfo']</convert>
     </widget>
-    <widget position="870,595" size="330,35" source="session.j00zekMSNWeather" render="Label" font="HD_Thin; 25" backgroundColor="background" halign="left" valign="center" noWrap="1" transparent="1" zPosition="10">
+    <widget position="937,595" size="250,30" source="session.j00zekMSNWeather" render="j00zekLabel" font="HD_Thin; 25" backgroundColor="background" halign="left" valign="center" noWrap="1" transparent="1" zPosition="10">
         <convert type="j00zekMSNWeather">RUN|['currentData']['pm10']['name']| - |['currentData']['pm10']['valInfo']</convert>
     </widget>
-    <widget position="870,625" size="330,35" source="session.j00zekMSNWeather" render="Label" font="HD_Thin; 25" backgroundColor="background" halign="left" valign="center" noWrap="1" transparent="1" zPosition="10">
+    <widget position="937,625" size="250,30" source="session.j00zekMSNWeather" render="j00zekLabel" font="HD_Thin; 25" backgroundColor="background" halign="left" valign="center" noWrap="1" transparent="1" zPosition="10">
         <convert type="j00zekMSNWeather">RUN|['currentData']['pm1']['name']| - |['currentData']['pm1']['valInfo']</convert>
    </widget>
-   <widget position="100,665" size="1710,70" source="session.j00zekMSNWeather" render="Label" font="Roboto_HD; 27" foregroundColor="yellow" backgroundColor="background" halign="center" noWrap="1" transparent="1" zPosition="10">
-        <convert type="j00zekMSNWeather">RUN|['currentData']['airlyAdvice']</convert>
+   <widget position="70,665" size="1790,70" source="session.j00zekMSNWeather" render="Label" font="Roboto_HD; 27" foregroundColor="yellow" backgroundColor="background" halign="center" noWrap="1" transparent="1" zPosition="10">
+        <convert type="j00zekMSNWeather">RUN|['currentData']['airlyIndex']['info']|,  |0x00e6ffe6|['currentData']['airlyIndex']['advice']</convert>
     </widget>
    
    <eLabel name="new eLabel" position="1200,563" size="1,90" backgroundColor="blue" />

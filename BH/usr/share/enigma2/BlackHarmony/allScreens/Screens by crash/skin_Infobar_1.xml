@@ -244,7 +244,7 @@
       <convert type="ConditionalShowHide" />
     </widget>
     <widget noWrap="1" backgroundColor="background" font="HD_Thin; 23" render="Label" position="1204,807" size="70,30" source="session.j00zekMSNWeather" zPosition="3" halign="right" transparent="0" foregroundColor="light_yellow">
-      <convert type="j00zekMSNWeather">temperature_current</convert>
+      <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
     </widget>
     <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="1296,799" size="50,50" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
       <convert type="j00zekMSNWeather">weathericon,current</convert>

@@ -49,7 +49,7 @@
     </widget>   
  
   <widget noWrap="1" backgroundColor="black" font="Roboto_HD; 40" render="Label" position="84,595" size="100,50" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1" foregroundColor="green">
-    <convert type="j00zekMSNWeather">temperature_current</convert>
+    <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
   </widget>
 
      <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="186,584" size="80,80" source="session.j00zekMSNWeather" transparent="1" zPosition="5">

@@ -120,7 +120,7 @@
       <convert type="j00zekMSNWeather">weathericon,current</convert>
     </widget>
     <widget noWrap="1" backgroundColor="black" font="Roboto_HD; 30" render="Label" position="1765,845" size="100,35" source="session.j00zekMSNWeather" zPosition="3" halign="right" transparent="1" valign="top">
-      <convert type="j00zekMSNWeather">temperature_current</convert>
+      <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
     </widget>
     <ePixmap pixmap="BlackHarmony/weather_icons/temp.png" position="1860,885" size="20,50" zPosition="3" transparent="1" alphatest="blend" />
     <widget source="session.CurrentService" render="Label" position="1752,885" size="120,44" zPosition="2" font="Roboto_HD; 18" halign="center" foregroundColor="#E34234" backgroundColor="black" transparent="1" >

@@ -99,7 +99,7 @@
       <convert type="j00zekMSNWeather">weathericon,current</convert>
     </widget>
     <widget noWrap="1" backgroundColor="black" font="HD_Thin; 30" render="Label" position="1765,878" size="100,35" source="session.j00zekMSNWeather" zPosition="3" halign="right" transparent="1" valign="top">
-      <convert type="j00zekMSNWeather">temperature_current</convert>
+      <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
     </widget>
         <widget source="session.RecordState" render="Pixmap" position="930,749" size="40,23" zPosition="3" pixmap="BlackHarmony/icons/ico_rec_on.png" alphatest="blend">
       <convert type="ConditionalShowHide">Blink</convert>
