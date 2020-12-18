@@ -400,11 +400,14 @@ class MSNweatherNP(Screen):
             #current data
             item = self.weatherData.weatherItems.get('-1', None)
             if item is not None:
-                self["currentData_temperature"].text = str(item.dictWeather['currentData']['temperature']['valInfo']) #"%s°%s" % (item.temperature, self.weatherData.degreetype)
+                self["currentData_temperature"].text = str(item.dictWeather.get('currentData', {}).get('temperature', {}).get('valInfo', '')) #"%s°%s" % (item.temperature, self.weatherData.degreetype)
                 self["currentData_skytext"].text = item.skytext
                     
-                c =  time.strptime(item.observationtime, "%H:%M:%S")
-                self["currentData_observationtime"].text = _("Actualization time: %s") %  time.strftime("%H:%M",c)
+                try:
+                    c =  time.strptime(item.observationtime, "%H:%M:%S")
+                    self["currentData_observationtime"].text = _("Actualization time: %s") %  time.strftime("%H:%M",c)
+                except Exception:
+                    self["currentData_observationtime"].text = item.observationtime
                 self["observationpoint"].text = _("Observation point: %s") % item.observationpoint
                 if DBG: printDEBUG('getWeatherDataCallback item.skytext == %s' % item.skytext)
                 self.showIcon( -1, item.iconFilename)
@@ -412,56 +415,59 @@ class MSNweatherNP(Screen):
                 #self["currentData_weathericon"] = item.iconFilename
                 
                 #populate currentData_infoList
-                tmpDict = item.dictWeather['currentData']
-                self["currentData_airlyInfo"].text = str(tmpDict.get('airlyIndex', {}).get('info', ""))
-                alert = str(tmpDict['alert']['valInfo'])
-                if alert == '':
-                    self["currentData_airlyAdvice"].text = str(tmpDict.get('airlyIndex', {}).get('advice', ""))
-                else:
-                    self["currentData_airlyAdvice"].text = alert
+                tmpDict = item.dictWeather.get('currentData', {})
                 tmpList = []
                 tmpListWeather = []
-                for key in tmpDict:
-                    valDict = tmpDict[key]
-                    if isinstance(valDict,dict):
-                        inList = valDict.get('inList', False)
-                        if key in ('dew_point_temp','feelslike','humidity','pressure','visibility','wind_speed'):
-                            tmpListWeather.append((str(valDict['name']),str(valDict['valInfo'])))
-                        elif inList:
-                            try:
-                                tmpList.append((str(valDict['name']),str(valDict['valInfo'])))
-                            except Exception:
-                                pass
-                try: tmpList.sort(key=lambda t : tuple(str(t[0]).lower()))
-                except Exception: tmpList.sort()
+                if len(tmpDict) > 0:
+                    self["currentData_airlyInfo"].text = str(tmpDict.get('airlyIndex', {}).get('info', ""))
+                    alert = str(tmpDict.get('alert', {}).get('valInfo', ''))
+                    if alert == '':
+                        self["currentData_airlyAdvice"].text = str(tmpDict.get('airlyIndex', {}).get('advice', ""))
+                    else:
+                        self["currentData_airlyAdvice"].text = alert
+                    for key in tmpDict:
+                        valDict = tmpDict[key]
+                        if isinstance(valDict,dict):
+                            inList = valDict.get('inList', False)
+                            if key in ('dew_point_temp','feelslike','humidity','pressure','visibility','wind_speed'):
+                                tmpListWeather.append((str(valDict['name']),str(valDict['valInfo'])))
+                            elif inList:
+                                try:
+                                    tmpList.append((str(valDict['name']),str(valDict['valInfo'])))
+                                except Exception:
+                                    pass
+                    try: tmpList.sort(key=lambda t : tuple(str(t[0]).lower()))
+                    except Exception: tmpList.sort()
+                    try: tmpListWeather.sort(key=lambda t : tuple(str(t[0]).lower()))
+                    except Exception: tmpListWeather.sort()
+                    
                 self["currentData_infoList"].list = tmpList
-                try: tmpListWeather.sort(key=lambda t : tuple(str(t[0]).lower()))
-                except Exception: tmpListWeather.sort()
                 self["currentData_WeatherinfoList"].list = tmpListWeather
                 
                 #populate hourlyData_infoList
                 self["hourlyData_infoList"].list = []
                 tmpDict = item.dictWeather['hourlyData']
                 tmpList = []
-                index = 0
-                if DBG: printDEBUG('populate hourlyData_infoList')
-                pngH = LoadPixmap(cached=True, path='/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/humidity_icon.png')
-                pngT = LoadPixmap(cached=True, path='/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/temperature_icon.png')
-                while index < len(tmpDict.keys()):
-                    try:
-                        record = tmpDict['Record=%s' % index]
-                        index += 1
-                    except Exception as e:
-                        break
-                    iconfilename = str(record['imgfilename'])
-                    if DBG: printDEBUG('record = %s\n' % str(record))
-                    if iconfilename.endswith('.png'):
-                        png = LoadPixmap(cached=True, path=iconfilename)
-                        tmpList.append(( png, '%s:00' % str(record['time']) ,
-                                              str(record['temperature']), 
-                                              str(record['rainprecip']),
-                                              str(record['skytext']),
-                                              pngT, pngH ))
+                if len(tmpDict) > 0:
+                    index = 0
+                    if DBG: printDEBUG('populate hourlyData_infoList')
+                    pngH = LoadPixmap(cached=True, path='/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/humidity_icon.png')
+                    pngT = LoadPixmap(cached=True, path='/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/temperature_icon.png')
+                    while index < len(tmpDict.keys()):
+                        try:
+                            record = tmpDict['Record=%s' % index]
+                            index += 1
+                        except Exception as e:
+                            break
+                        iconfilename = str(record['imgfilename'])
+                        if DBG: printDEBUG('record = %s\n' % str(record))
+                        if iconfilename.endswith('.png'):
+                            png = LoadPixmap(cached=True, path=iconfilename)
+                            tmpList.append(( png, '%s:00' % str(record['time']) ,
+                                                            str(record['temperature']), 
+                                                            str(record['rainprecip']),
+                                                            str(record['skytext']),
+                                                            pngT, pngH ))
                 self["hourlyData_infoList"].list = tmpList
                 
                 #populate dailyData_infoList
@@ -469,23 +475,24 @@ class MSNweatherNP(Screen):
                 tmpDict = item.dictWeather['dailyData']
                 tmpList = []
                 index = 0
-                if DBG: printDEBUG('populate dailyData_infoList')
-                while index < len(tmpDict.keys()):
-                    try:
-                        record = tmpDict['Record=%s' % index]
-                        index += 1
-                    except Exception as e:
-                        if DBG: printDEBUG('record=%s exception: %s\n' % (index,str(e)))
-                        break
-                    iconfilename = str(record['imgfilename'])
-                    if DBG: printDEBUG('record = %s\n' % str(record))
-                    if iconfilename.endswith('.png'):
-                        png = LoadPixmap(cached=True, path=iconfilename)
-                        tmpList.append(( png, '%s, %s' % (str(record['weekday']), str(record['monthday'])) ,
-                                              str(record['temp_high']), 
-                                              str(record['temp_low']),
-                                              str(record['rainprecip']),
-                                              str(record['forecast'])
+                if len(tmpDict) > 0:
+                    if DBG: printDEBUG('populate dailyData_infoList')
+                    while index < len(tmpDict.keys()):
+                        try:
+                            record = tmpDict['Record=%s' % index]
+                            index += 1
+                        except Exception as e:
+                            if DBG: printDEBUG('record=%s exception: %s\n' % (index,str(e)))
+                            break
+                        iconfilename = str(record['imgfilename'])
+                        if DBG: printDEBUG('record = %s\n' % str(record))
+                        if iconfilename.endswith('.png'):
+                            png = LoadPixmap(cached=True, path=iconfilename)
+                            tmpList.append(( png, '%s, %s' % (str(record['weekday']), str(record['monthday'])) ,
+                                                                str(record['temp_high']), 
+                                                                str(record['temp_low']),
+                                                                str(record['rainprecip']),
+                                                                str(record['forecast'])
                                         ))
                 self["dailyData_infoList"].list = tmpList
 
