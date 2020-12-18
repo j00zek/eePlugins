@@ -40,7 +40,7 @@ alphatest="blend" zPosition="1" >
     <convert type="j00zekMSNWeather">weathericon,current</convert>
   </widget>
  <widget foregroundColor="HMRname" font="VFD3;100" render="Label" halign="right" valign="center" noWrap="1" transparent="1" source="session.j00zekMSNWeather" position="550,252" size="230,90" zPosition="5">
- 		<convert type="j00zekMSNWeather">temperature_current</convert>
+ 		<convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
  </widget>
 <widget font="VFD3;63" render="Label" halign="right" valign="center" noWrap="1" transparent="1" source="session.j00zekMSNWeather" position="548,399" size="230,90" zPosition="5">
  		<convert type="j00zekMSNWeather">feelslike</convert>
@@ -148,7 +148,7 @@ options="movetype=running,startpoint=0,direction=left,steptime=70,repeat=0,start
   <convert type="j00zekMSNWeather">temperature_text,current</convert>
 </widget>
 <widget source="session.j00zekMSNWeather" render="Label" position="260,40" size="170,75" font="VFD;70" zPosition="1" halign="left" valign="top" foregroundColor="#ff3333" transparent="1" noWrap="1">
-  <convert type="j00zekMSNWeather">temperature_current</convert>
+  <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
   </widget>
 <widget source="session.j00zekMSNWeather"  render="Label" position="260,150" size="170,75" font="VFD;70" zPosition="1" halign="left" valign="top" foregroundColor="#33CCFF" transparent="1" noWrap="1">
   <convert type="j00zekMSNWeather">feelslike</convert>

@@ -111,7 +111,7 @@ options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=0,start
       <convert type="j00zekMSNWeather">weathericon,current</convert>
     </widget>
   <widget source="session.j00zekMSNWeather" render="Label" position="615,80" size="170,75" font="VFD; 75" zPosition="1" halign="left" valign="top" foregroundColor="#ff3333" transparent="1" noWrap="1">
-      <convert type="j00zekMSNWeather">temperature_current</convert>
+      <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
     </widget>
 <widget source="session.j00zekMSNWeather" render="j00zekModRunningText" 
 options="movetype=running,startpoint=0,direction=left,steptime=70,repeat=0,startdelay=2000,always=0,oneshot=0" noWrap="1"  position="400,195" size="190,82" font="VFD;72" transparent="1" halign="left" valign="center" foregroundColor="HMRname"  zPosition="3">
@@ -986,7 +986,7 @@ options="movetype=running,startpoint=0,direction=left,steptime=70,repeat=0,start
   <convert type="j00zekMSNWeather">weathericon,current</convert>
   </widget>
   <widget noWrap="1" backgroundColor="black" font="VFD;73"  render="Label" position="600,170" size="230,90" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1" >
-    <convert type="j00zekMSNWeather">temperature_current</convert>
+    <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
   </widget>
 <widget font="VFD;73" render="Label" halign="left" valign="center" noWrap="1" transparent="1" source="session.j00zekMSNWeather" position="600,235" size="230,90" foregroundColor="#58ccff" zPosition="5">
  <convert type="j00zekMSNWeather">feelslike</convert>

@@ -40,7 +40,7 @@ alphatest="blend" zPosition="1" >
     <convert type="j00zekMSNWeather">weathericon,current</convert>
   </widget>
  <widget foregroundColor="HMRname" font="VFD3;100" render="Label" halign="right" valign="center" noWrap="1" transparent="1" source="session.j00zekMSNWeather" position="550,252" size="230,90" zPosition="5">
- 		<convert type="j00zekMSNWeather">temperature_current</convert>
+ 		<convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
  </widget>
 <widget font="VFD3;63" render="Label" halign="right" valign="center" noWrap="1" transparent="1" source="session.j00zekMSNWeather" position="548,399" size="230,90" zPosition="5">
  		<convert type="j00zekMSNWeather">feelslike</convert>
@@ -132,7 +132,7 @@ options="movetype=running,startpoint=0,direction=left,steptime=70,repeat=0,start
  		<convert type="j00zekMSNWeather">temperature_text,current</convert>
 </widget>
   <widget source="session.j00zekMSNWeather" render="Label" position="615,70" size="170,75" font="VFD; 70" zPosition="1" halign="left" valign="top" foregroundColor="#00CFFF" transparent="1" noWrap="1">
-      <convert type="j00zekMSNWeather">temperature_current</convert>
+      <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
     </widget>
    <widget source="session.RecordState" render="Pixmap" pixmap="HomarLCDskins/Homar/Homar_2.png" position="680,20" size="120,30" zPosition="3" alphatest="blend">
       <convert type="ConfigEntryTest">config.usage.blinking_rec_symbol_during_recording,True,CheckSourceBoolean</convert>

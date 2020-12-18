@@ -57,7 +57,7 @@ options="movetype=running,startpoint=0,direction=left,steptime=70,repeat=0,start
  <convert type="j00zekMSNWeather">temperature_text,current</convert>
  </widget>
  <widget source="session.j00zekMSNWeather" render="Label" position="345,40" size="130,65" font="VFD; 58" zPosition="1" halign="left" valign="top" foregroundColor="#00CFFF" transparent="1" noWrap="1">
- <convert type="j00zekMSNWeather">temperature_current</convert>
+ <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
  </widget>
  <widget source="session.RecordState" render="Pixmap" pixmap="HomarLCDskins/Homar_480x320/Homar_2.png" position="380,30" size="80,20" zPosition="3" alphatest="blend">
  <convert type="ConfigEntryTest">config.usage.blinking_rec_symbol_during_recording,True,CheckSourceBoolean</convert>
@@ -934,7 +934,7 @@ options="movetype=running,startpoint=0,direction=left,steptime=70,repeat=0,start
  <convert type="j00zekMSNWeather">temperature_text,current</convert>
  </widget>
  <widget source="session.j00zekMSNWeather" render="Label" position="350,160" size="130,65" font="VFD; 58" zPosition="1" halign="left" valign="top" foregroundColor="#001BA1E3" transparent="1" noWrap="1">
- <convert type="j00zekMSNWeather">temperature_current</convert>
+ <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
  </widget>
  <widget source="session.j00zekMSNWeather" render="j00zekModRunningText" 
 options="movetype=running,startpoint=0,direction=left,steptime=70,repeat=0,startdelay=2000,always=0,oneshot=0" noWrap="1"  position="16,165" size="220,60" font="VFD;56" transparent="1" halign="left" valign="center" foregroundColor="HMRname" zPosition="3">

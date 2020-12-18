@@ -524,7 +524,7 @@ options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=0,start
         </widget>
 		
 <widget source="session.j00zekMSNWeather" render="Label" position="20,17" size="162,73" font="VFD; 66" zPosition="1" halign="left" valign="top" foregroundColor="#00CFFF" transparent="1" noWrap="1">
-      <convert type="j00zekMSNWeather">temperature_current</convert>
+      <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
     </widget>
 <widget source="session.j00zekMSNWeather"  render="Label" position="265,17" size="120,73" font="VFD;66" halign="left" foregroundColor="#00CFFF" transparent="1" >
  		<convert type="j00zekMSNWeather">humidity</convert>

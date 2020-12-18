@@ -56,7 +56,7 @@ options="movetype=running,startpoint=0,direction=left,steptime=70,repeat=0,start
  <convert type="j00zekMSNWeather">temperature_text,current</convert>
  </widget>
  <widget source="session.j00zekMSNWeather" render="Label" position="220,70" size="130,65" font="VFD;56" zPosition="1" halign="left" valign="top" foregroundColor="#ff3333" transparent="1" noWrap="1">
- <convert type="j00zekMSNWeather">temperature_current</convert>
+ <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
  </widget>
 <ePixmap pixmap="HomarLCDskins/weather/thermo.png" position="180,40" size="33,100" zPosition="3" transparent="1" alphatest="blend" />
 <widget alphatest="blend" path="/usr/share/enigma2/HomarLCDskins" picontype="MoonPhase" position="330,65" render="j00zekPicons" size="115,115" source="global.CurrentTime" zPosition="1">
@@ -942,7 +942,7 @@ options="movetype=running,startpoint=0,direction=left,steptime=70,repeat=0,start
  <convert type="j00zekMSNWeather">temperature_text,current</convert>
  </widget>
  <widget source="session.j00zekMSNWeather" render="Label" position="350,100" size="130,65" font="VFD; 58" zPosition="1" halign="left" valign="top" foregroundColor="#001BA1E3" transparent="1" noWrap="1">
- <convert type="j00zekMSNWeather">temperature_current</convert>
+ <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
  </widget>
  <widget source="session.j00zekMSNWeather" render="j00zekModRunningText" 
 options="movetype=running,startpoint=0,direction=left,steptime=70,repeat=0,startdelay=2000,always=0,oneshot=0" noWrap="1"  position="300,200" size="180,60" font="VFD;54" transparent="1" halign="left" valign="center" foregroundColor="#ffff00" zPosition="3">
