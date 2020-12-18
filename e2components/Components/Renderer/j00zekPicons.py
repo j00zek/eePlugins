@@ -184,7 +184,7 @@ def getPiconName(serviceName, selfPiconType):
                     pass
     if not pngname:
         if DBG: j00zekDEBUG('[j00zekPicons:getPiconName] pngname not found by sname')
-        fields = sname.split('_', 3)
+        fields = sname.split('_', 6)
         isChanged = False
         isStream = False
         if len(fields) > 2 and fields[2] != '2' and fields[2] != '1':
@@ -194,6 +194,12 @@ def getPiconName(serviceName, selfPiconType):
             fields[0] = '1'
             isChanged = True
             isStream = True
+        if len(fields) >= 6:
+            currSID = fields[4]
+            currTR = fields[5]
+        else:
+            currSID = ''
+            currTR = ''
         if isChanged == True:
             pngname = findPicon('_'.join(fields), selfPiconType, serviceName)
         if not pngname:
@@ -211,7 +217,7 @@ def getPiconName(serviceName, selfPiconType):
                         pngname = findPicon(name[:-2], selfPiconType, serviceName)
                     elif name.endswith('pl'):
                         pngname = findPicon(name[:-2], selfPiconType, serviceName)
-                if not pngname and config.plugins.j00zekCC.PiconsMissingDownload.value == True:
+                if not pngname and config.plugins.j00zekCC.PiconsMissingDownload.value == True and currTR in ('13e', '71'):
                     pngname = getOnLinePicon(name, selfPiconType)
                     if not pngname:
                         if name.endswith('hd') or name.endswith('pl'):
