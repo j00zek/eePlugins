@@ -110,7 +110,7 @@ class MSNWeatherNP(Converter, object):
                         if cmd.startswith("0x"):
                             self.dictWeatherRUNs[n] = Hex2strColor(int(cmd, 16))
             except Exception as e:
-                self.EXCEPTIONDEBUG('Exception enumarating RUN %s' % str(e))
+                self.EXCEPTIONDEBUG('__init__ Exception enumarating RUN|GET %s' % str(e))
         else:
             if type.find("weathericon") != -1: self.mode = self.ICON
             elif type.find("temperature_high") != -1: self.mode = self.TEMPERATURE_HEIGH
@@ -205,7 +205,7 @@ class MSNWeatherNP(Converter, object):
                     else:
                         retText += cmd
             except Exception as e:
-                self.EXCEPTIONDEBUG('Exception %s running cmd %s' % (str(e), cmd))
+                self.EXCEPTIONDEBUG('getText(DAILYDICT) ','Exception %s running cmd %s' % (str(e), cmd))
         elif self.mode == self.DAILYDICT:
             try:
                 mode2 = self.mode2.split(',')
@@ -234,7 +234,7 @@ class MSNWeatherNP(Converter, object):
                     elif item in ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9'):
                         retText = str('%s' % recordDict[int(item)].strip())
             except Exception as e:
-                self.EXCEPTIONDEBUG('DAILYDICT ','Exception %s' % str(e))
+                self.EXCEPTIONDEBUG('getText(DAILYDICT) ','Exception %s' % str(e))
         elif self.mode == self.HOURLYDICT:
             try:
                 mode2 =  self.mode2.split(',')
@@ -295,7 +295,7 @@ class MSNWeatherNP(Converter, object):
                 #service icons or not found
                 iconFileName = recordDict['imgfilename'].strip()
             except Exception as e:
-                self.EXCEPTIONDEBUG('DAILYDICT ','Exception %s' % str(e))
+                self.EXCEPTIONDEBUG('getIconFilename(DAILYDICT) ','Exception %s' % str(e))
         elif self.mode == self.HOURLYDICT:
             try:
                 mode2 = self.mode2
@@ -312,19 +312,19 @@ class MSNWeatherNP(Converter, object):
                 #service icons or not found
                 iconFileName = recordDict['imgfilename'].strip()
             except Exception as e:
-                self.EXCEPTIONDEBUG('HOURLYDICT ','Exception %s' % str(e))
+                self.EXCEPTIONDEBUG('getIconFilename(HOURLYDICT) ','Exception %s' % str(e))
         elif self.mode == self.METEOGRAM:
             retVal = '/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/meteogram.png'
         elif self.mode == self.WEATHERDICT:
             try:
                 for cmd in self.dictWeatherRUNs:
-                    self.DEBUG('cmd= |%s|' % cmd)
+                    self.DEBUG('cmd= |%s|' % str(cmd))
                     if cmd.startswith("['"):
-                        self.DEBUG('running: |%s|' % cmd)
+                        self.DEBUG('running: |%s|' % str(cmd))
                         retVal = str(self.source.dictWeather(cmd))
                         self.DEBUG('received: |%s|' % retVal)
             except Exception as e:
-                self.EXCEPTIONDEBUG('Exception %s running cmd %s' % (str(e), cmd))
+                self.EXCEPTIONDEBUG('getIconFilename(WEATHERDICT) ' , 'Exception %s running cmd %s' % (str(e), cmd))
         self.DEBUG('\t Finally converter returns for index "%s" than icon is "%s"' % (self.index,retVal))
         return str(retVal)
             

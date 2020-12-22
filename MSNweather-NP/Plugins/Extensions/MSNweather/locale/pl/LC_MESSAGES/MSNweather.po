@@ -557,8 +557,8 @@ msgstr "Wyjątek:: \n%s"
 msgid "Save"
 msgstr "Zapisz"
 
-msgid "Airly API key:"
-msgstr "Klucz API Airly:"
+msgid "AAirly API key %s:"
+msgstr "Klucz API Airly %s:"
 
 msgid "Sensors priority:"
 msgstr "Priorytet sensorów:"
@@ -576,7 +576,7 @@ msgid "MsnTsAirly"
 msgstr "MSN > TS > Airly"
 
 msgid "Meteogram for www.foreca.net/<this part>"
-msgstr "Meteogram dla www.foreca.com/<ta część>"
+msgstr "Meteogram dla www.foreca.net/<ta część>"
 
 msgid "The air quality is good today!"
 msgstr "Jakość powietrza jest dzisiaj dobra!"
@@ -676,3 +676,21 @@ msgstr "Temperatura"
 
 msgid "WIND_SPEED"
 msgstr "Wiatr"
+
+msgid "--- OPTIONAL, NOT REQUIRED ---"
+msgstr "--- OPCJONALNE, NIE WYMAGANE ---"
+
+msgid "local"
+msgstr "lokalny"
+
+msgid "remote"
+msgstr "zdalny"
+
+msgid "Airly plugin detected - API key CAN be BLOCKED!!!"
+msgstr "Wykryto wtyczkę Airly. możliwa BLOKADA klucza API!!!"
+
+msgid "No airly installations within 20km distance, provide ID manually"
+msgstr "Nie wykryto czujnika airly w promieniu 20km, podaj ID ręcznie"
+
+msgid "Hourly"
+msgstr "Prognoza godzinowa"

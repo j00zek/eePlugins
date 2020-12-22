@@ -25,7 +25,7 @@ from . import _
 
 from Components.ActionMap import ActionMap
 from Components.ConfigList import ConfigList, ConfigListScreen
-from Components.config import ConfigSubsection, ConfigText, ConfigSelection, getConfigListEntry, config, configfile, ConfigEnableDisable
+from Components.config import ConfigSubsection, ConfigText, ConfigSelection, getConfigListEntry, config, configfile, ConfigEnableDisable, ConfigIP
 from Components.GUIComponent import GUIComponent
 from Components.MenuList import MenuList
 from Components.Sources.StaticText import StaticText
@@ -72,6 +72,11 @@ def initWeatherPluginEntryConfig(i=0):
         s.Fmeteo.value = open('/hdd/User_Configs/Fmeteo.%s' % i, 'r').readline().strip()
 
     config.plugins.MSNweatherNP.Entry.append(s)
+    
+    s.entryType = ConfigSelection(choices = [("main", _("local")), ("client", _("remote"))], default = "main")
+    s.mainEntryADDR = ConfigIP(default = [0,0,0,0])
+    s.mainEntryID = ConfigSelection(choices = [("0", "0"),("1", "1"),("2", "2"),("3", "3"),("4", "4"),("5", "6"),], default = "0")
+
     return s
 
 def initConfig():
@@ -163,16 +168,17 @@ class MSNWeatherEntriesListConfigScreen(Screen):
         self.session.openWithCallback(self.deleteConfirm, MessageBox, _("Really delete this WeatherPlugin Entry?"))
 
     def deleteConfirm(self, result):
-        if not result:
-            return
-        sel = self["entrylist"].l.getCurrentSelection()[0]
-        config.plugins.MSNweatherNP.entrycount.value -= 1
-        config.plugins.MSNweatherNP.entrycount.save()
-        config.plugins.MSNweatherNP.Entry.remove(sel)
-        config.plugins.MSNweatherNP.Entry.save()
-        config.plugins.MSNweatherNP.save()
-        configfile.save()
-        self.updateList()
+        if result:
+            os.system('rm -f /tmp/.MSNdata/*')
+            sel = self["entrylist"].l.getCurrentSelection()[0]
+            config.plugins.MSNweatherNP.entrycount.value -= 1
+            config.plugins.MSNweatherNP.entrycount.save()
+            config.plugins.MSNweatherNP.Entry.remove(sel)
+            config.plugins.MSNweatherNP.Entry.save()
+            config.plugins.MSNweatherNP.save()
+            configfile.save()
+            self.updateList()
+        return
 
 class WeatherEntryList(MenuList):
     def __init__(self, list, enableWrapAround = True):
@@ -285,30 +291,46 @@ class MSNWeatherEntryConfigScreen(ConfigListScreen, Screen):
             if self.current.thingSpeakChannelID.value == '' and os.path.exists('/hdd/User_Configs/thingSpeakChannelID.%s' % self.selIDX):
                 self.current.thingSpeakChannelID.value = open('/hdd/User_Configs/thingSpeakChannelID.%s' % self.selIDX, 'r').readline().strip()
 
-        cfglist = [
-            getConfigListEntry(_("City"), self.current.city),
-            getConfigListEntry(_("Location code"), self.current.weatherlocationcode),
-            getConfigListEntry(_("Location Full name"), self.current.weatherSearchFullName),
-            getConfigListEntry(_("System"), self.current.degreetype),
-            getConfigListEntry(_("Geo Latitude"), self.current.geolatitude),
-            getConfigListEntry(_("Geo Longitude"), self.current.geolongitude),
-            getConfigListEntry(_("thingSpeak meteo channel ID"), self.current.thingSpeakChannelID),
-            getConfigListEntry(_("Airly installation ID (OK)"), self.current.airlyID),
-            getConfigListEntry(_("Meteogram for www.foreca.net/<this part>"), self.current.Fcity),
-            getConfigListEntry(_("Location in www.foreca.com/<this part>"), self.current.Fmeteo),
-        ]
+        ConfigListScreen.__init__(self, [], session, on_change = self.changedEntry)
+        self.buildList()
 
-        ConfigListScreen.__init__(self, cfglist, session)
-
+    def buildList(self):
+        if self.current.entryType.value == "client":
+            cfglist = [ getConfigListEntry(_("Entry type:"), self.current.entryType),
+                        getConfigListEntry(_("Main plugin IP address:"), self.current.mainEntryADDR),
+                        getConfigListEntry(_("Main plugin entry ID:"), self.current.mainEntryID),
+            ]
+        else:
+            cfglist = [ getConfigListEntry(_("Entry type DON'T CHANGE:"), self.current.entryType),
+                        getConfigListEntry(_("City"), self.current.city),
+                        getConfigListEntry(_("Location code"), self.current.weatherlocationcode),
+                        getConfigListEntry(_("Location Full name"), self.current.weatherSearchFullName),
+                        getConfigListEntry(_("System"), self.current.degreetype),
+                        getConfigListEntry(_("Geo Latitude"), self.current.geolatitude),
+                        getConfigListEntry(_("Geo Longitude"), self.current.geolongitude),
+                        getConfigListEntry('\c00289496' + _("--- OPTIONAL, NOT REQUIRED ---"), config.plugins.MSNweatherNP.FakeEntry),
+                        getConfigListEntry(_("thingSpeak meteo channel ID"), self.current.thingSpeakChannelID),
+                        getConfigListEntry(_("Airly installation ID (OK)"), self.current.airlyID),
+                        getConfigListEntry(_("Meteogram for www.foreca.net/<this part>"), self.current.Fcity),
+                        getConfigListEntry(_("Location in www.foreca.com/<this part>"), self.current.Fmeteo),
+                    ]
+        self["config"].list = cfglist
+    
+    def changedEntry(self):
+        self.buildList()
+        
     def keyOK(self):
+        #open("/tmp/.MSNdata/keyOK.log", "w").write('%s\n' % 'keyOK')
         curIndex = self["config"].getCurrentIndex()
         currItemCfg = self["config"].list[curIndex][1]
         currItemNam = self["config"].list[curIndex][0]
         if currItemCfg == self.current.airlyID:
+            #open("/tmp/.MSNdata/keyOK.log", "a").write('%s\n' % 'currItemCfg == self.current.airlyID')
             try:
                 float(self.current.geolatitude.value)
                 float(self.current.geolongitude.value)
             except Exception:
+                #open("/tmp/.MSNdata/keyOK.log", "a").write('%s\n' % 'float exception')
                 from Screens.MessageBox import MessageBox
                 self.session.openWithCallback(self.doNothing, MessageBox, _("Set proper latitude and longitude!!!"), MessageBox.TYPE_INFO, timeout=10)
                 return
@@ -323,8 +345,15 @@ class MSNWeatherEntryConfigScreen(ConfigListScreen, Screen):
             InstList = self.Airlyinstallations(currItemCfg.value)
             if len(InstList) > 0:
                 from Screens.ChoiceBox import ChoiceBox
-                self.session.openWithCallback(self.AirlyinstallationIDret, ChoiceBox, title = _("10 closest Airly installations"), list = InstList)
-            return
+                if os.path.exists('/usr/lib/enigma2/python/Plugins/Extensions/Airly'):
+                    ChoiceBoxTitle = _("Airly plugin detected - API key CAN be BLOCKED!!!")
+                else:
+                    ChoiceBoxTitle = _("10 closest Airly installations")
+                self.session.openWithCallback(self.AirlyinstallationIDret, ChoiceBox, title = ChoiceBoxTitle, list = InstList)
+                return
+            else:
+                currItemNam = _('No airly installations within 20km distance, provide ID manually')
+                self.session.openWithCallback(self.keyOKret, VirtualKeyBoard, title= currItemNam, text = currItemCfg.value)
         else:
             self.session.openWithCallback(self.keyOKret, VirtualKeyBoard, title= currItemNam, text = currItemCfg.value)
             return
@@ -344,7 +373,7 @@ class MSNWeatherEntryConfigScreen(ConfigListScreen, Screen):
             opener.addheaders = [('Accept', 'application/json')]
             opener.addheaders = [('Accept-Language', 'en')]
             opener.addheaders = [('apikey', config.plugins.MSNweatherNP.airlyAPIKEY.value)]
-            request = urllib2.Request('https://airapi.airly.eu/v2/installations/nearest?lat=%s&lng=%s&maxDistanceKM=10&maxResults=10' % (self.current.geolatitude.value, self.current.geolongitude.value))
+            request = urllib2.Request('https://airapi.airly.eu/v2/installations/nearest?lat=%s&lng=%s&maxDistanceKM=20&maxResults=10' % (self.current.geolatitude.value, self.current.geolongitude.value))
             webContent = opener.open(request).read()
             webContent = urllib.unquote(webContent)
             #analiza przygotowane danych
@@ -389,8 +418,13 @@ class MSNWeatherEntryConfigScreen(ConfigListScreen, Screen):
     def keyOKret(self, retVal):
         if not retVal is None:
             curIndex = self["config"].getCurrentIndex()
-            currItemCfg = self["config"].list[curIndex][1]
-            currItemCfg.value = retVal
+            try:
+                currItem = self["config"].list[curIndex]
+                if len(currItem) > 1:
+                    currItemCfg = currItem[1]
+                    currItemCfg.value = retVal
+            except Exception:
+                pass
       
     def searchLocation(self):
         if self.current.city.value != "":
@@ -406,6 +440,7 @@ class MSNWeatherEntryConfigScreen(ConfigListScreen, Screen):
 
     def keySave(self):
         if self.current.city.value != "" and self.current.weatherlocationcode.value != "":
+            os.system('rm -f /tmp/.MSNdata/*')
             if self.newmode == 1:
                 config.plugins.MSNweatherNP.entrycount.value = config.plugins.MSNweatherNP.entrycount.value + 1
                 config.plugins.MSNweatherNP.entrycount.save()
@@ -431,15 +466,16 @@ class MSNWeatherEntryConfigScreen(ConfigListScreen, Screen):
             self.session.openWithCallback(self.deleteConfirm, MessageBox, _("Really delete this WeatherPlugin Entry?"))
 
     def deleteConfirm(self, result):
-        if not result:
-            return
-        config.plugins.MSNweatherNP.entrycount.value = config.plugins.MSNweatherNP.entrycount.value - 1
-        config.plugins.MSNweatherNP.entrycount.save()
-        config.plugins.MSNweatherNP.Entry.remove(self.current)
-        config.plugins.MSNweatherNP.Entry.save()
-        config.plugins.MSNweatherNP.save()
-        configfile.save()
-        self.close()
+        if result:
+            os.system('rm -f /tmp/.MSNdata/*')
+            config.plugins.MSNweatherNP.entrycount.value = config.plugins.MSNweatherNP.entrycount.value - 1
+            config.plugins.MSNweatherNP.entrycount.save()
+            config.plugins.MSNweatherNP.Entry.remove(self.current)
+            config.plugins.MSNweatherNP.Entry.save()
+            config.plugins.MSNweatherNP.save()
+            configfile.save()
+            self.close()
+        return
         
         
     def xmlCallback(self, xmlstring):
@@ -627,7 +663,7 @@ class MSNWeatherConfiguration(Screen, ConfigListScreen):
         ConfigList = []
         ConfigList.append(getConfigListEntry('\c00289496' + _("*** Basic settings ***"), config.plugins.MSNweatherNP.FakeEntry))
         ConfigList.append(getConfigListEntry(_("Data presented (if now defined in skin):"), config.plugins.MSNweatherNP.skinOrientation))
-        ConfigList.append(getConfigListEntry(_("Airly API key:"), config.plugins.MSNweatherNP.airlyAPIKEY))
+        ConfigList.append(getConfigListEntry(_("Airly API key %s:") % config.plugins.MSNweatherNP.airlyLimits.value, config.plugins.MSNweatherNP.airlyAPIKEY))
         ConfigList.append(getConfigListEntry(_("Sensors priority:"), config.plugins.MSNweatherNP.SensorsPriority))
         ConfigList.append(getConfigListEntry(_("Icons type:"), config.plugins.MSNweatherNP.IconsType))
         ConfigList.append(getConfigListEntry(_("Icons scaling engine:"), config.plugins.MSNweatherNP.ScalePicType))

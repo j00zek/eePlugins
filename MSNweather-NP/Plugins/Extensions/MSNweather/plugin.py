@@ -28,11 +28,10 @@ from Components.Label import Label
 from Components.Sources.List import List
 from Components.Sources.StaticText import StaticText
 from debug import printDEBUG, clearLogs
-from enigma import eTimer
+from enigma import eTimer, ePicLoad
 from getWeather import getWeather
 from Plugins.Plugin import PluginDescriptor
 #from datetime import datetime, timedelta
-#from enigma import eTimer
 #from random import randint
 from Screens.MessageBox import MessageBox
 from Screens.Screen import Screen
@@ -42,16 +41,25 @@ from Tools.LoadPixmap import LoadPixmap
 from version import Version
 import time, os
 
-DBG = True
+DBG = False
 
 config.plugins.MSNweatherNP = ConfigSubsection()
 config.plugins.MSNweatherNP.FakeEntry = NoSave(ConfigNothing())
 
-config.plugins.MSNweatherNP.skinOrientation = ConfigSelection(choices = [ ("skinMSNweatherNP-vertical.xml", _("Vertically")),
-                                                                           ("skin_MSNweatherNP-horizontal.xml", _("Horizontally")),
-                                                                         ],
-                                                                default = "skinMSNweatherNP-vertical.xml"
-                                                               )
+config.plugins.MSNweatherNP.airlyLimits = NoSave(ConfigText(default = "", fixed_size = False))
+
+choicesList = [ ("skinMSNweatherNP-vertical.xml", _("Vertically")),
+                ("skin_MSNweatherNP-horizontal.xml", _("Horizontally")),
+              ]
+                                                                         
+if os.path.exists('/usr/share/enigma2/BlackHarmony/allScreens/MSNweatherNP/'):
+    for mFile in os.listdir('/usr/share/enigma2/BlackHarmony/allScreens/MSNweatherNP/'):
+        if mFile.startswith('skin_MSNweatherNP-') and mFile.endswith('.xml'):
+            sFile = mFile[18:-4]
+            sFile = 'BlackHarmony ' + _(sFile)
+            choicesList.append(( os.path.join('/usr/share/enigma2/BlackHarmony/allScreens/MSNweatherNP/', mFile), sFile ))
+config.plugins.MSNweatherNP.skinOrientation = ConfigSelection(choices = choicesList, default = "skinMSNweatherNP-vertical.xml" )
+
 config.plugins.MSNweatherNP.SensorsPriority = ConfigSelection(choices = [ ("TsAirlyMsn", _("TsAirlyMsn")),
                                                                            ("AirlyTsMsn", _("AirlyTsMsn")),
                                                                            ("MsnAirlyTs", _("MsnAirlyTs")),
@@ -148,7 +156,13 @@ def Plugins(**kwargs):
 
 class MSNweatherNP(Screen):
     def __init__(self, session):
-        self.skin = open("/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/%s" % config.plugins.MSNweatherNP.skinOrientation.value,'r').read()
+        if config.plugins.MSNweatherNP.skinOrientation.value.startswith('/') and os.path.exists(config.plugins.MSNweatherNP.skinOrientation.value):
+            self.skin = open(config.plugins.MSNweatherNP.skinOrientation.value,'r').read()
+        elif os.path.exists("/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/skins/%s" % config.plugins.MSNweatherNP.skinOrientation.value):
+            self.skin = open("/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/skins/%s" % config.plugins.MSNweatherNP.skinOrientation.value,'r').read()
+        else:
+            self.skin = open("/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/skins/skinMSNweatherNP-vertical.xml",'r').read()
+            
         Screen.__init__(self, session)
         self.title = _("MSN weather NP @j00zek %s" % Version)
         self.setTitle(_("MSN weather NP @j00zek %s") % Version) 
@@ -181,14 +195,20 @@ class MSNweatherNP(Screen):
         self["observationpoint"] = StaticText()
         self["currentData_airlyInfo"] = StaticText()
         self["currentData_airlyAdvice"] = StaticText()
-        self["currentData_infoList"] = List()
-        self["dailyData_infoList"] = List()
-        self["hourlyData_infoList"] = List()
-        self["currentData_WeatherinfoList"] = List()
-        self["currentData_WeatherinfoList"].list = []
-        self["currentData_infoList"].list = []
-        self["dailyData_infoList"].list = []
-        self["hourlyData_infoList"].list = []
+
+        self["currentData_infoList"] = List([])
+        #self["currentData_infoList"].list = []
+
+        self["currentData_WeatherinfoList"] = List([])
+        #self["currentData_WeatherinfoList"].list = []
+
+        self["currentData_allInfoList"] = List([])
+
+        self["dailyData_infoList"] = List([])
+        #self["dailyData_infoList"].list = []
+
+        self["hourlyData_infoList"] = List([])
+        #self["hourlyData_infoList"].list = []
 
         self["key_red"] = Label(config.plugins.MSNweatherNP.AC1inf.value)
         self["key_green"] = Label(config.plugins.MSNweatherNP.AC2inf.value)
@@ -210,6 +230,8 @@ class MSNweatherNP(Screen):
         self.webSite = ""
         
         self.weatherData = None
+
+        self.picload = ePicLoad()
 
         self.onClose.append(self.__onClose)
         #self.onLayoutFinish.append(self.__onLayoutFinish)
@@ -257,18 +279,7 @@ class MSNweatherNP(Screen):
                 self.weatherData.cancel()
                 self.weatherData = None
             self.weatherData = getWeather()
-            self.weatherData.getWeatherData(self.weatherPluginEntry.degreetype.value,
-                                            self.weatherPluginEntry.weatherlocationcode.value,
-                                            self.weatherPluginEntry.city.value,
-                                            self.weatherPluginEntry.weatherSearchFullName.value,
-                                            self.weatherPluginEntry.thingSpeakChannelID.value,
-                                            self.weatherPluginEntry.Fcity.value,
-                                            self.weatherPluginEntry.Fmeteo.value,
-                                            self.weatherPluginEntry.airlyID.value,
-                                            self.weatherPluginEntry.geolatitude.value,
-                                            self.weatherPluginEntry.geolongitude.value,
-                                            self.getWeatherDataCallback,
-                                            None) #self.showIcon)
+            self.weatherData.getWeatherData(self.weatherPluginEntry, self.getWeatherDataCallback, None) #self.showIcon)
         else:
             self["statustext"].text = _("No locations defined...\nPress 'Menu' to do that.")
 
@@ -302,6 +313,7 @@ class MSNweatherNP(Screen):
         self["observationpoint"].text = ""
         self["currenticon"].hide()
         self.webSite = ""
+        self["currentData_allInfoList"].list = []
         self["currentData_infoList"].list = []
         self["dailyData_infoList"].list = []
         self["hourlyData_infoList"].list = []
@@ -417,6 +429,7 @@ class MSNweatherNP(Screen):
                 #populate currentData_infoList
                 tmpDict = item.dictWeather.get('currentData', {})
                 tmpList = []
+                tmpAllList = []
                 tmpListWeather = []
                 if len(tmpDict) > 0:
                     self["currentData_airlyInfo"].text = str(tmpDict.get('airlyIndex', {}).get('info', ""))
@@ -429,46 +442,51 @@ class MSNweatherNP(Screen):
                         valDict = tmpDict[key]
                         if isinstance(valDict,dict):
                             inList = valDict.get('inList', False)
-                            if key in ('dew_point_temp','feelslike','humidity','pressure','visibility','wind_speed'):
-                                tmpListWeather.append((str(valDict['name']),str(valDict['valInfo'])))
-                            elif inList:
-                                try:
-                                    tmpList.append((str(valDict['name']),str(valDict['valInfo'])))
-                                except Exception:
-                                    pass
+                            if inList:
+                                tmpAllList.append((str(valDict['name']),str(valDict['valInfo'])))
+                                if key in ('dew_point_temp','feelslike','humidity','pressure','visibility','wind_speed'):
+                                    tmpListWeather.append((str(valDict['name']),str(valDict['valInfo'])))
+                                else:
+                                    try:
+                                        tmpList.append((str(valDict['name']),str(valDict['valInfo'])))
+                                    except Exception:
+                                        pass
                     try: tmpList.sort(key=lambda t : tuple(str(t[0]).lower()))
                     except Exception: tmpList.sort()
                     try: tmpListWeather.sort(key=lambda t : tuple(str(t[0]).lower()))
                     except Exception: tmpListWeather.sort()
+                    try: tmpAllList.sort(key=lambda t : tuple(str(t[0]).lower()))
+                    except Exception: tmpAllList.sort()
                     
                 self["currentData_infoList"].list = tmpList
                 self["currentData_WeatherinfoList"].list = tmpListWeather
+                self["currentData_allInfoList"].list = tmpAllList
                 
-                #populate hourlyData_infoList
-                self["hourlyData_infoList"].list = []
-                tmpDict = item.dictWeather['hourlyData']
-                tmpList = []
-                if len(tmpDict) > 0:
-                    index = 0
-                    if DBG: printDEBUG('populate hourlyData_infoList')
-                    pngH = LoadPixmap(cached=True, path='/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/humidity_icon.png')
-                    pngT = LoadPixmap(cached=True, path='/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/temperature_icon.png')
-                    while index < len(tmpDict.keys()):
-                        try:
-                            record = tmpDict['Record=%s' % index]
-                            index += 1
-                        except Exception as e:
-                            break
-                        iconfilename = str(record['imgfilename'])
-                        if DBG: printDEBUG('record = %s\n' % str(record))
-                        if iconfilename.endswith('.png'):
-                            png = LoadPixmap(cached=True, path=iconfilename)
-                            tmpList.append(( png, '%s:00' % str(record['time']) ,
-                                                            str(record['temperature']), 
-                                                            str(record['rainprecip']),
-                                                            str(record['skytext']),
-                                                            pngT, pngH ))
-                self["hourlyData_infoList"].list = tmpList
+                if 1: #populate hourlyData_infoList
+                    self["hourlyData_infoList"].list = []
+                    tmpDict = item.dictWeather['hourlyData']
+                    tmpList = []
+                    if len(tmpDict) > 0:
+                        index = 0
+                        if DBG: printDEBUG('populate hourlyData_infoList')
+                        pngH = LoadPixmap(cached=True, path='/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/humidity_icon.png')
+                        pngT = LoadPixmap(cached=True, path='/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/temperature_icon.png')
+                        while index < len(tmpDict.keys()):
+                            try:
+                                record = tmpDict['Record=%s' % index]
+                                index += 1
+                            except Exception as e:
+                                break
+                            iconfilename = str(record['imgfilename'])
+                            if DBG: printDEBUG('record = %s\n' % str(record))
+                            if iconfilename.endswith('.png'):
+                                png = LoadPixmap(cached=True, path=iconfilename)
+                                tmpList.append(( png, '%s:00' % str(record['time']) ,
+                                                                str(record['temperature']), 
+                                                                str(record['rainprecip']),
+                                                                str(record['skytext']),
+                                                                pngT, pngH ))
+                    self["hourlyData_infoList"].list = tmpList
                 
                 #populate dailyData_infoList
                 self["dailyData_infoList"].list = []
@@ -478,17 +496,25 @@ class MSNweatherNP(Screen):
                 if len(tmpDict) > 0:
                     if DBG: printDEBUG('populate dailyData_infoList')
                     while index < len(tmpDict.keys()):
+                        png = None
+                        iconfilename = ''
                         try:
                             record = tmpDict['Record=%s' % index]
                             index += 1
                         except Exception as e:
                             if DBG: printDEBUG('record=%s exception: %s\n' % (index,str(e)))
                             break
-                        iconfilename = str(record['imgfilename'])
-                        if DBG: printDEBUG('record = %s\n' % str(record))
-                        if iconfilename.endswith('.png'):
-                            png = LoadPixmap(cached=True, path=iconfilename)
-                            tmpList.append(( png, '%s, %s' % (str(record['weekday']), str(record['monthday'])) ,
+                        if config.plugins.MSNweatherNP.IconsType.value == "serviceIcons":
+                            iconsList = (str(record['imgfilename']),str(record['iconfilename']))
+                        else:
+                            iconsList = (str(record['iconfilename']),str(record['imgfilename']))
+                        for tmpIcon in iconsList:
+                            if tmpIcon.endswith('.png') and os.path.exists(tmpIcon):
+                                iconfilename = tmpIcon
+                                png = LoadPixmap(cached=True, path=iconfilename)
+                                break
+                        #if DBG: printDEBUG('record = %s\n' % str(record))
+                        tmpList.append(( png, '%s, %s' % (str(record['weekday']), str(record['monthday'])) ,
                                                                 str(record['temp_high']), 
                                                                 str(record['temp_low']),
                                                                 str(record['rainprecip']),
