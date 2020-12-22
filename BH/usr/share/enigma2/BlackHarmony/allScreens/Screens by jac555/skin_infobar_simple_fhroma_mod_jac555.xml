@@ -1,7 +1,7 @@
 <skin>
 <screen name="InfoBar" position="0,52" size="1920,1080" title="InfoBar" flags="wfNoBorder" backgroundColor="transparent">
   <ePixmap position="0,760" zPosition="-2" size="1922,255" pixmap="BlackHarmony/bg_design/infobar4.png" />
-  <widget source="session.CurrentService" render="Label" position="85,775" size="1242,48" font="HD_Thin; 45" valign="top" noWrap="1" foregroundColor="#66CC99" backgroundColor="black" transparent="1" halign="left">
+  <widget source="session.CurrentService" render="Label" position="85,775" size="1173,48" font="HD_Thin; 45" valign="top" noWrap="1" foregroundColor="#66CC99" backgroundColor="black" transparent="1" halign="left">
     <convert type="j00zekModExtraTuner">ServiceNumberName</convert>
   </widget>
       <widget pixmap="BlackHarmony/gfx/progress_mario.png" position="323,902" render="Progress" size="1200,4" source="session.Event_Now" transparent="1" zPosition="3">
@@ -37,7 +37,7 @@
   <widget alphatest="blend" position="70,830" render="j00zekPicons" picontype="picon" size="220,132" source="session.CurrentService" transparent="1" zPosition="4">
     <convert type="ServiceName">Reference</convert>
   </widget>
-  <widget backgroundColor="black" font="HD_Thin; 26" halign="right" position="1332,793" render="Label" size="357,30" source="global.CurrentTime" transparent="1" valign="center" noWrap="1" foregroundColor="#66CC99">
+  <widget backgroundColor="black" font="HD_Thin; 26" halign="right" position="1257,790" render="Label" size="433,30" source="global.CurrentTime" transparent="1" valign="center" noWrap="1" foregroundColor="#66CC99">
     <convert type="ClockToText">Format:%A %d %B %Y </convert>
   </widget>
   <!-- POGODA -->

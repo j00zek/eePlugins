@@ -153,6 +153,7 @@ find -L /usr/share/enigma2/BlackHarmony/allScreens/Infobars -name *.xml -type l 
 find -L /usr/share/enigma2/BlackHarmony/allScreens/Secondinfobars -name *.xml -type l -exec  rm {} +
 find -L /usr/share/enigma2/BlackHarmony/allScreens/Volume -name *.xml -type l -exec  rm {} +
 find -L /usr/share/enigma2/BlackHarmony/allScreens/Messageboxes -name *.xml -type l -exec  rm {} +
+find -L /usr/share/enigma2/BlackHarmony/allScreens/MSNweatherNP -name *.xml -type l -exec  rm {} +
 #tworzenie linkow w strukturze drzewa
 echo "BH - #tworzenie linkow typu ChannelSelections..."
 find /usr/share/enigma2/BlackHarmony/allScreens -iname skin_channelselection_*.xml|while read f; do
@@ -190,11 +191,20 @@ find /usr/share/enigma2/BlackHarmony/allScreens -iname skin_volume_*.xml|while r
     ln -sf "$f" "$f2"
   fi
 done
-echo "BH - #tworzenie linkow typu Messageboxe..."
+echo "BH - #tworzenie linkow typu Messageboxes..."
 find /usr/share/enigma2/BlackHarmony/allScreens -iname skin_*Messagebox_*.xml|while read f; do
   #echo "$f"
   if [ `echo "$f"|grep -c '/Messageboxes/'` -eq 0 ]; then
     f2="`echo \"$f\"|sed 's;\(^.*/allScreens/\).*\(/skin_*\);\1Messageboxes\2;'`"
+    #echo "$f2"
+    ln -sf "$f" "$f2"
+  fi
+done
+echo "BH - #tworzenie linkow dla MSNweatherNP..."
+find /usr/share/enigma2/BlackHarmony/allScreens -iname skin_MSNweatherNP-*.xml|while read f; do
+  #echo "$f"
+  if [ `echo "$f"|grep -c '/MSNweatherNP/'` -eq 0 ]; then
+    f2="`echo \"$f\"|sed 's;\(^.*/allScreens/\).*\(/skin_*\);\1MSNweatherNP\2;'`"
     #echo "$f2"
     ln -sf "$f" "$f2"
   fi

@@ -11,8 +11,7 @@
   <widget source="global.CurrentTime" render="Label" position="104,29" size="303,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
     <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
   </widget>
-  <widget name="text" position="34,108" size="621,32" font="HD_Thin; 27" foregroundColor="light_yellow" backgroundColor="background" />
-  <widget name="list" position="20,145" size="670,760" itemHeight="40" font="HD_Thin; 36" backgroundColor="background" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_850_40.png" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" transparent="0" />
+  <widget name="list" position="20,115" size="670,795" itemHeight="40" font="HD_Thin; 35" backgroundColor="background" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_850_40.png" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" transparent="0" />
   <ePixmap position="24,943" size="60,30" pixmap="BlackHarmony/buttons/key_ok.png" alphatest="blend" />
   <ePixmap position="97,942" size="60,30" pixmap="BlackHarmony/buttons/key_exit.png" alphatest="blend" />
 </screen>

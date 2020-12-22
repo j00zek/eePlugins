@@ -9,7 +9,7 @@
     </widget>
 	<widget source="Title" render="Label" position="980,80" zPosition="2" size="840,40" font="Roboto_HD; 28" halign="right" backgroundColor="dark_grey" transparent="1" />
 	
-	<widget name="filelist" valign="center" itemHeight="50" font0="Roboto_HD; 29" font1="Roboto_HD; 27" DimText0="70,2,700,35" DimText1="70,41,700,30" DimPIC="5,15,54,54" position="118,182" size="932,756" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_1095_50.png" backgroundColor="black" transparent="1" />
+	<widget name="filelist" valign="center" itemHeight="50" font0="Roboto_HD; 32" font1="Roboto_HD; 30" DimText0="70,2,700,35" DimText1="70,41,700,30" DimPIC="5,15,54,54" position="118,182" size="932,756" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_1095_50.png" backgroundColor="black" transparent="1" />
     
 	<widget name="PreviewPicture" position="1105,182" size="700,394" alphatest="blend" />
     <widget source="PreviewInfo" render="Label" position="1105,594" size="700,342" zPosition="5" font="Roboto_HD; 27" halign="left" foregroundColor="lemon" backgroundColor="dark_grey" transparent="1" />
@@ -34,7 +34,7 @@
     </widget>
 	<widget source="Title" render="Label" position="980,80" zPosition="2" size="840,40" font="Roboto_HD; 28" halign="right" backgroundColor="dark_grey" transparent="1" />
 	
-	<widget name="config" valign="center" itemHeight="50" position="118,182" size="932,756" font0="Roboto_HD; 27" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_1095_50.png" backgroundColor="black" transparent="1" />
+	<widget name="config" valign="center" itemHeight="50" position="118,182" size="932,756" font="Roboto_HD; 25" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_1095_50.png" backgroundColor="black" transparent="1" />
     <widget name="Picture" position="1105,182" size="700,394" alphatest="on" />
 	
 	<widget source="PreviewInfo" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=top,steptime=90,repeat=2,startdelay=6000,wrap" position="1105,594" size="700,342" zPosition="5" font="Roboto_HD; 28" foregroundColor="white" backgroundColor="dark_grey" transparent="1" />

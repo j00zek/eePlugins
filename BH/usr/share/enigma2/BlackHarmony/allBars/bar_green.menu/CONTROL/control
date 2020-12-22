@@ -1,0 +1,10 @@
+Package: blackharmonyfhd-addon-bar.gray.menu
+Priority: optional
+Section: utils
+Depends: enigma2---j00zeks-components enigma2-plugin-skins--j00zeks-blackharmonyfhd
+Description: blackharmonyfhd addon
+Maintainer: j00zek
+Source: http://github.com/j00zek/eePlugins
+Version: 20.03.02.1957
+Architecture: all
+DestinationPath: /usr/share/enigma2/BlackHarmony/allBars/bar_gray.menu

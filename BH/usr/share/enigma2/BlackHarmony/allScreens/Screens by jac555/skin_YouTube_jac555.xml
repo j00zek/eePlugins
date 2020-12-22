@@ -7,7 +7,7 @@
   <widget source="global.CurrentTime" render="Label" position="129,50" size="460,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
     <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
   </widget>
-  <eLabel text="YouTube" position="1030,50" size="420,42" font="Roboto_HD; 32" halign="right" backgroundColor="dark_grey" transparent="1" />
+  <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/IPTVPlayer/icons/logos/youtubelogo.png" position="1212,45" size="240,80" alphatest="blend" />
   
   <widget source="list" render="Listbox" valign="center" font="Roboto_HD; 29" position="87,173" size="1340,729" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_1390_100.png" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" transparent="1">
   <convert type="TemplatedMultiContent">
@@ -20,15 +20,13 @@
 						"fonts": [gFont("Roboto_HD",29), gFont("Roboto_HD",24)],
 						"itemHeight": 100}
 					</convert>
-	</widget>
-	<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="80,955" size="35,27" alphatest="blend" />
-	<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="360,955" size="35,27" alphatest="blend" />
-    <widget source="session.CurrentService" render="j00zekLabel" position="130,955" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" >
-      <convert type="j00zekTranslator">Exit</convert>
-    </widget>
-	<eLabel text="OK" position="410,955" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
-	<widget name="thumbnail" position="0,0" size="137,100" />
+</widget>
+  <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="80,955" size="35,27" alphatest="blend" />
+  <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="360,955" size="35,27" alphatest="blend" />
+  <eLabel text="Exit" position="130,955" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+  <eLabel text="OK" position="410,955" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+  <widget name="thumbnail" position="0,0" size="137,100" />
   
-	<ePixmap pixmap="BlackHarmony/buttons/menu.png" position="632,955" size="60,30" alphatest="blend" />
+  <ePixmap pixmap="BlackHarmony/buttons/menu.png" position="632,955" size="60,30" alphatest="blend" />
 </screen>
 </skin>
