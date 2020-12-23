@@ -2,7 +2,7 @@
 #
 # WeatherPlugin E2
 #
-# Coded by Dr.Best (c) 2012-2013
+# Coded by Dr.Best (c) 2012-2013, mod j00zek 2020-2021
 # Support: www.dreambox-tools.info
 # E-Mail: dr.best@dreambox-tools.info
 #
@@ -293,7 +293,7 @@ class MSNWeatherNP(Converter, object):
                     if iconFileName.endswith('.png') and path.exists(iconFileName):
                         return str(iconFileName)
                 #service icons or not found
-                iconFileName = recordDict['imgfilename'].strip()
+                return str(recordDict['imgfilename'].strip())
             except Exception as e:
                 self.EXCEPTIONDEBUG('getIconFilename(DAILYDICT) ','Exception %s' % str(e))
         elif self.mode == self.HOURLYDICT:
@@ -310,7 +310,7 @@ class MSNWeatherNP(Converter, object):
                     if iconFileName.endswith('.png') and path.exists(iconFileName):
                         return str(iconFileName)
                 #service icons or not found
-                iconFileName = recordDict['imgfilename'].strip()
+                return str(recordDict['imgfilename'].strip())
             except Exception as e:
                 self.EXCEPTIONDEBUG('getIconFilename(HOURLYDICT) ','Exception %s' % str(e))
         elif self.mode == self.METEOGRAM:
