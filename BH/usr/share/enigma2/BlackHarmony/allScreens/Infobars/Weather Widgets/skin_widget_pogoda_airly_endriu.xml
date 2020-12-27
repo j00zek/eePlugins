@@ -30,8 +30,11 @@
       <convert type="j00zekMSNWeather">RUN|['currentData']['pm1']['name']|-|['currentData']['pm1']['valInfo']</convert>
     </widget>
 	
-	<widget position="20,115" size="900,70" source="session.j00zekMSNWeather" render="Label" font="Roboto_HD; 22" backgroundColor="black" halign="center" noWrap="1" transparent="1" zPosition="2">
-      <convert type="j00zekMSNWeather">RUN|['currentData']['airlyIndex']['info']|,  |0x00e6ffe6|['currentData']['airlyIndex']['advice']</convert>
+	<widget position="35,115" size="155,70" source="session.j00zekMSNWeather" render="Label" font="Roboto_HD; 22" backgroundColor="black" halign="left" noWrap="1" transparent="1" zPosition="2">
+      <convert type="j00zekMSNWeather">RUN|['currentData']['airlyIndex']['info']</convert>
+	</widget>
+	<widget position="195,115" size="722,70" source="session.j00zekMSNWeather" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=90,repeat=99,startdelay=2000" font="Roboto_HD; 22" backgroundColor="black" halign="right" noWrap="1" transparent="1" zPosition="2">
+      <convert type="j00zekMSNWeather">RUN|['currentData']['airlyIndex']['advice']</convert>
 	</widget>
 	
 	<!--pogoda dalej-->

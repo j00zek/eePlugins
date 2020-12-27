@@ -16,11 +16,11 @@
 		<convert type="j00zekTranslator">MSN weather</convert>
     </widget>
     
-	<!--airly info-->
+	<!--lokalizacja, airly info-->
 	
-	<widget source="caption" render="Label" position="120,120" size="420,35" font="HD_Thin; 30" halign="left" valign="center" transparent="1" backgroundColor="black" foregroundColor="green"/>
+	<widget source="caption" render="Label" position="90,120" size="400,35" font="HD_Thin; 30" halign="left" valign="center" transparent="1" backgroundColor="black" foregroundColor="#000090e6"/>
 	<widget source="currentData_airlyInfo"   render="Label" position="100,120" size="680,35" font="HD_Thin; 30" halign="right" transparent="1" backgroundColor="black"/>
-	<widget source="currentData_airlyAdvice" render="Label" position="800,120" size="1000,35" font="HD_Thin; 30" transparent="1" backgroundColor="black"/>
+	<widget source="currentData_airlyAdvice" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=90,repeat=99,startdelay=2000" position="800,120" size="1000,35" font="HD_Thin; 30" transparent="1" backgroundColor="black"/>
 
 <!--aktualna pogoda-->
     
@@ -99,16 +99,18 @@
 
 <!-- dolna belka -->
     
-	<ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="94,980" size="60,30" alphatest="blend"/>
-	<ePixmap pixmap="BlackHarmony/buttons/left.png" position="202,980" size="60,30" alphatest="blend"/>
-    <eLabel text="Lokalizacja" position="272,980" size="180,35" font="Roboto_HD;24" halign="left"  transparent="1"/>
-	<ePixmap pixmap="BlackHarmony/buttons/right.png" position="407,980" size="60,30" alphatest="blend"/>
-    <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="550,980" size="35,27" alphatest="blend"/>
-    <widget name="key_red" position="590,980" size="350,35" font="Roboto_HD; 24" backgroundColor="black" transparent="1"/>
-	<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="880,980" size="35,27" alphatest="blend"/>
-    <widget name="key_green" position="920,980" size="350,35" font="Roboto_HD; 24" backgroundColor="black" transparent="1"/>
-    <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="1210,980" size="35,27" alphatest="blend"/>
-    <widget name="key_yellow" position="1250,980" size="350,35" font="Roboto_HD; 24" backgroundColor="black" transparent="1"/>
-    <ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="1540,980" size="35,27" alphatest="blend"/>
-    <widget name="key_blue" position="1580,980" size="350,35" font="Roboto_HD; 24" backgroundColor="black" transparent="1"/>
+	<ePixmap pixmap="BlackHarmony/buttons/key_left.png" position="80,980" size="35,27" alphatest="blend"/>
+    <eLabel text="Location" position="120,980" size="130,35" font="Roboto_HD;24" halign="left" backgroundColor="black" transparent="1"/>
+	<ePixmap pixmap="BlackHarmony/buttons/key_right.png" position="250,980" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="295,980" size="60,30" alphatest="blend"/>
+	<ePixmap pixmap="BlackHarmony/buttons/key_ok.png" position="365,980" size="60,30" alphatest="blend"/>
+	<eLabel text="View details" position="430,963" size="200,65" font="Roboto_HD;24" halign="left" valign="center" transparent="1" backgroundColor="black"/>
+	<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="650,980" size="35,27" alphatest="blend"/>
+	<widget name="key_red" position="690,963" size="289,65" font="Roboto_HD; 24" backgroundColor="black" transparent="1" halign="left" valign="center"/>
+	<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="980,980" size="35,27" alphatest="blend"/>
+    <widget name="key_green" position="1020,963" size="289,65" font="Roboto_HD; 24" backgroundColor="black" transparent="1" halign="left" valign="center"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="1310,980" size="35,27" alphatest="blend"/>
+    <widget name="key_yellow" position="1350,963" size="289,65" font="Roboto_HD; 24" backgroundColor="black" transparent="1" halign="left" valign="center"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="1640,980" size="35,27" alphatest="blend"/>
+    <widget name="key_blue" position="1680,963" size="150,65" font="Roboto_HD; 24" backgroundColor="black" transparent="1" halign="left" valign="center"/>
 </screen>
