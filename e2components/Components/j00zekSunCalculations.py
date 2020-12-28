@@ -14,15 +14,69 @@ import time
 class Sun:
     def getSunriseTime( self, longitude, latitude ): return self.calcSunTime( longitude, latitude, True )
     def getSunsetTime( self, longitude, latitude ): return self.calcSunTime( longitude, latitude, False )
-    def calcSunTime( self, longitude, latitude, isRiseTime, zenith = 90.8 ):
+    def getDayLength( self, longitude, latitude, year = None, month = None, day = None ):
+        daySunriseDec = self.calcSunTime( longitude, latitude, True, zenith = 90.8, year = None, month = None, day = None )['UTCtimeDec']
+        daySunsetDec = self.calcSunTime( longitude, latitude, False, zenith = 90.8, year = None, month = None, day = None )['UTCtimeDec']
+        DayLengthDec = daySunsetDec - daySunriseDec
+        dayLengthHour = int(DayLengthDec)
+        dayLengthMinute = int((DayLengthDec - dayLengthHour)*60.0)
+        if dayLengthMinute >=10:
+            dayLength = "%s:%s" % (dayLengthHour,dayLengthMinute)
+        else:
+            dayLength = "%s:0%s" % (dayLengthHour,dayLengthMinute)
+        return {'DayLengthDec': DayLengthDec,
+                'dayLength': dayLength,
+                }
+    def getShortestDayLength( self, longitude, latitude, year = None ):
+        if year is None:
+            year = datetime.datetime.now().year
+        DayLengthDec = 99
+        dayLength = ''
+        for day in (21, 22):
+            daySunriseDec = self.calcSunTime( longitude, latitude, True, zenith = 90.8, year = year, month = 12, day = day )['UTCtimeDec']
+            daySunsetDec = self.calcSunTime( longitude, latitude, False, zenith = 90.8, year = year, month = 12, day = day )['UTCtimeDec']
+            if DayLengthDec > daySunsetDec - daySunriseDec:
+                DayLengthDec = daySunsetDec - daySunriseDec
+                dayLengthHour = int(DayLengthDec)
+                dayLengthMinute = int((DayLengthDec - dayLengthHour)*60.0)
+                if dayLengthMinute >=10:
+                    dayLength = "%s:%s" % (dayLengthHour,dayLengthMinute)
+                else:
+                    dayLength = "%s:0%s" % (dayLengthHour,dayLengthMinute)
+                
+        return {'ShortestDayLengthDec': DayLengthDec,
+                'ShortestdayLength': dayLength,
+                }
+    def getLongestDayLength( self, longitude, latitude, year = None ):
+        if year is None:
+            year = datetime.datetime.now().year
+        DayLengthDec = 99
+        dayLength = ''
+        for day in (20, 21):
+            daySunriseDec = self.calcSunTime( longitude, latitude, True, zenith = 90.8, year = year, month = 6, day = day )['UTCtimeDec']
+            daySunsetDec = self.calcSunTime( longitude, latitude, False, zenith = 90.8, year = year, month = 6, day = day )['UTCtimeDec']
+            if DayLengthDec > daySunsetDec - daySunriseDec:
+                DayLengthDec = daySunsetDec - daySunriseDec
+                dayLengthHour = int(DayLengthDec)
+                dayLengthMinute = int((DayLengthDec - dayLengthHour)*60.0)
+                if dayLengthMinute >=10:
+                    dayLength = "%s:%s" % (dayLengthHour,dayLengthMinute)
+                else:
+                    dayLength = "%s:0%s" % (dayLengthHour,dayLengthMinute)
+                
+        return {'LongestDayLengthDec': DayLengthDec,
+                'LongestdayLength': dayLength,
+                }
+    def calcSunTime( self, longitude, latitude, isRiseTime, zenith = 90.8, year = None, month = None, day = None ):
         # isRiseTime == False, returns sunsetTime
         longitude = float(longitude)
         latitude = float(latitude)
 
-        now = datetime.datetime.now()
-        day = now.day
-        month = now.month
-        year = now.year
+        if year is None or month is None or day is None:
+            now = datetime.datetime.now()
+            day = now.day
+            month = now.month
+            year = now.year
 
         TO_RAD = math.pi/180
 
