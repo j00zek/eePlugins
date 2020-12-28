@@ -14,6 +14,7 @@
 		<convert type="j00zekAlternateTitle">Detailed forecast</convert>
     </widget>
 <!-- TOP LEFT-->
+	<widget source="day_date" render="Label" position="169,180" size="276,30" font="HD_Thin; 22" halign="center" valign="center" transparent="1" backgroundColor="black" noWrap="1" />
     <widget name="day_icon" position="243,212" size="128,128" zPosition="5" alphatest="blend"/>
 	<widget source="day_skytext" render="Label" position="179,340" size="256,60" font="HD_Thin; 26" halign="center" valign="center" transparent="1" backgroundColor="black"/>
 	<widget source="day_infoList" render="Listbox" position="179,410" size="256,240" scrollbarMode="showNever" transparent="1" backgroundColor="black">

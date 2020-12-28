@@ -4,7 +4,7 @@ from Components.j00zekModHex2strColor import Hex2strColor as h2c, clr
 from Components.j00zekAccellPixmap import j00zekAccellPixmap
 
 from Components.ActionMap import ActionMap
-from datetime import datetime
+from datetime import datetime, timedelta
 from enigma import getDesktop, ePoint, eSize, eTimer, ePicLoad
 from Components.config import config
 from Components.Label import Label
@@ -47,6 +47,7 @@ class MSNweatherDailyDetails(Screen):
         #TOP LEFT
         self["day_icon"] = j00zekAccellPixmap()
         self["day_skytext"] = StaticText()
+        self["day_date"] = StaticText()
         self["day_infoList"] = List([])
         
         #<!-- TOP MIDDLE-->
@@ -62,6 +63,14 @@ class MSNweatherDailyDetails(Screen):
         self["h4_infoList"] = List([])
         self["h5_infoList"] = List([])
         
+        self.WeekDays = {'Pn': 'Poniedziałek',
+                         'Wt': 'Wtorek',
+                         'Śr': 'Środa',
+                         'Cz': 'Czwartek',
+                         'Pt': 'Piątek',
+                         'So': 'Sobota',
+                         'N':  'Niedziela',
+                        }
         #self[""] = List([])
         #self[""] = StaticText()
         #self[""] = j00zekAccellPixmap()
@@ -104,14 +113,14 @@ class MSNweatherDailyDetails(Screen):
     def NextDay(self):
         self.dayIDX += 1
         if self.dayIDX >= self.Days:
-            self.dayIDX = 0
+            self.dayIDX = self.Days - 1
         self.hourIDX = 0
         self.updateInfo()
         
     def PreviousDay(self):
         self.dayIDX -= 1
         if self.dayIDX < 0:
-            self.dayIDX = self.Days - 1
+            self.dayIDX = 0
         self.hourIDX = 0
         self.updateInfo()
 
@@ -151,7 +160,7 @@ class MSNweatherDailyDetails(Screen):
             return None
         elif iconName == 'N': 
             retPNG = '/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/w000_polnoc.png'
-        elif iconName == 'NE': 
+        elif iconName in ('NE', 'ENE'): 
             retPNG = '/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/w045_polnocny_wschod.png'
         elif iconName == 'E': 
             retPNG = '/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/w090_wschod.png'
@@ -159,11 +168,11 @@ class MSNweatherDailyDetails(Screen):
             retPNG = '/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/w135_poludniowy_wschod.png'
         elif iconName == 'S': 
             retPNG = '/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/w180_poludnie.png'
-        elif iconName == 'SW': 
+        elif iconName in ('SW', 'WSW'): 
             retPNG = '/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/w225_poludniowy_zachod.png'
         elif iconName == 'W': 
             retPNG = '/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/w270_zachod.png'
-        elif iconName == 'NW': 
+        elif iconName in ('NW', 'WNW'): 
             retPNG = '/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/w315_polnocny_zachod.png'
         else:
             return None
@@ -181,6 +190,10 @@ class MSNweatherDailyDetails(Screen):
             dictdetails = dayDetails['dictdetalis']
             #self.DEBUG('loadIcon' , 'retPNG: %s ' % str(dictdetails))
             #top left
+            nowDate = datetime.now()
+            dayDate =  nowDate + timedelta(days=self.dayIDX)
+            dayName =  str(dayDetails.get('day','?'))
+            self["day_date"].text = '%s, %s' % ( self.WeekDays.get(dayName, dayName), datetime.strftime(dayDate, "%d.%m.%Y") )
             self["day_icon"].updateIcon(self.loadIcon('dailyIcon' , dayDetails))
             self["day_skytext"].text = str(dictdetails.get('skytext','?'))
             
