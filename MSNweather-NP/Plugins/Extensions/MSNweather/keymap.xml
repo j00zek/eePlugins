@@ -49,4 +49,19 @@
     <key id="KEY_LEFT" mapto="keyLeft" flags="m" />
     <key id="KEY_RIGHT" mapto="keyRight" flags="m" />
   </map>
+  <map context="MSNweatherDailyDetails">
+    <key id="KEY_ESC"   mapto="keyCancel" flags="m" />
+    <key id="KEY_EXIT"  mapto="keyCancel" flags="m" />
+    <key id="KEY_HOME"  mapto="keyCancel" flags="m" />
+    <key id="KEY_STOP"  mapto="keyCancel" flags="m" />
+    <!--key id="KEY_OK"   mapto="keyOk" flags="m" /-->
+    <key id="KEY_RED"   mapto="keyCancel" flags="m" />
+    <!--key id="KEY_GREEN" mapto="keyGreen" flags="m" />
+    <key id="KEY_YELLOW" mapto="keyYellow" flags="m" />
+    <key id="KEY_BLUE" mapto="keyBlue" flags="m" /-->
+    <key id="KEY_UP"    mapto="keyNextDay" flags="m" />
+    <key id="KEY_DOWN"  mapto="keyPreviousDay" flags="m" /> 
+    <key id="KEY_LEFT"  mapto="keyHourLeft" flags="m" />
+    <key id="KEY_RIGHT" mapto="keyHourRight" flags="m" />
+  </map>
 </keymap>

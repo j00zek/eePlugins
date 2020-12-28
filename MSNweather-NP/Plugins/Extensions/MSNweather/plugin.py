@@ -48,7 +48,7 @@ config.plugins.MSNweatherNP.FakeEntry = NoSave(ConfigNothing())
 
 config.plugins.MSNweatherNP.airlyLimits = NoSave(ConfigText(default = "", fixed_size = False))
 
-choicesList = [ ("skinMSNweatherNP-vertical.xml", _("Vertically")),
+choicesList = [ ("skin_MSNweatherNP-vertical.xml", _("Vertically")),
                 ("skin_MSNweatherNP-horizontal.xml", _("Horizontally")),
               ]
                                                                          
@@ -58,7 +58,7 @@ if os.path.exists('/usr/share/enigma2/BlackHarmony/allScreens/MSNweatherNP/'):
             sFile = mFile[18:-4]
             sFile = 'BlackHarmony ' + _(sFile)
             choicesList.append(( os.path.join('/usr/share/enigma2/BlackHarmony/allScreens/MSNweatherNP/', mFile), sFile ))
-config.plugins.MSNweatherNP.skinOrientation = ConfigSelection(choices = choicesList, default = "skinMSNweatherNP-vertical.xml" )
+config.plugins.MSNweatherNP.skinOrientation = ConfigSelection(choices = choicesList, default = "skin_MSNweatherNP-vertical.xml" )
 
 config.plugins.MSNweatherNP.SensorsPriority = ConfigSelection(choices = [ ("TsAirlyMsn", _("TsAirlyMsn")),
                                                                            ("AirlyTsMsn", _("AirlyTsMsn")),
@@ -161,7 +161,7 @@ class MSNweatherNP(Screen):
         elif os.path.exists("/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/skins/%s" % config.plugins.MSNweatherNP.skinOrientation.value):
             self.skin = open("/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/skins/%s" % config.plugins.MSNweatherNP.skinOrientation.value,'r').read()
         else:
-            self.skin = open("/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/skins/skinMSNweatherNP-vertical.xml",'r').read()
+            self.skin = open("/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/skins/skin_MSNweatherNP-vertical.xml",'r').read()
             
         Screen.__init__(self, session)
         self.title = _("MSN weather NP @j00zek %s" % Version)
@@ -183,6 +183,7 @@ class MSNweatherNP(Screen):
             "hourly_down": self.hourly_down,
             "daily_up": self.daily_up,
             "daily_down": self.daily_down,
+            "keyOk": self.openDailyDetails,
         }, -1)
 
         self["statustext"] = StaticText()
@@ -192,6 +193,7 @@ class MSNweatherNP(Screen):
         self["currentData_temperature"] = StaticText()
         self["currentData_skytext"] = StaticText()
         self["currentData_observationtime"] = StaticText()
+        self["currentData_AllObservationTimes"] = StaticText()
         self["observationpoint"] = StaticText()
         self["currentData_airlyInfo"] = StaticText()
         self["currentData_airlyAdvice"] = StaticText()
@@ -310,6 +312,7 @@ class MSNweatherNP(Screen):
         self["currentData_temperature"].text = ""
         self["currentData_skytext"].text = ""
         self["currentData_observationtime"].text = ""
+        self["currentData_AllObservationTimes"].text = ""
         self["observationpoint"].text = ""
         self["currenticon"].hide()
         self.webSite = ""
@@ -399,7 +402,14 @@ class MSNweatherNP(Screen):
         elif config.plugins.MSNweatherNP.AC2.value == 'samsung':
             from aircon_Controller_samsung import SamsungController
             self.session.openWithCallback(self.doNothing, SamsungController, config.plugins.MSNweatherNP.AC2_IP.value, config.plugins.MSNweatherNP.AC2_PORT.value, config.plugins.MSNweatherNP.AC2inf.value)
-    
+
+    def openDailyDetails(self):
+        if self.weatherData is not None:
+            if self.weatherData.weatherItems.get('-1', None) is not None:
+                import dailyDetails
+                reload(dailyDetails)             
+                self.session.open(dailyDetails.MSNweatherDailyDetails, self.weatherData.weatherItems.get('-1', None))
+            
     def getWeatherDataCallback(self, result, errortext):
         self["statustext"].text = ""
         if result == getWeather.ERROR:
@@ -426,12 +436,22 @@ class MSNweatherNP(Screen):
                 
                 #self["currentData_weathericon"] = item.iconFilename
                 
-                #populate currentData_infoList
                 tmpDict = item.dictWeather.get('currentData', {})
+                
+                #populate currentData_infoList
                 tmpList = []
                 tmpAllList = []
                 tmpListWeather = []
                 if len(tmpDict) > 0:
+                    #info o aktualuzaci
+                    tmpVal = str(tmpDict.get('observationtime', {}).get('name', ""))
+                    tmpVal += ' ' + str(tmpDict.get('observationtime', {}).get('time', ""))
+                    if str(tmpDict.get('tsobservationtime', {}).get('time', "")) != '':
+                        tmpVal += ', TS %s' % str(tmpDict.get('tsobservationtime', {}).get('time', ""))
+                    if str(tmpDict.get('airlyobservationtime', {}).get('time', "")) != '':
+                        tmpVal += ', Airly %s' % str(tmpDict.get('airlyobservationtime', {}).get('time', ""))
+                    self["currentData_AllObservationTimes"].text = tmpVal
+                    
                     self["currentData_airlyInfo"].text = str(tmpDict.get('airlyIndex', {}).get('info', ""))
                     alert = str(tmpDict.get('alert', {}).get('valInfo', ''))
                     if alert == '':
