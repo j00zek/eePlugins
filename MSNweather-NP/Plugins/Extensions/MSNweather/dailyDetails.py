@@ -2,6 +2,7 @@
 from . import _
 from Components.j00zekModHex2strColor import Hex2strColor as h2c, clr
 from Components.j00zekAccellPixmap import j00zekAccellPixmap
+from Components.j00zekSunCalculations import Sun
 
 from Components.ActionMap import ActionMap
 from datetime import datetime, timedelta
@@ -208,10 +209,22 @@ class MSNweatherDailyDetails(Screen):
             #top middle
             self.DEBUG('updateInfo ' ,'top middle...')
             self["Day_Forecast"].text = str(dayDetails.get('forecast',''))
-            sunrise = str(dictdetails['sunrise'])
-            sunriseMins = int(sunrise[:2]) * 60 + int(sunrise[-2:])
-            sunset = str(dictdetails['sunset'])
-            sunsetMins = int(sunset[:2]) * 60 + int(sunset[-2:])
+            #sun calculations
+            longitude = self.item.dictWeather['currentData']['geo']['longitude']
+            latitude = self.item.dictWeather['currentData']['geo']['latitude']
+            sun = Sun()
+            dayLengthDict = sun.getDayLength(longitude, latitude, year = dayDate.year, month = dayDate.month, day = dayDate.day ) 
+            #print dayLengthDict
+            DayDiffTimesDict = sun.getDayDiffTimes(longitude, latitude, year = dayDate.year, month = dayDate.month, day = dayDate.day )
+            #print DayDiffTimesDict
+            if self.dayIDX == 0:
+                sunrise = str(self.item.dictWeather['currentData']['sun']['sunrise']['TZtime'])
+                sunset = str(self.item.dictWeather['currentData']['sun']['sunset']['TZtime'])
+            else:
+                sunrise = str(dictdetails['sunrise'])
+                sunset = str(dictdetails['sunset'])
+            sunriseMins = int(sunrise.split(':')[0]) * 60 + int(sunrise.split(':')[1])
+            sunsetMins = int(sunset.split(':')[0]) * 60 + int(sunset.split(':')[1])
             dayLenghtMins = sunsetMins - sunriseMins
             self["details_List"].list = [(
                                         'Średnia temperatura maksymalna',   clr['R'] + str(dictdetails['avgHi']),
@@ -221,11 +234,14 @@ class MSNweatherDailyDetails(Screen):
                                         'Najniższa zanotowana',             "%s%s %s(%s)" % (clr['B'], str(dictdetails['recLo']), clr['Gray'], str(dictdetails['recLoYr']) ),
                                         
                                         'Średnie opady deszczu',            str(dictdetails['avgRain']),
-                                        'Najwyższe zanotowane',             "%s (%s)" % (str(dictdetails['recRain']), str(dictdetails['recRainYr']) ),
+                                        'Najwyższe zanotowane',             "%s %s(%s)" % (str(dictdetails['recRain']), clr['Gray'], str(dictdetails['recRainYr']) ),
 
                                         'Wschód słońca',                    sunrise,
                                         'Zachód słońca',                    sunset,
-                                        'Dzień będzie trwał %s godzin i %s minut' % (int(dayLenghtMins/60), (dayLenghtMins - int(dayLenghtMins/60)*60)),
+                                        'Dzień będzie trwał %s, będzie dłuższy od najkrótszego o %s i krótszy od najdłuższego o %s' % ( dayLengthDict['dayLength'],
+                                                                                                                                        DayDiffTimesDict['diffToShortest'],
+                                                                                                                                        DayDiffTimesDict['diffToLongest']
+                                                                                                                                       ),
                                         
                                         'Wschód księżyca',                  str(dictdetails['moonrise']),
                                         'Zachód księżyca',                  str(dictdetails['moonset']),

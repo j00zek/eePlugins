@@ -43,39 +43,39 @@
 	</widget>
 <!-- TOP MIDDLE-->
     <widget source="Day_Forecast" render="Label" position="620,180" size="1150,90" font="HD_Thin; 30" halign="center" valign="center" transparent="1" backgroundColor="black"/>
-	<widget source="details_List" render="Listbox" position="720,300" size="950,280" scrollbarMode="showOnDemand" transparent="1" backgroundColor="black">
+	<widget source="details_List" render="Listbox" position="620,300" size="1150,280" scrollbarMode="showOnDemand" transparent="1" backgroundColor="black">
 		<convert type="TemplatedMultiContent">
                     {"template": [
                         MultiContentEntryText(pos = (0, 0),    size = (450, 40), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 0, color=0xf2f2f2, color_sel=0xf2f2f2),
                         MultiContentEntryText(pos = (0, 0),    size = (450, 40), font=1, flags = RT_HALIGN_RIGHT|RT_VALIGN_CENTER, text = 1, color=0x99ff99, color_sel=0x99ff99),
-                        MultiContentEntryText(pos = (500, 0),  size = (450, 40), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 2, color=0xf2f2f2, color_sel=0xf2f2f2),
-                        MultiContentEntryText(pos = (500, 0),  size = (450, 40), font=1, flags = RT_HALIGN_RIGHT|RT_VALIGN_CENTER, text = 3, color=0x99ff99, color_sel=0x99ff99),
+                        MultiContentEntryText(pos = (700, 0),  size = (450, 40), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 2, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        MultiContentEntryText(pos = (700, 0),  size = (450, 40), font=1, flags = RT_HALIGN_RIGHT|RT_VALIGN_CENTER, text = 3, color=0x99ff99, color_sel=0x99ff99),
 
                         MultiContentEntryText(pos = (0, 40),    size = (450, 40), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 4, color=0xf2f2f2, color_sel=0xf2f2f2),
                         MultiContentEntryText(pos = (0, 40),    size = (450, 40), font=1, flags = RT_HALIGN_RIGHT|RT_VALIGN_CENTER, text = 5, color=0x99ff99, color_sel=0x99ff99),
-                        MultiContentEntryText(pos = (500, 40),  size = (450, 40), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 6, color=0xf2f2f2, color_sel=0xf2f2f2),
-                        MultiContentEntryText(pos = (500, 40),  size = (450, 40), font=1, flags = RT_HALIGN_RIGHT|RT_VALIGN_CENTER, text = 7, color=0x99ff99, color_sel=0x99ff99),
+                        MultiContentEntryText(pos = (700, 40),  size = (450, 40), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 6, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        MultiContentEntryText(pos = (700, 40),  size = (450, 40), font=1, flags = RT_HALIGN_RIGHT|RT_VALIGN_CENTER, text = 7, color=0x99ff99, color_sel=0x99ff99),
 
                         MultiContentEntryText(pos = (0, 80),    size = (450, 40), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 8, color=0xf2f2f2, color_sel=0xf2f2f2),
                         MultiContentEntryText(pos = (0, 80),    size = (450, 40), font=1, flags = RT_HALIGN_RIGHT|RT_VALIGN_CENTER, text = 9, color=0x99ff99, color_sel=0x99ff99),
-                        MultiContentEntryText(pos = (500, 80),  size = (450, 40), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 10, color=0xf2f2f2, color_sel=0xf2f2f2),
-                        MultiContentEntryText(pos = (500, 80),  size = (450, 40), font=1, flags = RT_HALIGN_RIGHT|RT_VALIGN_CENTER, text = 11, color=0x99ff99, color_sel=0x99ff99),
+                        MultiContentEntryText(pos = (700, 80),  size = (450, 40), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 10, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        MultiContentEntryText(pos = (700, 80),  size = (450, 40), font=1, flags = RT_HALIGN_RIGHT|RT_VALIGN_CENTER, text = 11, color=0x99ff99, color_sel=0x99ff99),
 
                         MultiContentEntryText(pos = (0, 120),    size = (450, 40), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 12, color=0xf2f2f2, color_sel=0xf2f2f2),
                         MultiContentEntryText(pos = (0, 120),    size = (450, 40), font=1, flags = RT_HALIGN_RIGHT|RT_VALIGN_CENTER, text = 13, color=0x99ff99, color_sel=0x99ff99),
-                        MultiContentEntryText(pos = (500, 120),  size = (450, 40), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 14, color=0xf2f2f2, color_sel=0xf2f2f2),
-                        MultiContentEntryText(pos = (500, 120),  size = (450, 40), font=1, flags = RT_HALIGN_RIGHT|RT_VALIGN_CENTER, text = 15, color=0x99ff99, color_sel=0x99ff99),
+                        MultiContentEntryText(pos = (700, 120),  size = (450, 40), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 14, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        MultiContentEntryText(pos = (700, 120),  size = (450, 40), font=1, flags = RT_HALIGN_RIGHT|RT_VALIGN_CENTER, text = 15, color=0x99ff99, color_sel=0x99ff99),
 
-                        MultiContentEntryText(pos = (0, 160),   size = (1000, 40), font=1, flags = RT_HALIGN_CENTER|RT_VALIGN_CENTER, text = 16, color=0xffff66, color_sel=0xffff66),
+                        MultiContentEntryText(pos = (0, 160),   size = (1150, 40), font=0, flags = RT_HALIGN_CENTER|RT_VALIGN_CENTER, text = 16, color=0xffff66, color_sel=0xffff66),
 
                         MultiContentEntryText(pos = (0, 200),  size = (450, 40), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 17, color=0xf2f2f2, color_sel=0xf2f2f2),
                         MultiContentEntryText(pos = (0, 200),  size = (450, 40), font=1, flags = RT_HALIGN_RIGHT|RT_VALIGN_CENTER, text = 18, color=0x99ff99, color_sel=0x99ff99),
-                        MultiContentEntryText(pos = (500, 200),  size = (450, 40), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 19, color=0xf2f2f2, color_sel=0xf2f2f2),
-                        MultiContentEntryText(pos = (500, 200),  size = (450, 40), font=1, flags = RT_HALIGN_RIGHT|RT_VALIGN_CENTER, text = 20, color=0x99ff99, color_sel=0x99ff99),
+                        MultiContentEntryText(pos = (700, 200),  size = (450, 40), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 19, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        MultiContentEntryText(pos = (700, 200),  size = (450, 40), font=1, flags = RT_HALIGN_RIGHT|RT_VALIGN_CENTER, text = 20, color=0x99ff99, color_sel=0x99ff99),
 
-                        MultiContentEntryText(pos = (0, 240),   size = (1000, 40), font=1, flags = RT_HALIGN_CENTER|RT_VALIGN_CENTER, text = 21, color=0xffff66, color_sel=0xffff66),
+                        MultiContentEntryText(pos = (0, 240),   size = (1150, 40), font=1, flags = RT_HALIGN_CENTER|RT_VALIGN_CENTER, text = 21, color=0xffff66, color_sel=0xffff66),
                         ],
-                        "fonts": [gFont("Regular", 24), gFont("Regular", 24)],
+                        "fonts": [gFont("Regular", 22), gFont("Regular", 24)],
                         "itemHeight": 280,
 						"selectionEnabled": False
                     }
