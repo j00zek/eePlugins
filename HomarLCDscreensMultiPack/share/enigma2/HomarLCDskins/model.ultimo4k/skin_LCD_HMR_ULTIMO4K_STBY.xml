@@ -40,7 +40,7 @@ alphatest="blend" zPosition="1" >
  		<convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
  </widget>
 <widget font="VFD3;63" render="Label" halign="right" valign="center" noWrap="1" transparent="1" source="session.j00zekMSNWeather" position="548,306" size="230,90" zPosition="5">
- 		<convert type="j00zekMSNWeather">feelslike</convert>
+ 		<convert type="j00zekMSNWeather">GET|['currentData']['feelslike']['valInfo']</convert>
  </widget>
   <widget position="15,380" size="760,76" source="global.CurrentTime" render="Label" font="Roboto_HD; 33" foregroundColor="HMRname" halign="center" transparent="1" zPosition="2">
         <convert type="j00zekModABTCAirlyWidget">ldesc</convert>

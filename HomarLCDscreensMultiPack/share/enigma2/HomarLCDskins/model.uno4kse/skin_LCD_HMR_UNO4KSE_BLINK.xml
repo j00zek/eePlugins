@@ -66,7 +66,7 @@ options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=0,start
 <ePixmap pixmap="HomarLCDskins/weather/thermo.png" position="130,30" size="33,100" zPosition="3" transparent="1" alphatest="blend" />
 <ePixmap pixmap="HomarLCDskins/weather/thermo2.png" position="260,30" size="33,100" zPosition="3" transparent="1" alphatest="blend" />
 <widget source="session.j00zekMSNWeather"  render="Label" position="300,50" size="95,55" font="VFD;54" zPosition="1" halign="left" valign="top" foregroundColor="#00CFFF" transparent="1" noWrap="1">
-  <convert type="j00zekMSNWeather">feelslike</convert>
+  <convert type="j00zekMSNWeather">GET|['currentData']['feelslike']['valInfo']</convert>
  </widget>
   <widget source="session.CurrentService" render="Pixmap" pixmap="HomarLCDskins/Homar_UNO4KSE/VTI.png" position="320,20" size="80,20" zPosition="4" alphatest="blend">
   <convert type="ConfigEntryTest">config.usage.update_available,True</convert>

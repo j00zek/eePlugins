@@ -39,7 +39,7 @@ alphatest="blend" zPosition="1" >
  		<convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
  </widget>
 <widget font="VFD3;63" render="Label" halign="right" valign="center" noWrap="1" transparent="1" source="session.j00zekMSNWeather" position="548,389" size="230,90" zPosition="5">
- 		<convert type="j00zekMSNWeather">feelslike</convert>
+ 		<convert type="j00zekMSNWeather">GET|['currentData']['feelslike']['valInfo']</convert>
  </widget>
  <eLabel font="Roboto_HD;32" halign="center" name="new eLabel" position="150,430" size="500,34" text="TEMPERATURA ODCZUWALNA" transparent="1" zPosition="2" valign="center" />
  <widget position="15,352" size="760,76" source="global.CurrentTime" render="Label" font="Roboto_HD; 33" foregroundColor="HMRname" halign="center" transparent="1" zPosition="2">
