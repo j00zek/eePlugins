@@ -12,11 +12,51 @@ import json
 import time
 
 class Sun:
-    def getSunriseTime( self, longitude, latitude ): return self.calcSunTime( longitude, latitude, True )
-    def getSunsetTime( self, longitude, latitude ): return self.calcSunTime( longitude, latitude, False )
+    def getSunriseTime( self, longitude, latitude, year = None, month = None, day = None ):
+        return self.calcSunTime( longitude, latitude, True, 90.8, year, month, day )
+    
+    def getSunsetTime( self, longitude, latitude, year = None, month = None, day = None ): 
+        return self.calcSunTime( longitude, latitude, False, 90.8, year, month, day )
+    
+    def getDayDiffTimes( self, longitude, latitude, year = None, month = None, day = None ): 
+        if year is None or month is None or day is None:
+            now = datetime.datetime.now()
+            day = now.day
+            month = now.month
+            year = now.year
+        
+        DayLengthDec = self.getDayLength(longitude, latitude, year, month, day )['DayLengthDec']
+        sDayLengthDec = self.getShortestDayLength(longitude, latitude, year )['ShortestDayLengthDec']
+        lDayLengthDec = self.getLongestDayLength(longitude, latitude, year )['LongestDayLengthDec']
+        diffToShortestDec = DayLengthDec - sDayLengthDec
+        diffToLongestDec = lDayLengthDec - DayLengthDec
+        diffHour = int(diffToShortestDec)
+        diffMins = int((diffToShortestDec - diffHour) * float(60))
+        diffSecs = int(diffToShortestDec * 3600) - diffHour * 3600 - diffMins * 60
+        diffToShortest = '%s:' % diffHour
+        if diffMins < 10: diffToShortest += '0'
+        diffToShortest += '%s:' % diffMins
+        if diffSecs < 10: diffToShortest += '0'
+        diffToShortest += '%s:' % diffSecs
+        
+        diffHour = int(diffToLongestDec)
+        diffMins = int((diffToLongestDec - diffHour)*float(60))
+        diffSecs = int(diffToLongestDec * 3600) - diffHour * 3600 - diffMins * 60
+        diffToLongest = '%s:' % diffHour
+        if diffMins < 10: diffToLongest += '0'
+        diffToLongest += '%s:' % diffMins
+        if diffSecs < 10: diffToLongest += '0'
+        diffToLongest += '%s' % diffSecs
+        
+        return {'diffToShortestDec': diffToShortestDec,
+                'diffToShortest': diffToShortest,
+                'diffToLongestDec': diffToLongestDec,
+                'diffToLongest': diffToLongest,
+                }
+    
     def getDayLength( self, longitude, latitude, year = None, month = None, day = None ):
-        daySunriseDec = self.calcSunTime( longitude, latitude, True, zenith = 90.8, year = None, month = None, day = None )['UTCtimeDec']
-        daySunsetDec = self.calcSunTime( longitude, latitude, False, zenith = 90.8, year = None, month = None, day = None )['UTCtimeDec']
+        daySunriseDec = self.calcSunTime( longitude, latitude, True, 90.8, year, month, day )['UTCtimeDec']
+        daySunsetDec = self.calcSunTime( longitude, latitude, False, 90.8, year, month, day )['UTCtimeDec']
         DayLengthDec = daySunsetDec - daySunriseDec
         dayLengthHour = int(DayLengthDec)
         dayLengthMinute = int((DayLengthDec - dayLengthHour)*60.0)
@@ -27,6 +67,7 @@ class Sun:
         return {'DayLengthDec': DayLengthDec,
                 'dayLength': dayLength,
                 }
+    
     def getShortestDayLength( self, longitude, latitude, year = None ):
         if year is None:
             year = datetime.datetime.now().year
