@@ -33,17 +33,19 @@ class Sun:
         diffHour = int(diffToShortestDec)
         diffMins = int((diffToShortestDec - diffHour) * float(60))
         diffSecs = int(diffToShortestDec * 3600) - diffHour * 3600 - diffMins * 60
-        diffToShortest = '%s:' % diffHour
-        if diffMins < 10: diffToShortest += '0'
+        diffToShortest = ''
+        if diffHour != 0: diffToShortest = '%s:' % diffHour
+        if diffMins < 10 and diffHour != 0: diffToShortest += '0'
         diffToShortest += '%s:' % diffMins
         if diffSecs < 10: diffToShortest += '0'
-        diffToShortest += '%s:' % diffSecs
+        diffToShortest += '%s' % diffSecs
         
         diffHour = int(diffToLongestDec)
         diffMins = int((diffToLongestDec - diffHour)*float(60))
         diffSecs = int(diffToLongestDec * 3600) - diffHour * 3600 - diffMins * 60
-        diffToLongest = '%s:' % diffHour
-        if diffMins < 10: diffToLongest += '0'
+        diffToLongest = ''
+        if diffHour != 0: diffToLongest = '%s:' % diffHour
+        if diffMins < 10 and diffHour != 0: diffToLongest += '0'
         diffToLongest += '%s:' % diffMins
         if diffSecs < 10: diffToLongest += '0'
         diffToLongest += '%s' % diffSecs
