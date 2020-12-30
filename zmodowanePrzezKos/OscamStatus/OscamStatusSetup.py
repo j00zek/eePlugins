@@ -230,8 +230,15 @@ class OscamServerEntryList(MenuList):
         else:
             self.l.setFont(0, gFont('Regular', 20))
             self.l.setFont(1, gFont('Regular', 18))
-        self.pic0 = LoadPixmap(cached=True, path=resolveFilename(SCOPE_SKIN, 'skin_default/icons/lock_off.png'))
-        self.pic1 = LoadPixmap(cached=True, path=resolveFilename(SCOPE_SKIN, 'skin_default/icons/lock_on.png'))
+        
+        if os.path.exists(resolveFilename(SCOPE_SKIN, 'skin_default/icons/lock_off.png')):
+            self.pic0 = LoadPixmap(cached=True, path=resolveFilename(SCOPE_SKIN, 'skin_default/icons/lock_off.png'))
+        else:
+            self.pic0 = None
+        if os.path.exists(resolveFilename(SCOPE_SKIN, 'skin_default/icons/lock_on.png')):
+            self.pic1 = LoadPixmap(cached=True, path=resolveFilename(SCOPE_SKIN, 'skin_default/icons/lock_on.png'))
+        else:
+            self.pic1 = None
 
     def postWidgetCreate(self, instance):
         MenuList.postWidgetCreate(self, instance)

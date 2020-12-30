@@ -161,125 +161,143 @@ getPage2 = GetPage2()
 class oscamdata():
 
     def __init__(self):
-        self.version = _('n/a')
-        self.revision = _('n/a')
-        self.starttime = _('n/a')
-        self.uptime = _('n/a')
-        self.readonly = _('n/a')
+        self.version = 'n/a'
+        self.revision = 'n/a'
+        self.starttime = 'n/a'
+        self.uptime = 'n/a'
+        self.readonly = 'n/a'
 
 
 class client():
 
     def __init__(self):
-        self.type = _('n/a')
-        self.name = _('n/a')
-        self.protocol = _('n/a')
-        self.protocolext = _('n/a')
-        self.au = _('n/a')
-        self.caid = _('n/a')
-        self.provid = _('n/a')
-        self.srvid = _('n/a')
-        self.ecmtime = _('n/a')
-        self.ecmhistory = _('n/a')
-        self.answered = _('n/a')
-        self.service = _('n/a')
-        self.login = _('n/a')
-        self.online = _('n/a')
-        self.idle = _('n/a')
-        self.ip = _('n/a')
-        self.port = _('n/a')
-        self.connection = _('n/a')
+        self.type = 'n/a'
+        self.name = 'n/a'
+        self.protocol = 'n/a'
+        self.protocolext = 'n/a'
+        self.au = 'n/a'
+        self.caid = 'n/a'
+        self.provid = 'n/a'
+        self.srvid = 'n/a'
+        self.ecmtime = 'n/a'
+        self.ecmhistory = 'n/a'
+        self.answered = 'n/a'
+        self.service = 'n/a'
+        self.login = 'n/a'
+        self.online = 'n/a'
+        self.idle = 'n/a'
+        self.ip = 'n/a'
+        self.port = 'n/a'
+        self.connection = 'n/a'
 
 
 class user():
 
     def __init__(self):
-        self.name = _('n/a')
-        self.status = _('n/a')
-        self.ip = _('n/a')
-        self.protocol = _('n/a')
-        self.timeonchannel = _('n/a')
+        self.name = 'n/a'
+        self.status = 'n/a'
+        self.ip = 'n/a'
+        self.protocol = 'n/a'
+        self.timeonchannel = 'n/a'
 
 
 class reader():
 
     def __init__(self):
-        self.label = _('n/a')
-        self.hostaddress = _('n/a')
-        self.hostport = _('n/a')
-        self.totalcards = _('n/a')
+        self.label = 'n/a'
+        self.hostaddress = 'n/a'
+        self.hostport = 'n/a'
+        self.totalcards = 'n/a'
         self.cards = []
 
 
 class card():
 
     def __init__(self):
-        self.number = _('n/a')
-        self.caid = _('n/a')
-        self.provid = _('n/a')
-        self.system = _('n/a')
-        self.reshare = _('n/a')
-        self.hop = _('n/a')
-        self.shareid = _('n/a')
-        self.remoteid = _('n/a')
-        self.totalproviders = _('n/a')
+        self.number = 'n/a'
+        self.caid = 'n/a'
+        self.provid = 'n/a'
+        self.system = 'n/a'
+        self.reshare = 'n/a'
+        self.hop = 'n/a'
+        self.shareid = 'n/a'
+        self.remoteid = 'n/a'
+        self.totalproviders = 'n/a'
         self.providers = []
-        self.totalnodes = _('n/a')
+        self.totalnodes = 'n/a'
         self.nodes = []
 
 
 class provider():
 
     def __init__(self):
-        self.number = _('n/a')
-        self.sa = _('n/a')
-        self.caid = _('n/a')
-        self.provid = _('n/a')
-        self.service = _('n/a')
+        self.number = 'n/a'
+        self.sa = 'n/a'
+        self.caid = 'n/a'
+        self.provid = 'n/a'
+        self.service = 'n/a'
 
 
 class pnode():
 
     def __init__(self):
-        self.number = _('n/a')
-        self.hexval = _('n/a')
+        self.number = 'n/a'
+        self.hexval = 'n/a'
 
 
 class ecm():
 
     def __init__(self):
-        self.caid = _('n/a')
-        self.provid = _('n/a')
-        self.srvid = _('n/a')
-        self.channelname = _('n/a')
-        self.avgtime = _('n/a')
-        self.lasttime = _('n/a')
-        self.rc = _('n/a')
-        self.rcs = _('n/a')
-        self.lastrequest = _('n/a')
-        self.val = _('n/a')
+        self.caid = 'n/a'
+        self.provid = 'n/a'
+        self.srvid = 'n/a'
+        self.channelname = 'n/a'
+        self.avgtime = 'n/a'
+        self.lasttime = 'n/a'
+        self.rc = 'n/a'
+        self.rcs = 'n/a'
+        self.lastrequest = 'n/a'
+        self.val = 'n/a'
 
 
 class emm():
 
     def __init__(self):
-        self.type = _('n/a')
-        self.result = _('n/a')
-        self.val = _('n/a')
+        self.type = 'n/a'
+        self.result = 'n/a'
+        self.val = 'n/a'
 
 
 class readerlist():
 
     def __init__(self):
-        self.label = _('n/a')
-        self.protocol = _('n/a')
-        self.type = _('n/a')
-        self.enabled = _('n/a')
+        self.label = 'n/a'
+        self.protocol = 'n/a'
+        self.type = 'n/a'
+        self.enabled = 'n/a'
 
 
 class ReaderServiceDataScreen(Screen):
     if FULLHD:
-        skin = '\n\t\t\t<screen flags="wfNoBorder" position="%d,0" size="1080,%d" name="ReaderDataScreen" >\n\t\t\t\t<widget render="Label" source="title" position="15,50" size="1050,39" valign="center" zPosition="5" transparent="0" foregroundColor="#fcc000" font="Regular;33"/>\n\t\t\t\t<widget source="data" render="Listbox" position="15,100" size="1050,891" scrollbarMode="showOnDemand">\n\t\t\t\t\t<convert type="TemplatedMultiContent">\n\t\t\t\t\t\t{"template": [\n\t\t\t\t\t\t\tMultiContentEntryText(pos = (  1, 0), size = ( 82, 33), font=0, flags = RT_HALIGN_LEFT, text = 0),\n\t\t\t\t\t\t\tMultiContentEntryText(pos = ( 90, 0), size = (120, 33), font=0, flags = RT_HALIGN_LEFT, text = 1),\n\t\t\t\t\t\t\tMultiContentEntryText(pos = (218, 0), size = (510, 33), font=0, flags = RT_HALIGN_LEFT, text = 2),\n\t\t\t\t\t\t\tMultiContentEntryText(pos = (750, 0), size = (195, 33), font=0, flags = RT_HALIGN_LEFT, text = 3),\n\t\t\t\t\t\t\tMultiContentEntryText(pos = (953, 0), size = ( 75, 33), font=0, flags = RT_HALIGN_LEFT, text = 4),\n\t\t\t\t\t\t],\n\t\t\t\t\t\t"fonts": [gFont("Regular", 28)],\n\t\t\t\t\t\t"itemHeight": 33\n\t\t\t\t\t\t}\n\t\t\t\t\t</convert>\n\t\t\t\t</widget>\n\t\t\t</screen>' % dlg_xh(1080)
+        skin = """
+                <screen flags="wfNoBorder" position="%d,0" size="1080,%d" name="ReaderDataScreen" >
+                    <widget render="Label" source="title" position="15,50" size="1050,39" valign="center" zPosition="5" transparent="0" foregroundColor="#fcc000" font="Regular;33"/>
+                    <widget source="data" render="Listbox" position="15,100" size="1050,891" scrollbarMode="showOnDemand">
+                        <convert type="TemplatedMultiContent">
+                            {"template": [
+                                            MultiContentEntryText(pos = (  1, 0), size = ( 82, 33), font=0, flags = RT_HALIGN_LEFT, text = 0),
+                                            MultiContentEntryText(pos = ( 90, 0), size = (120, 33), font=0, flags = RT_HALIGN_LEFT, text = 1),
+                                            MultiContentEntryText(pos = (218, 0), size = (510, 33), font=0, flags = RT_HALIGN_LEFT, text = 2),
+                                            MultiContentEntryText(pos = (750, 0), size = (195, 33), font=0, flags = RT_HALIGN_LEFT, text = 3),
+                                            MultiContentEntryText(pos = (953, 0), size = ( 75, 33), font=0, flags = RT_HALIGN_LEFT, text = 4),
+                                          ],
+                             "fonts": [gFont("Regular", 28)],
+                             "itemHeight": 33
+                            }
+                        </convert>
+                    </widget>
+                    </widget>
+                </screen>""" % dlg_xh(1080)
     else:
         skin = '\n\t\t\t<screen flags="wfNoBorder" position="%d,0" size="720,%d" name="ReaderDataScreen" >\n\t\t\t\t<widget render="Label" source="title" position="10,80" size="700,26" valign="center" zPosition="5" transparent="0" foregroundColor="#fcc000" font="Regular;22"/>\n\t\t\t\t<widget source="data" render="Listbox" position="10,130" size="700,396" scrollbarMode="showOnDemand">\n\t\t\t\t\t<convert type="TemplatedMultiContent">\n\t\t\t\t\t\t{"template": [\n\t\t\t\t\t\t\tMultiContentEntryText(pos = (  1, 0), size = ( 55, 22), font=0, flags = RT_HALIGN_LEFT, text = 0),\n\t\t\t\t\t\t\tMultiContentEntryText(pos = ( 60, 0), size = ( 80, 22), font=0, flags = RT_HALIGN_LEFT, text = 1),\n\t\t\t\t\t\t\tMultiContentEntryText(pos = (145, 0), size = (340, 22), font=0, flags = RT_HALIGN_LEFT, text = 2),\n\t\t\t\t\t\t\tMultiContentEntryText(pos = (500, 0), size = (130, 22), font=0, flags = RT_HALIGN_LEFT, text = 3),\n\t\t\t\t\t\t\tMultiContentEntryText(pos = (635, 0), size = ( 50, 22), font=0, flags = RT_HALIGN_LEFT, text = 4),\n\t\t\t\t\t\t],\n\t\t\t\t\t\t"fonts": [gFont("Regular", 19)],\n\t\t\t\t\t\t"itemHeight": 22\n\t\t\t\t\t\t}\n\t\t\t\t\t</convert>\n\t\t\t\t</widget>\n\t\t\t</screen>' % dlg_xh(720)
 
@@ -1216,8 +1234,8 @@ class ReaderstatsScreen(DownloadXMLScreen):
                     psw = 50
                     psh = 30
                     if FULLHD:
-                        psw = 50
-                        psh = 30
+                        psw = 110
+                        psh = 55
                     self.picon.setPara((psw,
                      psh,
                      1,
@@ -1412,6 +1430,7 @@ class StatusDataScreen(DownloadXMLScreen):
         skin2 = '\n\t\t\t<screen flags="wfNoBorder" position="%d,0" size="720,%d" name="StatusDataScreen" >\n\t\t\t\t<widget render="Label" source="title"  position=" 20, 80" size="680,26" valign="center" zPosition="5" transparent="0" foregroundColor="#fcc000" font="Regular;22"/>\n\t\t\t\t<widget render="Label" source="label0" position=" 20,130" size="160,20" valign="center" zPosition="5" transparent="0" foregroundColor="black" backgroundColor="white" font="Regular;18"/>\n\t\t\t\t<widget render="Label" source="label1" position="180,130" size="150,20" valign="center" zPosition="5" transparent="0" foregroundColor="black" backgroundColor="white" font="Regular;18"/>\n\t\t\t\t<widget render="Label" source="label2" position="326,130" size=" 34,20" valign="center" zPosition="5" transparent="0" foregroundColor="black" backgroundColor="white" font="Regular;18"/>\n\t\t\t\t<widget render="Label" source="label3" position="360,130" size=" 90,20" valign="center" zPosition="5" transparent="0" foregroundColor="black" backgroundColor="white" font="Regular;18"/>\n\t\t\t\t<widget render="Label" source="label4" position="450,130" size="250,20" valign="center" zPosition="5" transparent="0" foregroundColor="black" backgroundColor="white" font="Regular;17"/>\n\t\t\t\t<widget source="data" render="Listbox" position="20,153" size="680,288" scrollbarMode="showOnDemand">\n\t\t\t\t\t<convert type="TemplatedMultiContent">\n\t\t\t\t\t\t{"template": [\n\t\t\t\t\t\t\tMultiContentEntryText(pos = (  2, 2), size = (154, 24), font=0, flags = RT_HALIGN_LEFT, text = 0),\n\t\t\t\t\t\t\tMultiContentEntryText(pos = (160, 2), size = (158, 24), font=0, flags = RT_HALIGN_LEFT, text = 1),\n\t\t\t\t\t\t\tMultiContentEntryPixmapAlphaTest(pos = (310, 4), size = (16, 16), png = 2),\n\t\t\t\t\t\t\tMultiContentEntryText(pos = (340, 2), size = ( 88, 24), font=0, flags = RT_HALIGN_LEFT, text = 3),\n\t\t\t\t\t\t\tMultiContentEntryText(pos = (430, 2), size = (250, 24), font=0, flags = RT_HALIGN_LEFT, text = 4),\n\t\t\t\t\t\t],\n\t\t\t\t\t\t"fonts": [gFont("Regular", 20)],\n\t\t\t\t\t\t"itemHeight": 24\n\t\t\t\t\t\t}\n\t\t\t\t\t</convert>\n\t\t\t\t</widget>\n\t\t\t\t<eLabel text="" position="20,450" size="680,2" transparent="0" backgroundColor="#ffffff" />\n\t\t\t\t<widget name="ButtonYellow" pixmap="skin_default/buttons/yellow.png" position="20,460" size="140,40" zPosition="4" alphatest="on"/>\n\t\t\t\t<widget name="ButtonYellowtext" position="20,460" size="140,40" valign="center" halign="center" zPosition="5" transparent="1" foregroundColor="#000000" font="Regular;16"/>\n\t\t\t\t<widget name="ButtonBlue" pixmap="skin_default/buttons/blue.png" position="160,460" size="140,40" zPosition="4" transparent="1" alphatest="on"/>\n\t\t\t\t<widget name="ButtonBluetext" position="160,460" size="140,40" valign="center" halign="center" zPosition="5" transparent="1" foregroundColor="white" font="Regular;16"/>\n\t\t\t</screen>' % dlg_xh(720)
 
     def __init__(self, session, type, part, oServer):
+        print '[OscamStatus] class StatusDataScreen.__init__ >>>'
         self.type = type
         self.oServer = oServer
         if USEPICONS.value:
@@ -1469,10 +1488,12 @@ class StatusDataScreen(DownloadXMLScreen):
         self.onLayoutFinish.append(self.LayoutFinished)
 
     def LayoutFinished(self):
+        print '[OscamStatus] class StatusDataScreen.LayoutFinished >>>'
         x, h = dlg_xh(self.instance.size().width())
         self.instance.move(ePoint(x, 0))
 
     def parseXML(self, dom):
+        print '[OscamStatus] class StatusDataScreen.parseXML >>>'
         d = []
         for elem in dom.getElementsByTagName('status'):
             for node in elem.getElementsByTagName('client'):
@@ -1512,11 +1533,13 @@ class StatusDataScreen(DownloadXMLScreen):
         self.setList()
 
     def setList(self):
+        print '[OscamStatus] class StatusDataScreen.setList >>>'
         dlist = []
         self.picon = ePicLoad()
         if self.type == 'clients':
             self.setTitle(_('Connected Clients') + ' @ ' + self.oServer.serverName)
             for index, c in enumerate(self.status):
+                png = None
                 if c.type == 'c':
                     if USEECM.value:
                         idle = c.ecmtime
@@ -1528,17 +1551,19 @@ class StatusDataScreen(DownloadXMLScreen):
                             psw = 50
                             psh = 30
                             if FULLHD:
-                                psw = 50
-                                psh = 30
+                                psw = 110
+                                psh = 55
                             self.picon.setPara((psw,
-                             psh,
-                             1,
-                             1,
-                             False,
-                             1,
-                             '#000f0f0f'))
-                            self.picon.startDecode(picon, 0, 0, False)
-                            png = self.picon.getData()
+                                                psh,
+                                                1,
+                                                1,
+                                                False,
+                                                1,
+                                                '#000f0f0f'
+                                              ))
+                            if fileExists(str(picon)):
+                                self.picon.startDecode(picon, 0, 0, False)
+                                png = self.picon.getData()
                     if self.hideIdle:
                         if c.answered != '':
                             if USEPICONS.value:
@@ -1562,8 +1587,8 @@ class StatusDataScreen(DownloadXMLScreen):
                             psw = 50
                             psh = 30
                             if FULLHD:
-                                psw = 50
-                                psh = 30
+                                psw = 110
+                                psh = 55
                             self.picon.setPara((psw,
                              psh,
                              1,
@@ -1571,8 +1596,9 @@ class StatusDataScreen(DownloadXMLScreen):
                              False,
                              1,
                              '#000f0f0f'))
-                            self.picon.startDecode(picon, 0, 0, False)
-                            png = self.picon.getData()
+                            if fileExists(str(picon)):
+                                self.picon.startDecode(picon, 0, 0, False)
+                                png = self.picon.getData()
                         dlist.append((c.name,
                          c.answered,
                          self.auEntrys[c.au],
@@ -1597,13 +1623,13 @@ class StatusDataScreen(DownloadXMLScreen):
                     idle = elapsedTime(c.idle, '%02d:%02d:%02d')
                 if c.type == 'r' or c.type == 'p':
                     if USEPICONS.value:
-                        picon = getPicon(c.service)
+                        picon = getPicon(c.protocol)
                         if picon != '':
                             psw = 50
                             psh = 30
                             if FULLHD:
-                                psw = 50
-                                psh = 30
+                                psw = 110
+                                psh = 55
                             self.picon.setPara((psw,
                              psh,
                              1,
@@ -1611,8 +1637,9 @@ class StatusDataScreen(DownloadXMLScreen):
                              False,
                              1,
                              '#000f0f0f'))
-                            self.picon.startDecode(picon, 0, 0, False)
-                            png = self.picon.getData()
+                            if fileExists(str(picon)):
+                                self.picon.startDecode(picon, 0, 0, False)
+                                png = self.picon.getData()
                         dlist.append((c.name,
                          c.connection,
                          self.auEntrys[c.au],
