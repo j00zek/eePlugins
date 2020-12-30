@@ -197,7 +197,7 @@ do
 #    sed -i "s;type=\"j00zekMSNWeatherWebCurrent\">barometrValue;type=\"j00zekMSNWeather\">RUN|['currentData']['pressure']['val']|hPa;g" "$F"
 #  fi
 #  if [ `grep -c 'type="j00zekMSNWeatherWebhourly">Record' < "$F"` -gt 0 ];then
-#    sed -i 's;type="j00zekMSNWeatherWebhourly">Record;type="j00zekMSNWeather">RUN|[\'currentData\'][\'pressure\'][\'val\'];g' "$F"
+#    sed -i 's;type="j00zekMSNWeatherWebhourly">Record;type=\"j00zekMSNWeather\">RUN|[\'currentData\'][\'pressure\'][\'val\'];g' "$F"
 #  fi
   if [ `grep -c 'type="j00zekMSNWeather">temperature_current' < "$F"` -gt 0 ];then
     sed -i "s;type=\"j00zekMSNWeather\">temperature_current;type=\"j00zekMSNWeather\">GET|['currentData']['temperature']['valInfo'];g" "$F"
@@ -207,6 +207,9 @@ do
   fi
   if [ `grep -c 'type="j00zekMSNWeather">temperature_low,day1' < "$F"` -gt 0 ];then
     sed -i "s;type=\"j00zekMSNWeather\">temperature_low,day1;type=\"j00zekMSNWeather\">RUN|['dailyData']['Record=0']['temp_low']|C;g" "$F"
+  fi
+  if [ `grep -c 'type="j00zekMSNWeather">feelslike' < "$F"` -gt 0 ];then
+    sed -i "s;type=\"j00zekMSNWeather\">feelslike;type=\"j00zekMSNWeather\">GET|['currentData']['feelslike']['valInfo'];g" "$F"
   fi
 
 done

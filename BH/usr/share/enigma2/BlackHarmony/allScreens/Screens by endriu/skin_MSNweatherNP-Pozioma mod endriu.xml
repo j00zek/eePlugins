@@ -58,32 +58,44 @@
     <widget source="session.j00zekMSNWeather" render="Label" position="956,308" size="85,24" font="Roboto_HD; 22" halign="center" valign="center" transparent="1" backgroundColor="black">
        <convert type="j00zekMSNWeather">RUN|['currentData']['sun']['sunrise']['TZtime']</convert>
        </widget>	
-		
+
+<!--długość dnia-->	 
+
+    <widget source="session.j00zekMSNWeather" render="Label" position="920,182" size="130,24" font="Roboto_HD; 22" halign="right" valign="center" transparent="1" backgroundColor="black">
+       <convert type="j00zekMSNWeather">RUN|+|['currentData']['sun']['dayLength']['time2shortest']</convert>
+       </widget>
+	 <widget source="session.j00zekMSNWeather" render="Label" position="1230,182" size="130,24" font="Roboto_HD; 22" halign="left" valign="center" transparent="1" backgroundColor="black">
+       <convert type="j00zekMSNWeather">RUN|-|['currentData']['sun']['dayLength']['time2longest']</convert>
+       </widget>
+	   
  <!-- ZACHOD -->
         
     <widget source="session.j00zekMSNWeather" render="Label" position="1239,308" size="85,24" font="Roboto_HD; 22" halign="center" valign="center" transparent="1" backgroundColor="black" foregroundColor="grey">
        <convert type="j00zekMSNWeather">RUN|['currentData']['sun']['sunset']['TZtime']</convert>
        </widget>
     <widget render="Label" position="1098,266" size="85,24" source="session.j00zekMSNWeather" font="Roboto_HD; 22" halign="center" valign="center" backgroundColor="black" transparent="1" zPosition="3">
-       <convert type="j00zekMSNWeather">RUN|0x0045b701|['currentData']['sun']['dayLength']</convert>
+       <convert type="j00zekMSNWeather">RUN|0x0045b701|['currentData']['sun']['dayLength']['time']</convert>
        </widget>
-		
+
 <!-- MOON -->
 		
 	<ePixmap pixmap="BlackHarmony/icons/Weather/ksiezyc.png" position="960,295" zPosition="1" size="360,130" alphatest="blend" />
     <widget source="global.CurrentTime" render="j00zekPicons" position="1099,296" size="80,80" path="/usr/share/enigma2/BlackHarmony/icons" picontype="MoonPhase" showdefaultpic="no" zPosition="8"  alphatest="blend">
         <convert type="j00zekMoon">obraz</convert>
         </widget>
-    <widget source="session.j00zekMSNWeather" render="Label" position="956,425" size="85,25" font="Roboto_HD; 22" halign="center" valign="center" transparent="1" backgroundColor="black" foregroundColor="grey">
+    <widget source="session.j00zekMSNWeather" render="Label" position="956,425" size="85,25" font="Roboto_HD; 22" halign="center" valign="center" transparent="1" backgroundColor="black" >
         <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=0']['dictdetalis']['moonrise']</convert>
         </widget>
-	<widget source="session.j00zekMSNWeather" render="Label" position="1239,425" size="85,25" font="Roboto_HD; 22" halign="center" valign="center" transparent="1" backgroundColor="black" foregroundColor="grey">
+	<widget source="session.j00zekMSNWeather" render="Label" position="1239,425" size="85,25" font="Roboto_HD; 22" halign="center" valign="center" transparent="1" backgroundColor="black" >
         <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=0']['dictdetalis']['moonset']</convert>
         </widget>
 		
-    <widget source="session.j00zekMSNWeather" render="Label" position="1090,390" size="100,30" zPosition="1" font="Roboto_HD;22" halign="center" transparent="1" backgroundColor="background" foregroundColor="grey">
+    <widget source="session.j00zekMSNWeather" render="Label" position="1090,375" size="100,25" zPosition="1" font="Roboto_HD;22" halign="center" transparent="1" backgroundColor="black" >
         <convert type="j00zekMSNWeather">RUN|0x00fffe9e|['currentData']['moon']['illuminated_percentage']</convert>
         </widget>
+	<widget source="session.j00zekMSNWeather" render="j00zekLabel" position="1040,400" size="200,50" zPosition="1" font="Roboto_HD;24" halign="center" valign="center" transparent="1" backgroundColor="black" >
+        <convert type="j00zekMSNWeather">RUN|0x66CCCC|['currentData']['moon']['phase_name']</convert>
+        </widget>	
 		
 <!--AIRLY-->
     

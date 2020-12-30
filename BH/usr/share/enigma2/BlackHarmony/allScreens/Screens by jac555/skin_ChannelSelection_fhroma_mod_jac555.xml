@@ -1,8 +1,8 @@
 <skin>
 <screen name="ChannelSelection" position="center,center" size="1920,1080" title=" " flags="wfNoBorder" backgroundColor="transparent">
-  <ePixmap position="0,1" zPosition="-7" size="1923,1080" pixmap="BlackHarmony/bg_design/cs.png" />
-  <widget source="session.VideoPicture" render="Pig" position="1169,1" size="720,418" zPosition="3" backgroundColor="transparent" />
-<widget alphatest="blend" position="1169,286" render="j00zekPicons" picontype="picon" size="220,132" source="session.CurrentService" transparent="1" zPosition="4">
+  <ePixmap position="0,0" zPosition="-7" size="1920,1080" pixmap="BlackHarmony/bg_design/cs.png" />
+  <widget source="session.VideoPicture" render="Pig" position="1190,1" size="720,418" zPosition="3" backgroundColor="transparent" />
+<widget alphatest="blend" position="1191,286" render="j00zekPicons" picontype="picon" size="220,132" source="session.CurrentService" transparent="1" zPosition="4">
   <convert type="ServiceName">Reference</convert>
 </widget>
   <widget source="global.CurrentTime" render="Label" position="814,23" size="172,66" font="RegularLight; 57" foregroundColor="white" halign="left" backgroundColor="black" transparent="1" valign="center">
@@ -12,10 +12,10 @@
     <convert type="ClockToText">Format:%A  %e %B %Y</convert>
   </widget>
 
-  <widget source="Title" render="Label" position="82,112" size="1025,35" font="Roboto_HD; 30" backgroundColor="black" transparent="1" halign="left" foregroundColor="light_yellow">
+  <widget source="Title" render="Label" position="81,107" size="1025,35" font="Roboto_HD; 30" backgroundColor="black" transparent="1" halign="left" foregroundColor="light_yellow">
   <convert type="j00zekAlternateTitle">Channel Selection</convert>
 </widget>
-  <widget name="list" position="69,155" size="1080,790" selectionPixmap="BlackHarmony/menu/sel_1200_50.png" scrollbarMode="showOnDemand" colorServiceDescription="#99ccff" colorServiceDescriptionSelected="#00AFAA" progressbarHeight="5" progressbarBorderWidth="2" colorEventProgressbar="#4898e8" colorEventProgressbarSelected="#00AFAA" colorEventProgressbarBorder="#0264c7" colorEventProgressbarBorderSelected="#00AFAA" foregroundColorServiceNotAvail="#6a6a6a" serviceItemHeight="50" serviceNumberFont="Roboto_HD; ;28" serviceNameFont="Roboto_HD; ;31" serviceInfoFont="Roboto_HD; ;34" transparent="1" foregroundColor="#bbbbbb" />
+  <widget name="list" position="65,155" size="1081,790" selectionPixmap="BlackHarmony/menu/sel_1200_50.png" scrollbarMode="showOnDemand" scrollbarWidth="7"  scrollbarSliderBorderColor="blue" scrollbarSliderForegroundColor="blue" colorServiceDescription="#99ccff" colorServiceDescriptionSelected="#00AFAA" progressbarHeight="5" progressbarBorderWidth="2" colorEventProgressbar="#4898e8" colorEventProgressbarSelected="#00AFAA" colorEventProgressbarBorder="#0264c7" colorEventProgressbarBorderSelected="#00AFAA" foregroundColorServiceNotAvail="#6a6a6a" serviceItemHeight="50" serviceNumberFont="Roboto_HD; ;28" serviceNameFont="Roboto_HD; ;31" serviceInfoFont="Roboto_HD; ;34" transparent="1" foregroundColor="#bbbbbb" />
   <widget font="Roboto_HD; 26" position="1751,756" render="Label" size="120,30" source="ServiceEvent" transparent="1" zPosition="2" halign="left" backgroundColor="black">
     <convert type="EventTime">Remaining</convert>
     <convert type="RemainingToText">NoSeconds</convert>
@@ -29,20 +29,20 @@
     <convert type="ClockToText">Format:- %H:%M</convert>
   </widget>
   
-  <widget render="j00zekModRunningText" source="ServiceEvent" options="movetype=running,startpoint=0,direction=top,steptime=90,repeat=2,startdelay=6000,wrap" halign="left" font="Roboto_HD; 26" foregroundColor="white" backgroundColor="background" position="1167,547" size="692,192" transparent="1">
+  <widget render="j00zekModRunningText" source="ServiceEvent" options="movetype=running,startpoint=0,direction=top,steptime=90,repeat=2,startdelay=6000,wrap" halign="left" font="Roboto_HD; 26" foregroundColor="white" backgroundColor="background" position="1173,547" size="686,192" transparent="1">
     <convert type="j00zekModEventName">ExtendedDescription</convert>
   </widget>
   <widget source="ServiceEvent" render="Progress" position="1358,768" size="376,6" pixmap="BlackHarmony/gfx/progress_cs.png" transparent="1">
     <convert type="EventTime">Progress</convert>
   </widget>
-  <widget source="ServiceEvent" render="Label" position="1164,469" size="693,73" font="HD_Thin; 30" backgroundColor="black" transparent="1" valign="top" halign="center" foregroundColor="light_yellow">
+  <widget source="ServiceEvent" render="Label" position="1172,469" size="685,73" font="HD_Thin; 30" backgroundColor="black" transparent="1" valign="top" halign="center" foregroundColor="light_yellow">
     <convert type="j00zekModEventName">Name</convert>
   </widget>
   
   <widget backgroundColor="background" font="HD_Thin; 36" halign="center" position="1186,422" render="Label" size="655,40" source="ServiceEvent" transparent="1" valign="center" foregroundColor="blue">
     <convert type="ServiceName">Name</convert>
   </widget>
-  <widget alphatest="blend" render="j00zekModEventListDisplay" position="1168,810" size="689,144" source="ServiceEvent" rowHeight="32" column0="0,70,white,Regular,25,0,0" column1="80,600,#00cc99,Regular,25,0,1" primetimeoffset="10">
+  <widget alphatest="blend" render="j00zekModEventListDisplay" position="1174,810" size="683,144" source="ServiceEvent" rowHeight="32" column0="0,70,white,Regular,25,0,0" column1="80,600,#00cc99,Regular,25,0,1" primetimeoffset="10">
     <convert type="j00zekModEventList">primetime=yes,eventcount=4</convert>
     </widget>
   <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="95,1001" size="35,27" alphatest="blend" />

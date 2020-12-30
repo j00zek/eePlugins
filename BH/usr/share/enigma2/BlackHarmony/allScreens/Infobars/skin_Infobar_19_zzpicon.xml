@@ -285,7 +285,7 @@
       <convert type="j00zekModimieniny" />
     </widget>
     <widget noWrap="1" backgroundColor="black" font="HD_Thin; 30" render="Label" position="1787,915" size="90,35" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1" foregroundColor="podsw" valign="top">
-      <convert type="j00zekMSNWeather">feelslike</convert>
+      <convert type="j00zekMSNWeather">GET|['currentData']['feelslike']['valInfo']</convert>
     </widget>
     <eLabel name="new eLabel" position="1572,23" size="1,90" backgroundColor="blue" />
     <eLabel font="HD_Thin; 30" foregroundColor="white" halign="right" name="new eLabel" position="1817,915" size="50,35" text="°C" transparent="1" zPosition="3" valign="top" />

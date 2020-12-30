@@ -7,7 +7,7 @@
   <widget source="global.CurrentTime" render="Label" position="708,22" size="360,30" halign="right" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
     <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
   </widget>
-<widget source="menu" render="Listbox" position="38,89" size="1150,769" selectionPixmap="BlackHarmony/menu/sel_1200_105.png" scrollbarMode="showNever">
+<widget source="menu" render="Listbox" position="38,89" size="1150,769" selectionPixmap="BlackHarmony/menu/sel_1200_105.png" scrollbarWidth="7" scrollbarSliderBorderWidth="1" scrollbarSliderBorderColor="blue" scrollbarSliderForegroundColor="blue" scrollbarMode="showOnDemand">
     <convert type="TemplatedMultiContent">
         {"template": [
           MultiContentEntryText(pos = (130, 33), size = (15, 33), font = 1, flags = RT_HALIGN_CENTER | RT_VALIGN_CENTER, text = 1), # Current Service

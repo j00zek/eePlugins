@@ -154,7 +154,7 @@
       <convert type="j00zekTranslator">FeelsLike</convert>
     </widget>
     <widget source="session.j00zekMSNWeather" render="Label" font="Roboto_HD; 30" position="1765,930" size="100,35" zPosition="3" halign="right"  foregroundColor="podsw" backgroundColor="black" transparent="1">
-      <convert type="j00zekMSNWeather">feelslike</convert>
+      <convert type="j00zekMSNWeather">GET|['currentData']['feelslike']['valInfo']</convert>
     </widget>
     <widget source="session.CurrentService" render="Label" position="500,954" size="410,25" font="Roboto_HD; 22" zPosition="3" halign="left" backgroundColor="black" transparent="1" >
       <convert type="j00zekModPliExtraInfo">CryptoBar</convert>

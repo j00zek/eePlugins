@@ -50,9 +50,6 @@
   <widget backgroundColor="black" font="HD_Thin; 42" foregroundColor="#66CC99" halign="left" noWrap="1" position="65,720" render="Label" size="700,48" source="session.CurrentService" transparent="1" valign="top">
     <convert type="j00zekModExtraTuner">ServiceNumberName</convert>
   </widget>
-<widget backgroundColor="background" font="Regular;22" halign="left" position="940,975" render="Label" size="270,60" source="session.CurrentService" transparent="1">
-<convert type="ServiceName">Provider</convert>
-</widget>
   <widget backgroundColor="black" font="Roboto_HD; 22" halign="center" position="475,782" render="Label" size="450,25" source="session.CurrentService" transparent="1" zPosition="1">
     <convert type="j00zekModExtraTuner">TunerInfo</convert>
   </widget>
@@ -123,7 +120,7 @@
   <widget backgroundColor="black" font="Roboto_HD; 22" halign="left" position="614,975" render="Label" size="60,25" source="session.CurrentService" transparent="1">
     <convert type="j00zekModExtraInfo">sid</convert>
   </widget>
-  <widget backgroundColor="black" font="Roboto_HD; 22" halign="right" position="1130,975" render="Label" size="700,25" source="session.CurrentService" transparent="1" valign="top" zPosition="2">
+  <widget backgroundColor="black" font="Roboto_HD; 22" halign="right" position="1222,975" render="Label" size="650,25" source="session.CurrentService" transparent="1" valign="top" zPosition="2">
     <convert type="j00zekModExtraInfo">Source</convert>
   </widget>
   
@@ -235,7 +232,7 @@
     <convert type="j00zekModCaidInfo2">BisEcm</convert>
     <convert type="ConditionalShowHide" />
   </widget>
-  <widget backgroundColor="black" font="Roboto_HD; 22" foregroundColor="yellow" halign="center" position="700,975" render="FixedLabel" size="60,25" source="session.CurrentService" text="FTA" transparent="1" valign="center" zPosition="1">
+  <widget backgroundColor="black" font="Roboto_HD; 22" foregroundColor="yellow" halign="right" position="700,975" render="FixedLabel" size="60,25" source="session.CurrentService" text="FTA" transparent="1" valign="center" zPosition="1">
     <convert type="j00zekModServiceInfoEX">IsFta</convert>
     <convert type="ConditionalShowHide" />
   </widget>
@@ -251,24 +248,10 @@
     <convert type="j00zekModCaidInfo2">Emu</convert>
     <convert type="ConditionalShowHide" />
   </widget>
-  <widget backgroundColor="black" font="Roboto_HD; 22" foregroundColor="light_yellow" halign="left" position="800,975" render="FixedLabel" size="85,25" source="session.FrontendInfo" text="DVB-T" transparent="1" zPosition="4">
-    <convert type="FrontendInfo">TYPE</convert>
-    <convert type="ValueRange">2,2</convert>
-    <convert type="ConditionalShowHide" />
-  </widget>
-  <widget backgroundColor="black" font="Roboto_HD; 22" foregroundColor="yellow" halign="left" position="800,975" render="FixedLabel" size="85,25" source="session.FrontendInfo" text="DVB-C" transparent="1" zPosition="3">
-    <convert type="FrontendInfo">TYPE</convert>
-    <convert type="ValueRange">1,1</convert>
-    <convert type="ConditionalShowHide" />
-  </widget>
-  <widget backgroundColor="black" font="Roboto_HD; 22" foregroundColor="green" halign="left" position="800,975" render="FixedLabel" size="85,25" source="session.FrontendInfo" text="DVB-S" transparent="1" zPosition="2">
-    <convert type="FrontendInfo">TYPE</convert>
-    <convert type="ValueRange">0,0</convert>
-    <convert type="ConditionalShowHide" />
-  </widget>
-  <widget backgroundColor="black" font="Roboto_HD; 22" foregroundColor="green" halign="left" position="800,975" render="Label" size="85,25" source="session.CurrentService" text="DVB-S2" transparent="1" zPosition="1">
-    <convert type="j00zekModServiceName2">%s </convert>
-  </widget>
+  <widget source="session.CurrentService" render="j00zekLabel" backgroundColor="background" font="Roboto_HD; 22" halign="left"  position="800,975" size="800,25" transparent="1" zPosition="3">
+      <convert type="j00zekModServiceName2">UseCFG</convert>
+    </widget>
+ 
  <eLabel backgroundColor="black" font="Roboto_HD; 22" foregroundColor="yellow" halign="left" position="715,930" size="65,25" text="BTR:" transparent="1" />
   <widget backgroundColor="black" font="Roboto_HD; 22" halign="left" position="780,930" render="Label" size="150,25" source="session.CurrentService" transparent="1">
     <convert type="j00zekBitrate_BH">VideoBitrateUnits</convert>
@@ -362,20 +345,20 @@
 	<ePixmap alphatest="blend" pixmap="BlackHarmony/weather_icons/wiatr.png" position="70,589" size="30,30" transparent="1" zPosition="3" />
   <ePixmap alphatest="blend" pixmap="BlackHarmony/weather_icons/deszcz.png" position="70,626" size="30,30" transparent="1" zPosition="4" />
   
-  <widget backgroundColor="black" font="Regular; 21" foregroundColor="white" halign="left" position="105,590" render="j00zekLabel" size="120,25" source="session.j00zekMSNWeather" transparent="1" zPosition="3">
+  <widget backgroundColor="black" font="Regular; 21" foregroundColor="white" halign="left" position="110,590" render="j00zekLabel" size="115,25" source="session.j00zekMSNWeather" transparent="1" zPosition="3">
     <convert type="j00zekMSNWeather">RUN|['currentData']['wind_speed']['valInfo']</convert>
   </widget>
   <widget backgroundColor="black" font="Regular; 21" foregroundColor="white" halign="left" position="110,628" render="Label" size="60,25" source="session.j00zekMSNWeather" transparent="1" zPosition="3">
     <convert type="j00zekMSNWeather">RUN|['currentData']['humidity']['valInfo']</convert>
   </widget>
   
-   <widget backgroundColor="background" font="Regular; 21" halign="center" position="215,565" render="Label" size="208,25" source="global.CurrentTime" transparent="1" zPosition="1">
+   <widget backgroundColor="background" font="Regular; 21" halign="center" valign="center" position="275,565" render="Label" size="145,90" source="global.CurrentTime" transparent="1" zPosition="1">
  <convert type="j00zekMoon">faza</convert>
    </widget> 
- <widget alphatest="on" path="/usr/share/enigma2/BlackHarmony/icons" picontype="MoonPhase" position="245,595" render="j00zekPicons" showdefaultpic="no" size="60,60" source="global.CurrentTime" zPosition="8">
+ <widget alphatest="on" path="/usr/share/enigma2/BlackHarmony/icons" picontype="MoonPhase" position="210,565" render="j00zekPicons" showdefaultpic="no" size="60,60" source="global.CurrentTime" zPosition="8">
  <convert type="j00zekMoon">obraz</convert>
  </widget>
- <widget backgroundColor="background" font="Regular;21" halign="center" position="305,628" render="Label" size="100,35" source="global.CurrentTime" transparent="1" zPosition="1">
+ <widget backgroundColor="background" font="Regular;21" halign="center" position="200,628" render="Label" size="80,35" source="global.CurrentTime" transparent="1" zPosition="1">
  <convert type="j00zekMoon">oswietlenie</convert>
  </widget>
     

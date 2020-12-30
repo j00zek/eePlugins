@@ -56,7 +56,7 @@
   
   
   <widget noWrap="1" backgroundColor="black" font="HD_Thin; 37" render="Label" position="1267,117" size="90,40" source="session.j00zekMSNWeather" zPosition="3" halign="right" transparent="1" valign="center">
-    <convert type="j00zekMSNWeather">feelslike</convert>
+    <convert type="j00zekMSNWeather">GET|['currentData']['feelslike']['valInfo']</convert>
   </widget>
 <eLabel font="HD_Thin; 21" halign="right" name="new eLabel" position="1378,205" size="255,25" text="Aktualizcja danych:" transparent="1" zPosition="2" valign="center" backgroundColor="black" />
   </screen>

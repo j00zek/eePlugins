@@ -290,7 +290,7 @@
   
   
   <widget noWrap="1" backgroundColor="black" font="HD_Thin; 37" render="Label" position="1267,127" size="90,40" source="session.j00zekMSNWeather" zPosition="3" halign="right" transparent="1" valign="center">
-    <convert type="j00zekMSNWeather">feelslike</convert>
+    <convert type="j00zekMSNWeather">GET|['currentData']['feelslike']['valInfo']</convert>
   </widget>
   <widget source="session.CurrentService" render="Label" position="768,803" size="530,30" font="Roboto_HD; 22" backgroundColor="black" transparent="1" halign="left" noWrap="1" valign="center" text="19.2E  DVB-S2  10627 27500 3/4 8PSK" zPosition="3">
     <convert type="j00zekModExtraTuner">TunerInfo</convert>

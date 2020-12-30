@@ -108,14 +108,8 @@
     <widget source="session.CurrentService" render="j00zekLabel" position="1325,1012" zPosition="2" size="340,25" font="Roboto_HD; 22" valign="center" halign="left" transparent="1" backgroundColor="black" foregroundColor="blue">
       <convert type="j00zekModExtraInfo">Source</convert>
     </widget>
-    <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="1632,883" size="128,128" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
-      <convert type="j00zekMSNWeather">weathericon,current</convert>
-    </widget>
-    <widget noWrap="1" backgroundColor="black" font="Roboto_HD; 30" render="Label" position="1765,905" size="100,35" source="session.j00zekMSNWeather" zPosition="3" halign="right" transparent="1" valign="top">
-      <convert type="j00zekMSNWeather">RUN|['currentData']['temperature']['valInfo']</convert>
-    </widget>
     
-	<!-- wykorzystanie glowic dostepnych w tunerze-->
+ <!-- wykorzystanie glowic dostepnych w tunerze-->
         
 	<widget source="session.FrontendInfo" render="Label" position="870,833" size="260,50" zPosition="3" font="Roboto_HD;22" halign="center" valign="center" backgroundColor="black" transparent="1">
     <convert type="j00zekModFrontendInfo2">ACTIVE_BUSY_AVAILABLE_TUNER_COLORS,0x0000FF00,0x00FFFF00,0x00DCDCDC</convert>
@@ -223,7 +217,7 @@
       <convert type="j00zekModCaidInfo2">BisEcm</convert>
       <convert type="ConditionalShowHide" />
     </widget>
-    <widget source="session.CurrentService" render="FixedLabel" text="FTA" font="Roboto_HD; 22" position="1270,1012" size="60,25" halign="center" backgroundColor="black" foregroundColor="green" zPosition="1" valign="center" transparent="1">
+    <widget source="session.CurrentService" render="FixedLabel" text="FTA" font="Roboto_HD; 22" position="1270,1012" size="60,25" halign="right" backgroundColor="black" foregroundColor="green" zPosition="1" valign="center" transparent="1">
       <convert type="j00zekModServiceInfoEX">IsFta</convert>
       <convert type="ConditionalShowHide" />
     </widget>
@@ -244,9 +238,15 @@
   <widget source="session.CurrentService" render="Label" position="1155,1012" size="130,25" font="Roboto_HD; 22" halign="left" backgroundColor="black" transparent="1">
     <convert type="j00zekBitrate_BH">VideoBitrateUnits</convert>
   </widget>
-	<widget source="session.CurrentService" render="Label" position="1700,875" size="200,25" font="Roboto_HD; 23" backgroundColor="black" halign="center" transparent="1" foregroundColor="lemon" >
+	<widget source="session.CurrentService" render="Label" position="1700,875" size="200,30" font="Roboto_HD; 23" backgroundColor="black" halign="center" valign="center" transparent="1" foregroundColor="lemon" >
           <convert type="j00zekTranslator">Weather now</convert>
         </widget>
+	<widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="1632,883" size="128,128" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
+      <convert type="j00zekMSNWeather">weathericon,current</convert>
+    </widget>
+    <widget noWrap="1" backgroundColor="black" font="Roboto_HD; 30" render="Label" position="1765,905" size="100,35" source="session.j00zekMSNWeather" zPosition="3" halign="right" transparent="1" valign="top">
+      <convert type="j00zekMSNWeather">RUN|['currentData']['temperature']['valInfo']</convert>
+    </widget>	
 
     <widget noWrap="1" backgroundColor="black" font="Roboto_HD; 30" render="Label" position="1787,985" size="90,35" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1" foregroundColor="podsw" valign="top">
       <convert type="j00zekMSNWeather">RUN|['currentData']['feelslike']['valInfo']</convert>
@@ -255,7 +255,7 @@
    <widget source="session.CurrentService" render="Label" font="Roboto_HD; 18" foregroundColor="light_yellow" halign="center" position="1762,945" size="120,44"  transparent="1" zPosition="2" valign="center" backgroundColor="black" >
           <convert type="j00zekTranslator">Felt temperature</convert>
         </widget>
-	<eLabel backgroundColor="green" position="505,937" size="1120,4" transparent="0" zPosition="2" foregroundColor="black" />
+	
     <widget source="session.j00zekMSNWeather" render="Label" position="1725,1012" size="142,30" font="Regular;18" zPosition="2" halign="right" valign="center" foregroundColor="lemon" backgroundColor="background" transparent="1" noWrap="1">
   <convert type="j00zekMSNWeather">RUN|['currentData']['pressure']['valInfo']</convert>
 </widget>
@@ -266,10 +266,12 @@
     <widget source="session.CurrentService" render="Label" font="Roboto_HD; 22" foregroundColor="green" halign="center" position="1580,1012" size="263,30"  transparent="1" zPosition="2" valign="center" backgroundColor="black" >
           <convert type="j00zekTranslator">Pressure</convert>
         </widget>
-    <widget pixmap="BlackHarmony/gfx/pointer.png" position="505,932" render="Progress" size="1120,14" source="session.Event_Now" transparent="1" zPosition="3">
+		
+	<eLabel backgroundColor="green" position="505,943" size="1120,4" transparent="0" zPosition="2" foregroundColor="black" />	
+    <widget pixmap="BlackHarmony/gfx/pointer.png" position="505,938" render="Progress" size="1120,14" source="session.Event_Now" transparent="1" zPosition="3">
   <convert type="EventTime">Progress</convert>
 </widget>
-    <widget pointer="BlackHarmony/gfx/seekbutton.png:14,1" position="505,933" render="j00zekModPositionGauge" size="1120,14" source="session.Event_Now" transparent="1" zPosition="3">
+    <widget pointer="BlackHarmony/gfx/seekbutton.png:14,1" position="505,938" render="j00zekModPositionGauge" size="1120,14" source="session.Event_Now" transparent="1" zPosition="3">
       <convert type="j00zekModEventPosition">Gauge</convert>
     </widget>
   <!-- Animacja -->

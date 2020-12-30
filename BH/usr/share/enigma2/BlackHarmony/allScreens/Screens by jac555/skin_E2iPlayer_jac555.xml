@@ -1,17 +1,17 @@
 <skin>
 <screen name="E2iPlayerWidget" position="center,center" size="1920,1080" title=" " flags="wfNoBorder" backgroundColor="transparent">
      <ePixmap position="0,0" zPosition="-10" size="1920,1080" pixmap="BlackHarmony/bg_design/black.png" transparent="0" />
-     <ePixmap position="170,1040" zPosition="4" size="30,30" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/IPTVPlayer/icons/red.png" transparent="1" alphatest="on" />
-     <ePixmap position="620,1040" zPosition="4" size="30,30" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/IPTVPlayer/icons/green.png" transparent="1" alphatest="on" />
-     <ePixmap position="1120,1040" zPosition="4" size="30,30" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/IPTVPlayer/icons/yellow.png" transparent="1" alphatest="on" />
-     <ePixmap position="1620,1040" zPosition="4" size="30,30" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/IPTVPlayer/icons/blue.png" transparent="1" alphatest="on" />
+     <ePixmap position="160,1040" zPosition="4" size="35,27" pixmap="BlackHarmony/buttons/key_red.png" transparent="1" alphatest="blend" />
+     <ePixmap position="610,1040" zPosition="4" size="35,27" pixmap="BlackHarmony/buttons/key_green.png" transparent="1" alphatest="blend" />
+     <ePixmap position="1110,1040" zPosition="4" size="35,27" pixmap="BlackHarmony/buttons/key_yellow.png" transparent="1" alphatest="blend" />
+     <ePixmap position="1610,1040" zPosition="4" size="35,27" pixmap="BlackHarmony/buttons/key_blue.png" transparent="1" alphatest="blend" />
      <widget render="Label" source="key_red" position="205,1035" size="250,41" zPosition="5" valign="center" halign="left" backgroundColor="background" font="Regular;24" transparent="1" foregroundColor="white" />
      <widget name="key_green_ext" position="655,1035" size="250,41" zPosition="5" valign="center" halign="left" backgroundColor="background" font="Regular;24" transparent="1" foregroundColor="white" />
      <widget render="Label" source="key_yellow" position="1155,1035" size="250,41" zPosition="5" valign="center" halign="left" backgroundColor="background" font="Regular;24" transparent="1" foregroundColor="white" />
      <widget render="Label" source="key_blue" position="1655,1035" size="250,41" zPosition="5" valign="center" halign="left" backgroundColor="background" font="Regular;24" transparent="1" foregroundColor="white" />
      <widget name="headertext" position="5,5" zPosition="1" size="830,90" font="RegularLight; 35" transparent="1" backgroundColor="background" foregroundColor="#a2d7fa" />
      
-     <widget name="list" position="750,120" size="1157,676" zPosition="2" itemHeight="40" font="HD_Thin; 19" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" backgroundColor="background" foregroundColor="#a8d1ff" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_1200_40.png" transparent="1" valign="center" />
+     <widget name="list" position="750,120" size="1157,676" zPosition="2" itemHeight="40" font="HD_Thin; 19" DimPIC="0,5,40,40" enableWrapAround="1" scrollbarSliderBorderWidth="1" backgroundColor="background" foregroundColor="#a8d1ff" scrollbarMode="showOnDemand" scrollbarWidth="7" scrollbarSliderBorderColor="blue" scrollbarSliderForegroundColor="blue" selectionPixmap="BlackHarmony/menu/sel_1260_40.png" transparent="1" valign="center" />
 
      <widget name="console" position="34,830" zPosition="1" size="1855,200" font="Roboto_HD; 25" transparent="1" backgroundColor="background" foregroundColor="#d8dbb8" />
      <widget name="cover" zPosition="2" position="35,115" size="700,695" alphatest="blend" borderWidth="2" borderColor="black" backgroundColor="background" />

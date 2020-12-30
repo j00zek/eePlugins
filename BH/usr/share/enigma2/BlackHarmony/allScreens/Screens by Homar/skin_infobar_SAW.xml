@@ -194,7 +194,7 @@
 
 
 <widget noWrap="1" backgroundColor="black" font="HD_Thin; 30" render="Label" position="1637,992" size="90,35" source="session.j00zekMSNWeather" zPosition="3" halign="right" transparent="1" foregroundColor="white" valign="top">
-  <convert type="j00zekMSNWeather">feelslike</convert>
+  <convert type="j00zekMSNWeather">GET|['currentData']['feelslike']['valInfo']</convert>
 </widget>
 
 

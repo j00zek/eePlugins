@@ -445,7 +445,7 @@
       <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
     </widget>
     <widget noWrap="1" backgroundColor="black" font="Roboto_HD; 30" render="Label" position="1755,900" size="90,35" source="session.j00zekMSNWeather" zPosition="3" halign="right" transparent="1" foregroundColor="podsw" valign="top">
-      <convert type="j00zekMSNWeather">feelslike</convert>
+      <convert type="j00zekMSNWeather">GET|['currentData']['feelslike']['valInfo']</convert>
     </widget>
 
     <widget source="session.CurrentService" render="j00zekLabel" font="Roboto_HD; 18" foregroundColor="yellow" halign="center" name="new eLabel" position="1715,875" size="150,20" transparent="1" zPosition="2" valign="center" backgroundColor="black">

@@ -9,11 +9,11 @@
   </widget>
   <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/IPTVPlayer/icons/logos/youtubelogo.png" position="1212,45" size="240,80" alphatest="blend" />
   
-  <widget source="list" render="Listbox" valign="center" font="Roboto_HD; 29" position="87,173" size="1340,729" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_1390_100.png" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" transparent="1">
+  <widget source="list" render="Listbox" valign="center" font="Roboto_HD; 29" position="87,173" size="1340,729" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_1390_100.png" enableWrapAround="1" scrollbarWidth="7" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="blue" scrollbarSliderBorderColor="blue" transparent="1">
   <convert type="TemplatedMultiContent">
 						{"template": [
 							MultiContentEntryPixmapAlphaTest(pos=(0,0), size=(137,100), png=2), # Thumbnail
-							MultiContentEntryText(pos=(235,1), size=(1095,78), font=0, flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER|RT_WRAP, text=3), # Title
+							MultiContentEntryText(pos=(185,1), size=(1095,78), font=0, flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER|RT_WRAP, text=3), # Title
 							MultiContentEntryText(pos=(800, 75), size=(300,33), font=1, flags=RT_HALIGN_LEFT, text=4), # Views
 							MultiContentEntryText(pos=(1090,75), size=(300,33), font=1, flags=RT_HALIGN_LEFT, text=5), # Duration
 							],

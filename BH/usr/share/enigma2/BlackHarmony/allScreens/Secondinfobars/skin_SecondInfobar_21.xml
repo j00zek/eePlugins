@@ -171,7 +171,7 @@
   <eLabel text="o" foregroundColor="white" font="HD_Thin; 15" halign="left" name="new eLabel" position="1378,872" size="15,15" transparent="1" zPosition="3" valign="center" backgroundColor="black" />
   <eLabel text="C" foregroundColor="white" font="HD_Thin;37" halign="left" name="new eLabel" position="1386,870" size="60,40" transparent="1" zPosition="3" valign="center" backgroundColor="black" />
   <widget noWrap="1" backgroundColor="black" font="HD_Thin; 37" render="Label" position="1287,870" size="90,40" source="session.j00zekMSNWeather" zPosition="3" halign="right" transparent="1" valign="center">
-    <convert type="j00zekMSNWeather">feelslike</convert>
+    <convert type="j00zekMSNWeather">GET|['currentData']['feelslike']['valInfo']</convert>
   </widget>
 </screen>
 </skin>

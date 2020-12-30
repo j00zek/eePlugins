@@ -50,7 +50,7 @@
     </widget>
     <eLabel font="Roboto_HD; 18" foregroundColor="yellow" halign="center" name="new eLabel" position="1633,985" size="180,20" text="Temp. odczuwalna:" transparent="1" zPosition="2" valign="center" backgroundColor="black" /> 
     <widget noWrap="1" backgroundColor="black" font="HD_Thin; 27" render="Label" position="1815,976" size="100,35" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1" foregroundColor="podsw" valign="center">
-      <convert type="j00zekMSNWeather">feelslike</convert>
+      <convert type="j00zekMSNWeather">GET|['currentData']['feelslike']['valInfo']</convert>
     </widget>
     <eLabel text="Pogoda teraz:" position="1701,829" size="200,28" font="Roboto_HD; 22" backgroundColor="black" halign="center" transparent="1" foregroundColor="lemon" />
     <widget noWrap="1" backgroundColor="black" font="HD_Thin; 36" render="Label" position="1740,851" size="109,59" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1" valign="center">

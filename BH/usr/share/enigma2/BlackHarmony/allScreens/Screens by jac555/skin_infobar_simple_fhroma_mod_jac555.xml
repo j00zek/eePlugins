@@ -48,7 +48,7 @@
       <convert type="j00zekMSNWeather">weathericon,current</convert>
     </widget>
     <widget noWrap="1" backgroundColor="black" font="HD_Thin; 36" render="Label" position="1720,878" size="109,59" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1" foregroundColor="podsw" valign="center">
-      <convert type="j00zekMSNWeather">feelslike</convert>
+      <convert type="j00zekMSNWeather">GET|['currentData']['feelslike']['valInfo']</convert>
     </widget> 
 </screen>
 </skin>
