@@ -527,7 +527,7 @@ options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=0,start
       <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
     </widget>
 <widget source="session.j00zekMSNWeather"  render="Label" position="265,17" size="120,73" font="VFD;66" halign="left" foregroundColor="#00CFFF" transparent="1" >
- 		<convert type="j00zekMSNWeather">humidity</convert>
+ 		<convert type="j00zekMSNWeather">RUN|['currentData']['humidity']['valInfo']</convert>
    </widget> 
 <eLabel text="%" position="360,17" size="55,73" font="VFD;66"  halign="left" foregroundColor="#00CFFF" transparent="1" />
 

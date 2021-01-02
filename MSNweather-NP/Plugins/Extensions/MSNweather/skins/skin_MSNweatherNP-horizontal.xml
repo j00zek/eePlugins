@@ -35,9 +35,7 @@
                     }
         </convert>
 	</widget>
-    <widget source="session.CurrentService" render="Label" position="1240,200" size="320,30" font="Roboto_HD; 27" halign="center" valign="center" foregroundColor="light_yellow" backgroundColor="dark_grey" transparent="1" >
-		<convert type="j00zekTranslator">Air quality</convert>
-    </widget>
+    <widget source="airQualityTitle" render="Label" position="1240,200" size="320,30" font="Roboto_HD; 27" halign="center" valign="center" foregroundColor="light_yellow" backgroundColor="dark_grey" transparent="1" />
 	<widget source="currentData_infoList" render="Listbox" position="1240,247" size="320,200" scrollbarMode="showOnDemand" transparent="1" backgroundColor="black">
 		<convert type="TemplatedMultiContent">
                     {"template": [

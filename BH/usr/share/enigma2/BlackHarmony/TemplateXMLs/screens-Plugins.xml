@@ -215,6 +215,7 @@
     <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="273,760" size="35,27" alphatest="blend"/>
     <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="499,760" size="35,27" alphatest="blend"/>
     <ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="723,760" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="923,760" size="35,27" alphatest="blend"/>
     <widget source="key_red" render="Label" position="87,759" size="180,27" zPosition="1" font="Roboto_HD; 24" halign="left" foregroundColor="white" backgroundColor="dark_grey" transparent="1"/>
     <widget source="key_green" render="Label" position="313,759" size="180,27" zPosition="1" font="Roboto_HD; 24" halign="left" foregroundColor="white" backgroundColor="dark_grey" transparent="1"/>
     <widget source="key_yellow" render="Label" position="538,759" size="180,26" zPosition="1" font="Roboto_HD;24" halign="left" foregroundColor="white" backgroundColor="dark_grey" transparent="1"/>

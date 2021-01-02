@@ -160,12 +160,12 @@ options="movetype=running,startpoint=0,direction=left,steptime=70,repeat=0,start
 </widget>
 <ePixmap pixmap="HomarLCDskins/weather/barometer.png" position="420,200" size="100,100" zPosition="3" transparent="1" alphatest="blend" />
 <widget source="session.j00zekMSNWeather"  render="Label" position="470,40" size="120,62" font="VFD;60" halign="right" transparent="1" >
-  <convert type="j00zekMSNWeather">humidity</convert>
+  <convert type="j00zekMSNWeather">RUN|['currentData']['humidity']['valInfo']</convert>
    </widget> 
 <eLabel text="%" position="582,38" size="56,56" transparent="1" font="VFD;54" halign="right" />
 <ePixmap pixmap="HomarLCDskins/weather/deszcz.png" position="440,40" size="100,100" zPosition="3" transparent="1" alphatest="blend" />
 <widget source="session.j00zekMSNWeather"  render="Label" position="500,120" size="220,62" font="VFD;60" halign="right" transparent="1" >
-  <convert type="j00zekMSNWeather">winddisplay</convert>
+  <convert type="j00zekMSNWeather">RUN|['currentData']['wind_speed']['valInfo']</convert>
   </widget> 
 <ePixmap pixmap="HomarLCDskins/weather/wiatr.png" position="440,120" size="100,100" zPosition="3" transparent="1" alphatest="blend" />
 <widget source="session.Event_Now" render="Label" position="580,288" size="160,75" font="VFD;80" transparent="1" halign="right" valign="top" foregroundColor="#ff3333">

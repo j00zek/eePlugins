@@ -312,7 +312,7 @@ class MSNWeatherEntryConfigScreen(ConfigListScreen, Screen):
                         getConfigListEntry(_("thingSpeak meteo channel ID"), self.current.thingSpeakChannelID),
                         getConfigListEntry(_("Airly installation ID (OK)"), self.current.airlyID),
                         getConfigListEntry(_("Meteogram for www.foreca.net/<this part>"), self.current.Fcity),
-                        getConfigListEntry(_("Location in www.foreca.com/<this part>"), self.current.Fmeteo),
+                        #getConfigListEntry(_("Location in www.foreca.com/<this part>"), self.current.Fmeteo),
                     ]
         self["config"].list = cfglist
     

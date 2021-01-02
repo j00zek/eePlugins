@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*- 
 from . import _
 from Components.j00zekModHex2strColor import Hex2strColor as h2c, clr
 from Components.ActionMap import ActionMap
@@ -7,6 +8,7 @@ from Components.config import config
 from Components.Label import Label
 from Components.Pixmap import Pixmap
 from Components.Sources.StaticText import StaticText
+from MSNcomponents.icons import getWindIcon
 from os import path
 from Screens.Screen import Screen
 from Tools.LoadPixmap import LoadPixmap
@@ -26,7 +28,7 @@ class MSNweatherHistograms(Screen):
             self.scaleSize = 100
         else:
             WindowWidth = 1760
-            WindowHeight = 600
+            WindowHeight = 700
             FontSize = 24
             SpaceBetweenBars = 10
             fieldSize = 70
@@ -37,6 +39,7 @@ class MSNweatherHistograms(Screen):
         
         self.PressureBarPosY = offset + self.scaleSize
         self.TempBarPosY = offset + self.scaleSize * 2 + 50 + 100
+        self.windBarPosY = offset + self.scaleSize * 3 + 50 + 100
         
         self.skin += '<widget name="TitlePressure" position="0,%s" size="220,25" font="Regular;20" halign="left" foregroundColor="yellow" />\n' %(100)
         self.skin += '<widget name="TitleTemperature" position="0,%s" size="420,25" font="Regular;20" halign="left" foregroundColor="yellow" />\n' %(self.PressureBarPosY + 100)
@@ -54,6 +57,10 @@ class MSNweatherHistograms(Screen):
             self.skin += '<widget name="tempBar%s" position="%s,%s" zPosition="1" size="%s,3" alphatest="blend"/>\n' % (i, posX, self.TempBarPosY, fieldSize)
             self.skin += '<widget name="curTempBar%s" position="%s,%s" zPosition="2" size="%s,2" alphatest="blend"/>\n' % (i, posX, self.TempBarPosY, fieldSize)
             self.skin += '<widget render="Label" source="tempName%s" position="%s,%s" zPosition="5" size="%s,30" foregroundColor="lemon" halign="center" font="Regular;20" transparent="1"/>\n' % (i, posX, self.TempBarPosY + 10, fieldSize)
+            #wind
+            self.skin += '<widget name="TitleWind" position="0,%s" size="420,25" font="Regular;20" halign="left" foregroundColor="yellow" />\n' %(self.windBarPosY)
+            self.skin += '<widget render="Label" source="windspeed%s" position="%s,%s" zPosition="5" size="%s,30" foregroundColor="white" halign="center" font="Regular;20" transparent="1"/>\n' % (i, posX, self.windBarPosY + 30, fieldSize)
+            self.skin += '<widget name="windIcon%s" position="%s,%s" zPosition="2" size="%s,30" alphatest="blend"/>\n' % (i, posX + 20, self.windBarPosY + 65, fieldSize)
             
             i += 1
         self.skin += '</screen>\n'
@@ -70,6 +77,7 @@ class MSNweatherHistograms(Screen):
         self.setTitle(_("What happened in weather during last %s hours?") % ( self.maxItems))
         self['TitlePressure'] = Label(_('Pressure'))
         self['TitleTemperature'] = Label(clr['R'] + _('Temperature') + clr['Y'] + ' | ' + clr['B'] + _('Feeling temperature'))
+        self['TitleWind'] = Label(_('Wind'))
 
         self.currTime = int(time.time())
         i = 0
@@ -88,6 +96,9 @@ class MSNweatherHistograms(Screen):
             self['tempBar%s' % i] = Pixmap()
             self['curTempBar%s' % i] = Pixmap()
             self['tempName%s' % i] = StaticText()
+            #wind
+            self['windspeed%s' % i] = StaticText()
+            self['windIcon%s' % i] = Pixmap()
             
             i += 1
             
@@ -125,7 +136,19 @@ class MSNweatherHistograms(Screen):
         except Exception:
             return 'ExceptionIcon'
     
-    #EPOC|getCurrTemperature|Wiatr=NW 39 km/h|getPressure|Wilgotnosc=78%|getCurrTemperature|skyCode=13|observationtime=18:00:00|getIcon
+    def getWind(self, record): #iconFilename=/usr/share/enigma2/BlackHarmony/weather_icons/13.png
+        try:
+            return record[3].split('=')[1].strip()
+        except Exception:
+            return None
+    
+    def getWindIcon(self, record): #iconFilename=/usr/share/enigma2/BlackHarmony/weather_icons/13.png
+        try:
+            return getWindIcon(str(record[10].split('=')[1].strip()))
+        except Exception:
+            return None
+
+    #EPOC|0115|Temp. odczuwalna=-5|Wiatr=7|Ciœnienie=1010|Wilgotnoœæ=90|currTemp=1|skyCode=27.png|observationtime=15:10:55|iconFilename=/usr/share/enigma2/BlackHarmony/weather_icons/27.png|winddir=S
     def startRun(self):
         self.DEBUG('MSNweatherHistograms(Screen).startRun >>>')
         minPressure = 1000
@@ -181,6 +204,9 @@ class MSNweatherHistograms(Screen):
                 pressure = self.getPressure(record)
                 temp = self.getTemperature(record)
                 currtemp = self.getCurrTemperature(record)
+                windspeed = self.getWind(record)
+                windDirectionIcon = self.getWindIcon(record)
+
                 dayANDhour = str(record[1])
                 index = self.mapDict.get(dayANDhour, -1)
                 self.DEBUG('\t dayANDhour="%s", index=%s, pressure="%s", temp="%s"' % (dayANDhour, index, pressure,temp))
@@ -208,6 +234,11 @@ class MSNweatherHistograms(Screen):
                         self['curTempBar%s' % index].instance.move(ePoint(int(barX), int(self.TempBarPosY - (int(currtemp) - minTemp) * stepTemp)))
                         self['curTempBar%s' % index].instance.setPixmap(self.barRed)
                         self['curTempBar%s' % index].show()
+                    if windspeed is not None:
+                        self['windspeed%s' % index].text = '%skm/h' % str(windspeed)
+                    if windDirectionIcon is not None:
+                        self['windIcon%s' % index].instance.setPixmap(windDirectionIcon)
+                        self['windIcon%s' % index].show()
                 i += 1
 
     def keyOk(self):

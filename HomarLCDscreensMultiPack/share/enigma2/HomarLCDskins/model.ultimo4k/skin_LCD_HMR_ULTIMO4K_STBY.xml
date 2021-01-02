@@ -55,10 +55,10 @@ alphatest="blend" zPosition="1" >
             <convert type="j00zekMSNWeather">RUN|['currentData']['pressure']['val']|hPa</convert>
    </widget>
   <widget source="session.j00zekMSNWeather"  render="Label" position="410,250" size="120,62" font="VFD3;60" halign="left" transparent="1" >
- 		<convert type="j00zekMSNWeather">humidity</convert>
+ 		<convert type="j00zekMSNWeather">RUN|['currentData']['humidity']['valInfo']</convert>
    </widget> 
 <widget source="session.j00zekMSNWeather"  render="Label" position="130,250" size="220,62" font="VFD3;60" halign="left" transparent="1" >
- 		<convert type="j00zekMSNWeather">winddisplay</convert>
+ 		<convert type="j00zekMSNWeather">RUN|['currentData']['wind_speed']['valInfo']</convert>
   </widget> 
   <ePixmap pixmap="HomarLCDskins/weather/wiatr.png" position="0,165" size="160,160" zPosition="3" transparent="1" alphatest="blend" />
   <ePixmap pixmap="HomarLCDskins/weather/deszcz.png" position="340,240" size="100,100" zPosition="4" transparent="1" alphatest="blend" />

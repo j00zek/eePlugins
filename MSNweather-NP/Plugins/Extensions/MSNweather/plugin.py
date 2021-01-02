@@ -187,6 +187,7 @@ class MSNweatherNP(Screen):
         }, -1)
 
         self["statustext"] = StaticText()
+        self["airQualityTitle"] = StaticText()
         self["currenticon"] = j00zekAccellPixmap()
         self["caption"] = StaticText()
         self["currentData_weathericon"] = StaticText()
@@ -324,6 +325,7 @@ class MSNweatherNP(Screen):
         self["currentData_WeatherinfoList"].list = []
         self["currentData_airlyInfo"].text = ""
         self["currentData_airlyAdvice"].text = ""
+        self["airQualityTitle"].text = ""
 
     def showIcon(self,index, filename):
         self["currenticon"].updateIcon(filename)
@@ -366,8 +368,11 @@ class MSNweatherNP(Screen):
         return
       
     def keyYellow(self): #ShowHistograms
-        from histograms import MSNweatherHistograms
-        self.session.open(MSNweatherHistograms)
+        #from histograms import MSNweatherHistograms
+        #self.session.open(MSNweatherHistograms)
+        import histograms
+        reload(histograms)
+        self.session.open(histograms.MSNweatherHistograms)
 
     def keyBlue(self): #ShowMaps
         from maps import MSNweatherMaps
@@ -443,7 +448,7 @@ class MSNweatherNP(Screen):
                 tmpAllList = []
                 tmpListWeather = []
                 if len(tmpDict) > 0:
-                    #info o aktualuzaci
+                    #info o aktualizacji
                     tmpVal = str(tmpDict.get('observationtime', {}).get('name', ""))
                     tmpVal += ' ' + str(tmpDict.get('observationtime', {}).get('time', ""))
                     if str(tmpDict.get('tsobservationtime', {}).get('time', "")) != '':
@@ -479,6 +484,8 @@ class MSNweatherNP(Screen):
                     except Exception: tmpAllList.sort()
                     
                 self["currentData_infoList"].list = tmpList
+                if len(tmpList) > 0:
+                    self["airQualityTitle"].text = _('Air quality')
                 self["currentData_WeatherinfoList"].list = tmpListWeather
                 self["currentData_allInfoList"].list = tmpAllList
                 

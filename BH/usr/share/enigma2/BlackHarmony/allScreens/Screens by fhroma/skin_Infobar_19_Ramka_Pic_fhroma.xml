@@ -139,7 +139,7 @@
       <convert type="j00zekTranslator">FeelsLike</convert>
     </widget>
     <widget source="session.j00zekMSNWeather" render="Label" font="Roboto_HD; 30" position="1765,930" size="100,35" zPosition="3" halign="right"  foregroundColor="podsw" backgroundColor="black" transparent="1">
-      <convert type="j00zekMSNWeather">GET|['currentData']['feelslike']['valInfo']</convert>
+      <convert type="j00zekMSNWeather">RUN|['currentData']['feelslike']['valInfo']</convert>
     </widget>
     <eLabel text="EX" font="Roboto_HD; 22" position="800,952" size="40,25" halign="center" backgroundColor="black" foregroundColor="white" transparent="1" valign="center" zPosition="1" />
     <widget source="session.CurrentService" render="FixedLabel" text="EX" font="Roboto_HD; 22" position="800,952" size="40,25" halign="center" backgroundColor="black" foregroundColor="#FFFF00" zPosition="2" valign="center" transparent="1">
@@ -291,10 +291,10 @@
       <convert type="j00zekMSNWeather">weathericon,day3</convert>
     </widget>
     <widget source="session.j00zekMSNWeather" render="Label" position="1305,72" size="140,30" font="Roboto_HD; 20" halign="center" valign="center" transparent="1" zPosition="3">
-      <convert type="j00zekMSNWeather">temperature_heigh_low,day2</convert>
+      <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=1']['temp_high']|C|     |['dailyData']['Record=1']['temp_low']|C</convert>
     </widget>
     <widget source="session.j00zekMSNWeather" render="Label" position="1615,72" size="140,30" font="Roboto_HD; 20" halign="center" valign="center" transparent="1" zPosition="3">
-      <convert type="j00zekMSNWeather">temperature_heigh_low,day3</convert>
+      <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=2']['temp_high']|C|     |['dailyData']['Record=2']['temp_low']|C</convert>
     </widget>
   </screen> 
 </skin>

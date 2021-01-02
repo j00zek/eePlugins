@@ -13,6 +13,7 @@ from Components.Pixmap import Pixmap
 from Components.Sources.List import List
 from Components.Sources.StaticText import StaticText
 from MSNcomponents.GetAsyncWebDataNP import IMGtoICON
+from MSNcomponents.icons import getWindIcon
 from os import path
 from Screens.Screen import Screen
 from Tools.LoadPixmap import LoadPixmap
@@ -87,7 +88,7 @@ class MSNweatherDailyDetails(Screen):
     
     def DEBUG(self, myFUNC = '' , myText = '' ):
         if DBG:
-            from Plugins.Extensions.MSNweather.debug import printDEBUG
+            from Plugins.Extensions.MSNweather.MSNcomponents.debug import printDEBUG
             printDEBUG( myFUNC , myText, logFileName = 'MSNweatherDailyDetails.log' )
 
     def __onShown(self):
@@ -154,36 +155,6 @@ class MSNweatherDailyDetails(Screen):
         #retPNG = LoadPixmap(cached=True, path=iconfilename)
         return retPNG
         
-    def loadWindIcon(self, iconName = None):
-        retPNG = None
-        self.DEBUG('loadWindIcon' , 'iconName: %s ' % iconName)
-        if iconName is None or iconName == '':
-            return None
-        elif iconName == 'N': 
-            retPNG = '/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/w000_polnoc.png'
-        elif iconName in ('NE', 'ENE'): 
-            retPNG = '/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/w045_polnocny_wschod.png'
-        elif iconName == 'E': 
-            retPNG = '/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/w090_wschod.png'
-        elif iconName in ('SE', 'SSE'): 
-            retPNG = '/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/w135_poludniowy_wschod.png'
-        elif iconName == 'S': 
-            retPNG = '/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/w180_poludnie.png'
-        elif iconName in ('SW', 'WSW'): 
-            retPNG = '/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/w225_poludniowy_zachod.png'
-        elif iconName == 'W': 
-            retPNG = '/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/w270_zachod.png'
-        elif iconName in ('NW', 'WNW'): 
-            retPNG = '/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/w315_polnocny_zachod.png'
-        else:
-            return None
-
-        if not retPNG is None and os.path.exists(retPNG):
-            self.DEBUG('loadWindIcon ' , 'retPNG: %s ' % retPNG)
-            return LoadPixmap(cached=False, path=retPNG)
-        else:
-            return None
-    
     def updateInfo(self):
         try:
             dayDetails = self.item.dictWeather['dailyData']['Record=%s' % self.dayIDX]
@@ -198,7 +169,7 @@ class MSNweatherDailyDetails(Screen):
             self["day_icon"].updateIcon(self.loadIcon('dailyIcon' , dayDetails))
             self["day_skytext"].text = str(dictdetails.get('skytext','?'))
             
-            windIcon = self.loadWindIcon(str(dictdetails.get('windDir','')))
+            windIcon = getWindIcon(str(dictdetails.get('windDir','')))
             self["day_infoList"].list = [(  
                                             self.tempHigh_icon, str(dayDetails.get('temp_high','?')),
                                             self.tempLow_icon,  str(dayDetails.get('temp_low','?')),
@@ -251,17 +222,17 @@ class MSNweatherDailyDetails(Screen):
             self.DEBUG('updateInfo Exception: ' ,str(e))
 
         #hourly
-        dicthourly = dayDetails['dicthourly']
-        self.Hours = len(dicthourly['times'])
-        precipitationsList = dicthourly.get('precipitations', [])
-        skyCodesList = dicthourly.get('skyCodes', [])
-        skyImagesList = dicthourly.get('skyImages', [])
-        skyTextsList = dicthourly.get('skyTexts', [])
-        temperaturesList = dicthourly.get('temperatures', [])
-        timesList = dicthourly.get('times', [])
-        windList = dicthourly.get('wind', [])
-        windDirList = dicthourly.get('windDir', [])
         try:
+            dicthourly = dayDetails['dicthourly']
+            self.Hours = len(dicthourly['times'])
+            precipitationsList = dicthourly.get('precipitations', [])
+            skyCodesList = dicthourly.get('skyCodes', [])
+            skyImagesList = dicthourly.get('skyImages', [])
+            skyTextsList = dicthourly.get('skyTexts', [])
+            temperaturesList = dicthourly.get('temperatures', [])
+            timesList = dicthourly.get('times', [])
+            windList = dicthourly.get('wind', [])
+            windDirList = dicthourly.get('windDir', [])
             self.DEBUG('updateInfo ' ,'cleaning hourly data...')
             hIDX = 0
             while hIDX < self.Hours:
@@ -271,7 +242,7 @@ class MSNweatherDailyDetails(Screen):
         except Exception as e:
             self.DEBUG('updateInfo Exception cleaning hourly data: ' ,str(e))
         try:
-            self.DEBUG('updateInfo ' ,'updating hourly data...')
+            self.DEBUG('updateInfo ' ,'updating hourly data for %s hours...' % self.Hours)
             hIDX = 0
             while hIDX < self.Hours:
                 listName = "h%s_infoList" % hIDX
@@ -287,7 +258,7 @@ class MSNweatherDailyDetails(Screen):
                     weatherIcon = LoadPixmap(cached=False, path=imgWeather)
                 else:
                     weatherIcon = None
-                windIcon = self.loadWindIcon(str(windDirList[hourIDX]))
+                windIcon = getWindIcon(str(windDirList[hourIDX]))
                 self[listName].list = [(
                                         str(timesList[hourIDX]) + ':00',
                                         weatherIcon,
