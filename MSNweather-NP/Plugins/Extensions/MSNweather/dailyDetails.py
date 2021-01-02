@@ -13,7 +13,7 @@ from Components.Pixmap import Pixmap
 from Components.Sources.List import List
 from Components.Sources.StaticText import StaticText
 from MSNcomponents.GetAsyncWebDataNP import IMGtoICON
-from MSNcomponents.icons import getWindIcon
+from MSNcomponents.icons import getWindIconName
 from os import path
 from Screens.Screen import Screen
 from Tools.LoadPixmap import LoadPixmap
@@ -154,6 +154,20 @@ class MSNweatherDailyDetails(Screen):
         self.DEBUG('loadIcon' , 'retPNG: %s ' % str(retPNG))
         #retPNG = LoadPixmap(cached=True, path=iconfilename)
         return retPNG
+
+    def getWindIcon(self, iconName = None):
+        retPNG = None
+        self.DEBUG('icons.getWindIcon' , 'iconName: %s ' % iconName)
+        if iconName is None or iconName == '':
+            return None
+        else:
+            retPNG = getWindIconName(iconName)
+
+        if not retPNG is None and os.path.exists(retPNG):
+            self.DEBUG('icons.getWindIcon ' , 'retPNG: %s ' % retPNG)
+            return LoadPixmap(cached=False, path=retPNG)
+        else:
+            return None
         
     def updateInfo(self):
         try:
@@ -169,7 +183,7 @@ class MSNweatherDailyDetails(Screen):
             self["day_icon"].updateIcon(self.loadIcon('dailyIcon' , dayDetails))
             self["day_skytext"].text = str(dictdetails.get('skytext','?'))
             
-            windIcon = getWindIcon(str(dictdetails.get('windDir','')))
+            windIcon = self.getWindIcon(str(dictdetails.get('windDir','')))
             self["day_infoList"].list = [(  
                                             self.tempHigh_icon, str(dayDetails.get('temp_high','?')),
                                             self.tempLow_icon,  str(dayDetails.get('temp_low','?')),
@@ -258,7 +272,7 @@ class MSNweatherDailyDetails(Screen):
                     weatherIcon = LoadPixmap(cached=False, path=imgWeather)
                 else:
                     weatherIcon = None
-                windIcon = getWindIcon(str(windDirList[hourIDX]))
+                windIcon = self.getWindIcon(str(windDirList[hourIDX]))
                 self[listName].list = [(
                                         str(timesList[hourIDX]) + ':00',
                                         weatherIcon,

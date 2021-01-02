@@ -8,11 +8,11 @@ from Components.config import config
 from Components.Label import Label
 from Components.Pixmap import Pixmap
 from Components.Sources.StaticText import StaticText
-from MSNcomponents.icons import getWindIcon
+from MSNcomponents.icons import getWindIconName
 from os import path
 from Screens.Screen import Screen
 from Tools.LoadPixmap import LoadPixmap
-import time
+import os, time
 
 class MSNweatherHistograms(Screen):
 
@@ -144,7 +144,12 @@ class MSNweatherHistograms(Screen):
     
     def getWindIcon(self, record): #iconFilename=/usr/share/enigma2/BlackHarmony/weather_icons/13.png
         try:
-            return getWindIcon(str(record[10].split('=')[1].strip()))
+            retPNG = getWindIconName(str(record[10].split('=')[1].strip()))
+            if not retPNG is None and os.path.exists(retPNG):
+                self.DEBUG('icons.getWindIcon ' , 'retPNG: %s ' % retPNG)
+                return LoadPixmap(cached=False, path=retPNG)
+            else:
+                return None
         except Exception:
             return None
 
