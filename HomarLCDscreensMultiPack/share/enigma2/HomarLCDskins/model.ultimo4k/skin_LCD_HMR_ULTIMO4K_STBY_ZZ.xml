@@ -32,16 +32,15 @@
 </windowstyle>
 
 <screen name="LCDWetterStandbyTemplate">
-  <widget source="session.j00zekMSNWeather" render="j00zekMSNWeatherPixmap" position="630,20" size="145,145" transparent="1"
-alphatest="blend" zPosition="1" >
+  <widget source="session.j00zekMSNWeather" render="j00zekMSNWeatherPixmap" position="630,20" size="145,145" transparent="1" alphatest="blend" zPosition="1" >
     <convert type="j00zekMSNWeather">weathericon,current</convert>
   </widget>
- <widget foregroundColor="HMRname" font="VFD3;100" render="Label" halign="right" valign="center" noWrap="1" transparent="1" source="session.j00zekMSNWeather" position="550,242" size="230,90" zPosition="5">
- 		<convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
- </widget>
-<widget font="VFD3;63" render="Label" halign="right" valign="center" noWrap="1" transparent="1" source="session.j00zekMSNWeather" position="548,306" size="230,90" zPosition="5">
- 		<convert type="j00zekMSNWeather">GET|['currentData']['feelslike']['valInfo']</convert>
- </widget>
+  <widget foregroundColor="HMRname" font="VFD3;100" render="Label" halign="right" valign="center" noWrap="1" transparent="1" source="session.j00zekMSNWeather" position="550,242" size="230,90" zPosition="5">
+    <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
+  </widget>
+  <widget font="VFD3;63" render="Label" halign="right" valign="center" noWrap="1" transparent="1" source="session.j00zekMSNWeather" position="548,306" size="230,90" zPosition="5">
+    <convert type="j00zekMSNWeather">GET|['currentData']['feelslike']['valInfo']</convert>
+  </widget>
   <widget position="15,380" size="760,76" source="global.CurrentTime" render="Label" font="Roboto_HD; 33" foregroundColor="HMRname" halign="center" transparent="1" zPosition="2">
         <convert type="j00zekModABTCAirlyWidget">ldesc</convert>
 	 </widget>
@@ -63,7 +62,7 @@ alphatest="blend" zPosition="1" >
   <ePixmap pixmap="HomarLCDskins/weather/wiatr.png" position="0,165" size="160,160" zPosition="3" transparent="1" alphatest="blend" />
   <ePixmap pixmap="HomarLCDskins/weather/deszcz.png" position="340,240" size="100,100" zPosition="4" transparent="1" alphatest="blend" />
   <ePixmap pixmap="HomarLCDskins/weather/barometer.png" position="30,310" size="100,100" zPosition="3" transparent="1" alphatest="blend" />
-  <ePixmap pixmap="HomarLCDskins/weather/termometr.png" position="500,250" size="140,200" zPosition="3" transparent="1" alphatest="blend" />
+  <ePixmap pixmap="HomarLCDskins/weather/termometr.png" position="520,250" size="140,200" zPosition="3" transparent="1" alphatest="blend" />
     </screen>
 
 <screen name="MoviePlayerTemplate">

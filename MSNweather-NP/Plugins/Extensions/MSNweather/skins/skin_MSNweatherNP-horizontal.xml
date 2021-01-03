@@ -21,7 +21,7 @@
       <convert type="j00zekMSNWeather">weathericon,current</convert>
     </widget>
     <widget source="currentData_temperature" render="Label" font="Roboto_HD; 40" position="370,244" size="140,45" backgroundColor="black" zPosition="3" transparent="1" valign="center" foregroundColor="light_yellow"/>
-    <widget source="currentData_skytext"     render="j00zekModRunningText" position="120,340" size="400,60" font="HD_Thin; 26" halign="center" valign="center" transparent="1" backgroundColor="black"/>
+    <widget source="currentData_skytext"     render="j00zekLabel" position="120,340" size="400,60" font="HD_Thin; 26" halign="center" valign="center" transparent="1" backgroundColor="black"/>
 <!-- top second from left -->
 	<widget source="currentData_WeatherinfoList" render="Listbox" position="620,247" size="400,180" scrollbarMode="showOnDemand" transparent="1" backgroundColor="black">
 		<convert type="TemplatedMultiContent">
@@ -69,81 +69,81 @@
         </widget>
 <!--HOURLY DATA-->
     <ePixmap pixmap="BlackHarmony/gfx/line.png" position="420,455" size="1200,2" zPosition="3" transparent="1" alphatest="blend"/>
-    <widget position="100,440" size="350,30" zPosition="3" halign="left" valign="top" render="Label" source="session.j00zekMSNWeather" font="Roboto_HD; 24" transparent="1" foregroundColor="green">
+    <widget position="100,440" size="350,30" zPosition="3" halign="left" valign="top" render="j00zekLabel" source="session.j00zekMSNWeather" font="Roboto_HD; 24" transparent="1" foregroundColor="green">
       <convert type="j00zekMSNWeather">RUN|['hourlyData']['title']</convert>
     </widget>
     <!-- h0 -->
-    <widget position="90,470" size="150,190" zPosition="3" halign="center" valign="top" render="Label" source="session.j00zekMSNWeather" font="Roboto_HD; 22" transparent="1" backgroundColor="black">
+    <widget position="90,470" size="150,190" zPosition="3" halign="center" valign="top" render="j00zekLabel" source="session.j00zekMSNWeather" font="Roboto_HD; 22" transparent="1" backgroundColor="black">
       <convert type="j00zekMSNWeather">HourlyRecord=0</convert>
     </widget>
     <widget position="140,500" size="50,50" zPosition="5" alphatest="blend" render="j00zekMSNWeatherPixmap" source="session.j00zekMSNWeather" transparent="1">
         <convert type="j00zekMSNWeather">RUN|['hourlyData']['Record=0']['imgfilename']</convert>
     </widget>
     <!-- h1 -->
-    <widget position="250,470" size="150,190" zPosition="3" halign="center" valign="top" render="Label" source="session.j00zekMSNWeather" font="Roboto_HD; 22" transparent="1" backgroundColor="black">
+    <widget position="250,470" size="150,190" zPosition="3" halign="center" valign="top" render="j00zekLabel" source="session.j00zekMSNWeather" font="Roboto_HD; 22" transparent="1" backgroundColor="black">
       <convert type="j00zekMSNWeather">HourlyRecord=1</convert>
     </widget>
     <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="300,500" size="50,50" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
         <convert type="j00zekMSNWeather">RUN|['hourlyData']['Record=1']['imgfilename']</convert>
     </widget>
     <!-- h2 -->
-    <widget position="410,470" size="150,190" zPosition="3" halign="center" valign="top" render="Label" source="session.j00zekMSNWeather" font="Roboto_HD; 22" transparent="1" backgroundColor="black">
+    <widget position="410,470" size="150,190" zPosition="3" halign="center" valign="top" render="j00zekLabel" source="session.j00zekMSNWeather" font="Roboto_HD; 22" transparent="1" backgroundColor="black">
       <convert type="j00zekMSNWeather">HourlyRecord=2</convert>
     </widget>
     <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="460,500" size="50,50" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
         <convert type="j00zekMSNWeather">RUN|['hourlyData']['Record=2']['imgfilename']</convert>
     </widget>
     <!-- h3 -->
-    <widget position="570,470" size="150,190" zPosition="3" halign="center" valign="top" render="Label" source="session.j00zekMSNWeather" font="Roboto_HD; 22" transparent="1" backgroundColor="black">
+    <widget position="570,470" size="150,190" zPosition="3" halign="center" valign="top" render="j00zekLabel" source="session.j00zekMSNWeather" font="Roboto_HD; 22" transparent="1" backgroundColor="black">
       <convert type="j00zekMSNWeather">HourlyRecord=3</convert>
     </widget>
     <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="620,500" size="50,50" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
         <convert type="j00zekMSNWeather">RUN|['hourlyData']['Record=3']['imgfilename']</convert>
     </widget>
     <!-- h4 -->
-    <widget position="730,470" size="150,190" zPosition="3" halign="center" valign="top" render="Label" source="session.j00zekMSNWeather" font="Roboto_HD; 22" transparent="1" backgroundColor="black">
+    <widget position="730,470" size="150,190" zPosition="3" halign="center" valign="top" render="j00zekLabel" source="session.j00zekMSNWeather" font="Roboto_HD; 22" transparent="1" backgroundColor="black">
       <convert type="j00zekMSNWeather">HourlyRecord=4</convert>
     </widget>
     <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="780,500" size="50,50" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
         <convert type="j00zekMSNWeather">RUN|['hourlyData']['Record=4']['imgfilename']</convert>
     </widget>
     <!-- h5 -->
-    <widget position="890,470" size="150,190" zPosition="3" halign="center" valign="top" render="Label" source="session.j00zekMSNWeather" font="Roboto_HD; 22" transparent="1" backgroundColor="black">
+    <widget position="890,470" size="150,190" zPosition="3" halign="center" valign="top" render="j00zekLabel" source="session.j00zekMSNWeather" font="Roboto_HD; 22" transparent="1" backgroundColor="black">
       <convert type="j00zekMSNWeather">HourlyRecord=5</convert>
     </widget>
     <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="940,500" size="50,50" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
         <convert type="j00zekMSNWeather">RUN|['hourlyData']['Record=5']['imgfilename']</convert>
     </widget>
     <!-- h6 -->
-    <widget position="1050,470" size="150,190" zPosition="3" halign="center" valign="top" render="Label" source="session.j00zekMSNWeather" font="Roboto_HD; 22" transparent="1" backgroundColor="black">
+    <widget position="1050,470" size="150,190" zPosition="3" halign="center" valign="top" render="j00zekLabel" source="session.j00zekMSNWeather" font="Roboto_HD; 22" transparent="1" backgroundColor="black">
       <convert type="j00zekMSNWeather">HourlyRecord=6</convert>
     </widget>
     <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="1100,500" size="50,50" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
         <convert type="j00zekMSNWeather">RUN|['hourlyData']['Record=6']['imgfilename']</convert>
     </widget>
     <!-- h7 -->
-    <widget position="1210,470" size="150,190" zPosition="3" halign="center" valign="top" render="Label" source="session.j00zekMSNWeather" font="Roboto_HD; 22" transparent="1" backgroundColor="black">
+    <widget position="1210,470" size="150,190" zPosition="3" halign="center" valign="top" render="j00zekLabel" source="session.j00zekMSNWeather" font="Roboto_HD; 22" transparent="1" backgroundColor="black">
       <convert type="j00zekMSNWeather">HourlyRecord=7</convert>
     </widget>
     <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="1260,500" size="50,50" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
         <convert type="j00zekMSNWeather">RUN|['hourlyData']['Record=7']['imgfilename']</convert>
     </widget>
     <!-- h8 -->
-    <widget position="1370,470" size="150,190" zPosition="3" halign="center" valign="top" render="Label" source="session.j00zekMSNWeather" font="Roboto_HD; 22" transparent="1" backgroundColor="black">
+    <widget position="1370,470" size="150,190" zPosition="3" halign="center" valign="top" render="j00zekLabel" source="session.j00zekMSNWeather" font="Roboto_HD; 22" transparent="1" backgroundColor="black">
       <convert type="j00zekMSNWeather">HourlyRecord=8</convert>
     </widget>
     <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="1420,500" size="50,50" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
         <convert type="j00zekMSNWeather">RUN|['hourlyData']['Record=8']['imgfilename']</convert>
     </widget>
     <!-- h9 -->
-    <widget position="1530,470" size="150,190" zPosition="3" halign="center" valign="top" render="Label" source="session.j00zekMSNWeather" font="Roboto_HD; 22" transparent="1" backgroundColor="black">
+    <widget position="1530,470" size="150,190" zPosition="3" halign="center" valign="top" render="j00zekLabel" source="session.j00zekMSNWeather" font="Roboto_HD; 22" transparent="1" backgroundColor="black">
       <convert type="j00zekMSNWeather">HourlyRecord=9</convert>
     </widget>
     <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="1580,500" size="50,50" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
         <convert type="j00zekMSNWeather">RUN|['hourlyData']['Record=9']['imgfilename']</convert>
     </widget>
     <!-- h10 -->
-    <widget position="1690,470" size="150,190" zPosition="3" halign="center" valign="top" render="Label" source="session.j00zekMSNWeather" font="Roboto_HD; 22" transparent="1" backgroundColor="black">
+    <widget position="1690,470" size="150,190" zPosition="3" halign="center" valign="top" render="j00zekLabel" source="session.j00zekMSNWeather" font="Roboto_HD; 22" transparent="1" backgroundColor="black">
       <convert type="j00zekMSNWeather">HourlyRecord=10</convert>
     </widget>
     <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="1740,500" size="50,50" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
@@ -157,7 +157,7 @@
     <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="128,730" size="128,128" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
         <convert type="j00zekMSNWeather">DailyRecord=0</convert>
     </widget>
-    <widget source="session.j00zekMSNWeather" render="Label" font="Roboto_HD; 26" position="100,860" size="190,110" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="top">
+    <widget source="session.j00zekMSNWeather" render="j00zekLabel" font="Roboto_HD; 26" position="100,860" size="190,110" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="top">
       <convert type="j00zekMSNWeather">DailyRecord=0,info</convert>
     </widget>
 <!--DAY1-->

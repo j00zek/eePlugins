@@ -672,6 +672,9 @@ class MSNWeatherConfiguration(Screen, ConfigListScreen):
             ConfigList.append(getConfigListEntry(_("Period:"), config.plugins.MSNweatherNP.HistoryPeriod))
 
         ConfigList.append(getConfigListEntry(""))
+        ConfigList.append(getConfigListEntry('\c00289496' + _("*** Home solar system ***")))
+
+        ConfigList.append(getConfigListEntry(""))
         ConfigList.append(getConfigListEntry('\c00289496' + _("*** Home air condition ***")))
         ConfigList.append(getConfigListEntry(_("1st AC system:"), config.plugins.MSNweatherNP.AC1))
         if config.plugins.MSNweatherNP.AC1.value != 'off':
