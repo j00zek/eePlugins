@@ -266,38 +266,6 @@
     <convert type="j00zekModCaidInfo2">Emu</convert>
     <convert type="ConditionalShowHide" />
   </widget>
-  <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="1289,33" size="85,85" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
-    <convert type="j00zekMSNWeather">weathericon,day1</convert>
-  </widget>
-  <ePixmap pixmap="BlackHarmony/weather_icons/wiatr.png" position="1503,34" size="30,30" zPosition="3" transparent="1" alphatest="blend" />
-  <ePixmap pixmap="BlackHarmony/weather_icons/deszcz.png" position="1505,77" size="28,30" zPosition="4" transparent="1" alphatest="blend" />
-  <ePixmap pixmap="BlackHarmony/weather_icons/temp.png" position="1837,58" size="20,50" zPosition="3" transparent="1" alphatest="blend" />
-  <ePixmap pixmap="BlackHarmony/weather_icons/temp.png" position="1457,58" size="20,50" zPosition="3" transparent="1" alphatest="blend" />
-  <eLabel text="Dzisiaj" position="1389,26" size="80,25" font="Roboto_HD; 22" backgroundColor="black" halign="left" transparent="1" foregroundColor="light_yellow" />
-  <widget source="session.j00zekMSNWeather" render="Label" font="Roboto_HD; 22" position="1389,57" size="65,25" backgroundColor="black" zPosition="3" transparent="1" valign="center" halign="center">
-    <convert type="j00zekMSNWeather">temperature_high,current</convert>
-  </widget>
-  <widget source="session.j00zekMSNWeather" render="Label" font="Roboto_HD; 22" position="1389,83" size="65,25" backgroundColor="black" zPosition="3" transparent="1" valign="center" halign="center">
-    <convert type="j00zekMSNWeather">temperature_low,current</convert>
-  </widget>
-  <widget backgroundColor="black" font="Roboto_HD; 22" foregroundColor="white" render="Label" position="1553,36" size="110,25" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1">
-    <convert type="j00zekMSNWeather">winddisplay</convert>
-  </widget>
-  <widget backgroundColor="black" font="Roboto_HD; 22" foregroundColor="white" render="Label" position="1535,80" size="55,25" source="session.j00zekMSNWeather" zPosition="3" halign="right" transparent="1">
-    <convert type="j00zekMSNWeather">humidity</convert>
-  </widget>
-  <eLabel text="%" position="1594,80" size="30,25" backgroundColor="black" transparent="1" font="Roboto_HD; 21" foregroundColor="white" />
-  <ePixmap position="1265,8" zPosition="-2" size="625,120" pixmap="BlackHarmony/bg_design/infobar_pogoda.png" />
-  <eLabel text="Jutro" position="1770,26" size="75,25" font="Roboto_HD; 22" backgroundColor="black" halign="left" transparent="1" foregroundColor="light_yellow" />
-  <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="1670,33" size="85,85" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
-    <convert type="j00zekMSNWeather">weathericon,day2</convert>
-  </widget>
-  <widget noWrap="1" backgroundColor="black" font="Roboto_HD; 22" render="Label" position="1770,57" size="65,25" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1">
-    <convert type="j00zekMSNWeather">temperature_high,day2</convert>
-  </widget>
-  <widget noWrap="1" backgroundColor="black" font="Roboto_HD; 22" render="Label" position="1770,83" size="65,25" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1">
-    <convert type="j00zekMSNWeather">temperature_low,day2</convert>
-  </widget>
   <eLabel text="Pogoda teraz :" position="1640,796" size="200,25" font="Roboto_HD; 23" backgroundColor="black" halign="left" transparent="1" foregroundColor="green" />
   <eLabel text="CPU :" position="1564,958" size="65,25" font="Roboto_HD; 22" backgroundColor="black" halign="left" transparent="1" foregroundColor="yellow" />
   <eLabel text="BTR :" position="1680,958" size="65,25" font="Roboto_HD; 22" backgroundColor="black" halign="left" transparent="1" foregroundColor="blue" />

@@ -1,0 +1,78 @@
+ <skin>
+<screen name="InfoBar" position="0,0" size="1920,1080" title="InfoBar" flags="wfNoBorder" backgroundColor="transparent">
+ <ePixmap pixmap="BlackHarmony/bg_design/pogoda_swiateczny_mario.png" position="1265,10" size="614,572" zPosition="-2" />
+   <widget alphatest="blend" position="1435,63" render="j00zekMSNWeatherPixmap" size="100,100" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
+   <convert type="j00zekMSNWeather">weathericon,current</convert>
+   </widget>
+   <ePixmap alphatest="blend" pixmap="BlackHarmony/weather_icons/wiatr.png" position="1687,75" size="30,30" transparent="1" zPosition="3" />
+   <ePixmap alphatest="blend" pixmap="BlackHarmony/weather_icons/deszcz.png" position="1787,107" size="28,30" transparent="1" zPosition="4" />
+   <eLabel backgroundColor="black" font="HD_Thin; 21" foregroundColor="light_yellow" halign="center" position="1307,198" size="140,25" text="Jutro" transparent="1" />
+   <widget backgroundColor="black" font="Roboto_HD; 21" foregroundColor="red" halign="right" position="1545,77" render="Label" size="65,25" source="session.j00zekMSNWeather" transparent="1" valign="center" zPosition="3">
+   <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=0']['temp_high']|C</convert>
+   </widget>
+   <widget backgroundColor="black" font="Roboto_HD; 21" foregroundColor="blue" halign="right" position="1545,110" render="Label" size="65,25" source="session.j00zekMSNWeather" transparent="1" valign="center" zPosition="3">
+   <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=0']['temp_low']|C</convert>
+   </widget>
+   <widget backgroundColor="black" font="Roboto_HD; 21" foregroundColor="white" halign="left" position="1740,77" render="Label" size="100,25" source="session.j00zekMSNWeather" transparent="1" zPosition="3">
+   <convert type="j00zekMSNWeather">RUN|['currentData']['wind_speed']['valInfo']</convert>
+   </widget>
+   <widget backgroundColor="black" font="Roboto_HD; 21" foregroundColor="white" halign="right" position="1675,110" render="Label" size="90,25" source="session.j00zekMSNWeather" transparent="1" zPosition="3">
+   <convert type="j00zekMSNWeather">RUN|['currentData']['humidity']['valInfo']</convert>
+   </widget>
+  <eLabel backgroundColor="black" font="HD_Thin; 21" foregroundColor="light_yellow" halign="center" position="1605,198" size="140,25" text="Pojutrze" transparent="1" />
+   <ePixmap alphatest="blend" pixmap="BlackHarmony/weather_icons/temp+.png" position="1285,237" size="20,50" transparent="1" zPosition="3" />
+   <widget backgroundColor="black" font="Roboto_HD; 21" halign="center" position="1307,233" render="Label" size="140,30" source="session.j00zekMSNWeather" transparent="1" valign="center" zPosition="3">
+   <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=1']['temp_high']|C|     |['dailyData']['Record=1']['temp_low']|C</convert>
+   </widget> 
+   <ePixmap alphatest="blend" pixmap="BlackHarmony/weather_icons/temp-.png" position="1447,213" size="20,50" transparent="1" zPosition="3" />
+   <widget alphatest="blend" position="1488,200" render="j00zekMSNWeatherPixmap" size="70,70" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
+   <convert type="j00zekMSNWeather">DailyRecord=1</convert>
+   </widget>
+   <ePixmap alphatest="blend" pixmap="BlackHarmony/weather_icons/temp+.png" position="1584,234" size="20,50" transparent="1" zPosition="3" />
+   <widget backgroundColor="black" font="Roboto_HD; 21" halign="center" position="1605,233" render="Label" size="140,30" source="session.j00zekMSNWeather" transparent="1" valign="center" zPosition="3">
+   <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=2']['temp_high']|C|     |['dailyData']['Record=2']['temp_low']|C</convert>
+   </widget>
+   <ePixmap alphatest="blend" pixmap="BlackHarmony/weather_icons/temp-.png" position="1746,213" size="20,50" transparent="1" zPosition="3" />
+   <widget alphatest="blend" position="1786,200" render="j00zekMSNWeatherPixmap" size="70,70" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
+   <convert type="j00zekMSNWeather">DailyRecord=2</convert>
+   </widget>
+   <widget backgroundColor="black" font="HD_Thin; 24" foregroundColor="light_yellow" halign="center" noWrap="1" position="1292,23" render="Label" size="575,26" source="session.CurrentService" transparent="1" zPosition="3">
+   <convert type="j00zekModBoxInfo">Uptime</convert>
+   </widget>
+   <eLabel backgroundColor="black" font="HD_Thin; 21" halign="center" name="new eLabel" position="1597,158" size="187,25" text="Aktualizcja danych:" transparent="1" valign="center" zPosition="2" />
+   <widget backgroundColor="black" font="Roboto_HD; 21" foregroundColor="lemon" halign="left" position="1786,158" render="Label" size="80,25" source="session.j00zekMSNWeather" transparent="1" zPosition="2">
+   <convert type="j00zekMSNWeather">observationtime</convert>
+   </widget>
+   <widget backgroundColor="black" font="HD_Thin; 37" halign="right" noWrap="1" position="1315,86" render="Label" size="90,40" source="session.j00zekMSNWeather" transparent="1" valign="center" zPosition="3">
+   <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
+   </widget>
+   <ePixmap alphatest="blend" pixmap="BlackHarmony/weather_icons/temp_high_low.png" position="1616,72" size="26,70" transparent="1" zPosition="3" />
+   <widget source="session.j00zekMSNWeather" render="Label" position="1281,152" size="313,35" font="HD_Thin; 22" halign="center" valign="center" transparent="1" backgroundColor="black" foregroundColor="yellow" zPosition="8">
+    <convert type="j00zekMSNWeather">RUN|['currentData']['pressure']['valInfo']</convert>
+   </widget>
+#--wschod--# 
+  <widget backgroundColor="black" font="HD_Thin; 22" foregroundColor="blue" halign="center" position="1368,338" render="Label" size="100,35" source="global.CurrentTime" transparent="1" valign="center">
+  <convert type="j00zekSun">wschod</convert>
+  </widget>
+  <widget backgroundColor="black" font="HD_Thin; 22" foregroundColor="blue" halign="center" position="1579,337" render="Label" size="100,35" source="global.CurrentTime" transparent="1" valign="center">
+  <convert type="j00zekSun">zachod</convert>
+  </widget>
+  <ePixmap alphatest="blend" pixmap="BlackHarmony/icons/Weather/wsch.png" position="1366,278" size="99,50" zPosition="1" />
+  <ePixmap alphatest="blend" pixmap="BlackHarmony/icons/Weather/zach.png" position="1578,278" size="99,50" zPosition="1" />
+  <eLabel backgroundColor="black" font="HD_Thin; 22" foregroundColor="light_yellow" halign="center" name="snr" position="1265,303" size="100,59" text="Wschód słońca:" transparent="1" valign="bottom" />
+  <eLabel backgroundColor="black" font="HD_Thin; 22" foregroundColor="light_yellow" halign="center" name="snr" position="1476,303" size="100,59" text="Zachód słońca:" transparent="1" valign="bottom" />
+#--choinka--#  
+  <widget alphatest="on" control="1" count="10" pixdelay="220" pixmaps="BlackHarmony/pixAnims/mikolaj" position="1295,346" render="j00zekModAnimatedPicsmap" size="352,220" source="session.CurrentService" transparent="1" zPosition="1" />
+  <widget alphatest="on" control="1" count="4" pixdelay="150" pixmaps="BlackHarmony/pixAnims/choinka" position="1720,375" render="j00zekModAnimatedPicsmap" size="100,176" source="session.CurrentService" transparent="1" zPosition="1" />
+#--ksiezyc--#   
+  <widget backgroundColor="background" font="Regular; 19" foregroundColor="light_yellow" halign="center" position="1665,271" render="Label" size="135,90" source="global.CurrentTime" transparent="1" zPosition="1">
+  <convert type="j00zekMoon">faza</convert>
+  </widget>
+  <widget alphatest="blend" path="/usr/share/enigma2/BlackHarmony/icons" picontype="MoonPhase" position="1786,290" render="j00zekPicons" size="85,85" source="global.CurrentTime" zPosition="8">
+  <convert type="j00zekMoon">obraz</convert>
+  </widget>
+  <widget backgroundColor="background" font="Regular;20" foregroundColor="yellow" halign="center" position="1695,351" render="Label" size="86,35" source="global.CurrentTime" transparent="1" zPosition="1">
+  <convert type="j00zekMoon">oswietlenie</convert>
+  </widget>
+</screen>
+</skin>

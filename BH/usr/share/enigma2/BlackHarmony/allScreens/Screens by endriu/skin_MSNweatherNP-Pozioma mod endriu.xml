@@ -28,7 +28,7 @@
         <convert type="j00zekMSNWeather">weathericon,current</convert>
         </widget>
      <widget render="Label" source="currentData_temperature" font="Roboto_HD; 40" position="320,234" size="120,55" backgroundColor="black" zPosition="3" transparent="1" halign="center" foregroundColor="light_yellow"/>
-	 <widget source="currentData_skytext" render="j00zekModRunningText" position="90,330" size="400,60" font="HD_Thin; 26" halign="center" valign="center" transparent="1" backgroundColor="black"/>
+	 <widget source="currentData_skytext" render="j00zekLabel" position="98,330" size="344,90" font="HD_Thin; 26" halign="center" valign="center" transparent="1" backgroundColor="black"/>
    
    <!--aktualne dane-->
 	
@@ -94,7 +94,7 @@
         <convert type="j00zekMSNWeather">RUN|0x00fffe9e|['currentData']['moon']['illuminated_percentage']</convert>
         </widget>
 	<widget source="session.j00zekMSNWeather" render="j00zekLabel" position="1040,400" size="200,50" zPosition="1" font="Roboto_HD;24" halign="center" valign="center" transparent="1" backgroundColor="black" >
-        <convert type="j00zekMSNWeather">RUN|0x66CCCC|['currentData']['moon']['phase_name']</convert>
+        <convert type="j00zekMSNWeather">RUN|0x66CCCC|['dailyData']['Record=0']['dictdetalis']['moon']</convert>
         </widget>	
 		
 <!--AIRLY-->
@@ -225,7 +225,7 @@
     <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="128,710" size="128,128" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
         <convert type="j00zekMSNWeather">DailyRecord=0</convert>
         </widget>
-    <widget source="session.j00zekMSNWeather" render="Label" font="Roboto_HD; 26" position="100,840" size="190,110" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="top">
+    <widget source="session.j00zekMSNWeather" render="j00zekLabel" font="Roboto_HD; 26" position="100,840" size="190,110" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="top">
         <convert type="j00zekMSNWeather">DailyRecord=0,info</convert>
         </widget>
 <!--DAY1-->

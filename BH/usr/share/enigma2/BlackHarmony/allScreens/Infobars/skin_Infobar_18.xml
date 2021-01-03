@@ -266,24 +266,7 @@
       <convert type="j00zekModCaidInfo2">Emu</convert>
       <convert type="ConditionalShowHide" />
     </widget>
-    <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="1467,27" size="85,85" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
-      <convert type="j00zekMSNWeather">weathericon,day2</convert>
-    </widget>
-    <ePixmap pixmap="BlackHarmony/weather_icons/temp.png" position="1600,64" size="20,50" zPosition="3" transparent="1" alphatest="blend" />
-    <ePixmap pixmap="BlackHarmony/weather_icons/temp.png" position="1290,60" size="20,50" zPosition="3" transparent="1" alphatest="blend" />
-    <eLabel name="new eLabel" position="1325,30" size="120,30" text="Jutro" font="Arial; 28" transparent="1" zPosition="3" />
-    <widget source="session.j00zekMSNWeather" render="Label" position="1312,72" size="140,30" font="Arial; 20" halign="center" valign="center" transparent="1" zPosition="3">
-      <convert type="j00zekMSNWeather">temperature_heigh_low,day2</convert>
-    </widget>
-    <ePixmap position="1265,8" zPosition="-2" size="625,120" pixmap="BlackHarmony/bg_design/infobar_pogoda_k661.png" />
-    <eLabel name="new eLabel" position="1625,30" size="130,30" text="Pojutrze" font="Arial; 28" transparent="1" zPosition="3" />
-    <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="1780,25" size="85,85" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
-      <convert type="j00zekMSNWeather">weathericon,day3</convert>
-    </widget>
-    <widget source="session.j00zekMSNWeather" render="Label" position="1622,72" size="140,30" font="Arial; 20" halign="center" valign="center" transparent="1" zPosition="3">
-      <convert type="j00zekMSNWeather">temperature_heigh_low,day3</convert>
-    </widget>
-    <eLabel text="Pogoda teraz :" position="1640,796" size="200,25" font="Roboto_HD; 23" backgroundColor="black" halign="left" transparent="1" foregroundColor="green" />
+    
     <eLabel text="CPU :" position="1489,958" size="65,25" font="Roboto_HD; 22" backgroundColor="black" halign="left" transparent="1" foregroundColor="yellow" />
     <eLabel text="BTR :" position="1610,958" size="65,25" font="Roboto_HD; 22" backgroundColor="black" halign="left" transparent="1" foregroundColor="blue" />
     <widget source="session.CurrentService" render="Label" position="1669,958" size="130,25" font="Roboto_HD; 22" halign="left" backgroundColor="black" transparent="1">
@@ -296,11 +279,10 @@
     <widget source="global.CurrentTime" render="Label" position="1384,768" size="348,26" font="Regular; 19" halign="right" transparent="1" backgroundColor="black" foregroundColor="grey" zPosition="3" noWrap="1">
       <convert type="j00zekModimieniny" />
     </widget>
-    <widget noWrap="1" backgroundColor="black" font="HD_Thin; 30" render="Label" position="1780,910" size="90,35" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1" foregroundColor="podsw" valign="top">
+    <widget noWrap="1" backgroundColor="black" font="HD_Thin; 30" render="Label" position="1760,910" size="100,35" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1" foregroundColor="podsw" valign="top">
       <convert type="j00zekMSNWeather">GET|['currentData']['feelslike']['valInfo']</convert>
     </widget>
-    <eLabel name="new eLabel" position="1577,23" size="1,90" backgroundColor="green" />
-    <eLabel font="Regular; 30" foregroundColor="white" halign="right" name="new eLabel" position="1820,910" size="50,35" text="°C" transparent="1" zPosition="3" valign="top" />
+    
     <eLabel font="Regular; 18" foregroundColor="white" halign="center" name="new eLabel" position="1762,879" size="120,25" text="odczuwalne" transparent="1" zPosition="2" valign="center" />
   </screen>
   </skin>
