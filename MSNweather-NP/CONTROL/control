@@ -1,10 +1,10 @@
 Package: enigma2-plugin-extensions--j00zeks-msnweather-np
 Priority: optional
 Section: utils
-Depends: python-requests
+Depends: python-requests enigma2---j00zeks-components
 Description: wersja tylko dla skórki BlackHarmony!!!
 Maintainer: j00zek
 Source: 
-Version: 21.01.03.1050
+Version: 21.01.05.1438
 Architecture: all
 DestinationPath: /usr/lib/enigma2/python/
