@@ -1,2 +1,9 @@
 #!/bin/sh
+if [ -e /j00zekNP/MSNweather ]; then
+  for f in `find /j00zekNP/MSNweather/ -type f`; do
+    fd=`echo $f|sed "s;/j00zekNP/MSNweather/;/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/;"`
+    #echo $fd
+    ln -sf $f $fd
+  done
+fi
 exit 0

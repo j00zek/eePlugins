@@ -681,10 +681,10 @@ msgid "--- OPTIONAL, NOT REQUIRED ---"
 msgstr "--- OPCJONALNE, NIE WYMAGANE ---"
 
 msgid "local"
-msgstr "lokalny"
+msgstr "lokalna"
 
 msgid "remote"
-msgstr "zdalny"
+msgstr "zdalna"
 
 msgid "Airly plugin detected - API key CAN be BLOCKED!!!"
 msgstr "Wykryto wtyczkę Airly. możliwa BLOKADA klucza API!!!"
@@ -727,3 +727,21 @@ msgstr "Wiatr"
 
 msgid "Air quality"
 msgstr "Jakość powietrza"
+
+msgid "Entry type"
+msgstr "Typ lokalizacji"
+
+msgid "Location name on the list"
+msgstr "Nazwa lokalizacji na liście"
+
+msgid "Main plugin IP address"
+msgstr "Adres IP (FTP) głównej wtyczki"
+
+msgid "Main plugin username"
+msgstr "Nazwa użytkownika FTP"
+
+msgid "Main plugin password"
+msgstr "Hasło FTP"
+
+msgid "Main plugin entry ID"
+msgstr "ID lokalizacji w głównej wtyczce"
