@@ -60,9 +60,9 @@
     <!--widget source="session.CurrentService" render="Label" position="66,500" size="320,35" font="Roboto_HD; 27" halign="left" foregroundColor="white" backgroundColor="black" transparent="1" >
       <convert type="j00zekTranslator">CPU temperature:</convert>
     </widget-->
-    <widget source="session.CurrentService" render="Label" position="465,500" size="80,35" font="Roboto_HD; 27" halign="left" foregroundColor="white" backgroundColor="black" transparent="1">
+    <!--widget source="session.CurrentService" render="Label" position="465,500" size="80,35" font="Roboto_HD; 27" halign="left" foregroundColor="white" backgroundColor="black" transparent="1">
       <convert type="j00zekModFanTempInfo">TempInfo</convert>
-    </widget>    
+    </widget-->    
     <widget source="session.CurrentService" render="Label" position="65,760" size="240,32" font="Roboto_HD; 26" foregroundColor="lemon" backgroundColor="black" transparent="1" >
       <convert type="j00zekTranslator">Support for Skin:</convert>
     </widget>
