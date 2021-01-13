@@ -93,13 +93,13 @@
                         MultiContentEntryPixmapAlphaBlend(pos = (0, 30), size = (128,128), png = 1),
                         
                         MultiContentEntryPixmapAlphaBlend(pos = (140, 60), size = (30, 30), png = 2),
-                        MultiContentEntryText(pos = (170, 60), size = (90, 30), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 3, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        MultiContentEntryText(pos = (180, 60), size = (90, 30), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 3, color=0xf2f2f2, color_sel=0xf2f2f2),
                         
 						MultiContentEntryPixmapAlphaBlend(pos = (140, 90), size = (30, 30), png = 4),
-                        MultiContentEntryText(pos = (170, 90), size = (90, 30), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 5, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        MultiContentEntryText(pos = (180, 90), size = (90, 30), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 5, color=0xf2f2f2, color_sel=0xf2f2f2),
                         
 						MultiContentEntryPixmapAlphaBlend(pos = (140, 120), size = (30, 30), png = 6),
-                        MultiContentEntryText(pos = (170, 120), size = (90, 25), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 7, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        MultiContentEntryText(pos = (180, 120), size = (90, 25), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 7, color=0xf2f2f2, color_sel=0xf2f2f2),
                         
                         MultiContentEntryText(pos = (10, 160), size = (260, 75), font=0, flags = RT_HALIGN_CENTER|RT_VALIGN_CENTER|RT_WRAP, text = 8, color=0xf2f2f2, color_sel=0xf2f2f2),
                         ],
@@ -117,13 +117,13 @@
                         MultiContentEntryPixmapAlphaBlend(pos = (0, 30), size = (128,128), png = 1),
                         
                         MultiContentEntryPixmapAlphaBlend(pos = (140, 60), size = (30, 30), png = 2),
-                        MultiContentEntryText(pos = (170, 60), size = (90, 30), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 3, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        MultiContentEntryText(pos = (180, 60), size = (90, 30), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 3, color=0xf2f2f2, color_sel=0xf2f2f2),
                         
 						MultiContentEntryPixmapAlphaBlend(pos = (140, 90), size = (30, 30), png = 4),
-                        MultiContentEntryText(pos = (170, 90), size = (90, 30), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 5, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        MultiContentEntryText(pos = (180, 90), size = (90, 30), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 5, color=0xf2f2f2, color_sel=0xf2f2f2),
                         
 						MultiContentEntryPixmapAlphaBlend(pos = (140, 120), size = (30, 30), png = 6),
-                        MultiContentEntryText(pos = (170, 120), size = (90, 25), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 7, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        MultiContentEntryText(pos = (180, 120), size = (90, 25), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 7, color=0xf2f2f2, color_sel=0xf2f2f2),
                         
                         MultiContentEntryText(pos = (10, 160), size = (260, 75), font=0, flags = RT_HALIGN_CENTER|RT_VALIGN_CENTER|RT_WRAP, text = 8, color=0xf2f2f2, color_sel=0xf2f2f2),
                         ],
@@ -141,13 +141,13 @@
                         MultiContentEntryPixmapAlphaBlend(pos = (0, 30), size = (128,128), png = 1),
                         
                         MultiContentEntryPixmapAlphaBlend(pos = (140, 60), size = (30, 30), png = 2),
-                        MultiContentEntryText(pos = (170, 60), size = (90, 30), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 3, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        MultiContentEntryText(pos = (180, 60), size = (90, 30), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 3, color=0xf2f2f2, color_sel=0xf2f2f2),
                         
 						MultiContentEntryPixmapAlphaBlend(pos = (140, 90), size = (30, 30), png = 4),
-                        MultiContentEntryText(pos = (170, 90), size = (90, 30), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 5, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        MultiContentEntryText(pos = (180, 90), size = (90, 30), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 5, color=0xf2f2f2, color_sel=0xf2f2f2),
                         
 						MultiContentEntryPixmapAlphaBlend(pos = (140, 120), size = (30, 30), png = 6),
-                        MultiContentEntryText(pos = (170, 120), size = (90, 25), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 7, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        MultiContentEntryText(pos = (180, 120), size = (90, 25), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 7, color=0xf2f2f2, color_sel=0xf2f2f2),
                         
                         MultiContentEntryText(pos = (10, 160), size = (260, 75), font=0, flags = RT_HALIGN_CENTER|RT_VALIGN_CENTER|RT_WRAP, text = 8, color=0xf2f2f2, color_sel=0xf2f2f2),
                         ],
@@ -165,13 +165,13 @@
                         MultiContentEntryPixmapAlphaBlend(pos = (0, 30), size = (128,128), png = 1),
                         
                         MultiContentEntryPixmapAlphaBlend(pos = (140, 60), size = (30, 30), png = 2),
-                        MultiContentEntryText(pos = (170, 60), size = (90, 30), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 3, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        MultiContentEntryText(pos = (180, 60), size = (90, 30), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 3, color=0xf2f2f2, color_sel=0xf2f2f2),
                         
 						MultiContentEntryPixmapAlphaBlend(pos = (140, 90), size = (30, 30), png = 4),
-                        MultiContentEntryText(pos = (170, 90), size = (90, 30), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 5, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        MultiContentEntryText(pos = (180, 90), size = (90, 30), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 5, color=0xf2f2f2, color_sel=0xf2f2f2),
                         
 						MultiContentEntryPixmapAlphaBlend(pos = (140, 120), size = (30, 30), png = 6),
-                        MultiContentEntryText(pos = (170, 120), size = (90, 25), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 7, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        MultiContentEntryText(pos = (180, 120), size = (90, 25), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 7, color=0xf2f2f2, color_sel=0xf2f2f2),
                         
                         MultiContentEntryText(pos = (10, 160), size = (260, 75), font=0, flags = RT_HALIGN_CENTER|RT_VALIGN_CENTER|RT_WRAP, text = 8, color=0xf2f2f2, color_sel=0xf2f2f2),
                         ],
@@ -189,13 +189,13 @@
                         MultiContentEntryPixmapAlphaBlend(pos = (0, 30), size = (128,128), png = 1),
                         
                         MultiContentEntryPixmapAlphaBlend(pos = (140, 60), size = (30, 30), png = 2),
-                        MultiContentEntryText(pos = (170, 60), size = (90, 30), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 3, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        MultiContentEntryText(pos = (180, 60), size = (90, 30), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 3, color=0xf2f2f2, color_sel=0xf2f2f2),
                         
 						MultiContentEntryPixmapAlphaBlend(pos = (140, 90), size = (30, 30), png = 4),
-                        MultiContentEntryText(pos = (170, 90), size = (90, 30), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 5, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        MultiContentEntryText(pos = (180, 90), size = (90, 30), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 5, color=0xf2f2f2, color_sel=0xf2f2f2),
                         
 						MultiContentEntryPixmapAlphaBlend(pos = (140, 120), size = (30, 30), png = 6),
-                        MultiContentEntryText(pos = (170, 120), size = (90, 25), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 7, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        MultiContentEntryText(pos = (180, 120), size = (90, 25), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 7, color=0xf2f2f2, color_sel=0xf2f2f2),
                         
                         MultiContentEntryText(pos = (10, 160), size = (260, 75), font=0, flags = RT_HALIGN_CENTER|RT_VALIGN_CENTER|RT_WRAP, text = 8, color=0xf2f2f2, color_sel=0xf2f2f2),
                         ],
@@ -213,13 +213,13 @@
                         MultiContentEntryPixmapAlphaBlend(pos = (0, 30), size = (128,128), png = 1),
                         
                         MultiContentEntryPixmapAlphaBlend(pos = (140, 60), size = (30, 30), png = 2),
-                        MultiContentEntryText(pos = (170, 60), size = (90, 30), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 3, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        MultiContentEntryText(pos = (180, 60), size = (90, 30), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 3, color=0xf2f2f2, color_sel=0xf2f2f2),
                         
 						MultiContentEntryPixmapAlphaBlend(pos = (140, 90), size = (30, 30), png = 4),
-                        MultiContentEntryText(pos = (170, 90), size = (90, 30), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 5, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        MultiContentEntryText(pos = (180, 90), size = (90, 30), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 5, color=0xf2f2f2, color_sel=0xf2f2f2),
                         
 						MultiContentEntryPixmapAlphaBlend(pos = (140, 120), size = (30, 30), png = 6),
-                        MultiContentEntryText(pos = (170, 120), size = (90, 25), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 7, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        MultiContentEntryText(pos = (180, 120), size = (90, 25), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 7, color=0xf2f2f2, color_sel=0xf2f2f2),
                         
                         MultiContentEntryText(pos = (10, 160), size = (260, 75), font=0, flags = RT_HALIGN_CENTER|RT_VALIGN_CENTER|RT_WRAP, text = 8, color=0xf2f2f2, color_sel=0xf2f2f2),
                         ],
