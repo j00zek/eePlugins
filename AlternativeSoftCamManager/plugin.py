@@ -46,6 +46,7 @@ language.addCallback(localeInit)
 
 config.plugins.AltSoftcam = ConfigSubsection()
 config.plugins.AltSoftcam.enabled = ConfigYesNo(default = False)
+config.plugins.AltSoftcam.CAMsupport = ConfigYesNo(default = True)
 config.plugins.AltSoftcam.OsCamonly = ConfigYesNo(default = True)
 config.plugins.AltSoftcam.actcam = ConfigText(default = _("none"))
 config.plugins.AltSoftcam.camdir = ConfigDirectory(default = "/")
@@ -443,6 +444,7 @@ class ConfigEdit(Screen, ConfigListScreen):
         self.camconfigold = config.plugins.AltSoftcam.camconfig.value
         self.camdirold = config.plugins.AltSoftcam.camdir.value
         self.list = []
+        self.list.append(getConfigListEntry(_("Activate CAM helper mode"), config.plugins.AltSoftcam.CAMsupport))
         self.list.append(getConfigListEntry(_("Activate Alternative Softam Manager"), config.plugins.AltSoftcam.enabled))
         self.list.append(getConfigListEntry(_("Manage oscam only?"), config.plugins.AltSoftcam.OsCamonly))
         self.list.append(getConfigListEntry(_("SoftCam directory (press OK)"), config.plugins.AltSoftcam.camdir))
