@@ -5,7 +5,7 @@ Depends: python-pkgutil python-shell python python-ctypes python-requests python
 Description: pakiet zawiera wszystko co potrzebne, żeby strumienie w e2 działały z buforowaniem i innymi cudami
 Maintainer: j00zek
 Source: http://github.com/j00zek/eePlugins
-Version: 20.12.14.1417
+Version: 21.01.13.0830
 Architecture: all
 DestinationPath: /
 ExcludeFolder: scripts

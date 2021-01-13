@@ -1,5 +1,21 @@
 # -*- coding: utf-8 -*-
-name2nameDict = {'telewizjawphd': 'wp'}
+name2nameDict = {'telewizjawphd': 'wp',
+                'tvp3białystok'             : 'tvp3warszawa',
+                'tvp3bydgoszcz'             : 'tvp3warszawa',
+                'tvp3gdańsk'                : 'tvp3warszawa',
+                'tvp3gorzówwielkopolski'    : 'tvp3warszawa',
+                'tvp3katowice'              : 'tvp3warszawa',
+                'tvp3kielce'                : 'tvp3warszawa',
+                'tvp3kraków'                : 'tvp3warszawa',
+                'tvp3lublin'                : 'tvp3warszawa',
+                'tvp3Łódź'                  : 'tvp3warszawa',
+                'tvp3olsztyn'               : 'tvp3warszawa',
+                'tvp3opole'                 : 'tvp3warszawa',
+                'tvp3poznań'                : 'tvp3warszawa',
+                'tvp3rzeszów'               : 'tvp3warszawa',
+                'tvp3szczecin'              : 'tvp3warszawa',
+                'tvp3wrocław'               : 'tvp3warszawa',
+                }
 
 name2service4wpDict = { 'Telewizja WP HD':      '1:0:1:3D5A:2C88:13E:820000:0:0:0',
                         'TVP 1 HD':             '1:0:1:3ABD:514:13E:820000:0:0:0',
@@ -31,7 +47,10 @@ name2service4wpDict = { 'Telewizja WP HD':      '1:0:1:3D5A:2C88:13E:820000:0:0:
                         'TBN Polska HD':        '1:0:1:327:1:1:82B00F:0:0:0'
                       }
 
-name2serviceDict = {}
+
+name2serviceDict = {    'tvp3warszawa': '1:0:1:113B:2AF8:13E:820000:0:0:0',
+                    
+                    }
 
 def updateDict():
     global name2serviceDict

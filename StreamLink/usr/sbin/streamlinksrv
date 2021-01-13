@@ -15,7 +15,7 @@ jtools.cleanCMD()
 
 """ Streamlink Daemon """
 
-__version__ = "1.4.0"
+__version__ = "1.5.0"
 
 import os
 import sys
@@ -33,17 +33,15 @@ import warnings
 from platform import node as hostname
 from six import itervalues, iteritems
 from six import PY2
+from six.moves.urllib_parse import unquote
 
 if PY2:
-    from urllib import unquote
     from BaseHTTPServer import HTTPServer, BaseHTTPRequestHandler
     from SocketServer import ForkingMixIn
 else:
-    from urllib.parse import unquote
     from http.server import HTTPServer, BaseHTTPRequestHandler
     from socketserver import ThreadingMixIn as ForkingMixIn
 
-    
 from websocket import __version__ as websocket_version
 from requests import __version__ as requests_version
 
@@ -247,9 +245,9 @@ def sendHeaders(http, status=200, type="text/html"):
 
 def sendOfflineMP4(http, send_headers=True, file2send="/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/streams/offline.mp4"):
     if send_headers:
-        sendHeaders(http)
+        sendHeaders(http, type="video/mp4")
 
-    http.wfile.write(open(file2send, "r").read())
+    http.wfile.write(open(file2send, "rb").read())
     http.wfile.close()
 
 def sendCachedFile(http, send_headers=True, pid=0, file2send=None):
@@ -307,6 +305,11 @@ def sendCachedFile(http, send_headers=True, pid=0, file2send=None):
         else:
             LOGGER.debug("pid {0} has been killed", pid )
             
+def stream_to_url(stream):
+    try:
+        return stream.to_url()
+    except TypeError:
+        return None
             
 def Stream(streamlink, http, url, argstr, quality):
     global parser, _loglevel
@@ -387,9 +390,9 @@ def Stream(streamlink, http, url, argstr, quality):
             stream_type = type(stream).shortname()
             LOGGER.info("Opening stream: {0} ({1})".format(stream_name, stream_type))
             if stream_type in args.player_passthrough:
-                LOGGER.info('301 Passthrough - URL: {0}'.format(stream.url))
+                LOGGER.info('301 Passthrough - URL: {0}'.format(stream_to_url(stream)))
                 http.send_response(301)
-                http.send_header('Location', stream.url)
+                http.send_header('Location', stream_to_url(stream))
                 return http.end_headers()
 
             fd, prebuffer = test_stream(plugin, args, stream)
@@ -427,6 +430,9 @@ def Stream(streamlink, http, url, argstr, quality):
             # player disconnected
             LOGGER.info('Detected player disconnect')
     except Exception as err:
+        if str(err).startswith('E2MSG:'):
+            E2MSG = str(err).replace('E2MSG:','http://localhost/web/message?')
+            os.system('wget -O /dev/null -q "%s"' % E2MSG)
         if str(err) == 'wperror-403':
             sendOfflineMP4(http, send_headers=not_stream_opened, file2send="/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/streams/wperror-403.mp4")
         elif str(err) == 'wperror-422':
@@ -457,6 +463,8 @@ class Streamlink2(Streamlink):
             self._update_loaded_plugins()
         else:
             self.load_plugins(plugins.__path__[0])
+            if opts_parser_version >= "0.2.5" and os.path.isdir(PLUGINS_DIR):
+                self.load_ext_plugins([PLUGINS_DIR])
             self.__class__._loaded_plugins = self.plugins.copy()
 
     def _update_loaded_plugins(self):
@@ -464,6 +472,14 @@ class Streamlink2(Streamlink):
         for plugin in itervalues(self.plugins):
             plugin.session = self
 
+    def load_ext_plugins(self, dirs):
+        dirs = [os.path.expanduser(d) for d in dirs]
+        for directory in dirs:
+            if os.path.isdir(directory):
+                self.load_plugins(directory)
+            else:
+                log.warning("Plugin path {0} does not exist or is not a directory!".format(directory))
+                                
 class StreamHandler(BaseHTTPRequestHandler):
 
     def do_HEAD(s):

@@ -4,6 +4,13 @@ from streamlink.jtools import *
 print 'PRZYKLAD: streamlink -l debug [ -o /tmp/fileName] "url" best'
 cleanCMD()
 
+import sys
+idx = 0
+for argument in sys.argv:
+    argument = argument.replace('%3a',':')
+    sys.argv[idx] = argument
+    idx += 1
+#print sys.argv
 import streamlink_cli.main
 streamlink_cli.main.main()
 

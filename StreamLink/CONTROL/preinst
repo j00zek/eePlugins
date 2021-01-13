@@ -2,8 +2,8 @@
 if [ -e /var/run/streamlink.pid ];then
  /etc/init.d/streamlinksrv stop
 fi
-if [`grep -c ARMv7 < /proc/cpuinfo` -eq 0 ]; then
-  echo "Unsopported CPU architecture!!! / Niewspierana architerktura CPU!!!"
+if [ `grep -c ARMv7 < /proc/cpuinfo` -eq 0 ]; then
+  echo "Unsopported CPU architecture!!! / Niewspierana architektura CPU!!!"
   exit 1
 else
   exit 0
