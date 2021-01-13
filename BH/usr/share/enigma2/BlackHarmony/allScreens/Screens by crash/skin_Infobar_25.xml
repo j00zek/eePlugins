@@ -1,5 +1,5 @@
 <skin>
-<screen name="InfoBar" position="-2,-20" size="1920,1080" title="InfoBar" flags="wfNoBorder" backgroundColor="transparent">
+<screen name="InfoBar" position="0,0" size="1920,1080" title="InfoBar" flags="wfNoBorder" backgroundColor="transparent">
   <ePixmap position="35,723" zPosition="-2" size="1850,375" pixmap="BlackHarmony/bg_design/infobar_big.png" />
   <widget source="session.CurrentService" render="Pixmap" pixmap="BlackHarmony/icons/ico_lan_on.png" position="1818,1029" zPosition="2" size="17,20" transparent="1" alphatest="blend">
     <convert type="j00zekModRouteInfo">Lan</convert>

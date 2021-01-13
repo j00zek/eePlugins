@@ -1,5 +1,5 @@
 <skin>
-<screen backgroundColor="transparent" flags="wfNoBorder" name="InfoBar" position="-2,10" size="1920,1080" title="InfoBar">
+<screen backgroundColor="transparent" flags="wfNoBorder" name="InfoBar" position="0,0" size="1920,1080" title="InfoBar">
   <ePixmap pixmap="BlackHarmony/bg_design/infobar_weather.png" position="25,761" size="1928,300" zPosition="-2" />
   <widget alphatest="blend" pixmap="BlackHarmony/icons/update.png" position="775,805" render="Pixmap" size="20,20" source="session.CurrentService" zPosition="3">
       <convert type="j00zekOPKGupgradeCheck"/>

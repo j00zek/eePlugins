@@ -302,18 +302,17 @@
   <ePixmap alphatest="blend" pixmap="BlackHarmony/weather_icons/deszcz.png" position="1465,807" size="28,30" transparent="1" zPosition="4" />
   <ePixmap alphatest="blend" pixmap="BlackHarmony/weather_icons/temp.png" position="1423,797" size="20,50" transparent="1" zPosition="3" />
   <widget backgroundColor="black" font="Roboto_HD; 21" halign="right" position="1345,797" render="Label" size="65,25" source="session.j00zekMSNWeather" transparent="1" valign="center" zPosition="3">
-    <convert type="j00zekMSNWeather">temperature_high,current</convert>
+    <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=0']['temp_high']|C</convert>
   </widget>
   <widget backgroundColor="black" font="Roboto_HD; 21" halign="right" position="1345,822" render="Label" size="65,25" source="session.j00zekMSNWeather" transparent="1" valign="center" zPosition="3">
-    <convert type="j00zekMSNWeather">temperature_low,current</convert>
+    <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=0']['temp_low']|C</convert>
   </widget>
   <widget backgroundColor="black" font="Roboto_HD; 21" foregroundColor="white" halign="left" position="1633,812" render="Label" size="100,25" source="session.j00zekMSNWeather" transparent="1" zPosition="3">
-    <convert type="j00zekMSNWeather">winddisplay</convert>
+    <convert type="j00zekMSNWeather">RUN|['currentData']['wind_speed']['valInfo']</convert>
   </widget>
-  <widget backgroundColor="black" font="Roboto_HD; 21" foregroundColor="white" halign="left" position="1510,810" render="Label" size="60,25" source="session.j00zekMSNWeather" transparent="1" zPosition="3">
-    <convert type="j00zekMSNWeather">humidity</convert>
+  <widget backgroundColor="black" font="Roboto_HD; 21" foregroundColor="white" halign="left" position="1510,810" render="Label" size="90,25" source="session.j00zekMSNWeather" transparent="1" zPosition="3">
+    <convert type="j00zekMSNWeather">RUN|['currentData']['humidity']['valInfo']</convert>
   </widget>
-  <eLabel backgroundColor="black" font="Roboto_HD; 21" foregroundColor="white" position="1540,810" size="30,25" text="%" transparent="1" />
   <widget backgroundColor="black" font="Roboto_HD; 22" halign="left" noWrap="1" position="1700,917" render="Label" size="50,25" source="session.FrontendStatus" transparent="1">
     <convert type="j00zekModFrontendInfo">SNR</convert>
   </widget>

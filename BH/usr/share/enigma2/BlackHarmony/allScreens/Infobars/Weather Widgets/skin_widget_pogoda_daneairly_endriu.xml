@@ -17,8 +17,11 @@
  <ePixmap pixmap="BlackHarmony/weather_icons/wiatr.png" position="141,24" size="30,30" zPosition="3" transparent="1" alphatest="blend" />
  <ePixmap pixmap="BlackHarmony/weather_icons/humidity_outdoor.png" position="141,56" size="25,25" zPosition="4" transparent="1" alphatest="blend" />
   
- <widget backgroundColor="black" font="Regular; 22" foregroundColor="#000090e6" render="Label" position="178,27" size="192,30" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1">
+ <widget backgroundColor="black" font="Regular; 22" foregroundColor="#000090e6" render="Label" position="178,27" size="200,30" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1">
     <convert type="j00zekMSNWeather">RUN|['currentData']['wind_speed']['valInfo']</convert>
+  </widget>
+  <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="338,24" size="30,30" source="session.j00zekMSNWeather" zPosition="3" transparent="1">
+    <convert type="j00zekMSNWeather">RUN|['currentData']['wind_dir']['valInfo']</convert>
   </widget>
  <widget backgroundColor="black" font="Regular; 22" foregroundColor="white" render="Label" position="173,54" size="197,30" source="session.j00zekMSNWeather" zPosition="3" valign="center" halign="left" transparent="1">
     <convert type="j00zekMSNWeather">RUN|['currentData']['humidity']['valInfo']</convert>
@@ -62,10 +65,10 @@
 	<widget backgroundColor="black" font="Roboto_HD; 25" render="Label" position="810,28" size="50,50" source="session.j00zekMSNWeather" zPosition="5" halign="center" valign="center" transparent="1">
     <convert type="j00zekMSNWeather">RUN|['currentData']['airlyIndex']['val']</convert>
      </widget>
-    <widget position="800,3" size="570,26" source="session.j00zekMSNWeather" render="j00zekLabel" font="Regular; 22"  backgroundColor="background" halign="center" valign="center" noWrap="0" transparent="1" zPosition="10">
+    <widget position="800,1" size="570,24" source="session.j00zekMSNWeather" render="j00zekLabel" font="Regular; 21"  backgroundColor="background" halign="center" valign="center" noWrap="0" transparent="1" zPosition="10">
         <convert type="j00zekMSNWeather">RUN|['currentData']['pm25']['name']|-|['currentData']['pm25']['valInfo']|,  |0x00e6ffe6|['currentData']['pm10']['name']|-|['currentData']['pm10']['valInfo']|,  |0x00e6ffe6|['currentData']['pm1']['name']|-|['currentData']['pm1']['valInfo']</convert>
       </widget>
-    <widget position="868,31" size="504,52" source="session.j00zekMSNWeather" render="j00zekLabel" font="Regular; 24" backgroundColor="background" halign="center" valign="center" noWrap="0" transparent="1" zPosition="10">
+    <widget position="868,25" size="504,60" source="session.j00zekMSNWeather" render="j00zekLabel" font="Regular; 24" backgroundColor="background" halign="center" valign="center" noWrap="0" transparent="1" zPosition="10">
         <convert type="j00zekMSNWeather">RUN|['currentData']['airlyIndex']['info']|, |0x00e6ffe6|['currentData']['airlyIndex']['advice']</convert>
       </widget>
 	

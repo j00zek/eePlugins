@@ -48,27 +48,23 @@
 	 <eLabel text="Dzisiaj" position="350,660" size="140,25" font="HD_Thin; 21" backgroundColor="black" halign="center" transparent="1" foregroundColor="light_yellow" />
 	
 	  <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="910,648" size="60,60" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
-    <convert type="j00zekMSNWeather">weathericon,current</convert>
+    <convert type="j00zekMSNWeather">DailyRecord=0</convert>
   </widget>
-  <ePixmap pixmap="BlackHarmony/weather_icons/wiatr.png" position="750,660" size="30,30" zPosition="3" transparent="1" alphatest="blend" />
-  <ePixmap pixmap="BlackHarmony/weather_icons/deszcz.png" position="870,660" size="28,30" zPosition="4" transparent="1" alphatest="blend" />
+  <ePixmap pixmap="BlackHarmony/weather_icons/wiatr.png" position="670,660" size="30,30" zPosition="3" transparent="1" alphatest="blend" />
+  <ePixmap pixmap="BlackHarmony/weather_icons/deszcz.png" position="795,660" size="28,30" zPosition="4" transparent="1" alphatest="blend" />
  
-  <widget source="session.j00zekMSNWeather" render="Label" font="Roboto_HD; 21" position="500,660" size="65,25" backgroundColor="black" zPosition="3" transparent="1" valign="center" halign="center">
-    <convert type="j00zekMSNWeather">temperature_high,current</convert>
+  <widget source="session.j00zekMSNWeather" render="Label" font="Roboto_HD; 21" position="495,660" size="120,25" backgroundColor="black" zPosition="3" transparent="1" valign="center" halign="center">
+    <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=0']['temp_high']|C|     |['dailyData']['Record=0']['temp_low']|C</convert>
   </widget>
-  <widget source="session.j00zekMSNWeather" render="Label" font="Roboto_HD; 21" position="560,660" size="65,25" backgroundColor="black" zPosition="3" transparent="1" valign="center" halign="center">
-    <convert type="j00zekMSNWeather">temperature_low,current</convert>
+  <widget backgroundColor="black" font="Roboto_HD; 21" foregroundColor="white" render="Label" position="705,660" size="100,25" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1">
+    <convert type="j00zekMSNWeather">RUN|['currentData']['wind_speed']['valInfo']</convert>
   </widget>
-  <widget backgroundColor="black" font="Roboto_HD; 21" foregroundColor="white" render="Label" position="660,660" size="100,25" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1">
-    <convert type="j00zekMSNWeather">winddisplay</convert>
-  </widget>
-  <widget backgroundColor="black" font="Roboto_HD; 21" foregroundColor="white" render="Label" position="770,660" size="60,25" source="session.j00zekMSNWeather" zPosition="3" halign="right" transparent="1">
-    <convert type="j00zekMSNWeather">humidity</convert>
+  <widget backgroundColor="black" font="Roboto_HD; 21" foregroundColor="white" render="Label" position="830,660" size="90,25" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1">
+    <convert type="j00zekMSNWeather">RUN|['currentData']['humidity']['valInfo']</convert>
   </widget>
 	 <ePixmap pixmap="BlackHarmony/gfx/temp+.png" position="470,660" size="20,50" zPosition="3" transparent="1" alphatest="blend" />
 	
 	 <ePixmap pixmap="BlackHarmony/gfx/temp-.png" position="620,635" size="20,50" zPosition="3" transparent="1" alphatest="blend" />
-	 <eLabel text="%" position="830,660" size="30,25" backgroundColor="black" transparent="1" font="Roboto_HD; 21" foregroundColor="white" />
 	
 	 <widget source="global.CurrentTime" render="Label" position="50,660" size="375,60" font="Roboto_HD; 21" halign="center" transparent="1" backgroundColor="black" zPosition="3" noWrap="1">
     <convert type="j00zekModimieniny" />
@@ -76,11 +72,11 @@
 	 <eLabel text="Jutro" position="1000,660" size="140,25" font="HD_Thin; 21" backgroundColor="black" halign="center" transparent="1" foregroundColor="light_yellow" />
  <ePixmap pixmap="BlackHarmony/gfx/temp+.png" position="1140,660" size="20,50" zPosition="3" transparent="1" alphatest="blend" />
   <widget source="session.j00zekMSNWeather" render="Label" position="1167,660" size="140,30" font="Roboto_HD; 21" halign="center" valign="center" transparent="1" zPosition="3" backgroundColor="black">
-    <convert type="j00zekMSNWeather">temperature_heigh_low,day2</convert>
+    <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=1']['temp_high']|C|     |['dailyData']['Record=1']['temp_low']|C</convert>
   </widget>
   <ePixmap pixmap="BlackHarmony/gfx/temp-.png" position="1317,635" size="20,50" zPosition="3" transparent="1" alphatest="blend" />
   <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="1340,648" size="60,60" source="session.j00zekMSNWeather" transparent="1" zPosition="3">
-    <convert type="j00zekMSNWeather">weathericon,day2</convert>
+    <convert type="j00zekMSNWeather">DailyRecord=1</convert>
   </widget>
 	
 	
@@ -88,11 +84,11 @@
 	 <eLabel text="Pojutrze" position="1410,660" size="140,25" font="HD_Thin; 21" backgroundColor="black" halign="center" transparent="1" foregroundColor="light_yellow" />
   <ePixmap pixmap="BlackHarmony/gfx/temp+.png" position="1557,660" size="20,50" zPosition="3" transparent="1" alphatest="blend" />
   <widget source="session.j00zekMSNWeather" render="Label" position="1577,660" size="140,30" font="Roboto_HD; 21" halign="center" valign="center" transparent="1" zPosition="3" backgroundColor="black">
-    <convert type="j00zekMSNWeather">temperature_heigh_low,day3</convert>
+    <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=2']['temp_high']|C|     |['dailyData']['Record=2']['temp_low']|C</convert>
   </widget>
   <ePixmap pixmap="BlackHarmony/gfx/temp-.png" position="1717,635" size="20,50" zPosition="3" transparent="1" alphatest="blend" />
   <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="1745,648" size="60,60" source="session.j00zekMSNWeather" transparent="1" zPosition="3">
-    <convert type="j00zekMSNWeather">weathericon,day3</convert>
+    <convert type="j00zekMSNWeather">DailyRecord=2</convert>
   </widget>
     <!--##########################################-->
     <ePixmap position="30,721" zPosition="-2" size="1900,300" pixmap="BlackHarmony/bg_design/infobar1.png" />

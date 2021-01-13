@@ -18,9 +18,9 @@
     
 	<!--lokalizacja, airly info-->
 	
-	<widget source="caption" render="Label" position="90,120" size="400,35" font="HD_Thin; 30" halign="left" valign="center" transparent="1" backgroundColor="black" foregroundColor="#000090e6"/>
-	<widget source="currentData_airlyInfo"   render="Label" position="100,120" size="680,35" font="HD_Thin; 30" halign="right" transparent="1" backgroundColor="black"/>
-	<widget source="currentData_airlyAdvice" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=90,repeat=99,startdelay=2000" position="800,120" size="1000,35" font="HD_Thin; 30" transparent="1" backgroundColor="black"/>
+	<widget source="caption" render="Label" position="90,120" size="500,35" font="HD_Thin; 30" halign="left" valign="center" transparent="1" backgroundColor="black" foregroundColor="#000090e6"/>
+	 <widget source="currentData_airlyInfo"   render="Label" position="590,120" size="320,35" font="HD_Thin; 30" halign="right" transparent="1" backgroundColor="black"/>
+	 <widget source="currentData_airlyAdvice" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=10,repeat=99,startdelay=2000" position="940,120" size="880,35" font="HD_Thin; 30" transparent="1" backgroundColor="black"/>
 
 <!--aktualna pogoda-->
     
