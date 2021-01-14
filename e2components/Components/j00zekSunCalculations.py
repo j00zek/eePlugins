@@ -30,30 +30,36 @@ class Sun:
         lDayLengthDec = self.getLongestDayLength(longitude, latitude, year )['LongestDayLengthDec']
         diffToShortestDec = DayLengthDec - sDayLengthDec
         diffToLongestDec = lDayLengthDec - DayLengthDec
-        diffHour = int(diffToShortestDec)
-        diffMins = int((diffToShortestDec - diffHour) * float(60))
-        diffSecs = int(diffToShortestDec * 3600) - diffHour * 3600 - diffMins * 60
+        diffHourS = int(diffToShortestDec)
+        diffMinsS = int((diffToShortestDec - diffHourS) * float(60))
+        diffSecsS = int(diffToShortestDec * 3600) - diffHourS * 3600 - diffMinsS * 60
         diffToShortest = ''
-        if diffHour != 0: diffToShortest = '%s:' % diffHour
-        if diffMins < 10 and diffHour != 0: diffToShortest += '0'
-        diffToShortest += '%s:' % diffMins
-        if diffSecs < 10: diffToShortest += '0'
-        diffToShortest += '%s' % diffSecs
+        if diffHourS != 0: diffToShortest = '%s:' % diffHourS
+        if diffMinsS < 10 and diffHourS != 0: diffToShortest += '0'
+        diffToShortest += '%s:' % diffMinsS
+        if diffSecsS < 10: diffToShortest += '0'
+        diffToShortest += '%s' % diffSecsS
         
-        diffHour = int(diffToLongestDec)
-        diffMins = int((diffToLongestDec - diffHour)*float(60))
-        diffSecs = int(diffToLongestDec * 3600) - diffHour * 3600 - diffMins * 60
+        diffHourL = int(diffToLongestDec)
+        diffMinsL = int((diffToLongestDec - diffHourL)*float(60))
+        diffSecsL = int(diffToLongestDec * 3600) - diffHourL * 3600 - diffMinsL * 60
         diffToLongest = ''
-        if diffHour != 0: diffToLongest = '%s:' % diffHour
-        if diffMins < 10 and diffHour != 0: diffToLongest += '0'
-        diffToLongest += '%s:' % diffMins
-        if diffSecs < 10: diffToLongest += '0'
-        diffToLongest += '%s' % diffSecs
+        if diffHourL != 0: diffToLongest = '%s:' % diffHourL
+        if diffMinsL < 10 and diffHourL != 0: diffToLongest += '0'
+        diffToLongest += '%s:' % diffMinsL
+        if diffSecsL < 10: diffToLongest += '0'
+        diffToLongest += '%s' % diffSecsL
         
         return {'diffToShortestDec': diffToShortestDec,
-                'diffToShortest': diffToShortest,
+                'diffToShortest':    diffToShortest,
+                'diffToShortesttHours':  diffHourS,
+                'diffToShortestMinutes': diffMinsS,
+                'diffToShortestSeconds': diffSecsS,
                 'diffToLongestDec': diffToLongestDec,
-                'diffToLongest': diffToLongest,
+                'diffToLongest':    diffToLongest,
+                'diffToLongestHours':   diffHourL,
+                'diffToLongestMinutes': diffMinsL,
+                'diffToLongestSeconds': diffSecsL,
                 }
     
     def getDayLength( self, longitude, latitude, year = None, month = None, day = None ):
