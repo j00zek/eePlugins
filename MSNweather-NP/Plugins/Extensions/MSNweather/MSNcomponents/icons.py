@@ -46,7 +46,7 @@ iconsMap={
     'opadydeszczu'                      :   '11.png',
     "opadysniegu"                       :   '14.png', 
     'przelotneopadysniegu'              :   '41.png',
-    'przelotneopadydeszczuzesniegiem'   :   '41.png',
+    'przelotneopadydeszczuzesniegiem'   :   '71.png',
     'przewazniebezchmurnie'             :   '31.png',
     'przewaznieslonecznie'              :   '34.png',
     'silneburze'                        :   '37.png',
