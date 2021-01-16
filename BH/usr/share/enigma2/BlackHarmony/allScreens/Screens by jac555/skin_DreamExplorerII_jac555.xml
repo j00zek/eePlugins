@@ -11,7 +11,7 @@
     <convert type="j00zekAlternateTitle">DreamExplorer II</convert>
   </widget>
   
-  <widget name="filelist" itemHeight="40" font0="Roboto_HD; 32" font1="Roboto_HD; 32" DimText0="70,2,700,40" DimText1="70,41,700,40" position="65,141" size="1095,595" enableWrapAround="1" scrollbarWidth="7" scrollbarSliderBorderWidth="1" scrollbarSliderBorderColor="blue" scrollbarSliderForegroundColor="blue" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_1095_40.png" backgroundColor="black" transparent="1" />
+  <widget name="filelist" itemHeight="40" valign="center" position="65,110" size="1095,635" enableWrapAround="1" scrollbarWidth="7" scrollbarSliderBorderWidth="1" scrollbarSliderBorderColor="blue" scrollbarSliderForegroundColor="blue" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_1095_40.png" backgroundColor="black" transparent="1" />
 
   <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="41,853" size="35,27" alphatest="blend" />
   <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="328,853" size="35,27" alphatest="blend" />
@@ -28,5 +28,21 @@
   <eLabel text="Move / Copy" position="665,852" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
   <eLabel text="Bookmarks" position="952,852" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
   <ePixmap position="40,754" zPosition="10" size="1148,1" pixmap="BlackHarmony/gfx/linia.png" />
+</screen>
+
+<screen name="CPmaniger" position="345,93" size="1232,908" title="Select Copy/Move location..." flags="wfNoBorder" backgroundColor="transparent">
+  <ePixmap position="0,0" zPosition="-10" size="1232,908" pixmap="BlackHarmony/bg_design/mainbg.png" />
+  <widget source="global.CurrentTime" render="Label" position="40,25" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+  <convert type="ClockToText">Default</convert>
+  </widget>
+  <widget source="global.CurrentTime" render="Label" position="125,25" size="460,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+  <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+  </widget>
+  <widget name="File" position="65,60" size="1090,80" font="Regular;21" halign="center" valign="center" foregroundColor="white" backgroundColor="background" />
+  <widget name="CPto" itemHeight="40" valign="center" position="65,160" size="1095,635" enableWrapAround="1" scrollbarWidth="7" scrollbarSliderBorderWidth="1" scrollbarSliderBorderColor="blue" scrollbarSliderForegroundColor="blue" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_1095_40.png" backgroundColor="black" transparent="1" />
+  <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="41,853" size="35,27" alphatest="blend" />
+  <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="615,853" size="35,27" alphatest="blend" />
+  <eLabel text="Move" position="91,852" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="white" transparent="1" />
+  <eLabel text="Copy" position="665,852" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="white" transparent="1" />
 </screen>
 </skin>

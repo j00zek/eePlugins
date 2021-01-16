@@ -48,8 +48,8 @@
     <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="1528,871" size="170,170" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
       <convert type="j00zekMSNWeather">weathericon,current</convert>
     </widget>
-    <eLabel font="Roboto_HD; 18" foregroundColor="yellow" halign="center" name="new eLabel" position="1633,1035" size="180,20" text="Temp. odczuwalna:" transparent="1" zPosition="2" valign="center" backgroundColor="black" /> 
-    <widget noWrap="1" backgroundColor="black" font="HD_Thin; 27" render="Label" position="1815,1026" size="100,35" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1" foregroundColor="podsw" valign="center">
+    <eLabel font="Roboto_HD; 18" foregroundColor="yellow" halign="center" name="new eLabel" position="1613,1035" size="180,20" text="Temp. odczuwalna:" transparent="1" zPosition="2" valign="center" backgroundColor="black" /> 
+    <widget noWrap="1" backgroundColor="black" font="HD_Thin; 27" render="Label" position="1795,1026" size="100,35" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1" foregroundColor="podsw" valign="center">
       <convert type="j00zekMSNWeather">GET|['currentData']['feelslike']['valInfo']</convert>
     </widget>
     <eLabel text="Pogoda teraz:" position="1701,879" size="200,28" font="Roboto_HD; 22" backgroundColor="black" halign="center" transparent="1" foregroundColor="lemon" />

@@ -1,5 +1,5 @@
 <skin>
-<screen name="SecondInfoBar" backgroundColor="transparent" flags="wfNoBorder" position="0,70" size="1920,1080">
+<screen name="SecondInfoBar" backgroundColor="transparent" flags="wfNoBorder" position="0,60" size="1920,1080">
   <ePixmap position="10,0" zPosition="-2" size="1920,699" pixmap="BlackHarmony/bg_design/secondinfobar.png" />
     <widget source="session.CurrentService" render="j00zekLabel" backgroundColor="black" font="HD_Thin; 27" foregroundColor="green" position="75,55" size="90,40" transparent="1">
       <convert type="j00zekTranslator">Now:</convert>

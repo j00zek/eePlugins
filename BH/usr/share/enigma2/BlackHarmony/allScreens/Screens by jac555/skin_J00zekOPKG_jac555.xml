@@ -1,0 +1,46 @@
+<skin>
+<screen name="Jopkg" position="345,93" size="1232,908" title=" " flags="wfNoBorder" backgroundColor="transparent" >
+    <ePixmap position="0,0" zPosition="-10" size="1232,908" pixmap="BlackHarmony/bg_design/mainbg.png"/>
+    <widget source="global.CurrentTime" render="Label" position="40,25" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="125,25" size="460,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+    <widget source="Title" render="Label" position="660,25" size="520,30" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1">
+      <convert type="j00zekAlternateTitle">j00zek's OPKG manager</convert>
+    </widget>
+    <widget source="list" render="Listbox" position="65,125" size="1095,675" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_1095_75.png" scrollbarWidth="7" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="blue" scrollbarSliderBorderColor="blue">
+      <convert type="TemplatedMultiContent" transparent="1">
+                                {"template":
+                                        [
+                                                MultiContentEntryPixmapAlphaTest(pos = (5, 15), size = (48, 48), png = 4), # index 4 is the status pixmap
+                                                #MultiContentEntryPixmapAlphaTest(pos = (2, 23), size = (48, 48), png = 5),
+                                                MultiContentEntryText(pos = (75, 3), size = (1095, 33), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 0), # index 2 is the description
+                                                MultiContentEntryText(pos = (75, 42), size = (800, 24), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 2), # index 0 is the name
+                                                MultiContentEntryText(pos = (850, 49), size = (200, 22), font=1, flags = RT_HALIGN_RIGHT|RT_VALIGN_CENTER, text = 1), # index 2 is the description
+                                        ],
+                                "fonts": [gFont("Regular", 25),gFont("Regular", 18)],
+                                "itemHeight": 75
+                                }
+                        </convert>
+    </widget>
+    <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="41,850" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="328,850" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="615,850" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="902,850" size="35,27" alphatest="blend"/>
+    <widget objectTypes="key_red,Label,Button" name="key_red" position="91,849" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget objectTypes="key_red,StaticText" source="key_red" render="Label" position="91,849" size="200,27" zPosition="2" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget objectTypes="key_green,Label,Button" name="key_green" position="378,849" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget objectTypes="key_green,StaticText" source="key_green" render="Label" position="378,849" size="200,27" zPosition="2" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget objectTypes="key_yellow,Label,Button" name="key_yellow" position="665,849" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget objectTypes="key_yellow,StaticText" source="key_yellow" render="Label" position="665,849" size="200,27" zPosition="2" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget objectTypes="key_blue,Label,Button" name="key_blue" position="952,849" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget objectTypes="key_blue,StaticText" source="key_blue" render="Label" position="952,849" size="200,27" zPosition="2" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget name="whatUPDATED" position="65,210" size="1095,590" font="Roboto_HD; 27" transparent="1"/>
+  </screen>
+  <screen name="Jconsole" position="365,145" size="1200,800" title="Command execution...">
+    <widget name="text" position="20,20" size="1160,800" font="Roboto_HD; 25" backgroundColor="background" transparent="1"/>
+ </screen>
+
+</skin>
