@@ -13,7 +13,7 @@ headers = { 'user-agent': 'ExoMedia 4.3.0 (43000) / Android 8.0.0 / foster_e',
             'content-type': 'application/json; charset=UTF-8'
           }
 
-data = {'device': 'AndroidTV', 
+data = {'device': 'android_tv', 
         'login' : getE2config('WPusername'), 
         'password': getE2config('WPpassword')
       }
