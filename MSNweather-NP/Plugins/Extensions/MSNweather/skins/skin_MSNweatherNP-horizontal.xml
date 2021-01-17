@@ -16,7 +16,7 @@
     <widget source="currentData_airlyAdvice" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=90,repeat=99,startdelay=2000" position="120,120" size="400,30" font="HD_Thin; 26" transparent="1" backgroundColor="black"/>
     <widget source="caption" render="Label" position="1395,120" size="420,30" font="HD_Thin; 26" halign="right" valign="center" transparent="1" backgroundColor="black" foregroundColor="green"/>
 <!-- CURRENT TOP -->
-    <widget source="currentData_airlyInfo"   render="Label" position="120,180" size="400,30" font="HD_Thin; 26" halign="center" valign="center" transparent="1" backgroundColor="black"/>
+    <widget source="currentData_airlyInfo"   render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=90,repeat=99,startdelay=2000" position="120,180" size="400,30" font="HD_Thin; 26" halign="center" valign="center" transparent="1" backgroundColor="black" noWrap="1"/>
     <widget source="session.j00zekMSNWeather" render="j00zekMSNWeatherPixmap" alphatest="blend" position="243,212" size="128,128" transparent="1" zPosition="5">
       <convert type="j00zekMSNWeather">weathericon,current</convert>
     </widget>
