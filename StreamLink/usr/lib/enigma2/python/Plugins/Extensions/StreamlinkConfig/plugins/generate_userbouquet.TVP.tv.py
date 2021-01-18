@@ -11,6 +11,7 @@ import re
 
 preferedTypes4idDict = {'51656539': '&prefertype=mpd',
                         '51449546': '&prefertype=mpd',
+                        '51161266': '&prefertype=mpd',
                           }
                           
 def getUrl(url): #1-1 z wtyczki do kodi
