@@ -130,6 +130,8 @@ def homarLCDskins( skinlist = [] , tunerName = getTunerName() ):
                 if FullDBG: printDEBUG("homarLCDskins skinname'%s'" % (skinname))
                 if tunerName == 'duo4k':
                     skinlist.append(( skinname, _(x[len('skin_LCD_'):-4].replace("_", " ").replace('solo4k', 'duo4k').replace('SOLO4K', 'DUO4K')) ))
+                elif tunerName == 'duo4kse':
+                    skinlist.append(( skinname, _(x[len('skin_LCD_'):-4].replace("_", " ").replace('solo4k', 'duo4kse').replace('SOLO4K', 'DUO4KSE')) ))
                 else:
                     skinlist.append(( skinname, _(x[len('skin_LCD_'):-4].replace("_", " ")) ))
     
@@ -141,6 +143,8 @@ def homarLCDskins( skinlist = [] , tunerName = getTunerName() ):
                 tunerName = 'all'
             elif trybDevelopera.find('trybDevelopera=duo4k') > -1:
                 tunerName = 'duo4k'
+            elif trybDevelopera.find('trybDevelopera=duo4kse') > -1:
+                tunerName = 'duo4kse'
     
     if tunerName == 'all':
         subRoot='HomarLCDskins/'
