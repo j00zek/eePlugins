@@ -1,17 +1,6 @@
 # -*- coding: utf-8 -*- 
 
-import os
-
-DBG = False
-
-def DEBUG(myFUNC = '' , myText = '' ):
-    if DBG:
-        from debug import printDEBUG
-        printDEBUG( myFUNC , myText, logFileName = 'MSNcomponents.log' )
-
-
 def getWindIconName(iconName = None):
-    DEBUG('icons.getWindIconName' , 'iconName: %s ' % iconName)
     if iconName is None or iconName == '':
         return None
     elif iconName == 'N': 
@@ -40,6 +29,7 @@ iconsMap={
     'czesciowoslonecznie'               :   '30.png',
     'deszcz'                            :   '12.png',
     'deszczzesniegiem'                  :   '7.png',
+    'gestamgla'                         :   '19.png',
     'lekkideszczzesniegiem'             :   '6.png',
     'mgla'                              :   '19.png',
     "niewielkieopadysniegu"             :   '13.png', 

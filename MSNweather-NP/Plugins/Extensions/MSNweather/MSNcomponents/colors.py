@@ -4,7 +4,7 @@
 ####################################################################### 
 #
 #   This script resolves issue with freezing E2 in case of network problems and speeds-up everything
-#   Coded by j00zek (c)2020
+#   Coded by j00zek (c)2020-2021
 #
 #    Uszanuj moja decyzje i prace i ...
 #              - nie kasuj/zmieniaj informacji kto jest autorem skryptu
@@ -14,7 +14,6 @@
 #     
 ####################################################################### 
 """
-from debug import printDEBUG
 
 def Hex2strColor(rgb):
   out = ""
@@ -66,158 +65,159 @@ def Temperature2strColor(temp):
 def airQualityInfo(key, val):
     info = ''
     colorCode = ''
-    val = float(val)
-    if key in ('pm25','pm25'):
-        if   val <= 12 :
-            colorCode = clr['VeryGood']
-            info = 'Very good'
-        elif val <= 36 :
-            colorCode = clr['Good']
-            info =  'Good'
-        elif val <= 60 :
-            colorCode = clr['Moderate'] 
-            info =  'Moderate'
-        elif val <= 84 :
-            colorCode = clr['satisfactory']
-            info =  'satisfactory'
-        elif val <=120 :
-            colorCode = clr['Bad']
-            info =  'Bad'
-        else:
-            colorCode = clr['VeryBad']
-            info =  'Very bad'
-    elif key == 'pm10':
-        if   val <= 20 :
-            colorCode = clr['VeryGood']
-            info =  'Very good'
-        elif val <= 60 :
-            colorCode = clr['Good']
-            info =  'Good'
-        elif val <=100 :
-            colorCode = clr['Moderate']
-            info =  'Moderate'
-        elif val <=140 :
-            colorCode = clr['Bad']
-            info =  'satisfactory'
-        elif val <=200 :
-            colorCode = clr['']
-            info =  'Bad'
-        else:
-            colorCode = clr['VeryBad']
-            info =  'Very bad'
-    elif key == 'pm1off':
-        if   val <= 20 :
-            colorCode = clr['VeryGood']
-            info =  'Very good'
-        elif val <= 60 :
-            colorCode = clr['Good']
-            info =  'Good'
-        elif val <=100 :
-            colorCode = clr['Moderate']
-            info =  'Moderate'
-        elif val <=140 :
-            colorCode = clr['satisfactory']
-            info =  'satisfactory'
-        elif val <=200 :
-            colorCode = clr['Bad']
-            info =  'Bad'
-        else:
-            colorCode = clr['VeryBad']
-            info =  'Very bad'
-    elif key == 'o3':
-        if   val <= 79 :
-            colorCode = clr['VeryGood']
-            info =  'Very good'
-        elif val <=120 :
-            colorCode = clr['Good']
-            info =  'Good'
-        elif val <=150 :
-            colorCode = clr['Moderate']
-            info =  'Moderate'
-        elif val <=180 :
-            colorCode = clr['satisfactory']
-            info =  'satisfactory'
-        elif val <=240 :
-            colorCode = clr['Bad']
-            info =  'Bad'
-        else:
-            colorCode = clr['VeryBad']
-            info =  'Very bad'
-    elif key == 'no2':
-        if   val <= 40 :
-            colorCode = clr['VeryGood']
-            info =  'Very good'
-        elif val <=100 : 
-            colorCode = clr['Good']
-            info =  'Good'
-        elif val <=150 :
-            colorCode = clr['Moderate']
-            info =  'Moderate'
-        elif val <=200 : 
-            colorCode = clr['satisfactory']
-            info =  'satisfactory'
-        elif val <=400 :
-            colorCode = clr['Bad']
-            info =  'Bad'
-        else:
-            colorCode = clr['VeryBad']
-            info =  'Very bad'
-    elif key == 'so2':
-        if   val <= 50 :
-            colorCode = clr['VeryGood']
-            info =  'Very good'
-        elif val <=100 :
-            colorCode = clr['Good']
-            info =  'Good'
-        elif val <=200 :
-            colorCode = clr['Moderate']
-            info =  'Moderate'
-        elif val <=350 :
-            colorCode = clr['satisfactory']
-            info =  'satisfactory'
-        elif val <=500 :
-            colorCode = clr['Bad']
-            info =  'Bad'
-        else:
-            colorCode = clr['VeryBad']
-            info =  'Very bad'
-    elif key == 'c6h6':
-        if   val <=  6 :
-            colorCode = clr['VeryGood']
-            info =  'Very good'
-        elif val <= 11 :
-            colorCode = clr['Good']
-            info =  'Good'
-        elif val <= 16 :
-            colorCode = clr['Moderate']
-            info =  'Moderate'
-        elif val <= 21 :
-            colorCode = clr['satisfactory']
-            info =  'satisfactory'
-        elif val <= 51 :
-            colorCode = clr['Bad']
-            info =  'Bad'
-        else:
-            colorCode = clr['VeryBad']
-            info =  'Very bad'
-    elif key == 'co':
-        if   val <=  3 :
-            colorCode = clr['VeryGood']
-            info =  'Very good'
-        elif val <=  7 :
-            colorCode = clr['Good']
-            info =  'Good'
-        elif val <= 11 :
-            colorCode = clr['Moderate']
-            info =  'Moderate'
-        elif val <= 15 :
-            colorCode = clr['satisfactory']
-            info =  'satisfactory'
-        elif val <= 21 :
-            colorCode = clr['Bad']
-            info =  'Bad'
-        else:
-            colorCode = clr['VeryBad']
-            info =  'Very bad'
+    if val != '' and key != '':
+        val = float(val)
+        if key in ('pm25','pm25'):
+            if   val <= 12 :
+                colorCode = clr['VeryGood']
+                info = 'Very good'
+            elif val <= 36 :
+                colorCode = clr['Good']
+                info =  'Good'
+            elif val <= 60 :
+                colorCode = clr['Moderate'] 
+                info =  'Moderate'
+            elif val <= 84 :
+                colorCode = clr['satisfactory']
+                info =  'satisfactory'
+            elif val <=120 :
+                colorCode = clr['Bad']
+                info =  'Bad'
+            else:
+                colorCode = clr['VeryBad']
+                info =  'Very bad'
+        elif key == 'pm10':
+            if   val <= 20 :
+                colorCode = clr['VeryGood']
+                info =  'Very good'
+            elif val <= 60 :
+                colorCode = clr['Good']
+                info =  'Good'
+            elif val <=100 :
+                colorCode = clr['Moderate']
+                info =  'Moderate'
+            elif val <=140 :
+                colorCode = clr['Bad']
+                info =  'satisfactory'
+            elif val <=200 :
+                colorCode = clr['Gray']
+                info =  'Bad'
+            else:
+                colorCode = clr['VeryBad']
+                info =  'Very bad'
+        elif key == 'pm1off':
+            if   val <= 20 :
+                colorCode = clr['VeryGood']
+                info =  'Very good'
+            elif val <= 60 :
+                colorCode = clr['Good']
+                info =  'Good'
+            elif val <=100 :
+                colorCode = clr['Moderate']
+                info =  'Moderate'
+            elif val <=140 :
+                colorCode = clr['satisfactory']
+                info =  'satisfactory'
+            elif val <=200 :
+                colorCode = clr['Bad']
+                info =  'Bad'
+            else:
+                colorCode = clr['VeryBad']
+                info =  'Very bad'
+        elif key == 'o3':
+            if   val <= 79 :
+                colorCode = clr['VeryGood']
+                info =  'Very good'
+            elif val <=120 :
+                colorCode = clr['Good']
+                info =  'Good'
+            elif val <=150 :
+                colorCode = clr['Moderate']
+                info =  'Moderate'
+            elif val <=180 :
+                colorCode = clr['satisfactory']
+                info =  'satisfactory'
+            elif val <=240 :
+                colorCode = clr['Bad']
+                info =  'Bad'
+            else:
+                colorCode = clr['VeryBad']
+                info =  'Very bad'
+        elif key == 'no2':
+            if   val <= 40 :
+                colorCode = clr['VeryGood']
+                info =  'Very good'
+            elif val <=100 : 
+                colorCode = clr['Good']
+                info =  'Good'
+            elif val <=150 :
+                colorCode = clr['Moderate']
+                info =  'Moderate'
+            elif val <=200 : 
+                colorCode = clr['satisfactory']
+                info =  'satisfactory'
+            elif val <=400 :
+                colorCode = clr['Bad']
+                info =  'Bad'
+            else:
+                colorCode = clr['VeryBad']
+                info =  'Very bad'
+        elif key == 'so2':
+            if   val <= 50 :
+                colorCode = clr['VeryGood']
+                info =  'Very good'
+            elif val <=100 :
+                colorCode = clr['Good']
+                info =  'Good'
+            elif val <=200 :
+                colorCode = clr['Moderate']
+                info =  'Moderate'
+            elif val <=350 :
+                colorCode = clr['satisfactory']
+                info =  'satisfactory'
+            elif val <=500 :
+                colorCode = clr['Bad']
+                info =  'Bad'
+            else:
+                colorCode = clr['VeryBad']
+                info =  'Very bad'
+        elif key == 'c6h6':
+            if   val <=  6 :
+                colorCode = clr['VeryGood']
+                info =  'Very good'
+            elif val <= 11 :
+                colorCode = clr['Good']
+                info =  'Good'
+            elif val <= 16 :
+                colorCode = clr['Moderate']
+                info =  'Moderate'
+            elif val <= 21 :
+                colorCode = clr['satisfactory']
+                info =  'satisfactory'
+            elif val <= 51 :
+                colorCode = clr['Bad']
+                info =  'Bad'
+            else:
+                colorCode = clr['VeryBad']
+                info =  'Very bad'
+        elif key == 'co':
+            if   val <=  3 :
+                colorCode = clr['VeryGood']
+                info =  'Very good'
+            elif val <=  7 :
+                colorCode = clr['Good']
+                info =  'Good'
+            elif val <= 11 :
+                colorCode = clr['Moderate']
+                info =  'Moderate'
+            elif val <= 15 :
+                colorCode = clr['satisfactory']
+                info =  'satisfactory'
+            elif val <= 21 :
+                colorCode = clr['Bad']
+                info =  'Bad'
+            else:
+                colorCode = clr['VeryBad']
+                info =  'Very bad'
 
     return colorCode, info

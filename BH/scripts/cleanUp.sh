@@ -199,17 +199,20 @@ do
 #  if [ `grep -c 'type="j00zekMSNWeatherWebhourly">Record' < "$F"` -gt 0 ];then
 #    sed -i 's;type="j00zekMSNWeatherWebhourly">Record;type=\"j00zekMSNWeather\">RUN|[\'currentData\'][\'pressure\'][\'val\'];g' "$F"
 #  fi
-  if [ `grep -c 'type="j00zekMSNWeather">temperature_current' < "$F"` -gt 0 ];then
-    sed -i "s;type=\"j00zekMSNWeather\">temperature_current;type=\"j00zekMSNWeather\">GET|['currentData']['temperature']['valInfo'];g" "$F"
-  fi
-  if [ `grep -c 'type="j00zekMSNWeather">temperature_high,day1' < "$F"` -gt 0 ];then
-    sed -i "s;type=\"j00zekMSNWeather\">temperature_high,day1;type=\"j00zekMSNWeather\">RUN|['dailyData']['Record=0']['temp_high']|C;g" "$F"
-  fi
-  if [ `grep -c 'type="j00zekMSNWeather">temperature_low,day1' < "$F"` -gt 0 ];then
-    sed -i "s;type=\"j00zekMSNWeather\">temperature_low,day1;type=\"j00zekMSNWeather\">RUN|['dailyData']['Record=0']['temp_low']|C;g" "$F"
-  fi
-  if [ `grep -c 'type="j00zekMSNWeather">feelslike' < "$F"` -gt 0 ];then
-    sed -i "s;type=\"j00zekMSNWeather\">feelslike;type=\"j00zekMSNWeather\">GET|['currentData']['feelslike']['valInfo'];g" "$F"
+#  if [ `grep -c 'type="j00zekMSNWeather">temperature_current' < "$F"` -gt 0 ];then
+#    sed -i "s;type=\"j00zekMSNWeather\">temperature_current;type=\"j00zekMSNWeather\">GET|['currentData']['temperature']['valInfo'];g" "$F"
+#  fi
+#  if [ `grep -c 'type="j00zekMSNWeather">temperature_high,day1' < "$F"` -gt 0 ];then
+#    sed -i "s;type=\"j00zekMSNWeather\">temperature_high,day1;type=\"j00zekMSNWeather\">RUN|['dailyData']['Record=0']['temp_high']|C;g" "$F"
+#  fi
+#  if [ `grep -c 'type="j00zekMSNWeather">temperature_low,day1' < "$F"` -gt 0 ];then
+#    sed -i "s;type=\"j00zekMSNWeather\">temperature_low,day1;type=\"j00zekMSNWeather\">RUN|['dailyData']['Record=0']['temp_low']|C;g" "$F"
+#  fi
+#  if [ `grep -c 'type="j00zekMSNWeather">feelslike' < "$F"` -gt 0 ];then
+#    sed -i "s;type=\"j00zekMSNWeather\">feelslike;type=\"j00zekMSNWeather\">GET|['currentData']['feelslike']['valInfo'];g" "$F"
+#  fi
+  if [ `grep -c "'airlyIndex'" < "$F"` -gt 0 ];then
+    sed -i "s;'airlyIndex';'airIndex';g" "$F"
   fi
 
 done

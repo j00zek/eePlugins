@@ -56,10 +56,10 @@ class MSNweatherHistograms(Screen):
             #temperature
             self.skin += '<widget name="tempBar%s" position="%s,%s" zPosition="1" size="%s,3" alphatest="blend"/>\n' % (i, posX, self.TempBarPosY, fieldSize)
             self.skin += '<widget name="curTempBar%s" position="%s,%s" zPosition="2" size="%s,2" alphatest="blend"/>\n' % (i, posX, self.TempBarPosY, fieldSize)
-            self.skin += '<widget render="Label" source="tempName%s" position="%s,%s" zPosition="5" size="%s,30" foregroundColor="lemon" halign="center" font="Regular;20" transparent="1"/>\n' % (i, posX, self.TempBarPosY + 10, fieldSize)
+            self.skin += '<widget render="j00zekLabel" source="tempName%s" position="%s,%s" zPosition="5" size="%s,30" foregroundColor="lemon" halign="center" font="Regular;20" transparent="1"/>\n' % (i, posX, self.TempBarPosY + 10, fieldSize)
             #wind
             self.skin += '<widget name="TitleWind" position="0,%s" size="420,25" font="Regular;20" halign="left" foregroundColor="yellow" />\n' %(self.windBarPosY)
-            self.skin += '<widget render="Label" source="windspeed%s" position="%s,%s" zPosition="5" size="%s,30" foregroundColor="white" halign="center" font="Regular;20" transparent="1"/>\n' % (i, posX, self.windBarPosY + 30, fieldSize)
+            self.skin += '<widget render="j00zekLabel" source="windspeed%s" position="%s,%s" zPosition="5" size="%s,30" foregroundColor="white" halign="center" font="Regular;20" transparent="1"/>\n' % (i, posX, self.windBarPosY + 30, fieldSize)
             self.skin += '<widget name="windIcon%s" position="%s,%s" zPosition="2" size="%s,30" alphatest="blend"/>\n' % (i, posX + 20, self.windBarPosY + 65, fieldSize)
             
             i += 1

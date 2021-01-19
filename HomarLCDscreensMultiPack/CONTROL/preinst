@@ -13,7 +13,7 @@ if [ -e /proc/stb/info/vumodel ];then
   model=`cat /proc/stb/info/vumodel`
 fi
 
-if [ `echo 'duo4k,solo4k,ultimo4k,uno4kse'|grep -c "$model"` -lt 1 ];then
+if [ `echo 'duo4k,solo4k,ultimo4k,uno4kse,duo4kse'|grep -c "$model"` -lt 1 ];then
   echo "tuner not compatible"
   exit 1
 fi

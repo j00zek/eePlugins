@@ -424,13 +424,13 @@
 <!--AIRLY-->
 
     <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="1714,500" size="120,120" source="session.j00zekMSNWeather" transparent="1" zPosition="3">
-        <convert type="j00zekMSNWeather">RUN|['currentData']['airlyIndex']['iconfilename']</convert>
+        <convert type="j00zekMSNWeather">RUN|['currentData']['airIndex']['iconfilename']</convert>
     </widget>
 	<widget foregroundColor="foreground" backgroundColor="background" font="HD_Thin; 50" render="Label" position="1695,480" size="160,160" source="session.j00zekMSNWeather" zPosition="5" halign="center" valign="center" transparent="1">
-    <convert type="j00zekMSNWeather">RUN|['currentData']['airlyIndex']['val']</convert>
+    <convert type="j00zekMSNWeather">RUN|['currentData']['airIndex']['val']</convert>
      </widget>
     <widget position="1684,357" size="196,143" source="session.j00zekMSNWeather" render="j00zekLabel" font="Regular; 23" backgroundColor="background" halign="center" valign="center" transparent="1" zPosition="10">
-        <convert type="j00zekMSNWeather">RUN|['currentData']['airlyIndex']['info']|, |0x00c1ff63|['currentData']['airlyIndex']['advice']</convert>
+        <convert type="j00zekMSNWeather">RUN|['currentData']['airIndex']['info']|, |0x00c1ff63|['currentData']['airIndex']['advice']</convert>
       </widget>
 </screen>
 </skin>
