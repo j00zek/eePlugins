@@ -62,7 +62,7 @@
 	<widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="810,28" size="50,50" source="session.j00zekMSNWeather" transparent="1" zPosition="3">
         <convert type="j00zekMSNWeather">RUN|['currentData']['airIndex']['iconfilename']</convert>
       </widget>
-	<widget backgroundColor="black" font="Roboto_HD; 25" render="Label" position="810,28" size="50,50" source="session.j00zekMSNWeather" zPosition="5" halign="center" valign="center" transparent="1">
+	<widget backgroundColor="black" font="Roboto_HD; 21" render="Label" position="810,28" size="50,50" source="session.j00zekMSNWeather" zPosition="5" halign="center" valign="center" transparent="1">
     <convert type="j00zekMSNWeather">RUN|['currentData']['airIndex']['val']</convert>
      </widget>
     <widget position="800,1" size="570,24" source="session.j00zekMSNWeather" render="j00zekLabel" font="Regular; 21"  backgroundColor="background" halign="center" valign="center" noWrap="0" transparent="1" zPosition="10">
