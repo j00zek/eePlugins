@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*- 
 from . import _
-from Components.j00zekModHex2strColor import Hex2strColor as h2c, clr
 from Components.ActionMap import ActionMap
 from datetime import datetime
 from enigma import getDesktop, ePoint, eSize
@@ -8,7 +7,7 @@ from Components.config import config
 from Components.Label import Label
 from Components.Pixmap import Pixmap
 from Components.Sources.StaticText import StaticText
-from MSNcomponents.icons import getWindIconName
+from MSNcomponents.mappings import *
 from os import path
 from Screens.Screen import Screen
 from Tools.LoadPixmap import LoadPixmap
