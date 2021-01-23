@@ -27,11 +27,17 @@ clr={'Y':           Hex2strColor(0x00ffcc00), #yellow
      'O':           Hex2strColor(0x00ffcc00), #orange
      'Gray':        Hex2strColor(0x00e6e6e6),
      'VeryGood':    Hex2strColor(0x00009900),
+     'VERY_GOOD':   Hex2strColor(0x00009900),
      'Good':        Hex2strColor(0x0099FF33),
+     'GOOD':        Hex2strColor(0x0099FF33),
      'Moderate':    Hex2strColor(0x00FFFF00),
+     'MODERATE':    Hex2strColor(0x00FFFF00),
      'satisfactory':Hex2strColor(0x00FF6600),
+     'ACCEPTABLE':  Hex2strColor(0x00FF6600),
      'Bad':         Hex2strColor(0x00FF0000),
+     'BAD':         Hex2strColor(0x00FF0000),
      'VeryBad':     Hex2strColor(0x00990000),
+     'VERY_BAD':    Hex2strColor(0x00990000),
      'Żółty':       Hex2strColor(0x00ffcc00),
      'Czerwony':    Hex2strColor(0x00FF3333),
      'Yellow':      Hex2strColor(0x00ffcc00),
@@ -61,7 +67,7 @@ def Temperature2strColor(temp):
         retVal = Hex2strColor(0x00ff99cc)
     return retVal
 
-def airQualityInfo(key, val):
+def airQualityInfo(key, val, retLevel = False):
     info = ''
     colorCode = ''
     if val != '' and key != '':
@@ -69,155 +75,203 @@ def airQualityInfo(key, val):
         if key in ('pm25','pm25'):
             if   val <= 12 :
                 colorCode = clr['VeryGood']
-                info = 'Very good'
+                if retLevel: info = 0
+                else: info = 'Very good'
             elif val <= 36 :
                 colorCode = clr['Good']
-                info =  'Good'
+                if retLevel: info = 1
+                else: info =  'Good'
             elif val <= 60 :
                 colorCode = clr['Moderate'] 
-                info =  'Moderate'
+                if retLevel: info = 2
+                else: info =  'Moderate'
             elif val <= 84 :
                 colorCode = clr['satisfactory']
-                info =  'satisfactory'
+                if retLevel: info = 3
+                else: info =  'satisfactory'
             elif val <=120 :
                 colorCode = clr['Bad']
-                info =  'Bad'
+                if retLevel: info = 4
+                else: info =  'Bad'
             else:
                 colorCode = clr['VeryBad']
-                info =  'Very bad'
+                if retLevel: info = 5
+                else: info =  'Very bad'
         elif key == 'pm10':
             if   val <= 20 :
                 colorCode = clr['VeryGood']
-                info =  'Very good'
+                if retLevel: info = 0
+                else: info =  'Very good'
             elif val <= 60 :
                 colorCode = clr['Good']
-                info =  'Good'
+                if retLevel: info = 1
+                else: info =  'Good'
             elif val <=100 :
                 colorCode = clr['Moderate']
-                info =  'Moderate'
+                if retLevel: info = 2
+                else: info =  'Moderate'
             elif val <=140 :
                 colorCode = clr['Bad']
-                info =  'satisfactory'
+                if retLevel: info = 3
+                else: info =  'satisfactory'
             elif val <=200 :
                 colorCode = clr['Gray']
-                info =  'Bad'
+                if retLevel: info = 4
+                else: info =  'Bad'
             else:
                 colorCode = clr['VeryBad']
-                info =  'Very bad'
+                if retLevel: info = 5
+                else: info =  'Very bad'
         elif key == 'pm1off':
             if   val <= 20 :
                 colorCode = clr['VeryGood']
-                info =  'Very good'
+                if retLevel: info = 0
+                else: info =  'Very good'
             elif val <= 60 :
                 colorCode = clr['Good']
-                info =  'Good'
+                if retLevel: info = 1
+                else: info =  'Good'
             elif val <=100 :
                 colorCode = clr['Moderate']
-                info =  'Moderate'
+                if retLevel: info = 2
+                else: info =  'Moderate'
             elif val <=140 :
                 colorCode = clr['satisfactory']
-                info =  'satisfactory'
+                if retLevel: info = 3
+                else: info =  'satisfactory'
             elif val <=200 :
                 colorCode = clr['Bad']
-                info =  'Bad'
+                if retLevel: info = 4
+                else: info =  'Bad'
             else:
                 colorCode = clr['VeryBad']
-                info =  'Very bad'
+                if retLevel: info = 5
+                else: info =  'Very bad'
         elif key == 'o3':
             if   val <= 79 :
                 colorCode = clr['VeryGood']
-                info =  'Very good'
+                if retLevel: info = 0
+                else: info =  'Very good'
             elif val <=120 :
                 colorCode = clr['Good']
-                info =  'Good'
+                if retLevel: info = 1
+                else: info =  'Good'
             elif val <=150 :
                 colorCode = clr['Moderate']
-                info =  'Moderate'
+                if retLevel: info = 2
+                else: info =  'Moderate'
             elif val <=180 :
                 colorCode = clr['satisfactory']
-                info =  'satisfactory'
+                if retLevel: info = 3
+                else: info =  'satisfactory'
             elif val <=240 :
                 colorCode = clr['Bad']
-                info =  'Bad'
+                if retLevel: info = 4
+                else: info =  'Bad'
             else:
                 colorCode = clr['VeryBad']
-                info =  'Very bad'
+                if retLevel: info = 5
+                else: info =  'Very bad'
         elif key == 'no2':
             if   val <= 40 :
                 colorCode = clr['VeryGood']
-                info =  'Very good'
+                if retLevel: info = 0
+                else: info =  'Very good'
             elif val <=100 : 
                 colorCode = clr['Good']
-                info =  'Good'
+                if retLevel: info = 1
+                else: info =  'Good'
             elif val <=150 :
                 colorCode = clr['Moderate']
-                info =  'Moderate'
+                if retLevel: info = 2
+                else: info =  'Moderate'
             elif val <=200 : 
                 colorCode = clr['satisfactory']
-                info =  'satisfactory'
+                if retLevel: info = 3
+                else: info =  'satisfactory'
             elif val <=400 :
-                colorCode = clr['Bad']
+                if retLevel: info = 4
+                else: colorCode = clr['Bad']
                 info =  'Bad'
             else:
-                colorCode = clr['VeryBad']
+                if retLevel: info = 5
+                else: colorCode = clr['VeryBad']
                 info =  'Very bad'
         elif key == 'so2':
             if   val <= 50 :
                 colorCode = clr['VeryGood']
-                info =  'Very good'
+                if retLevel: info = 0
+                else: info =  'Very good'
             elif val <=100 :
                 colorCode = clr['Good']
-                info =  'Good'
+                if retLevel: info = 1
+                else: info =  'Good'
             elif val <=200 :
                 colorCode = clr['Moderate']
-                info =  'Moderate'
+                if retLevel: info = 2
+                else: info =  'Moderate'
             elif val <=350 :
                 colorCode = clr['satisfactory']
-                info =  'satisfactory'
+                if retLevel: info = 3
+                else: info =  'satisfactory'
             elif val <=500 :
                 colorCode = clr['Bad']
-                info =  'Bad'
+                if retLevel: info = 4
+                else: info =  'Bad'
             else:
                 colorCode = clr['VeryBad']
-                info =  'Very bad'
+                if retLevel: info = 5
+                else: info =  'Very bad'
         elif key == 'c6h6':
             if   val <=  6 :
                 colorCode = clr['VeryGood']
-                info =  'Very good'
+                if retLevel: info = 0
+                else: info =  'Very good'
             elif val <= 11 :
                 colorCode = clr['Good']
-                info =  'Good'
+                if retLevel: info = 1
+                else: info =  'Good'
             elif val <= 16 :
                 colorCode = clr['Moderate']
-                info =  'Moderate'
+                if retLevel: info = 2
+                else: info =  'Moderate'
             elif val <= 21 :
                 colorCode = clr['satisfactory']
-                info =  'satisfactory'
+                if retLevel: info = 3
+                else: info =  'satisfactory'
             elif val <= 51 :
                 colorCode = clr['Bad']
-                info =  'Bad'
+                if retLevel: info = 4
+                else: info =  'Bad'
             else:
                 colorCode = clr['VeryBad']
-                info =  'Very bad'
+                if retLevel: info = 5
+                else: info =  'Very bad'
         elif key == 'co':
             if   val <=  3 :
                 colorCode = clr['VeryGood']
-                info =  'Very good'
+                if retLevel: info = 0
+                else: info =  'Very good'
             elif val <=  7 :
                 colorCode = clr['Good']
-                info =  'Good'
+                if retLevel: info = 1
+                else: info =  'Good'
             elif val <= 11 :
                 colorCode = clr['Moderate']
-                info =  'Moderate'
+                if retLevel: info = 2
+                else: info =  'Moderate'
             elif val <= 15 :
                 colorCode = clr['satisfactory']
-                info =  'satisfactory'
+                if retLevel: info = 3
+                else: info =  'satisfactory'
             elif val <= 21 :
                 colorCode = clr['Bad']
-                info =  'Bad'
+                if retLevel: info = 4
+                else: info =  'Bad'
             else:
                 colorCode = clr['VeryBad']
-                info =  'Very bad'
+                if retLevel: info = 5
+                else: info =  'Very bad'
 
     return colorCode, info
 
