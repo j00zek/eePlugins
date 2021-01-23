@@ -2,24 +2,28 @@
 <screen name="InfoBar" position="0,0" size="1920,1080" title="InfoBar" flags="wfNoBorder" backgroundColor="transparent">
     <ePixmap position="25,8" zPosition="-2" size="900,150" pixmap="BlackHarmony/bg_design/infobar_pogoda2.png" />
 	
-    <ePixmap pixmap="BlackHarmony/weather_icons/wiatr.png" position="50,34" size="30,30" zPosition="3" transparent="1" alphatest="blend" />
-	<widget backgroundColor="black" font="Roboto_HD; 22" render="j00zekLabel" position="85,36" size="95,25" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1">
+    <ePixmap pixmap="BlackHarmony/weather_icons/wiatr.png" position="50,20" size="30,30" zPosition="3" transparent="1" alphatest="blend" />
+	<widget backgroundColor="black" font="HD_Thin; 20" render="j00zekLabel" position="85,26" size="95,28" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1">
       <convert type="j00zekMSNWeather">RUN|['currentData']['wind_speed']['valInfo']</convert>
     </widget>
-	<widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="175,34" size="30,30" source="session.j00zekMSNWeather" zPosition="3" transparent="1">
+	<widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="175,20" size="30,30" source="session.j00zekMSNWeather" zPosition="3" transparent="1">
     <convert type="j00zekMSNWeather">RUN|['currentData']['wind_dir']['valInfo']</convert>
-  </widget>
-    <ePixmap pixmap="BlackHarmony/weather_icons/humidity_outdoor.png" position="50,77" size="28,30" zPosition="4" transparent="1" alphatest="blend" />
-    <widget backgroundColor="black" font="Roboto_HD; 22" render="Label" position="85,80" size="55,25" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1">
+       </widget>
+    <ePixmap pixmap="BlackHarmony/weather_icons/humidity_outdoor.png" position="50,50" size="28,30" zPosition="4" transparent="1" alphatest="blend" />
+    <widget backgroundColor="black" font="HD_Thin; 20" render="Label" position="85,55" size="55,28" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1">
       <convert type="j00zekMSNWeather">RUN|['currentData']['humidity']['valInfo']</convert>
-    </widget>
+      </widget>
+    <ePixmap pixmap="BlackHarmony/weather_icons/barometr.png" position="50,84" size="25,25" zPosition="4" transparent="1" alphatest="blend" />
+    <widget backgroundColor="black" font="HD_Thin; 20" render="Label" position="85,84" size="100,28" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1">
+    <convert type="j00zekMSNWeather">RUN|['currentData']['pressure']['valInfo']</convert>
+      </widget>
 	
 	<!--AIRLY-->
   
     <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="220,35" size="70,70" source="session.j00zekMSNWeather" transparent="1" zPosition="3">
         <convert type="j00zekMSNWeather">RUN|['currentData']['airIndex']['iconfilename']</convert>
     </widget>
-	<widget backgroundColor="black" font="Roboto_HD; 30" render="Label" position="220,35" size="70,70" source="session.j00zekMSNWeather" zPosition="5" halign="center" valign="center" transparent="1">
+	<widget backgroundColor="black" font="Roboto_HD; 30" render="Label" position="220,35" size="70,70" source="session.j00zekMSNWeather" zPosition="5" halign="center" valign="center" transparent="1" foregroundColor="#0e0e0e">
     <convert type="j00zekMSNWeather">RUN|['currentData']['airIndex']['val']</convert>
      </widget>
     <widget position="295,26" size="185,28" source="session.j00zekMSNWeather" render="j00zekLabel" font="HD_Thin; 20" foregroundColor="foreground" backgroundColor="black" halign="center" valign="center" noWrap="1" transparent="1" zPosition="10">
@@ -32,14 +36,11 @@
       <convert type="j00zekMSNWeather">RUN|['currentData']['pm1']['name']|-|['currentData']['pm1']['valInfo']</convert>
     </widget>
 	
-	<widget position="35,115" size="280,70" source="session.j00zekMSNWeather" render="Label" font="Roboto_HD; 22" backgroundColor="black" halign="left" noWrap="1" transparent="1" zPosition="2">
+	<widget position="35,115" size="880,27" source="session.j00zekMSNWeather" render="Label" font="Roboto_HD; 22" backgroundColor="black" halign="center" transparent="1" zPosition="2">
       <convert type="j00zekMSNWeather">RUN|['currentData']['airIndex']['info']</convert>
 	</widget>
-	<widget position="320,115" size="597,70" source="session.j00zekMSNWeather" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=20,repeat=99,startdelay=2000" font="Roboto_HD; 22" backgroundColor="black" halign="right" noWrap="1" transparent="1" zPosition="2">
-      <convert type="j00zekMSNWeather">RUN|['currentData']['airIndex']['advice']</convert>
-	</widget>
 	
-	<!--pogoda dalej-->
+<!--pogoda dalej-->
 	
 	<eLabel name="new eLabel" position="485,23" size="1,90" backgroundColor="blue" />
     

@@ -227,22 +227,22 @@
  	<widget position="1505,855" size="90,90" source="session.j00zekMSNWeather" render="j00zekMSNWeatherPixmap" alphatest="blend" transparent="1" zPosition="9">
         <convert type="j00zekMSNWeather">RUN|['currentData']['airIndex']['iconfilename']</convert>
     </widget>
-    <widget position="1505,855" size="90,90" source="session.j00zekMSNWeather" render="Label" font="Roboto_HD; 34" foregroundColor="foreground" backgroundColor="background" halign="center" valign="center" noWrap="1" transparent="1" zPosition="10">
+    <widget position="1505,855" size="90,90" source="session.j00zekMSNWeather" render="Label" font="Roboto_HD; 37" foregroundColor="#0e0e0e" backgroundColor="background" halign="center" valign="center" noWrap="1" transparent="1" zPosition="10">
         <convert type="j00zekMSNWeather">RUN|['currentData']['airIndex']['val']</convert>
      </widget>
-    <widget position="1605,845" size="265,26" source="session.j00zekMSNWeather" render="j00zekLabel" font="Regular; 24" foregroundColor="foreground" backgroundColor="background" halign="left" valign="center" noWrap="1" transparent="1" zPosition="10">
+    <widget position="1605,845" size="265,26" source="session.j00zekMSNWeather" render="j00zekLabel" font="Regular; 24" backgroundColor="background" halign="left" valign="center" noWrap="1" transparent="1" zPosition="10">
         <convert type="j00zekMSNWeather">RUN|['currentData']['no2']['name']|-|['currentData']['no2']['valInfo']</convert>
     </widget>
-    <widget position="1605,871" size="265,26" source="session.j00zekMSNWeather" render="j00zekLabel" font="Regular; 24" foregroundColor="foreground" backgroundColor="background" halign="left" valign="center" noWrap="1" transparent="1" zPosition="10">
+    <widget position="1605,871" size="265,26" source="session.j00zekMSNWeather" render="j00zekLabel" font="Regular; 24" backgroundColor="background" halign="left" valign="center" noWrap="1" transparent="1" zPosition="10">
         <convert type="j00zekMSNWeather">RUN|['currentData']['pm10']['name']|-|['currentData']['pm10']['valInfo']</convert>
     </widget>
-    <widget position="1605,897" size="265,26" source="session.j00zekMSNWeather" render="j00zekLabel" font="Regular; 24" foregroundColor="foreground" backgroundColor="background" halign="left" valign="center" noWrap="1" transparent="1" zPosition="10">
+    <widget position="1605,897" size="265,26" source="session.j00zekMSNWeather" render="j00zekLabel" font="Regular; 24" backgroundColor="background" halign="left" valign="center" noWrap="1" transparent="1" zPosition="10">
         <convert type="j00zekMSNWeather">RUN|['currentData']['o3']['name']|-|['currentData']['o3']['valInfo']</convert>
    </widget>
-   <widget position="1605,923" size="265,26" source="session.j00zekMSNWeather" render="j00zekLabel" font="Regular; 24" foregroundColor="foreground" backgroundColor="background" halign="left" valign="center" noWrap="1" transparent="1" zPosition="10">
+   <widget position="1605,923" size="265,26" source="session.j00zekMSNWeather" render="j00zekLabel" font="Regular; 24" backgroundColor="background" halign="left" valign="center" noWrap="1" transparent="1" zPosition="10">
         <convert type="j00zekMSNWeather">RUN|['currentData']['pm1']['name']|-|['currentData']['pm1']['valInfo']</convert>
     </widget>
-    <widget position="1605,949" size="265,26" source="session.j00zekMSNWeather" render="j00zekLabel" font="Regular; 24" foregroundColor="foreground" backgroundColor="background" halign="left" valign="center" noWrap="1" transparent="1" zPosition="10">
+    <widget position="1605,949" size="265,26" source="session.j00zekMSNWeather" render="j00zekLabel" font="Regular; 24" backgroundColor="background" halign="left" valign="center" noWrap="1" transparent="1" zPosition="10">
         <convert type="j00zekMSNWeather">RUN|['currentData']['pm25']['name']|-|['currentData']['pm25']['valInfo']</convert>
    </widget>
 

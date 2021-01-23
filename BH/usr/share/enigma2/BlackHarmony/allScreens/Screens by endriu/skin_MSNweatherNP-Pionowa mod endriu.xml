@@ -18,19 +18,19 @@
     
 	<!--lokalizacja, airly info-->
 	
-	<widget source="caption" render="Label" position="90,120" size="500,35" font="HD_Thin; 30" halign="left" valign="center" transparent="1" backgroundColor="black" foregroundColor="#000090e6"/>
-	 <widget source="currentData_airlyInfo"   render="Label" position="590,120" size="320,35" font="HD_Thin; 30" halign="right" transparent="1" backgroundColor="black"/>
-	 <widget source="currentData_airlyAdvice" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=10,repeat=99,startdelay=2000" position="940,120" size="880,35" font="HD_Thin; 30" transparent="1" backgroundColor="black"/>
+	 <widget source="caption" render="Label" position="90,120" size="500,35" font="HD_Thin; 30" halign="left" valign="center" transparent="1" backgroundColor="black" foregroundColor="#000090e6"/>
+	 <widget source="currentData_airlyInfo" render="Label" position="420,70" size="1080,35" font="HD_Thin; 30" halign="center" transparent="1" backgroundColor="black"/>
+	 <widget source="currentData_airlyAdvice" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=10,repeat=99,startdelay=2000" halign="center" position="560,120" size="800,35" font="HD_Thin; 30" transparent="1" backgroundColor="black"/>
 
 <!--aktualna pogoda-->
     
-    <widget source="session.j00zekMSNWeather" render="j00zekMSNWeatherPixmap" alphatest="blend" position="243,212" size="128,128" transparent="1" zPosition="5">
+    <widget source="session.j00zekMSNWeather" render="j00zekMSNWeatherPixmap" alphatest="blend" position="243,192" size="128,128" transparent="1" zPosition="5">
       <convert type="j00zekMSNWeather">weathericon,current</convert>
     </widget>
-    <widget source="currentData_temperature" render="Label" font="Roboto_HD; 40" position="380,244" size="120,45" halign="center" backgroundColor="black" zPosition="3" transparent="1" foregroundColor="light_yellow"/>
-    <widget source="currentData_skytext"     render="j00zekModRunningText" position="120,340" size="400,60" font="HD_Thin; 26" halign="center" valign="center" transparent="1" backgroundColor="black"/>
+    <widget source="currentData_temperature" render="Label" font="Roboto_HD; 40" position="380,224" size="120,45" halign="center" backgroundColor="black" zPosition="3" transparent="1" foregroundColor="light_yellow"/>
+    <widget source="currentData_skytext" render="Label" position="120,320" size="400,60" font="HD_Thin; 26" halign="center" valign="center" transparent="1" backgroundColor="black"/>
 <!--aktualne dane-->
-	<widget source="currentData_allInfoList" render="Listbox" position="120,430" size="420,360" scrollbarMode="showOnDemand" scrollbarWidth="6" transparent="1" backgroundColor="black">
+	<widget source="currentData_allInfoList" render="Listbox" position="120,410" size="420,364" scrollbarMode="showOnDemand" scrollbarWidth="6" transparent="1" backgroundColor="black">
 		<convert type="TemplatedMultiContent">
                     {"template": [
                         MultiContentEntryText(pos = (2, 2), size = (396, 28), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 0),
@@ -43,7 +43,10 @@
         </convert>
 	</widget>
 <!-- CURRENT BOTTOM -->
-    <widget render="Label" position="120,800" size="400,70" source="currentData_observationtime" font="Roboto_HD;26" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="center" foregroundColor="green"/>
+    <widget source="currentData_AllObservationTimes" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=20,repeat=99,startdelay=2000"  position="110,790" size="420,30" font="Roboto_HD;25" backgroundColor="black" zPosition="3" transparent="1" halign="center" foregroundColor="#00fffe9e"/>
+	<widget source="session.j00zekMSNWeather" backgroundColor="black" font="Roboto_HD;25" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=20,repeat=99,startdelay=2000"  position="110,825" size="420,30" zPosition="3" halign="center" transparent="1">
+        <convert type="j00zekMSNWeather">RUN|0x66CCCC|['currentData']['activeSources']['observationpointsInfo']</convert>
+        </widget>
         <!-- WSCHOD -->
         <ePixmap pixmap="BlackHarmony/icons/Weather/wsch.png" position="155,865" zPosition="1" size="99,50" alphatest="blend" />
         <widget source="global.CurrentTime" render="Label" position="155,915" size="100,35" font="HD_Thin; 22" halign="center" valign="center" transparent="1" backgroundColor="black">
