@@ -379,8 +379,8 @@ iconsMap={
 paramsNames={
         'NO2'   : 'dwutlenek azotu',
         'no2'   : 'dwutlenek azotu',
-        'PM1'   : 'pył zawieszony PM10',
-        'pm1'   : 'pył zawieszony PM10',
+        'PM1'   : 'pył zawieszony PM1',
+        'pm1'   : 'pył zawieszony PM1',
         'PM10'  : 'pył zawieszony PM10',
         'pm10'  : 'pył zawieszony PM10',
         'PM2.5' : 'pył zawieszony PM2.5',

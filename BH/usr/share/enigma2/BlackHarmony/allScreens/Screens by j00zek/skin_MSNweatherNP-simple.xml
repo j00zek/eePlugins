@@ -28,7 +28,7 @@
     <!-- top right corner -->
     <widget render="Label" source="currentData_skytext" font="Roboto_HD; 26" position="100,420" size="330,70" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="center" foregroundColor="green"/>
     <!-- top middle -->
-	<widget source="currentData_WeatherinfoList" render="Listbox" position="550,247" size="400,180" scrollbarMode="showOnDemand" transparent="1" backgroundColor="black">
+	<widget source="currentData_WeatherinfoList" render="Listbox" position="500,280" size="400,300" scrollbarMode="showOnDemand" transparent="1" backgroundColor="black">
 		<convert type="TemplatedMultiContent">
                     {"template": [
                         MultiContentEntryText(pos = (2, 2), size = (396, 28), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 0),
@@ -40,11 +40,13 @@
                     }
         </convert>
 	</widget>
-	<widget source="currentData_infoList" render="Listbox" position="1100,247" size="320,200" scrollbarMode="showOnDemand" transparent="1" backgroundColor="black">
+    <widget alphatest="blend" name="currentAirQualityIcon" position="970,170" size="90,90" transparent="1" zPosition="3"/>
+	<widget source="currentData_airlyInfo"   render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=90,repeat=99,startdelay=2000" foregroundColor="light_yellow" backgroundColor="black" font="Roboto_HD; 32" position="1070,170" size="360,90" zPosition="5" halign="left" valign="center" transparent="1" />
+	<widget source="currentData_infoList" render="Listbox" position="970,280" size="460,300" scrollbarMode="showOnDemand" transparent="1" backgroundColor="black">
 		<convert type="TemplatedMultiContent">
                     {"template": [
-                        MultiContentEntryText(pos = (2, 2), size = (296, 28), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 0),
-                        MultiContentEntryText(pos = (2, 2), size = (296, 28), font=1, flags = RT_HALIGN_RIGHT|RT_VALIGN_CENTER, text = 1),
+                        MultiContentEntryText(pos = (2, 2), size = (456, 28), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 0),
+                        MultiContentEntryText(pos = (2, 2), size = (456, 28), font=1, flags = RT_HALIGN_RIGHT|RT_VALIGN_CENTER, text = 1),
                         ],
                         "fonts": [gFont("Regular", 24), gFont("Regular", 24)],
                         "itemHeight": 28,
