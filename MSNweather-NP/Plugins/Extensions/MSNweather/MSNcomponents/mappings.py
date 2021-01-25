@@ -379,8 +379,14 @@ iconsMap={
     }
 
 paramsNames={
+        'C6H6'  : 'benzen',
+        'c6h6'  : 'benzen',
+        'CO'    : 'tlenek węgla (czad)',
+        'co'    : 'tlenek węgla (czad)',
         'NO2'   : 'dwutlenek azotu',
         'no2'   : 'dwutlenek azotu',
+        'O3'    : 'ozon',
+        'o3'    : 'ozon',
         'PM1'   : 'pył zawieszony PM1',
         'pm1'   : 'pył zawieszony PM1',
         'PM10'  : 'pył zawieszony PM10',
@@ -389,8 +395,6 @@ paramsNames={
         'pm2.5' : 'pył zawieszony PM2.5',
         'PM25'  : 'pył zawieszony PM2.5',
         'pm25'  : 'pył zawieszony PM2.5',
-        'O3'    : 'ozon',
-        'o3'    : 'ozon',
-        'C6H6'  : 'benzen',
-        'c6h6'  : 'benzen',
+        'SO2'   : 'dwutlenek siarki',
+        'so2'   : 'dwutlenek siarki',
     }
