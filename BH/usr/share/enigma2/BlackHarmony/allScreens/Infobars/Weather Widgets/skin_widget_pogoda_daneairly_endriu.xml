@@ -57,28 +57,25 @@
  </widget>
  
   <!--airly--> 
-	
+    
 	<eLabel position="798,16" size="1,51" backgroundColor="linie" />
-	<widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="810,28" size="50,50" source="session.j00zekMSNWeather" transparent="1" zPosition="3">
+	<widget source="session.j00zekMSNWeather" render="j00zekLabel" position="799,2" size="561,24" font="Regular; 22" backgroundColor="background" foregroundColor="#0045b701" halign="center" valign="center" transparent="1" zPosition="10">
+        <convert type="j00zekMSNWeather">RUN|['currentData']['airIndex']['info']</convert>
+      </widget>
+	<widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="802,28" size="50,50" source="session.j00zekMSNWeather" transparent="1" zPosition="3">
         <convert type="j00zekMSNWeather">RUN|['currentData']['airIndex']['iconfilename']</convert>
       </widget>
-	<widget backgroundColor="black" font="Roboto_HD; 24" render="Label" position="810,28" size="50,50" source="session.j00zekMSNWeather" zPosition="5" halign="center" valign="center" transparent="1" foregroundColor="#0e0e0e">
-    <convert type="j00zekMSNWeather">RUN|['currentData']['airIndex']['val']</convert>
-     </widget>
-    <widget position="800,3" size="570,24" source="session.j00zekMSNWeather" render="j00zekLabel" font="Regular; 21"  backgroundColor="background" halign="center" valign="center" noWrap="0" transparent="1" zPosition="10">
-        <convert type="j00zekMSNWeather">RUN|['currentData']['pm25']['name']|-|['currentData']['pm25']['valInfo']|,  |0x00e6ffe6|['currentData']['pm10']['name']|-|['currentData']['pm10']['valInfo']|,  |0x00e6ffe6|['currentData']['pm1']['name']|-|['currentData']['pm1']['valInfo']</convert>
-      </widget>
-    <widget position="868,27" size="504,57" source="session.j00zekMSNWeather" render="j00zekLabel" font="Regular; 24" backgroundColor="background" halign="center" valign="center" transparent="1" zPosition="10">
-        <convert type="j00zekMSNWeather">RUN|['currentData']['airIndex']['info']</convert>
+	<widget position="852,26" size="507,58" source="session.j00zekMSNWeather" render="j00zekLabel" font="Regular; 22"  backgroundColor="background" halign="center" valign="center" transparent="1" zPosition="10">
+    <convert type="j00zekMSNWeather">RUN|['currentData']['pm25']['name']|-|['currentData']['pm25']['valInfo']|, |0x00e6ffe6|['currentData']['pm10']['name']|-|['currentData']['pm10']['valInfo']|, |0x00e6ffe6|['currentData']['pm1']['name']|-|['currentData']['pm1']['valInfo']|, |0x00e6ffe6|['currentData']['co']['name']|-|['currentData']['co']['valInfo']|, |0x00e6ffe6|['currentData']['no2']['name']|-|['currentData']['no2']['valInfo']|, |0x00e6ffe6|['currentData']['o3']['name']|-|['currentData']['o3']['valInfo']</convert>
       </widget>
 	
 	<!--imieniny--> 
    
-  <eLabel position="1370,16" size="1,51" backgroundColor="linie" />
-  <widget source="session.CurrentService" render="j00zekLabel" backgroundColor="black" font="Regular; 25" foregroundColor="lemon" halign="center" position="1373,3" size="222,26"  transparent="1" valign="center" zPosition="2" >
+  <eLabel position="1360,16" size="1,51" backgroundColor="linie" />
+  <widget source="session.CurrentService" render="j00zekLabel" backgroundColor="black" font="Regular; 25" foregroundColor="lemon" halign="center" position="1363,3" size="232,26"  transparent="1" valign="center" zPosition="2" >
           <convert type="j00zekTranslator">name day</convert>
         </widget>
- <widget backgroundColor="black" font="Regular; 25" foregroundColor="grey" halign="center" valign="center" noWrap="0" position="1373,29" render="j00zekLabel" size="222,55" source="global.CurrentTime" transparent="1" zPosition="3">
+ <widget backgroundColor="black" font="Regular; 25" foregroundColor="grey" halign="center" valign="center" noWrap="0" position="1362,29" render="j00zekLabel" size="234,55" source="global.CurrentTime" transparent="1" zPosition="3">
       <convert type="j00zekModimieniny" />
     </widget>
 	

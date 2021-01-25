@@ -380,26 +380,13 @@
 	<widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="845,580" size="75,75" source="session.j00zekMSNWeather" transparent="1" zPosition="3">
         <convert type="j00zekMSNWeather">RUN|['currentData']['airIndex']['iconfilename']</convert>
     </widget>
-	<widget backgroundColor="black" font="Roboto_HD; 30" render="Label" position="845,580" size="75,75" source="session.j00zekMSNWeather" zPosition="5" halign="center" valign="center" transparent="1" foregroundColor="#0e0e0e">
-    <convert type="j00zekMSNWeather">RUN|['currentData']['airIndex']['val']</convert>
-     </widget>
-	
-	<widget position="937,565" size="250,30" source="session.j00zekMSNWeather" render="j00zekLabel" font="HD_Thin; 25" backgroundColor="black" halign="left" valign="center" noWrap="1" transparent="1" zPosition="10">
-        <convert type="j00zekMSNWeather">RUN|['currentData']['pm25']['name']| - |['currentData']['pm25']['valInfo']</convert>
-    </widget>
-    <widget position="937,595" size="250,30" source="session.j00zekMSNWeather" render="j00zekLabel" font="HD_Thin; 25" backgroundColor="black" halign="left" valign="center" noWrap="1" transparent="1" zPosition="10">
-        <convert type="j00zekMSNWeather">RUN|['currentData']['pm10']['name']| - |['currentData']['pm10']['valInfo']</convert>
-    </widget>
-    <widget position="937,625" size="250,30" source="session.j00zekMSNWeather" render="j00zekLabel" font="HD_Thin; 25" backgroundColor="black" halign="left" valign="center" noWrap="1" transparent="1" zPosition="10">
-        <convert type="j00zekMSNWeather">RUN|['currentData']['pm1']['name']| - |['currentData']['pm1']['valInfo']</convert>
-   </widget>
-   <widget position="60,665" size="720,70" source="session.j00zekMSNWeather" render="Label" font="Roboto_HD; 27" backgroundColor="black" halign="right" transparent="1" zPosition="10">
+	<widget position="920,566" size="277,100" source="session.j00zekMSNWeather" render="j00zekLabel" font="Roboto_HD; 27" backgroundColor="black" foregroundColor="#0045b701" halign="center" valign="center" transparent="1" zPosition="10">
         <convert type="j00zekMSNWeather">RUN|['currentData']['airIndex']['info']</convert>
     </widget>
-	<widget position="800,665" size="1060,70" source="session.j00zekMSNWeather" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=20,repeat=99,startdelay=2000"  font="Roboto_HD; 27" backgroundColor="black" halign="left" transparent="1" zPosition="10">
-        <convert type="j00zekMSNWeather">RUN|['currentData']['airIndex']['advice']</convert>
-    </widget>
-   
+	<widget position="68,668" size="1800,30" source="session.j00zekMSNWeather" render="j00zekLabel" font="Regular; 27"  backgroundColor="background" halign="center" valign="center" transparent="1" zPosition="10">
+    <convert type="j00zekMSNWeather">RUN|['currentData']['pm25']['name']|-|['currentData']['pm25']['valInfo']|, |0x00e6ffe6|['currentData']['pm10']['name']|-|['currentData']['pm10']['valInfo']|, |0x00e6ffe6|['currentData']['pm1']['name']|-|['currentData']['pm1']['valInfo']|, |0x00e6ffe6|['currentData']['co']['name']|-|['currentData']['co']['valInfo']|, |0x00e6ffe6|['currentData']['no2']['name']|-|['currentData']['no2']['valInfo']|, |0x00e6ffe6|['currentData']['o3']['name']|-|['currentData']['o3']['valInfo']|, |0x00e6ffe6|['currentData']['so2']['name']|-|['currentData']['so2']['valInfo']</convert>
+      </widget>
+	
    <eLabel name="new eLabel" position="1200,563" size="1,90" backgroundColor="blue" />
    
    <!--pogoda dalej-->

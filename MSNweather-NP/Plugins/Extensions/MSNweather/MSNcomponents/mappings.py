@@ -311,7 +311,7 @@ iconsMap={
     'opadydeszczu'                      :   '11.png',
     "opadysniegu"                       :   '14.png', 
     'przelotneopadysniegu'              :   '41.png',
-    'przelotneopadydeszczuzesniegiem'   :   '71.png',
+    'przelotneopadydeszczuzesniegiem'   :   ['71.png', '70.png'],
     'przewazniebezchmurnie'             :   '31.png',
     'przewaznieslonecznie'              :   '34.png',
     'silneburze'                        :   '37.png',
@@ -371,6 +371,8 @@ iconsMap={
     'BBiwNf.png'	: '',
     #Mapowanie odwrotne
     "9.png"         :   'BBi9ul.png',
+    '13.png'        :   'BBb49j.png',
+    '16.png'        :   'BBaWqy.png',
     "26.png"        :   'BB1kc8s.png',
     '27.png'        :   'BB1kKVy.png',
     '28.png'        :   'BB1kvzy.png',

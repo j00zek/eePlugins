@@ -24,19 +24,19 @@
    
    <!--aktualna pogoda-->
    
-     <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="188,202" size="128,128" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
+     <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="168,185" size="145,145" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
         <convert type="j00zekMSNWeather">weathericon,current</convert>
         </widget>
      <widget render="Label" source="currentData_temperature" font="Roboto_HD; 40" position="320,234" size="120,55" backgroundColor="black" zPosition="3" transparent="1" halign="center" foregroundColor="light_yellow"/>
-	 <widget source="currentData_skytext" render="j00zekLabel" position="98,330" size="344,90" font="HD_Thin; 26" halign="center" valign="center" transparent="1" backgroundColor="black"/>
+	 <widget source="currentData_skytext" render="j00zekLabel" position="95,330" size="350,100" font="HD_Thin; 30" halign="center" valign="center" transparent="1" backgroundColor="black"/>
    
    <!--aktualne dane-->
 	
-	<widget source="currentData_WeatherinfoList" render="Listbox" position="480,200" size="410,200" scrollbarMode="showOnDemand" scrollbarWidth="6" transparent="1" backgroundColor="black">
+	<widget source="currentData_WeatherinfoList" render="Listbox" position="455,185" size="360,224" scrollbarMode="showOnDemand" scrollbarWidth="6" transparent="1" backgroundColor="black">
 	    <convert type="TemplatedMultiContent">
           {"template": [
-           MultiContentEntryText(pos = (2, 2), size = (406, 30), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 0),
-           MultiContentEntryText(pos = (2, 2), size = (406, 30), font=1, flags = RT_HALIGN_RIGHT|RT_VALIGN_CENTER, text = 1),
+           MultiContentEntryText(pos = (2, 2), size = (346, 30), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 0),
+           MultiContentEntryText(pos = (2, 2), size = (346, 30), font=1, flags = RT_HALIGN_RIGHT|RT_VALIGN_CENTER, text = 1),
            ],
            "fonts": [gFont("Roboto_HD", 26), gFont("Roboto_HD", 26)],
            "itemHeight": 32,
@@ -44,76 +44,77 @@
 		   }
         </convert>
 	    </widget>
-    <widget source="currentData_AllObservationTimes" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=20,repeat=99,startdelay=2000" position="480,400" size="410,30" font="Roboto_HD;26" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="center" foregroundColor="#00fffe9e"/>	
+    <widget source="currentData_AllObservationTimes" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=20,repeat=99,startdelay=2000" position="455,410" size="350,30" font="Roboto_HD;26" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="center" foregroundColor="#00fffe9e"/>	
 
 <!--słońce,księżyc-->
         
-	<ePixmap pixmap="BlackHarmony/icons/Weather/slonce2.png" position="960,178" zPosition="1" size="360,130" alphatest="blend" />
+	<ePixmap pixmap="BlackHarmony/icons/Weather/slonce2.png" position="850,178" zPosition="1" size="360,130" alphatest="blend" />
 	
 <!-- WSCHOD -->
         
-    <widget source="session.j00zekMSNWeather" render="Label" position="956,308" size="85,24" font="Roboto_HD; 22" halign="center" valign="center" transparent="1" backgroundColor="black">
+    <widget source="session.j00zekMSNWeather" render="Label" position="846,308" size="85,24" font="Roboto_HD; 22" halign="center" valign="center" transparent="1" backgroundColor="black">
        <convert type="j00zekMSNWeather">RUN|['currentData']['sun']['sunrise']['TZtime']</convert>
        </widget>	
 
 <!--długość dnia-->	 
 
-    <widget source="session.j00zekMSNWeather" render="Label" position="890,182" size="160,24" font="Roboto_HD; 22" halign="right" valign="center" transparent="1" backgroundColor="black">
+    <widget source="session.j00zekMSNWeather" render="Label" position="811,176" size="160,23" font="Roboto_HD; 22" halign="center" transparent="1" backgroundColor="black">
        <convert type="j00zekMSNWeather">RUN|+|['currentData']['sun']['dayLength']['time2shortest']</convert>
        </widget>
-	 <widget source="session.j00zekMSNWeather" render="Label" position="1225,182" size="160,24" font="Roboto_HD; 22" halign="left" valign="center" transparent="1" backgroundColor="black">
+	<widget source="session.j00zekMSNWeather" render="Label" position="1090,176" size="160,23" font="Roboto_HD; 22" halign="center" transparent="1" backgroundColor="black">
        <convert type="j00zekMSNWeather">RUN|-|['currentData']['sun']['dayLength']['time2longest']</convert>
        </widget>
 	   
  <!-- ZACHOD -->
         
-    <widget source="session.j00zekMSNWeather" render="Label" position="1239,308" size="85,24" font="Roboto_HD; 22" halign="center" valign="center" transparent="1" backgroundColor="black" foregroundColor="grey">
+    <widget source="session.j00zekMSNWeather" render="Label" position="1129,308" size="85,24" font="Roboto_HD; 22" halign="center" valign="center" transparent="1" backgroundColor="black" foregroundColor="grey">
        <convert type="j00zekMSNWeather">RUN|['currentData']['sun']['sunset']['TZtime']</convert>
        </widget>
-    <widget render="Label" position="1045,266" size="190,24" source="session.j00zekMSNWeather" font="Roboto_HD; 22" halign="center" valign="center" backgroundColor="black" transparent="1" zPosition="3">
+    <widget render="Label" position="935,266" size="190,24" source="session.j00zekMSNWeather" font="Roboto_HD; 22" halign="center" valign="center" backgroundColor="black" transparent="1" zPosition="3">
        <convert type="j00zekMSNWeather">RUN|0x0045b701|['currentData']['sun']['dayLength']['time']</convert>
        </widget>
 
 <!-- MOON -->
 		
-	<ePixmap pixmap="BlackHarmony/icons/Weather/ksiezyc.png" position="960,295" zPosition="1" size="360,130" alphatest="blend" />
-    <widget source="global.CurrentTime" render="j00zekPicons" position="1099,296" size="80,80" path="/usr/share/enigma2/BlackHarmony/icons" picontype="MoonPhase" showdefaultpic="no" zPosition="8"  alphatest="blend">
+	<ePixmap pixmap="BlackHarmony/icons/Weather/ksiezyc.png" position="850,295" zPosition="1" size="360,130" alphatest="blend" />
+    <widget source="global.CurrentTime" render="j00zekPicons" position="989,296" size="80,80" path="/usr/share/enigma2/BlackHarmony/icons" picontype="MoonPhase" showdefaultpic="no" zPosition="8"  alphatest="blend">
         <convert type="j00zekMoon">obraz</convert>
         </widget>
-    <widget source="session.j00zekMSNWeather" render="Label" position="956,425" size="85,25" font="Roboto_HD; 22" halign="center" valign="center" transparent="1" backgroundColor="black" >
+    <widget source="session.j00zekMSNWeather" render="Label" position="846,425" size="85,25" font="Roboto_HD; 22" halign="center" valign="center" transparent="1" backgroundColor="black" >
         <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=0']['dictdetalis']['moonrise']</convert>
         </widget>
-	<widget source="session.j00zekMSNWeather" render="Label" position="1239,425" size="85,25" font="Roboto_HD; 22" halign="center" valign="center" transparent="1" backgroundColor="black" >
+	<widget source="session.j00zekMSNWeather" render="Label" position="1129,425" size="85,25" font="Roboto_HD; 22" halign="center" valign="center" transparent="1" backgroundColor="black" >
         <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=0']['dictdetalis']['moonset']</convert>
         </widget>
 		
-    <widget source="session.j00zekMSNWeather" render="Label" position="1090,375" size="100,25" zPosition="1" font="Roboto_HD;22" halign="center" transparent="1" backgroundColor="black" >
+    <widget source="session.j00zekMSNWeather" render="Label" position="978,375" size="100,25" zPosition="1" font="Roboto_HD;22" halign="center" transparent="1" backgroundColor="black" >
         <convert type="j00zekMSNWeather">RUN|0x00fffe9e|['currentData']['moon']['illuminated_percentage']</convert>
         </widget>
-	<widget source="session.j00zekMSNWeather" render="j00zekLabel" position="1040,400" size="200,50" zPosition="1" font="Roboto_HD;24" halign="center" valign="center" transparent="1" backgroundColor="black" >
+	<widget source="session.j00zekMSNWeather" render="j00zekLabel" position="930,400" size="200,50" zPosition="1" font="Roboto_HD;24" halign="center" valign="center" transparent="1" backgroundColor="black" >
         <convert type="j00zekMSNWeather">RUN|0x66CCCC|['dailyData']['Record=0']['dictdetalis']['moon']</convert>
         </widget>	
 		
 <!--AIRLY-->
     
-	<widget source="session.CurrentService" render="Label" position="1450,190" size="320,30" font="Roboto_HD; 27" halign="center" valign="center" foregroundColor="light_yellow" backgroundColor="dark_grey" transparent="1" >
-		<convert type="j00zekTranslator">Air quality</convert>
-    </widget>
-    <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="1380,225" size="90,90" source="session.j00zekMSNWeather" transparent="1" zPosition="3">
-        <convert type="j00zekMSNWeather">RUN|['currentData']['airIndex']['iconfilename']</convert>
-        </widget>
-	<widget backgroundColor="black" font="Roboto_HD; 37" render="Label" position="1380,225" size="90,90" source="session.j00zekMSNWeather" zPosition="5" halign="center" valign="center" transparent="1" foregroundColor="#0e0e0e">
-        <convert type="j00zekMSNWeather">RUN|['currentData']['airIndex']['val']</convert>
-        </widget>
-	<widget backgroundColor="black" font="Roboto_HD; 22" render="Label" position="1360,320" size="130,25" source="session.j00zekMSNWeather" zPosition="5" halign="center" valign="center" transparent="1">
+	<eLabel text="Airly limit:" position="1620,140" size="207,25" font="Roboto_HD;22" halign="left" backgroundColor="black" transparent="1"/>
+	<widget backgroundColor="black" font="Roboto_HD; 22" render="Label" position="1620,140" size="207,25" source="session.j00zekMSNWeather" zPosition="5" halign="right" valign="center" transparent="1">
         <convert type="j00zekMSNWeather">RUN|0x0045b701|['currentData']['airlyLimitsDailyRemaining']|0x00e6ffe6|/|['currentData']['airlyLimitsDaily']</convert>
         </widget>
-	
-	<widget source="currentData_infoList" render="Listbox" position="1490,225" size="305,140" scrollbarMode="showOnDemand" scrollbarWidth="6" transparent="1" backgroundColor="black">
+	<widget source="session.CurrentService" render="Label" position="1400,190" size="320,30" font="Roboto_HD; 27" halign="center" valign="center" foregroundColor="light_yellow" backgroundColor="dark_grey" transparent="1" >
+		<convert type="j00zekTranslator">Air quality</convert>
+    </widget>
+    <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="1255,215" size="100,100" source="session.j00zekMSNWeather" transparent="1" zPosition="3">
+        <convert type="j00zekMSNWeather">RUN|['currentData']['airIndex']['iconfilename']</convert>
+        </widget>
+	<!--eLabel text="Index:" position="1250,320" size="110,25" font="Roboto_HD;24" halign="left" backgroundColor="black" transparent="1"/>	
+	<widget backgroundColor="black" font="Roboto_HD; 24" render="Label" position="1250,320" size="110,25" source="session.j00zekMSNWeather" zPosition="4" halign="right" transparent="1" >
+        <convert type="j00zekMSNWeather">RUN|['currentData']['airIndex']['valInfo']</convert>
+        </widget-->
+	<widget source="currentData_infoList" render="Listbox" position="1370,225" size="455,140" scrollbarMode="showOnDemand" scrollbarWidth="6" transparent="1" backgroundColor="black">
 		<convert type="TemplatedMultiContent">
                     {"template": [
-                        MultiContentEntryText(pos = (2, 2), size = (288, 28), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 0),
-                        MultiContentEntryText(pos = (2, 2), size = (288, 28), font=1, flags = RT_HALIGN_RIGHT|RT_VALIGN_CENTER, text = 1),
+                        MultiContentEntryText(pos = (2, 2), size = (443, 28), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 0),
+                        MultiContentEntryText(pos = (2, 2), size = (443, 28), font=1, flags = RT_HALIGN_RIGHT|RT_VALIGN_CENTER, text = 1),
                         ],
                         "fonts": [gFont("Regular", 24), gFont("Regular", 24)],
                         "itemHeight": 28,
@@ -121,13 +122,13 @@
                     }
         </convert>
 	    </widget>
-	<widget source="session.CurrentService" render="Label" backgroundColor="black" font="Regular;24" halign="left" position="1360,380" size="460,30" transparent="1" foregroundColor="#66CCCC">
+	<widget source="session.CurrentService" render="Label" backgroundColor="black" font="Regular;24" halign="left" position="1260,380" size="100,30" transparent="1" foregroundColor="#66CCCC">
       <convert type="j00zekTranslator">Source:</convert>
         </widget>
-	<widget backgroundColor="black" font="Regular;24" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=30,repeat=99,startdelay=2000" position="1446,380" size="373,30" source="session.j00zekMSNWeather" zPosition="3" halign="right" transparent="1">
+	<widget backgroundColor="black" font="Regular;24" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=30,repeat=99,startdelay=2000" position="1360,380" size="457,30" source="session.j00zekMSNWeather" zPosition="3" halign="right" transparent="1">
         <convert type="j00zekMSNWeather">RUN|['currentData']['activeSources']['names']</convert>
         </widget>
-	<widget backgroundColor="black" font="Regular;24" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=30,repeat=99,startdelay=2000"  position="1360,410" size="460,30" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1">
+	<widget backgroundColor="black" font="Regular;24" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=30,repeat=99,startdelay=2000"  position="1260,410" size="557,30" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1">
         <convert type="j00zekMSNWeather">RUN|0x00fffe9e|['currentData']['activeSources']['observationpoints']</convert>
         </widget>
 
