@@ -1,51 +1,131 @@
-#NAME Muzyczne IPTV
-#SERVICE 4097:0:1:1B61:7DA:2:11A0000:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.twitch.tv/pul2etv:PUL2E.RU
-#DESCRIPTION PUL2E.RU
-#SERVICE 4097:0:1:F79D:1E5F:EC:0:0:0:0:https%3a//hls.myvideocontent.ru/hls2/vivarussia/index.m3u8:VIVA Rusia
-#DESCRIPTION VIVA Rusia
-#SERVICE 4097:0:1:2D05:B795:EC:0:0:0:0:https%3a//hls.myvideocontent.ru/hls2/tv12/index.m3u8:MAFI2A MUSIC
-#DESCRIPTION MAFI2A MUSIC
-#SERVICE 4097:0:1:135F:ED5C:EC:0:0:0:0:http%3a//telekomtv-ro.akamaized.net/shls/LIVE$MoozDanceHD/227.m3u8/Level(545259)?start=LIVE&end=END&time=1472768812494:Mooz Dance
-#DESCRIPTION Mooz Dance
-#SERVICE 4097:0:1:732B:E574:EC:0:0:0:0:https%3a//eurodance.catcast.tv/content/36987/index.m3u8:Eurodance 90
+#NAME Muzyczne
+#SERVICE 4097:0:1:6FFF:436:1:C00000:0:0:0:http%3a//cdnnow.goodgame.ru/hls/147714.m3u8:Mafi2a Music
+#DESCRIPTION Mafi2a Music
+#SERVICE 4097:0:1:CE0B:A80F:EC:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.twitch.tv/asot:ASOT
+#DESCRIPTION ASOT
+#SERVICE 4097:0:1:7A4A:410:1:C00000:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.twitch.tv/pul2etv:Pulse Tv
+#DESCRIPTION Pulse Tv
+#SERVICE 4097:0:1:57B8:1509:EC:0:0:0:0:http%3a//cdnnow.goodgame.ru/hls/179649.m3u8:Ritsa
+#DESCRIPTION Ritsa
+#SERVICE 4097:0:1:1AF8:3FE:1:C00000:0:0:0:http%3a//cdnnow.goodgame.ru/hls/180805.m3u8 :Viva Russia
+#DESCRIPTION Viva Russia
+#SERVICE 4097:0:1:306:7:85:C00000:0:0:0:http%3a//1hdru-hls-otcnet.cdnvideo.ru/onehdmusic/tracks-v1a1/index.m3u8:1HD MUSIC TELEVISION HD
+#DESCRIPTION 1HD MUSIC TELEVISION HD
+#SERVICE 4097:0:19:19D6:444:1:C00000:0:0:0:http%3a//m2otv-lh.akamaihd.net%3a80/i/m2oTv_1@186074/index_600_av-b.m3u8:M2O TV
+#DESCRIPTION M2O TV
+#SERVICE 4097:0:19:19D6:444:1:C00000:0:0:0:http%3a//m2otv-lh.akamaihd.net/i/m2oTv_1@186074/index_600_av-b.m3u8:m2o tv (360p)
+#DESCRIPTION m2o tv (360p)
+#SERVICE 4097:0:19:1967:44E:1:C00000:0:0:0:http%3a//serv25.vintera.tv%3a8081/test/rusmusbox/playlist.m3u8:Russian Music Box
+#DESCRIPTION Russian Music Box
+#SERVICE 4097:0:1:7A4A:410:1:C00000:0:0:0:http%3a//deejay_tv-lh.akamaihd.net/i/DeejayTv_1@129866/index_600_av-p.m3u8:Deejay TV
+#DESCRIPTION Deejay TV
+#SERVICE 4097:0:1:301:7:85:C00000:0:0:0:https%3a//edge126.rcs-rds.ro/utvedge/musicchannelhq.stream/playlist.m3u8:1Music Channel (ROM)
+#DESCRIPTION 1Music Channel (ROM)
+#SERVICE 4097:0:19:226D:438:1:C00000:0:0:0:https%3a//tv.city.bg/play/tshls/citytv/3.m3u8:City TV (BG)
+#DESCRIPTION City TV (BG)
+#SERVICE 4097:0:19:220A:44C:1:C00000:0:0:0:http%3a//ott-cdn.ucom.am/s49/index.m3u8:MCM TOP
+#DESCRIPTION MCM TOP
+#SERVICE 4097:0:19:200C:430:1:C00000:0:0:0:http%3a//5be019f0d8c6e.streamlock.net%3a1935/ngroup/NRJHitsTV_720p/playlist.m3u8:NRJ Hits TV HD
+#DESCRIPTION NRJ Hits TV HD
+#SERVICE 4097:0:19:1967:44E:1:C00000:0:0:0:https%3a//dpp-qmusicnl-live.akamaized.net/streamx/QmusicNL.m3u8:Q Music (NL)
+#DESCRIPTION Q Music (NL)
+#SERVICE 4097:0:1:306:7:85:C00000:0:0:0:http%3a//stream.mediawork.cz/retrotv/smil%3aretrotv2.smil/playlist.m3u8:Retro Music Television (CZ)
+#DESCRIPTION Retro Music Television (CZ)
+#SERVICE 4097:0:19:1967:44E:1:C00000:0:0:0:http%3a//strm.yandex.ru/kal/musicboxgold/musicboxgold0_169_480p.json/index-v1-a1.m3u8:MUSIC BOX GOLD
+#DESCRIPTION MUSIC BOX GOLD
+#SERVICE 4097:0:2:6F19:445:1:C00000:0:0:0:https%3a//eurodance.catcast.tv/content/36987/index.m3u8:Eurodance 90
 #DESCRIPTION Eurodance 90
-#SERVICE 4097:0:1:81C9:F89E:EC:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/WFofeGZnCG4:Kaukaz Music (YT)
-#DESCRIPTION Kaukaz Music (YT)
-#SERVICE 4097:0:1:DAD1:1C81:EC:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/C6_ql03n-vQ:Raz Nitzan Music (YT)
-#DESCRIPTION Raz Nitzan Music (YT)
-#SERVICE 4097:0:1:8D36:86D5:EC:0:0:0:0:http%3a//vcndstv.teleosmedia.com/stream/dstv/dstv/seglist_720p.m3u8:Dancestar TV
-#DESCRIPTION Dancestar TV
-#SERVICE 4097:0:1:CF77:8DF8:EC:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//m2otv-lh.akamaihd.net/i/m2oTv_1@186074/index_600_av-p.m3u8|format=mpegts:m2o TV
-#DESCRIPTION m2o TV
-#SERVICE 4097:0:1:C72C:4A7D:EC:0:0:0:0:http%3a//ocko-live.ssl.cdn.cra.cz/channels/ocko_expres/playlist/cze/live_hq.m3u8?offsetSeconds=0:Ocko Expres
+#SERVICE 4097:0:1:7032:41B:1:C00000:0:0:0:http%3a//hz1.teleport.cc/HLS/HD.m3u8:1muz.com
+#DESCRIPTION 1muz.com
+#SERVICE 4097:0:1:749C:41C:1:C00000:0:0:0:http%3a//rtmp.one.by%3a1200:Pervyj Muzykal'nyj BY
+#DESCRIPTION Pervyj Muzykal'nyj BY
+#SERVICE 4097:0:1:7A4A:410:1:C00000:0:0:0:http%3a//songtvam.ru%3a8060/high/playlist.m3u8:Song TV Armenia
+#DESCRIPTION Song TV Armenia
+#SERVICE 4097:0:1:1AF8:3FE:1:C00000:0:0:0:http%3a//songtvru.ru%3a8060/high/playlist.m3u8:Song TV Russia
+#DESCRIPTION Song TV Russia
+#SERVICE 4097:0:2:334E:45B:1:C00000:0:0:0:http%3a//live.stranafm.cdnvideo.ru/stranafm/stranafm_hd.sdp/playlist.m3u8:Strana FM (HD)
+#DESCRIPTION Strana FM (HD)
+#SERVICE 4097:0:1:7A4A:410:1:C00000:0:0:0:http%3a//bitcdn-kronehit.bitmovin.com/v2/hls/chunklist_b3128000.m3u8:Kronehit TV [FHD]
+#DESCRIPTION Kronehit TV [FHD]
+#SERVICE 4097:0:1:23B4:446:1:C00000:0:0:0:https%3a//stream.4fun.tv%3a8888/hls/4f_high/index.m3u8:4 Fun TV(HD)
+#DESCRIPTION 4 Fun TV(HD)
+#SERVICE 4097:0:1:301:7:85:C00000:0:0:0:http%3a//hitmusic.hu/hitmusic.m3u8:Hit Music Channel
+#DESCRIPTION Hit Music Channel
+#SERVICE 4097:0:1:7A4A:410:1:C00000:0:0:0:http%3a//haititivi.com%3a8088/haititv/tele6NY/index.m3u8:NAGO TV
+#DESCRIPTION NAGO TV
+#SERVICE 4097:0:1:7A4A:410:1:C00000:0:0:0:https%3a//58d921499d3d3.streamlock.net/RadioPiterpanTV/livestream/chunklist_w1730364624.m3u8:PiterPan TV
+#DESCRIPTION PiterPan TV
+#SERVICE 4097:0:1:7A4A:410:1:C00000:0:0:0:https%3a//live.cast-control.eu/xalastratv/xalastratv/chunklist_w187891420.m3u8:Xalastra TV - Greece
+#DESCRIPTION Xalastra TV - Greece
+#SERVICE 4097:0:1:1D6:77D9:EC:0:0:0:0:http%3a//ocko-live.ssl.cdn.cra.cz/channels/ocko/playlist/cze/live_hq.m3u8:Ocko
+#DESCRIPTION Ocko
+#SERVICE 4097:0:1:86B0:460B:EC:0:0:0:0:http%3a//ocko-live.ssl.cdn.cra.cz/channels/ocko_expres/playlist/cze/live_hq.m3u8:Ocko Expres
 #DESCRIPTION Ocko Expres
-#SERVICE 4097:0:1:8782:35D1:EC:0:0:0:0:https%3a//bitcdn-kronehit.bitmovin.com/v2/hls/chunklist_b3128000.m3u8:Kronehit TV
-#DESCRIPTION Kronehit TV
-#SERVICE 4097:0:1:A5A:93:EC:0:0:0:0:http%3a//live-edge01.telecentro.net.ar/live/smil%3amusictop.smil/chunklist_w767435128_b2028000_sleng.m3u8:MusicTop
-#DESCRIPTION MusicTop
-#SERVICE 4097:0:1:3EEA:97D4:EC:0:0:0:0:http%3a//s02.diazol.hu%3a10190/stream.m3u8:MusicPlus
-#DESCRIPTION MusicPlus
-#SERVICE 4097:0:1:9941:C4AC:EC:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//ok.ru/video/1077196103291:Muz.play
-#DESCRIPTION Muz.play
-#SERVICE 4097:0:1:A095:BE27:EC:0:0:0:0:https%3a//a-mobile.camera/cams/RITSA/tracks-v1a1/mono.m3u8:RITSA TV
-#DESCRIPTION RITSA TV
-#SERVICE 4097:0:1:D2CC:3FFC:EC:0:0:0:0:http%3a//flash8.streaming.xdevel.com/fmitalia/fmitalia/chunklist_w1306569031.m3u8:FM ITALIA TV
-#DESCRIPTION FM ITALIA TV
-#SERVICE 4097:0:1:E88E:6067:EC:0:0:0:0:https%3a//edge126.rcs-rds.ro/utvedge/musicchannelhq.stream/chunklist_w613488818.m3u8:1 MUSIC CHANNEL
-#DESCRIPTION 1 MUSIC CHANNEL
-#SERVICE 4097:0:1:A2FF:1BC2:EC:0:0:0:0:https%3a//content-aeui1.uplynk.com/channel/36953f5b6546464590d2fcd954bc89cf/f.m3u8?pbs=b2de0dfa6d834b5590ffc3e9f12a7445:VH1
-#DESCRIPTION VH1
-#SERVICE 4097:0:1:34A5:5C2E:EC:0:0:0:0:https%3a//59f2354c05961.streamlock.net%3a1443/retroplustv/_definst_/retroplustv/chunklist_w321073727.m3u8:Retro PLUS TV
-#DESCRIPTION Retro PLUS TV
-#SERVICE 4097:0:1:E458:EF7A:EC:0:0:0:0:http%3a//stream.mediawork.cz%3a1935/retrotv/retrotvHQ1/chunklist_w877554018.m3u8:Retro MUSIC TV
-#DESCRIPTION Retro MUSIC TV
-#SERVICE 4097:0:1:A5D1:D242:EC:0:0:0:0:https%3a//bozztv.com/36bay2/gin/giniko_ramusic_1200kb_36bay2/tracks-v1a1/mono.m3u8:Relaxing Music TV
-#DESCRIPTION Relaxing Music TV
-#SERVICE 4097:0:1:11F0:8EA3:EC:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/Dx5qFachd3A:JAZZ TV (YT)
-#DESCRIPTION JAZZ TV (YT)
-#SERVICE 1:0:1:DFD9:22EA:EC:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//deejay_tv-lh.akamaihd.net/i/DeejayTv_1@129866/index_600_av-p.m3u8?sd=10|rebase=on|format=mpegts:DeeJay TV
-#DESCRIPTION DeeJay TV
-#SERVICE 4097:0:1:F55:DE34:EC:0:0:0:0:http%3a//telekomtv-ro.akamaized.net/shls/LIVE$MoozHitsSD/167.m3u8/Level(545259)?start=LIVE&end=END:Mooz Hits
-#DESCRIPTION Mooz Hits
-#SERVICE 4097:0:1:E725:BD64:EC:0:0:0:0:https%3a//cdnlive.radiou.com/LS-ATL-43240-1/tracks-v2a1/mono.m3u8:RADIO U TV
-#DESCRIPTION RADIO U TV
+#SERVICE 4097:0:19:2335:442:1:C00000:0:0:0:http%3a//ocko-live.ssl.cdn.cra.cz/channels/ocko_gold/playlist/cze/live_hq.m3u8:Ocko Star
+#DESCRIPTION Ocko Star
+#SERVICE 4097:0:19:2777:409:1:C00000:0:0:0:http%3a//unilivemtveu-lh.akamaihd.net/i/mtvno_1@346424/index_3500_av-b.m3u8:MTV HD (Norge)
+#DESCRIPTION MTV HD (Norge)
+#SERVICE 4097:0:1:7A4A:410:1:C00000:0:0:0:http%3a//wma10.fluidstream.net/CompanyTV/_definst_/mp4%3alivestream_720p/playlist.m3u8:Company TV
+#DESCRIPTION Company TV
+#SERVICE 4097:0:1:7A4A:410:1:C00000:0:0:0:http%3a//mid5dg6m.rocketcdn.com/kraltv_720/chunklist.m3u8:KRAL TV
+#DESCRIPTION KRAL TV
+#SERVICE 4097:0:1:126F:3F7:1:C00000:0:0:0:http%3a//live.m2.tv/hls3/stream.m3u8:M2
+#DESCRIPTION M2
+#SERVICE 4097:0:19:16AD:3FF:1:C00000:0:0:0:http%3a//tv.portalfoxmix.club%3a1935/portalfoxmix/portalfoxmix/chunklist_w707723531.m3u8:PORTAL FOXMIX TV
+#DESCRIPTION PORTAL FOXMIX TV
+#SERVICE 4097:0:1:6FFF:436:1:C00000:0:0:0:http%3a//5592f056abba8.streamlock.net%3a1935/citytv/citytv/chunklist.m3u8:City Music TV (BE)
+#DESCRIPTION City Music TV (BE)
+#SERVICE 4097:0:1:6EE1:4B1:1:C00000:0:0:0:http%3a//stream.rjtv.tv/live/smil%3arjtv.smil/chunklist_b2892000.m3u8:Radio Javan TV
+#DESCRIPTION Radio Javan TV
+#SERVICE 4097:0:19:206D:432:1:C00000:0:0:0:http%3a//flash8.streaming.xdevel.com/fmitalia/fmitalia/playlist.m3u8:FM Italia TV
+#DESCRIPTION FM Italia TV
+#SERVICE 4097:0:0:15D6:41F:1:C00000:0:0:0:http%3a//rtmp.one.by%3a1300:One.by HD (1080p)
+#DESCRIPTION One.by HD (1080p)
+#SERVICE 4097:0:0:15D6:41F:1:C00000:0:0:0:http%3a//rtmp.one.by%3a2300:One.by Россия HD (1080p)
+#DESCRIPTION One.by Россия HD (1080p)
+#SERVICE 4097:0:19:1967:44E:1:C00000:0:0:0:http%3a//hithd.camsh.orsk.ru/hls/hithd.m3u8:Hit Music (720p)
+#DESCRIPTION Hit Music (720p)
+#SERVICE 4097:0:19:1967:44E:1:C00000:0:0:0:http%3a//live-edge01.telecentro.net.ar%3a1935/live/msctphd-720/playlist.m3u8:Music Top (ARG)
+#DESCRIPTION Music Top (ARG)
+#SERVICE 4097:0:1:7A4A:410:1:C00000:0:0:0:http%3a//cmctv.ios.internapcdn.net/cmctv_vitalstream_com/live_1/CMC-TV/CMC-TV.m3u8:CMC TV
+#DESCRIPTION CMC TV
+#SERVICE 4097:0:19:26AE:43E:1:C00000:0:0:0:http%3a//cmctv.ios.internapcdn.net/cmctv_vitalstream_com/live_1/CMCU-92/chunklist.m3u8:CMC USA
+#DESCRIPTION CMC USA
+#SERVICE 4097:0:1:6EE1:4B1:1:C00000:0:0:0:http%3a//56b50ada2d659.streamlock.net%3a1935/RadioBirikinaTV/livestream/chunklist.m3u8:Radio Birikina TV
+#DESCRIPTION Radio Birikina TV
+#SERVICE 4097:0:1:23DC:446:1:C00000:0:0:0:http%3a//contact-lh.akamaihd.net/i/CONTACT_1@321283/index_1800_av-p.m3u8:Radio Contact
+#DESCRIPTION Radio Contact
+#SERVICE 4097:0:1:7596:422:1:C00000:0:0:0:http%3a//w10.streamgb.com%3a1935/kool/kool/playlist.m3u8:Radio Kool London
+#DESCRIPTION Radio Kool London
+#SERVICE 4097:0:0:239A:44A:1:C00000:0:0:0:http%3a//m-1.data.lt/m-1/smil%3am-1.smil/chunklist_b1000000.m3u8:Radio M-1 (LIT) WEB
+#DESCRIPTION Radio M-1 (LIT) WEB
+#SERVICE 4097:0:1:7596:422:1:C00000:0:0:0:https%3a//cdnlive.radiou.com/LS-ATL-43240-1/tracks-v1a1/index.m3u8:Radio U TV
+#DESCRIPTION Radio U TV
+#SERVICE 4097:0:1:7596:422:1:C00000:0:0:0:http%3a//srunserding-lh.akamaihd.net/i/visualradio_ud@197013/index_1662_av-p.m3u8:Radio Unserding
+#DESCRIPTION Radio Unserding
+#SERVICE 4097:0:19:1967:44E:1:C00000:0:0:0:http%3a//cdn25.live247stream.com/steelbirdmusic/tv/playlist.m3u8:Steelbird Music
+#DESCRIPTION Steelbird Music
+#SERVICE 4097:0:19:1967:44E:1:C00000:0:0:0:http%3a//live-edge01.telecentro.net.ar%3a1935/live/msctphd-720/playlist.m3u8:Music Top (ARG)
+#DESCRIPTION Music Top (ARG)
+#SERVICE 4097:0:1:23CD:446:1:C00000:0:0:0:http%3a//rtl-video4-stream.thron.com/live-video/video4/video4/playlist_1.m3u8:RTL 102.5 Best
+#DESCRIPTION RTL 102.5 Best
+#SERVICE 4097:0:1:23CD:446:1:C00000:0:0:0:http%3a//rtl-video8-stream.thron.com/live-video/video8/video8/playlist_1.m3u8:RTL 102.5 Bro & Sis
+#DESCRIPTION RTL 102.5 Bro & Sis
+#SERVICE 4097:0:1:23CD:446:1:C00000:0:0:0:http%3a//rtl-video6-stream.thron.com/live-video/video6/video6/playlist_1.m3u8:RTL 102.5 Doc
+#DESCRIPTION RTL 102.5 Doc
+#SERVICE 4097:0:1:79EA:443:1:C00000:0:0:0:http%3a//rtl-video12-stream.thron.com/live-video/video12/video12/playlist_1.m3u8:RTL 102.5 Extra
+#DESCRIPTION RTL 102.5 Extra
+#SERVICE 4097:0:1:23CD:446:1:C00000:0:0:0:http%3a//rtl-video11-stream.thron.com/live-video/video11/video11/playlist_1.m3u8:RTL 102.5 Gurdia Costiera
+#DESCRIPTION RTL 102.5 Gurdia Costiera
+#SERVICE 4097:0:1:23CD:446:1:C00000:0:0:0:http%3a//rtl-video5-stream.thron.com/live-video/video5/video5/playlist_1.m3u8:RTL 102.5 Napule
+#DESCRIPTION RTL 102.5 Napule
+#SERVICE 4097:0:1:23CD:446:1:C00000:0:0:0:http%3a//rtl-video7-stream.thron.com/live-video/video7/video7/playlist_1.m3u8:RTL 102.5 News
+#DESCRIPTION RTL 102.5 News
+#SERVICE 4097:0:1:23CD:446:1:C00000:0:0:0:http%3a//rtl-video9-stream.thron.com/live-video/video9/video9/playlist_1.m3u8:RTL 102.5 Romeo & Juliet
+#DESCRIPTION RTL 102.5 Romeo & Juliet
+#SERVICE 4097:0:1:6FFF:436:1:C00000:0:0:0:https%3a//eco.streams.ovh%3a443/BarazaClassic/BarazaClassic/playlist.m3u8:Baraza Music TV (Dance)
+#DESCRIPTION Baraza Music TV (Dance)
+#SERVICE 4097:0:1:6FFF:436:1:C00000:0:0:0:http%3a//eco.streams.ovh%3a1935/BarazaTV/BarazaTV/playlist.m3u8:Baraza Music TV (Greek Hits 1)
+#DESCRIPTION Baraza Music TV (Greek Hits 1)
+#SERVICE 4097:0:1:6FFF:436:1:C00000:0:0:0:https%3a//eco.streams.ovh/BarazaTV/BarazarazaTV/BarazaTV/playlist.m3u8:Baraza Music TV (Greek Hits 2)
+#DESCRIPTION Baraza Music TV (Greek Hits 2)

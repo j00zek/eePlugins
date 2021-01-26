@@ -1,0 +1,71 @@
+#NAME IPTV TVP azman
+#SERVICE 4097:0:19:1139:2AF8:13E:820000:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//tvpstream.vod.tvp.pl/?channel_id=1455:TVP Info
+#DESCRIPTION TVP Info
+#SERVICE 4097:0:1:E83:3200:13E:820000:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//tvpstream.vod.tvp.pl/?channel_id=34776037:TVP Polonia
+#DESCRIPTION TVP Polonia
+#SERVICE 4097:0:1:3:0:48:0:0:0:0:http%3a//f1.stream.devkom.pro%3a1063/ramowka/video.m3u8:Belsat Tv
+#DESCRIPTION Belsat Tv
+#SERVICE 4097:0:1:3:0:48:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.youtube.com/watch?v=RDK9HBNiNEs:Belsat Tv  (YT)
+#DESCRIPTION Belsat Tv  (YT)
+#SERVICE 4097:0:1:5:0:48:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//tvpstream.vod.tvp.pl/?channel_id=47093982:TVP Kultura 2
+#DESCRIPTION TVP Kultura 2
+#SERVICE 4097:0:1:5:0:48:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//tvp_player.php?object_id=51161266&prefertype=mpd:TVP Kultura 2 nowy link
+#DESCRIPTION TVP Kultura 2 nowy link
+#SERVICE 4097:0:1:4:0:48:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//tvp_player.php?object_id=51656539&prefertype=mpd:Poland IN
+#DESCRIPTION Poland IN
+#SERVICE 4097:0:1:4:0:48:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.youtube.com/watch?v=muLv33Ca-qk&ab_channel=PolandIn:Poland IN  (YT)
+#DESCRIPTION Poland IN  (YT)
+#SERVICE 4097:0:1:28:0:48:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//tvp_player.php?object_id=47094324&prefertype=mpd:TVP eSzkoła (Pn-Pt od 9:00)
+#DESCRIPTION TVP eSzkoła (Pn-Pt od 9:00)
+#SERVICE 4097:0:1:29:0:48:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//tvpstream.vod.tvp.pl/?channel_id=36588687:Teatr TVP (Pon 21:00)
+#DESCRIPTION Teatr TVP (Pon 21:00)
+#SERVICE 4097:0:1:6:0:48:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//tvpstream.vod.tvp.pl/?channel_id=1729:Wiadomości TVP (8:00, 12:00, 15:00, 19:30)
+#DESCRIPTION Wiadomości TVP (8:00, 12:00, 15:00, 19:30)
+#SERVICE 4097:0:1:27:0:48:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//tvpstream.vod.tvp.pl/?channel_id=1751:PNŚ (7:55-11:35) Panorama TVP (18:00-18:20)
+#DESCRIPTION PNŚ (7:55-11:35) Panorama TVP (18:00-18:20)
+#SERVICE 4097:0:1:1:0:48:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//tvpstream.vod.tvp.pl/?channel_id=44418549:TVP Wilno (17:30-19:30)
+#DESCRIPTION TVP Wilno (17:30-19:30)
+#SERVICE 4097:0:1:2:0:48:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//tvpstream.vod.tvp.pl/?channel_id=36588721:TVP Msze
+#DESCRIPTION TVP Msze
+#SERVICE 4097:0:1:30:0:48:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//tvpstream.vod.tvp.pl/?channel_id=36588705:TVP Sport (okazjonalnie)
+#DESCRIPTION TVP Sport (okazjonalnie)
+#SERVICE 4097:0:1:7:0:48:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//tvp_player.php?object_id=14812658:TVP3 Białystok
+#DESCRIPTION TVP3 Białystok
+#SERVICE 4097:0:1:8:0:48:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//tvp_player.php?object_id=14813071:TVP3 Bydgoszcz
+#DESCRIPTION TVP3 Bydgoszcz
+#SERVICE 4097:0:1:9:0:48:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//tvp_player.php?object_id=14813041:TVP3 Gdańsk
+#DESCRIPTION TVP3 Gdańsk
+#SERVICE 4097:0:1:10:0:48:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//tvp_player.php?object_id=14812873:TVP3 Gorzów Wielkopolski
+#DESCRIPTION TVP3 Gorzów Wielkopolski
+#SERVICE 4097:0:1:11:0:48:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//tvp_player.php?object_id=14812916:TVP3 Katowice
+#DESCRIPTION TVP3 Katowice
+#SERVICE 4097:0:1:12:0:48:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//tvp_player.php?object_id=14813011:TVP3 Kielce
+#DESCRIPTION TVP3 Kielce
+#SERVICE 4097:0:1:13:0:48:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//tvp_player.php?object_id=14813024:TVP3 Kraków
+#DESCRIPTION TVP3 Kraków
+#SERVICE 4097:0:1:14:0:48:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//tvp_player.php?object_id=14813060:TVP3 Lublin
+#DESCRIPTION TVP3 Lublin
+#SERVICE 4097:0:1:15:0:48:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//tvp_player.php?object_id=14813056:TVP3 Łódź
+#DESCRIPTION TVP3 Łódź
+#SERVICE 4097:0:1:16:0:48:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//tvp_player.php?object_id=14813089:TVP3 Olsztyn
+#DESCRIPTION TVP3 Olsztyn
+#SERVICE 4097:0:1:17:0:48:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//tvp_player.php?object_id=14813091:TVP3 Opole
+#DESCRIPTION TVP3 Opole
+#SERVICE 4097:0:1:18:0:48:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//tvp_player.php?object_id=14813084:TVP3 Poznań
+#DESCRIPTION TVP3 Poznań
+#SERVICE 4097:0:1:19:0:48:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//tvp_player.php?object_id=14813059:TVP3 Rzeszów
+#DESCRIPTION TVP3 Rzeszów
+#SERVICE 4097:0:1:20:0:48:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//tvp_player.php?object_id=14813052:TVP3 Szczecin
+#DESCRIPTION TVP3 Szczecin
+#SERVICE 4097:0:1:21:0:48:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//tvp_player.php?object_id=14812858:TVP3 Warszawa
+#DESCRIPTION TVP3 Warszawa
+#SERVICE 4097:0:1:22:0:48:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3a//tvp_player.php?object_id=14813087:TVP3 Wrocław
+#DESCRIPTION TVP3 Wrocław
+#SERVICE 4097:0:1:23:0:48:0:0:0:0:http%3a//hbbtvlive3.v3.tvp.pl/hbbtvlive/livestream.php?app_id=sejm:TVP Sejm
+#DESCRIPTION TVP Sejm
+#SERVICE 4097:0:1:24:0:48:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//tvpstream.vod.tvp.pl/?channel_id=14660873:TVP Senat
+#DESCRIPTION TVP Senat
+#SERVICE 4097:0:1:25:0:48:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//tvpstream.vod.tvp.pl/?channel_id=16756563:TVP Parlament 1
+#DESCRIPTION TVP Parlament 1
+#SERVICE 4097:0:1:26:0:48:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//tvpstream.vod.tvp.pl/?channel_id=16756568:TVP Parlament 2
+#DESCRIPTION TVP Parlament 2
