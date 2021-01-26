@@ -310,7 +310,7 @@ iconsMap={
     "niewielkieopadysniegu"             :   '13.png', 
     'opadydeszczu'                      :   '11.png',
     "opadysniegu"                       :   '14.png', 
-    'przelotneopadysniegu'              :   '41.png',
+    'przelotneopadysniegu'              :   ['41.png', '46.png'],
     'przelotneopadydeszczuzesniegiem'   :   ['71.png', '70.png'],
     'przewazniebezchmurnie'             :   '31.png',
     'przewaznieslonecznie'              :   '34.png',
