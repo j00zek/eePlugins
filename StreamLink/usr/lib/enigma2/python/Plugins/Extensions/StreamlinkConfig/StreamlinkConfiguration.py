@@ -34,6 +34,7 @@ config.plugins.streamlinksrv.PortNumber = ConfigSelection(default = "8088", choi
 config.plugins.streamlinksrv.bufferPath = ConfigText(default = "/tmp")
 config.plugins.streamlinksrv.EPGserver = ConfigEnableDisable(default = False)
 config.plugins.streamlinksrv.Recorder = ConfigEnableDisable(default = False)
+config.plugins.streamlinksrv.managePicons = ConfigEnableDisable(default = True)
 
 # pilot.wp.pl
 config.plugins.streamlinksrv.WPusername = ConfigText()
@@ -168,6 +169,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         Mlist.append(getConfigListEntry(_("Buffer path:"), config.plugins.streamlinksrv.bufferPath))
         Mlist.append(getConfigListEntry(_("EPGimport mode:"), config.plugins.streamlinksrv.EPGserver))
         Mlist.append(getConfigListEntry(_("Recorder mode:"), config.plugins.streamlinksrv.Recorder))
+        Mlist.append(getConfigListEntry(_("link IPTV picons:"), config.plugins.streamlinksrv.managePicons))
         
         Mlist.append(getConfigListEntry(""))
         Mlist.append(getConfigListEntry('\c00289496' + _("*** /etc/streamlink/config ***")))

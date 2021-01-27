@@ -60,7 +60,7 @@ def _generate_E2bouquet():
             ServiceID = name2service4wpDict.get(title , standardReference)
             if ServiceID.startswith(standardReference):
                 ServiceID = name2serviceDict.get(name2nameDict.get(lcaseTitle, lcaseTitle) , standardReference)
-            #mapowanie po zbalezionych kanalach w bukietach
+            #mapowanie po znalezionych kanalach w bukietach
                 if ServiceID.startswith(standardReference):
                     doLog("\t- Brak mapowania referencji kanału  %s (%s) dla EPG" % (title, lcaseTitle))
             if not ServiceID.startswith(frameWork):

@@ -655,6 +655,42 @@ class Daemon:
             sys.stderr.write(message % self.pidfile)
             sys.exit(1)
 
+        #sync picons config.plugins.streamlinksrv.managePicons
+        from streamlink.e2config import getE2config
+        if getE2config('managePicons', True): #default is true in config
+            syncPicons = False
+            for f in os.listdir("/etc/enigma2"):
+                ff = "/etc/enigma2/%s" % f
+                if os.path.islink(ff):
+                    fl = os.readlink(ff)
+                    if fl.startswith('/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/IPTVbouquets'):
+                        syncPicons = True
+                        break
+            if syncPicons == True:
+                for f in os.listdir("/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/picons"):
+                    if f.endswith('.png'):
+                        flist = []
+                        flist.append(f)
+                        if '_' in f:
+                            f2nd = f.split('_',1)[1]
+                            for x in ('1','4097','5001','5002'):
+                                f2 = '%s_%s' % (x,f2nd)
+                                if f2 != f: 
+                                    flist.append(f2)
+                        for p in flist:
+                            if not os.path.exists('/usr/share/enigma2/picon/%s' % p):
+                                print "syncing %s to /usr/share/enigma2/picon/%s" % (f,p)
+                                os.symlink("/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/picons/%s" % f, '/usr/share/enigma2/picon/%s' % p)
+            else:
+                for f in os.listdir("/usr/share/enigma2/picon/"):
+                    ff = "/usr/share/enigma2/picon/%s" % f
+                    try:
+                        fl = os.readlink(ff)
+                        if fl.startswith('/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/picons'):
+                            os.remove(ff)
+                    except Exception:
+                        pass
+                    
         # Start the daemon
         self.daemonize()
         self.run()
