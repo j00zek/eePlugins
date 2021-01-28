@@ -69,4 +69,24 @@
       <pixmap pos="bpBottomRight" filename="BlackHarmony/bg_design/bs_br.png" />
     </borderset>
   </windowstyle>
+    <fonts>
+    <alias name="PluginBrowser0" font="Regular" size="25" height="70" />
+    <alias name="PluginBrowser1" font="Regular" size="20" />
+    <alias name="VirtualKeyBoard" font="Regular" size="30" height="65"/>
+    <alias name="HelpMenuList" font="Regular" size="26" height="40" />
+    <alias name="ChoiceList" font="Roboto_HD" size="27" height="40"/>
+    <alias name="FileList" font="Roboto_HD" size="24" height="45"/>
+    <alias name="SetList" font="Roboto_HD" size="27" height="40"/>
+    <alias name="FileListMulti" font="Roboto_HD" size="24" height="45"/>
+    <alias name="SelectionList" font="Roboto_HD" size="27" height="45" />
+    <alias name="PlayList" font="Roboto_HD" size="26" height="40"/>
+    <alias name="ServiceInfo" font="Roboto_HD" size="27" height="40" />
+    <alias name="ChoiceBoxDescription" font="Roboto_HD" size="26" height="40"/>
+    <alias name="TextNormal" font="Roboto_HD" size="26" height="40"/>
+    <alias name="SHOUTcastListItem" font="Roboto_HD" size="25" height="110"/>
+    <alias name="iptvupdatelistitem_0" font="Roboto_HD" size="24" height="35"/>
+    <alias name="iptvupdatelistitem_1" font="Roboto_HD" size="27" height="35"/>
+    <alias name="iptvlistitem" font="HD_Thin" size="27" height="40"/>
+    <alias name="Dreamexplorer" font="Regular" size="24" height="40" />
+  </fonts>
 </skin>

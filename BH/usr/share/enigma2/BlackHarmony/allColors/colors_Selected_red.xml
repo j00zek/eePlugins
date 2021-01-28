@@ -4,7 +4,8 @@
     <color name="backtop" value="#001b2c47" />
     <color name="black" value="#00000000" />
     <color name="Black" value="#00000000"/>
-    <color name="blue" value="#0000cbf6" />
+    <color name="blue" value="#a6ddff" />
+    <color name="redd" value="#ff7070" />
     <color name="blue_epg" value="#15091d37" />
     <color name="border" value="#00292929" />
     <color name="dark" value="#00294a6b" />
@@ -20,28 +21,27 @@
     <color name="font_szary" value="#00595959" />
     <color name="font_tlo_ciemny" value="#00aaaaaa" />
     <color name="font_tlo_szary" value="#00dddddd" />
-    <color name="foreground" value="#d1ffd3" />
-    <color name="green" value="#007ad927" />
-    <color name="greenn" value="#4ac258" />
+    <color name="foreground" value="#edf5ff" />
+    <color name="green" value="#e31728" />
     <color name="green_epg" value="#1800851f" />
     <color name="grey" value="#00dcdcdc" />
-    <color name="lemon" value="#07b507" />
+    <color name="lemon" value="#ff4f4f" />
     <color name="light_grey" value="#00bababa" />
-    <color name="light_yellow" value="#6fcf00" />
+    <color name="light_yellow" value="#ff0000" />
     <color name="linie" value="#00828282" />
     <color name="orange" value="#00ff6000" />
     <color name="pastel" value="#00ffffd8" />
     <color name="picture" value="#ff000000" />
     <color name="podsw" value="#00ffffd1" />
     <color name="red" value="#00f50000" />
-    <color name="selected" value="#09370c" />
+    <color name="selected" value="#7a0000" />
     <color name="transparent" value="#ffffffff" />
     <color name="transparent2" value="#ff000000"/>
     <color name="transpBlack" value="#19000000" />
     <color name="transpBlack_1" value="#25000000" />
     <color name="transpWhite" value="#77d4d4d4" />
     <color name="transpyellow" value="#33bab329" />
-    <color name="white" value="#f0fff0" />
+    <color name="white" value="#fff2f2" />
     <color name="yellow" value="#00ffcc00" />
   </colors>
   <windowstyle type="skinned" id="0">
@@ -51,11 +51,11 @@
     <color name="ListboxBackground" color="background" />
     <color name="ListboxForeground" color="white" />
     <color name="ListboxSelectedBackground" color="selected" />
-    <color name="ListboxSelectedForeground" color="greenn" />
+    <color name="ListboxSelectedForeground" color="redd" />
     <color name="ListboxMarkedBackground" color="black" />
     <color name="ListboxMarkedForeground" color="lemon" />
     <color name="ListboxMarkedAndSelectedBackground" color="black" />
-    <color name="ListboxMarkedAndSelectedForeground" color="green" />
+    <color name="ListboxMarkedAndSelectedForeground" color="orange" />
     <color name="WindowTitleForeground" color="white" />
     <color name="WindowTitleBackground" color="dark_grey" />
     <borderset name="bsWindow">

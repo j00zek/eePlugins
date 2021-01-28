@@ -11,7 +11,7 @@
      <widget render="Label" source="key_blue" position="1655,1035" size="250,27" zPosition="4" valign="center" halign="left" backgroundColor="background" font="Roboto_HD;24" transparent="1" foregroundColor="white" />
      <widget name="headertext" position="5,5" zPosition="1" size="830,97" font="RegularLight; 33" halign="left" valign="center" transparent="1" backgroundColor="background" foregroundColor="#a2d7fa" />
      
-     <widget name="list" position="750,120" size="1157,676" zPosition="2" itemHeight="40" enableWrapAround="1" scrollbarSliderBorderWidth="1" backgroundColor="background" foregroundColor="#a8d1ff" scrollbarMode="showOnDemand" scrollbarWidth="7" scrollbarSliderBorderColor="blue" scrollbarSliderForegroundColor="blue" selectionPixmap="BlackHarmony/menu/sel_1260_40.png" transparent="1" valign="center" />
+     <widget name="list" position="750,120" size="1157,676" zPosition="2" itemHeight="40" enableWrapAround="1" scrollbarSliderBorderWidth="1" backgroundColor="background" foregroundColor="#a8d1ff" scrollbarMode="showOnDemand" scrollbarWidth="7" scrollbarSliderBorderColor="blue" scrollbarSliderForegroundColor="blue" selectionPixmap="BlackHarmony/menu/sel_1200_40.png" transparent="1" valign="center" />
 
      <widget name="console" position="center,825" zPosition="1" size="1860,200" font="Roboto_HD; 25" transparent="1" backgroundColor="background" foregroundColor="#d8dbb8" />
      <widget name="cover" zPosition="2" position="35,115" size="700,695" alphatest="blend" borderWidth="2" borderColor="black" backgroundColor="background" />
@@ -168,10 +168,4 @@
   <widget objectTypes="key_blue,StaticText" source="key_blue" render="Label" position="952,850" size="200,27" zPosition="2" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
   <widget name="key_ok" position="65,760" size="1095,35" font="Roboto_HD; 27" halign="center" backgroundColor="black" transparent="1" foregroundColor="light_yellow" />
 </screen>
-
-
-
-
-
-
 </skin>
