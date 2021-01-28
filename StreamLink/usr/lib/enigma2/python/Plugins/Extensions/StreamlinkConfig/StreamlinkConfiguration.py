@@ -405,22 +405,25 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         #    self.session.openWithCallback(self.doNothing,MessageBox, _("Error running script, check log."), MessageBox.TYPE_INFO, timeout = 5)
     def reloadBouquets(self, ret = False):
         msg = _("Bouquets has been reloaded")
-        msgpicons = ''
-        for f in os.listdir("/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/picons"):
-            if f.endswith('.png'):
-                flist = []
-                flist.append(f)
-                if '_' in f:
-                    f2nd = f.split('_',1)[1]
-                    for x in ('1','4097','5001','5002'):
-                        f2 = '%s_%s' % (x,f2nd)
-                        if f2 != f: 
-                            flist.append(f2)
-                for p in flist:
-                    if not os.path.exists('/usr/share/enigma2/picon/%s' % p):
-                        if msgpicons == '': 
-                            msgpicons = '\nBrakujące pikony zostały zlinkowane'
-                        os.symlink("/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/picons/%s" % f, '/usr/share/enigma2/picon/%s' % p)
+        if config.plugins.streamlinksrv.managePicons.value == True:
+            if not os.path.exists('/usr/share/enigma2/picon/'):
+                os.mkdir('/usr/share/enigma2/picon/')
+            msgpicons = ''
+            for f in os.listdir("/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/picons"):
+                if f.endswith('.png'):
+                    flist = []
+                    flist.append(f)
+                    if '_' in f:
+                        f2nd = f.split('_',1)[1]
+                        for x in ('1','4097','5001','5002'):
+                            f2 = '%s_%s' % (x,f2nd)
+                            if f2 != f: 
+                                flist.append(f2)
+                    for p in flist:
+                        if not os.path.exists('/usr/share/enigma2/picon/%s' % p):
+                            if msgpicons == '': 
+                                msgpicons = '\nBrakujące pikony zostały zlinkowane'
+                            os.symlink("/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/picons/%s" % f, '/usr/share/enigma2/picon/%s' % p)
 
         from enigma import eDVBDB
         eDVBDB.getInstance().reloadBouquets()
