@@ -7,7 +7,9 @@
     <font filename="/usr/share/enigma2/HomarLCDskins/fonts/analog.ttf" name="VFD2" scale="90"/>
     <font filename="/usr/share/enigma2/HomarLCDskins/fonts/meteocons.ttf" name="Meteo" scale="100"/>
     <font filename="/usr/share/enigma2/HomarLCDskins/fonts/nmsbd.ttf" name="VFD3" scale="90"/>
+<font filename="/usr/share/enigma2/HomarLCDskins/fonts/digi.ttf" name="DIGI" scale="100"/>
 <font filename="/usr/share/enigma2/HomarLCDskins/fonts/CarbonPhyber-Regular 400.ttf" name="Carbon" scale="100"/>
+<font filename="/usr/share/enigma2/HomarLCDskins/fonts/junegull.ttf" name="Junegull" scale="94"/>
 </fonts>
 <colors>
     <color name="HMRstartTime" value="#ffff66"/>
@@ -68,10 +70,6 @@
 <widget source="parent.ServiceEvent" render="Progress" pixmap="HomarLCDskins/Homar_480x320/Homar_3.png" position="0,205" size="400,42" transparent="1" zPosition="2" >                     
  <convert type="EventTime">Progress</convert>
  </widget>
-
-
-
-
 
 </screen>
 
@@ -144,7 +142,7 @@ options="movetype=running,startpoint=0,direction=left,steptime=20,repeat=2,start
 <ePixmap pixmap="HomarLCDskins/Homar_UNO4KSE/Homar_1.png" position="0,0" size="400,240" zPosition="-1" alphatest="blend" />
 <widget render="j00zekModRunningText" source="parent.Text" options="movetype=running,startpoint=0,direction=top,steptime=70,repeat=0,startdelay=6000,wrap" foregroundColor="HMRname" position="20,20" size="360,170" font="VFD;38" valign="center" transparent="1">
 </widget>
-    <widget source="parent.selectedChoice" render="Label" position="20,200" size="400,50" font="VFD3;44" transparent="1" halign="center" valign="center" />
+    <widget source="parent.selectedChoice" render="Label" position="20,200" size="400,50" font="Junegull;44" transparent="1" halign="center" valign="center" />
 </screen>
 
 <!-- PluginBrowser -->
@@ -508,9 +506,9 @@ options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=0,start
 <screen name="MenuSummary" position="0,0" size="400,240" id="1">
 <ePixmap pixmap="HomarLCDskins/Homar_UNO4KSE/Homar_1.png" position="0,0" size="400,240" zPosition="-1" alphatest="blend" />
 <ePixmap pixmap="HomarLCDskins/Homar/Homar_Uno4KSE.png" position="0,10" size="400,240" zPosition="-1" alphatest="blend" />
-<widget source="parent.title" render="Label" position="10,25" size="386,53" font="VFD; 46" halign="center" valign="top" foregroundColor="HMRname" transparent="1" />
+<widget source="parent.title" render="Label" position="10,25" size="386,53" font="Junegull; 46" halign="center" valign="top" foregroundColor="HMRname" transparent="1" />
 
-<widget render="j00zekModRunningText" source="parent.menu" options="movetype=running,startpoint=0,direction=top,steptime=70,repeat=0,startdelay=6000,wrap" position="10,110" size="386,53" font="VFD; 46" halign="center" valign="center" foregroundColor="HMRname" transparent="1" >
+<widget render="j00zekModRunningText" source="parent.menu" options="movetype=running,startpoint=0,direction=top,steptime=70,repeat=0,startdelay=6000,wrap" position="10,110" size="386,53" font="Junegull; 46" halign="center" valign="center" foregroundColor="HMRname" transparent="1" >
   <convert type="StringListSelection" />
   </widget>
 </screen>

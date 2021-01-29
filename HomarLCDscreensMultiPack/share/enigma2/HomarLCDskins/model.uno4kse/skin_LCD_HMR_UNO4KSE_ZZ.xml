@@ -7,6 +7,9 @@
     <font filename="/usr/share/enigma2/HomarLCDskins/fonts/analog.ttf" name="VFD2" scale="90"/>
     <font filename="/usr/share/enigma2/HomarLCDskins/fonts/meteocons.ttf" name="Meteo" scale="100"/>
     <font filename="/usr/share/enigma2/HomarLCDskins/fonts/nmsbd.ttf" name="VFD3" scale="90"/>
+<font filename="/usr/share/enigma2/HomarLCDskins/fonts/digi.ttf" name="DIGI" scale="100"/>
+<font filename="/usr/share/enigma2/HomarLCDskins/fonts/CarbonPhyber-Regular 400.ttf" name="Carbon" scale="100"/>
+<font filename="/usr/share/enigma2/HomarLCDskins/fonts/junegull.ttf" name="Junegull" scale="94"/>
 </fonts>
 <colors>
     <color name="HMRstartTime" value="#ffff66"/>
@@ -101,30 +104,30 @@ options="movetype=running,startpoint=0,direction=left,steptime=20,repeat=2,start
 	<convert type="EventTime">Progress</convert>
 </widget>
 <!--   Today   --> 
-<widget noWrap="1" font="VFD;30" render="Label" position="90,120" size="145,50" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1" valign="top" foregroundColor="#ff3333">
-    <convert type="j00zekMSNWeather">temperature_high,current</convert>
+<widget noWrap="1" font="VFD;30" render="Label" position="80,120" size="140,40" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1" valign="top" foregroundColor="#ff3333">
+    <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=0']['temp_high']|C</convert>
   </widget>
-  <widget noWrap="1" font="VFD;30" render="Label" position="160,120" size="145,50" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1" valign="top" foregroundColor="#00CFFF">
-    <convert type="j00zekMSNWeather">temperature_low,current</convert>
+  <widget noWrap="1" font="VFD;30" render="Label" position="150,120" size="140,40" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1" valign="top" foregroundColor="#00CFFF">
+    <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=0']['temp_low']|C</convert>
   </widget>
    <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="160,30" size="100,100" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
       <convert type="j00zekMSNWeather">DailyRecord=0</convert>
     </widget>
-   <widget noWrap="1" font="VFD;30" render="Label" position="130,10" size="150,50" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1" >
+   <widget noWrap="1" font="VFD;30" render="Label" position="130,10" size="130,40" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1" >
       <convert type="j00zekMSNWeather">DailyRecord=0,date</convert>
   </widget>
 <!--   Tomorrow   -->
 <widget noWrap="1" 
-font="VFD;30" render="Label" position="225,120" size="145,50" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1" valign="top" foregroundColor="#ff3333">
-    <convert type="j00zekMSNWeather">temperature_high,day2</convert>
+font="VFD;30" render="Label" position="215,120" size="140,40" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1" valign="top" foregroundColor="#ff3333">
+    <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=1']['temp_high']|C</convert>
   </widget>
-  <widget noWrap="1" font="VFD;30" render="Label" position="295,120" size="145,50" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1" valign="top" foregroundColor="#00CFFF">
-    <convert type="j00zekMSNWeather">temperature_low,day2</convert>
+  <widget noWrap="1" font="VFD;30" render="Label" position="285,120" size="140,40" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1" valign="top" foregroundColor="#00CFFF">
+    <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=1']['temp_low']|C</convert>
   </widget>
    <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="295,30" size="100,100" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
       <convert type="j00zekMSNWeather">DailyRecord=1</convert>
     </widget>
-   <widget noWrap="1" font="VFD;30" render="Label" position="260,10" size="150,50" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1" >
+   <widget noWrap="1" font="VFD;30" render="Label" position="265,10" size="130,40" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1" >
       <convert type="j00zekMSNWeather">DailyRecord=1,date</convert>
   </widget>
 </screen>
@@ -198,7 +201,7 @@ options="movetype=running,startpoint=0,direction=left,steptime=20,repeat=2,start
 <ePixmap pixmap="HomarLCDskins/Homar_UNO4KSE/Homar_1.png" position="0,0" size="400,240" zPosition="-1" alphatest="blend" />
 <widget render="j00zekModRunningText" source="parent.Text" options="movetype=running,startpoint=0,direction=top,steptime=70,repeat=0,startdelay=6000,wrap" foregroundColor="HMRname" position="20,20" size="360,170" font="VFD;38" valign="center" transparent="1">
 </widget>
-    <widget source="parent.selectedChoice" render="Label" position="20,200" size="400,50" font="VFD3;44" transparent="1" halign="center" valign="center" />
+    <widget source="parent.selectedChoice" render="Label" position="20,200" size="400,50" font="Junegull;44" transparent="1" halign="center" valign="center" />
 </screen>
 
 <!-- PluginBrowser -->
@@ -562,9 +565,9 @@ options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=0,start
 <screen name="MenuSummary" position="0,0" size="400,240" id="1">
 <ePixmap pixmap="HomarLCDskins/Homar_UNO4KSE/Homar_1.png" position="0,0" size="400,240" zPosition="-1" alphatest="blend" />
 <ePixmap pixmap="HomarLCDskins/Homar/Homar_Uno4KSE.png" position="0,10" size="400,240" zPosition="-1" alphatest="blend" />
-<widget source="parent.title" render="Label" position="10,25" size="386,53" font="VFD; 46" halign="center" valign="top" foregroundColor="HMRname" transparent="1" />
+<widget source="parent.title" render="Label" position="10,25" size="386,53" font="Junegull; 46" halign="center" valign="top" foregroundColor="HMRname" transparent="1" />
 
-<widget render="j00zekModRunningText" source="parent.menu" options="movetype=running,startpoint=0,direction=top,steptime=70,repeat=0,startdelay=6000,wrap" position="10,110" size="386,53" font="VFD; 46" halign="center" valign="center" foregroundColor="HMRname" transparent="1" >
+<widget render="j00zekModRunningText" source="parent.menu" options="movetype=running,startpoint=0,direction=top,steptime=70,repeat=0,startdelay=6000,wrap" position="10,110" size="386,53" font="Junegull; 46" halign="center" valign="center" foregroundColor="HMRname" transparent="1" >
   <convert type="StringListSelection" />
   </widget>
 </screen>
