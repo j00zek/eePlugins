@@ -13,7 +13,7 @@
 # it without source code (this version and your modifications).
 # This means you also have to distribute
 # source code of your modifications.
-DBG = True
+DBG = False
 FullDBG = False
 
 from debug import printDEBUG
@@ -118,6 +118,7 @@ def atvLCDskins( skinlist = [] ):
     return [] #skinlist
 
 def homarLCDskins( skinlist = [] , tunerName = getTunerName() ):
+    if DBG == True: printDEBUG('homarLCDskins() >>>')
     def find(arg, dirname, names):
         for x in names:
             if x.startswith('skin_LCD_HMR') and x.endswith('.xml'):
@@ -283,7 +284,10 @@ class UserSkin_Config(Screen, ConfigListScreen):
             self.LCDscreensList.extend( vtiLCDskins() )
             if  self.desktopType == 'lcd' and tunerName != 'unknown':
                 self.LCDscreensList.extend( homarLCDskins() )
-
+            
+            self.LCDscreensList = list(set(self.LCDscreensList))
+            try: self.LCDscreensList.sort(key=lambda t : tuple(str(t[0]).lower()))
+            except Exception: self.LCDscreensList.sort()
             config.plugins.UserSkin.LCDmode = ConfigSelection(default="system", choices = self.LCDscreensList)
 #### initializing FONTS ###
             if DBG == True: printDEBUG('#### initializing FONTS ###')
