@@ -2,9 +2,9 @@ Package: enigma2-plugin-extensions--j00zeks-msnweather-np
 Priority: optional
 Section: utils
 Depends: python-requests enigma2---j00zeks-components
-Description: wersja tylko dla skórki BlackHarmony!!!
+Description: Pogoda i dane o jakości powietrza z MSN, airly, GIOŚ, looko2 i innych
 Maintainer: j00zek
 Source: 
-Version: 21.01.26.0641
+Version: 21.01.31.0653
 Architecture: all
 DestinationPath: /usr/lib/enigma2/python/

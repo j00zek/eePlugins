@@ -110,14 +110,14 @@
 	<widget backgroundColor="black" font="Roboto_HD; 24" render="Label" position="1250,320" size="110,25" source="session.j00zekMSNWeather" zPosition="4" halign="right" transparent="1" >
         <convert type="j00zekMSNWeather">RUN|['currentData']['airIndex']['valInfo']</convert>
         </widget-->
-	<widget source="currentData_infoList" render="Listbox" position="1370,225" size="455,140" scrollbarMode="showOnDemand" scrollbarWidth="6" transparent="1" backgroundColor="black">
+	<widget source="currentData_infoList" render="Listbox" position="1370,220" size="455,150" scrollbarMode="showOnDemand" scrollbarWidth="6" transparent="1" backgroundColor="black">
 		<convert type="TemplatedMultiContent">
                     {"template": [
-                        MultiContentEntryText(pos = (2, 2), size = (443, 28), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 0),
-                        MultiContentEntryText(pos = (2, 2), size = (443, 28), font=1, flags = RT_HALIGN_RIGHT|RT_VALIGN_CENTER, text = 1),
+                        MultiContentEntryText(pos = (2, 2), size = (443, 30), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 0),
+                        MultiContentEntryText(pos = (2, 2), size = (443, 30), font=1, flags = RT_HALIGN_RIGHT|RT_VALIGN_CENTER, text = 1),
                         ],
-                        "fonts": [gFont("Regular", 24), gFont("Regular", 24)],
-                        "itemHeight": 28,
+                        "fonts": [gFont("Regular", 23), gFont("Regular", 23)],
+                        "itemHeight": 30,
 						"selectionEnabled": False
                     }
         </convert>

@@ -41,11 +41,11 @@
 	<widget source="currentData_infoList" render="Listbox" position="1140,225" size="520,225" scrollbarMode="showOnDemand" transparent="1" backgroundColor="black">
 		<convert type="TemplatedMultiContent">
                     {"template": [
-                        MultiContentEntryText(pos = (2, 2), size = (496, 28), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 0),
-                        MultiContentEntryText(pos = (2, 2), size = (496, 28), font=1, flags = RT_HALIGN_RIGHT|RT_VALIGN_CENTER, text = 1),
+                        MultiContentEntryText(pos = (2, 2), size = (496, 30), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 0),
+                        MultiContentEntryText(pos = (2, 2), size = (496, 30), font=1, flags = RT_HALIGN_RIGHT|RT_VALIGN_CENTER, text = 1),
                         ],
                         "fonts": [gFont("Regular", 24), gFont("Regular", 24)],
-                        "itemHeight": 28,
+                        "itemHeight": 30,
 						"selectionEnabled": False
                     }
         </convert>
