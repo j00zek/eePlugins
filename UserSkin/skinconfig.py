@@ -258,7 +258,7 @@ class UserSkin_Config(Screen, ConfigListScreen):
                 self.desktopType = 'vfd'
             if DBG == True: printDEBUG('#### initializing %s skins ###' % self.desktopType.upper() )
             self.LCDscreensList = [("system", "system")]
-            if  path.exists('/usr/lib/enigma2/python/Plugins/Extensions/LCDlinux'):
+            if path.exists('/usr/lib/enigma2/python/Plugins/Extensions/LCDlinux') or path.exists('/usr/lib/enigma2/python/Plugins/Extensions/LCD4linux'):
                 self.LCDscreensList.append(("LCDLinux", "LCDLinux"))
             
             filterVFDskins4model = False
@@ -763,6 +763,8 @@ class UserSkin_Config(Screen, ConfigListScreen):
             myMessage += _("Are you sure you want to use it?")
             restartbox = self.session.openWithCallback(restartNotOKcb,MessageBox, myMessage, MessageBox.TYPE_YESNO, default = False)
         else:
+            if config.plugins.UserSkin.LCDmode.value == 'LCDLinux':
+                myMessage += _("LCDLinux selected, open it and generate its skin again.")
             myMessage += _("Restart GUI now?")
             restartbox = self.session.openWithCallback(restartGUIcb,MessageBox, myMessage, MessageBox.TYPE_YESNO, default = False)
         restartbox.setTitle(_("Message"))
