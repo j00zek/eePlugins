@@ -35,7 +35,7 @@
             <convert type="j00zekMSNWeather">RUN|['currentData']['pressure']['val']</convert>
         </widget> 
         <widget position="67%,2%" size="31%,16%" font="BHfDlcD;50" noWrap="1" foregroundColor="#ccffff" backgroundColor="#000000" render="Label" source="session.j00zekMSNWeather" zPosition="3" halign="right" transparent="1">
-            <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
+            <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['val']</convert>
         </widget> 
                 <widget backgroundColor="#000000" font="BHfDlcD;140" foregroundColor="white" halign="center" position="0%,27%" render="Label" size="100%,48%" source="global.CurrentTime" transparent="0" zPosition="2">
                         <convert type="ClockToText">Format:%-H:%M</convert>
