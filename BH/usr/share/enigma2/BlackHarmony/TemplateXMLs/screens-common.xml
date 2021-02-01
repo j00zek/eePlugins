@@ -4219,9 +4219,9 @@
       <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
     </widget>
     <eLabel text="LCD4linux Settings" position="1500,70" size="320,30" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1"/>
-    <widget name="LCD1" position="765,300" zPosition="2" size="1100,520" transparent="1" alphatest="blend"/>
+    <widget name="LCD1" position="865,300" zPosition="2" size="1100,520" transparent="1" alphatest="blend"/>
     <widget source="LCD1text" render="Label" position="953,250" size="850,35" zPosition="1" font="Roboto_HD; 27" halign="center" valign="center" backgroundColor="background" transparent="1" foregroundColor="light_yellow"/>
-    <widget name="config" font="Roboto_HD; 27" position="113,195" size="750,665" itemHeight="35" scrollbarMode="showOnDemand" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" selectionPixmap="BlackHarmony/menu/sel_750_35.png" backgroundColor="black" transparent="1"/>
+    <widget name="config" font="Roboto_HD; 25" position="113,195" size="750,665" itemHeight="35" scrollbarMode="showOnDemand" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" selectionPixmap="BlackHarmony/menu/sel_750_35.png" backgroundColor="black" transparent="1"/>
     <widget source="introduction" render="Label" position="113,890" size="750,35" font="Roboto_HD; 27" halign="center" backgroundColor="black" transparent="1" foregroundColor="light_yellow"/>
     <widget source="About" render="Label" position="1435,988" size="170,27" zPosition="1" font="Roboto_HD; 24" halign="left" valign="center" backgroundColor="dark_grey" transparent="1"/>
     <widget source="Version" render="Label" position="1625,988" size="100,27" zPosition="1" font="Roboto_HD; 24" halign="left" valign="center" backgroundColor="dark_grey" transparent="1"/>
