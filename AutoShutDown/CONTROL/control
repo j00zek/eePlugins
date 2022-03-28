@@ -1,0 +1,10 @@
+Package: enigma2-plugin-extensions--j00zeks-mod-autoshutdown
+Priority: optional
+Section: utils
+Depends: 
+Description: min.automatyczne usypianie przy braku aktywnosci
+Maintainer: j00zek
+Source: http://github.com/j00zek/eePlugins
+Version: 21.02.22.0722
+Architecture: all
+DestinationPath: /usr/lib/enigma2/python/Plugins/SystemPlugins/AutoShutDown
