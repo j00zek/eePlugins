@@ -1,0 +1,558 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: tuxbox-enigma 0.0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-11-01 13:01+0000\n"
+"PO-Revision-Date: 2022-03-04 11:18+0800\n"
+"Last-Translator: 沙鸥\n"
+"Language-Team: 沙鸥\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 1.8.3\n"
+
+msgid "%s: %s Free: %s Used: %s (%s%%)"
+msgstr "%s: %s 空闲: %s 已用: %s (%s%%)"
+
+msgid "%s: %s Used: %s Free: %s"
+msgstr "%s: %s 已用: %s 可用: %s"
+
+msgid "%s: %s, in use: %s%%"
+msgstr "%s: %s, 已用: %s%%"
+
+msgid "%s: Not Available"
+msgstr "%s：不可用"
+
+msgid "AdvancedMovieSelection"
+msgstr "高级电影选项"
+
+msgid "AdvancedMovieSelection Button Setup"
+msgstr "高级电影选项"
+
+msgid "Air pressure:"
+msgstr "气压："
+
+msgid "Air quality"
+msgstr "空气质量"
+
+msgid "Audio PID"
+msgstr "音频PID"
+
+msgid "Audio PID%s, codec & lang"
+msgstr "音频 PID%s，编解码器和语言"
+
+msgid "Audio PID, codec & lang"
+msgstr "音频PID,编解码器和语言"
+
+msgid "AudioCodec:"
+msgstr "音频编解码器："
+
+msgid "Auto Mount Manager"
+msgstr "挂载管理器."
+
+msgid "Bandwidth"
+msgstr "带宽"
+
+msgid "Basic PID info"
+msgstr "基本 PID 信息"
+
+msgid "Box Type:"
+msgstr "盒子类型："
+
+msgid "CD Info"
+msgstr "CD信息"
+
+msgid "CPU Temperature:"
+msgstr "CPU温度："
+
+msgid "CPU temperature:"
+msgstr "CPU温度："
+
+msgid "Changes"
+msgstr "更改"
+
+msgid "Channel"
+msgstr "频道"
+
+msgid "Channel Selection"
+msgstr "频道选择"
+
+msgid "CleanupWizard settings"
+msgstr "清理向导的设置"
+
+msgid "Code rate HP"
+msgstr "高编码率"
+
+msgid "Code rate LP"
+msgstr "低编码率"
+
+msgid "Connected:"
+msgstr "接通:"
+
+msgid "Constellation"
+msgstr "星座"
+
+msgid "CoverFind"
+msgstr "寻找覆盖"
+
+msgid "CrossEPG Setup"
+msgstr "交互EPG设置"
+
+msgid "Current"
+msgstr "当前"
+
+msgid "Current weather:"
+msgstr "当前天气："
+
+msgid "DVB Subtitles PID & lang"
+msgstr "Dvb 字幕 Pid + 语言"
+
+msgid "Data update:"
+msgstr "数据更新："
+
+msgid "Day after tomorrow"
+msgstr "后天"
+
+msgid "Detailed forecast"
+msgstr "详细天气预测"
+
+msgid "Diagnostic"
+msgstr "诊断"
+
+msgid "DreamExplorer II"
+msgstr "DreamExplorer II"
+
+msgid "ECM Info"
+msgstr "ECM信息"
+
+msgid "EMC Menu"
+msgstr "EMC菜单"
+
+msgid "EMC Selection"
+msgstr "EMC选择"
+
+msgid "East"
+msgstr "东部"
+
+msgid "Embedded"
+msgstr "嵌入的"
+
+msgid "English"
+msgstr "英语"
+
+msgid "Exit"
+msgstr "退出"
+
+msgid "Extended PID info"
+msgstr "扩展 PID 信息"
+
+msgid "FEC"
+msgstr "FEC（前向纠错）"
+
+msgid "Feeling temp."
+msgstr "体感温度"
+
+msgid "FeelsLike"
+msgstr "体感温度"
+
+msgid "Felt temperature"
+msgstr "感觉温度"
+
+msgid "File Browser"
+msgstr "文件浏览器"
+
+msgid "Flash Free:"
+msgstr "可用闪存："
+
+msgid "Flash:"
+msgstr "内部闪存:"
+
+msgid "Free-to-air"
+msgstr "发送广播"
+
+msgid "French"
+msgstr "法语"
+
+msgid "Frequency"
+msgstr "频率"
+
+msgid "German"
+msgstr "德语"
+
+msgid "Green Panel"
+msgstr "绿色面板"
+
+msgid "Guard interval"
+msgstr "保护间隔"
+
+msgid "HDD Temperature:"
+msgstr "硬盘温度："
+
+msgid "Harddisk Setup"
+msgstr "硬盘设置"
+
+msgid "Harddisk Wait"
+msgstr "硬盘等待"
+
+msgid "Hierarchy info"
+msgstr "层次信息"
+
+msgid "IPKG Menu"
+msgstr "IPKG菜单"
+
+msgid "Input"
+msgstr "输入"
+
+msgid "Input Stream ID"
+msgstr "输入流ID"
+
+msgid "Installing Software..."
+msgstr "正在安装软件..."
+
+msgid "Inversion"
+msgstr "逆温"
+
+msgid "J00zekMenuChannels"
+msgstr "J00zek 菜单通道"
+
+msgid "Load Avg:"
+msgstr "平均负荷："
+
+msgid "MSN weather"
+msgstr "MSN 天气"
+
+msgid "MSN weather config"
+msgstr "MSN天气配置"
+
+msgid "Memory:"
+msgstr "内存："
+
+msgid "Miscellaneous languages"
+msgstr "其他语言"
+
+msgid ""
+"Mode 1 supports Kodi, PIP may not work. Mode 12 supports PIP, Kodi may not "
+"work"
+msgstr "模式1支持Kodi ， PIP可能无法工作。模式12支持PIP ， Kodi可能无法工作"
+
+msgid "Modulation"
+msgstr "调制"
+
+msgid "Mount Edit"
+msgstr "装载编辑"
+
+msgid "Mount View"
+msgstr "安装视图"
+
+msgid "N/A"
+msgstr "无"
+
+msgid "NIM"
+msgstr "Nim"
+
+msgid "Name-day:"
+msgstr "命名日:"
+
+msgid "Nameserver Setup"
+msgstr "名称服务器设置"
+
+msgid "Namespace & Orbital pos."
+msgstr "名称空间和轨道位置"
+
+msgid "Network Adapter Selection"
+msgstr "网络适配器选择"
+
+msgid "Network Adapter Test"
+msgstr "网络适配器测试"
+
+msgid "Network Configuration..."
+msgstr "网络配置..."
+
+msgid "Network Setup"
+msgstr "网络设置"
+
+msgid "Next:"
+msgstr "下一步："
+
+msgid "No info"
+msgstr "无信息"
+
+msgid "Now"
+msgstr "现在"
+
+msgid "Now:"
+msgstr "现在："
+
+msgid "Online update OpenATV"
+msgstr "在线更新OpenATV"
+
+msgid "OpenWebiF Configuration"
+msgstr "OpenWebiF配置"
+
+msgid "Orbital position"
+msgstr "轨道位置"
+
+msgid "Original"
+msgstr "原件"
+
+msgid "Other Subtitles & lang"
+msgstr "其他字幕和语言"
+
+msgid "PLS Code"
+msgstr "PLS代码"
+
+msgid "PLS Mode"
+msgstr "PLS模式"
+
+msgid "PMT PID"
+msgstr "PMT PID:"
+
+msgid "Packet Manager"
+msgstr "数据包管理器"
+
+msgid "Pilot"
+msgstr "向导"
+
+msgid "Playing since:"
+msgstr "播放时间："
+
+msgid "Plugin Manager"
+msgstr "插件管理器"
+
+msgid "Plugin browser"
+msgstr "插件浏览器"
+
+msgid "Polarization"
+msgstr "极化"
+
+msgid "Polish"
+msgstr "波兰语"
+
+msgid "Pressure"
+msgstr "压力"
+
+msgid "Pressure:"
+msgstr "压力："
+
+msgid "Provider"
+msgstr "供应商"
+
+msgid "Radio"
+msgstr "无线电"
+
+msgid "Reserved"
+msgstr "保留"
+
+msgid "Resolution:"
+msgstr "分辨率："
+
+msgid "Restore Menu"
+msgstr "恢复菜单"
+
+msgid "Roll-off"
+msgstr "滚降系数"
+
+msgid "Select HDD"
+msgstr "选择硬盘"
+
+msgid "Select files/folders to backup..."
+msgstr "选择 文件/文件夹 来备份..."
+
+msgid "Sensed temperature"
+msgstr "感测温度"
+
+msgid "Service & PIDs"
+msgstr "服务信息 + PIDs"
+
+msgid "Service Info"
+msgstr "服务信息"
+
+msgid "Service Name"
+msgstr "服务名称"
+
+msgid "Service info"
+msgstr "服务信息"
+
+msgid "Service info - ECM Info"
+msgstr "服务信息 - ECM 信息"
+
+msgid "Service info - Transponder"
+msgstr "服务信息 - 转发器"
+
+msgid "Service info - Tuner status"
+msgstr "服务信息 - 调谐器状态"
+
+msgid "Service info - service & Basic PID Info"
+msgstr "服务信息-服务和基本PID信息"
+
+msgid "Service info - service & Extended PID Info"
+msgstr "频道信息-频道和扩展PID信息"
+
+msgid "Service info - service & PIDs"
+msgstr "服务信息 - 服务和PID"
+
+msgid "Service reference"
+msgstr "频道索引"
+
+msgid "Setup"
+msgstr "设置"
+
+msgid "Show Histograms"
+msgstr "显示直方图"
+
+msgid "Show Maps"
+msgstr "显示地图"
+
+msgid "Software Update..."
+msgstr "软件更新..."
+
+msgid "Softwaremanager Setup"
+msgstr "软件管理器设置"
+
+msgid "Softwaremanager..."
+msgstr "软件管理器..."
+
+msgid "Source:"
+msgstr "来源："
+
+msgid "Subtitles"
+msgstr "字幕"
+
+msgid "Sunrise:"
+msgstr "日出 ："
+
+msgid "Sunset:"
+msgstr "日落："
+
+msgid "Support for Skin:"
+msgstr "支持皮肤："
+
+msgid "Support for skin:"
+msgstr "对皮肤的支持："
+
+msgid "Symbol rate"
+msgstr "符号速率"
+
+msgid "System"
+msgstr "系统"
+
+msgid "TXT PID"
+msgstr "文本控制TXT PID"
+
+msgid "TXT Subtitles page & lang"
+msgstr "TXT字幕页和语言"
+
+msgid "Test again"
+msgstr "重新测试"
+
+msgid "Timer Edit List"
+msgstr "定时器编辑"
+
+msgid "Timer Log"
+msgstr "计时器日志"
+
+msgid "Timer Selection"
+msgstr "定时器选择"
+
+msgid "Timer entry"
+msgstr "计时器输入"
+
+msgid "Today"
+msgstr "今天"
+
+msgid "Tomorrow"
+msgstr "明天"
+
+msgid "Transmission mode"
+msgstr "传输方式"
+
+msgid "Tuner/System"
+msgstr "调谐器/系统"
+
+msgid "Type"
+msgstr "类型"
+
+msgid "Undetermined"
+msgstr "未定"
+
+msgid "Unencrypted"
+msgstr "加密"
+
+msgid "Unknown"
+msgstr "未知"
+
+msgid "Uptime:"
+msgstr "正常运行时间："
+
+msgid "User Manager"
+msgstr "用户管理器"
+
+msgid "VTI Update Info"
+msgstr "VTI更新信息"
+
+msgid "Video Enhancement Preview"
+msgstr "视频增强预览"
+
+msgid "Video Enhancement Setup"
+msgstr "视频增强设置"
+
+msgid "VideoCodec:"
+msgstr "视频编解码器："
+
+msgid "Videocodec, size & format"
+msgstr "视频编码,大小和格式"
+
+msgid "Weather Widgets"
+msgstr "天气小部件"
+
+msgid "Weather now"
+msgstr "现在的天气"
+
+msgid "WebCam Widgets"
+msgstr "网络摄像头小部件"
+
+msgid "Webinterface"
+msgstr "网页管理界面"
+
+msgid "West"
+msgstr "西部"
+
+msgid "Works:"
+msgstr "工作:"
+
+msgid ""
+"You are in WRONG PLACE, use UserSkin to configure BlackHarmony instead !!!"
+msgstr "你在错误的地方，使用UserSkin来配置黑色和谐！ ！ ！"
+
+msgid "day after tomorrow"
+msgstr "后天"
+
+msgid "filename"
+msgstr "文件名"
+
+msgid "later"
+msgstr "后来"
+
+msgid "n/A"
+msgstr "N/A"
+
+msgid "name day"
+msgstr "姓名日期"
+
+msgid "no data from CI"
+msgstr "没有来自CI的数据"
+
+msgid "no data from CI and emulator"
+msgstr "没有来自CI和仿真器的数据"
+
+msgid "no data from the emulator"
+msgstr "没有来自模拟器的数据"
+
+msgid "pressure"
+msgstr "压力："
+
+msgid "unavailable"
+msgstr "不可用的"

@@ -1,0 +1,32 @@
+<skin>
+<screen name="EPGSelectionEPGBar_HD" position="0,0" size="1920,1080" title="" flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="0,0" zPosition="-2" size="1920,1080" pixmap="BlackHarmony/bg_design/infobar-HMR33_1920x1080x24.png" />
+    <widget alphatest="blend" position="228,850" render="j00zekPicons" picontype="zzpicon" size="350,149" source="Service" transparent="1" zPosition="4">
+      <convert type="ServiceName">Reference</convert>
+    </widget>
+    <widget source="Service" render="Label" position="235,776" size="400,80" font="HD_Thin; 29" valign="center" noWrap="1" backgroundColor="black" transparent="1" halign="center" text="Polsat Sport Premium PPV5" foregroundColor="cyan">
+      <convert type="j00zekModServiceName2">Name</convert>
+    </widget>
+    <widget render="j00zekModRunningText" source="Event" options="movetype=running,startpoint=0,direction=top,steptime=90,repeat=2,startdelay=8000,wrap" halign="left" font="Roboto_HD; 27" backgroundColor="background" position="620,860" size="640,190" transparent="1">
+      <convert type="j00zekModEventName">ExtendedDescription</convert>
+    </widget>
+    <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="10,830" size="35,27" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="10,890" size="35,27" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="10,950" size="35,27" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="10,1010" size="35,27" alphatest="blend" />
+    <widget backgroundColor="background" font="Roboto_HD; 21" foregroundColor="white" halign="left" name="key_blue" position="46,1010" size="120,54" transparent="1" valign="top" zPosition="11" />
+    <widget backgroundColor="background" font="Roboto_HD; 21" foregroundColor="white" halign="left" name="key_green" position="46,890" size="160,54" transparent="1" valign="top" zPosition="11" />
+    <widget backgroundColor="background" font="Roboto_HD; 21" foregroundColor="white" halign="left" name="key_red" position="46,830" size="180,54" transparent="1" valign="top" zPosition="11" />
+    <widget backgroundColor="background" font="Roboto_HD; 21" foregroundColor="white" halign="left" name="key_yellow" position="46,950" size="140,54" transparent="1" valign="top" zPosition="2" />
+    <widget name="list" position="1255,860" size="720,200" font="Roboto_HD; 26" itemHeight="40" enableWrapAround="1" scrollbarMode="showNever" selectionPixmap="BlackHarmony/menu/sel_720_40.png" backgroundColor="transpBlack" transparent="1" />
+    <widget source="global.CurrentTime" render="Label" position="280,1010" size="185,64" font="Roboto_HD;54" halign="center" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="session.CurrentService" render="j00zekPicons" picontype="picon" position="1690,715" size="220,132" zPosition="2" transparent="1" alphatest="blend">
+      <convert type="j00zekModServiceName2">Reference</convert>
+    </widget>
+    <widget source="session.Event_Now" render="Label" position="650,800" size="1030,45" font="HD_Thin; 40" halign="left" backgroundColor="black" transparent="1" valign="top">
+      <convert type="j00zekModEventName2">Name</convert>
+    </widget>
+  </screen>
+</skin>

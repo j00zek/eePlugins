@@ -1,0 +1,44 @@
+  <screen name="MessageBox" position="center,center" size="790,10" title="Message">
+    <widget name="text" position="110,8" size="680,0" font="Roboto_HD; 25" transparent="1" />
+    <widget name="ErrorPixmap" pixmap="BlackHarmony/icons/error.png" position="5,5" size="100,100" alphatest="blend"/>
+    <widget name="QuestionPixmap" pixmap="BlackHarmony/icons/question.png" position="5,5" size="100,100" alphatest="blend"/>
+    <widget name="InfoPixmap" pixmap="BlackHarmony/icons/info.png" position="5,5" size="100,100" alphatest="blend"/>
+    <widget name="list" font="Roboto_HD; 27" position="15,70" size="750,0" backgroundColor="background" itemHeight="35" selectionPixmap="BlackHarmony/menu/sel_750_35.png" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" transparent="1"/>
+    <applet type="onLayoutFinish">
+# this should be factored out into some helper code, but currently demonstrates applets.
+from enigma import eSize, ePoint
+
+orgwidth = self.instance.size().width()
+orgheight = self.instance.size().height()
+orgpos = self.instance.position()
+textsize = self["text"].getSize()
+
+# y size still must be fixed in font stuff...
+textsize = (textsize[0] + 80, textsize[1] + 80)
+offset = 20
+#if self.type == self.TYPE_YESNO:
+#        offset = 80
+wsizex = textsize[0] + 120
+wsizey = textsize[1] + offset
+if (790 &gt; wsizex):
+        wsizex = 790
+
+# resize label
+self["text"].instance.resize(eSize(*textsize))
+
+# move list
+count = len(self.list)
+listsize = (wsizex - 20, 35 * count)
+self["list"].instance.move(ePoint(10, textsize[1] + 10 ))
+self["list"].instance.resize(eSize(*listsize))
+
+# resize window
+wsize = (wsizex, wsizey + listsize[1] + 10)
+self.instance.resize(eSize(*wsize))
+
+# center window
+newwidth = wsize[0]
+newheight = wsize[1]
+self.instance.move(ePoint(orgpos.x() + (orgwidth - newwidth)/2 , orgpos.y() + (orgheight - newheight)/2 ))
+    </applet>
+  </screen> 

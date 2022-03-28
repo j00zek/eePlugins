@@ -1,0 +1,54 @@
+<skin>
+<screen name="InfoBar" position="0,0" size="1920,1080" title="InfoBar" flags="wfNoBorder" backgroundColor="transparent">
+  <ePixmap position="0,810" zPosition="-2" size="1922,255" pixmap="BlackHarmony/bg_design/infobar4.png" />
+  <widget source="session.CurrentService" render="Label" position="85,825" size="1173,48" font="HD_Thin; 45" valign="top" noWrap="1" foregroundColor="#66CC99" backgroundColor="black" transparent="1" halign="left">
+    <convert type="j00zekModExtraTuner">ServiceNumberName</convert>
+  </widget>
+      <widget pixmap="BlackHarmony/gfx/progress_mario.png" position="323,952" render="Progress" size="1200,4" source="session.Event_Now" transparent="1" zPosition="3">
+  <convert type="EventTime">Progress</convert>
+</widget>
+  <widget source="session.Event_Now" render="Label" position="320,895" size="105,36" font="HD_Thin; 32" halign="left" backgroundColor="black" transparent="1">
+    <convert type="EventTime">StartTime</convert>
+    <convert type="ClockToText">Default</convert>
+  </widget>
+  <eLabel text="-" position="422,895" size="20,36" font="HD_Thin; 30" halign="left" backgroundColor="black" transparent="1" foregroundColor="light_grey" />
+  <widget source="session.Event_Now" render="Label" position="446,895" size="900,40" font="HD_Thin; 32" halign="left" backgroundColor="black" transparent="1">
+    <convert type="j00zekModEventName">Name</convert>
+  </widget>
+  <widget source="session.Event_Now" render="Label" position="1350,895" size="170,36" font="RegularLight; 32" halign="right" backgroundColor="black" transparent="1">
+    <convert type="EventTime">Remaining</convert>
+    <convert type="RemainingToText">InMinutes</convert>
+  </widget>
+  <widget source="session.Event_Next" render="Label" position="320,966" size="105,36" font="RegularLight; 32" halign="left" foregroundColor="#808080" backgroundColor="black" transparent="1">
+    <convert type="EventTime">StartTime</convert>
+    <convert type="ClockToText">Default</convert>
+  </widget>
+  <eLabel text="-" position="422,966" size="20,36" font="RegularLight; 30" halign="left" foregroundColor="#808080" backgroundColor="black" transparent="1" />
+  <widget source="session.Event_Next" render="Label" position="446,966" size="900,40" font="RegularLight; 32" halign="left" backgroundColor="black" transparent="1" foregroundColor="#808080">
+    <convert type="j00zekModEventName">Name</convert>
+  </widget>
+  <widget source="session.Event_Next" render="Label" position="1350,966" size="170,36" font="RegularLight; 32" halign="right" foregroundColor="#808080" backgroundColor="black" transparent="1">
+    <convert type="EventTime">Duration</convert>
+    <convert type="ClockToText">InMinutes</convert>
+  </widget>
+  <widget source="global.CurrentTime" render="Label" position="1712,825" size="150,48" font="HD_Thin; 46" halign="left" backgroundColor="black" transparent="1" valign="center">
+    <convert type="ClockToText">Default</convert>
+  </widget>
+  <widget alphatest="blend" position="70,880" render="j00zekPicons" picontype="picon" size="220,132" source="session.CurrentService" transparent="1" zPosition="4">
+    <convert type="ServiceName">Reference</convert>
+  </widget>
+  <widget backgroundColor="black" font="HD_Thin; 26" halign="right" position="1257,840" render="Label" size="433,30" source="global.CurrentTime" transparent="1" valign="center" noWrap="1" foregroundColor="#66CC99">
+    <convert type="ClockToText">Format:%A %d %B %Y </convert>
+  </widget>
+  <!-- POGODA -->
+    <widget source="session.CurrentService" render="j00zekLabel" position="1680,885" size="200,28" font="Roboto_HD; 22" backgroundColor="black" halign="center" transparent="1" foregroundColor="lemon">
+      <convert type="j00zekTranslator">Current weather:</convert>
+    </widget>
+    <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="1528,871" size="170,170" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
+      <convert type="j00zekMSNWeather">weathericon,current</convert>
+    </widget>
+    <widget noWrap="1" backgroundColor="black" font="HD_Thin; 36" render="Label" position="1720,928" size="109,59" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1" foregroundColor="podsw" valign="center">
+      <convert type="j00zekMSNWeather">GET|['currentData']['feelslike']['valInfo']</convert>
+    </widget> 
+</screen>
+</skin>

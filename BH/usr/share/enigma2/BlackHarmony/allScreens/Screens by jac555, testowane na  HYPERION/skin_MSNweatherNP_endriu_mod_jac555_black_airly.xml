@@ -1,0 +1,432 @@
+<skin>
+<screen name="MSNweatherNP" position="0,0" size="1920,1080" title=" " flags="wfNoBorder" backgroundColor="black">
+    <ePixmap position="0,0" zPosition="-10" size="1920,1080" pixmap="BlackHarmony/bg_design/EPGPig.png" transparent="1" alphatest="blend" />    <widget source="statustext" render="Label" position="0,1041" size="1920,28" font="Roboto_HD; 22" halign="center" valign="bottom" transparent="1" backgroundColor="black" foregroundColor="red" />
+
+  <!--godzina,data-->
+     <widget source="global.CurrentTime" render="Label" position="30,23" size="93,40" font="Roboto_HD; 31" backgroundColor="black" transparent="1">
+        <convert type="ClockToText">Default</convert>
+        </widget>
+     <widget source="global.CurrentTime" render="Label" position="126,28" size="389,35" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+        <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+        </widget>
+     <widget source="session.CurrentService" render="Label" position="1550,28" size="325,35" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1">
+		<convert type="j00zekTranslator">MSN weather</convert>
+	    </widget>
+
+  <!--lokalizacja,airly info-->
+	 <widget source="caption" render="Label" position="45,107" size="403,80" font="HD_Thin; 34" halign="left" valign="top" transparent="1" backgroundColor="black" foregroundColor="#000090e6" />
+	 <widget source="currentData_airIndexInfo" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=10,repeat=99,startdelay=2000" position="460,11" size="1000,49" font="HD_Thin; 35" halign="center" transparent="1" backgroundColor="black" foregroundColor="#0045b701" />
+	 <widget source="currentData_airIndexAdvice" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=1,repeat=99,startdelay=2000" halign="center" position="360,60" size="1200,40" font="HD_Thin; 28" transparent="1" backgroundColor="black" />
+
+   <!--aktualna pogoda-->
+    <widget source="currentData_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="111,165" size="190,190" transparent="1" zPosition="5" />	
+    <widget render="Label" source="currentData_temperature" font="Roboto_HD; 43" position="320,234" size="120,58" backgroundColor="black" zPosition="3" transparent="1" halign="center" foregroundColor="light_yellow" />
+    <widget source="currentData_skytext" render="j00zekLabel" position="42,331" size="407,103" font="HD_Thin; 30" halign="center" valign="center" transparent="1" backgroundColor="black" />
+ 
+
+   <!--aktualne dane-->
+    <widget source="currentData_WeatherinfoList" render="Listbox" position="445,98" size="368,343" transparent="1" scrollbarMode="showNever" scrollbarWidth="2" scrollbarSliderBorderColor="background" scrollbarSliderForegroundColor="background" backgroundColor="black">
+    <convert type="TemplatedMultiContent">
+          {"template": [
+           MultiContentEntryText(pos = (2, 2), size = (346, 32), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 0),
+           MultiContentEntryText(pos = (2, 2), size = (346, 32), font=1, flags = RT_HALIGN_RIGHT|RT_VALIGN_CENTER, text = 1),
+           ],
+           "fonts": [gFont("HD_Thin", 24), gFont("HD_Thin", 24)],
+           "itemHeight": 32,
+	       "selectionEnabled": False
+		   }
+        </convert>
+	    </widget>
+    <widget source="currentData_AllObservationTimes" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=20,repeat=99,startdelay=2000" position="445,440" size="368,27" font="Roboto_HD;17" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="center" foregroundColor="#00fffe9e" />	
+
+  <!--słońce,księżyc-->
+    <ePixmap pixmap="BlackHarmony/icons/Weather/slonce22.png" position="850,115" zPosition="1" size="360,140" alphatest="blend" />
+    <widget render="Label" position="939,220" size="183,26" source="session.j00zekMSNWeather" font="Roboto_HD; 24" halign="center" valign="center" backgroundColor="black" transparent="1" zPosition="3">
+      <convert type="j00zekMSNWeather">RUN|0x0045b701|['currentData']['sun']['dayLength']['time']</convert>
+       </widget>
+
+  <!-- WSCHOD -->
+    <widget source="sunrise_time" render="Label" position="845,255" size="85,24" font="Roboto_HD; 22" halign="center" valign="center" transparent="1" backgroundColor="black" />
+
+  <!--długość dnia-->
+    <widget source="session.j00zekMSNWeather" render="Label" position="809,120" size="160,23" font="Roboto_HD; 22" halign="center" transparent="1" backgroundColor="black">
+       <convert type="j00zekMSNWeather">RUN|+|['currentData']['sun']['dayLength']['time2shortest']</convert>
+       </widget>
+    <widget source="session.j00zekMSNWeather" render="Label" position="1101,120" size="160,23" font="Roboto_HD; 22" halign="center" transparent="1" backgroundColor="black">
+       <convert type="j00zekMSNWeather">RUN|-|['currentData']['sun']['dayLength']['time2longest']</convert>
+       </widget>
+
+  <!-- ZACHOD -->
+    <widget source="sunset_time" render="Label" position="1135,255" size="85,24" font="Roboto_HD; 22" halign="center" valign="center" transparent="1" backgroundColor="black" />
+
+  <!-- WIATR -->
+    <ePixmap pixmap="BlackHarmony/weather_icons/wind.png" position="820,303" zPosition="1" size="68,60" alphatest="blend" name="lend" />
+    <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="895,320" size="35,35" source="session.j00zekMSNWeather" zPosition="3" transparent="1">
+    <convert type="j00zekMSNWeather">RUN|['currentData']['wind_dir']['valInfo']</convert>
+    </widget>
+
+<!-- MOON -->
+    <widget source="global.CurrentTime" render="j00zekPicons" position="995,290" size="120,120" path="/usr/share/enigma2/BlackHarmony/icons" picontype="MoonPhase" showdefaultpic="no" zPosition="8" alphatest="blend">
+        <convert type="j00zekMoon">obraz</convert>
+        </widget>
+      <widget source="moon_iluminatedPerc" render="Label" position="1125,338" size="114,40" zPosition="1" font="Roboto_HD;23" halign="left" transparent="1" backgroundColor="black" />
+ 		 	<widget source="session.j00zekMSNWeather" render="j00zekLabel" position="955,416" size="200,45" zPosition="1" font="Roboto_HD;22" halign="center" valign="center" transparent="1" backgroundColor="black">
+     <convert type="j00zekMSNWeather">RUN|0x66CCCC|['currentData']['moon']['phase_name']</convert>
+      </widget>
+
+<!--AIRLY-->
+    <widget source="session.CurrentService" render="Label" position="1407,100" size="454,31" font="Roboto_HD; 28" halign="center" valign="center" foregroundColor="light_yellow" backgroundColor="dark_grey" transparent="1">
+	<convert type="j00zekTranslator">Air quality</convert>
+    </widget>
+    <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="1250,180" size="130,130" source="session.j00zekMSNWeather" transparent="1" zPosition="3">
+        <convert type="j00zekMSNWeather">RUN|['currentData']['airIndex']['iconfilename']</convert>
+        </widget>
+	<widget foregroundColor="black" backgroundColor="black" font="Roboto_HD; 26" render="Label" position="1250,274" size="130,30" source="session.j00zekMSNWeather" zPosition="5" halign="center" transparent="1">
+        <convert type="j00zekMSNWeather">RUN|['currentData']['airIndex']['val']</convert>
+        </widget>
+	<widget backgroundColor="black" font="Roboto_HD; 23" render="Label" position="1250,325" size="130,28" source="session.j00zekMSNWeather" zPosition="5" halign="center" valign="center" transparent="1">
+        <convert type="j00zekMSNWeather">RUN|0x0045b701|['currentData']['airlyLimitsDailyRemaining']|0x00e6ffe6|/|['currentData']['airlyLimitsDaily']</convert>
+        </widget>
+
+	<!--eLabel text="Index:" position="1250,320" size="110,25" font="Roboto_HD;24" halign="left" backgroundColor="black" transparent="1"/>	
+	<widget backgroundColor="black" font="Roboto_HD; 24" render="Label" position="1250,320" size="110,25" source="session.j00zekMSNWeather" zPosition="4" halign="right" transparent="1" >
+        <convert type="j00zekMSNWeather">RUN|['currentData']['airIndex']['valInfo']</convert>
+        </widget-->
+	<widget source="currentData_infoList" render="Listbox" position="1406,137" size="455,263" transparent="1" scrollbarMode="showNever" scrollbarWidth="2" scrollbarSliderBorderColor="background" scrollbarSliderForegroundColor="background" backgroundColor="black">
+		<convert type="TemplatedMultiContent">
+                    {"template": [
+                        MultiContentEntryText(pos = (2, 2), size = (443, 32), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 0),
+                        MultiContentEntryText(pos = (2, 2), size = (443, 32), font=1, flags = RT_HALIGN_RIGHT|RT_VALIGN_CENTER, text = 1),
+                        ],
+                        "fonts": [gFont("HD_Thin", 24), gFont("HD_Thin", 24)],
+                        "itemHeight": 32,
+						"selectionEnabled": False
+                    }
+        </convert>
+	    </widget>
+	<widget source="session.CurrentService" render="Label" backgroundColor="black" font="Regular;18" halign="left" position="1407,413" size="100,25" transparent="1" foregroundColor="#66CCCC">
+      <convert type="j00zekTranslator">Source:</convert>
+        </widget>
+	<widget backgroundColor="black" font="Regular;18" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=30,repeat=99,startdelay=2000" position="1406,413" size="455,25" source="session.j00zekMSNWeather" zPosition="3" halign="right" transparent="1">
+        <convert type="j00zekMSNWeather">RUN|['currentData']['activeSources']['names']</convert>
+        </widget>
+	<widget backgroundColor="black" font="Regular;17" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=30,repeat=99,startdelay=2000" position="1295,440" size="565,27" source="session.j00zekMSNWeather" zPosition="3" halign="right" transparent="1">
+        <convert type="j00zekMSNWeather">RUN|0x00fffe9e|['currentData']['activeSources']['observationpoints']</convert>
+        </widget>
+
+<!--pogoda godzinowa-->
+    <eLabel position="410,465" size="1468,2" backgroundColor="#09249c" />
+    <widget position="100,440" size="350,30" zPosition="3" halign="left" valign="top" render="Label" source="hourlyData_title" font="Roboto_HD; 24" transparent="1" foregroundColor="green" />
+    <!-- h0 -->
+    <widget position="90,470" size="150,205" zPosition="3" halign="center" valign="top" render="j00zekLabel" source="hourlyRecord_0_Summary" font="Roboto_HD; 22" transparent="1" backgroundColor="black" />
+    <widget source="hourlyRecord_0_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="140,490" size="50,50" zPosition="5" transparent="1" />
+    <!-- h1 -->
+    <widget position="249,470" size="150,205" zPosition="3" halign="center" valign="top" render="j00zekLabel" source="hourlyRecord_1_Summary" font="Roboto_HD; 22" transparent="1" backgroundColor="black" />
+    <widget source="hourlyRecord_1_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="299,490" size="50,50" zPosition="5" transparent="1" />
+    <!-- h2 -->
+    <widget position="408,470" size="150,205" zPosition="3" halign="center" valign="top" render="j00zekLabel" source="hourlyRecord_2_Summary" font="Roboto_HD; 22" transparent="1" backgroundColor="black" />
+    <widget source="hourlyRecord_2_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="458,490" size="50,50" zPosition="5" transparent="1" />
+    <!-- h3 -->
+    <widget position="567,470" size="150,205" zPosition="3" halign="center" valign="top" render="j00zekLabel" source="hourlyRecord_3_Summary" font="Roboto_HD; 22" transparent="1" backgroundColor="black" />
+    <widget source="hourlyRecord_3_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="617,490" size="50,50" zPosition="5" transparent="1" />
+    <!-- h4 -->
+    <widget position="726,470" size="150,205" zPosition="3" halign="center" valign="top" render="j00zekLabel" source="hourlyRecord_4_Summary" font="Roboto_HD; 22" transparent="1" backgroundColor="black" />
+    <widget source="hourlyRecord_4_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="776,490" size="50,50" zPosition="5" transparent="1" />
+    <!-- h5 -->
+    <widget position="885,470" size="150,205" zPosition="3" halign="center" valign="top" render="j00zekLabel" source="hourlyRecord_5_Summary" font="Roboto_HD; 22" transparent="1" backgroundColor="black" />
+    <widget source="hourlyRecord_5_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="935,490" size="50,50" zPosition="5" transparent="1" />
+    <!-- h6 -->
+    <widget position="1044,470" size="150,205" zPosition="3" halign="center" valign="top" render="j00zekLabel" source="hourlyRecord_6_Summary" font="Roboto_HD; 22" transparent="1" backgroundColor="black" />
+    <widget source="hourlyRecord_6_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="1094,490" size="50,50" zPosition="5" transparent="1" />
+    <!-- h7 -->
+    <widget position="1203,470" size="150,205" zPosition="3" halign="center" valign="top" render="j00zekLabel" source="hourlyRecord_7_Summary" font="Roboto_HD; 22" transparent="1" backgroundColor="black" />
+    <widget source="hourlyRecord_7_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="1253,490" size="50,50" zPosition="5" transparent="1" />
+    <!-- h8 -->
+    <widget position="1362,470" size="150,205" zPosition="3" halign="center" valign="top" render="j00zekLabel" source="hourlyRecord_8_Summary" font="Roboto_HD; 22" transparent="1" backgroundColor="black" />
+    <widget source="hourlyRecord_8_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="1412,490" size="50,50" zPosition="5" transparent="1" />
+    <!-- h9 -->
+    <widget position="1521,470" size="150,205" zPosition="3" halign="center" valign="top" render="j00zekLabel" source="hourlyRecord_9_Summary" font="Roboto_HD; 22" transparent="1" backgroundColor="black" />
+    <widget source="hourlyRecord_9_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="1571,490" size="50,50" zPosition="5" transparent="1" />
+    <!-- h10 -->
+    <widget position="1680,470" size="150,205" zPosition="3" halign="center" valign="top" render="j00zekLabel" source="hourlyRecord_10_Summary" font="Roboto_HD; 22" transparent="1" backgroundColor="black" />
+    <widget source="hourlyRecord_10_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="1730,490" size="50,50" zPosition="5" transparent="1" />
+    <eLabel position="70,673" size="1780,2" backgroundColor="#09249c" />
+
+  <!--Pogoda dzienna-->
+<!--TODAY-->
+    <widget source="daily_0_date_summary" render="Label" font="Roboto_HD; 26" position="100,680" size="190,30" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="center" />
+    <widget source="daily_0_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="128,710" size="128,128" transparent="1" zPosition="5" />
+    <widget source="daily_0_summary" render="j00zekLabel" font="Roboto_HD; 26" position="100,840" size="190,135" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="top" />
+<!--DAY1-->
+    <widget source="daily_1_date_summary" render="Label" font="Roboto_HD; 26" position="290,680" size="190,30" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="center" />
+    <widget source="daily_1_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="318,710" size="128,128" transparent="1" zPosition="5" />
+    <widget source="daily_1_summary" render="j00zekLabel" font="Roboto_HD; 26" position="290,840" size="190,135" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="top" />
+<!--DAY2-->
+    <widget source="daily_2_date_summary" render="Label" font="Roboto_HD; 26" position="480,680" size="190,30" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="center" />
+    <widget source="daily_2_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="508,710" size="128,128" transparent="1" zPosition="5" />
+    <widget source="daily_2_summary" render="j00zekLabel" font="Roboto_HD; 26" position="480,840" size="190,135" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="top" />
+<!--DAY3-->
+    <widget source="daily_3_date_summary" render="Label" font="Roboto_HD; 26" position="670,680" size="190,30" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="center" />
+    <widget source="daily_3_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="698,710" size="128,128" transparent="1" zPosition="5" />
+    <widget source="daily_3_summary" render="j00zekLabel" font="Roboto_HD; 26" position="670,840" size="190,135" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="top" />
+<!--DAY4-->
+    <widget source="daily_4_date_summary" render="Label" font="Roboto_HD; 26" position="860,680" size="190,30" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="center" />
+    <widget source="daily_4_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="888,710" size="128,128" transparent="1" zPosition="5" />
+    <widget source="daily_4_summary" render="j00zekLabel" font="Roboto_HD; 26" position="860,840" size="190,135" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="top" />
+<!--DAY5-->
+    <widget source="daily_5_date_summary" render="Label" font="Roboto_HD; 26" position="1050,680" size="190,30" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="center" />
+    <widget source="daily_5_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="1078,710" size="128,128" transparent="1" zPosition="5" />
+    <widget source="daily_5_summary" render="j00zekLabel" font="Roboto_HD; 26" position="1049,840" size="190,135" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="top" />
+<!--DAY6-->
+    <widget source="daily_6_date_summary" render="Label" font="Roboto_HD; 26" position="1240,680" size="190,30" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="center" />
+    <widget source="daily_6_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="1268,710" size="128,128" transparent="1" zPosition="5" />
+    <widget source="daily_6_summary" render="j00zekLabel" font="Roboto_HD; 26" position="1240,840" size="190,135" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="top" />
+<!--DAY7-->
+    <widget source="daily_7_date_summary" render="Label" font="Roboto_HD; 26" position="1430,680" size="190,30" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="center" />
+    <widget source="daily_7_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="1458,710" size="128,128" transparent="1" zPosition="5" />
+    <widget source="daily_7_summary" render="j00zekLabel" font="Roboto_HD; 26" position="1430,840" size="190,135" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="top" />
+<!--DAY8-->
+    <widget source="daily_8_date_summary" render="Label" font="Roboto_HD; 26" position="1620,680" size="190,30" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="center" />
+    <widget source="daily_8_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="1648,710" size="128,128" transparent="1" zPosition="5" />
+    <widget source="daily_8_summary" render="j00zekLabel" font="Roboto_HD; 26" position="1620,840" size="190,135" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="top" />
+
+<!-- dolna belka -->
+    <ePixmap pixmap="BlackHarmony/buttons/key_left.png" position="70,1010" size="40,30" alphatest="blend" />
+    <eLabel text="Location" position="115,1010" size="130,35" font="Roboto_HD;24" halign="left" backgroundColor="black" transparent="1" />
+	<ePixmap pixmap="BlackHarmony/buttons/key_right.png" position="245,1010" size="40,30" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="295,1010" size="60,30" alphatest="blend" />
+	<ePixmap pixmap="BlackHarmony/buttons/key_ok.png" position="365,1010" size="60,30" alphatest="blend" />
+	<eLabel text="View details" position="430,993" size="200,65" font="Roboto_HD;24" halign="left" valign="center" transparent="1" backgroundColor="black" />
+  <widget source="session.CurrentService" render="j00zekPiconAnimation" position="650,1013" zPosition="10" size="35,27" alphatest="blend"
+	initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0" random="True"
+	pixmaps="BlackHarmony/skin_user_animButtons/key_red"
+	pixalter="BlackHarmony/buttons/key_red.png" />
+  <widget source="session.CurrentService" render="j00zekPiconAnimation" position="980,1013" zPosition="10" size="35,27" alphatest="blend"
+	initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,1" random="True"
+	pixmaps="BlackHarmony/skin_user_animButtons/key_green"
+	pixalter="BlackHarmony/buttons/key_green.png" />
+  <widget source="session.CurrentService" render="j00zekPiconAnimation" position="1310,1013" zPosition="10" size="35,27" alphatest="blend"
+	initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,2" random="True"
+	pixmaps="BlackHarmony/skin_user_animButtons/key_yellow"
+	pixalter="BlackHarmony/buttons/key_yellow.png" />
+  <widget source="session.CurrentService" render="j00zekPiconAnimation" position="1640,1013" zPosition="10" size="35,27" alphatest="blend"
+	initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,3" random="True"
+	pixmaps="BlackHarmony/skin_user_animButtons/key_blue"
+	pixalter="BlackHarmony/buttons/key_blue.png" />
+  <widget name="key_red" position="690,993" size="289,65" font="Roboto_HD; 24" backgroundColor="black" transparent="1" halign="left" valign="center"/>
+  <widget name="key_green" position="1020,993" size="289,65" font="Roboto_HD; 24" backgroundColor="black" transparent="1" halign="left" valign="center"/>
+  <widget name="key_yellow" position="1350,993" size="289,65" font="Roboto_HD; 24" backgroundColor="black" transparent="1" halign="left" valign="center"/>
+  <widget name="key_blue" position="1680,993" size="150,65" font="Roboto_HD; 24" backgroundColor="black" transparent="1" halign="left" valign="center"/>
+</screen>
+
+<!-- Daily Details pod OK -->
+    <screen name="advDailyDetails" position="0,0" size="1920,1080" title=" " flags="wfNoBorder" backgroundColor="black">
+    <ePixmap position="0,0" zPosition="-10" size="1920,1080" pixmap="BlackHarmony/bg_design/EPGPig.png" transparent="1" alphatest="blend" />
+
+    <!-- header -->
+    <widget source="global.CurrentTime" render="Label" position="35,30" size="80,35" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="124,30" size="460,35" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+    <widget source="session.CurrentService" render="Label" position="1453,30" size="420,35" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1">
+		<convert type="j00zekAlternateTitle">Detailed forecast</convert>
+    </widget>
+<!-- INFORMACJE DZIENNE-->
+	<widget source="day_date" render="Label" position="51,56" size="1817,50" font="HD_Thin; 36" halign="center" valign="center" transparent="1" backgroundColor="black" foregroundColor="green" noWrap="1" />
+	<widget source="day_length_summary" render="Label" position="451,124" size="1350,311" font="HD_Thin; 26" halign="left" valign="top" transparent="1" backgroundColor="black" noWrap="0" />
+    <ePixmap position="120,220" zPosition="-5" size="20, 25" pixmap="//usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/temp+.png" transparent="1" alphatest="blend" />
+	<widget source="day_tempHi" render="Label" position="150,215" size="90,32" font="HD_Thin; 27" halign="left" valign="center" transparent="1" backgroundColor="black" noWrap="1" />
+    <ePixmap position="220,220" zPosition="-5" size="20, 25" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/temp-.png" transparent="1" alphatest="blend" />
+	<widget source="day_tempLo" render="Label" position="250,215" size="90,32" font="HD_Thin; 27" halign="left" valign="center" transparent="1" backgroundColor="black" noWrap="1" />
+    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/aircon_data/co_odtemp_eu.png" position="180,148" size="48,48" zPosition="3" transparent="1" alphatest="blend" />
+	<widget source="day_UV" render="Label" position="187,300" size="223,51" font="HD_Thin; 22" halign="left" valign="center" transparent="1" backgroundColor="black" noWrap="1" />
+        <ePixmap position="150,314" zPosition="-5" size="25, 25" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/uv_icon.png" transparent="1" alphatest="blend" />
+<!-- Podsumowanie dnia-->
+	<widget source="day_title" render="Label" position="241,395" size="356,32" font="HD_Thin; 27" halign="left" valign="center" transparent="1" backgroundColor="black" foregroundColor="yellow" noWrap="1" />
+    <widget source="day_icon" render="j00zekMSNWeatherPixmap" position="230,440" size="130,130" zPosition="5" alphatest="blend" transparent="1" />
+    <widget source="Day_Forecast" render="j00zekLabel" position="380,410" size="580,158" font="HD_Thin; 26" halign="left" valign="center" transparent="1" backgroundColor="black" />
+<!-- Podsumowanie nocy-->
+	<widget source="night_title" render="Label" position="1102,395" size="356,32" font="HD_Thin; 27" halign="left" valign="center" transparent="1" backgroundColor="black" foregroundColor="blue" noWrap="1" />
+    <widget source="night_icon" render="j00zekMSNWeatherPixmap" position="1090,440" size="130,130" zPosition="5" alphatest="blend" transparent="1" />
+    <widget source="night_Forecast" render="j00zekLabel" position="1240,410" size="580,158" font="HD_Thin; 26" halign="left" valign="center" transparent="1" backgroundColor="black" />
+<!-- Moon info-->
+        <ePixmap pixmap="BlackHarmony/icons/Weather/moonwsch.png" position="390,575" zPosition="1" size="99,50" alphatest="blend" />
+	<widget source="moonriseLabel" render="Label" position="500,590" size="250,30" font="HD_Thin; 22" halign="left" valign="center" transparent="1" backgroundColor="black" noWrap="1" />
+	<widget source="moonrise" render="Label" position="500,590" size="250,30" font="HD_Thin; 22" halign="right" valign="center" transparent="1" backgroundColor="black" noWrap="1" />
+	<ePixmap pixmap="BlackHarmony/icons/Weather/moonzach.png" position="790,575" zPosition="1" size="99,50" alphatest="blend" />
+        <widget source="moonsetLabel" render="Label" position="900,590" size="250,30" font="HD_Thin; 22" halign="left" valign="center" transparent="1" backgroundColor="black" noWrap="1" />
+	<widget source="moonset" render="Label" position="900,590" size="250,30" font="HD_Thin; 22" halign="right" valign="center" transparent="1" backgroundColor="black" noWrap="1" />
+	<widget source="moonPhase" render="Label" position="1200,588" size="500,32" font="HD_Thin; 23" halign="left" valign="center" transparent="1" backgroundColor="black" foregroundColor="#86abdb" noWrap="1" />
+<!--HOURLY DATA-->
+	  <ePixmap pixmap="BlackHarmony/gfx/liniapion.png" position="380,680" size="2,240" zPosition="3" transparent="1" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/gfx/liniapion.png" position="670,680" size="2,240" zPosition="3" transparent="1" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/gfx/liniapion.png" position="960,680" size="2,240" zPosition="3" transparent="1" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/gfx/liniapion.png" position="1250,680" size="2,240" zPosition="3" transparent="1" alphatest="blend" />
+	  <ePixmap pixmap="BlackHarmony/gfx/liniapion.png" position="1540,680" size="2,240" zPosition="3" transparent="1" alphatest="blend" />
+    <eLabel position="70,640" size="1780,2" backgroundColor="#09249c" />
+
+    <!-- h0 -->
+	<widget source="h0_infoList" render="Listbox" position="100,660" size="270,280" scrollbarMode="showNever" transparent="1" backgroundColor="black">
+		<convert type="TemplatedMultiContent">
+                    {"template": [
+                        MultiContentEntryText(pos = (0, 0), size = (280, 25), font=1, flags = RT_HALIGN_CENTER|RT_VALIGN_CENTER, text = 0, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        
+                        MultiContentEntryPixmapAlphaBlend(pos = (140, 60), size = (30, 30), png = 1),
+                        MultiContentEntryText(pos = (180, 60), size = (90, 30), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 2, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        
+						MultiContentEntryPixmapAlphaBlend(pos = (140, 90), size = (30, 30), png = 3),
+                        MultiContentEntryText(pos = (180, 90), size = (90, 30), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 4, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        
+						MultiContentEntryPixmapAlphaBlend(pos = (140, 120), size = (30, 30), png = 5),
+                        MultiContentEntryText(pos = (180, 120), size = (90, 25), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 6, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        
+                        MultiContentEntryText(pos = (10, 160), size = (260, 110), font=0, flags = RT_HALIGN_CENTER|RT_VALIGN_CENTER|RT_WRAP, text = 7, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        ],
+                        "fonts": [gFont("Regular", 24), gFont("Regular", 22)],
+                        "itemHeight": 280,
+						"selectionEnabled": False
+                    }
+        </convert>
+	</widget>
+    <widget source="h0_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="100,690" size="130,130" zPosition="5" transparent="1" />
+    <!-- h1 -->
+	<widget source="h1_infoList" render="Listbox" position="390,660" size="270,280" scrollbarMode="showNever" transparent="1" backgroundColor="black">
+		<convert type="TemplatedMultiContent">
+                    {"template": [
+                        MultiContentEntryText(pos = (0, 0), size = (280, 25), font=1, flags = RT_HALIGN_CENTER|RT_VALIGN_CENTER, text = 0, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        
+                        MultiContentEntryPixmapAlphaBlend(pos = (140, 60), size = (30, 30), png = 1),
+                        MultiContentEntryText(pos = (180, 60), size = (90, 30), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 2, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        
+						MultiContentEntryPixmapAlphaBlend(pos = (140, 90), size = (30, 30), png = 3),
+                        MultiContentEntryText(pos = (180, 90), size = (90, 30), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 4, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        
+						MultiContentEntryPixmapAlphaBlend(pos = (140, 120), size = (30, 30), png = 5),
+                        MultiContentEntryText(pos = (180, 120), size = (90, 25), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 6, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        
+                        MultiContentEntryText(pos = (10, 160), size = (260, 110), font=0, flags = RT_HALIGN_CENTER|RT_VALIGN_CENTER|RT_WRAP, text = 7, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        ],
+                        "fonts": [gFont("Regular", 24), gFont("Regular", 22)],
+                        "itemHeight": 280,
+						"selectionEnabled": False
+                    }
+        </convert>
+	</widget>
+    <widget source="h1_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="390,690" size="130,130" zPosition="5" transparent="1" />
+    <!-- h2 -->
+	<widget source="h2_infoList" render="Listbox" position="680,660" size="270,280" scrollbarMode="showNever" transparent="1" backgroundColor="black">
+		<convert type="TemplatedMultiContent">
+                    {"template": [
+                        MultiContentEntryText(pos = (0, 0), size = (280, 25), font=1, flags = RT_HALIGN_CENTER|RT_VALIGN_CENTER, text = 0, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        
+                        MultiContentEntryPixmapAlphaBlend(pos = (140, 60), size = (30, 30), png = 1),
+                        MultiContentEntryText(pos = (180, 60), size = (90, 30), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 2, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        
+						MultiContentEntryPixmapAlphaBlend(pos = (140, 90), size = (30, 30), png = 3),
+                        MultiContentEntryText(pos = (180, 90), size = (90, 30), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 4, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        
+						MultiContentEntryPixmapAlphaBlend(pos = (140, 120), size = (30, 30), png = 5),
+                        MultiContentEntryText(pos = (180, 120), size = (90, 25), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 6, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        
+                        MultiContentEntryText(pos = (10, 160), size = (260, 110), font=0, flags = RT_HALIGN_CENTER|RT_VALIGN_CENTER|RT_WRAP, text = 7, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        ],
+                        "fonts": [gFont("Regular", 24), gFont("Regular", 22)],
+                        "itemHeight": 280,
+						"selectionEnabled": False
+                    }
+        </convert>
+	</widget>
+    <widget source="h2_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="677,690" size="130,130" zPosition="5" transparent="1" />
+    <!-- h3 -->
+	<widget source="h3_infoList" render="Listbox" position="970,660" size="270,280" scrollbarMode="showNever" transparent="1" backgroundColor="black">
+		<convert type="TemplatedMultiContent">
+                    {"template": [
+                        MultiContentEntryText(pos = (0, 0), size = (280, 25), font=1, flags = RT_HALIGN_CENTER|RT_VALIGN_CENTER, text = 0, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        
+                        MultiContentEntryPixmapAlphaBlend(pos = (140, 60), size = (30, 30), png = 1),
+                        MultiContentEntryText(pos = (180, 60), size = (90, 30), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 2, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        
+						MultiContentEntryPixmapAlphaBlend(pos = (140, 90), size = (30, 30), png = 3),
+                        MultiContentEntryText(pos = (180, 90), size = (90, 30), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 4, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        
+						MultiContentEntryPixmapAlphaBlend(pos = (140, 120), size = (30, 30), png = 5),
+                        MultiContentEntryText(pos = (180, 120), size = (90, 25), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 6, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        
+                        MultiContentEntryText(pos = (10, 160), size = (260, 110), font=0, flags = RT_HALIGN_CENTER|RT_VALIGN_CENTER|RT_WRAP, text = 7, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        ],
+                        "fonts": [gFont("Regular", 24), gFont("Regular", 22)],
+                        "itemHeight": 280,
+						"selectionEnabled": False
+                    }
+        </convert>
+	</widget>
+    <widget source="h3_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="970,690" size="130,130" zPosition="5" transparent="1" />
+    <!-- h4 -->
+	<widget source="h4_infoList" render="Listbox" position="1260,660" size="270,280" scrollbarMode="showNever" transparent="1" backgroundColor="black">
+		<convert type="TemplatedMultiContent">
+                    {"template": [
+                        MultiContentEntryText(pos = (0, 0), size = (280, 25), font=1, flags = RT_HALIGN_CENTER|RT_VALIGN_CENTER, text = 0, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        
+                        MultiContentEntryPixmapAlphaBlend(pos = (140, 60), size = (30, 30), png = 1),
+                        MultiContentEntryText(pos = (180, 60), size = (90, 30), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 2, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        
+						MultiContentEntryPixmapAlphaBlend(pos = (140, 90), size = (30, 30), png = 3),
+                        MultiContentEntryText(pos = (180, 90), size = (90, 30), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 4, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        
+						MultiContentEntryPixmapAlphaBlend(pos = (140, 120), size = (30, 30), png = 5),
+                        MultiContentEntryText(pos = (180, 120), size = (90, 25), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 6, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        
+                        MultiContentEntryText(pos = (10, 160), size = (260, 110), font=0, flags = RT_HALIGN_CENTER|RT_VALIGN_CENTER|RT_WRAP, text = 7, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        ],
+                        "fonts": [gFont("Regular", 24), gFont("Regular", 22)],
+                        "itemHeight": 280,
+						"selectionEnabled": False
+                    }
+        </convert>
+	</widget>
+    <widget source="h4_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="1260,690" size="130,130" zPosition="5" transparent="1" />
+    <!-- h5 -->
+	<widget source="h5_infoList" render="Listbox" position="1550,660" size="270,280" scrollbarMode="showNever" transparent="1" backgroundColor="black">
+		<convert type="TemplatedMultiContent">
+                    {"template": [
+                        MultiContentEntryText(pos = (0, 0), size = (280, 25), font=1, flags = RT_HALIGN_CENTER|RT_VALIGN_CENTER, text = 0, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        
+                        MultiContentEntryPixmapAlphaBlend(pos = (140, 60), size = (30, 30), png = 1),
+                        MultiContentEntryText(pos = (180, 60), size = (90, 30), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 2, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        
+						MultiContentEntryPixmapAlphaBlend(pos = (140, 90), size = (30, 30), png = 3),
+                        MultiContentEntryText(pos = (180, 90), size = (90, 30), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 4, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        
+						MultiContentEntryPixmapAlphaBlend(pos = (140, 120), size = (30, 30), png = 5),
+                        MultiContentEntryText(pos = (180, 120), size = (90, 25), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 6, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        
+                        MultiContentEntryText(pos = (10, 160), size = (260, 110), font=0, flags = RT_HALIGN_CENTER|RT_VALIGN_CENTER|RT_WRAP, text = 7, color=0xf2f2f2, color_sel=0xf2f2f2),
+                        ],
+                        "fonts": [gFont("Regular", 24), gFont("Regular", 22)],
+                        "itemHeight": 280,
+						"selectionEnabled": False
+                    }
+        </convert>
+	</widget>
+    <widget source="h5_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="1550,690" size="130,130" zPosition="5" transparent="1" />
+
+<!-- dolna belka -->
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="83,1015" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" pixmaps="BlackHarmony/skin_user_animButtons/key_red" pixalter="/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/key_red.png" />
+	<!--ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/key_red.png" position="100,980" size="35,27" alphatest="blend"/-->
+    <widget name="key_red" position="126,1014" size="350,35" font="Roboto_HD; 24" backgroundColor="black" transparent="1" />
+
+    <!--ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/key_green.png" position="500,980" size="35,27" alphatest="blend"/>
+    <widget name="key_green" position="550,980" size="350,35" font="Roboto_HD; 24" backgroundColor="black" transparent="1"/>
+    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/key_yellow.png" position="900,980" size="35,27" alphatest="blend"/>
+    <widget name="key_yellow" position="950,980" size="350,35" font="Roboto_HD; 24" backgroundColor="black" transparent="1"/>
+    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/key_blue.png" position="1300,980" size="35,27" alphatest="blend"/>
+    <widget name="key_blue" position="1350,980" size="350,35" font="Roboto_HD; 24" backgroundColor="black" transparent="1"/-->
+
+    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/key_left.png" position="1550,1015" size="35,27" alphatest="blend" />
+    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/key_right.png" position="1600,1015" size="35,27" alphatest="blend" />
+    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/key_up.png" position="1650,1015" size="35,27" alphatest="blend" />
+    <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/key_down.png" position="1700,1015" size="35,27" alphatest="blend" />
+</screen>
+</skin>

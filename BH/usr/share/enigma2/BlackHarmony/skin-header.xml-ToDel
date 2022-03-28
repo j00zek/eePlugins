@@ -1,0 +1,233 @@
+<skin>
+  <copyright>
+    <orginal author="Crash" version="4.3" name="BlackHarmony" license="No public modifications allowed without my permission"/>
+    <homepage url="NA"/>
+    <support url="NA"/>
+  </copyright>
+  <output id="0">
+    <resolution xres="1920" yres="1080" bpp="32"/>
+  </output>
+  <colors>
+    <color name="background" value="#18000000"/>
+    <color name="backtop" value="#001b2c47"/>
+    <color name="black" value="#00000000"/>
+    <color name="blue" value="#0000cbf6"/>
+    <color name="blue_epg" value="#000b2b4e"/>
+    <color name="border" value="#00292929"/>
+    <color name="cyan" value="#000090e6" />
+    <color name="dark" value="#00294a6b"/>
+    <color name="dark_blue" value="#00005ea0"/>
+    <color name="dark_grey" value="#00595959"/>
+    <color name="data" value="#000383c5" />
+    <color name="font_0" value="#00454545" />
+    <color name="font_1" value="#00292929" />
+    <color name="font_ciemny" value="#00292929" />
+    <color name="font_green" value="#0045b701" />
+    <color name="font_grey" value="#006a6a6a" />
+    <color name="font_light_grey" value="#00b5b5b5" />
+    <color name="font_szary" value="#00595959" />
+    <color name="font_tlo_ciemny" value="#00aaaaaa" />
+    <color name="font_tlo_szary" value="#00dddddd" />
+    <color name="foreground" value="#00ffffff"/>
+    <color name="green" value="#007ad927"/>
+    <color name="green_epg" value="#00096509"/>
+    <color name="grey" value="#00dcdcdc"/>
+    <color name="lemon" value="#00c0f000"/>
+    <color name="light_grey" value="#00bababa"/>
+    <color name="light_red" value="#00f52a6d"/>
+    <color name="light_yellow" value="#00fffe9e"/>
+    <color name="linie" value="#00828282"/>
+    <color name="orange" value="#00ff6215"/>
+    <color name="pastel" value="#00ffffd8"/>
+    <color name="picture" value="#ff000000"/>
+    <color name="podsw" value="#00ffffd1"/>
+    <color name="red" value="#00db0000"/>
+    <color name="selected" value="#00013956"/>
+    <color name="transparent" value="#ffffffff"/>
+    <color name="transpBlack" value="#19000000"/>
+    <color name="transpBlack_1" value="#25000000"/>
+    <color name="transpWhite" value="#77d4d4d4"/>
+    <color name="transpyellow" value="#33bab329"/>
+    <color name="white" value="#00ffffff"/>
+    <color name="yellow" value="#00ffcc00"/>
+  </colors>
+  <fonts>
+    <font filename="lcd.ttf" name="LCD" scale="100"/>
+    <font filename="ae_AlMateen.ttf" name="Replacement" scale="100" replacement="1"/>
+    <font filename="tuxtxt.ttf" name="Console" scale="100"/>
+    <font filename="/usr/share/enigma2/BlackHarmony/fonts/nmsbd.ttf" name="Arial" scale="100"/>
+    <font filename="/usr/share/enigma2/BlackHarmony/fonts/nmsbd.ttf" name="BHfDlcD" scale="100"/>
+    <font filename="/usr/share/enigma2/BlackHarmony/fonts/HandelGotDBol.ttf" name="Bold" scale="100"/>
+    <font filename="/usr/share/enigma2/BlackHarmony/fonts/roboto.ttf" name="Napisy" scale="200"/>
+    <font filename="/usr/share/enigma2/BlackHarmony/fonts/regular.ttf" name="Regular" scale="110"/>
+    <font filename="/usr/share/enigma2/BlackHarmony/fonts/roboto.ttf" name="Roboto_HD" scale="100"/>
+    <font filename="/usr/share/enigma2/BlackHarmony/fonts/hd_thin.ttf" name="HD_Thin" scale="100"/>
+    <font filename="/usr/share/enigma2/BlackHarmony/fonts/scoutcondd.ttf" name="Cyfry" scale="100"/>
+    <font filename="/usr/share/enigma2/BlackHarmony/fonts/meteocons.ttf" name="Wetter" scale="140" />
+    <font filename="/usr/share/enigma2/BlackHarmony/fonts/NewXTA.ttf" name="Menu" scale="100" />
+    <font filename="/usr/share/enigma2/BlackHarmony/fonts/Geomanist.ttf" name="Geomanist" scale="100" />
+    <font filename="/usr/share/enigma2/BlackHarmony/fonts/BebasNeue.ttf" name="BebasNeue" scale="100" />
+</fonts>
+  <parameters>
+    <parameter name="ConfigListSlider" value="22,1"/>
+    <parameter name="ConfigListSeperator" value="400"/>
+    <!--             MovieList                                  -->
+    <parameter name="MovieListProgress" value="1200,17,80,13"/>
+    <parameter name="MovieListProgressPercent" value="1250,8,80,37"/>
+    <parameter name="MovieListProgressBorder" value="1"/>
+    <parameter name="MovieListIcon" value="0,9,25,22"/>
+    <parameter name="MovieListDirIcon" value="0,9,25,22"/>
+    <parameter name="MovieListDirectoryIcon" value="50,2,1020,45"/>
+    <parameter name="MovieListMinimalItemHeight" value="45"/>
+    <parameter name="MovieListMinimalFont1" value="Roboto_HD;28"/>
+    <parameter name="MovieListMinimalVTIPicon" value="1060,7,50,30"/>
+    <parameter name="MovieListMinimalVTIService" value="920,11,100,40"/>
+    <parameter name="MovieListMinimalVTITitle" value="-60,4,1000,40"/>
+    <parameter name="MovieListMinimalVTIBegin" value="1135,11,10,40"/>
+    <parameter name="MovieListMinimalVTILength" value="1160,11,15,40"/>
+    <parameter name="MovieListMinimalVTISize" value="1190,11,10,40"/>
+    <!--             Choicelist                       -->
+    <parameter name="ChoicelistItemHeight" value="40"/>
+    <parameter name="ServicelistPicon" value="0,10,60,40"/>
+    <parameter name="ChoicelistFont" value="Roboto_HD; 26"/>
+    <parameter name="ChoicelistFontSize" value="30"/>
+    <parameter name="ChoicelistName" value="45,1,800,40"/>
+    <parameter name="ChoicelistIcon" value="3,4,35,35"/>
+    <parameter name="ChoicelistDash" value="0,36,1000,30"/>
+    <!--             EPGList                         -->
+    <parameter name="EPGlistFont1" value="Roboto_HD; 27"/>
+    <parameter name="EPGlistFont2" value="Roboto_HD; 27"/>
+    <parameter name="EPGlistText1" value="20,0,70,40"/>
+    <parameter name="EPGlistText2" value="90,0,200,40"/>
+    <parameter name="EPGlistRecImage" value="320,5,21,21"/>
+    <parameter name="EPGlistRecText" value="347,0,773,40"/>
+    <parameter name="EPGlistNonRecText" value="320,0,800,40"/>
+    <parameter name="EPGlistEPGBarIcon" value="3,12,21,40"/>
+    <parameter name="EPGlistEPGBarText1" value="35,0,620,40"/>
+    <parameter name="EPGlistEPGBarText2" value="5,0,650,40"/>
+    <!--             FileList                         -->
+    <parameter name="FileListName" value="35,1,700,45"/>
+    <parameter name="FileListIcon" value="10,11,20,20"/>
+    <parameter name="FileListMultiName" value="55,1,470,36"/>
+    <parameter name="FileListMultiIcon" value="30,8,20,20"/>
+    <parameter name="FileListMultiLock" value="0,0,20,20"/>
+    <parameter name="FileListMulitiFont" value="Regular; 28" />
+    <parameter name="FileListMultiFontSize" value="37" />
+    <parameter name="FileListMultiItemHeight" value="40" />
+    <parameter name="FileListFont" value="Roboto_HD;26"/>
+    <parameter name="FileListFontSize" value="28"/>
+    <parameter name="FileListItemHeight" value="35"/>
+    <parameter name="HelpMenuListHlp" value="10,4,750,40"/>
+    <parameter name="HelpMenuListFont0" value="Roboto_HD; 26"/>
+    <parameter name="HelpMenuListFontSize1" value="32"/>
+    <parameter name="HelpMenuListExtFontSize1" value="32"/>
+    <parameter name="HelpMenuListExtFontSize2" value="28"/>
+    <parameter name="HelpMenuListItemHeight" value="35"/>
+    <parameter name="HelpMenuListExtHlp0" value="0,0,400,40"/>
+    <parameter name="HelpMenuListExtendedFont0" value="Roboto_HD; 26"/>
+    <parameter name="HelpMenuListExtHlp1" value="0,36,400,40"/>
+    <parameter name="HelpMenuListExtendedFont1" value="Roboto_HD; 26"/>
+    <parameter name="HelpMenuListExtendedItemHeight" value="35"/>
+    <!--            PluginList                         -->
+    <parameter name="PluginListFont1" value="Roboto_HD; 26"/>
+    <parameter name="PluginListFont2" value="Roboto_HD; 22"/>
+    <parameter name="PluginListItemHeight" value="70"/>
+    <parameter name="PluginListName" value="140,4,775,37"/>
+    <parameter name="PluginListDescription" value="140,38,775,32"/>
+    <parameter name="PluginListIcon" value="10,14,100,40"/>
+    <!--            PluginListDownload                 -->
+    <parameter name="PluginBrowserName" value="180,8,38" />
+    <parameter name="PluginBrowserDescr" value="180,42,25" />
+    <parameter name="PluginBrowserIcon" value="15,8,150,60" />
+    <parameter name="PluginBrowserDownloadName" value="120,8,38" />
+    <parameter name="PluginBrowserDownloadDescr" value="120,42,25" />
+    <parameter name="PluginBrowserDownloadIcon" value="15,0,90,75" />
+    <!--             TimerList                        -->
+    <parameter name="TimerListNoStyleName" value="0,3,1100,32"/>
+    <parameter name="TimerListNoStyleDesc" value="0,46,1100,32"/>
+    <parameter name="TimerListTime" value="0,86,900,30"/>
+    <parameter name="TimerListFont1" value="Roboto_HD;32"/>
+    <parameter name="TimerListFont2" value="Roboto_HD;29"/>
+    <parameter name="TimerListItemHeight" value="120"/>
+    <parameter name="TimerListState" value="800,86,210,30"/>
+    <parameter name="TimerListIconHOffset" value="86"/>
+    <parameter name="TimerListNoIconHOffset" value="10"/>
+    <parameter name="TimerListTrimLength" value="86"/>
+    <parameter name="TimerListIcon" value="15,40,30,30"/>
+    <parameter name="TimerListPngTimer" value="10,45,30,36"/>
+    <parameter name="TimerListZapTimer" value="5,9,36,36"/>
+    <parameter name="TimerListDisabledTimer" value="10,45,30,36"/>
+    <parameter name="TimerListRedTimer" value="500,5,45,40"/>
+    <parameter name="TimerListInstantRecord" value="10,45,30,36"/>
+    <!--             MultiQuickButtonList                        -->
+    <parameter name="MultiQuickButtonListItemHeight" value="35"/>
+    <parameter name="MultiQuickButtonList" value="45,1,780,35"/>
+    <parameter name="MultiQuickButtonListFont" value="Roboto_HD;26"/>
+    <!--             SelectionList                         -->
+    <parameter name="SelectionListFont" value="Roboto_HD;26"/>
+    <parameter name="SelectionListDescription" value="35,5,600,35"/>
+    <parameter name="SelectionListIcon" value="0,5,35,35"/>
+    <parameter name="SelectionListItemHeight" value="35"/>
+    <!--             ServiceInfoList                         -->
+    <parameter name="ServiceInfo" value="0, 0, 250, 38"/>
+    <parameter name="ServiceInfoLeft" value="0, 0, 250, 38"/>
+    <parameter name="ServiceInfoRight" value="270, 0, 840, 38"/>
+    <!--             ServiceList                         -->
+    <parameter name="ServicelistDoubleSpacedMinHeight" value="50"/>
+    <parameter name="Servicelist100Picon" value="10,17,100,60"/>
+    <parameter name="ServicelistServiceTypePixmap100" value="0,0,30,30"/>
+    <parameter name="ServicelistServiceEventProgressbar100" value="780,-45,100,5"/>
+    <parameter name="ServicelistRecordServicePixmap100" value="35,0,65,65"/>
+    <parameter name="ServicelistServiceNumber100" value="30,4,50,40"/>
+    <parameter name="ServicelistServiceName100" value="35,4,900,40"/>
+    <parameter name="ServicelistServiceInfo100" value="35,5,900,40"/>
+    <!-- parameter name="ServicelistRecordServicePixmap" value="3,7,30,45" /-->
+    <!--             MediaplayerPlaylist                      -->
+    <parameter name="MediaPlayerPlayListFont" value="Roboto_HD;26"/>
+    <parameter name="MediaPlayerPlayList" value="30,2,700,40"/>
+    <parameter name="PlayListMultiName" value="39,3,675,39" />
+    <parameter name="PlayListMultiIcon" value="3,9,30,30" />
+    <parameter name="PlayListMultiLock" value="3,9,30,30" />
+         <!--            VirtualKeyBoard                      -->
+    <parameter name="VirtualKeyBoard" value="45,85"/>
+    <parameter name="VirtualKeyBoardAlignment" value="0,0"/>
+    <parameter name="VirtualKeyBoardPadding" value="4,4"/>
+    <parameter name="VirtualKeyBoardShiftColors" value="16777215, 16777215, 65535, 16711935"/>
+    <!--             SHOUTcastList                      -->
+    <parameter name="SHOUTcastListItem" value="25, 25, 45, 110, 35, 37, 75, 35"/>
+    <!--             Audio selection                      -->
+    <parameter name="AudioSelectionSliderSeparation" value="275" />
+    <parameter name="ConfigListSliderSeparation" value="250" />
+  </parameters>
+  <subtitles>
+    <sub name="Subtitle_TTX" font="Napisy;70" foregroundColor="white" shadowColor="black" shadowOffset="4,4"/>
+    <sub name="Subtitle_Regular" font="Napisy;70" foregroundColor="white" shadowColor="black" shadowOffset="4,4"/>
+    <sub name="Subtitle_Bold" font="Napisy;70" foregroundColor="white" shadowColor="black" shadowOffset="4,4"/>
+    <sub name="Subtitle_Italic" font="Napisy;70" foregroundColor="white" shadowColor="black" shadowOffset="4,4"/>
+  </subtitles>
+  <windowstyle type="skinned" id="0">
+    <title offset="33,22" font="Roboto_HD;26"/>
+    <color name="Background" color="background"/>
+    <color name="LabelForeground" color="white"/>
+    <color name="ListboxBackground" color="background"/>
+    <color name="ListboxForeground" color="white"/>
+    <color name="ListboxSelectedBackground" color="selected"/>
+    <color name="ListboxSelectedForeground" color="podsw"/>
+    <color name="ListboxMarkedBackground" color="black"/>
+    <color name="ListboxMarkedForeground" color="lemon"/>
+    <color name="ListboxMarkedAndSelectedBackground" color="black"/>
+    <color name="ListboxMarkedAndSelectedForeground" color="orange"/>
+    <color name="WindowTitleForeground" color="white"/>
+    <color name="WindowTitleBackground" color="dark_grey"/>
+    <borderset name="bsWindow">
+      <pixmap pos="bpTopLeft" filename="BlackHarmony/bg_design/bs_tl.png"/>
+      <pixmap pos="bpTop" filename="BlackHarmony/bg_design/bs_t.png"/>
+      <pixmap pos="bpTopRight" filename="BlackHarmony/bg_design/bs_tr.png"/>
+      <pixmap pos="bpLeft" filename="BlackHarmony/bg_design/bs_l.png"/>
+      <pixmap pos="bpRight" filename="BlackHarmony/bg_design/bs_r.png"/>
+      <pixmap pos="bpBottomLeft" filename="BlackHarmony/bg_design/bs_bl.png"/>
+      <pixmap pos="bpBottom" filename="BlackHarmony/bg_design/bs_b.png"/>
+      <pixmap pos="bpBottomRight" filename="BlackHarmony/bg_design/bs_br.png"/>
+    </borderset>
+  </windowstyle>
+</skin>

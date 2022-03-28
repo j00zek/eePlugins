@@ -1,0 +1,74 @@
+<screen name="MessageBox" position="center,center" size="790,180" title="Message">
+    <widget name="QuestionPixmap" pixmap="BlackHarmony/icons/transparent.png" position="5,5" size="120,180" alphatest="blend"/>
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" pixdelay="100" loopdelay="100" loop="True" lockpath="True" pixmaps="BlackHarmony/icons/Confused/" position="0,0" zPosition="10" size="120,180" alphatest="blend" />
+    <widget name="text" position="0,0" size="0,0" font="Roboto_HD; 30" transparent="1" valign="center" />
+    <widget name="list" font="Roboto_HD; 27" position="0,0" size="0,0" backgroundColor="background" itemHeight="35" selectionPixmap="BlackHarmony/menu/sel_750_35.png" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" transparent="1"/>
+    <!-- tylko aby skin sie nie plul, ze brak -->
+        <widget name="ErrorPixmap" pixmap="BlackHarmony/icons/transparent.png" position="5,5" size="120,180" alphatest="blend"/>
+    <widget name="InfoPixmap" pixmap="BlackHarmony/icons/transparent.png" position="5,5" size="120,180" alphatest="blend"/>
+    <applet type="onLayoutFinish">
+# this should be factored out into some helper code, but currently demonstrates applets.
+
+DBG=False
+
+from enigma import eSize, ePoint
+if DBG: open("/tmp/MessageBox.log", "w").write('%s\n' % self.text)
+
+animPosition = (0, 0)
+animWidth = self["QuestionPixmap"].instance.size().width()
+animHeight = self["QuestionPixmap"].instance.size().height()
+WindowWidth = self.instance.size().width()
+windowHeight = self.instance.size().height()
+orgWindowPos = self.instance.position()
+offset = 10
+textFont = 25
+listItemHeight = 35
+
+# Move and Resize label
+textPos = (offset + animWidth, offset)
+textWidth = WindowWidth - offset * 2 - animPosition[0] - animWidth
+textTmpHeight = textFont * 2 + offset
+textSize = ( textWidth, textTmpHeight)
+self["text"].instance.move(ePoint(textPos[0], textPos[1]))
+self["text"].instance.resize(eSize(textWidth, textTmpHeight))
+textHeight = self["text"].instance.calculateSize().height()
+if DBG: open("/tmp/MessageBox.log", "a").write('textHeight=%s\n' % textHeight)
+if DBG: open("/tmp/MessageBox.log", "a").write('textTmpHeight=%s\n' % textTmpHeight)
+if textHeight > textTmpHeight:
+        self["text"].instance.resize(eSize(textWidth, textHeight))
+else:
+        textHeight = textTmpHeight
+
+AnimEndPosY = animPosition[1] + animHeight + offset
+listPosY = textPos[1] + textHeight + offset
+listHeight = listItemHeight * len(self.list)
+if DBG: open("/tmp/MessageBox.log", "a").write('listHeight=%s\n' % listHeight)
+#
+if (listPosY) > (AnimEndPosY):
+        listPos = (offset, listPosY)
+        listSize = (WindowWidth - offset * 2, listHeight)
+        newWindowHeight = listPosY + listHeight + offset
+elif (listPosY + listHeight) > (AnimEndPosY):
+        listPos = (offset, AnimEndPosY)
+        listSize = (WindowWidth - offset * 2, listHeight)
+        newWindowHeight = AnimEndPosY + listHeight + offset
+else:
+        listPos = (textPos[0], listPosY) 
+        listSize =  (textWidth, listHeight)
+        newWindowHeight = AnimEndPosY
+#newWindowHeight = listPos[1] + listSize[1] + offset
+
+# Move and Resize list
+self["list"].instance.move(ePoint(listPos[0], listPos[1]))
+self["list"].instance.resize(eSize(*listSize))
+
+# resize window
+wsize = (WindowWidth, newWindowHeight)
+self.instance.resize(eSize(*wsize))
+
+# center window
+newwidth = wsize[0]
+newheight = wsize[1]
+self.instance.move(ePoint(orgWindowPos.x() , orgWindowPos.y() + (windowHeight - newWindowHeight)/2 ))
+    </applet>
+</screen>

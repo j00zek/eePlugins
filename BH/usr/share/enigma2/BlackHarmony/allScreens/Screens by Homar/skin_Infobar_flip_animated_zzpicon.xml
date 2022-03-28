@@ -1,0 +1,130 @@
+<skin>
+<screen name="InfoBar" position="0,0" size="1920,1080" title="InfoBar" flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="30,760" zPosition="-2" size="1900,300" pixmap="BlackHarmony/bg_design/infobar_zkpicon.png" />
+        <widget source="session.CurrentService" render="j00zekFrontEndIcon" position="989,800" size="44,20" zPosition="3" alphatest="blend"/> 
+    <widget source="session.CurrentService" render="j00zekVideoResolutionIcon" position="1094,750" size="37,20" zPosition="5" alphatest="blend"/> 
+    <widget source="session.CurrentService" render="Pixmap" pixmap="BlackHarmony/icons/ico_lan_on.png" position="870,800" zPosition="2" size="44,20" transparent="1" alphatest="blend">
+      <convert type="j00zekModRouteInfo">Lan</convert>
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="session.CurrentService" render="Pixmap" pixmap="BlackHarmony/icons/ico_wifi_on.png" position="870,800" zPosition="3" size="44,20" transparent="1" alphatest="blend">
+      <convert type="j00zekModRouteInfo">Wifi</convert>
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <ePixmap position="1143,800" size="57,20" zPosition="1" pixmap="BlackHarmony/icons/ico_dolby_off.png" alphatest="blend" />
+    <widget source="session.CurrentService" render="Pixmap" position="1143,800" size="57,20" zPosition="2" pixmap="BlackHarmony/icons/ico_dolby_on.png" alphatest="blend">
+      <convert type="ServiceInfo">IsMultichannel</convert>
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <ePixmap position="1048,800" size="36,20" zPosition="1" pixmap="BlackHarmony/icons/ico_format_off.png" alphatest="blend" />
+    <widget source="session.CurrentService" render="Pixmap" position="1048,800" size="36,20" zPosition="2" pixmap="BlackHarmony/icons/ico_format_on.png" alphatest="blend">
+      <convert type="ServiceInfo">IsWidescreen</convert>
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <ePixmap position="1274,800" size="26,20" zPosition="1" pixmap="BlackHarmony/icons/ico_crypt_off.png" alphatest="blend" />
+    <widget source="session.CurrentService" render="Pixmap" position="1274,800" size="26, 20" zPosition="2" pixmap="BlackHarmony/icons/ico_crypt_on.png" alphatest="blend">
+      <convert type="ServiceInfo">IsCrypted</convert>
+      <convert type="ConditionalShowHide" />
+    </widget>
+
+    <widget source="session.CurrentService" render="Label" position="55,782" size="780,68" font="HD_Thin; 58" valign="top" backgroundColor="black" transparent="1" halign="left" noWrap="1" foregroundColor="yellow" zPosition="1">
+      <convert type="j00zekModExtraTuner">ServiceNumberName</convert>
+    </widget>
+            <widget source="session.Event_Now" render="Label" position="480,889" size="125,46" font="HD_Thin; 40" halign="left" backgroundColor="black" transparent="1">
+      <convert type="EventTime">StartTime</convert>
+      <convert type="ClockToText">Default</convert>
+    </widget>
+        <widget backgroundColor="background" font="HD_Thin; 40" foregroundColor="blue" halign="left" noWrap="1" position="610,889" render="j00zekModTypeLabel" size="865,46" source="session.Event_Now" transparent="1" typeCaret="1" typeRepeats="1" typeSpeed="700" typeStartDelay="2000" zPosition="1">
+      <convert type="j00zekModEventName">Name</convert>
+    </widget>
+    <widget source="session.Event_Now" render="Label" position="1490,889" size="140,46" font="HD_Thin; 38" halign="right" backgroundColor="black" transparent="1">
+      <convert type="EventTime">Remaining</convert>
+      <convert type="RemainingToText">InMinutes</convert>
+    </widget>
+    <widget source="session.Event_Next" render="Label" position="480,965" size="125,46" font="HD_Thin; 40" halign="left" foregroundColor="light_grey" backgroundColor="black" transparent="1">
+      <convert type="EventTime">StartTime</convert>
+      <convert type="ClockToText">Default</convert>
+    </widget>
+        <widget source="session.Event_Next" render="Label" position="609,965" size="855,46" font="HD_Thin; 40" halign="left" backgroundColor="black" transparent="1" foregroundColor="light_grey">
+      <convert type="j00zekModEventName">Name</convert>
+    </widget>
+    <widget source="session.Event_Next" render="Label" position="1490,965" size="140,46" font="HD_Thin; 38" halign="right" foregroundColor="light_grey" backgroundColor="black" transparent="1">
+      <convert type="EventTime">Duration</convert>
+      <convert type="ClockToText">InMinutes</convert>
+    </widget>
+    <ePixmap position="1215,800" size="44,20" zPosition="1" pixmap="BlackHarmony/icons/ico_hbbtv_on.png" alphatest="blend" />
+    <widget source="session.CurrentService" render="Pixmap" position="1215,800" size="44,20" zPosition="2" pixmap="BlackHarmony/icons/ico_hbbtv_off.png" alphatest="blend">
+      <convert type="j00zekModServiceInfoEX">HasHBBTV</convert>
+      <convert type="ConditionalShowHide" />
+    </widget>
+<ePixmap alphatest="blend" pixmap="BlackHarmony/allScreens/Screens by Homar/clock/flip/default.png" position="1633,787" size="360,200" zPosition="1" />
+	<widget source="global.CurrentTime" render="j00zekModFlipClock" position="1648,805" zPosition="2" size="57,107" alphatest="blend" transparent="1">
+	  <convert type="ClockToText">Format:H1 %H</convert>
+	</widget>
+	<widget source="global.CurrentTime" render="j00zekModFlipClock" position="1693,805" zPosition="2" size="57,107" alphatest="blend" transparent="1">
+	  <convert type="ClockToText">Format:H2 %H</convert>
+	</widget>
+	<widget source="global.CurrentTime" render="j00zekModFlipClock" position="1762,805" zPosition="2" size="57,107" alphatest="blend" transparent="1">
+	  <convert type="ClockToText">Format:M1 %M</convert>
+	</widget>
+	<widget source="global.CurrentTime" render="j00zekModFlipClock" position="1807,805" zPosition="2" size="57,107" alphatest="blend" transparent="1">
+	  <convert type="ClockToText">Format:M2 %M</convert>
+	</widget>
+<ePixmap alphatest="blend" pixmap="BlackHarmony/allScreens/Screens by Homar/clock/AGC.png" position="610,860" size="360,200" zPosition="1" />	
+<ePixmap alphatest="blend" pixmap="BlackHarmony/gfx/progress_gray.png" position="660,866" size="120,8" zPosition="1" />	
+<widget source="session.FrontendStatus" render="Progress" position="660,866" size="120,8" zPosition="5"  pixmap="BlackHarmony/gfx/bar_snr_130x15.png" transparent="1">
+ <convert type="FrontendInfo">AGC</convert>
+ </widget>
+ <widget source="session.FrontendStatus" render="Label" position="788,858" size="60,25" font="Roboto_HD; 22" halign="left" backgroundColor="black" transparent="1" zPosition="1" foregroundColor="green">
+ <convert type="FrontendInfo">AGC</convert>
+ </widget>
+ <ePixmap alphatest="blend" pixmap="BlackHarmony/allScreens/Screens by Homar/clock/SNR.png" position="855,860" size="360,200" zPosition="1" />
+ <ePixmap alphatest="blend" pixmap="BlackHarmony/gfx/progress_gray.png" position="905,866" size="120,8" zPosition="1" />
+ <widget source="session.FrontendStatus" render="Progress" position="905,866" size="120,8" zPosition="5"  pixmap="BlackHarmony/gfx/bar_snr_130x15.png" transparent="1">
+ <convert type="FrontendInfo">SNR</convert>
+ </widget>
+ <widget source="session.FrontendStatus" render="Label" position="1033,858" size="60,25" font="Roboto_HD; 22" halign="left" backgroundColor="black" transparent="1" zPosition="1" foregroundColor="green">
+ <convert type="FrontendInfo">SNR</convert>
+ </widget>
+        <!-- Pikona -->
+    <widget alphatest="blend" position="65,865" render="j00zekPicons" picontype="zzpicon" size="400,170" source="session.CurrentService" transparent="1" zPosition="4">
+      <convert type="ServiceName">Reference</convert>
+    </widget>
+    <!-- Animacja -->
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" pixmaps="animatedZZPicons" position="65,865" size="400,170" zPosition="5" transparent="1" alphatest="blend" />
+    <widget backgroundColor="black" font="HD_Thin; 25" halign="center" position="1280,795" render="Label" size="353,35" source="global.CurrentTime" transparent="1" valign="center" noWrap="1" foregroundColor="lemon" text=" ">
+      <convert type="ClockToText">Format:%A %d %B </convert>
+    </widget>
+            <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="1632,923" size="128,128" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
+      <convert type="j00zekMSNWeather">weathericon,current</convert>
+    </widget>
+    <widget noWrap="1" backgroundColor="black" font="HD_Thin; 30" render="Label" position="1765,928" size="100,35" source="session.j00zekMSNWeather" zPosition="3" halign="right" transparent="1" valign="top">
+      <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
+    </widget>
+        <widget source="session.RecordState" render="Pixmap" position="930,799" size="40,23" zPosition="3" pixmap="BlackHarmony/icons/ico_rec_on.png" alphatest="blend">
+      <convert type="ConditionalShowHide">Blink</convert>
+    </widget>
+        
+    <eLabel text="Pogoda teraz :" position="1654,903" size="200,25" font="Roboto_HD; 23" backgroundColor="black" halign="center" transparent="1" foregroundColor="green" />
+    <widget source="global.CurrentTime" render="Label" position="608,1018" size="448,29" font="Regular; 22" halign="left" transparent="1" backgroundColor="black" foregroundColor="grey" zPosition="3" noWrap="1">
+      <convert type="j00zekModimieniny" />
+    </widget>
+    <widget noWrap="1" backgroundColor="black" font="HD_Thin; 30" render="Label" position="1787,1005" size="90,35" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1" foregroundColor="podsw" valign="top">
+      <convert type="j00zekMSNWeather">GET|['currentData']['feelslike']['valInfo']</convert>
+    </widget>
+    
+   <eLabel font="LCD; 20" foregroundColor="light_yellow" halign="center" name="new eLabel" position="1762,959" size="120,46" text="temperatura odczuwalna" transparent="1" zPosition="2" valign="center" backgroundColor="black" />
+    <eLabel backgroundColor="green" position="605,948" size="880,6" transparent="0" zPosition="2" foregroundColor="black" />
+    <widget source="session.j00zekMSNWeather" render="Label" position="1543,1014" size="142,34" font="Regular;20" zPosition="2" halign="left" valign="center" foregroundColor="lemon" backgroundColor="background" transparent="1" noWrap="1">
+      <convert type="j00zekMSNWeather">RUN|['currentData']['pressure']['val']|hPa</convert>
+    </widget>
+        
+    <eLabel font="HD_Thin; 22" foregroundColor="green" halign="center" name="new eLabel" position="1284,1018" size="263,30" text="ciśnienie atmosferyczne:" transparent="1" zPosition="2" valign="center" backgroundColor="black" />
+    <widget pixmap="BlackHarmony/gfx/pointer.png" position="605,941" render="Progress" size="880,20" source="session.Event_Now" transparent="1" zPosition="3">
+  <convert type="EventTime">Progress</convert>
+</widget>
+    <widget pointer="BlackHarmony/gfx/seekbutton.png:14,1" position="605,941" render="j00zekModPositionGauge" size="880,20" source="session.Event_Now" transparent="1" zPosition="3">
+      <convert type="j00zekModEventPosition">Gauge</convert>
+    </widget>
+  </screen>
+  </skin>

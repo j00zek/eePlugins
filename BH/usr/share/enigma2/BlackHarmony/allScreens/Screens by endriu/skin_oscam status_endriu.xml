@@ -1,0 +1,120 @@
+<skin>
+
+<screen name="OscamStatus" position="462,128" size="1000,820" title=" " flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="0,0" zPosition="-10" size="1000,820" pixmap="BlackHarmony/bg_design/small.png"/>
+    <widget source="global.CurrentTime" render="Label" position="45,30" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="130,30" size="260,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+    <eLabel text="Oscam Status" position="460,30" size="480,30" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1"/>
+    <widget source="menu" render="Listbox" position="68,140" size="860,560" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" selectionPixmap="BlackHarmony/menu/sel_860_45.png" backgroundColor="background" scrollbarMode="showOnDemand">
+      <convert type="TemplatedMultiContent">
+					{"template": [
+						MultiContentEntryPixmapAlphaTest(pos = (5, 6), size = (40, 40), png = 0),
+						MultiContentEntryText(pos = (70, 4), size = (380, 45), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 1),
+					],
+					"fonts": [gFont("Roboto_HD", 27)],
+					"itemHeight": 45
+					}
+				</convert>
+    </widget>
+	<ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="45,752" size="60,30" alphatest="blend"/>
+	<widget render="Label" source="KeyMenuText" position="120,752" size="200,30" zPosition="1" font="Roboto_HD;24" halign="left" foregroundColor="white" backgroundColor="dark_grey" transparent="1"/>
+  </screen>
+  
+  <screen name="StatusDataScreen" position="0,0" size="1920,1080" title=" " flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="201,31" zPosition="-10" size="1522,1022" pixmap="BlackHarmony/bg_design/wizard.png"/>
+    <widget source="global.CurrentTime" render="Label" position="260,85" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="345,85" size="460,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+    <eLabel text="OScam Status" position="1225,85" size="420,30" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1"/>
+    
+	<widget render="Label" source="label2" position="280,200" size="100,30" valign="top" zPosition="5" transparent="0" font="Roboto_HD; 26"/>
+	<widget render="Label" source="label0" position="340,200" size="200,30" valign="top" zPosition="5" transparent="0" foregroundColor="green" font="Roboto_HD; 26"/>
+    <widget render="Label" source="label1" position="545,200" size="150,30" valign="top" zPosition="5" transparent="0" foregroundColor="light_yellow" font="Roboto_HD; 26"/>
+    <widget render="Label" source="label3" position="800,200" size="160,30" valign="top" zPosition="5" transparent="0" foregroundColor="blue" font="Roboto_HD; 26"/>
+    <widget render="Label" source="label4" position="980,200" size="200,30" valign="top" zPosition="5" transparent="0" foregroundColor="yellow" font="Roboto_HD; 26"/>
+	<widget render="Label" source="label5" position="1100,200" size="200,30" valign="top" zPosition="5" transparent="0" font="Roboto_HD; 26"/>
+	
+	<ePixmap pixmap="BlackHarmony/gfx/line.png" position="350,247" size="1200,1" alphatest="blend"/>
+	
+	<widget source="data" render="Listbox" position="285,265" size="1345,680" scrollbarMode="showOnDemand" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" selectionPixmap="BlackHarmony/menu/sel_1345_40.png" backgroundColor="transpBlack" transparent="1">
+      <convert type="TemplatedMultiContent">
+					{"template": [
+						MultiContentEntryPixmapAlphaTest(pos = (2, 11), size = (20, 20), png = 2),
+
+						MultiContentEntryText(pos = ( 45, 0), size = (220, 38), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 0),
+
+						MultiContentEntryText(pos = (260, 0), size = (240, 40), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 1),
+						
+						MultiContentEntryText(pos = (520, 0), size = ( 150, 40), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 3),
+						
+						MultiContentEntryPixmapAlphaTest(pos = (700, 4), size = (50, 30), png = 4),
+						MultiContentEntryText(pos = (760, 0), size = (600, 40), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 5),
+					],
+					"fonts": [gFont("Regular", 25), gFont("Regular", 25)],
+					"itemHeight": 40
+					}
+</convert>
+    </widget>
+	<widget render="Label" source="title" position="285,985" size="500,26" valign="center" zPosition="5" transparent="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="929,985" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="1230,985" size="35,27" alphatest="blend"/>
+    <widget name="ButtonYellowtext" position="979,985" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget name="ButtonBluetext" position="1280,985" size="350,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+  </screen>
+  
+  <screen name="OscamRestartScreen" position="center,center" size="1920,1080" title=" " flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="461,131" zPosition="-10" size="1000,820" pixmap="BlackHarmony/bg_design/small.png"/>
+    <widget source="global.CurrentTime" render="Label" position="515,165" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="600,165" size="260,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+    <eLabel text="Oscam Restart" position="910,165" size="480,30" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1"/>
+    <widget render="Label" source="title" position="517,890" size="400,26" valign="center" zPosition="5" transparent="1" foregroundColor="white" font="Roboto_HD; 24" backgroundColor="dark_grey"/>
+    <widget render="Label" source="lversion" position="560,299" size="140,30" font="Roboto_HD;25" transparent="1" foregroundColor="green" backgroundColor="black"/>
+    <widget render="Label" source="version" position="750,354" size="600,30" font="Roboto_HD;25" transparent="1" backgroundColor="black"/>
+    <widget render="Label" source="lrevision" position="560,354" size="140,30" font="Roboto_HD;25" transparent="1" foregroundColor="light_yellow" backgroundColor="black"/>
+    <widget render="Label" source="revision" position="750,299" size="600,30" font="Roboto_HD;25" transparent="1" backgroundColor="black"/>
+    <widget render="Label" source="lstarttime" position="560,409" size="140,30" font="Roboto_HD;25" transparent="1" foregroundColor="blue" backgroundColor="black"/>
+    <widget render="Label" source="starttime" position="750,409" size="600,30" font="Roboto_HD;25" transparent="1" backgroundColor="black"/>
+    <widget render="Label" source="luptime" position="560,464" size="140,30" font="Roboto_HD;25" transparent="1" foregroundColor="yellow" backgroundColor="black"/>
+    <widget render="Label" source="uptime" position="750,464" size="600,30" font="Roboto_HD;25" transparent="1" backgroundColor="black"/>
+    <widget render="Label" source="lreadonly" position="560,519" size="140,30" font="Roboto_HD;25" transparent="1" backgroundColor="black"/>
+    <widget render="Label" source="readonly" position="750,519" size="600,30" font="Roboto_HD;25" transparent="1" backgroundColor="black"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="930,890" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="1171,890" size="35,27" alphatest="blend" zPosition="3"/>
+    <widget name="ButtonYellowtext" position="976,890" size="180,26" zPosition="1" font="Roboto_HD;24" halign="left" foregroundColor="white" backgroundColor="dark_grey" transparent="1"/>
+    <widget name="ButtonBluetext" position="1217,890" size="180,26" zPosition="1" font="Roboto_HD;24" halign="left" foregroundColor="white" backgroundColor="dark_grey" transparent="1"/>
+  </screen>
+  
+  <screen name="OscamDataScreen" position="center,center" size="1920,1080" title=" " flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="461,131" zPosition="-10" size="1000,820" pixmap="BlackHarmony/bg_design/small.png"/>
+    <widget source="global.CurrentTime" render="Label" position="515,165" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="600,165" size="260,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+    <eLabel text="Oscam Data" position="910,165" size="480,30" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1"/>
+    <widget render="Label" source="title" position="517,890" size="400,26" valign="center" zPosition="5" transparent="1" foregroundColor="white" font="Roboto_HD; 24" backgroundColor="dark_grey"/>
+    <widget render="Label" source="lversion" position="560,299" size="140,30" font="Roboto_HD;25" transparent="1" foregroundColor="green" backgroundColor="black"/>
+    <widget render="Label" source="version" position="750,354" size="600,30" font="Roboto_HD;25" transparent="1" backgroundColor="black"/>
+    <widget render="Label" source="lrevision" position="560,354" size="140,30" font="Roboto_HD;25" transparent="1" foregroundColor="light_yellow" backgroundColor="black"/>
+    <widget render="Label" source="revision" position="750,299" size="600,30" font="Roboto_HD;25" transparent="1" backgroundColor="black"/>
+    <widget render="Label" source="lstarttime" position="560,409" size="140,30" font="Roboto_HD;25" transparent="1" foregroundColor="blue" backgroundColor="black"/>
+    <widget render="Label" source="starttime" position="750,409" size="600,30" font="Roboto_HD;25" transparent="1" backgroundColor="black"/>
+    <widget render="Label" source="luptime" position="560,464" size="140,30" font="Roboto_HD;25" transparent="1" foregroundColor="yellow" backgroundColor="black"/>
+    <widget render="Label" source="uptime" position="750,464" size="600,30" font="Roboto_HD;25" transparent="1" backgroundColor="black"/>
+    <widget render="Label" source="lreadonly" position="560,519" size="140,30" font="Roboto_HD;25" transparent="1" backgroundColor="black"/>
+    <widget render="Label" source="readonly" position="750,519" size="600,30" font="Roboto_HD;25" transparent="1" backgroundColor="black"/>
+  </screen>
+  
+ </skin>

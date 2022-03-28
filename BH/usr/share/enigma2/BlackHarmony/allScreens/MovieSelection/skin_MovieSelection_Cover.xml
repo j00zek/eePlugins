@@ -1,0 +1,41 @@
+<skin>
+<screen name="MovieSelection" position="center,center" size="1920,1080" title=" " flags="wfNoBorder" backgroundColor="transparent">
+  <ePixmap position="1,0" zPosition="-5" size="1920,1080" pixmap="BlackHarmony/bg_design/info.png" />
+  <eLabel text="Select a movie" position="980,88" size="820,30" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1" />
+  <widget source="global.CurrentTime" render="Label" position="110,80" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+    <convert type="ClockToText">Default</convert>
+  </widget>
+  <widget source="global.CurrentTime" render="Label" position="195,80" size="660,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+    <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+  </widget>
+  <widget name="list" position="122,190" size="920,480" WatchingColor="white" FinishedColor="green" RecordingColor="red" scrollbarMode="showOnDemand" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" selectionPixmap="BlackHarmony/menu/sel_920_40.png" backgroundColor="transpBlack" transparent="1" />
+  <widget name="freeDiskSpace" position="1110,852" size="685,70" font="Roboto_HD; 26" valign="center" backgroundColor="black" transparent="1" foregroundColor="light_yellow" halign="center" />
+  <widget source="Service" render="Label" position="1659,190" size="135,70" font="Roboto_HD; 26" halign="right" backgroundColor="black" transparent="1" foregroundColor="blue">
+    <convert type="ServiceTime">Duration</convert>
+    <convert type="ClockToText">AsLength</convert>
+  </widget>
+  <widget render="j00zekModRunningText" source="Service" options="movetype=running,startpoint=0,direction=top,steptime=90,repeat=2,startdelay=6000,wrap" halign="left" backgroundColor="background" position="370,700" size="670,220" font="Roboto_HD; 27" transparent="1">
+    <convert type="j00zekModEventName">ExtendedDescription</convert>
+  </widget>
+  <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="110,991" size="35,27" alphatest="blend" />
+  <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="500,991" size="35,27" alphatest="blend" />
+  <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="890,991" size="35,27" alphatest="blend" />
+  <ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="1280,991" size="35,27" alphatest="blend" />
+  <widget name="key_red" position="160,990" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+  <widget name="key_green" position="550,990" size="300,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+  <widget name="key_yellow" position="940,990" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+  <widget name="key_blue" position="1330,990" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+  <ePixmap position="1655,991" size="70,30" pixmap="BlackHarmony/buttons/menu.png" alphatest="blend" />
+  <widget backgroundColor="black" font="Roboto_HD; 26" position="122,702" render="Label" size="220,40" source="Service" transparent="1" halign="center" foregroundColor="light_yellow" valign="bottom">
+    <convert type="ServiceTime">StartTime</convert>
+    <convert type="ClockToText">Format:%a %d. %b %Y</convert>
+  </widget>
+  <widget source="Service" render="j00zekPicons" picontype="picon" position="122,765" zPosition="10" size="220,132" transparent="1" alphatest="blend">
+    <convert type="j00zekModMovieReference" />
+  </widget>
+  <widget source="Service" render="Label" position="1110,190" size="540,70" font="HD_Thin; 26" backgroundColor="black" valign="top" halign="left" transparent="1" foregroundColor="yellow">
+    <convert type="j00zekModEventName">Name</convert>
+  </widget>
+  <widget source="Service" render="j00zekModCover" position="1270,302" size="350,510" zPosition="2" backgroundColor="background" alphatest="blend" transparent="1" />
+</screen>
+  </skin>

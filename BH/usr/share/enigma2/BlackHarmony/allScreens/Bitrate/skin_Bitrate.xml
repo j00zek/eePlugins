@@ -1,0 +1,13 @@
+<skin>
+<screen name="BitrateViewer" position="0,0" size="1920,1080" title=" " flags="wfNoBorder" backgroundColor="transparent">
+<ePixmap position="1286,949" zPosition="-2" size="625,120" pixmap="BlackHarmony/bg_design/infobar_pogoda.png" />
+  <widget source="min" render="Label" position="1303,970" zPosition="1" size="140,30" font="HD_Thin; 26" foregroundColor="light_red" backgroundColor="background" transparent="1" halign="center" />
+  <widget name="vmin" position="1305,1015" size="140,30" font="Roboto_HD; 26" foregroundColor="white" backgroundColor="background" transparent="1" halign="center" />
+  <widget source="max" render="Label" position="1453,970" zPosition="1" size="140,30" font="HD_Thin; 26" foregroundColor="green" backgroundColor="background" transparent="1" halign="center" />
+  <widget name="vmax" position="1453,1015" size="140,30" font="Roboto_HD; 26" foregroundColor="white" backgroundColor="background" transparent="1" halign="center" />
+  <widget source="avg" render="Label" position="1603,970" zPosition="1" size="140,30" font="HD_Thin; 26" foregroundColor="white" backgroundColor="background" transparent="1" halign="center" />
+  <widget name="vavg" position="1603,1015" size="140,30" font="Roboto_HD; 26" foregroundColor="white" backgroundColor="background" transparent="1" halign="center" />
+  <widget source="cur" render="Label" position="1753,970" zPosition="1" size="140,30" font="HD_Thin; 26" foregroundColor="light_yellow" backgroundColor="background" transparent="1" halign="center" />
+  <widget name="vcur" position="1753,1015" size="140,30" font="Roboto_HD; 26" foregroundColor="white" backgroundColor="background" transparent="1" halign="center" />
+</screen>
+</skin>

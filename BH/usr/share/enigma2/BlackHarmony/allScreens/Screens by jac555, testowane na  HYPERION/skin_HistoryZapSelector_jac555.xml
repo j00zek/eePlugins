@@ -1,0 +1,26 @@
+<skin>
+<screen name="HistoryZapSelector" position="center,center" size="1232,908" title="History zap..." flags="wfNoBorder" NoAnimationAfter="1" backgroundColor="transparent">
+  <ePixmap position="1,3" zPosition="-10" size="1232,908" pixmap="BlackHarmony/bg_design/mainbg.png" />
+  <widget source="global.CurrentTime" render="Label" position="1079,14" size="111,44" font="Roboto_HD; 34" backgroundColor="black" transparent="1">
+    <convert type="ClockToText">Default</convert>
+  </widget>
+  <widget source="global.CurrentTime" render="Label" position="708,22" size="360,30" halign="right" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+    <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+  </widget>
+<widget source="menu" render="Listbox" position="38,89" size="1150,769" selectionPixmap="BlackHarmony/menu/sel_1200_105.png" scrollbarWidth="7" scrollbarSliderBorderWidth="1" scrollbarSliderBorderColor="blue" scrollbarSliderForegroundColor="blue" scrollbarMode="showOnDemand">
+    <convert type="TemplatedMultiContent">
+        {"template": [
+          MultiContentEntryText(pos = (130, 33), size = (15, 33), font = 1, flags = RT_HALIGN_CENTER | RT_VALIGN_CENTER, text = 1), # Current Service
+          MultiContentEntryText(pos = (163, 3), size = (625, 38), font = 1, flags = RT_HALIGN_LEFT | RT_VALIGN_TOP, text = 2), # Servicename
+          MultiContentEntryText(pos = (163, 40), size = (1100, 33), font = 2, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER | RT_WRAP, text = 3), # Eventname
+          MultiContentEntryText(pos = (563, 76), size = (525, 32), font = 3, flags = RT_HALIGN_RIGHT, text = 5), # Eventtime
+          MultiContentEntryPixmapAlphaBlend(pos = (12, 12), size = (120, 77), png=6, flags = BT_SCALE) # picon
+        ],
+        "fonts": [gFont("Regular", 20), gFont("Regular", 30), gFont("Regular", 26), gFont("Regular", 20)],
+        "itemHeight": 110
+        }
+      </convert>
+  </widget>
+<eLabel text="Historia zmiany kanałów" position="15,17" size="437,34" font="Roboto_HD; 27" halign="left" backgroundColor="dark_grey" transparent="1" />
+</screen>
+</skin>

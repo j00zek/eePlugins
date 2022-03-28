@@ -1,0 +1,57 @@
+<skin>
+  <screen name="ChannelSelection" position="center,center" size="1920,1080" title="Channel Selection" flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="0,1" zPosition="-7" size="1920,1080" pixmap="BlackHarmony/bg_design/cs_xpicon.png" />
+    <widget source="global.CurrentTime" render="Label" position="50,50" size="80,30" font="Roboto_HD; 27" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="135,50" size="660,30" font="Roboto_HD; 27" foregroundColor="lemon" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+    <widget source="Title" render="Label" position="1225,50" size="635,30" font="Roboto_HD; 25" transparent="1" halign="right" noWrap="1" valign="center" zPosition="3" />
+    <widget name="list" position="62,162" size="1055,810" serviceItemHeight="45" selectionPixmap="BlackHarmony/menu/sel_1055_45.png" scrollbarMode="showOnDemand" enableWrapAround="1" colorServiceDescription="pastel" colorServiceDescriptionSelected="lemon" colorEventProgressbarBorder="border" colorEventProgressbarBorderSelected="border" picServiceEventProgressbar="BlackHarmony/gfx/progcl.png" foregroundColorServiceNotAvail="#777777" serviceNumberFont="Roboto_HD;32" serviceNameFont="Roboto_HD;32" serviceInfoFont="Roboto_HD;29" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" transparent="0" />
+    <widget font="Roboto_HD; 26" position="1775,768" render="Label" size="90,30" source="ServiceEvent" transparent="1" zPosition="2" halign="left">
+      <convert type="EventTime">Remaining</convert>
+      <convert type="RemainingToText">NoSeconds</convert>
+    </widget>
+    <widget source="ServiceEvent" render="Label" position="1165,768" size="80,30" font="Roboto_HD; 26" transparent="1">
+      <convert type="EventTime">StartTime</convert>
+      <convert type="ClockToText" />
+    </widget>
+    <widget source="ServiceEvent" render="Label" position="1237,768" size="105,30" font="Roboto_HD; 26" transparent="1">
+      <convert type="EventTime">EndTime</convert>
+      <convert type="ClockToText">Format:- %H:%M</convert>
+    </widget>
+    <widget source="ServiceEvent" render="Label" position="1165,252" size="450,38" font="Roboto_HD; 23" transparent="1" halign="left" noWrap="1" valign="center" text="19.2E  DVB-S2  10627 27500 3/4 8PSK" zPosition="3" foregroundColor="pastel">
+      <convert type="j00zekModServiceName2">%O  %s  %F %p %Y %f %M %b</convert>
+    </widget>
+    <widget render="j00zekModRunningText" source="ServiceEvent" options="movetype=running,startpoint=0,direction=top,steptime=90,repeat=2,startdelay=6000,wrap" halign="left" font="Roboto_HD; 28" position="1165,410" size="690,335" transparent="1">
+      <convert type="j00zekModEventName">ExtendedDescription</convert>
+    </widget>
+    <widget source="ServiceEvent" render="Progress" position="1338,781" size="415,6" pixmap="BlackHarmony/gfx/csx_progress.png" transparent="1">
+      <convert type="EventTime">Progress</convert>
+    </widget>
+    <widget source="ServiceEvent" render="Label" position="1165,358" size="690,35" font="HD_Thin; 32" transparent="1" halign="left" noWrap="1" foregroundColor="light_yellow">
+      <convert type="j00zekModEventName">Name</convert>
+    </widget>
+    <widget source="ServiceEvent" render="j00zekPicons" picontype="picon" position="1635,169" size="220,132" zPosition="2" transparent="1" alphatest="blend">
+      <convert type="ServiceName">Reference</convert>
+    </widget>
+    <widget font="Regular; 46" halign="left" position="1165,173" render="Label" size="450,55" source="ServiceEvent" transparent="1" valign="center" foregroundColor="green">
+      <convert type="ServiceName">Name</convert>
+    </widget>
+    <widget alphatest="blend" render="j00zekModEventListDisplay" position="1165,838" size="690,140" source="ServiceEvent" rowHeight="32" column0="0,70,green,Roboto_HD,25,0,0" column1="80,545,white,Roboto_HD,25,0,1" primetimeoffset="10">
+      <convert type="j00zekModEventList">primetime=yes,eventcount=4</convert>
+    </widget>
+    <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="90,1016" size="35,27" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="390,1016" size="35,27" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="690,1016" size="35,27" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="990,1016" size="35,27" alphatest="blend" />
+    <widget name="key_red" position="130,1016" size="240,27" zPosition="1" font="Roboto_HD; 24" halign="left" transparent="1" />
+    <widget name="key_green" position="430,1016" size="240,27" zPosition="1" font="Roboto_HD; 24" halign="left" transparent="1" />
+    <widget name="key_yellow" position="730,1016" size="240,27" zPosition="1" font="Roboto_HD; 24" halign="left" transparent="1" />
+    <widget name="key_blue" position="1030,1016" size="240,27" zPosition="1" font="Roboto_HD; 24" halign="left" transparent="1" />
+    <ePixmap position="1650,1014" size="60,30" pixmap="BlackHarmony/buttons/key_ok.png" alphatest="blend" />
+    <ePixmap position="1730,1014" size="60,30" pixmap="BlackHarmony/buttons/key_menu.png" alphatest="blend" />
+    <ePixmap position="1810,1014" size="60,30" pixmap="BlackHarmony/buttons/key_info.png" alphatest="blend" />
+  </screen>
+</skin>
