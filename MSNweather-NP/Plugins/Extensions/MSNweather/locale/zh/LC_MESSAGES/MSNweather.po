@@ -1,0 +1,1053 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: MSNweather\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-01-03 08:33+0100\n"
+"PO-Revision-Date: 2022-03-2 21:12\n"
+"Language-Team: 沙鸥 804381256@qq.com\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: .\n"
+"X-Generator: Poedit 1.8.3\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2;\n"
+"Last-Translator: \n"
+"Language: zh\n"
+"X-Poedit-SearchPath-0: ../src\n"
+
+msgid "%sName:%s %s"
+msgstr "%s名称:%s %s"
+
+msgid "*** Basic settings ***"
+msgstr "***基本设置***"
+
+msgid "*** Debuging options ***"
+msgstr "***调试选项***"
+
+msgid "*** Home solar system ***"
+msgstr "***家用太阳能系统***"
+
+msgid "*** Home air condition ***"
+msgstr "***家用空调***"
+
+msgid "*** Integration with Airly plugin ***"
+msgstr "***集成Airly插件集成***"
+
+msgid "--- OPTIONAL, NOT REQUIRED ---"
+msgstr "---可选,非必要---"
+
+msgid "/etc/enigma2/Airly/api.txt file\n"
+msgstr "/etc/enigma2/Airly/api.txt 文件\n"
+
+msgid "/hdd/User_Configs/airlyAPIKEY file\n"
+msgstr "/hdd/User_Configs/airlyAPI密钥 文件\n"
+
+msgid "10 closest Airly installations"
+msgstr "10个最近的通风装置"
+
+msgid "1st AC system:"
+msgstr "第一个空调系统："
+
+msgid "2nd AC system:"
+msgstr "第二个空调系统："
+
+msgid "5 days meteogram for:"
+msgstr "5天气象图："
+
+msgid "A/C IP address not set!"
+msgstr "A/C IP地址未设置！"
+
+msgid "A/C type not set!"
+msgstr "A/C 未设置类型！"
+
+msgid "AAirly API key %s:"
+msgstr "AAirly API密钥 %s:"
+
+msgid "AC in the attic"
+msgstr "阁楼上的空调"
+
+msgid "AC in the bedroom"
+msgstr "卧室空调"
+
+msgid "AC in the living room"
+msgstr "客厅空调"
+
+msgid "Actualization time: %s"
+msgstr "更新时间: %s"
+
+msgid "Add"
+msgstr "添加"
+
+msgid "Air is quite good."
+msgstr "空气很好."
+
+msgid "Air quality"
+msgstr "空气质量"
+
+msgid "Airly installation ID (OK)"
+msgstr "Airly安装ID（确定）"
+
+msgid "Airly plugin detected - API key CAN be BLOCKED!!!"
+msgstr "检测到Airly插件-可以锁定API密钥！！！"
+
+msgid "Airly sensor Latitude"
+msgstr "Airly传感器纬度"
+
+msgid "Airly sensor Longitude"
+msgstr "Airly传感器经度"
+
+msgid "Airly service"
+msgstr "Airly服务"
+
+msgid "Airly sync time"
+msgstr "Airly同步时间"
+
+msgid "AirlyTsMsn"
+msgstr "AirlyTsMsn"
+
+msgid "Animated infobar icons"
+msgstr "动画信息栏图标"
+
+msgid "Animated plugin icons"
+msgstr "动画插件图标"
+
+msgid "Apr"
+msgstr "四月"
+
+msgid "Aug"
+msgstr "八月"
+
+msgid "Average maximum temperature"
+msgstr "平均最高温度"
+
+msgid "Average minimum temperature"
+msgstr "平均最低气温"
+
+msgid "Average rain"
+msgstr "平均降雨量"
+
+msgid "Avoid being outside possible"
+msgstr "尽量避免在外面"
+
+msgid "Back"
+msgstr "返回"
+
+msgid "Bad"
+msgstr "坏的"
+
+msgid "Build histograms:"
+msgstr "构建直方图："
+
+msgid "CORRECTLY enter API key and SELECT sensor ID"
+msgstr "正确输密钥并选择传感"
+
+msgid "Cancel"
+msgstr "取消"
+
+msgid "Careful! Dust is hanging over the city."
+msgstr "小心！灰尘笼罩着城市."
+
+msgid "City"
+msgstr "城市"
+
+msgid "Close"
+msgstr "关闭"
+
+msgid "Cloud"
+msgstr "云层"
+
+msgid "Current information"
+msgstr "当前信息"
+
+msgid "Current selection"
+msgstr "当前选择"
+
+msgid "Daikin Air Conditioner"
+msgstr "大金空调"
+
+msgid "Data presented (if now defined in skin):"
+msgstr "提供的数据（如果现在在皮肤中定义）："
+
+msgid "Debug (require restart):"
+msgstr "调试（需要重新启动）："
+
+msgid "Debug log file size:"
+msgstr "调试日志文件大小："
+
+msgid "Dec"
+msgstr "12月"
+
+msgid "Define the air quality in one word? NOT GOOD.OK,two words;)"
+msgstr "用一个词来定义空气质量？不是好的。好的，两个字；）"
+
+msgid "Delete"
+msgstr "删除"
+
+msgid "Description:"
+msgstr "说明："
+
+msgid "Detailed forecast"
+msgstr "详细预测"
+
+msgid "Direction"
+msgstr "方向"
+
+msgid "Do you smell it? That`s the smell of clean air."
+msgstr "你闻到了吗？那是干净空气的味道."
+
+msgid "Donat go out,unless you want to breathe like Darth Vader!"
+msgstr "别出去，除非你想像达斯·维德那样呼吸！"
+
+msgid "Downloading clouds forecast maps..."
+msgstr "正在下载云预测地图."
+
+msgid "Downloading precipitation forecast maps..."
+msgstr "正在下载降水预报地图."
+
+msgid "Downloading satellite observation maps..."
+msgstr "正在下载卫星观测地图."
+
+msgid "Downloading today's temperature maps..."
+msgstr "正在下载今天的温度图."
+
+msgid "Edit"
+msgstr "编辑"
+
+msgid "Enjoy the clean air."
+msgstr "享受干净的空气."
+
+msgid "Entry type"
+msgstr "条目类型"
+
+msgid "Error analyzing web data"
+msgstr "分数据时出错"
+
+msgid "Error sychronizing web data"
+msgstr "同数据时出错"
+
+msgid "Error sychronizing webMaps data"
+msgstr "同数据时出错"
+
+msgid "Error wrong input data"
+msgstr "输入数据错误"
+
+msgid "Exception %s"
+msgstr "异"
+
+msgid "Exit"
+msgstr "出口"
+
+msgid "Fan"
+msgstr "风扇"
+
+msgid "Feature not available in this system!!!"
+msgstr "功能在此系统中不可用!"
+
+msgid "Feb"
+msgstr "二月"
+
+msgid "Feeling temperature"
+msgstr "体感温度"
+
+msgid "Feels like %s"
+msgstr "体感温度 %s"
+
+msgid "First Quarter"
+msgstr "第一季度"
+
+msgid "Forecast for"
+msgstr "天气预报:"
+
+msgid "Full Moon"
+msgstr "满月"
+
+msgid "General Error"
+msgstr "一般性错误"
+
+msgid "Geo Latitude"
+msgstr "纬度"
+
+msgid "Geo Longitude"
+msgstr "经度"
+
+msgid "Get current data from:"
+msgstr "从以下位置获取当前数据："
+
+msgid "Getting weather information..."
+msgstr "正在获取天气信息..."
+
+msgid "GiOS sensor ID (OK)"
+msgstr "GiOS传感（正常）"
+
+msgid "Good"
+msgstr "很好"
+
+msgid "Great air here today!"
+msgstr "今天这里空气真好！"
+
+msgid "HUMIDITY"
+msgstr "湿度"
+
+msgid "Highest noted"
+msgstr "最著名的"
+
+msgid "Horizontally"
+msgstr "横向"
+
+msgid "Hourly"
+msgstr "每小时"
+
+msgid "Humidity: %s %%"
+msgstr "湿度: %s %%"
+
+msgid "IP address:"
+msgstr "IP地址："
+
+msgid "Icons scaling engine:"
+msgstr "图标缩放引擎："
+
+msgid "Icons type:"
+msgstr "图标类型："
+
+msgid "If you can, stay home."
+msgstr "如果可以的话，呆在家里."
+
+msgid "Instead of running outdoors,how about a treadmill instead?"
+msgstr "与其在户外跑步，不如用跑步机代替？"
+
+msgid "It's better to limit your outside physical activity today."
+msgstr "今天最好限制你的户外活动."
+
+msgid "It's not good,oh no!"
+msgstr "不好，哦不！"
+
+msgid "Jan"
+msgstr "一月"
+
+msgid "Jul"
+msgstr "七月"
+
+msgid "Jun"
+msgstr "六月"
+
+msgid "Keep your windows closed today"
+msgstr "今天不要关窗户"
+
+msgid "Last 12h"
+msgstr "最后 12小时"
+
+msgid "Last 24h"
+msgstr "最近 24小时"
+
+msgid "Last 3h"
+msgstr "最近3小时"
+
+msgid "Last 6h"
+msgstr "最近6小时"
+
+msgid "Last Quarter"
+msgstr "上个季度"
+
+msgid "Last hour"
+msgstr "最后一小时"
+
+msgid "Loading storms maps..."
+msgstr "正在加载风暴地图..."
+
+msgid "Location Full name"
+msgstr "位置全名"
+
+msgid "Location code"
+msgstr "位置代码"
+
+msgid "Location in www.foreca.com/<this part>"
+msgstr "在www.foreca.com/中的位置<this part>"
+
+msgid "Location name on the list"
+msgstr "列表上的位置名称"
+
+msgid "LookO2TsAirlyMsn"
+msgstr "看两个卫星"
+
+msgid "Lowest noted"
+msgstr "最低记录"
+
+msgid "MSN location search result"
+msgstr "MSN位置搜索结果"
+
+msgid "MSN or Airly depending which latest"
+msgstr "MSN取决于最新版本"
+
+msgid "MSN service"
+msgstr "MSN服务"
+
+msgid "MSN service icons"
+msgstr "MSN服务图标"
+
+msgid "MSN sync time"
+msgstr "MSN同步时间"
+
+msgid "MSN weather NP"
+msgstr "MSN天气 NP版"
+
+msgid "MSN weather configuration"
+msgstr "MSN天气配置"
+
+msgid "MSN weather: List of Entries"
+msgstr "MSN天气：条目列表"
+
+msgid "Main plugin IP address"
+msgstr "主插地址"
+
+msgid "Main plugin entry ID"
+msgstr "主插件条"
+
+msgid "Main plugin password"
+msgstr "主插件密码"
+
+msgid "Main plugin username"
+msgstr "主插件用户名"
+
+msgid "Mar"
+msgstr "三月"
+
+msgid "May"
+msgstr "五月"
+
+msgid "Meteogram for www.foreca.net/<this part>"
+msgstr "气象图由 www.foreca.net/<这个部分>"
+
+msgid "Mode"
+msgstr "模式"
+
+msgid "Moderate"
+msgstr "中等"
+
+msgid "MsnAirlyTs"
+msgstr "奈尔利茨小姐"
+
+msgid "MsnTsAirly"
+msgstr "Msn Ts Airly"
+
+msgid "Neither good nor bad. Think before leaving the house."
+msgstr "既不好也不坏,离开家前要想一想."
+
+msgid "New Moon"
+msgstr "新月"
+
+msgid "No airly installations within 20km distance, provide ID manually"
+msgstr "20公里范围内无空中设施，请手动提供身份证"
+
+msgid "Not configured!!!"
+msgstr "未配置！！！"
+
+msgid "Nov"
+msgstr "十一月"
+
+msgid "O2 sync time"
+msgstr "O2同步时间"
+
+msgid "OK"
+msgstr "确定"
+
+msgid "Observation point: %s"
+msgstr "观察点: %s"
+
+msgid "Observation time: %s"
+msgstr "观察时间: %s"
+
+msgid "Oct"
+msgstr "十月"
+
+msgid "PRESSURE"
+msgstr "压力"
+
+msgid "Period:"
+msgstr "期间:"
+
+msgid "Please enter a valid city name."
+msgstr "请输入有效的城市名称."
+
+msgid "Please enter a valid location code for the city."
+msgstr "请输入城市的有效位置代码."
+
+msgid "Poor air quality!"
+msgstr "空气质量差！"
+
+msgid "Precipation"
+msgstr "沉淀"
+
+msgid "Pressure"
+msgstr "压 力:"
+
+msgid "Pressure %s"
+msgstr "压力 %s"
+
+msgid "Protect your lungs!"
+msgstr "保护你的肺！"
+
+msgid "Rain %s"
+msgstr "雨 ％s"
+
+msgid "Really delete this WeatherPlugin Entry?"
+msgstr "真的要删除这个天气插件条目？"
+
+msgid "Sadly, the air is not quite as clean as it looks today."
+msgstr "可悲的是,空气不像今天看起来那么干净."
+
+msgid "Samsung Air Conditioner"
+msgstr "三星空调"
+
+msgid "Satellite"
+msgstr "卫星"
+
+msgid "Save"
+msgstr "保存"
+
+msgid "Search Code"
+msgstr "搜索代码"
+
+msgid "Sensors priority:"
+msgstr "传感器优先级："
+
+msgid "Sep"
+msgstr "九月"
+
+msgid "Set airly API key using one of the following methods:\n"
+msgstr "使用以下方法之一设密钥:\n"
+
+msgid "Set proper latitude and longitude!!!"
+msgstr "设置正确的经纬度！！！"
+
+msgid "Show Histograms"
+msgstr "显示直方图"
+
+msgid "Show Maps"
+msgstr "显示地图"
+
+msgid "Show Weather Forecast"
+msgstr "显示天气预报"
+
+msgid "Something's hanging in the air. Take care!"
+msgstr "有东西悬在空中。当心！"
+
+msgid "Sro."
+msgstr "Sro."
+
+msgid "meteogram"
+msgstr "气象图"
+
+msgid "Storms"
+msgstr "风暴"
+
+msgid "Storms observations"
+msgstr "风暴观测"
+
+msgid "System"
+msgstr "系统"
+
+msgid "TEMPERATURE"
+msgstr "温度"
+
+msgid "TS sync time"
+msgstr "TS同步时间"
+
+msgid "Take a breath!"
+msgstr "深呼吸！"
+
+msgid "Take a deep breath. Today, you can. ;)"
+msgstr "深呼吸.今天，你可以 ;)"
+
+msgid "Taking long walks on a day like today isn't advisable"
+msgstr "在今天这样的日子里走很长的路是不可取的"
+
+msgid "Temperature"
+msgstr "温度"
+
+msgid "Temperature | Feelng temperature"
+msgstr "温触感温度"
+
+msgid "The air doesn't encourage walking today."
+msgstr "今天的空气不利于散步."
+
+msgid "The air is nice and clean today!"
+msgstr "今天的空气又好又干净！"
+
+msgid "The air is slightly polluted."
+msgstr "空气受到轻微污染."
+
+msgid "The air quality is good today!"
+msgstr "今天的空气质量很好！"
+
+msgid "The smog is coming! :O"
+msgstr "烟雾来了！"
+
+msgid "Things were good once... Let's hope it doesn't get worse!"
+msgstr "曾经一切都很好。希望不会更糟！"
+
+msgid "This isn't a day for a walk with The kids:("
+msgstr "今天不是和孩子们散步的日子"
+
+msgid "Try to stay with your family at home."
+msgstr "尽量和家人呆在家里."
+
+msgid "TsAirlyMsn"
+msgstr "TsAirlyMsn"
+
+msgid "Turn off"
+msgstr "关掉"
+
+msgid "Turn on"
+msgstr "打开"
+
+msgid "Use A/C outside temp sensor instead of MSN:"
+msgstr "使用空调外部温度传感器代："
+
+msgid "Vertically"
+msgstr "垂直地"
+
+msgid "Very bad"
+msgstr "非常糟糕"
+
+msgid "Very good"
+msgstr "很好"
+
+msgid "Very high pollution!"
+msgstr "污染非常严重！"
+
+msgid "WIND_SPEED"
+msgstr "风速"
+
+msgid "WRONG API KEY!!!"
+msgstr "错误密钥！！！"
+
+msgid "Waning Crescent"
+msgstr "月牙"
+
+msgid "Waning Gibbous"
+msgstr "亏凸月"
+
+msgid "Watch out - a few signs of smog"
+msgstr "小有一些烟雾的迹象"
+
+msgid "Watch out - a few signs of smog today."
+msgstr "小心——今天有一些烟雾的迹象."
+
+msgid "Waxing Crescent"
+msgstr "娥眉月"
+
+msgid "Waxing Gibbous"
+msgstr "渐盈凸月"
+
+msgid "Weather Plugin"
+msgstr "天气插件"
+
+msgid "Weather maps"
+msgstr "天气图"
+
+msgid "WeatherPlugin: Edit Entry"
+msgstr "WeatherPlugin:编辑条目"
+
+msgid "WeatherPlugin: List of Entries"
+msgstr "WeatherPlugin:条目列表"
+
+msgid "Well... It's been better."
+msgstr "好。好多了."
+
+msgid "What happened in weather during last %s hours?"
+msgstr "在过去 %s 小时内天气发生了什么？"
+
+msgid "Wind"
+msgstr "最低风速:"
+
+msgid "Yes, yes - it's true. The air quality is good today!"
+msgstr "是的，是这是真的。今天的空气质量很好！"
+
+msgid "animated Icons"
+msgstr "动画图标"
+
+msgid "blebox sensor ID (OK)"
+msgstr "气囊盒传感（正常）"
+
+msgid "clouds_forecast"
+msgstr "乌云预报"
+
+msgid "czw."
+msgstr "捷克语."
+
+msgid "ePicLoad (E.g. Vu+ org)"
+msgstr "ePicLoad（例如Vu +组织）"
+
+msgid "feelslike"
+msgstr "体感温度:"
+
+msgid "global plugin settings\n"
+msgstr "全局插件设置\n"
+
+msgid "humidity"
+msgstr "湿度:"
+
+msgid "imperial system"
+msgstr "英制"
+
+msgid "internal E2"
+msgstr "内部 E2"
+
+msgid "local"
+msgstr "地方的"
+
+msgid "looko2 sensor ID (OK)"
+msgstr "looko2传感器ID（确定）"
+
+msgid "maximum temperture"
+msgstr "最高气温:"
+
+msgid "meteogram not available, check configuration"
+msgstr "仪表图不可用，请检查配置"
+
+msgid "metric system"
+msgstr "公制"
+
+msgid "minimum temperture"
+msgstr "最低气温:"
+
+msgid "niedz."
+msgstr "尼兹"
+
+msgid "not installed"
+msgstr "未安装"
+
+msgid "observationtime"
+msgstr "观测时间"
+
+msgid "openSense sensor ID (OK)"
+msgstr "openSense开放传感器ID(确定)"
+
+msgid "pi膮."
+msgstr "pi膮."
+
+msgid "pon."
+msgstr "pon."
+
+msgid "precipitation_forecast"
+msgstr "降水量预报"
+
+msgid "rain probablility"
+msgstr "降雨几率:"
+
+msgid "rel. humidity"
+msgstr "相对。湿度"
+
+msgid "remote"
+msgstr "遥远的"
+
+msgid "satellite_observation"
+msgstr "卫星观测"
+
+msgid "satisfactory"
+msgstr "令人满意的"
+
+msgid "skin Icons"
+msgstr "皮肤图标"
+
+msgid "skytext"
+msgstr "天空文字"
+
+msgid "sob."
+msgstr "sob."
+
+msgid "temperature"
+msgstr "温度"
+
+msgid "temperature_today"
+msgstr "今天的温度"
+
+msgid "thingSpeak meteo channel ID"
+msgstr "ThingSpeak气象频道ID"
+
+msgid "wind_speed"
+msgstr "最高风速:"
+
+msgid "wto."
+msgstr "世贸组织."
+
+msgid "%s\n\n\n%s\nTemp. %s\nOpady %s"
+msgstr "%s\n\n\n%s\n温度: %s\n降雨几率: %s"
+
+msgid "Clear"
+msgstr "晴朗"
+
+msgid "MSN weather"
+msgstr "MSN天气预报"
+
+msgid "Dewpoint"
+msgstr "露点温度:"
+
+msgid "Feels like"
+msgstr "体感温度:"
+
+msgid "Rel. hum."
+msgstr "湿 度:"
+
+msgid "Visibility"
+msgstr "能见度:"
+
+msgid "wind"
+msgstr "风 速:"
+
+msgid "MSNWeather API key:"
+msgstr "MSN天气 API密钥"
+
+msgid "Airly API key %s:"
+msgstr "Airly API密钥 %s:"
+
+msgid "Daily icons type:"
+msgstr "每天图标类型:"
+
+msgid "Hourly icons type:"
+msgstr "每小时图标类型:"
+
+msgid "Period"
+msgstr "时段:"
+
+msgid "Producer:"
+msgstr "厂家:"
+
+msgid "ID:"
+msgstr "产品ID:"
+
+msgid "API key:"
+msgstr "API密钥:"
+
+msgid "Debug to /tmp/.MSNdata (require restart):"
+msgstr "调试日记在 /tmp/.MSNdata(需要重新启动):"
+
+msgid "MSN/F service icons"
+msgstr "MSN/F 服务图标"
+
+msgid "--- REQUIRED ---"
+msgstr "--- 必填选项 ---"
+
+msgid "foreca.com/..."
+msgstr "foreca.com/ID/地名全称"
+
+msgid "foreca daily rain precip"
+msgstr "预报每日降雨量"
+
+msgid "--- CZUJNIKI JAKOŚCI POWETRZA (najbliższy najlepszy)---"
+msgstr "---空气质量传感器(最接近的最佳)---"
+
+msgid "smogOK sensor ID (OK)"
+msgstr "烟雾传感器 ID(确定)"
+
+msgid "Wschód słońca"
+msgstr "日出时间:"
+
+msgid "Zachód słońca"
+msgstr "日落时间:"
+
+msgid "Dzień będzie trwał %s, %s %s"
+msgstr "这一天将持续 %s, %s %s"
+
+msgid "%s godzin i %s minut"
+msgstr " %s小时 %s分钟"
+
+msgid "będzie dłuższy od najkrótszego o "
+msgstr "比前一天短"
+
+msgid "\ni krótszy od najdłuższego o "
+msgstr "\n并且比最长的一天要短 "
+
+msgid "km/h"
+msgstr "千米/小时"
+
+msgid "Detailed forecast "
+msgstr "详细预测"
+
+msgid "updateInfo Exception: "
+msgstr "更新信息异常:"
+
+msgid "updateInfo Exception cleaning hourly data: "
+msgstr "更新信息异常清除每小时数据:"
+
+msgid "updating hourly data for %s hours..."
+msgstr "正在更新 %s小时的小时数据..."
+
+msgid "updateInfo Exception updating hourly data: "
+msgstr "更新信息异常更新每小时数据:"
+
+msgid "Exception: %s"
+msgstr "例外情况:%s"
+
+msgid "\t EXCEPTION: "
+msgstr "\t例外情况:"
+
+msgid "Chmury"
+msgstr "云量:"
+
+msgid "Humidity"
+msgstr "湿度:"
+
+msgid "Temp. wody"
+msgstr "水温:"
+
+msgid "Temp. punktu rosy"
+msgstr "露点:"
+
+msgid "UV"
+msgstr "紫外线:"
+
+msgid "Wind gust"
+msgstr "最高风速:"
+
+msgid "Temp. odczuwalna"
+msgstr "体感温度:"
+
+msgid "W dzień:"
+msgstr "白天预报:"
+
+msgid "W nocy:"
+msgstr "夜间预报:"
+
+msgid "%s godzinę"
+msgstr "%s 小时"
+
+msgid "%s minutę"
+msgstr "%s 分钟"
+
+msgid "%s minuty"
+msgstr "%s 分钟"
+
+msgid "%s minut"
+msgstr "%s 分钟"
+
+msgid "%s sekundy"
+msgstr "%s 秒"
+
+msgid "%s sekund"
+msgstr "%s 第二"
+
+msgid "pogoda za dnia"
+msgstr "白天天气"
+
+msgid "podsumowanie dnia"
+msgstr "一天的总结"
+
+msgid "Prognoza na %s, %s"
+msgstr "天气预测 %s, %s"
+
+msgid "Wschód księżyca"
+msgstr "月出:"
+
+msgid "Zachód księżyca"
+msgstr "日落:"
+
+msgid "Słońce "
+msgstr "太阳 "
+
+msgid "wzejdzie o %s"
+msgstr "将上升到 %s"
+
+msgid "wzeszło o %s"
+msgstr "上升到"
+
+msgid " i zajdzie o %s. "
+msgstr "它将是关于 %s. "
+
+msgid " i zaszło o %s. "
+msgstr "事情发生在 %s. "
+
+msgid "Dzień będzie trwał "
+msgstr "这一天将持续下去"
+
+msgid " i "
+msgstr " - "
+
+msgid ", będzie dłuższy od najkrótszego o "
+msgstr ",比最短的要长 "
+
+msgid "i krótszy od najdłuższego o "
+msgstr "比最长的要短 "
+
+msgid "\nW ostatnich "
+msgstr "\n 近年来 "
+
+msgid " latach w tym dniu..."
+msgstr " 在那一天..."
+
+msgid "\n- deszcz padał "
+msgstr "\n- 下雨了"
+
+msgid " dni, średnie opady "
+msgstr "天，平均降水量"
+
+msgid ", maksymalne "
+msgstr ",最大值"
+
+msgid " w "
+msgstr "在"
+
+msgid "\n- śnieg padał "
+msgstr "\n- śnieg padał "
+
+msgid " padal "
+msgstr "下雨了"
+
+msgid "r"
+msgstr "年"
+
+msgid "\n- Średnia temperatura maksymalna wynosiła %s%s°C%s, najwyższa zanotowana %s%s°C%s w %s%sr"
+msgstr "\n- 平均最高温度为 %s%s°C%s, 最高记录 %s%s°C%s 在 %s%s年"
+
+msgid "\n- Średnia temperatura minimalna wynosiła %s%s°C%s, najniższa zanotowana %s%s°C%s w %s%sr"
+msgstr "\n- 平均最低温度为 %s%s°C%s, 最低记录 %s%s°C%s 在 %s%s年"
+
+msgid "%s rekordów"
+msgstr "%s 记录"
+
+msgid "czyszczenie danych godzinowych"
+msgstr "每小时数据清理"
+
+msgid "aktualizuje dane godzinowe"
+msgstr "更新每小时数据"
+
+msgid "Będzie bezwietrznie"
+msgstr "无风"
+
+msgid "Powiewy o prędkości %s km/h"
+msgstr "软风 %s 千米/时"
+
+msgid "Wiatr słaby o prędkości %s km/h"
+msgstr "轻风 %s 千米/时"
+
+msgid "Wiatr łagodny o prędkości %s km/h"
+msgstr "微风 %s 千米/时"
+
+msgid "Wiatr umiarkowany o prędkości %s km/h"
+msgstr "和风 %s 千米/时"
+
+msgid "Wiatr dość silny o prędkości %s km/h"
+msgstr "清风 %s 千米/时"
+
+msgid "Wiatr silny o prędkości %s km/h"
+msgstr "强风 %s 千米/时"
+
+msgid "Wiatr bardzo silny o prędkości %s km/h"
+msgstr "疾风 %s 千米/时"
+
+msgid "Wiatr gwałtowny o prędkości %s km/h"
+msgstr "大风 %s 千米/时"
+
+msgid "Wichura o prędkości %s km/h"
+msgstr "暴风 %s 千米/时"
+
+msgid "Silna wichura o prędkości %s km/h"
+msgstr "狂风 %s 千米/时"
+
+msgid "Gwałtowna wichura o prędkości %s km/h"
+msgstr "暴风 %s 千米/时"
+
+msgid "Huragan o prędkości %s km/h"
+msgstr "飓风 %s 千米/时"

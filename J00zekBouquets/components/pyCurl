@@ -1,0 +1,36 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+#
+# @j00zek 2020
+#
+###########################################################################################################
+
+import urllib2, os, sys
+
+if __name__ == '__main__': 
+    if len(sys.argv) - 1 < 2:
+        print "BŁĄD: za mało parametrów"
+        quit()
+    try:
+        urlFile=sys.argv[1]
+        fileName=sys.argv[2]
+        url=None
+        if not os.path.exists(urlFile):
+            print "Wybrany plik '%s' nie istnieje" % urlFile
+        if not os.path.isfile(urlFile):
+            print "'%s' jest katalogiem, a nie plikiem" % urlFile
+        else:
+            with open(urlFile, 'r') as f:
+                url=f.readline().strip()
+                f.close()
+            if url.startswith('http://'):
+                if os.path.exists(fileName):
+                    os.remove(fileName)
+                print "Pobieram %s do %s" % (url,fileName)
+                webContent = urllib2.urlopen(url).read()
+                with open(fileName, 'w') as f:
+                    f.write(webContent)
+            else:
+                print "Zły adres strony web"
+    except Exception, e:
+        print "Wyjątek: %s" % str(e)

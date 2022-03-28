@@ -1,0 +1,57 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+#
+# @j00zek 2020
+#
+###########################################################################################################
+
+import os, sys
+
+def importFilesFrom(sourceDir):
+    for m3uFile in os.listdir(sourceDir):
+        if not m3uFile.endswith('.m3u'): continue
+        BFNAME = 'userbouquet.%s.j00zekAutobouquetIPTV.tv' % m3uFile[:-4]
+        BFNAMEandPath = '/etc/enigma2/%s' % BFNAME
+        m3uFileWithPath = os.path.join(sourceDir, m3uFile)
+        desk_tmp = ''
+        print "Import streamów z %s ..." % m3uFile[:-4]
+        if os.path.isfile(BFNAMEandPath):
+            os.remove(BFNAMEandPath)
+        with open('/etc/enigma2/%s' % BFNAME, 'w') as outFile:
+            infile = open(m3uFileWithPath, 'r')
+            line = infile.readline().strip()
+            if not '#EXTM3U' in line:
+                print "Plik '%s' ma niepoprawny format, pomijam" % m3uFile
+                break
+            outFile.write('#NAME %s\n' % m3uFile[:-4])
+            line = infile.readline().strip()
+            descr = ''
+            url = ''
+            while line:
+                if line.startswith('#EXTINF') and line.find(','):
+                    descr = line.split(',', 1)[1].strip()
+                elif line.startswith('http://'):
+                    url = line.strip().replace(':', '%3a')
+                #jak mamy wszystko, to zapisujemy
+                if descr != '' and url != '':
+                    outFile.write('#SERVICE %s:0:1:1:0:0:0:0:0:0:%s:%s\n' %( str(FrameworkType), url, descr))
+                    descr = ''
+                    url = ''
+                line = infile.readline().strip()
+            infile.close()
+            outFile.close()
+        if os.path.isfile('/etc/enigma2/bouquets.tv'):
+            update_bouquets_tv = True
+            for line in open('/etc/enigma2/bouquets.tv'):
+                if BFNAME in line:
+                    update_bouquets_tv = False
+                    break
+            if update_bouquets_tv:
+                print "Dodaję w pliku bouquets.tv definicję bukietu"
+                with open('/etc/enigma2/bouquets.tv', 'a') as outfile:
+                    outfile.write('#SERVICE 1:7:1:0:0:0:0:0:0:0:FROM BOUQUET "%s" ORDER BY bouquet\n' % BFNAME)
+                    outfile.close()
+        
+
+if __name__ == '__main__': 
+    print "ClearBouquets"

@@ -1,0 +1,870 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WeatherPlugin\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-01-03 08:33+0100\n"
+"PO-Revision-Date: 2020-01-27 11:07+0100\n"
+"Last-Translator: Mariusz1970 <Mariusz1970@onet.eu>\n"
+"Language-Team: Björn Freise <Mariusz1970@onet.eu>\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: .\n"
+"X-Generator: Poedit 1.7.6\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+"X-Poedit-SearchPath-0: ../src\n"
+
+msgid "Add"
+msgstr "Dodaj"
+
+msgid "animated Icons"
+msgstr "Animowane ikony"
+
+msgid "Animated plugin icons"
+msgstr "Animacja ikon we wtyczce"
+
+msgid "Animated infobar icons"
+msgstr "Animacja ikon na infobarze"
+
+msgid "Back"
+msgstr "Powrót "
+
+msgid "Build histograms:"
+msgstr "Twórz histogramy"
+
+msgid "Cancel"
+msgstr "Anuluj"
+
+msgid "Close"
+msgstr "Zamknij"
+
+msgid "City"
+msgstr "Miasto"
+
+msgid "Cloud"
+msgstr "Zachmurzenie"
+
+msgid "clouds_forecast"
+msgstr "Prognoza zachmurzenia"
+
+msgid "Delete"
+msgstr "Usuń"
+
+msgid "Debug to /tmp/.MSNdata (require restart):"
+msgstr "Logowanie do /tmp/.MSNdata (wymagany restart):"
+
+msgid "Debug log file size:"
+msgstr "Wielkość pliku loga"
+
+msgid "Downloading today's temperature maps..."
+msgstr "Pobieranie map z dzisiejszą temperaturą..."
+
+msgid "Downloading precipitation forecast maps..."
+msgstr "Pobieranie map z prognozą opadów..."
+
+msgid "Downloading satellite observation maps..."
+msgstr "Pobieranie map satelitarnych..."
+
+msgid "Downloading clouds forecast maps..."
+msgstr "Pobieranie map z prognozą zachmurzenia..."
+
+msgid "Edit"
+msgstr "Edytuj"
+
+msgid "Exit"
+msgstr "Wyjdź"
+
+msgid "ePicLoad (E.g. Vu+ org)"
+msgstr "ePicLoad (np. Vu+ org)"
+
+msgid "Error wrong input data"
+msgstr "Błąd, podano złe dane"
+
+msgid "Error sychronizing web data"
+msgstr "Błąd synchonizacji danych"
+
+msgid "Error analyzing web data"
+msgstr "Błąd analizy danych"
+
+msgid "Exception %s"
+msgstr "Wyjątek %s"
+
+msgid "Error sychronizing webMaps data"
+msgstr "Błąd synchronizacji danych o mapach"
+
+msgid "Feature not available in this system!!!"
+msgstr "Funkcja niedostępna na tym systemie!!!"
+
+msgid "Feels like %s"
+msgstr "Temp. odczuwalna %s"
+
+msgid "Feels like"
+msgstr "Temp. odczuwalna"
+
+msgid "General Error"
+msgstr "Nieznany błąd"
+
+msgid "Geo Latitude"
+msgstr "Szerokość geograficzna"
+
+msgid "Geo Longitude"
+msgstr "Długość geograficzna"
+
+msgid "Getting weather information..."
+msgstr "Pobieranie informacji o pogodzie ..."
+
+msgid "Humidity: %s %%"
+msgstr "Wilgotność: %s %%"
+
+msgid "imperial system"
+msgstr "Stopnie Fahrenheita "
+
+msgid "Location code"
+msgstr "Kod lokalizacji"
+
+msgid "Location Full name"
+msgstr "Pełna nazwa lokalizacji"
+
+msgid "Last 24h"
+msgstr "Ostatnie 24 godziny"
+
+msgid "Last 12h"
+msgstr "Ostatnie 12 godzin"
+
+msgid "Last 6h"
+msgstr "Ostatnie 6 godzin"
+
+msgid "Last 3h"
+msgstr "Ostatnie 3 godziny"
+
+msgid "Last hour"
+msgstr "Ostatnia godzina"
+
+msgid "Loading storms maps..."
+msgstr "Ładuję mapy występowania burz..."
+
+msgid "MSN location search result"
+msgstr "Wynik szukania lokalizacji w MSN"
+
+msgid "MSN weather NP"
+msgstr "Pogoda MSN & Foreca"
+
+msgid "MSN weather configuration"
+msgstr "MSN weather konfiguracja"
+
+msgid "MSN weather: List of Entries"
+msgstr "Pogoda MSN: Lista wpisów"
+
+msgid "MSN service icons"
+msgstr "Ikony serwisu MSN"
+
+msgid "metric system"
+msgstr "Stopnie Celsjusza"
+
+msgid ""
+"No locations defined...\n"
+"Press 'Menu' to do that."
+msgstr ""
+"Brak zdefiniowanej lokalizacji ..\n"
+"Naciśnij przycisk \"Menu\", aby to zrobić."
+
+msgid "OK"
+msgstr "Zapisz"
+
+msgid "Observation point: %s"
+msgstr "Punkt obserwacji: %s"
+
+msgid "Observation time: %s"
+msgstr "Czas obserwacji: %s"
+
+msgid "Pressure"
+msgstr "Ciśnienie"
+
+msgid "Precipation"
+msgstr "Opady"
+
+msgid "precipitation_forecast"
+msgstr "Prognoza opadów"
+
+msgid "Please enter a valid city name."
+msgstr "Wprowadź prawidłową nazwę miasta."
+
+msgid "Please enter a valid location code for the city."
+msgstr "Wpisz poprawny kod dla lokalizacji miasta"
+
+msgid "Pressure %s"
+msgstr "Ciśnienie %s"
+
+msgid "Period:"
+msgstr "Okres:"
+
+msgid "Really delete this WeatherPlugin Entry?"
+msgstr "Naprawdę usunąć ten wpis?"
+
+msgid "Satellite"
+msgstr "Satelita"
+
+msgid "satellite_observation"
+msgstr "Mapa satelitarna"
+
+msgid "Search Code"
+msgstr "Szukaj  Kodu"
+
+msgid "Show Maps"
+msgstr "Pokaż mapy"
+
+msgid "Show Histograms"
+msgstr "Pokaż histogramy"
+
+msgid "Show Weather Forecast"
+msgstr "Pokazuje prognozę pogody"
+
+msgid "System"
+msgstr "Skala: (ºC - ºF)"
+
+msgid "skin Icons"
+msgstr "Ikony skórki"
+
+msgid "Storms"
+msgstr "Burze"
+
+msgid "Storms observations"
+msgstr "Zaobserwowane burze"
+
+msgid "Temperature"
+msgstr "Temperatura"
+
+msgid "Temperature | Feelng temperature"
+msgstr "Temperatura | Temp. odczuwalna"
+
+msgid "temperature_today"
+msgstr "Dzisiejsza temperatura"
+
+msgid "thingSpeak meteo channel ID"
+msgstr "Numer kanału meteo w serwisie thingSpeak"
+
+msgid "Weather Plugin"
+msgstr "Prognoza pogody"
+
+msgid "WeatherPlugin: Edit Entry"
+msgstr "Prognoza pogody: Edytuj wpis"
+
+msgid "WeatherPlugin: List of Entries"
+msgstr "Prognoza pogody: Lista wpisów"
+
+msgid ""
+"You need to enter a valid city name before you can search for the location "
+"code."
+msgstr "Musisz wprowadzić poprawną nazwę miasta, aby znaleźć kod lokalizacji."
+
+msgid "What happened in weather during last %s hours?"
+msgstr "Jak zmieniała się pogoda podczas ostatnich %s godzin?"
+
+msgid "Weather maps"
+msgstr "Mapy pogody"
+
+msgid "Jan"
+msgstr "sty"
+
+msgid "Feb"
+msgstr "lut"
+
+msgid "Mar"
+msgstr "mar"
+
+msgid "Apr"
+msgstr "kwi"
+
+msgid "May"
+msgstr "maj"
+
+msgid "Jun"
+msgstr "cze"
+
+msgid "Jul"
+msgstr "lip"
+
+msgid "Aug"
+msgstr "sie"
+
+msgid "Sep"
+msgstr "wrz"
+
+msgid "Oct"
+msgstr "paz"
+
+msgid "Nov"
+msgstr "lis"
+
+msgid "Dec"
+msgstr "gru"
+
+msgid "pon."
+msgstr "pn."
+
+msgid "wto."
+msgstr "wt."
+
+msgid "Sro."
+msgstr "śr."
+
+msgid "czw."
+msgstr "cz."
+
+msgid "pią."
+msgstr "pt."
+
+msgid "sob."
+msgstr "so."
+
+msgid "niedz."
+msgstr "nd."
+
+msgid "Airly sensor Latitude"
+msgstr "Szerokość geograficzna czujnika airly"
+
+msgid "Airly sensor Longitude"
+msgstr "Długość geograficzna czujnika airly"
+
+msgid "Location in www.foreca.com/<this part>"
+msgstr "Lokalizacja w www.foreca.com/<ta część>"
+
+msgid "*** Basic settings ***"
+msgstr "*** Ustawienia podstawowe ***"
+
+msgid "*** Home air condition ***"
+msgstr "*** Domowe klimatyzatory ***"
+
+msgid "1st AC system:"
+msgstr "Pierwszy klimatyzator:"
+
+msgid "IP address:"
+msgstr "Adres IP:"
+
+msgid "2nd AC system:"
+msgstr "Drugi klimatyzator:"
+
+msgid "*** Debuging options ***"
+msgstr "*** Opcje logowania ***"
+
+msgid "not installed"
+msgstr "nie zainstalowany"
+
+msgid "Daikin Air Conditioner"
+msgstr "Firmy Daikin"
+
+msgid "Samsung Air Conditioner"
+msgstr "Firmy Samsung"
+
+msgid "AC in the attic"
+msgstr "Klima na poddaszu"
+
+msgid "AC in the bedroom"
+msgstr "Klima w sypialni"
+
+msgid "AC in the living room"
+msgstr "Klima w salonie"
+
+msgid "*** Integration with Airly plugin ***"
+msgstr "*** Integracja z wtyczką Airly ***"
+
+msgid "Get current data from:"
+msgstr "Użyj aktualnych danych z:"
+
+msgid "MSN service"
+msgstr "serwisu MSN"
+
+msgid "Airly service"
+msgstr "serwisu airly"
+
+msgid "MSN or Airly depending which latest"
+msgstr "serwisu, który ma dane najświerzsze"
+
+msgid "Description:"
+msgstr "Opis:"
+
+msgid "A/C type not set!"
+msgstr "Nie zdefiniowano typu klimatyzatora!"
+
+msgid "A/C IP address not set!"
+msgstr "Nie zdefiniowano adresu IP klimatyzatora!"
+
+msgid "Use A/C outside temp sensor instead of MSN:"
+msgstr "Użyj zewnętrzny czujnik temparatury klimy zamiast MSN:"
+
+msgid "Fan"
+msgstr "Wiatrak"
+
+msgid "Direction"
+msgstr "Kierunek"
+
+msgid "Mode"
+msgstr "Tryb"
+
+msgid "Turn off"
+msgstr "Wyłącz"
+
+msgid "Turn on"
+msgstr "Włącz"
+
+msgid "%sName:%s %s"
+msgstr "%sNazwa:%s %s"
+
+msgid "Very good"
+msgstr "Bardzo dobre"
+
+msgid "Good"
+msgstr "Dobre"
+
+msgid "Moderate"
+msgstr "Umiarkowane"
+
+msgid "satisfactory"
+msgstr "Dostateczne"
+
+msgid "Bad"
+msgstr "Złe"
+
+msgid "Very bad"
+msgstr "Bardzo złe"
+
+msgid "Current information"
+msgstr "Aktualnie"
+
+msgid "MSN sync time"
+msgstr "Czas aktualizacji z MSN"
+
+msgid "New Moon"
+msgstr "Nów"
+
+msgid "Waxing Crescent"
+msgstr "Sierp przybywający"
+
+msgid "First Quarter"
+msgstr "I kwadra"
+
+msgid "Waxing Gibbous"
+msgstr "Przybywający księżyc garbaty"
+
+msgid "Full Moon"
+msgstr "Pełnia"
+
+msgid "Waning Gibbous"
+msgstr "Ubywający księżyc garbaty"
+
+msgid "Last Quarter"
+msgstr "III kwadra"
+
+msgid "Waning Crescent"
+msgstr "Sierp ubywający"
+
+msgid "Actualization time: %s"
+msgstr "Zaktualizowano o %s"
+
+msgid "Rain %s"
+msgstr "Deszcz %s"
+
+msgid "Not configured!!!"
+msgstr "Nie skonfigurowano!!!"
+
+msgid "5 days meteogram for:"
+msgstr "5-cio dniowy meteogram dla:"
+
+msgid "meteogram not available, check configuration"
+msgstr "Meteogram niedostępny, sprawdź konfigurację"
+
+msgid "Things were good once... Let's hope it doesn't get worse!"
+msgstr "Kiedyś było dobrze ... Miejmy nadzieję, że nie będzie gorzej!"
+
+msgid "Great air here today!"
+msgstr "Wspaniałe powietrze!"
+
+msgid "Air is quite good."
+msgstr "Dobre powietrze"
+
+msgid "Well... It's been better."
+msgstr "Bywało lepiej..."
+
+msgid "Poor air quality!"
+msgstr "Zła jakość powietrza!"
+
+msgid "Very high pollution!"
+msgstr "Bardzo zła jakość powietrza!"
+
+msgid "Airly sync time"
+msgstr "Airly zaktualizowano o"
+
+msgid "TS sync time"
+msgstr "TS zaktualizowano o"
+
+msgid "Try to stay with your family at home."
+msgstr "Lepiej zostać z rodziną w domu."
+
+msgid "The air doesn't encourage walking today."
+msgstr "Powietrze dziś nie zachęca do spacerów."
+
+msgid "Neither good nor bad. Think before leaving the house."
+msgstr "Powietrze ani dobre ani złe. Zastanów się przed wyjściem z domu."
+
+msgid "If you can, stay home."
+msgstr "Jeśli możesz, zostań w domu"
+
+msgid "The smog is coming! :O"
+msgstr "Smog nadchodzi!"
+
+msgid "Watch out - a few signs of smog today."
+msgstr "Uwaga - dziś kilka oznak smogu."
+
+msgid "Protect your lungs!"
+msgstr "Chroń swoje płuca!"
+
+msgid "Airly installation ID (OK)"
+msgstr "ID instalacji Airly (OK aby wybrać)"
+
+msgid "Set proper latitude and longitude!!!"
+msgstr "Ustaw poprawnie dłuhość i szerokość geograficzną!!!"
+
+msgid "Set airly API key using one of the following methods:\n"
+msgstr "Ustaw klucz API arily wg jednej z poniższych metod:\n"
+
+msgid "global plugin settings\n"
+msgstr "w ustawieniach wtyczki\n"
+
+msgid "/hdd/User_Configs/airlyAPIKEY file\n"
+msgstr "w pliku /hdd/User_Configs/airlyAPIKEY\n"
+
+msgid "/etc/enigma2/Airly/api.txt file\n"
+msgstr "w pliku /etc/enigma2/Airly/api.txt\n"
+
+msgid "10 closest Airly installations"
+msgstr "10 najbliższych instalacji"
+
+msgid "Current selection"
+msgstr "Aktualnie wybrana"
+
+msgid "Exception: \n%s"
+msgstr "Wyjątek:: \n%s"
+
+msgid "Save"
+msgstr "Zapisz"
+
+msgid "AAirly API key %s:"
+msgstr "Klucz API Airly %s:"
+
+msgid "Sensors priority:"
+msgstr "Priorytet sensorów:"
+
+msgid "TsAirlyMsn"
+msgstr "TS > Airly > MSN"
+
+msgid "AirlyTsMsn"
+msgstr "Airly > TS > MSN"
+
+msgid "MsnAirlyTs"
+msgstr "MSN > Airly > TS"
+
+msgid "MsnTsAirly"
+msgstr "MSN > TS > Airly"
+
+msgid "LookO2TsAirlyMsn"
+msgstr "looko2 > TS > Airly > MSN"
+
+msgid "Meteogram for www.foreca.net/<this part>"
+msgstr "Meteogram dla www.foreca.net/<ta część>"
+
+msgid "The air quality is good today!"
+msgstr "Jakość powietrza jest dzisiaj dobra!"
+
+msgid "Take a breath!"
+msgstr "Weź oddech!"
+
+msgid "Take a deep breath. Today, you can. ;)"
+msgstr "Weź głęboki oddech. Dzisiaj możesz!"
+
+msgid "Enjoy the clean air."
+msgstr "Ciesz się dobrym powietrzem!"
+
+msgid "It's better to limit your outside physical activity today."
+msgstr "Dziś lepiej ograniczyć aktywność fizyczną na zewnątrz."
+
+msgid "Yes, yes - it's true. The air quality is good today!"
+msgstr "Tak - to prawda. Dzisiaj jakość powietrza jest dobra!"
+
+msgid "The air is nice and clean today!"
+msgstr "Powietrze jest dzisiaj przyjemne i czyste!"
+
+msgid "Watch out - a few signs of smog"
+msgstr "Uwaga - kilka oznak smogu"
+
+msgid "Keep your windows closed today"
+msgstr "Trzymaj dzisiaj okna zamknęte"
+
+msgid "It's not good,oh no!"
+msgstr "Nie jest dobrze, o nie!"
+
+msgid "Avoid being outside possible"
+msgstr "Unikaj przebywania na zewnątrz"
+
+msgid "This isn't a day for a walk with The kids:("
+msgstr "To nie jest dzień na spacer z dziećmi"
+
+msgid "Donat go out,unless you want to breathe like Darth Vader!"
+msgstr "Nie wychodź, chyba że chcesz oddychać jak Darth Vader!"
+
+msgid "Taking long walks on a day like today isn't advisable"
+msgstr "Nie zaleca się długich spacerów w taki dzień jak dzisiaj"
+
+msgid "Instead of running outdoors,how about a treadmill instead?"
+msgstr "Zamiast biegać na świeżym powietrzu, co powiesz na bieżnię?"
+
+msgid "Careful! Dust is hanging over the city."
+msgstr "Ostrożnie! Kurz wisi nad miastem."
+
+msgid "Define the air quality in one word? NOT GOOD.OK,two words;)"
+msgstr "Zdefiniować jakość powietrza jednym słowem? NIE DOBRE. OK, dwa słowa"
+
+msgid "Something's hanging in the air. Take care!"
+msgstr "Coś wisi w powietrzu. Uważaj!"
+
+msgid "The air is slightly polluted."
+msgstr "Powietrze jest lekko zanieczyszczone."
+
+msgid "Data presented (if now defined in skin):"
+msgstr "Układ (gdy nie zdefiniowano w skórce):"
+
+msgid "Vertically"
+msgstr "Pionowy"
+
+msgid "Horizontally"
+msgstr "Poziomy"
+
+msgid "Do you smell it? That`s the smell of clean air."
+msgstr "Czujesz to? Tak pachnie czyste powietrze!"
+
+msgid "Sadly, the air is not quite as clean as it looks today."
+msgstr "Niestety powietrze nie jest tak czyste, jak to dzisiaj wygląda."
+
+msgid "HUMIDITY"
+msgstr "Wilgotność"
+
+msgid "Humidity"
+msgstr "Wilgotność"
+
+msgid "PRESSURE"
+msgstr "Ciśnienie"
+
+msgid "TEMPERATURE"
+msgstr "Temperatura"
+
+msgid "Forecast for %s: maximum temperature %s, minimum temperature %s, rain probability %s"
+msgstr "%s: temperatura maksymalna %s, temperatura minimalna %s, prawdopodobieństwo opadów %s"
+
+msgid "feelslike"
+msgstr "Temp. odczuwalna"
+
+msgid "observationtime"
+msgstr "Czas obserwacji"
+
+msgid "skytext"
+msgstr "opis"
+
+msgid "temperature"
+msgstr "Temperatura"
+
+msgid "WIND_SPEED"
+msgstr "Wiatr"
+
+msgid "--- OPTIONAL, NOT REQUIRED ---"
+msgstr "--- OPCJONALNE, NIE WYMAGANE ---"
+
+msgid "local"
+msgstr "lokalna"
+
+msgid "remote"
+msgstr "zdalna"
+
+msgid "Airly plugin detected - API key CAN be BLOCKED!!!"
+msgstr "Wykryto wtyczkę Airly. możliwa BLOKADA klucza API!!!"
+
+msgid "No airly installations within 20km distance, provide ID manually"
+msgstr "Nie wykryto czujnika airly w promieniu 20km, podaj ID ręcznie"
+
+msgid "Hourly"
+msgstr "Prognoza godzinowa"
+
+msgid "Detailed forecast"
+msgstr "Prognoza szczegółowa"
+
+msgid "Average maximum temperature"
+msgstr "Średnia temperatura maksymalna"
+
+msgid "Average minimum temperature"
+msgstr "Średnia temperatura minimalna"
+
+msgid "Highest noted"
+msgstr "Najwyższa zanotowana"
+
+msgid "Lowest noted"
+msgstr "Najniższa zanotowana"
+
+msgid "Average rain"
+msgstr "Średnie opady deszczu"
+
+msgid "WRONG API KEY!!!"
+msgstr "ŻŁ¥ KLUCZ API!!!"
+
+msgid "CORRECTLY enter API key and SELECT sensor ID"
+msgstr "POPRAWNIE wpisz klucz API i WYBIERZ czujnik z listy!"
+
+msgid "Feeling temperature"
+msgstr "Temperatura odczuwalna"
+
+msgid "Wind"
+msgstr "Wiatr"
+
+msgid "wind"
+msgstr "Wiatr"
+
+msgid "Air quality"
+msgstr "Jakość powietrza"
+
+msgid "Entry type"
+msgstr "Typ lokalizacji"
+
+msgid "Location name on the list"
+msgstr "Nazwa lokalizacji na liście"
+
+msgid "Main plugin IP address"
+msgstr "Adres IP (FTP) głównej wtyczki"
+
+msgid "Main plugin username"
+msgstr "Nazwa użytkownika FTP"
+
+msgid "Main plugin password"
+msgstr "Hasło FTP"
+
+msgid "Main plugin entry ID"
+msgstr "ID lokalizacji w głównej wtyczce"
+
+msgid "O2 sync time"
+msgstr "looko2 zaktualizowano o"
+
+msgid "looko2 sensor ID (OK)"
+msgstr "ID czujnika looko2 (OK aby wpisać)"
+
+msgid "GiOS sensor ID (OK)"
+msgstr "ID czujnika GiOŚ (OK aby wybrać)"
+
+msgid "blebox sensor ID (OK)"
+msgstr "ID czujnika blebox (OK aby wpisać)"
+
+msgid "rel. humidity"
+msgstr "Wilgotność odczuwalna"
+
+msgid "openSense sensor ID (OK)"
+msgstr "ID czujnika openSense (OK aby wpisać)"
+
+msgid "*** Home solar system ***"
+msgstr "*** Domowa elektrownia słoneczna ***"
+
+msgid "Producer:"
+msgstr "Producent:"
+
+msgid "ID:"
+msgstr "ID instalacji:"
+
+msgid "API key:"
+msgstr "klucz API:"
+
+msgid "--- REQUIRED ---"
+msgstr "--- WYMAGANE ---"
+
+msgid "foreca daily rain precip"
+msgstr "Prognoza dziennych opadów:"
+
+msgid "maximum"
+msgstr "maksymalna prognoza godzinowa"
+
+msgid "average"
+msgstr "średnia prognoza godzinowa"
+
+msgid "Daily icons type:"
+msgstr "Typ ikon dziennych:"
+
+msgid "Hourly icons type:"
+msgstr "Typ ikon godzinowych:"
+
+msgid "Icons scaling engine:"
+msgstr "Silnik skalowanie ikon:"
+
+msgid "internal E2"
+msgstr "wewnętrzny E2"
+
+msgid "Pochmurnie i niewielkie opady deszcz"
+msgstr "Pochmurnie i niewielkie opady deszczu"
+
+msgid "Mon"
+msgstr "Pon"
+
+msgid "Tue"
+msgstr "Wto"
+
+msgid "Wed"
+msgstr "Śro"
+
+msgid "Thu"
+msgstr "Czw"
+
+msgid "Fri"
+msgstr "Pią"
+
+msgid "Sat"
+msgstr "Sob"
+
+msgid "Sun"
+msgstr "Nie"
+
+msgid "Wind gust"
+msgstr "Wiatr w porywach do"
+
+msgid "Cloud cover"
+msgstr "Zachmurzenie"
+
+msgid "Visibility"
+msgstr "Widoczność"
+
+msgid "Temp."
+msgstr "Temp."
+
+msgid "Water temp."
+msgstr "Temp. wody"
+
+msgid "Dew point temp."
+msgstr "Temp. punktu rosy"
+
+msgid "UV"
+msgstr "UV"
+
+msgid "%s\n\n\n%s\nTemp. %s\nRain %s"
+msgstr "%s\n\n\n%s\nTemp. %s\nOpady %s"
+
+msgid "Sun "
+msgstr "Słońce "
+
+msgid "will rise at %s"
+msgstr "wzejdzie o %s"
+
+msgid "rose at %s"
+msgstr "wzeszło o %s"
+
+msgid " and goes down at %s. "
+msgstr " i zajdzie o %s. "
+
+msgid " and went down at %s. "
+msgstr " i zaszło o %s. "
+
+msgid "Day will take %s%s and %s"
+msgstr "Dzień będzie trwał %s%s i %s"
