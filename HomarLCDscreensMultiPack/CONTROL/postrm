@@ -1,0 +1,6 @@
+#!/bin/sh
+skinsDir='/usr/share/enigma2'
+
+[ -e $skinsDir/vfd_skin/model.* ] && rm -rf $skinsDir/vfd_skin/model.*
+
+exit 0

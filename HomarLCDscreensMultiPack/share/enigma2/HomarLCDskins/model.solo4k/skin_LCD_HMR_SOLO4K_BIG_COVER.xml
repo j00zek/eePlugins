@@ -1,0 +1,984 @@
+ <skin>
+  <!-- vfd-Skin by HOMAR-->
+  <!-- 24.02.2019 -->
+ <fonts>
+    <font filename="/usr/share/enigma2/HomarLCDskins/fonts/BoldCondensed.ttf" name="VFD" scale="100"/>
+    <font filename="/usr/share/enigma2/HomarLCDskins/fonts/MyriadPro-Regular.otf" name="RegularLCD" scale="100"/>
+    <font filename="/usr/share/enigma2/HomarLCDskins/fonts/analog.ttf" name="VFD2" scale="90"/>
+    <font filename="/usr/share/enigma2/HomarLCDskins/fonts/meteocons.ttf" name="Meteo" scale="100"/>
+    <font filename="/usr/share/enigma2/HomarLCDskins/fonts/nmsbd.ttf" name="VFD3" scale="90"/>
+<font filename="/usr/share/enigma2/HomarLCDskins/fonts/digi.ttf" name="DIGI" scale="100"/>
+<font filename="/usr/share/enigma2/HomarLCDskins/fonts/CarbonPhyber-Regular 400.ttf" name="Carbon" scale="100"/>
+<font filename="/usr/share/enigma2/HomarLCDskins/fonts/junegull.ttf" name="Junegull" scale="94"/>
+
+</fonts>
+<colors>
+    <color name="HMRstartTime" value="#ffff66"/>
+    <color name="HMRname" value="#ffff00"/>
+    <color name="HMRendTime" value="#ff3333"/>
+
+
+
+</colors>
+<windowstyle type="skinned" id="1">
+<color name="Background" color="#000000" />
+<color name="LabelForeground" color="#ffffff" />
+<color name="ListboxBackground" color="#ffffff" />
+<color name="ListboxForeground" color="#000000" />
+<color name="ListboxSelectedBackground" color="#ffffff" />
+<color name="ListboxSelectedForeground" color="#000000" />
+<color name="ListboxMarkedBackground" color="#ffffff" />
+<color name="ListboxMarkedForeground" color="#000000" />
+<color name="ListboxMarkedAndSelectedBackground" color="#ffffff" />
+<color name="ListboxMarkedAndSelectedForeground" color="#000000" />
+<color name="WindowTitleForeground" color="#000000" />
+<color name="WindowTitleBackground" color="#ffffff" />
+</windowstyle>
+
+
+<!-- InfoBar -->
+ <screen name="InfoBarSummary" position="0,0" size="480,320" id="1">
+ <ePixmap pixmap="HomarLCDskins/Homar_480x320/Homar_4.png" position="0,0" size="480,320" zPosition="-1" alphatest="blend" />
+ <widget source="session.CurrentService" render="j00zekPiconAnimation" pixmaps="HomarLCDskins/common/animated" position="10,30" size="320,160" zPosition="5" transparent="1" alphatest="blend" />
+ <widget alphatest="blend" render="j00zekPicons" picontype="picon" position="10,30" size="320,160" source="session.CurrentService" zPosition="4" transparent="1">
+ <convert type="j00zekModServiceName2">Reference</convert>
+ </widget>
+ <widget source="session.Event_Now" render="j00zekModRunningText" 
+options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=0,startdelay=200,always=0,oneshot=0" noWrap="1" position="16,200" size="460,69" font="VFD;58" transparent="1" halign="left" valign="top" foregroundColor="HMRname">
+ <convert type="j00zekModEventName">Name</convert>
+ </widget>
+ <widget source="session.Event_Now" render="Progress" pixmap="HomarLCDskins/Homar_480x320/Homar_3.png" position="130,275" size="230,35" borderWidth="6" backgroundColor="#00CFFF">
+ <convert type="EventTime">Progress</convert>
+ </widget>
+ <widget source="global.CurrentTime" render="Label" position="15,260" size="130,58" font="VFD;47" transparent="1" halign="left" valign="center">
+ <convert type="ClockToText">Format:%H:%M</convert>
+ </widget>
+ <widget source="session.j00zekMSNWeather" render="j00zekMSNWeatherPixmap" position="355,125" size="95,95" zPosition="1" transparent="1" alphatest="blend">
+ <convert type="j00zekMSNWeather">weathericon,current</convert>
+ </widget>
+ <widget source="session.j00zekMSNWeather" render="j00zekModRunningText" 
+options="movetype=running,startpoint=0,direction=left,steptime=70,repeat=0,startdelay=2000,always=0,oneshot=0" noWrap="1"  position="340,85" size="150,60" font="VFD;40" transparent="1" halign="left" valign="center" foregroundColor="HMRname" zPosition="3">
+ <convert type="j00zekMSNWeather">temperature_text,current</convert>
+ </widget>
+ <widget source="session.j00zekMSNWeather" render="Label" position="345,40" size="130,65" font="VFD; 58" zPosition="1" halign="left" valign="top" foregroundColor="#00CFFF" transparent="1" noWrap="1">
+ <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
+ </widget>
+ <widget source="session.RecordState" render="Pixmap" pixmap="HomarLCDskins/Homar_480x320/Homar_2.png" position="380,30" size="80,20" zPosition="3" alphatest="blend">
+ <convert type="ConfigEntryTest">config.usage.blinking_rec_symbol_during_recording,True,CheckSourceBoolean</convert>
+ <convert type="ConditionalShowHide">Blink</convert>
+ </widget>
+ <widget source="session.Event_Now" render="j00zekModRunningText" 
+options="movetype=running,startpoint=0,direction=left,steptime=50,repeat=0,startdelay=2000,always=0,oneshot=1" noWrap="1" position="367,260" size="100,58" font="VFD;47" transparent="1" halign="right" valign="center" foregroundColor="#ff3333">
+ <convert type="EventTime">Remaining</convert>
+ <convert type="RemainingToText">InMinutes</convert>
+ </widget>
+ <widget source="session.CurrentService" render="Pixmap" pixmap="HomarLCDskins/Homar_480x320/VTI.png" position="380,30" size="80,20" zPosition="3" alphatest="blend">
+ <convert type="ConfigEntryTest">config.usage.update_available,True</convert>
+ <convert type="ConditionalShowHide">Blink</convert>
+ </widget>
+ <!-- Timeshift -->
+<widget source="session.CurrentService" render="Progress" pixmap="HomarLCDskins/Homar_480x320/Homar_7.png" position="130,275" size="230,35" borderWidth="6" zPosition="2" transparent="2">
+ <convert type="ServicePosition">Position</convert>
+ </widget>
+ </screen>
+
+ <!-- ChannelSelection -->
+ <screen name="ChannelSelection_summary" position="0,0" size="480,320" id="1">
+ <ePixmap pixmap="HomarLCDskins/Homar_480x320/Homar_4.png" position="0,0" size="480,320" zPosition="-1" alphatest="blend" />
+ <widget source="parent.ServiceEvent" render="j00zekPiconAnimation" pixmaps="HomarLCDskins/common/animated" position="15,30" size="220,130" zPosition="5" transparent="1" alphatest="blend" />
+ <widget source="parent.ServiceEvent" render="j00zekPicons" picontype="picon" position="12,30" size="220,130" zPosition="4" transparent="1" alphatest="blend">
+ <convert type="j00zekModServiceName2">Reference</convert>
+ </widget>
+ <widget source="parent.ServiceEvent" render="j00zekModRunningText" 
+options="movetype=running,startpoint=0,direction=left,steptime=20,repeat=0,startdelay=800,always=0,oneshot=0" noWrap="1"  position="16,200" size="460,69" font="VFD;58" transparent="1" halign="left" valign="top" foregroundColor="HMRname" >
+ <convert type="j00zekModEventName">Name</convert>
+ </widget>
+ <widget source="parent.ServiceEvent" render="Label" noWrap="1" position="15,260" size="130,58" font="VFD;47" transparent="1" halign="left" valign="top" foregroundColor="#ffff66">
+ <convert type="EventTime">StartTime</convert>
+ <convert type="ClockToText">Default</convert>
+ </widget>
+ <widget source="parent.ServiceEvent" render="Label" noWrap="1" position="330,260" size="145,58" font="VFD;47" transparent="1"  halign="right" valign="top" foregroundColor="#ff3333">
+ <convert type="EventTime">EndTime</convert>
+ <convert type="ClockToText">Format:%H:%M</convert>
+ </widget>
+ <widget source="parent.ServiceEvent" render="Label" position="140,270" size="220,40" font="VFD;33" transparent="1" zPosition="4" halign="center" valign="center" foregroundColor="#000000">
+ <convert type="EventTime">Remaining</convert>
+ <convert type="RemainingToText">InMinutes</convert>
+ </widget>
+ <widget source="parent.ServiceEvent" render="Progress" pixmap="HomarLCDskins/Homar_480x320/Homar_3.png" position="130,275" size="230,35" borderWidth="6" backgroundColor="#00CFFF">                     
+ <convert type="EventTime">Progress</convert>
+ </widget>
+ <widget source="session.RecordState" render="Pixmap" pixmap="HomarLCDskins/Homar_480x320/Homar_2.png" position="370,10" size="80,20" zPosition="3" alphatest="blend">
+ <convert type="ConfigEntryTest">config.usage.blinking_rec_symbol_during_recording,True,CheckSourceBoolean</convert>
+ <convert type="ConditionalShowHide">Blink</convert>
+ </widget>
+ <!--   Today   --> 
+ <widget noWrap="1" backgroundColor="background" font="VFD;34" render="Label" position="160,176" size="110,45" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1" valign="top">
+ <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=0']['temp_high']|C</convert>
+
+ </widget>
+ <widget noWrap="1" backgroundColor="background" font="VFD;34" render="Label" position="235,176" size="110,45" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1" valign="top">
+ <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=0']['temp_low']|C</convert>
+
+ </widget>
+ <ePixmap pixmap="HomarLCDskins/weather/temp1.png" position="222,150" size="70,30" zPosition="3" transparent="1" alphatest="blend" />
+ <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="222,60" size="100,100" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
+ <convert type="j00zekMSNWeather">DailyRecord=0</convert>
+ </widget>
+ <widget noWrap="1" backgroundColor="background" font="VFD;31" render="Label" position="223,30" size="135,40" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1" foregroundColor="foreground">
+ <convert type="j00zekMSNWeather">DailyRecord=0,date</convert>
+ </widget>
+ <!--   Tomorrow   -->
+ <widget noWrap="1" backgroundColor="background" font="VFD;34" render="Label" position="310,176" size="110,45" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1" valign="top">
+ <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=1']['temp_high']|C</convert>
+
+ </widget>
+ <widget noWrap="1" backgroundColor="background" font="VFD;34" render="Label" position="385,176" size="110,45" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1" valign="top">
+ <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=1']['temp_low']|C</convert>
+
+ </widget>
+ <ePixmap pixmap="HomarLCDskins/weather/temp1.png" position="371,150" size="70,30" zPosition="3" transparent="1" alphatest="blend" />
+ <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="351,60" size="100,100" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
+ <convert type="j00zekMSNWeather">DailyRecord=1</convert>
+ </widget>
+ <widget noWrap="1" backgroundColor="background" font="VFD;31" render="Label" position="350,30" size="135,40" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1" foregroundColor="foreground">
+ <convert type="j00zekMSNWeather">DailyRecord=1,date</convert>
+ </widget>
+ </screen>
+
+
+<!-- EMCMoviePlayer -->
+<screen name="EMCMoviePlayerSummary" position="0,0" size="480,320" id="1">
+  <ePixmap pixmap="HomarLCDskins/Homar_480x320/Homar_4.png" position="0,0" size="480,320" zPosition="-1" alphatest="blend" />
+<ePixmap pixmap="HomarLCDskins/Homar_480x320/movie.png" position="40,180" size="120,120" zPosition="-1" alphatest="blend" />
+  <widget source="session.CurrentService" render="Progress"
+pixmap="HomarLCDskins/Homar_480x320/Homar_7.png" position="200,275" size="260,34" borderWidth="6" backgroundColor="#00CFFF"> 
+    <convert type="ServicePosition">Position</convert>
+  </widget>
+  <widget source="session.CurrentService" render="Label" position="285,160" size="145,58" font="VFD;46" transparent="1" halign="right" valign="top">
+    <convert type="ServicePosition">Remaining,Negate,ShowHours,ShowNoSeconds</convert>
+  </widget>
+<widget source="session.CurrentService" render="Label" position="245,160" size="90,58" font="VFD;46" transparent="1" halign="left" valign="top">
+    <convert type="ServicePosition">Position,ShowNoSeconds,ShowHours</convert>
+  </widget>
+<widget source="session.RecordState" render="Pixmap" pixmap="HomarLCDskins/Homar_480x320/Homar_2.png" position="220,25" size="80,20" zPosition="3" alphatest="blend">
+       <convert type="ConfigEntryTest">config.usage.blinking_rec_symbol_during_recording,True,CheckSourceBoolean</convert>
+      <convert type="ConditionalShowHide">Blink</convert>
+     </widget>
+    <widget source="session.CurrentService" render="j00zekModRunningText" 
+options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=0,startdelay=200,always=0,oneshot=0" noWrap="1" position="200,200" size="260,69" font="VFD;58" transparent="1" halign="left" valign="top" foregroundColor="HMRname" backgroundColor="#000000">
+    <convert type="j00zekModServiceName2">Name</convert>
+  </widget>
+<widget source="session.CurrentService" render="Pixmap" pixmap="HomarLCDskins/Homar_480x320/SD.png" position="300,120" zPosition="1" size="130,40" alphatest="blend">
+	 <convert type="ServiceInfo">VideoHeight</convert>
+	 <convert type="ValueRange">0,719</convert>
+	 <convert type="ConditionalShowHide" />
+	</widget>
+	<widget source="session.CurrentService" render="Pixmap" pixmap="HomarLCDskins/Homar_480x320/HD.png" position="300,120" zPosition="1" size="130,40" alphatest="blend">
+	 <convert type="ServiceInfo">VideoHeight</convert>
+	 <convert type="ValueRange">720,1079</convert>
+	 <convert type="ConditionalShowHide" />
+	</widget>
+	<widget source="session.CurrentService" render="Pixmap" pixmap="HomarLCDskins/Homar_480x320/FHD.png" position="300,120" zPosition="1" size="130,40" alphatest="blend">
+	 <convert type="ServiceInfo">VideoHeight</convert>
+	 <convert type="ValueRange">1080,2159</convert>
+	 <convert type="ConditionalShowHide" />
+	</widget>
+	<widget source="session.CurrentService" render="Pixmap" pixmap="HomarLCDskins/Homar_480x320/UHD.png" position="300,120" zPosition="1" size="130,40" alphatest="blend">
+	 <convert type="ServiceInfo">VideoHeight</convert>
+	 <convert type="ValueRange">2160,5000</convert>
+	 <convert type="ConditionalShowHide" />
+	</widget>	
+  <widget source="session.CurrentService" render="Pixmap" pixmap="HomarLCDskins/Homar_480x320/Homar_6.png" position="310,75" size="190,70" alphatest="blend">
+  <convert type="ServiceInfo">IsMultichannel</convert>
+  <convert type="ConditionalShowHide" />
+  </widget>
+  <widget source="global.CurrentTime" render="Label" position="220,15" size="200,96" font="VFD;48" transparent="1" halign="right" >
+    <convert type="ClockToText">Format:%H:%M</convert>
+  </widget>
+  <widget source="session.CurrentService" render="Cover" position="0,0" size="200,330" zPosition="5" transparent="0" alphatest="off" />
+  <widget source="session.CurrentService" render="j00zekPicons" picontype="picon" position="10,50" size="180,100" zPosition="4" transparent="1" alphatest="blend">
+  <convert type="MovieBarInfo">Reference</convert>
+  </widget>
+</screen>
+
+<!-- EMC Hauptmenü -->
+<screen name="EMCSelectionSummary" position="0,0" size="480,320" id="1">
+   <ePixmap pixmap="HomarLCDskins/Homar_480x320/kino.png" position="7,7" size="480,320" zPosition="-1" alphatest="blend" />
+<widget source="session.CurrentService" render="j00zekPiconAnimation" pixmaps="HomarLCDskins/common/animated_1" position="33,7" size="420,227" zPosition="5" transparent="1" alphatest="blend" />
+<widget render="j00zekModRunningText" source="parent.Service" options="movetype=running,startpoint=0,direction=top,steptime=90,repeat=0,startdelay=6000,wrap" foregroundColor="#111111" font="VFD;48" position="33,7" size="420,227" halign="center" valign="center" transparent="1">
+    <convert type="j00zekModServiceName2">Name</convert>
+  </widget>
+<widget source="parent.Service" render="Label" position="40,260" size="300,58" font="VFD;42" transparent="1" halign="left" valign="center">
+		<convert type="MovieInfo">FileSize</convert>
+		</widget>
+  <widget source="parent.Service" render="Label" position="290,260" size="160,58" font="VFD;42" transparent="1"  halign="right" valign="center">
+    <convert type="ServiceTime">Duration</convert>
+    <convert type="ClockToText">AsLength</convert>
+  </widget>
+</screen>		
+
+ <!-- LCD screen IPTVExtMoviePlayerSummary -->
+ <screen name="IPTVExtMoviePlayerSummary" position="0,0" size="480,320">
+ <ePixmap pixmap="HomarLCDskins/Homar_480x320/Homar_4.png" position="0,0" size="480,320" zPosition="-1" alphatest="blend" />
+ <ePixmap pixmap="HomarLCDskins/Homar_480x320/iptvlogo.png" position="60,270" size="225,90" zPosition="-1" alphatest="blend" />
+ <widget source="global.CurrentTime" render="Label" position="290,85" size="200,55" font="VFD;52" transparent="1" halign="center" valign="center">
+ <convert type="ClockToText">Format:%H:%M</convert>
+ </widget>
+ <widget source="global.CurrentTime" render="Label" position="20,30" size="460,54" font="VFD;48" transparent="1" halign="left" valign="top" foregroundColor="HMRname">
+ <convert type="ClockToText">Format:%a, %d %B %Y</convert>
+ </widget>
+ <widget source="parent.Title" render="j00zekModRunningText" 
+options="movetype=running,startpoint=0,direction=left,steptime=20,repeat=0,startdelay=800,always=0,oneshot=0" noWrap="1" position="16,150" size="460,58" font="VFD;52" transparent="1" halign="left" valign="top" foregroundColor="HMRname" >
+ </widget>
+ <widget source="session.CurrentService" render="Progress" pixmap="HomarLCDskins/Homar_480x320/Homar_3.png" position="18,215" size="460,34" borderWidth="6" backgroundColor="#00CFFF"> 
+ <convert type="j00zekE2iPlayer">Progress</convert>
+ </widget>
+ <widget source="session.CurrentService" render="Label" font="VFD;52" position="190,250" size="260,78" halign="right" valign="center" transparent="1" zPosition="1" noWrap="1" >
+ <convert type="j00zekE2iPlayer">RemindedMinutes</convert>
+ </widget>
+ </screen> 
+
+ <!-- MediaPlayer -->
+ <screen name="MediaPlayerLCDScreen" position="0,0" size="480,320" id="1">
+ <widget source="session.CurrentService" render="j00zekPiconAnimation" pixmaps="HomarLCDskins/common/animated_1" position="0,0" size="480,320" zPosition="5" transparent="1" alphatest="blend" />
+ <ePixmap pixmap="HomarLCDskins/Homar_480x320/Homar_1.png" position="0,0" size="480,320" zPosition="-1" alphatest="blend" />
+ <widget name="text1" position="20,80" size="467,120" font="VFD;35" halign="left" valign="top" transparent="1" />
+ <widget source="session.CurrentService" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=0,startdelay=200,always=0,oneshot=0" position="16,195" size="460,65" font="VFD;60" foregroundColor="HMRname" noWrap="1" halign="left" valign="top" transparent="1" zPosition="2">
+ <convert type="ServiceName">Name</convert>
+ </widget>
+ <widget source="session.CurrentService" render="Progress"
+pixmap="HomarLCDskins/Homar_480x320/Homar_7.png" position="120,268" size="245,34" borderWidth="6" backgroundColor="#00CFFF"> 
+ <convert type="ServicePosition">Position</convert>
+ </widget>
+ <widget source="session.CurrentService" render="Label" position="320,258" size="145,58" font="VFD;44" transparent="1" halign="right" valign="top">
+ <convert type="ServicePosition">Remaining,Negate,ShowHours,ShowNoSeconds</convert>
+ </widget>
+ <widget source="session.CurrentService" render="Label" position="30,255" size="90,58" font="VFD;44" transparent="1" halign="left" valign="center">
+ <convert type="ServicePosition">Position,ShowNoSeconds,ShowHours</convert>
+ </widget>
+ <widget source="global.CurrentTime" render="Label" position="0,24" size="350,55" font="RegularLCD;42" transparent="1" halign="center" valign="center" foregroundColor="HMRname" >
+ <convert type="ClockToText">Format:%a, %d.%m.%Y</convert>
+ </widget>
+ <widget source="global.CurrentTime" render="Label" position="306,24" size="170,45" font="VFD;42" transparent="1" halign="right" valign="center">
+ <convert type="ClockToText">Format:%H:%M:%S</convert>
+ </widget>
+ </screen>
+
+<!-- MoviePlayer_SimplePlayerMP -->
+<screen name="InfoBarMoviePlayerSummary" position="0,0" size="480,320" id="1">
+  <ePixmap pixmap="HomarLCDskins/Homar_480x320/Homar_4.png" position="0,0" size="480,320" zPosition="-1" alphatest="blend" />
+<ePixmap pixmap="HomarLCDskins/Homar_480x320/movie.png" position="40,180" size="120,120" zPosition="-1" alphatest="blend" />
+  <widget source="session.CurrentService" render="Progress"
+pixmap="HomarLCDskins/Homar_480x320/Homar_7.png" position="200,275" size="260,34" borderWidth="6" backgroundColor="#00CFFF"> 
+    <convert type="ServicePosition">Position</convert>
+  </widget>
+  <widget source="session.CurrentService" render="Label" position="285,160" size="145,58" font="VFD;46" transparent="1" halign="right" valign="top">
+    <convert type="ServicePosition">Remaining,Negate,ShowHours,ShowNoSeconds</convert>
+  </widget>
+<widget source="session.CurrentService" render="Label" position="245,160" size="90,58" font="VFD;46" transparent="1" halign="left" valign="top">
+    <convert type="ServicePosition">Position,ShowNoSeconds,ShowHours</convert>
+  </widget>
+<widget source="session.RecordState" render="Pixmap" pixmap="HomarLCDskins/Homar_480x320/Homar_2.png" position="220,25" size="80,20" zPosition="3" alphatest="blend">
+       <convert type="ConfigEntryTest">config.usage.blinking_rec_symbol_during_recording,True,CheckSourceBoolean</convert>
+      <convert type="ConditionalShowHide">Blink</convert>
+     </widget>
+    <widget source="session.CurrentService" render="j00zekModRunningText" 
+options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=0,startdelay=200,always=0,oneshot=0" noWrap="1" position="200,200" size="260,69" font="VFD;58" transparent="1" halign="left" valign="top" foregroundColor="HMRname" backgroundColor="#000000">
+    <convert type="j00zekModServiceName2">Name</convert>
+  </widget>
+<widget source="session.CurrentService" render="Pixmap" pixmap="HomarLCDskins/Homar_480x320/SD.png" position="300,120" zPosition="1" size="130,40" alphatest="blend">
+	 <convert type="ServiceInfo">VideoHeight</convert>
+	 <convert type="ValueRange">0,719</convert>
+	 <convert type="ConditionalShowHide" />
+	</widget>
+	<widget source="session.CurrentService" render="Pixmap" pixmap="HomarLCDskins/Homar_480x320/HD.png" position="300,120" zPosition="1" size="130,40" alphatest="blend">
+	 <convert type="ServiceInfo">VideoHeight</convert>
+	 <convert type="ValueRange">720,1079</convert>
+	 <convert type="ConditionalShowHide" />
+	</widget>
+	<widget source="session.CurrentService" render="Pixmap" pixmap="HomarLCDskins/Homar_480x320/FHD.png" position="300,120" zPosition="1" size="130,40" alphatest="blend">
+	 <convert type="ServiceInfo">VideoHeight</convert>
+	 <convert type="ValueRange">1080,2159</convert>
+	 <convert type="ConditionalShowHide" />
+	</widget>
+	<widget source="session.CurrentService" render="Pixmap" pixmap="HomarLCDskins/Homar_480x320/UHD.png" position="300,120" zPosition="1" size="130,40" alphatest="blend">
+	 <convert type="ServiceInfo">VideoHeight</convert>
+	 <convert type="ValueRange">2160,5000</convert>
+	 <convert type="ConditionalShowHide" />
+	</widget>	
+  <widget source="session.CurrentService" render="Pixmap" pixmap="HomarLCDskins/Homar_480x320/Homar_6.png" position="310,75" size="190,70" alphatest="blend">
+  <convert type="ServiceInfo">IsMultichannel</convert>
+  <convert type="ConditionalShowHide" />
+  </widget>
+  <widget source="global.CurrentTime" render="Label" position="220,15" size="200,96" font="VFD;48" transparent="1" halign="right" >
+    <convert type="ClockToText">Format:%H:%M</convert>
+  </widget>
+  <widget source="session.CurrentService" render="Cover" position="0,0" size="200,330" zPosition="5" transparent="0" alphatest="off" />
+  <widget source="session.CurrentService" render="j00zekPicons" picontype="picon" position="10,50" size="180,100" zPosition="4" transparent="1" alphatest="blend">
+  <convert type="MovieBarInfo">Reference</convert>
+  </widget>
+</screen>
+
+<!-- MovieSelection_summary -->
+<screen name="MovieSelection_summary" position="0,0" size="480,320" id="1">
+   <ePixmap pixmap="HomarLCDskins/Homar_480x320/kino.png" position="7,7" size="480,320" zPosition="-1" alphatest="blend" />
+<widget source="session.CurrentService" render="j00zekPiconAnimation" pixmaps="HomarLCDskins/common/animated_1" position="33,7" size="420,227" zPosition="5" transparent="1" alphatest="blend" />
+<widget render="j00zekModRunningText" source="parent.Service" options="movetype=running,startpoint=0,direction=top,steptime=90,repeat=0,startdelay=6000,wrap" foregroundColor="#111111" font="VFD;48" position="33,7" size="420,227" halign="center" valign="center" transparent="1">
+    <convert type="j00zekModServiceName2">Name</convert>
+  </widget>
+<widget source="parent.Service" render="Label" position="40,260" size="300,58" font="VFD;42" transparent="1" halign="left" valign="center">
+		<convert type="MovieInfo">FileSize</convert>
+		</widget>
+  <widget source="parent.Service" render="Label" position="290,260" size="160,58" font="VFD;42" transparent="1"  halign="right" valign="center">
+    <convert type="ServiceTime">Duration</convert>
+    <convert type="ClockToText">AsLength</convert>
+  </widget>
+</screen>		
+		  
+<!-- SHOUTcast -->
+  <screen name="SHOUTcastLCDScreen" position="0,0" size="480,320" id="1">
+<widget source="session.CurrentService" render="j00zekPiconAnimation" pixmaps="HomarLCDskins/common/animated_1" position="0,0" size="480,320" zPosition="5" transparent="1" alphatest="blend" />
+  <ePixmap pixmap="HomarLCDskins/Homar_480x320/music.png" position="0,0" size="480,320" zPosition="-1" alphatest="blend" />
+    <widget source="global.CurrentTime" render="Label" position="20,15" size="440,60" font="VFD;48" transparent="1" halign="left" valign="center" foregroundColor="HMRname" >
+    <convert type="ClockToText">Format:%a, %d.%m.%Y</convert>
+  </widget>
+  <widget source="global.CurrentTime" render="Label" position="190,55" size="200,55" font="VFD;48" transparent="1" halign="right" valign="center">
+  <convert type="ClockToText">Format:%H:%M:%S</convert>
+  </widget>
+  <widget name="text1" position="26,110" size="300,130" font="VFD;39" transparent="1" halign="left" foregroundColor="#04FC0C" valign="center"/>
+  <widget source="text2" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=0,startdelay=200,always=0,oneshot=0" noWrap="1" position="16,260" size="460,58" font="VFD;48" transparent="1" halign="left" foregroundColor="HMRname"/>
+<widget name="songPic" position="0,0" zPosition="4" size="480,260" alphatest="off" />
+</screen>
+
+<!-- Abspielen von ISO -->
+<screen name="DVDSummary" position="0,0" size="480,320" id="1">
+<ePixmap pixmap="HomarLCDskins/Homar_480x320/Homar_4.png" position="0,0" size="480,320" zPosition="-1" alphatest="blend" />
+<ePixmap pixmap="HomarLCDskins/Homar_480x320/movie.png" position="40,180" size="120,120" zPosition="-1" alphatest="blend" />
+  <widget source="session.CurrentService" render="Progress"
+pixmap="HomarLCDskins/Homar_480x320/Homar_7.png" position="200,275" size="260,34" borderWidth="6" backgroundColor="#00CFFF"> 
+    <convert type="ServicePosition">Position</convert>
+  </widget>
+  <widget source="session.CurrentService" render="Label" position="285,160" size="145,58" font="VFD;46" transparent="1" halign="right" valign="top">
+    <convert type="ServicePosition">Remaining,Negate,ShowHours,ShowNoSeconds</convert>
+  </widget>
+<widget source="session.CurrentService" render="Label" position="245,160" size="90,58" font="VFD;46" transparent="1" halign="left" valign="top">
+    <convert type="ServicePosition">Position,ShowNoSeconds,ShowHours</convert>
+  </widget>
+<widget source="session.RecordState" render="Pixmap" pixmap="HomarLCDskins/Homar_480x320/Homar_2.png" position="220,25" size="80,20" zPosition="3" alphatest="blend">
+       <convert type="ConfigEntryTest">config.usage.blinking_rec_symbol_during_recording,True,CheckSourceBoolean</convert>
+      <convert type="ConditionalShowHide">Blink</convert>
+     </widget>
+    <widget source="session.CurrentService" render="j00zekModRunningText" 
+options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=0,startdelay=200,always=0,oneshot=0" noWrap="1" position="200,200" size="260,69" font="VFD;58" transparent="1" halign="left" valign="top" foregroundColor="HMRname" backgroundColor="#000000">
+    <convert type="j00zekModServiceName2">Name</convert>
+  </widget>
+<widget source="session.CurrentService" render="Pixmap" pixmap="HomarLCDskins/Homar_480x320/SD.png" position="300,120" zPosition="1" size="130,40" alphatest="blend">
+	 <convert type="ServiceInfo">VideoHeight</convert>
+	 <convert type="ValueRange">0,719</convert>
+	 <convert type="ConditionalShowHide" />
+	</widget>
+	<widget source="session.CurrentService" render="Pixmap" pixmap="HomarLCDskins/Homar_480x320/HD.png" position="300,120" zPosition="1" size="130,40" alphatest="blend">
+	 <convert type="ServiceInfo">VideoHeight</convert>
+	 <convert type="ValueRange">720,1079</convert>
+	 <convert type="ConditionalShowHide" />
+	</widget>
+	<widget source="session.CurrentService" render="Pixmap" pixmap="HomarLCDskins/Homar_480x320/FHD.png" position="300,120" zPosition="1" size="130,40" alphatest="blend">
+	 <convert type="ServiceInfo">VideoHeight</convert>
+	 <convert type="ValueRange">1080,2159</convert>
+	 <convert type="ConditionalShowHide" />
+	</widget>
+	<widget source="session.CurrentService" render="Pixmap" pixmap="HomarLCDskins/Homar_480x320/UHD.png" position="300,120" zPosition="1" size="130,40" alphatest="blend">
+	 <convert type="ServiceInfo">VideoHeight</convert>
+	 <convert type="ValueRange">2160,5000</convert>
+	 <convert type="ConditionalShowHide" />
+	</widget>	
+  <widget source="session.CurrentService" render="Pixmap" pixmap="HomarLCDskins/Homar_480x320/Homar_6.png" position="310,75" size="190,70" alphatest="blend">
+  <convert type="ServiceInfo">IsMultichannel</convert>
+  <convert type="ConditionalShowHide" />
+  </widget>
+  <widget source="global.CurrentTime" render="Label" position="220,15" size="200,96" font="VFD;48" transparent="1" halign="right" >
+    <convert type="ClockToText">Format:%H:%M</convert>
+  </widget>
+  <widget source="session.CurrentService" render="Cover" position="0,0" size="200,330" zPosition="5" transparent="0" alphatest="off" />
+  <widget source="session.CurrentService" render="j00zekPicons" picontype="picon" position="10,50" size="180,100" zPosition="4" transparent="1" alphatest="blend">
+  <convert type="MovieBarInfo">Reference</convert>
+  </widget>
+</screen>
+
+<!-- NumberZapWithName -->
+<screen name="NumberZapWithName_summary" position="0,0" size="480,320" id="1">
+<ePixmap pixmap="HomarLCDskins/Homar_480x320/Homar_1.png" position="0,0" size="480,320" zPosition="-1" alphatest="blend" />
+<widget source="parent.Service" render="j00zekPiconAnimation" pixmaps="HomarLCDskins/common/animated" position="60,30" size="360,160" zPosition="5" transparent="1" alphatest="blend" />
+<widget source="parent.Service" render="j00zekPicons" picontype="picon" position="60,30" size="360,160" zPosition="4" transparent="1" alphatest="blend">
+<convert type="j00zekModServiceName2">Reference</convert>
+</widget>
+<widget source="parent.Service" render="j00zekModRunningText" 
+options="movetype=running,startpoint=0,direction=left,steptime=20,repeat=0,startdelay=800,always=0,oneshot=0" noWrap="1"
+position="16,250" size="460,69" font="VFD;56" transparent="1" halign="center" valign="center" foregroundColor="HMRname" >
+<convert type="j00zekModServiceName2">Name</convert>
+</widget>
+<widget source="parent.Service" render="Label" 
+position="16,190" size="460,69" font="VFD;62" transparent="1" halign="center" valign="center" >
+<convert type="j00zekModServiceName2">Number</convert>
+</widget>
+</screen> 
+
+<!-- ZapHistory -->   
+<screen name="InfoBarZapHistory_summary" position="0,0" size="480,320" id="1">
+<ePixmap pixmap="HomarLCDskins/Homar_480x320/Homar_1.png" position="0,0" size="480,320" zPosition="-1" alphatest="blend" />
+<widget source="parent.ServiceEvent" render="j00zekPiconAnimation" pixmaps="HomarLCDskins/common/animated" position="110,70" size="280,135" zPosition="5" transparent="1" alphatest="blend" />
+<widget source="parent.ServiceEvent" render="j00zekPicons" picontype="picon"   position="110,70" size="280,135" zPosition="4" transparent="1" alphatest="blend">
+  <convert type="j00zekModServiceName2">Reference</convert>
+</widget>
+<widget source="parent.ServiceEvent" render="j00zekModRunningText" 
+options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=0,startdelay=200,always=0,oneshot=0" noWrap="1"
+position="16,15" size="460,50" font="VFD; 40" foregroundColor="HMRname" halign="left" zPosition="2" transparent="1" >
+  <convert type="j00zekModEventName2">NextName</convert>
+  </widget>
+<widget source="parent.ServiceEvent" render="j00zekModRunningText" 
+options="movetype=running,startpoint=0,direction=left,steptime=20,repeat=0,startdelay=800,always=0,oneshot=0" noWrap="1"  position="16,200" size="460,69" font="VFD;58" transparent="1" halign="left" valign="top" foregroundColor="HMRname" backgroundColor="#000000">
+  <convert type="j00zekModEventName">Name</convert>
+</widget>
+<widget source="parent.ServiceEvent" render="Label" noWrap="1" position="15,260" size="130,58" font="VFD;47" transparent="1" halign="left" valign="center" foregroundColor="#ffff66">
+  <convert type="EventTime">StartTime</convert>
+  <convert type="ClockToText">Default</convert>
+</widget>
+<widget source="parent.ServiceEvent" render="Label" noWrap="1" position="330,260" size="145,58" font="VFD;47" transparent="1"  halign="right" valign="center" foregroundColor="#ff3333">
+  <convert type="EventTime">EndTime</convert>
+  <convert type="ClockToText">Format:%H:%M</convert>
+</widget>
+<widget source="parent.ServiceEvent" render="Label" position="140,270" size="220,40" font="VFD;33" transparent="1" zPosition="4" halign="center" valign="center" foregroundColor="#000000">
+   <convert type="EventTime">Remaining</convert>
+   <convert type="RemainingToText">InMinutes</convert>
+</widget>
+<widget source="parent.ServiceEvent" render="Progress" pixmap="HomarLCDskins/Homar_480x320/Homar_3.png" position="130,275" size="230,35" borderWidth="6" backgroundColor="#00CFFF"> 
+	<convert type="EventTime">Progress</convert>
+</widget>
+<widget source="session.RecordState" render="Pixmap" pixmap="HomarLCDskins/Homar_480x320/Homar_2.png" position="20,190" size="80,20" zPosition="3" alphatest="blend">
+      <convert type="ConfigEntryTest">config.usage.blinking_rec_symbol_during_recording,True,CheckSourceBoolean</convert>
+      <convert type="ConditionalShowHide">Blink</convert>
+     </widget>
+	  </screen>
+
+<!-- ChoiceBox -->
+<screen name="ChoiceBox_summary" position="0,0" size="480,320" id="1">
+  <ePixmap pixmap="HomarLCDskins/Homar_480x320/Homar_1.png" position="0,0" size="480,320" zPosition="-1" alphatest="blend" />
+  <widget source="parent.summary_list" render="Label" position="20,20" size="440,280" font="VFD;40" transparent="1"  />
+</screen>
+
+<!-- DeviceManager2 -->
+<screen name="DeviceManager2Summary" position="0,0" size="480,320" id="1">
+  <ePixmap pixmap="HomarLCDskins/Homar_480x320/Homar_1.png" position="0,0" size="480,320" zPosition="-1" alphatest="blend" />
+  <widget source="entry" render="Label" position="20,20" size="440,130" font="VFD;50" transparent="1" halign="center" valign="center" />
+  <widget source="desc" render="Label" position="20,170" size="440,130" font="VFD;40" transparent="1" halign="center" valign="center" />
+</screen>
+
+<!-- Menu -->
+<screen name="MenuSummary" position="0,0" size="480,320" id="1">
+ <ePixmap pixmap="HomarLCDskins/Homar_480x320/Homar_1.png" position="0,0" size="480,320" zPosition="-1" alphatest="blend" />
+  <ePixmap pixmap="HomarLCDskins/Homar_480x320/lcd_icons/icon_time.png" position="337,34"  size="36,36" alphatest="blend" />
+ 
+<widget source="global.CurrentTime" render="Label" position="345,12" size="65,52" font="DIGI; 49" transparent="1" halign="right">
+      <convert type="ClockToText">Format:%H</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="FixedLabel" text=":" font="DIGI; 49" position="408,12" size="16,52" halign="right" zPosition="3" transparent="1">
+      <convert type="j00zekShareBlinkingClock" />
+      <convert type="ConditionalShowHide">Blink</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="405,12" size="65,52" font="DIGI; 49" transparent="1" halign="right">
+      <convert type="ClockToText">Format:%M</convert>
+    </widget>
+
+     <widget source="session.RecordState" render="FixedLabel" position="30,30" zPosition="3" size="36,36" text=" ">
+  <convert type="ConfigEntryTest">config.usage.during_recording,True</convert>
+  <convert type="ConditionalShowHide" />
+  </widget>
+  <widget source="session.RecordState" render="Pixmap" pixmap="HomarLCDskins/Homar_480x320/lcd_icons/icon_REC_red.png" position="30,30"  size="36,36" alphatest="blend">
+  <convert type="ConditionalShowHide" />
+  </widget>
+  <widget source="session.CurrentService" render="Pixmap" pixmap="HomarLCDskins/Homar_480x320/lcd_icons/icon_CRYPT_orange.png" position="70,30"  size="36,36" alphatest="blend">
+  <convert type="ServiceInfo">IsCrypted</convert>
+  <convert type="ConditionalShowHide" />
+  </widget>
+  <widget source="session.CurrentService" render="Pixmap" pixmap="HomarLCDskins/Homar_480x320/lcd_icons/icon_TELETEXT_yellow.png" position="110,30" size="36,36" alphatest="blend">
+  <convert type="ServiceInfo">HasTelext</convert>
+  <convert type="ConditionalShowHide" />
+  </widget>
+  <widget source="session.CurrentService" render="Pixmap" pixmap="HomarLCDskins/Homar_480x320/lcd_icons/icon_16x9_blue.png" position="150,30" size="36,36" alphatest="blend">
+  <convert type="ServiceInfo">IsWidescreen</convert>
+  <convert type="ConditionalShowHide" />
+  </widget>
+  <widget source="session.CurrentService" render="Pixmap" pixmap="HomarLCDskins/Homar_480x320/lcd_icons/icon_new_DOLBY_gold.png" position="190,30" size="36,36" alphatest="blend">
+  <convert type="ServiceInfo">IsMultichannel</convert>
+  <convert type="ConditionalShowHide" />
+  </widget>
+<widget source="parent.title" render="Label" position="20,80" size="440,60" font="Junegull;52" transparent="1" halign="center" valign="center" foregroundColor="HMRname" />
+  <widget source="parent.menu" render="Label" position="20,170" size="440,100" font="Junegull;44" transparent="1" halign="center" foregroundColor="HMRname" >
+  <convert type="StringListSelection" />
+  </widget>
+	<widget text="A" position="10,268" size="44,44" font="Junegull;46" source="session.TunerInfo" render="FixedLabel" zPosition="3" foregroundColor="#ffffff" halign="center" valign="center" transparent="1">
+    <convert type="TunerInfo">TunerAvailable</convert>
+    <convert type="ValueRange">1,18</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget text="A" position="10,268" size="44,44" font="Junegull;46" source="session.FrontendInfo" render="FixedLabel" zPosition="5" foregroundColor="#ffffff" backgroundColor="#0031a500" halign="center" valign="center" transparent="0">
+			<convert type="FrontendInfo">NUMBER</convert>
+      <convert type="ValueRange">0,0</convert>
+      <convert type="ConditionalShowHide" />
+  </widget>
+  <widget text="A" position="10,268" size="44,44" font="Junegull;46" source="session.TunerInfo" render="FixedLabel" zPosition="4" foregroundColor="#ffffff" backgroundColor="#00ff0000" halign="center" valign="center" transparent="0">
+    <convert type="TunerInfo">TunerUseMask</convert>
+    <convert type="ValueBitTest">1</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget text="B" position="56,268" size="44,44" font="Junegull;46" source="session.TunerInfo" render="FixedLabel" zPosition="3" foregroundColor="#ffffff" halign="center" valign="center" transparent="1">
+    <convert type="TunerInfo">TunerAvailable</convert>
+    <convert type="ValueRange">2,18</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget text="B" position="56,268" size="44,44" font="Junegull;46" source="session.FrontendInfo" render="FixedLabel" zPosition="5" foregroundColor="#ffffff" backgroundColor="#0031a500" halign="center" valign="center" transparent="0">
+			<convert type="FrontendInfo">NUMBER</convert>
+      <convert type="ValueRange">1,1</convert>
+      <convert type="ConditionalShowHide" />
+  </widget>
+  <widget text="B" position="56,268" size="44,44" font="Junegull;46" source="session.TunerInfo" render="FixedLabel" zPosition="4" foregroundColor="#ffffff" backgroundColor="#00ff0000" halign="center" valign="center" transparent="0">
+    <convert type="TunerInfo">TunerUseMask</convert>
+    <convert type="ValueBitTest">2</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget text="C" position="102,268" size="44,44" font="Junegull;46" source="session.TunerInfo" render="FixedLabel" zPosition="3" foregroundColor="#ffffff" halign="center" valign="center" transparent="1">
+    <convert type="TunerInfo">TunerAvailable</convert>
+    <convert type="ValueRange">3,18</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget text="C" position="102,268" size="44,44" font="Junegull;46" source="session.FrontendInfo" render="FixedLabel" zPosition="5" foregroundColor="#ffffff" backgroundColor="#0031a500" halign="center" valign="center" transparent="0">
+			<convert type="FrontendInfo">NUMBER</convert>
+      <convert type="ValueRange">2,2</convert>
+      <convert type="ConditionalShowHide" />
+  </widget>
+  <widget text="C" position="102,268" size="44,44" font="Junegull;46" source="session.TunerInfo" render="FixedLabel" zPosition="4" foregroundColor="#ffffff" backgroundColor="#00ff0000" halign="center" valign="center" transparent="0">
+    <convert type="TunerInfo">TunerUseMask</convert>
+    <convert type="ValueBitTest">4</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget text="D" position="148,268" size="44,44" font="Junegull;46" source="session.TunerInfo" render="FixedLabel" zPosition="3" foregroundColor="#ffffff" halign="center" valign="center" transparent="1">
+    <convert type="TunerInfo">TunerAvailable</convert>
+    <convert type="ValueRange">4,18</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget text="D" position="148,268" size="44,44" font="Junegull;46" source="session.FrontendInfo" render="FixedLabel" zPosition="5" foregroundColor="#ffffff" backgroundColor="#0031a500" halign="center" valign="center" transparent="0">
+			<convert type="FrontendInfo">NUMBER</convert>
+      <convert type="ValueRange">3,3</convert>
+      <convert type="ConditionalShowHide" />
+  </widget>
+  <widget text="D" position="148,268" size="44,44" font="Junegull;46" source="session.TunerInfo" render="FixedLabel" zPosition="4" foregroundColor="#ffffff" backgroundColor="#00ff0000" halign="center" valign="center" transparent="0">
+    <convert type="TunerInfo">TunerUseMask</convert>
+    <convert type="ValueBitTest">8</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget text="E" position="194,268" size="44,44" font="Junegull;46" source="session.TunerInfo" render="FixedLabel" zPosition="3" foregroundColor="#ffffff" halign="center" valign="center" transparent="1">
+    <convert type="TunerInfo">TunerAvailable</convert>
+    <convert type="ValueRange">5,18</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget text="E" position="194,268" size="44,44" font="Junegull;46" source="session.FrontendInfo" render="FixedLabel" zPosition="5" foregroundColor="#ffffff" backgroundColor="#0031a500" halign="center" valign="center" transparent="0">
+			<convert type="FrontendInfo">NUMBER</convert>
+      <convert type="ValueRange">4,4</convert>
+      <convert type="ConditionalShowHide" />
+  </widget>
+  <widget text="E" position="194,268" size="44,44" font="Junegull;46" source="session.TunerInfo" render="FixedLabel" zPosition="4" foregroundColor="#ffffff" backgroundColor="#00ff0000" halign="center" valign="center" transparent="0">
+    <convert type="TunerInfo">TunerUseMask</convert>
+    <convert type="ValueBitTest">16</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget text="F" position="240,268" size="44,44" font="Junegull;46" source="session.TunerInfo" render="FixedLabel" zPosition="3" foregroundColor="#ffffff" halign="center" valign="center" transparent="1">
+    <convert type="TunerInfo">TunerAvailable</convert>
+    <convert type="ValueRange">6,18</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget text="F" position="240,268" size="44,44" font="Junegull;46" source="session.FrontendInfo" render="FixedLabel" zPosition="5" foregroundColor="#ffffff" backgroundColor="#0031a500" halign="center" valign="center" transparent="0">
+			<convert type="FrontendInfo">NUMBER</convert>
+      <convert type="ValueRange">5,5</convert>
+      <convert type="ConditionalShowHide" />
+  </widget>
+  <widget text="F" position="240,268" size="44,44" font="Junegull;46" source="session.TunerInfo" render="FixedLabel" zPosition="4" foregroundColor="#ffffff" backgroundColor="#00ff0000" halign="center" valign="center" transparent="0">
+    <convert type="TunerInfo">TunerUseMask</convert>
+    <convert type="ValueBitTest">32</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget text="G" position="286,268" size="44,44" font="Junegull;46" source="session.TunerInfo" render="FixedLabel" zPosition="3" foregroundColor="#ffffff" halign="center" valign="center" transparent="1">
+    <convert type="TunerInfo">TunerAvailable</convert>
+    <convert type="ValueRange">7,18</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget text="G" position="286,268" size="44,44" font="Junegull;46" source="session.FrontendInfo" render="FixedLabel" zPosition="5" foregroundColor="#ffffff" backgroundColor="#0031a500" halign="center" valign="center" transparent="0">
+			<convert type="FrontendInfo">NUMBER</convert>
+      <convert type="ValueRange">6,6</convert>
+      <convert type="ConditionalShowHide" />
+  </widget>
+  <widget text="G" position="286,268" size="44,44" font="Junegull;46" source="session.TunerInfo" render="FixedLabel" zPosition="4" foregroundColor="#ffffff" backgroundColor="#00ff0000" halign="center" valign="center" transparent="0">
+    <convert type="TunerInfo">TunerUseMask</convert>
+    <convert type="ValueBitTest">64</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget text="H" position="332,268" size="44,44" font="Junegull;46" source="session.TunerInfo" render="FixedLabel" zPosition="3" foregroundColor="#ffffff" halign="center" valign="center" transparent="1">
+    <convert type="TunerInfo">TunerAvailable</convert>
+    <convert type="ValueRange">8,18</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget text="H" position="332,268" size="44,44" font="Junegull;46" source="session.FrontendInfo" render="FixedLabel" zPosition="5" foregroundColor="#ffffff" backgroundColor="#0031a500" halign="center" valign="center" transparent="0">
+			<convert type="FrontendInfo">NUMBER</convert>
+      <convert type="ValueRange">7,7</convert>
+      <convert type="ConditionalShowHide" />
+  </widget>
+  <widget text="H" position="332,268" size="44,44" font="Junegull;46" source="session.TunerInfo" render="FixedLabel" zPosition="4" foregroundColor="#ffffff" backgroundColor="#00ff0000" halign="center" valign="center" transparent="0">
+    <convert type="TunerInfo">TunerUseMask</convert>
+    <convert type="ValueBitTest">128</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget text="I" position="378,268" size="44,44" font="Junegull;46" source="session.TunerInfo" render="FixedLabel" zPosition="3" foregroundColor="#ffffff" halign="center" valign="center" transparent="1">
+    <convert type="TunerInfo">TunerAvailable</convert>
+    <convert type="ValueRange">9,18</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget text="I" position="378,268" size="44,44" font="Junegull;46" source="session.FrontendInfo" render="FixedLabel" zPosition="5" foregroundColor="#ffffff" backgroundColor="#0031a500" halign="center" valign="center" transparent="0">
+			<convert type="FrontendInfo">NUMBER</convert>
+      <convert type="ValueRange">8,8</convert>
+      <convert type="ConditionalShowHide" />
+  </widget>
+  <widget text="I" position="378,268" size="44,44" font="Junegull;46" source="session.TunerInfo" render="FixedLabel" zPosition="4" foregroundColor="#ffffff" backgroundColor="#00ff0000" halign="center" valign="center" transparent="0">
+    <convert type="TunerInfo">TunerUseMask</convert>
+    <convert type="ValueBitTest">256</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget text="J" position="424,268" size="44,44" font="Junegull;46" source="session.TunerInfo" render="FixedLabel" zPosition="3" foregroundColor="#ffffff" halign="center" valign="center" transparent="1">
+    <convert type="TunerInfo">TunerAvailable</convert>
+    <convert type="ValueRange">10,18</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget text="J" position="424,268" size="44,44" font="Junegull;46" source="session.FrontendInfo" render="FixedLabel" zPosition="5" foregroundColor="#ffffff" backgroundColor="#0031a500" halign="center" valign="center" transparent="0">
+			<convert type="FrontendInfo">NUMBER</convert>
+      <convert type="ValueRange">9,9</convert>
+      <convert type="ConditionalShowHide" />
+  </widget>
+  <widget text="J" position="424,268" size="44,44" font="Junegull;46" source="session.TunerInfo" render="FixedLabel" zPosition="4" foregroundColor="#ffffff" backgroundColor="#00ff0000" halign="center" valign="center" transparent="0">
+    <convert type="TunerInfo">TunerUseMask</convert>
+    <convert type="ValueBitTest">512</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>  
+</screen>
+
+<!-- MessageBox -->
+<screen name="MessageBox_summary" position="0,0" size="480,320" id="1">
+<ePixmap pixmap="HomarLCDskins/Homar_480x320/Homar_1.png" position="0,0" size="480,320" zPosition="-1" alphatest="blend" />
+<widget render="j00zekModRunningText" source="parent.Text" options="movetype=running,startpoint=0,direction=top,steptime=70,repeat=0,startdelay=6000,wrap" foregroundColor="HMRname" font="VFD;42" position="20,20" size="455,245" valign="center" transparent="1">
+</widget>
+<eLabel position="0,374" size="800,4" backgroundColor="#00FFFFFF" />
+<widget source="parent.selectedChoice" render="Label" position="50,265" size="400,58" font="Junegull;50" transparent="1" halign="center" valign="center" />
+</screen>
+
+<!-- PluginBrowser -->
+<screen name="PluginBrowserSummary" position="0,0" size="480,320" id="1">
+  <ePixmap pixmap="HomarLCDskins/Homar_480x320/Homar_1.png" position="0,0" size="480,320" zPosition="-1" alphatest="blend" />
+  <widget source="entry" render="Label" position="20,30" size="440,120" font="VFD;45" transparent="1" halign="center" valign="center" foregroundColor="HMRname" />
+  <eLabel position="0,160" size="800,2" backgroundColor="#00FFFFFF" />
+<widget render="j00zekModRunningText" source="desc" options="movetype=running,startpoint=0,direction=top,steptime=70,repeat=0,startdelay=6000,wrap" font="VFD;45" position="20,160" size="440,150" halign="center" valign="center"  transparent="1" >
+</widget>
+</screen>
+
+<!-- ServiceScan -->
+<screen name="ServiceScanSummary" position="0,0" size="480,320" id="1">
+  <ePixmap pixmap="HomarLCDskins/Homar_480x320/Homar_1.png" position="0,0" size="480,320" zPosition="-1" alphatest="blend" />
+    <ePixmap pixmap="HomarLCDskins/Homar_480x320/Homar_5.png" position="175,72" size="200,200" zPosition="1" alphatest="blend" />
+  <widget source="global.CurrentTime" render="VWatches" position="199,95" size="100,100" zPosition="5" foregroundColor="#000000" alphatest="on">
+  <convert type="VExtraNumText">minHand</convert>
+  </widget>
+  <widget source="global.CurrentTime" render="VWatches" position="220,115" size="60,60" zPosition="4" foregroundColor="#000000" alphatest="on">
+  <convert type="VExtraNumText">hourHand</convert>
+  </widget>
+  <widget source="global.CurrentTime" render="VWatches" position="201,95" size="100,100" zPosition="5" foregroundColor="#000000" alphatest="on">
+  <convert type="VExtraNumText">minHand</convert>
+  </widget>
+  <widget source="global.CurrentTime" render="VWatches" position="220,115" size="60,60" zPosition="4" foregroundColor="#000000" alphatest="on">
+  <convert type="VExtraNumText">hourHand</convert>
+  </widget>
+  <widget source="global.CurrentTime" render="VWatches" position="199,94" size="100,100" zPosition="5" foregroundColor="#000000" alphatest="on">
+  <convert type="VExtraNumText">minHand</convert>
+  </widget>
+  <widget source="global.CurrentTime" render="VWatches" position="220,115" size="60,60" zPosition="4" foregroundColor="#000000" alphatest="on">
+  <convert type="VExtraNumText">hourHand</convert>
+  </widget>
+  <widget source="global.CurrentTime" render="VWatches" position="199,96" size="100,100" zPosition="5" foregroundColor="#000000" alphatest="on">
+  <convert type="VExtraNumText">minHand</convert>
+  </widget>
+  <widget source="global.CurrentTime" render="VWatches" position="220,115" size="60,60" zPosition="4" foregroundColor="#000000" alphatest="on">
+  <convert type="VExtraNumText">hourHand</convert>
+  </widget>
+  <widget source="global.CurrentTime" render="Label" position="80,75" size="140,80" font="VFD;78" transparent="1" halign="left" foregroundColor="HMRname" >
+  <convert type="ClockToText">Format:%H</convert>
+  </widget>
+<widget source="global.CurrentTime" render="Label" position="270,75" size="140,80" font="VFD;78" transparent="1" halign="right" foregroundColor="HMRname" >
+  <convert type="ClockToText">Format:%M</convert>
+  </widget>
+<widget name="Service" position="20,225" size="560,52" font="VFD;48" transparent="1" valign="center" halign="left" foregroundColor="HMRname" />
+  <widget name="scan_progress" pixmap="HomarLCDskins/Homar_480x320/Homar_7.png" position="20,275" size="455,34" borderWidth="8" backgroundColor="#00CFFF">
+  </widget>
+<widget text="A" position="10,20" size="50,50" font="VFD;46" source="session.TunerInfo" render="FixedLabel" zPosition="3" foregroundColor="#ffffff" halign="center" valign="center" transparent="1">
+  <convert type="TunerInfo">TunerAvailable</convert>
+  <convert type="ValueRange">1,18</convert>
+  <convert type="ConditionalShowHide" />
+  </widget>
+  <widget text="A" position="10,20" size="50,50" font="VFD;46" source="session.FrontendInfo" render="FixedLabel" zPosition="5" foregroundColor="#ffffff" backgroundColor="#0031a500" halign="center" valign="center" transparent="0">
+  <convert type="FrontendInfo">NUMBER</convert>
+  <convert type="ValueRange">0,0</convert>
+  <convert type="ConditionalShowHide" />
+  </widget>
+  <widget text="A" position="10,20" size="50,50" font="VFD;46" source="session.TunerInfo" render="FixedLabel" zPosition="4" foregroundColor="#ffffff" backgroundColor="#00ff0000" halign="center" valign="center" transparent="0">
+ <convert type="TunerInfo">TunerUseMask</convert>
+ <convert type="ValueBitTest">1</convert>
+ <convert type="ConditionalShowHide" />
+ </widget>
+ <widget text="B" position="60,20" size="50,50" font="VFD;46" source="session.TunerInfo" render="FixedLabel" zPosition="3" foregroundColor="#ffffff" halign="center" valign="center" transparent="1">
+ <convert type="TunerInfo">TunerAvailable</convert>
+ <convert type="ValueRange">2,18</convert>
+ <convert type="ConditionalShowHide" />
+ </widget>
+ <widget text="B" position="60,20" size="50,50" font="VFD;46" source="session.FrontendInfo" render="FixedLabel" zPosition="5" foregroundColor="#ffffff" backgroundColor="#0031a500" halign="center" valign="center" transparent="0">
+ <convert type="FrontendInfo">NUMBER</convert>
+ <convert type="ValueRange">1,1</convert>
+ <convert type="ConditionalShowHide" />
+ </widget>
+ <widget text="B" position="60,20" size="50,50" font="VFD;46" source="session.TunerInfo" render="FixedLabel" zPosition="4" foregroundColor="#ffffff" backgroundColor="#00ff0000" halign="center" valign="center" transparent="0">
+ <convert type="TunerInfo">TunerUseMask</convert>
+ <convert type="ValueBitTest">2</convert>
+ <convert type="ConditionalShowHide" />
+ </widget>
+ <widget text="C" position="110,20" size="50,50" font="VFD;46" source="session.TunerInfo" render="FixedLabel" zPosition="3" foregroundColor="#ffffff" halign="center" valign="center" transparent="1">
+ <convert type="TunerInfo">TunerAvailable</convert>
+ <convert type="ValueRange">3,18</convert>
+ <convert type="ConditionalShowHide" />
+ </widget>
+ <widget text="C" position="110,20" size="50,50" font="VFD;46" source="session.FrontendInfo" render="FixedLabel" zPosition="5" foregroundColor="#ffffff" backgroundColor="#0031a500" halign="center" valign="center" transparent="0">
+ <convert type="FrontendInfo">NUMBER</convert>
+ <convert type="ValueRange">2,2</convert>
+ <convert type="ConditionalShowHide" />
+ </widget>
+ <widget text="C" position="110,20" size="50,50" font="VFD;46" source="session.TunerInfo" render="FixedLabel" zPosition="4" foregroundColor="#ffffff" backgroundColor="#00ff0000" halign="center" valign="center" transparent="0">
+ <convert type="TunerInfo">TunerUseMask</convert>
+ <convert type="ValueBitTest">4</convert>
+ <convert type="ConditionalShowHide" />
+ </widget>
+ <widget text="D" position="160,20" size="50,50" font="VFD;46" source="session.TunerInfo" render="FixedLabel" zPosition="3" foregroundColor="#ffffff" halign="center" valign="center" transparent="1">
+ <convert type="TunerInfo">TunerAvailable</convert>
+ <convert type="ValueRange">4,18</convert>
+ <convert type="ConditionalShowHide" />
+ </widget>
+ <widget text="D" position="160,20" size="50,50" font="VFD;46" source="session.FrontendInfo" render="FixedLabel" zPosition="5" foregroundColor="#ffffff" backgroundColor="#0031a500" halign="center" valign="center" transparent="0">
+ <convert type="FrontendInfo">NUMBER</convert>
+ <convert type="ValueRange">3,3</convert>
+ <convert type="ConditionalShowHide" />
+ </widget>
+ <widget text="D" position="160,20" size="50,50" font="VFD;46" source="session.TunerInfo" render="FixedLabel" zPosition="4" foregroundColor="#ffffff" backgroundColor="#00ff0000" halign="center" valign="center" transparent="0">
+ <convert type="TunerInfo">TunerUseMask</convert>
+ <convert type="ValueBitTest">8</convert>
+ <convert type="ConditionalShowHide" />
+ </widget>
+ <widget text="E" position="210,20" size="50,50" font="VFD;46" source="session.TunerInfo" render="FixedLabel" zPosition="3" foregroundColor="#ffffff" halign="center" valign="center" transparent="1">
+ <convert type="TunerInfo">TunerAvailable</convert>
+ <convert type="ValueRange">5,18</convert>
+ <convert type="ConditionalShowHide" />
+ </widget>
+ <widget text="E" position="210,20" size="50,50" font="VFD;46" source="session.FrontendInfo" render="FixedLabel" zPosition="5" foregroundColor="#ffffff" backgroundColor="#0031a500" halign="center" valign="center" transparent="0">
+ <convert type="FrontendInfo">NUMBER</convert>
+ <convert type="ValueRange">4,4</convert>
+ <convert type="ConditionalShowHide" />
+ </widget>
+ <widget text="E" position="210,20" size="50,50" font="VFD;46" source="session.TunerInfo" render="FixedLabel" zPosition="4" foregroundColor="#ffffff" backgroundColor="#00ff0000" halign="center" valign="center" transparent="0">
+ <convert type="TunerInfo">TunerUseMask</convert>
+ <convert type="ValueBitTest">16</convert>
+ <convert type="ConditionalShowHide" />
+ </widget>
+ <widget text="F" position="260,20" size="50,50" font="VFD;46" source="session.TunerInfo" render="FixedLabel" zPosition="3" foregroundColor="#ffffff" halign="center" valign="center" transparent="1">
+ <convert type="TunerInfo">TunerAvailable</convert>
+ <convert type="ValueRange">6,18</convert>
+ <convert type="ConditionalShowHide" />
+ </widget>
+ <widget text="F" position="260,20" size="50,50" font="VFD;46" source="session.FrontendInfo" render="FixedLabel" zPosition="5" foregroundColor="#ffffff" backgroundColor="#0031a500" halign="center" valign="center" transparent="0">
+ <convert type="FrontendInfo">NUMBER</convert>
+ <convert type="ValueRange">5,5</convert>
+ <convert type="ConditionalShowHide" />
+ </widget>
+ <widget text="F" position="260,20" size="50,50" font="VFD;46" source="session.TunerInfo" render="FixedLabel" zPosition="4" foregroundColor="#ffffff" backgroundColor="#00ff0000" halign="center" valign="center" transparent="0">
+ <convert type="TunerInfo">TunerUseMask</convert>
+ <convert type="ValueBitTest">32</convert>
+ <convert type="ConditionalShowHide" />
+ </widget>
+ <widget text="G" position="310,20" size="50,50" font="VFD;46" source="session.TunerInfo" render="FixedLabel" zPosition="3" foregroundColor="#ffffff" halign="center" valign="center" transparent="1">
+ <convert type="TunerInfo">TunerAvailable</convert>
+ <convert type="ValueRange">7,18</convert>
+ <convert type="ConditionalShowHide" />
+ </widget>
+ <widget text="G" position="310,20" size="50,50" font="VFD;46" source="session.FrontendInfo" render="FixedLabel" zPosition="5" foregroundColor="#ffffff" backgroundColor="#0031a500" halign="center" valign="center" transparent="0">                   
+ <convert type="FrontendInfo">NUMBER</convert>
+ <convert type="ValueRange">6,6</convert>
+ <convert type="ConditionalShowHide" />
+ </widget>
+ <widget text="G" position="310,20" size="50,50" font="VFD;46" source="session.TunerInfo" render="FixedLabel" zPosition="4" foregroundColor="#ffffff" backgroundColor="#00ff0000" halign="center" valign="center" transparent="0">
+ <convert type="TunerInfo">TunerUseMask</convert>
+ <convert type="ValueBitTest">64</convert>
+ <convert type="ConditionalShowHide" />
+ </widget>
+ <widget text="H" position="360,20" size="50,50" font="VFD;46" source="session.TunerInfo" render="FixedLabel" zPosition="3" foregroundColor="#ffffff" halign="center" valign="center" transparent="1">
+ <convert type="TunerInfo">TunerAvailable</convert>
+ <convert type="ValueRange">8,18</convert>
+ <convert type="ConditionalShowHide" />
+ </widget>
+ <widget text="H" position="360,20" size="50,50" font="VFD;46" source="session.FrontendInfo" render="FixedLabel" zPosition="5" foregroundColor="#ffffff" backgroundColor="#0031a500" halign="center" valign="center" transparent="0">
+ <convert type="FrontendInfo">NUMBER</convert>
+ <convert type="ValueRange">7,7</convert>
+ <convert type="ConditionalShowHide" />
+ </widget>
+ <widget text="H" position="360,20" size="50,50" font="VFD;46" source="session.TunerInfo" render="FixedLabel" zPosition="4" foregroundColor="#ffffff" backgroundColor="#00ff0000" halign="center" valign="center" transparent="0">
+ <convert type="TunerInfo">TunerUseMask</convert>
+ <convert type="ValueBitTest">128</convert>
+ <convert type="ConditionalShowHide" />
+ </widget>
+ <widget text="I" position="410,20" size="50,50" font="VFD;46" source="session.TunerInfo" render="FixedLabel" zPosition="3" foregroundColor="#ffffff" halign="center" valign="center" transparent="1">
+ <convert type="TunerInfo">TunerAvailable</convert>
+ <convert type="ValueRange">9,18</convert>
+ <convert type="ConditionalShowHide" />
+ </widget>
+ <widget text="I" position="410,20" size="50,50" font="VFD;46" source="session.FrontendInfo" render="FixedLabel" zPosition="5" foregroundColor="#ffffff" backgroundColor="#0031a500" halign="center" valign="center" transparent="0">
+ <convert type="FrontendInfo">NUMBER</convert>
+ <convert type="ValueRange">8,8</convert>
+ <convert type="ConditionalShowHide" />
+ </widget>
+ <widget text="I" position="410,20" size="50,50" font="VFD;46" source="session.TunerInfo" render="FixedLabel" zPosition="4" foregroundColor="#ffffff" backgroundColor="#00ff0000" halign="center" valign="center" transparent="0">
+ <convert type="TunerInfo">TunerUseMask</convert>
+ <convert type="ValueBitTest">256</convert>
+ <convert type="ConditionalShowHide" />
+ </widget>
+ <widget text="J" position="460,20" size="50,50" font="VFD;46" source="session.TunerInfo" render="FixedLabel" zPosition="3" foregroundColor="#ffffff" halign="center" valign="center" transparent="1">
+ <convert type="TunerInfo">TunerAvailable</convert>
+ <convert type="ValueRange">10,18</convert>
+ <convert type="ConditionalShowHide" />
+ </widget>
+ <widget text="J" position="460,20" size="50,50" font="VFD;46" source="session.FrontendInfo" render="FixedLabel" zPosition="5" foregroundColor="#ffffff" backgroundColor="#0031a500" halign="center" valign="center" transparent="0">
+ <convert type="FrontendInfo">NUMBER</convert>
+ <convert type="ValueRange">9,9</convert>
+ <convert type="ConditionalShowHide" />
+ </widget>
+ <widget text="J" position="460,20" size="50,50" font="VFD;46" source="session.TunerInfo" render="FixedLabel" zPosition="4" foregroundColor="#ffffff" backgroundColor="#00ff0000" halign="center" valign="center" transparent="0">
+ <convert type="TunerInfo">TunerUseMask</convert>
+ <convert type="ValueBitTest">512</convert>
+ <convert type="ConditionalShowHide" />
+ </widget>  
+ </screen>
+
+<!-- Setup -->
+<screen name="SetupSummary" position="0,0" size="480,320" id="1">
+  <ePixmap pixmap="HomarLCDskins/Homar_480x320/Homar_1.png" position="0,0" size="480,320" zPosition="-1" alphatest="blend" />
+  <widget source="SetupTitle" render="Label" position="20,10" size="440,115" font="VFD;55" transparent="1" halign="center" valign="center" foregroundColor="HMRname" />
+  <widget source="SetupEntry" render="Label" position="20,120" size="440,100" font="VFD;45" transparent="1" halign="center" valign="center" />
+  <widget source="SetupValue" render="Label" position="20,220" size="440,100" font="VFD;45" transparent="1" halign="center" valign="center" />
+</screen>
+
+<!-- Simple -->
+<screen name="SimpleSummary" position="0,0" size="480,320" id="1">
+  <ePixmap pixmap="HomarLCDskins/Homar_480x320/Homar_1.png" position="0,0" size="480,320" zPosition="-1" alphatest="blend" />
+  <ePixmap pixmap="HomarLCDskins/Homar/currentBoxLogo.png" position="10,15" size="480,320" zPosition="-1" alphatest="blend" />
+  <ePixmap pixmap="HomarLCDskins/Homar_480x320/Homar_5.png" position="175,72" size="200,200" zPosition="1" alphatest="blend" />
+  <widget source="global.CurrentTime" render="VWatches" position="199,95" size="100,100" zPosition="5" foregroundColor="#000000" alphatest="on">
+  <convert type="VExtraNumText">minHand</convert>
+  </widget>
+  <widget source="global.CurrentTime" render="VWatches" position="220,115" size="60,60" zPosition="4" foregroundColor="#000000" alphatest="on">
+  <convert type="VExtraNumText">hourHand</convert>
+  </widget>
+  <widget source="global.CurrentTime" render="VWatches" position="201,95" size="100,100" zPosition="5" foregroundColor="#000000" alphatest="on">
+  <convert type="VExtraNumText">minHand</convert>
+  </widget>
+  <widget source="global.CurrentTime" render="VWatches" position="220,115" size="60,60" zPosition="4" foregroundColor="#000000" alphatest="on">
+  <convert type="VExtraNumText">hourHand</convert>
+  </widget>
+  <widget source="global.CurrentTime" render="VWatches" position="199,94" size="100,100" zPosition="5" foregroundColor="#000000" alphatest="on">
+  <convert type="VExtraNumText">minHand</convert>
+  </widget>
+  <widget source="global.CurrentTime" render="VWatches" position="220,115" size="60,60" zPosition="4" foregroundColor="#000000" alphatest="on">
+  <convert type="VExtraNumText">hourHand</convert>
+  </widget>
+  <widget source="global.CurrentTime" render="VWatches" position="199,96" size="100,100" zPosition="5" foregroundColor="#000000" alphatest="on">
+  <convert type="VExtraNumText">minHand</convert>
+  </widget>
+  <widget source="global.CurrentTime" render="VWatches" position="220,115" size="60,60" zPosition="4" foregroundColor="#000000" alphatest="on">
+  <convert type="VExtraNumText">hourHand</convert>
+  </widget>
+  <widget source="global.CurrentTime" render="Label" position="80,75" size="140,80" font="VFD;78" transparent="1" halign="left" foregroundColor="HMRname" >
+  <convert type="ClockToText">Format:%H</convert>
+  </widget>
+<widget source="global.CurrentTime" render="Label" position="270,75" size="140,80" font="VFD;78" transparent="1" halign="right" foregroundColor="HMRname" >
+  <convert type="ClockToText">Format:%M</convert>
+  </widget>
+  <ePixmap pixmap="HomarLCDskins/weather/sun.png" position="5,125" zPosition="1" size="130,130" alphatest="blend" />
+  <ePixmap pixmap="HomarLCDskins/weather/moon.png" position="365,125" zPosition="1" size="130,130" alphatest="blend" />
+<widget source="global.CurrentTime" render="Label" position="10,235" size="100,42" font="VFD;42" halign="center" valign="center" transparent="1">
+    <convert type="j00zekSun">wschod</convert>
+  </widget>
+ <widget source="global.CurrentTime" render="Label" position="370,235" size="100,42" font="VFD;42" halign="center" valign="center" transparent="1">
+    <convert type="j00zekSun">zachod</convert>
+  </widget>
+<widget source="parent.Title" render="j00zekModRunningText" 
+options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=0,startdelay=200,always=0,oneshot=0" noWrap="1" position="15,20" size="460,46" font="RegularLCD;42" halign="center" valign="top" transparent="1" foregroundColor="HMRname" />
+ </screen>
+
+ <!-- Standby -->
+ <screen name="StandbySummary" position="0,0" size="480,320" id="1">
+ <widget source="session.CurrentService" render="j00zekPiconAnimation" pixmaps="HomarLCDskins/common/animated_2" position="0,0" size="480,320" zPosition="5" transparent="1" alphatest="blend" />
+ <ePixmap pixmap="HomarLCDskins/Homar_480x320/Homar_4.png" position="0,0" size="480,320" zPosition="-1" alphatest="blend" />
+  <ePixmap pixmap="HomarLCDskins/Homar/currentBoxLogo.png" position="0,15" size="480,320" zPosition="-1" alphatest="blend" />
+ <widget source="global.CurrentTime" render="Label" position="90,15" size="300,70" font="VFD;70" transparent="1" foregroundColor="#001BA1E3"  halign="center" valign="center">
+ <convert type="ClockToText">Format:%H:%M</convert>
+ </widget>
+<widget source="global.CurrentTime" render="Label" position="315,8" size="70,70" font="VFD;47" transparent="1" foregroundColor="#001BA1E3"  halign="center" valign="center">
+ <convert type="ClockToText">Format:%S</convert>
+ </widget>
+ <widget source="global.CurrentTime" render="Label" position="10,75" size="450,75" font="VFD;62" transparent="1" halign="center" valign="center" >
+ <convert type="ClockToText">Format:%a, %d.%m.%Y</convert>
+ </widget>
+ <widget source="session.j00zekMSNWeather" render="j00zekMSNWeatherPixmap" position="245,140" size="110,110" zPosition="1" transparent="1" alphatest="blend">
+ <convert type="j00zekMSNWeather">weathericon,current</convert>
+ </widget>
+ <widget source="session.j00zekMSNWeather" render="j00zekModRunningText" 
+options="movetype=running,startpoint=0,direction=left,steptime=70,repeat=0,startdelay=2000,always=0,oneshot=0" noWrap="1"  position="340,225" size="150,60" font="VFD;40" transparent="1" halign="left" valign="center" foregroundColor="HMRname" zPosition="3">
+ <convert type="j00zekMSNWeather">temperature_text,current</convert>
+ </widget>
+ <widget source="session.j00zekMSNWeather" render="Label" position="350,160" size="130,65" font="VFD; 58" zPosition="1" halign="left" valign="top" foregroundColor="#001BA1E3" transparent="1" noWrap="1">
+ <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
+ </widget>
+ <widget source="session.j00zekMSNWeather" render="j00zekModRunningText" 
+options="movetype=running,startpoint=0,direction=left,steptime=70,repeat=0,startdelay=2000,always=0,oneshot=0" noWrap="1"  position="16,165" size="220,60" font="VFD;56" transparent="1" halign="left" valign="center" foregroundColor="HMRname" zPosition="3">
+ <convert type="j00zekMSNWeather">city</convert>
+ </widget>
+ <widget source="session.RecordState" render="Pixmap" pixmap="HomarLCDskins/Homar_480x320/Homar_2.png" position="380,30" size="80,20" zPosition="3" alphatest="blend">
+ <convert type="ConfigEntryTest">config.usage.blinking_rec_symbol_during_recording,True,CheckSourceBoolean</convert>
+ <convert type="ConditionalShowHide">Blink</convert>
+ </widget>
+ </screen>
+
+ <!-- VTIPanel -->
+ <screen name="VTIPanelSummary" position="0,0" size="480,320" id="1">
+ <ePixmap pixmap="HomarLCDskins/Homar_480x320/Homar_1.png" position="0,0" size="480,320" zPosition="-1" alphatest="blend" />
+ <widget source="entry" render="Label" position="20,20" size="460,140" font="VFD;40" transparent="1" halign="center" valign="center" foregroundColor="HMRname" />
+ <widget source="desc" render="Label" position="20,160" size="460,140" font="VFD;40" transparent="1" halign="center" valign="center" />
+ </screen>
+
+ <!-- Wizard -->
+ <screen name="WizardSummary" position="0,0" size="480,320" id="1">
+ <ePixmap pixmap="HomarLCDskins/Homar_480x320/Homar_1.png" position="0,0" size="480,320" zPosition="-1" alphatest="blend" />
+ <widget source="text" render="Label" position="10,30" size="440,115" font="VFD;50" transparent="1" halign="center" valign="center" foregroundColor="HMRname" />
+ <widget source="parent.list" render="Label" position="10,144" size="440,155" font="VFD;40" transparent="1" halign="center" valign="center">
+ <convert type="StringListSelection" />
+ </widget>
+ </screen>
+
+ </skin>
