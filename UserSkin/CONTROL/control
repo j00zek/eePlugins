@@ -1,0 +1,10 @@
+Package: enigma2-plugin-extensions--j00zeks-userskin
+Priority: optional
+Section: utils
+Depends:
+Description: UserSkins configuration tool
+Maintainer: j00zek
+Source: http://github.com/j00zek/eePlugins
+Version: 22.03.09.0609
+Architecture: all
+DestinationPath: /usr/lib/enigma2/python/Plugins/Extensions/UserSkin

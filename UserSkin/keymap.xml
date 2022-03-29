@@ -1,0 +1,103 @@
+<keymap>
+  <map context="UserSkinEditActions">
+    <key id="KEY_ENTER" mapto="ok" flags="m" />
+    <key id="KEY_OK" mapto="ok" flags="m" />
+    <key id="KEY_EXIT" mapto="cancel" flags="m" />
+    <key id="KEY_ESC" mapto="cancel" flags="m" />
+    <key id="KEY_LEFT" mapto="left" flags="m" />
+    <key id="KEY_RIGHT" mapto="right" flags="m" />
+    <key id="KEY_RED" mapto="cancel" flags="m" />
+    <key id="KEY_GREEN" mapto="green" flags="m" />
+    <key id="KEY_YELLOW" mapto="yellow" flags="m" />
+    <key id="KEY_BLUE" mapto="blue" flags="m" />
+    <key id="KEY_CHANNELUP" mapto="keyup" flags="mr" />
+    <key id="KEY_CHANNELDOWN" mapto="keydown" flags="mr" />
+    <key id="KEY_PAGEUP" mapto="keyup" flags="mr" />
+    <key id="KEY_PAGEDOWN" mapto="keydown" flags="mr" />
+    <key id="KEY_1" mapto="1" flags="m" />
+    <key id="KEY_2" mapto="2" flags="m" />
+    <key id="KEY_3" mapto="3" flags="m" />
+    <key id="KEY_4" mapto="4" flags="m" />
+    <key id="KEY_5" mapto="5" flags="m" />
+    <key id="KEY_6" mapto="6" flags="m" />
+    <key id="KEY_7" mapto="7" flags="m" />
+    <key id="KEY_8" mapto="8" flags="m" />
+    <key id="KEY_9" mapto="9" flags="m" />
+    <key id="KEY_0" mapto="0" flags="m" />
+  </map>
+  <map context="TreeUserSkinActions">
+    <key id="KEY_ENTER" mapto="runMenuEntry" flags="m" />
+    <key id="KEY_OK" mapto="runMenuEntry" flags="m" />
+    <key id="KEY_EXIT" mapto="cancel" flags="m" />
+    <key id="KEY_ESC" mapto="cancel" flags="m" />
+    <key id="KEY_LEFT" mapto="left" flags="m" />
+    <key id="KEY_RIGHT" mapto="right" flags="m" />
+    <key id="KEY_RED" mapto="cancel" flags="m" />
+    <key id="KEY_GREEN" mapto="green" flags="m" />
+    <key id="KEY_YELLOW" mapto="yellow" flags="m" />
+    <key id="KEY_BLUE" mapto="blue" flags="m" />
+    <key id="KEY_UP" mapto="lineUp" flags="mr" />
+    <key id="KEY_DOWN" mapto="lineDown" flags="mr" />
+    <key id="KEY_LEFT" mapto="pageUp" flags="m" />
+    <key id="KEY_RIGHT" mapto="pageDown" flags="m" />
+    <key id="KEY_PAGEUP" mapto="pageUp" flags="m" />
+    <key id="KEY_PAGEDOWN" mapto="pageDown" flags="m" />
+  </map>
+  <map context="UserSkinPreviewSkinActions">
+    <key id="KEY_ENTER" mapto="keyCancel" flags="m" />
+    <key id="KEY_OK" mapto="keyCancel" flags="m" />
+    <key id="KEY_EXIT" mapto="keyCancel" flags="m" />
+    <key id="KEY_ESC" mapto="keyCancel" flags="m" />
+    <key id="KEY_RED" mapto="keyCancel" flags="m" />
+    <key id="KEY_GREEN" mapto="keyCancel" flags="m" />
+    <key id="KEY_BLUE" mapto="doGrab" flags="m" />
+  </map>
+  <map context="UserSkinMiniTVmakerActions">
+    <key id="\x0a" mapto="keyOK" flags="m" />
+    <key id="\x1b" mapto="keyCancel" flags="m" />
+    <key id="KEY_OK" mapto="keyOK" flags="m" />
+    <key id="KEY_EXIT" mapto="keyCancel" flags="m" />
+    <key id="KEY_MENU" mapto="keyMenu" flags="mr" />
+    <key id="KEY_RED" mapto="keyRed" flags="m" />
+    <key id="KEY_GREEN" mapto="keyGreen" flags="m" />
+    <key id="KEY_YELLOW" mapto="keyYellow" flags="m" />
+    <key id="KEY_BLUE" mapto="keyBlue" flags="m" />
+    <key id="KEY_1" mapto="key1" flags="m" />
+    <key id="KEY_2" mapto="key2" flags="m" />
+    <key id="KEY_3" mapto="key3" flags="m" />
+    <key id="KEY_4" mapto="key4" flags="m" />
+    <key id="KEY_5" mapto="key5" flags="m" />
+    <key id="KEY_6" mapto="key6" flags="m" />
+    <key id="KEY_7" mapto="key7" flags="m" />
+    <key id="KEY_8" mapto="key8" flags="m" />
+    <key id="KEY_9" mapto="key9" flags="m" />
+    <key id="KEY_0" mapto="key0" flags="m" />
+    <key id="KEY_UP" mapto="keyUp" flags="mr" />
+    <key id="KEY_DOWN" mapto="keyDown" flags="mr" />
+    <key id="KEY_LEFT" mapto="keyLeft" flags="mr" />
+    <key id="KEY_RIGHT" mapto="keyRight" flags="mr" />
+    <key id="KEY_CHANNELUP" mapto="keyChannelUp" flags="m" />
+    <key id="KEY_CHANNELDOWN" mapto="keyChannelDown" flags="m" />
+    <key id="KEY_INFO" mapto="KeyInfo" flags="m" />
+                <key id="KEY_TV" mapto="preview" flags="m" />
+                <key id="KEY_REWIND" mapto="prevDay" flags="m" />
+                <key id="KEY_FASTFORWARD" mapto="nextDay" flags="m" />
+                <key id="KEY_NEXT" mapto="nextService" flags="m" />
+                <key id="KEY_PREVIOUS" mapto="prevService" flags="m" />
+                <key id="KEY_HOME" mapto="moveTop" flags="mr" />
+
+    <!-- enigma2-PC -->
+    <key id="KEY_ENTER" mapto="keyOK" flags="m" />
+    <key id="KEY_ESC" mapto="keyCancel" flags="m" />
+    <key id="KEY_SPACE" mapto="keyMenu" flags="mr" />
+    <key id="KEY_F1" mapto="keyRed" flags="mr" />
+    <key id="KEY_F2" mapto="keyGreen" flags="mr" />
+    <key id="KEY_F3" mapto="keyYellow" flags="mr" />
+    <key id="KEY_F4" mapto="keyBlue" flags="mr" />
+    <device name="keyboard">
+        <key id="a" mapto="up" flags="mr" />
+        <key id="b" mapto="down" flags="mr" />
+    </device>
+
+  </map>
+</keymap>

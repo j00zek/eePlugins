@@ -1,0 +1,657 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: UserSkin v0.1\n"
+"POT-Creation-Date: 2013-08-16 18:44+0100\n"
+"PO-Revision-Date: 2021-03-01 10:15+0100\n"
+"Language-Team: j00zek\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.2\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: de\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+msgid "(Advanced mode)"
+msgstr "Erweiterter Modus"
+
+msgid ""
+"All modifications have been reverted\n"
+"\n"
+msgstr ""
+"Alle Änderungen wurden rückgängig gemacht\n"
+"\n"
+
+msgid "About"
+msgstr "Über das Plugin"
+
+msgid "Advanced (merge screens)"
+msgstr "Erweitert (mehrere Screens)"
+
+msgid "Advanced attributes edit"
+msgstr "Erweiterte Attributbearbeitung"
+
+msgid "Advanced %s attribute edit"
+msgstr "Erweiterte%s Attributbearbeitung"
+
+msgid "Actions"
+msgstr "Aktionen"
+
+msgid "All skins"
+msgstr "Alle Skins"
+
+msgid "animated_zzpicon"
+msgstr "Animierte ZZPicons"
+
+msgid "animated_picon"
+msgstr "Animierte Picons"
+
+msgid "Archive downloaded improperly"
+msgstr "Archiv falsch heruntergeladen"
+
+msgid "Archive unpacked improperly"
+msgstr "Archiv falsch entpackt"
+
+msgid "Archive is broken"
+msgstr "Archiv ist defekt"
+
+msgid "Archive unpacked properly, you can select it in skin selector"
+msgstr "Archiv richtig ausgepackt, du kannst es in der Skin-Auswahl auswählen"
+
+msgid "Are you sure you want to use it?"
+msgstr "Bist du sicher, dass du ihn verwenden möchtest?"
+
+msgid "Are you sure you want delete the screen?"
+msgstr "Möchtest du diesen Skin löschen?"
+
+msgid "Are you sure you want to change: '%s' to '%s'?"
+msgstr ""
+"Möchtest du ändern '%s' auf\n"
+" '%s'?"
+
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgid "Celsius"
+msgstr "Celsius"
+
+msgid "Colors:"
+msgstr "Farbe:"
+
+msgid "ChannelList skins"
+msgstr "Kanalliste Skins"
+
+msgid "Channel[ ]*Selection"
+msgstr "Kanallisten Selektor"
+
+msgid "Channel[ ]*Selections"
+msgstr "Kanallisten Selektor"
+
+msgid "Change font size"
+msgstr "Schriftgröße ändern"
+
+msgid "Choose LCD skin:"
+msgstr "LCD-Skin wählen"
+
+msgid "Checking installation mode"
+msgstr "Installationsmodus überprüfen"
+
+msgid "Checking internet connection"
+msgstr "Internetverbindung prüfen"
+
+msgid "Checking archive consistency"
+msgstr "Archivkonsistenz prüfen"
+
+msgid "Custom path:"
+msgstr "Benutzerdefinierter Pfad:"
+
+msgid "Controlled through %s. "
+msgstr "Kontrolliert durch %s. "
+
+msgid "Controlled by script or plugin. "
+msgstr "Wird per Skript oder Plugin kontrolliert. "
+
+msgid "ChannelList"
+msgstr "Kanalliste"
+
+msgid "default"
+msgstr "Standard"
+
+msgid "default skin.xml"
+msgstr "Standard skin.xml"
+
+msgid "default skin_display.xml"
+msgstr "Standard skin_display.xml"
+
+msgid "Display %s. "
+msgstr "Zeige %s. "
+
+msgid "Display a picture. "
+msgstr "Zeige Grafik"
+
+msgid "Display skin:"
+msgstr "LCD Skin"
+
+msgid "Display skin (OK):"
+msgstr "Zeige Skin (OK)"
+
+msgid "Do you really want to cancel?"
+msgstr "Willst du wirklich annullieren? "
+
+msgid "Do you want to update plugin?"
+msgstr "Willst du Plugin aktualisieren?"
+
+msgid "Do you want to update skin?"
+msgstr "Willst du Skin aktualisieren? "
+
+msgid "Do you want to update your skin modification?"
+msgstr "Willst du Skin-Modifikation aktualisieren? "
+
+msgid "Delete"
+msgstr "Lösche Skin"
+
+msgid "Downloading latest plugin version"
+msgstr "Herunterladen der neuesten Plugin-Version "
+
+msgid "Downloading latest skin version"
+msgstr "Herunterladen der neuesten Skin-Version"
+
+msgid "Downloading "
+msgstr "Herunterladen"
+
+msgid "Download addons"
+msgstr "Addons herunterladen"
+
+msgid "Download additional Components/plugins"
+msgstr "Zusätzliche Komponenten / Plugins herunter herunterladen "
+
+msgid "Delete addons"
+msgstr "Komponente löschen"
+
+msgid "Edit"
+msgstr "Editieren"
+
+msgid "Enable skin personalization:"
+msgstr "Skin-Personalisierung aktivieren:"
+
+msgid "Enable PIG (not recommended for 1080p):"
+msgstr "PIG aktivieren (nicht empfohlen für 1080p):"
+
+msgid "Enter filename"
+msgstr "Dateinamen angeben"
+
+msgid "Error downloading the history of changes"
+msgstr "Fehler beim Herunterladen des Änderungsverlaufs "
+
+msgid "Exit"
+msgstr "Exit"
+
+msgid "Exit options"
+msgstr "Exit Options"
+
+msgid "Export"
+msgstr "Export"
+
+msgid "Exit without saving"
+msgstr "Exit ohne zu speichern"
+
+msgid "Extract from skin.xml"
+msgstr "Skin aus skin.xml "
+
+msgid "Fahrenheit"
+msgstr "Fahrenheit"
+
+msgid "Font:"
+msgstr "Schriftart:"
+
+msgid "Force using custom path:"
+msgstr "Erzwingen der Verwendung eines benutzerdefinierten Pfads:"
+
+msgid "Generic"
+msgstr "Allgemein"
+
+msgid "github server unavailable, update impossible"
+msgstr "Github-Server nicht verfügbar, Aktualisierung nicht möglich"
+
+msgid "History of changes"
+msgstr "Änderungsprotokoll"
+
+msgid "Homar LCD skins from opkg"
+msgstr "Homar LCD-Skins von opkg"
+
+msgid "Installing new version"
+msgstr "Neue Version installieren"
+
+msgid "Installation incorrect"
+msgstr "Falsche Installation"
+
+msgid ""
+"Installation of LCD screens prepared by Homar from opkg will take a minute. "
+"Do you want to proceed?"
+msgstr ""
+"Die Installation der von Homar vorbereiteten LCD-Skins von opkg dauert eine "
+"Minute. Möchtest du fortfahren?"
+
+msgid "Install miniTV skin creator"
+msgstr "Installiere miniTV Skin Creator"
+
+msgid "Install from OPKG"
+msgstr "Von OPKG installieren"
+
+msgid "Infobar skins"
+msgstr "Infobar Skins"
+
+msgid "Infobars"
+msgstr "Infobars"
+
+msgid "Infobar"
+msgstr "Infobar"
+
+msgid "Import"
+msgstr "Import"
+
+msgid "Import foreign skin"
+msgstr "Skin importieren"
+
+msgid "List loaded screens"
+msgstr "Zeige geladene Screens"
+
+msgid "LCD skin (OK):"
+msgstr "LCD Skin (OK):"
+
+msgid "LCD/VFD skin:"
+msgstr "LCD/VFD Skin:"
+
+msgid "LCD/VFD too small to use miniTV skin creator"
+msgstr "LCD/VFD zu klein, um miniTV Skin Creator zu verwenden "
+
+msgid "Loaded screens %s"
+msgstr "Geladene Screens %s"
+
+msgid "Latest version already installed"
+msgstr "Neueste Version bereits installiert"
+
+msgid "Location # (http://weather.yahoo.com/):"
+msgstr "Standortnummer (http://weather.yahoo.com/): "
+
+msgid "Message"
+msgstr "Nachricht"
+
+msgid ""
+"Missing components found: %s\n"
+"\n"
+msgstr ""
+"Fehlende Komponenten gefunden: %s\n"
+"\n"
+
+msgid "Modyfing "
+msgstr "Verändere"
+
+msgid "Move left/right"
+msgstr "Nach links/rechts"
+
+msgid "Move Up/Down"
+msgstr "Nach oben/unten"
+
+msgid "miniTV skin creator"
+msgstr "miniTV Skin Creator"
+
+msgid "No addons path configured"
+msgstr "Kein Addon-Pfad konfiguriert"
+
+msgid "No addons installed"
+msgstr "Keine Addons installiert"
+
+msgid "No action"
+msgstr "Keine Aktion"
+
+msgid "No JPG previews:"
+msgstr "Keine JPG-Vorschau:"
+
+msgid "No widgets found"
+msgstr "Keine Widgets gefunden"
+
+msgid "No User skins found"
+msgstr "Kein Benutzer-Skins gefunden"
+
+msgid "No archive downloaded, check your curl version"
+msgstr "Kein Archiv heruntergeladen, überprüfe die Curl-Version"
+
+msgid "_no_"
+msgstr "_Nein_"
+
+msgid ""
+"NOTE: System uses definition from plugin when screen is not listed above."
+msgstr ""
+"HINWEIS: Das System verwendet die im Plug-In enthaltene Definition, wenn "
+"sie nicht aufgeführt ist"
+
+msgid "Nothing to select"
+msgstr "Nichts zur Auswahl"
+
+msgid "OK"
+msgstr "OK"
+
+msgid "off"
+msgstr "Aus"
+
+msgid "on"
+msgstr "An"
+
+msgid "Personalize your Skin"
+msgstr "Personalisieren dein Skin"
+
+msgid "Parent Category"
+msgstr "Vorherige Kategorie"
+
+msgid "Permanent preview 1"
+msgstr "Permanente Vorschau 1"
+
+msgid "Permanent preview 2"
+msgstr "Permanente Vorschau 2"
+
+msgid "Paint a square. "
+msgstr "Erstellt ein Rechteck."
+
+msgid "---Picons animations optional settings---"
+msgstr "--- Optionale Picons-Animationen Einstellungen ---"
+
+msgid "Personalization mode:"
+msgstr "Personalisierungsmodus:"
+
+msgid "Preview"
+msgstr "Vorschau"
+
+msgid "Refresh"
+msgstr "Aktualisierung"
+
+msgid "Report automatically skin GS:"
+msgstr "Automatische Skin-GS Meldung"
+
+msgid "Restart GUI now?"
+msgstr "Restart GUI jetzt?"
+
+msgid "Resize left/right"
+msgstr "Breite ändern"
+
+msgid "Resize Up/Down"
+msgstr "Höhe ändern"
+
+msgid "Refresh interval in minutes:"
+msgstr "Aktualisiere alle in (min):"
+
+msgid "Restart necessary, restart GUI now?"
+msgstr "Restart GUI jetzt, um Änderungen zu aktivieren?"
+
+msgid ""
+"Required program 'curl' is not installed. Trying to install it via OPKG."
+msgstr ""
+"Erforderliches Programm 'curl' ist nicht installiert. Versuch, es über OPKG "
+"zu installieren."
+
+msgid ""
+"Required program 'curl' is not available. Please install it first manually."
+msgstr ""
+"Erforderliches Programm 'Curl' ist nicht verfügbar. Bitte installiere es "
+"zuerst manuell."
+
+msgid "Save as & Exit"
+msgstr "Speichern als und schließen"
+
+msgid "Save & Exit"
+msgstr "Speichern und schließen"
+
+msgid "Sample Text"
+msgstr "Beispiel"
+
+msgid "Save"
+msgstr "Speichern"
+
+msgid "Save as"
+msgstr "Speichern als"
+
+msgid "Selector bar style:"
+msgstr "Auswahlleistenstil:"
+
+msgid "Select screen:"
+msgstr "Screenauswahl /Bildschirmauswahl"
+
+msgid "Select skin to export:"
+msgstr "Wähle Skin zum exportieren Skin aus:"
+
+msgid "Select attribute to edit:"
+msgstr "Attribut zum Bearbeiten wählen:"
+
+msgid "Set standard background"
+msgstr "Standardhintergrund festlegen"
+
+msgid "SecondInfobar"
+msgstr "SecondInfobar / zweites Infobar"
+
+msgid "Screen"
+msgstr "Screen / Bildschirm"
+
+msgid "Source"
+msgstr "Quelle"
+
+msgid "Secondinfobars"
+msgstr "Secondinfobars"
+
+msgid "Screens by"
+msgstr "Screens von"
+
+msgid "Safe mode (reset on GS):"
+msgstr "Abgesicherter Modus (Reset nach GS):"
+
+msgid ""
+"Skin will NOT work properly and GS expected!!!\n"
+"\n"
+msgstr ""
+"Der Skin wird nicht richtig funktionieren, GS möglich!!!\n"
+"\n"
+
+msgid "Select Action:"
+msgstr "Wähle Aktion aus:"
+
+msgid "Save settings?"
+msgstr "Einstellungen speichern?"
+
+msgid "Settings"
+msgstr "Einstellungen"
+
+msgid "Setup - UserSkin"
+msgstr "Setup - UserSkin"
+
+msgid "Success: Restart system to use new plugin version"
+msgstr ""
+"Erfolg: Starte das System neu, um die neue Plugin-Version zu verwenden"
+
+msgid "Skin personalization"
+msgstr "Skin Personalisierung"
+
+msgid "Skin does not have downloadable addons"
+msgstr "Der Skin hat keine herunterladbaren Add-Ons"
+
+msgid "Switch screen"
+msgstr "Skin (Bildschirm) wechseln"
+
+msgid "UserSkin Setup"
+msgstr "UserSkin Setup"
+
+msgid "UserSkin additional screens"
+msgstr "UserSkin zusätzliche Screens"
+
+msgid ""
+"\n"
+"Script finished\n"
+"Use up/down arrows to scroll text. OK closes window"
+msgstr ""
+"\n"
+"Skript beendet\n"
+"Aufwärts- / Abwärtspfeile, um Text zu scrollen. OK schließt das Fenster"
+
+msgid "Temperature unit:"
+msgstr "Temperatureinheit:"
+
+msgid "This skin does not have the history of changes."
+msgstr "Der Skin hat keinen Änderungsverlauf."
+
+msgid "This skin is not configured for updates."
+msgstr "Dieser Skin ist nicht für Updates konfiguriert."
+
+msgid ""
+"To see previews install package:\n"
+"enigma2-skin-infinityhd-nbox-tux-full-preview"
+msgstr ""
+"Installiere das Paket um Vorschau zu zeigen:\n"
+"enigma2-skin-infinityhd-nbox-tux-full-preview"
+
+msgid "User skins"
+msgstr "User Skins"
+
+msgid "Update main skin"
+msgstr "Skin Aktualisierung"
+
+msgid "Update plugin"
+msgstr "Aktualisierung Plugin"
+
+msgid "Updating skin"
+msgstr "Aktualisiere Skin"
+
+msgid "Updating plugin"
+msgstr "Aktualisiere Plugin"
+
+msgid "UserSkin controlled by OPKG. Please use it for updates."
+msgstr "UserSkin wird von OPKG kontrolliert. Bitte verwende es für Updates."
+
+msgid "Unpacking new version"
+msgstr "Entpacken von Neuer Version"
+
+msgid "Updating"
+msgstr "Aktualisiere"
+
+msgid "Unpacking "
+msgstr "Entpacke"
+
+msgid ""
+"\n"
+"Use up/down arrows to scroll text. OK closes window"
+msgstr ""
+"\n"
+"Aufwärts- / Abwärtspfeile, um durch den Text zu scrollen. OK schließt das "
+"Fenster"
+
+msgid "UserSkin %s - additional screens"
+msgstr "UserSkin %s - zusätzliche Screens"
+
+msgid "UserSkin %s - EditScreens"
+msgstr "UserSkin %s - Edit Screens"
+
+msgid "UserSkin %s - Edit %s screen"
+msgstr "UserSkin %s - Edit %s Screen"
+
+msgid "UserSkin %s - Edit %s screen (1/%d)"
+msgstr "UserSkin %s - Edit %s Screen (1/%d)"
+
+msgid "UserSkin Setup %s"
+msgstr "UserSkin Setup %s"
+
+msgid "UnknownName"
+msgstr "Unbekannter Name"
+
+msgid "UserSkin has been updated. Please restart GUI"
+msgstr "UserSkin wurde aktualisiert. Bitte starte GUI neu"
+
+msgid "VFD skin (OK):"
+msgstr "VFD skin (OK):"
+
+msgid "VTI8.0.x detected, patching skin"
+msgstr "VTI8.0.x entdeckt, Skin wird angepasst"
+
+msgid "Window style:"
+msgstr "Fensterstil: "
+
+msgid "Warning"
+msgstr "Warnung"
+
+msgid "---Weather---"
+msgstr "---Wetter---"
+
+msgid "MovieSelection"
+msgstr "Filmauswahl"
+
+msgid "Messageboxes"
+msgstr "Nachrichtenbox"
+
+msgid "animated"
+msgstr "Animiert"
+
+msgid "double-spaced"
+msgstr "Zweizeilig"
+
+msgid "DoubleSpaced"
+msgstr "Zweizeilig"
+
+msgid "Full"
+msgstr "Voll"
+
+msgid "fulllist"
+msgstr "Volle Liste"
+
+msgid "BigFonts"
+msgstr "Große Schriftarten"
+
+msgid "gray"
+msgstr "Grau"
+
+msgid "gold"
+msgstr "Gold"
+
+msgid "%s addon"
+msgstr "Addons %s"
+
+msgid "Selector buttons style:"
+msgstr "Icons der Auswahltasten:"
+
+msgid "Circle"
+msgstr "Rund"
+
+msgid "Donut"
+msgstr "Kreis "
+
+msgid "Oval"
+msgstr "Oval"
+
+msgid "Quad"
+msgstr "Viereck"
+
+msgid "Rectangle"
+msgstr "Rechteck"
+
+msgid "Standard-mixed"
+msgstr "Standard-Gemischt"
+
+msgid "*** Basic settings ***"
+msgstr "*** Standardeinstellungen ***"
+
+msgid "LCD Colors:"
+msgstr "LCD Farben:"
+
+msgid "LCDLinux selected, open it and generate its skin again."
+msgstr "LCDLinux ausgewählt, du musst neuen Skin generieren."
+
+msgid "don't use"
+msgstr "Ohne Animation"
+
+msgid "Anim buttons (if in skin):"
+msgstr "Animierte Buttons (wenn im Skin):"
+
+msgid "Moving rectangle"
+msgstr "Wachsender Rechteck"
+
+msgid "Running dots"
+msgstr "Laufende Punkte "
