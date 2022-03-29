@@ -1,0 +1,233 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: j00zekOPKGmanager\n"
+"POT-Creation-Date: 2021-09-28 10:00+0100\n"
+"PO-Revision-Date: 2016-04-13 14:21+0200\n"
+"Last-Translator: 沙鸥\n"
+"Language-Team: j00zek\n"
+"Language: zh\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.6\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+msgid ""
+"\n"
+"Use up/down arrows to scroll text. OK closes window"
+msgstr ""
+"\n"
+"使用上/下箭头滚动文本.确定关闭窗口"
+
+msgid "'opkg update' command returned an error %i :("
+msgstr "'安装更新' 命令返回了一个错误 %i :("
+
+msgid ""
+"After changes in opkg, tuner has to be restarted.\n"
+" Restart now?"
+msgstr ""
+"在opkg改变后，调谐器必须重新启动.\n"
+" 现在重启吗?"
+
+msgid "Alternate OPKG manager"
+msgstr "软件更新管理器"
+
+msgid "Apply"
+msgstr "应用"
+
+msgid "Are you sure to install %s package with %s size?"
+msgstr "您确定要安装大小包吗？"
+
+msgid "Are you sure to install %s package?"
+msgstr "您确定要安软件包吗？"
+
+msgid "Are you sure, you want delete % package?"
+msgstr "确定要删 % 包吗？"
+
+msgid "Cancel"
+msgstr "取消"
+
+msgid "Delete"
+msgstr "删除"
+
+msgid "Do you want to run '%s'? (package size %s)"
+msgstr "是否要运行 '%s'？（包大 %s）"
+
+msgid "Do you want to upgrade %s package?"
+msgstr "要升包吗？"
+
+msgid "Do you want to upgrade all packages?"
+msgstr "是否要升级所有软件包？"
+
+msgid "Downloading"
+msgstr "下载"
+
+msgid "ERROR connecting to OPKG"
+msgstr "连接时出错"
+
+msgid "ERROR connecting to the internet"
+msgstr "连接时出错"
+
+msgid "ERROR updating OPKG"
+msgstr "更时出错"
+
+msgid "Inflating"
+msgstr "膨胀"
+
+msgid "Install"
+msgstr "安装"
+
+msgid "Install Local package"
+msgstr "安装本地包"
+
+msgid "Install local packet"
+msgstr "安装本地数据包"
+
+msgid "Install, update, upgade all ipk packages from GUI"
+msgstr "安装,更新升级软件-j00zek"
+
+msgid "Installing"
+msgstr "安装"
+
+msgid "Internal flash"
+msgstr "内部闪存"
+
+msgid "Neigther internet nor service is working :("
+msgstr "互联网和服务都不起作用 :("
+
+msgid ""
+"New actualization ready to install\n"
+"Start OPKG manager?"
+msgstr ""
+"新的实施准备安装\n"
+"启动OPKG管理器?"
+
+msgid "New directory"
+msgstr "新目录"
+
+msgid "OPKG manager"
+msgstr "安装软件管理"
+
+msgid "OPKG server does not response on pings :("
+msgstr "OPKG服务器不响 :("
+
+msgid ""
+"Only %d MB left!!!\n"
+"At least 8MB is required to safely install and upgrade packages."
+msgstr ""
+"只剩下%d MB 空间!!!\n"
+"安全安装和升级软件包至少需要 8MB的空间."
+
+msgid "Options"
+msgstr "选项"
+
+msgid "Package list update"
+msgstr "包列表更新"
+
+msgid "Post upgrade cleanup..."
+msgstr "升级后清理.."
+
+msgid "Recommended update installed packages"
+msgstr "建议更新已安装的程序包"
+
+msgid "Refresh list"
+msgstr "刷新列表"
+
+msgid "Reinstall"
+msgstr "重新安装"
+
+msgid "Remove some packages, or upgade from console!"
+msgstr "移除一些包，或者从控制台向上移动!"
+
+msgid "Select option"
+msgstr "选择选项"
+
+msgid "Select package"
+msgstr "选择程序包"
+
+msgid "Show DVB USB modules only"
+msgstr "仅显模块"
+
+msgid "Show DVB-T modules only"
+msgstr "仅显模块"
+
+msgid "Show all Neutrino elements only"
+msgstr "仅显示所有中微子元素"
+
+msgid "Show all openPLI elements only"
+msgstr "仅显示所元素"
+
+msgid "Show all packages"
+msgstr "显示所有程序包"
+
+msgid "Show extension plugins only"
+msgstr "仅显示扩展插件"
+
+msgid "Show j00zek's plugins only"
+msgstr "仅显的插件"
+
+msgid "Show kernel modules only"
+msgstr "仅显示内核模块"
+
+msgid "Show openPLI plugins only"
+msgstr "仅显插件"
+
+msgid "Show openPLI skins only"
+msgstr "仅显外观"
+
+msgid "Show system plugins only"
+msgstr "仅显示系统插件"
+
+msgid "Too many packages and too small free space for upgrade!!!"
+msgstr "软件包太多，可用空间太小，无法升级"
+
+msgid "Trying to download a new packetlist. Please wait..."
+msgstr "正在尝试下载新的包列表.请稍候..."
+
+msgid "Upgrade"
+msgstr "升级"
+
+msgid "Upgrade packages"
+msgstr "升级包"
+
+msgid "Upgrading all packages..."
+msgstr "正在升级所有包..."
+
+msgid "Upgrading all packages...."
+msgstr "正在升级所有包...."
+
+msgid "You will be later prompted for file selection."
+msgstr "稍后将提示您选择文件."
+
+msgid "delete %s"
+msgstr "删除 %s"
+
+msgid "install %s"
+msgstr "安装 %s"
+
+msgid "show Python modules only"
+msgstr "仅显模块"
+
+msgid "show channels only"
+msgstr "仅显示频道"
+
+msgid "show fonts only"
+msgstr "仅显示字体"
+
+msgid "show language packets only"
+msgstr "仅显示语言包"
+
+msgid "show oscam packages only"
+msgstr "仅显软件包"
+
+msgid "show picons only"
+msgstr "仅显示图片"
+
+msgid "show system libraries only"
+msgstr "仅显示系统库"
+
+msgid "upgrade %s"
+msgstr "升级 %s"
