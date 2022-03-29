@@ -1,0 +1,53 @@
+#!/bin/sh
+ln -sf /usr/sbin/streamlinksrv /etc/init.d/streamlinksrv
+ln -sf /usr/sbin/streamlinksrv /etc/rc3.d/S50streamlinksrv
+ln -sf /usr/sbin/streamlinksrv /etc/rc4.d/S50streamlinksrv
+if `grep -q 'osd.language=pl_PL' </etc/enigma2/settings`; then
+    echo ""
+    echo "streamlinksrv zainstalowany"
+    echo ""
+else
+    echo ""
+    echo "streamlinksrv instalolled"
+    echo ""
+fi
+#korekta brakujacych skryptow
+if [ ! -e /usr/lib/python2.7/site-packages/backports/__init__.py ];then
+echo "#created by streamlink package
+from pkgutil import extend_path
+__path__ = extend_path(__path__, __name__)
+" > /usr/lib/python2.7/site-packages/backports/__init__.py
+fi
+
+if [ -e /usr/lib/python2.7/site-packages/Crypto/Util/ ] && [ ! -e /usr/lib/python2.7/site-packages/Crypto/Util/Padding.py ];then
+  ln -sf /usr/lib/python2.7/site-packages/streamlink/missingScripts/Padding.py /usr/lib/python2.7/site-packages/Crypto/Util/Padding.py
+fi
+
+if [ `grep -c 'config.plugins.streamlinksrv.enabled=true' < /etc/enigma2/settings` -gt 0 ];then
+  /etc/init.d/streamlinksrv start
+  if [ -e /var/run/streamlink.pid ];then
+    if `grep -q 'osd.language=pl_PL' </etc/enigma2/settings`; then
+      echo "streamlinksrv uruchomiony"
+      echo ""
+    else
+      echo "streamlinksrv started"
+      echo ""
+    fi 
+  else
+    if `grep -q 'osd.language=pl_PL' </etc/enigma2/settings`; then
+      echo "BŁĄD uruchamiania streamlinksrv !!!"
+      echo ""
+    else
+      echo "ERROR starting streamlinksrv !!!"
+      echo ""
+    fi 
+  fi
+fi
+touch '/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/1stRun'
+
+if [ -e /usr/lib/enigma2/python/Plugins/SystemPlugins/VTIPanel ];then
+  sed -i 's/^#\(ffmpeg-ffmpeg=\)/\1/' /etc/streamlink/config.template
+fi
+[ -f /etc/streamlink/config ] || cp /etc/streamlink/config.template /etc/streamlink/config
+
+exit 0

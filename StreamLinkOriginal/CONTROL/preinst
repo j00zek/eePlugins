@@ -1,0 +1,19 @@
+#!/bin/sh
+if [ -e /var/run/streamlink.pid ];then
+ /etc/init.d/streamlinksrv stop
+fi
+if [ `grep -c ARMv7 < /proc/cpuinfo` -eq 0 ]; then
+  if `grep -q 'osd.language=pl_PL' </etc/enigma2/settings`; then
+    echo "NiEWSPIERANA architektura CPU!!! Problemy będziesz musiał rozwiązywać sam"
+  else
+    echo "INSUPPORTED CPU architecture!!! You must resolve all issues yourself"
+  fi  
+fi
+if [ -e /usr/lib/python3.8 ] || [ -e /usr/lib/python3.9 ]; then
+  if `grep -q 'osd.language=pl_PL' </etc/enigma2/settings`; then
+    echo "Python 3 NIE wspierany!!!"
+  else
+    echo "Python 3 NOT supported"
+  fi  
+fi
+exit 0
