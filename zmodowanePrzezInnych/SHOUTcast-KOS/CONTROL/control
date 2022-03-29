@@ -1,0 +1,10 @@
+Package: enigma2-plugin-extensions--j00zeks-shoutcast-mod-kos
+Priority: optional
+Section: utils
+Depends: 
+Description: wersja zmodyfikowana przez kolegę Kos
+Maintainer: j00zek
+Source: http://github.com/j00zek/eePlugins
+Version: 20.10.19.2137
+Architecture: all
+DestinationPath: /usr/lib/enigma2/python/Plugins/Extensions/SHOUTcast
