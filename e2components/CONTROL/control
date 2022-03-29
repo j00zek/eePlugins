@@ -1,0 +1,10 @@
+Package: enigma2---j00zeks-components
+Priority: optional
+Section: utils
+Depends: 
+Description: e2 components used in varius packages
+Maintainer: j00zek
+Source: http://github.com/j00zek/eePlugins
+Version: 22.02.14.0636
+Architecture: all
+DestinationPath: /usr/lib/enigma2/python
