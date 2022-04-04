@@ -49,8 +49,16 @@ config.plugins.AltSoftcam.enabled = ConfigYesNo(default = False)
 config.plugins.AltSoftcam.CAMsupport = ConfigYesNo(default = True)
 config.plugins.AltSoftcam.OsCamonly = ConfigYesNo(default = True)
 config.plugins.AltSoftcam.actcam = ConfigText(default = _("none"))
-config.plugins.AltSoftcam.camdir = ConfigDirectory(default = "/")
-config.plugins.AltSoftcam.camconfig = ConfigDirectory(default = "/")
+
+if os.path.exists('/j00zek/OsCam/bin/'):
+    config.plugins.AltSoftcam.camdir = ConfigDirectory(default = "/j00zek/OsCam/bin")
+else:
+    config.plugins.AltSoftcam.camdir = ConfigDirectory(default = "/")
+if os.path.exists('/j00zek/OsCam/'):
+    config.plugins.AltSoftcam.camconfig = ConfigDirectory(default = "/j00zek/OsCam/")
+else:
+    config.plugins.AltSoftcam.camconfig = ConfigDirectory(default = "/")
+
 AltSoftcamConfigError = False
 if not os.path.isdir(config.plugins.AltSoftcam.camconfig.value):
     config.plugins.AltSoftcam.camconfig.value = _("none")
