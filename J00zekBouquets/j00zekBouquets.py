@@ -4,8 +4,11 @@
 #   Coded by j00zek (c)2014-2020
 #
 #######################################################################
+from __future__ import absolute_import #zmiana strategii ladowanie modulow w py2 z relative na absolute jak w py3
 
-from inits import * 
+from Plugins.Extensions.J00zekBouquets.inits import * 
+from Plugins.Extensions.J00zekBouquets.j00zekConsole import j00zekConsole
+
 from Components.ActionMap import ActionMap
 from Components.config import *
 from Components.ConfigList import ConfigList, ConfigListScreen
@@ -13,7 +16,6 @@ from Components.Console import Console
 from Components.FileList import FileList, EXTENSIONS
 from Components.Label import Label
 from enigma import eDVBDB, eServiceReference, eTimer, eConsoleAppContainer, getDesktop
-from j00zekConsole import j00zekConsole
 from os import system as os_system, remove as os_remove, chmod as os_chmod, symlink as os_symlink, path as os_path
 from Screens.InfoBar import InfoBar
 from Screens.ChoiceBox import ChoiceBox 

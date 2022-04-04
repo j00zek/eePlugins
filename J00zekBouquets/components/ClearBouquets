@@ -14,14 +14,14 @@ def importFilesFrom(sourceDir):
         BFNAMEandPath = '/etc/enigma2/%s' % BFNAME
         m3uFileWithPath = os.path.join(sourceDir, m3uFile)
         desk_tmp = ''
-        print "Import streamów z %s ..." % m3uFile[:-4]
+        print("Import streamów z %s ..." % m3uFile[:-4])
         if os.path.isfile(BFNAMEandPath):
             os.remove(BFNAMEandPath)
         with open('/etc/enigma2/%s' % BFNAME, 'w') as outFile:
             infile = open(m3uFileWithPath, 'r')
             line = infile.readline().strip()
             if not '#EXTM3U' in line:
-                print "Plik '%s' ma niepoprawny format, pomijam" % m3uFile
+                print("Plik '%s' ma niepoprawny format, pomijam" % m3uFile)
                 break
             outFile.write('#NAME %s\n' % m3uFile[:-4])
             line = infile.readline().strip()
@@ -47,11 +47,11 @@ def importFilesFrom(sourceDir):
                     update_bouquets_tv = False
                     break
             if update_bouquets_tv:
-                print "Dodaję w pliku bouquets.tv definicję bukietu"
+                print("Dodaję w pliku bouquets.tv definicję bukietu")
                 with open('/etc/enigma2/bouquets.tv', 'a') as outfile:
                     outfile.write('#SERVICE 1:7:1:0:0:0:0:0:0:0:FROM BOUQUET "%s" ORDER BY bouquet\n' % BFNAME)
                     outfile.close()
         
 
 if __name__ == '__main__': 
-    print "ClearBouquets"
+    print("ClearBouquets")

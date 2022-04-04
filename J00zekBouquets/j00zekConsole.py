@@ -4,6 +4,7 @@
 # changes/improvements:
 # - translation of cmd texts with common structure _(), e.g. echo "_(this is an example)"
 # - safe for tuners with small memory size
+from __future__ import absolute_import #zmiana strategii ladowanie modulow w py2 z relative na absolute jak w py3
 
 from enigma import eConsoleAppContainer, eServiceReference, getDesktop
 from Screens.InfoBar import InfoBar
@@ -11,7 +12,7 @@ from Screens.Screen import Screen
 from Components.ActionMap import ActionMap
 from Components.MenuList import MenuList
 from Components.ScrollLabel import ScrollLabel
-from inits import *
+from Plugins.Extensions.J00zekBouquets.inits import *
 #
 #from Components.Pixmap import Pixmap
 #from enigma import eTimer
@@ -80,9 +81,9 @@ class j00zekConsole(Screen):
                 self.runFinished(-1) # so we must call runFinished manual
         else:
             #lastpage = self["text"].isAtLastPage()
-            str = self["text"].getText()
-            str += self.endText;
-            self["text"].setText(str)
+            myText = self["text"].getText()
+            myText += self.endText;
+            self["text"].setText(myText)
             #if lastpage:
             self["text"].lastPage()
             if self.finishedCallback is not None:
@@ -96,11 +97,14 @@ class j00zekConsole(Screen):
             self.container.appClosed.remove(self.runFinished)
             self.container.dataAvail.remove(self.dataAvail)
 
-    def dataAvail(self, str):
+    def dataAvail(self, myText):
+        myText =  str(myText)
+        try: myText.decode('utf-8')
+        except: pass
         #lastpage = self["text"].isAtLastPage()
-        #with open("/tmp/JB", "a") as f: f.write(str)
-        if str.find("zapTo(") > -1:
-            dvbService = str.split('zapTo(', 1)[1]
+        #with open("/tmp/JB", "a") as f: f.write(myText)
+        if myText.find("zapTo(") > -1:
+            dvbService = myText.split('zapTo(', 1)[1]
             if dvbService.find(")") > -1:
                 dvbService = dvbService.split(')', 1)[0]
                 serviceDVB = eServiceReference(dvbService)
@@ -108,8 +112,11 @@ class j00zekConsole(Screen):
                 InfoBar.instance.servicelist.enterPath(serviceDVB)
                 InfoBar.instance.servicelist.setCurrentSelection(serviceDVB)
                 InfoBar.instance.servicelist.zap()
-                str = str.replace("zapTo(%s)" % dvbService ,"Przełączanie na kanał nadający dane o numeracji...")
+                myText = myText.replace("zapTo(%s)" % dvbService ,"Przełączanie na kanał nadający dane o numeracji...")
             #with open("/tmp/JB", "a") as f: f.write("aaaa" + dvbService)
-        self["text"].setText(self["text"].getText() + str)
+        tmpText = self["text"].getText()
+        if tmpText.count('\n') > 200: # za dlugie texty powoduja ze wszystko ginie, jakby bufor sie przepelnial
+            tmpText = "...\n" + "\n".join(tmpText.split("\n")[20:])
+        self["text"].setText( tmpText + myText)
         #if lastpage:
         self["text"].lastPage()
