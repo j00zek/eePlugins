@@ -153,7 +153,7 @@ def process_response(response):
        standard prefix @RESPONSE_PREFIX a RespException will be raised.
     '''
     rsp = response.split(b',')
-    if (len(rsp) is 0) or (not rsp[0].startswith(b'ret=')):
+    if (len(rsp) == 0) or (not rsp[0].startswith(b'ret=')):
         raise RespException("Unrecognized data format for the response")
 
     ret_msg = rsp[0][4:]
