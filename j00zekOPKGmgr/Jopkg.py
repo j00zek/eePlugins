@@ -18,7 +18,6 @@ from Screens.MessageBox import MessageBox
 from os import listdir, statvfs, popen as os_popen, system as os_system, remove as os_remove, path as os_path
 from Plugins.Plugin import PluginDescriptor
 from Screens.Screen import Screen
-from sys import version_info
 from Tools.LoadPixmap import LoadPixmap
 from Tools.Directories import *
 
@@ -31,8 +30,6 @@ myDEBUG = False
 
 myDEBUGfile = '/tmp/j00zekOPKGmgr.log'
 append2file=False
-
-PyMajorVersion = version_info.major
 
 def printDEBUG( callingFunction , myText = ''):
     global append2file
@@ -590,8 +587,8 @@ class Jopkg(Screen):
             printDEBUG( "build_UpgradeMenu" , "list of packages" )
             tmptxt=''
             for x in result.splitlines():
-                if PyMajorVersion == 3:
-                    x = x.decode('utf-8')
+                try: x = x.decode('utf-8')
+                except Exception: pass
                 if not x.startswith('Not selecting'):
                     tmptxt += x[:x.find(' - ')] + '\n'
             self["whatUPDATED"].setText(tmptxt)
@@ -656,8 +653,8 @@ class Jopkg(Screen):
         if lista != '':
             self.packetlist = []
             for x in lista.splitlines():
-                if PyMajorVersion == 3:
-                    x = x.decode('utf-8')
+                try: x = x.decode('utf-8')
+                except Exception: pass
                 if x.startswith('Not selecting'):
                     continue
                 parts = x.split(' - ')
