@@ -1,7 +1,7 @@
 # -*- coding: iso-8859-2 -*-
+from __future__ import absolute_import #zmiana strategii ladowania modulow w py2 z relative na absolute jak w py3
 
 from . import mygettext as _
-#no idea why importing scripts in the same directory doesn't work in ATV6.5
 from Plugins.Extensions.DynamicLCDbrightnessInStandby.version import Version
 
 from enigma import eTimer, eDBoxLCD

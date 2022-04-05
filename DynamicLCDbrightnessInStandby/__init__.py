@@ -1,4 +1,6 @@
 #### tlumaczenia
+from __future__ import absolute_import #zmiana strategii ladowania modulow w py2 z relative na absolute jak w py3
+
 PluginName = 'DynamicLCDbrightnessInStandby'
 
 from Tools.Directories import resolveFilename, SCOPE_PLUGINS
