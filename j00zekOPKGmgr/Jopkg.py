@@ -561,7 +561,7 @@ class Jopkg(Screen):
             self.list.append((_("Show openPLI skins only" ) , '' , '', ['-skin',], LoadPixmap(cached=True, path=PluginPath + 'icons/opkg_skin.png'), self.divpng))
             self.list.append((_("show fonts only" ) , '' , '', ['font',], LoadPixmap(cached=True, path=PluginPath + 'icons/opkg_fonts.png'), self.divpng))
             self.list.append((_("show oscam packages only" ) , '' , '', ['oscam',], LoadPixmap(cached=True, path=PluginPath + 'icons/opkg_softcam.png'), self.divpng))
-            self.list.append((_("show Python modules only" ) , '' , '', ['python-',], LoadPixmap(cached=True, path=PluginPath + 'icons/opkg_python.png'), self.divpng))
+            self.list.append((_("show Python modules only" ) , '' , '', ['python-','python3-',], LoadPixmap(cached=True, path=PluginPath + 'icons/opkg_python.png'), self.divpng))
             self.list.append((_("Show DVB USB modules only" ) , '' , '', ['dvb-usb',], LoadPixmap(cached=True, path=PluginPath + 'icons/opkg_dvbt.png'), self.divpng))
             self.list.append((_("Show all packages" ) , '' , '', '', LoadPixmap(cached=True, path=PluginPath + 'icons/opkg_all.png'), self.divpng))
             self.list.append((_("Install local packet" ) , " ", _("You will be later prompted for file selection." ), 'InstallLocal', self.gousbpng, self.divpng))

@@ -25,6 +25,8 @@ PluginName_lower=`grep 'Package:' < $plugAbsPath/CONTROL/control|cut -d ':' -f2|
 PluginPath=`grep 'DestinationPath:' < $plugAbsPath/CONTROL/control|cut -d ':' -f2|xargs`
 ExcludeFolder=`grep 'ExcludeFolder' < $plugAbsPath/CONTROL/control|cut -d ':' -f2|xargs`
 RunScriptBeforeBuild=`grep 'RunScriptBeforeBuild' < $plugAbsPath/CONTROL/control|cut -d ':' -f2|xargs`
+BuildType=`grep 'BuildType' < $plugAbsPath/CONTROL/control|cut -d ':' -f2|xargs`
+[ ! $BuildType ] && BuildType='Any'
 
 #sprawdzanie czy xmle nie maja bledow
 find $plugAbsPath -iname "*.xml" | 
@@ -48,19 +50,36 @@ compile(source, filename, 'exec')
 find $plugAbsPath -iname "*.py" | 
   while read F 
   do
-    python /tmp/checker.py "$F"
-    if [[ $? -gt 0 ]];then
-      echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ERROR in PY2 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-      echo "!!!!!!!!!! $F !!!!!!!!!!"
-      exit 1
-      break
-    fi
-    python3 /tmp/checker.py "$F"
-    if [[ $? -gt 0 ]];then
-      echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ERROR in PY3 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-      echo "!!!!!!!!!! $F !!!!!!!!!!"
-      exit 1
-      break
+    if [ $BuildType == 'python310' ];then
+      python3.10 /tmp/checker.py "$F"
+      if [[ $? -gt 0 ]];then
+        echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ERROR in PY3.10 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+        echo "!!!!!!!!!! $F !!!!!!!!!!"
+        exit 1
+        break
+      fi
+    else
+      python /tmp/checker.py "$F"
+      if [[ $? -gt 0 ]];then
+        echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ERROR in PY2 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+        echo "!!!!!!!!!! $F !!!!!!!!!!"
+        exit 1
+        break
+      fi
+      python3 /tmp/checker.py "$F"
+      if [[ $? -gt 0 ]];then
+        echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ERROR in PY3 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+        echo "!!!!!!!!!! $F !!!!!!!!!!"
+        exit 1
+        break
+      fi
+      python3.10 /tmp/checker.py "$F"
+      if [[ $? -gt 0 ]];then
+        echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ERROR in PY3.10 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+        echo "!!!!!!!!!! $F !!!!!!!!!!"
+        exit 1
+        break
+      fi
     fi
   done
 [ $? -gt 0 ] && exit 1
@@ -105,7 +124,7 @@ fi
 find $ipkdir/ -iname "*.py" | 
   while read F 
   do
-    [ -e "${F/.py/.pyo}" ] || touch "${F/.py/.pyo}"
+    [ -e "${F/.py/.pyo}" ] && rm -f "${F/.py/.pyo}" #|| touch "${F/.py/.pyo}"
     [ -e "${F/.py/.pyc}" ] && rm -f "${F/.py/.pyc}"
     [ -e "${F/.py/.py~}" ] && rm -f "${F/.py/.py~}"
   done
