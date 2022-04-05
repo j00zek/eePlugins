@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
-from __init__ import *
-from __init__ import translate as _
-from Cleaningfilenames import *
-from cueSheetHelper import setCut, CUT_TYPE_LAST
+from __future__ import absolute_import #zmiana strategii ladowanie modulow w py2 z relative na absolute jak w py3
+from Plugins.Extensions.AdvancedFreePlayer.__init__ import *
+from Plugins.Extensions.AdvancedFreePlayer.__init__ import translate as _
+from Plugins.Extensions.AdvancedFreePlayer.Cleaningfilenames import *
+from Plugins.Extensions.AdvancedFreePlayer.cueSheetHelper import setCut, CUT_TYPE_LAST
 
 from Screens.Screen import Screen
 

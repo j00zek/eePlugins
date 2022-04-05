@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import #zmiana strategii ladowanie modulow w py2 z relative na absolute jak w py3
-try:
-    from version import Version
-except Exception:
-    from .version import Version
+from Plugins.Extensions.AdvancedFreePlayer.version import Version
+
 PluginInfo='@j00zek %s' % Version
 
 #permanent

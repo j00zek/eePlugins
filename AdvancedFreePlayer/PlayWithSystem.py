@@ -1,3 +1,4 @@
+from __future__ import absolute_import #zmiana strategii ladowanie modulow w py2 z relative na absolute jak w py3
 from Components.config import *
 from enigma import eServiceReference
 from Screens.InfoBar import MoviePlayer as systemMoviePlayer

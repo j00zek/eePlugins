@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import #zmiana strategii ladowanie modulow w py2 z relative na absolute jak w py3
-from __init__ import *
-from __init__ import translate as _
-from Cleaningfilenames import *
-from cueSheetHelper import getCut, clearLastPosition
+from Plugins.Extensions.AdvancedFreePlayer.__init__ import *
+from Plugins.Extensions.AdvancedFreePlayer.__init__ import translate as _
+from Plugins.Extensions.AdvancedFreePlayer.Cleaningfilenames import *
+from Plugins.Extensions.AdvancedFreePlayer.cueSheetHelper import getCut, clearLastPosition
+from Plugins.Extensions.AdvancedFreePlayer.j00zekFileList import FileList, EXTENSIONS
 
 from Screens.Screen import Screen
 
@@ -29,7 +30,6 @@ from enigma import eTimer
 from skin import parseColor
 
 from time import *
-from j00zekFileList import FileList, EXTENSIONS
 import json
 import datetime
 import os
@@ -155,7 +155,7 @@ class AdvancedFreePlayerStart(Screen):
         self["key_blue"] = StaticText()
         self["key_yellow"] = StaticText(_("Config"))
         
-        from PlayWithdmnapi import KeyMapInfo #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        from Plugins.Extensions.AdvancedFreePlayer.PlayWithdmnapi import KeyMapInfo #<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         self["Description"] = Label(KeyMapInfo)
         self["Cover"] = j00zekAccellPixmap()
         
@@ -425,7 +425,7 @@ class AdvancedFreePlayerStart(Screen):
         if os.path.exists(self.openmovie) or self.openmovie.startswith("http://"):
             if myConfig.SRTplayer.value =="system":
                 printDEBUG("PlayWithSystem title:'%s' filename:'%s'" %(self.movieTitle,self.openmovie))
-                from PlayWithSystem import AdvancedFreePlayer
+                from Plugins.Extensions.AdvancedFreePlayer.PlayWithSystem import AdvancedFreePlayer
             else:
                 try: 
                     lastOPLIsetting = config.subtitles.pango_autoturnon.value
@@ -435,10 +435,10 @@ class AdvancedFreePlayerStart(Screen):
                     printDEBUG("pango_autoturnon non existent, is it VTI?")
                 if myConfig.SRTplayer.value =="plugin-SubsSupport":
                     printDEBUG("PlayWithsubsupport title:'%s' filename:'%s'" %(self.movieTitle,self.openmovie))
-                    from PlayWithsubsupport import AdvancedFreePlayer
+                    from Plugins.Extensions.AdvancedFreePlayer.PlayWithsubsupport import AdvancedFreePlayer
                 else:
                     printDEBUG("PlayWithdmnapi title:'%s' filename:'%s'" %(self.movieTitle,self.openmovie))
-                    from PlayWithdmnapi import AdvancedFreePlayer
+                    from Plugins.Extensions.AdvancedFreePlayer.PlayWithdmnapi import AdvancedFreePlayer
             #initiate player
             self.session.openWithCallback(EndPlayer,AdvancedFreePlayer,self.openmovie,self.opensubtitle,
                                             self.rootID,self.LastPlayedService,self.URLlinkName,
@@ -486,7 +486,7 @@ class AdvancedFreePlayerStart(Screen):
             self["filelist"].refresh()
 
     def runConfig(self):
-        from AFPconfig import AdvancedFreePlayerConfig
+        from Plugins.Extensions.AdvancedFreePlayer.AFPconfig import AdvancedFreePlayerConfig
         self.session.openWithCallback(self.runConfigRet, AdvancedFreePlayerConfig)
         return
 

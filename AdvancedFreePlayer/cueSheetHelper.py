@@ -1,4 +1,5 @@
-from __init__ import printDEBUG
+from __future__ import absolute_import #zmiana strategii ladowanie modulow w py2 z relative na absolute jak w py3
+from Plugins.Extensions.AdvancedFreePlayer.__init__ import printDEBUG
 from os import path as os_path
 import struct
 cutsParser = struct.Struct('>QI') # big-endian, 64-bit PTS and 32-bit type

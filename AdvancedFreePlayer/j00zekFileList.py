@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
-from __init__ import *
-from __init__ import translate as _
-from Cleaningfilenames import *
+from __future__ import absolute_import #zmiana strategii ladowanie modulow w py2 z relative na absolute jak w py3
+from Plugins.Extensions.AdvancedFreePlayer.__init__ import *
+from Plugins.Extensions.AdvancedFreePlayer.__init__ import translate as _
+from Plugins.Extensions.AdvancedFreePlayer.Cleaningfilenames import *
+from Plugins.Extensions.AdvancedFreePlayer.cueSheetHelper import getCut
+
 from re import compile as re_compile
 from os import path as os_path, listdir
 from Components.config import config
@@ -44,8 +47,6 @@ EXTENSIONS = {
         "url": "movieurl",
     }
 
-from cueSheetHelper import getCut
-
 def FileEntryComponent(name, absolute = None, isDir = False, goBack = False, currDir = None, DimText0 = (45, 1, 1020, 35, 0), DimText1 = (0, 0, 0, 0), DimPIC = (5, 4, 25, 25) ):
     def getInfo(info):#currLang
         info =  "_skin_" + info + ".txt"
@@ -71,7 +72,7 @@ def FileEntryComponent(name, absolute = None, isDir = False, goBack = False, cur
     else:
         extension = name.split('.')
         extension = extension[-1].lower()
-        if EXTENSIONS.has_key(extension):
+        if extension in EXTENSIONS: # p2.7 if EXTENSIONS.has_key(extension):
             status=''
             if currDir is not None and EXTENSIONS[extension] in ("movie", "movieurl"):
                 if not os_path.exists("%s/%s.cuts" %(currDir,absolute)):
