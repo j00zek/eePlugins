@@ -575,8 +575,18 @@ class UserSkin_Config(Screen, ConfigListScreen):
                         if 'skin_display.xml' in f.read():
                             self.LCDconfigKey = 'skin_display.xml'
                         f.close()
+                elif os.path.exists('/usr/lib/enigma2/python/skin.pyc') and (os.path.exists('/usr/share/enigma2/skin_display.xml') or os.path.exists('/usr/share/enigma2/skin_display.xml.org')):
+                    with open('/usr/lib/enigma2/python/skin.pyc', 'rb') as f:
+                        if 'skin_display.xml' in f.read():
+                            self.LCDconfigKey = 'skin_display.xml'
+                        f.close()
                 elif os.path.exists('/usr/lib/enigma2/python/skin.pyo') and (os.path.islink('/usr/share/enigma2/skin_box.xml') or not os.path.isfile('/usr/share/enigma2/skin_box.xml')):
                     with open('/usr/lib/enigma2/python/skin.pyo', 'rb') as f:
+                        if 'skin_box.xml' in f.read():
+                            self.LCDconfigKey = 'skin_box.xml'
+                        f.close()
+                elif os.path.exists('/usr/lib/enigma2/python/skin.pyc') and (os.path.islink('/usr/share/enigma2/skin_box.xml') or not os.path.isfile('/usr/share/enigma2/skin_box.xml')):
+                    with open('/usr/lib/enigma2/python/skin.pyc', 'rb') as f:
                         if 'skin_box.xml' in f.read():
                             self.LCDconfigKey = 'skin_box.xml'
                         f.close()
@@ -1244,7 +1254,7 @@ class UserSkin_Config(Screen, ConfigListScreen):
                         if not path.exists(myPath + myComponent):
                             updateLackOfFile(myComponent)
                 else:
-                    if not path.exists(myPath + myComponent + ".pyo") and not path.exists(myPath + myComponent + ".py"):
+                    if not path.exists(myPath + myComponent + ".pyo") and not path.exists(myPath + myComponent + ".pyc") and not path.exists(myPath + myComponent + ".py"):
                         updateLackOfFile(myComponent)
         return
     
