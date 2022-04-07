@@ -1,0 +1,6 @@
+#https://streamlink.github.io/cli.html#configuration-file
+http-no-ssl-verify
+hls-segment-threads=9
+#ffmpeg-ffmpeg=/usr/bin/ffmpeg-4-3-1-armhf-static
+#ffmpeg-verbose
+#ffmpeg-verbose-path=/tmp/ffmpeg_verbose.log

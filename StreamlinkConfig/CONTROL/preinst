@@ -1,0 +1,20 @@
+#!/bin/sh
+pythonType='unknown'
+if [ -e /usr/lib/python2.7 ]; then
+  pythonType='python2.7'
+elif [ -e /usr/lib/python3.9 ]; then
+  pythonType='python3.9'
+elif [ -e /usr/lib/python3.10 ]; then
+  pythonType='python3.10'
+fi
+
+echo
+if [ -e /usr/lib/$pythonType/site-packages/streamlink ];then
+  echo "Wykryto system z $pythonType z zainstalowanym streaminkiem :)"
+  exit 0
+else
+  echo "Wykryto system z $pythonType bez streamlinka - Instalacja niemożliwa :("
+  echo
+  exit 1
+fi
+
