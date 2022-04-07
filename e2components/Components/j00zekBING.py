@@ -20,8 +20,7 @@
 #######################################################################
 
 from __future__ import absolute_import #zmiana strategii ladowanie modulow w py2 z relative na absolute jak w py3
-from j00zekComponents import isINETworking
-from j00zekComponents import isPY2
+from Components.j00zekComponents import isINETworking, isPY2
 
 import json
 if isPY2() == True:

@@ -1,6 +1,13 @@
 #!/bin/sh
 if [ `ps -ef 2>&1 |grep -v grep|grep opkg|grep -c remove` -ge 1 ] || [ `ps -l 2>&1 |grep -v grep|grep opkg|grep -c remove` -ge 1 ];then
   rm -f /etc/BH-* 2 > /dev/null
+  rm -f /usr/lib/enigma2/python/Tools/j00zek*
+  rm -f /usr/lib/enigma2/python/Plugins/SystemPlugins/e2componentsInitiator
+  rm -f /usr/lib/enigma2/python/Plugins/SystemPlugins/j00zekWeatherComponentHandler
+  rm -f /usr/lib/enigma2/python/Components/j00zek*
+  rm -f /usr/lib/enigma2/python/Components/Converter/j00zek*
+  rm -f /usr/lib/enigma2/python/Components/Renderer/j00zek*
+  rm -f /usr/lib/enigma2/python/Components/Sources/j00zek*
   if `grep -q 'osd.language=pl_PL' </etc/enigma2/settings`; then
     echo ""
     echo "Wtyczka skasowana. Przeładuj teraz GUI!"
