@@ -18,6 +18,7 @@ from Screens.MessageBox import MessageBox
 from os import listdir, statvfs, popen as os_popen, system as os_system, remove as os_remove, path as os_path
 from Plugins.Plugin import PluginDescriptor
 from Screens.Screen import Screen
+from sys import version_info
 from Tools.LoadPixmap import LoadPixmap
 from Tools.Directories import *
 
@@ -30,6 +31,8 @@ myDEBUG = False
 
 myDEBUGfile = '/tmp/j00zekOPKGmgr.log'
 append2file=False
+
+PyMajorVersion = version_info.major
 
 def printDEBUG( callingFunction , myText = ''):
     global append2file
@@ -558,6 +561,7 @@ class Jopkg(Screen):
             self.list.append((_("Show Black Harmony components only") , '' , '', ['e2-j00zeks-bh-addon-'], LoadPixmap(cached=True, path=PluginPath + 'icons/opkg_plugin.png'), self.divpng))
             self.list.append((_("Show animated picons only") , '' , '', ['enigma2-plugin-picons--j00zeks-',], LoadPixmap(cached=True, path=PluginPath + 'icons/opkg_plugin.png'), self.divpng))
             self.list.append((_("show picons only" ) , '' , '', ['-picon',], LoadPixmap(cached=True, path=PluginPath + 'icons/opkg_picon.png'), self.divpng))
+            self.list.append((_("Show KODI addons only") , '' , '', ['kodi-addon-','kodi-addon--j00zeks-','enigma2-plugin-extensions-kodi',], LoadPixmap(cached=True, path=PluginPath + 'icons/opkg_plugin.png'), self.divpng))
             self.list.append((_("Show openPLI skins only" ) , '' , '', ['-skin',], LoadPixmap(cached=True, path=PluginPath + 'icons/opkg_skin.png'), self.divpng))
             self.list.append((_("show fonts only" ) , '' , '', ['font',], LoadPixmap(cached=True, path=PluginPath + 'icons/opkg_fonts.png'), self.divpng))
             self.list.append((_("show oscam packages only" ) , '' , '', ['oscam',], LoadPixmap(cached=True, path=PluginPath + 'icons/opkg_softcam.png'), self.divpng))
@@ -587,8 +591,9 @@ class Jopkg(Screen):
             printDEBUG( "build_UpgradeMenu" , "list of packages" )
             tmptxt=''
             for x in result.splitlines():
-                try: x = x.decode('utf-8')
-                except Exception: pass
+                if PyMajorVersion == 3:
+                    try: x = x.decode('utf-8')
+                    except Exception: pass
                 if not x.startswith('Not selecting'):
                     tmptxt += x[:x.find(' - ')] + '\n'
             self["whatUPDATED"].setText(tmptxt)
@@ -653,8 +658,9 @@ class Jopkg(Screen):
         if lista != '':
             self.packetlist = []
             for x in lista.splitlines():
-                try: x = x.decode('utf-8')
-                except Exception: pass
+                if PyMajorVersion == 3:
+                    try: x = x.decode('utf-8')
+                    except Exception: pass
                 if x.startswith('Not selecting'):
                     continue
                 parts = x.split(' - ')

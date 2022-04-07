@@ -10,6 +10,8 @@
 #source code of your modifications.
 #autoshutdown.png <from http://www.everaldo.com>
 
+from __future__ import absolute_import #zmiana strategii ladowanie modulow w py2 z relative na absolute jak w py3
+
 from Components.ActionMap import ActionMap
 from Components.config import *
 from Components.ConfigList import ConfigListScreen
