@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
-from __init__ import mygettext as _
-from version import Version
+from __future__ import absolute_import #zmiana strategii ladowania modulow w py2 z relative na absolute jak w py3
+from Plugins.Extensions.MyMemories.__init__ import mygettext as _
+from Plugins.Extensions.MyMemories.version import Version
  
 from Components.ActionMap import ActionMap, NumberActionMap
 from Components.AVSwitch import AVSwitch
@@ -22,7 +23,6 @@ import Screens.Standby
 import random
 
 MyMemoriesWakeUpPicDialog = None
-BingPicOfTheDay = '/usr/lib/enigma2/python/Plugins/Extensions/MyMemories/data/BingPicOfTheDay.jpg'
 GenerateBootlogo = """
 ffmpeg -i "PHOTO" -r 25 -b 20000 -s 1280x720 /tmp/mybootlogo.m1v
 if [ -f /tmp/mybootlogo.m1v ];then
@@ -78,15 +78,15 @@ config.mymemories.separator = NoSave(ConfigNothing())
 config.mymemories.FrameSize = ConfigSelection(default="pic_frame_290x260x32.png", choices = [("pic_frame_190x200x8.png", "190x200"),("pic_frame_290x260x32.png", "290x260")])
                                               
 #Auto display a pic
+BingPicOfTheDay = '/usr/lib/enigma2/python/Plugins/Extensions/MyMemories/data/BingPicOfTheDay.jpg'
 try:
     from Components.j00zekBING import getPicOfTheDay
+    if not os.path.exists(BingPicOfTheDay):
+        if DBG: printDEBUG("initial import of the BingPicOfTheDay")
+        getPicOfTheDay(downloadPathAndFileName = BingPicOfTheDay)
 except Exception as e:
-    print str(e)
+    print(str(e))
     if DBG: printDEBUG("Exception: required components are missing!!!")
-
-if not os.path.exists(BingPicOfTheDay):
-    if DBG: printDEBUG("initial import of the BingPicOfTheDay")
-    getPicOfTheDay(downloadPathAndFileName = BingPicOfTheDay)
 
 config.mymemories.autoMode =  ConfigSelection(default = "off",choices = [("off", _("off")),
                                                                             ("bing", _("show Bing pic of the day")),
@@ -541,12 +541,12 @@ class MyMemoriesSetup(Screen, ConfigListScreen):
                 if None != newPath: self["config"].list[curIndex][1].value = newPath
             from Tools.BoundFunction import boundFunction
             titletxt=_("Select directory with your photos")
-            print curIndex
-            print DirectorySelectorWidget
-            print currItem.value
-            print titletxt
-            print boundFunction
-            print SetDirPathCallBack
+            print(curIndex)
+            print(DirectorySelectorWidget)
+            print(currItem.value)
+            print(titletxt)
+            print(boundFunction)
+            print(SetDirPathCallBack)
             if os.path.isdir(currItem.value):
                 self.session.openWithCallback(boundFunction(SetDirPathCallBack, curIndex), DirectorySelectorWidget, currDir=currItem.value, title=titletxt)
             else:
