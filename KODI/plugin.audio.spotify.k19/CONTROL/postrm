@@ -1,0 +1,6 @@
+#!/bin/sh
+if [ `ps -ef 2>&1 |grep -v grep|grep opkg|grep -c remove` -ge 1 ] || [ `ps -l 2>&1 |grep -v grep|grep opkg|grep -c remove` -ge 1 ];then
+  rm -rf /usr/share/kodi/addons/plugin.audio.spotify.k19 > /dev/null 2>&1
+  echo "Dodatek Spotify dla Kodi 19.x odinstalowany"
+fi
+exit 0

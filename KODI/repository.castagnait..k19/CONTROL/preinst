@@ -1,0 +1,6 @@
+#!/bin/sh
+if [ ! -e /usr/share/kodi/addons/ ]; then
+  echo "Brak instalacji kodi !!!"
+  exit 1
+fi
+exit 0
