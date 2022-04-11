@@ -33,7 +33,62 @@ from time import *
 import json
 import datetime
 import os
+import sys
 import time
+
+PyMajorVersion = sys.version_info.major
+
+try:
+    import requests
+except Exception:
+    if sys.platform != 'win32':
+        if PyMajorVersion == 2:
+            exec('opkg install python-requests')
+        elif PyMajorVersion >= 3:
+            exec('opkg install python3-requests')
+        try:
+            import requests
+        except Exception:
+            pass
+
+def decodeHTML(text):
+    text = text.replace('%lf', '. ').replace('&#243;', 'ó')
+    text = text.replace('&#176;', '°').replace('&lt;', '<').replace('&gt;', '>').replace('&quot;', '"').replace('&apos;', "'").replace('&#65282;', '"').replace('&#xFF02;', '"')
+    text = text.replace('&#228;', 'ä').replace('&#196;', 'Ă').replace('&#246;', 'ö').replace('&#214;', 'Ö').replace('&#252;', 'ü').replace('&#220;', 'Ü').replace('&#223;', 'ß')
+    return text
+
+def decodeUTF8(string2decode):
+    printDEBUG('decodeUTF8() >>>')
+    if PyMajorVersion == 3:
+        return string2decode.decode('utf8')
+    else:
+        return string2decode
+
+def downloadWebPage(webURL, doUnquote = False , HEADERS={}):
+    try:
+        if len(HEADERS) == 0:
+        #Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:88.0) Gecko/20100101 Firefox/88.0
+        #Exceeded 30 redirects
+            #used previously: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:54.0) Gecko/20100101 Firefox/54.0
+            #Mozilla/5.0 (Android 7.0; Mobile; rv:54.0) Gecko/54.0 Firefox/54.0
+            #Mozilla/5.0 (Windows Phone 10.0; Android 6.0.1; Microsoft; Lumia 950) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Mobile Safari/537.36 Edge/15.14977
+
+            HEADERS = { 'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:88.0) Gecko/20100101 Firefox/88.0', 
+                        'Accept-Charset': 'utf-8', 
+                        'Content-Type': 'text/html; charset=utf-8'
+                      }
+        resp = requests.get(webURL, headers=HEADERS, timeout=5)
+        webContent = resp.content
+        webHeader = resp.headers
+        if doUnquote == True:
+            webContent = decodeUTF8(webContent)
+            webContent =  urllib_unquote(webContent)
+            webContent = decodeHTML(webContent)
+    except Exception as e:
+        print("EXCEPTION '%s' in downloadWebPage() for %s" % (str(e), webURL) )
+        webContent = ''
+
+    return webContent
 
 class AdvancedFreePlayerStarter(Screen):
     def __init__(self, session, openmovie, movieTitle):
@@ -628,7 +683,7 @@ class AdvancedFreePlayerStart(Screen):
             self.setCover('hideCover')
         WebDescrFile='/tmp/%s.AFP.txt' % getNameWithoutExtension(self.filelist.getFilename())
         ### DESCRIPTION from EIT ###
-        if os.path.exists(temp + '.eit'):
+        if os.path.exists(temp + '.eit') and PyMajorVersion == 2:
             def parseMJD(MJD):
                 # Parse 16 bit unsigned int containing Modified Julian Date,
                 # as per DVB-SI spec
@@ -821,10 +876,17 @@ class AdvancedFreePlayerStart(Screen):
         myConfig.FileListSelectedItem.value = self.FileListSelectedItem
 
         extension = self.getExtension(self.filelist.getFilename())[1:]
-        if not EXTENSIONS.has_key(extension) or EXTENSIONS[extension] != "movie":
-            self.setCover('hideCover')
-            self.setDescription('')
-            return
+        
+        if PyMajorVersion == 2:
+            if not EXTENSIONS.has_key(extension) or EXTENSIONS[extension] != "movie":
+                self.setCover('hideCover')
+                self.setDescription('')
+                return
+        else:
+            if not extension in EXTENSIONS or EXTENSIONS[extension] != "movie":
+                self.setCover('hideCover')
+                self.setDescription('')
+                return
             
         ClearMemory() #just in case for nbox, where we have limited RAM
            
@@ -1007,7 +1069,8 @@ class AdvancedFreePlayerStart(Screen):
         else:
             printDEBUG("[GetFromTMDBbyName] url: " + url) #DEBUG
             self.gettingDataFromWEB = True
-            getPage(url, headers={'Content-Type':'application/x-www-form-urlencoded'}).addCallback(readTmBD,movieYear,isMovie,myMovie).addErrback(dataError,errorType='getting data')
+            readTmBD(downloadWebPage(webURL = url, doUnquote = True , HEADERS={}), movieYear, isMovie,myMovie)
+            #getPage(url, headers={'Content-Type':'application/x-www-form-urlencoded'}).addCallback(readTmBD,movieYear,isMovie,myMovie).addErrback(dataError,errorType='getting data')
         
 ##################################################################### SUBTITLES >>>>>>>>>>
     def runDMnapi(self):
