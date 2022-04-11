@@ -1,6 +1,0 @@
-#!/bin/sh
-[ -e /etc/init.d/streamlinksrv ] && [ -e /var/run/streamlink.pid ] && /etc/init.d/streamlinksrv stop
-[ -e /etc/init.d/streamlinksrv ] && rm -f /etc/init.d/streamlinksrv
-[ -e /etc/rc3.d/S50streamlinksrv ] && rm -f /etc/rc3.d/S50streamlinksrv
-[ -e /etc/rc4.d/S50streamlinksrv ] && rm -f /etc/rc4.d/S50streamlinksrv
-exit 0
