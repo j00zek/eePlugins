@@ -8,6 +8,9 @@ from enigma import iPlayableService
 from Components.Converter.Converter import Converter
 from Components.Converter.Poll import Poll
 from Components.Element import cached
+import sys
+
+PyMajorVersion = sys.version_info.major
 
 class j00zekModAudioInfo(Poll, Converter, object):
     GET_AUDIO_ICON = 0
@@ -78,11 +81,18 @@ class j00zekModAudioInfo(Poll, Converter, object):
         return description_str
 
     def getAudioIcon(self,info):
-        description_str = self.get_short(self.getAudioCodec(info).translate(None,' .').lower())
+        if PyMajorVersion == 2:
+            description_str = self.get_short(self.getAudioCodec(info).translate(None,' .').lower())
+        else:
+            description_str = self.get_short(self.getAudioCodec(info).translate(str.maketrans('','',' .')).lower())
         return description_str
 
     def get_short(self, audioName):
-        for return_codec, codecs in sorted(self.codecs.iteritems()):
+        if PyMajorVersion == 2:
+            sortedCodecs = sorted(self.codecs.iteritems())
+        else:
+            sortedCodecs = sorted(self.codecs.items())
+        for return_codec, codecs in sortedCodecs:
             for codec in codecs:
                 if codec in audioName:
                     codec = return_codec.split('_')[1]
