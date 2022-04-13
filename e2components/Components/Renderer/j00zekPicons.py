@@ -123,13 +123,15 @@ def getPiconName(serviceName, selfPiconType):
   
     def getName(serName, iptvStream = False):
         gname = ServiceReference(serName).getServiceName().lower()
+        if DBG: j00zekDEBUG('[j00zekPicons:getPiconName:getName] "%s" translates to "%s"' % (serName,gname))
         if iptvStream:
             gname = gname.replace(' fhd', ' hd').replace(' uhd', ' hd') #iptv streams names correction
         if PyMajorVersion >= 3:
-            gname = six.ensure_str(unicodedata.normalize('NFKD', name).encode('ASCII', 'ignore'))
+            gname = six.ensure_str(unicodedata.normalize('NFKD', gname).encode('ASCII', 'ignore'))
         else:
             gname = unicodedata.normalize('NFKD', unicode(gname, 'utf_8', errors='ignore')).encode('ASCII', 'ignore')
         gname = re.sub('[^a-z0-9]', '', gname.replace('&', 'and').replace('+', 'plus').replace('*', 'star'))
+        if DBG: j00zekDEBUG('[j00zekPicons:getPiconName:getName] gname modified "%s"' % gname)
         return gname
       
     if DBG: j00zekDEBUG('[j00zekPicons:getPiconName] >>>')
@@ -145,8 +147,24 @@ def getPiconName(serviceName, selfPiconType):
         pngname = findPicon(serviceName.upper().replace('.', '').replace('\xc2\xb0', ''), selfPiconType, serviceName)
     if not pngname:
         name = 'unknown'
-        sname = '_'.join(GetWithAlternative(serviceName).split(':', 10)[:10])
+        fields = GetWithAlternative(serviceName).split(':', 10)[:10]
+        if not fields or len(fields) < 10:
+            return ""
+        else:
+           sname = '_'.join(fields)
         pngname = findPicon(sname, selfPiconType, serviceName)
+        if not pngname and not fields[6].endswith("0000"):
+            #remove "sub-network" from namespace
+            fields[6] = fields[6][:-4] + "0000"
+            pngname = findPicon('_'.join(fields), selfPiconType, serviceName)
+        if not pngname and fields[0] != '1':
+                #fallback to 1 for other reftypes
+                fields[0] = '1'
+                pngname = findPicon('_'.join(fields))
+        if not pngname and fields[2] != '1':
+                #fallback to 1 for services with different service types
+                fields[2] = '1'
+                pngname = findPicon('_'.join(fields))
         if pngname and isVTI and os.path.islink(pngname): #to delete incorrect references
             name = getName(serviceName)
             cname = os.path.abspath(pngname)

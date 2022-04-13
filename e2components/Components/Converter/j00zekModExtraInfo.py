@@ -97,13 +97,13 @@ class j00zekModExtraInfo(Converter, object):
                 if (currentLine == ""):
                     break
                 foundIdIndex = currentLine.find(("id:" + theId))
-                if (foundIdIndex is not -1):
+                if (foundIdIndex != -1):
                     fileString = currentLine
                     break
 
                 atIndex = fileString.find(" at ")
                 cardIndex = fileString.find(" Card ")
-                if ((atIndex is not -1) and (cardIndex is not -1)):
+                if ((atIndex != -1) and (cardIndex != -1)):
                     addy = fileString[(atIndex + 4):cardIndex]
                     addyLen = len(addy)
                     if (addyLen > 15):
@@ -111,10 +111,10 @@ class j00zekModExtraInfo(Converter, object):
                         expertString = (expertString + addy)
                 expertString = ((expertString + "  BoxId:") + theId)
                 distIndex = fileString.find("dist:")
-                if (distIndex is not -1):
+                if (distIndex != -1):
                     expertString = (((expertString + " ") + "D:") + fileString[(distIndex + 5)])
                 levelIndex = fileString.find("Lev:")
-                if (levelIndex is not -1):
+                if (levelIndex != -1):
                     expertString = (((expertString + " ") + "L:") + fileString[(levelIndex + 4)])
         except:
             print("Infobar")
@@ -330,7 +330,7 @@ class j00zekModExtraInfo(Converter, object):
                 boxidIndex = line.find("prov")
                 caidIndex = line.find("CaID")
                 caIdString = line[(caidIndex + 7):(caidIndex + 11)]
-                if (boxidIndex is not -1):
+                if (boxidIndex != -1):
                     boxidString = currentLine[(boxidIndex + 6):(boxidIndex + 10)]
                 ee = 3 # Gbox and evocamd
             if x[0] == "address":
@@ -346,7 +346,7 @@ class j00zekModExtraInfo(Converter, object):
             if ecmtime == "":
                 x = line.split("--", 1)
                 msecIndex = x[0].find("msec")
-                if (msecIndex is not -1):
+                if (msecIndex != -1):
                     ecmtime = x[0].strip()
                     ecmtime = " TIME: "+ ecmtime
         file.close()

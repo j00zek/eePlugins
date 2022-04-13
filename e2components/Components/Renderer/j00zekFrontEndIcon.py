@@ -66,7 +66,7 @@ class j00zekFrontEndIcon(Renderer):
                             if not service.streamed() is None:
                                 tmpIcon = 'ico_iptv.png'
                             else:
-                                if tpdata.get('system', 0) is 0:
+                                if tpdata.get('system', 0) == 0:
                                     tmpIcon = 'ico_%s.png' % tpdata.get('tuner_type', '').lower()
                                 else:
                                     tmpIcon = 'ico_%s2.png' % tpdata.get('tuner_type', '').lower()

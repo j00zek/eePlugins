@@ -292,7 +292,7 @@ class j00zekModPliExtraInfo(Poll, Converter, object):
 
     def createOrbPosOrTunerSystem(self, fedata, feraw):
         orbpos = self.createOrbPos(feraw)
-        if orbpos is not '':
+        if orbpos != '':
             return orbpos
         return self.createTunerSystem(fedata)
 

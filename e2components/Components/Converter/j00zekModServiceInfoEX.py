@@ -413,27 +413,27 @@ class j00zekModServiceInfoEX(Poll, Converter, object):
                 return True
         elif self.type == self.IS_SATELLITE_S:
             if type == 'DVB-S' and service.streamed() is None:
-                if self.tpdata.get('system', 0) is 0:
+                if self.tpdata.get('system', 0) == 0:
                     return True
         elif self.type == self.IS_SATELLITE_S2:
             if type == 'DVB-S' and service.streamed() is None:
-                if self.tpdata.get('system', 0) is 1:
+                if self.tpdata.get('system', 0) == 1:
                     return True
         elif self.type == self.IS_CABLE_C:
             if type == 'DVB-C' and service.streamed() is None:
-                if self.tpdata.get('system', 0) is 0:
+                if self.tpdata.get('system', 0) == 0:
                     return True
         elif self.type == self.IS_CABLE_C2:
             if type == 'DVB-C' and service.streamed() is None:
-                if self.tpdata.get('system', 0) is 1:
+                if self.tpdata.get('system', 0) == 1:
                     return True
         elif self.type == self.IS_TERRESTRIAL_T:
             if type == 'DVB-T' and service.streamed() is None:
-                if self.tpdata.get('system', 0) is 0:
+                if self.tpdata.get('system', 0) == 0:
                     return True
         elif self.type == self.IS_TERRESTRIAL_T2:
             if type == 'DVB-T' and service.streamed() is None:
-                if self.tpdata.get('system', 0) is 1:
+                if self.tpdata.get('system', 0) == 1:
                     return True
         return False
     
