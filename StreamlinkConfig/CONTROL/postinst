@@ -1,5 +1,5 @@
 #!/bin/sh
-plugBinDir=/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/bin
+plugBinDir='/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/bin'
 
 pythonType='unknown'
 if [ -e /usr/lib/python2.7 ]; then
@@ -29,8 +29,8 @@ else
     echo "streamlinksrv installed"
     echo ""
   fi
+  mkdir -p /etc/streamlink
   if [ ! -f /etc/streamlink/config ];then
-    mkdir -p pythonType
     cp $plugBinDir/etc_streamlink_config.template /etc/streamlink/config
     if [ -e /usr/lib/enigma2/python/Plugins/SystemPlugins/VTIPanel ];then
       ln -sf $plugBinDir/ffmpeg-4-3-1-armhf-static /usr/bin/ffmpeg-4-3-1-armhf-static

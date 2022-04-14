@@ -1,7 +1,7 @@
 #!/usr/bin/python
 from streamlink.jtools import *
 
-print 'PRZYKLAD: streamlink -l debug [ -o /tmp/fileName] "url" best'
+print('PRZYKLAD: streamlink -l debug [ -o /tmp/fileName] "url" best')
 cleanCMD(forceKill = True)
 
 import sys

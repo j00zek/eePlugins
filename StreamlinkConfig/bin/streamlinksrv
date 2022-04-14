@@ -662,7 +662,7 @@ class Daemon:
                                     flist.append(f2)
                         for p in flist:
                             if not os.path.exists('/usr/share/enigma2/picon/%s' % p):
-                                print "syncing %s to /usr/share/enigma2/picon/%s" % (f,p)
+                                print("syncing %s to /usr/share/enigma2/picon/%s" % (f,p))
                                 os.symlink("/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/picons/%s" % f, '/usr/share/enigma2/picon/%s' % p)
             else:
                 for f in os.listdir("/usr/share/enigma2/picon/"):
