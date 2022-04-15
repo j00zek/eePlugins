@@ -13,7 +13,7 @@ fi
 
 ##### sprawdzenie i ustawienie architektury procesora
 if [ `grep -c ARMv7 < /proc/cpuinfo` -eq 0 ]; then
-        echo "NiEWSPIERANA architektura CPU!!! Instalator NIE będzie działać. Radź sobie sam :P"
+        echo "NIEWSPIERANA architektura CPU!!! Instalator NIE będzie działać. Radź sobie sam :P"
         exit 1
 else
         archName='cortexa15hf-neon-vfpv4'

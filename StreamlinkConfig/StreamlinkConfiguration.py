@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
-from __init__ import mygettext as _
-from version import Version
+from __future__ import absolute_import #zmiana strategii ladowanie modulow w py2 z relative na absolute jak w py3
+from Plugins.Extensions.StreamlinkConfig.__init__ import mygettext as _
+from Plugins.Extensions.StreamlinkConfig.version import Version
 import os
 # GUI (Screens)
 from Components.ActionMap import ActionMap

@@ -1,4 +1,6 @@
 #### tlumaczenia
+from __future__ import absolute_import #zmiana strategii ladowanie modulow w py2 z relative na absolute jak w py3
+
 PluginName = 'StreamlinkConfig'
 
 from Tools.Directories import resolveFilename, SCOPE_PLUGINS

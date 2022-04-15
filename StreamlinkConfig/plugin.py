@@ -1,9 +1,10 @@
+from __future__ import absolute_import #zmiana strategii ladowanie modulow w py2 z relative na absolute jak w py3
 from Plugins.Plugin import PluginDescriptor
-from . import mygettext as _
+from Plugins.Extensions.StreamlinkConfig.__init__ import mygettext as _
 
 def main(session, **kwargs):
-    import StreamlinkConfiguration
-    reload(StreamlinkConfiguration)
+    import Plugins.Extensions.StreamlinkConfig.StreamlinkConfiguration
+    reload(Plugins.Extensions.StreamlinkConfig.StreamlinkConfiguration)
     session.open(StreamlinkConfiguration.StreamlinkConfiguration)
 
 def Plugins(path, **kwargs):

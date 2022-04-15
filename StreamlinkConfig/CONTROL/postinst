@@ -1,5 +1,5 @@
 #!/bin/sh
-plugBinDir='/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/bin'
+plugBinDir='/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig'
 
 pythonType='unknown'
 if [ -e /usr/lib/python2.7 ]; then
@@ -12,56 +12,76 @@ fi
 
 if [ -f /usr/sbin/streamlinksrv ] && [ ! -L /usr/sbin/streamlinksrv ];then
   echo
-  echo "Wykryto zainstalowaną inną, nie w pełni zgodną, wersję streamlinksrv COŚ MOŻE NIE DZIAŁAĆ!!!"
+  echo "Wykryto zainstalowaną inną, nie w pełni zgodną, wersję serwera streamlink COŚ MOŻE NIE DZIAŁAĆ!!!"
   echo
 else
-  ln -sf $plugBinDir/streamlink /usr/sbin/streamlink
-  ln -sf $plugBinDir/streamlinksrv /usr/sbin/streamlinksrv
+  ln -sf $plugBinDir/bin/streamlink /usr/sbin/streamlink
+  ln -sf $plugBinDir/bin/streamlinksrv /usr/sbin/streamlinksrv
   ln -sf /usr/sbin/streamlinksrv /etc/init.d/streamlinksrv
   ln -sf /usr/sbin/streamlinksrv /etc/rc3.d/S50streamlinksrv
   ln -sf /usr/sbin/streamlinksrv /etc/rc4.d/S50streamlinksrv
   if `grep -q 'osd.language=pl_PL' </etc/enigma2/settings`; then
     echo ""
-    echo "streamlinksrv zainstalowany"
+    echo "Mod j00zka serwera streamlink zainstalowany"
     echo ""
   else
     echo ""
-    echo "streamlinksrv installed"
+    echo "Streamlink server mod j00zek installed"
     echo ""
   fi
   mkdir -p /etc/streamlink
   if [ ! -f /etc/streamlink/config ];then
-    cp $plugBinDir/etc_streamlink_config.template /etc/streamlink/config
+    cp $plugBinDir/bin/etc_streamlink_config.template /etc/streamlink/config
     if [ -e /usr/lib/enigma2/python/Plugins/SystemPlugins/VTIPanel ];then
-      ln -sf $plugBinDir/ffmpeg-4-3-1-armhf-static /usr/bin/ffmpeg-4-3-1-armhf-static
+      ln -sf $plugBinDir/bin/ffmpeg-4-3-1-armhf-static /usr/bin/ffmpeg-4-3-1-armhf-static
       sed -i 's/^#\(ffmpeg-ffmpeg=\)/\1/' /etc/streamlink/config
     fi
   fi
 fi
 
-if [ -e /usr/lib/$pythonType/site-packages/streamlink/jtools.py ] && [ `grep -c 'config.plugins.streamlinksrv.enabled=true' < /etc/enigma2/settings` -gt 0 ];then
-  if [ -e /etc/init.d/streamlinksrv ];then
-    if [ -e /var/run/streamlink.pid ];then
-      /etc/init.d/streamlinksrv restart
-    else
-      /etc/init.d/streamlinksrv start
-    fi
-    if [ -e /var/run/streamlink.pid ];then
-      if `grep -q 'osd.language=pl_PL' </etc/enigma2/settings`; then
-        echo "streamlinksrv uruchomiony"
-        echo ""
+#tworzenie linkow w strukturze drzewa
+if [ -e /usr/lib/$pythonType/site-packages/streamlink ];then
+  echo "Dołączanie nieoficjalnych wtyczek j00zka do streamlinka..."
+  find -L "/usr/lib/$pythonType/site-packages/streamlink" -name *.py -type l -exec  rm {} +
+  find $plugBinDir/plugins/unofficial/ -iname *.py|while read f; do
+    #echo "$f"
+    f2=`echo "$f"|sed "s;$plugBinDir/plugins/unofficial/;;"`
+    #echo "$f2"
+    ln -sf "$f" "/usr/lib/$pythonType/site-packages/streamlink/$f2"
+  done
+
+  if [ `grep -c 'config.plugins.streamlinksrv.enabled=true' < /etc/enigma2/settings` -gt 0 ];then
+    if [ -e /etc/init.d/streamlinksrv ];then
+      if [ -e /var/run/streamlink.pid ];then
+        /etc/init.d/streamlinksrv restart
       else
-        echo "streamlinksrv started"
-        echo ""
-      fi 
-    else
-      if `grep -q 'osd.language=pl_PL' </etc/enigma2/settings`; then
-        echo "BŁĄD uruchamiania streamlinksrv !!!"
-        echo ""
-      else
-        echo "ERROR starting streamlinksrv !!!"
-        echo ""
+        /etc/init.d/streamlinksrv start
       fi
+      if [ -e /var/run/streamlink.pid ];then
+        if `grep -q 'osd.language=pl_PL' </etc/enigma2/settings`; then
+          echo "Serwer streamlinka uruchomiony"
+          echo ""
+        else
+          echo "streamlink server started"
+          echo ""
+        fi 
+      else
+        if `grep -q 'osd.language=pl_PL' </etc/enigma2/settings`; then
+          echo "BŁĄD uruchamiania serwera streamlink !!!"
+          echo ""
+        else
+          echo "ERROR starting streamlink server !!!"
+          echo ""
+        fi
+      fi
+    fi
+  else
+    if `grep -q 'osd.language=pl_PL' </etc/enigma2/settings`; then
+      echo "Aktywuj serwer streamlinka w konfiguratorze"
+      echo ""
+    else
+      echo "Enable streamlink server in Configurator"
+      echo ""
     fi
   fi
 fi

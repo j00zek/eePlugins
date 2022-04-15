@@ -1,5 +1,5 @@
-#!/usr/bin/python2.7
-# j00zek 2020-2021
+#!/usr/bin/python
+# j00zek 2020-2022
 
 import os
 os.environ["XDG_CONFIG_HOME"] = "/etc" #aby config streamlinka dzialal
