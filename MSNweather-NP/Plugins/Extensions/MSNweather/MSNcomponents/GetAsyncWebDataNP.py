@@ -1786,7 +1786,7 @@ def msn_api(webContent, webFileName):
                 val = dataDict['value'][0]['responses'][0]['source']['location']['Name']
                 paramsDict['dictWeather']['currentData'][keyName] = {'val': val, 'name': 'Observation point', 'valInfo': paramsDict['weatherSearchFullName'], 'inList': False}
                 keyName = 'observationtime'
-                val = ISO3339toDATETIME(overviewDict['current']['created'],1)
+                val = ISO3339toDATETIME(overviewDict['current']['created'],0)
                 paramsDict['dictWeather']['currentData'][keyName] = {'name': _('MSN sync time'), 'date': val[0], 'time': val[1], 'datetime': '%s %s' % (val[0],val[1]), 'inList': False}
             ##### Forecast godzinny #####
             keyName='Forecast godzinny'
@@ -1796,7 +1796,7 @@ def msn_api(webContent, webFileName):
                 paramsDict['dictWeather']['hourlyData']['title'] = _('Hourly')
                 for Line in dailyDict:
                     #print(dayID,HourID)
-                    ltime = ISO3339toDATETIME(Line['valid'],1)[1].split(':')[0]
+                    ltime = ISO3339toDATETIME(Line['valid'],0)[1].split(':')[0]
                     #print(Line['valid'])
                     skytext = Line['cap']
                     imgurl = Line['urlIcon']
