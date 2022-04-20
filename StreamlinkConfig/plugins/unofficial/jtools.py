@@ -1,8 +1,22 @@
 #!/usr/bin/python
 # j00zek 2020-2022
 
-import os
+from streamlink.e2config import getE2config
+import base64, os, sys, time, warnings
+
 os.environ["XDG_CONFIG_HOME"] = "/etc" #aby config streamlinka dzialal
+PyMajorVersion = sys.version_info.major
+   
+if PyMajorVersion >= 3:
+    unicode = str
+    from urllib.request import urlretrieve as urllib_urlretrieve
+    from urllib.parse import unquote as urllib_unquote, quote as urllib_quote
+else: #py2
+    from urllib import urlretrieve as urllib_urlretrieve, unquote as urllib_unquote, quote as urllib_quote
+
+warnings.filterwarnings('ignore', message='Unverified HTTPS request')
+    
+remoteE2standbyCMD = None
 
 def clearCache(): #zawsze dobrze oczyscic przed uruchomieniem os.system aby nie bylo GS-a
     with open("/proc/sys/vm/drop_caches", "w") as f: f.write("1\n")
@@ -30,11 +44,6 @@ def cleanCMD(forceKill = True): #czyszczenie smieci
     CMDs.append("find /tmp/ -maxdepth 1 -mmin +180 -name 'streamlinkpipe-*' -exec rm -- '{}' \;")
     os.system('\n'.join(CMDs))
 
-#config stored in E2 settings file
-import urllib2, base64 #for remoteE2
-import time
-    
-from streamlink.e2config import getE2config
 
 def GetPortNumber():
     return getE2config('PortNumber', 8088) # change it to 88 for livestreamersrv compatibility
@@ -59,8 +68,38 @@ def LogToFile():
     
 def GetLogFileName():
     return getE2config('logPath', '/tmp') + '/streamlinksrv.log'
-    
-remoteE2standbyCMD = None
+
+
+def decodeHTML(text):
+    text = text.replace('%lf', '. ').replace('&#243;', 'ó')
+    text = text.replace('&#176;', '°').replace('&lt;', '<').replace('&gt;', '>').replace('&quot;', '"').replace('&apos;', "'").replace('&#65282;', '"').replace('&#xFF02;', '"')
+    text = text.replace('&#228;', 'ä').replace('&#196;', 'Ă').replace('&#246;', 'ö').replace('&#214;', 'Ö').replace('&#252;', 'ü').replace('&#220;', 'Ü').replace('&#223;', 'ß')
+    return text
+
+def downloadWebPage(webURL, doUnquote = False , HEADERS={}):
+    try:
+        if len(HEADERS) == 0:
+        #Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:88.0) Gecko/20100101 Firefox/88.0
+        #Exceeded 30 redirects
+            #used previously: Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:54.0) Gecko/20100101 Firefox/54.0
+            #Mozilla/5.0 (Android 7.0; Mobile; rv:54.0) Gecko/54.0 Firefox/54.0
+            #Mozilla/5.0 (Windows Phone 10.0; Android 6.0.1; Microsoft; Lumia 950) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Mobile Safari/537.36 Edge/15.14977
+
+            HEADERS = { 'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:88.0) Gecko/20100101 Firefox/88.0', 
+                        'Accept-Charset': 'utf-8', 
+                        'Content-Type': 'text/html; charset=utf-8'
+                      }
+        resp = requests.get(webURL, headers=HEADERS, timeout=5)
+        webContent = resp.content
+        webHeader = resp.headers
+        if doUnquote == True:
+            webContent =  urllib_unquote(webContent)
+            webContent = decodeHTML(webContent)
+    except Exception as e:
+        print("EXCEPTION '%s' in downloadWebPage() for %s" % (str(e), webURL) )
+        webContent = ''
+
+    return webContent
 
 def remoteE2( url = '' ):
     global remoteE2standbyCMD
