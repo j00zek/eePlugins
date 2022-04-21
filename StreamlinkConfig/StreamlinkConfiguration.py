@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import #zmiana strategii ladowanie modulow w py2 z relative na absolute jak w py3
-from Plugins.Extensions.StreamlinkConfig.__init__ import mygettext as _
+from Plugins.Extensions.StreamlinkConfig.__init__ import mygettext as _ , readCFG
 from Plugins.Extensions.StreamlinkConfig.version import Version
 import os
 # GUI (Screens)
@@ -47,8 +47,8 @@ config.plugins.streamlinksrv.Recorder = ConfigEnableDisable(default = False)
 #config.plugins.streamlinksrv.managePicons = ConfigEnableDisable(default = True)
 
 # pilot.wp.pl
-config.plugins.streamlinksrv.WPusername = ConfigText()
-config.plugins.streamlinksrv.WPpassword = ConfigPassword()
+config.plugins.streamlinksrv.WPusername = ConfigText(readCFG('WPusername'), fixed_size = False)
+config.plugins.streamlinksrv.WPpassword = ConfigPassword(readCFG('WPpassword'), fixed_size = False)
 config.plugins.streamlinksrv.WPbouquet  = NoSave(ConfigNothing())
 config.plugins.streamlinksrv.WPlogin    = NoSave(ConfigNothing())
 config.plugins.streamlinksrv.WPpreferDASH = ConfigEnableDisable(default = False)
@@ -56,23 +56,17 @@ config.plugins.streamlinksrv.WPdevice = ConfigSelection(default = "androidtv", c
 config.plugins.streamlinksrv.WPvideoDelay = ConfigSelection(default = "0", choices = [("0", _("don't delay")), ("0.25", _("by %s s." % '0.25')),
                                                                                       ("0.5", _("by %s s." % '0.5')), ("0.75", _("by %s s." % '0.75')),
                                                                                       ("1.0", _("by %s s." % '1.0')), ("5.0", _("by %s s." % '5.0'))])
+
 # remote E2
 config.plugins.streamlinksrv.remoteE2address = ConfigText(default = "192.168.1.8")
 config.plugins.streamlinksrv.remoteE2port = ConfigText(default = "8001")
 config.plugins.streamlinksrv.remoteE2username = ConfigText(default = "root")
 config.plugins.streamlinksrv.remoteE2password = ConfigPassword(default = "root")
-config.plugins.streamlinksrv.remoteE2zap = ConfigEnableDisable(default = True)
-config.plugins.streamlinksrv.remoteE2wakeup = ConfigEnableDisable(default = True)
+config.plugins.streamlinksrv.remoteE2zap = ConfigEnableDisable(default = False)
+config.plugins.streamlinksrv.remoteE2wakeup = ConfigEnableDisable(default = False)
 
 if os.path.exists("/tmp/StreamlinkConfig.log"):
     os.remove("/tmp/StreamlinkConfig.log")
-
-#### get user configs ####
-if config.plugins.streamlinksrv.WPusername.value == '' and os.path.exists('/hdd/User_Configs/WPusername'):
-    config.plugins.streamlinksrv.WPusername.value =  open('/hdd/User_Configs/WPusername', 'r').readline().strip()
-if config.plugins.streamlinksrv.WPpassword.value == '' and os.path.exists('/hdd/User_Configs/WPpassword'):
-    config.plugins.streamlinksrv.WPpassword.value =  open('/hdd/User_Configs/WPpassword', 'r').readline().strip()
-
 
 #### streamlink config /etc/streamlink/config ####
 def getFFlist():

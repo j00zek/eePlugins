@@ -69,7 +69,7 @@ def _generate_E2bouquet():
             data += '#SERVICE %s:%s%s%s:%s\n' % (ServiceID, streamlinkURL, params['video_url'].replace(':','%3a') , id, title)
             data += '#DESCRIPTION %s\n' % (title)
 
-    with open(file_name, 'w') as f:
+    with open(file_name, 'wb') as f:
         f.write(data.encode('utf-8'))
         f.close()
 
