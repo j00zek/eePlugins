@@ -2,7 +2,7 @@ import logging
 import re
 
 from streamlink.plugin import Plugin
-from streamlink.plugin.api import http
+#from streamlink.plugin.api import http
 from streamlink.plugin.api import useragents
 from streamlink.stream import HLSStream
 from streamlink.utils import update_scheme
@@ -34,17 +34,17 @@ class BalticLivecam(Plugin):
         return data_new
 
     def _get_streams(self):
-        http.headers.update({'User-Agent': useragents.FIREFOX})
+        self.session.http.headers.update({'User-Agent': useragents.FIREFOX})
         log.debug('Version 2018-07-01')
         log.info('This is a custom plugin. '
                  'For support visit https://github.com/back-to/plugins')
-        res = http.get(self.url)
+        res = self.session.http.get(self.url)
 
         data = self._data_re.search(res.text)
         if data:
             log.debug('Found _data_re')
             data = self.js_to_json_regex(data.group(1))
-            res = http.post(self.api_url, data=data)
+            res = self.session.http.post(self.api_url, data=data)
             m = self._hls_re.search(res.text)
             if m:
                 log.debug('Found _hls_re')

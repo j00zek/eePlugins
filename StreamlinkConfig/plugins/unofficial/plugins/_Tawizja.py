@@ -2,7 +2,7 @@ import re
 
 from streamlink.exceptions import PluginError
 from streamlink.plugin import Plugin
-from streamlink.plugin.api import http
+#from streamlink.plugin.api import http
 from streamlink.plugin.api import useragents
 from streamlink.stream import HLSStream
 from streamlink.stream import HTTPStream
@@ -16,7 +16,7 @@ class Tawizja(Plugin):
         return _url_re.match(url)
 
     def _get_streams(self):
-        res = http.get(self.url)
+        res = self.session.http.get(self.url)
         text = res.text 
         playlist_url = _RE_PLAYLIST.search(text).group(1) 
         if playlist_url.startswith("//"): playlist_url='http:'+playlist_url

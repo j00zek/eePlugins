@@ -74,7 +74,10 @@ if [ -e "/usr/lib/$pythonType/site-packages/streamlink" ];then
     sed -i 's/from typing/from backports.typing/' /usr/lib/$pythonType/site-packages/streamlink/plugin/plugin.py
   fi
 
-  if [ `grep -c 'config.plugins.streamlinksrv.enabled=true' < /etc/enigma2/settings` -gt 0 ];then
+  #przygotowanie wersji pod WP
+  cat /usr/lib/$pythonType/site-packages/streamlink/stream/hls.py|sed 's/ffmpegmux import/_ffmpegmux4wp import/' > /usr/lib/$pythonType/site-packages/streamlink/stream/_hls4wp.py
+  
+  if [ `grep 'config.plugins.streamlinksrv.enabled=' < /etc/enigma2/settings|egrep -c 'true|True'` -gt 0 ];then
     if [ -e /etc/init.d/streamlinksrv ];then
       if [ -e /var/run/streamlink.pid ];then
         /etc/init.d/streamlinksrv restart
