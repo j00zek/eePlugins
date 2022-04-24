@@ -260,31 +260,29 @@ def initThread(webURL, webFileName, HEADER=[]):
     x.start()
 
 
-def ISO3339toDATETIME(text, offset=0):
-    Y = int(text[:4])
-    M = int(text[5:7])
-    D = int(text[8:10])
-    h = int(text[11:13])
-    m = int(text[14:16])
-    if offset ==0:
-        date = '%s/%s/%s' % (D,M,Y)
-        time = '%s:%s' % (h,m)
-        return (date, time)
-    elif len(text) >= 25:#2021-12-24T10:00:00+01:00
-        timeOfset = text[19:22]
-        try:
-            timeOfsetInt = int(timeOfset)
-            if timeOfsetInt == offset:
-                date = '%s/%s/%s' % (text[8:10], text[5:7], text[:4])
-                time = '%s:%s' % (text[11:13],text[14:16])
-                return (date, time)
-        except Exception as e:
-            print("EXCEPTION in ISO3339toDATETIME('%s'): %s" % (text, str(e)))
-    o = text[-1:]
-    epoc = (datetime(Y, M, D, h, m) + timedelta(hours=offset) - datetime(1970, 1, 1)).total_seconds()
-    tmpTxt = datetime.fromtimestamp(epoc)
-    date = tmpTxt.strftime('%d/%m/%Y')
-    time = tmpTxt.strftime('%H:%M')
+def ISO3339toDATETIME(ISO3339time, offset=0):
+    defDBG = True
+    try:
+        systemTZ = datetime.now().hour - datetime.utcnow().hour
+        Y = int(ISO3339time[:4])
+        M = int(ISO3339time[5:7])
+        D = int(ISO3339time[8:10])
+        h = int(ISO3339time[11:13])
+        m = int(ISO3339time[14:16])
+        date = datetime(Y, M, D, h, m).strftime('%d/%m/%Y')
+        time = datetime(Y, M, D, h, m).strftime('%H:%M')
+        if ISO3339time.endswith('z') or ISO3339time.endswith('Z'): #czas podany w UTC
+            timeOffset = 0
+        elif ISO3339time[-6:-5] in ['+','-']:
+            timeOffset = int(ISO3339time[-6:-3])
+        else:
+            timeOffset = systemTZ
+        if systemTZ != timeOffset:
+            date = (datetime(Y, M, D, h, m) + timedelta(hours=systemTZ - timeOffset)).strftime('%d/%m/%Y')
+            time = (datetime(Y, M, D, h, m) + timedelta(hours=systemTZ - timeOffset)).strftime('%H:%M')
+        if defDBG: print('\t ISO3339toDATETIME(%s) > systemTZ = %s, timeOffset = %s >>> %s' %(ISO3339time, systemTZ, timeOffset, (datetime(Y, M, D, h, m) + timedelta(hours=systemTZ - timeOffset)) ))
+    except Exception as e:
+        print("EXCEPTION in ISO3339toDATETIME('%s'): %s" % (ISO3339time, str(e)))
     return (date, time)
 
 
@@ -909,33 +907,36 @@ def looko2(webContent):
     dictFC = {}
     webCOLOR = findInContent(webContent, '<td width=[0-9]+[%]* style="background:(#[^;]*?);"><\\/td>')
     FC = findInContent(webContent, '<table>(.*?)id="NodeDailyChart"')
-    try:
-        observationpoint = findInContent(FC, 'id="NodeDescription"> <h4>(.*?)</div> </h4></td>')
-        observationpoint = observationpoint.replace('LOOKO2', '').replace('_', ' ')
-        if defDBG:
-            print('thread.looko2() observationpoint = "%s"' % observationpoint)
-        dictFC['observationpoint'] = observationpoint
-        datetime = findInContent(FC, '<\\/h6><h6>.*: (.*?)<\\/h6>')
-        if defDBG:
-            print('thread.looko2() datetime = "%s"' % datetime)
-        dictFC['observationtime'] = {'datetime': datetime, 'date': datetime.split(' ')[0], 
-           'time': datetime.split(' ')[1]}
-        dictFC['advice'] = findInContent(FC, '<\\/div><\\/P>[\n]?[ ]*<P>[\n]?[ ]*(.*?)<\\/P>').strip()
-        dictFC['info'] = findInContent(FC, '<P><div>[\n]?[ ]*(.*?)[ ]*<BR>').strip()
-        dictFC['infoFull'] = dictFC['info']
-        dictFC['info'] = re.sub('<img.*>', ' ', dictFC['info'])
-        dictFC['color'] = webCOLOR
-        sensorsList = re.findall('class="col-sm-4".*<H4>([a-zA-Z0-9\\.]*?)<\\/H4><BR>([0-9]+) ', FC)
-        if defDBG:
-            print('thread.looko2() sensorsList = "%s"' % str(sensorsList))
-        if sensorsList is not None:
-            for sensor in sensorsList:
-                dictFC[sensor[0]] = sensor[1]
+    if len(FC) < 10:
+        print('thread.looko2() >>> zwrócona strona jest niepoprawna, na pewno czujnik działa?')
+    else:
+        try:
+            observationpoint = findInContent(FC, 'id="NodeDescription"> <h4>(.*?)</div> </h4></td>')
+            observationpoint = observationpoint.replace('LOOKO2', '').replace('_', ' ')
+            if defDBG:
+                print('thread.looko2() observationpoint = "%s"' % observationpoint)
+            dictFC['observationpoint'] = observationpoint
+            datetime = findInContent(FC, '<\\/h6><h6>.*: (.*?)<\\/h6>')
+            if defDBG:
+                print('thread.looko2() datetime = "%s"' % datetime)
+            dictFC['observationtime'] = {'datetime': datetime, 'date': datetime.split(' ')[0], 
+                'time': datetime.split(' ')[1]}
+            dictFC['advice'] = findInContent(FC, '<\\/div><\\/P>[\n]?[ ]*<P>[\n]?[ ]*(.*?)<\\/P>').strip()
+            dictFC['info'] = findInContent(FC, '<P><div>[\n]?[ ]*(.*?)[ ]*<BR>').strip()
+            dictFC['infoFull'] = dictFC['info']
+            dictFC['info'] = re.sub('<img.*>', ' ', dictFC['info'])
+            dictFC['color'] = webCOLOR
+            sensorsList = re.findall('class="col-sm-4".*<H4>([a-zA-Z0-9\\.]*?)<\\/H4><BR>([0-9]+) ', FC)
+            if defDBG:
+                print('thread.looko2() sensorsList = "%s"' % str(sensorsList))
+            if sensorsList is not None:
+                for sensor in sensorsList:
+                    dictFC[sensor[0]] = sensor[1]
 
-        saveJsonDict('dictLooko2.json', dictFC, doSort=True, pushSave=defDBG)
-    except Exception as e:
-        dictFC = {}
-        print('EXCEPTION in looko2(): %s' % str(e))
+            saveJsonDict('dictLooko2.json', dictFC, doSort=True, pushSave=defDBG)
+        except Exception as e:
+            dictFC = {}
+            print('EXCEPTION in looko2(): %s' % str(e))
 
     paramsDict['dictLooko2'] = dictFC
     return

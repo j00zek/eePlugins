@@ -28,6 +28,7 @@ def getE2config( CFGname, CFGdefault = "noCFG" ):
     return E2config.get(CFGname.replace('config.plugins.MSNweatherNP.',''), CFGdefault)
 
 def printDEBUG( myFUNC = '' , myText = '' , logFileName = 'MSNweather.log', devDBG = False):
+    print ("[%s] %s" % (myFUNC,myText))
     try:
         from Components.config import config
         printDebugEnabled =  config.plugins.MSNweatherNP.DebugEnabled.value
@@ -40,7 +41,7 @@ def printDEBUG( myFUNC = '' , myText = '' , logFileName = 'MSNweather.log', devD
         if not path.exists(myPATH):
             system('mkdir -p %s' % myPATH)
         myDEBUGfile = '%s/%s' % (myPATH, logFileName)
-        print ("[%s] %s" % (myFUNC,myText))
+        #print ("[%s] %s" % (myFUNC,myText))
         if myFUNC == 'INIT':
             if logFileName == 'MSNweather.log':
                 system('rm -f %s/*.log' % myPATH)

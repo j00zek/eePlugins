@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import #zmiana strategii ladowanie modulow w py2 z relative na absolute jak w py3
 from . import _
-from Plugins.Extensions.MSNweather.version import Version #ATV6.5 import error workarround
+from Plugins.Extensions.MSNweather.version import Version
 
 from Components.config import config
 from enigma import eEnv, eConsoleAppContainer
@@ -66,14 +66,14 @@ class getWeather:
         printDEBUG(myFUNC, myText, 'getWeather.log')
 
     def GetAsyncWebDataDEBUG(self, myFUNC='', myText=''):
-        if config.plugins.MSNweatherNP.DebugEnabled.value:
+        if config.plugins.MSNweatherNP.DebugEnabled.value == True:
             from Plugins.Extensions.MSNweather.debug import printDEBUG
             printDEBUG(myFUNC, myText, 'GetAsyncWebData.log')
         elif os.path.exists('/tmp/.MSNdata/GetAsyncWebData.log'):
             os.remove('/tmp/.MSNdata/GetAsyncWebData.log')
 
     def DEBUG(self, myFUNC='', myText=''):
-        if config.plugins.MSNweatherNP.DebugEnabled.value:
+        if config.plugins.MSNweatherNP.DebugEnabled.value == True:
             from Plugins.Extensions.MSNweather.debug import printDEBUG
             printDEBUG(myFUNC, myText, 'getWeather.log')
 
