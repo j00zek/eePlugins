@@ -19,9 +19,9 @@ def getE2config( CFGname, CFGdefault = "noCFG" ):
                     val = cfg[1]
                     if val.isdigit():
                         val = int(val)
-                    elif val == 'true':
+                    elif val == 'true' or val == 'True':
                         val = True
-                    elif val == 'false':
+                    elif val == 'false' or val == 'False':
                         val = False
                     E2config[cfg[0].replace('config.plugins.MSNweatherNP.','')] = val
             f.close()
