@@ -66,7 +66,7 @@ class MSNweatherDailyDetails(Screen):
 
     def DEBUG(self, myFUNC='', myText=''):
         if DBG:
-            from Plugins.Extensions.MSNweather.MSNcomponents.debug import printDEBUG
+            from Plugins.Extensions.MSNweather.debug import printDEBUG
             printDEBUG(myFUNC, myText, logFileName='MSNweatherDailyDetails.log')
 
     def __onShown(self):

@@ -97,7 +97,7 @@ class advDailyDetails(Screen):
 
     def DEBUG(self, myFUNC='', myText=''):
         if DBG or 'EXCEPTION' in myFUNC or 'EXCEPTION' in myText:
-            from Plugins.Extensions.MSNweather.MSNcomponents.debug import printDEBUG
+            from Plugins.Extensions.MSNweather.debug import printDEBUG
             printDEBUG(myFUNC, myText, logFileName='advDailyDetails.log')
 
     def __onShown(self):
