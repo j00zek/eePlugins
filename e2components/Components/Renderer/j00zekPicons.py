@@ -36,7 +36,7 @@ lastPiconsDict = {}
 #piconType = 'picon'
 
 ##### write log in /tmp folder #####
-DBG = False
+DBG = True
 try:
     from Components.j00zekComponents import j00zekDEBUG
 except Exception:
@@ -145,39 +145,40 @@ def getPiconName(serviceName, selfPiconType):
     elif selfPiconType == 'piconSat':
         if DBG: j00zekDEBUG('[j00zekPicons:getPiconName] looking for piconSat')
         pngname = findPicon(serviceName.upper().replace('.', '').replace('\xc2\xb0', ''), selfPiconType, serviceName)
+    elif selfPiconType == 'MoonPhase':
+        if DBG: j00zekDEBUG('[j00zekPicons:getPiconName] looking for MoonPhase')
+        pngname = findPicon(serviceName.upper(), selfPiconType, serviceName)
     if not pngname:
         name = 'unknown'
         fields = GetWithAlternative(serviceName).split(':', 10)[:10]
-        if not fields or len(fields) < 10:
-            return ""
-        else:
-           sname = '_'.join(fields)
-        pngname = findPicon(sname, selfPiconType, serviceName)
-        if not pngname and not fields[6].endswith("0000"):
-            #remove "sub-network" from namespace
-            fields[6] = fields[6][:-4] + "0000"
-            pngname = findPicon('_'.join(fields), selfPiconType, serviceName)
-        if not pngname and fields[0] != '1':
+        if fields and len(fields) >= 10:
+            sname = '_'.join(fields)
+            pngname = findPicon(sname, selfPiconType, serviceName)
+            if not pngname and not fields[6].endswith("0000"):
+                #remove "sub-network" from namespace
+                fields[6] = fields[6][:-4] + "0000"
+                pngname = findPicon('_'.join(fields), selfPiconType, serviceName)
+            if not pngname and fields[0] != '1':
                 #fallback to 1 for other reftypes
                 fields[0] = '1'
                 pngname = findPicon('_'.join(fields))
-        if not pngname and fields[2] != '1':
+            if not pngname and fields[2] != '1':
                 #fallback to 1 for services with different service types
                 fields[2] = '1'
                 pngname = findPicon('_'.join(fields))
-        if pngname and isVTI and os.path.islink(pngname): #to delete incorrect references
-            name = getName(serviceName)
-            cname = os.path.abspath(pngname)
-            cname = os.path.realpath(cname)
-            cname = os.path.basename(cname)
-            cname = os.path.splitext(cname)[0]
-            if cname != name:
-                if DBG: j00zekDEBUG('[j00zekPicons:getPiconName] %s != %s, deleting' % (cname,name))
-                try:
-                    os.remove(pngname)
-                    pngname = None
-                except Exception:
-                    pass
+            if pngname and isVTI and os.path.islink(pngname): #to delete incorrect references
+                name = getName(serviceName)
+                cname = os.path.abspath(pngname)
+                cname = os.path.realpath(cname)
+                cname = os.path.basename(cname)
+                cname = os.path.splitext(cname)[0]
+                if cname != name:
+                    if DBG: j00zekDEBUG('[j00zekPicons:getPiconName] %s != %s, deleting' % (cname,name))
+                    try:
+                        os.remove(pngname)
+                        pngname = None
+                    except Exception:
+                        pass
     if not pngname:
         if DBG: j00zekDEBUG('[j00zekPicons:getPiconName] pngname not found by sname')
         fields = sname.split('_', 6)
@@ -319,7 +320,7 @@ class j00zekPicons(Renderer):
                     if self.source.text is not None and self.source.text != '':
                         if self.GIFsupport == True: gifname = getPiconName(self.source.text, self.GifsPath)
                         pngname = getPiconName(self.source.text, self.piconType)
-                        if DBG: j00zekDEBUG('[j00zekPicons]:[changed] gifname=%s, pngname=%s' %(gifname,pngname))
+                        if DBG: j00zekDEBUG('[j00zekPicons]:[changed(%s)] gifname=%s, pngname=%s' %(self.source.text, gifname,pngname))
                     if pngname is None and self.ShowDefault == True:
                         pngname = findPicon('picon_default', self.piconType, 'picon_default')
                         if pngname is None and pathExists(resolveFilename(SCOPE_CURRENT_SKIN, 'picon_default.png')):
