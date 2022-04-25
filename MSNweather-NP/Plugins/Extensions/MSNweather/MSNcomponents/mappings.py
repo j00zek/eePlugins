@@ -68,11 +68,12 @@ def Temperature2strColor(temp):
     return retVal
 
 def airQualityInfo(key, val, retLevel = False):
-    info = ''
+    if retLevel: info = -1
+    else: info = ''
     colorCode = ''
     if val != '' and key != '':
         val = float(val)
-        if key in ('pm25','pm25'):
+        if key in ('pm2.5','pm25'):
             if   val <= 12 :
                 colorCode = clr['VeryGood']
                 if retLevel: info = 0
@@ -122,24 +123,24 @@ def airQualityInfo(key, val, retLevel = False):
                 colorCode = clr['VeryBad']
                 if retLevel: info = 5
                 else: info =  'Very bad'
-        elif key == 'pm1off':
-            if   val <= 20 :
+        elif key == 'pm1': #https://fotoacc.pl/normy-jakosci-powietrza-w-polsce/
+            if   val <= 11 :
                 colorCode = clr['VeryGood']
                 if retLevel: info = 0
                 else: info =  'Very good'
-            elif val <= 60 :
+            elif val <= 31 :
                 colorCode = clr['Good']
                 if retLevel: info = 1
                 else: info =  'Good'
-            elif val <=100 :
+            elif val <=51 :
                 colorCode = clr['Moderate']
                 if retLevel: info = 2
                 else: info =  'Moderate'
-            elif val <=140 :
+            elif val <=71 :
                 colorCode = clr['satisfactory']
                 if retLevel: info = 3
                 else: info =  'satisfactory'
-            elif val <=200 :
+            elif val <=101 :
                 colorCode = clr['Bad']
                 if retLevel: info = 4
                 else: info =  'Bad'
@@ -247,7 +248,7 @@ def airQualityInfo(key, val, retLevel = False):
                 colorCode = clr['VeryBad']
                 if retLevel: info = 5
                 else: info =  'Very bad'
-        elif key == 'cooff':
+        elif key == 'co': #https://fotoacc.pl/normy-jakosci-powietrza-w-polsce/
             if   val <=  3 :
                 colorCode = clr['VeryGood']
                 if retLevel: info = 0
