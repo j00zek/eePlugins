@@ -36,7 +36,7 @@ lastPiconsDict = {}
 #piconType = 'picon'
 
 ##### write log in /tmp folder #####
-DBG = True
+DBG = False
 try:
     from Components.j00zekComponents import j00zekDEBUG
 except Exception:
@@ -148,6 +148,8 @@ def getPiconName(serviceName, selfPiconType):
     elif selfPiconType == 'MoonPhase':
         if DBG: j00zekDEBUG('[j00zekPicons:getPiconName] looking for MoonPhase')
         pngname = findPicon(serviceName.upper(), selfPiconType, serviceName)
+    else:
+        if DBG: j00zekDEBUG('[j00zekPicons:getPiconName] selfPiconType = %s' % selfPiconType)
     if not pngname:
         name = 'unknown'
         fields = GetWithAlternative(serviceName).split(':', 10)[:10]
@@ -161,11 +163,11 @@ def getPiconName(serviceName, selfPiconType):
             if not pngname and fields[0] != '1':
                 #fallback to 1 for other reftypes
                 fields[0] = '1'
-                pngname = findPicon('_'.join(fields))
+                pngname = findPicon('_'.join(fields), selfPiconType, serviceName)
             if not pngname and fields[2] != '1':
                 #fallback to 1 for services with different service types
                 fields[2] = '1'
-                pngname = findPicon('_'.join(fields))
+                pngname = findPicon('_'.join(fields), selfPiconType, serviceName)
             if pngname and isVTI and os.path.islink(pngname): #to delete incorrect references
                 name = getName(serviceName)
                 cname = os.path.abspath(pngname)
@@ -209,11 +211,11 @@ def getPiconName(serviceName, selfPiconType):
                         os.symlink(pngname, '%s/%s.png' % (os.path.dirname(pngname), sname) )
                     except Exception as e:
                         if DBG:  j00zekDEBUG('[j00zekPicons:getPiconName] Exception %s' % str(e))
-                if not pngname and len(name) > 2:
+                if not pngname:
                     if name.endswith('hd'):
                         pngname = findPicon(name[:-2], selfPiconType, serviceName)
-                    elif name.endswith('pl'):
-                        pngname = findPicon(name[:-2], selfPiconType, serviceName)
+                    elif name.endswith('hevc'):
+                        pngname = findPicon(name[:-4], selfPiconType, serviceName)
             if not pngname:
                 if DBG: j00zekDEBUG('[j00zekPicons:getPiconName] service name not found in lamedb, trying provided name')
                 pngname = findPicon(serviceName, selfPiconType, serviceName)
