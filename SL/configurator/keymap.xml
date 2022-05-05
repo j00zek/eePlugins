@@ -8,7 +8,7 @@
     <key id="KEY_ESC" mapto="cancel" flags="m" />
     <key id="KEY_ENTER" mapto="ok" flags="m" />
     <key id="KEY_OK" mapto="ok" flags="m" /> 
-    <key id="KEY_LEFT" mapto="prevConf" flags="b" />
-    <key id="KEY_RIGHT" mapto="nextConf" flags="b" /> 
+    <!--key id="KEY_LEFT" mapto="prevConf" flags="b" />
+    <key id="KEY_RIGHT" mapto="nextConf" flags="b" /--> 
   </map>
 </keymap>

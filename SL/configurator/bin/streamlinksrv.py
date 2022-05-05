@@ -3,6 +3,8 @@
 # Linux Python2/3 Streamlink Daemon
 #
 # Copyright (c) 2017 - 2021 Billy2011 @vuplus-support.org
+# Copyright (c) 2021 jbleyel (python3 mod)
+#                                          
 # License: GPLv2+
 #
 # mod j00zek 2020-2021
@@ -11,14 +13,17 @@
 # - proceeding url parameters according to html standard
 # - using hlsdl for some m3u services
 
-from streamlink import jtools
+try:
+    from streamlink import jtools
+except Exception:
+    import jtools
 import os
 jtools.killSRVprocess(os.getpid())
 jtools.cleanCMD()
 
 """ Streamlink Daemon """
 
-__version__ = "1.8.2"
+__version__ = "1.8.3"
 
 import atexit
 import errno
@@ -88,7 +93,7 @@ if jtools.LogToFile() :
 # do not change
 LOGGER = logging.getLogger('streamlink.streamlinksrv')
 STREAM_SYNONYMS = ["best", "worst", "best-unfiltered", "worst-unfiltered"]
-parser = None
+PARSER = None
 PLUGIN_ARGS = False
 
 
@@ -146,8 +151,8 @@ def format_valid_streams(plugin, streams):
 
 def test_stream(plugin, args, stream):
     prebuffer = None
-    retry_open = args.retry_open
-    for i in range(retry_open):
+    retry_open = args.retry_open if True else 1
+    for i in list(range(retry_open)):
         stream_fd = None
         try:
             stream_fd = stream.open()
@@ -170,33 +175,29 @@ def test_stream(plugin, args, stream):
     return stream_fd, prebuffer
     
 def log_current_arguments(streamlink, args, url, quality):
-        global parser
+    global PARSER, LOGGER
 
-        if not logger.root.isEnabledFor(logging.DEBUG):
-                return
+    if not logger.root.isEnabledFor(logging.DEBUG):
+        return
 
-        sensitive = set()
-        for pname, plugin in iteritems(streamlink.plugins):
-                for parg in plugin.arguments:
-                        if parg.sensitive:
-                                sensitive.add(parg.argument_name(pname))
+    sensitive = set()
+    for pname, plugin in iteritems(streamlink.plugins):
+        for parg in plugin.arguments:
+            if parg.sensitive:
+                sensitive.add(parg.argument_name(pname))
 
-        LOGGER.debug("Arguments:")
-        LOGGER.debug(" url={0}".format(url))
-        LOGGER.debug(" stream={0}".format(quality.split(",")))
-        for action in parser._actions:
-                if not hasattr(args, action.dest):
-                        continue
-                value = getattr(args, action.dest)
-                if action.default != value:
-                        name = (
-                            next(  # pragma: no branch
-                                (option for option in action.option_strings if option.startswith("--")), action.option_strings[0]
-                            )
-                            if action.option_strings 
-                            else action.dest
-                        )
-                        LOGGER.debug(" {0}={1}".format(name, value if name not in sensitive else "*" * 8))
+    LOGGER.debug("Arguments:")
+    LOGGER.debug(" url={0}".format(url))
+    LOGGER.debug(" stream={0}".format(quality.split(",")))
+    for action in PARSER._actions:
+        if not hasattr(args, action.dest):
+            continue
+        value = getattr(args, action.dest)
+        if action.default != value:
+            name = next(  # pragma: no branch
+                (option for option in action.option_strings if option.startswith("--")), action.option_strings[0]
+            ) if action.option_strings else action.dest
+            LOGGER.debug(" {0}={1}".format(name, value if name not in sensitive else '*' * 8))
 
 def sendHeaders(http, status=200, type="text/html"):
     http.send_response(status)
@@ -213,14 +214,14 @@ def sendOfflineMP4(http, send_headers=True, file2send="/usr/lib/enigma2/python/P
     http.wfile.close()
 
 def sendCachedFile(http, send_headers=True, pid=0, file2send=None):
-    LOGGER.debug("sendCachedFile(send_headers={0}, pid={1}, file2send={2})", str(send_headers), pid, file2send)
+    LOGGER.debug("sendCachedFile(send_headers={0}, pid={1}, file2send={2})".format(str(send_headers), pid, file2send))
     if file2send is None:
         return
 
     #waiting for cache file
     for x in range(1, 10):
         if not os.path.exists(file2send):
-            LOGGER.debug("\twaiting for cache file {0} ms", int(1000 * 0.1 * x) )
+            LOGGER.debug("\twaiting for cache file {0} ms".format(int(1000 * 0.1 * x) ))
             time.sleep(0.1)
         else:
             break
@@ -229,12 +230,12 @@ def sendCachedFile(http, send_headers=True, pid=0, file2send=None):
     initialBuffer = 8192 * 10
     for x in range(1, 10):
         currBufferSize = os.path.getsize(file2send)
-        LOGGER.debug("\tfilling initial buffer {0} / {1}", currBufferSize, initialBuffer )
+        LOGGER.debug("\tfilling initial buffer {0} / {1}".format(currBufferSize, initialBuffer ))
         if int(currBufferSize) >= int(initialBuffer):
-            LOGGER.debug("\tbuffered data: {0}", currBufferSize )
+            LOGGER.debug("\tbuffered data: {0}".format(currBufferSize ))
             break
         else:
-            LOGGER.debug("\tfilling initial buffer {0} / {1}", currBufferSize, initialBuffer )
+            LOGGER.debug("\tfilling initial buffer {0} / {1}".format(currBufferSize, initialBuffer ))
             time.sleep(0.1)
 
     if send_headers:
@@ -246,7 +247,7 @@ def sendCachedFile(http, send_headers=True, pid=0, file2send=None):
     while not CachedFile.closed:
         try:
             currBufferSize = int(os.path.getsize(file2send))
-            LOGGER.debug("\t data in buffer: {0} (read {1} / total {2})", (currBufferSize - readBufferSize), readBufferSize, currBufferSize )
+            LOGGER.debug("\t data in buffer: {0} (read {1} / total {2})".format((currBufferSize - readBufferSize), readBufferSize, currBufferSize ))
             data = CachedFile.read(8192)
             if len(data):
                 readBufferSize += len(data)
@@ -263,9 +264,9 @@ def sendCachedFile(http, send_headers=True, pid=0, file2send=None):
     if int(pid) > 1000:
         os.system('kill -s 9 %s;killall hlsdl' % pid)
         if os.path.exists('/proc/%s') % pid:
-            LOGGER.debug("Error killing pid {0}", pid )
+            LOGGER.debug("Error killing pid {0}".format(pid))
         else:
-            LOGGER.debug("pid {0} has been killed", pid )
+            LOGGER.debug("pid {0} has been killed".format(pid))
             
 def stream_to_url(stream):
     try:
@@ -274,7 +275,7 @@ def stream_to_url(stream):
         return None
             
 def Stream(streamlink, http, url, argstr, quality):
-    global parser, _loglevel
+    global PARSER, _loglevel
 
     if url.startswith('remoteE2/'):
         url = jtools.remoteE2(url)
@@ -289,7 +290,7 @@ def Stream(streamlink, http, url, argstr, quality):
 
         # setup plugin, http & stream specific options
         args = plugin = None
-        if parser:
+        if PARSER:
             global PLUGIN_ARGS
             if not PLUGIN_ARGS:
                 PLUGIN_ARGS = setup_plugin_args(streamlink)
@@ -309,7 +310,7 @@ def Stream(streamlink, http, url, argstr, quality):
         if not plugin:
             plugin = streamlink.resolve_url(url)
 
-        if parser and PLUGIN_ARGS and args:
+        if PARSER and PLUGIN_ARGS and args:
             setup_plugin_options(streamlink, plugin, args)
             log_current_arguments(streamlink, args, url, quality)
 
@@ -321,19 +322,19 @@ def Stream(streamlink, http, url, argstr, quality):
             LOGGER.error("No playable streams found on this URL: {0}".format(url))
             return sendOfflineMP4(http, send_headers=not_stream_opened, file2send="/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/streams/noStreamsFound.mp4")
 
-        LOGGER.info("Available streams:\n{0}", format_valid_streams(plugin, streams))
+        LOGGER.info("Available streams:\n{0}".format(format_valid_streams(plugin, streams)))
         stream = None
-        for stream_name in (resolve_stream_name(streams, s.strip()) for s in quality.split(",")):
+        for stream_name in (resolve_stream_name(streams, s.strip()) for s in quality.split(',')):
             if stream_name in streams:
                 stream = True
                 break
-        
+
         if not stream:
             if "best" in streams:
                 stream_name = "best"
-                LOGGER.info("The specified stream(s) '{0}' could not be found, using '{1}' stream", quality, stream_name)
+                LOGGER.info("The specified stream(s) '{0}' could not be found, using '{1}' stream".format(quality, stream_name))
             else:
-                LOGGER.error("The specified stream(s) '{0}' could not be found", quality)
+                LOGGER.error("The specified stream(s) '{0}' could not be found".format(quality))
                 return sendOfflineMP4(http, send_headers=not_stream_opened)
 
         if not stream_name.endswith("_alt") and stream_name not in STREAM_SYNONYMS:
@@ -378,19 +379,19 @@ def Stream(streamlink, http, url, argstr, quality):
         http.wfile.write(prebuffer)
         shutil.copyfileobj(fd, http.wfile)
     except NoPluginError:
-        LOGGER.error("No plugin can handle URL: {0}", url)
+        LOGGER.error("No plugin can handle URL: {0}".format(url))
         sendOfflineMP4(http, send_headers=not_stream_opened, file2send="/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/streams/noPluginFound.mp4")
     except PluginError as err:
-        LOGGER.error("Plugin error: {0}", err)
+        LOGGER.error("Plugin error: {0}".format(err))
         sendOfflineMP4(http, send_headers=not_stream_opened, file2send="/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/streams/PluginError.mp4")
     except FatalPluginError as err:
-        LOGGER.error("Fatal Plugin error: {0}", err)
+        LOGGER.error("Fatal Plugin error: {0}".format(err))
         sendOfflineMP4(http, send_headers=not_stream_opened, file2send="/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/streams/PluginFatalError.mp4")
     except StreamError as err:
-        LOGGER.error("Stream Error: {0}", err)
+        LOGGER.error("Stream Error: {0}".format(err))
         sendOfflineMP4(http, send_headers=not_stream_opened, file2send="/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/streams/noStreamsFound.mp4")
     except NoStreamsError as err:
-        LOGGER.error("No Streams Error: {0}", err)
+        LOGGER.error("No Streams Error: {0}".format(err))
         sendOfflineMP4(http, send_headers=not_stream_opened, file2send="/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/streams/noStreamsFound.mp4")
     except socket.error as err:
         if err.errno != errno.EPIPE:
@@ -398,7 +399,7 @@ def Stream(streamlink, http, url, argstr, quality):
             raise
         else:
             # player disconnected
-            LOGGER.info("Detected player disconnect")
+            LOGGER.info('Detected player disconnect')
     except Exception as err:
         if str(err).startswith('E2MSG:'):
             E2MSG = str(err).replace('E2MSG:','http://localhost/web/message?')
@@ -413,9 +414,9 @@ def Stream(streamlink, http, url, argstr, quality):
             sendCachedFile(http, send_headers=not_stream_opened, pid=retData[1], file2send=retData[2])
         else:
             if not_stream_opened and LOGLEVEL not in ("debug", "trace"):
-                LOGGER.error("Got exception: {0}", err)
+                LOGGER.error("Got exception: {0}".format(err))
             else:
-                LOGGER.error("Got exception: {0}\n{1}", err, traceback.format_exc().splitlines())
+                LOGGER.error("Got exception: {0}\n{1}".format(err, traceback.format_exc().splitlines()))
             sendOfflineMP4(http, send_headers=not_stream_opened)
     except KeyboardInterrupt:
         pass
@@ -452,7 +453,7 @@ class Streamlink2(Streamlink):
                 self.load_plugins(directory)
             else:
                 LOGGER.warning("Plugin path {0} does not exist or is not a directory!".format(directory))
-                                
+
 class StreamHandler(BaseHTTPRequestHandler):
 
     def do_HEAD(s):
@@ -460,10 +461,10 @@ class StreamHandler(BaseHTTPRequestHandler):
 
     def do_GET(s):
         jtools.cleanCMD()
-        url=unquote(s.path[1:])
-        quality="best"
+        url = unquote(s.path[1:])
+        quality = "best"
 
-        LOGGER.debug("Received URL: {}", url)
+        LOGGER.debug("Received URL: {}".format(url))
         #split args
         url = url.split(';SLARGS;', 1)
         if len(url) > 1:
@@ -473,20 +474,20 @@ class StreamHandler(BaseHTTPRequestHandler):
                 url[1] = url[1][1:]
             #dla pozostalych
             url[1] = url[1].replace(';--',';-') 
-            LOGGER.debug("args: {}", url[1])
+            LOGGER.debug("args: {}".format(url[1]))
             url[1] = url[1].replace(';',' ')
             if 'quality=' in url[1]:
                 for arg in url[1].split(' '):
                     if arg.startswith('quality='):
                         quality = arg[8:]
-                        LOGGER.debug("quality params: {}", quality)
+                        LOGGER.debug("quality params: {}".format(quality))
                         url[1] = url[1].replace('quality=%s' % quality,'').strip()
                         break
-        LOGGER.info("Processing URL: {}", url[0].strip())
+        LOGGER.info("Processing URL: {0}".format(url[0].strip()))
         with warnings.catch_warnings():
             warnings.simplefilter("ignore")
             streamlink = Streamlink2()
-        return Stream(streamlink, s, url[0].strip(), url[1:2], quality) #ciekawa konstrukcja, zwrca url[1] jesli istnieje lub [] jesli nie
+        return Stream(streamlink, s, url[0].strip(), url[1:2], quality) #ciekawa konstrukcja, zwraca url[1] jesli istnieje lub [] jesli nie
 
     def finish(self, *args, **kw):
         try:
@@ -515,15 +516,15 @@ def start():
         fmt = ("[{asctime},{msecs:0.0f}]" if level == "trace" else "") + "[{name}][{levelname}] {message}"
         logger.basicConfig(stream=stream, level=level, format=fmt, style="{", datefmt="%H:%M:%S")
 
-    global LOGGER, parser
+    global LOGGER, PARSER
     setup_logging(level=LOGLEVEL)
     if opts_parser_version != "N/A":
         try:
             opts_parser.LOGGER = LOGGER
             opts_parser.DEFAULT_LEVEL = LOGLEVEL
-            parser = build_parser()
+            PARSER = build_parser()
         except Exception as err:
-            LOGGER.error("err: {}", str(err))
+            LOGGER.error("err: {}".format(str(err)))
 
     httpd = ThreadedHTTPServer(("", PORT_NUMBER), StreamHandler)
     try:
@@ -531,14 +532,14 @@ def start():
         from version import Version as jVersion
     except Exception as e:
         jVersion = str(e)
-    LOGGER.info("###################################################")
-    LOGGER.info("{0} Server ({1} - {2}) started", time.asctime(), __version__, jVersion)
-    LOGGER.info("Host:            {0}", hostname())
-    LOGGER.info("Port:            {0}", PORT_NUMBER)
-    LOGGER.info("OS:              {0}", platform.platform())
+    LOGGER.info("####################mod j00zek#####################")
+    LOGGER.info("{0} Server ({1} - {2}) started".format(time.asctime(), __version__, jVersion))
+    LOGGER.info("Host:            {0}".format(hostname()))
+    LOGGER.info("Port:            {0}".format(PORT_NUMBER))
+    LOGGER.info("OS:              {0}".format(platform.platform()))
     LOGGER.info("Python:          {0}".format(platform.python_version()))
     LOGGER.info("Streamlink:      {0} / {1}".format(streamlink_version, streamlink_version_date))
-    LOGGER.info("Log level:       {0}", _loglevel)
+    LOGGER.info("Log level:       {0}".format( _loglevel))
     LOGGER.debug("Options Parser: {0}".format(opts_parser_version))
     LOGGER.debug("youtube-dl:     {0}".format(ytdl_version))
     LOGGER.info("Requests({0}), Socks({1}), Websocket({2})".format(requests_version, socks_version, websocket_version))
@@ -556,7 +557,7 @@ def start():
     except KeyboardInterrupt:
         LOGGER.info("Interrupted! Exiting...")
     httpd.server_close()
-    LOGGER.info("{0} Server stopped - Host: {1}, Port: {2}", time.asctime(), hostname(), PORT_NUMBER)
+    LOGGER.info("{0} Server stopped - Host: {1}, Port: {2}".format(time.asctime(), hostname(), PORT_NUMBER))
 
 
 class Daemon:
@@ -637,43 +638,6 @@ class Daemon:
             message = "pidfile %s already exist. Daemon already running?\n"
             sys.stderr.write(message % self.pidfile)
             sys.exit(1)
-
-        #sync picons config.plugins.streamlinksrv.managePicons
-        from streamlink.e2config import getE2config
-        if getE2config('managePicons', True): #default is true in config
-            syncPicons = False
-            for f in os.listdir("/etc/enigma2"):
-                ff = "/etc/enigma2/%s" % f
-                if os.path.islink(ff):
-                    fl = os.readlink(ff)
-                    if fl.startswith('/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/IPTVbouquets'):
-                        syncPicons = True
-                        break
-            if syncPicons == True:
-                for f in os.listdir("/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/picons"):
-                    if f.endswith('.png'):
-                        flist = []
-                        flist.append(f)
-                        if '_' in f:
-                            f2nd = f.split('_',1)[1]
-                            for x in ('1','4097','5001','5002'):
-                                f2 = '%s_%s' % (x,f2nd)
-                                if f2 != f: 
-                                    flist.append(f2)
-                        for p in flist:
-                            if not os.path.exists('/usr/share/enigma2/picon/%s' % p):
-                                print("syncing %s to /usr/share/enigma2/picon/%s" % (f,p))
-                                os.symlink("/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/picons/%s" % f, '/usr/share/enigma2/picon/%s' % p)
-            else:
-                for f in os.listdir("/usr/share/enigma2/picon/"):
-                    ff = "/usr/share/enigma2/picon/%s" % f
-                    try:
-                        fl = os.readlink(ff)
-                        if fl.startswith('/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/picons'):
-                            os.remove(ff)
-                    except Exception:
-                        pass
-                    
         # Start the daemon
         self.daemonize()
         self.run()
@@ -685,16 +649,20 @@ class Daemon:
         # Get the pid from the pidfile
         jtools.killSRVprocess(os.getpid())
         jtools.cleanCMD()
+        
         try:
             pf = open(self.pidfile,"r")
             pid = int(pf.read().strip())
             pf.close()
-        except IOError:
+        except IOError as e:
+            #print(str(e))
             pid = None
 
         if not pid:
-            message = "pidfile %s does not exist. Daemon not running?\n"
-            sys.stderr.write(message % self.pidfile)
+            if os.path.exists(self.pidfile): 
+                os.remove(self.pidfile)
+            #message = "pidfile %s does not exist. Probably already killed by jtools.killSRVprocess\n"
+            #sys.stderr.write(message % self.pidfile)
             return # not an error in a restart
 
         # Try killing the daemon process

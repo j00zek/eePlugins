@@ -2,22 +2,28 @@
 plugBinDir='/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig'
 
 pythonType='unknown'
-if [ -e /usr/lib/python2.7 ]; then
-  pythonType='python2.7'
+if [ -e /usr/lib/python3.10 ]; then
+  pythonType='python3.10'
 elif [ -e /usr/lib/python3.9 ]; then
   pythonType='python3.9'
-elif [ -e /usr/lib/python3.10 ]; then
-  pythonType='python3.10'
+elif [ -e /usr/lib/python2.7 ]; then
+  pythonType='python2.7'
 fi
 
-if [ -f /usr/sbin/streamlinksrv ] && [ ! -L /usr/sbin/streamlinksrv ];then
+if [ -f /usr/sbin/streamlink ] && [ ! -L /usr/sbin/streamlink ];then
   echo
-  echo "Wykryto zainstalowaną inną, nie w pełni zgodną, wersję serwera streamlink COŚ MOŻE NIE DZIAŁAĆ!!!"
+  echo "Wykryto zainstalowaną NIEZNANĄ wersję klienta streamlinka COŚ MOŻE NIE DZIAŁAĆ!!!"
   echo
 else
-  ln -sf $plugBinDir/bin/streamlink /usr/sbin/streamlink
-  ln -sf $plugBinDir/bin/streamlinksrv /usr/sbin/streamlinksrv
-  ln -sf /usr/sbin/streamlinksrv /etc/init.d/streamlinksrv
+  ln -sf $plugBinDir/bin/streamlinkCLI.py /usr/sbin/streamlink
+fi
+if [ -f /usr/sbin/streamlinksrv ] && [ ! -L /usr/sbin/streamlinksrv ];then
+  echo
+  echo "Wykryto zainstalowaną NIEZNANĄ wersję serwera streamlinka COŚ MOŻE NIE DZIAŁAĆ!!!"
+  echo
+else
+  ln -sf $plugBinDir/bin/streamlinksrv.py /usr/sbin/streamlinksrv
+  ln -sf $plugBinDir/bin/streamlinksrv.py /etc/init.d/streamlinksrv
   ln -sf /usr/sbin/streamlinksrv /etc/rc3.d/S50streamlinksrv
   ln -sf /usr/sbin/streamlinksrv /etc/rc4.d/S50streamlinksrv
   if `grep -q 'osd.language=pl_PL' </etc/enigma2/settings`; then
@@ -42,8 +48,14 @@ fi
 #tworzenie linkow w strukturze drzewa
 if [ -e "/usr/lib/$pythonType/site-packages/streamlink" ];then
   echo "Dołączanie pakietów emukodi i streamlink_cli do pythona..."
+  ln -sf $plugBinDir/bin/jtools.py /usr/lib/$pythonType/site-packages/streamlink/jtools.py
+  ln -sf $plugBinDir/bin/e2config.py /usr/lib/$pythonType/site-packages/streamlink/e2config.py
   ln -sf "$plugBinDir/plugins/emukodi" "/usr/lib/$pythonType/site-packages/emukodi"
-  ln -sf "$plugBinDir/plugins/streamlink_cli" "/usr/lib/$pythonType/site-packages/streamlink_cli"
+  if [ $pythonType == 'python2.7' ];then
+    ln -sf "$plugBinDir/plugins/streamlink_cli.p27" "/usr/lib/$pythonType/site-packages/streamlink_cli"
+  else
+    ln -sf "$plugBinDir/plugins/streamlink_cli" "/usr/lib/$pythonType/site-packages/streamlink_cli"
+  fi
   echo "Dołączanie nieoficjalnych wtyczek j00zka do streamlinka..."
   find -L "/usr/lib/$pythonType/site-packages/streamlink" -name *.py -type l -exec  rm {} +
   find $plugBinDir/plugins/unofficial/ -iname *.py|while read f; do

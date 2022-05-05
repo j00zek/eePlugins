@@ -1,7 +1,11 @@
 #!/usr/bin/python
 # j00zek 2020-2022
 
-from streamlink.e2config import getE2config
+try:
+    from streamlink.e2config import getE2config
+except Exception:
+    from e2config import getE2config
+
 import base64, os, sys, time, warnings
 
 os.environ["XDG_CONFIG_HOME"] = "/etc" #aby config streamlinka dzialal

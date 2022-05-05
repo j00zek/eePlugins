@@ -5,8 +5,9 @@ Depends:
 Description: konfigurator SL, wp, kamer internetowcyh i innych pierdół
 Maintainer: j00zek
 Source: http://github.com/j00zek/eePlugins
-Version: 22.04.24.0855
+Version: 22.05.05.1131
 Architecture: all
 DestinationPath: /usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig
-ExcludeFolder: 
-RunScriptBeforeBuild: 
+ExcludeFolder: scripts
+RunScriptBeforeBuild: scripts/getOnlineFiles.sh
+BuildType: python310

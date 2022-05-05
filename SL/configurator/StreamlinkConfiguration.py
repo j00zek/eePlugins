@@ -120,66 +120,73 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         Mlist = []
         # pilot.wp.pl
         #Mlist.append(getConfigListEntry("", NoSave(ConfigNothing()) ))
-        Mlist.append(getConfigListEntry('\c00289496' + _("*** Available IPTV bouquets ***"), config.plugins.streamlinksrv.One))
-        if self.VisibleSection == 1:
-            for f in sorted(os.listdir("/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/IPTVbouquets"), key=str.lower):
-                if f.startswith('OFF') or f.endswith('OFF') or f.endswith('OFF-not updated'):
-                    pass
-                elif os.path.exists('/etc/enigma2/%s' % f):
-                    Mlist.append(getConfigListEntry(_("Press OK to remove: %s") % f , config.plugins.streamlinksrv.removeBouquet))
-                else:
-                    Mlist.append(getConfigListEntry(_("Press OK to add: %s") % f , config.plugins.streamlinksrv.installBouquet))
-            for f in sorted(os.listdir("/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/plugins"), key=str.lower):
-                if f.startswith('generate_') and f.endswith('.py'):
-                    bname = f[9:-3]
-                    if os.path.exists('/etc/enigma2/%s' % bname):
-                        Mlist.append(getConfigListEntry(_("Press OK to remove: %s") % bname , config.plugins.streamlinksrv.removeBouquet))
+        if not os.path.exists('/usr/sbin/streamlinksrv'):
+            Mlist.append(getConfigListEntry('\c00981111' + _("*** Deamon not installed ***")))
+        else:
+            Mlist.append(getConfigListEntry('\c00289496' + _("*** Available IPTV bouquets ***"), config.plugins.streamlinksrv.One))
+            if self.VisibleSection == 1:
+                for f in sorted(os.listdir("/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/IPTVbouquets"), key=str.lower):
+                    if f.startswith('OFF') or f.endswith('OFF') or f.endswith('OFF-not updated'):
+                        pass
+                    elif os.path.exists('/etc/enigma2/%s' % f):
+                        Mlist.append(getConfigListEntry(_("Press OK to remove: %s") % f , config.plugins.streamlinksrv.removeBouquet))
                     else:
-                        Mlist.append(getConfigListEntry(_("Press OK to create: %s") % bname , config.plugins.streamlinksrv.generateBouquet))
+                        Mlist.append(getConfigListEntry(_("Press OK to add: %s") % f , config.plugins.streamlinksrv.installBouquet))
+                for f in sorted(os.listdir("/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/plugins"), key=str.lower):
+                    if f.startswith('generate_') and f.endswith('.py'):
+                        bname = f[9:-3]
+                        if os.path.exists('/etc/enigma2/%s' % bname):
+                            Mlist.append(getConfigListEntry(_("Press OK to remove: %s") % bname , config.plugins.streamlinksrv.removeBouquet))
+                        else:
+                            Mlist.append(getConfigListEntry(_("Press OK to create: %s") % bname , config.plugins.streamlinksrv.generateBouquet))
                 
-        Mlist.append(getConfigListEntry(""))
-        Mlist.append(getConfigListEntry('\c00289496' + _("*** %s configuration ***") % 'pilot.wp.pl', config.plugins.streamlinksrv.Two))
-        if self.VisibleSection == 2:
-            Mlist.append(getConfigListEntry(_("Username:"), config.plugins.streamlinksrv.WPusername))
-            Mlist.append(getConfigListEntry(_("Password:"), config.plugins.streamlinksrv.WPpassword))
-            Mlist.append(getConfigListEntry(_("Check login credentials"), config.plugins.streamlinksrv.WPlogin))
-            #Mlist.append(getConfigListEntry("Przedstaw się jako:", config.plugins.streamlinksrv.WPdevice))
-            Mlist.append(getConfigListEntry(_("Prefer DASH than HLS:"), config.plugins.streamlinksrv.WPpreferDASH))
-            Mlist.append(getConfigListEntry(_("Delay video:"), config.plugins.streamlinksrv.WPvideoDelay))
-            Mlist.append(getConfigListEntry(_("Press OK to create %s bouquet") % "userbouquet.WPPL.tv", config.plugins.streamlinksrv.WPbouquet))
+            Mlist.append(getConfigListEntry(""))
+            Mlist.append(getConfigListEntry('\c00289496' + _("*** %s configuration ***") % 'pilot.wp.pl', config.plugins.streamlinksrv.Two))
+            if self.VisibleSection == 2:
+                Mlist.append(getConfigListEntry(_("Username:"), config.plugins.streamlinksrv.WPusername))
+                Mlist.append(getConfigListEntry(_("Password:"), config.plugins.streamlinksrv.WPpassword))
+                Mlist.append(getConfigListEntry(_("Check login credentials"), config.plugins.streamlinksrv.WPlogin))
+                #Mlist.append(getConfigListEntry("Przedstaw się jako:", config.plugins.streamlinksrv.WPdevice))
+                Mlist.append(getConfigListEntry(_("Prefer DASH than HLS:"), config.plugins.streamlinksrv.WPpreferDASH))
+                Mlist.append(getConfigListEntry(_("Delay video:"), config.plugins.streamlinksrv.WPvideoDelay))
+                Mlist.append(getConfigListEntry(_("Press OK to create %s bouquet") % "userbouquet.WPPL.tv", config.plugins.streamlinksrv.WPbouquet))
         
-        Mlist.append(getConfigListEntry(""))
-        Mlist.append(getConfigListEntry('\c00289496' + _("*** remote E2 helper ***"), config.plugins.streamlinksrv.Three))
-        if self.VisibleSection == 3:
-            Mlist.append(getConfigListEntry(_("IP address:"), config.plugins.streamlinksrv.remoteE2address))
-            Mlist.append(getConfigListEntry(_("Streaming port:"), config.plugins.streamlinksrv.remoteE2port))
-            Mlist.append(getConfigListEntry(_("Username:"), config.plugins.streamlinksrv.remoteE2username))
-            Mlist.append(getConfigListEntry(_("Password:"), config.plugins.streamlinksrv.remoteE2password))
-            Mlist.append(getConfigListEntry(_("Wakeup if remote E2 in standby:"), config.plugins.streamlinksrv.remoteE2wakeup))
-            Mlist.append(getConfigListEntry(_("Zap before stream workarround:"), config.plugins.streamlinksrv.remoteE2zap))
+            if os.path.islink('/usr/sbin/streamlinksrv') and 'StreamlinkConfig/' in os.readlink('/usr/sbin/streamlinksrv'):
+                Mlist.append(getConfigListEntry(""))
+                Mlist.append(getConfigListEntry('\c00289496' + _("*** remote E2 helper ***"), config.plugins.streamlinksrv.Three))
+                if self.VisibleSection == 3:
+                    Mlist.append(getConfigListEntry(_("IP address:"), config.plugins.streamlinksrv.remoteE2address))
+                    Mlist.append(getConfigListEntry(_("Streaming port:"), config.plugins.streamlinksrv.remoteE2port))
+                    Mlist.append(getConfigListEntry(_("Username:"), config.plugins.streamlinksrv.remoteE2username))
+                    Mlist.append(getConfigListEntry(_("Password:"), config.plugins.streamlinksrv.remoteE2password))
+                    Mlist.append(getConfigListEntry(_("Wakeup if remote E2 in standby:"), config.plugins.streamlinksrv.remoteE2wakeup))
+                    Mlist.append(getConfigListEntry(_("Zap before stream workarround:"), config.plugins.streamlinksrv.remoteE2zap))
         
-        Mlist.append(getConfigListEntry(""))
-        Mlist.append(getConfigListEntry('\c00289496' + _("*** Deamon configuration ***"), config.plugins.streamlinksrv.Four))
-        if self.VisibleSection == 4 or config.plugins.streamlinksrv.enabled.value == False:
-            Mlist.append(getConfigListEntry(_("Enable deamon:"), config.plugins.streamlinksrv.enabled))
-            Mlist.append(getConfigListEntry(_("Port number (127.0.0.1:X):"), config.plugins.streamlinksrv.PortNumber))
-            Mlist.append(getConfigListEntry(_("Log level:"), config.plugins.streamlinksrv.logLevel))
-            Mlist.append(getConfigListEntry(_("Log to file:"), config.plugins.streamlinksrv.logToFile))
-            Mlist.append(getConfigListEntry(_("Clear log on each start:"), config.plugins.streamlinksrv.ClearLogFile))
-            Mlist.append(getConfigListEntry(_("Save log file in:"), config.plugins.streamlinksrv.logPath))
-            Mlist.append(getConfigListEntry(_("Buffer path:"), config.plugins.streamlinksrv.bufferPath))
-            Mlist.append(getConfigListEntry(_("EPGimport mode:"), config.plugins.streamlinksrv.EPGserver))
-            Mlist.append(getConfigListEntry(_("Recorder mode:"), config.plugins.streamlinksrv.Recorder))
-            #Mlist.append(getConfigListEntry(_("link IPTV picons:"), config.plugins.streamlinksrv.managePicons))
+                Mlist.append(getConfigListEntry(""))
+                Mlist.append(getConfigListEntry('\c00289496' + _("*** Deamon configuration ***"), config.plugins.streamlinksrv.Four))
+                if self.VisibleSection == 4 or config.plugins.streamlinksrv.enabled.value == False:
+                    Mlist.append(getConfigListEntry(_("Enable deamon:"), config.plugins.streamlinksrv.enabled))
+                    Mlist.append(getConfigListEntry(_("Port number (127.0.0.1:X):"), config.plugins.streamlinksrv.PortNumber))
+                    Mlist.append(getConfigListEntry(_("Log level:"), config.plugins.streamlinksrv.logLevel))
+                    Mlist.append(getConfigListEntry(_("Log to file:"), config.plugins.streamlinksrv.logToFile))
+                    Mlist.append(getConfigListEntry(_("Clear log on each start:"), config.plugins.streamlinksrv.ClearLogFile))
+                    Mlist.append(getConfigListEntry(_("Save log file in:"), config.plugins.streamlinksrv.logPath))
+                    Mlist.append(getConfigListEntry(_("Buffer path:"), config.plugins.streamlinksrv.bufferPath))
+                    Mlist.append(getConfigListEntry(_("EPGimport mode:"), config.plugins.streamlinksrv.EPGserver))
+                    Mlist.append(getConfigListEntry(_("Recorder mode:"), config.plugins.streamlinksrv.Recorder))
+                    #Mlist.append(getConfigListEntry(_("link IPTV picons:"), config.plugins.streamlinksrv.managePicons))
         
-        Mlist.append(getConfigListEntry(""))
-        Mlist.append(getConfigListEntry('\c00289496' + _("*** /etc/streamlink/config ***"), config.plugins.streamlinksrv.Five))
-        if self.VisibleSection == 5:
-            for cfg in getStreamlinkConfig():
-                if cfg.startswith('ffmpeg-ffmpeg='):
-                    Mlist.append(getConfigListEntry("ffmpeg-ffmpeg=" , config.plugins.streamlinksrv.streamlinkconfigFFMPEG))
-                else:
-                    Mlist.append(getConfigListEntry( cfg , config.plugins.streamlinksrv.streamlinkconfig))
+                Mlist.append(getConfigListEntry(""))
+                Mlist.append(getConfigListEntry('\c00289496' + _("*** /etc/streamlink/config ***"), config.plugins.streamlinksrv.Five))
+                if self.VisibleSection == 5:
+                    for cfg in getStreamlinkConfig():
+                        if cfg.startswith('ffmpeg-ffmpeg='):
+                            Mlist.append(getConfigListEntry("ffmpeg-ffmpeg=" , config.plugins.streamlinksrv.streamlinkconfigFFMPEG))
+                        else:
+                            Mlist.append(getConfigListEntry( cfg , config.plugins.streamlinksrv.streamlinkconfig))
+            else:
+                Mlist.append(getConfigListEntry(""))
+                Mlist.append(getConfigListEntry('\c00981111' + _("*** not compliant Deamon found ***")))
 
         #Mlist.append()
         return Mlist
@@ -189,6 +196,11 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         self.VisibleSection = 0
         self.DoBuildList = eTimer()
         self.DoBuildList.callback.append(self.buildList)
+        if os.path.exists('/usr/sbin/streamlinksrv') and os.path.islink('/usr/sbin/streamlinksrv') and 'StreamlinkConfig/' in os.readlink('/usr/sbin/streamlinksrv'):
+            self.mySL = True
+        else:
+            self.mySL = False
+        
         Screen.__init__(self, session)
         self.session = session
         ConfigListScreen.__init__(self, self.buildList(), on_change = self.changedEntry)
@@ -199,9 +211,18 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
 
         # Buttons
         self["key_red"] = Label(_("Cancel"))
-        self["key_green"] = Label(_("Save"))
-        self["key_yellow"] = Label(_("Check status"))
-        self["key_blue"] = Label(_("Restart daemon"))
+        
+        if self.mySL == True:
+            self["key_green"] = Label(_("Save"))
+            self["key_blue"] = Label(_("Restart daemon"))
+            if os.path.exists('/usr/lib/python2.7'):
+                self["key_yellow"] = Label(_("Check status"))
+            elif os.path.exists('/tmp/streamlinksrv.log'):
+                self["key_yellow"] = Label(_("Show log"))
+        else:
+            self["key_green"] = Label()
+            self["key_blue"] = Label()
+            self["key_yellow"] = Label()
 
         # Define Actions
         self["actions"] = ActionMap(["StreamlinkConfiguration"],
@@ -216,8 +237,9 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                 "prevConf": self.prevConf,
                 "nextConf": self.nextConf,
             }, -2)
-        if not self.selectionChanged in self["config"].onSelectionChanged:
-            self["config"].onSelectionChanged.append(self.selectionChanged)
+        if 0:
+            if not self.selectionChanged in self["config"].onSelectionChanged:
+                self["config"].onSelectionChanged.append(self.selectionChanged)
         self.onLayoutFinish.append(self.layoutFinished)
         self.doAction = None
 
@@ -228,13 +250,14 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         configfile.save()
 
     def save(self):
-        self.saveConfig()
-        if os.path.exists('/var/run/streamlink.pid'):
-            os.system('/etc/init.d/streamlinksrv stop')
-        if config.plugins.streamlinksrv.enabled.value:
-            os.system('/etc/init.d/streamlinksrv start')
-        self.VisibleSection = 0
-        self.close(None)
+        if self.mySL == True:
+            self.saveConfig()
+            if os.path.exists('/var/run/streamlink.pid'):
+                os.system('/etc/init.d/streamlinksrv stop')
+            if config.plugins.streamlinksrv.enabled.value:
+                os.system('/etc/init.d/streamlinksrv start')
+            self.VisibleSection = 0
+            self.close(None)
         
     def refreshBuildList(self, ret = False):
         self.DBGlog('refreshBuildList >>>')
@@ -254,12 +277,17 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                 mtitle = _('Checking state of required packages...')
                 cmd = '/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/plugins/installPackets.sh'
             self.session.openWithCallback(self.doNothing ,Console, title = mtitle, cmdlist = [ cmd ])
-        self.session.openWithCallback(yellowRet, MessageBox, _("Do you want to force packets reinstallation?"), MessageBox.TYPE_YESNO, default = False)
+        if self.mySL == True:
+            if os.path.exists('/usr/lib/python2.7'):
+                self.session.openWithCallback(yellowRet, MessageBox, _("Do you want to force packets reinstallation?"), MessageBox.TYPE_YESNO, default = False)
+            elif os.path.exists('/tmp/streamlinksrv.log'):
+                self.session.openWithCallback(self.doNothing ,Console, title = '/tmp/streamlinksrv.log', cmdlist = [ 'cat /tmp/streamlinksrv.log' ])
         
     def blue(self):
-        mtitle = _('Restarting daemon')
-        cmd = '/usr/sbin/streamlinksrv restart'
-        self.session.openWithCallback(self.doNothing ,Console, title = mtitle, cmdlist = [ cmd ])
+        if self.mySL == True:
+            mtitle = _('Restarting daemon')
+            cmd = '/usr/sbin/streamlinksrv restart'
+            self.session.openWithCallback(self.doNothing ,Console, title = mtitle, cmdlist = [ cmd ])
         
     def exit(self):
         self.VisibleSection = 0
@@ -304,7 +332,8 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
             self.DBGlog('%s' % str(e))
 
     def selectionChanged(self):
-        self.DBGlog('%s' % 'selectionChanged(%s)' % self["config"].getCurrent()[0])
+        if 0:
+            self.DBGlog('%s' % 'selectionChanged(%s)' % self["config"].getCurrent()[0])
 
     def getCurrentEntry(self):
         return self["config"].getCurrent()[0]
