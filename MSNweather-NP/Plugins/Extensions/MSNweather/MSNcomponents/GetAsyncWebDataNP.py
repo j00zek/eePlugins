@@ -1721,7 +1721,7 @@ def msn_api(webContent, webFileName):
                 units = unitsDict.get('cloudCover', '%')
                 valInfo = colorCode + val + units
                 manageCurrenDataWeatherItem(doUpdate, keyName, colorCode, inList, name, source, val, units, valInfo)
-            if 1: #water_temp  
+            if 0: #water_temp  
                 keyName = 'water_temp'
                 source = 'MSNAPI'
                 doUpdate = True
