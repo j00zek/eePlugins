@@ -661,7 +661,11 @@ class AdvancedFreePlayerStart(Screen):
             self.opensubtitle = ''
       
     def getExtension(self, MovieNameWithExtension):
-        return os.path.splitext( os.path.basename(MovieNameWithExtension) )[1]
+        try:
+            reVal = os.path.splitext(os.path.basename(MovieNameWithExtension) )[1]
+        except Exception:
+            reVal = 'None'
+        return reVal
       
     def SetLocalDescriptionAndCover(self, MovieNameWithPath):
         FoundCover = False
