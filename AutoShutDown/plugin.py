@@ -257,7 +257,7 @@ shutdownactions = AutoShutDownActions()
 
 def autostart(reason, **kwargs):
     global session
-    if kwargs.has_key("session") and reason == 0:
+    if "session" in kwargs and reason == 0:
         session = kwargs["session"]
         print("[AutoShutDown] start....")
         config.misc.standbyCounter.addNotifier(standbyCounterChanged, initial_call = False)
