@@ -686,8 +686,9 @@ class AdvancedFreePlayerStart(Screen):
         else:
             self.setCover('hideCover')
         WebDescrFile='/tmp/%s.AFP.txt' % getNameWithoutExtension(self.filelist.getFilename())
+        
         ### DESCRIPTION from EIT ###
-        if os.path.exists(temp + '.eit') and PyMajorVersion == 2:
+        if os.path.exists(temp + '.eit'):
             def parseMJD(MJD):
                 # Parse 16 bit unsigned int containing Modified Julian Date,
                 # as per DVB-SI spec
@@ -712,8 +713,14 @@ class AdvancedFreePlayerStart(Screen):
                         ChannelName = _('From: %s\n') % tmpTXT.split('::')[1].strip()
                     descrTXT.close()
                 
-            with open(temp + '.eit','r') as descrTXT:
-                data = descrTXT.read() #[19:].replace('\00','\n')
+            if PyMajorVersion == 2: openingType = 'r'
+            else: openingType = 'rb'
+
+            with open(temp + '.eit',openingType) as descrTXT:
+                if PyMajorVersion == 2:
+                    data = descrTXT.read().replace('\00','\n') #[19:].replace('\00','\n')
+                else:
+                    data = descrTXT.read().replace(b'\00',b'\n')
                 ### Below is based on EMC handlers, thanks to author!!!
                 e = struct.unpack(">HHBBBBBBH", data[0:12])
                 TZhour = unBCD(e[2]) + self.TZoffset
@@ -725,18 +732,22 @@ class AdvancedFreePlayerStart(Screen):
                 EETtxt = ''
                 pos = 12
                 while pos < len(data):
-                    rec = ord(data[pos])
-                    length = ord(data[pos+1]) + 2
+                    if PyMajorVersion == 2:
+                        rec = ord(data[pos])
+                        length = ord(data[pos+1]) + 2
+                    else:
+                        rec = data[pos]
+                        length = data[pos+1] + 2
                     if rec == 0x4E:
                     #special way to handle CR/LF charater
                         for i in range (pos+8,pos+length):
-                            if str(ord(data[i]))=="138":
+                            if (PyMajorVersion == 2 and ord(data[i])==138) or (PyMajorVersion >= 2 and data[i]==138):
                                 extended_event_descriptor.append("\n")
                             else:
                                 if data[i]== '\x10' or data[i]== '\x00' or  data[i]== '\x02':
                                     pass
                                 else:
-                                    extended_event_descriptor.append(data[i])
+                                    extended_event_descriptor.append(chr(data[i]))
                     pos += length
 
                     # Very bad but there can be both encodings
@@ -744,15 +755,16 @@ class AdvancedFreePlayerStart(Screen):
                     # Is there no other way?
                 EETtxt = "".join(extended_event_descriptor)
                 if EETtxt:
-                    try:
-                        EETtxt.decode('utf-8')
-                    except UnicodeDecodeError:
+                    if PyMajorVersion == 2:
                         try:
-                            EETtxt = EETtxt.decode("cp1250").encode("utf-8")
+                            EETtxt.decode('utf-8')
                         except UnicodeDecodeError:
-                            # do nothing, otherwise cyrillic wont properly displayed
-                            #extended_event_descriptor = extended_event_descriptor.decode("iso-8859-1").encode("utf-8")
-                            pass
+                            try:
+                                EETtxt = EETtxt.decode("cp1250").encode("utf-8")
+                            except UnicodeDecodeError:
+                                # do nothing, otherwise cyrillic wont properly displayed
+                                #extended_event_descriptor = extended_event_descriptor.decode("iso-8859-1").encode("utf-8")
+                                pass
                 
                 self.setDescription(myDescr + ConvertChars(EETtxt) )
                 FoundDescr = True

@@ -60,9 +60,12 @@ def DecodeNationalLetters(text):
     return text.strip()
 
 def ConvertChars(text):
-    CharsTable={ '\xC2\xB1': '\xC4\x85','\xC2\xB6': '\xC5\x9b','\xC4\xBD': '\xC5\xba'}
-    for i, j in CharsTable.iteritems():
-        text = text.replace(i, j)
+    CharsTable={ '\xC2\xB1': '\xC4\x85','\xC2\xB6': '\xC5\x9b','\xC4\xBD': '\xC5\xba',
+                 'Ã³': 'ó',
+                }
+    
+    for i in CharsTable:
+        text = text.replace(i, CharsTable[i])
     return text
 
 def getNameWithoutExtension(MovieNameWithExtension):
