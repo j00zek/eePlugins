@@ -28,20 +28,27 @@ class PLUGINNAME(Plugin):
         #self.session.set_option('hls-live-edge', 10)
         self.session.http.headers.update({'User-Agent': useragents.CHROME})
         res = self.session.http.get(self.url)
-        #log.debug(res.text)
+        open("/tmp/_limetv.log", "w").write(res.text)
         
         myName = self.url.rsplit("limehd.tv/")[1].replace("/","")
-        searchesList = ['myPlayer\.src\({"src":"([^"]+)"' , 
+        searchesList = [
+                        '\"(http:[^"]*streaming[^"]*%s[^"]*)' % myName ,
                         "'(http:[^']*streaming[^']*%s[^']*)'" % myName ,
+                        'myPlayer\.src\({"src":"([^"]+)"' , 
                         ]
+
         for searchRegEx in searchesList:
             searchRet = re.search(searchRegEx, res.text)
             if searchRet:
                 break
         
+        if searchRet is None:
+            log.debug("Streaming URLS not found :(") 
+            return
+        
         try:
             address = searchRet.group(1)
-            address = address.replace('\/','/')
+            address = address.replace('\/','/').replace('\\u002F','/')
             log.debug("Found address: %s" % address)
         except Exception as e:
             log.debug(str(e))
