@@ -18,6 +18,10 @@ do
     #echo $paczka
     info=`sed -n "/^Package: $paczka\$/,/^MD5Sum:/p" < ../Packages`
     myPKG=`echo $info|grep "Filename: "|grep -o "[^ ]*.ipk"|grep -o "[^ ]*.ipk"`
+    if [ -z $myPKG ];then
+      echo brak danych dla $paczka
+      exit 1
+    fi
     echo Pobieram $myPKG
     curl -s http://feeds2.mynonpublic.com/7.1/h9combo/cortexa15hf-neon-vfpv4/$myPKG -o ./myPKG.ipk
     ar -x ./myPKG.ipk;
@@ -26,3 +30,5 @@ do
 done
 rm -fr $dirPath/../usr
 cp -fr ./* $dirPath/../
+mv -f $dirPath/../usr/bin/chardetect $dirPath/../usr/bin/chardetect3 #konflikt z py2.7
+rm -f $dirPath/../etc/ld.so.conf
