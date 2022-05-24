@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 #
 # Linux Python2/3 Streamlink Daemon
 #

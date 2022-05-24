@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 from streamlink.jtools import *
 
 print('PRZYKLAD: streamlink -l debug [ -o /tmp/fileName] "url" best')

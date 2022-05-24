@@ -1,11 +1,16 @@
 #!/bin/sh
 pythonType='unknown'
-if [ -e /usr/lib/python2.7 ]; then
-  pythonType='python2.7'
+
+if [ -e /usr/lib/python3.10 ]; then
+  pythonType='python3.10'
 elif [ -e /usr/lib/python3.9 ]; then
   pythonType='python3.9'
-elif [ -e /usr/lib/python3.10 ]; then
-  pythonType='python3.10'
+elif [ -e /usr/lib/python2.7 ]; then
+  pythonType='python2.7'
+  echo
+  echo "Wykryto system z $pythonType - Instalacja niemożliwa :("
+  echo
+  exit 1
 fi
 
 echo
