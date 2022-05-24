@@ -1,11 +1,11 @@
-Package: enigma2-plugin-extensions--j00zeks-streamlink
+Package: enigma2-plugin-extensions--j00zeks-streamlink-minipython310
 Priority: optional
 Section: utils
 Depends: 
 Description: pakiet zawiera przepakowane skrypty oryginalnego streamlinka z repo ATV 7.1 do instalacji na systemach z python 2.7
 Maintainer: j00zek
 Source: http://github.com/j00zek/eePlugins
-Version: 22.05.24.0703
+Version: 22.05.24.1634
 Architecture: all
 DestinationPath: /usr/lib/python3.10/site-packages/
 ExcludeFolder: scripts

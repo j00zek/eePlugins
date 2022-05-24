@@ -1,10 +1,13 @@
 #!/bin/sh
 if [ ! -e /usr/lib/python2.7 ]; then
+  echo
   echo "Brak instalacji Python 2.7, zainstaluj wersję odpowiednią dla Twojego systemu !!!"
+  echo
   exit 1
-fi
 elif [ ! -e /usr/lib/python3.10 ]; then
+  echo
   echo "Brak instalacji Python 3.10, wtyczka nie bedzie działać !!!"
+  echo
   exit 1
 fi
 exit 0
