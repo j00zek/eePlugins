@@ -4,13 +4,13 @@ libc6
 #libc6-dev
 #libcrypt2
 libcrypto3
-#libffi8
+libffi8
 #libgcc
 #libgcc1
 #liblzma5
 libpython3.10-1.0
 #libreadline8
-#libssl3
+libssl3
 #libtinfo5
 #libuuid1
 #libxml2
@@ -39,6 +39,7 @@ python3-cssselect
 python3-ctypes
 python3-datetime
 python3-difflib
+python3-distutils
 python3-email
 python3-fcntl
 python3-futures3
