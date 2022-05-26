@@ -556,7 +556,7 @@ class Jopkg(Screen):
                 self.list.append((_("Upgrade packages" ), '', _("Recommended update installed packages"), 'UpgradeAll', self.upgradeablepng, self.divpng))
             self.list.append((_("Show system plugins only") , '' , '', ['-systemplugins-',], LoadPixmap(cached=True, path=PluginPath + 'icons/opkg_plugin.png'), self.divpng))
             self.list.append((_("Show extension plugins only") , '' , '', ['-extensions-',], LoadPixmap(cached=True, path=PluginPath + 'icons/opkg_plugin.png'), self.divpng))
-            self.list.append((_("Show j00zek's plugins only") , '' , '', ['enigma2-plugin-extensions--j00zeks-','enigma2-plugin-systemplugins--j00zeks-',], LoadPixmap(cached=True, path=PluginPath + 'icons/opkg_plugin.png'), self.divpng))
+            self.list.append((_("Show j00zek's plugins only") , '' , '', ['enigma2-plugin-extensions--j00zeks-','enigma2-plugin-systemplugins--j00zeks-','system-addon--j00zeks-',], LoadPixmap(cached=True, path=PluginPath + 'icons/opkg_plugin.png'), self.divpng))
             self.list.append((_("Show j00zek's skins only") , '' , '', ['enigma2-plugin-skins--j00zeks-',], LoadPixmap(cached=True, path=PluginPath + 'icons/opkg_plugin.png'), self.divpng))
             self.list.append((_("Show Black Harmony components only") , '' , '', ['e2-j00zeks-bh-addon-'], LoadPixmap(cached=True, path=PluginPath + 'icons/opkg_plugin.png'), self.divpng))
             self.list.append((_("Show animated picons only") , '' , '', ['enigma2-plugin-picons--j00zeks-',], LoadPixmap(cached=True, path=PluginPath + 'icons/opkg_plugin.png'), self.divpng))
