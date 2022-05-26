@@ -1,5 +1,5 @@
 #!/bin/sh
-/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/bin/(re)initiate.sh
+/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/bin/re-initiate.sh
 if [ $? -gt 0 ];then
   exit 1
 else

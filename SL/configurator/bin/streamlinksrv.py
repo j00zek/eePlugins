@@ -272,7 +272,7 @@ def sendCachedFile(http, send_headers=True, pid=0, file2send=None):
                 break
             
         except IOError:
-            log.error("sendCachedFile aborted")
+            LOGGER.error("sendCachedFile aborted")
             os.system('kill -s 9 %s;killall hlsdl' % pid)
             return
     http.wfile.close()
