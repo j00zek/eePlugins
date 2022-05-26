@@ -1,11 +1,11 @@
-Package: enigma2-plugin-extensions--j00zeks-minipython310
+Package: system-addon--j00zeks-minipython310
 Priority: optional
 Section: utils
 Depends: 
 Description: python 3.10 z repo ATV 7.1 do instalacji na systemach z python 2.7 WYMAGA 60MB!!!
 Maintainer: j00zek
 Source: http://github.com/j00zek/eePlugins
-Version: 22.05.25.0803
+Version: 22.05.26.0529
 Architecture: all
 DestinationPath: /
 ExcludeFolder: scripts

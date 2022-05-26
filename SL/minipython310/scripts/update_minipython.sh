@@ -45,4 +45,4 @@ rm -fr $dirPath/../lb3
 mv -f $dirPath/../lib $dirPath/../lb3
 
 #porzadki
-[ -e $dirPath/../lib ] rm -rf && $dirPath/../lib
+[ -e $dirPath/../lib ] && rm -rf $dirPath/../lib
