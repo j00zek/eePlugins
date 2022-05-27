@@ -44,10 +44,16 @@ def cleanCMD(forceKill = True): #czyszczenie smieci
     CMDs.append(' rm -f /tmp/streamlinkpipe-*')
     CMDs.append('fi')
     CMDs.append('killall hlsdl 2>/dev/null')
+    CMDs.append('if [ -e /var/run/processPID.pid ];then pid=`cat /var/run/processPID.pid`;[ -e /proc/$pid ] && kill $pid || rm -f /var/run/processPID.pid;fi')
     CMDs.append('[ -e /tmp/stream.ts ] && rm -f /tmp/stream.ts')
     CMDs.append("find /tmp/ -maxdepth 1 -mmin +180 -name 'streamlinkpipe-*' -exec rm -- '{}' \;")
     os.system('\n'.join(CMDs))
 
+def GetBufferPath():
+    return getE2config('bufferPath', '/tmp')
+
+def GetuseCLI():
+    return getE2config('useCLI', 'n')
 
 def GetPortNumber():
     return getE2config('PortNumber', 8088) # change it to 88 for livestreamersrv compatibility

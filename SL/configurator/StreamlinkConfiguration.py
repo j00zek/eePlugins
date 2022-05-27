@@ -44,7 +44,7 @@ config.plugins.streamlinksrv.PortNumber = ConfigSelection(default = "8088", choi
 config.plugins.streamlinksrv.bufferPath = ConfigText(default = "/tmp")
 config.plugins.streamlinksrv.EPGserver = ConfigEnableDisable(default = False)
 config.plugins.streamlinksrv.Recorder = ConfigEnableDisable(default = False)
-config.plugins.streamlinksrv.useCLI = ConfigEnableDisable(default = False)
+config.plugins.streamlinksrv.useCLI = ConfigSelection(default = "n", choices = [("n", "No"), ("a", "Yes, for all"), ("s", "Yes, only for defined sites only"),])
 #config.plugins.streamlinksrv.managePicons = ConfigEnableDisable(default = True)
 
 # pilot.wp.pl

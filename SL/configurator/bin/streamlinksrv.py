@@ -228,19 +228,23 @@ def sendOfflineMP4(http, send_headers=True, file2send="/usr/lib/enigma2/python/P
     http.wfile.write(open(file2send, "rb").read())
     http.wfile.close()
 
-def sendCachedFile(http, send_headers=True, pid=0, file2send=None):
+def sendCachedFile(http, send_headers=True, pid=0, file2send=None, maxWaitTime = 10 ):
     LOGGER.debug("sendCachedFile(send_headers={0}, pid={1}, file2send={2})".format(str(send_headers), pid, file2send))
     if file2send is None:
         return
 
     #waiting for cache file
-    for x in range(1, 10):
-        if not os.path.exists(file2send):
+    for x in range(1, maxWaitTime):
+        if not os.path.exists(file2send) and int(pid) > 1000 and os.path.exists('/proc/%s' % pid):
             LOGGER.debug("\twaiting for cache file {0} ms".format(int(1000 * 0.1 * x) ))
             time.sleep(0.1)
         else:
             break
-            
+    #if still no file, send offline.mp4
+    if not os.path.exists(file2send):
+        sendOfflineMP4(http)
+        return
+    
     #filling buffer
     initialBuffer = 8192 * 10
     for x in range(1, 10):
@@ -1045,6 +1049,32 @@ class Streamlink2(Streamlink):
                 LOGGER.warning("Plugin path {0} does not exist or is not a directory!".format(directory))
 
 
+def useCLI(http, url, argstr, quality):
+    LOGGER.info("useCLI(%s,%s,%s) >>>" %(url,argstr,quality))
+    CacheFileName = '/tmp/stream.ts'
+    _cmd = ['/usr/sbin/streamlink'] 
+    _cmd.extend(['-l', 'debug', '-o', CacheFileName, url, quality])
+    LOGGER.debug("run command: %s" % ' '.join(_cmd))
+    import subprocess
+    try:
+        from subprocess import DEVNULL # Python 3.
+    except ImportError:
+        import os
+        DEVNULL = open(os.devnull, 'wb')
+    try:
+        #logfile = open('/tmp/streamlink.log', "w")
+        processCLI = subprocess.Popen(_cmd, stdout= DEVNULL, stderr= DEVNULL )
+        if processCLI:
+            LOGGER.debug("processCLI.pid=%s" % processCLI.pid)
+            processPID = processCLI.pid
+            open('/var/run/processPID.pid', "w").write("%s\n" % str(processPID))
+            sendCachedFile(http, send_headers=True, pid=processPID, file2send=CacheFileName, maxWaitTime = 100)
+        else:
+            LOGGER.error('ERROR: CLI subprocess not stared :(')
+    except Exception as e:
+        LOGGER.debug('EXCEPTION: ' % str(e))
+        
+
 class StreamHandler(BaseHTTPRequestHandler):
 
     def do_HEAD(s):
@@ -1075,13 +1105,27 @@ class StreamHandler(BaseHTTPRequestHandler):
                         url[1] = url[1].replace('quality=%s' % quality,'').strip()
                         break
         LOGGER.info("Processing URL: {0}".format(url[0].strip()))
-        with warnings.catch_warnings():
-            warnings.simplefilter("ignore")
-            streamlink = Streamlink2()
+        if url[0].strip().startswith('useCLI/'):
+            useCLI(s, url[0].strip()[7:], url[1:2], quality)
+            return
+        elif jtools.GetuseCLI() == 'a':
+            useCLI(s, url[0].strip(), url[1:2], quality)
+            return
+        elif jtools.GetuseCLI() == 's' and (url[0].strip().startswith('https://ok.ru') or 
+                                            url[0].strip().startswith('https://www.youtube.com/channel')
+                                           ):
+            useCLI(s, url[0].strip(), url[1:2], quality)
+            return
+        else:
+            with warnings.catch_warnings():
+                warnings.simplefilter("ignore")
+                streamlink = Streamlink2()
 
-        return Stream(streamlink, s, url[0].strip(), url[1:2], quality) #ciekawa konstrukcja, zwraca url[1] jesli istnieje lub [] jesli nie
+            return Stream(streamlink, s, url[0].strip(), url[1:2], quality) #ciekawa konstrukcja, zwraca url[1] jesli istnieje lub [] jesli nie
 
     def finish(self, *args, **kw):
+        LOGGER.debug("finish >>>")
+        jtools.cleanCMD()
         try:
             if not self.wfile.closed:
                 self.wfile.flush()
