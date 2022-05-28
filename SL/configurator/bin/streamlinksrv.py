@@ -1077,7 +1077,7 @@ def useCLI(http, url, argstr, quality):
                     except Exception:
                         pass
                     if outLine != '':
-                        LOGGER.debug('\t%s' % outLine.strip())
+                        LOGGER.debug('\t%s' % outLine.replace('\n','').strip())
                     time.sleep(0.1)
                 else:
                     break
@@ -1089,7 +1089,7 @@ def useCLI(http, url, argstr, quality):
         else:
             LOGGER.error('ERROR: CLI subprocess not stared :(')
     except Exception as e:
-        LOGGER.debug('EXCEPTION: ' % str(e))
+        LOGGER.debug('EXCEPTION: %s' % str(e))
         
 
 class StreamHandler(BaseHTTPRequestHandler):
