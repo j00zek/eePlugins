@@ -7,7 +7,7 @@
 #                                          
 # License: GPLv2+
 #
-# mod j00zek 2020-2021
+# mod j00zek 2020-2022
 # changes:
 # - connection with e2settings
 # - proceeding url parameters according to html standard
@@ -17,6 +17,13 @@ from streamlink import jtools
 import os
 jtools.killSRVprocess(os.getpid())
 jtools.cleanCMD()
+processCLI = None
+import subprocess
+try:
+    from subprocess import DEVNULL # Python 3.
+except ImportError:
+    import os
+    DEVNULL = open(os.devnull, 'wb')
 
 from six import PY2
 """ Streamlink Daemon """
@@ -231,11 +238,11 @@ def sendOfflineMP4(http, send_headers=True, file2send="/usr/lib/enigma2/python/P
 def sendCachedFile(http, send_headers=True, pid=0, file2send=None, maxWaitTime = 10 ):
     LOGGER.debug("sendCachedFile(send_headers={0}, pid={1}, file2send={2})".format(str(send_headers), pid, file2send))
     if file2send is None:
-        return
+        return 
 
     #waiting for cache file
     for x in range(1, maxWaitTime):
-        if not os.path.exists(file2send) and int(pid) > 1000 and os.path.exists('/proc/%s' % pid):
+        if not os.path.exists(file2send):
             LOGGER.debug("\twaiting for cache file {0} ms".format(int(1000 * 0.1 * x) ))
             time.sleep(0.1)
         else:
@@ -243,7 +250,7 @@ def sendCachedFile(http, send_headers=True, pid=0, file2send=None, maxWaitTime =
     #if still no file, send offline.mp4
     if not os.path.exists(file2send):
         sendOfflineMP4(http)
-        return
+        return 
     
     #filling buffer
     initialBuffer = 8192 * 10
@@ -1052,23 +1059,33 @@ class Streamlink2(Streamlink):
 def useCLI(http, url, argstr, quality):
     LOGGER.info("useCLI(%s,%s,%s) >>>" %(url,argstr,quality))
     CacheFileName = '/tmp/stream.ts'
+    if os.path.exists(CacheFileName):
+        os.remove()
     _cmd = ['/usr/sbin/streamlink'] 
     _cmd.extend(['-l', 'debug', '-o', CacheFileName, url, quality])
     LOGGER.debug("run command: %s" % ' '.join(_cmd))
-    import subprocess
     try:
-        from subprocess import DEVNULL # Python 3.
-    except ImportError:
-        import os
-        DEVNULL = open(os.devnull, 'wb')
-    try:
-        #logfile = open('/tmp/streamlink.log', "w")
-        processCLI = subprocess.Popen(_cmd, stdout= DEVNULL, stderr= DEVNULL )
+        processCLI = subprocess.Popen(_cmd, stdout= subprocess.PIPE, stderr= DEVNULL )
         if processCLI:
-            LOGGER.debug("processCLI.pid=%s" % processCLI.pid)
-            processPID = processCLI.pid
-            open('/var/run/processPID.pid', "w").write("%s\n" % str(processPID))
-            sendCachedFile(http, send_headers=True, pid=processPID, file2send=CacheFileName, maxWaitTime = 100)
+            #waiting for CLI to proceed
+            LOGGER.debug("processCLI.pid=%s : Waiting for streamlink to proceed..." % processCLI.pid)
+            for x in range(1, 100):
+                if not os.path.exists(CacheFileName):
+                    outLine = processCLI.stdout.readline()
+                    try:
+                        outLine = outLine.decode('utf-8')
+                    except Exception:
+                        pass
+                    if outLine != '':
+                        LOGGER.debug('\t%s' % outLine.strip())
+                    time.sleep(0.1)
+                else:
+                    break
+            open('/var/run/processPID.pid', "w").write("%s\n" % processCLI.pid)
+            if os.path.exists(CacheFileName):
+                sendCachedFile(http, send_headers=True, pid=processCLI.pid, file2send=CacheFileName, maxWaitTime = 100)
+            else:
+                sendOfflineMP4(http)
         else:
             LOGGER.error('ERROR: CLI subprocess not stared :(')
     except Exception as e:
