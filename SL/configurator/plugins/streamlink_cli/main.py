@@ -429,6 +429,7 @@ def read_stream(stream, output, prebuffer, formatter: Formatter, chunk_size=8192
     finally:
         stream.close()
         log.info("Stream ended")
+        if args.player_external_http: sys.exit() #j00zek_patch 2
 
 
 def handle_stream(plugin: Plugin, streams: Dict[str, Stream], stream_name: str) -> None:
