@@ -7,7 +7,7 @@
 # License: GPLv2+
 #
 
-__version__ = "1.1"
+__version__ = "1.2"
 import atexit
 import errno
 import logging
@@ -140,13 +140,13 @@ def useCLI(http, url, argstr, quality):
     _cmd.extend(['-l', LOGLEVEL, '--player-external-http', '--player-external-http-port', str(streamCLIport) , url, quality])
     LOGGER.debug("run command: %s" % ' '.join(_cmd))
     try:
-        processCLI = subprocess.Popen(_cmd, stdout= subprocess.PIPE, stderr= subprocess.PIPE )
+        processCLI = subprocess.Popen(_cmd, stdout= subprocess.PIPE, stderr= subprocess.DEVNULL )
         serverRunning = False
         if processCLI:
             #waiting for CLI to proceed
             LOGGER.debug("processCLI.pid=%s : Waiting for streamlink to proceed..." % processCLI.pid)
             for x in range(1, 100):
-                outLine = processCLI.stdout.readline() + processCLI.stderr.readline()
+                outLine = processCLI.stdout.readline()
                 try:
                     outLine = outLine.decode('utf-8')
                 except Exception:
@@ -156,20 +156,20 @@ def useCLI(http, url, argstr, quality):
                     if 'http://127.0.0.1:%s/' % streamCLIport in outLine:
                         serverRunning = True
                         redirectToStreamlinkCLI(http)
-                        break
+                        return
                     elif 'FileCache:' in outLine:
                         retData = outLine.strip().split(':')
                         processCLI.kill()
                         sendCachedFile(http, send_headers=True, pid=retData[1], file2send=retData[2])
-                        break
+                        return
                     elif 'wperror-403' in outLine:
                         processCLI.kill()
                         sendOfflineMP4(http, send_headers=True, file2send="wperror-403.mp4")
-                        break
+                        return
                     elif 'wperror-422' in outLine:
                         processCLI.kill()
                         sendOfflineMP4(http, send_headers=True, file2send="wperror-422.mp4")
-                        break
+                        return
                 time.sleep(0.1)
             try:
                 open('/var/run/processPID.pid', "w").write("%s\n" % processCLI.pid)

@@ -57,7 +57,7 @@ class gotoyanet(Plugin):
             processHLSDL = subprocess.Popen(_cmd, stdout= DEVNULL, stderr= DEVNULL )
             if processHLSDL: 
                 processPID = processHLSDL.pid
-                log.debug('FileCache:%s:%s' % ( processPID, CacheFileName )) 
+                log.info('FileCache:%s:%s' % ( processPID, CacheFileName )) 
                 #raise Exception('FileCache:%s:%s' % ( processPID, CacheFileName ))
                 return
                 #import time

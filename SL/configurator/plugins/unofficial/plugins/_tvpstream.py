@@ -66,7 +66,8 @@ class tvpstream(Plugin):
         processHLSDL = subprocess.Popen(_cmd, stdout= DEVNULL, stderr= DEVNULL )
         if processHLSDL: 
             processPID = processHLSDL.pid
-            raise Exception('FileCache:%s:%s' % ( processPID, CacheFileName ))
+            log.info('FileCache:%s:%s' % ( processPID, CacheFileName ))
+            #raise Exception('FileCache:%s:%s' % ( processPID, CacheFileName ))
             return
             #import time
             #time.sleep(2)
