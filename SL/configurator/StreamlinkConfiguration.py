@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import #zmiana strategii ladowanie modulow w py2 z relative na absolute jak w py3
-from Plugins.Extensions.StreamlinkConfig.__init__ import mygettext as _ , readCFG
+from Plugins.Extensions.StreamlinkConfig.__init__ import mygettext as _ , readCFG , DBGlog
 from Plugins.Extensions.StreamlinkConfig.version import Version
 import os
 # GUI (Screens)
@@ -16,58 +16,6 @@ from Screens.Console import Console
 from Screens.MessageBox import MessageBox
 from Screens.Screen import Screen
 from Screens.Setup import SetupSummary
-
-config.plugins.streamlinksrv = ConfigSubsection()
-
-config.plugins.streamlinksrv.installBouquet = NoSave(ConfigNothing())
-config.plugins.streamlinksrv.removeBouquet = NoSave(ConfigNothing())
-config.plugins.streamlinksrv.generateBouquet = NoSave(ConfigNothing())
-config.plugins.streamlinksrv.One = NoSave(ConfigNothing())
-config.plugins.streamlinksrv.Two = NoSave(ConfigNothing())
-config.plugins.streamlinksrv.Three = NoSave(ConfigNothing())
-config.plugins.streamlinksrv.Four = NoSave(ConfigNothing())
-config.plugins.streamlinksrv.Five = NoSave(ConfigNothing())
-
-config.plugins.streamlinksrv.enabled = ConfigYesNo(default = False)
-config.plugins.streamlinksrv.logLevel = ConfigSelection(default = "info", choices = [("none", _("none")),
-                                                                                    ("info", _("info")),
-                                                                                    ("warning", _("warning")),
-                                                                                    ("error", _("error")),
-                                                                                    ("critical", _("critical")),
-                                                                                    ("debug", _("debug")),
-                                                                                    ("trace", _("trace")),
-                                                                              ])
-config.plugins.streamlinksrv.logToFile = ConfigEnableDisable(default = False)
-config.plugins.streamlinksrv.ClearLogFile = ConfigEnableDisable(default = True)
-config.plugins.streamlinksrv.logPath = ConfigSelection(default = "/tmp", choices = [("/home/root", "/home/root"), ("/tmp", "/tmp"), ("/hdd", "/hdd"), ])
-config.plugins.streamlinksrv.PortNumber = ConfigSelection(default = "8088", choices = [("8088", "8088"), ("88", "88"), ])
-config.plugins.streamlinksrv.bufferPath = ConfigText(default = "/tmp")
-config.plugins.streamlinksrv.EPGserver = ConfigEnableDisable(default = False)
-config.plugins.streamlinksrv.Recorder = ConfigEnableDisable(default = False)
-config.plugins.streamlinksrv.useCLI = ConfigSelection(default = "n", choices = [("n", "No"), ("a", "Yes, for all"), ("s", "Yes, only for defined sites only"),])
-#config.plugins.streamlinksrv.managePicons = ConfigEnableDisable(default = True)
-
-# pilot.wp.pl
-config.plugins.streamlinksrv.WPusername = ConfigText(readCFG('WPusername'), fixed_size = False)
-config.plugins.streamlinksrv.WPpassword = ConfigPassword(readCFG('WPpassword'), fixed_size = False)
-config.plugins.streamlinksrv.WPbouquet  = NoSave(ConfigNothing())
-config.plugins.streamlinksrv.WPlogin    = NoSave(ConfigNothing())
-config.plugins.streamlinksrv.WPpreferDASH = ConfigEnableDisable(default = False)
-config.plugins.streamlinksrv.WPdevice = ConfigSelection(default = "androidtv", choices = [("androidtv", "Android TV"), ("web", _("web client")), ])
-config.plugins.streamlinksrv.WPvideoDelay = ConfigSelection(default = "0", choices = [("0", _("don't delay")), ("0.25", _("by %s s." % '0.25')),
-                                                                                      ("0.5", _("by %s s." % '0.5')), ("0.75", _("by %s s." % '0.75')),
-                                                                                      ("1.0", _("by %s s." % '1.0')), ("5.0", _("by %s s." % '5.0'))])
-
-# remote E2
-config.plugins.streamlinksrv.remoteE2address = ConfigText(default = "192.168.1.8")
-config.plugins.streamlinksrv.remoteE2port = ConfigText(default = "8001")
-config.plugins.streamlinksrv.remoteE2username = ConfigText(default = "root")
-config.plugins.streamlinksrv.remoteE2password = ConfigPassword(default = "root")
-config.plugins.streamlinksrv.remoteE2zap = ConfigEnableDisable(default = False)
-config.plugins.streamlinksrv.remoteE2wakeup = ConfigEnableDisable(default = False)
-
-if os.path.exists("/tmp/StreamlinkConfig.log"):
-    os.remove("/tmp/StreamlinkConfig.log")
 
 #### streamlink config /etc/streamlink/config ####
 def getFFlist():
@@ -116,7 +64,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                             <widget name="key_blue"   position="500,150" zPosition="2" size="150,30" foregroundColor="blue" valign="center" halign="left" font="Regular;22" transparent="1" />
                           </screen>"""
     def buildList(self):
-        self.DBGlog('buildList >>> self.VisibleSection = %s' % self.VisibleSection )
+        DBGlog('buildList >>> self.VisibleSection = %s' % self.VisibleSection )
         self.DoBuildList.stop()
         Mlist = []
         # pilot.wp.pl
@@ -174,9 +122,13 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                     Mlist.append(getConfigListEntry(_("Save log file in:"), config.plugins.streamlinksrv.logPath))
                     Mlist.append(getConfigListEntry(_("Buffer path:"), config.plugins.streamlinksrv.bufferPath))
                     #Mlist.append(getConfigListEntry(_("useCLI:"), config.plugins.streamlinksrv.useCLI))
+                    Mlist.append(getConfigListEntry(" !!! EXPERIMENTAL OPTION(S) !!!"))
                     Mlist.append(getConfigListEntry(_("EPGimport mode:"), config.plugins.streamlinksrv.EPGserver))
                     Mlist.append(getConfigListEntry(_("Recorder mode:"), config.plugins.streamlinksrv.Recorder))
                     #Mlist.append(getConfigListEntry(_("link IPTV picons:"), config.plugins.streamlinksrv.managePicons))
+                    Mlist.append(getConfigListEntry(_("stop deamon on standby:"), config.plugins.streamlinksrv.StandbyMode))
+                    if config.plugins.streamlinksrv.StandbyMode.value == True:
+                        Mlist.append(getConfigListEntry(_("proxy (http://127.0.0.1:8818) for channel:"), config.plugins.streamlinksrv.streamlinkProxy1))
         
                 Mlist.append(getConfigListEntry(""))
                 Mlist.append(getConfigListEntry('\c00289496' + _("*** /etc/streamlink/config ***"), config.plugins.streamlinksrv.Five))
@@ -194,7 +146,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         return Mlist
 
     def __init__(self, session, args=None):
-        self.DBGlog('%s' % '__init__')
+        DBGlog('%s' % '__init__')
         self.VisibleSection = 0
         self.DoBuildList = eTimer()
         self.DoBuildList.callback.append(self.buildList)
@@ -262,12 +214,12 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
             self.close(None)
         
     def refreshBuildList(self, ret = False):
-        self.DBGlog('refreshBuildList >>>')
+        DBGlog('refreshBuildList >>>')
         self["config"].list = self.buildList()
         self.DoBuildList.start(50, True)
         
     def doNothing(self, ret = False):
-        self.DBGlog('doNothing >>>')
+        DBGlog('doNothing >>>')
         return
       
     def yellow(self):
@@ -296,14 +248,14 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         self.close(None)
         
     def prevConf(self):
-        self.DBGlog('prevConf >>> VisibleSection = %s' % self.VisibleSection)
+        DBGlog('prevConf >>> VisibleSection = %s' % self.VisibleSection)
         self.VisibleSection -= 1
         if self.VisibleSection < 1:
             self.VisibleSection = 5
         self.refreshBuildList()
         
     def nextConf(self):
-        self.DBGlog('nextConf >>> VisibleSection = %s' % self.VisibleSection)
+        DBGlog('nextConf >>> VisibleSection = %s' % self.VisibleSection)
         self.VisibleSection += 1
         if self.VisibleSection > 5:
             self.VisibleSection = 1
@@ -326,16 +278,16 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
             self.choicesList = [("gstreamer (root 4097)","4097"),("Hardware (root 1) wymagany do PIP","1"),(_("ServiceApp not installed!"), None)]
 
     def changedEntry(self):
-        self.DBGlog('%s' % 'changedEntry()')
+        DBGlog('%s' % 'changedEntry()')
         try:
             for x in self.onChangedEntry:
                 x()
         except Exception as e:
-            self.DBGlog('%s' % str(e))
+            DBGlog('%s' % str(e))
 
     def selectionChanged(self):
         if 0:
-            self.DBGlog('%s' % 'selectionChanged(%s)' % self["config"].getCurrent()[0])
+            DBGlog('%s' % 'selectionChanged(%s)' % self["config"].getCurrent()[0])
 
     def getCurrentEntry(self):
         return self["config"].getCurrent()[0]
@@ -347,11 +299,8 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
     def createSummary(self):
         return SetupSummary
 
-    def DBGlog(self, text):
-        open("/tmp/StreamlinkConfig.log", "a").write('%s\n' % str(text))
-        
     def Okbutton(self):
-        self.DBGlog('%s' % 'Okbutton')
+        DBGlog('%s' % 'Okbutton')
         try:
             self.doAction = None
             curIndex = self["config"].getCurrentIndex()
@@ -398,27 +347,27 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                         self.session.openWithCallback(self.doNothing ,Console, title = _('Credentials verification'), cmdlist = [ cmd ])
                         return
                 elif currItem == config.plugins.streamlinksrv.generateBouquet:
-                    self.DBGlog('currItem == config.plugins.streamlinksrv.generateBouquet')
+                    DBGlog('currItem == config.plugins.streamlinksrv.generateBouquet')
                     bouquetFileName = currInfo.split(': ')[1].strip()
                     self.doAction = ('generate_%s.py' % bouquetFileName, '/etc/enigma2/%s' % bouquetFileName, 'anonymous','nopassword')
                 elif currItem == config.plugins.streamlinksrv.removeBouquet: #removeBouquet
-                    self.DBGlog('currItem == config.plugins.streamlinksrv.removeBouquet')
+                    DBGlog('currItem == config.plugins.streamlinksrv.removeBouquet')
                     #wybrany bukiet
                     bouquetFileName = currInfo.split(': ')[1].strip()
                     self.doAction = ('removeBouquet.py', '/etc/enigma2/%s' % bouquetFileName, _("Bouquet_'%s' _removed_properly") % bouquetFileName)
                 elif currItem == config.plugins.streamlinksrv.installBouquet: #installBouquet
-                    self.DBGlog('currItem == config.plugins.streamlinksrv.installBouquet')
+                    DBGlog('currItem == config.plugins.streamlinksrv.installBouquet')
                     #wybrany bukiet
                     bouquetFileName = currInfo.split(': ')[1].strip()
                     self.cleanBouquets_tvradio()
                     self.doAction = ('installBouquet.py', bouquetFileName)
                     
                 ####
-                self.DBGlog('%s' % str(self.doAction))
+                DBGlog('%s' % str(self.doAction))
                 if not self.doAction is None:
                     cmd = self.doAction[0]
                     bfn = self.doAction[1]
-                    self.DBGlog('%s' % bfn)
+                    DBGlog('%s' % bfn)
                     if cmd == 'removeBouquet.py':
                         cmd = '/usr/bin/python /usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/plugins/%s' % ' '.join(self.doAction)
                         self.session.openWithCallback(self.retFromCMD ,Console, title = _('Removing bouquet...'), cmdlist = [ cmd ])
@@ -429,7 +378,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                         self.cmdTitle = _('Creating %s...') % bfn
                         self.session.openWithCallback(self.OkbuttonConfirmed, MessageBox, _("Do you want to create '%s' file?") % bfn, MessageBox.TYPE_YESNO, default = True)
         except Exception as e:
-            self.DBGlog('%s' % str(e))
+            DBGlog('%s' % str(e))
 
     def cleanBouquets_tvradio(self): #clean bouquets.tv from non existing files
         for TypBukietu in('/etc/enigma2/bouquets.tv','/etc/enigma2/bouquets.radio'):
@@ -445,13 +394,13 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
             
     def OkbuttonTextChangedConfirmed(self, ret ):
         if ret is None:
-            self.DBGlog("OkbuttonTextChangedConfirmed(ret ='%s')" % str(ret))
+            DBGlog("OkbuttonTextChangedConfirmed(ret ='%s')" % str(ret))
         else:
             try:
                 curIndex = self["config"].getCurrentIndex()
                 self["config"].list[curIndex][1].value = ret
             except Exception as e:
-                self.DBGlog('%s' % str(e))
+                DBGlog('%s' % str(e))
 
     def OkbuttonConfirmed(self, ret = False):
         if ret:
@@ -465,9 +414,9 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                                                                                                                 ret[1]
                                                                                                                )
         if self.doAction[0] == 'wpBouquet.py':
-            self.DBGlog('%s WPuser WPpass %s %s' % (self.doAction[0], config.plugins.streamlinksrv.PortNumber.value, ret[1]))
+            DBGlog('%s WPuser WPpass %s %s' % (self.doAction[0], config.plugins.streamlinksrv.PortNumber.value, ret[1]))
         else:
-            self.DBGlog('%s' % cmd)
+            DBGlog('%s' % cmd)
         self.session.openWithCallback(self.retFromCMD ,Console, title = self.cmdTitle, cmdlist = [ cmd ])
 
     def reloadBouquets(self):
@@ -475,7 +424,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         eDVBDB.getInstance().reloadBouquets()
         
     def retFromCMD(self, ret = False):
-        self.DBGlog('retFromCMD >>>')
+        DBGlog('retFromCMD >>>')
         self.cleanBouquets_tvradio()
         self.reloadBouquets()
         msg = _("Bouquets has been reloaded")
