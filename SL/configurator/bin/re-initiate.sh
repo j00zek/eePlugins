@@ -16,6 +16,8 @@ if [ -f /usr/sbin/streamlink ] && [ ! -L /usr/sbin/streamlink ];then
   echo
 else
   ln -sf $plugBinDir/bin/streamlinkCLI.py /usr/sbin/streamlink
+  ln -sf $plugBinDir/bin/streamlinkCLI.py $plugBinDir/bin/streamlinkProxy.py
+  ln -sf $plugBinDir/bin/streamlinkCLI.py $plugBinDir/bin/streamlinkRecorder.py
 fi
 if [ -f /usr/sbin/streamlinksrv ] && [ ! -L /usr/sbin/streamlinksrv ];then
   echo

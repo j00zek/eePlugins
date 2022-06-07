@@ -14,8 +14,9 @@ fi
 [ -e /etc/rc4.d/S50streamlinksrv ] && rm -f /etc/rc4.d/S50streamlinksrv
 
 if [ $pythonType != 'unknown' ];then
-  [ -e "/usr/lib/$pythonType/site-packages/streamlink" ] && find -L "/usr/lib/$pythonType/site-packages/streamlink" -name *.py -type l -exec  rm {} +
+  [ -e "/usr/lib/$pythonType/site-packages/streamlink" ] && find -L "/usr/lib/$pythonType/site-packages/streamlink" -name *.py* -type l -exec  rm {} +
   [ -e "/usr/lib/$pythonType/site-packages/emukodi" ] && rm -rf "/usr/lib/$pythonType/site-packages/emukodi"
   [ -e "/usr/lib/$pythonType/site-packages/streamlink_cli" ] && rm -rf "/usr/lib/$pythonType/site-packages/streamlink_cli"
 fi
+rm -rf /usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig
 exit 0

@@ -62,7 +62,7 @@ config.plugins.streamlinksrv.Recorder = ConfigEnableDisable(default = False)
 config.plugins.streamlinksrv.useCLI = ConfigSelection(default = "n", choices = [("n", "No"), ("a", "Yes, for all"), ("s", "Yes, only for defined sites only"),])
 #config.plugins.streamlinksrv.managePicons = ConfigEnableDisable(default = True)
 config.plugins.streamlinksrv.StandbyMode = ConfigEnableDisable(default = False)
-config.plugins.streamlinksrv.streamlinkProxy1 = ConfigText(default = "https://pilot.wp.pl/api/v1/channel/271", fixed_size = False)
+config.plugins.streamlinksrv.streamlinkProxy1 = ConfigText(default = readCFG('streamlinkProxy1'), fixed_size = False)
 
 # pilot.wp.pl
 config.plugins.streamlinksrv.WPusername = ConfigText(readCFG('WPusername'), fixed_size = False)

@@ -12,6 +12,6 @@ unzip -q ~/streamlink-master.zip
 #cp -rf ~/streamlink-master/src/streamlink_cli/* $myAbsPath/../../streamlink_cli/
 cp -rf ~/streamlink-master/src/streamlink_cli/* $myAbsPath/../plugins/streamlink_cli/
 if [ `grep -c '#j00zek_patch 2' < $myAbsPath/../plugins/streamlink_cli/main.py` -eq 0 ];then
- sed -i 's/\(.*\)\(log\.info."Stream ended".*\)/\1\2\n\1if args.player_external_http: sys.exit() #j00zek_patch 2/' $myAbsPath/../plugins/streamlink_cli/main.py
+ sed -i 's/\(.*\)\(log\.info."Stream ended".*\)/\1\2\n\1if args.player_external_http and "streamlink" in sys.argv[0]: sys.exit() #j00zek_patch 2/' $myAbsPath/../plugins/streamlink_cli/main.py
 fi
 rm -rf ~/streamlink-master*

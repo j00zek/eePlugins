@@ -1,5 +1,6 @@
 from __future__ import absolute_import #zmiana strategii ladowanie modulow w py2 z relative na absolute jak w py3
 from Components.config import config
+from Components.Console import Console
 from Plugins.Plugin import PluginDescriptor
 from . import mygettext as _ , DBGlog
 
@@ -9,17 +10,22 @@ if sys.version_info.major > 2: #PyMajorVersion
 
 import Screens.Standby
 
-
+def runCMD(myCMD):
+    with open("/proc/sys/vm/drop_caches", "w") as f: f.write("1\n")
+    Console().ePopen(myCMD) #safer than os.system and asynchronous
+    
 def SLconfigLeaveStandbyInitDaemon():
-    DBGlog('LeaveStandbyInitDaemon')
+    DBGlog('LeaveStandbyInitDaemon - streamlinksrv restart')
+    runCMD('streamlinksrv restart')
 
 def SLconfigStandbyCounterChanged(configElement):
-    DBGlog('standbyCounterChanged')
+    DBGlog('standbyCounterChanged - streamlinksrv stop')
+    runCMD('streamlinksrv stop')
     try:
         if SLconfigLeaveStandbyInitDaemon not in Screens.Standby.inStandby.onClose:
             Screens.Standby.inStandby.onClose.append(SLconfigLeaveStandbyInitDaemon)
     except Exception as e:
-        DBGlog('standbyCounterChanged %s' % str(e))
+        DBGlog('standbyCounterChanged EXCEPTION: %s' % str(e))
 
 # sessionstart
 def sessionstart(reason, session = None):
