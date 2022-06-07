@@ -11,16 +11,26 @@ if sys.version_info.major > 2: #PyMajorVersion
 import Screens.Standby
 
 def runCMD(myCMD):
+    DBGlog('CMD: %s' % myCMD)
     with open("/proc/sys/vm/drop_caches", "w") as f: f.write("1\n")
     Console().ePopen(myCMD) #safer than os.system and asynchronous
     
 def SLconfigLeaveStandbyInitDaemon():
-    DBGlog('LeaveStandbyInitDaemon - streamlinksrv restart')
+    DBGlog('LeaveStandbyInitDaemon() >>>')
     runCMD('streamlinksrv restart')
+    if config.plugins.streamlinksrv.streamlinkProxy1.value != '':
+        _cmd = []
+        _cmd.append('/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/bin/streamlinkProxy.py')
+        _cmd.append(' -l %s ' % config.plugins.streamlinksrv.logLevel.value)
+        _cmd.append('--player-external-http --player-external-http-port 8818')
+        _cmd.append(config.plugins.streamlinksrv.streamlinkProxy1.value)
+        _cmd.append('best')
+        runCMD(" ".join(_cmd))
+      
 
 def SLconfigStandbyCounterChanged(configElement):
-    DBGlog('standbyCounterChanged - streamlinksrv stop')
-    runCMD('streamlinksrv stop')
+    DBGlog('standbyCounterChanged() >>>')
+    runCMD('streamlinksrv stop;killall -9 streamlinkProxy.py')
     try:
         if SLconfigLeaveStandbyInitDaemon not in Screens.Standby.inStandby.onClose:
             Screens.Standby.inStandby.onClose.append(SLconfigLeaveStandbyInitDaemon)

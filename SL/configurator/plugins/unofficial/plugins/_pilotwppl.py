@@ -71,10 +71,12 @@ class PilotWPpl(Plugin):
             self.session.http.headers.update({'Cookie': cookies})
             response = _Response()
         if response == '403': #403 Client Error: Forbidden for url:
+            log.info('wperror-403')
             raise Exception('wperror-403')    
             return
         elif response == '422': #422 Client Error: Unprocessable Entity for url:
-            raise Exception('wperror-422')    
+            log.info('wperror-422')
+            #raise Exception('wperror-422')    
             return
 
         log.debug("Response: %s" % response)
