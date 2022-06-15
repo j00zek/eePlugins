@@ -2,7 +2,7 @@
 #######################################################################
 #
 #    Plugin for Enigma2
-#    Coded by j00zek (c)2020
+#    Coded by j00zek (c)2020-2022
 #
 #    Uszanuj moja prace i nie kasuj/zmieniaj informacji kto jest autorem konwertera
 #    Please respect my work and don't delete/change name of the converter author
@@ -19,7 +19,8 @@
 #     
 #######################################################################
  
-from __init__ import _
+from __future__ import absolute_import #zmiana strategii ladowanie modulow w py2 z relative na absolute jak w py3
+from . import _
 
 from Components.ActionMap import ActionMap
 from Components.config import config
@@ -31,7 +32,7 @@ from Components.Label import Label
 from enigma import eTimer,ePoint
 from Screens.Screen import Screen
 
-from daikin_aircon import *
+from Plugins.Extensions.MSNweather.daikin_aircon import *
 
 import os
 

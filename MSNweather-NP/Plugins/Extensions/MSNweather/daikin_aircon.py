@@ -5,7 +5,7 @@ import time
 import logging
 import urllib3
 
-import bridge
+from Plugins.Extensions.MSNweather.bridge import parse_basic_info, parse_sensor_info, format_control_info, parse_control_info
 
 
 DSCV_TXT = "DAIKIN_UDP/common/basic_info"
@@ -86,13 +86,13 @@ class Aircon():
         return self.send_request('GET', '/common/basic_info')
 
     def get_basic_info(self):
-        return bridge.parse_basic_info(self.get_raw_basic_info())
+        return parse_basic_info(self.get_raw_basic_info())
 
     def get_raw_sensor_info(self):
         return self.send_request('get', '/aircon/get_sensor_info')
 
     def get_sensor_info(self):
-        return bridge.parse_sensor_info(self.get_raw_sensor_info())
+        return parse_sensor_info(self.get_raw_sensor_info())
 
     def set_raw_control_info(self, params, update=True):
         if update:
@@ -105,13 +105,13 @@ class Aircon():
         self.send_request('GET', '/aircon/set_control_info', fields=params)
 
     def set_control_info(self, params, update=True):
-        return self.set_raw_control_info(bridge.format_control_info(params), update)
+        return self.set_raw_control_info(format_control_info(params), update)
 
     def get_raw_control_info(self):
         return self.send_request('GET', '/aircon/get_control_info')
 
     def get_control_info(self):
-        return bridge.parse_control_info(self.get_raw_control_info())
+        return parse_control_info(self.get_raw_control_info())
 
     def send_request(self, method, url, fields=None, headers=None, **urlopen_kw):
         '''Send request to air conditioner
