@@ -1,0 +1,30 @@
+  <screen name="SkinSelector" position="462,128" size="1000,820" title=" " flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="-1,0" zPosition="-10" size="1000,820" pixmap="BlackHarmony/bg_design/small.png"/>
+    <widget source="global.CurrentTime" render="Label" position="45,30" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="130,30" size="290,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+    <widget name="preview" position="75,179" size="280,210" scale="aspect" alphatest="blend"/>
+    <widget source="skins" render="Listbox" position="372,150" size="520,480" itemHeight="35" font="Roboto_HD; 27" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_520_35.png" backgroundColor="black" transparent="1">
+      <convert type="TemplatedMultiContent">
+          {"template": [
+                 MultiContentEntryText(pos = (10,0), size = (540,40), font = 0, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 1),
+                 MultiContentEntryText(pos = (560,0), size = (540,40), font = 0, flags = RT_HALIGN_RIGHT | RT_VALIGN_CENTER, text = 2)
+               ],
+                 "fonts": [gFont("Roboto_HD",24)],
+                 "itemHeight":35
+          }
+      </convert>
+    </widget>
+    <widget source="description" render="Label" position="76,650" size="845,32" font="Roboto_HD; 26" halign="center" backgroundColor="transpBlack" transparent="1" foregroundColor="light_yellow"/>
+    <eLabel text="Choose your Skin" position="460,30" size="480,30" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1"/>
+    <widget name="Preview" position="75,327" size="280,210" scale="aspect" alphatest="blend"/>
+    <widget name="SkinList" position="392,150" size="520,480" itemHeight="35" font="Roboto_HD; 27" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_520_35.png" backgroundColor="black" transparent="1"/>
+    <widget source="introduction" render="Label" position="75,676" size="845,32" font="Roboto_HD; 26" halign="center" backgroundColor="transpBlack" transparent="1" foregroundColor="light_yellow"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="47,760" size="35,27" alphatest="blend"/>
+    <widget source="key_red" render="Label" position="87,759" size="180,27" zPosition="1" font="Roboto_HD; 24" halign="left" foregroundColor="white" backgroundColor="dark_grey" transparent="1"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="291,761" size="35,27" alphatest="blend"/>
+    <widget source="key_green" render="Label" position="339,760" size="180,27" zPosition="1" font="Roboto_HD; 24" halign="left" foregroundColor="white" backgroundColor="dark_grey" transparent="1"/>
+  </screen>

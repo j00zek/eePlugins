@@ -8293,7 +8293,7 @@ self.instance.resize(eSize(*wsize))
 # center window
 newwidth = wsize[0]
 newheight = wsize[1]
-self.instance.move(ePoint(orgWindowPos.x() , orgWindowPos.y() + (windowHeight - newWindowHeight)/2 ))
+self.instance.move(ePoint(orgWindowPos.x() , orgWindowPos.y() + int((windowHeight - newWindowHeight)/2) ))
     </applet>
 </screen>
 <!-- HistoryZapDefaultSkin screen by endriu-->

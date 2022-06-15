@@ -9135,7 +9135,7 @@ self.instance.resize(eSize(*wsize))
 
 # center window
 newwidth = wsize[0]
-self.instance.move(ePoint(orgpos.x() + (orgwidth - newwidth)/2,orgpos.y()))
+self.instance.move(ePoint(orgpos.x() + int((orgwidth - newwidth)/2),orgpos.y()))
 		</applet>
   </screen>
      <!-- EPGvertical -->

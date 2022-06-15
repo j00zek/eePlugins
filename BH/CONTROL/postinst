@@ -44,7 +44,11 @@ if [ -e /usr/lib/enigma2/python/Plugins/SystemPlugins/VTIPanel ];then
 elif [ -e /usr/lib/enigma2/python/Blackhole ];then
   systemType='BlackHole'
 elif [ -e /etc/init.d/start_pkt.sh ];then
-  systemType='PKT'
+  if [ -e /etc/image-version ] && [ `egrep -c 'distro=zukonMOD|imageversion=9' < /etc/image-version` -gt 1 ];then
+    systemType='zukonMOD'
+  else
+    systemType='PKT'
+  fi
 elif [ "`cat /etc/opkg/all-feed.conf 2> /dev/null|grep -c 'openbh'`" -gt 0 ];then
   systemType='openBlackHole'
 elif [ "`cat /etc/opkg/all-feed.conf 2> /dev/null|grep -c 'openpli-7'`" -gt 0 ];then
@@ -106,6 +110,11 @@ elif [ "$systemType" == 'BlackHole' ];then
 elif [ "$systemType" == 'PKT' ];then
   cat /usr/share/enigma2/BlackHarmony/TemplateXMLs/image-openATV_specific.xml|grep -v 'skin>' >> $BHfolder/skin.xml
   cat /usr/share/enigma2/BlackHarmony/TemplateXMLs/image-PKT_specific.xml|grep -v 'skin>' >> $BHfolder/skin.xml
+
+elif [ "$systemType" == 'zukonMOD' ];then
+  cat /usr/share/enigma2/BlackHarmony/TemplateXMLs/image-openATV_specific.xml|grep -v 'skin>' >> $BHfolder/skin.xml
+  cat /usr/share/enigma2/BlackHarmony/TemplateXMLs/image-PKT_specific.xml|grep -v 'skin>' >> $BHfolder/skin.xml
+  cat /usr/share/enigma2/BlackHarmony/TemplateXMLs/image-PKT_zukonMOD_specific.xml|grep -v 'skin>' >> $BHfolder/skin.xml
 
 elif [ "$systemType" == 'openPLI-7' ];then
   cat /usr/share/enigma2/BlackHarmony/TemplateXMLs/image-openATV_specific.xml|grep -v 'skin>' >> $BHfolder/skin.xml
