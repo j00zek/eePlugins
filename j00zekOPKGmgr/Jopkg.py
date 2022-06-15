@@ -285,7 +285,7 @@ class Jopkg(Screen):
             
             #>>>>> Usuwanie pakietów...
             if self.keyGreenAction.find("remove") > 0:
-                tekst=_("Are you sure, you want delete % package?") % current[0]
+                tekst=_("Are you sure, you want delete %s package?") % current[0]
 
             #>>>>> przy za malej ilosci pamieci pozwalamy jedynie na remove...
             elif self.BlockedInstall == True:
