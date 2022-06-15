@@ -1,0 +1,4 @@
+#!/bin/sh
+[ -e /usr/lib/enigma2/python/Plugins/Extensions/scripts ] && rm -fr /usr/lib/enigma2/python/Plugins/Extensions/scripts
+[ -e /usr/lib/enigma2/python/Plugins/Extensions/version.pyc ] && rm -f /usr/lib/enigma2/python/Plugins/Extensions/version.pyc
+exit 0

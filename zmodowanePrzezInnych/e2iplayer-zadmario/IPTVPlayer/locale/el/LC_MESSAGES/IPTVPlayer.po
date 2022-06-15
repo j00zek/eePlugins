@@ -1,0 +1,1662 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: IPTVPlayer\n"
+"POT-Creation-Date: 2013-12-15 12:19+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: MCelliot_g <mcelliot_g@hotmail.com>\n"
+"Language-Team: IPTVPlayer\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.7\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+"X-Poedit-SearchPath-0: ../plugin\n"
+
+msgid "Watch video materials from IPTV services"
+msgstr "Παρακολούθηση βίντεο από υπηρεσίες IPTV"
+
+msgid "Configure IPTV Player"
+msgstr "Ρυθμίσεις IPTV Player"
+
+msgid "Enter pin"
+msgstr "Εισαγωγή pin"
+
+msgid "Pin incorrect!"
+msgstr "Λάθος pin!"
+
+msgid "Exit"
+msgstr "Έξοδος"
+
+msgid "Player > Recorder"
+msgstr "Αναπ/γή > Εγγραφή"
+
+msgid "Recorder > Player"
+msgstr "Εγγραφή > Αναπ/γή"
+
+msgid "Refresh"
+msgstr "Ανανέωση"
+
+msgid "More"
+msgstr "Περισσότερα"
+
+msgid "Loading..."
+msgstr "Φόρτωση..."
+
+msgid "Configure host"
+msgstr "Ρυθμίσεις διακομιστή"
+
+msgid "Info"
+msgstr "Πληροφορίες"
+
+msgid "IPTV download manager"
+msgstr "Διαχείριση λήψεων IPTV "
+
+msgid "Select option"
+msgstr "Δώστε μια επιλογή"
+
+msgid ""
+"Autors: samsamsam, zdzislaw22, mamrot, MarcinO, skalita, huball, matzg, "
+"tomashj291"
+msgstr ""
+"Δημιουργοί: samsamsam, zdzislaw22, mamrot, MarcinO, skalita, huball, matzg, "
+"tomashj291 "
+
+msgid "Operation aborted!"
+msgstr "Ματαίωση λειτουργίας!"
+
+msgid "Configuration"
+msgstr "Παραμετροποίηση"
+
+msgid "Following host are broken or additional python modules are needed."
+msgstr ""
+"Ο παρακάτω διακομιστής δεν λειτουργεί ή απαιτούνται πρόσθετα αρχεία python."
+
+msgid "Update"
+msgstr "Ενημέρωση"
+
+msgid "JSON module not available!"
+msgstr "Το JSON δεν είναι διαθέσιμο!"
+
+msgid "Select service"
+msgstr "Επιλογή υπηρεσίας"
+
+msgid "There is no free space on the drive [%s]."
+msgstr "Δεν υπάρχει ελεύθερος χώρος στο δίσκο [%s]."
+
+msgid "New icons will not be available."
+msgstr "Τα νέα εικονίδια δεν θα είναι διαθέσιμα."
+
+msgid "No valid links available."
+msgstr "Μη διαθέσιμοι έγκυροι σύνδεσμοι."
+
+msgid "Select link"
+msgstr "Επιλογή συνδέσμου"
+
+msgid "Format 'wmv' blocked in configuration."
+msgstr "Το φορμά 'wmv' έχει μπλοκαριστεί στις ρυθμίσεις."
+
+msgid "Unknown protocol [%s]"
+msgstr "Άγνωστο πρωτόκολλο [%s]"
+
+msgid "File can not be downloaded. Protocol [%s] is unsupported"
+msgstr "Αδυναμία λήψης του αρχείου. Το πρωτόκολλο [%s] δεν υποστηρίζεται."
+
+msgid "File [%s] was added to downloading queue."
+msgstr "Το αρχείο [%s] προστέθηκε στη λίστα λήψεων."
+
+msgid "Search results"
+msgstr "Αποτελέσματα αναζήτησης"
+
+msgid "Refreshing"
+msgstr "Ανανέωση"
+
+msgid "Downloading"
+msgstr "Λήψη"
+
+msgid "Loading"
+msgstr "Φόρτωση"
+
+msgid "Search type"
+msgstr "Τύπος αναζήτησης"
+
+msgid "Your search entry"
+msgstr "Όροι αναζήτησης"
+
+msgid ""
+"No item to display. \n"
+"Press OK to refresh.\n"
+msgstr ""
+"Κανένα στοιχείο προς εμφάνιση.\n"
+"Πιέστε ΟΚ για ανανέωση.\n"
+
+msgid ""
+"Downloading cannot be started.\n"
+" Invalid URI[%s]."
+msgstr ""
+"Αδυναμία εκκίνησης λήψης.\n"
+"Μη έγκυρη URL ('%s')."
+
+msgid ""
+"Downloading cannot be started.\n"
+" Downloader [%s] not working properly.\n"
+" Status[%s]"
+msgstr ""
+"Αδυναμία εκκίνησης λήψης.\n"
+"Ο μεταφορτωτής [%s] δεν δουλεύει σωστά.\n"
+"Κατάσταση [%s]"
+
+msgid "Downloading file [%s] problem."
+msgstr "Πρόβλημα λήψης του αρχείου [%s]."
+
+msgid "Input"
+msgstr "Εισαγωγή"
+
+msgid "Enter name"
+msgstr "Εισαγωγή ονόματος"
+
+msgid "Invalid name."
+msgstr "Μη έγκυρο όνομα."
+
+msgid "unknown"
+msgstr "άγνωστο"
+
+msgid "after closing"
+msgstr "μετά το κλείσιμο"
+
+msgid "after day"
+msgstr "μετά από μία ημέρα"
+
+msgid "after three days"
+msgstr "μετά από τρεις ημέρες"
+
+msgid "after a week"
+msgstr "μετά από μία εβδομάδα"
+
+msgid "internal"
+msgstr "εσωτερικός"
+
+msgid "standard"
+msgstr "στάνταρ"
+
+msgid "external eplayer3"
+msgstr "Εξωτερικός eplayer3"
+
+msgid "external gstplayer"
+msgstr "εξωτερικός gstplayer"
+
+msgid "no"
+msgstr "όχι"
+
+msgid "yes, to console"
+msgstr "ναι, στην κονσόλα"
+
+msgid "yes, to file /hdd/iptv.dbg"
+msgstr "ναι, στο αρχείο /hdd/iptv.dbg"
+
+msgid "with source code"
+msgstr "με κώδικα πηγής"
+
+msgid "precompiled"
+msgstr "προσυντεθειμένο"
+
+msgid "all types"
+msgstr "όλοι οι τύποι"
+
+msgid "Show all version in the update menu"
+msgstr "Εμφάνιση όλων των εκδόσεων στο μενού ενημέρωσης"
+
+msgid "Disable host protection (error == GS)"
+msgstr "Απενεργοποίηση προστασίας διακομιστή (σφάλμα == GS)?"
+
+msgid "Platform"
+msgstr "Πλατφόρμα"
+
+msgid "Services configuration"
+msgstr "Ρυθμίσεις υπηρεσιών"
+
+msgid "Pin protection for plugin"
+msgstr "Προστασία με pin για το πρόσθετο"
+
+msgid "Pin protection for configuration"
+msgstr "Προστασία με pin για τις ρυθμίσεις"
+
+msgid "Set pin code"
+msgstr "Ορισμός κωδικού pin"
+
+msgid "Skin"
+msgstr "Θέμα"
+
+msgid "Display thumbnails"
+msgstr "Εμφάνιση μικρογραφιών"
+
+msgid "    Allowed formats of thumbnails"
+msgstr "    Επιτρεπόμενα φορμά μικρογραφιών"
+
+msgid "all"
+msgstr "όλα"
+
+msgid "Subtitle box position"
+msgstr "Θέση πλαισίου υποτίτλων"
+
+msgid "Subtitle box height"
+msgstr "Ύψος πλαισίου υποτίτλων"
+
+msgid "Subtitle vertical alignment"
+msgstr "Κάθετη στοίχιση υποτίτλων"
+
+msgid "bottom"
+msgstr "κάτω"
+
+msgid "bestfit"
+msgstr "προσαρμογή"
+
+msgid "nonlinear"
+msgstr "μη γραμμικό"
+
+msgid "From E2 settings"
+msgstr "Από τις ρυθμίσεις του Ε2"
+
+msgid "lime"
+msgstr "λεμονί"
+
+msgid "olive"
+msgstr "λαδί"
+
+msgid "navy"
+msgstr "βαθυγάλαζο"
+
+msgid "teal"
+msgstr "γαλαζοπράσινο"
+
+msgid "aqua"
+msgstr "θαλασσί"
+
+msgid "silver"
+msgstr "ασημί"
+
+msgid "gray"
+msgstr "γκρι"
+
+msgid "maroon"
+msgstr "βαθυκόκκινο"
+
+msgid "purple"
+msgstr "μωβ"
+
+msgid "fuchsia"
+msgstr "φουξ"
+
+msgid "    Remove thumbnails"
+msgstr "    Αφαίρεση μικρογραφιών"
+
+msgid "Graphic services selector"
+msgstr "Επιλογέας γραφικών υπηρεσιών"
+
+msgid "    Service icon size"
+msgstr "    Μέγεθος εικονιδίου υπηρεσίας"
+
+msgid "    Number of rows"
+msgstr "    Αριθμός γραμμών"
+
+msgid "    Number of columns"
+msgstr "    Αριθμός στηλών"
+
+msgid "Proxy server url"
+msgstr "Διεύθυνση διακομιστή proxy"
+
+msgid "Folder for cache data"
+msgstr "Φάκελος για δεδομένα cache"
+
+msgid "Folder for temp data"
+msgstr "Φάκελος προσωρινής αποθήκευσης"
+
+msgid "[HTTP] buffering"
+msgstr "[HTTP] προφόρτωση"
+
+msgid "[HLS/M3U8] buffering"
+msgstr "[HLS/M3U8] προφόρτωση"
+
+msgid "[RTMP] buffering (rtmpdump required)"
+msgstr "[RTMP] προφόρτωση (απαιτείται το rtmpdump)"
+
+msgid "    Buffer size [MB]"
+msgstr "    Μέγεθος προφόρτωσης [MB]"
+
+msgid "Buffer path"
+msgstr "Διαδρομή προφόρτωσης"
+
+msgid "Records path"
+msgstr "Διαδρομή εγγραφών"
+
+msgid "Start download manager per default"
+msgstr "Εκκίνηση του μεταφορτωτή από προεπιλογή"
+
+msgid "Show download manager after adding new item"
+msgstr "Εμφάνιση του μεταφορτωτή μετά την προσθήκη νέου στοιχείου"
+
+msgid "Number of downloaded files simultaneously"
+msgstr "Αριθμός ταυτόχρονης λήψης αρχείων"
+
+msgid "login"
+msgstr "είσοδος"
+
+msgid "password"
+msgstr "κωδικός"
+
+msgid "First movie player in buffering mode"
+msgstr "Πρώτη μεταφορά του player σε λειτουργία προφόρτωσης"
+
+msgid "Second movie player in buffering mode"
+msgstr "Δεύτερη μεταφορά του player σε λειτουργία προφόρτωσης"
+
+msgid "Movie player without buffering mode"
+msgstr "Player ohne Puffermodus"
+
+msgid "Movie player"
+msgstr "Αναπαραγωγή ταινιών"
+
+msgid "Block wmv files"
+msgstr "Μπλοκάρισμα αρχείων wmv"
+
+msgid "Show IPTVPlayer in extension list"
+msgstr "Εμφάνιση του IPTVPlayer στη λίστα επεκτάσεων"
+
+msgid "Show IPTVPlayer in main menu"
+msgstr "Εμφάνιση του IPTVPlayer στο κεντρικό μενού"
+
+msgid "Show update icon in service selection menu"
+msgstr "Εμφάνιση εικονιδίου ενημέρωσης στο μενού επιλογής υπηρεσιών"
+
+msgid "Debug logs"
+msgstr "Καταγραφή αποσφαλμάτωσης"
+
+msgid "Allow downgrade"
+msgstr "Να επιτρέπεται η υποβάθμιση"
+
+msgid "Update packet type"
+msgstr "Τύπος πακέτου ενημέρωσης"
+
+msgid "Enter old pin"
+msgstr "Εισαγωγή παλιού pin"
+
+msgid "Enter new pin"
+msgstr "Εισαγωγή νέου pin"
+
+msgid "Confirm new pin"
+msgstr "Επιβεβαίωση νέου pin"
+
+msgid "Pin has been changed."
+msgstr "To pin άλλαξε."
+
+msgid "Confirmation error."
+msgstr "Σφάλμα επιβεβαίωσης."
+
+msgid "Configuration for service[%s]"
+msgstr "Ρυθμίσεις για την υπηρεσία [%s]"
+
+msgid "[%s] - configuration"
+msgstr "[%s] - παραμετροποίηση"
+
+msgid "IPTVPlayer services configuration"
+msgstr "Ρυθμίσεις υπηρεσιών IPTVPlayer"
+
+msgid "Service [%s] has no additional settings."
+msgstr "Η υπηρεσία [%s] δεν διαθέτει πρόσθετες ρυθμίσεις."
+
+msgid "PENDING"
+msgstr "ΑΝΑΜΟΝΗ"
+
+msgid "DOWNLOADING"
+msgstr "ΛΗΨΗ"
+
+msgid "DOWNLOADED"
+msgstr "ΕΓΙΝΕ ΛΗΨΗ"
+
+msgid "ABORTED"
+msgstr "ΜΑΤΑΙΩΣΗ"
+
+msgid "DOWNLOAD ERROR"
+msgstr "ΣΦΑΛΜΑ ΛΗΨΗΣ"
+
+msgid "Stop"
+msgstr "Διακοπή"
+
+msgid "Start"
+msgstr "Εκκίνηση"
+
+msgid "STARTED"
+msgstr "ΕΚΚΙΝΗΘΗΚΕ"
+
+msgid "STOPPED"
+msgstr "ΔΙΑΚΟΠΗΚΕ"
+
+msgid "Manager status: "
+msgstr "Κατάσταση:"
+
+msgid "Play with [%s] player"
+msgstr "Αναπαραγωγή με το [%s]"
+
+msgid "Play file"
+msgstr "Αναπαραγωγή αρχείου"
+
+msgid "Continue downloading"
+msgstr "Συνέχιση λήψης"
+
+msgid "Download again"
+msgstr "Λήψη ξανά"
+
+msgid "Stop downloading"
+msgstr "Διακοπή λήψης"
+
+msgid "Remove file"
+msgstr "Αφαίρεση αρχείου"
+
+msgid "Remove item"
+msgstr "Αφαίρεση στοιχείου"
+
+msgid "Promote item"
+msgstr "Προώθηση στοιχείου"
+
+msgid "Select action"
+msgstr "Επιλογή ενέργειας"
+
+msgid "> Press OK to start <"
+msgstr ">Πιέστε OK για εκκίνηση <"
+
+msgid "No steps to execute."
+msgstr "Κανένα βήμα προς εκτέλεση."
+
+msgid "Step [%s] cannot be aborted. Please wait."
+msgstr "Το βήμα [%s] δεν μπορεί να ματαιωθεί. Παρακαλώ περιμένετε."
+
+msgid "Aborted"
+msgstr "Ματαίωση"
+
+msgid "The problem with creating a directory [%s]."
+msgstr "Πρόβλημα δημιουργίας φακέλου [%s]."
+
+msgid "Problem with the directory [%s]."
+msgstr "Πρόβλημα με το φάκελο [%s]."
+
+msgid ""
+"There is no space in the directory [%s]\n"
+" Available[%s], required [%s]."
+msgstr ""
+"Δεν υπάρχει χώρος στο φάκελο [%s]\n"
+"Διαθέσιμα [%s], απαιτούνται [%s]."
+
+msgid "IPTVPlayer - update"
+msgstr "IPTVPlayer - Ενημέρωση"
+
+msgid ""
+"Wrong version. \n"
+" downloaded version [%s] is different from the requested [%s]."
+msgstr ""
+"Λάθος έκδοση.\n"
+" η κατεβασμένη έκδοση [%s] είναι διαφορετική από τη ζητούμενη [%s]."
+
+msgid "File [%s] reading failed."
+msgstr "Αποτυχία ανάγνωσης του αρχείου [%s]."
+
+msgid "Please remember that you use the IPTVPlayer plugin at your own risk."
+msgstr ""
+"Παρακαλώ έχετε υπόψιν σας ότι χρησιμοποιείτε το IPTVPlayer με το δικό σας "
+"ρίσκο."
+
+msgid ""
+"Restart GUI failed. \n"
+"Please restart STB manually."
+msgstr ""
+"Η επανεκκίνηση του Enigma2 απέτυχε.\n"
+"Παρακαλώ επανεκκινήστε το δέκτη χειροκίνητα."
+
+msgid ""
+"E2 GUI restart after IPTVPlayer update to version[%s].\n"
+"\n"
+msgstr ""
+"Enigma2 Neustart nuch Update\n"
+"Von IPTV-Player auf Version [%s]\n"
+
+msgid "Currently you have version [%s]."
+msgstr "Τρέχουσα έκδοση [%s]."
+
+msgid "Update completed successfully. For the moment, the system will reboot."
+msgstr ""
+"Η ενημέρωση ολοκληρώθηκε με επιτυχία. Προς το παρόν, το σύστημα θα "
+"επανεκκινηθεί."
+
+msgid ""
+"Update failed.\n"
+"Check the status by selecting interesting and pressing OK."
+msgstr ""
+"Η ενημέρωση απέτυχε.\n"
+"Ελέγξτε την κατάσταση επιλέγοντας ενδιαφέρον και πιέζοντας το ΟΚ."
+
+msgid "Obtaining server list."
+msgstr "Λήψη λίστας διακομιστών."
+
+msgid "Downloading an update packet."
+msgstr "Λήψη πακέτου ενημέρωσης."
+
+msgid "Extracting an update packet."
+msgstr "Εξαγωγή πακέτου αναβάθμισης."
+
+msgid "Executing user scripts."
+msgstr "Εκτέλεση script χρήστη."
+
+msgid "Checking version."
+msgstr "Έλεγχος έκδοσης."
+
+msgid "Confirmation of installation."
+msgstr "Επικύρωση εγκατάστασης."
+
+msgid "Removing the old version."
+msgstr "Αφαίρεση παλιάς έκδοσης."
+
+msgid "Installing new version."
+msgstr "Εγκατάσταση νέας έκδοσης."
+
+msgid "Pending"
+msgstr "Σε αναμονή"
+
+msgid "No user scripts."
+msgstr "Χωρίς script χρήστη."
+
+msgid "Problem with user script execution [%s]."
+msgstr "Πρόβλημα στην εκτέλεση του script χρήστη [%s]."
+
+msgid "Archive"
+msgstr "Αρχείο"
+
+msgid "IPTV Player download manager"
+msgstr "Διαχείριση λήψεων IPTV"
+
+msgid ""
+"Version [%s] is ready for installation. After installation, restart of the "
+"system will be done.\n"
+"Do you want to continue?"
+msgstr ""
+"Η έκδοση [%s] είναι έτοιμη για εγκατάσταση. Μετά την εγκατάσταση, θα γίνει "
+"επανεκκίνηση του συστήματος.\n"
+"Θέλετε να συνεχίσετε;"
+
+msgid "Installation has been confirmed."
+msgstr "Η εγκατάσταση επικυρώθηκε."
+
+msgid "Installation has been aborted."
+msgstr "Η εγκατάσταση ματαιώθηκε."
+
+msgid "Problem with downloading the server list from [%s]."
+msgstr "Πρόβλημα στη λήψη της λίστας διακομιστών από το [%s]."
+
+msgid "Problem with downloading the server list."
+msgstr "Πρόβλημα στη λήψη της λίστας διακομιστών."
+
+msgid "Select update server"
+msgstr "Επιλογή διακομιστή ενημέρωσης."
+
+msgid "There is no update for the current configuration."
+msgstr "Δεν υπάρχει ενημέρωση για την τρέχουσα παραμετροποίηση."
+
+msgid "Update not available."
+msgstr "Μη διαθέσιμη ενημέρωση."
+
+msgid "Selected version [%s]."
+msgstr "Επιλεγμένη έκδοση [%s]."
+
+msgid "Update server not selected."
+msgstr "Δεν έχει επιλεγεί διακομιστής ενημέρωσης."
+
+msgid ""
+"Problem with downloading the update packet:\n"
+"[%s]."
+msgstr ""
+"Πρόβλημα στη λήψη του πακέτου ενημέρωσης:\n"
+"[%s]."
+
+msgid "Update packet was downloaded successfully."
+msgstr "Επιτυχής λήψη του πακέτου ενημέρωσης."
+
+msgid ""
+"Problem with extracting the archive. Return code [%d]\n"
+"%s."
+msgstr ""
+"Πρόβλημα στην εξαγωγή του αρχείου. Κώδικας σφάλματος [%d]\n"
+"%s."
+
+msgid "Unpacking the archive completed successfully."
+msgstr "Η αποσυμπίεση του αρχείου ολοκληρώθηκε με επιτυχία."
+
+msgid "Completed."
+msgstr "Ολοκληρώθηκε."
+
+msgid ""
+"Problem with the removal of the previous version.\n"
+"Status[%d], outData[%s]."
+msgstr ""
+"Πρόβλημα με την αφαίρεση της προηγούμενης έκδοσης.\n"
+"Κατάσταση [%d], δεδομένα εξόδου [%s]."
+
+msgid ""
+"Problem with installing the new version.\n"
+"Status[%d], outData[%s]"
+msgstr ""
+"Πρόβλημα με την εγκατάσταση της νέας έκδοσης.\n"
+"Κατάσταση [%d], δεδομένα εξόδου [%s]."
+
+msgid "Next page"
+msgstr "Επόμενη σελίδα"
+
+msgid "Video"
+msgstr "Βίντεο"
+
+msgid "Channel"
+msgstr "Κανάλι"
+
+msgid "Playlist"
+msgstr "Λίστα αναπαραγωγής"
+
+msgid "Movie"
+msgstr "Ταινία"
+
+msgid "Live"
+msgstr "Ζωντανά"
+
+msgid "Search"
+msgstr "Αναζήτηση"
+
+msgid "Search history"
+msgstr "Ιστορικό αναζήτησης"
+
+msgid "User links"
+msgstr "Σύνδεσμοι χρήστη"
+
+msgid "User links stored in the ytlist.txt file."
+msgstr "Οι σύνδεσμοι χρήστη αποθηκεύτηκαν στο αρχείο ytlist.txt."
+
+msgid "History of searched phrases."
+msgstr "Ιστορικό όρων αναζήτησης."
+
+msgid "Search youtube materials"
+msgstr "Αναζήτηση στο youtube"
+
+msgid "Sort by:"
+msgstr "Ταξινόμηση κατά:"
+
+msgid "Path to ytlist.txt, urllist.txt"
+msgstr "Διαδρομή για τα ytlist.txt, urllist.txt"
+
+msgid "Video format:"
+msgstr "Φορμά εικόνας:"
+
+msgid "Default video quality:"
+msgstr "Προεπιλεγμένη ποιότητα βίντεο:"
+
+msgid "Use default video quality:"
+msgstr "Χρήση προεπιλεγμένης ποιότητας βίντεο:"
+
+msgid "the worst"
+msgstr "χειρότερη"
+
+msgid "the best"
+msgstr "βέλτιστη"
+
+msgid "Relevance"
+msgstr "Συνάφεια"
+
+msgid "Upload date"
+msgstr "Ημερομηνία ανεβάσματος"
+
+msgid "View count"
+msgstr "Αριθμός προβολών"
+
+msgid "Rating"
+msgstr "Αξιολόγηση"
+
+msgid "--All--"
+msgstr "--Όλα--"
+
+msgid "--Other--"
+msgstr "--Άλλα-"
+
+msgid "Polish proxy server url"
+msgstr "Διεύθυνση πολωνικού διακομιστή proxy"
+
+msgid "German proxy server url"
+msgstr "Διεύθυνση γερμανικού διακομιστή proxy"
+
+msgid "Save"
+msgstr "Αποθήκευση"
+
+msgid "Cancel"
+msgstr "Ακύρωση"
+
+msgid "New dir"
+msgstr "Νέος φάκελος"
+
+msgid "Apply"
+msgstr "Εφαρμογή"
+
+msgid "Use German proxy for link request"
+msgstr "Χρήση γερμανικού proxy για τις αιτήσεις συνδέσμων"
+
+msgid "Sort search result by"
+msgstr "Ταξινόμηση αποτελεσμάτων κατά"
+
+msgid "Alphabetically"
+msgstr "Αλφαβητικά"
+
+msgid "Songs"
+msgstr "Τραγούδια"
+
+msgid "Playlists"
+msgstr "Λίστες αναπαραγωγής"
+
+msgid "Albums"
+msgstr "Άλμπουμ"
+
+msgid "Sin in to"
+msgstr "Εγγραφή σε"
+
+msgid "    Username or Email"
+msgstr "    Όνομα χρήστη ή Email"
+
+msgid "    Password"
+msgstr "    Κωδικός"
+
+msgid "User [%s] logon failure."
+msgstr "Η είσοδος του χρήστη [%s] απέτυχε."
+
+msgid "Last error"
+msgstr "Τελευταίο σφάλμα"
+
+msgid "Unknown"
+msgstr "Άγνωστο"
+
+msgid "mobile"
+msgstr "κινητό"
+
+msgid "Type: "
+msgstr "Τύπος:"
+
+msgid "Popular"
+msgstr "Δημοφιλή"
+
+msgid "Daily"
+msgstr "Καθημερινά"
+
+msgid "Weekly"
+msgstr "Εβδομαδιαία"
+
+msgid "Monthly"
+msgstr "Μηνιαία"
+
+msgid "Broadcasts"
+msgstr "Εκπομπές"
+
+msgid "Stations"
+msgstr "Σταθμοί"
+
+msgid "Profile"
+msgstr "Προφίλ"
+
+msgid "Collection"
+msgstr "Συλλογή"
+
+msgid "Favorites"
+msgstr "Αγαπημένα"
+
+msgid "Following"
+msgstr "Ακολουθούνται"
+
+msgid "Now playing"
+msgstr "Αναπαραγωγή τώρα"
+
+msgid "History"
+msgstr "Ιστορικό"
+
+msgid "    Video buffer size [MB]"
+msgstr "    Μέγεθος προφόρτωσης βίντεο [MB]"
+
+msgid "    Audio buffer size [KB]"
+msgstr "    Μέγεθος προφόρτωσης ήχου [KB]"
+
+msgid "Country (changing may be illegal in your country)"
+msgstr "Χώρα (η αλλαγή μπορεί να είναι παράνομη στη χώρα σας)"
+
+msgid "based on IP"
+msgstr "βασισμένο στην IP"
+
+msgid "Number of songs fetched at once for the station"
+msgstr "Αριθμός τραγουδιών που λαμβάνονται ταυτόχρονα για το σταθμό"
+
+msgid "Device ID"
+msgstr "ID συσκευής"
+
+msgid "Games"
+msgstr "Παιχνίδια"
+
+msgid "Channels"
+msgstr "Κανάλια"
+
+msgid "Videos"
+msgstr "Βίντεο"
+
+msgid "Live Channels"
+msgstr "Ζωντανά κανάλια"
+
+msgid "Top"
+msgstr "Κορυφαία"
+
+msgid "Random"
+msgstr "Τυχαία"
+
+msgid "Polish channles"
+msgstr "Πολωνικά κανάλια"
+
+msgid "German channles"
+msgstr "Γερμανικά κανάλια"
+
+msgid "Week"
+msgstr "Εβδομάδα"
+
+msgid "Month"
+msgstr "Μήνας"
+
+msgid "%s viewers, %s channels"
+msgstr "%s προβολές, %s κανάλια"
+
+msgid "Promoted channels"
+msgstr "Κανάλια που προωθούνται"
+
+msgid "Promoted games"
+msgstr "Παιχνίδια που προωθούνται"
+
+msgid "Enable reordering mode"
+msgstr "Ενεργοποίηση λειτουργίας αναταξινόμησης"
+
+msgid "Disable reordering mode"
+msgstr "Απενεργοποίηση λειτουργίας επαναταξινόμησης"
+
+msgid "Icons size"
+msgstr "Μέγεθος εικονιδίων"
+
+msgid "Prefered format"
+msgstr "Προτιμώμενο φορμά"
+
+msgid "Prefered quality"
+msgstr "Προτιμώμενη ποιότητα"
+
+msgid "More important"
+msgstr "Τα πιο σημαντικά"
+
+msgid "One link mode"
+msgstr "Λειτουργία μονού συνδέσμου"
+
+msgid "large"
+msgstr "μεγάλη"
+
+msgid "medium"
+msgstr "μεσαία"
+
+msgid "small"
+msgstr "μικρή"
+
+msgid "low"
+msgstr "χαμηλή"
+
+msgid "high"
+msgstr "υψηλή"
+
+msgid "very high"
+msgstr "πολύ υψηλή"
+
+msgid "quality"
+msgstr "ποιότητα"
+
+msgid "format"
+msgstr "φορμά"
+
+msgid "Categories"
+msgstr "Κατηγορίες"
+
+msgid "%s items in category"
+msgstr "%s στοιχεία στην κατηγορία"
+
+msgid "Featured"
+msgstr "Προτεινόμενα"
+
+msgid "Recent"
+msgstr "Πρόσφατα"
+
+msgid "Most Popular"
+msgstr "Δημοφιλέστερα"
+
+msgid "News"
+msgstr "Ειδήσεις"
+
+msgid "Topics"
+msgstr "Θέματα"
+
+msgid "Missed the show?"
+msgstr "Χάσατε την εκπομπή;"
+
+msgid "Program A-Z"
+msgstr "Πρόγραμμα Α-Ω"
+
+msgid "Home page"
+msgstr "Αρχική σελίδα"
+
+msgid "All programs in the Live Stream"
+msgstr "Όλα τα προγράμματα στο Live Stream"
+
+msgid ""
+"It seems that the host \"%s\" has crashed. Do you want to report this "
+"problem?"
+msgstr ""
+"Φαίνεται ότι ο διακομιστής \"%s\"  κράσαρε. Θέλετε να αναφέρετε αυτό το "
+"πρόβλημα;"
+
+msgid ""
+"\n"
+"Make sure you are using the latest version of the plugin."
+msgstr ""
+"\n"
+"Βεβαιωθείτε ότι χρησιμοποιείτε την τελευταία έκδοση του πρόσθετου."
+
+# weeb.tv main menu
+msgid "Sorted channels A-Z [live]"
+msgstr "Ταξινομημένα κανάλια Α-Ω (ζωντανά)"
+
+msgid "Sorted most viewed channels now [live]"
+msgstr "Ταξινομημένα κανάλια με τις περισσότερες προβολές τώρα [ζωντανά]"
+
+msgid "Sorted most viewed channels general [live]"
+msgstr "Ταξινομημένα κανάλια με τις περισσότερες προβολές γενικά [ζωντανά]"
+
+msgid "Offline channels"
+msgstr "Κανάλια εκτός σύνδεσης"
+
+msgid "Show all channels"
+msgstr "Εμφάνιση όλων των καναλιών"
+
+msgid "Username:"
+msgstr "Όνομα χρήστη:"
+
+msgid "Password:"
+msgstr "Κωδικός:"
+
+msgid "Preferred video quality:"
+msgstr "Προτιμώμενη ποιότητα βίντεο:"
+
+msgid "Low"
+msgstr "Χαμηλή"
+
+msgid "Standard"
+msgstr "Στάνταρ"
+
+msgid "High (or HD)"
+msgstr "Υψηλή (ή HD)"
+
+msgid "You do not have a premium account. Starting a sponsored broadcast."
+msgstr "Δεν διαθέτετε premium λογαριασμό. Εκκίνηση σπονσοραρισμένης εκπομπής."
+
+msgid "Information"
+msgstr "Πληροφορίες"
+
+msgid ""
+"IPTVPlayer need some additional setup.\n"
+"Such as downloading and installation additional binaries.\n"
+"Press OK to start."
+msgstr ""
+"Το IPTVPlayer χρειάζεται επιπρόσθετα αρχεία.\n"
+"Απαιτείται η λήψη και η εγκατάσταση πρόσθετου υλικού.\n"
+"Πιέστε ΟΚ για να ξεκινήσει."
+
+msgid ""
+"Skipping IPTVPlayer setup may cause problems.\n"
+"Are you sure to skip IPTVPlayer setup?"
+msgstr ""
+"Η παράλειψη της εγκατάστασης του IPTVPlayer μπορεί να προκαλέσει "
+"προβλήματα.\n"
+"Θέλετε σίγουρα να παραλείψετε την εγκατάσταση;"
+
+msgid "recommended"
+msgstr "προτείνεται"
+
+msgid "Do not install (not recommended)"
+msgstr "Μη εγκατάσταση (δεν προτείνεται)"
+
+msgid "Detection of the platform."
+msgstr "Εντοπισμός πλατφόρμας."
+
+msgid "Plugin can be run on one of the following platforms: sh4, mipsel, i686."
+msgstr ""
+"Το πρόσθετο μπορεί να τρέξει σε μία από τις παρακάτω πλατφόρμες: sh4, "
+"mipsel, i686."
+
+msgid ""
+"Fatal Error!\n"
+"Plugin is not supported with your platform."
+msgstr ""
+"Ανεπανόρθωτο σφάλμα!\n"
+"Το πρόσθετο δεν υποστηρίζεται σε αυτή την πλατφόρμα."
+
+msgid "Detection of the OpenSSL version."
+msgstr "Εντοπισμός έκδοσης OpenSSL."
+
+msgid "OpenSSL lib is needed by wget and rtmpdump utilities."
+msgstr "Απαιτείται το OpenSSL μέσω του wget και του rtmdump."
+
+msgid ""
+"Fatal Error!\n"
+"Openssl could not be found. Please install it and retry."
+msgstr ""
+"Ανεπανόρθωτο σφάλμα!\n"
+"Το Openssl δεν βρέθηκε. Εγκαταστήστε το και ξαναπροσπαθήστε."
+
+msgid "Install into the \"%s\"."
+msgstr "Εγκατάσταση στο  \"%s\"."
+
+msgid "Detection of the gstreamer version."
+msgstr "Εντοπισμός της έκδοσης του gstreamer."
+
+msgid ""
+"The \"%s\" utility is used by the IPTVPlayer to buffering and downloading "
+"[%s] links."
+msgstr ""
+"Το εργαλείο  \"%s\" χρησιμοποιείται από το IPTVPlayer για την προφόρτωση και "
+"τη λήψη των [%s] συνδέσμων."
+
+msgid "The \"%s\" utility is used by the IPTVPlayer as external movie player."
+msgstr ""
+"Το εργαλείο  \"%s\" χρησιμοποιείται από το IPTVPlayer ως εξωτερικός "
+"αναπαραγωγός ταινιών."
+
+msgid "Detection of the \"%s\" utility."
+msgstr "Εντοπισμός του εργαλείου  \"%s\"."
+
+msgid "The \"%s\" utility is used by IPTVPlayer."
+msgstr "Το εργαλείο  \"%s\" χρησιμοποιείται από το IPTVPlayer."
+
+msgid "Downloading \"%s\"."
+msgstr "Λήψη του \"%s\"."
+
+msgid ""
+"Downloading \"%s\" failed. \n"
+"Do you want to retry?"
+msgstr ""
+"Η λήψη του \"%s\" απέτυχε. \n"
+"Θέλετε να ξαναπροσπαθήσετε;"
+
+msgid ""
+"Utility \"%s\" has not been detected. \n"
+"What do you want to do?"
+msgstr ""
+"Το εργαλείο \"%s\" δεν εντοπίστηκε. \n"
+"Τι θέλετε να γίνει;"
+
+msgid ""
+"Utility \"%s\" has not been detected. \n"
+"Do you want to install it?"
+msgstr ""
+"Το εργαλείο \"%s\" δεν εντοπίστηκε. \n"
+"Θέλετε να το εγκαταστήσετε;"
+
+msgid ""
+"Utility \"%s\" is deprecated. \n"
+"What do you want to do?"
+msgstr ""
+"Το εργαλείο \"%s\" είναι παρωχημένο. \n"
+"Τι θέλετε να γίνει;"
+
+msgid ""
+"Utility \"%s\" is deprecated. \n"
+"Do you want to install new one?"
+msgstr ""
+"Το εργαλείο \"%s\" είναι παρωχημένο. \n"
+"Θέλετε να εγκαταστήσετε ένα νέο;"
+
+msgid "Installing \"%s\"."
+msgstr "Εγκατάσταση του \"%s\"."
+
+msgid "Auto check for plugin update"
+msgstr "Αυτόματος έλεγχος ενημερώσεων του πρόσθετου"
+
+msgid ""
+"There is a new version available do you want to update? \n"
+"Your version [%s], latest version on server [%s]"
+msgstr ""
+"Υπάρχει διαθέσιμη νέα έκδοση, θέλετε να γίνει ενημέρωση;\n"
+"Τρέχουσα έκδοση [%s], τελευταία έκδοση στον εξυπηρετητή [%s] "
+
+msgid "Change active movie player"
+msgstr "Αλλαγή ενεργού αναπαραγωγού ταινιών"
+
+msgid "Set active movie player"
+msgstr "Ορισμός ενεργού αναπαραγωγού ταινιών"
+
+msgid "[%s] with buffering"
+msgstr "[%s] με προφόρτωση"
+
+msgid "[%s] without buffering"
+msgstr "[%s] χωρίς προφόρτωση"
+
+msgid "Select movie player"
+msgstr "Επιλογή αναπαραγωγού ταινιών"
+
+msgid "Auto selection based on the settings"
+msgstr "Αυτόματη επιλογή βασισμένη στις ρυθμίσεις"
+
+msgid "Favourites manager"
+msgstr "Διαχείριση αγαπημένων"
+
+msgid "Add item to favourites"
+msgstr "Προσθήκη στοιχείου στα αγαπημένα"
+
+msgid "Edit favourites"
+msgstr "Επεξεργασία αγαπημένων"
+
+msgid "Add new group of favourites"
+msgstr "Προσθήκη νέας ομάδας αγαπημένων"
+
+msgid "Name:"
+msgstr "Όνομα:"
+
+msgid "Group %d"
+msgstr "Ομάδα %d"
+
+msgid "Description:"
+msgstr "Περιγραφή:"
+
+msgid "Name cannot be empty."
+msgstr "Το όνομα δεν μπορεί να είναι κενό."
+
+msgid ""
+"Name is not valid.\n"
+"Please remove special characters."
+msgstr ""
+"Μη έγκυρο όνομα.\n"
+"Παρακαλώ αφαιρέστε τους ειδικούς χαρακτήρες."
+
+msgid "Group \"%s\" already exists."
+msgstr "Η ομάδα \"%s\" υπάρχει ήδη."
+
+msgid "Select favourite group"
+msgstr "Επιλογή ομάδας αγαπημένων"
+
+msgid "There is no favourites groups."
+msgstr "Δεν υπάρχουν ομάδες αγαπημένων."
+
+msgid "Favourites groups"
+msgstr "Ομάδες αγαπημένων."
+
+msgid "Remove group"
+msgstr "Αφαίρεση ομάδας"
+
+msgid "Move group"
+msgstr "Μετακίνηση ομάδας"
+
+msgid "Add new group"
+msgstr "Προσθήκη νέας ομάδας"
+
+msgid "Items in group \"%s\""
+msgstr "Στοιχεία στην ομάδα \"%s\""
+
+msgid "Move item"
+msgstr "Μετακίνηση στοιχείου"
+
+msgid "Add item to group"
+msgstr "Προσθήκη στοιχείου στην ομάδα"
+
+msgid "Wrong indexes."
+msgstr "Λάθος δείκτες."
+
+msgid "The same item already exists in this group."
+msgstr "Το ίδιο στοιχείο υπάρχει ήδη σε αυτή την ομάδα."
+
+msgid "Item idx[%d] not found in group[%s]."
+msgstr "Ο δείκτης του στοιχείου [%d] δεν βρέθηκε στην ομάδα [%s]."
+
+msgid "Group with id[%s] not found."
+msgstr "Η ομάδα με το αναγνωριστικό [%s] δεν βρέθηκε."
+
+msgid "Error reading file \"%s\".\n"
+msgstr "Σφάλμα ανάγνωσης αρχείου \"%s\".\n"
+
+msgid "Error deleting file \"%s\".\n"
+msgstr "Σφάλμα διαγραφής αρχείου \"%s\".\n"
+
+msgid "Error writing file \"%s\".\n"
+msgstr "Σφάλμα εγγραφής αρχείου \"%s\".\n"
+
+msgid "Favourites"
+msgstr "Αγαπημένα"
+
+msgid " Username or Email"
+msgstr " Όνομα χρήστη ή email"
+
+msgid " Password"
+msgstr " Κωδικός"
+
+msgid "https - validate SSL certificates"
+msgstr "https - επικύρωση πιστοποιητικών SSL"
+
+msgid "Folder for temporary data"
+msgstr "Φάκελος προσωρινών αρχείων"
+
+msgid "First movie player without buffering mode"
+msgstr "Πρώτη μεταφορά αναπαραγωγού χωρίς προφόρτωση"
+
+msgid "Second movie player without buffering mode"
+msgstr "Δεύτερη μεταφορά αναπαραγωγού χωρίς προφόρτωση"
+
+msgid "External player use software decoder for the AAC"
+msgstr "Εξωτερικός αναπαραγωγός, χρήση λογισμικού για το AAC"
+
+msgid "External player infobar timeout"
+msgstr "Χρόνος λήξης μπάρας πληροφοριών εξωτερικού αναπαραγωγού"
+
+msgid "Save changes?"
+msgstr "Αποθήκευση αλλαγών;"
+
+msgid "Please remember that you use this plugin at your own risk."
+msgstr "Έχετε υπόψιν σας ότι χρησιμοποιείτε αυτό το πρόσθετο με δικό σας ρίσκο"
+
+msgid "During processing, please wait."
+msgstr "Επεξεργασία σε εκτέλεση, παρακαλώ περιμένετε."
+
+msgid "During processing, please do not interrupt."
+msgstr "Κατά την εκτέλεση, παρακαλώ μη διακόπτετε."
+
+msgid "Delegate cannot be used in MainThread!"
+msgstr "Ο αντιπρόσωπος δεν μπορεί να χρησιμοποιηθεί στο ΚύριοΝήμα!"
+
+msgid "New folder"
+msgstr "Νέος φάκελος"
+
+msgid "Problem with removing old buffering file"
+msgstr "Πρόβλημα αφαίρεσης του παλαιού αρχείου προφόρτωσης"
+
+msgid "Skin read error: "
+msgstr "Πρόβλημα ανάγνωσης θέματος: "
+
+msgid "Test platform OK"
+msgstr "Έλεγχος πλατφόρμας ΟΚ"
+
+msgid "Check opennSSL version"
+msgstr "Έλεγχος έκδοσης openSSL"
+
+msgid "GStreamer Core Library version 0.10"
+msgstr "Κεντρική βιβλιοθήκη του GStreamer έκδοση 0.10"
+
+msgid "gst-launch --gst-version"
+msgstr "gst-φόρτωση --gst-έκδοση"
+
+msgid "Detection of the ffmpeg version."
+msgstr "Εντοπισμός της έκδοσης του ffmpeg."
+
+msgid "ffmpeg -version"
+msgstr "ffmpeg -έκδοση"
+
+msgid "version"
+msgstr "έκδοση"
+
+msgid ""
+"The \"%s\" utility is used by the IPTVPlayer as external movie player based "
+"on the ffmpeg and libeplayer."
+msgstr ""
+"Το εργαλείο \"%s\" χρησιμοποιείται από το IPTVPlayer ως εξωτερικός "
+"αναπαραγωγός βασισμένος σε ffmpeg και libeplayer."
+
+msgid "detection"
+msgstr "εντοπισμός"
+
+msgid ""
+" has not been detected. \n"
+"Do you want to install it? "
+msgstr ""
+" δεν έχει εντοπιστεί. \n"
+"Θέλετε να το εγκαταστήσετε;"
+
+msgid ""
+" is deprecated. \n"
+"Do you want to install new one? "
+msgstr ""
+" είναι παρωχημένο. \n"
+"Θέλετε να εγκαταστήσετε ένα νέο; "
+
+msgid "[%s] will be used by IPTVPlayer."
+msgstr "Το [%s] θα χρησιμοποιηθεί από το IPTVPlayer."
+
+msgid "download"
+msgstr "λήψη"
+
+msgid "install"
+msgstr "εγκατάσταση"
+
+msgid "Installation binary failed. Retry?"
+msgstr "Η εγκατάσταση του εκτελέσιμου αρχείου απέτυχε. Επαναπροσπάθεια;"
+
+msgid "Subtitles downloader"
+msgstr "Λήψη υποτίτλων"
+
+msgid "title"
+msgstr "τίτλος"
+
+msgid "console"
+msgstr "κονσόλα"
+
+msgid "actions"
+msgstr "ενέργειες"
+
+msgid "Subtitles provider: %s"
+msgstr "Πάροχος υποτίτλων: %s"
+
+msgid "Login user \"%s\" into %s"
+msgstr "Είσοδος χρήστη \"%s\" στο %s"
+
+msgid "Request token from %s"
+msgstr "Αίτηση διακριτικού από το %s"
+
+msgid ""
+"Error occurs.\n"
+"[%s]"
+msgstr ""
+"Συνέβη ένα σφάλμα.\n"
+"[%s]"
+
+msgid "message"
+msgstr "μήνυμα"
+
+msgid "Confirm title of the movie"
+msgstr "Επιβεβαίωση του τίτλου της ταινίας"
+
+msgid "Search for movie \"%s\""
+msgstr "Αναζήτηση για την ταινία  \"%s\""
+
+msgid "Movie \"%s\" has not been found."
+msgstr "Η ταινία  \"%s\" δεν βρέθηκε."
+
+msgid "Get supported languages list."
+msgstr "Λήψη υποστηριζόμενης λίστας γλωσσών."
+
+msgid "An unknown error has occurred."
+msgstr "Συνέβη ένα άγνωστο σφάλμα."
+
+msgid "Search for subitile for \"%s\""
+msgstr "Αναζήτηση υποτίτλου για το \"%s\""
+
+msgid "Download subtitle \"%s\""
+msgstr "Λήψη υποτίτλου \"%s\""
+
+msgid "Subtitles downloaded successfully. [%s]"
+msgstr "Οι υπότιτλοι λήφθηκαν με επιτυχία. [%s]"
+
+msgid "Select movie"
+msgstr "Επιλογή ταινίας"
+
+msgid "Select language"
+msgstr "Επιλογή γλώσσας"
+
+msgid "Select subtitles to download"
+msgstr "Επιλογή υποτίτλων για λήψη"
+
+msgid "Select aspect ratio"
+msgstr "Επιλογή λόγου πλευρών"
+
+msgid "options"
+msgstr "επιλογές"
+
+msgid "selectSubtitle"
+msgstr "επιλογήΥποτίτλου"
+
+msgid "Synchronize"
+msgstr "Συγχρονισμός"
+
+msgid "Load"
+msgstr "Φόρτωση"
+
+msgid "Download"
+msgstr "Λήψη"
+
+msgid "Select subtitles track"
+msgstr "Επιλογή κομματιού υποτίτλων"
+
+msgid "enabled"
+msgstr "ενεργό"
+
+msgid "Select subtitles file"
+msgstr "Επιλογή αρχείου υποτίτλων"
+
+msgid "enableSubtitles track[%s]"
+msgstr "ενεργοποίηση κομματιού Υποτίτλων[%s]"
+
+msgid "An error occurred while loading a subtitle from [%s]."
+msgstr "Συνέβη ένα σφάλμα κατά τη φόρτωση ενός υποτίτλου από το [%s]."
+
+msgid ""
+"It seems that the video player \"%s\" does not work properly.\n"
+"\n"
+"STS: %s\n"
+"ERROR CODE: %r"
+msgstr ""
+"Φαίνεται ότι ο αναπαραγωγός βίντεο \"%s\" δεν λειτουργεί σωστά.\n"
+"\n"
+"STS: %s\n"
+"ΚΩΔΙΚΟΣ ΣΦΑΛΜΑΤΟΣ: %r"
+
+msgid ""
+"ERROR: pipeline could not be constructed: no element \"playbin2\" \n"
+"Please check if gstreamer plugins are available in your system."
+msgstr ""
+"ΣΦΑΛΜΑ: αδυναμία δημιουργίας διασύνδεσης: δεν υπάρχει το στοιχείο "
+"\"playbin2\" \n"
+"Παρακαλώ ελέγξτε αν το gstreamer είναι διαθέσιμο στο σύστημά σας."
+
+msgid "got buffer empty from driver!"
+msgstr "η προφόρτωση από τον οδηγό είναι άδεια!"
+
+msgid "Status object [%r]"
+msgstr "Κατάσταση αντικειμένου [%r]"
+
+msgid "Length"
+msgstr "Διάρκεια"
+
+msgid "length"
+msgstr "διάρκεια"
+
+msgid "Status"
+msgstr "Κατάσταση"
+
+msgid "Speed"
+msgstr "Ταχύτητα"
+
+msgid "waiting"
+msgstr "αναμονή"
+
+msgid "visible"
+msgstr "ορατό"
+
+msgid "blocked"
+msgstr "μπλοκαρισμένο"
+
+msgid "IPTV Player Configuring and external movie player"
+msgstr "IPTV Player Ρύθμιση και εξωτερικός αναπαραγωγός ταινιών"
+
+msgid "External movie player config"
+msgstr "Ρύθμιση εξωτερικού αναπαραγωγού ταινιών"
+
+msgid "Subtitles"
+msgstr "Υπότιτλοι"
+
+msgid "subtitles"
+msgstr "υπότιτλοι"
+
+msgid "Video options"
+msgstr "Επιλογές βίντεο"
+
+msgid "Subtitles box position"
+msgstr "Θέση πλαισίου υποτίτλων"
+
+msgid "Subtitle font"
+msgstr "Γραμματοσειρά υποτίτλων"
+
+msgid "Subtitle font size"
+msgstr "Μέγεθος γραμματοσειράς υποτίτλων"
+
+msgid "Subtitle font color"
+msgstr "Χρώμα γραμματοσειράς υποτίτλων"
+
+msgid "Subtitle border enabled"
+msgstr "Περίγραμμα υποτίτλων ενεργό"
+
+msgid "Subtitle border color"
+msgstr "Χρώμα περιγράμματος υποτίτλων"
+
+msgid "Subtitle border width"
+msgstr "Πλάτος περιγράμματος υποτίτλων"
+
+msgid "Subtitle shadow color"
+msgstr "Χρώμα σκιάς υποτίτλων"
+
+msgid "Subtitle shadow enabled"
+msgstr "Σκιά υποτίτλων ενεργή"
+
+msgid "Subtitle shadow X offset"
+msgstr "Μετατόπιση σκιάς υποτίτλων Χ"
+
+msgid "Subtitle shadow Y offset"
+msgstr "Μετατόπιση σκιάς υποτίτλων Y"
+
+msgid "Regular"
+msgstr "Κανονικό"
+
+msgid "second"
+msgstr "δευτερόλεπτο"
+
+msgid "seconds"
+msgstr "δευτερόλεπτα"
+
+msgid "from E2 settings"
+msgstr "από τις ρυθμίσεις του Ε2"
+
+msgid "Configuring an external movie player"
+msgstr "Ρύθμιση ενός εξωτερικού αναπαραγωγού ταινιών"
+
+msgid "Default video aspect ratio"
+msgstr "Προεπιλεγμένος λόγος πλευρών"
+
+msgid "Default video policy"
+msgstr "Προεπιλεγμένη πολιτική βίντεο"
+
+msgid "Default second video policy"
+msgstr "Προεπιλεγμένη δεύτερη πολιτική βίντεο"
+
+msgid "download-buffer-path"
+msgstr "διαδρομή-λήψης-προφόρτωσης"
+
+msgid "ring-buffer-max-size"
+msgstr "μέγιστο-μέγεθος-κυκλικής-προφόρτωσης"
+
+msgid "buffer-duration"
+msgstr "διάρκεια-προφόρτωσης"
+
+msgid "buffer-size"
+msgstr "μέγεθος-προφόρτωσης"
+
+msgid "data"
+msgstr "δεδομένα"
+
+msgid "font"
+msgstr "γραμματοσειρά"
+
+msgid "name"
+msgstr "όνομα"
+
+msgid "active"
+msgstr "ενεργό"
+
+msgid "Select video option"
+msgstr "Επιλογή λειτουργίας βίντεο"
+
+msgid "Select %s"
+msgstr "Επιλογή %s"
+
+msgid "lang"
+msgstr "γλώσσα"
+
+msgid "path"
+msgstr "διαδρομή"
+
+msgid "marker"
+msgstr "σημειωτής"
+
+msgid "Fatal error: consoleWrite failed!"
+msgstr "Ανεπανόρθωτο σφάλμα: αποτυχία εγγραφήςΚονσολας!"
+
+msgid "The number of items in the search history"
+msgstr "Αριθμός στοιχείων στο ιστορικό αναζήτησης"
+
+msgid "Video default quality:"
+msgstr "Προεπιλεγμένη ποιότητα βίντεο:"
+
+msgid "High"
+msgstr "Υψηλή"
+
+msgid "The best"
+msgstr "Βέλτιστη"
+
+msgid "The worst"
+msgstr "Χειρότερη"
+
+msgid "Mid"
+msgstr "Μεσαία"
+
+msgid "Deutsch"
+msgstr "Γερμανικά"
+
+msgid "Use default quality:"
+msgstr "Χρήση προεπιλεγμένης ποιότητας:"
+
+msgid "Language:"
+msgstr "Γλώσσα:"
+
+msgid "Alternative geolocation IP 1:"
+msgstr "Εναλλακτική γεωγραφική θέση της IP 1:"
+
+msgid "Alternative geolocation IP 2:"
+msgstr "Εναλλακτική γεωγραφική θέση της IP 2:"
+
+msgid "----------Other----------"
+msgstr "----------Άλλα----------"
+
+msgid "Use Polish proxy for http://prognoza.pogody.tv/"
+msgstr "Χρήση πολωνικού proxy για το http://prognoza.pogody.tv/"
+
+msgid "Subtitles not found."
+msgstr "Δεν βρέθηκαν υπότιτλοι."
+
+#~ msgid "..............."
+#~ msgstr "..............."
+
+#~ msgid "mipsel"
+#~ msgstr "mipsel"
+
+#~ msgid "sh4"
+#~ msgstr "sh4"
+
+#~ msgid "i686"
+#~ msgstr "i686"
+
+#~ msgid "Completed.\n"
+#~ msgstr "Ολοκληρώθηκε.\n"
+
+#~ msgid "PC"
+#~ msgstr "PC"
+
+#~ msgid "hd"
+#~ msgstr "HD"
