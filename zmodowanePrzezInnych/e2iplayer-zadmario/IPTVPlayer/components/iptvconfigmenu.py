@@ -345,7 +345,8 @@ class ConfigMenu(ConfigBaseWidget):
         if config.plugins.iptvplayer.preferredupdateserver.value == '3':
             list.append(getConfigListEntry(_("%s login") % 'E2iPlayer', config.plugins.iptvplayer.iptvplayer_login))
             list.append(getConfigListEntry(_("%s password") % 'E2iPlayer', config.plugins.iptvplayer.iptvplayer_password))
-        list.append(getConfigListEntry(_("Update"), config.plugins.iptvplayer.fakeUpdate))
+        if config.plugins.iptvplayer.preferredupdateserver.value != '4':
+            list.append(getConfigListEntry(_("Update"), config.plugins.iptvplayer.fakeUpdate))
         list.append(getConfigListEntry(_("Virtual Keyboard type"), config.plugins.iptvplayer.osk_type))
         if config.plugins.iptvplayer.osk_type.value == 'own':
             list.append(getConfigListEntry(_("    Background color"), config.plugins.iptvplayer.osk_background_color))
