@@ -671,7 +671,6 @@ class CSelOneLink():
 #############################################################
 # debugs
 
-
 def getDebugMode():
     DBG = ''
     try:
@@ -692,10 +691,14 @@ def printDBG(DBGtxt):
         return
     elif DBG == 'console':
         print(DBGtxt)
-    elif DBG == 'debugfile':
+    else:
+        if DBG == 'debugfile':
+            DBGfile = '/hdd/iptv.dbg' #backward compatibility
+        else:
+            DBGfile = DBG
         try:
-            f = open('/hdd/iptv.dbg', 'a')
-            f.write(DBGtxt + '\n')
+            f = open(DBGfile, 'a')
+            f.write(str(DBGtxt) + '\n')
             f.close
         except Exception:
             print("======================EXC printDBG======================")
@@ -703,8 +706,8 @@ def printDBG(DBGtxt):
             print("========================================================")
             try:
                 msg = '%s' % traceback.format_exc()
-                f = open('/tmp/iptv.dbg', 'a')
-                f.write(DBGtxt + '\n')
+                f = open(DBGfile, 'a')
+                f.write(str(DBGtxt) + '\n')
                 f.close
             except Exception:
                 print("======================EXC printDBG======================")

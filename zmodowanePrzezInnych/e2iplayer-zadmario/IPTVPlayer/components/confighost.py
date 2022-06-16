@@ -11,7 +11,7 @@ from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc, Ge
 from Plugins.Extensions.IPTVPlayer.components.configbase import ConfigBaseWidget
 from Plugins.Extensions.IPTVPlayer.components.iptvplayerinit import TranslateTXT as _
 ###################################################
-
+from Plugins.Extensions.IPTVPlayer.p2p3.pVer import isPY2
 ###################################################
 # FOREIGN import
 ###################################################
@@ -233,7 +233,10 @@ class ConfigHostsMenu(ConfigBaseWidget):
         for hostName in sortedList:
             try:
                 optionEntry = None
-                exec('optionEntry = config.plugins.iptvplayer.host' + hostName)
+                if isPY2():
+                    exec('optionEntry = config.plugins.iptvplayer.host' + hostName)
+                else:
+                    optionEntry = eval('config.plugins.iptvplayer.host' + hostName)
                 self.list.append(getConfigListEntry("%s" % hostsAliases.get('host' + hostName, hostName), optionEntry))
                 if hostName in ['ipla']:
                     self.privacePoliceWorningList.append(optionEntry)

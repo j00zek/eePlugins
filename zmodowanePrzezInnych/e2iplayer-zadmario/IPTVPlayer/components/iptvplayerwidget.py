@@ -1190,7 +1190,8 @@ class E2iPlayerWidget(Screen):
         self.displayGroupsList.append((_("Configuration"), "config"))
 
         if config.plugins.iptvplayer.AktualizacjaWmenu.value == True:
-            self.displayGroupsList.append((_("Update"), "update"))
+            if config.plugins.iptvplayer.preferredupdateserver.value != '4': #4 = managed by opkg
+                self.displayGroupsList.append((_("Update"), "update"))
 
         self.newDisplayGroupsList = []
         self.session.openWithCallback(self.selectGroupCallback, PlayerSelectorWidget, inList=self.displayGroupsList, outList=self.newDisplayGroupsList, numOfLockedItems=self.getNumOfSpecialItems(self.displayGroupsList), groupName='selectgroup')
@@ -1338,7 +1339,8 @@ class E2iPlayerWidget(Screen):
             errorMessage = _("Following host are broken or additional python modules are needed.") + '\n' + '\n'.join(brokenHostList)
 
         if config.plugins.iptvplayer.AktualizacjaWmenu.value == True:
-            self.displayHostsList.append((_("Update"), "update"))
+            if config.plugins.iptvplayer.preferredupdateserver.value != '4': #4 = managed by opkg
+                self.displayHostsList.append((_("Update"), "update"))
 
         if "" != errorMessage and True == self.showHostsErrorMessage:
             self.showHostsErrorMessage = False
