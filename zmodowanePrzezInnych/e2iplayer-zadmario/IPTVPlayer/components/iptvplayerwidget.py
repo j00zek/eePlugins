@@ -1583,7 +1583,7 @@ class E2iPlayerWidget(Screen):
 
         options = []
         for link in links:
-            printDBG("selectLinkForCurrVideo: |%s| |%s|" % (link.name, link.url))
+            printDBG("selectLinkForCurrVideo: |%s| of type(%s) |%s| of type(%s)" % (link.name, type(link.name), link.url, type(link.url)))
             link.name = ensure_str(link.name)
             link.url = ensure_str(link.url)
             options.append((link.name, link.url, link.urlNeedsResolve))

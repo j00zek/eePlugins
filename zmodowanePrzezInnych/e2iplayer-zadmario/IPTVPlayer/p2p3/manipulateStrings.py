@@ -52,9 +52,14 @@ def ensure_binary(text, encoding='utf-8', errors='strict'): #based on six librar
 def ensure_str(text, encoding='utf-8', errors='strict'): #based on six library
     if type(text) is str:
         return text
-    if isPY2():
-        if isinstance(text, unicode):
+    if isPY2() and isinstance(text, unicode):
+        try:
             return text.encode(encoding, errors)
-    else: #PY3
-        if isinstance(text, bytes):
+        except Exception:
+            return text.encode(encoding, 'ignore')
+    elif not PY2() and isinstance(text, bytes): #PY3
+        try:
             return text.decode(encoding, errors)
+        except Exception:
+            return text.decode(encoding, 'ignore')
+    return text # strwithmeta type defined in e2iplayer goes thorugh it
