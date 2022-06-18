@@ -495,7 +495,8 @@ class E2iPlayerWidget(Screen):
                         message = _('It seems that the host "%s" has crashed. Do you want to report this problem?') % self.hostName
                         message += "\n"
                         message += _('\nMake sure you are using the latest version of the plugin.')
-                        message += _('\nYou can also report problem here: \nhttps://gitlab.com/iptvplayer-for-e2/iptvplayer-for-e2/issues\nor here: samsamsam@o2.pl')
+                        if config.plugins.iptvplayer.preferredupdateserver.value == '3': #private sss repository
+                            message += _('\nYou can also report problem here: \nhttps://gitlab.com/iptvplayer-for-e2/iptvplayer-for-e2/issues\nor here: samsamsam@o2.pl')
                         self.session.openWithCallback(self.reportHostCrash, MessageBox, text=message, type=MessageBox.TYPE_YESNO)
             self.hideSpinner()
         except Exception:
@@ -503,7 +504,7 @@ class E2iPlayerWidget(Screen):
 
     def reportHostCrash(self, ret):
         try:
-            if ret:
+            if ret and config.plugins.iptvplayer.preferredupdateserver.value == '3': #private sss repository
                 try:
                     exceptStack = self.workThread.getExceptStack()
                     reporter = GetPluginDir('iptvdm/reporthostcrash.py')
@@ -712,8 +713,9 @@ class E2iPlayerWidget(Screen):
         if ret:
             if ret[1] == "info": #information about plugin
                 TextMSG = _("Lead programmer: ") + "\n\t- samsamsam\n"
-                TextMSG += _("E-mail: ") + "\n\t- iptvplayere2@gmail.com\n"
-                TextMSG += _("www: ") + "\n\t- http://iptvplayer.vline.pl/" + '\n\t- http://www.iptvplayer.gitlab.io/\n'
+                if config.plugins.iptvplayer.preferredupdateserver.value == '3': #private sss repository
+                    TextMSG += _("E-mail: ") + "\n\t- iptvplayere2@gmail.com\n"
+                    TextMSG += _("www: ") + "\n\t- http://iptvplayer.vline.pl/" + '\n\t- http://www.iptvplayer.gitlab.io/\n'
                 TextMSG += _("Developers: ")
                 developersTab = [{'nick': 'zdzislaw22', },
                                  {'nick': 'mamrot', },
@@ -1583,7 +1585,7 @@ class E2iPlayerWidget(Screen):
 
         options = []
         for link in links:
-            printDBG("selectLinkForCurrVideo: |%s| of type(%s) |%s| of type(%s)" % (link.name, type(link.name), link.url, type(link.url)))
+            printDBG("selectLinkForCurrVideo: |%s| %s |%s| %s" % (link.name, type(link.name), link.url, type(link.url)))
             link.name = ensure_str(link.name)
             link.url = ensure_str(link.url)
             options.append((link.name, link.url, link.urlNeedsResolve))

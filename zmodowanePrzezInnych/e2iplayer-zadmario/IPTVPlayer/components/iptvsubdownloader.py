@@ -379,7 +379,8 @@ class IPTVSubDownloaderWidget(Screen):
                     message = _("It seems that the subtitle's provider \"%s\" has crashed. Do you want to report this problem?") % self.hostName
                     message += "\n"
                     message += _('\nMake sure you are using the latest version of the plugin.')
-                    message += _('\nYou can also report problem here: \nhttps://gitlab.com/iptvplayer-for-e2/iptvplayer-for-e2/issues\nor here: samsamsam@o2.pl')
+                    if config.plugins.iptvplayer.preferredupdateserver.value == '3': #private sss repository
+                        message += _('\nYou can also report problem here: \nhttps://gitlab.com/iptvplayer-for-e2/iptvplayer-for-e2/issues\nor here: samsamsam@o2.pl')
                     self.session.openWithCallback(self.reportHostCrash, MessageBox, text=message, type=MessageBox.TYPE_YESNO)
             self.hideSpinner()
         except Exception:
@@ -387,7 +388,7 @@ class IPTVSubDownloaderWidget(Screen):
 
     def reportHostCrash(self, ret):
         try:
-            if ret:
+            if ret and config.plugins.iptvplayer.preferredupdateserver.value == '3': #private sss repository:
                 try:
                     exceptStack = self.workThread.getExceptStack()
                     reporter = GetPluginDir('iptvdm/reporthostcrash.py')

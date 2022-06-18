@@ -10,7 +10,7 @@ from Plugins.Extensions.IPTVPlayer.tools.iptvfavourites import IPTVFavourites
 from Plugins.Extensions.IPTVPlayer.components.iptvchoicebox import IPTVChoiceBoxItem
 from Plugins.Extensions.IPTVPlayer.libs.crypto.hash.md5Hash import MD5
 ###################################################
-
+from Plugins.Extensions.IPTVPlayer.p2p3.pVer import isPY2
 ###################################################
 # FOREIGN import
 ###################################################
@@ -210,6 +210,8 @@ class IPTVHost(CHostBase):
             hashAlg = MD5()
             hashData = ('%s_%s' % (str(displayItem.name), str(displayItem.type)))
             hashData = hexlify(hashAlg(hashData))
+            if not isPY2():
+                hashData = hashData.decode()
             return (hostName, hashData)
         return ret
 
