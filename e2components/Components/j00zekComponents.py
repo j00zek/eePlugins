@@ -13,7 +13,7 @@ def WhatPythonVersion():
   import sys
   return sys.version_info[0]
 
-def isPY2(): #from Components.j00zekComponents import isPY2 if isPY2()
+def isPY2(): #from Components.j00zekComponents import isPY2 then use if isPY2()
     global PYversion
     if PYversion is None:
         if WhatPythonVersion() == 3:
@@ -22,6 +22,23 @@ def isPY2(): #from Components.j00zekComponents import isPY2 if isPY2()
             PYversion = True
     return PYversion
 
+def ensure_str(text, encoding='utf-8', errors='strict'): #from Components.j00zekComponents import ensure_str
+    if type(text) is str:
+        return text
+    if isPY2():
+        if isinstance(text, unicode):
+            try:
+                return text.encode(encoding, errors)
+            except Exception:
+                return text.encode(encoding, 'ignore')
+    else: #PY3
+        if isinstance(text, bytes):
+            try:
+                return text.decode(encoding, errors)
+            except Exception:
+                return text.decode(encoding, 'ignore')
+    return text # strwithmeta type defined in e2iplayer goes thorugh it
+  
 def clearCache():
     with open("/proc/sys/vm/drop_caches", "w") as f: f.write("1\n")
 
