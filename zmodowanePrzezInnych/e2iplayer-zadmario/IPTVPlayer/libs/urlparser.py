@@ -46,6 +46,7 @@ if not isPY2():
     xrange = range
     from functools import cmp_to_key
 from Plugins.Extensions.IPTVPlayer.p2p3.UrlLib import urllib_unquote, urllib_quote_plus, urllib_urlencode, urllib_quote
+from Plugins.Extensions.IPTVPlayer.p2p3.manipulateStrings import ensure_str
 ###################################################
 # FOREIGN import
 ###################################################
@@ -614,10 +615,14 @@ class urlparser:
                        'premiumserver.club': self.pp.parserMSTREAMICU,
                        'mystream.streamango.to': self.pp.parserMSTREAMICU,
                        'embed.mystream.to': self.pp.parserMSTREAMICU,
+                       'dood.cx': self.pp.parserDOOD,
+                       'dood.pm': self.pp.parserDOOD,
+                       'dood.sh': self.pp.parserDOOD,
                        'dood.so': self.pp.parserDOOD,
                        'dood.to': self.pp.parserDOOD,
                        'dood.watch': self.pp.parserDOOD,
                        'dood.ws': self.pp.parserDOOD,
+                       'dood.la': self.pp.parserDOOD,
                        'doodstream.com': self.pp.parserDOOD,
                        'govod.tv': self.pp.parserWIIZTV,
                        'streamtape.com': self.pp.parserSTREAMTAPE,
@@ -14591,7 +14596,7 @@ class pageParser(CaptchaHelper):
 
         url = self.cm.ph.getDataBeetwenMarkers(script, 'var %s="' % jsvar, '";', False)[1]
         url = eval(jscode.replace(jsvar, 'url'))
-        url = domain + base64.b64decode(url)
+        url = domain + ensure_str(base64.b64decode(url))
         urlTab = []
         if url != domain:
             urlTab.append({'name': 'mp4', 'url': strwithmeta(url, {'Referer': baseUrl})})

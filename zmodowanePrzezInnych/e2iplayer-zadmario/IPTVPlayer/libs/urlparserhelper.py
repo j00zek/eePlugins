@@ -40,7 +40,10 @@ except Exception:
 
 
 def int2base(x, base):
-    digs = string.digits + string.lowercase
+    if isPY2():
+        digs = string.digits + string.lowercase
+    else:
+        digs = string.digits + string.ascii_lowercase
     if x < 0:
         sign = -1
     elif x == 0:
@@ -51,7 +54,7 @@ def int2base(x, base):
     digits = []
     while x:
         digits.append(digs[x % base])
-        x /= base
+        x = x // base # // pushes PY3 to use int arithmetic
     if sign < 0:
         digits.append('-')
     digits.reverse()

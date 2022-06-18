@@ -1551,7 +1551,7 @@ class IPTVExtMoviePlayer(Screen):
                         params['progressive'] = False
 
                 except Exception:
-                    printExc()
+                    printExc(WarnOnly = True)
                 try:
                     DAR = float(obj.get('an', 1) * params['width']) / float(obj.get('ad', 1) * params['height'])
                     aTab = []
