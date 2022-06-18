@@ -28,6 +28,17 @@ from xml.etree.cElementTree import fromstring as cet_fromstring
 DBG = False
 if DBG:
     from Plugins.Extensions.MSNweather.debug import printDEBUG
+
+def ensure_str(text):
+    if type(text) is str:
+        return text
+    if PyMajorVersion == 2:
+        if isinstance(text, unicode):
+            return text.encode('utf-8', 'ignore')
+    else: #PY3
+        if isinstance(text, bytes):
+            return text.decode('utf-8', 'ignore')
+    return text
         
 def initWeatherPluginEntryConfig(i=0):
     s = ConfigSubsection()
@@ -451,20 +462,14 @@ class MSNWeatherEntryConfigScreen(ConfigListScreen, Screen):
                 try:
                     myID = str(inst['id'])
                     myAddress = inst['address']
-                    try:
-                        myCity = myAddress['city'].encode('utf-8', 'ignore')
-                    except Exception:
-                        myCity = ''
+                    try: myCity = ensure_str(myAddress['city'])
+                    except Exception: myCity = ''
 
-                    try:
-                        myStreet = myAddress['street'].encode('utf-8', 'ignore')
-                    except Exception:
-                        myStreet = ''
+                    try: myStreet = ensure_str(myAddress['street'])
+                    except Exception: myStreet = ''
 
-                    try:
-                        myCountry = myAddress['country'].encode('utf-8', 'ignore')
-                    except Exception:
-                        myCountry = ''
+                    try: myCountry = ensure_str(myAddress['country'])
+                    except Exception: myCountry = ''
 
                     myItem = '%s:\t%s, %s %s' % (myID, myCity, myStreet, myCountry)
                     InstList.append((myItem, myID))
