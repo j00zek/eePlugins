@@ -1422,6 +1422,8 @@ class CMoviePlayerPerHost():
         try:
             if {} == self.activePlayer and os.path.isfile(self.filePath):
                 os.remove(self.filePath)
+            elif self.activePlayer.get('buffering', None) == None:
+                printDBG('WARNING: buffering NOT set')
             else:
                 data = {}
                 data['buffering'] = self.activePlayer['buffering']

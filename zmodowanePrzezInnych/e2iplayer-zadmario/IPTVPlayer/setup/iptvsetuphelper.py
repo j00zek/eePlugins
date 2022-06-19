@@ -15,27 +15,27 @@ from Components.config import configfile
 ###################################################
 
 
-def SetupDownloaderCmdCreator(url, file):
+def SetupDownloaderCmdCreator(url, fileName):
     printDBG("SetupDownloaderCreator url[%s]" % url)
     if url.startswith('https'):
         if IsExecutable(DMHelper.GET_WGET_PATH()):
             printDBG("SetupDownloaderCreator WgetDownloader")
-            return '%s "%s" -O "%s" ' % (DMHelper.GET_WGET_PATH(), url, file)
+            return '%s "%s" -O "%s" ' % (DMHelper.GET_WGET_PATH(), url, fileName)
         elif IsExecutable('python'):
             printDBG("SetupDownloaderCreator PwgetDownloader")
-            return 'python "%s" "%s" "%s" ' % (DMHelper.GET_PWGET_PATH(), url, file)
+            return 'python "%s" "%s" "%s" ' % (DMHelper.GET_PWGET_PATH(), url, fileName)
     else:
         if IsExecutable(DMHelper.GET_WGET_PATH()):
             printDBG("SetupDownloaderCreator WgetDownloader")
-            return '%s "%s" -O "%s" ' % (DMHelper.GET_WGET_PATH(), url, file)
+            return '%s "%s" -O "%s" ' % (DMHelper.GET_WGET_PATH(), url, fileName)
         elif IsExecutable('wget'):
             printDBG("SetupDownloaderCreator BuxyboxWgetDownloader")
-            return 'wget "%s" -O "%s" ' % (url, file)
+            return 'wget "%s" -O "%s" ' % (url, fileName)
         elif IsExecutable('python'):
             printDBG("SetupDownloaderCreator PwgetDownloader")
-            return 'python "%s" "%s" "%s" ' % (DMHelper.GET_PWGET_PATH(), url, file)
+            return 'python "%s" "%s" "%s" ' % (DMHelper.GET_PWGET_PATH(), url, fileName)
     printDBG("SetupDownloaderCreator downloader not available")
-    return 'python "%s" "%s" "%s" ' % (DMHelper.GET_PWGET_PATH(), url, file)
+    return 'python "%s" "%s" "%s" ' % (DMHelper.GET_PWGET_PATH(), url, fileName)
 
 
 class CCmdValidator:
@@ -229,11 +229,11 @@ class CBinaryStepHelper:
     def updateMessage(self, key, message, id=1):
         self.messages[key][id] = message
 
-    def setInstallChoiseList(self, list):
-        self.installChoiseList = list
+    def setInstallChoiseList(self, inputList):
+        self.installChoiseList = inputList
 
-    def setPaths(self, list):
-        self.paths = list
+    def setPaths(self, inputList):
+        self.paths = inputList
 
     def setDetectCmdBuilder(self, callback):
         self.detectCmdBuilder = callback

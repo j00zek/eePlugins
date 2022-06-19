@@ -47,7 +47,11 @@ def ensure_binary(text, encoding='utf-8', errors='strict'): #based on six librar
         if isinstance(text, bytes):
           return text
         if isinstance(text, str):
-            return text.encode(encoding, errors)
+            try:
+                return text.encode(encoding, errors)
+            except Exception:
+                return text.encode(encoding, 'ignore')
+    return text
 
 def ensure_str(text, encoding='utf-8', errors='strict'): #based on six library
     if type(text) is str:

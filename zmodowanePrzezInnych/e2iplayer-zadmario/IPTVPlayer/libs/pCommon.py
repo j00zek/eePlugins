@@ -1265,6 +1265,7 @@ class common:
     def getURLRequestData(self, params={}, post_data=None):
 
         def urlOpen(req, customOpeners, timeout):
+            req = ensure_binary(req)
             if len(customOpeners) > 0:
                 opener = urllib2_build_opener(*customOpeners)
                 if timeout != None:

@@ -76,7 +76,7 @@ from Plugins.Extensions.IPTVPlayer.components.e2ivkselector import GetVirtualKey
 ######################################################
 from Plugins.Extensions.IPTVPlayer.p2p3.manipulateStrings import ensure_str
 from Plugins.Extensions.IPTVPlayer.p2p3.UrlLib import urllib_quote
-from Plugins.Extensions.IPTVPlayer.p2p3.pVer import isPY2
+from Plugins.Extensions.IPTVPlayer.p2p3.pVer import isPY2, pVersion
 if not isPY2():
     basestring = str
 ######################################################
@@ -140,7 +140,10 @@ class E2iPlayerWidget(Screen):
                 """ % (IPTV_VERSION, GetIconDir('red.png'), GetIconDir('green.png'), GetIconDir('yellow.png'), GetIconDir('blue.png'), GetIconDir('line.png'))
 
     def __init__(self, session):
-        printDBG("E2iPlayerWidget.__init__ desktop IPTV_VERSION[%s]\n" % (E2iPlayerWidget.IPTV_VERSION))
+        printDBG("!!!!! E2iPlayerWidget.__init__ desktop IPTV_VERSION[%s], CPU:%s, PYTHON:%s !!!!!\n" % (E2iPlayerWidget.IPTV_VERSION,
+                                                                                                         config.plugins.iptvplayer.plarform.value,
+                                                                                                         pVersion()
+                                                                                                        ))
         self.session = session
         self.skinResolutionType = 'sd'
         screenwidth = getDesktop(0).size().width()
@@ -415,7 +418,7 @@ class E2iPlayerWidget(Screen):
         try:
             asynccall.gMainFunctionsQueueTab[0].setProcFun(None)
             asynccall.gMainFunctionsQueueTab[0].clearQueue()
-            iptv_system('echo 1 > /proc/sys/vm/drop_caches')
+            with open("/proc/sys/vm/drop_caches", "w") as f: f.write("1")
         except Exception:
             printExc()
         self.activePlayer = None
