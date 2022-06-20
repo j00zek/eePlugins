@@ -213,6 +213,9 @@
     <widget source="global.CurrentTime" render="Label" position="142,50" size="360,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
       <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
     </widget>
+    <widget source="description" render="Label" position="72,110" size="565,80" conditional="description" font="Regular;22" valign="center" halign="center" foregroundColor="#00b3ffff" backgroundColor="black" transparent="1" >
+      <convert type="ConditionalShowHide" />
+    </widget>
     <widget source="menu" render="Listbox" position="70,227" size="565,450" selectionPixmap="BlackHarmony/menu/sel_565_45.png" scrollbarMode="showNever" enableWrapAround="1" transparent="0">
       <convert type="TemplatedMultiContent">
 				{"template": [ MultiContentEntryText(pos = (15,5),size = (565,35),flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER,text = 0) ],
