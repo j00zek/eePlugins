@@ -747,7 +747,10 @@ class AdvancedFreePlayerStart(Screen):
                                 if data[i]== '\x10' or data[i]== '\x00' or  data[i]== '\x02':
                                     pass
                                 else:
-                                    extended_event_descriptor.append(chr(data[i]))
+                                    try:
+                                        extended_event_descriptor.append(chr(data[i]))
+                                    except Exception as e:
+                                        printDEBUG("Exception: %s" % str(e))
                     pos += length
 
                     # Very bad but there can be both encodings
