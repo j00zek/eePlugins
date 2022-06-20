@@ -178,6 +178,9 @@ class Ipla(CBaseHostClass):
             data = None
             if "0" == config.plugins.iptvplayer.iplacachexml.value:
                 return
+            elif not os_path.exists(self.cacheFilePath):
+                printDBG("INFO: %s does NOT exist. No cached data read." % self.cacheFilePath)
+                return
             from ast import literal_eval
             with open(self.cacheFilePath, 'r') as f:
                 data = f.read()

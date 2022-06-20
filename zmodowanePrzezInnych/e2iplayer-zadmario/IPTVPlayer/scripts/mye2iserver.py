@@ -83,6 +83,7 @@ if __name__ == "__main__":
         siteKey = CAPTCHA_DATA['siteKey']
         captchaType = CAPTCHA_DATA['captchaType']
 
+        SocketServer.TCPServer.allow_reuse_address = True
         httpd =  SocketServer.TCPServer((IP, PORT), redirect_handler_factory('%s/#e2it?k=%s&st=%s' % (siteUrl, siteKey, captchaType)))
         print("Http Server Serving at port", PORT)
         httpd.serve_forever()

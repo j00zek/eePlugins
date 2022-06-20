@@ -1462,18 +1462,24 @@ def byteify(input, noneReplacement=None, baseTypesAsString=False):
 
 def printExc(msg='', WarnOnly = False):
     printDBG("===============================================")
-    if WarnOnly:
-        msg = ''
-        printDBG("                    WARNING                    ")
-    elif msg == 'WARNING':
+    if WarnOnly or msg.startswith('WARNING'):
         printDBG("                    WARNING                    ")
         msg = ''
     else:
         printDBG("                   EXCEPTION                   ")
     printDBG("===============================================")
-    msg = msg + ': \n%s' % traceback.format_exc()
+    exc_formatted = traceback.format_exc()
+    if msg == '' or msg == 'WARNING':
+        msg = '\n%s' % exc_formatted
+    else:
+        msg = msg + ': \n%s' % exc_formatted
     printDBG(msg)
     printDBG("===============================================")
+    try:
+        retMSG = exc_formatted.splitlines()[-1]
+    except Exception:
+        pass
+    return retMSG #returns the error description to possibly use in main code. E.g. inform about failed login
 
 
 def GetIPTVPlayerVerstion():

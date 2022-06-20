@@ -1723,6 +1723,7 @@ class pageParser(CaptchaHelper):
         # extract qualities
         sts, data = getPage(inUrl, defaultParams)
         if sts:
+            qualities = ''
             tmp = self.cm.ph.getDataBeetwenMarkers(data, "player_data='", "'", False)[1].strip()
             if tmp == '':
                 tmp = self.cm.ph.getDataBeetwenMarkers(data, 'player_data="', '"', False)[1].strip()
@@ -1731,7 +1732,6 @@ class pageParser(CaptchaHelper):
                     data = json_loads(tmp)
                     qualities = data['video']['qualities']
             except Exception:
-                qualities = ''
                 printExc()
             printDBG("parserCDA qualities[%r]" % qualities)
             for item in qualities:
