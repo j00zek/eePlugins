@@ -18,7 +18,8 @@ from Plugins.Extensions.IPTVPlayer.tools.e2ijs import js_execute
 ###################################################
 # FOREIGN import
 ###################################################
-import re, urllib, base64, urllib2
+import re, urllib, base64
+from Plugins.Extensions.IPTVPlayer.p2p3.UrlLib import urllib_unquote
 try:
     import simplejson
 except:
@@ -238,9 +239,6 @@ class Host:
            if config.plugins.iptvplayer.religia.value:
               valTab.append(CDisplayListItem('Religijne', 'Religijne', CDisplayListItem.TYPE_CATEGORY, ['Religijne'], 'Religijne', 'http://wakcji24.pl/wp-content/uploads/2019/01/RELIGIA-e1548150968793.png', None)) 
            Image = 'http://newsblog.pl/wp-content/uploads/2019/09/Najlepszy-VPN-IPTV-w-2019-roku-aby-odblokowac-szybkie-predkosci.jpg'
-           valTab.insert(0,CDisplayListItem('Info o E2iPlayer - samsamsam', 'Wersja hostinfoversion: '+self.infoversion, CDisplayListItem.TYPE_CATEGORY, ['http://www.e2iplayer.gitlab.io/update2/log.txt'], 'info', Image, None)) 
-           valTab.insert(0,CDisplayListItem('Info o E2iPlayer - fork maxbambi', 'Wersja hostinfoversion: '+self.infoversion, CDisplayListItem.TYPE_CATEGORY, ['https://gitlab.com/maxbambi/e2iplayer/commits/master.atom'], 'info', Image, None)) 
-           valTab.insert(0,CDisplayListItem('Info o E2iPlayer - fork mosz_nowy', 'Wersja hostinfoversion: '+self.infoversion, CDisplayListItem.TYPE_CATEGORY, ['https://gitlab.com/mosz_nowy/e2iplayer/commits/master.atom'], 'info', Image, None)) 
            valTab.insert(0,CDisplayListItem('Info o E2iPlayer - fork -=Mario=-', 'Wersja hostinfoversion: '+self.infoversion, CDisplayListItem.TYPE_CATEGORY, ['https://gitlab.com/zadmario/e2iplayer/commits/master.atom'], 'info', Image, None)) 
            #valTab.insert(0,CDisplayListItem('Info o E2iPlayer - projekt zamknięty 19 maja 2019r', 'Wersja hostinfoversion: '+self.infoversion, CDisplayListItem.TYPE_CATEGORY, ['https://gitlab.com/e2i/e2iplayer/commits/master.atom'], 'info', 'http://www.cam-sats.com/images/forumicons/ip.png', None)) 
            if self.infoversion != self.inforemote and self.inforemote != "0.0.0":
@@ -2966,8 +2964,8 @@ class Host:
             for item in data:
                 Url = self.cm.ph.getSearchGroups(item, '''sourceURL":['"]([^"^']+?)['"]''', 1, True)[0] 
                 Title = self.cm.ph.getSearchGroups(item, '''title":['"]([^"^']+?)['"]''', 1, True)[0] 
-                Url = urllib2.unquote(Url)
-                Title = urllib2.unquote(Title)
+                Url = urllib_unquote(Url)
+                Title = urllib_unquote(Title)
                 #printDBG( 'Host Url: '+Url )
                 #printDBG( 'Host Title: '+Title )
                 if 'm3u8' in Url:
@@ -4598,7 +4596,7 @@ class Host:
                 Url = self.cm.ph.getSearchGroups(data, '''playlist:  unescape\(['"]([^"^']+?)['"]''', 1, True)[0]
                 if not Url: Url = self.cm.ph.getSearchGroups(data, '''src=['"]([^"^']+?)['"]''', 1, True)[0].replace('http://nullrefer.com/?','')
                 if Url:
-                    Url = urllib2.unquote(Url)
+                    Url = urllib_unquote(Url)
                     try: data = self.cm.getURLRequestData({ 'url': Url, 'header': header, 'use_host': False, 'use_cookie': True, 'save_cookie': True, 'load_cookie': False, 'cookiefile': COOKIEFILE, 'use_post': False, 'return_data': True })
                     except Exception as e:
                         printExc()
@@ -5081,7 +5079,7 @@ class Host:
             url = self.cm.ph.getSearchGroups(data2, '''<iframe[^>]+?src=['"]([^"^']+?)['"]''')[0].replace('&amp;','&') 
             if not url: 
                 videoUrl = self.cm.ph.getSearchGroups(data, '''"sourceURL":['"]([^"^']+?)['"]''')[0] 
-                return urllib2.unquote(videoUrl)
+                return urllib_unquote(videoUrl)
             sts, data = self.get_Page(url)
             if not sts: return ''
             #printDBG( 'Host listsItems data2: '+data )

@@ -23,4 +23,9 @@ sync
 rm -rf ~/infoversion-master*
 #modifications of infoversion
 sed -i 's/<>/!=/g' $myAbsPath/../IPTVPlayer/hosts/hostinfoversion.py
+sed -i "/'Info o E2iPlayer - samsamsam'/d" $myAbsPath/../IPTVPlayer/hosts/hostinfoversion.py
+sed -i "/'Info o E2iPlayer - fork maxbambi'/d" $myAbsPath/../IPTVPlayer/hosts/hostinfoversion.py
+sed -i "/'Info o E2iPlayer - fork mosz_nowy'/d" $myAbsPath/../IPTVPlayer/hosts/hostinfoversion.py
+sed -i 's/urllib2\.unquote/urllib_unquote/g' $myAbsPath/../IPTVPlayer/hosts/hostinfoversion.py
+sed -i 's/, urllib2/\nfrom Plugins.Extensions.IPTVPlayer.p2p3.UrlLib import urllib_unquote/' $myAbsPath/../IPTVPlayer/hosts/hostinfoversion.py
 exit 0
