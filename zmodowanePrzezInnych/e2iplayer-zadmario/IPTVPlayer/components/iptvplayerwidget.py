@@ -43,7 +43,7 @@ from Plugins.Extensions.IPTVPlayer.libs.pCommon import CParsingHelper
 from Plugins.Extensions.IPTVPlayer.libs.urlparser import urlparser
 from Plugins.Extensions.IPTVPlayer.tools.iptvtypes import strwithmeta
 from Plugins.Extensions.IPTVPlayer.tools.iptvtools import FreeSpace as iptvtools_FreeSpace, \
-                                                          mkdirs as iptvtools_mkdirs, GetIPTVPlayerVerstion, GetVersionNum, \
+                                                          mkdirs as iptvtools_mkdirs, GetIPTVPlayerVerstion, getIPTVplayerOPKGVersion, GetVersionNum, \
                                                           printDBG, printExc, iptv_system, GetHostsList, IsHostEnabled, \
                                                           eConnectCallback, GetSkinsDir, GetIconDir, GetPluginDir, GetExtensionsDir, \
                                                           SortHostsList, GetHostsOrderList, CSearchHistoryHelper, IsExecutable, \
@@ -84,7 +84,10 @@ gDownloadManager = None
 
 
 class E2iPlayerWidget(Screen):
-    IPTV_VERSION = GetIPTVPlayerVerstion()
+    if getIPTVplayerOPKGVersion() != '':
+        IPTV_VERSION = '%s / %s' % (GetIPTVPlayerVerstion(), getIPTVplayerOPKGVersion())
+    else:
+        IPTV_VERSION = GetIPTVPlayerVerstion()
     screenwidth = getDesktop(0).size().width()
     if screenwidth and screenwidth == 1920:
         skin = """
@@ -140,10 +143,10 @@ class E2iPlayerWidget(Screen):
                 """ % (IPTV_VERSION, GetIconDir('red.png'), GetIconDir('green.png'), GetIconDir('yellow.png'), GetIconDir('blue.png'), GetIconDir('line.png'))
 
     def __init__(self, session):
-        printDBG("!!!!! E2iPlayerWidget.__init__ desktop IPTV_VERSION[%s], CPU:%s, PYTHON:%s !!!!!\n" % (E2iPlayerWidget.IPTV_VERSION,
-                                                                                                         config.plugins.iptvplayer.plarform.value,
-                                                                                                         pVersion()
-                                                                                                        ))
+        printDBG("!!!!! E2iPlayerWidget.__init__ IPTV_VERSION[%s], CPU:%s, PYTHON:%s !!!!!\n" % (E2iPlayerWidget.IPTV_VERSION,
+                                                                                                 config.plugins.iptvplayer.plarform.value,
+                                                                                                 pVersion()
+                                                                                                ))
         self.session = session
         self.skinResolutionType = 'sd'
         screenwidth = getDesktop(0).size().width()

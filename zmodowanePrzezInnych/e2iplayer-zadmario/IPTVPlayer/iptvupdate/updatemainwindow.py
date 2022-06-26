@@ -22,7 +22,7 @@ from Plugins.Extensions.IPTVPlayer.components.ihost import ArticleContent
 from Plugins.Extensions.IPTVPlayer.libs.pCommon import common
 from Plugins.Extensions.IPTVPlayer.components.iptvplayerinit import TranslateTXT as _
 ###################################################
-
+from Plugins.Extensions.IPTVPlayer.p2p3.pVer import isPY2
 ###################################################
 # FOREIGN import
 ###################################################
@@ -697,7 +697,7 @@ class UpdateMainAppImpl(IUpdateObjectInterface):
         try:
             rmtree(self.tmpDir)
         except Exception:
-            printExc()
+            printExc('WARNING')
 
     ##############################################################################
     # SERWERS LISTS STEP'S PRIVATES METHODS
@@ -791,7 +791,10 @@ class UpdateMainAppImpl(IUpdateObjectInterface):
             serversList = []
             try:
                 with open(filePath) as fileHandle:
-                    jsonData = json.load(fileHandle, 'utf-8')
+                    if isPY2():
+                        jsonData = json.load(fileHandle, 'utf-8')
+                    else:
+                        jsonData = json.load(fileHandle)
                 #printDBG("__serversListDownloadFinished jsonData [%r]" % jsonData)
                 for server in jsonData['servers']:
                     serverOK = True

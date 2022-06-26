@@ -36,7 +36,7 @@ import socket
 
 SERVER_DOMAINS = {'vline': 'http://iptvplayer.vline.pl/', 'gitlab': 'http://zadmario.gitlab.io/', 'private': 'http://www.e2iplayer.gitlab.io/'}
 SERVER_UPDATE_PATH = {'vline': 'download/update2/', 'gitlab': 'update2/', 'private': 'update2/'}
-
+CACHED_DATA_DICT = {}
 
 def GetServerKey(serverNum=None):
     if serverNum == None:
@@ -1445,19 +1445,19 @@ class CMoviePlayerPerHost():
         self.save()
 
 
-def byteify(input, noneReplacement=None, baseTypesAsString=False):
-    if isinstance(input, dict):
-        return dict([(byteify(key, noneReplacement, baseTypesAsString), byteify(value, noneReplacement, baseTypesAsString)) for key, value in iterDictItems(input)])
-    elif isinstance(input, list):
-        return [byteify(element, noneReplacement, baseTypesAsString) for element in input]
-    elif isinstance(input, unicode):
-        return input.encode('utf-8')
-    elif input == None and noneReplacement != None:
+def byteify(inData, noneReplacement=None, baseTypesAsString=False):
+    if isinstance(inData, dict):
+        return dict([(byteify(key, noneReplacement, baseTypesAsString), byteify(value, noneReplacement, baseTypesAsString)) for key, value in iterDictItems(inData)])
+    elif isinstance(inData, list):
+        return [byteify(element, noneReplacement, baseTypesAsString) for element in inData]
+    elif isinstance(inData, unicode):
+        return ensure_str(inData)
+    elif inData == None and noneReplacement != None:
         return noneReplacement
     elif baseTypesAsString:
-        return str(input)
+        return str(inData)
     else:
-        return input
+        return inData
 
 
 def printExc(msg='', WarnOnly = False):
@@ -1480,7 +1480,6 @@ def printExc(msg='', WarnOnly = False):
     except Exception:
         pass
     return retMSG #returns the error description to possibly use in main code. E.g. inform about failed login
-
 
 def GetIPTVPlayerVerstion():
     try:
@@ -1841,3 +1840,21 @@ def isOPKGinstall():
         return True
     else:
         return False
+
+def getIPTVplayerOPKGVersion():
+    global CACHED_DATA_DICT
+    if None == CACHED_DATA_DICT.get('IPTVplayerOPKGVersion', None):
+        if not isOPKGinstall():
+            CACHED_DATA_DICT['IPTVplayerOPKGVersion'] = ''
+        else:
+            for controlFile in ('/var/lib/opkg/info/enigma2-plugin-extensions--j00zeks-e2iplayer-mod-zadmario.control',
+                                '/var/lib/opkg/info/enigma2-plugin-extensions-e2iplayer.control'):
+                if os.path.exists(controlFile):
+                    lines = []
+                    with open(controlFile, 'r') as f:
+                        lines = f.readlines()
+                        f.close()
+                    for line in lines:
+                        if line.startswith('Version: '):
+                            CACHED_DATA_DICT['IPTVplayerOPKGVersion'] = line[9:].strip()
+    return CACHED_DATA_DICT.get('IPTVplayerOPKGVersion', '')

@@ -35,7 +35,7 @@ def loads(input, noneReplacement=None, baseTypesAsString=False, utf8=True):
             out = byteify(out, noneReplacement, baseTypesAsString)
     else:
         out = json.loads(input)
-        if isPY2() and (utf8 or noneReplacement != None or baseTypesAsString != False):
+        if utf8 or noneReplacement != None or baseTypesAsString != False:
             out = byteify(out, noneReplacement, baseTypesAsString)
 
     return out

@@ -242,7 +242,7 @@ class Host:
            valTab.insert(0,CDisplayListItem('Info o E2iPlayer - fork -=Mario=-', 'Wersja hostinfoversion: '+self.infoversion, CDisplayListItem.TYPE_CATEGORY, ['https://gitlab.com/zadmario/e2iplayer/commits/master.atom'], 'info', Image, None)) 
            #valTab.insert(0,CDisplayListItem('Info o E2iPlayer - projekt zamknięty 19 maja 2019r', 'Wersja hostinfoversion: '+self.infoversion, CDisplayListItem.TYPE_CATEGORY, ['https://gitlab.com/e2i/e2iplayer/commits/master.atom'], 'info', 'http://www.cam-sats.com/images/forumicons/ip.png', None)) 
            if self.infoversion != self.inforemote and self.inforemote != "0.0.0":
-              valTab.insert(0,CDisplayListItem('---UPDATE---','UPDATE MENU',        CDisplayListItem.TYPE_CATEGORY,           [''], 'UPDATE',  '', None)) 
+              pass #valTab.insert(0,CDisplayListItem('---UPDATE---','UPDATE MENU',        CDisplayListItem.TYPE_CATEGORY,           [''], 'UPDATE',  '', None)) 
            if config.plugins.iptvplayer.infoupdate.value:
                valTab.append(CDisplayListItem('ZMIANY W WERSJI',                    'ZMIANY W WERSJI',   CDisplayListItem.TYPE_CATEGORY, ['https://gitlab.com/mosz_nowy/infoversion/commits/master.atom'], 'UPDATE-ZMIANY', '', None)) 
            #valTab.insert(0,CDisplayListItem(_('PROSZĘ PRZEKAŻ 1% PODATKU NA KRS 0000049063'),  _('KRS 0000049063\nSTOWARZYSZENIE "OTWÓRZMY PRZED NIMI ŻYCIE"\nUL. KOŚCIUSZKI 43   32-065 KRZESZOWICE\nPRZEKAŻ 1 % SWOJEGO PODATKU\nPODARUJ NASZYM NIEPEŁNOSPRAWNYM SŁOŃCE'),             CDisplayListItem.TYPE_MORE,             [''], '',        '', None)) 

@@ -77,6 +77,7 @@ config.plugins.iptvplayer.extplayer_subtitle_box_height = ConfigInteger(240, (50
 
 config.plugins.iptvplayer.extplayer_infobanner_clockformat = ConfigSelection(default="", choices=[("", _("None")), ("24", _("24 hour format ")), ("12", _("12 hour format "))])
 
+config.plugins.iptvplayer.GSTplayer_no_IFD = ConfigYesNo(default=False)
 
 class ConfigExtMoviePlayerBase():
 
@@ -375,6 +376,7 @@ class ConfigExtMoviePlayer(ConfigBaseWidget, ConfigExtMoviePlayerBase):
             list.append(getConfigListEntry("    " + _("Radio iframe file"), config.plugins.iptvplayer.iframe_file))
         if 'sh4' != config.plugins.iptvplayer.plarform.value and (config.plugins.iptvplayer.show_iframe.value or config.plugins.iptvplayer.use_clear_iframe.value):
             list.append(getConfigListEntry("    " + _("Black iframe file"), config.plugins.iptvplayer.clear_iframe_file))
+        list.append(getConfigListEntry(_("GSTplayer no IFD workarround"), config.plugins.iptvplayer.GSTplayer_no_IFD))
         self.list = list
         ConfigBaseWidget.runSetup(self)
 

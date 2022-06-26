@@ -262,7 +262,7 @@ class CParsingHelper:
                              u'á': u'a', u'é': u'e', u'í': u'i', u'ñ': u'n', u'ó': u'o', u'ú': u'u', u'ü': u'u',
                              u'Á': u'A', u'É': u'E', u'Í': u'I', u'Ñ': u'N', u'Ó': u'O', u'Ú': u'U', u'Ü': u'U',
                             }
-        txt = ensure_str(txt)
+        txt = strDecode(txt)
         if None != idx:
             txt = txt[idx]
         nrmtxt = unicodedata.normalize('NFC', txt)

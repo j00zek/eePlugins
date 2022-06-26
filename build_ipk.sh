@@ -102,10 +102,11 @@ if [ -z $2 ]; then
 else
   version=$2
 fi
+
 sed -i "s/^Version\:.*/Version: $version/" $plugAbsPath//CONTROL/control
 if [ -e $plugAbsPath/version.py ];then echo "Version='$version'" > $plugAbsPath/version.py
 elif [ -e $plugAbsPath/Plugins/Extensions/MSNweather/version.py ];then echo "Version='$version'" > $plugAbsPath/Plugins/Extensions/MSNweather/version.py
-#elif [ ! -z $versionFileName ] && [ `grep -c 'IPTV_VERSION=' < $versionFileName` -gt 0 ];then  echo "IPTV_VERSION='$version'" > $versionFileName
+#elif [ ! -z $versionFileName ] && [ `grep -c 'IPTV_VERSION=' < $versionFileName` -gt 0 ];then echo "$version" > "${versionFileName/.py/_eeP}"
 elif [ ! -z $versionFileName ] && [ -e $versionFileName ];then echo "Version='$version'" > $versionFileName
 fi
 find $plugAbsPath/ -type f -name *.po  -exec bash -c 'msgfmt "$1" -o "${1%.po}".mo' - '{}' \;
