@@ -4,6 +4,7 @@
 # LOCAL import
 ###################################################
 from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc
+from Plugins.Extensions.IPTVPlayer.p2p3.manipulateStrings import ensure_str
 from Plugins.Extensions.IPTVPlayer.p2p3.pVer import isPY2
 if not isPY2():
     from functools import cmp_to_key
@@ -40,9 +41,7 @@ class IPTVFileHost:
                     line = fp.readline()
                     if not line:
                         break
-                    line = line.strip()
-                    if type(line) == type(u''):
-                        line = line.encode('utf-8', 'replace')
+                    line = ensure_str(line.strip(), 'utf-8', 'replace')
                     if 0 == len(line) or '#' == line[0]:
                         continue
                     idx1 = line.find(';')

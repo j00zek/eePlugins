@@ -26,7 +26,8 @@ from Screens.Screen import Screen
 
 from Components.ActionMap import ActionMap, HelpableActionMap
 from Components.Label import Label
-from Components.config import config, ConfigSubsection, ConfigSelection, ConfigDirectory, ConfigYesNo, ConfigOnOff, Config, ConfigInteger, ConfigSubList, ConfigText, getConfigListEntry, configfile
+from Components.config import config, ConfigSubsection, ConfigSelection, ConfigDirectory, ConfigYesNo, ConfigOnOff, Config, ConfigInteger, \
+                              ConfigSubList, ConfigText, getConfigListEntry, configfile, ConfigNothing, NoSave
 from Components.ConfigList import ConfigListScreen
 from Tools.BoundFunction import boundFunction
 from Tools.Directories import resolveFilename, fileExists, SCOPE_PLUGINS
@@ -37,6 +38,17 @@ from Tools.Directories import resolveFilename, fileExists, SCOPE_PLUGINS
 # Config options for HOST
 ###################################################
 config.plugins.iptvplayer = ConfigSubsection()
+
+config.plugins.iptvplayer.FakeEntry = NoSave(ConfigNothing())
+#show/hide sections
+config.plugins.iptvplayer.basicConfVisible = NoSave(ConfigNothing())
+config.plugins.iptvplayer.prxyConfVisible = NoSave(ConfigNothing())
+config.plugins.iptvplayer.buffConfVisible = NoSave(ConfigNothing())
+config.plugins.iptvplayer.downConfVisible = NoSave(ConfigNothing())
+config.plugins.iptvplayer.captConfVisible = NoSave(ConfigNothing())
+config.plugins.iptvplayer.subtConfVisible = NoSave(ConfigNothing())
+config.plugins.iptvplayer.playConfVisible = NoSave(ConfigNothing())
+config.plugins.iptvplayer.otherConfVisible = NoSave(ConfigNothing())
 
 from Plugins.Extensions.IPTVPlayer.components.configextmovieplayer import ConfigExtMoviePlayer
 
@@ -308,6 +320,14 @@ class ConfigMenu(ConfigBaseWidget):
         self.platformOld = config.plugins.iptvplayer.plarform.value
         self.remove_diabled_hostsOld = config.plugins.iptvplayer.remove_diabled_hosts.value
         self.enabledHostsListOld = GetEnabledHostsList()
+        self.basicConfVisible = True #BASIC CONFIGURATION
+        self.prxyConfVisible = False #PROXIES CONFIGURATION
+        self.buffConfVisible = False #BUFFERING CONFIGURATION
+        self.downConfVisible = False #DOWNLOADING CONFIGURATION
+        self.captConfVisible = False #CAPTCHA CONFIGURATION
+        self.subtConfVisible = False #SUBTITLES CONFIGURATION
+        self.playConfVisible = False #PLAYERS CONFIGURATION
+        self.otherConfVisible = False #OTHER SETTINGS
 
     def __del__(self):
         printDBG("ConfigMenu.__del__ -------------------------------")
@@ -321,8 +341,10 @@ class ConfigMenu(ConfigBaseWidget):
         self.setTitle(_("E2iPlayer - settings"))
 
     @staticmethod
-    def fillConfigList(list, hiddenOptions=False):
+    def fillConfigList(list, hiddenOptions=False, basicConfVisible = True, prxyConfVisible = False, buffConfVisible = False, downConfVisible = False, 
+                                                  captConfVisible = False, subtConfVisible = False, playConfVisible = False, otherConfVisible = False):
         if hiddenOptions:
+            list.append(getConfigListEntry('\\c00289496' + _("----- HIDDEN OPTIONS -----"), config.plugins.iptvplayer.FakeEntry))
             list.append(getConfigListEntry(_("Last checked version"), config.plugins.iptvplayer.updateLastCheckedVersion))
             list.append(getConfigListEntry(_("Show all version in the update menu"), config.plugins.iptvplayer.hiddenAllVersionInUpdate))
             list.append(getConfigListEntry(_("VFD set current title:"), config.plugins.iptvplayer.set_curr_title))
@@ -344,170 +366,188 @@ class ConfigMenu(ConfigBaseWidget):
             list.append(getConfigListEntry("Prefer hlsld for playlist with alt. media", config.plugins.iptvplayer.prefer_hlsdl_for_pls_with_alt_media))
             list.append(getConfigListEntry(_("Hosts List Type-NOT FINISHED"), config.plugins.iptvplayer.hostsListType))
             
-        list.append(getConfigListEntry(_("Auto check for plugin update"), config.plugins.iptvplayer.autoCheckForUpdate))
-        list.append(getConfigListEntry(_("The preferred update server"), config.plugins.iptvplayer.preferredupdateserver))
-        if config.plugins.iptvplayer.preferredupdateserver.value == '2':
-            list.append(getConfigListEntry(_("Add update from GitLab repository"), config.plugins.iptvplayer.gitlab_repo))
-        if config.plugins.iptvplayer.preferredupdateserver.value == '3':
-            list.append(getConfigListEntry(_("%s login") % 'E2iPlayer', config.plugins.iptvplayer.iptvplayer_login))
-            list.append(getConfigListEntry(_("%s password") % 'E2iPlayer', config.plugins.iptvplayer.iptvplayer_password))
-        if config.plugins.iptvplayer.preferredupdateserver.value != '4':
-            list.append(getConfigListEntry(_("Update"), config.plugins.iptvplayer.fakeUpdate))
-        list.append(getConfigListEntry(_("Virtual Keyboard type"), config.plugins.iptvplayer.osk_type))
-        if config.plugins.iptvplayer.osk_type.value == 'own':
-            list.append(getConfigListEntry(_("    Background color"), config.plugins.iptvplayer.osk_background_color))
-            list.append(getConfigListEntry(_("    Show suggestions"), config.plugins.iptvplayer.osk_allow_suggestions))
-            list.append(getConfigListEntry(_("    Default suggestions provider"), config.plugins.iptvplayer.osk_default_suggestions))
+        list.append(getConfigListEntry('\\c00289496' + _("----- BASIC CONFIGURATION (OK) -----"), config.plugins.iptvplayer.basicConfVisible))
+        if basicConfVisible: #BASIC CONFIGURATION
+            list.append(getConfigListEntry(_("Auto check for plugin update"), config.plugins.iptvplayer.autoCheckForUpdate))
+            list.append(getConfigListEntry(_("The preferred update server"), config.plugins.iptvplayer.preferredupdateserver))
+            if config.plugins.iptvplayer.preferredupdateserver.value == '2':
+                list.append(getConfigListEntry(_("Add update from GitLab repository"), config.plugins.iptvplayer.gitlab_repo))
+            if config.plugins.iptvplayer.preferredupdateserver.value == '3':
+                list.append(getConfigListEntry(_("%s login") % 'E2iPlayer', config.plugins.iptvplayer.iptvplayer_login))
+                list.append(getConfigListEntry(_("%s password") % 'E2iPlayer', config.plugins.iptvplayer.iptvplayer_password))
+            if config.plugins.iptvplayer.preferredupdateserver.value != '4':
+                list.append(getConfigListEntry(_("Update"), config.plugins.iptvplayer.fakeUpdate))
+        
+            list.append(getConfigListEntry(_("Virtual Keyboard type"), config.plugins.iptvplayer.osk_type))
+            if config.plugins.iptvplayer.osk_type.value == 'own':
+                list.append(getConfigListEntry(_("    Background color"), config.plugins.iptvplayer.osk_background_color))
+                list.append(getConfigListEntry(_("    Show suggestions"), config.plugins.iptvplayer.osk_allow_suggestions))
+                list.append(getConfigListEntry(_("    Default suggestions provider"), config.plugins.iptvplayer.osk_default_suggestions))
 
-        list.append(getConfigListEntry(_("Platform"), config.plugins.iptvplayer.plarform))
-        list.append(getConfigListEntry(_("Services configuration"), config.plugins.iptvplayer.fakeHostsList))
-        list.append(getConfigListEntry(_("Remove disabled services"), config.plugins.iptvplayer.remove_diabled_hosts))
-        list.append(getConfigListEntry(_("Initialize web interface (experimental)"), config.plugins.iptvplayer.IPTVWebIterface))
+            list.append(getConfigListEntry(_("Platform"), config.plugins.iptvplayer.plarform))
+            list.append(getConfigListEntry(_("Services configuration"), config.plugins.iptvplayer.fakeHostsList))
+            list.append(getConfigListEntry(_("Remove disabled services"), config.plugins.iptvplayer.remove_diabled_hosts))
+            list.append(getConfigListEntry(_("Initialize web interface (experimental)"), config.plugins.iptvplayer.IPTVWebIterface))
 
-        list.append(getConfigListEntry(_("Disable live at plugin start"), config.plugins.iptvplayer.disable_live))
-        list.append(getConfigListEntry(_("Pin protection for plugin"), config.plugins.iptvplayer.pluginProtectedByPin))
-        list.append(getConfigListEntry(_("Pin protection for configuration"), config.plugins.iptvplayer.configProtectedByPin))
-        if config.plugins.iptvplayer.pluginProtectedByPin.value or config.plugins.iptvplayer.configProtectedByPin.value:
-            list.append(getConfigListEntry(_("Set pin code"), config.plugins.iptvplayer.fakePin))
+            list.append(getConfigListEntry(_("Disable live at plugin start"), config.plugins.iptvplayer.disable_live))
+            list.append(getConfigListEntry(_("Pin protection for plugin"), config.plugins.iptvplayer.pluginProtectedByPin))
+            list.append(getConfigListEntry(_("Pin protection for configuration"), config.plugins.iptvplayer.configProtectedByPin))
+            if config.plugins.iptvplayer.pluginProtectedByPin.value or config.plugins.iptvplayer.configProtectedByPin.value:
+                list.append(getConfigListEntry(_("Set pin code"), config.plugins.iptvplayer.fakePin))
 
-        list.append(getConfigListEntry(_("Skin"), config.plugins.iptvplayer.skin))
-        list.append(getConfigListEntry(_("Display thumbnails"), config.plugins.iptvplayer.showcover))
-        if config.plugins.iptvplayer.showcover.value:
-            list.append(getConfigListEntry(_("    Allowed formats of thumbnails"), config.plugins.iptvplayer.allowedcoverformats))
-            list.append(getConfigListEntry(_("    Remove thumbnails"), config.plugins.iptvplayer.deleteIcons))
-        #list.append(getConfigListEntry("Sortować listy?", config.plugins.iptvplayer.sortuj))
-        list.append(getConfigListEntry(_("Graphic services selector"), config.plugins.iptvplayer.ListaGraficzna))
-        if config.plugins.iptvplayer.ListaGraficzna.value == True:
-            list.append(getConfigListEntry(_("    Enable hosts groups"), config.plugins.iptvplayer.group_hosts))
-            list.append(getConfigListEntry(_("    Service icon size"), config.plugins.iptvplayer.IconsSize))
-            list.append(getConfigListEntry(_("    Number of rows"), config.plugins.iptvplayer.numOfRow))
-            list.append(getConfigListEntry(_("    Number of columns"), config.plugins.iptvplayer.numOfCol))
+            list.append(getConfigListEntry(_("Skin"), config.plugins.iptvplayer.skin))
+            list.append(getConfigListEntry(_("Display thumbnails"), config.plugins.iptvplayer.showcover))
+            if config.plugins.iptvplayer.showcover.value:
+                list.append(getConfigListEntry(_("    Allowed formats of thumbnails"), config.plugins.iptvplayer.allowedcoverformats))
+                list.append(getConfigListEntry(_("    Remove thumbnails"), config.plugins.iptvplayer.deleteIcons))
+            #list.append(getConfigListEntry("Sortować listy?", config.plugins.iptvplayer.sortuj))
+            list.append(getConfigListEntry(_("Graphic services selector"), config.plugins.iptvplayer.ListaGraficzna))
+            if config.plugins.iptvplayer.ListaGraficzna.value == True:
+                list.append(getConfigListEntry(_("    Enable hosts groups"), config.plugins.iptvplayer.group_hosts))
+                list.append(getConfigListEntry(_("    Service icon size"), config.plugins.iptvplayer.IconsSize))
+                list.append(getConfigListEntry(_("    Number of rows"), config.plugins.iptvplayer.numOfRow))
+                list.append(getConfigListEntry(_("    Number of columns"), config.plugins.iptvplayer.numOfCol))
 
-        list.append(getConfigListEntry(_("Use the PyCurl for HTTP(S) requests"), config.plugins.iptvplayer.usepycurl))
-        list.append(getConfigListEntry(_("https - validate SSL certificates"), config.plugins.iptvplayer.httpssslcertvalidation))
-        list.append(getConfigListEntry(_("Alternative proxy server (1)"), config.plugins.iptvplayer.alternative_proxy1))
-        list.append(getConfigListEntry(_("Alternative proxy server (2)"), config.plugins.iptvplayer.alternative_proxy2))
-        list.append(getConfigListEntry(_("Polish proxy server url"), config.plugins.iptvplayer.proxyurl))
-        list.append(getConfigListEntry(_("German proxy server url"), config.plugins.iptvplayer.german_proxyurl))
-        list.append(getConfigListEntry(_("Russian proxy server url"), config.plugins.iptvplayer.russian_proxyurl))
-        list.append(getConfigListEntry(_("Ukrainian proxy server url"), config.plugins.iptvplayer.ukrainian_proxyurl))
+            list.append(getConfigListEntry(_("Use the PyCurl for HTTP(S) requests"), config.plugins.iptvplayer.usepycurl))
+            list.append(getConfigListEntry(_("https - validate SSL certificates"), config.plugins.iptvplayer.httpssslcertvalidation))
+            
+        list.append(getConfigListEntry('\\c00289496' + _("----- PROXIES CONFIGURATION (OK) -----"), config.plugins.iptvplayer.prxyConfVisible))
+        if prxyConfVisible: #PROXIES CONFIGURATION
+            list.append(getConfigListEntry(_("Alternative proxy server (1)"), config.plugins.iptvplayer.alternative_proxy1))
+            list.append(getConfigListEntry(_("Alternative proxy server (2)"), config.plugins.iptvplayer.alternative_proxy2))
+            list.append(getConfigListEntry(_("Polish proxy server url"), config.plugins.iptvplayer.proxyurl))
+            list.append(getConfigListEntry(_("German proxy server url"), config.plugins.iptvplayer.german_proxyurl))
+            list.append(getConfigListEntry(_("Russian proxy server url"), config.plugins.iptvplayer.russian_proxyurl))
+            list.append(getConfigListEntry(_("Ukrainian proxy server url"), config.plugins.iptvplayer.ukrainian_proxyurl))
 
-        list.append(getConfigListEntry(_("Folder for cache data"), config.plugins.iptvplayer.SciezkaCache))
-        list.append(getConfigListEntry(_("Folder for temporary data"), config.plugins.iptvplayer.NaszaTMP))
+            list.append(getConfigListEntry(_("Folder for cache data"), config.plugins.iptvplayer.SciezkaCache))
+            list.append(getConfigListEntry(_("Folder for temporary data"), config.plugins.iptvplayer.NaszaTMP))
 
-        # BUFFERING
-        list.append(getConfigListEntry(_("[HTTP] buffering"), config.plugins.iptvplayer.buforowanie))
-        list.append(getConfigListEntry(_("[HLS/M3U8] buffering"), config.plugins.iptvplayer.buforowanie_m3u8))
-        list.append(getConfigListEntry(_("[RTMP] buffering (rtmpdump required)"), config.plugins.iptvplayer.buforowanie_rtmp))
+        list.append(getConfigListEntry('\\c00289496' + _("----- BUFFERING CONFIGURATION (OK) -----"), config.plugins.iptvplayer.buffConfVisible))
+        if buffConfVisible: #BUFFERING CONFIGURATION
+            list.append(getConfigListEntry(_("[HTTP] buffering"), config.plugins.iptvplayer.buforowanie))
+            list.append(getConfigListEntry(_("[HLS/M3U8] buffering"), config.plugins.iptvplayer.buforowanie_m3u8))
+            list.append(getConfigListEntry(_("[RTMP] buffering (rtmpdump required)"), config.plugins.iptvplayer.buforowanie_rtmp))
 
-        if config.plugins.iptvplayer.buforowanie.value or config.plugins.iptvplayer.buforowanie_m3u8.value or config.plugins.iptvplayer.buforowanie_rtmp.value:
-            list.append(getConfigListEntry(_("    Video buffer size [MB]"), config.plugins.iptvplayer.requestedBuffSize))
-            list.append(getConfigListEntry(_("    Audio buffer size [KB]"), config.plugins.iptvplayer.requestedAudioBuffSize))
-            list.append(getConfigListEntry(_("Buffering location"), config.plugins.iptvplayer.bufferingPath))
+            if config.plugins.iptvplayer.buforowanie.value or config.plugins.iptvplayer.buforowanie_m3u8.value or config.plugins.iptvplayer.buforowanie_rtmp.value:
+                list.append(getConfigListEntry(_("    Video buffer size [MB]"), config.plugins.iptvplayer.requestedBuffSize))
+                list.append(getConfigListEntry(_("    Audio buffer size [KB]"), config.plugins.iptvplayer.requestedAudioBuffSize))
+                list.append(getConfigListEntry(_("Buffering location"), config.plugins.iptvplayer.bufferingPath))
 
-        list.append(getConfigListEntry(_("Downloads location"), config.plugins.iptvplayer.NaszaSciezka))
-        list.append(getConfigListEntry(_("Start download manager per default"), config.plugins.iptvplayer.IPTVDMRunAtStart))
-        list.append(getConfigListEntry(_("Show download manager after adding new item"), config.plugins.iptvplayer.IPTVDMShowAfterAdd))
-        list.append(getConfigListEntry(_("Number of downloaded files simultaneously"), config.plugins.iptvplayer.IPTVDMMaxDownloadItem))
+        list.append(getConfigListEntry('\\c00289496' + _("----- DOWNLOADING CONFIGURATION (OK) -----"), config.plugins.iptvplayer.downConfVisible))
+        if downConfVisible: #DOWNLOADING CONFIGURATION
+            list.append(getConfigListEntry(_("Downloads location"), config.plugins.iptvplayer.NaszaSciezka))
+            list.append(getConfigListEntry(_("Start download manager per default"), config.plugins.iptvplayer.IPTVDMRunAtStart))
+            list.append(getConfigListEntry(_("Show download manager after adding new item"), config.plugins.iptvplayer.IPTVDMShowAfterAdd))
+            list.append(getConfigListEntry(_("Number of downloaded files simultaneously"), config.plugins.iptvplayer.IPTVDMMaxDownloadItem))
 
-        list.append(getConfigListEntry(_("%s e-mail") % ('My JDownloader'), config.plugins.iptvplayer.myjd_login))
-        list.append(getConfigListEntry(_("%s password") % ('My JDownloader'), config.plugins.iptvplayer.myjd_password))
-        list.append(getConfigListEntry(_("%s device name") % ('My JDownloader'), config.plugins.iptvplayer.myjd_jdname))
+            list.append(getConfigListEntry(_("%s e-mail") % ('My JDownloader'), config.plugins.iptvplayer.myjd_login))
+            list.append(getConfigListEntry(_("%s password") % ('My JDownloader'), config.plugins.iptvplayer.myjd_password))
+            list.append(getConfigListEntry(_("%s device name") % ('My JDownloader'), config.plugins.iptvplayer.myjd_jdname))
 
-        list.append(getConfigListEntry(_("Default captcha bypass"), config.plugins.iptvplayer.captcha_bypass))
-        list.append(getConfigListEntry(_("%s API KEY") % 'https://9kw.eu/', config.plugins.iptvplayer.api_key_9kweu))
-        list.append(getConfigListEntry(_("%s API KEY") % 'http://2captcha.com/', config.plugins.iptvplayer.api_key_2captcha))
+        list.append(getConfigListEntry('\\c00289496' + _("----- CAPTCHA CONFIGURATION (OK) -----"), config.plugins.iptvplayer.captConfVisible))
+        if captConfVisible: #CAPTCHA CONFIGURATION
+            list.append(getConfigListEntry(_("Default captcha bypass"), config.plugins.iptvplayer.captcha_bypass))
+            list.append(getConfigListEntry(_("%s API KEY") % 'https://9kw.eu/', config.plugins.iptvplayer.api_key_9kweu))
+            list.append(getConfigListEntry(_("%s API KEY") % 'http://2captcha.com/', config.plugins.iptvplayer.api_key_2captcha))
 
-        list.append(getConfigListEntry(_("Use subtitles parser extension if available"), config.plugins.iptvplayer.useSubtitlesParserExtension))
-        list.append(getConfigListEntry("http://opensubtitles.org/ " + _("login"), config.plugins.iptvplayer.opensuborg_login))
-        list.append(getConfigListEntry("http://opensubtitles.org/ " + _("password"), config.plugins.iptvplayer.opensuborg_password))
-        list.append(getConfigListEntry("http://napisy24.pl/ " + _("login"), config.plugins.iptvplayer.napisy24pl_login))
-        list.append(getConfigListEntry("http://napisy24.pl/ " + _("password"), config.plugins.iptvplayer.napisy24pl_password))
+        list.append(getConfigListEntry('\\c00289496' + _("----- SUBTITLES CONFIGURATION (OK) -----"), config.plugins.iptvplayer.subtConfVisible))
+        if subtConfVisible: #SUBTITLES CONFIGURATION
+            list.append(getConfigListEntry(_("Use subtitles parser extension if available"), config.plugins.iptvplayer.useSubtitlesParserExtension))
+            list.append(getConfigListEntry("http://opensubtitles.org/ " + _("login"), config.plugins.iptvplayer.opensuborg_login))
+            list.append(getConfigListEntry("http://opensubtitles.org/ " + _("password"), config.plugins.iptvplayer.opensuborg_password))
+            list.append(getConfigListEntry("http://napisy24.pl/ " + _("login"), config.plugins.iptvplayer.napisy24pl_login))
+            list.append(getConfigListEntry("http://napisy24.pl/ " + _("password"), config.plugins.iptvplayer.napisy24pl_password))
 
-        list.append(getConfigListEntry("http://vk.com/ " + _("login"), config.plugins.iptvplayer.vkcom_login))
-        list.append(getConfigListEntry("http://vk.com/ " + _("password"), config.plugins.iptvplayer.vkcom_password))
+            list.append(getConfigListEntry("http://vk.com/ " + _("login"), config.plugins.iptvplayer.vkcom_login))
+            list.append(getConfigListEntry("http://vk.com/ " + _("password"), config.plugins.iptvplayer.vkcom_password))
 
-        list.append(getConfigListEntry("http://1fichier.com/ " + _("e-mail"), config.plugins.iptvplayer.fichiercom_login))
-        list.append(getConfigListEntry("http://1fichier.com/ " + _("password"), config.plugins.iptvplayer.fichiercom_password))
+            list.append(getConfigListEntry("http://1fichier.com/ " + _("e-mail"), config.plugins.iptvplayer.fichiercom_login))
+            list.append(getConfigListEntry("http://1fichier.com/ " + _("password"), config.plugins.iptvplayer.fichiercom_password))
 
-        players = []
-        bufferingMode = config.plugins.iptvplayer.buforowanie.value or config.plugins.iptvplayer.buforowanie_m3u8.value or config.plugins.iptvplayer.buforowanie_rtmp.value
-        if 'sh4' == config.plugins.iptvplayer.plarform.value:
-            list.append(getConfigListEntry(_("First movie player without buffering mode"), config.plugins.iptvplayer.defaultSH4MoviePlayer0))
-            players.append(config.plugins.iptvplayer.defaultSH4MoviePlayer0)
-            list.append(getConfigListEntry(_("Second movie player without buffering mode"), config.plugins.iptvplayer.alternativeSH4MoviePlayer0))
-            players.append(config.plugins.iptvplayer.alternativeSH4MoviePlayer0)
+        list.append(getConfigListEntry('\\c00289496' + _("----- PLAYERS CONFIGURATION (OK) -----"), config.plugins.iptvplayer.playConfVisible))
+        if playConfVisible: #PLAYERS CONFIGURATION
+            players = []
+            bufferingMode = config.plugins.iptvplayer.buforowanie.value or config.plugins.iptvplayer.buforowanie_m3u8.value or config.plugins.iptvplayer.buforowanie_rtmp.value
+            if 'sh4' == config.plugins.iptvplayer.plarform.value:
+                list.append(getConfigListEntry(_("First movie player without buffering mode"), config.plugins.iptvplayer.defaultSH4MoviePlayer0))
+                players.append(config.plugins.iptvplayer.defaultSH4MoviePlayer0)
+                list.append(getConfigListEntry(_("Second movie player without buffering mode"), config.plugins.iptvplayer.alternativeSH4MoviePlayer0))
+                players.append(config.plugins.iptvplayer.alternativeSH4MoviePlayer0)
 
-            list.append(getConfigListEntry(_("First movie player in buffering mode"), config.plugins.iptvplayer.defaultSH4MoviePlayer))
-            players.append(config.plugins.iptvplayer.defaultSH4MoviePlayer)
-            list.append(getConfigListEntry(_("Second movie player in buffering mode"), config.plugins.iptvplayer.alternativeSH4MoviePlayer))
-            players.append(config.plugins.iptvplayer.alternativeSH4MoviePlayer)
+                list.append(getConfigListEntry(_("First movie player in buffering mode"), config.plugins.iptvplayer.defaultSH4MoviePlayer))
+                players.append(config.plugins.iptvplayer.defaultSH4MoviePlayer)
+                list.append(getConfigListEntry(_("Second movie player in buffering mode"), config.plugins.iptvplayer.alternativeSH4MoviePlayer))
+                players.append(config.plugins.iptvplayer.alternativeSH4MoviePlayer)
 
-        elif 'mipsel' == config.plugins.iptvplayer.plarform.value:
-            list.append(getConfigListEntry(_("First movie player without buffering mode"), config.plugins.iptvplayer.defaultMIPSELMoviePlayer0))
-            players.append(config.plugins.iptvplayer.defaultMIPSELMoviePlayer0)
-            list.append(getConfigListEntry(_("Second movie player without buffering mode"), config.plugins.iptvplayer.alternativeMIPSELMoviePlayer0))
-            players.append(config.plugins.iptvplayer.alternativeMIPSELMoviePlayer0)
+            elif 'mipsel' == config.plugins.iptvplayer.plarform.value:
+                list.append(getConfigListEntry(_("First movie player without buffering mode"), config.plugins.iptvplayer.defaultMIPSELMoviePlayer0))
+                players.append(config.plugins.iptvplayer.defaultMIPSELMoviePlayer0)
+                list.append(getConfigListEntry(_("Second movie player without buffering mode"), config.plugins.iptvplayer.alternativeMIPSELMoviePlayer0))
+                players.append(config.plugins.iptvplayer.alternativeMIPSELMoviePlayer0)
 
-            list.append(getConfigListEntry(_("First movie player in buffering mode"), config.plugins.iptvplayer.defaultMIPSELMoviePlayer))
-            players.append(config.plugins.iptvplayer.defaultMIPSELMoviePlayer)
-            list.append(getConfigListEntry(_("Second movie player in buffering mode"), config.plugins.iptvplayer.alternativeMIPSELMoviePlayer))
-            players.append(config.plugins.iptvplayer.alternativeMIPSELMoviePlayer)
+                list.append(getConfigListEntry(_("First movie player in buffering mode"), config.plugins.iptvplayer.defaultMIPSELMoviePlayer))
+                players.append(config.plugins.iptvplayer.defaultMIPSELMoviePlayer)
+                list.append(getConfigListEntry(_("Second movie player in buffering mode"), config.plugins.iptvplayer.alternativeMIPSELMoviePlayer))
+                players.append(config.plugins.iptvplayer.alternativeMIPSELMoviePlayer)
 
-        elif 'i686' == config.plugins.iptvplayer.plarform.value:
-            list.append(getConfigListEntry(_("First movie player without buffering mode"), config.plugins.iptvplayer.defaultI686MoviePlayer0))
-            players.append(config.plugins.iptvplayer.defaultI686MoviePlayer0)
-            list.append(getConfigListEntry(_("Second movie player without buffering mode"), config.plugins.iptvplayer.alternativeI686MoviePlayer0))
-            players.append(config.plugins.iptvplayer.alternativeI686MoviePlayer0)
+            elif 'i686' == config.plugins.iptvplayer.plarform.value:
+                list.append(getConfigListEntry(_("First movie player without buffering mode"), config.plugins.iptvplayer.defaultI686MoviePlayer0))
+                players.append(config.plugins.iptvplayer.defaultI686MoviePlayer0)
+                list.append(getConfigListEntry(_("Second movie player without buffering mode"), config.plugins.iptvplayer.alternativeI686MoviePlayer0))
+                players.append(config.plugins.iptvplayer.alternativeI686MoviePlayer0)
 
-            list.append(getConfigListEntry(_("First movie player in buffering mode"), config.plugins.iptvplayer.defaultI686MoviePlayer))
-            players.append(config.plugins.iptvplayer.defaultI686MoviePlayer)
-            list.append(getConfigListEntry(_("Second movie player in buffering mode"), config.plugins.iptvplayer.alternativeI686MoviePlayer))
-            players.append(config.plugins.iptvplayer.alternativeI686MoviePlayer)
+                list.append(getConfigListEntry(_("First movie player in buffering mode"), config.plugins.iptvplayer.defaultI686MoviePlayer))
+                players.append(config.plugins.iptvplayer.defaultI686MoviePlayer)
+                list.append(getConfigListEntry(_("Second movie player in buffering mode"), config.plugins.iptvplayer.alternativeI686MoviePlayer))
+                players.append(config.plugins.iptvplayer.alternativeI686MoviePlayer)
 
-        elif 'armv7' == config.plugins.iptvplayer.plarform.value:
-            list.append(getConfigListEntry(_("First movie player without buffering mode"), config.plugins.iptvplayer.defaultARMV7MoviePlayer0))
-            players.append(config.plugins.iptvplayer.defaultARMV7MoviePlayer0)
-            list.append(getConfigListEntry(_("Second movie player without buffering mode"), config.plugins.iptvplayer.alternativeARMV7MoviePlayer0))
-            players.append(config.plugins.iptvplayer.alternativeARMV7MoviePlayer0)
+            elif 'armv7' == config.plugins.iptvplayer.plarform.value:
+                list.append(getConfigListEntry(_("First movie player without buffering mode"), config.plugins.iptvplayer.defaultARMV7MoviePlayer0))
+                players.append(config.plugins.iptvplayer.defaultARMV7MoviePlayer0)
+                list.append(getConfigListEntry(_("Second movie player without buffering mode"), config.plugins.iptvplayer.alternativeARMV7MoviePlayer0))
+                players.append(config.plugins.iptvplayer.alternativeARMV7MoviePlayer0)
 
-            list.append(getConfigListEntry(_("First movie player in buffering mode"), config.plugins.iptvplayer.defaultARMV7MoviePlayer))
-            players.append(config.plugins.iptvplayer.defaultARMV7MoviePlayer)
-            list.append(getConfigListEntry(_("Second movie player in buffering mode"), config.plugins.iptvplayer.alternativeARMV7MoviePlayer))
-            players.append(config.plugins.iptvplayer.alternativeARMV7MoviePlayer)
-        elif 'armv5t' == config.plugins.iptvplayer.plarform.value:
-            list.append(getConfigListEntry(_("First movie player without buffering mode"), config.plugins.iptvplayer.defaultARMV5TMoviePlayer0))
-            players.append(config.plugins.iptvplayer.defaultARMV5TMoviePlayer0)
-            list.append(getConfigListEntry(_("Second movie player without buffering mode"), config.plugins.iptvplayer.alternativeARMV5TMoviePlayer0))
-            players.append(config.plugins.iptvplayer.alternativeARMV5TMoviePlayer0)
+                list.append(getConfigListEntry(_("First movie player in buffering mode"), config.plugins.iptvplayer.defaultARMV7MoviePlayer))
+                players.append(config.plugins.iptvplayer.defaultARMV7MoviePlayer)
+                list.append(getConfigListEntry(_("Second movie player in buffering mode"), config.plugins.iptvplayer.alternativeARMV7MoviePlayer))
+                players.append(config.plugins.iptvplayer.alternativeARMV7MoviePlayer)
+            elif 'armv5t' == config.plugins.iptvplayer.plarform.value:
+                list.append(getConfigListEntry(_("First movie player without buffering mode"), config.plugins.iptvplayer.defaultARMV5TMoviePlayer0))
+                players.append(config.plugins.iptvplayer.defaultARMV5TMoviePlayer0)
+                list.append(getConfigListEntry(_("Second movie player without buffering mode"), config.plugins.iptvplayer.alternativeARMV5TMoviePlayer0))
+                players.append(config.plugins.iptvplayer.alternativeARMV5TMoviePlayer0)
 
-            list.append(getConfigListEntry(_("First movie player in buffering mode"), config.plugins.iptvplayer.defaultARMV5TMoviePlayer))
-            players.append(config.plugins.iptvplayer.defaultARMV5TMoviePlayer)
-            list.append(getConfigListEntry(_("Second movie player in buffering mode"), config.plugins.iptvplayer.alternativeARMV5TMoviePlayer))
-            players.append(config.plugins.iptvplayer.alternativeARMV5TMoviePlayer)
+                list.append(getConfigListEntry(_("First movie player in buffering mode"), config.plugins.iptvplayer.defaultARMV5TMoviePlayer))
+                players.append(config.plugins.iptvplayer.defaultARMV5TMoviePlayer)
+                list.append(getConfigListEntry(_("Second movie player in buffering mode"), config.plugins.iptvplayer.alternativeARMV5TMoviePlayer))
+                players.append(config.plugins.iptvplayer.alternativeARMV5TMoviePlayer)
 
-        else:
-            list.append(getConfigListEntry(_("Movie player"), config.plugins.iptvplayer.NaszPlayer))
+            else:
+                list.append(getConfigListEntry(_("Movie player"), config.plugins.iptvplayer.NaszPlayer))
 
-        playersValues = [player.value for player in players]
-        if 'exteplayer' in playersValues or 'extgstplayer' in playersValues or 'auto' in playersValues:
-            list.append(getConfigListEntry(_("External movie player config"), config.plugins.iptvplayer.fakExtMoviePlayerList))
+            playersValues = [player.value for player in players]
+            if 'exteplayer' in playersValues or 'extgstplayer' in playersValues or 'auto' in playersValues:
+                list.append(getConfigListEntry(_("External movie player config"), config.plugins.iptvplayer.fakExtMoviePlayerList))
 
-        list.append(getConfigListEntry(_("Autoplay start delay"), config.plugins.iptvplayer.autoplay_start_delay))
-        list.append(getConfigListEntry(_("The number of items in the search history"), config.plugins.iptvplayer.search_history_size))
-        list.append(getConfigListEntry(_("Block wmv files"), config.plugins.iptvplayer.ZablokujWMV))
-        list.append(getConfigListEntry(_("Show IPTVPlayer in extension list"), config.plugins.iptvplayer.showinextensions))
-        list.append(getConfigListEntry(_("Show IPTVPlayer in main menu"), config.plugins.iptvplayer.showinMainMenu))
-        if config.plugins.iptvplayer.preferredupdateserver.value != '4': #4 = managed by opkg, no no update icon
-            list.append(getConfigListEntry(_("Show update icon in service selection menu"), config.plugins.iptvplayer.AktualizacjaWmenu))
-        list.append(getConfigListEntry(_("Debug logs"), config.plugins.iptvplayer.debugprint))
-        if config.plugins.iptvplayer.preferredupdateserver.value != '4': #4 = managed by opkg, no no update icon
-            list.append(getConfigListEntry(_("Allow downgrade"), config.plugins.iptvplayer.downgradePossible))
-            list.append(getConfigListEntry(_("Update packet type"), config.plugins.iptvplayer.possibleUpdateType))
+        list.append(getConfigListEntry('\\c00289496' + _("----- OTHER SETTINGS (OK) -----"), config.plugins.iptvplayer.otherConfVisible))
+        if otherConfVisible: #OTHER SETTINGS
+            list.append(getConfigListEntry(_("Autoplay start delay"), config.plugins.iptvplayer.autoplay_start_delay))
+            list.append(getConfigListEntry(_("The number of items in the search history"), config.plugins.iptvplayer.search_history_size))
+            list.append(getConfigListEntry(_("Block wmv files"), config.plugins.iptvplayer.ZablokujWMV))
+            list.append(getConfigListEntry(_("Show IPTVPlayer in extension list"), config.plugins.iptvplayer.showinextensions))
+            list.append(getConfigListEntry(_("Show IPTVPlayer in main menu"), config.plugins.iptvplayer.showinMainMenu))
+            if config.plugins.iptvplayer.preferredupdateserver.value != '4': #4 = managed by opkg, no no update icon
+                list.append(getConfigListEntry(_("Show update icon in service selection menu"), config.plugins.iptvplayer.AktualizacjaWmenu))
+            list.append(getConfigListEntry(_("Debug logs"), config.plugins.iptvplayer.debugprint))
+            if config.plugins.iptvplayer.preferredupdateserver.value != '4': #4 = managed by opkg, no no update icon
+                list.append(getConfigListEntry(_("Allow downgrade"), config.plugins.iptvplayer.downgradePossible))
+                list.append(getConfigListEntry(_("Update packet type"), config.plugins.iptvplayer.possibleUpdateType))
 
     def runSetup(self):
         self.list = []
-        ConfigMenu.fillConfigList(self.list, self.isHiddenOptionsUnlocked())
+        ConfigMenu.fillConfigList(self.list, self.isHiddenOptionsUnlocked(), self.basicConfVisible, self.prxyConfVisible, self.buffConfVisible, self.downConfVisible, 
+                                                                             self.captConfVisible, self.subtConfVisible, self.playConfVisible, self.otherConfVisible)
         ConfigBaseWidget.runSetup(self)
 
     def onSelectionChanged(self):
@@ -547,7 +587,9 @@ class ConfigMenu(ConfigBaseWidget):
 
     def getMessageBeforeClose(self, afterSave):
         needPluginUpdate = False
-        if afterSave and config.plugins.iptvplayer.ListaGraficzna.value and 0 == GetAvailableIconSize(False):
+        if config.plugins.iptvplayer.preferredupdateserver == "4": #opkg
+            return ''
+        elif afterSave and config.plugins.iptvplayer.ListaGraficzna.value and 0 == GetAvailableIconSize(False):
             needPluginUpdate = True
         else:
             enabledHostsList = GetEnabledHostsList()
@@ -612,6 +654,30 @@ class ConfigMenu(ConfigBaseWidget):
             self.hostsList()
         elif config.plugins.iptvplayer.fakExtMoviePlayerList == currItem:
             self.extMoviePlayerList()
+        elif config.plugins.iptvplayer.basicConfVisible == currItem:
+            self.basicConfVisible = not self.basicConfVisible
+            self.runSetup()
+        elif config.plugins.iptvplayer.prxyConfVisible == currItem:
+            self.prxyConfVisible = not self.prxyConfVisible
+            self.runSetup()
+        elif config.plugins.iptvplayer.buffConfVisible == currItem:
+            self.buffConfVisible = not self.buffConfVisible
+            self.runSetup()
+        elif config.plugins.iptvplayer.downConfVisible == currItem:
+            self.downConfVisible = not self.downConfVisible
+            self.runSetup()
+        elif config.plugins.iptvplayer.captConfVisible == currItem:
+            self.captConfVisible = not self.captConfVisible
+            self.runSetup()
+        elif config.plugins.iptvplayer.subtConfVisible == currItem:
+            self.subtConfVisible = not self.subtConfVisible
+            self.runSetup()
+        elif config.plugins.iptvplayer.playConfVisible == currItem:
+            self.playConfVisible = not self.playConfVisible
+            self.runSetup()
+        elif config.plugins.iptvplayer.otherConfVisible == currItem:
+            self.otherConfVisible = not self.otherConfVisible
+            self.runSetup()
         else:
             ConfigBaseWidget.keyOK(self)
 

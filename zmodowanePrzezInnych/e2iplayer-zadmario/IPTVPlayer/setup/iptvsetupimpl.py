@@ -306,7 +306,7 @@ class IPTVSetupImpl:
     def getOpensslVersionFinished(self, stsTab, dataTab):
         printDBG("IPTVSetupImpl.getOpensslVersionFinished")
         if len(stsTab) > 0 and True == stsTab[-1]:
-            for ver in ['0.9.8', '1.0.0', '1.0.2']:
+            for ver in ['0.9.8', '1.0.0', '1.0.2', '1.1.1']:
                 if ver in dataTab[-1]:
                     self.openSSLVersion = '.' + ver
                     break

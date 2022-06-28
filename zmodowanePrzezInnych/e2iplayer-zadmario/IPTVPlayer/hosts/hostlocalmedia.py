@@ -380,7 +380,11 @@ class LocalMedia(CBaseHostClass):
                         printExc()
                         continue
                 try:
-                    title = ensure_str(item[0].decode(encoding))
+                    if isPY2():
+                        title = item[0].decode(encoding).encode('utf-8')
+                    else:
+                        if isinstance(item[0], bytes):
+                            title = item[0].decode(encoding, 'ignore')
                 except Exception:
                     title = item[0]
                     printExc()

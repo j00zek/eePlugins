@@ -40,6 +40,7 @@ except Exception:
 
 
 def int2base(x, base):
+    printDBG('int2base(%s,%s)' % (x, base)) #temporary to catch why digits.append(digs[x % base]) sometimes returns TypeError: string indices must be integers
     if isPY2():
         digs = string.digits + string.lowercase
     else:

@@ -15080,8 +15080,10 @@ class pageParser(CaptchaHelper):
         jscode = script + '\n' + jsdata
         jscode = jscode.replace('atob', 'base64.b64decode')
         decode = ''
-        vars = re.compile('var\s(.*?=[^{]+?;)').findall(jscode)
-        exec('\n'.join(vars))
+        variables = re.compile('var\s(.*?=[^{]+?;)').findall(jscode)
+        for variable in variables:
+            variable = ensure_str(variable)
+        exec('\n'.join(variables))
 
         urlTab = []
         if decode:
