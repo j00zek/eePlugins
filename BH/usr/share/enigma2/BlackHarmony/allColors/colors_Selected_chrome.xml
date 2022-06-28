@@ -42,6 +42,8 @@
     <color name="transpyellow" value="#33bab329" />
     <color name="white" value="#acb7bf" />
     <color name="yellow" value="#adaba1" />
+    <!-- kolory metrixa dla lepszej kompatybilności z niektórymi wtyczkami -->
+    <color name="unffffff" value="#00ffffff" />
   </colors>
   <windowstyle type="skinned" id="0">
     <title offset="33,22" font="Roboto_HD;26" />
