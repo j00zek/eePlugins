@@ -1269,7 +1269,12 @@ class common:
     def getURLRequestData(self, params={}, post_data=None):
 
         def urlOpen(req, customOpeners, timeout):
-            req = ensure_binary(req)
+            #req = ensure_binary(req)
+            # above line was added to resolve > "TypeError: POST data should be bytes, an iterable of bytes, or a file object. It cannot be of type str."
+            # but it seems it breaks other scenarios
+            # also documentation says req should be a string. :(
+            # NEEDS FURTHER INVESTIGATION !!!
+    
             if len(customOpeners) > 0:
                 opener = urllib2_build_opener(*customOpeners)
                 if timeout != None:

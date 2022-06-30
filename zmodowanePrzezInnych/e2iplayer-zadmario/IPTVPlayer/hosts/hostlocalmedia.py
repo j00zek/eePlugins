@@ -379,6 +379,7 @@ class LocalMedia(CBaseHostClass):
                     except Exception:
                         printExc()
                         continue
+                title = item[0]
                 try:
                     if isPY2():
                         title = item[0].decode(encoding).encode('utf-8')
@@ -386,7 +387,6 @@ class LocalMedia(CBaseHostClass):
                         if isinstance(item[0], bytes):
                             title = item[0].decode(encoding, 'ignore')
                 except Exception:
-                    title = item[0]
                     printExc()
                 params = {'title': title, 'raw_name': item[0]}
                 if 'd' == item[1]:
