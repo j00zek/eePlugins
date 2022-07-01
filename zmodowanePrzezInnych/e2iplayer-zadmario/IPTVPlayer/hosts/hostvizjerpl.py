@@ -259,7 +259,7 @@ class Vizjer(CBaseHostClass):
 
         for item in data:
 #            printDBG("Vizjer.getLinksForVideo item[%s]" % item)
-            playerUrl = base64.b64decode(self.cm.ph.getSearchGroups(item, '''data-iframe=['"]([^"^']+?)['"]''')[0]).replace('\\r', '').replace('\\', '')
+            playerUrl = ensure_str(base64.b64decode(self.cm.ph.getSearchGroups(item, '''data-iframe=['"]([^"^']+?)['"]''')[0])).replace('\\r', '').replace('\\', '')
             playerUrl = self.getFullUrl(self.cm.ph.getSearchGroups(playerUrl, '''src['"]:['"]([^"^']+?)['"]''')[0])
             name = self.up.getHostName(playerUrl)
             item = item.split('</td>\n')
