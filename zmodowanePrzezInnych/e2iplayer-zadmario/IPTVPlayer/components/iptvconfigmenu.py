@@ -587,7 +587,7 @@ class ConfigMenu(ConfigBaseWidget):
 
     def getMessageBeforeClose(self, afterSave):
         needPluginUpdate = False
-        if config.plugins.iptvplayer.preferredupdateserver == "4": #opkg
+        if config.plugins.iptvplayer.preferredupdateserver.value == "4": #opkg
             return ''
         elif afterSave and config.plugins.iptvplayer.ListaGraficzna.value and 0 == GetAvailableIconSize(False):
             needPluginUpdate = True
