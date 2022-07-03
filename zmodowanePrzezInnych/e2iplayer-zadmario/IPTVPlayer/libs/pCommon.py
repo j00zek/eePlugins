@@ -1196,19 +1196,38 @@ class common:
 
             checkFromFirstBytes = addParams.get('check_first_bytes', [])
             OK = True
-            if 'maintype' in addParams and addParams['maintype'] != downHandler.headers.maintype:
-                printDBG("common.getFile wrong maintype! requested[%r], retrieved[%r]" % (addParams['maintype'], downHandler.headers.maintype))
-                if 0 == len(checkFromFirstBytes):
-                    downHandler.close()
-                OK = False
-
+            if 'maintype' in addParams:
+                if isPY2():
+                    if addParams['maintype'] != downHandler.headers.maintype:
+                        printDBG("common.getFile wrong maintype! requested[%r], retrieved[%r]" % (addParams['maintype'], downHandler.headers.maintype))
+                        if 0 == len(checkFromFirstBytes):
+                            downHandler.close()
+                        OK = False
+                else: #PY3
+                    #printDBG('!!!!! downHandler.headers: %s!!!!!' % downHandler.headers )
+                    if addParams['maintype'] not in str(downHandler.headers): #silly catching Content-Type: image/png from header
+                        printDBG("common.getFile wrong maintype! requested[%s], retrieved[%s]" % (addParams['maintype'], str(downHandler.headers)))
+                        if 0 == len(checkFromFirstBytes):
+                            downHandler.close()
+                        OK = False
+            
             if OK and 'subtypes' in addParams:
                 OK = False
+                #printDBG('!!!!! downHandler.headers: %s!!!!!' % downHandler.headers )
                 for item in addParams['subtypes']:
-                    if item == downHandler.headers.subtype:
-                        OK = True
-                        break
+                    #printDBG("saveWebFile() subtype='%s'" % item)
+                    if isPY2():
+                        if item == downHandler.headers.subtype:
+                            OK = True
+                            break
+                    else: #PY3
+                        if item in str(downHandler.headers):
+                            printDBG("common.getFile found '%s' subtype in header" % item)
+                            OK = True
+                            break
+                    
 
+            printDBG('saveWebFile() OK=%s, checkFromFirstBytes=%s' % (str(OK), checkFromFirstBytes))
             if OK or len(checkFromFirstBytes):
                 blockSize = addParams.get('block_size', 8192)
                 fileHandler = None
@@ -1216,6 +1235,7 @@ class common:
                     buffer = downHandler.read(blockSize)
 
                     if len(checkFromFirstBytes):
+                        printDBG('saveWebFile() buffer.startswith "%s"' % buffer[:5])
                         OK = False
                         for item in checkFromFirstBytes:
                             if buffer.startswith(ensure_binary(item)):
@@ -1231,7 +1251,7 @@ class common:
                     downDataSize += len(buffer)
                     if len(buffer):
                         if fileHandler == None:
-                            fileHandler = file(file_path, "wb")
+                            fileHandler = open(file_path, "wb")
                         fileHandler.write(buffer)
                 if fileHandler != None:
                     fileHandler.close()

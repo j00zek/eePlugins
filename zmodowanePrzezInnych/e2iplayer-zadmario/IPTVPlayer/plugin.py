@@ -131,20 +131,29 @@ class pluginAutostart(Screen):
 
 
 def doRunMain(session):
-    for DBGfile in ['/hdd/iptv.dbg','/tmp/iptv.dbg','/home/root/logs/iptv.dbg']:
-        if os.path.exists(DBGfile):
-            os.remove(DBGfile)
     session.open(E2iPlayerWidget)
 
 
 def runMain(session, nextFunction=doRunMain):
+    def allToolsFromOPKG():
+        toolsList = ['enigma2-plugin-extensions-e2iplayer-deps', 'duktape', 'exteplayer3', 'uchardet', 'gstplayer', 'rtmpdump']
+        for tool in toolsList:
+            if not os.path.exists(os.path.join('/var/lib/opkg/info/', tool) + '.control'):
+                return False
+        else:
+            return True
+    
+    for DBGfile in ['/hdd/iptv.dbg','/tmp/iptv.dbg','/home/root/logs/iptv.dbg']:
+        if os.path.exists(DBGfile):
+            os.remove(DBGfile)
+
     wgetpath = IsExecutable(config.plugins.iptvplayer.wgetpath.value)
     rtmpdumppath = IsExecutable(config.plugins.iptvplayer.rtmpdumppath.value)
     f4mdumppath = IsExecutable(config.plugins.iptvplayer.f4mdumppath.value)
     platform = config.plugins.iptvplayer.plarform.value
     if platform in ["auto", "unknown"] or not wgetpath or not rtmpdumppath or not f4mdumppath:
         session.openWithCallback(boundFunction(nextFunction, session), IPTVSetupMainWidget)
-    elif IPTVPlayerNeedInit():
+    elif IPTVPlayerNeedInit() and not allToolsFromOPKG():
         session.openWithCallback(boundFunction(nextFunction, session), IPTVSetupMainWidget, True)
     else:
         nextFunction(session)

@@ -8,6 +8,7 @@ from Plugins.Extensions.IPTVPlayer.components.ihost import CHostBase, CBaseHostC
 from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc, byteify
 from Plugins.Extensions.IPTVPlayer.libs.urlparserhelper import getDirectM3U8Playlist
 ###################################################
+from Plugins.Extensions.IPTVPlayer.p2p3.pVer import isPY2
 if not isPY2():
     from functools import cmp_to_key
 ###################################################
