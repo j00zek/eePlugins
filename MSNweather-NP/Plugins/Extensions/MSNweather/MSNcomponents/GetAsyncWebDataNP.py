@@ -2163,7 +2163,7 @@ def mainProc():
             saveJsonDict(paramsDict['dictWeatherfile'], paramsDict['dictWeather'], False, True)
 
             def useArly(override):
-                if paramsDict['airlyAPIKEY'] != '' and paramsDict['airlyID'] != '':
+                if paramsDict['airlyAPIKEY'] != '' and paramsDict['airlyID'] != '' and len(paramsDict.get('airlyData.json','')) > 0:
                     airlyData = paramsDict['airlyData.json']
                     if len(airlyData) == 0:
                         print('\tbrak danych airly, opuszczam.')
@@ -2233,7 +2233,7 @@ def mainProc():
 
 
             def useTS(override):
-                if paramsDict['airThingSpeakChannelID'] != '':
+                if paramsDict['airThingSpeakChannelID'] != '' and len(paramsDict.get('thingSpeakItems','')) > 0:
                     tsDict = paramsDict['thingSpeakItems']
                     if str(tsDict.get('ObservationTime', ''))[:10] != str(datetime.now().strftime('%Y-%m-%d')):
                         print('\tnieaktualne dane THINGSPEAK (%s), opuszczam.' % str(tsDict.get('ObservationTime', ''))[:10])
@@ -2260,7 +2260,7 @@ def mainProc():
 
 
             def useLookO2(override):
-                if paramsDict['airLooko2ID'] != '':
+                if paramsDict['airLooko2ID'] != '' and len(paramsDict.get('dictLooko2','')) > 0:
                     tmpDict = paramsDict['dictLooko2']
                     if str(tmpDict.get('observationtime', {}).get('date', '')) != str(datetime.now().strftime('%Y-%m-%d')):
                         print('\tnieaktualne dane LookO2 (%s), opuszczam.' % str(tmpDict.get('date', '')))
