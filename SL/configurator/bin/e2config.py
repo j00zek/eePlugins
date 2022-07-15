@@ -2,6 +2,15 @@ import os
 
 streamlinkDict = {}
 
+#### get user configs ####
+def readCFG(cfgName, defVal = ''):
+    retValue = defVal
+    for cfgPath in ['/j00zek/streamlink_defaults/','/hdd/User_Configs']:
+        if os.path.exists(os.path.join(cfgPath, cfgName)):
+            retValue = open(os.path.join(cfgPath, cfgName), 'r').readline().strip()
+            break
+    return retValue
+
 def getE2config( CFGname, CFGdefault = "noCFG" ):
     global streamlinkDict
     if len(streamlinkDict) == 0:
@@ -22,4 +31,7 @@ def getE2config( CFGname, CFGdefault = "noCFG" ):
                         streamlinkDict[cfg[0].replace('config.plugins.streamlinksrv.','')] = val
                         streamlinkDict["Loaded"] += 1
                 f.close()
-    return streamlinkDict.get(CFGname.replace('config.plugins.streamlinksrv.',''), CFGdefault)
+    retVal = streamlinkDict.get(CFGname.replace('config.plugins.streamlinksrv.',''), CFGdefault)
+    if retVal == CFGdefault:
+        retVal = readCFG(CFGname.replace('config.plugins.streamlinksrv.',''), CFGdefault)
+    return retVal

@@ -18,5 +18,7 @@ if [ $pythonType != 'unknown' ];then
   [ -e "/usr/lib/$pythonType/site-packages/emukodi" ] && rm -rf "/usr/lib/$pythonType/site-packages/emukodi"
   [ -e "/usr/lib/$pythonType/site-packages/streamlink_cli" ] && rm -rf "/usr/lib/$pythonType/site-packages/streamlink_cli"
 fi
-rm -rf /usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig
+if [ `ps -ef 2>&1 |grep -v grep|grep opkg|grep -c remove` -ge 1 ] || [ `ps -l 2>&1 |grep -v grep|grep opkg|grep -c remove` -ge 1 ];then
+  rm -rf /usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig
+fi
 exit 0

@@ -122,7 +122,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                     Mlist.append(getConfigListEntry(_("Save log file in:"), config.plugins.streamlinksrv.logPath))
                     Mlist.append(getConfigListEntry(_("Buffer path:"), config.plugins.streamlinksrv.bufferPath))
                     #Mlist.append(getConfigListEntry(_("useCLI:"), config.plugins.streamlinksrv.useCLI))
-                    Mlist.append(getConfigListEntry(" !!! EXPERIMENTAL OPTION(S) !!!"))
+                    Mlist.append(getConfigListEntry(_(" !!! EXPERIMENTAL OPTION(S) !!!")))
                     Mlist.append(getConfigListEntry(_("EPGimport mode:"), config.plugins.streamlinksrv.EPGserver))
                     Mlist.append(getConfigListEntry(_("Recorder mode:"), config.plugins.streamlinksrv.Recorder))
                     #Mlist.append(getConfigListEntry(_("link IPTV picons:"), config.plugins.streamlinksrv.managePicons))
@@ -343,7 +343,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                         return
                     else:
                         self.saveConfig()
-                        cmd = '/usr/bin/python /usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/plugins/wpBouquet.py checkLogin'
+                        cmd = "/usr/bin/python /usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/plugins/wpBouquet.py checkLogin '%s' '%s'" % (config.plugins.streamlinksrv.WPusername.value, config.plugins.streamlinksrv.WPpassword.value)
                         self.session.openWithCallback(self.doNothing ,Console, title = _('Credentials verification'), cmdlist = [ cmd ])
                         return
                 elif currItem == config.plugins.streamlinksrv.generateBouquet:

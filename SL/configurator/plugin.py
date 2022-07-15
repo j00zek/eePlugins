@@ -13,11 +13,20 @@ import Screens.Standby
 def runCMD(myCMD):
     DBGlog('CMD: %s' % myCMD)
     with open("/proc/sys/vm/drop_caches", "w") as f: f.write("1\n")
-    Console().ePopen(myCMD) #safer than os.system and asynchronous
-    
-def SLconfigLeaveStandbyInitDaemon():
-    DBGlog('LeaveStandbyInitDaemon() >>>')
-    runCMD('streamlinksrv restart')
+    if ';' in myCMD:
+        myCMDs = myCMD.split(';')
+        CMDsCount = len(myCMDs)
+        curCount = 1
+        for curCMD in myCMDs:
+            if curCount == CMDsCount:
+                Console().ePopen(curCMD + " &")
+            else:
+                Console().ePopen(curCMD)
+            curCount += 1
+    else:
+        Console().ePopen(myCMD + " &")
+
+def initProxy():
     if config.plugins.streamlinksrv.streamlinkProxy1.value != '':
         _cmd = []
         _cmd.append('/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/bin/streamlinkProxy.py')
@@ -25,8 +34,13 @@ def SLconfigLeaveStandbyInitDaemon():
         _cmd.append('--player-external-http --player-external-http-port 8818')
         _cmd.append(config.plugins.streamlinksrv.streamlinkProxy1.value)
         _cmd.append('best')
+        DBGlog('runCMD(%s)' % " ".join(_cmd))
         runCMD(" ".join(_cmd))
-      
+
+def SLconfigLeaveStandbyInitDaemon():
+    DBGlog('LeaveStandbyInitDaemon() >>>')
+    runCMD('streamlinksrv restart')
+    initProxy()
 
 def SLconfigStandbyCounterChanged(configElement):
     DBGlog('standbyCounterChanged() >>>')
@@ -42,10 +56,12 @@ def sessionstart(reason, session = None):
     if os.path.exists("/tmp/StreamlinkConfig.log"):
         os.remove("/tmp/StreamlinkConfig.log")
     DBGlog("autostart")
+    runCMD('/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/bin/re-initiate.sh;streamlinksrv restart;killall -9 streamlinkProxy.py')
     from Screens.Standby import inStandby
     if reason == 0 and config.plugins.streamlinksrv.StandbyMode.value == True:
         DBGlog('reason == 0 and StandbyMode enabled')
         config.misc.standbyCounter.addNotifier(SLconfigStandbyCounterChanged, initial_call=False)
+        initProxy()
 
 
 

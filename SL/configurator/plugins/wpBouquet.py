@@ -7,6 +7,9 @@
 import sys
 import os
 
+import warnings
+warnings.filterwarnings('ignore', message='Unverified HTTPS request')
+
 from wpConfig import headers
 from wpConfig import params #'login_url', 'main_url', 'video_url', 'close_stream_url'
 from wpConfig import data
@@ -113,14 +116,18 @@ if __name__ == '__main__':
         #print 'filename' , file_name
         #print path + file_name
         data['login'] = sys.argv[2]
-        #print 'username' , data['login']
+        #print('username' , data['login'])
         data['password'] = sys.argv[3]
-        #print 'password' , data['password']
+        #print('password' , data['password'])
         streamlinkURL = 'http%%3a//127.0.0.1%%3a%s/' % sys.argv[4]
         frameWork = sys.argv[5]
         #print frameWork
         _generate_E2bouquet()
-    elif len(sys.argv) == 2 and sys.argv[1] == 'checkLogin':
+    elif len(sys.argv) == 4 and sys.argv[1] == 'checkLogin':
+        data['login'] = sys.argv[2]
+        #print('username' , data['login'])
+        data['password'] = sys.argv[3]
+        #print('password' , data['password'])
         if _login():
             print('Zalogowano poprawnie\n\n')
         else:
