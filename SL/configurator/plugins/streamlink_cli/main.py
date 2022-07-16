@@ -428,7 +428,7 @@ def read_stream(stream, output, prebuffer, formatter: Formatter, chunk_size=8192
     finally:
         stream.close()
         log.info("Stream ended")
-        if args.player_external_http and "streamlink" in sys.argv[0]: sys.exit() #j00zek_patch 2
+        if args.player_external_http and not "streamlinkProxy" in sys.argv[0]: sys.exit() #j00zek_patch 2
 
 
 def handle_stream(plugin: Plugin, streams: Dict[str, Stream], stream_name: str) -> None:
