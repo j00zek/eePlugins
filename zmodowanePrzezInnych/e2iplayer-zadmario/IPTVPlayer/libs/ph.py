@@ -102,7 +102,6 @@ def check(arg1, arg2=None):
 
 
 def findall(data, start, end=('',), flags=START_E | END_E, limits=-1):
-
     start = start if isinstance(start, tuple) or isinstance(start, list) else (start,)
     end = end if isinstance(end, tuple) or isinstance(end, list) else (end,)
 
@@ -182,7 +181,6 @@ def findall(data, start, end=('',), flags=START_E | END_E, limits=-1):
 
 
 def rfindall(data, start, end=('',), flags=START_E | END_E, limits=-1):
-
     start = start if isinstance(start, tuple) or isinstance(start, list) else (start,)
     end = end if isinstance(end, tuple) or isinstance(end, list) else (end,)
 

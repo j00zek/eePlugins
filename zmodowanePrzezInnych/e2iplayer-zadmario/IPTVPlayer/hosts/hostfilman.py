@@ -137,11 +137,11 @@ class Filman(CBaseHostClass):
         if sort not in url:
             url = url + sort
 
-        if '?' in url:
-            url += '&'
-        else:
-            url += '?'
         if page > 1:
+            if '?' in url:
+                url += '&'
+            else:
+                url += '?'
             url = url + 'page={0}'.format(page)
 
         sts, data = self.getPage(url)
@@ -155,8 +155,10 @@ class Filman(CBaseHostClass):
         else:
             nextPage = False
 
+        data = self.cm.ph.getDataBeetwenNodes(data, ('<div id="wrapper">',) , ('<!-- Footer: -->',))[1] # exclude header and footer
+
         if 'phrase=' in cItem['url']:
-            data = self.cm.ph.getAllItemsBeetwenNodes(data, ('<a', '>', 'clearfix item'), ('</a', '>'))
+            data = self.cm.ph.getAllItemsBeetwenNodes(data, ('<a', '>', ' title='), ('</a', '>'))
         else:
             data = data.split('<div class="poster">')[1:]
 
