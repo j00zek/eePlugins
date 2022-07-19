@@ -22,11 +22,11 @@ import time
 
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from six.moves.urllib_parse import unquote
-from socketserver import ThreadingMixIn as ForkingMixIn
+from socketserver import ForkingMixIn #ThreadingMixIn as ForkingMixIn
 from streamlink import jtools
 
 jtools.killSRVprocess(os.getpid())
-jtools.cleanCMD()
+jtools.cleanCMD(forceKill = True)
 
 PORT_NUMBER = jtools.GetPortNumber()
 _loglevel = LOGLEVEL = jtools.GetLogLevel()
@@ -135,7 +135,7 @@ def useCL2(http, url, argstr, quality):
         sendOfflineMP4(http)
 
 def useCLI(http, url, argstr, quality):
-    LOGGER.debug("useCLI(%s,%s,%s) >>>" %(url,argstr,quality))
+    LOGGER.debug("useCLI(url=%s, argstr=%s, quality=%s) >>>" %(url,argstr,quality))
     _cmd = ['/usr/sbin/streamlink'] 
     _cmd.extend(['-l', LOGLEVEL, '--player-external-http', '--player-external-http-port', str(streamCLIport) , url, quality])
     LOGGER.debug("run command: %s" % ' '.join(_cmd))
@@ -223,7 +223,6 @@ class StreamHandler(BaseHTTPRequestHandler):
 
     def finish(self, *args, **kw):
         LOGGER.debug("finish >>>")
-        #jtools.cleanCMD()
         try:
             if not self.wfile.closed:
                 self.wfile.flush()
@@ -363,7 +362,7 @@ class Daemon:
         """
         # Get the pid from the pidfile
         jtools.killSRVprocess(os.getpid())
-        jtools.cleanCMD()
+        jtools.cleanCMD(forceKill = True)
         
         try:
             pf = open(self.pidfile, "r")
