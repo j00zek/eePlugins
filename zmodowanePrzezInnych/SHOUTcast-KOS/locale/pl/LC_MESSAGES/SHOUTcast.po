@@ -1,0 +1,404 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: enigma2-plugins 3.2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-08-06 00:57+0000\n"
+"PO-Revision-Date: 2020-10-06 06:11+0100\n"
+"Last-Translator: @Kos\n"
+"Language-Team: SHOUTcast\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.7.6\n"
+
+msgid " - Cover from Bing"
+msgstr " - Okładka z Bing"
+
+msgid " - Cover from Google"
+msgstr " - Okładka z Google"
+
+msgid ""
+"%s\n"
+"Press OK to try again..."
+msgstr ""
+"%s \n"
+" Naciśnij OK, aby spróbować ponownie ..."
+
+msgid ""
+"%s\n"
+"Press green-button to try again..."
+msgstr ""
+"%s\n"
+"Wciśnij Zielony przycisk, aby spróbować ponownie..."
+
+msgid "90s"
+msgstr "- ( Lata 90'te' )"
+
+msgid "ALL STATIONS"
+msgstr "- ( Wszystkie stacje )"
+
+msgid "Activate Picture in Picture"
+msgstr "Uruchom PiP"
+
+msgid "Add current playing stream to favorite"
+msgstr "Dodaj odtwarzaną stację do ulubionych"
+
+msgid "Add current selected genre to favorite"
+msgstr "Dodaj wybrany gatunek muzyki do ulubionych"
+
+msgid "Add current selected station to favorite"
+msgstr "Dodaj wybraną stację do ulubionych"
+
+msgid "Add sequence number to output file:"
+msgstr "Dodaj kolejny numer do pliku wyjściowego:"
+
+msgid "All"
+msgstr "Wszystkie"
+
+msgid "All speeds"
+msgstr "Wszystkie prędkości"
+
+msgid "Audio: %s"
+msgstr "Dźwięk: %s"
+
+msgid "Bing"
+msgstr "www.Bing"
+
+msgid "Bit rate: %s kbps"
+msgstr "Prędkość Transmisji: %s kbps"
+
+msgid "Cancel"
+msgstr "Anuluj"
+
+msgid "Choose action:"
+msgstr "Wybierz akcję"
+
+msgid "Config"
+msgstr "Ustawienia"
+
+msgid "Connected:"
+msgstr "Połączony:"
+
+msgid "Could not play %s"
+msgstr "Nie można odtworzyć %s"
+
+msgid "Cover Position H:"
+msgstr "Okładka Pozycja H:"
+
+msgid "Cover Position V:"
+msgstr "Okładka Pozycja V:"
+
+msgid "Cover Size H:"
+msgstr "Okładka Rozmiar H:"
+
+msgid "Cover Size V:"
+msgstr "Okładka Rozmiar V:"
+
+msgid "Cover from:"
+msgstr "Okładka z:"
+
+msgid "Coverheight:"
+msgstr "Wysokość okładki:"
+
+msgid "Coverwidth:"
+msgstr "Szerokość okładki:"
+
+msgid "Create a directory for each stream:"
+msgstr "Utwórz katalog dla każdego strumienia:"
+
+msgid "Dance"
+msgstr "- ( Dance )"
+
+msgid "Description:"
+msgstr "Opis:"
+
+msgid "Disable Picture in Picture"
+msgstr "Wyłącz PIP"
+
+msgid "Disco Polo"
+msgstr "- ( Disco Polo )"
+
+msgid "Do you really want to stop the recording?"
+msgstr "Czy chcesz zatrzymać nagrywanie?"
+
+msgid "Enter in minutes (0 means unlimited)"
+msgstr "Wprowadź w minutach (0 oznacza brak ograniczenia)"
+
+msgid "Enter new name for favorite item"
+msgstr "Wprowadź nową nazwę dla ulubionych"
+
+msgid "Enter text to search for"
+msgstr "Wpisz tekst do wyszukania"
+
+msgid "Error create directory %s!"
+msgstr "Błąd podczas tworzenia katalogu %s!"
+
+msgid "Error downloading cover..."
+msgstr "Pobieranie okładki nie powiodło się..."
+
+msgid "Favorite list"
+msgstr "Lista Ulubionych"
+
+msgid "Favorites"
+msgstr "Ulubione"
+
+msgid "First play streaming!"
+msgstr "Najpierw zagraj w streaming!"
+
+msgid "Genres"
+msgstr "Gatunki"
+
+msgid "Getting  -  %s"
+msgstr "Pobieranie  -  %s"
+
+msgid "Getting SHOUTcast genre list for %s"
+msgstr "Pobieranie listy gatunków SHOUTcast dla %s"
+
+msgid "Getting SHOUTcast genre list..."
+msgstr "Pobieranie listy gatunków SHOUTcast..."
+
+msgid ""
+"Getting streaming data from\n"
+"%s"
+msgstr ""
+"Pobieranie danych z\n"
+"%s"
+
+msgid "Google"
+msgstr "www.Google"
+
+msgid ""
+"Got 0 genres. Could be a network problem.\n"
+"Please try again..."
+msgstr ""
+"Brak gatunków. Możesz mieć problem z siecią.\n"
+"Spróbuj ponownie..."
+
+msgid "Hide"
+msgstr "Ukryj"
+
+msgid "Ignoring useless updated info provided by streamengine!"
+msgstr "Ignoruj niepotrzebne informacje o aktualizacji zawarte w danych!"
+
+msgid "Invalid Location"
+msgstr "Nieprawidłowa lokalizacja"
+
+msgid "Italo"
+msgstr "- ( Włoskie )"
+
+msgid "Loading station list, please wait ..."
+msgstr "Ładowanie listy stacji, proszę czekać ..."
+
+msgid "Menu PiP"
+msgstr "Menu PiP"
+
+msgid "Move Picture in Picture"
+msgstr "Przesuń PiP"
+
+msgid "N/a"
+msgstr "Niedostępny"
+
+msgid "Name (needs GUI restart):"
+msgstr "Nazwa (wymagany restart GUI):"
+
+msgid "No streaming data found..."
+msgstr "Nie znaleziono danych transmisji strumieniowej ..."
+
+msgid "OK"
+msgstr "Zapisz"
+
+msgid "Off"
+msgstr "Wyłącz"
+
+msgid "On"
+msgstr "Włącz"
+
+msgid "Only running streamings can be recorded!"
+msgstr "Można nagrywać tylko uruchomione stacje!"
+
+msgid "Poland"
+msgstr "- ( Polskie )"
+
+msgid "Random stations"
+msgstr "- ( Stacje losowe )"
+
+msgid "Record"
+msgstr "Nagraj"
+
+msgid "Recording length"
+msgstr "Czas nagrania"
+
+msgid "Recording location:"
+msgstr "Lokalizacja nagrania:"
+
+msgid "Recording station:  "
+msgstr "Trwa nagrywanie stacji:  "
+
+msgid "Recording stream station"
+msgstr "Nagrywanie aktualnej stacji"
+
+msgid "Reload station list:"
+msgstr "Odśwież listę stacji:"
+
+msgid "Rip to single file, name is timestamped:"
+msgstr "Zgraj do pojedynczego pliku:"
+
+msgid "SHOUTcast"
+msgstr "SHOUTcast"
+
+msgid "SHOUTcast genre list"
+msgstr "SHOUTcast - Lista Gatunków"
+
+msgid "SHOUTcast setup"
+msgstr "Ustawienia SHOUTcast"
+
+msgid "SHOUTcast station list for %s"
+msgstr "Lista Stacji dla %s"
+
+msgid "Search"
+msgstr "Szukaj"
+
+msgid "Searching SHOUTcast for %s..."
+msgstr "Wyszukiwanie SHOUTcast dla %s..."
+
+msgid "Select a genre, then press OK to proceed."
+msgstr "Wybierz gatunek, a następnie naciśnij przycisk „OK”, aby kontynuować."
+
+msgid "Select a station then press OK to start playback."
+msgstr ""
+"Wybierz stację, a następnie naciśnij przycisk „OK”, aby rozpocząć "
+"odtwarzanie."
+
+msgid "Select record path for streamripper"
+msgstr "Wybierz ścieżka nagrania dla streamripper"
+
+msgid "Setup"
+msgstr "Ustawienia"
+
+msgid "Shoutcast Setup"
+msgstr "Ustawienia SHOUTcast"
+
+msgid "Show cover:"
+msgstr "Pokaż okładkę:"
+
+msgid "Show in (needs GUI restart):"
+msgstr "Pokaż w (wymagany restart GUI)"
+
+msgid "Show in extension menu:"
+msgstr "Pokaż w menu rozszerzeń (Standardowo (Długo) klawisz 'Niebieski'):"
+
+msgid "Station List number:"
+msgstr "Lista Stacji nr:"
+
+msgid ""
+"Station List number: ( 1 - Poland ) ( 2 - Trance ) ( 3 - Dance ) ( 4 - "
+"Techno ) ( 5 - 90s ) ( 6 - Random stations ) ( 7 - All Stations )"
+msgstr ""
+"Lista Stacji nr: ( 1 - Polskie ) ( 2 - Trance ) ( 3 - Dance ) ( 4 - "
+"Techno ) ( 5 - Lata 90'te' ) ( 6 - Stacje losowe ) ( 7 - Wszystkie Stacje )"
+
+msgid "Station list from %s %s"
+msgstr "Lista stacji z %s %s"
+
+msgid "Station: "
+msgstr "Stacja: "
+
+msgid "Station: %s"
+msgstr "Stacja: %s"
+
+msgid "Stations"
+msgstr "Stacje"
+
+msgid "Stations selected:  "
+msgstr "Wybrano stacje:  "
+
+msgid "Stop record"
+msgstr "Zatrzymaj nagrywanie"
+
+msgid "Stream stopped playing, playback of stream stopped!"
+msgstr "Przekaz zakończył się,odtwarzanie danych zatrzymano!"
+
+msgid "Streaming rate:"
+msgstr "Prędkość Transmisji:"
+
+msgid "Techno"
+msgstr "- ( Techno )"
+
+msgid "Trance"
+msgstr "- ( Trance )"
+
+msgid "This Dreambox can't decode %s streams!"
+msgstr "Nie można zdekodować %s danych!"
+
+msgid "Title: "
+msgstr "Tytuł: "
+
+msgid "Title: %s"
+msgstr "Tytuł: %s"
+
+msgid "Title: n/a"
+msgstr "Tytuł: Niedostępny"
+
+msgid "UNKNOWN"
+msgstr "NIEZNANY"
+
+msgid "Unknown"
+msgstr "Nieznany"
+
+msgid "Ver."
+msgstr ""
+"Wer.%s\n"
+"Wciśnij OK, aby spróbować ponownie..."
+
+msgid "You Listen to Internet Radio..."
+msgstr "Słuchasz Radia Internetowego ..."
+
+msgid "Zap focus to Picture in Picture"
+msgstr "Przełącz na PiP"
+
+msgid "Zap focus to main screen"
+msgstr "Przełącz na główny ekran"
+
+msgid "all"
+msgstr "wszystkie"
+
+msgid "every five minutes"
+msgstr "co 5 minut"
+
+msgid "every minute"
+msgstr "co minutę"
+
+msgid "every three minutes"
+msgstr "co 3 minuty"
+
+msgid "genre %s"
+msgstr "gatunku %s"
+
+msgid "genre: ( %s )"
+msgstr "gatunku: ( %s )"
+
+msgid "listen to shoutcast internet-radio"
+msgstr "Słuchaj radia internetowego SHOUTcast"
+
+msgid "n/a"
+msgstr "Brak Tytulu"
+
+msgid "off"
+msgstr "wyłącz"
+
+msgid "on"
+msgstr "włącz"
+
+msgid "remove current selected favorite"
+msgstr "Usuń z ulubionych"
+
+msgid "rename current selected favorite"
+msgstr "Zmień nazwę"
+
+msgid "search-criteria %s"
+msgstr "Kryterium wyszukiwania ( %s )"
+
+msgid "streamripper not installed!"
+msgstr "streamripper nie jest zainstalowany!"

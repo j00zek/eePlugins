@@ -1,0 +1,72 @@
+<skin>
+<screen name="MovieSelection" position="0,0" size="1920,1080" title="" backgroundColor="transparent" flags="wfNoBorder">
+    <ePixmap position="0,-1" zPosition="-10" size="1920,1080" pixmap="BlackHarmony/bg_design/mainbg1920x1080x24.png" transparent="1" />
+    <widget source="global.CurrentTime" render="Label" position="920,50" size="920,50" font="Regular;42" valign="center" halign="center" backgroundColor="transpBlack" transparent="1">
+      <convert type="ClockToText">Format:%A  %e  %B  %Y   %H:%M </convert>
+    </widget>
+
+<ePixmap position="576,130" size="10,600" zPosition="4" pixmap="BlackHarmony/gfx/linia_IB_md.png" alphatest="blend" />
+
+
+
+    <ePixmap position="28,139" size="548,364" zPosition="4" pixmap="BlackHarmony/bg_design/ramka622x364.png" alphatest="blend" />
+    <widget source="session.VideoPicture" render="Pig" position=" 50,156" size="506,330" zPosition="3" backgroundColor="transparent2" />
+    <eLabel text="Select a movie" position="0,25" size="720,55" font="Regular;44" halign="center" backgroundColor="transpBlack" transparent="1" />
+    <widget source="session.CurrentService" render="Label" position="30,92" size="520,38" zPosition="3" font="Regular;34" halign="center" noWrap="1" transparent="1" foregroundColor="white" backgroundColor="background">
+      <convert type="ServiceName">Name</convert>
+    </widget>
+
+    <widget source="session.Event_Now" render="Label" position="70,540" size="440,72" zPosition="2" halign="center" font="Regular;28" backgroundColor="transpBlack" transparent="1">
+      <convert type="j00zekModEventName">Name</convert>
+    </widget>
+    <widget source="session.Event_Now" render="Progress" pixmap="BlackHarmony/gfx/progress_mario.png" position="140,517" zPosition="2" size="305,10" transparent="1">
+      <convert type="EventTime">Progress</convert>
+    </widget>
+    <widget source="session.Event_Now" render="Label" position="20,505" size="105,33" halign="right" font="Regular; 28" backgroundColor="black" transparent="1" valign="center" zPosition="10">
+      <convert type="EventTime">StartTime</convert>
+      <convert type="ClockToText">Format:%H:%M</convert>
+    </widget>
+    <widget source="session.Event_Now" render="Label" position="460,505" size="105,33" halign="left" font="Regular; 28" backgroundColor="black" transparent="1" valign="center" zPosition="10">
+      <convert type="EventTime">EndTime</convert>
+      <convert type="ClockToText">Format:%H:%M</convert>
+    </widget>
+
+<eLabel backgroundColor="cyan" position="140,517" size="305,10" transparent="0" zPosition="1" foregroundColor="black" />
+
+<eLabel position="580,140" size="1320,2" backgroundColor="foreground" foregroundColor="foreground" name="linia extra2" />
+
+        <widget name="list" position="582,155" size="1320,585" scrollbarMode="showNever" selectionPixmap="BlackHarmony/menu/sel_1340_45.png" transparent="1" />
+    <widget source="Service" render="Label" position="220,770" size="480,34" font="Regular; 28" halign="center" backgroundColor="black" transparent="1" foregroundColor="green">
+  <convert type="MovieInfo">RecordServiceName</convert>
+</widget>
+    <widget source="Service" render="Label" position="24,620" size="546,114" font="Regular; 32" backgroundColor="black" valign="center" halign="center" transparent="1" foregroundColor="lemon">
+      <convert type="j00zekModEventName">Name</convert>
+    </widget>
+
+    <eLabel position="580,755" size="1320,2" backgroundColor="foreground" foregroundColor="foreground" name="linia extra2" />
+    <widget render="j00zekModRunningText" source="Service" options="movetype=running,startpoint=0,direction=top,steptime=120,repeat=2,startdelay=9000,wrap" halign="left" font="Regular; 26" backgroundColor="transparent" position="720,765" size="1190,230" transparent="1">
+  <convert type="j00zekModEventName">FullDescription</convert>
+</widget>
+    <widget source="Service" render="j00zekPicons" picontype="zzpicon" position="275,825" zPosition="10" size="400,170" transparent="1" alphatest="blend">
+      <convert type="j00zekModMovieReference" />
+    </widget>
+
+
+
+
+
+
+    <widget source="Service" render="j00zekModCover" position="24,760" size="200,280" zPosition="2" backgroundColor="background" alphatest="blend" transparent="0" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_info.png" position="300,1005" size="100,40" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="450,1005" size="100,40" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_exit.png" position="600,1005" size="100,40" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="800,1005" size="250,30" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="1060,1005" size="250,30" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="1320,1005" size="250,30" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="1580,1005" size="250,30" alphatest="blend" />
+    <widget name="key_red" position="810,1004" size="250,30" zPosition="1" font="Regular;26" halign="center" backgroundColor="black" transparent="1" />
+    <widget name="key_green" position="1070,1004" size="250,30" zPosition="1" font="Regular;26" halign="center" backgroundColor="black" transparent="1" />
+    <widget name="key_yellow" position="1330,1004" size="250,30" zPosition="1" font="Regular;26" halign="center" backgroundColor="black" transparent="1" />
+    <widget name="key_blue" position="1590,1004" size="250,30" zPosition="1" font="Regular;26" halign="center" backgroundColor="black" transparent="1" />
+  </screen>
+  </skin>

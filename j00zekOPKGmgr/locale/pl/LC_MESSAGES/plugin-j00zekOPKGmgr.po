@@ -1,0 +1,254 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: j00zekOPKGmanager\n"
+"POT-Creation-Date: 2016-01-07 12:00+0100\n"
+"PO-Revision-Date: 2016-04-13 14:21+0200\n"
+"Last-Translator: j00zek\n"
+"Language-Team: j00zek\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.6\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+msgid "Alternate OPKG manager"
+msgstr "Alternatywny menadżer OPKG"
+
+msgid "Install, update, upgade all ipk packages from GUI"
+msgstr "Instaluj, aktualizuj dowolne pakiety IPK pilotem"
+
+msgid ""
+"New actualization ready to install\n"
+"Start OPKG manager?"
+msgstr ""
+"Są dostępne nowe aktualizaje\n"
+"Uruchomić OPKG managera?"
+
+msgid "Install Local package"
+msgstr "Instalacja lokalnego pakietu"
+
+msgid "You will be later prompted for file selection."
+msgstr "Zostaniesz poproszony o wskazanie pliku."
+
+msgid "ERROR connecting to OPKG"
+msgstr "BŁĄD połączenia z OPKG"
+
+msgid "Neigther internet nor service is working :("
+msgstr "Połączenie z internetem lub serwis nie działa :("
+
+msgid "OPKG manager"
+msgstr "Menadżer OPKG"
+
+msgid "Select option"
+msgstr "Wybierz opcję"
+
+msgid "New directory"
+msgstr "Nowy folder"
+
+msgid "Cancel"
+msgstr "Anuluj"
+
+msgid "Apply"
+msgstr "Zainstaluj"
+
+msgid "Internal flash"
+msgstr "Pamięć wewnętrzna"
+
+msgid "Select package"
+msgstr "Wybierz pakiet"
+
+msgid "Refresh list"
+msgstr "Odśwież listę"
+
+msgid "Options"
+msgstr "Opcje"
+
+msgid "Upgrading all packages...."
+msgstr "Aktualizacja wszystkich pakietów..."
+
+msgid "Are you sure, you want delete %s package?"
+msgstr "Na pewno usunąć pakiet %s?"
+
+msgid ""
+"Only %d MB left!!!\n"
+"At least 8MB is required to safely install and upgrade packages."
+msgstr ""
+"Pozostało tylko %d MB wolnej przestrzeni!!!\n"
+"Potrzeba najmniej 8 MB, aby bezpiecznie instalować lub aktualizować "
+"większość pakietów."
+
+msgid "Remove some packages, or upgade from console!"
+msgstr "Usuń jakieś pakiety, lub zaktualizuj z konsoli!"
+
+msgid "Too many packages and too small free space for upgrade!!!"
+msgstr "Za dużo pakietów do aktualizacji i za mało miejsca!!!"
+
+msgid "Do you want to upgrade all packages?"
+msgstr "Na pewno aktualizować wszystkie pakiety?"
+
+msgid "Do you want to upgrade %s package?"
+msgstr "Na pewno aktualizować pakiet %s?"
+
+msgid "Are you sure to install %s package?"
+msgstr "Na pewno zainstalować pakiet %s?"
+
+msgid "Are you sure to install %s package with %s size?"
+msgstr "Na pewno zainstalować pakiet %s o wielkości %s?"
+
+msgid "Do you want to run '%s'? (package size %s)"
+msgstr "Na pewno wykonać '%s'? (wielkość pakietu %s)"
+
+msgid "Upgrading all packages..."
+msgstr "Aktualizacja wszystkich pakietów..."
+
+msgid "Post upgrade cleanup..."
+msgstr "Czyszczenie po aktualizacji"
+
+msgid ""
+"After changes in opkg, tuner has to be restarted.\n"
+" Restart now?"
+msgstr ""
+"System musi być zrestartowany po zmianach w OPKG.\n"
+" Zrestartować teraz?"
+
+msgid "Trying to download a new packetlist. Please wait..."
+msgstr "Próbuję pobrać nową listę pakietów. Proszę czekać..."
+
+msgid "Package list update"
+msgstr "Aktualizacja listy paczek"
+
+msgid "Upgrade packages"
+msgstr "Aktualizacja pakietów"
+
+msgid "Recommended update installed packages"
+msgstr "Zalecana aktualizacja zainstalowanych pakietów"
+
+msgid "Show openPLI plugins only"
+msgstr "Wtyczki dla E2"
+
+msgid "Show openPLI skins only"
+msgstr "Skórki dla E2"
+
+msgid "Show all openPLI elements only"
+msgstr "OpenPLi"
+
+msgid "Show all Neutrino elements only"
+msgstr "Neutrino"
+
+msgid "show oscam packages only"
+msgstr "OScam"
+
+msgid "show fonts only"
+msgstr "Czcionki"
+
+msgid "show picons only"
+msgstr "Pikony"
+
+msgid "show language packets only"
+msgstr "Języki"
+
+msgid "show system libraries only"
+msgstr "Biblioteki systemowe"
+
+msgid "show Python modules only"
+msgstr "Python"
+
+msgid "Show DVB-T modules only"
+msgstr "DVB-T"
+
+msgid "Show kernel modules only"
+msgstr "Kernel"
+
+msgid "Show all packages"
+msgstr "Wszystkie pakiety"
+
+msgid "Install local packet"
+msgstr "Instalacja pakietu z USB"
+
+msgid "Delete"
+msgstr "Usuń"
+
+msgid "delete %s"
+msgstr "skasować %s"
+
+msgid "Reinstall"
+msgstr "Reinstaluj"
+
+msgid "Install"
+msgstr "Instaluj"
+
+msgid "install %s"
+msgstr "zainstalować %s"
+
+msgid "Upgrade"
+msgstr "Aktualizuj"
+
+msgid "upgrade %s"
+msgstr "aktualizować %s"
+
+msgid "Show system plugins only"
+msgstr "Wtyczki systemowe dla E2"
+
+msgid "Show extension plugins only"
+msgstr "Wtyczki z rozszerzeniami dla E2"
+
+msgid "Show j00zek's plugins only"
+msgstr "Wtyczki przygotowane przez j00zka i przyjaciół"
+
+msgid "Show j00zek's skins only"
+msgstr "Skórki kolegów Crash, Homar"
+
+msgid "Show Black Harmony components only"
+msgstr "Dodatkowe komponenty skórki Black Harmony"
+
+msgid "Show animated picons only"
+msgstr "Animowane pikony"
+
+msgid "ERROR connecting to the internet"
+msgstr "BŁĄD połączenia z internetem"
+
+msgid "OPKG server does not response on pings :("
+msgstr "Serwer OPKG nie odpowiada na pingi :("
+
+msgid "ERROR updating OPKG"
+msgstr "BŁĄD aktualizacji OPKG"
+
+msgid "'opkg update' command returned an error %i :("
+msgstr "Komenda 'opkg update' zwróciła błąd %s :("
+
+msgid "show channels only"
+msgstr "Listy kanałów"
+
+msgid "Show DVB USB modules only"
+msgstr "DVB dla USB"
+
+msgid "\nUse up/down arrows to scroll text. OK closes window"
+msgstr "\nUżyj strzałek góra/dół aby przewinąc tekst.Klawisz OK zamyka okno"
+
+msgid "Downloading"
+msgstr "Pobieranie"
+
+msgid "Inflating"
+msgstr "Przetwarzanie"
+
+msgid "Installing"
+msgstr "Instalacja"
+
+msgid "Force uninstall"
+msgstr "Wymuś odinstalowanie"
+
+msgid "Show Black Harmony addons only"
+msgstr "Dodatki do skórki Black Harmony"
+
+msgid "Upgrading"
+msgstr "Aktualizacja"
+
+msgid "Configuring"
+msgstr "Konfiguracja"
+
+msgid "Show KODI addons only"
+msgstr "Dodatki dla KODI"

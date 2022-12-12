@@ -1,0 +1,12 @@
+<skin> 
+  <!-- ExtMoviePlayer --> 
+    <screen name="IPTVExtMoviePlayerSummary" position="0,0" size="140,32">
+      <widget source="parent.Title" render="RollerCharLCDLong" position="0,10" size="140,14" font="FdLcD;14" halign="center" valign="bottom" zPosition="1" noWrap="1"/>
+      <widget source="session.CurrentService"  render="Progress" position="0,26" size="60,6" borderWidth="1" zPosition="1" >
+        <convert type="j00zekE2iPlayer">Progress</convert>
+      </widget>
+      <widget source="session.CurrentService" render="Label" position="77,22" size="64,12" font="FdLcD;12" halign="right" zPosition="1" noWrap="1">
+        <convert type="j00zekE2iPlayer">RemindedMinutes</convert>
+      </widget>
+    </screen>
+</skin> 

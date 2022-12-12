@@ -1,0 +1,45 @@
+<skin>
+<screen name="MovieSelection" position="center,center" size="1920,1080" title=" " flags="wfNoBorder" backgroundColor="transparent">
+   <ePixmap position="1,0" zPosition="-5" size="1920,1080" pixmap="BlackHarmony/bg_design/movie.png" />
+    <widget source="session.CurrentService" render="j00zekLabel" position="1024,55" size="820,30" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1">
+      <convert type="j00zekAlternateTitle">Select a movie</convert>
+    </widget>
+  <widget source="global.CurrentTime" render="Label" position="80,55" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+    <convert type="ClockToText">Default</convert>
+  </widget>
+  <widget source="global.CurrentTime" render="Label" position="165,55" size="660,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+    <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+  </widget>
+  <widget name="list" position="95,175" size="1340,495" WatchingColor="white" FinishedColor="green" RecordingColor="red" scrollbarMode="showOnDemand" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" selectionPixmap="BlackHarmony/menu/sel_1340_45.png" backgroundColor="transpBlack" transparent="1" />
+  <widget name="freeDiskSpace" position="1498,616" size="340,60" font="Roboto_HD; 24" valign="center" backgroundColor="black" transparent="1" foregroundColor="light_yellow" halign="center" />
+  <widget source="Service" render="Label" position="1674,745" size="158,38" font="HD_Thin; 28" halign="right" backgroundColor="black" transparent="1" foregroundColor="yellow" valign="bottom">
+    <convert type="ServiceTime">Duration</convert>
+    <convert type="ClockToText">InMinutes</convert>
+  </widget>
+  <widget render="j00zekModRunningText" source="Service" options="movetype=running,startpoint=0,direction=top,steptime=90,repeat=2,startdelay=6000,wrap" halign="left" backgroundColor="background" position="95,801" size="1465,140" font="Roboto_HD; 28" transparent="1">
+    <convert type="j00zekModEventName">ExtendedDescription</convert>
+  </widget>
+  <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="110,996" size="35,27" alphatest="blend" />
+  <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="500,996" size="35,27" alphatest="blend" />
+  <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="890,996" size="35,27" alphatest="blend" />
+  <ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="1280,996" size="35,27" alphatest="blend" />
+  <widget name="key_red" position="160,995" size="300,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+  <widget name="key_green" position="550,995" size="300,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+  <widget name="key_yellow" position="940,995" size="300,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+  <widget name="key_blue" position="1330,995" size="300,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+  <ePixmap position="1710,993" size="70,30" pixmap="BlackHarmony/buttons/key_menu.png" alphatest="blend" />
+  <widget backgroundColor="black" font="HD_Thin; 28" position="1364,745" render="Label" size="310,38" source="Service" transparent="1" halign="right" foregroundColor="green" valign="bottom">
+    <convert type="ServiceTime">StartTime</convert>
+    <convert type="ClockToText">Format:%A %d %b %Y</convert>
+  </widget>
+  <widget source="Service" render="j00zekPicons" picontype="picon" position="1602,805" zPosition="10" size="220,132" transparent="1" alphatest="blend">
+    <convert type="j00zekModMovieReference" />
+  </widget>
+  <widget source="Service" render="Label" position="95,745" size="1200,38" font="HD_Thin; 33" backgroundColor="black" valign="center" halign="left" transparent="1" foregroundColor="light_yellow">
+    <convert type="j00zekModEventName">Name</convert>
+  </widget>
+  <ePixmap zPosition="1" position="1530,173" size="274,397" pixmap="BlackHarmony/gfx/No-Cover_1.png" backgroundColor="background" alphatest="blend" transparent="0" />
+  <ePixmap zPosition="3" position="1510,152" size="310,435" pixmap="BlackHarmony/gfx/No-Cover_bg_1.png" backgroundColor="background" alphatest="blend" transparent="0" />
+  <widget source="Service" render="j00zekModCover" position="1530,173" size="274,397" zPosition="2" backgroundColor="background" alphatest="blend" transparent="0" />
+</screen>
+  </skin>

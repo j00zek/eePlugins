@@ -1,0 +1,511 @@
+#NAME Zwierzęta live z PIP 
+#SERVICE 1:64:E:0:0:0:0:0:0:0:Aktualizacja(endriu 17.08.20)
+#DESCRIPTION Aktualizacja(endriu 17.08.20)
+#SERVICE 1:64:0:0:0:0:0:0:0:0::Akwaria i zwierzęta morskie
+#DESCRIPTION Akwaria i zwierzęta morskie
+#SERVICE 1:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//s3.ipcamlive.com/streams/035f10b565e1fb010/stream.m3u8|format=mpegts:Akwarium - Florida Keys Aquarium Encounters - USA
+#DESCRIPTION Akwarium - Florida Keys Aquarium Encounters - USA
+#SERVICE 1:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//sochi.camera%3a8080/cam_40/index.m3u8|format=mpegts:Akwarium - Sochi
+#DESCRIPTION Akwarium - Sochi
+#SERVICE 1:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//sochi.camera%3a8080/cam_39/index.m3u8|format=mpegts:Akwarium - Koi - Sochi
+#DESCRIPTION Akwarium - Koi - Sochi
+#SERVICE 1:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//live.zoosociety.org%3a1935/live/lakewi.stream/.m3u8|format=mpegts:Akwarium - Milwaukee - USA
+#DESCRIPTION Akwarium - Milwaukee - USA
+#SERVICE 1:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//stream.wildlifestreaming.io%3a8443/Marwell/marwell_aquarium.stream/chunklist_w165487152.m3u8|format=mpegts:Akwarium - Winchester - Marwell Zoo - GB
+#DESCRIPTION Akwarium - Winchester - Marwell Zoo - GB
+#SERVICE 1:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//use01-smr05-relay.ozolio.com/hls-live/_definst_/relay01.eecm52.fd0.sm1.av2.at0.sh2.rt15865.rc0.basic.stream/chunklist_w1240068599.m3u8|format=mpegts:Atlanta - Georgia Aquarium - Rybki - USA
+#DESCRIPTION Atlanta - Georgia Aquarium - Rybki - USA
+#SERVICE 1:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//stream-uc2-alfa.dropcam.com/nexus_aac/bda684bac9f44198ad6c00965548978a/chunklist_w1742274840.m3u8?public=FfbQbO7srG|format=mpegts:Atlanta - Georgia Aquarium - Piranie - USA
+#DESCRIPTION Atlanta - Georgia Aquarium - Piranie - USA
+#SERVICE 1:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//usw01-smr05-relay.ozolio.com/hll-live/_definst_/relay01.yclpb83.fd0.sm1.av2.at0.sh2.rt15865.rc0.basic.stream/chunklist_w1534254936.m3u8|format=mpegts:Atlanta - Georgia Aquarium - Bieługa - USA
+#DESCRIPTION Atlanta - Georgia Aquarium - Bieługa - USA
+#SERVICE 1:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//usw01-smr05-relay.ozolio.com/hll-live/_definst_/relay01.zmzabg0.fd0.sm1.av2.at0.sh2.rt15865.rc0.basic.stream/chunklist_w1300797555.m3u8|format=mpegts:Atlanta - Georgia Aquarium - Lew morski - USA
+#DESCRIPTION Atlanta - Georgia Aquarium - Lew morski - USA
+#SERVICE 1:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//usw01-smr03-relay.ozolio.com/hll-live/_definst_/relay01.nese5h.fd0.sm1.av2.at0.sh2.rt15865.rc0.basic.stream/chunklist_w1704847332.m3u8|format=mpegts:Atlanta - Georgia Aquarium - Pingwiny Afrykańskie - USA
+#DESCRIPTION Atlanta - Georgia Aquarium - Pingwiny Afrykańskie - USA
+#SERVICE 1:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//use01-smr04-relay.ozolio.com/hll-live/_definst_/relay01.tdqxbwt.fd0.sm1.av2.at0.sh2.rt15865.rc0.basic.stream/chunklist_w487798190.m3u8|format=mpegts:Atlanta - Georgia Aquarium - Wydry Morskie - USA
+#DESCRIPTION Atlanta - Georgia Aquarium - Wydry Morskie - USA
+#SERVICE 1:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//usw01-smr04-relay.ozolio.com/hll-live/_definst_/relay01.kfuab47.fd0.sm1.av1.at0.sh2.rt15865.rc0.basic.stream/chunklist_w1604144885.m3u8|format=mpegts:Atlanta - Georgia Aquarium - Aligatory - USA
+#DESCRIPTION Atlanta - Georgia Aquarium - Aligatory - USA
+#SERVICE 1:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//usw01-smr05-relay.ozolio.com/hls-live/_definst_/relay01.hqko7z.fd0.sm1.av2.at0.sh2.rt15865.rc0.basic.stream/chunklist_w141201618.m3u8|format=mpegts:Atlanta - Georgia Aquarium - Ocean - USA
+#DESCRIPTION Atlanta - Georgia Aquarium - Ocean - USA
+#SERVICE 1:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//use01-smr03-relay.ozolio.com/hls-live/_definst_/relay01.yogybc4.fd0.sm1.av2.at0.sh2.rt15865.rc0.basic.stream/chunklist_w1946891061.m3u8|format=mpegts:Atlanta - Georgia Aquarium - Kamera podwodna - USA
+#DESCRIPTION Atlanta - Georgia Aquarium - Kamera podwodna - USA
+#SERVICE 4097:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/baEkSml4XBc:AquaRio - Rio de Janeiro (YT)
+#DESCRIPTION AquaRio - Rio de Janeiro (YT)
+#SERVICE 4097:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/jk5tN2Lvt3o:AquaRio 2 - Rio de Janeiro (YT)
+#DESCRIPTION AquaRio 2 - Rio de Janeiro (YT)
+#SERVICE 4097:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/ogMTmdbYaPs:Aquarium of the Pacific - Blue Cavern - USA (YT)
+#DESCRIPTION Aquarium of the Pacific - Blue Cavern - USA (YT)
+#SERVICE 4097:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/CTRonVgRe1E:Aquarium of the Pacific - Pingwiny - USA (YT)
+#DESCRIPTION Aquarium of the Pacific - Pingwiny - USA (YT)
+#SERVICE 4097:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/muv29jLpEnA:Aquarium of the Pacific - Pingwiny w wodzie - USA (YT)
+#DESCRIPTION Aquarium of the Pacific - Pingwiny w wodzie - USA (YT)
+#SERVICE 4097:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/CEzSXX3tcmU:Aquarium of the Pacific - Rafa koralowa - USA (YT)
+#DESCRIPTION Aquarium of the Pacific - Rafa koralowa - USA (YT)
+#SERVICE 4097:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/LvfaMv9nbJc:Aquarium of the Pacific - Rekiny - USA (YT)
+#DESCRIPTION Aquarium of the Pacific - Rekiny - USA (YT)
+#SERVICE 1:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//use01-smr05-relay.ozolio.com/hls-live/_definst_/relay01.jcelme.fd0.sm1.av1.at0.sh2.rt15865.rc0.basic.stream/chunklist_w993071347.m3u8|format=mpegts:Delfiny - Clearwater - Marine Aquarium - USA
+#DESCRIPTION Delfiny - Clearwater - Marine Aquarium - USA
+#SERVICE 1:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//usw01-smr03-relay.ozolio.com/hls-live/_definst_/relay01.mvynmj.fd0.sm1.av1.at0.sh2.rt15865.rc0.basic.stream/chunklist_w1451892440.m3u8|format=mpegts:Delfiny 2 - Clearwater - Marine Aquarium - USA
+#DESCRIPTION Delfiny 2 - Clearwater - Marine Aquarium - USA
+#SERVICE 1:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//use01-smr05-relay.ozolio.com/hls-live/_definst_/relay01.qykom4.fd0.sm1.av1.at0.sh2.rt15865.rc0.basic.stream/chunklist_w543089696.m3u8|format=mpegts:Delfiny 3 - Clearwater - Marine Aquarium - USA
+#DESCRIPTION Delfiny 3 - Clearwater - Marine Aquarium - USA
+#SERVICE 1:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//usw01-smr03-relay.ozolio.com/hls-live/_definst_/relay01.giegbjc.fd0.sm1.av2.at0.sh2.rt15865.rc0.basic.stream/chunklist_w1165065991.m3u8|format=mpegts:Delfiny 4 - Clearwater - Marine Aquarium - USA
+#DESCRIPTION Delfiny 4 - Clearwater - Marine Aquarium - USA
+#SERVICE 1:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//s1.dcdn.lt/livecam/kljm1.stream/chunklist.m3u8|format=mpegts:Foki
+#DESCRIPTION Foki
+#SERVICE 4097:0:1:0:0:0:0:0:0:0:https%3a//kamera.task.gda.pl%3a443/rtplive/hel3.sdp/playlist.m3u8|format=mpegts:Fokarium - Hel
+#DESCRIPTION Fokarium - Hel
+#SERVICE 4097:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/oYBrRrw0aY0:Fokarium II (YT)
+#DESCRIPTION Fokarium II (YT)
+#SERVICE 4097:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.youtube.com/watch?v=3A1Wi3sOy7g:Foki szare na plaży- Estonia (YT)
+#DESCRIPTION Foki szare na plaży- Estonia (YT)
+#SERVICE 4097:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/eFkjUPXM87I:Honolulu - Waikiki Aquarium (YT)
+#DESCRIPTION Honolulu - Waikiki Aquarium (YT)
+#SERVICE 4097:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/-2v0b1uJBMs:Kamera podwodna - Blue Spring State Park - USA (YT)
+#DESCRIPTION Kamera podwodna - Blue Spring State Park - USA (YT)
+#SERVICE 4097:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/Z4LDFmUUmno:Kamera nad wodą - Blue Spring State Park - USA (YT)
+#DESCRIPTION Kamera nad wodą - Blue Spring State Park - USA (YT)
+#SERVICE 1:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//edge08.nginx.hdontap.com/ho3/hdontap_koi-pond_fixed.stream/chunklist.m3u8|format=mpegts:Karpie Koi - San Diego - USA
+#DESCRIPTION Karpie Koi - San Diego - USA
+#SERVICE 1:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//565c3c746b763.streamlock.net/live/ecomare.stream/playlist.m3u8|format=mpegts:Lew morski - Ecomare - NL
+#DESCRIPTION Lew morski - Ecomare - NL
+#SERVICE 1:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//live.zoosociety.org%3a1935/live/penguincam.stream/.m3u8|format=mpegts:Pingwiny
+#DESCRIPTION Pingwiny
+#SERVICE 1:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//zssd-penguin.hls.camzonecdn.com/CamzoneStreams/zssd-penguin/Playlist.m3u8|format=mpegts:Pingwiny 2
+#DESCRIPTION Pingwiny 2
+#SERVICE 1:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//s1.dcdn.lt/livecam/kljm2.stream/chunklist.m3u8|format=mpegts:Pingwiny 3
+#DESCRIPTION Pingwiny 3
+#SERVICE 1:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//ngx.cr2.streamzilla.xlcdn.com/session/fb046a2e8bc4e402c6b2e77dc501a7f5/sz/streamdays/wowza4/live/dudleyzoo-penguincam/chunklist.m3u8|format=mpegts:Pingwiny - Dudley - Zoo - GB
+#DESCRIPTION Pingwiny - Dudley - Zoo - GB
+#SERVICE 1:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//ngx.cr1.streamzilla.xlcdn.com/session/fcc8edab67626fbfd8ed83b8352582f5/sz/streamdays/wowza4/live/handykam-paradisepark03/chunklist.m3u8|format=mpegts:Pingwiny - Hayle - Paradise Park - GB
+#DESCRIPTION Pingwiny - Hayle - Paradise Park - GB
+#SERVICE 4097:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.youtube.com/channel/UC30iDn14yeARYIoAcdvd8MA/live:Pingwiny - Śląski Ogród Zoologiczny (YT)
+#DESCRIPTION Pingwiny - Śląski Ogród Zoologiczny (YT)
+#SERVICE 4097:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/7i8ARjIeM2k:Rafa koralowa - Miami na Florydzie - (YT)
+#DESCRIPTION Rafa koralowa - Miami na Florydzie - (YT)
+#SERVICE 1:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//use01-smr04-relay.ozolio.com/hls-live/_definst_/relay01.zzkbbr9.fd0.sm1.av2.at0.sh2.rt15865.rc0.basic.stream/chunklist_w1911246017.m3u8|format=mpegts:Rekiny - Toronto - Ripley's Aquarium of Canada
+#DESCRIPTION Rekiny - Toronto - Ripley's Aquarium of Canada
+#SERVICE 1:64:E:0:0:0:0:0:0:0::Bociany
+#DESCRIPTION Bociany
+#SERVICE 1:0:0:0:0:0:0:0:0:2:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//stream5.nadaje.com%3a8324/live/YgL921.stream/chunklist_w1411557585.m3u8|format=mpegts:Brzozów
+#DESCRIPTION Brzozów
+#SERVICE 1:0:0:0:0:0:0:0:0:2:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//streaming.airmax.pl/umigwc/tracks-v1/mono.m3u8|format=mpegts:Borzykowa
+#DESCRIPTION Borzykowa
+#SERVICE 4097:0:4:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/GFIG5CtQNFY:Bocian Czarny - Estonia (YT)
+#DESCRIPTION Bocian Czarny - Estonia (YT)
+#SERVICE 1:0:0:0:0:0:0:0:0:2:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//hoktastream1.webcamera.pl/burnit_cam_fb8ba3/burnit_cam_fb8ba3.stream/chunks.m3u8|format=mpegts:Gniew
+#DESCRIPTION Gniew
+#SERVICE 4097:0:4:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/B_w-ebltUEM:Kozubszczyzna - Bociani Azyl (YT)
+#DESCRIPTION Kozubszczyzna - Bociani Azyl (YT)
+#SERVICE 4097:0:4:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/-0IfZDEsgfw:Kozubszczyzna - Bociani Azyl - Oczko wodne (YT)
+#DESCRIPTION Kozubszczyzna - Bociani Azyl - Oczko wodne (YT)
+#SERVICE 4097:0:4:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/-Y2grSpxr4Q:Kozubszczyzna - gniazda na stodole (YT)
+#DESCRIPTION Kozubszczyzna - gniazda na stodole (YT)
+#SERVICE 1:0:0:0:0:0:0:0:0:2:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//77.89.89.9%3a1935/live/lewkow.stream/chunklist_w331565958.m3u8|format=mpegts:Lewków
+#DESCRIPTION Lewków
+#SERVICE 4097:0:4:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/0htIws-aboE:Lublewo Gdańskie (YT)
+#DESCRIPTION Lublewo Gdańskie (YT)
+#SERVICE 1:0:0:0:0:0:0:0:0:2:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//5d84fe297ee2b.streamlock.net/lask/lask.stream/chunklist_w974200873.m3u8|format=mpegts:Łask
+#DESCRIPTION Łask
+#SERVICE 4097:0:4:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/IavRetMqfBk:Łódź - Bociany czarne (YT)
+#DESCRIPTION Łódź - Bociany czarne (YT)
+#SERVICE 1:0:0:0:0:0:0:0:0:2:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//streaming.airmax.pl/integro/tracks-v1/mono.m3u8|format=mpegts:Ługi
+#DESCRIPTION Ługi
+#SERVICE 1:0:0:0:0:0:0:0:0:2:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//1311441818.rsc.cdn77.org/live/Urv776.stream/chunklist.m3u8|format=mpegts:Nowe Opole
+#DESCRIPTION Nowe Opole
+#SERVICE 4097:0:4:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/MLiFuwIdxU8:Ostrołęka (YT)
+#DESCRIPTION Ostrołęka (YT)
+#SERVICE 1:0:0:0:0:0:0:0:0:2:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//hoktastream1.webcamera.pl/gminapaslek_cam_7d31ac/gminapaslek_cam_7d31ac.stream/chunks.m3u8|format=mpegts:Pasłęk
+#DESCRIPTION Pasłęk
+#SERVICE 1:0:0:0:0:0:0:0:0:2:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//78.31.90.123/hls/bocian_high/index.m3u8|format=mpegts:Pietrowice Wielkie
+#DESCRIPTION Pietrowice Wielkie
+#SERVICE 1:0:0:0:0:0:0:0:0:2:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//1724745499.rsc.cdn77.org/live/przygodzice5.stream/chunklist.m3u8|format=mpegts:Przygodzice
+#DESCRIPTION Przygodzice
+#SERVICE 1:0:0:0:0:0:0:0:0:2:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//stream5.nadaje.com%3a34778/live/Tfw820.stream/chunklist_w102790107.m3u8|format=mpegts:Radłów
+#DESCRIPTION Radłów
+#SERVICE 1:0:0:0:0:0:0:0:0:2:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//5d84fe297ee2b.streamlock.net/rakowo/rakowo.stream_720p/chunklist_w516678558.m3u8|format=mpegts:Rakowo-Czachy
+#DESCRIPTION Rakowo-Czachy
+#SERVICE 1:0:0:0:0:0:0:0:0:2:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//77.89.89.9%3a1935/live/raszkow.stream/chunklist_w773149223.m3u8|format=mpegts:Raszków
+#DESCRIPTION Raszków
+#SERVICE 1:0:0:0:0:0:0:0:0:2:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//stream1.stimotion.pl/live/bocian1.m3u8|format=mpegts:Rzepedź
+#DESCRIPTION Rzepedź
+#SERVICE 4097:0:4:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/elSzSLRKCtw:Sidorówka (YT)
+#DESCRIPTION Sidorówka (YT)
+#SERVICE 4097:0:4:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/I-G6jDcVWYE:Sokółka (YT)
+#DESCRIPTION Sokółka (YT)
+#SERVICE 4097:0:4:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/_Lw96b9mceg:Sławacinek Stary (YT)
+#DESCRIPTION Sławacinek Stary (YT)
+#SERVICE 1:0:0:0:0:0:0:0:0:2:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//big-edge01.cdn.wolfcloud.pl/lookcam/1k0XBbawjK5mopX4VGPQM1Nynb8dkl6XEjWYRaBOzwAxqZeJ7E30gL9v2p3KEZP2/tracks-v1a1/mono.m3u8?token=Tw_gUHXa0X3IpZedIuiyGw|format=mpegts:Strzelce
+#DESCRIPTION Strzelce
+#SERVICE 1:0:0:0:0:0:0:0:0:2:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//big-edge01.cdn.wolfcloud.pl/lookcam/jAk568qd3zxPwlaR2WyNdvLDbkr5jEJ6R1Jg9GnmBe4qOXQZ76KY80o1AebzN4n0/tracks-v1a1/mono.m3u8?token=ORxAqCUKwgg4lJEzC-v49Q|format=mpegts:Strzelce - widok na staw
+#DESCRIPTION Strzelce - widok na staw
+#SERVICE 1:0:0:0:0:0:0:0:0:2:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//s1.worldcam.live%3a8082/slesin/tracks-v1/mono.m3u8|format=mpegts:Ślesin
+#DESCRIPTION Ślesin
+#SERVICE 1:0:0:0:0:0:0:0:0:2:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//streaming.airmax.pl/gmswierklaniec1/tracks-v1/mono.m3u8|format=mpegts:Świerklaniec
+#DESCRIPTION Świerklaniec
+#SERVICE 1:0:0:0:0:0:0:0:0:2:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//hoktastream2.webcamera.pl/klekusiowo_cam_b05c8d/klekusiowo_cam_b05c8d.stream/chunks.m3u8|format=mpegts:Tomaszów Bolesławiecki (Klekusiowo)
+#DESCRIPTION Tomaszów Bolesławiecki (Klekusiowo)
+#SERVICE 1:0:0:0:0:0:0:0:0:2:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//hoktastream2.webcamera.pl/klekusiowo_cam_cd36d8/klekusiowo_cam_cd36d8.stream/playlist.m3u8|format=mpegts:Tomaszów Bolesławiecki (Klekusiowo 2)
+#DESCRIPTION Tomaszów Bolesławiecki (Klekusiowo 2)
+#SERVICE 1:0:0:0:0:0:0:0:0:2:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//s1.worldcam.live%3a8082/trzciniec/tracks-v1/index-1362504585-now.m3u8|format=mpegts:Trzciniec
+#DESCRIPTION Trzciniec
+#SERVICE 1:0:0:0:0:0:0:0:0:2:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//5d84fe297ee2b.streamlock.net/wegleszyn/wegleszyn.stream/chunklist_w2071960766.m3u8|format=mpegts:Węgleszyn
+#DESCRIPTION Węgleszyn
+#SERVICE 1:0:0:0:0:0:0:0:0:2:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//stream1.stimotion.pl/live/frampol1.m3u8|format=mpegts:Wola Radzięcka
+#DESCRIPTION Wola Radzięcka
+#SERVICE 1:0:0:0:0:0:0:0:0:2:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//1914843022.rsc.cdn77.org/live/BCw1178.stream/chunklist.m3u8|format=mpegts:Wola Suchożebrska
+#DESCRIPTION Wola Suchożebrska
+#SERVICE 1:0:0:0:0:0:0:0:0:2:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//s1.worldcam.live%3a8082/zastawki/tracks-v1a1/index-1362504585-now.m3u8|format=mpegts:Zastawki
+#DESCRIPTION Zastawki
+#SERVICE 1:64:0:0:0:0:0:0:0:0::Karmniki dla ptaków
+#DESCRIPTION Karmniki dla ptaków
+#SERVICE 4097:0:2:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/PMjuIMzzQxY:Bloomington - USA (YT)
+#DESCRIPTION Bloomington - USA (YT)
+#SERVICE 4097:0:2:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/N609loYkFJo:Cornell FeederWatch (YT)
+#DESCRIPTION Cornell FeederWatch (YT)
+#SERVICE 4097:0:2:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/_4PfczuRlME:Hoogezand - Holandia (YT)
+#DESCRIPTION Hoogezand - Holandia (YT)
+#SERVICE 1:0:2:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//s1.worldcam.live%3a8082/karmnik/tracks-v1/mono.m3u8|format=mpegts:Karmnik w Gorzowie Wielkopolskim
+#DESCRIPTION Karmnik w Gorzowie Wielkopolskim
+#SERVICE 1:0:2:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//5d881567b7568.streamlock.net/live/Voercam2Tafel.stream/chunklist.m3u8|format=mpegts:Karmnik I
+#DESCRIPTION Karmnik I
+#SERVICE 1:0:2:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//stream.wildlifestreaming.io%3a1935/WildlifeKate/HDMammal.stream/.m3u8|format=mpegts:Karmnik II
+#DESCRIPTION Karmnik II
+#SERVICE 1:0:2:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//584b389d712f9.streamlock.net/live/pindacam.stream/playlist.m3u8|format=mpegts:Karmnik III
+#DESCRIPTION Karmnik III
+#SERVICE 1:0:2:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//584b389d712f9.streamlock.net/live/pindacam2.stream/playlist.m3u8|format=mpegts:Karmnik IV
+#DESCRIPTION Karmnik IV
+#SERVICE 4097:0:2:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/pXe8MpU7uzk:Kolibry - Los Angeles - USA (YT)
+#DESCRIPTION Kolibry - Los Angeles - USA (YT)
+#SERVICE 4097:0:2:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/L6O4mJd4pFE:Kolibry - West Texas Feeders (YT)
+#DESCRIPTION Kolibry - West Texas Feeders (YT)
+#SERVICE 1:0:2:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//s1.worldcam.live%3a8082/karmnikptaszki/tracks-v1a1/mono.m3u8|format=mpegts:Koszalin - ptaszki-tv
+#DESCRIPTION Koszalin - ptaszki-tv
+#SERVICE 4097:0:2:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/iNYDhlAYmgg:Ohio - USA (YT)
+#DESCRIPTION Ohio - USA (YT)
+#SERVICE 4097:0:2:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/WtoxxHADnGk:Panama - El Valle de Antón (YT)
+#DESCRIPTION Panama - El Valle de Antón (YT)
+#SERVICE 4097:0:2:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/3tgQLj33xrc:Recke - Niemcy (YT)
+#DESCRIPTION Recke - Niemcy (YT)
+#SERVICE 1:0:2:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//e3-eu2.angelcam.com/m6-eu5/cameras/7138/streams/hls/playlist.m3u8?token=eyJjYW1lcmFfaWQiOiI3MTM4IiwidGltZSI6MTU5NDkyNjI4MzAzNTA2MywidGltZW91dCI6MzYwMH0=.5dcf59f1559e6db648f8c2398fed2ce131b0422af546073d89bd68e64d17d9ab|format=mpegts:Rezerwat przyrody Rzeka Drwęca
+#DESCRIPTION Rezerwat przyrody Rzeka Drwęca
+#SERVICE 1:64:0:0:0:0:0:0:0:0::Karmniki i pastwiska leśne
+#DESCRIPTION Karmniki i pastwiska leśne
+#SERVICE 1:0:3:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//edge06.nginx.hdontap.com/hodvr4/ngrp%3acarbontv_crush-deer.stream_all/chunklist_b3955712_DVR.m3u8|format=mpegts:Karmnik - Keosauqua - USA
+#DESCRIPTION Karmnik - Keosauqua - USA
+#SERVICE 1:0:3:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//77.89.89.9%3a1935/live/karmnik.stream/chunklist_w1519680408.m3u8|format=mpegts:Ostrów Wielkopolski
+#DESCRIPTION Ostrów Wielkopolski
+#SERVICE 1:0:3:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//edge07.nginx.hdontap.com/hodvr4/ngrp%3acarbontv_wildlifers-http.stream_all/chunklist_b51232768_DVR.m3u8|format=mpegts:Refugio - Teksas USA 
+#DESCRIPTION Refugio - Teksas USA 
+#SERVICE 1:0:3:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//hoktastream1.webcamera.pl/babki_cam_628fc3/babki_cam_628fc3.stream/chunks.m3u8|format=mpegts:Wilczyny - Paśnik dla dzikich zwierząt
+#DESCRIPTION Wilczyny - Paśnik dla dzikich zwierząt
+#SERVICE 1:0:3:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//files.atriw.com/mstream/zubryonline.stream/index.m3u8|format=mpegts:Żubry - Białowieża
+#DESCRIPTION Żubry - Białowieża
+#SERVICE 1:0:3:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//streaming.airmax.pl/zenaida1/tracks-v1a1/mono.m3u8|format=mpegts:Żubry - Teremiski
+#DESCRIPTION Żubry - Teremiski
+#SERVICE 1:0:3:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//streaming.airmax.pl/zenaida2/tracks-v1a1/mono.m3u8|format=mpegts:Żubry - Teremiski 2
+#DESCRIPTION Żubry - Teremiski 2
+#SERVICE 1:0:3:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//streaming.airmax.pl/zenaida/tracks-v1a1/mono.m3u8|format=mpegts:Żubry - Teremiski 3
+#DESCRIPTION Żubry - Teremiski 3
+#SERVICE 1:64:0:0:0:0:0:0:0:0::Koty
+#DESCRIPTION Koty
+#SERVICE 4097:0:8:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/HOVpFpO7y10:Schronisko dla zwierząt - Kralendijk (YT)
+#DESCRIPTION Schronisko dla zwierząt - Kralendijk (YT)
+#SERVICE 4097:0:8:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/UZcVnXgkLSk:Schronisko dla zwierząt - Kralendijk 2 (YT)
+#DESCRIPTION Schronisko dla zwierząt - Kralendijk 2 (YT)
+#SERVICE 1:0:8:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//edge01.balticlivecam.com/anim/dobryDom/tracks-v1/mono.m3u8?token=2261630b22e86d4d79855ca1ca894f2b%3a1595010117183|format=mpegts:Schronisko Dobrij Dom -Rosja -Chabarowsk
+#DESCRIPTION Schronisko Dobrij Dom -Rosja -Chabarowsk
+#SERVICE 1:0:8:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//edge01.balticlivecam.com/anim/VarjupaikTallinn/tracks-v1/mono.m3u8?token=d33ec23cf2df66c6f4449c66c17377b8%3a1594928413997|format=mpegts:Schronisko Varjupaikade - Estonia
+#DESCRIPTION Schronisko Varjupaikade - Estonia
+#SERVICE 1:0:8:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//edge01.balticlivecam.com/anim/VarjupaikTallinn2/tracks-v1/mono.m3u8?token=73455bb96bdea890bd45560c289e3c04%3a1594928507205|format=mpegts:Schronisko Varjupaikade - Estonia 2
+#DESCRIPTION Schronisko Varjupaikade - Estonia 2
+#SERVICE 1:0:8:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//edge01.balticlivecam.com/anim/Beglobis/tracks-v1/mono.m3u8?token=7e5bb0f987d5d6cdc1fb04ca3c7ba377%3a1594928588591|format=mpegts:Schronisko Beglobis - Wilno
+#DESCRIPTION Schronisko Beglobis - Wilno
+#SERVICE 1:0:8:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//edge08.nginx.hdontap.com/ho2/cat-cafe_sandiego_amcrest.stream/chunklist.m3u8|format=mpegts:The Cat Cafe - San Diego - USA
+#DESCRIPTION The Cat Cafe - San Diego - USA
+#SERVICE 1:64:0:0:0:0:0:0:0:0::Psy
+#DESCRIPTION Psy
+#SERVICE 4097:0:6:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/XLwYWCzlfIw:Brookeville - Maryland - USA
+#DESCRIPTION Brookeville - Maryland - USA
+#SERVICE 1:0:6:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//animalslife.net/videos_for/Lesi_(Serbia)/anim_LesiBac_1506508463_9472Trim_part1.mp4:Schronisko Lesi - Serbia - Plavna
+#DESCRIPTION Schronisko Lesi - Serbia - Plavna
+#SERVICE 1:64:0:0:0:0:0:0:0:0::Ptaki w gniazdach
+#DESCRIPTION Ptaki w gniazdach
+#SERVICE 4097:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/t9XNKQY4tQc:Albatros Królewski - Taiaroa Head - Nowa Zelandia (YT)
+#DESCRIPTION Albatros Królewski - Taiaroa Head - Nowa Zelandia (YT)
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//5d881567b7568.streamlock.net/live/Koolmees2.stream/chunklist.m3u8|format=mpegts:Bogatka I
+#DESCRIPTION Bogatka I
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//5d881567b7568.streamlock.net/live/BlijdeWei1.stream/chunklist.m3u8|format=mpegts:Bogatka II
+#DESCRIPTION Bogatka II
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//5d881567b7568.streamlock.net/live/TurkseTortel.stream/chunklist.m3u8|format=mpegts:Gołąb
+#DESCRIPTION Gołąb
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//5d881567b7568.streamlock.net/live/Havik.stream/chunklist.m3u8|format=mpegts:Jastrząb
+#DESCRIPTION Jastrząb
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//e3-eu2.angelcam.com/m6-eu5/cameras/20073/streams/hls/playlist.m3u8?token=eyJjYW1lcmFfaWQiOiIyMDA3MyIsInRpbWUiOjE1OTQ5MTQzNDA5OTU2MTIsInRpbWVvdXQiOjM2MDB9.53664d1a7312deb9c7ce971f3b099e36819247ad4c0248bd2b103b7764553305|format=mpegts:Jerzyki - Jastrzębie-Zdrój
+#DESCRIPTION Jerzyki - Jastrzębie-Zdrój
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//5d84fe297ee2b.streamlock.net/jerzyki/budki.stream/chunklist_w1366091525.m3u8|format=mpegts:Jerzyki - Szczecin
+#DESCRIPTION Jerzyki - Szczecin
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//5d84fe297ee2b.streamlock.net/jerzyki/budki2.stream/chunklist_w1222413318.m3u8|format=mpegts:Jeżyki - Szczecin 2
+#DESCRIPTION Jeżyki - Szczecin 2
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//5d84fe297ee2b.streamlock.net/jerzyki/budki3.stream/chunklist_w698612824.m3u8|format=mpegts:Jeżyki - Szczecin 3
+#DESCRIPTION Jeżyki - Szczecin 3
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//5d84fe297ee2b.streamlock.net/jerzyki/budki4.stream/chunklist_w607405769.m3u8|format=mpegts:Jeżyki - Szczecin 4
+#DESCRIPTION Jeżyki - Szczecin 4
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//5d84fe297ee2b.streamlock.net/jerzyki/wloty.stream/chunklist_w812242184.m3u8|format=mpegts:Jeżyki - Szczecin - wloty do budek
+#DESCRIPTION Jeżyki - Szczecin - wloty do budek
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//zssd-condorhd.hls.camzonecdn.com/CamzoneStreams/zssd-condorhd/.m3u8|format=mpegts:Kondor
+#DESCRIPTION Kondor
+#SERVICE 4097:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/fvl_umojeYE:Kondor (gniazdo) - Big Sur - Kalifornia USA (YT)
+#DESCRIPTION Kondor (gniazdo) - Big Sur - Kalifornia USA (YT)
+#SERVICE 4097:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/scvFA-ShZwc:Kondor (wejście) - Big Sur - Kalifornia USA (YT)
+#DESCRIPTION Kondor (wejście) - Big Sur - Kalifornia USA (YT)
+#SERVICE 4097:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.youtube.com/watch?v=V2XZ4KXtss0:Orlik grubodzioby - Estonia (YT)
+#DESCRIPTION Orlik grubodzioby - Estonia (YT)
+#SERVICE 4097:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/Fwe5wGGdoxw:Orlik krzykliwy  - Estonia (YT)
+#DESCRIPTION Orlik krzykliwy  - Estonia (YT)
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//rrr.sz.xlcdn.com/?account=bdl&file=Kerkuil1&type=live&service=wowza&protocol=https&output=playlist.m3u8|format=mpegts:Płomykówka zwyczajna
+#DESCRIPTION Płomykówka zwyczajna
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//rrr.sz.xlcdn.com/?account=bdl&file=Kerkuil2&type=live&service=wowza&protocol=https&output=playlist.m3u8|format=mpegts:Płomykówka zwyczajna 2
+#DESCRIPTION Płomykówka zwyczajna 2
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//ngx.cr1.streamzilla.xlcdn.com/session/b70f4982b9a98b76a77221f6fa69446b/sz/streamdays/wowza4/live/wildlifewindows-dwt-lorton/chunklist.m3u8|format=mpegts:Płomykówka zwyczajna - Dorchester - GB
+#DESCRIPTION Płomykówka zwyczajna - Dorchester - GB
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//53c7d208964cd.streamlock.net/mpecw/mpecw.stream_aac/chunklist_w431982377.m3u8|format=mpegts:Pustułki - Włocławek (wewn.)
+#DESCRIPTION Pustułki - Włocławek (wewn.)
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//53c7d208964cd.streamlock.net/mpecz/mpecpodest.stream/chunklist_w1152349739.m3u8|format=mpegts:Pustułki - Włocławek (zewn.)
+#DESCRIPTION Pustułki - Włocławek (zewn.)
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//5d881567b7568.streamlock.net/live/Torenvalk3.stream/chunklist.m3u8|format=mpegts:Pustułki I
+#DESCRIPTION Pustułki I
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//5d881567b7568.streamlock.net/live/Torenvalk2.stream/chunklist.m3u8|format=mpegts:Pustułki II
+#DESCRIPTION Pustułki II
+#SERVICE 4097:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/CFADOA230qg:Rybołów - Estonia (YT)
+#DESCRIPTION Rybołów - Estonia (YT)
+#SERVICE 4097:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/6iT-YYeAOY0:Rybołów zwyczajny - Finlandia (YT)
+#DESCRIPTION Rybołów zwyczajny - Finlandia (YT)
+#SERVICE 4097:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/KhLwQpsipiQ:Rybołów zwyczajny - Finlandia 2 (YT)
+#DESCRIPTION Rybołów zwyczajny - Finlandia 2 (YT)
+#SERVICE 4097:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/CzSnIdecJcs:Rybołów zwyczajny - Finlandia 3 (YT)
+#DESCRIPTION Rybołów zwyczajny - Finlandia 3 (YT)
+#SERVICE 4097:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/jGvVZLWjHh8:Rybołów zwyczajny - Finlandia 4 (YT)
+#DESCRIPTION Rybołów zwyczajny - Finlandia 4 (YT)
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//s1.worldcam.live%3a8082/budkalegowa2/tracks-v1a1/mono.m3u8|format=mpegts:Sikorki - Budka lęgowa - Suwałki
+#DESCRIPTION Sikorki - Budka lęgowa - Suwałki
+#SERVICE 4097:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/Y84ITefXsOs:Sokoły -Gdańsk (YT)
+#DESCRIPTION Sokoły -Gdańsk (YT)
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//53c7d208964cd.streamlock.net/pge1/pge1.stream_aac/chunklist_w1386177444_tkdG9rZW5zZW5kdGltZT0xNTk0OTI0NDY4JnRva2Vuc2hhc2g9cnA3MlFnUWFPUFJyUnJpRllBQ01mWm1pUlViNTZiT0R2c1NJejQ5cWw4UW1xUGpWWlFBUnNHRTh5eDNJa3o0eSZ0b2tlbnNzdGFydHRpbWU9MTU5NDkxMzY2OA==.m3u8|format=mpegts:Sokoły - Gdynia (wewn.)
+#DESCRIPTION Sokoły - Gdynia (wewn.)
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//53c7d208964cd.streamlock.net/pge1/pge2.stream_aac/chunklist_w1552182385_tkdG9rZW5zZW5kdGltZT0xNTk0OTI0MzgyJnRva2Vuc2hhc2g9bDBlazI2TnROck9aOUFqT0ZkYVVOcnN6UElmaEJhMndYMFFiTWpxYWx0UnlQcEFRZXdSZ2ZfdlVIcHVZejZ6YiZ0b2tlbnNzdGFydHRpbWU9MTU5NDkxMzU4Mg==.m3u8|format=mpegts:Sokoły - Gdynia (zewn.)
+#DESCRIPTION Sokoły - Gdynia (zewn.)
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//stream.orlen.pl/sokol/gniazdo.stream/chunklist_w294985603.m3u8|format=mpegts:Sokoły - Płock (wewn.)
+#DESCRIPTION Sokoły - Płock (wewn.)
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//stream.orlen.pl/sokol/podest.stream/chunklist_w1678692661.m3u8|format=mpegts:Sokoły - Płock (zewn.)
+#DESCRIPTION Sokoły - Płock (zewn.)
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//53c7d208964cd.streamlock.net/pgelublin/lublin2.stream/chunklist_w1058904469_tkdG9rZW5zZW5kdGltZT0xNTk0OTI2MDQ3JnRva2Vuc2hhc2g9WW5ORmNZbmJvdUpkRFZYTE91M3RMR0JTQjNteGM4eGZiZUVIRHlBbEZ6QkhrQzhtdFcxSnRONEVyS3lJRVE0QyZ0b2tlbnNzdGFydHRpbWU9MTU5NDkxNTI0Nw==.m3u8|format=mpegts:Sokół wędrowny - Lublin (wewn.)
+#DESCRIPTION Sokół wędrowny - Lublin (wewn.)
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//53c7d208964cd.streamlock.net/pgelublin/lublin1.stream/chunklist_w408590154_tkdG9rZW5zZW5kdGltZT0xNTk0OTIyNTU0JnRva2Vuc2hhc2g9dGIzWnhWQnZLdTdoRXFmVWc3bEFFWTBQaXlDd1QyaU55bzcyR01sTUVlTWZrUXVjYVh2bHNLLUFIVmpLRmhaNSZ0b2tlbnNzdGFydHRpbWU9MTU5NDkxNTM1NA==.m3u8|format=mpegts:Sokół wędrowny - Lublin (zewn.)
+#DESCRIPTION Sokół wędrowny - Lublin (zewn.)
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//53c7d208964cd.streamlock.net/veolia/poznan1.stream_aac/chunklist_w952548286_tkdG9rZW5zZW5kdGltZT0xNTk0OTI3NTc1JnRva2Vuc2hhc2g9dlB4SzVvaFlLTVl1ZHJ6V2NuZXlVNXBsc19NUVY3VF9ZV21DSE5ZeWQ3aF9BSURNM29uSDdUT3VwTS1LeHIzaCZ0b2tlbnNzdGFydHRpbWU9MTU5NDkxNjc3NQ==.m3u8|format=mpegts:Sokół wędrowny - Poznań (wewn.)
+#DESCRIPTION Sokół wędrowny - Poznań (wewn.)
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//53c7d208964cd.streamlock.net/veolia/poznan2.stream/chunklist_w1426176975_tkdG9rZW5zZW5kdGltZT0xNTk0OTI3NDM1JnRva2Vuc2hhc2g9NUZsZXpOQTVxNnhOSzJrekcxQWI3NmhqRFdCN2V2VDNTMkpvdEhmSFNhd3FRbjdzbXozWng0aHpDck5CdFpfTyZ0b2tlbnNzdGFydHRpbWU9MTU5NDkxNjYzNQ==.m3u8|format=mpegts:Sokół wędrowny - Poznań (zewn.)
+#DESCRIPTION Sokół wędrowny - Poznań (zewn.)
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//53c7d208964cd.streamlock.net/Las/lascdn7.stream/chunklist_w768815761_tkdG9rZW5zZW5kdGltZT0xNTk0OTI3MzE2JnRva2Vuc2hhc2g9WDJZcjdMTTlLV1pBekhDbndXcFhoR25IMzFxZjBZcEJaNnJzZFphTkh5Z2hYVjNDRU1kbGhsWUsyamZlOEVEdCZ0b2tlbnNzdGFydHRpbWU9MTU5NDkxNjUxNg==.m3u8|format=mpegts:Sokoły wędrowne - Trzebież
+#DESCRIPTION Sokoły wędrowne - Trzebież
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//streaming.airmax.pl/pecsa1/tracks-v1/mono.m3u8|format=mpegts:Sokoły wędrowne - PEC Wałbrzych (wewn.)
+#DESCRIPTION Sokoły wędrowne - PEC Wałbrzych (wewn.)
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//streaming.airmax.pl/pecsa2/tracks-v1/mono.m3u8|format=mpegts:Sokoły wędrowne - PEC Wałbrzych (zewn.)
+#DESCRIPTION Sokoły wędrowne - PEC Wałbrzych (zewn.)
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//5857db5306b83.streamlock.net/heidelberg-rtplive/_definst_/mp4%3acamera3.stream/.m3u8|format=mpegts:Sokół wędrowny I - Heidelberg
+#DESCRIPTION Sokół wędrowny I - Heidelberg
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//56f2a99952126.streamlock.net/829/default.stream/.m3u8|format=mpegts:Sokół wędrowny II - Heidelberg
+#DESCRIPTION Sokół wędrowny II - Heidelberg
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//5d881567b7568.streamlock.net/live/Slechtvalk1Binnen.stream/chunklist.m3u8|format=mpegts:Sokół wędrowny III - NL
+#DESCRIPTION Sokół wędrowny III - NL
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//5d881567b7568.streamlock.net/live/Slechtvalk1Buiten.stream/chunklist.m3u8|format=mpegts:Sokół wędrowny IV - NL
+#DESCRIPTION Sokół wędrowny IV - NL
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//rrr.sz.xlcdn.com/?account=bdl&file=SlechtvalkGemert1&type=live&service=wowza&protocol=https&output=playlist.m3u8|format=mpegts:Sokół wędrowny V
+#DESCRIPTION Sokół wędrowny V
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//rrr.sz.xlcdn.com/?account=bdl&file=SlechtvalkGemert2&type=live&service=wowza&protocol=https&output=playlist.m3u8|format=mpegts:Sokół wędrowny VI
+#DESCRIPTION Sokół wędrowny VI
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//84.22.110.224/live/cam1/mystream.m3u8|format=mpegts:Sokół wędrowny VII - Amsterdam
+#DESCRIPTION Sokół wędrowny VII - Amsterdam
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//84.22.110.224/live/cam2/mystream.m3u8|format=mpegts:Sokół wędrowny VIII - Amsterdam
+#DESCRIPTION Sokół wędrowny VIII - Amsterdam
+#SERVICE 4097:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.youtube.com/watch?v=LIf_navuFuQ:Sowa - Estonia (YT)
+#DESCRIPTION Sowa - Estonia (YT)
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//5d881567b7568.streamlock.net/live/Steenuil2Binnen.stream/chunklist.m3u8|format=mpegts:Sowa I
+#DESCRIPTION Sowa I
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//5d881567b7568.streamlock.net/live/Steenuil2Buiten.stream/chunklist.m3u8|format=mpegts:Sowa II
+#DESCRIPTION Sowa II
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//rrr.sz.xlcdn.com/?account=bdl&file=Steenuil1&type=live&service=wowza&protocol=https&output=playlist.m3u8|format=mpegts:Sowa III
+#DESCRIPTION Sowa III
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//rrr.sz.xlcdn.com/?account=bdl&file=Steenuil2&type=live&service=wowza&protocol=https&output=playlist.m3u8|format=mpegts:Sowa IV
+#DESCRIPTION Sowa IV
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//rrr.sz.xlcdn.com/?account=bdl&file=Steenuil3&type=live&service=wowza&protocol=https&output=playlist.m3u8|format=mpegts:Sowa V
+#DESCRIPTION Sowa V
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//5d84fe297ee2b.streamlock.net//lista/Stream5/chunklist_w745501047.m3u8|format=mpegts:Szpaki - Rudy - 2 gniazda
+#DESCRIPTION Szpaki - Rudy - 2 gniazda
+#SERVICE 4097:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.youtube.com/watch?v=QBSPRB6WrFI:Orzeł morski - Estonia (YT)
+#DESCRIPTION Orzeł morski - Estonia (YT)
+#SERVICE 4097:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.youtube.com/watch?v=72DFKhihTpg:Orzeł bielik - Estonia (YT)
+#DESCRIPTION Orzeł bielik - Estonia (YT)
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//edge03.nginx.hdontap.com/ho4/aef-nefl-ptz1_mux.stream/chunklist.m3u8|format=mpegts:Orzeł I
+#DESCRIPTION Orzeł I
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//584b389d712f9.streamlock.net/live/nestkast3.stream/playlist.m3u8|format=mpegts:Szpak I
+#DESCRIPTION Szpak I
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//5d881567b7568.streamlock.net/live/Spreeuw4Binnen.stream/chunklist.m3u8|format=mpegts:Szpak II
+#DESCRIPTION Szpak II
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//5d881567b7568.streamlock.net/live/Lepelaar.stream/chunklist.m3u8|format=mpegts:Warzęcha biała I
+#DESCRIPTION Warzęcha biała I
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//rrr.sz.xlcdn.com/?account=bdl&file=Lepelaar1&type=live&service=wowza&protocol=https&output=playlist.m3u8|format=mpegts:Warzęcha biała II
+#DESCRIPTION Warzęcha biała II
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//rrr.sz.xlcdn.com/?account=bdl&file=Lepelaar2&type=live&service=wowza&protocol=https&output=playlist.m3u8|format=mpegts:Warzęcha biała III
+#DESCRIPTION Warzęcha biała III
+#SERVICE 1:64:0:0:0:0:0:0:0:0::Zwierzęta - przyroda
+#DESCRIPTION Zwierzęta - przyroda
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//ngx.cr1.streamzilla.xlcdn.com/session/d081a4a085efba71c90ebd3c8dd2d31b/sz/streamdays/wowza4/live/kelcom-dubzoo-savanna/chunklist.m3u8|format=mpegts:African Savanna - Irlandia - Dublin - Zoo
+#DESCRIPTION African Savanna - Irlandia - Dublin - Zoo
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//files.atriw.com/mstream/zubryonline.stream/index.m3u8|format=mpegts:Bizony - USA
+#DESCRIPTION Bizony - USA
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//127.0.0.1%3a8088/https%3a//youtu.be/HBDC8mJf2lk:Bizony ranczo - Burns - D & B - Oregon USA (YT)
+#DESCRIPTION Bizony ranczo - Burns - D & B - Oregon USA (YT)
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//hoktastream2.webcamera.pl/klekusiowo_cam_996002/klekusiowo_cam_996002.stream/playlist.m3u8|format=mpegts:Czerwony jeleń - Polska - Klekusiowo
+#DESCRIPTION Czerwony jeleń - Polska - Klekusiowo
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//ngx.cr5.streamzilla.xlcdn.com/session/acd5130654392f0dfc097a71b20eac57/sz/streamdays/wowza4/live/paigntonzoo-flamingo/chunklist.m3u8|format=mpegts:Flamingi - Paignton - Zoo - GB
+#DESCRIPTION Flamingi - Paignton - Zoo - GB
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//stream.wildlifestreaming.io%3a8443/Marwell/marwell_flamingo.stream/chunklist_w1942501164.m3u8|format=mpegts:Flamingi - Winchester - Marwell Zoo - GB
+#DESCRIPTION Flamingi - Winchester - Marwell Zoo - GB
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//use01-smr03-relay.ozolio.com/hls-live/_definst_/relay01.hzyrcsm.fd0.sm1.av2.at0.sh2.rt15865.rc0.basic.stream/chunklist_w272486158.m3u8|format=mpegts:Flamingi - Memphis - Tennessee USA
+#DESCRIPTION Flamingi - Memphis - Tennessee USA
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//edge04.hdontap.com/ingest03-hd3/grizzly1_rpz.stream/chunklist_w974819959.m3u8|format=mpegts:Glizli - Tucson - Reid Park Zoo - USA
+#DESCRIPTION Glizli - Tucson - Reid Park Zoo - USA
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//edge02.hdontap.com/ingest03-hd3/grizzly2_rpz.stream/chunklist_w770387806.m3u8|format=mpegts:Glizli 2 - Tucson - Reid Park Zoo - USA
+#DESCRIPTION Glizli 2 - Tucson - Reid Park Zoo - USA
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//use01-smr04-relay.ozolio.com/hls-live/_definst_/relay01.xsqpcsh.fd0.sm1.av2.at0.sh2.rt15865.rc0.basic.stream/chunklist_w400523182.m3u8|format=mpegts:Grizli - Memphis - Tennessee USA
+#DESCRIPTION Grizli - Memphis - Tennessee USA
+#SERVICE 4097:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/6NIt6ibAD6I:Hipopotany - Laikipia County - Kenya (YT)
+#DESCRIPTION Hipopotany - Laikipia County - Kenya (YT)
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//usw01-smr03-relay.ozolio.com/hls-live/_definst_/relay01.uxqfb3x.fd0.sm1.av2.at0.sh2.rt15865.rc0.basic.stream/chunklist_w86530643.m3u8|format=mpegts:Hipopotan - Memphis - Tennessee USA
+#DESCRIPTION Hipopotan - Memphis - Tennessee USA
+#SERVICE 1:0:5:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//live.zoosociety.org%3a1935/live/outdoorjaguar.stream/.m3u8|format=mpegts:Jaguar II - USA
+#DESCRIPTION Jaguar II - USA
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//live.zoosociety.org%3a1935/live/jaguars.stream/.m3u8|format=mpegts:Jaguar I - USA
+#DESCRIPTION Jaguar I - USA
+#SERVICE 4097:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.youtube.com/watch?v=LKz1cXG-U2Y:Jeleń - Hirv - Estland (YT)
+#DESCRIPTION Jeleń - Hirv - Estland (YT)
+#SERVICE 4097:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.youtube.com/watch?v=IeB6NjgroAs:Kasmu - Meeresmuseum - Estland (YT)
+#DESCRIPTION Kasmu - Meeresmuseum - Estland (YT)
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//zssd-koala.hls.camzonecdn.com/CamzoneStreams/zssd-koala/Playlist.m3u8|format=mpegts:Koala
+#DESCRIPTION Koala
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//edge04.hdontap.com/ingest03-hd3/lemur_rpz.stream/chunklist_w586615973.m3u8|format=mpegts:Lemury - Tucson - Reid Park Zoo - USA
+#DESCRIPTION Lemury - Tucson - Reid Park Zoo - USA
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//edge02.hdontap.com/ingest03-hd3/lion_rpz.stream/chunklist_w1432969364.m3u8|format=mpegts:Lwy - Tucson - Reid Park Zoo - USA
+#DESCRIPTION Lwy - Tucson - Reid Park Zoo - USA
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//ngx.cr2.streamzilla.xlcdn.com/session/7c4156f764d49aee64704617ad1fb6f0/sz/streamdays/wowza4/live/blairdrummond03/chunklist.m3u8|format=mpegts:Lwy - Stirling - Blair Drummond Safari Park - GB
+#DESCRIPTION Lwy - Stirling - Blair Drummond Safari Park - GB
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//live.zoosociety.org%3a1935/live/lion.stream/.m3u8:Lwy - Milwaukee Zoo - USA
+#DESCRIPTION Lwy - Milwaukee Zoo - USA
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//nzp-ms06.si.edu/live_edge_lion/smil%3alion01_all.smil/.m3u8|format=mpegts:Lwy - Smithsonian's National Zoo - USA
+#DESCRIPTION Lwy - Smithsonian's National Zoo - USA
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//ngx.cr2.streamzilla.xlcdn.com/session/102429f35ffefcb200b14e4901494d4a/sz/streamdays/wowza4/live/paigntonzoo-blackmacaques/chunklist.m3u8|format=mpegts:Makaki, gibony - Paignton - Zoo - GB
+#DESCRIPTION Makaki, gibony - Paignton - Zoo - GB
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//ape.hls.camzonecdn.com/CamzoneStreams/ape/playlist.m3u8|format=mpegts:Małpa - USA
+#DESCRIPTION Małpa - USA
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//56d7ccce550bc.streamlock.net/rtplive/neushoorn-2.sdp/.m3u8|format=mpegts:Nosorożec - NL Zoo
+#DESCRIPTION Nosorożec - NL Zoo
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//ngx.cr1.streamzilla.xlcdn.com/session/17c2dca77cc28c1909b4f6197b4f9b85/sz/streamdays/wowza4/live/blairdrummond02/chunklist.m3u8|format=mpegts:Nosorożce - Stirling - Blair Drummond Safari Park - GB
+#DESCRIPTION Nosorożce - Stirling - Blair Drummond Safari Park - GB
+#SERVICE 4097:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/hWbt2eVCEe8:Niedźwiedź polarny - Anchorage - Alaska ZOO - USA (YT)
+#DESCRIPTION Niedźwiedź polarny - Anchorage - Alaska ZOO - USA (YT)
+#SERVICE 4097:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/tC-J27EF800:Niedźwiedzie polarne - Churchill - Kanada (YT)
+#DESCRIPTION Niedźwiedzie polarne - Churchill - Kanada (YT)
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//ngx.cr2.streamzilla.xlcdn.com/session/90a3612ab8f3c3e53bbae85fa54dc952/sz/streamdays/wowza4/live/devondonkey-shelter-1/chunklist.m3u8|format=mpegts:Osły - Sidmouth - GB
+#DESCRIPTION Osły - Sidmouth - GB
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//ngx.cr6.streamzilla.xlcdn.com/session/0e6ea2d0385ae312a5792df1aee7eb24/sz/streamdays/wowza4/live/donkeysanctuary-cam08/chunklist.m3u8|format=mpegts:Osły - Sidmouth 2 - GB
+#DESCRIPTION Osły - Sidmouth 2 - GB
+#SERVICE 4097:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/FUkxWre2yRU:Osły - Ipswich - Massachusetts - USA (YT)
+#DESCRIPTION Osły - Ipswich - Massachusetts - USA (YT)
+#SERVICE 4097:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/g4sSOUw-0a8:Park Zwierząt - Amersfoort - Holandia 2 (YT)
+#DESCRIPTION Park Zwierząt - Amersfoort - Holandia 2 (YT)
+#SERVICE 4097:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/9b9pEoxEWT8:Park Zwierząt - Amersfoort - Holandia (YT)
+#DESCRIPTION Park Zwierząt - Amersfoort - Holandia (YT)
+#SERVICE 4097:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/lH5goZL8tCU:Park Zwierząt - Amersfoort - Holandia 3 (YT)
+#DESCRIPTION Park Zwierząt - Amersfoort - Holandia 3 (YT)
+#SERVICE 4097:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/GcdN8SomBBY:Park Zwierząt - Amersfoort - Holandia 4 (YT)
+#DESCRIPTION Park Zwierząt - Amersfoort - Holandia 4 (YT)
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//hoktastream2.webcamera.pl/pszczoly_cam_41eddc/pszczoly_cam_41eddc.stream/playlist.m3u8|format=mpegts:Przczoły - Polska
+#DESCRIPTION Przczoły - Polska
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//ngx.cr6.streamzilla.xlcdn.com/session/64256e39bb3079414eebeb799a079413/sz/streamdays/wowza4/live/dudleyzoo-tigercam/chunklist.m3u8|format=mpegts:Tygrys - Dudley - Zoo (GB)
+#DESCRIPTION Tygrys - Dudley - Zoo (GB)
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//nzp-ms06.si.edu/live_edge_panda/smil%3apanda02_all.smil/.m3u8|format=mpegts:Panda - USA - Smithsonian National-Zoo
+#DESCRIPTION Panda - USA - Smithsonian National-Zoo
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//nzp-ms06.si.edu/live_edge_panda/smil%3apanda03_all.smil/.m3u8|format=mpegts:Panda - USA - Smithsonian National-Zoo
+#DESCRIPTION Panda - USA - Smithsonian National-Zoo
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//ccurlott.optiktv.telus.net/live-spts/pandacam01/transmux/CCURstream3000000.m3u8|format=mpegts:Panda III
+#DESCRIPTION Panda III
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//zssd-panda.hls.camzonecdn.com/CamzoneStreams/zssd-panda/.m3u8:Panda IV
+#DESCRIPTION Panda IV
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//use01-smr05-relay.ozolio.com/hls-live/_definst_/relay01.fkztb4r.fd0.sm1.av2.at0.sh2.rt15865.rc0.basic.stream/chunklist_w1748963351.m3u8|format=mpegts:Panda wybieg - Memphis - Tennessee USA
+#DESCRIPTION Panda wybieg - Memphis - Tennessee USA
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//usw01-smr03-relay.ozolio.com/hls-live/_definst_/relay01.akayb38.fd0.sm1.av2.at0.sh2.rt15865.rc0.basic.stream/chunklist_w1558912544.m3u8|format=mpegts:Panda wnętrze - Memphis - Tennessee USA
+#DESCRIPTION Panda wnętrze - Memphis - Tennessee USA
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//edge03.nginx.hdontap.com/ho3/Jeezly-3_CWRC.stream/chunklist.m3u8|format=mpegts:Raptor Flight Facility - Brookfield - Kanada
+#DESCRIPTION Raptor Flight Facility - Brookfield - Kanada
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//sochi.camera%3a8080/cam_156/index.m3u8|format=mpegts:Ryś - Sochi - Zoo
+#DESCRIPTION Ryś - Sochi - Zoo
+#SERVICE 4097:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/sqAdEAH2q_g:Rezerwat Madikwe Game - Republika Południowej Afryki (YT)
+#DESCRIPTION Rezerwat Madikwe Game - Republika Południowej Afryki (YT)
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//ngx.cr1.streamzilla.xlcdn.com/session/c5ff2936542043bfd6e483d0f87a4840/sz/streamdays/wowza4/live/cotswold-meerkats/chunklist.m3u8|format=mpegts:Surykatki - Burford - Cotswold Wildlife Park - (GB)
+#DESCRIPTION Surykatki - Burford - Cotswold Wildlife Park - (GB)
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//videos-3.earthcam.com/fecnetwork/14443.flv/chunklist_w1642932728.m3u8?t=EgBufjK5ZkO9D8ishUz6IJPD7qpbmhVVZakolJeK9WQ%3D|format=mpegts:Surykatki - Miami - Zoo - USA
+#DESCRIPTION Surykatki - Miami - Zoo - USA
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//elephants.hls.camzonecdn.com/CamzoneStreams/elephants/Playlist.m3u8|format=mpegts:Słonie
+#DESCRIPTION Słonie
+#SERVICE 4097:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/48MFrf5ADp8:Słonie - Tembe Elephant Park - Emangusi, South Africa
+#DESCRIPTION Słonie - Tembe Elephant Park - Emangusi, South Africa (YT)
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//ngx.cr2.streamzilla.xlcdn.com/session/bd2de06c44fad59d2afd193388f51535/sz/streamdays/wowza4/live/kelcom-dubzoo-elephants/chunklist.m3u8|format=mpegts:Słonie - Irlandia - Dublin - Zoo
+#DESCRIPTION Słonie - Irlandia - Dublin - Zoo
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//edge02.hdontap.com/ingest03-hd3/elephant-exhibit_rpz.stream/chunklist_w150522843.m3u8|format=mpegts:Słonie - Tucson - Reid Park Zoo - USA
+#DESCRIPTION Słonie - Tucson - Reid Park Zoo - USA
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//usw01-smr04-relay.ozolio.com/hls-live/_definst_/relay01.xrnqb3s.fd0.sm1.av2.at0.sh2.rt15865.rc0.basic.stream/chunklist_w2097732423.m3u8|format=mpegts:Słonie - Memphis - Tennessee USA
+#DESCRIPTION Słonie - Memphis - Tennessee USA
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//edge04.hdontap.com/ingest03-hd3/elephant-mudpit_rpz.stream/chunklist_w2020720951.m3u8|format=mpegts:Słonie 2 - Tucson - Reid Park Zoo - USA
+#DESCRIPTION Słonie 2 - Tucson - Reid Park Zoo - USA
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//56d7ccce550bc.streamlock.net/rtplive/olifanten_buitencam1.sdp/playlist.m3u8|format=mpegts:Słonie - Zoo Amsterdam
+#DESCRIPTION Słonie - Zoo Amsterdam
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//56d7ccce550bc.streamlock.net/rtplive/olifanten_buitencam2.sdp/playlist.m3u8|format=mpegts:Słonie 2 - Zoo Amsterdam
+#DESCRIPTION Słonie 2 - Zoo Amsterdam
+#SERVICE 4097:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/i17Zbi1xlpc:Słonie - Tembe Elephant Park - USA (YT)
+#DESCRIPTION Słonie - Tembe Elephant Park - USA (YT)
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//edge02.hdontap.com/ingest03-hd3/Guinea-Pig_Kungl.stream/chunklist_w518970160.m3u8|format=mpegts:Świnki morskie i króliki - Tustin - USA
+#DESCRIPTION Świnki morskie i króliki - Tustin - USA
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//sochi.camera%3a8080/cam_147/index.m3u8|format=mpegts:Tygrys I - Sochi - Zoo
+#DESCRIPTION Tygrys I - Sochi - Zoo
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//sochi.camera%3a8080/cam_148/index.m3u8|format=mpegts:Tygrys II - Sochi - Zoo
+#DESCRIPTION Tygrys II - Sochi - Zoo
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//sochi.camera%3a8080/cam_149/index.m3u8|format=mpegts:Tygrys III - Sochi - Zoo
+#DESCRIPTION Tygrys III - Sochi - Zoo
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//live.zoosociety.org%3a1935/live/tiger.stream/.m3u8|format=mpegts:Tygrys IV - USA - Milwaukee Zoo
+#DESCRIPTION Tygrys IV - USA - Milwaukee Zoo
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//595b9deb3d6ac.streamlock.net/qlive/edinburghzootiger1.stream/chunklist_w328320233.m3u8|format=mpegts:Tygrys V - Edinburg Zoo
+#DESCRIPTION Tygrys V - Edinburg Zoo
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//edge08.nginx.hdontap.com/ho2/nywolf_graywolves-ambassadors_enclosure-SRT.stream/chunklist.m3u8|format=mpegts:Wilki - Lewisboro - Wolf Conservation Center - USA
+#DESCRIPTION Wilki - Lewisboro - Wolf Conservation Center - USA
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//edge03.nginx.hdontap.com/ho2/nywolf_redwolves-veronicaandsam_enclosure-SRT.stream/chunklist.m3u8|format=mpegts:Wilki 2 - Lewisboro - Wolf Conservation Center - USA
+#DESCRIPTION Wilki 2 - Lewisboro - Wolf Conservation Center - USA
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//edge06.nginx.hdontap.com/ho2/nywolf_redwolves-tykeandmj_enclosure-SRT.stream/chunklist.m3u8|format=mpegts:Wilki 3 - Lewisboro - Wolf Conservation Center - USA
+#DESCRIPTION Wilki 3 - Lewisboro - Wolf Conservation Center - USA
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//edge03.nginx.hdontap.com/ho2/nywolf_mexicanwolves-magdalenaanddiego_enclosure-SRT.stream/chunklist.m3u8|format=mpegts:Wilki 4 - Lewisboro - Wolf Conservation Center - USA
+#DESCRIPTION Wilki 4 - Lewisboro - Wolf Conservation Center - USA
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//edge06.nginx.hdontap.com/ho2/nywolf_mexicanwolves-trumpetandlighthawk_enclosure-SRT.stream/chunklist.m3u8|format=mpegts:Wilki 5 - Lewisboro - Wolf Conservation Center - USA
+#DESCRIPTION Wilki 5 - Lewisboro - Wolf Conservation Center - USA
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//hddn00.skylinewebcams.com/live.m3u8?a=kvnilbnpcigv7721501c194k27|format=mpegts:Żółwie słoniowe - Wyspy Galápagos
+#DESCRIPTION Żółwie słoniowe - Wyspy Galápagos
+#SERVICE 4097:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//youtu.be/XayJuhPXKFA:Żyrafy - Harpursville - Animal Adventure Park - USA (YT)
+#DESCRIPTION Żyrafy - Harpursville - Animal Adventure Park - USA (YT)
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//edge04.hdontap.com/ingest03-hd3/giraffe_rpz.stream/chunklist_w580125421.m3u8|format=mpegts:Żyrafy - Tucson - Reid Park Zoo - USA
+#DESCRIPTION Żyrafy - Tucson - Reid Park Zoo - USA
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|http%3a//rrr.sz.xlcdn.com/?account=bdl&file=Vijver1&type=live&service=wowza&protocol=https&output=playlist.m3u8|format=mpegts:NL
+#DESCRIPTION NL
+#SERVICE 1:0:7:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/ffmpeg|https%3a//hls1.webcamera.pl/um_wejherowo_cam_d5888b/um_wejherowo_cam_d5888b.stream/playlist.m3u8|format=mpegts:Polska
+#DESCRIPTION Polska

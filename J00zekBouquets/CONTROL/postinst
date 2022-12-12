@@ -1,0 +1,22 @@
+#!/bin/sh
+if [ ! -f /etc/enigma2/JB_m3u_sections.cfg ];then
+  echo '# każda linia zawiera nazwę sekcji w pliku m3u w formacie regex' > /etc/enigma2/JB_m3u_sections.cfg
+  echo '# UWAGA zawsze po części wspólnej musi znaleźć się znacznik [' >> /etc/enigma2/JB_m3u_sections.cfg
+  echo '# przykładowo definicja linii: "#EXTINF:-1,##########   Poland   ##########"' >> /etc/enigma2/JB_m3u_sections.cfg
+  echo '# będzie wyglądać tak:"#EXTINF:-1,##########[ ]+Poland[ ]+##########"' >> /etc/enigma2/JB_m3u_sections.cfg
+  echo 'EXTINF:-1,##########[ ]+Poland' >> /etc/enigma2/JB_m3u_sections.cfg
+  echo 'EXTINF:-1,▬[ ]+Poland' >> /etc/enigma2/JB_m3u_sections.cfg
+  #echo '' >> /etc/enigma2/JB_m3u_sections.cfg
+fi
+
+if `grep -q 'osd.language=pl_PL' </etc/enigma2/settings`; then
+  echo ""
+  echo "Wtyczka j00zekBouquets zainstalowana. Przeładuj teraz GUI!"
+  echo ""
+else
+  echo ""
+  echo "j00zekBouquets plugin successfully installed. You should restart GUI!"
+  echo ""
+fi 
+sleep 5
+exit 0

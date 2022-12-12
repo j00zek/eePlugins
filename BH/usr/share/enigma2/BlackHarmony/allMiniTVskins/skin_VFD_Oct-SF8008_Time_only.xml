@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<skin>
+<!-- MyClockPanel -->    
+    <screen name="MyClockPanel">
+        <widget source="global.CurrentTime" render="Label" position="0,0" size="120,64" font="Regular;48" halign="center" valign="center">
+            <convert type="ClockToText">Format:%H:%M</convert>
+        </widget>
+    </screen>
+    
+<!-- standby -->
+    <screen name="StandbySummary" position="0,0" size="1,1">
+                <panel name="MyClockPanel" />
+    </screen>
+
+<!-- channelselection-->
+    <screen name="ChannelSelection_summary" position="0,0" size="1,1">
+        <panel name="MyClockPanel" />
+    </screen> 
+    
+<!-- Wizard -->
+    <screen name="WizardSummary" position="0,0" size="1,1">
+        <panel name="MyClockPanel" />
+    </screen>
+
+<!-- main-->
+    <screen name="InfoBarSummary" position="0,0" size="1,1">
+        <panel name="MyClockPanel" />
+    </screen>
+
+<!-- movieplayer-->
+    <screen name="InfoBarMoviePlayerSummary" position="0,0" size="1,1">
+        <panel name="MyClockPanel" />
+    </screen>
+
+<!-- menus-->
+    <screen name="MenuSummary" position="0,0" size="1,1">
+        <panel name="MyClockPanel" />
+    </screen>
+    <screen name="GeneralMenuSummary" position="0,0" size="1,1">
+        <panel name="MyClockPanel" />
+    </screen>
+    <screen name="QuickMenu_summary" position="0,0" size="1,1">
+        <panel name="MyClockPanel" />
+    </screen>
+
+<!-- setup -->
+    <screen name="SetupSummary" position="0,0" size="1,1">
+        <panel name="MyClockPanel" />
+    </screen>
+
+<!-- About -->
+    <screen name="AboutSummary" position="0,0" size="1,1">
+        <panel name="MyClockPanel" />
+    </screen>
+
+<!-- Blindscan -->
+    <screen name="SetupSummary2" position="0,0" size="1,1">
+        <panel name="MyClockPanel" />
+    </screen>
+
+<!-- Numberzap -->    
+    <screen name="NumberZap_summary" position="0,0" size="1,1">
+        <panel name="MyClockPanel" />
+    </screen> 
+    <screen name="NumberZapPicon_summary" position="0,0" size="1,1">
+        <panel name="MyClockPanel" />
+    </screen>
+
+<!-- misc-->
+    <screen name="ServiceScanSummary" position="0,0" size="1,1">
+        <panel name="MyClockPanel" />
+    </screen>
+    <screen name="SimpleSummary" position="0,0" size="1,1">
+        <panel name="MyClockPanel" />
+    </screen>
+    <screen name="ChoiceBox_summary" position="0,0" size="1,1">
+        <panel name="MyClockPanel" />
+    </screen>
+    <screen name="MessageBox_summary" position="0,0" size="1,1">
+        <panel name="MyClockPanel" />
+    </screen>
+    <screen name="MessageBoxSimple_summary" position="0,0" size="1,1">
+        <panel name="MyClockPanel" />
+    </screen>
+    <screen name="PluginBrowserSummary" position="0,0" size="1,1">
+        <panel name="MyClockPanel" />
+    </screen>
+    <screen name="JobView_summary" position="0,0" size="1,1">
+        <panel name="MyClockPanel" />
+    </screen>
+
+<!-- DVD -->
+    <screen name="DVDSummary" position="0,0" size="1,1">
+        <panel name="MyClockPanel" />
+    </screen>
+
+<!-- MediaPlayer -->
+    <screen name="MediaPlayerLCDScreen" position="0,0" size="1,1">
+        <panel name="MyClockPanel" />
+    </screen>
+
+<!-- AutoTimer -->
+    <screen name="AutoTimerOverviewSummary" position="0,0" size="1,1">
+        <panel name="MyClockPanel" />
+    </screen>
+
+<!-- EMC  -->
+    <screen name="EMCSelection_summary" position="0,0" size="1,1">
+        <panel name="MyClockPanel" />
+    </screen>
+    <screen name="EMCSelectionSummary" position="0,0" size="1,1">
+        <panel name="MyClockPanel" />
+    </screen>
+    <screen name="EMCMoviePlayerSummary" position="0,0" size="1,1">
+        <panel name="MyClockPanel" />
+    </screen>
+
+<!-- webradioFS  -->
+    <screen name="webradioFSdisplay13" position="0,0" size="1,1">
+        <panel name="MyClockPanel" />
+    </screen>
+
+<!-- IMdb  -->
+    <screen name="IMDbLCDScreen" position="0,0" size="1,1">
+        <panel name="MyClockPanel" />
+    </screen>
+</skin>

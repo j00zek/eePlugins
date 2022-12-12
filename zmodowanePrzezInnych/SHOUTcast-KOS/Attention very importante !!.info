@@ -1,0 +1,25 @@
+SHOUTcast mod @Kos
+
+www.sat-4-all.com
+
+Fix'e
+Zmiana z "name=" na "source=" wszystko po to by 'SHOUTcast' mógł obsługiwać 'Renderer' zdaje sobię sprawę że jest to doraźna
+ingerencja ale niestety kiedyś trzeba to zrobić.
+LCDScreen, płynne przewijanie i full text
+Kosmetyka i inne
+
+
+Info dla tworzących skórki, ekrany.
+
+<widget source="statustext" render="Label"
+<widget source="headertext" render="Label"
+<widget source="station" render="Label"
+<widget source="titel" render="Label"
+
+
+
+<!-- Shoutcast skin_display-->
+
+	<screen name="SHOUTcastLCDScreen" size="132,64">
+		 <widget source="text2" render="RollerCharLCD" position="0,0" size="120,20" font="Regular;18" halign="left" noWrap="1"  />
+	</screen>

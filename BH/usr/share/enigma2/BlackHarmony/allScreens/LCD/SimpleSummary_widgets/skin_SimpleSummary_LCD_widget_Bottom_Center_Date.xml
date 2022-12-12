@@ -1,0 +1,7 @@
+<skin>
+	<screen name="SimpleSummary" position="0,0" size="100%,100%">
+		<widget backgroundColor="#000000" font="BHfDlcD;44" foregroundColor="#FFFF00" halign="center" position="0,81%" render="Label" size="100%,17%" source="global.CurrentTime" transparent="0" zPosition="2">
+			<convert type="ClockToText">Format:%d.%m.%Y</convert>
+		</widget>
+	</screen>
+</skin>

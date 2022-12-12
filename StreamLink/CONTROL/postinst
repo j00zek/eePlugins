@@ -1,0 +1,43 @@
+#!/bin/sh
+/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/bin/re-initiate.sh
+if [ $? -gt 0 ];then
+  exit 1
+else
+  if [ `grep 'config.plugins.streamlinkSRV.enabled=' < /etc/enigma2/settings|egrep -c 'true|True'` -gt 0 ];then
+    if [ -e /etc/init.d/streamlinkSRV ];then
+      if [ -e /var/run/streamlink.pid ];then
+        /etc/init.d/streamlinkSRV restart
+      else
+        /etc/init.d/streamlinkSRV start
+      fi
+#      if [ -e /var/run/streamlink.pid ];then
+#        if `grep -q 'osd.language=pl_PL' </etc/enigma2/settings`; then
+#          echo "Serwer streamlinka uruchomiony"
+#          echo ""
+#        else
+#          echo "streamlink server started"
+#          echo ""
+#        fi 
+#      else
+#        if `grep -q 'osd.language=pl_PL' </etc/enigma2/settings`; then
+#          echo "BŁĄD uruchamiania serwera streamlink !!!"
+#          echo ""
+#        else
+#          echo "ERROR starting streamlink server !!!"
+#          echo ""
+#        fi
+#      fi
+    fi
+  else
+    if `grep -q 'osd.language=pl_PL' </etc/enigma2/settings`; then
+      echo "Aktywuj serwer streamlinka w konfiguratorze"
+      echo ""
+    else
+      echo "Enable streamlink server in Configurator"
+      echo ""
+    fi
+  fi
+fi
+rm -rf /usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/scripts 2 > /dev/null
+
+exit 0

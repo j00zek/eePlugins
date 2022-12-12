@@ -1,0 +1,671 @@
+#NAME Kamery EarthCam (18.08)
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::USA
+#DESCRIPTION USA
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::ALABAMA
+#DESCRIPTION ALABAMA
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/alabama/florence/?cam=lioncam:Florence-Lion's Den Cam
+#DESCRIPTION Florence-Lion's Den Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::ARIZONA
+#DESCRIPTION ARIZONA
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/arizona/sedona//?cam=sedona_gateway:Sedona-Sedona Cam
+#DESCRIPTION Sedona-Sedona Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/arizona/sedona/redrock/?cam=sedona_hd:Sedona-Sedona Red Rock Cam
+#DESCRIPTION Sedona-Sedona Red Rock Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/arizona/sedona/sevenarches/?cam=sedona7:Sedona-Sedona Seven Arches Cam
+#DESCRIPTION Sedona-Sedona Seven Arches Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/arizona/tucson/?cam=tucson:Tucson-Tucson Cam
+#DESCRIPTION Tucson-Tucson Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::CALIFORNIA
+#DESCRIPTION CALIFORNIA
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/california/belvedere/?cam=belvederecove:Tiburon-Belvedere Cove Cam
+#DESCRIPTION Tiburon-Belvedere Cove Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/california/discoverybay/?cam=discoverybay:Discovery Bay-Discovery Bay Cam
+#DESCRIPTION Discovery Bay-Discovery Bay Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/california/davis/:Davis-Falcon Cam - Davis, CA
+#DESCRIPTION Davis-Falcon Cam - Davis, CA
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/california/sanfrancisco/falcon/:San Francisco-Falcon Cam - San Francisco, CA
+#DESCRIPTION San Francisco-Falcon Cam - San Francisco, CA
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/california/losangeles/hollywoodandvine/:Los Angeles-Hollywood and Vine Cam
+#DESCRIPTION Los Angeles-Hollywood and Vine Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/california/losangeles/hollywoodblvd/:Los Angeles-Hollywood Blvd Cam
+#DESCRIPTION Los Angeles-Hollywood Blvd Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/california/losangeles/hollywoodstars/:Los Angeles-Hollywood Stars Cam
+#DESCRIPTION Los Angeles-Hollywood Stars Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/california/newportcoast/:Newport Coast-Newport Coast Cam
+#DESCRIPTION Newport Coast-Newport Coast Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/california/ojai/?cam=ojaivalley:Ojai-Ojai Valley Cam
+#DESCRIPTION Ojai-Ojai Valley Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/california/sanfrancisco/?cam=rowingclub:San Francisco-San Francisco Bayfront Cam
+#DESCRIPTION San Francisco-San Francisco Bayfront Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/california/sanfrancisco/?cam=sanfranciscoskyline:San Francisco-San Francisco Skyline Cam
+#DESCRIPTION San Francisco-San Francisco Skyline Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/california/santamonica/:Santa Monica-Santa Monica Cam
+#DESCRIPTION Santa Monica-Santa Monica Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::COLORADO
+#DESCRIPTION COLORADO
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/colorado/breckenridge/:Breckenridge-Breckenridge Ski Cam
+#DESCRIPTION Breckenridge-Breckenridge Ski Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/colorado/denver/:Denver-Denver Cam
+#DESCRIPTION Denver-Denver Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::CONNECTICUT
+#DESCRIPTION CONNECTICUT
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/connecticut/newlondon/:New London-New London Harbor Cam
+#DESCRIPTION New London-New London Harbor Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::DISTRICT OF COLUMBIA
+#DESCRIPTION DISTRICT OF COLUMBIA
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/dc/cherryblossoms/?cam=cherryblossoms2:Washington-Bloom Cam
+#DESCRIPTION Washington-Bloom Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/dc/mlk/?content=poi:Washington DC-Martin Luther King, Jr. National Memorial Interactive Camera
+#DESCRIPTION Washington DC-Martin Luther King, Jr. National Memorial Interactive Camera
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/nationalparkservice/:Washington-National Park Service Cams
+#DESCRIPTION Washington-National Park Service Cams
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/dc/washingtonmonument/?cam=wamo:Washington-WAMO Cam
+#DESCRIPTION Washington-WAMO Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/dc/?cam=dc_kennedycenter:Washington-Washington, D.C. Cam
+#DESCRIPTION Washington-Washington, D.C. Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::FLORIDA
+#DESCRIPTION FLORIDA
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/florida/annamariaisland/:Anna Maria Island-Anna Maria Island
+#DESCRIPTION Anna Maria Island-Anna Maria Island
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/florida/browardcounty/?cam=burrowingowl:Boynton Beach-Burrowing Owl Cam
+#DESCRIPTION Boynton Beach-Burrowing Owl Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/florida/miamiandthebeaches/?cam=miamibeach9:Miami-Calle Ocho Cam
+#DESCRIPTION Miami-Calle Ocho Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/florida/miamiandthebeaches/?cam=miamibeach5:Miami-Downtown Miami
+#DESCRIPTION Miami-Downtown Miami
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/florida/marcoisland/eagle/:Marco Island-Eagle Cam - Marco Island, FL
+#DESCRIPTION Marco Island-Eagle Cam - Marco Island, FL
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/florida/englewood/:Englewood-Englewood Beach Cam
+#DESCRIPTION Englewood-Englewood Beach Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/florida/fortlauderdale/everglades/:Fort Lauderdale-Everglades Cam
+#DESCRIPTION Fort Lauderdale-Everglades Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/florida/stpetersburg/?cam=stpeteair:St. Petersburg-Florida Flight Cam
+#DESCRIPTION St. Petersburg-Florida Flight Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/florida/rivierabeach/manatee/:Riviera Beach-Florida Manatee Cam, Riviera Beach
+#DESCRIPTION Riviera Beach-Florida Manatee Cam, Riviera Beach
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/florida/fortlauderdale/marina/:Fort Lauderdale-Florida Marina Cam
+#DESCRIPTION Fort Lauderdale-Florida Marina Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/florida/portrichey/:Port Richey-Florida State Park Cam
+#DESCRIPTION Port Richey-Florida State Park Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/florida/hillsboro/:Hillsboro Beach-Hillsboro Lighthouse Cam
+#DESCRIPTION Hillsboro Beach-Hillsboro Lighthouse Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/florida/keywest/:Key West-Key West Cam
+#DESCRIPTION Key West-Key West Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/florida/lauderdalebythesea/?cam=windjammer:Lauderdale-By-The-Sea -Lauderdale-By-The-Sea Beach Cam
+#DESCRIPTION Lauderdale-By-The-Sea -Lauderdale-By-The-Sea Beach Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/florida/lauderdalebythesea/town/?cam=lbts_beach:Lauderdale-By-The-Sea-Lauderdale-By-The-Sea Cam - Beach View
+#DESCRIPTION Lauderdale-By-The-Sea-Lauderdale-By-The-Sea Cam - Beach View
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/florida/lauderdalebythesea/town/?cam=lbts_town:Lauderdale-By-The-Sea -Lauderdale-By-The-Sea Cam - Town View
+#DESCRIPTION Lauderdale-By-The-Sea -Lauderdale-By-The-Sea Cam - Town View
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/florida/miamiandthebeaches/?cam=miamibeach10:Miami-Lincoln Road
+#DESCRIPTION Miami-Lincoln Road
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/florida/miami/meerkat/:Miami-Meerkat Cam
+#DESCRIPTION Miami-Meerkat Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/florida/miamiandthebeaches/?cam=miamibeach1:Miami-Miami Beach Cam
+#DESCRIPTION Miami-Miami Beach Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/florida/miamiandthebeaches/?cam=miamibeach4:Miami-Miami Biscayne Bay Cam
+#DESCRIPTION Miami-Miami Biscayne Bay Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/florida/miami/?cam=miami:Miami-Miami News Cafe
+#DESCRIPTION Miami-Miami News Cafe
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/florida/naples/?cam=naplespier:Naples-Naples Panorama - Pier Cam
+#DESCRIPTION Naples-Naples Panorama - Pier Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/florida/naples/waterfront/:Naples-Naples Waterfront Cam
+#DESCRIPTION Naples-Naples Waterfront Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/florida/pensacolabeach/:Pensacola Beach-Pensacola Beach Cam
+#DESCRIPTION Pensacola Beach-Pensacola Beach Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/cams/earth/space/?cam=nasa:Planet Earth Cam-Planet Earth Cam
+#DESCRIPTION Planet Earth Cam-Planet Earth Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/florida/daytona/halifax/:Daytona Beach-Puppy Cam
+#DESCRIPTION Daytona Beach-Puppy Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/florida/destin/sandestinbeach/?cam=sandestin:Destin-Sandestin Beach
+#DESCRIPTION Destin-Sandestin Beach
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/florida/sarasota/:Sarasota-Siesta Beach Cam
+#DESCRIPTION Sarasota-Siesta Beach Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/florida/miamiandthebeaches/?cam=miamibeach7:Miami-South Beach Cam
+#DESCRIPTION Miami-South Beach Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/florida/miamiandthebeaches/?cam=miamibeach2 :Sunny Isles Beach-Sunny Isles Beach Cam
+#DESCRIPTION Sunny Isles Beach-Sunny Isles Beach Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/florida/watersound/:Watersound-Watersound Beach Club Cam
+#DESCRIPTION Watersound-Watersound Beach Club Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::GEORGIA
+#DESCRIPTION GEORGIA
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/georgia/athens/?cam=athensga:Athens-Athens, GA Cam
+#DESCRIPTION Athens-Athens, GA Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/georgia/atlanta/:Atlanta-Atlanta, GA Cam
+#DESCRIPTION Atlanta-Atlanta, GA Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/georgia/macon/:Macon-Macon, GA Cam
+#DESCRIPTION Macon-Macon, GA Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::HAWAII
+#DESCRIPTION HAWAII
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/hawaii/kauai/koloa/:Koloa-Hawaii Surf Cam
+#DESCRIPTION Koloa-Hawaii Surf Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/hawaii/kauai/:Kauai-Kauai Cam
+#DESCRIPTION Kauai-Kauai Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/hawaii/bigisland/waikoloa/:Waikoloa-Waikoloa Cam
+#DESCRIPTION Waikoloa-Waikoloa Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::IDAHO
+#DESCRIPTION IDAHO
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/idaho/idahofalls/:Idaho Falls-Penguin Cam
+#DESCRIPTION Idaho Falls-Penguin Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::IIINOIS
+#DESCRIPTION IIINOIS
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/illinois/wilmington/midewin/:Wilmington-Bison Cam
+#DESCRIPTION Wilmington-Bison Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/illinois/chicago/field/:Chicago-Chicago Cam
+#DESCRIPTION Chicago-Chicago Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/illinois/falcon/?cam=falcon_ro :Romeoville-Falcon Cam - Romeoville, IL
+#DESCRIPTION Romeoville-Falcon Cam - Romeoville, IL
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/illinois/falcon/?cam=falcon_il:Waukegan-Falcon Cam - Waukegan, IL
+#DESCRIPTION Waukegan-Falcon Cam - Waukegan, IL
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/illinois/chicago/wrigleyfield/?cam=wrigleyfield_hd :Chicago-Wrigley Field Cam
+#DESCRIPTION Chicago-Wrigley Field Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/illinois/chicago/wrigleyville/?cam=wrigleyville:Chicago-Wrigleyville Cam
+#DESCRIPTION Chicago-Wrigleyville Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::INDIANA
+#DESCRIPTION INDIANA
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/indiana/notredame/:Notre Dame-University of Notre Dame Cam
+#DESCRIPTION Notre Dame-University of Notre Dame Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::IOWA
+#DESCRIPTION IOWA
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/iowa/dyersville/:Dyersville-Field of Dreams Movie Site Cam
+#DESCRIPTION Dyersville-Field of Dreams Movie Site Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::KENTUCKY
+#DESCRIPTION KENTUCKY
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/kentucky/hyden/:Hyden-Hyden Cam
+#DESCRIPTION Hyden-Hyden Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::LOUSIIANA
+#DESCRIPTION LOUISIANA
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/louisiana/neworleans/bourbonstreet/?cam=catsmeowkaraoke:New Orleans-Cats Meow Karaoke
+#DESCRIPTION New Orleans-Cats Meow Karaoke
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/louisiana/neworleans/bourbonstreet/?cam=catsmeow:New Orleans-Cats Meow Karaoke Stage Cam
+#DESCRIPTION New Orleans-Cats Meow Karaoke Stage Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/events/mardigras/:New Orleans-Mardi Gras Cams
+#DESCRIPTION New Orleans-Mardi Gras Cams
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/louisiana/neworleans/bourbonstreet/?cam=bourbonstreet:New Orleans-New Orleans Bourbon Street
+#DESCRIPTION New Orleans-New Orleans Bourbon Street
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/louisiana/neworleans/bourbonstreet/?cam=catsmeow2:New Orleans-New Orleans Cats Meow Balcony
+#DESCRIPTION New Orleans-New Orleans Cats Meow Balcony
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::MAINE
+#DESCRIPTION MAINE
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/maine/peaksisland/:Peaks Island-Peaks Island Cam
+#DESCRIPTION Peaks Island-Peaks Island Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::MARYLAND
+#DESCRIPTION MARYLAND
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/maryland/baltimore/:Baltimore-Baltimore Inner Harbor Cam
+#DESCRIPTION Baltimore-Baltimore Inner Harbor Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/maryland/baltimore/fortmchenry/?cam=fortmchenry2:Baltimore-Fort McHenry Cam - Fort View
+#DESCRIPTION Baltimore-Fort McHenry Cam - Fort View
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/maryland/baltimore/fortmchenry/?cam=fortmchenry1:Baltimore-Fort McHenry Cam - Rampart View
+#DESCRIPTION Baltimore-Fort McHenry Cam - Rampart View
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/maryland/baltimore/aquarium/?cam=jellyfish:Baltimore-Jellyfish Cam
+#DESCRIPTION Baltimore-Jellyfish Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/maryland/northeast/sandycove/:North East-Sandy Cove Cam
+#DESCRIPTION North East-Sandy Cove Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/maryland/baltimore/aquarium/?cam=blacktipreef:Baltimore-Shark Cam
+#DESCRIPTION Baltimore-Shark Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/maryland/baltimore/aquarium/?cam=coralreef:Baltimore-Tropical Fish Cam
+#DESCRIPTION Baltimore-Tropical Fish Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::MASSACHUSETTS
+#DESCRIPTION MASSACHUSETTS
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/massachusetts/boston/?cam=boston_hd:Cambridge-Boston Cam
+#DESCRIPTION Cambridge-Boston Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/massachusetts/essex/?cam=essex_osprey:Essex-Osprey Cam - Essex, MA
+#DESCRIPTION Essex-Osprey Cam - Essex, MA
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/massachusetts/oxford/:Oxford-Osprey Cam - Oxford, MA
+#DESCRIPTION Oxford-Osprey Cam - Oxford, MA
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::MICHIGAN
+#DESCRIPTION MICHIGAN
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/michigan/clinton/:Clinton Township-Falcon Cam - Macomb County, MI
+#DESCRIPTION Clinton Township-Falcon Cam - Macomb County, MI
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/michigan/warren/falcon/:Warren-Falcon Cam - Warren, MI
+#DESCRIPTION Warren-Falcon Cam - Warren, MI
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/michigan/ludington/:Ludington-Hamlin Lake Cam
+#DESCRIPTION Ludington-Hamlin Lake Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/michigan/clinton/animalshelter/:Clinton Township-Kitten Cam - Macomb County, MI
+#DESCRIPTION Clinton Township-Kitten Cam - Macomb County, MI
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/michigan/stjoseph/lakemichigan/:St Joseph-Lake Michigan Beach Cam
+#DESCRIPTION St Joseph-Lake Michigan Beach Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/michigan/grandhaven/lakemichigan/:Grand Haven-Lake Michigan Cam
+#DESCRIPTION Grand Haven-Lake Michigan Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/michigan/brighton/:Brighton-Michigan Mill Pond Cam
+#DESCRIPTION Brighton-Michigan Mill Pond Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/michigan/gaylord/snowman/?cam=snowman:Gaylord-Michigan Snowman Cam
+#DESCRIPTION Gaylord-Michigan Snowman Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::MINNESOTA
+#DESCRIPTION MINNESOTA
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/minnesota/rochester/falcon/:Rochester-Falcon Cam - Rochester, MN
+#DESCRIPTION Rochester-Falcon Cam - Rochester, MN
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/minnesota/saintpaul/?cam=stpaul:St. Paul-Saint Paul Cam
+#DESCRIPTION St. Paul-Saint Paul Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::MISSOURI
+#DESCRIPTION MISSOURI
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/missouri/kansascity/:Kansas City-Kansas City Skyline Cam
+#DESCRIPTION Kansas City-Kansas City Skyline Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/missouri/hannibal/:Hannibal-Mark Twain Cam
+#DESCRIPTION Hannibal-Mark Twain Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/missouri/stlouis/?cam=arch_riverview:St. Louis-St. Louis Arch Cam
+#DESCRIPTION St. Louis-St. Louis Arch Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/missouri/stlouis/?cam=arch_pano:East St. Louis-St. Louis Arch Panorama
+#DESCRIPTION East St. Louis-St. Louis Arch Panorama
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/missouri/westalton/tern/:West Alton-Tern Cam - West Alton, MO
+#DESCRIPTION West Alton-Tern Cam - West Alton, MO
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::MONTANA
+#DESCRIPTION MONTANA
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/montana/bigsky/:Big Sky-Big Sky Cam
+#DESCRIPTION Big Sky-Big Sky Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/montana/billings/:Billings-Montana Bear Cam
+#DESCRIPTION Billings-Montana Bear Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::NEBRASKA
+#DESCRIPTION NEBRASKA
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/nebraska/omaha/falconcam/:Omaha-Falcon Cam - Omaha, NE
+#DESCRIPTION Omaha-Falcon Cam - Omaha, NE
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::NEVADA
+#DESCRIPTION NEVADA
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/nevada/lasvegas/index.php?cam=wedding :Las Vegas-Elvis Wedding Chapel
+#DESCRIPTION Las Vegas-Elvis Wedding Chapel
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/nevada/lasvegas/fremontstreet/:Las Vegas-Fremont Street
+#DESCRIPTION Las Vegas-Fremont Street
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/nevada/laketahoe/:Lake Tahoe-Lake Tahoe Cam
+#DESCRIPTION Lake Tahoe-Lake Tahoe Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/nevada/lasvegas/karaoke/:Las Vegas-Las Vegas Karaoke Cam
+#DESCRIPTION Las Vegas-Las Vegas Karaoke Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/nevada/lasvegas/index.php?cam=sign_hd:Las Vegas-Welcome to Fabulous Las Vegas
+#DESCRIPTION Las Vegas-Welcome to Fabulous Las Vegas
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::NEW HAMPSHIRE
+#DESCRIPTION NEW HAMPSHIRE
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newhampshire/hamptonbeach/?cam=hamptonbeach:Hampton Beach-Hampton Beach Cam
+#DESCRIPTION Hampton Beach-Hampton Beach Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::NEW JERSEY
+#DESCRIPTION NEW JERSEY
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/events/solareclipse/2017/?cam=earthcamhq_eclipse2017:Upper Saddle River-EarthCam Headquarters
+#DESCRIPTION Upper Saddle River-EarthCam Headquarters
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newjersey/atlantichighlands/:Upper Saddle River-EarthCam Headquarters: 2017 Solar Eclipse
+#DESCRIPTION Upper Saddle River-EarthCam Headquarters: 2017 Solar Eclipse
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newjersey/atlantichighlands/:Atlantic Highlands-Atlantic Highlands Cam
+#DESCRIPTION Atlantic Highlands-Atlantic Highlands Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newyork/skyline/?cam=hyatthd:Jersey City-New York Skyline Cam
+#DESCRIPTION Jersey City-New York Skyline Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newjersey/paterson/:Paterson-Paterson Falls Cam
+#DESCRIPTION Paterson-Paterson Falls Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newjersey/seasideheights/?cam=seasideheights3:Seaside Heights-Seaside Heights Cam - Amusement Park View
+#DESCRIPTION Seaside Heights-Seaside Heights Cam - Amusement Park View
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newjersey/seasideheights/?cam=seasideheights:Seaside Heights-Seaside Heights Cam - North View
+#DESCRIPTION Seaside Heights-Seaside Heights Cam - North View
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newjersey/seasideheights/?cam=seasideheights2:Seaside Heights-Seaside Heights Cam - South View
+#DESCRIPTION Seaside Heights-Seaside Heights Cam - South View
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newjersey/seasidepark/:Seaside Park-Seaside Park Cam
+#DESCRIPTION Seaside Park-Seaside Park Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newjersey/wildwood/:Wildwood-Wildwood Cam
+#DESCRIPTION Wildwood-Wildwood Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newjersey/wildwood/crest/:Wildwood-Wildwood Crest Cam
+#DESCRIPTION Wildwood-Wildwood Crest Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::NEW MEXICO
+#DESCRIPTION NEW MEXICO
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newmexico/lasvegas/:Las Vegas-Las Vegas, New Mexico Cam
+#DESCRIPTION Las Vegas-Las Vegas, New Mexico Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newmexico/santafe/:Santa Fe-Santa Fe Cam
+#DESCRIPTION Santa Fe-Santa Fe Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::NEW YORK
+#DESCRIPTION NEW YORK
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newyork/fifthave/?cam=nyc5th_str:New York City-5th Avenue Cam
+#DESCRIPTION New York City-5th Avenue Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newyork/indianlake/bluemountainlake/?cam=bluemountainlake2:Indian Lake-Blue Mountain Lake - Pond View
+#DESCRIPTION Indian Lake-Blue Mountain Lake - Pond View
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newyork/indianlake/bluemountainlake/?cam=bluemountainlake:Indian Lake-Blue Mountain Lake Cam
+#DESCRIPTION Indian Lake-Blue Mountain Lake Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newyork/brooklynbridge/:New York City-Brooklyn Bridge Cam
+#DESCRIPTION New York City-Brooklyn Bridge Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newyork/wallstreet/chargingbull/?cam=chargingbull_hd :New York City-Charging Bull Cam
+#DESCRIPTION New York City-Charging Bull Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newyork/columbuscircle/:New York City-Columbus Circle Cam
+#DESCRIPTION New York City-Columbus Circle Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newyork/coneyisland/?cam=coneyisland:Brooklyn-Coney Island Cam
+#DESCRIPTION Brooklyn-Coney Island Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newyork/statueofliberty/?cam=liberty_ellisisland:New York City-Ellis Island
+#DESCRIPTION New York City-Ellis Island
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.esbnyc.com/earthcam-empire-state-building:New York City-Empire State Building
+#DESCRIPTION New York City-Empire State Building
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.esbnyc.com/earthcam-empire-state-building:New York City-Brooklyn Bridge Cam
+#DESCRIPTION New York City-Brooklyn Bridge Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newyork/highline/:New York City-High Line Cam
+#DESCRIPTION New York City-High Line Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newyork/skyline/?cam=skyline_pano:New York City-Hudson River Panorama
+#DESCRIPTION New York City-Hudson River Panorama
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newyork/lakegeorge/:Lake George-Lake George Cam
+#DESCRIPTION Lake George-Lake George Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newyork/midtown/skyline/?cam=midtown4k :New York City-Midtown 4K Cam
+#DESCRIPTION New York City-Midtown 4K Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newyork/montauk/:Montauk-Montauk Cam
+#DESCRIPTION Montauk-Montauk Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newyork/littleitaly/?cam=littleitaly_parade:New York City-Mulberry Street - San Gennaro Parade
+#DESCRIPTION New York City-Mulberry Street - San Gennaro Parade
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newyork/littleitaly/?cam=littleitaly :New York City-Mulberry Street Cam
+#DESCRIPTION New York City-Mulberry Street Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newyork/newyorkharbor/?cam=nyharbor :New York City-New York Harbor Cam
+#DESCRIPTION New York City-New York Harbor Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newyork/worldtradecenter/?cam=tower1 :New York City-One World Trade Center
+#DESCRIPTION New York City-One World Trade Center
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newyork/portjefferson/:Port Jefferson-Port Jefferson Cam
+#DESCRIPTION Port Jefferson-Port Jefferson Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newyork/saintnicholas/:New York City-Saint Nicholas National Shrine Cam
+#DESCRIPTION New York City-Saint Nicholas National Shrine Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newyork/statueofliberty/?cam=liberty_mp:New York City-Statue of Liberty
+#DESCRIPTION New York City-Statue of Liberty
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newyork/statueofliberty/?cam=liberty_str:New York City-Statue of Liberty Cam
+#DESCRIPTION New York City-Statue of Liberty Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newyork/statueofliberty/?cam=liberty_crown:Liberty Island-Statue of Liberty CrownCam
+#DESCRIPTION Liberty Island-Statue of Liberty CrownCam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newyork/statueofliberty/?cam=liberty_hd:New York City-Statue of Liberty HarborCam
+#DESCRIPTION New York City-Statue of Liberty HarborCam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newyork/statueofliberty/?cam=liberty_pano:New York City-Statue of Liberty Panorama Cam
+#DESCRIPTION New York City-Statue of Liberty Panorama Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newyork/statueofliberty/?cam=liberty_popart:New York City-Statue of Liberty Pop Art Cam
+#DESCRIPTION New York City-Statue of Liberty Pop Art Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newyork/statueofliberty/:New York City-Statue of Liberty TorchCam
+#DESCRIPTION New York City-Statue of Liberty TorchCam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newyork/utica/:Utica-Tamarin Monkey Cam
+#DESCRIPTION Utica-Tamarin Monkey Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newyork/brooklyn/governorsisland/:New York City-Tern Cam
+#DESCRIPTION New York City-Tern Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newyork/worldtradecenter/?cam=tower3:New York City-Three World Trade Center
+#DESCRIPTION New York City-Three World Trade Center
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newyork/timessquare/timemachine/:New York City-Time Machine Cam
+#DESCRIPTION New York City-Time Machine Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newyork/timessquare/?cam=tsrobo1:New York City-Times Square 4K
+#DESCRIPTION New York City-Times Square 4K
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newyork/timessquare/?cam=gped:New York City-Times Square Bowtie
+#DESCRIPTION New York City-Times Square Bowtie
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newyork/timessquare/?cam=gts2_broadway :New York City-Times Square Broadway South
+#DESCRIPTION New York City-Times Square Broadway South
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newyork/timessquare/?cam=tsrobo3:New York City-Times Square Crossroads
+#DESCRIPTION New York City-Times Square Crossroads
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newyork/timessquare/?cam=gduffy:New York City-Times Square Duffy Square
+#DESCRIPTION New York City-Times Square Duffy Square
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newyork/timessquare/?cam=tspano:New York City-Times Square FanCam
+#DESCRIPTION New York City-Times Square FanCam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newyork/timessquare/?cam=tsnorth_hd:New York City-Times Square North View
+#DESCRIPTION New York City-Times Square North View
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newyork/timessquare/?cam=gts1:New York City-Times Square Pedestrian Plaza
+#DESCRIPTION New York City-Times Square Pedestrian Plaza
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/newyears/ts/?cam=tstwo_hd2_ny2019:New York City-Times Square South - NYE Ball
+#DESCRIPTION New York City-Times Square South - NYE Ball
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newyork/timessquare/?cam=tstwo_hd:New York City-Times Square South View
+#DESCRIPTION New York City-Times Square South View
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newyork/timessquare/?cam=tsstreet:New York City-Time Machine Cam
+#DESCRIPTION New York City-Time Machine Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/nationalparkservice/virtualpark/:New York City-Virtual Park Cams
+#DESCRIPTION New York City-Virtual Park Cams
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newyork/worldtradecenter/?cam=skyline_g :New York City-World Trade Center
+#DESCRIPTION New York City-World Trade Center
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newyork/worldtradecenter/?cam=tower1base:New York City-World Trade Center - North Pool
+#DESCRIPTION New York City-World Trade Center - North Pool
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newyork/worldtradecenter/?cam=tower1cu:New York City-World Trade Center Tower 1 Zoom
+#DESCRIPTION New York City-World Trade Center Tower 1 Zoom
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/newyork/worldtradecenter/?cam=wtcmemorial:New York City-WTC 9/11 Memorial Museum North View
+#DESCRIPTION New York City-WTC 9/11 Memorial Museum North View
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::NEW CAROLINA
+#DESCRIPTION NEW CAROLINA
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/northcarolina/belmont/:Belmont-Belmont Cam
+#DESCRIPTION Belmont-Belmont Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/northcarolina/mooresville/?cam=ncwildlife:Mooresville-Lake Norman Wildlife Cam
+#DESCRIPTION Mooresville-Lake Norman Wildlife Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/northcarolina/mooresville/?cam=osprey_nc:Mooresville-Osprey Cam - Mooresville, NC
+#DESCRIPTION Mooresville-Osprey Cam - Mooresville, NC
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::NORTH DAKOTA
+#DESCRIPTION NORTH DAKOTA
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/northdakota/cavalier/:Cavalier-City of Cavalier Cam
+#DESCRIPTION Cavalier-City of Cavalier Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::OHIO
+#DESCRIPTION OHIO
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/ohio/cleveland/:Lakewood-Cleveland Cam
+#DESCRIPTION Lakewood-Cleveland Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::OKLAHOMA
+#DESCRIPTION OKLAHOMA
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/oklahoma/oklahomacity/:Oklahoma City-Oklahoma City Cam
+#DESCRIPTION Oklahoma City-Oklahoma City Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/oklahoma/vinita/?cam=route66east:Vinita-Route 66 Cam - East View
+#DESCRIPTION Vinita-Route 66 Cam - East View
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/oklahoma/vinita/?cam=route66west:Vinita-Route 66 Cam - West View
+#DESCRIPTION Vinita-Route 66 Cam - West View
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::PENNSYLVANIA
+#DESCRIPTION PENNSYLVANIA
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/pennsylvania/pittsburgh/warhol/?cam=warhol_figmentstream :Bethel Park-Andy Warhol FigmentCam
+#DESCRIPTION Bethel Park-Andy Warhol FigmentCam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3awww.earthcam.com/usa/pennsylvania/franklin/:Franklin-Downtown Franklin Cam
+#DESCRIPTION Franklin-Downtown Franklin Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/pennsylvania/pittsburgh/warhol/?cam=warhol_figmentmp :Bethel Park-FigmentCam - Megapixel
+#DESCRIPTION Bethel Park-FigmentCam - Megapixel
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/pennsylvania/pittsburgh/warhol/?cam=warhol_popart :Bethel Park-FigmentCam Pop Art
+#DESCRIPTION Bethel Park-FigmentCam Pop Art
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/pennsylvania/shanksville/?cam=flight93_hd:Shanksville-Flight 93 Memorial - Tower of Voices
+#DESCRIPTION Shanksville-Flight 93 Memorial - Tower of Voices
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/pennsylvania/philadelphia/:Philadelphia-Philadelphia Cam
+#DESCRIPTION Philadelphia-Philadelphia Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/pennsylvania/scranton/:Scranton-Steamtown Cam
+#DESCRIPTION Scranton-Steamtown Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/pennsylvania/pittsburgh/warhol/:Bethel Park-Warhol FigmentCams
+#DESCRIPTION Bethel Park-Warhol FigmentCams
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::SOUTH CAROLINA
+#DESCRIPTION SOUTH CAROLINA
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3awww.clemson.edu/business/new-building/:Clemson-Clemson College of Business
+#DESCRIPTION Clemson-Clemson College of Business
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/southcarolina/greenville/?cam=giraffe_int:Greenville-Giraffe Cam Barn
+#DESCRIPTION Greenville-Giraffe Cam Barn
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/southcarolina/greenville/?cam=giraffe_ext:Greenville-Giraffe Cam Paddock
+#DESCRIPTION Greenville-Giraffe Cam Paddock
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/southcarolina/kiawahisland/?cam=kiawahisland:Kiawah Island-Kiawah Island Beach
+#DESCRIPTION Kiawah Island-Kiawah Island Beach
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/southcarolina/kiawahisland/?cam=kiawah_island_hd:Kiawah Island-Kiawah Island Golf Cam
+#DESCRIPTION Kiawah Island-Kiawah Island Golf Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/southcarolina/myrtlebeach/?cam=myrtlebeach_hd2:Myrtle Beach-Myrtle Beach Cam - North View
+#DESCRIPTION Myrtle Beach-Myrtle Beach Cam - North View
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/southcarolina/myrtlebeach/?cam=myrtlebeach_hd:Myrtle Beach-Myrtle Beach Cam - South View
+#DESCRIPTION Myrtle Beach-Myrtle Beach Cam - South View
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/southcarolina/spartanburg/:Spartanburg-Pacolet River
+#DESCRIPTION Spartanburg-Pacolet River
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/southcarolina/myrtlebeach/resort/?cam=coralbeach:Myrtle Beach-South Carolina Resort Cams - Beach Resort
+#DESCRIPTION Myrtle Beach-South Carolina Resort Cams - Beach Resort
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/southcarolina/myrtlebeach/resort/?cam=seacrest:Myrtle Beach-South Carolina Resort Cams - Sea Crest Oceanfront
+#DESCRIPTION Myrtle Beach-South Carolina Resort Cams - Sea Crest Oceanfront
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::TENNESSEE
+#DESCRIPTION TENNESSEE
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/tennessee/walland/blackberrymountain/:Walland-Blackberry Mountain Cam
+#DESCRIPTION Walland-Blackberry Mountain Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/tennessee/nashville/:Nashville-Nashville Cam
+#DESCRIPTION Nashville-Nashville Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/events/solareclipse/2017/:Nashville-Solar Eclipse Cam
+#DESCRIPTION Nashville-Solar Eclipse Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::TEXAS
+#DESCRIPTION TEXAS
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/texas/southlake/:Southlake-City of Southlake Cam
+#DESCRIPTION Southlake-City of Southlake Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/texas/dallas/:Dallas-Dallas Skyline Cam
+#DESCRIPTION Dallas-Dallas Skyline Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/texas/dallas/dealeyplaza/:Dallas-Dealey Plaza Cam
+#DESCRIPTION Dallas-Dealey Plaza Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/texas/dallas/gasmonkey/:Dallas-Gas Monkey Garage Cam
+#DESCRIPTION Dallas-Gas Monkey Garage Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/texas/houston/:Houston-Houston Cam
+#DESCRIPTION Houston-Houston Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/texas/lakeway/:Lakeway-Lake Travis Cam
+#DESCRIPTION Lakeway-Lake Travis Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/texas/dallas/reuniontower/:Dallas-Reunion Tower Cam
+#DESCRIPTION Dallas-Reunion Tower Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/texas/sanantonio/:San Antonio-San Antonio Cam
+#DESCRIPTION San Antonio-San Antonio Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/texas/laporte/:La Porte-San Jacinto Monument Cam
+#DESCRIPTION La Porte-San Jacinto Monument Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::VERMONT
+#DESCRIPTION VERMONT
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/vermont/burlington/:Burlington-University of Vermont Cam
+#DESCRIPTION Burlington-University of Vermont Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::WASHIGTHON
+#DESCRIPTION WASHIGTHON
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/washington/seattle/?cam=seattledowntown:Seattle-Downtown Seattle Cam
+#DESCRIPTION Seattle-Downtown Seattle Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/washington/seattle/?cam=seattleskyline:Seattle-Seattle Skyline Cam
+#DESCRIPTION Seattle-Seattle Skyline Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/washington/seattle/?cam=seattlespaceneedle:Seattle-Seattle Space Needle Cam
+#DESCRIPTION Seattle-Seattle Space Needle Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/washington/pasco/?cam=vineyard:Pasco-Washington Vineyard Cam
+#DESCRIPTION Pasco-Washington Vineyard Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::WYOMING
+#DESCRIPTION WYOMING
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/wyoming/jackson/:Jackson-Jackson Hole Cam
+#DESCRIPTION Jackson-Jackson Hole Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::ŚWIAT
+#DESCRIPTION ŚWIAT
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::ANGUILLA
+#DESCRIPTION ANGUILLA
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/world/anguilla/meadsbay/?cam=aletapool:Meads Bay-Anguilla Cam - Aleta Pool
+#DESCRIPTION Meads Bay-Anguilla Cam - Aleta Pool
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/world/anguilla/meadsbay/?cam=barnesbay:Barnes Bay-Anguilla Cam - Barnes Bay
+#DESCRIPTION Barnes Bay-Anguilla Cam - Barnes Bay
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/world/anguilla/meadsbay/?cam=meadsbay_hd:Meads Bay-Anguilla Cam - Meads Bay
+#DESCRIPTION Meads Bay-Anguilla Cam - Meads Bay
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::ARUBA
+#DESCRIPTION ARUBA
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/world/aruba/beachresort/?cam=arubabeach:Oranjestad-Aruba Beach Resort Cams - Beach View
+#DESCRIPTION Oranjestad-Aruba Beach Resort Cams - Beach View
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/world/aruba/beachresort/?cam=pooldeck:Oranjestad-Aruba Beach Resort Cams - Pool Deck
+#DESCRIPTION Oranjestad-Aruba Beach Resort Cams - Pool Deck
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/world/aruba/beachfront/:Oranjestad-Aruba Beachfront Cam
+#DESCRIPTION Oranjestad-Aruba Beachfront Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/world/aruba/eaglebeach/?cam=bucuti3:Oranjestad-Aruba Cam - Bucuti Beach Wing
+#DESCRIPTION Oranjestad-Aruba Cam - Bucuti Beach Wing
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/world/aruba/druifbeach/:Oranjestad-Aruba Cam - Druif Beach
+#DESCRIPTION Oranjestad-Aruba Cam - Druif Beach
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/world/aruba/eaglebeach/?cam=bucuti1:Oranjestad-Aruba Cam - Eagle Beach
+#DESCRIPTION Oranjestad-Aruba Cam - Eagle Beach
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::BERMUDA
+#DESCRIPTION BERMUDA
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/world/bermuda/pembroke/:Pembroke-Bermuda Cam
+#DESCRIPTION Pembroke-Bermuda Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::BOTSWANA
+#DESCRIPTION BOTSWANA
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/world/botswana/chobe/:Chobe-Camp Kuzuma Cam
+#DESCRIPTION Chobe-Camp Kuzuma Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::BRAZIL
+#DESCRIPTION BRAZIL
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/world/brazil/riodejaneiro/?cam=rio_copacabana:Rio de Janeiro-Rio de Janeiro Cam - Copacabana South
+#DESCRIPTION Rio de Janeiro-Rio de Janeiro Cam - Copacabana South
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::CANADA
+#DESCRIPTION CANADA
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/world/canada/ontario/algonquinpark/:Algonquin Park-Algonquin Park Cam
+#DESCRIPTION Algonquin Park-Algonquin Park Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/world/canada/toronto/cntower/?cam=cntower1:Toronto-CN Tower Cam - East View
+#DESCRIPTION Toronto-CN Tower Cam - East View
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/world/canada/toronto/cntower/?cam=towerview:Toronto-CN Tower Cam - Tower View
+#DESCRIPTION Toronto-CN Tower Cam - Tower View
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/world/canada/toronto/cntower/?cam=cntower2:Toronto-CN Tower Cam - West View
+#DESCRIPTION Toronto-CN Tower Cam - West View
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/world/canada/alberta/edmonton/:Edmonton-Edmonton Cam
+#DESCRIPTION Edmonton-Edmonton Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/canada/niagarafalls/thefalls/?cam=niagarafalls2:Niagara Falls-Niagara Falls - The Falls Cam
+#DESCRIPTION Niagara Falls-Niagara Falls - The Falls Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/canada/niagarafalls/?cam=niagarafalls_str:Niagara Falls-Niagara Falls Cam - Panorama View
+#DESCRIPTION Niagara Falls-Niagara Falls Cam - Panorama View
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::COSTARICA
+#DESCRIPTION COSTARICA
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/world/costarica/lafortuna/:La Fortuna-Costa Rica Volcano Cam
+#DESCRIPTION La Fortuna-Costa Rica Volcano Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::CZECH REPUBLIC
+#DESCRIPTION CZECH REPUBLIC
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/world/czechrepublic/prague/?cam=grandhotel_str:Prague-Prague Cam
+#DESCRIPTION Prague-Prague Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::FRANCE
+#DESCRIPTION FRANCE
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/world/france/paris/?cam=eiffeltower_hd:Paris-Eiffel Tower Streaming Cam
+#DESCRIPTION Paris-Eiffel Tower Streaming Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::GEORGIA
+#DESCRIPTION GEORGIA
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/world/georgia/tbilisi/:Tbilisi-Tbilisi Freedom Square Cam
+#DESCRIPTION Tbilisi-Tbilisi Freedom Square Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::HUNGARY
+#DESCRIPTION HUNGARY
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/world/hungary/budapest/:Budapest-Budapest Cam
+#DESCRIPTION Budapest-Budapest Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::INDONESIA
+#DESCRIPTION INDONESIA
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/world/indonesia/bali/?cam=bali2:Bali-Bali Elephant Cam Bathing Pool
+#DESCRIPTION Bali-Bali Elephant Cam Bathing Pool
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/world/indonesia/bali/?cam=bali1:Bali-Bali Elephant Cam Trail Path
+#DESCRIPTION Bali-Bali Elephant Cam Trail Path
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::IRELAND
+#DESCRIPTION IRELAND
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/world/ireland/dublin/?cam=templebar :Dublin-Dublin Cam
+#DESCRIPTION Dublin-Dublin Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/world/ireland/dublin/?cam=dublinpub:Dublin-Dublin Pub Cam
+#DESCRIPTION Dublin-Dublin Pub Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::ISRAEL
+#DESCRIPTION ISRAEL
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/world/israel/uppergalilee/:Ein Harod-Israel Farm Cam
+#DESCRIPTION Ein Harod-Israel Farm Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/world/israel/jerusalem/:Jerusalem-Western Wall Cam
+#DESCRIPTION Jerusalem-Western Wall Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::JAMAICA
+#DESCRIPTION JAMAICA
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/world/jamaica/negril/?cam=rickscafe :Negril-Jamaica Cam
+#DESCRIPTION Negril-Jamaica Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/http%3awww.rickscafejamaica.com/rickslive.html:Negril-Rick's Cafe Jamaica
+#DESCRIPTION Negril-Rick's Cafe Jamaica
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/world/jamaica/negril/?cam=rickscafe_pano:Negril-Rick's Cafe Panorama
+#DESCRIPTION Negril-Rick's Cafe Panorama
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::JAPAN
+#DESCRIPTION JAPAN
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/world/japan/tokyo/:Tokyo-Tokyo Cam
+#DESCRIPTION Tokyo-Tokyo Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::JORDAN
+#DESCRIPTION JORDAN
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/world/jordan/?cam=amman:Amman-Amman Cam
+#DESCRIPTION Amman-Amman Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/world/jordan/?cam=mainhotsprings:Dead Sea-Ma'in Hot Springs Cam
+#DESCRIPTION Dead Sea-Ma'in Hot Springs Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::MALDVIES
+#DESCRIPTION MALDVIES
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/world/maldives/:One&Only Reethirah-Maldives Cam
+#DESCRIPTION One&Only Reethirah-Maldives Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::NEW ZEALAND
+#DESCRIPTION NEW ZEALAND
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/world/newzealand/queenstown/:Queenstown-New Zealand Cam
+#DESCRIPTION Queenstown-New Zealand Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::NORTHERN MARIANA ISLANDS
+#DESCRIPTION NORTHERN MARIANA ISLANDS
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/world/northernmarianaislands/saipan/:Saipan-Saipan Beach Cam
+#DESCRIPTION Saipan-Saipan Beach Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::PHILIPPINES
+#DESCRIPTION PHILIPPINES
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/world/philippines/boracay/:Boracay-Boracay Cam
+#DESCRIPTION Boracay-Boracay Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::RUSSIA
+#DESCRIPTION RUSSIA
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/world/russia/moscow/?cam=moscow_hd:Moscow-Moscow Skyline Cam
+#DESCRIPTION Moscow-Moscow Skyline Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::SPAIN
+#DESCRIPTION SPAIN
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/world/spain/ceuta/:Ceuta-Strait of Gibraltar Cam
+#DESCRIPTION Ceuta-Strait of Gibraltar Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::TANZANIA
+#DESCRIPTION TANZANIA
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/world/tanzania/moshi/:Moshi-Mount Kilimanjaro Cam
+#DESCRIPTION Moshi-Mount Kilimanjaro Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::THAILAND
+#DESCRIPTION THAILAND
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/world/thailand/pattaya/:Pattaya-Thailand Beach Cam
+#DESCRIPTION Pattaya-Thailand Beach Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::UNITED ARAB EMIRATES
+#DESCRIPTION UNITED ARAB EMIRATES
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/world/uae/dubai/atlantisthepalm/?cam=atlantis1:Dubai-Atlantis, The Palm - Dubai Skyline
+#DESCRIPTION Dubai-Atlantis, The Palm - Dubai Skyline
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/world/uae/dubai/atlantisthepalm/?cam=atlantis2:Dubai-Atlantis, The Palm - Hotel and Resort View
+#DESCRIPTION Dubai-Atlantis, The Palm - Hotel and Resort View
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::UNITED KINGDOM
+#DESCRIPTION UNITED KINGDOM
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/world/uk/bognorregis/:Bognor Regis-Bognor Regis Cam
+#DESCRIPTION Bognor Regis-Bognor Regis Cam
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/usa/virginislands/stcroix/?cam=mmstcroix_hd:St. Croix-St. Croix Cam
+#DESCRIPTION St. Croix-St. Croix Cam
+#SERVICE 1:64:10A:0:0:0:0:0:0:0::VIRGIN ISLANDS
+#DESCRIPTION VIRGIN ISLANDS
+#SERVICE 5002:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.earthcam.com/world/virginislands/stthomas/:St Thomas-St. Thomas Cam
+#DESCRIPTION St Thomas-St. Thomas Cam

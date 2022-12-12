@@ -1,0 +1,7 @@
+<skin>
+<screen name="NumberZapExt" position="center,center" size="800,170" title=" ">
+  <widget name="chPicon" position="409,3" size="400,170" alphatest="on" zPosition="2" />
+  <widget name="chNum" position="-13,5" size="408,60" halign="center" font="HD_Thin; 50" foregroundColor="#ffffff" />
+  <widget name="chName" position="0,72" size="404,100" halign="center" font="HD_Thin; 46" foregroundColor="#ffffff" />
+</screen>
+</skin>

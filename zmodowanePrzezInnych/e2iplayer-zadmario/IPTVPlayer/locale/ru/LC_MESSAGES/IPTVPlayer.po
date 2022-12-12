@@ -1,0 +1,4354 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: IPTVPlayer\n"
+"POT-Creation-Date: 2013-12-15 12:19+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: krutoj2010 <krutoj2010@gmail.com>\n"
+"Language-Team: IPTVPlayer\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.10\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+"X-Poedit-SearchPath-0: ../plugin\n"
+
+msgid ""
+"\n"
+"For more info please ask the author samsamsam@o2.pl"
+msgstr ""
+"\n"
+"Для получения более подробной информации, пожалуйста, спросите автора "
+"samsamsam@o2.pl"
+
+msgid ""
+"\n"
+"For more info please visit http://fluendo.com/"
+msgstr ""
+"\n"
+"Для получения более подробной информации, пожалуйста, посетите http://"
+"fluendo.com/"
+
+msgid ""
+"\n"
+"Make sure you are using the latest version of the plugin."
+msgstr ""
+"\n"
+"Убедитесь, что вы используете последнюю версию плагина."
+
+msgid ""
+"\n"
+"Please use \"Web\" streams player -> WeebTV instead."
+msgstr ""
+"\n"
+"Пожалуйста, используйте \"Web\" потоки плеера -> вместо WeebTV."
+
+msgid ""
+"\n"
+"This host is not integral part of the IPTVPlayer plugin.\n"
+"It is not supported by IPTVPlayer team."
+msgstr ""
+"\n"
+"Этот хост не является неотъемлемой частью плагина IPTVПлеер.\n"
+"Это не поддерживается авторами IPTVПлеера."
+
+msgid ""
+"\n"
+"You can also report problem here: \n"
+"https://gitlab.com/iptvplayer-for-e2/iptvplayer-for-e2/issues\n"
+"or here: samsamsam@o2.pl"
+msgstr ""
+"\n"
+"Сообшить о проблеме вы можете здесь: \n"
+"https://gitlab.com/iptvplayer-for-e2/iptvplayer-for-e2/issues\n"
+"или здесь: samsamsam@o2.pl"
+
+msgid "    Allowed formats of thumbnails"
+msgstr "Разрешенный формат эскизов"
+
+msgid "    Audio buffer size [KB]"
+msgstr "Размер буфера Аудио [KB]"
+
+msgid "    Buffer size [MB]"
+msgstr "    Размер буфера [MB]"
+
+msgid "    Number of columns"
+msgstr "Количество колонок"
+
+msgid "    Number of rows"
+msgstr "Количество строк"
+
+msgid "    Remove thumbnails"
+msgstr "Удалить эскизы"
+
+msgid "    Service icon size"
+msgstr "Размер иконки сервиса"
+
+msgid "    Video buffer size [MB]"
+msgstr "Размер буфера Видео [MB]"
+
+msgid " Last.fm login:"
+msgstr " Last.fm Войти:"
+
+msgid " Password"
+msgstr " Пароль"
+
+msgid " Username or Email"
+msgstr " Имя пользователя или адрес электронной почты"
+
+msgid ""
+" has not been detected. \n"
+"Do you want to install it? "
+msgstr ""
+" Это не было обнаружено. \n"
+"Вы хотите, установить его? "
+
+msgid ""
+" is deprecated. \n"
+"Do you want to install new one? "
+msgstr ""
+" не рекомендуется. \n"
+"Вы хотите, установить новый? "
+
+msgid "\"Web\" streams player"
+msgstr "\"Сеть\" Потоковый плеер"
+
+msgid "%s - configuration"
+msgstr "%s - Конфигурация"
+
+msgid "%s [download]"
+msgstr "%s Загрузить"
+
+msgid "%s [watch]"
+msgstr "%s Смотреть"
+
+msgid "%s items in category"
+msgstr "Пункты по категориям %s сек"
+
+msgid "%s viewers, %s channels"
+msgstr "%s зрителей, %s каналы"
+
+msgid "%s will be used by IPTVPlayer."
+msgstr "%s будет использоваться в IPTVПлеере."
+
+msgid "----------Other----------"
+msgstr "----------Другое----------"
+
+msgid "--All--"
+msgstr "--Все--"
+
+msgid "--Other--"
+msgstr "--Другой-"
+
+msgid "..............."
+msgstr "..............."
+
+msgid "> Press OK to start <"
+msgstr "> Нажмите кнопку OK, чтобы начать <"
+
+msgid "ABORTED"
+msgstr "ПРЕРВАНО"
+
+msgid "AC3 mix mode"
+msgstr "    Выбор режима AC3"
+
+msgid "ARTICLE"
+msgstr "АРТИСТ"
+
+msgid "AUDIO"
+msgstr "АУДИО"
+
+msgid "Aborted"
+msgstr "Прервано"
+
+msgid "Access status: "
+msgstr "Статус доступа: "
+
+msgid "Access status: [%r]"
+msgstr "Статус доступа: [%r]"
+
+msgid "Add item to favourites"
+msgstr "Добавить к избранному"
+
+msgid "Add item to group"
+msgstr "Добавить в группу"
+
+msgid "Add new group"
+msgstr "Добавить новую группу"
+
+msgid "Add new group of favourites"
+msgstr "Добавить новую группу избранное"
+
+msgid "Albums"
+msgstr "Альбомы"
+
+msgid "All"
+msgstr "Все"
+
+msgid "All TV shows"
+msgstr "Все ТВ-шоу"
+
+msgid "All in one"
+msgstr "Все файлы, без разделения на категории"
+
+msgid "All movies"
+msgstr "Все фильмы"
+
+msgid "All programs in the Live Stream"
+msgstr "Все программы в Live Stream"
+
+msgid "Allow dash format:"
+msgstr "Разрешить формат разных типов:"
+
+msgid "Allow downgrade"
+msgstr "Разрешить использование более ранних версий"
+
+msgid "Allow hls format"
+msgstr "Разрешить формат hls"
+
+msgid "Alternative geolocation IP 1:"
+msgstr "Альтернативная геолокация IP 1:"
+
+msgid "Alternative geolocation IP 2:"
+msgstr "Альтернативная геолокация IP 2:"
+
+msgid ""
+"An error occurred when try to sign in the user \"%s.\n"
+"Please check your login credentials and try again later...\""
+msgstr ""
+"Произошла ошибка при попытке войти к пользователю \"%s.\n"
+"Пожалуйста, проверьте ваши учетные данные и попробуйте еще раз позже...\""
+
+msgid "An error occurred while loading a subtitle from [%s]."
+msgstr "Произошла ошибка при загрузке субтитров из [%s]."
+
+msgid "An unknown error has occurred."
+msgstr "Произошла неизвестная ошибка."
+
+msgid "Anuluj"
+msgstr "Отменить"
+
+msgid "Apply"
+msgstr "Применить"
+
+msgid "Archive"
+msgstr "Архив"
+
+msgid "Are you sure you want to remove file \"%s\"?"
+msgstr "Вы уверены, что хотите удалить файл \"%s\"?"
+
+msgid "Aspect"
+msgstr "Аспект"
+
+msgid "Auto"
+msgstr "Автоматически"
+
+msgid "Auto check for plugin update"
+msgstr "Автоматическая проверка обновлений плагина"
+
+msgid "Auto selection based on the settings"
+msgstr "Автовыбор на основе настроек"
+
+msgid "Autors: samsamsam, zdzislaw22, mamrot, MarcinO, skalita, huball, matzg"
+msgstr ""
+"Авторы: samsamsam, zdzislaw22, mamrot, MarcinO, skalita, huball, matzg "
+
+msgid ""
+"Autors: samsamsam, zdzislaw22, mamrot, MarcinO, skalita, huball, matzg, "
+"tomashj291"
+msgstr ""
+"Авторы: samsamsam, zdzislaw22, mamrot, MarcinO, skalita, huball, matzg, "
+"tomashj291"
+
+msgid "Black"
+msgstr "Черный"
+
+msgid "Block wmv files"
+msgstr "Блокировать WMV файлы"
+
+msgid "Broadcasts"
+msgstr "Трансляции"
+
+msgid "Browse"
+msgstr "Смотреть"
+
+msgid "Buffer path"
+msgstr "Каталог буфера обмена"
+
+msgid "CATEGORY"
+msgstr "КАТЕГОРИИ"
+
+msgid "Cancel"
+msgstr "Отменить"
+
+msgid "Categories"
+msgstr "Категории"
+
+msgid "Ceska"
+msgstr "Чешский"
+
+msgid "Change active movie player"
+msgstr "Выбор активного видеоплеера"
+
+msgid "Channel"
+msgstr "Канал"
+
+msgid "Channels"
+msgstr "Каналы"
+
+msgid "Checking version."
+msgstr "Проверка версии."
+
+msgid "Cinema movies"
+msgstr "Кинофильмы"
+
+msgid "Collection"
+msgstr "Коллекция"
+
+msgid "Completed."
+msgstr "Завершено."
+
+msgid "Completed.\n"
+msgstr "Завершено.\n"
+
+msgid "Configuration"
+msgstr "Конфигурация"
+
+msgid "Configuration for service[%s]"
+msgstr "Конфигурация службы[%s]"
+
+msgid "Configure IPTV Player"
+msgstr "Настройки IPTV-Плеера"
+
+msgid "Configure host"
+msgstr "Настройка хоста"
+
+msgid "Configuring an external movie player"
+msgstr "Настройка внешнего видеоплеера"
+
+msgid "Confirm new pin"
+msgstr "Подтвердите новый PIN-код"
+
+msgid "Confirm title of the movie"
+msgstr "Подтвердите название фильма"
+
+msgid "Confirmation error."
+msgstr "Ошибка при вводе."
+
+msgid "Confirmation of installation."
+msgstr "Подтверждение установки."
+
+msgid "Continue downloading"
+msgstr "Продолжить загрузку"
+
+msgid "Copy"
+msgstr "Копировать"
+
+msgid ""
+"Could not read from resource.\n"
+"code: %r"
+msgstr ""
+"Не удалось прочитать из ресурса.\n"
+"код: %r"
+
+msgid ""
+"Could not read from resource.\n"
+"code: %s"
+msgstr ""
+"Не удалось прочитать из ресурса.\n"
+"код: %s"
+
+msgid "Countries"
+msgstr "Страны"
+
+msgid "Country (changing may be illegal in your country)"
+msgstr "Страна (изменить,зтот параметр может быть незаконным в вашей стране)"
+
+msgid "Currently you have version [%s]."
+msgstr "В настоящее время у вас версия [%s]."
+
+msgid "Cut"
+msgstr "Переместить"
+
+msgid "DOWNLOAD ERROR"
+msgstr "ОШИБКА ЗАГРУЗКИ"
+
+msgid "DOWNLOADED"
+msgstr "ЗАГРУЖЕННЫЕ"
+
+msgid "DOWNLOADING"
+msgstr "ЗАГРУЗКА"
+
+msgid "Daily"
+msgstr "Ежедневно"
+
+msgid "Darkgray"
+msgstr "Темно-серый"
+
+msgid "Debug logs"
+msgstr "Включить журнал диагностики"
+
+msgid "Default second video policy"
+msgstr "    Видео соотношение сторон по умолчанию (Второе)"
+
+msgid "Default video aspect ratio"
+msgstr "    Видео пропорции по умолчанию"
+
+msgid "Default video policy"
+msgstr "    Видео соотношение сторон по умолчанию"
+
+msgid "Default video quality:"
+msgstr "Формат видео-по умолчанию:"
+
+msgid "Description:"
+msgstr "Описание:"
+
+msgid "Detection of the \"%s\" utility."
+msgstr "Средства обнаружения \"%s\" утилита."
+
+msgid "Detection of the OpenSSL version."
+msgstr "Обнаружение версии OpenSSL."
+
+msgid "Detection of the ffmpeg version."
+msgstr "Обнаружение FFmpeg версии."
+
+msgid "Detection of the gstreamer version."
+msgstr "Обнаружение GStreamer версии."
+
+msgid "Detection of the platform."
+msgstr "Обнаружение платформы."
+
+msgid "Deutsch"
+msgstr "Немецкий"
+
+msgid "Developers: "
+msgstr "Разработчики: "
+
+msgid "Device ID"
+msgstr "ID устройства"
+
+msgid "Disable host protection (error == GS)"
+msgstr "Отключить родительскую защиту (ошибка == GS)"
+
+msgid "Disable live at plugin start"
+msgstr "Отключить просмотр каналов при старте плагина"
+
+msgid "Disable reordering mode"
+msgstr "Отключить режим перемещения"
+
+msgid "Display order:"
+msgstr "Отобразить заказ:"
+
+msgid "Display thumbnails"
+msgstr "Показать миниатюры"
+
+msgid "Do not install (not recommended)"
+msgstr "Не устанавливайте (не рекомендуется)"
+
+msgid "Download again"
+msgstr "Загрузить снова"
+
+msgid ""
+"Download can not be started.\n"
+" Incorrect address ('%r')."
+msgstr ""
+"Загрузка не может быть начата.\n"
+" Неправильный адрес ('%r')."
+
+msgid ""
+"Download can not be started.\n"
+"Downloader %s not working correctly.\n"
+"Status[%s]"
+msgstr ""
+"Загрузка не может быть начата.\n"
+"Загрузчик %s работает неправильно.\n"
+"Статус[%s]"
+
+msgid ""
+"Download failed.\n"
+"Status[%s]"
+msgstr ""
+"Ошибка загрузки.\n"
+"Статус[%s]"
+
+msgid "Download subtitle \"%s\""
+msgstr "Загрузить субтитры \"%s\""
+
+msgid "Download subtitle %s"
+msgstr "Загрузить субтитры %s"
+
+msgid "Download suggested"
+msgstr "Можно загружать"
+
+msgid "Downloading"
+msgstr "Загрузка"
+
+msgid "Downloading \"%s\" ."
+msgstr "Загрузка \"%s\" ."
+
+msgid ""
+"Downloading \"%s\" failed. \n"
+"Do you want to retry?"
+msgstr ""
+"Загрузка \"%s\" не удалось. \n"
+"Вы хотите, повторить попытку?"
+
+msgid "Downloading an update packet."
+msgstr "Загрузка пакета обновления."
+
+msgid ""
+"Downloading can not be started.\n"
+" Downloader %s does not work properly.\n"
+"Status[%s]"
+msgstr ""
+"Загрузка не может быть начата.\n"
+" Загрузчик %s не работает должным образом.\n"
+"Статус[%s]"
+
+msgid ""
+"Downloading can not be started.\n"
+" Downloader %s not working properly.\n"
+"Status[%s]"
+msgstr ""
+"Загрузка не может быть начата.\n"
+" Загрузчик %s не работает должным образом.\n"
+"Статус[%s]"
+
+msgid ""
+"Downloading can not be started.\n"
+" The address ('%r') It is incorrect."
+msgstr ""
+"Загрузка не может быть начата.\n"
+" Адрес ('%r') это неверно."
+
+msgid ""
+"Downloading can not be started.\n"
+" The address ('%r') is incorrect."
+msgstr ""
+"Загрузка не может быть начата.\n"
+" Адресс ('%r') неверен."
+
+msgid ""
+"Downloading cannot be started.\n"
+" Downloader [%s] not working properly.\n"
+" Status[%s]"
+msgstr ""
+"Загрузка невозможна.\n"
+"Загрузчик [%s] не работает должным образом.\n"
+"Статус[%s]"
+
+msgid ""
+"Downloading cannot be started.\n"
+" Invalid URI[%s]."
+msgstr ""
+"Загрузка невозможна.\n"
+" Неверный адрес [%s]."
+
+msgid "Downloading file [%s] problem."
+msgstr "Проблема с загрузкой файла [%s]."
+
+msgid ""
+"Downloading subtitles.\n"
+" ('%r')."
+msgstr ""
+"Загрузка субтитров.\n"
+" ('%r')."
+
+msgid "Downloads"
+msgstr "Загрузить"
+
+msgid "Drama Series"
+msgstr "Сериал"
+
+msgid "During processing, please do not interrupt."
+msgstr "Во время обработки, пожалуйста, не прерывайте."
+
+msgid "During processing, please wait."
+msgstr "Идет обработка, пожалуйста, подождите."
+
+msgid ""
+"E2 GUI restart after IPTVPlayer update to version[%s].\n"
+"\n"
+msgstr ""
+"Перезагрузить eнигму после обновления IPTV Плеера до версии[%s].\n"
+"\n"
+
+msgid ""
+"ERROR: pipeline could not be constructed: no element \"playbin2\" \n"
+"Please check if gstreamer plugins are available in your system."
+msgstr ""
+"ОШИБКА: Не удалось создать:, отсутствие контроля: отсутствие элемента "
+"\"playbin2 \" \n"
+"Проверьте установлены GStreamer плагины в вашей системе."
+
+msgid "Edit favourites"
+msgstr "Редактировать избранное"
+
+msgid "Email"
+msgstr "Эл. адрес"
+
+msgid "Enable reordering mode"
+msgstr "Включить режим перемещения"
+
+msgid "English"
+msgstr "Английский"
+
+msgid "Enter a value"
+msgstr "Введите значение"
+
+msgid "Enter name"
+msgstr "Введите код"
+
+msgid "Enter new pin"
+msgstr "Введите новый PIN-код"
+
+msgid "Enter old pin"
+msgstr "Введите старый PIN-код"
+
+msgid "Enter pin"
+msgstr "Введите PIN-код"
+
+msgid "Episodes"
+msgstr "Эпизоды"
+
+msgid "Error deleting file \"%s\" .\n"
+msgstr "Ошибка удаления файлов \"%s\" .\n"
+
+msgid "Error occurs during download."
+msgstr "Ошибка загрузки."
+
+msgid ""
+"Error occurs during download. \n"
+"Status[%s], tmpBuffSize[%r], canRunMoviePlayer[%r]"
+msgstr ""
+"Ошибка загрузки. \n"
+"Статус[%s], tmpBuffSize[%r], canRunMoviePlayer[%r]"
+
+msgid ""
+"Error occurs.\n"
+"[%s]"
+msgstr ""
+"Произошла ошибка.\n"
+"[%s]"
+
+msgid "Error reading file \"%s\" .\n"
+msgstr "Ошибка чтения файла \"%s\" .\n"
+
+msgid "Error writing file \"%s\" .\n"
+msgstr "Ошибка записи файла \"%s\" .\n"
+
+msgid "Executing user scripts."
+msgstr "Запуск пользовательских скриптов."
+
+msgid "Exit"
+msgstr "Выход"
+
+msgid "External movie player config"
+msgstr "Параметры внешнего плеера (Нажмите OK)"
+
+msgid "External player infobar timeout"
+msgstr "    Время ожидания внешнего проигрывателя"
+
+msgid "External player use software decoder for the AAC"
+msgstr "Применить наружный декодер для AAC"
+
+msgid "External player use software decoder for the DTS"
+msgstr "Применить наружный декодер для DTS"
+
+msgid "Extra"
+msgstr "Дополнительный"
+
+msgid "Extracting an update packet."
+msgstr "Извлечение пакета обновления."
+
+msgid "Favorite addresses are stored under the file urllist.user"
+msgstr "Избранное. Ссылки хранятся в файле urllist.user"
+
+msgid "Favorites"
+msgstr "Избранное"
+
+msgid "Favourites groups"
+msgstr "Группа Избранное"
+
+msgid "Favourites manager"
+msgstr "Избранное менеджер"
+
+msgid "Featured"
+msgstr "Рекомендуемые"
+
+msgid "File [%s] reading failed."
+msgstr "Проблема чтения файла [%s]."
+
+msgid "File [%s] was added to downloading queue."
+msgstr "Файл [%s] был добавлен в загрузку."
+
+msgid "File can not be downloaded. Protocol [%s] is unsupported"
+msgstr "Файл не может быть загружен. Протокол [%s] не поддерживается"
+
+msgid "Filmy"
+msgstr "Фильмы"
+
+msgid "First movie player in buffering mode"
+msgstr "Выбор Первого плеера с режимом буферизации"
+
+msgid "First movie player without buffering mode"
+msgstr "Выбор Первого плеера"
+
+msgid "Fluendo mpegdemux for GSTREAMER 0.10"
+msgstr "Сделать текучий mpegdemux для GSTREAMER 0.10"
+
+msgid "Folder for cache data"
+msgstr "Папка данных кэша"
+
+msgid "Folder for temp data"
+msgstr "Папка временных данных"
+
+msgid "Folder for temporary data"
+msgstr "Папка для временных данных"
+
+msgid "Following"
+msgstr "После"
+
+msgid "Following host are broken or additional python modules are needed."
+msgstr "Хост не работает, или не хватает дополнительных модулей Python."
+
+msgid "For children"
+msgstr "Для детей"
+
+msgid "Format 'wmv' blocked in configuration."
+msgstr "Формат 'wmv' заблокирован в конфигурации."
+
+msgid "French"
+msgstr "Франция"
+
+msgid "GST-IFDSRC for GSTREAMER 1.X"
+msgstr "GST-IFDSRC для GSTREAMER 1.X"
+
+msgid "Games"
+msgstr "Игры"
+
+msgid "Genres"
+msgstr "Жанры"
+
+msgid "German"
+msgstr "Германия"
+
+msgid "German channles"
+msgstr "Немецкие каналы"
+
+msgid "German proxy server url"
+msgstr "Адрес немецкого прокси-сервер"
+
+msgid "Get EPG"
+msgstr "Получить EPG"
+
+msgid "Get episodes list."
+msgstr "Получить список эпизодов."
+
+msgid "Get item type."
+msgstr "Получить тип элемента."
+
+msgid "Get supported languages list."
+msgstr "Открыть список поддерживаемых языков."
+
+msgid "Global"
+msgstr "Общий"
+
+msgid "Grade"
+msgstr "Класс"
+
+msgid "Graphic services selector"
+msgstr "Селектор Графические услуги"
+
+msgid "Group \"%s\" already exists."
+msgstr "Группа \"%s\" уже существует."
+
+msgid "Group %d"
+msgstr "Группа %d"
+
+msgid "Group links into categories: "
+msgstr "Группа, ссылки по категориям: "
+
+msgid "Group with id[%s] not found."
+msgstr "Группа с идентификатором[%s] не найдена."
+
+msgid "HIGH"
+msgstr "ВЫСОКИЙ"
+
+msgid "High (or HD)"
+msgstr "Высокий (или HD)"
+
+msgid "History"
+msgstr "История"
+
+msgid "History of searched phrases."
+msgstr "История поиска."
+
+msgid "Home page"
+msgstr "Главная страница"
+
+msgid "Hosting: %s, %s"
+msgstr "Хостинг: %s, %s"
+
+msgid "IPTV - Player mode"
+msgstr "IPTV - Режим Плеера"
+
+msgid "IPTV - the recorder mode"
+msgstr "IPTV - Режим записи"
+
+msgid "IPTV Player"
+msgstr "IPTV Плеер"
+
+msgid "IPTV Player "
+msgstr "IPTV Плеер "
+
+msgid "IPTV Player %s"
+msgstr "IPTV Плеер %s"
+
+msgid "IPTV Player - settings"
+msgstr "IPTV Плеер - Настройки"
+
+msgid "IPTV Player HD version %s"
+msgstr "IPTV Плеер HD версия %s"
+
+msgid "IPTV Player version %s"
+msgstr "IPTV Плеер версия %s"
+
+msgid "IPTV Recordings"
+msgstr "IPTV Записи"
+
+msgid "IPTV download manager"
+msgstr "Менеджер загрузок"
+
+msgid "IPTVPlayer - update"
+msgstr "IPTVПлеер - Обновление"
+
+msgid "IPTVPlayer need some additional setup"
+msgstr "IPTV Плеер нужна дополнительная настройка"
+
+msgid ""
+"IPTVPlayer need some additional setup.\n"
+"Such as downloading and installation additional binaries.\n"
+"Press OK to start."
+msgstr ""
+"IPTVPlayer нужна дополнительная настройка. \n"
+"таких, как загрузка и установка дополнительных модулей бинарного файла,"
+"нажмите OK, чтобы начать."
+
+msgid "IPTVPlayer services configuration"
+msgstr "IPTV-Плеер конфигурация хоста"
+
+msgid "IPTVPlayer setup version %s"
+msgstr "IPTV Плеер установка версии %s"
+
+msgid "IPTVPlayer setup version %s "
+msgstr "IPTV Плеер Настройка версии %s "
+
+msgid "Icons size"
+msgstr "Размер иконок"
+
+msgid "Info"
+msgstr "Информация"
+
+msgid "Information"
+msgstr "Информация"
+
+msgid "Information about audio tracks not available."
+msgstr "Информации о аудио треках не имеется."
+
+msgid "Input"
+msgstr "Вход"
+
+msgid "Install into the \"%s\" ."
+msgstr "Установите в \"%s\" ."
+
+msgid "Installation binary failed. Retry?"
+msgstr "Установка бинарного не удалось. Повторите?"
+
+msgid "Installation has been aborted."
+msgstr "Установка прервана."
+
+msgid "Installation has been confirmed."
+msgstr "Установка подтверждена."
+
+msgid "Installing \"%s\" ."
+msgstr "Установка \"%s\" ."
+
+msgid "Installing new version."
+msgstr "Установка новой версии."
+
+msgid "Invalid name."
+msgstr "Неверный код."
+
+msgid "It improves buffering mode with the gstplayer.\n"
+msgstr "Это улучшает режим буферизации с gstplayer.\n"
+
+msgid "It improves playing of streams hls/m3u8.\n"
+msgstr "Это улучшает воспроизведение потоков hls/m3u8.\n"
+
+msgid "It seems that the host \"%s\" has crashed."
+msgstr "Видимо, этот хост \"%s\" не работает."
+
+msgid ""
+"It seems that the host \"%s\" has crashed. Do you want to report this "
+"problem?"
+msgstr "Видимо, у вас \"%s\" призошёл сбой. Вы хотите, сообщить о проблеме?"
+
+msgid ""
+"It seems that the video player \"%s\" does not work properly.\n"
+"\n"
+"STS: %s\n"
+"ERROR CODE: %r"
+msgstr ""
+"Видимо, видео-плеер \"%s\" не работает должным образом.\n"
+"\n"
+"STS: %s\n"
+"КОД ОШИБКИ: %r"
+
+msgid "Italian"
+msgstr "Италия"
+
+msgid "Italiano"
+msgstr "Итальянский"
+
+msgid "Item idx[%d] not found in group[%s]."
+msgstr "Пункт idx[%d] не найден в группе[%s]."
+
+msgid "Items in group"
+msgstr "Положение в группе"
+
+msgid "Items in group \"%s\""
+msgstr "Положение в группе \"%s\""
+
+msgid "JSON module not available!"
+msgstr "Модуль JSON недоступен!"
+
+msgid "Japanese"
+msgstr "Японский"
+
+msgid "Junior"
+msgstr "Юношеский"
+
+msgid "Language:"
+msgstr "Язык:"
+
+msgid "Languages"
+msgstr "Языки"
+
+msgid "Last checked version"
+msgstr "Последняя проверка версии"
+
+msgid "Last error"
+msgstr "Последняя ошибка"
+
+msgid "Last error: \"%s\""
+msgstr "Последняя ошибка: \"%s\""
+
+msgid ""
+"Last error: \"People who live where you live aren't allowed to watch this "
+"video.. Not because we don't luv ya, but because the owners have some "
+"restrictions. The good news, is there are tens of thousands of other videos "
+"to choose from.\""
+msgstr ""
+"Последняя ошибка: \"Пользователь, где вы проживаете, невозможно посмотреть "
+"это видео..  Потому, что у вас имеются некоторые ограничения. Хорошая "
+"новость, есть десятки тысяч других видео на выбор.\""
+
+msgid "Last error: \"Silverlight stream not supported.\""
+msgstr "Последняя ошибка: \"Поток Silverlight не поддерживается.\""
+
+msgid ""
+"Last error: \"The Mirror is broken.If available you can choose other source."
+"\""
+msgstr ""
+"Последняя ошибка: \"Отображения нет. При наличии вы можете выбрать другой "
+"источник.\""
+
+msgid "Last error: %s"
+msgstr "Последняя ошибка: %s"
+
+msgid "Latest added"
+msgstr "Последние добавленные"
+
+msgid "Latest updates"
+msgstr "Последние обновления"
+
+msgid "Lightgray"
+msgstr "Светло-серый"
+
+msgid "Line Spacing"
+msgstr "    Межстрочный интервал"
+
+msgid "Link"
+msgstr "Cсылка"
+
+msgid "Links are videos and messages, without division into categories"
+msgstr "Ссылки видеоролики и сообщения, без разделения на категории"
+
+msgid "Links to the video files from the file urllist.txt"
+msgstr "Ссылки на видео из файла urllist.txt"
+
+msgid "List only channels with subscription"
+msgstr "Список каналов в подписке"
+
+msgid "Live"
+msgstr "Прямой эфир"
+
+msgid "Live Channels"
+msgstr "Текущие каналы"
+
+msgid "Live broadcasts from the file urllist.stream"
+msgstr "Прямые трансляции из файла urllist.stream"
+
+msgid "Load"
+msgstr "Выбрать"
+
+msgid "Load automatically the subtitle from file with the same name"
+msgstr "    Авто-загрузка субтитров из файла с тем же именем"
+
+msgid "Loading"
+msgstr "Загрузка"
+
+msgid "Loading..."
+msgstr "Загрузка..."
+
+msgid "LocalMedia"
+msgstr "Мои Медиа файлы"
+
+msgid "Login"
+msgstr "Авторизоваться"
+
+msgid "Login user \"%s\" into %s"
+msgstr "Пользователь Войти \"%s\" в %s"
+
+msgid "Login:"
+msgstr "Авторизоваться:"
+
+msgid "MEDIUM"
+msgstr "СРЕДНИЙ"
+
+msgid "MERGE protocol source"
+msgstr "Соединять источник протокола"
+
+msgid "MORE"
+msgstr "БОЛЬШЕ"
+
+msgid "Main"
+msgstr "Главный"
+
+msgid "Main Event"
+msgstr "Главное событие"
+
+msgid "Main developer, architect, coordinator: "
+msgstr "Главный разработчик, архитектор, координатор: "
+
+msgid "Manager status: "
+msgstr "Менеджер положение: "
+
+msgid "Max items per page"
+msgstr "Максимальное количество на странице"
+
+msgid "Mid"
+msgstr "Средний"
+
+msgid "Missed the show?"
+msgstr "Вы пропускаете?"
+
+msgid "Month"
+msgstr "Месяц"
+
+msgid "Monthly"
+msgstr "Ежемесячно"
+
+msgid "More"
+msgstr "Опции"
+
+msgid "More important"
+msgstr "Более важно"
+
+msgid "Most Popular"
+msgstr "Самые популярные"
+
+msgid "Move group"
+msgstr "Перемещение группы"
+
+msgid "Move item"
+msgstr "Переместить пункт"
+
+msgid "Movie"
+msgstr "Фильм"
+
+msgid "Movie \"%s\" has not been found."
+msgstr "Фильм \"%s\" не найден."
+
+msgid "Movie player"
+msgstr "Видеоплеер"
+
+msgid "Movie player without buffering mode"
+msgstr "Выбрать плеер без режима буферизации"
+
+msgid "Movies"
+msgstr "Кино"
+
+msgid "Music"
+msgstr "Музыка"
+
+msgid "Music-Box"
+msgstr "Музыка-Box"
+
+msgid "Musik"
+msgstr "Музыка"
+
+msgid "Name cannot be empty."
+msgstr "Название не может быть пустым."
+
+msgid ""
+"Name is not valid.\n"
+"Please remove special characters."
+msgstr ""
+"Это неправильное название.\n"
+"Пожалуйста, удалите специальные символы."
+
+msgid "Name:"
+msgstr "Название:"
+
+msgid "New dir"
+msgstr "Новая папка"
+
+msgid "New folder"
+msgstr "Новая папка"
+
+msgid "New icons will not be available."
+msgstr "Новые иконки не будут доступны."
+
+msgid "News"
+msgstr "Новости"
+
+msgid "Next page"
+msgstr "Следующая страница"
+
+msgid ""
+"No item to display. \n"
+"Press OK to refresh.\n"
+msgstr ""
+"Ничего не найдено.\n"
+"Нажмите ОК, чтобы обновить.\n"
+
+msgid "No steps to execute."
+msgstr "Никаких действий не выполнять."
+
+msgid "No user scripts."
+msgstr "Нет пользовательских скриптов."
+
+msgid "No valid links available."
+msgstr "Работающих ссылок нет."
+
+msgid ""
+"No valid links available. Last error: \"The Mirror is broken. If available "
+"you can choose other source.\""
+msgstr ""
+"Работающих ссылок нет. Последняя ошибка: \"Отображения нет. При наличии, вы "
+"можете выбрать другой источник.\""
+
+msgid "None"
+msgstr "нет"
+
+msgid "Now playing"
+msgstr "Сейчас в программе"
+
+msgid "Number of downloaded files simultaneously"
+msgstr "Количество загружаемых файлов одновременно"
+
+msgid "Number of songs fetched at once for the station"
+msgstr "Количество песен, найденных во время посещения станций"
+
+msgid "Obtaining server list."
+msgstr "Получение списка серверов."
+
+msgid "Odśwież"
+msgstr "Обновление"
+
+msgid "Offline channels"
+msgstr "Оффлайн каналы"
+
+msgid "One link mode"
+msgstr "Режим Одна ссылка"
+
+msgid "OpenSSL lib is needed by wget and rtmpdump utilities."
+msgstr "OpenSSL требуется для правильной работы Wget инструмента и rtmpdump."
+
+msgid "Operation aborted!"
+msgstr "Операция прервана!"
+
+msgid "Operation aborted! "
+msgstr "Операция прервана! "
+
+msgid "Others"
+msgstr "Другие"
+
+msgid "PC"
+msgstr "ПК"
+
+msgid "PENDING"
+msgstr "ОЖИДАНИЕ"
+
+msgid "PICTURE"
+msgstr "ФОТО"
+
+msgid "Password:"
+msgstr "Пароль:"
+
+msgid "Paste \"%s\""
+msgstr "Вставить \"%s\""
+
+msgid "Path to ytlist.txt, urllist.txt"
+msgstr "Путь к ytlist.txt, urllist.txt"
+
+msgid "Pending"
+msgstr "До"
+
+msgid "Photos"
+msgstr "Фото"
+
+msgid "Pin has been changed."
+msgstr "PIN-код был изменен."
+
+msgid "Pin incorrect!"
+msgstr "Pin неверен!"
+
+msgid "Pin protection for configuration"
+msgstr "Защита конфигурации настроек пин-кодом"
+
+msgid "Pin protection for plugin"
+msgstr "Защита плагина пин-кодом"
+
+msgid "Platform"
+msgstr "Платформа"
+
+msgid "Play file"
+msgstr "Воспроизведение видео"
+
+msgid "Play with [%s] player"
+msgstr "Воспроизведение записи в [%s]"
+
+msgid "PlayPuls"
+msgstr "ИгратьPuls"
+
+msgid "PlayPuls use a proxy?"
+msgstr "PlayPuls использовать прокси-сервер?"
+
+msgid "Player > Recorder"
+msgstr "Плеер > Запись"
+
+msgid "Playlist"
+msgstr "Плейлист"
+
+msgid "Playlists"
+msgstr "Плейлисты"
+
+msgid "Please remember that you use the IPTVPlayer plugin at your own risk."
+msgstr ""
+"Пожалуйста, помните, что вы используете плагин IPTV Плеер на свой страх и "
+"риск."
+
+msgid "Please remember that you use this plugin at your own risk."
+msgstr ""
+"Пожалуйста, помните, что вы используете этот плагин на свой страх и риск."
+
+msgid ""
+"Plugin can be run on one of the following platforms: sh4, mipsel, i686, "
+"armv7."
+msgstr ""
+"Плагин может работать на одной из следующих платформ: sh4, mipsel, i686, "
+"armv7."
+
+msgid "Pol'skiy"
+msgstr "Польский"
+
+msgid "Poland"
+msgstr "Польша"
+
+msgid "Policy"
+msgstr "Соотношение сторон"
+
+msgid "Policy2"
+msgstr "Соотношение сторон2"
+
+msgid "Polish channles"
+msgstr "Польские каналы"
+
+msgid "Polish proxy server url"
+msgstr "Адрес польского прокси-сервера"
+
+msgid "Popular"
+msgstr "Популярный"
+
+msgid "Popular Artists"
+msgstr "Популярные исполнители"
+
+msgid "Português"
+msgstr "Португальский"
+
+msgid "Prefered quality"
+msgstr "Предпочтительное качество"
+
+msgid "Preferred quality"
+msgstr "Предпочтительное качество"
+
+msgid "Preferred streaming protocol"
+msgstr "Предпочтительный протокол потоковой передачи"
+
+msgid "Preferred streaming protocol' + ': "
+msgstr "Предпочтительный протокол потоковой передачи' + ': "
+
+msgid "Preferred video quality:"
+msgstr "Выбор качества видео:"
+
+msgid "Premium user"
+msgstr "Премиум пользователь"
+
+msgid "Press OK to start"
+msgstr "Нажмите OK чтобы начать"
+
+msgid "Previous"
+msgstr "Предыдущий"
+
+msgid "Problem with downloading the server list from [%s]."
+msgstr "Проблема с загрузкой списка серверов от [%s]."
+
+msgid "Problem with downloading the server list."
+msgstr "Проблема с загрузкой списка серверов."
+
+msgid ""
+"Problem with downloading the update packet:\n"
+"[%s]."
+msgstr "Проблема с загрузкой пакета обновления:\n"
+"[%s]."
+
+msgid ""
+"Problem with extracting the archive. Return code [%d]\n"
+"%s."
+msgstr ""
+"Проблема с распаковкой архива. Код возврата [%d]\n"
+"%s."
+
+msgid ""
+"Problem with installing the new version.\n"
+"Status[%d], outData[%s]"
+msgstr ""
+"Проблема с установкой новой версии.\n"
+"Статус[%d], OutData[%s]"
+
+msgid "Problem with the directory [%s]."
+msgstr "Проблема с каталогом [%s]."
+
+msgid ""
+"Problem with the removal of the previous version.\n"
+"Status[%d], outData[%s]."
+msgstr ""
+"Проблема с удалением предыдущей версии.\n"
+"Статус[%d], OutData[%s]."
+
+msgid "Problem with user script execution [%s]."
+msgstr "Проблема с выполнением пользовательских скриптов [%s]."
+
+msgid "Profile"
+msgstr "Профиль"
+
+msgid "Promote item"
+msgstr "Переместить в начало списка"
+
+msgid "Promoted channels"
+msgstr "Популярные каналы"
+
+msgid "Promoted games"
+msgstr "Популярные игры"
+
+msgid "Protocol: "
+msgstr "Протокол: "
+
+msgid "Proxy server url"
+msgstr "Адрес прокси-сервера"
+
+msgid "Quality"
+msgstr "Качественный"
+
+msgid "Random"
+msgstr "Случайный"
+
+msgid "Ranking"
+msgstr "Расположение"
+
+msgid "Rating"
+msgstr "Рейтинг"
+
+msgid "Raw"
+msgstr "Необработанный"
+
+msgid "Recent"
+msgstr "Последний"
+
+msgid "Recorder > Player"
+msgstr "Запись > Плеер"
+
+msgid "Records path"
+msgstr "Каталог для загрузки"
+
+msgid "Refresh"
+msgstr "Обновление"
+
+msgid "Refreshing"
+msgstr "Обновляется"
+
+msgid "Regular"
+msgstr "Регулярный"
+
+msgid "Releases"
+msgstr "Релизы"
+
+msgid "Relevance"
+msgstr "Актуальный"
+
+msgid "Remember last watched position"
+msgstr "Запомнить последнее место воспроизведения"
+
+msgid "Remove"
+msgstr "Удалить"
+
+msgid "Remove file"
+msgstr "Удалить файл"
+
+msgid "Remove group"
+msgstr "Удалить группу"
+
+msgid "Remove item"
+msgstr "Удалить элементы"
+
+msgid "Removing the old version."
+msgstr "Удаление старой версии."
+
+msgid "Removing unnecessary files."
+msgstr "Удаление ненужных файлов."
+
+msgid "Rename"
+msgstr "Переименовать"
+
+msgid "Request token from \"%s\""
+msgstr "Символ запроса от \"%s\""
+
+msgid "Request token from %s"
+msgstr "Символ запроса от %s"
+
+msgid ""
+"Restart GUI failed. \n"
+"Please restart STB manually."
+msgstr ""
+"Перезапуск интерфейса не удался. \n"
+"Пожалуйста, перезагрузите тюнер вручную."
+
+msgid "Russia"
+msgstr "Россия"
+
+msgid "Russian proxy server url"
+msgstr "Адрес русского прокси-сервера"
+
+msgid "SEARCH"
+msgstr "ПОИСК"
+
+msgid "STARTED"
+msgstr "ОПЕРАЦИИ"
+
+msgid "STOPPED"
+msgstr "ОСТАНОВЛЕН"
+
+msgid "Save changes?"
+msgstr "Сохранить изменения?"
+
+msgid "Search"
+msgstr "Поиск"
+
+msgid "Search for movie \"%s\""
+msgstr "Поиск фильма \"%s\""
+
+msgid "Search for subitile for \"%s\""
+msgstr "Поиск субтитров для \"%s\""
+
+msgid "Search for subitile for %s"
+msgstr "Поиск субтитров для %s"
+
+msgid "Search history"
+msgstr "История поиска"
+
+msgid "Search results"
+msgstr "Результаты поиска"
+
+msgid "Search type"
+msgstr "Тип поиска"
+
+msgid "Search youtube materials "
+msgstr "Поиск материалов в YouTube"
+
+msgid "Second movie player in buffering mode"
+msgstr "Выбор Второго плеера с режимом буферизации"
+
+msgid "Second movie player without buffering mode"
+msgstr "Выбор Второго плеера"
+
+msgid "Select"
+msgstr "Выбрать"
+
+msgid "Select %s"
+msgstr "Выберите %s"
+
+msgid "Select action"
+msgstr "Выберите действие"
+
+msgid "Select audio track"
+msgstr "Выбор аудио дорожки"
+
+msgid "Select favourite group"
+msgstr "Выбор группы избранное"
+
+msgid "Select language"
+msgstr "Выберите язык"
+
+msgid "Select link"
+msgstr "Выбор ссылки"
+
+msgid "Select movie"
+msgstr "Выбор фильма"
+
+msgid "Select movie player"
+msgstr "Выбор плеера"
+
+msgid "Select option"
+msgstr "Выберите опцию"
+
+msgid "Select service"
+msgstr "Выбор услуги"
+
+msgid "Select subtitles file"
+msgstr "Выбор файла с субтитрами"
+
+msgid "Select subtitles to download"
+msgstr "Выбор субтитров для загрузки"
+
+msgid "Select subtitles track"
+msgstr "Выбор дорожки субтитров"
+
+msgid "Select the directory"
+msgstr "Выбор каталога"
+
+msgid "Select update server"
+msgstr "Выбор сервера обновлений"
+
+msgid "Select video option"
+msgstr "Выбор видео"
+
+msgid "Selected version [%s]."
+msgstr "Выбранный вариант [%s]."
+
+msgid "Seriale"
+msgstr "Сериалы"
+
+msgid "Series"
+msgstr "Серии"
+
+msgid "Service [%s] has no additional settings."
+msgstr "Конфигурация [%s] нет дополнительных настроек."
+
+msgid "Services configuration"
+msgstr "Выбор сервисов-хостов (Нажмите OK)"
+
+msgid "Set active movie player"
+msgstr "Выбор активного видеоплеера"
+
+msgid "Set pin code"
+msgstr "Установите пин-код"
+
+msgid "Show IPTVPlayer in extension list"
+msgstr "Показать IPTV Плеер в меню плагинов"
+
+msgid "Show IPTVPlayer in main menu"
+msgstr "Показать IPTV Плеер в главном меню"
+
+msgid "Show all channels"
+msgstr "Показать все каналы"
+
+msgid "Show all version in the update menu"
+msgstr "Показать все версии в меню Обновление"
+
+msgid "Show download manager after adding new item"
+msgstr "Показать менеджер загрузок после добавления нового файла"
+
+msgid "Show hiddens catalogs"
+msgstr "Показать скрытые каталоги"
+
+msgid "Show hiddens files"
+msgstr "Показать скрытые файлы"
+
+msgid "Show update icon in service selection menu"
+msgstr "Показать обновления в главном меню"
+
+msgid "Shows"
+msgstr "Шоу"
+
+msgid "Silverlight stream not supported."
+msgstr "Поток Silverlight не поддерживается."
+
+msgid "Simple subtitles downloader"
+msgstr "Загрузчик простых субтитров"
+
+msgid "Sin in to"
+msgstr "Войти в систему"
+
+msgid "Skin"
+msgstr "Выбор cкина"
+
+msgid ""
+"Skipping IPTVPlayer serup may cause problems.Are you sure to skip IPTVPlayer "
+"setup?"
+msgstr ""
+"Пропуск установки дополнительного, может привести к дефекту плагина."
+"Пропустить установку дополнительных модулей. Вы уверены?"
+
+msgid ""
+"Skipping IPTVPlayer setup may cause problems.\n"
+"Are you sure to skip IPTVPlayer setup?"
+msgstr ""
+"Пропуск установки дополнительного, может привести к дефекту плагина. \n"
+"Пропустить установку дополнительных модулей. Вы уверены?"
+
+msgid "SmackDown"
+msgstr "Обрушить"
+
+msgid "Some changes will be applied only after plugin update."
+msgstr "Некоторые изменения будут применены только после обновления плагина."
+
+msgid "Songs"
+msgstr "Песни"
+
+msgid "Sorry"
+msgstr "Извините"
+
+msgid "Sort by:"
+msgstr "Сортировать по:"
+
+msgid "Sort search result by"
+msgstr "Сортировать по результату поиска"
+
+msgid "Sort the list:"
+msgstr "Сортировать список:"
+
+msgid "Sorted channels A-Z [live]"
+msgstr "Сортировка каналов A-Z [прямой эфир]"
+
+msgid "Sorted most viewed channels general [live]"
+msgstr "Сортировка всех наиболее популярных каналов [прямой эфир]"
+
+msgid "Sorted most viewed channels now [live]"
+msgstr "Сортировка каналов, самых популярных в настоящее время [прямой эфир]"
+
+msgid "Spanish"
+msgstr "Испания"
+
+msgid "Start"
+msgstr "Начать"
+
+msgid "Start download manager per default"
+msgstr "Включить менеджер загрузок по умолчанию"
+
+msgid "Stations"
+msgstr "Станции"
+
+msgid "Status object [%r]"
+msgstr "Статус объекта [%r]"
+
+msgid "Step [%s] cannot be aborted. Please wait."
+msgstr "Активация [%s] не может быть прервана. Пожалуйста, подождите."
+
+msgid "Stereo downmix mode for software decoder"
+msgstr "Стерео микширование для програмного декодера"
+
+msgid "Stop"
+msgstr "Стоп"
+
+msgid "Stop downloading"
+msgstr "Остановка загрузки"
+
+msgid "Stop playing?"
+msgstr "Остановить воспроизведение?"
+
+msgid "StreamLiveTo.tv"
+msgstr "Прямой Поток для.ТВ"
+
+msgid "Subtitle background"
+msgstr "    Фон субтитров"
+
+msgid "Subtitle border color"
+msgstr "    Цвет границы субтитров"
+
+msgid "Subtitle border enabled"
+msgstr "    Включить границу субтитров "
+
+msgid "Subtitle border width"
+msgstr "    Ширина границы субтитров"
+
+msgid "Subtitle box height"
+msgstr "Высота субтитров"
+
+msgid "Subtitle box position"
+msgstr "    Позиция субтитров"
+
+msgid "Subtitle font"
+msgstr "    Шрифт субтитров"
+
+msgid "Subtitle font color"
+msgstr "    Цвет шрифта субтитров"
+
+msgid "Subtitle font size"
+msgstr "    Размер шрифта субтитров"
+
+msgid "Subtitle line height"
+msgstr "    Высота строки субтитров"
+
+msgid "Subtitle line wrapping"
+msgstr "    Перенос строк субтитров"
+
+msgid "Subtitle shadow X offset"
+msgstr "    Смещение тени субтитров по X"
+
+msgid "Subtitle shadow Y offset"
+msgstr "    Смещение тени субтитров по Y"
+
+msgid "Subtitle shadow color"
+msgstr "    Цвет тени субтитров"
+
+msgid "Subtitle shadow enabled"
+msgstr "    Включить тени субтитров"
+
+msgid "Subtitle vertical alignment"
+msgstr "Вертикальное выравнивание субтитров"
+
+msgid "Subtitles"
+msgstr "Субтитры"
+
+msgid "Subtitles downloaded successfully. [%s]"
+msgstr "Субтитры загружены успешно. [%s]"
+
+msgid "Subtitles downloaded successfully. [%s], conversion to UTF-8."
+msgstr "Субтитры загружены успешно. [%s], преобразование в UTF-8."
+
+msgid "Subtitles downloader"
+msgstr "Загрузить субтитры"
+
+msgid "Subtitles for: %s"
+msgstr "Субтитры для: %s"
+
+msgid "Subtitles not found."
+msgstr "Субтитры не найдены."
+
+msgid "Subtitles provider: %s"
+msgstr "Провайдер субтитров: %s"
+
+msgid "Such as downloading and installation additional binaries"
+msgstr "Таких, как загрузка и установка дополнительных модулей двоичного файла"
+
+msgid "Synchronize"
+msgstr "Синхронизировать"
+
+msgid "TV Shows"
+msgstr "ТВ Шоу"
+
+msgid "TV series"
+msgstr "Телесериал"
+
+msgid "TV shows"
+msgstr "ТВ шоу"
+
+msgid "Teletext decoder"
+msgstr "Декодер телетекста"
+
+msgid "Testers: "
+msgstr "Тестеры: "
+
+msgid "Text files ytlist and urllist are in:"
+msgstr "Текстовые файлы ytlist и urllist находятся:"
+
+msgid "The \"%s\" utility is used by IPTVPlayer."
+msgstr "Утилита \"%s\" используется в IPTV Плеере."
+
+msgid ""
+"The \"%s\" utility is used by the IPTVPlayer as external movie player based "
+"on the ffmpeg and libeplayer."
+msgstr ""
+"Утилита \"%s\" используется IPTV Плеером в качестве внешнего видеоплеера.на "
+"основе FFmpeg и libeplayer."
+
+msgid "The \"%s\" utility is used by the IPTVPlayer as external movie player."
+msgstr ""
+"Утилита \"%s\" используется IPTV Плеером в качестве внешнего видеоплеера."
+
+msgid ""
+"The \"%s\" utility is used by the IPTVPlayer to buffering and downloading "
+"[%s] links."
+msgstr ""
+"Утилита \"%s\" используется IPTV Плеером для кэширования и загрузки "
+"материала из ссылок [%s]."
+
+msgid ""
+"The \"%s\" utility is used by the IPTVPlayer to determine the encoding of "
+"the text."
+msgstr ""
+"В \"%s\" утилита используется IPTV Плеером для определения кодировки текста."
+
+msgid "The current host crashed"
+msgstr "Данный хост не работает"
+
+msgid "The default video quality:"
+msgstr "Качество видео по умолчанию:"
+
+msgid "The number of items in the search history"
+msgstr "Количество элементов в истории поиска"
+
+msgid "The preferred protocol:"
+msgstr "Предпочтительный протокол:"
+
+msgid "The problem with creating a directory [%s]."
+msgstr "Проблема с созданием каталога [%s]."
+
+msgid "The problem with obtaining the gateway proxy!"
+msgstr "Проблема с получением шлюза прокси!"
+
+msgid ""
+"The problem with the logged-in user \"%s. Check your login details in the "
+"host configuration.\""
+msgstr ""
+"Проблема с авторизирацией пользователя \"%s. Проверьте свои регистрационные "
+"данные в конфигурации хоста.\""
+
+msgid ""
+"The problem with the user's logon \"%s\". Check your login details in the "
+"host configuration."
+msgstr ""
+"Проблема с входом пользователя \"%s\". Проверьте свои регистрационные данные "
+"в конфигурации хоста."
+
+msgid "The same item already exists in this group."
+msgstr "То же самое, элемент уже существует в этой группе."
+
+msgid "The user Last.fm"
+msgstr "Пользователь Last.fm"
+
+msgid ""
+"There are no active premium account.\n"
+"Using a limited version that may not work properly with congested links."
+msgstr ""
+"Там нет активных премиум аккаунтов.\n"
+"Использовать ограниченную версию, которая не может работать должным образом "
+"с перегруженными ссылками."
+
+msgid ""
+"There is a new version available do you want to update? \n"
+"Your version [%s], latest version on server [%s]."
+msgstr ""
+"Вышла новая версия плагина. Вы хотите, обновить? \n"
+"Ваша версия [%s], новая версия на сервере [%s]."
+
+msgid "There are no other favourite groups"
+msgstr "Там нет группы избранное."
+
+msgid "There is no free space on the drive [%s]."
+msgstr "На диске нет свободного места [%s]."
+
+msgid ""
+"There is no space in the directory [%s]\n"
+" Available[%s], required [%s]."
+msgstr ""
+"В каталоге не хватает места [%s]\n"
+"Доступно [%s], необходимо [%s]."
+
+msgid "There is no update for the current configuration."
+msgstr "Для текущей версии, обновления отсутствуют."
+
+msgid "There was an error Download."
+msgstr "Была ошибка загрузки."
+
+msgid ""
+"There was an error Download. \n"
+"Status[%s], tmpBuffSize[%r], canRunMoviePlayer[%r]"
+msgstr ""
+"Была ошибка загрузки. \n"
+"Статус[%s], tmpБуффРазмер[%r], может работать Gameplayer[%r]"
+
+msgid "There was an error downloading."
+msgstr "Ошибка при загрузке."
+
+msgid "This site requires login. Please complete host configuration data."
+msgstr ""
+"Этот сайт требует логин. Пожалуйста, заполните данные конфигурации хостов."
+
+msgid "Today, too many people are watching a movie with"
+msgstr "Сегодня слишком много пользователей смотрят фильм с"
+
+msgid "Top"
+msgstr "Высший"
+
+msgid "Topics"
+msgstr "Темы"
+
+msgid "Total Divas"
+msgstr "Всего Примадонны"
+
+msgid "Transparent"
+msgstr "Прозрачный"
+
+msgid "Try again for some time"
+msgstr "Попробуйте еще раз в течение некоторого времени"
+
+msgid "Turkish"
+msgstr "Турция"
+
+msgid "Turn off buffering for http://prognoza.pogody.tv/"
+msgstr "Выключить буферизацию для http://prognoza.pogody.tv/"
+
+msgid "Type: "
+msgstr "Тип: "
+
+msgid "Türk"
+msgstr "Турецкий"
+
+msgid "UNKNOWN"
+msgstr "НЕИЗВЕСТНЫЙ"
+
+msgid "Ukraine"
+msgstr "Украина"
+
+msgid "Unknown"
+msgstr "Неизвестный"
+
+msgid "Unknown protocol %s"
+msgstr "Неизвестный протокол %s"
+
+msgid "Unknown protocol [%s]"
+msgstr "Неизвестный протокол [%s]"
+
+msgid "Unpacking the archive completed successfully."
+msgstr "Распаковка архива успешно завершена."
+
+msgid "Update"
+msgstr "Обновить плеер (Нажмите OK)"
+
+msgid "Update completed successfully. For the moment, the system will reboot."
+msgstr ""
+"Обновление успешно завершено. На данный момент, система перезагрузится."
+
+msgid ""
+"Update failed.\n"
+"Check the status by selecting interesting and pressing OK."
+msgstr ""
+"Не удалось выполнить обновление.\n"
+"Проверьте нужное вам, и нажмите OK."
+
+msgid ""
+"Update failed. Check the status by selectiong interesting and pressing ok."
+msgstr "Обновление не удалось. Проверьте статус выбранного, нажмите кнопку ОК."
+
+msgid "Update not available."
+msgstr "Обновление недоступно."
+
+msgid "Update packet type"
+msgstr "Пакеты, доступные для обновления"
+
+msgid "Update packet was downloaded successfully."
+msgstr "Обновленный пакет был успешно загружен."
+
+msgid "Update server not selected."
+msgstr "Сервер обновлений не выбран."
+
+msgid "Upload date"
+msgstr "Дата публикации"
+
+msgid "Urllists player"
+msgstr "Гиперссылки Плеер"
+
+msgid "Use German proxy for link request"
+msgstr "Использовать Немецкий прокси для запроса ссылки"
+
+msgid "Use Polish proxy for http://prognoza.pogody.tv/"
+msgstr "Использовать прокси-сервер для Польского http://prognoza.pogody.tv/"
+
+msgid "Use a proxy gateway"
+msgstr "Использовать прокси-шлюз"
+
+msgid "Use default video quality:"
+msgstr "Использовать качество видео по умолчанию:"
+
+msgid "Use defauult qality:"
+msgstr "Качество использования по умолчанию:"
+
+msgid "Use ru proxy server:"
+msgstr "Использовать прокси-сервер ру:"
+
+msgid "User Last.fm"
+msgstr "Пользователь Last.fm"
+
+msgid "User [%s] logon failure."
+msgstr "Пользователь [%s] ошибка входа в систему."
+
+msgid "User files"
+msgstr "Файлы пользователя"
+
+msgid "User links"
+msgstr "Ссылки пользователя"
+
+msgid "User links stored in the ytlist.txt file."
+msgstr "Ссылки пользователя, сохраненные в файле ytlist.txt."
+
+msgid "User-Agent"
+msgstr "Агент пользователя"
+
+msgid "Username:"
+msgstr "Имя пользователя:"
+
+msgid "Uses the default video quality:"
+msgstr "Использовать качество видео по умолчанию:"
+
+msgid ""
+"Utility \"%s\" has not been detected. \n"
+"Do you want to install it?"
+msgstr ""
+"Утилита \"%s\" устарела. \n"
+"Вы хотите, установить новую?"
+
+msgid ""
+"Utility \"%s\" has not been detected. \n"
+"What do you want to do?"
+msgstr ""
+"Утилита \"%s\" устарела. \n"
+"Что вы хочете сделать?"
+
+msgid ""
+"Utility \"%s\" is deprecated. \n"
+"Do you want to install new one?"
+msgstr ""
+"Утилита \"%s\" устарела. \n"
+"Вы хотите, установить новую?"
+
+msgid ""
+"Utility \"%s\" is deprecated. \n"
+"What do you want to do?"
+msgstr ""
+"Утилита \"%s\" устарела. \n"
+"Что вы хотите сделать?"
+
+msgid "VIDEO"
+msgstr "ВИДЕО"
+
+msgid "Version"
+msgstr "Версия"
+
+msgid ""
+"Version [%s] is ready for installation. After installation, restart of the "
+"system will be done.\n"
+"Do you want to continue?"
+msgstr ""
+"Версия [%s] готова к установке. После установки, cистема будет "
+"перезагружена.\n"
+"Вы хотите продолжить?"
+
+msgid "Video"
+msgstr "Видео"
+
+msgid "Video buffer size [MB]"
+msgstr "Размер буфера видео в [MB]"
+
+msgid "Video format:"
+msgstr "Формат видео:"
+
+msgid "Video options"
+msgstr "Параметры видео"
+
+msgid "Videos"
+msgstr "Видео"
+
+msgid "View count"
+msgstr "Количество просмотров"
+
+msgid "WWE Main Event"
+msgstr "WWE Главное событие"
+
+msgid "Watch video materials from IPTV services"
+msgstr "Просмотр сервисов IPTV"
+
+msgid "Web streams player"
+msgstr "Проигрывать Веб-потоки"
+
+msgid "Webpages: "
+msgstr "Веб-страница: "
+
+msgid "Week"
+msgstr "Неделю"
+
+msgid "Weekly"
+msgstr "Еженедельно"
+
+msgid "Writer"
+msgstr "Автор"
+
+msgid "Wrong indexes."
+msgstr "Неправильные индексы."
+
+msgid ""
+"Wrong version. \n"
+" downloaded version [%s] is different from the requested [%s]."
+msgstr "Неверная версия. Загруженная версия [%s] отличается от требуемой [%s]."
+
+msgid "You can use Russian proxy server as a workaround."
+msgstr ""
+"Вы можете использовать российской прокси-сервер в качестве обходного пути."
+
+msgid "You do not have a premium account. Starting a sponsored broadcast."
+msgstr "Вы не имеете премиум аккаунта. Оплатите одну трансляцию."
+
+msgid "You do not have a premium account.Starting a sponsored broadcast."
+msgstr "Вы не имеете премиум-аккаунта. Оплатите одну трансляцию."
+
+msgid "You need to enter email and password in configuration."
+msgstr "Вы должны ввести адрес электронной почты и пароль в конфигурации."
+
+msgid ""
+"You probably have not access to this page due to geolocation restriction."
+msgstr ""
+"Вы, наверное, не имеете доступ к этой странице в связи с ограничением "
+"геолокации."
+
+msgid "Your OpenSSL version is [%s]"
+msgstr "Ваша версия OpenSSL является [%s]"
+
+msgid "Your platform is [%s]"
+msgstr "Ваша платформа [%s]"
+
+msgid "Your search entry"
+msgstr "Введите тип поиска"
+
+msgid "Youtube player"
+msgstr "Ютубе плеер"
+
+msgid "Youtubes player"
+msgstr "Ютубе плеер"
+
+msgid "[%s] - configuration"
+msgstr "[%s] - Конфигурация"
+
+msgid "[%s] will be used by IPTVPlayer."
+msgstr "[%s] Будет использоваться IPTV плеером."
+
+msgid "[%s] with buffering"
+msgstr "%s с буферизацией"
+
+msgid "[%s] without buffering"
+msgstr "%s без буферизации"
+
+msgid "[For download only] "
+msgstr "Только Скачать "
+
+msgid "[HLS/M3U8] buffering"
+msgstr "Буферизация (HLS/M3U8)"
+
+msgid "[HTTP] buffering"
+msgstr "Буферизация (HTTP)"
+
+msgid "[RTMP] buffering (rtmpdump required)"
+msgstr "Буферизация (RTMP)"
+
+msgid "[group]"
+msgstr "[Группа]"
+
+msgid "active"
+msgstr "Активный"
+
+msgid "after a week"
+msgstr "Через неделю"
+
+msgid "after closing"
+msgstr "После закрытия"
+
+msgid "after day"
+msgstr "После одного дня"
+
+msgid "after three days"
+msgstr "После трех дней"
+
+msgid "all types"
+msgstr "Все типы"
+
+msgid "alltube.tv"
+msgstr "Все tube.тв"
+
+msgid "aqua"
+msgstr "Вода"
+
+msgid "ascending"
+msgstr "Восходящий"
+
+msgid "assessment"
+msgstr "Оценка"
+
+msgid "average"
+msgstr "Средний"
+
+msgid "back_pressed prev sel index %s"
+msgstr "Назад к предыдущему индексу %s"
+
+msgid "based on IP"
+msgstr "На основе IP"
+
+msgid "blue"
+msgstr "Синий"
+
+msgid "bottom"
+msgstr "Земля"
+
+msgid "buffer-duration"
+msgstr "Продолжительность буферизации"
+
+msgid "buffer-size"
+msgstr "Размер буфера"
+
+msgid "center"
+msgstr "Центр"
+
+msgid "channel"
+msgstr "Канал"
+
+msgid "console"
+msgstr "Консоль"
+
+msgid "cover"
+msgstr "Обложка"
+
+msgid "data"
+msgstr "Данные"
+
+msgid "date added"
+msgstr "Дата добавления"
+
+msgid "date-add"
+msgstr "Дата-надстройки"
+
+msgid "default"
+msgstr "По умолчанию"
+
+msgid "descending"
+msgstr "Нисходящий"
+
+msgid "deutsch"
+msgstr "Немецкий"
+
+msgid "direct link"
+msgstr "Прямая ссылка"
+
+msgid "download-buffer-path"
+msgstr "Скачать-буфер путь"
+
+msgid "downmix"
+msgstr "Микширование"
+
+msgid "english"
+msgstr "Английский"
+
+msgid "espanol"
+msgstr "Испанский"
+
+msgid "external eplayer3"
+msgstr "Внешний eplayer3"
+
+msgid "external gstplayer"
+msgstr "Внешний gstplayer"
+
+msgid "favourites"
+msgstr "Избранное"
+
+msgid "favourtes"
+msgstr "Избранное"
+
+msgid "format"
+msgstr "Формат"
+
+msgid "free premium player."
+msgstr "Бесплатно премиум плеер."
+
+msgid "fuchsia"
+msgstr "Фуксия"
+
+msgid "good"
+msgstr "Хороший"
+
+msgid "gray"
+msgstr "Серый"
+
+msgid "group"
+msgstr "Группа"
+
+msgid "hd"
+msgstr "hd"
+
+msgid "headertext"
+msgstr "Текст заголовка"
+
+msgid "high"
+msgstr "Высокий"
+
+msgid "http://www.ex.ua/"
+msgstr "EX.UA"
+
+msgid "https - validate SSL certificates"
+msgstr "Проверка сертификатов SSL"
+
+msgid "i686"
+msgstr "i686"
+
+msgid "internal"
+msgstr "Внутренний"
+
+msgid "large"
+msgstr "Большой"
+
+msgid "leave movie player..."
+msgstr "Оставить проигрыватель фильмов..."
+
+msgid "lector hd free "
+msgstr "Просмотр HD бесплатно "
+
+msgid "lector normal free "
+msgstr "Просмотр SD бесплатно "
+
+msgid "lime"
+msgstr "Лайм"
+
+msgid "live"
+msgstr "Прямой"
+
+msgid "live transfers"
+msgstr "Прямые Потоки"
+
+msgid "login"
+msgstr "Войти"
+
+msgid "low"
+msgstr "Низкий"
+
+msgid "maroon"
+msgstr "Темно-бордовый"
+
+msgid "medium"
+msgstr "Средний"
+
+msgid "mipsel"
+msgstr "mipsel"
+
+msgid "mobile"
+msgstr "Мобильный"
+
+msgid "movie"
+msgstr "Фильм"
+
+msgid "movie4k.to"
+msgstr "Кино4k.to"
+
+msgid "name"
+msgstr "Название"
+
+msgid "nasze-kino.eu"
+msgstr "Наше-Кино.eu"
+
+msgid "navy"
+msgstr "Морской волны"
+
+msgid "no"
+msgstr "Нет"
+
+msgid "nocnyseans.pl"
+msgstr "Ночной Сеанс.pl"
+
+msgid "number of views"
+msgstr "Количество просмотров"
+
+msgid "olive"
+msgstr "Оливковый"
+
+msgid "passthrough"
+msgstr "Нет"
+
+msgid "password"
+msgstr "Пароль"
+
+msgid "picture link"
+msgstr "Фото ссылка"
+
+msgid "playerlogo"
+msgstr "Плеер логотип"
+
+msgid "playlist"
+msgstr "Плейлист"
+
+msgid "polski"
+msgstr "Польский"
+
+msgid "precompiled"
+msgstr "Перекомпилированные"
+
+msgid "purple"
+msgstr "Пурпурный"
+
+msgid "quality"
+msgstr "Качество"
+
+msgid "recommended"
+msgstr "Рекомендуемый"
+
+msgid "red"
+msgstr "Красный"
+
+msgid "release date"
+msgstr "Дата выпуска"
+
+msgid "ring-buffer-max-size"
+msgstr "Максимальный размер буфера"
+
+msgid "rootfs"
+msgstr "Корневые файлы"
+
+msgid "second"
+msgstr "Секунда"
+
+msgid "seconds"
+msgstr "Секунд"
+
+msgid "self.getCurrentDirectory()"
+msgstr "Самостоятельно.получить Текущий каталог()"
+
+msgid "sequencer"
+msgstr "Секвенсор"
+
+msgid "sh4"
+msgstr "sh4"
+
+msgid "silver"
+msgstr "Серебро"
+
+msgid "small"
+msgstr "Небольшой"
+
+msgid "standard"
+msgstr "Стандарт"
+
+msgid "statustext"
+msgstr "Статус текст"
+
+msgid "teal"
+msgstr "Чирок"
+
+msgid "the best"
+msgstr "Лучший"
+
+msgid "the name"
+msgstr "Имя"
+
+msgid "the worst"
+msgstr "Худший"
+
+msgid "top"
+msgstr "Вверх"
+
+msgid "unknown"
+msgstr "Неизвестный"
+
+msgid "updated"
+msgstr "Обновленный"
+
+msgid "very high"
+msgstr "Очень высокий"
+
+msgid "video"
+msgstr "Видео"
+
+msgid "web-live.tv login:"
+msgstr "web-live.tv Войти:"
+
+msgid "web-live.tv password:"
+msgstr "web-live.tv Пароль:"
+
+msgid "web-live.tv premium user?"
+msgstr "web-live.tv Премиум пользователь?"
+
+msgid "white"
+msgstr "Белый"
+
+msgid "with source code"
+msgstr "С исходным кодом"
+
+msgid "worst"
+msgstr "Наихудший"
+
+msgid "yellow"
+msgstr "Желтый"
+
+msgid "yes, to console"
+msgstr "Да, на консоле"
+
+msgid "yes, to file /hdd/iptv.dbg"
+msgstr "Файл, на /hdd/iptv.dbg"
+
+msgid "Success."
+msgstr "Успешно."
+
+msgid "Autoplay start delay"
+msgstr "Автозапуск задержки пуска"
+
+msgid "Movie categories"
+msgstr "Категории фильмов"
+
+msgid "http://hdkinomir.com/"
+msgstr "HDКиномир"
+
+msgid "----------------- External exteplayer3 options -----------------"
+msgstr "----------------- Внешние опции exteplayer3 -----------------"
+
+msgid "XXX"
+msgstr "Видео Порно"
+
+msgid "--- Featured videos ---"
+msgstr "--- Избранные видео ---"
+
+msgid "--- Hits ---"
+msgstr "--- Хиты ---"
+
+msgid "--- Hot ---"
+msgstr "--- Горячий ---"
+
+msgid "--- Best Videos ---"
+msgstr "--- Лучшие Видео ---"
+
+msgid "--- New Videos ---"
+msgstr "--- Новые Видео ---"
+
+msgid "--- Tags alfabetical ---"
+msgstr "--- Слова алфавита ---"
+
+msgid "--- Pornstars ---"
+msgstr "--- Порно звезды ---"
+
+msgid "--- New ---"
+msgstr "--- Новый ---"
+
+msgid "--- Top Rated ---"
+msgstr "--- Самые популярные ---"
+
+msgid "--- Most Viewedo ---"
+msgstr "--- Наиболее просматриваемые ---"
+
+msgid "--- Most Favorited ---"
+msgstr "--- Большинство избранном ---"
+
+msgid "--- Most Discussed ---"
+msgstr "--- Самые обсуждаемые ---"
+
+msgid "--- Newest ---"
+msgstr "--- Новейший ---"
+
+msgid "--- Most Viewed ---"
+msgstr "--- Наиболее просматриваемые ---"
+
+msgid "--- Most Favored ---"
+msgstr "--- Наибольшего благоприятствования ---"
+
+msgid "--- Popular ---"
+msgstr "--- Популярный ---"
+
+msgid "--- On Air ---"
+msgstr "--- В эфире ---"
+
+msgid "--- Most Recent ---"
+msgstr "--- Самое новое ---"
+
+msgid "--- Longest ---"
+msgstr "--- Самый длинный ---"
+
+msgid "--- Most viewed ---"
+msgstr "--- Наиболее просматриваемые ---"
+
+msgid "--- Lastest ---"
+msgstr "--- Последнее ---"
+
+msgid "--- Highest Rated ---"
+msgstr "--- Наивысший рейтинг ---"
+
+msgid "--- Most Popular ---"
+msgstr "--- Самый популярный ---"
+
+msgid " - Local version"
+msgstr " - Локальная версия"
+
+msgid "--- Channels ---"
+msgstr "--- Каналы ---"
+
+msgid "---Search History"
+msgstr "---История поиска"
+
+msgid "Search History"
+msgstr "История поиска"
+
+msgid "---Search"
+msgstr "---Поиск"
+
+msgid "Search movies"
+msgstr "Поиск фильмов"
+
+msgid "Search "
+msgstr "Поиск "
+
+msgid "--- Cams ---"
+msgstr "--- Веб-кам ---"
+
+msgid "Cams"
+msgstr "Веб-кам"
+
+msgid "Update Now & Restart Enigma2"
+msgstr "Обновить сейчас & Перезагрузить Enigma2"
+
+msgid "ERROR - Error unpacking %s' % source"
+msgstr "Ошибка - ошибка распаковки %s' % источник"
+
+msgid "Require pin:"
+msgstr "Запрашивать PIN-код:"
+
+msgid "File Location xxxlist.txt :"
+msgstr "Расположение файла xxxlist.txt :"
+
+msgid "Sort xxxlist :"
+msgstr "Сортировка xxxlist :"
+
+msgid "--- boy ---"
+msgstr "--- Мальчик ---"
+
+msgid "--- gay ---"
+msgstr "--- Гей ---"
+
+msgid "--- Transgender ---"
+msgstr "--- Трансгендер ---"
+
+msgid "--- Couple ---"
+msgstr "--- Пара ---"
+
+msgid "--- Mature ---"
+msgstr "--- Зрелый ---"
+
+msgid "--- Fetish ---"
+msgstr "--- Фетиш ---"
+
+msgid "--- Lesbian ---"
+msgstr "--- Лесбиянка ---"
+
+msgid "--- Soul_mate ---"
+msgstr "--- Родственная душа ---"
+
+msgid "--- Hot_flirt ---"
+msgstr "--- Горячий Флирт ---"
+
+msgid "--- Girl ---"
+msgstr "--- Девушка ---"
+
+msgid "boy"
+msgstr "Мальчик"
+
+msgid "gay"
+msgstr "Гей"
+
+msgid "Transgender"
+msgstr "Трансгендер"
+
+msgid "Couple"
+msgstr "Пара"
+
+msgid "Mature"
+msgstr "Зрелый"
+
+msgid "Fetish"
+msgstr "Фетиш"
+
+msgid "Lesbian"
+msgstr "Лесбиянка"
+
+msgid "Soul_mate"
+msgstr "Родственная душа"
+
+msgid "Hot_flirt"
+msgstr "Горячий Флирт"
+
+msgid "Girl"
+msgstr "Девушка"
+
+msgid "--- Couples ---"
+msgstr "--- Пары ---"
+
+msgid "--- Male ---"
+msgstr "--- Мужчина ---"
+
+msgid "--- Transsexual ---"
+msgstr "--- Транссексуал ---"
+
+msgid "--- Female ---"
+msgstr "--- Женский ---"
+
+msgid "vapor"
+msgstr "Пар"
+
+msgid "Men"
+msgstr "Но"
+
+msgid "Shemale"
+msgstr "Транссексуал"
+
+msgid "Women"
+msgstr "Женщины"
+
+msgid "new"
+msgstr "Новый"
+
+msgid "ERROR - Error downloading: "
+msgstr "ОШИБКА - ошибка загрузки: "
+
+msgid "ERROR"
+msgstr "ОШИБКА"
+
+msgid "ERROR - Error unpacking /tmp/iptv-host-xxx.tar.gz"
+msgstr "ОШИБКА - ошибка распаковки /tmp/iptv-host-xxx.tar.gz"
+
+msgid "ERROR - Invalid file format /tmp/iptv-host-xxx.tar.gz"
+msgstr "ОШИБКА - неверный формат файла /tmp/iptv-host-xxx.tar.gz"
+
+msgid "ERROR - copy error"
+msgstr "ОШИБКА - ошибка копирования"
+
+msgid "Update End. Please manual restart enigma2"
+msgstr "Обновление Конец. Пожалуйста ручной перезапуск Enigma2"
+
+msgid "---UPDATE---"
+msgstr "---ОБНОВИТЬ---"
+
+msgid "UPDATE MENU"
+msgstr "МЕНЮ ОБНОВЛЕНИЕ"
+
+msgid " - Remote version"
+msgstr " - Удаленная версия"
+
+msgid "UPDATE"
+msgstr "ОБНОВИТЬ"
+
+msgid "UPDATE-CHANGES"
+msgstr "ОБНОВИТЬ-ИЗМЕНЕНИЯ"
+
+msgid "UPDATE-NOW"
+msgstr "ОБНОВИТЬ-СЕЙЧАС"
+
+msgid "CHANGES IN VERSION"
+msgstr "Изминения в версии"
+
+msgid "Update Now"
+msgstr "Обновить сейчас"
+
+msgid "Remote XXXversion"
+msgstr "Удаленный XXXверсия"
+
+msgid "Local  XXXversion"
+msgstr "Локальный  XXXверсия"
+
+msgid "Most Favorited"
+msgstr "Большинство избранном"
+
+msgid "xxxlist.txt"
+msgstr "Файл-xxx.txt"
+
+msgid "+++ XXXLIST +++"
+msgstr "+++ ФАЙЛ-XXX +++"
+
+msgid "On Air"
+msgstr "В эфире"
+
+msgid "Longest"
+msgstr "Самый длинный"
+
+msgid "Highest Rated"
+msgstr "Наивысший рейтинг"
+
+msgid "Pornstars"
+msgstr "Порно звезды"
+
+msgid "Last"
+msgstr "Последний"
+
+msgid "Most Favored"
+msgstr "Наибольшего благоприятствования"
+
+msgid "Newest"
+msgstr "Новейший"
+
+msgid "Featured videos"
+msgstr "Избранные видео"
+
+msgid "New Videos"
+msgstr "Новые Видео"
+
+msgid "Hits"
+msgstr "Хиты"
+
+msgid "Hot"
+msgstr "Горячий"
+
+msgid "LAST"
+msgstr "ПОСЛЕДНИЙ"
+
+msgid "Next"
+msgstr "Следующий"
+
+msgid "Page: "
+msgstr "Страница: "
+
+msgid "Last Page"
+msgstr "Последняя страница"
+
+msgid "Software decoding as"
+msgstr "Декодировать"
+
+msgid "Some changes will be applied only after movie player restart."
+msgstr ""
+"Некоторые изменения будут применены только после перезапуска видеоплеера."
+
+msgid "IPTV Player download manager"
+msgstr "IPTV Плеер менеджер загрузок"
+
+msgid "Animation [dubbing]"
+msgstr "Анимация [перезапись]"
+
+msgid "Series [dubbing]"
+msgstr "Серии [перезапись]"
+
+msgid "Animation [subtitles]"
+msgstr "Анимация [субтитры]"
+
+msgid "Series [subtitles]"
+msgstr "Серии [субтитры]"
+
+msgid "The worst"
+msgstr "Худший"
+
+msgid "The best"
+msgstr "Лучший"
+
+msgid "Video default quality:"
+msgstr "Качество видео по умолчанию:"
+
+msgid "Use default quality:"
+msgstr "Качество использования по умолчанию:"
+
+msgid "Portal:"
+msgstr "Портал:"
+
+msgid "Live-streams"
+msgstr "Прямые-потоки"
+
+msgid "New Movies"
+msgstr "Новые фильмы"
+
+msgid "HD Movies"
+msgstr "HD Фильмы"
+
+msgid "Latest Movies"
+msgstr "Последние фильмы"
+
+msgid "Latest TV Episodes"
+msgstr "Последние ТВ Эпизоды"
+
+msgid "New TV Episodes"
+msgstr "Новые ТВ Эпизоды"
+
+msgid "Coming Soon"
+msgstr "Скоро"
+
+msgid "Most popular"
+msgstr "Самый популярный"
+
+msgid "Treat episode as TV Show"
+msgstr "Смотреть эпизод, как ТВ-шоу"
+
+msgid "Show recommended by Rafalcool1:"
+msgstr "Показать рекомендовано Rafalcool1:"
+
+msgid "Recommended by Rafalcool1"
+msgstr "Рекомендуется Rafalcool1"
+
+msgid "List of movies prepared by Rafalcool1"
+msgstr "Список фильмов, подготовленных Rafalcool1"
+
+msgid "http://fs.to/"
+msgstr "FS.TO"
+
+msgid "Use ru proxy server to get file lists"
+msgstr "Использовать прокси-сервер, чтобы получить списки файлов"
+
+msgid "Audio"
+msgstr "Аудио"
+
+msgid "New episodes"
+msgstr "Новые серии"
+
+msgid "External player use software decoder for the WMA"
+msgstr "Применить наружный декодер для WMA"
+
+msgid "AAC mix mode"
+msgstr "    Выбор режима AAC"
+
+msgid "Preferred protocol:"
+msgstr "Выберите протокол:"
+
+msgid "Use the default video quality:"
+msgstr "Используйте качество видео по умолчанию:"
+
+msgid "password:"
+msgstr "Пароль:"
+
+msgid "login:"
+msgstr "Логин:"
+
+msgid "Sort results after:"
+msgstr "Сортировать результаты после:"
+
+msgid "Alphabetically"
+msgstr "В алфавитном порядке"
+
+msgid "Top rated"
+msgstr "Самые популярные"
+
+msgid "Latest"
+msgstr "Последний"
+
+msgid "Najtrafniejsze"
+msgstr "Новые"
+
+msgid "Folder start"
+msgstr "Начало"
+
+msgid "Name hamster (login)"
+msgstr "Имя (логин)"
+
+msgid "Password for hamster"
+msgstr "Пароль для chomika"
+
+msgid "Explore"
+msgstr "Исследовать"
+
+msgid "Small films and anime"
+msgstr "Фильмы и аниме"
+
+msgid "Films Extremal"
+msgstr "Фильмы Экстремальное"
+
+msgid "Automotive , accidents"
+msgstr "Автомобильные аварии"
+
+msgid "Muzik"
+msgstr "Музыка"
+
+msgid "Straight from Polish"
+msgstr "Прямо с Польского"
+
+msgid "Sport"
+msgstr "Спорт"
+
+msgid "Comedies"
+msgstr "Комедии"
+
+msgid "Miscellaneous"
+msgstr "Разное"
+
+msgid "Life of students"
+msgstr "Жизнь студентов"
+
+msgid "Waiting room"
+msgstr "Зал ожидания"
+
+msgid "User Videos 3dEU?"
+msgstr "Видео пользователя 3dEU?"
+
+msgid "  Filmy3dEU login:"
+msgstr "  Filmy3dEU логин:"
+
+msgid "  Filmy3dEU password:"
+msgstr "  Filmy3dEU пароль:"
+
+msgid "Added date"
+msgstr "Добавлена дата"
+
+msgid "Comment count"
+msgstr "Количество комментариев"
+
+msgid "Recommended"
+msgstr "Рекомендуемые"
+
+msgid "Most Watched"
+msgstr "Самые ценные"
+
+msgid "Homepage"
+msgstr "Домашняя страница"
+
+msgid "Category"
+msgstr "Категория"
+
+msgid "Katalog A-Z"
+msgstr "Каталог A-Z"
+
+msgid "Localization"
+msgstr "Локализация"
+
+msgid "Argentina"
+msgstr "Аргентина"
+
+msgid "Australia"
+msgstr "Австралия"
+
+msgid "Belgium"
+msgstr "Бельгия"
+
+msgid "Brazil"
+msgstr "Бразилия"
+
+msgid "Canada"
+msgstr "Канада"
+
+msgid "France"
+msgstr "Франция"
+
+msgid "Germany"
+msgstr "Германия"
+
+msgid "India"
+msgstr "Индия"
+
+msgid "Indonesia"
+msgstr "Индонезия"
+
+msgid "International"
+msgstr "Международный"
+
+msgid "Ireland"
+msgstr "Ирландия"
+
+msgid "Italy"
+msgstr "Италия"
+
+msgid "Malaysia"
+msgstr "Малайзия"
+
+msgid "Morocco"
+msgstr "Марокко"
+
+msgid "Netherlands"
+msgstr "Нидерланды"
+
+msgid "Pakistan"
+msgstr "Пакистан"
+
+msgid "Philippines"
+msgstr "Филиппины"
+
+msgid "Portugal"
+msgstr "Португалия"
+
+msgid "Singapore"
+msgstr "Сингапур"
+
+msgid "Swiss"
+msgstr "Швейцарский"
+
+msgid "Switzerland"
+msgstr "Швейцария"
+
+msgid "Schweiz"
+msgstr "Швеция"
+
+msgid "Tunisia"
+msgstr "Тунис"
+
+msgid "United States"
+msgstr "Соединенные Штаты"
+
+msgid "United Kingdom"
+msgstr "Великобритания"
+
+msgid "Turkey"
+msgstr "Турция"
+
+msgid "Spain"
+msgstr "Испания"
+
+msgid "Romania"
+msgstr "Румыния"
+
+msgid "Mexico"
+msgstr "Мексика"
+
+msgid "Belgian"
+msgstr "Бельгийский"
+
+msgid "Austria"
+msgstr "Австрия"
+
+msgid "VietNam"
+msgstr "Вьетнам"
+
+msgid "Japan"
+msgstr "Япония"
+
+msgid "Czech Republic"
+msgstr "Чешская Республика"
+
+msgid "Arab"
+msgstr "Арабский"
+
+msgid "Korea"
+msgstr "Корея"
+
+msgid "China"
+msgstr "Китай"
+
+msgid "Serials"
+msgstr "Сериалы"
+
+msgid "sun sessions"
+msgstr "Солнце сессии"
+
+msgid "Other videos"
+msgstr "Другие видео"
+
+msgid "Ibiza Global Radio"
+msgstr "Ibiza Глобальный Радио"
+
+msgid "Top 100"
+msgstr "Топ 100"
+
+msgid "Year"
+msgstr "Год"
+
+msgid "24 h"
+msgstr "24 ч"
+
+msgid "Quarter"
+msgstr "Четверть"
+
+msgid "Most"
+msgstr "Наиболее"
+
+msgid "List of anime"
+msgstr "Список аниме"
+
+msgid "List of films"
+msgstr "Список фильмов"
+
+msgid "Anime Issued"
+msgstr "Аниме Выпущено"
+
+msgid "New episodes broadcast"
+msgstr "Новые эпизоды трансляции"
+
+msgid "Recently added episodes from previous seasons"
+msgstr "Недавно добавленные эпизоды из прошлых сезонов"
+
+msgid "Harbinger"
+msgstr "Предвестник"
+
+msgid "User PREMIUM KinomanTV?"
+msgstr "ПРЕМИУМ Пользователь KinomanTV?"
+
+msgid "  KinomanTV login:"
+msgstr "  KinomanTV Логин:"
+
+msgid "  KinomanTV password:"
+msgstr "  KinomanTV Пароль:"
+
+msgid "Categories films"
+msgstr "Категории фильмов"
+
+msgid "Last added"
+msgstr "Последние добавления"
+
+msgid "Most rated"
+msgstr "По рейтингу"
+
+msgid "My Favorites"
+msgstr "Мои любимые"
+
+msgid "Enter data into your account (blue key)."
+msgstr "Введите данные в свой аккаунт (ключ)."
+
+msgid "Geolocation IP:"
+msgstr "Географическое положение IP:"
+
+msgid "TV channels"
+msgstr "Телеканалы"
+
+msgid "Radio stations"
+msgstr "Радиостанции"
+
+msgid "Latest series"
+msgstr "Последние серии"
+
+msgid "bitrate: worst"
+msgstr "Битрейт: наихудший"
+
+msgid "bitrate: 200p"
+msgstr "Битрейт: 200p"
+
+msgid "bitrate: 450p"
+msgstr "Битрейт: 450p"
+
+msgid "bitrate: 900"
+msgstr "Битрейт: 900"
+
+msgid "bitrate: 1800"
+msgstr "Битрейт: 1800"
+
+msgid "bitrate: the best"
+msgstr "Битрейт: лучший"
+
+msgid "The default video format:"
+msgstr "Формат видео по умолчанию:"
+
+msgid "Use the default video format:"
+msgstr "Используйте формат видео по умолчанию:"
+
+msgid "Ekstraklasa use a proxy?"
+msgstr "Использовать прокси-сервер экстракласса?"
+
+msgid "Goals"
+msgstr "Место назначения"
+
+msgid "Shortcuts"
+msgstr "Ярлыки"
+
+msgid "Gateway queue"
+msgstr "Очередной шлюз"
+
+msgid "Warehouse"
+msgstr "Склад"
+
+msgid "The most relevant"
+msgstr "Наиболее актуальное"
+
+msgid "Popularity"
+msgstr "Популярность"
+
+msgid "Items"
+msgstr "Предметы"
+
+msgid "Recent Items (Popular)"
+msgstr "Последние товары (Популярный)"
+
+msgid "Recent Items (All)"
+msgstr "Последние товары (Все)"
+
+msgid "Feature Potential Items"
+msgstr "Функция потенциальных товары"
+
+msgid "Top Items (Today)"
+msgstr "Лучшие товары (Cегодня)"
+
+msgid "Top Items (This Week)"
+msgstr "Лучшие товары (На этой неделе)"
+
+msgid "Top Items (This Month)"
+msgstr "Лучшие товары (Этот месяц)"
+
+msgid "Top Items (All time)"
+msgstr "Лучшие товары (Все время)"
+
+msgid "Yoursay"
+msgstr "Ты говоришь"
+
+msgid "Liveleakers"
+msgstr "Текущие"
+
+msgid "Must See"
+msgstr "Должен видеть"
+
+msgid "Syria"
+msgstr "Сирия"
+
+msgid "Entertainment"
+msgstr "Развлекательная программа"
+
+msgid "Browse Channels"
+msgstr "Просмотр каналов"
+
+msgid "By default, sort by:"
+msgstr "По умолчанию, сортировать по:"
+
+msgid "***Any***"
+msgstr "***Любые***"
+
+msgid "most viewed"
+msgstr "Наиболее просматриваемые"
+
+msgid "longest"
+msgstr "Самый длинный"
+
+msgid "top rated"
+msgstr "Самые популярные"
+
+msgid "random"
+msgstr "Случайный"
+
+msgid "Lastest"
+msgstr "Последний"
+
+msgid "Use a proxy"
+msgstr "Используйте прокси"
+
+msgid "Films"
+msgstr "Фильмы"
+
+msgid "Documents"
+msgstr "Документы"
+
+msgid "Tales"
+msgstr "Россказни"
+
+msgid "preferred streaming protocol"
+msgstr "Предпочтительным протоколом потоковой"
+
+msgid "Age viewer:"
+msgstr "Возраст просмотра:"
+
+msgid "Hide Video in the list above the age of the viewer:"
+msgstr "Скрыть видео в списке выше возраста зрителя:"
+
+msgid "TOP100 Always"
+msgstr "Топ 100 Всегда"
+
+msgid "TOP100 Of the week"
+msgstr "Топ 100 Недели"
+
+msgid "TOP100 Month"
+msgstr "Топ 100 Месяц"
+
+msgid "MOB: low"
+msgstr "MOB: Низкий"
+
+msgid "SD: standard"
+msgstr "SD: Стандарт"
+
+msgid "HD: high"
+msgstr "HD: Высокая"
+
+msgid "FHD: very high"
+msgstr "FHD: Очень высоко"
+
+msgid "Popular movies"
+msgstr "Популярные фильмы"
+
+msgid "Topics films"
+msgstr "Темы фильмов"
+
+msgid "Editorial"
+msgstr "Редакционный"
+
+msgid "Action RPG"
+msgstr "Действие RPG"
+
+msgid "The Witcher"
+msgstr "Ведьмак"
+
+msgid "Size of the icons"
+msgstr "Размер иконок"
+
+msgid "Connection type:"
+msgstr "Тип соединения:"
+
+msgid "Very high"
+msgstr "Очень высоко"
+
+msgid "Best"
+msgstr "Лучший"
+
+msgid "Worst"
+msgstr "Наихудший"
+
+msgid "Very low"
+msgstr "Очень низкий"
+
+msgid "Average"
+msgstr "В среднем"
+
+msgid "TVN Introduce yourself as:"
+msgstr "TVN Представьте себя:"
+
+msgid "TVN use a proxy?"
+msgstr "TVN использовать прокси-сервер?"
+
+msgid "No name"
+msgstr "Без имени"
+
+msgid "Audience zone"
+msgstr "Аудитория зона"
+
+msgid "  password:"
+msgstr "  Пароль:"
+
+msgid "The default video format"
+msgstr "Формат видео по умолчанию"
+
+msgid "Use Proxy?"
+msgstr "Используй прокси?"
+
+msgid "More as next page"
+msgstr "Подробнее в следующем странице"
+
+msgid ":for"
+msgstr "Для"
+
+msgid "Programs"
+msgstr "Программы"
+
+msgid "Information & journalism"
+msgstr "Информация и журналистика"
+
+msgid "Information Services"
+msgstr "Информационные услуги"
+
+msgid "Journalism"
+msgstr "Журналистика"
+
+msgid "Program A-Z"
+msgstr "Программа A-Z"
+
+msgid "Prefered format"
+msgstr "Предпочтительный формат"
+
+msgid "SORT"
+msgstr "СОРТИРОВАТЬ"
+
+msgid "LATEST VIDEOS"
+msgstr "ПОСЛЕДНИЕ ВИДЕО"
+
+msgid "SHOW REPLAY"
+msgstr "ИГРАТЬ ШОУ"
+
+msgid "WWE NETWORK"
+msgstr "WWE СЕТЬ"
+
+msgid "SMACKDOWN"
+msgstr "ОБРУШИТЬ"
+
+msgid "LUCHA UNDERGROUND"
+msgstr "Подпольный бойцовский"
+
+msgid "DEFAULT"
+msgstr "ПО УМОЛЧАНИЮ"
+
+msgid "VIEWS"
+msgstr "ПРОСМОТРЫ"
+
+msgid "DATE"
+msgstr "ДАТА"
+
+msgid "format: best"
+msgstr "Формат: лучший"
+
+msgid "format: worst"
+msgstr "Формат: наихудший"
+
+msgid "format: 720"
+msgstr "Формат: 720"
+
+msgid "format: 240p"
+msgstr "Формат: 240p"
+
+msgid "format: 360p"
+msgstr "Формат: 360p"
+
+msgid "format: 480p"
+msgstr "Формат: 480p"
+
+msgid "Cannot find player content"
+msgstr "Не можете найти содержание плеер"
+
+msgid "Sort movies: "
+msgstr "Сортировать фильмы: "
+
+msgid "last added"
+msgstr "Последние добавленные"
+
+msgid "last watched"
+msgstr "Последнее наблюдал"
+
+msgid "views"
+msgstr "Просмотры"
+
+msgid "favorite"
+msgstr "Любимый"
+
+msgid "TOP100 Week"
+msgstr "TOP100 Неделю"
+
+msgid "TOP100 of the Month"
+msgstr "TOP100 месяца"
+
+msgid "Iplex use a proxy?"
+msgstr "Iplex использовать прокси-сервер?"
+
+msgid "WrestlingNet._listVideos - no markers [m1][m2] found!"
+msgstr "WrestlingNet._listВидео - без маркеров [м1] [м2] найден!"
+
+msgid ""
+"Please visit '%s' from using web-browser form the PC. If links are available "
+"please report this problem.\n"
+"Email: samsamsam@o2.pl"
+msgstr ""
+"Пожалуйста, посетите '%s' от использования веб-браузера образуют ПК. Если "
+"ссылки доступны, пожалуйста, сообщите об этой проблеме.\n"
+"E-mail: samsamsam@o2.pl"
+
+msgid ""
+"Last error: \"Videomega has blocked your IP for some time. Please retry this "
+"link after some time.\""
+msgstr ""
+"Последняя ошибка: \"Videomega заблокировал ваш IP в течение некоторого "
+"времени. Пожалуйста, повторите попытку открыть эту ссылку после некоторого "
+"времени.\""
+
+msgid "Newest added"
+msgstr "Последним добавил"
+
+msgid "Oldest added"
+msgstr "Старые добавил"
+
+msgid "Newest year"
+msgstr "Новый год"
+
+msgid "Oldest year"
+msgstr "Старые год"
+
+msgid "Best rating"
+msgstr "СМС голосование"
+
+msgid "Worse rating"
+msgstr "Хуже рейтинг"
+
+msgid "Most viewed"
+msgstr "Наиболее просматриваемые"
+
+msgid "Less viewed"
+msgstr "Меньше просматриваемые"
+
+msgid "Login failed."
+msgstr "Ошибка входа."
+
+msgid ""
+"This host requires registration. \n"
+"Please fill your login and password in the host configuration. Available "
+"under blue button."
+msgstr ""
+"Этот узел требует регистрации. \n"
+"Заполните свой логин и пароль в конфигурации хост. Доступен под синюю кнопку."
+
+msgid "Default video quality"
+msgstr "По умолчанию качество видео"
+
+msgid "Use default video quality"
+msgstr "Использование качество видео по умолчанию"
+
+msgid "Icon type"
+msgstr "Тип иконка"
+
+msgid "The problem with user logon \"%s\".\n"
+msgstr "Проблема с входом пользователя \"%s\".\n"
+
+msgid "Randomize a playlist"
+msgstr "Функция случайного воспроизведения"
+
+msgid "New Releases"
+msgstr "Новые релизы"
+
+msgid "Categorization:"
+msgstr "Категоризации:"
+
+msgid "http://online-kinopokaz.ru/"
+msgstr "Кинопоказ"
+
+msgid "Labels"
+msgstr "Этикетки"
+
+msgid "Latest Update"
+msgstr "Последнее обновление"
+
+msgid "Anime List"
+msgstr "Аниме Список"
+
+msgid "Create Date"
+msgstr "Дата создания"
+
+msgid "Top Movies"
+msgstr "Лучшие фильмы"
+
+msgid "New HD Videos"
+msgstr "Новые HD Видео"
+
+msgid "Use proxy gateway"
+msgstr "Использовать прокси-шлюз"
+
+msgid "show iframe for audio item"
+msgstr "Включить заставку в режиме ауди"
+
+msgid "Iframe file"
+msgstr "Расположение заставки"
+
+msgid "Clear iframe file"
+msgstr "Расположение очистить заставки"
+
+msgid "Total size: "
+msgstr "Размер файла: "
+
+msgid "Show file size"
+msgstr "Показать размер файла"
+
+msgid "All Leagues"
+msgstr "Все Лиги"
+
+msgid "Previous Seasons"
+msgstr "Предыдущие сезоны"
+
+msgid "Goal Of The Month"
+msgstr "Игры месяца"
+
+msgid "Promoted"
+msgstr "Повышен"
+
+msgid "Catrtoon list"
+msgstr "Список мультфильмов"
+
+msgid "New cartoon"
+msgstr "Новый мультфильм"
+
+msgid "Sort by alphabet"
+msgstr "Сортировка по алфавиту"
+
+msgid "Sort by popularity"
+msgstr "Сортировать по популярности"
+
+msgid "Latest update"
+msgstr "Последнее обновление"
+
+msgid "Remove disabled services"
+msgstr "Удалить сервисы которые не работают"
+
+msgid ""
+"Some changes will be applied only after plugin update.\n"
+"Do you want to perform update now?"
+msgstr ""
+"Некоторые изменения будут применены только после обновления плагина.\n"
+"Вы хотите, чтобы выполнить обновление?"
+
+msgid "Make directory [%s]"
+msgstr "Создать каталог [%s]"
+
+msgid ""
+"Can not get mount points - cmd mount failed.\n"
+"Return code[%s].\n"
+"Return data[%s]."
+msgstr ""
+"Невозможно получить точки монтирования - cmd монтирования неудачная.\n"
+"Код возврата[%s].\n"
+"Возврат данных[%s]."
+
+msgid ""
+"Mount ISO file [%s] on [%s] failed.\n"
+"Return code[%s].\n"
+"Return data[%s]."
+msgstr ""
+"Монтировать ISO файл [%s] на [%s] не смогли.\n"
+"Код возврата[%s].\n"
+"Возврат данных[%s]."
+
+msgid "Mounted on %s"
+msgstr "Прикреплено к %s"
+
+msgid "Umount iso file"
+msgstr "Размонтирование файл iso"
+
+msgid "Set file name"
+msgstr "Установить имя файла"
+
+msgid "File \"%s\" already exists!"
+msgstr "Файл \"%s\" уже существует!"
+
+msgid "Mangas"
+msgstr "Мангас"
+
+msgid "By Year"
+msgstr "По годам"
+
+msgid "Recently Added"
+msgstr "Недавно добавленный"
+
+msgid "New"
+msgstr "Новый"
+
+msgid "Home"
+msgstr "Главная"
+
+msgid "Season"
+msgstr "Время года"
+
+msgid ""
+"Plugin can be run on one of the following platforms: sh4, mipsel, i686, "
+"armv7, armv5t."
+msgstr ""
+"Плагин может работать на одной из следующих платформ: sh4, mipsel, i686, "
+"armv7, armv5t."
+
+msgid "SovDub"
+msgstr "Совесткий дубляж"
+
+msgid "Foreign films"
+msgstr "Зарубежные фильмы"
+
+msgid "Major rankings"
+msgstr "Основные рейтинги"
+
+msgid "By year"
+msgstr "По годам"
+
+msgid "Watch Trailer"
+msgstr "Смотреть трейлер"
+
+msgid "[Trailer]"
+msgstr "[Трейлер]"
+
+msgid "Detection of the OpenSSL 1.0.0 version."
+msgstr "Обнаружение версии OpenSSL 1.0.0."
+
+msgid ""
+"Fatal Error!\n"
+"Openssl could not be found. Please install it and retry."
+msgstr ""
+"Фатальная ошибка!\n"
+"Openssl не может быть найден. Пожалуйста, установите его и повторите."
+
+msgid ""
+"Fatal Error!\n"
+"Your Openssl is not supported."
+msgstr ""
+"Фатальная ошибка!\n"
+"Ваш Openssl не поддерживается."
+
+msgid ""
+"OpenSSL in your image is not supported.\n"
+"Some functions may not work correctly."
+msgstr ""
+"OpenSSL в изображении не поддерживается.\n"
+"Некоторые функции могут работать некорректно."
+
+msgid "Install into the \"%s\"."
+msgstr "Установить в \"%s\"."
+
+msgid "Decode file [%s] problem."
+msgstr "Раскодировать файл [%s] проблема."
+
+msgid "Latest movies"
+msgstr "Последние фильмы"
+
+msgid "Movies genres"
+msgstr "Фильмы жанры"
+
+msgid "Movies by year"
+msgstr "Фильмы по годам"
+
+msgid "TV Series"
+msgstr "Телесериал"
+
+msgid "Series list"
+msgstr "Список серии"
+
+msgid "Popular Episodes"
+msgstr "Популярные эпизоды"
+
+msgid "Newest Episodes"
+msgstr "Новые эпизоды"
+
+msgid "All A-Z"
+msgstr "Все A-Z"
+
+msgid "From E2 settings"
+msgstr "Настройки E2"
+
+msgid "bestfit"
+msgstr "Оптимальное"
+
+msgid "panscan"
+msgstr "Панорама"
+
+msgid "letterbox"
+msgstr "Режим ящика"
+
+msgid "nonlinear"
+msgstr "Без чёрных полос"
+
+msgid "Cartoons"
+msgstr "Мультсериалы"
+
+msgid "Genre selection"
+msgstr "Выбор жанра"
+
+msgid "By country"
+msgstr "По странам"
+
+msgid "Translations"
+msgstr "Переводы"
+
+msgid "Collections"
+msgstr "Подборки"
+
+msgid ""
+"Link is not supported by the gstplayer. Please use the extelayer3 if "
+"available."
+msgstr ""
+"Ссылка не поддерживается проигрывателем gstplayer. Пожалуйста, используйте "
+"extelayer3 если таковая имеется."
+
+msgid "Fatal error: consoleWrite failed!"
+msgstr "Фатальная ошибка: Консоль записи произошел сбой!"
+
+msgid "Most Viewed"
+msgstr "Наиболее просматриваемые"
+
+msgid "Windows Media Video 9 Screen decoder"
+msgstr "Windows Медиа Видео 9 Экран декодер"
+
+msgid "Sort alphabetically"
+msgstr "Сортировать по алфавиту"
+
+msgid "Fail to get captcha data."
+msgstr "Не удалось получить данные."
+
+msgid "Send"
+msgstr "Послать"
+
+msgid "Answer"
+msgstr "Ответ"
+
+msgid "Wrong answer."
+msgstr "Неверный ответ."
+
+msgid "Get free credits"
+msgstr "Получить кредиты бесплатно"
+
+msgid "Fail to get \"%s\""
+msgstr "Не удалось получить \"%s\""
+
+msgid "Subtitles conversion to UTF-8 failed."
+msgstr "Субтитры преобразование в UTF-8 не удалось."
+
+msgid "Simplify the title and try again."
+msgstr "Упростить название и повторите попытку."
+
+msgid "Ukrainian proxy server url"
+msgstr "Адрес украинского прокси-сервер"
+
+msgid "file://"
+msgstr "путь://"
+
+msgid "An error occurred while writing into: %s"
+msgstr "Произошла ошибка при записи в: %s"
+
+msgid "Top Cartoons"
+msgstr "Лучшие Мультики"
+
+msgid "Anime"
+msgstr "Аниме"
+
+msgid "Cartoon List"
+msgstr "Список мультфильмов"
+
+msgid "only Anime"
+msgstr "Только аниме"
+
+msgid "only Cartoons"
+msgstr "Только мультфильм"
+
+msgid "Views"
+msgstr "Просмотры"
+
+msgid "Preview"
+msgstr "Предварительный просмотр"
+
+msgid ""
+"It seems that the subtitle's provider \"%s\" has crashed. Do you want to "
+"report this problem?"
+msgstr ""
+"Кажется, что поставщик субтитры \"%s\" разбился. Вы хотите, чтобы сообщить о "
+"проблеме?"
+
+msgid "Subtitles \"%s\" downloaded correctly."
+msgstr "Субтитры \"%s\" скачал правильно."
+
+msgid "Do you want to finish?"
+msgstr "Вы хотите, включить субтитры?"
+
+msgid "Season %s"
+msgstr "Время года %s"
+
+msgid "Failed to create directory \"%s\"."
+msgstr "Не удалось создать каталог \"%s\"."
+
+msgid "Unzip error code[%s]."
+msgstr "Распакуйте код ошибки[%s]."
+
+msgid "It seems that unzip utility is not installed."
+msgstr "Создается впечатление, что утилита разархивировать не установлена."
+
+msgid "Wrong format of zip archive."
+msgstr "Неправильный формат почтового архива."
+
+msgid "Unrar error code[%s]."
+msgstr "Unrar код ошибки[%s]."
+
+msgid "It seems that unrar utility is not installed."
+msgstr "Кажется, что unrar утилита не установлена."
+
+msgid "Wrong format of rar archive."
+msgstr "Неправильный формат rar архива."
+
+msgid "Failed to write the file \"%s\"."
+msgstr "Не удалось записать файл \"%s\"."
+
+msgid "Failed to convert the file \"%s\" to UTF-8."
+msgstr "Не удалось преобразовать файлы \"%s\" в UTF-8."
+
+msgid "Failed to open the file \"%s\"."
+msgstr "Не удалось открыть файл \"%s\"."
+
+msgid "Login failed!"
+msgstr "Ошибка входа!"
+
+msgid ""
+"Error message: \"%s\".\n"
+"Error code: \"%s\"."
+msgstr ""
+"Сообщение об ошибке: \"%s\".\n"
+"Код ошибки: \"%s\"."
+
+msgid "Get languages failed!"
+msgstr "Получить языки не удалось!"
+
+msgid "Failed to download subtitle."
+msgstr "Не удалось загрузить субтитры."
+
+msgid "Failed to gzip."
+msgstr "Не удалось gzip."
+
+msgid "Failed to decode to UTF-8."
+msgstr "Не удалось декодировать в UTF-8."
+
+msgid "Failed to write file \"%s\"."
+msgstr "Не удалось записать файл \"%s\"."
+
+msgid "json load error 2"
+msgstr "Ошибка загрузки 2 json"
+
+msgid ""
+"Download subtitles error.\n"
+"wget error code[%d]."
+msgstr ""
+"Ошибка скачать субтитры.\n"
+"wget код ошибки[%d]."
+
+msgid "unzip error - please check if utitlity unzip is available"
+msgstr ""
+"распакуйте ошибка - пожалуйста, проверьте, если утилита распакуйте доступна"
+
+msgid "write error"
+msgstr "ошибка записи"
+
+msgid "decode error"
+msgstr "ошибка декодирования"
+
+msgid "read error"
+msgstr "ошибка чтения"
+
+msgid "gzip error"
+msgstr "ошибка gzip"
+
+msgid "_checkStatus except error"
+msgstr "Проверка статуса, за исключением ошибок"
+
+msgid "Confirm the title of the movie"
+msgstr "Подтвердите название фильма"
+
+msgid "Searching subtitles for \"%s\""
+msgstr "Поиск субтитры для \"%s\""
+
+msgid "Select subtitles provider:"
+msgstr "Выбор провайдера субтитров:"
+
+msgid "OpenSubtitles.org"
+msgstr "Открытые субтитры"
+
+msgid "Napisy24.pl"
+msgstr "Субтитры24"
+
+msgid "Titlovi.com"
+msgstr "Титлы"
+
+msgid "Youtube.com"
+msgstr "Youtube"
+
+msgid "Subscene.com"
+msgstr "Subscene"
+
+msgid "If available you can choose other source."
+msgstr "При наличии вы можете выбрать другой источник."
+
+msgid "Reverse a playlist"
+msgstr "Повторить плейлист"
+
+msgid "Use UA proxy server to get file lists"
+msgstr "С помощью UA прокси-сервер, чтобы получить списки файлов"
+
+msgid "any"
+msgstr "Любые"
+
+msgid "C subtitle parser"
+msgstr "C парсер субтитров"
+
+msgid "It improves subtitles parsing.\n"
+msgstr "Он улучшает субтитры синтаксического анализа.\n"
+
+msgid "Use subtitles parser extension if available"
+msgstr "Использовать субтитры расширения парсер, если доступно"
+
+msgid "Copy post installed binaries."
+msgstr "Копировать после установки двоичных файлов."
+
+msgid "IPTVPlayer - Start"
+msgstr "IPTVПлеер - Запуск"
+
+msgid "Info..."
+msgstr "Информация"
+
+msgid "Sort Myfreecams :"
+msgstr "Сортировка Myfreecams :"
+
+msgid "Global search :"
+msgstr "Глобальный поиск :"
+
+msgid "Global sorting :"
+msgstr "Глобальная сортировка :"
+
+msgid "External player use software decoder for the AC3"
+msgstr "Применить наружный декодер для AC3"
+
+msgid "External player use software decoder for the EAC3"
+msgstr "Применить наружный декодер для EAC3"
+
+msgid "External player use software decoder for the MP3"
+msgstr "Применить наружный декодер для MP3"
+
+msgid ""
+"Using this host in your country can be illegal.\n"
+"Do you want to continue at your own risk?"
+msgstr ""
+"Используя этот хост в вашей стране может быть незаконным.\n"
+"Вы хотите продолжить на свой страх и риск?"
+
+msgid "http://tree.tv/"
+msgstr "tree"
+
+msgid "Live TV"
+msgstr "Прямой эфир"
+
+msgid "Live Radio"
+msgstr "Радио в прямом эфире"
+
+msgid "Icons quality"
+msgstr "Качество иконки"
+
+msgid "Your language preference:"
+msgstr "Ваши предпочтения языка:"
+
+msgid "By title"
+msgstr "По названию"
+
+msgid "Dokumentalne"
+msgstr "Документальный"
+
+msgid "Dla dzieci"
+msgstr "Для детей"
+
+msgid "Verify"
+msgstr "Проверить"
+
+msgid "Stand-Up"
+msgstr "Встаньте"
+
+msgid ""
+"Please remember to visit http://www.sport365.live/ and watch a few "
+"advertisements.\n"
+"This will fix problem, if your playback is constantly interrupted."
+msgstr ""
+"Пожалуйста, не забудьте посетить http://www.sport365.live/ и посмотреть "
+"несколько рекламных объявлений.\n"
+"Это позволит устранить проблему, если воспроизведение постоянно прерывается."
+
+msgid "Anime list"
+msgstr "Список аниме"
+
+msgid "Movies list"
+msgstr "Список фильмов"
+
+msgid "Opening. Please wait..."
+msgstr "Открытие. Пожалуйста , подождите ..."
+
+msgid "Closing. Please wait..."
+msgstr "Закрытие. Пожалуйста , подождите ..."
+
+msgid "Alternative proxy server (2)"
+msgstr "Альтернативный прокси - сервер (2)"
+
+msgid "Alternative proxy server (1)"
+msgstr "Альтернативный прокси - сервер (1)"
+
+msgid "Use proxy server:"
+msgstr "Использовать прокси - сервер:"
+
+msgid "Any"
+msgstr "Любые"
+
+msgid "Year: "
+msgstr "Год: "
+
+msgid "Connection to server failed!"
+msgstr "Подключение к серверу не удалось!"
+
+msgid "Enable reordering"
+msgstr "Включить перемещения"
+
+msgid "Disable reordering"
+msgstr "Отключить перемещения"
+
+msgid ""
+"To watch videos from http://vk.com/ you need to login.\n"
+"Please fill your login and password in the IPTVPlayer configuration."
+msgstr ""
+"Для просмотра видео с http://vk.com/ необходимо авторизоваться на сайте.\n"
+"Пожалуйста , заполните свой логин и пароль в конфигурации IPTVPlayer."
+
+msgid ""
+"Login user \"%s\" to http://vk.com/ failed!\n"
+"Please check your login data in the IPTVPlayer configuration."
+msgstr ""
+"Логин пользователя \"%s\" войти http://vk.com/ не удалось!\n"
+"Пожалуйста , проверьте свои данные для входа в конфигурации IPTVPlayer."
+
+msgid "The problem with user logon \"%s\"."
+msgstr "Проблема входа пользователя в систему \"%s\"."
+
+msgid "http://sovdub.ru/"
+msgstr "Совесткий дубляж"
+
+msgid "Video mode"
+msgstr "Режим видео"
+
+msgid "Is this message displayed correctly?"
+msgstr "Отображается это сообщение правильно?"
+
+msgid "Preferred format:"
+msgstr "Предпочтительный формат:"
+
+msgid "Use web-proxy (it may be illegal):"
+msgstr "Использование веб-прокси (это может быть незаконно):"
+
+msgid "Latest programs"
+msgstr "Последние программы"
+
+msgid "Latest news broadcast"
+msgstr "Последние новости вещания"
+
+msgid "Last chance"
+msgstr "Последний шанс"
+
+msgid "Live broadcasts"
+msgstr "Прямые трансляции"
+
+msgid "Programs A-Ö"
+msgstr "Программы A-Ö"
+
+msgid "Only available in Sweden.\n"
+msgstr "Доступно только в Швеции.\n"
+
+msgid "Only available in Sweden."
+msgstr "Доступно только в Швеции."
+
+msgid "Detection of glibc version."
+msgstr "Обнаружение glibc версии."
+
+msgid "Detection version of installed standard C library."
+msgstr "Обнаружение версии установленной стандартной библиотеки C."
+
+msgid "hlsdl downloader"
+msgstr "hlsdl загрузчик"
+
+msgid ""
+"\n"
+"For more info please ask samsamsam@o2.pl"
+msgstr ""
+"\n"
+"Для получения дополнительной информации, пожалуйста спросите  у samsamsam@o2."
+"pl"
+
+msgid "It improves HLS/M3U8 stream download.\n"
+msgstr "Это улучшает HLS/M3U8 потока загрузки.\n"
+
+msgid "Alternative domain:"
+msgstr "Альтернативный домен:"
+
+msgid ""
+"Fatal Error!\n"
+"Plugin is not supported with your platform."
+msgstr ""
+"Фатальная ошибка!\n"
+"Плагин не поддерживается на вашей платформе."
+
+msgid ""
+"\n"
+"Please visit http://duktape.org/"
+msgstr ""
+"\n"
+"Пожалуйста, посетите http://duktape.org/"
+
+msgid ""
+"Duktape is an embeddable Javascript engine, with a focus on portability and "
+"compact footprint.\n"
+msgstr ""
+"Duktape - это встраиваемый движок Javascript с акцентом на портативность и "
+"компактность.\n"
+
+msgid "TV Show"
+msgstr "ТВ шоу"
+
+msgid ""
+"Access to this service requires login.\n"
+"Please register on the site \"%s\" and then put your e-mail and password in "
+"the host configuration under blue button."
+msgstr ""
+"Для доступа к этой услуге требуется вход в систему.\n"
+"Пожалуйста, зарегистрируйтесь на сайте \"%s\", после чего введите свою "
+"электронную почту и пароль в конфигурацию хоста по голубой кнопке."
+
+msgid "Login mode"
+msgstr "Режим входа"
+
+msgid "Secure cookie name"
+msgstr "Безопасное имя файла cookie"
+
+msgid "Secure cookie value"
+msgstr "Безопасное значение cookie"
+
+msgid "Name"
+msgstr "Имя"
+
+msgid "ID"
+msgstr "Идентификация"
+
+msgid "Trailer"
+msgstr "Трейлер"
+
+msgid ""
+"This service requires a new Enigma2 image with a Python version %s or later."
+msgstr ""
+"Этот сервис требует нового enigma2 изображения с версией Python %s или более "
+"поздней версией."
+
+msgid "Genre: "
+msgstr "Жанр: "
+
+msgid "Order by: "
+msgstr "Сортировать по: "
+
+msgid "Score at least: "
+msgstr "Оценка по крайней мере: "
+
+msgid "trailer"
+msgstr "Трейлер"
+
+msgid "Advance (cookie item)"
+msgstr "Авансовый (элемент cookie)"
+
+msgid "Simple (e-mail, password)"
+msgstr "Простой (адрес электронной почты, пароль)"
+
+msgid "Top series"
+msgstr "Лучшие серии"
+
+msgid "Top movies"
+msgstr "Лучшие фильмы"
+
+msgid "Upcoming"
+msgstr "Предстоящие"
+
+msgid "Most watched"
+msgstr "Самые просматриваемые"
+
+msgid "Last update"
+msgstr "Последнее обновление"
+
+msgid "Cartoon list"
+msgstr "Список мультфильмов"
+
+msgid "Initialize web interface (experimental)"
+msgstr "Включить веб-интерфейс (экспериментальный)"
+
+msgid "Allow watched flag to be set (experimental)"
+msgstr "Разрешить просмотр установленного флага (экспериментальный)"
+
+msgid "The color of the viewed item"
+msgstr "Цвет просматриваемого объекта"
+
+msgid "The color of the watched item"
+msgstr "Цвет из часов эд пункта"
+
+msgid "Unset watched"
+msgstr "Отменить просмотр"
+
+msgid "Set watched"
+msgstr "Установить наблюдаемый"
+
+msgid "http://kinotan.ru/"
+msgstr "Кинотан"
+
+msgid "Show paid items (it may be illegal)"
+msgstr "Показывать платные предметы (это может быть незаконно)"
+
+msgid "Show items with DRM"
+msgstr "Показывать элементы с DRM"
+
+msgid "Items with DRM protection."
+msgstr "Элементы с защитой DRM."
+
+msgid "Video with DRM protection."
+msgstr "Видео с защитой DRM."
+
+msgid "Trailers"
+msgstr "Трейлеры"

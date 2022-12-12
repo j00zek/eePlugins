@@ -1,0 +1,128 @@
+<skin>
+  <colors>
+    <color name="background" value="#18000000"/>
+    <color name="backtop" value="#001b2c47"/>
+    <color name="black" value="#00000000"/>
+    <color name="Black" value="#00000000"/>
+    <color name="blue" value="#0000cbf6"/>
+    <color name="blue_epg" value="#000b2b4e"/>
+    <color name="border" value="#00292929"/>
+    <color name="cyan" value="#000090e6" />
+    <color name="dark" value="#00294a6b"/>
+    <color name="dark_blue" value="#00005ea0"/>
+    <color name="dark_grey" value="#00595959"/>
+    <color name="foreground" value="#00ffffff"/>
+    <color name="green" value="#007ad927"/>
+    <color name="green_epg" value="#00096509"/>
+    <color name="grey" value="#00dcdcdc"/>
+    <color name="lemon" value="#00c0f000"/>
+    <color name="light_grey" value="#00bababa"/>
+    <color name="light_red" value="#00f52a6d"/>
+    <color name="light_yellow" value="#FDE456"/>
+    <color name="linie" value="#00828282"/>
+    <color name="orange" value="#00ff6215"/>
+    <color name="pastel" value="#00ffffd8"/>
+    <color name="picture" value="#ff000000"/>
+    <color name="podsw" value="#00ffffd1"/>
+    <color name="red" value="#00db0000"/>
+    <color name="selected" value="#00013956"/>
+    <color name="transparent" value="#ffffffff"/>
+    <color name="transpBlack" value="#19000000"/>
+    <color name="transpBlack_1" value="#25000000"/>
+    <color name="transpWhite" value="#77d4d4d4"/>
+    <color name="transpyellow" value="#33bab329"/>
+    <color name="white" value="#FFFFFF"/>
+    <color name="yellow" value="#FFFF00"/>
+    <!-- kolory metrixa dla lepszej kompatybilności z niektórymi wtyczkami -->
+    <color name="unffffff" value="#00ffffff" />
+  </colors>
+  <windowstyle type="skinned" id="0">
+    <title offset="33,22" font="Roboto_HD;26"/>
+    <color name="Background" color="background"/>
+	<color name="LabelForeground" color="white"/>
+    <color name="ListboxBackground" color="background"/>
+	<color name="ListboxForeground" color="white"/>
+	<color name="ListboxSelectedBackground" color="#00191919"/>
+	<color name="ListboxSelectedForeground" color="#00a2c300"/> 
+	<color name="ListboxMarkedBackground" color="#25191919"/>
+	<color name="ListboxMarkedForeground" color="#FFFFFF"/>
+	<color name="ListboxMarkedAndSelectedBackground" color="black"/>
+	<color name="ListboxMarkedAndSelectedForeground" color="orange"/>
+    <color name="WindowTitleForeground" color="foreground"/>
+    <color name="WindowTitleBackground" color="background"/>
+    <borderset name="bsWindow">
+      <pixmap pos="bpTopLeft" filename="BlackHarmony/bg_design/bs_tl.png"/>
+      <pixmap pos="bpTop" filename="BlackHarmony/bg_design/bs_t.png"/>
+      <pixmap pos="bpTopRight" filename="BlackHarmony/bg_design/bs_tr.png"/>
+      <pixmap pos="bpLeft" filename="BlackHarmony/bg_design/bs_l.png"/>
+      <pixmap pos="bpRight" filename="BlackHarmony/bg_design/bs_r.png"/>
+      <pixmap pos="bpBottomLeft" filename="BlackHarmony/bg_design/bs_bl.png"/>
+      <pixmap pos="bpBottom" filename="BlackHarmony/bg_design/bs_b.png"/>
+      <pixmap pos="bpBottomRight" filename="BlackHarmony/bg_design/bs_br.png"/>
+    </borderset>
+  </windowstyle>
+  <fonts>  
+    <alias name="PluginBrowser0" font="Regular" size="25" height="70" />
+    <alias name="PluginBrowser1" font="Regular" size="20" />
+    <alias name="VirtualKeyBoard" font="Regular" size="30" height="65"/>
+    <alias name="HelpMenuList" font="Regular" size="26" height="40" />
+    <alias name="ChoiceList" font="Roboto_HD" size="27" height="40"/>
+    <alias name="FileList" font="Roboto_HD" size="24" height="45"/>
+    <alias name="SetList" font="Roboto_HD" size="27" height="40"/>
+    <alias name="FileListMulti" font="Roboto_HD" size="24" height="45"/>
+    <alias name="SelectionList" font="Roboto_HD" size="27" height="45" />
+    <alias name="PlayList" font="Roboto_HD" size="26" height="40"/>
+    <alias name="ServiceInfo" font="Roboto_HD" size="27" height="40" />
+    <alias name="ChoiceBoxDescription" font="Roboto_HD" size="26" height="40"/>
+    <alias name="TextNormal" font="Roboto_HD" size="26" height="40"/>
+    <alias name="SHOUTcastListItem" font="Roboto_HD" size="25" height="110"/>
+    <alias name="iptvupdatelistitem_0" font="Roboto_HD" size="24" height="35"/>
+    <alias name="iptvupdatelistitem_1" font="Roboto_HD" size="27" height="35"/>
+  </fonts>
+  <parameters>
+    <parameter name="ConfigListSlider" value="22,1"/>
+    <parameter name="ConfigListSeperator" value="550"/>
+    <!--             ServiceInfoList                         -->
+    <parameter name="ServiceInfo" value="0, 0, 250, 40"/>
+    <parameter name="ServiceInfoLeft" value="0, 0, 390, 40"/>
+    <parameter name="ServiceInfoRight" value="400, 0, 840, 40"/>
+    <!--            PluginList                         -->
+    <parameter name="PluginListFont1" value="Roboto_HD; 26"/>
+    <parameter name="PluginListFont2" value="Roboto_HD; 22"/>
+    <parameter name="PluginListItemHeight" value="70"/>
+    <parameter name="PluginListName" value="140,4,775,37"/>
+    <parameter name="PluginListDescription" value="140,38,775,32"/>
+    <parameter name="PluginListIcon" value="10,14,100,40"/>
+    <!--            PluginListDownload                 -->
+    <parameter name="PluginBrowserName" value="180,8,38" />
+    <parameter name="PluginBrowserDescr" value="180,42,25" />
+    <parameter name="PluginBrowserIcon" value="15,8,150,60" />
+    <parameter name="PluginBrowserDownloadName" value="120,8,38" />
+    <parameter name="PluginBrowserDownloadDescr" value="120,42,25" />
+    <parameter name="PluginBrowserDownloadIcon" value="15,0,90,75" />
+    <!--            VirtualKeyBoard                      -->
+	<parameter name="VirtualKeyBoard" value="45,85"/>
+    <parameter name="VirtualKeyBoardAlignment" value="0,0"/>
+	<parameter name="VirtualKeyBoardPadding" value="4,4"/>
+	<parameter name="VirtualKeyBoardShiftColors" value="16777215, 16777215, 65535, 16711935"/>
+	<!--             SHOUTcastList                      -->
+	<parameter name="SHOUTcastListItem" value="25, 25, 45, 110, 35, 37, 75, 35"/>
+	<!--             CCcamConfigListEntry                         -->
+    <parameter name="SelectionListDescr" value="50,5,880,40"/>
+	<parameter name="SelectionListLock" value="10,10,27,24"/>
+	<parameter name="SelectionListLockOff" value="10,10,27,24"/>	
+	<parameter name="ChoicelistName" value="80,0,880,40"/>
+	<parameter name="ChoicelistIcon" value="10,10,60,40"/>	
+	<parameter name="ChoicelistDash" value="0,2,700,2"/>
+	<!--            ListBackup                      -->
+	<parameter name="FileListName" value="40,2,660,28"/>
+	<parameter name="FileListIcon" value="10,4,20,20"/>
+	<parameter name="FileListMultiName" value="60,2,640,28"/>
+	<parameter name="FileListMultiIcon" value="30,4,20,20"/>
+	<parameter name="FileListMultiLock" value="2,0,25,25"/>
+	<!--             VTi Image start                         -->
+    <parameter name="AudioSelectionSliderSeparation" value="275" />
+    <parameter name="ConfigListSliderSeparation" value="250" />
+    <!--             VTi Image end                         -->
+  </parameters>
+</skin>

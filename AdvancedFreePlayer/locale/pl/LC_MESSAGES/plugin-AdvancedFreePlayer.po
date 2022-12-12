@@ -1,0 +1,418 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: tuxbox-enigma 0.0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-11-01 13:01+0000\n"
+"PO-Revision-Date: 2015-10-08 14:30+0100\n"
+"Last-Translator: \n"
+"Language-Team: j00zek\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: polish\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 1.5.5\n"
+
+msgid "About"
+msgstr "Informacje"
+
+msgid "DMnapi"
+msgstr "DMnapi"
+
+msgid ""
+"Player KEYMAP:\n\n"
+"up/down - position subtitle\n"
+"left/right - size subtitle\n"
+"channel up/down - seek+/- subtitle\n"
+"3/6/9 - seek+ 30s/2min/5min movie\n"
+"1/4/7 - seek- 15s/2min/5min movie\n"
+"play - pause on/off\n"
+"red - change aspect ratio\n"
+"green - change background color\n"
+"yellow - change type font\n"
+"blue - change color font\n"
+"TV - show/hide subtitle\n"
+"text - Download subtitles\n"
+"menu/info - show about\n"
+"ok - infobar\n"
+"audio - change audio track\n"
+msgstr ""
+"Klawisze odtwarzacza:\n\n"
+"góra/dół - pozycja napisów\n"
+"w prawo/w lewo - wielkość napisów\n"
+"kanał góra/dół - korekta czasu napisów\n"
+"3/6/9 - przewiń do przodu 30sek/2min/5min\n"
+"1/4/7 - przewiń do tyłu 15sek/2min/5min\n"
+"play - wł/wył pauzę\n"
+"czerwony - zmiana proporcji ekranu\n"
+"zielony - zmiana koloru tła\n"
+"żółty - zmiana czcionki napisów\n"
+"niebieski - zmiana koloru napisów\n"
+"TV - pokaż/ukryj napisy\n"
+"text - Pobierz napisy\n"
+"menu/info - informacje\n"
+"ok - pasek informacyjny\n"
+"audio - zmiana ścieżki dźwiękowej\n"
+
+msgid "Play"
+msgstr "Odtwarzaj"
+
+msgid "Play movie with subtitles"
+msgstr "Odtwarzaj film z napisami"
+
+msgid "Please select movie and subtitle"
+msgstr "Wybierz film i napisy"
+
+msgid ""
+"Please select movie files !\n"
+"\n"
+msgstr ""
+"Wybierz plik z filmem !\n"
+"\n"
+
+msgid "Sort"
+msgstr "Sortuj"
+
+msgid "Config"
+msgstr "Konfiguracja"
+
+msgid "Movie: "
+msgstr "Film: "
+
+msgid "Subtitle: "
+msgstr "Napisy: "
+
+msgid "FileList font size (20-32):"
+msgstr "Wielkość czcionki na liście (20-32):"
+
+msgid "MultiFramework selection:"
+msgstr "Wersja MultiFramework:"
+
+msgid "Error load subtitle !!!"
+msgstr "Błąd ładowania pliku z napisami !!!"
+
+msgid "Install DMnapi"
+msgstr "Instalacja DMnapi"
+
+msgid "Sort by filename"
+msgstr "Posortowano wg nazw plików"
+
+msgid "Sort by date"
+msgstr "Posortowano wg daty"
+
+msgid "Save"
+msgstr "Zapisz"
+
+msgid "Cancel"
+msgstr "Anuluj"
+
+msgid "Update"
+msgstr "Aktualizacja"
+
+msgid "Initial movies folder:"
+msgstr "Katalog startowy:"
+
+msgid "Stop playing entering AdvancedFreePlayer:"
+msgstr "Zatrzymaj TV przy starcie:"
+
+msgid "Remember last used folder:"
+msgstr "Pamiętaj ostatnio wybrany katalog"
+
+msgid "%s %s Config"
+msgstr "Konfiguracja %s %s"
+
+msgid "Select during start"
+msgstr "Wybór przy starcie odtwarzania"
+
+msgid "Updating plugin"
+msgstr "Aktualizacja wtyczki"
+
+msgid "Required program 'curl' is not installed. Trying to install it via OPKG."
+msgstr "Wymagany program 'curl' jest niezainstalowany. Próbuję zainstalować przez OPKG"
+
+msgid "Required program 'curl' is not available. Please install it first manually."
+msgstr "Wymagany program 'curl' jest niedostępny. Zainstaluj go najpierw ręcznie"
+
+msgid "Checking installation mode..."
+msgstr "Sprawdzam tryb instalacji"
+
+msgid "AdvancedFreePlayer controlled by OPKG. Please use it for updates."
+msgstr "AdvancedFreePlayer kontrolowany przez OPKG. Aktualizacje tylko przez OPKG."
+
+msgid "Checking internet connection..."
+msgstr "Sprawdzam połączenie internetowe"
+
+msgid "github server unavailable, update impossible!!!"
+msgstr "Serwer github niedostępny, aktualizacja niedostępna"
+
+msgid "Downloading latest AdvancedFreePlayer plugin version..."
+msgstr "Pobieram ostatnią wersję wtyczki AdvancedFreePlayer"
+
+msgid "Archive downloaded improperly"
+msgstr "Archiwum pobrane niepoprawnie"
+
+msgid "No archive downloaded, check your curl version"
+msgstr "Nie pobrano archiwum, sprawdz wersję curl"
+
+msgid "Unpacking new version..."
+msgstr "Rozpakowuję nową wersję"
+
+msgid "Archive unpacked improperly"
+msgstr "Archiwum rozpakowane poprawnie"
+
+msgid "Latest version already installed"
+msgstr "Najnowsza wersja jest już zainstalowana"
+
+msgid "Installing new version..."
+msgstr "Instaluję nową wersję"
+
+msgid "github is always up-2-date"
+msgstr "github jest zawsze aktualny ;)"
+
+msgid "Installation incorrect!!!"
+msgstr "Instalacja niepoprawna"
+
+msgid "Success: Restart system to use new plugin version"
+msgstr "Sukces: Zrestartuj system aby aktywować nową wersję wtyczki"
+
+msgid "Do you want to update plugin?"
+msgstr "Zaktualizować wtyczkę?"
+
+msgid ""
+"\n"
+"Use up/down arrows to scroll text. OK closes window"
+msgstr ""
+"\n"
+"Użyj strzałek góra/dół do przewinięcia tekstu. Klawisz OK zamyka okno."
+
+msgid "Time displaying infobar"
+msgstr "Czas wyświetlania paska informacyjnego"
+
+msgid "Display infobar on pause:"
+msgstr "Wyświetl pasek informacyjny podczas pauzy:"
+
+msgid "Key OK behavior:"
+msgstr "Zachowanie klawisza OK:"
+
+msgid "Select/Unselect"
+msgstr "Zaznacz/Odznacz"
+
+msgid "Select>Play"
+msgstr "Zaznacz>Odtwórz"
+
+msgid "Recorded: %s %02d:%02d:%02d\n"
+msgstr "Nagrano: %s %02d:%02d:%02d\n"
+
+msgid "Lenght: %02d:%02d:%02d\n\n"
+msgstr "Dlugość: %02d:%02d:%02d\n\n"
+
+msgid "Always ask for file removal:"
+msgstr "Zawsze pytaj czy skasować film:"
+
+msgid "Delete this movie?"
+msgstr "Skasować ten film?"
+
+msgid "Ask for file removal when % played (0=off):"
+msgstr "Pytaj czy skasować film po odtworzeniu % filmu (0=wył):"
+
+msgid "SRT subtitles displayed by:"
+msgstr "Napisy SRT wyświetlane przez:"
+
+msgid "Line1\nLine2\nLine3"
+msgstr "Linia 1\nLinia 2\nLinia 3"
+
+msgid "*** Standard settings ***"
+msgstr "*** Ustawienia standardowe ***"
+
+msgid "*** Infobar settings ***"
+msgstr "*** Ustawienia paska informacyjnego ***"
+
+msgid "*** Subtitles settings ***"
+msgstr "*** Ustawienia napisow ***"
+
+msgid "*** Advanced settings ***"
+msgstr "*** Ustawienia dodatkowe ***"
+
+msgid "Download:"
+msgstr "Pobierz:"
+
+msgid "every new version (debug)"
+msgstr "każdą nową wersję (debug)"
+
+msgid "only checked versions"
+msgstr "tylko wersję sprawdzoną (public)"
+
+msgid "Checking web version..."
+msgstr "Sprawdzam dostępność nowej wersji..."
+
+msgid "Error checking web version"
+msgstr "Błąd pobierania informacji o nowej wersji"
+
+msgid "Vew version available on the web"
+msgstr "Nowa wersja dostępna"
+
+msgid "DMnapi controlled by OPKG. Please use it for updates."
+msgstr "DMnapi kontrolowany przez OPKG. Aktualizacje tylko przez OPKG."
+
+msgid "Downloading latest DMnapi version..."
+msgstr "Pobieram ostatnią wersję wtyczki DMnapi..."
+
+msgid "Success: Restart system to reload plugins"
+msgstr "Sukces: zrestartuj GUI aby przeładować wtyczki"
+
+msgid "Show subtitles files on the list:"
+msgstr "Wyświetl na liście pliki napisów:"
+
+msgid "Initial files sorting:"
+msgstr "Początkowe sortowanie:"
+
+msgid "Time displaying infobar:"
+msgstr "Czas wyświetlanie belki informacyjnej:"
+
+msgid "*** Cover & Descriptions settings ***"
+msgstr "*** Ustawienia pobierania miniatur i opisów ***"
+
+msgid "Download Covers & Descriptions from WEB:"
+msgstr "Pobierz okładki i opisy z sieci:"
+
+msgid "Searching path:"
+msgstr "Ścieżka przeszukiwania filmów:"
+
+msgid "Delete"
+msgstr "Skasuj"
+
+msgid "Delete this file(s)/folder?"
+msgstr "Skasować te(n) plik(i)/katalog?"
+
+msgid "Released: "
+msgstr "Premiera: "
+
+msgid "Original title: "
+msgstr "Tytuł oryginalny: "
+
+msgid "Original language: "
+msgstr "Język: "
+
+msgid "Popularity: "
+msgstr "Popularność: "
+
+msgid "Score: "
+msgstr "Ocena: "
+
+msgid "AdvancedFreePlayer has been updated. Please restart GUI"
+msgstr "Wtyczka została zaktualizowana. Proszę zrestartować GUI"
+
+msgid "Network: "
+msgstr "Produkcja: "
+
+msgid "Show Movie name instead of Filename:"
+msgstr "Wyświetl nazwy filmów zamiast nazw plików:"
+
+msgid "Show Music files on the list:"
+msgstr "Wyświetl na liście pliki muzyczne:"
+
+msgid "Show Picture files on the list:"
+msgstr "Wyświetl na liście pliki graficzne:"
+
+msgid "Download from WEB:"
+msgstr "Pobierz z internetu:"
+
+msgid "Download to movie folder:"
+msgstr "Pobierz do katalogu z filmem:"
+
+msgid "Search TMDB for the language:"
+msgstr "Język opisów w TMDB:"
+
+msgid "Cover size:"
+msgstr "Wielkość miniatury:"
+
+msgid "Play movie"
+msgstr "Odtwórz film"
+
+msgid "System"
+msgstr "system"
+
+msgid "Plugin, local subtitles"
+msgstr "wtyczkę, napisy lokalne"
+
+msgid "Plugin, dmNapi support"
+msgstr "wtyczkę, wsparcie dmNapi"
+
+msgid "Plugin, SubsSupport support"
+msgstr "wtyczkę, wsparcie SubsSupport"
+
+msgid "Parent Directory"
+msgstr "Katalog nadrzędny"
+
+msgid "Delete '%s' folder?"
+msgstr "Skasować katalog '%s'?"
+
+msgid "Delete '%s' movie?"
+msgstr "Skasować film '%s'?"
+
+msgid "Delete subtitles for '%s' movie?"
+msgstr "Skasować napisy do filmu '%s'?"
+
+msgid "Delete link for '%s' movie?"
+msgstr "Skasować link do filmu '%s'?"
+
+msgid "No internet connection. :("
+msgstr "Brak połączenia z internetem :("
+
+msgid "Move to trash folder instead delete:"
+msgstr "Przenieś do śmietnika zamiast kasować:"
+
+msgid "Trash folder:"
+msgstr "Śmietnik:"
+
+msgid "Move folder '%s' to trash?"
+msgstr "Przenieść katalog '%s' do śmietnika?"
+
+msgid "Move subtitles for movie '%s' to trash?"
+msgstr "Przenieść napisy do filmu '%s' do śmietnika?"
+
+msgid "Move link for movie '%s' to trash?"
+msgstr "Przenieść link do filmu '%s' do śmietnika?"
+
+msgid "Move movie '%s' to trash?"
+msgstr "Przenieść film '%s' do śmietnika?"
+
+msgid "From: %s\n"
+msgstr "Z: %s\n"
+
+msgid "Show Movie with name containing:"
+msgstr "Wyświetl filmy zawierające w nazwie:"
+
+msgid "Missing directory info (_dir.info)"
+msgstr "Brak informacji o katalogu (_dir.info)"
+
+msgid "Missing directory cover (_dir.png)"
+msgstr "Brak okładki dla katalogu (_dir.png)"
+
+msgid "*** Session settings ***"
+msgstr "*** Ustawienia sesji ***"
+
+msgid "Show only movies containing (OK):"
+msgstr "Tylko filmy zawierające w nazwie (OK):"
+
+msgid "Rename (OK):"
+msgstr "Zmień nazwę (OK):"
+
+msgid "Fitering disabled"
+msgstr "Bez filtrowania"
+
+msgid "Active filter: %s"
+msgstr "Aktywny filtr: %s"
+
+msgid "Changing '%s' to '%s'\nDo you confirm it?"
+msgstr "Zmiana '%s' na '%s'\nPotwierdzasz?"
+
+msgid "New filename..."
+msgstr "Nowa nazwa pliku..."
+
+msgid "Movie name must contain..."
+msgstr "Nazwa filmu musi zawierać..."
+
+msgid "Sort also directories:"
+msgstr "Sortuj również katalogi:"

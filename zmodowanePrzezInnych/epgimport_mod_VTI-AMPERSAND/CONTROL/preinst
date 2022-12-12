@@ -1,0 +1,6 @@
+#!/bin/sh
+if [ ! -e /etc/vtiversion.info ]; then
+    echo "This version is especially prepared for VTi Image!"
+    exit 1
+fi
+exit 0

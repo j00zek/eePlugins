@@ -1,0 +1,11 @@
+#!/bin/sh
+if `grep -q 'osd.language=pl_PL' </etc/enigma2/settings`; then
+  echo ""
+  echo "Pikony zainstalowane. Przeładuj teraz GUI!"
+  echo ""
+else
+  echo ""
+  echo "Picons installed. You should restart GUI!"
+  echo ""
+fi 
+exit 0

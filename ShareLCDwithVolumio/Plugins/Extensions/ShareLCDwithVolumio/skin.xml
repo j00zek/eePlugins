@@ -1,0 +1,71 @@
+<screen position="center,center" size="1300,640" title=" " backgroundColor="#20606060" >
+<!-- Configuration section and buttons do not change -->
+    <widget name="config" position="10,10" size="620,100" zPosition="-1" transparent="0" scrollbarMode="showOnDemand" />
+    <eLabel position="10,120" size="620,480" zPosition="-10" backgroundColor="#20222222" /> 
+    <eLabel position="660,10" size="620,620" zPosition="-10" backgroundColor="#20222222" /> 
+    <widget name="key_red" position="0,610" zPosition="5" size="320,30" valign="center" halign="center" font="Regular;22" transparent="1" foregroundColor="red" />
+    <widget name="key_green" position="320,610" zPosition="5" size="320,30" valign="center" halign="center" font="Regular;22" transparent="1" foregroundColor="green" />
+<!-- ########################################################################## -->
+<!-- All below widgets are related to KODI, you can use it to easily create your screen and then copy to standby_summary if you like -->
+<!-- ########################################################################## -->
+	<!-- time when playing -->
+    <widget position="20,130" size="60,50" font="BHfDlcD;26" zPosition="15" transparent="1" foregroundColor="yellow" render="Label" source="global.CurrentTime" halign="right" valign="center" noWrap="1">
+        <convert type="j00zekLCD4volumio">currentTime</convert>
+    </widget>
+	<!-- icon ON/OFF when playing -->
+    <widget source="session.CurrentService" render="Pixmap" position="130,130" size="380,50" zPosition="2" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/ShareLCDwithVolumio/icons/volumio_logo.png" alphatest="blend">
+        <!--convert type="j00zekLCD4volumio">showWhenPlaying</convert-->
+        <!--convert type="ConditionalShowHide"/-->
+    </widget>
+<!-- ARTIST -->
+    <eLabel position="20,240" size="90,40" font="HD_Thin; 27" zPosition="5" transparent="1" foregroundColor="yellow" text="Artist:"/> 
+    <widget position="140,240" size="480,24" font="Regular;22" zPosition="5" transparent="1" foregroundColor="white" render="Label" source="session.CurrentService" valign="center">
+        <convert type="j00zekLCD4volumio">artist</convert>
+    </widget>
+<!-- ALBUM -->
+    <eLabel position="20,280" size="90,40" font="HD_Thin; 27" zPosition="5" transparent="1" foregroundColor="yellow" text="Album:"/> 
+    <widget position="140,280" size="480,24" font="Regular;22" zPosition="5" transparent="1" foregroundColor="white" render="Label" source="session.CurrentService" valign="center">
+        <convert type="j00zekLCD4volumio">album</convert>
+    </widget>
+<!-- TITLE -->
+    <eLabel position="20,320" size="90,40" font="HD_Thin; 27" zPosition="5" transparent="1" foregroundColor="yellow" text="Title:"/> 
+    <widget position="140,320" size="480,24" font="Regular;22" zPosition="5" transparent="1" foregroundColor="white" render="j00zekLabel" source="session.CurrentService" valign="center" noWrap="1">
+        <convert type="j00zekLCD4volumio">title,DoRefreshDict</convert>
+    </widget>
+<!-- Movie Length/DURATION -->
+    <eLabel position="20,360" size="100,40" font="HD_Thin; 27" zPosition="5" transparent="1" foregroundColor="yellow" text="Length:"/> 
+    <widget position="140,360" size="480,24" font="Regular;22" zPosition="5" transparent="1" foregroundColor="white" render="Label" source="session.CurrentService" valign="center">
+        <convert type="j00zekLCD4volumio">duration</convert>
+    </widget>
+<!-- PLAYED TIME -->
+        <eLabel position="20,400" size="100,40" font="HD_Thin; 27" zPosition="5" transparent="1" foregroundColor="yellow" text="Played:"/> 
+        <widget position="140,400" size="480,24" font="Regular;22" zPosition="5" transparent="1" foregroundColor="white" render="Label" source="session.CurrentService" valign="center">
+            <convert type="j00zekLCD4volumio">playedtime</convert>
+        </widget>
+<!-- LEFT TIME -->
+        <eLabel position="20,440" size="100,40" font="HD_Thin; 27" zPosition="5" transparent="1" foregroundColor="yellow" text="Left:"/> 
+        <widget position="140,440" size="480,24" font="Regular;22" zPosition="5" transparent="1" foregroundColor="white" render="Label" source="session.CurrentService" valign="center">
+            <convert type="j00zekLCD4volumio">lefttime</convert>
+        </widget>
+<!-- LEFT MINS -->
+        <eLabel position="230,440" size="100,40" font="HD_Thin; 27" zPosition="5" transparent="1" foregroundColor="yellow" text="/"/> 
+        <widget position="250,440" size="480,24" font="Regular;22" zPosition="5" transparent="1" foregroundColor="white" render="Label" source="session.CurrentService" valign="center">
+            <convert type="j00zekLCD4volumio">leftmins</convert>
+        </widget>
+<!-- LEFT MINS -->
+        <eLabel position="20,480" size="100,40" font="HD_Thin; 27" zPosition="5" transparent="1" foregroundColor="yellow" text="Service:"/> 
+        <widget position="140,480" size="480,24" font="Regular;22" zPosition="5" transparent="1" foregroundColor="white" render="Label" source="session.CurrentService" valign="center">
+            <convert type="j00zekLCD4volumio">service</convert>
+        </widget>
+<!-- Standard Progress ON/OFF -->
+        <eLabel position="20,520" size="120,40" font="HD_Thin; 27" zPosition="5" transparent="1" foregroundColor="yellow" text="Progress:"/> 
+        <widget position="140,535" size="480,10" zPosition="5" source="session.CurrentService" render="Progress" borderWidth="2" transparent="1">
+            <convert type="j00zekLCD4volumio">progress,hideWhenNotplaying</convert>
+        </widget>
+    <widget source="session.CurrentService" render="j00zekPixmap" position="660,10" zPosition="1" size="630,630" alphatest="blend">
+      <convert type="j00zekLCD4volumio">albumpic</convert>
+    </widget>
+    <widget position="670,20" size="600,600" font="Regular;24" zPosition="5" transparent="2" foregroundColor="red" render="Label" source="session.CurrentService" valign="center">
+        <convert type="j00zekLCD4volumio">EXCEPTIONINFO</convert>
+    </widget>
+</screen> 

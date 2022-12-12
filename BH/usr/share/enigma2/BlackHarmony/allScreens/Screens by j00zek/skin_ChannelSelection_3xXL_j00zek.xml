@@ -1,0 +1,54 @@
+<skin>
+  <screen name="ChannelSelection" position="50,27" size="1920,1080" title="Channel Selection" flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="0,0" size="1920,1080" zPosition="-10" pixmap="BlackHarmony/bg_design/j00zekCListBack1920x1080_bez_ramki.png" />
+        <!--PIG-->
+        <widget source="session.VideoPicture" render="Pig" position="1255,5" zPosition="3" size="660,360" backgroundColor="transparent" /> 
+        <!--czas i data w naglowku-->
+    <ePixmap position="10,17" size="1245,50" zPosition="-5" pixmap="BlackHarmony/bg_design/j00zekBelka50x960.png" />
+    <widget source="global.CurrentTime" render="Label" position="10,20" size="1245,40" halign="left" font="Roboto_HD;36" foregroundColor="white" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%H:%M    %a %d.%m.%Y</convert>
+    </widget>
+    <!-- EMU -->
+    <widget source="session.CurrentService" render="Label" position="10,20" size="1245,40" halign="right" valign="center" zPosition="1" font="Regular; 16" foregroundColor="foreground" backgroundColor="background" transparent="1" noWrap="1">
+      <convert type="j00zekModCaidInfo2">UseCFG</convert>
+    </widget> 
+        <!--Lista kanalow-->
+    <!--ePixmap position="10,80" size="960,40" zPosition="-5" pixmap="BlackHarmony/bg_design/j00zekBelka40x960.png" /-->
+    <widget source="Title" render="Label" position="10,20" size="1245,40" font="Roboto_HD;20" backgroundColor="black" transparent="1" halign="center"  valign="center" foregroundColor="light_yellow" />
+        <widget name="list" position="20,85" size="1880,650" selectionPixmap="BlackHarmony/menu/sel_1808_60.png" scrollbarMode="showOnDemand" enableWrapAround="1" colorServiceDescription="#ddae55" colorServiceDescriptionSelected="#ddae55" colorEventProgressbarBorder="border" colorEventProgressbarBorderSelected="border" picServiceEventProgressbar="BlackHarmony/gfx/progcl.png" foregroundColorServiceNotAvail="#737373" serviceItemHeight="61" serviceNumberFont="Roboto_HD;32" serviceNameFont="Roboto_HD;40" serviceInfoFont="Roboto_HD;54" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" transparent="1" />
+        <eLabel backgroundColor="linie"  position="10,745" size="1900,2" /> 
+        <!--Aktualne wydarzenie po kolei od gory-->
+    <widget source="ServiceEvent" render="Label" position="20,755" size="140,46"  halign="left" font="Roboto_HD; 44" backgroundColor="background" transparent="1">
+      <convert type="EventTime">StartTime</convert>
+      <convert type="ClockToText" />
+    </widget>
+    <ePixmap pixmap="BlackHarmony/gfx/progress_gray.png" position="160,775" size="420,6" zPosition="-10" alphatest="blend" />
+    <widget source="ServiceEvent" render="Progress" position="160,775" size="420,6" pixmap="BlackHarmony/gfx/progress_scan.png" transparent="1">
+      <convert type="EventTime">Progress</convert>
+    </widget>
+    <widget source="ServiceEvent" render="Label" position="600,755" size="150,46"  halign="left" font="Roboto_HD; 44" backgroundColor="background" transparent="1">
+      <convert type="EventTime">EndTime</convert>
+      <convert type="ClockToText">Format:%H:%M</convert>
+    </widget>
+    <widget source="ServiceEvent" render="j00zekLabel" cfgContext="EN" position="770,755" size="900,46" font="HD_Thin;44" backgroundColor="black" transparent="1" halign="left" noWrap="1" foregroundColor="#cc9329">
+      <convert type="j00zekModEventName">Name</convert>
+    </widget>
+        <!--Opis-->
+    <widget render="j00zekModRunningText" source="ServiceEvent" position="20,810" size="935,270" options="movetype=running,startpoint=0,direction=top,steptime=80,repeat=0,startdelay=6000,wrap" halign="left" font="Roboto_HD; 40" backgroundColor="background" transparent="1">
+      <convert type="j00zekModEventName">ExtendedDescription</convert>
+    </widget>
+        <!--Nastepne audycje-->
+        <widget source="ServiceEvent" render="j00zekNextEvents" position="980,810" size="835,172" zPosition="2" noWrap="1" font="Roboto_HD; 36" backgroundColor="black" transparent="1" foregroundColor="light_yellow" >
+                <convert type="ServiceName">Reference</convert>
+        </widget>
+        <!--Belka dolna-->
+    <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="980,999" size="35,27" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="1210,999" size="35,27" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="1440,999" size="35,27" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="1670,999" size="35,27" alphatest="blend" />
+    <widget name="key_red" position="1030,999" size="230,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <widget name="key_green" position="1260,999" size="230,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <widget name="key_yellow" position="1490,999" size="230,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <widget name="key_blue" position="1720,999" size="230,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+  </screen>
+</skin>

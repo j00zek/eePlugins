@@ -1,0 +1,16 @@
+<skin> 
+  <!-- LCD screen IPTVExtMoviePlayerSummary -->
+  <screen name="IPTVExtMoviePlayerSummary" position="0,0" size="480,320">
+    <widget source="parent.Title" render="Label" position="10,5" size="460,210" font="Regular;42" halign="center" valign="center" foregroundColor="light_yellow"/>
+    <widget source="session.CurrentService"  render="Progress" position="10,220" size="460,10" borderWidth="1" >
+      <convert type="j00zekE2iPlayer">Progress</convert>
+    </widget>
+    <widget source="session.CurrentService" render="Label" font="Roboto_HD; 45" position="210,230" size="260,80" halign="right" valign="center" backgroundColor="black" transparent="1" >
+      <convert type="j00zekE2iPlayer">RemindedMinutes</convert>
+    </widget>
+    <!--panel name="SummaryBigClockBottomLeftPanel" /-->
+    <widget source="global.CurrentTime" render="Label" position="10,230" size="200,80" font="FdLcD;70" halign="center" valign="center" noWrap="1">
+      <convert type="ClockToText"></convert>
+    </widget>
+    </screen> 
+</skin> 

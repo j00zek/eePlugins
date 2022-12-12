@@ -1,0 +1,5 @@
+#!/bin/sh
+if [ `cat /etc/opkg/*.conf |grep -c 'prywatne_repo_developerskie_j00zka'` -gt 0 ];then
+  sed -i "s/\(^.*[0-9]\)'/\1dev'/"  /usr/lib/enigma2/python/Plugins/Extensions/MSNweather/version.py
+fi
+exit 0

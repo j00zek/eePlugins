@@ -1,0 +1,9 @@
+<screen name="NumberZapExt" position="center,center" size="800,170" title=" ">
+  <widget name="chPicon" position="582,23" size="220,132" alphatest="on" zPosition="2" />
+  <widget name="number" position="7,7" size="205,45" halign="right" font="Roboto_HD; 29" foregroundColor="foreground" />
+  <widget name="chNum" position="225,7" size="330,45" halign="left" font="Roboto_HD; 29" foregroundColor="foreground" />
+  <widget name="channel" position="7,60" size="205,45" halign="right" font="Roboto_HD; 29" foregroundColor="foreground" />
+  <widget name="chName" position="225,60" size="330,45" halign="left" font="Roboto_HD; 26" noWrap="1" foregroundColor="foreground" />
+  <widget name="bouquet" position="7,113" size="205,45" halign="right" font="Roboto_HD; 29" foregroundColor="foreground" />
+  <widget name="chBouq" position="225,113" size="330,45" halign="left" font="Roboto_HD; 26" noWrap="1" foregroundColor="foreground" /> 
+</screen> 

@@ -1,0 +1,210 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: tuxbox-enigma 0.0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-10-01 13:01+0000\n"
+"PO-Revision-Date: 2018-10-08 14:30+0100\n"
+"Last-Translator: \n"
+"Language-Team: j00zek\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: polish\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 1.5.5\n"
+
+msgid "Cancel"
+msgstr "Anuluj"
+
+msgid "OK"
+msgstr "OK"
+
+msgid "Streamlink Configuration"
+msgstr "Konfiguracja serwera streamlink"
+
+msgid "none"
+msgstr "Nie loguj"
+
+msgid "info"
+msgstr "Informacje"
+
+msgid "warning"
+msgstr "Ostrzeżenia"
+
+msgid "error"
+msgstr "Błędy"
+
+msgid "critical"
+msgstr "Błędy krytyczne"
+
+msgid "debug"
+msgstr "Debugowanie"
+
+msgid "trace"
+msgstr "Śledzenie"
+
+msgid "Log level:"
+msgstr "Poziom logowania:"
+
+msgid "Log to file:"
+msgstr "Zapis do pliku:"
+
+msgid "Save log file in:"
+msgstr "Ścieżka do pliku:"
+
+msgid "Port number (127.0.0.1:X):"
+msgstr "Numer portu (127.0.0.1:X):"
+
+msgid "*** Deamon configuration ***"
+msgstr "*** Konfiguracja demona ***"
+
+msgid "*** %s configuration ***"
+msgstr "*** Konfiguracja %s ***"
+
+msgid "Username:"
+msgstr "Użytkownik:"
+
+msgid "Password:"
+msgstr "Hasło:"
+
+msgid "Press OK to create %s bouquet"
+msgstr "Naciśnij OK aby wygenerować bukiet %s"
+
+msgid "Do you want to update '%s' file?"
+msgstr "Zaktualizować plik '%s'?"
+
+msgid "Do you want to create '%s' file?"
+msgstr "Utworzyć plik '%s'?"
+
+msgid "Clear log on each start:"
+msgstr "Kasowanie loga przy pażdym starcie:"
+
+msgid "Press OK to download %s bouquet"
+msgstr "Naciśnij OK aby pobrać bukiet %s"
+
+msgid "Enable deamon:"
+msgstr "Aktywacja demona:"
+
+msgid "Save"
+msgstr "Zapisz"
+
+msgid "Check status"
+msgstr "Sprawdź stan"
+
+msgid "Do you want to force packets reinstallation?"
+msgstr "Wymusić reinstalację pakietów?"
+
+msgid "(Re)installing required packages..."
+msgstr "(Re)instalacja wymaganych pakietów..."
+
+msgid "Checking state of required packages..."
+msgstr "Sprawdzanie stanu wymaganych pakietów..."
+
+msgid "Username & Password are required!"
+msgstr "Nazwa konta i hasło jest wymagane!"
+
+msgid "Updating %s..."
+msgstr "Aktualizacja %s..."
+
+msgid "Creating %s..."
+msgstr "Tworzenie %s..."
+
+msgid "ServiceApp not installed!"
+msgstr "ServiceApp jest niezainstalowany!"
+
+msgid "Select Multiframework"
+msgstr "Wybór renderera wideo"
+
+msgid "Bouquets has been reloaded"
+msgstr "Definicje bukietów zostały przeładowane"
+
+msgid "Check login credentials"
+msgstr "Naciśnij OK aby zalogować się"
+
+msgid "Credentials verification"
+msgstr "Sprawdzanie danych do logowania"
+
+msgid "off"
+msgstr "wył."
+
+msgid "by %s s."
+msgstr "o %s s."
+
+msgid "don't delay"
+msgstr "nie opóźniaj"
+
+msgid "*** Available IPTV bouquets ***"
+msgstr "*** Dostępne bukiety IPTV ***"
+
+msgid "Press OK to remove: %s"
+msgstr "Naciśnij OK aby usunąć: %s"
+
+msgid "Press OK to add: %s"
+msgstr "Naciśnij OK aby dodać: %s"
+
+msgid "Prefer DASH than HLS:"
+msgstr "Preferuj DASH potem HLS:"
+
+msgid "Delay video:"
+msgstr "Opóźnij wideo:"
+
+msgid "*** remote E2 helper ***"
+msgstr "*** wsparcie zdalnej E2 ***"
+
+msgid "IP address:"
+msgstr "Adres IP:"
+
+msgid "Streaming port:"
+msgstr "Port strumienia:"
+
+msgid "Wakeup if remote E2 in standby:"
+msgstr "Obudź zdalne E2, jeśli śpi:"
+
+msgid "Zap before stream workarround:"
+msgstr "Obejście problemu przełączanie przed strumieniowaniem:"
+
+msgid "Press OK to select and download %s bouquet"
+msgstr "Naciśnij OK, aby wybrać i pobrać bukiet %s"
+
+msgid "Buffer path:"
+msgstr "Ścieżka bufora:"
+
+msgid "Bouquet '%s' removed properly"
+msgstr "Bukiet '%s' został usunięty z listy kanałów"
+
+msgid "Bouquet '%s' added properly"
+msgstr "Bukiet '%s' został dodany do listy kanałów"
+
+msgid "*** Deamon not installed ***"
+msgstr "!!! Serwer streamlinka jest NIEZAINSALOWANY !!!"
+
+msgid "*** not compliant Deamon found ***"
+msgstr "!!! Wykryto NIEZNANĄ wersję serwera streamlink !!!"
+
+msgid " !!! EXPERIMENTAL OPTION(S) !!!"
+msgstr " !!! OPCJE EKSPERYMENTALNE !!!"
+
+msgid "EPGimport mode:"
+msgstr "Tryb importu EPG:"
+
+msgid "Recorder mode:"
+msgstr "Tryb nagrywania:"
+
+msgid "stop deamon on standby:"
+msgstr "Zatrzymaj serwer streamlinka w uśpieniu:"
+
+msgid "proxy (http://127.0.0.1:8818) for channel:"
+msgstr "proxy (http://127.0.0.1:8818) kanału:"
+
+msgid "Support of azman IPTV lists disabled"
+msgstr "Wyłączona obsługa list IPTV kolegi azman"
+
+msgid "Support of azman IPTV lists:"
+msgstr "Obsługa list IPTV kolegi azman:"
+
+msgid "Allow Wrappers in lists:"
+msgstr "Dopuszczaj 'wrapery':"
+
+#msgid ""
+#msgstr ""

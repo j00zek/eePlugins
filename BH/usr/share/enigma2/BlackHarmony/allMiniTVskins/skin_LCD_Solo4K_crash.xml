@@ -1,0 +1,193 @@
+<skin>
+	<fonts>
+                <font filename="/usr/share/enigma2/BlackHarmony/fonts/nmsbd.ttf" name="FdLcD" scale="100"/>
+		<font filename="/usr/share/enigma2/BlackHarmony/fonts/nmsbd.ttf" name="VFD" scale="90"/>
+	</fonts>
+	<windowstyle type="skinned" id="1">
+		<color name="Background" color="#000000" />
+		<color name="LabelForeground" color="#ffffff" />
+		<color name="ListboxBackground" color="#ffffff" />
+		<color name="ListboxForeground" color="#000000" />
+		<color name="ListboxSelectedBackground" color="#ffffff" />
+		<color name="ListboxSelectedForeground" color="#000000" />
+		<color name="ListboxMarkedBackground" color="#ffffff" />
+		<color name="ListboxMarkedForeground" color="#000000" />
+		<color name="ListboxMarkedAndSelectedBackground" color="#ffffff" />
+		<color name="ListboxMarkedAndSelectedForeground" color="#000000" />
+		<color name="WindowTitleForeground" color="#000000" />
+		<color name="WindowTitleBackground" color="#ffffff" />
+	</windowstyle>
+<screen name="InfoBarSummary" position="0,0" size="480,320" id="1">
+    <widget source="session.RecordState" render="FixedLabel" position="446,10" zPosition="3" size="20,20" text=" ">
+      <convert type="ConfigEntryTest">config.usage.blinking_rec_symbol_during_recording,True,CheckSourceBoolean</convert>
+      <convert type="ConditionalShowHide">Blink</convert>
+    </widget>
+    <widget source="session.RecordState" render="Pixmap" pixmap="BlackHarmony/icons/ico_rec_on.png" position="446,10" size="20,20" alphatest="blend">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="287,235" size="180,70" font="VFD;70" halign="right">
+      <convert type="ClockToText">Format:%H:%M</convert>
+    </widget>
+    <widget source="session.CurrentService" render="j00zekPicons" picontype="zzpicon" position="40,10" zPosition="4" size="400,170" transparent="1" alphatest="blend">
+      <convert type="ServiceName">Reference</convert>
+    </widget>
+    <widget source="session.Event_Now" render="j00zekLabel" noWrap="1" position="14,185" size="920,52" font="VFD;52" halign="left" valign="top">
+      <convert type="j00zekModEventName">Name</convert>
+    </widget>
+    <widget source="session.Event_Now" render="Progress" pixmap="BlackHarmony/gfx/progress_lcd.png" position="15,265" size="280,20" borderWidth="2">
+      <convert type="EventTime">Progress</convert>
+    </widget>
+  </screen>
+  <screen name="ChannelSelection_summary" position="0,0" size="480,320" id="1">
+    <widget position="40,10" size="400,170" source="parent.ServiceEvent" render="j00zekPicons" picontype="zzpicon" zPosition="1">
+      <convert type="ServiceName">Reference</convert>
+    </widget>
+    <widget source="parent.ServiceEvent" render="RollerCharLCDLong" noWrap="1" position="10,192" size="460,55" font="VFD;55" halign="left" valign="center">
+      <convert type="ServiceName">Name</convert>
+    </widget>
+    <widget source="parent.ServiceEvent" render="RollerCharLCDLong" noWrap="1" position="10,254" size="460,55" font="VFD;55" halign="left" valign="center">
+      <convert type="j00zekModEventName">Name</convert>
+    </widget>
+  </screen>
+  <screen name="InfoBarMoviePlayerSummary" position="0,0" size="480,320" id="1">
+  <widget source="session.CurrentService" render="j00zekLabel" position="15,10" size="450,220" font="VFD;40" halign="center" valign="center">
+    <convert type="ServiceName">Name</convert>
+  </widget>
+
+  <widget source="session.CurrentService" render="Progress" pixmap="BlackHarmony/gfx/progress_lcd.png" position="15,265" size="270,20" borderWidth="2">
+    <convert type="ServicePosition">Position</convert>
+  </widget>
+<widget source="global.CurrentTime" render="Label" position="288,235" size="180,70" font="VFD;70" halign="right">
+  <convert type="ClockToText">Format:%H:%M</convert>
+</widget>
+
+  <widget source="session.RecordState" render="FixedLabel" position="410,188" zPosition="3" size="55,42" text=" ">
+    <convert type="ConfigEntryTest">config.usage.blinking_rec_symbol_during_recording,True,CheckSourceBoolean</convert>
+    <convert type="ConditionalShowHide">Blink</convert>
+  </widget>
+  <widget source="session.RecordState" render="Pixmap" pixmap="BlackHarmony/icons/ico_rec_on.png" position="410,188" size="55,42" alphatest="blend">
+    <convert type="ConditionalShowHide" />
+  </widget>
+</screen>
+  <screen name="MenuSummary" position="0,0" size="480,320" id="1">
+  <widget source="parent.title" render="Label" position="15,10" size="450,90" font="VFD;52" halign="center" valign="center" foregroundColor="white" />
+  <widget source="parent.menu" render="Label" position="16,101" size="450,120" font="VFD;52" halign="center" valign="center" foregroundColor="#fff889">
+  <convert type="StringListSelection" />
+</widget>
+  <widget source="global.CurrentTime" render="Label" position="14,235" size="260,70" font="VFD;70" halign="left">
+    <convert type="ClockToText">Format:%d.%m.%Y</convert>
+  </widget>
+<widget source="global.CurrentTime" render="Label" position="287,235" size="180,70" font="VFD;70" halign="right">
+  <convert type="ClockToText">Format:%H:%M</convert>
+</widget>
+</screen>
+  <screen name="ServiceScanSummary" position="0,0" size="480,320" id="1">
+    <widget name="Title" position="15,10" size="450,130" font="VFD;48" foregroundColor="#fff882" transparent="1" />
+    <widget name="Service" position="15,140" size="450,150" font="VFD;36" transparent="1" />
+    <widget name="scan_progress" position="12,275" pixmap="BlackHarmony/gfx/progress_scan.png" zPosition="1" borderWidth="2" size="460,20" />
+  </screen>
+<screen name="SetupSummary" position="0,0" size="480,320" id="1">
+    <widget source="SetupTitle" render="Label" position="15,10" size="450,80" font="VFD;42" valign="center" halign="center" />
+    <widget source="SetupEntry" render="Label" position="15,88" size="450,110" font="VFD;42" valign="center" halign="center" foregroundColor="#fff000" />
+    <widget source="SetupValue" render="Label" position="15,200" size="450,45" font="VFD;42" halign="center" valign="center" />
+
+  <widget source="global.CurrentTime" render="Label" position="14,255" size="260,50" font="VFD;50" halign="left">
+    <convert type="ClockToText">Format:%d.%m.%Y</convert>
+  </widget>
+<widget source="global.CurrentTime" render="Label" position="287,255" size="180,50" font="VFD;50" halign="right">
+  <convert type="ClockToText">Format:%H:%M</convert>
+</widget>
+    
+  </screen>
+<screen name="StandbySummary" position="0,0" size="480,320" id="1">
+  <widget source="global.CurrentTime" render="Label" position="40,45" size="400,210" font="VFD;160" halign="center">
+    <convert type="ClockToText">Format:%H:%M</convert>
+  </widget>
+  <widget source="session.RecordState" render="FixedLabel" position="415,15" zPosition="3" size="55,42" text=" ">
+    <convert type="ConfigEntryTest">config.usage.blinking_rec_symbol_during_recording,True,CheckSourceBoolean</convert>
+    <convert type="ConditionalShowHide">Blink</convert>
+  </widget>
+  <widget source="session.RecordState" render="Pixmap" pixmap="BlackHarmony/icons/ico_rec_on.png" position="415,15" size="55,42" alphatest="blend">
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget source="global.CurrentTime" render="Label" position="5,235" size="460,70" font="VFD;42" halign="center" valign="center" foregroundColor="#fff889">
+     <convert type="ClockToText">Format: %A, %d.%m.%Y </convert>
+  </widget>
+</screen>
+<screen name="SimpleSummary" position="0,0" size="480,320" id="1">
+    <widget source="parent.Title" render="Label" position="10,15" size="460,200" font="VFD;52" halign="center" valign="center" /> 
+  <widget source="global.CurrentTime" render="Label" position="14,235" size="260,70" font="VFD;70" halign="left">
+    <convert type="ClockToText">Format:%d.%m.%Y</convert>
+  </widget>
+<widget source="global.CurrentTime" render="Label" position="287,235" size="180,70" font="VFD;70" halign="right">
+  <convert type="ClockToText">Format:%H:%M</convert>
+</widget>     
+
+  </screen>
+  <screen name="MediaPlayerLCDScreen" position="0,0" size="480,320" id="1">
+    <widget name="text1" position="25,20" size="450,130" font="VFD;48" />
+    <widget name="text3" position="25,155" size="450,75" font="VFD;36" />
+    <widget name="text4" position="25,240" size="450,75" font="VFD;36" />
+  </screen>
+  <screen name="WizardSummary" position="0,0" size="480,320" id="1">
+    <widget source="text" render="Label" position="15,10" size="450,80" font="VFD;40" transparent="1" />
+    <widget source="parent.list" render="Label" position="15,100" size="450,220" font="VFD;32">
+      <convert type="StringListSelection" />
+    </widget>
+  </screen>
+  <!-- LCD screen PluginBrowser -->
+  <screen name="PluginBrowserSummary" position="0,0" size="480,320" id="1">
+    <widget source="entry" render="Label" position="10,10" size="460,147" font="VFD;40" halign="center" valign="center" foregroundColor="#fff889" />
+    <eLabel position="0,158" size="480,2" backgroundColor="#f0f0f0" />
+    <widget source="desc" render="Label" position="10,161" size="460,149" font="VFD;40" valign="center" halign="center" />
+  </screen>
+
+  <!-- LCD screen VTIPanel -->
+  <screen name="VTIPanelSummary" position="0,0" size="480,320" id="1">
+    <widget source="entry" render="Label" position="10,10" size="460,147" font="VFD;40" halign="center" valign="center" foregroundColor="#fff889" />
+    <eLabel position="0,158" size="480,2" backgroundColor="#f0f0f0" />
+    <widget source="desc" render="Label" position="10,161" size="460,149" font="VFD;40" valign="center" halign="center" />
+  </screen>
+  <!-- LCD screen DeviceManager2 -->
+  <screen name="DeviceManager2Summary" position="0,0" size="480,320" id="1">
+    <widget source="entry" render="Label" position="10,10" size="460,147" font="VFD;40" halign="center" valign="center" foregroundColor="#fff889" />
+    <eLabel position="0,158" size="480,2" backgroundColor="#f0f0f0" />
+    <widget source="desc" render="Label" position="10,161" size="460,149" font="VFD;40" valign="center" halign="center" />
+  </screen>
+  <!-- LCD screen Setup -->
+  <screen name="SetupSummary" position="0,0" size="480,320" id="1">
+    <widget source="SetupTitle" render="RollerCharLCDLong" position="10,10" size="460,18" font="VFD;40" noWrap="1" />
+    <widget source="SetupEntry" render="RollerCharLCDLong" position="10,60" size="460,16" font="VFD;40" noWrap="1" />
+    <widget source="SetupValue" render="RollerCharLCDLong" position="10,120" size="460,16" font="VFD;40" noWrap="1" />
+  </screen>
+  <!-- LCD screen MessageBox -->
+<screen name="MessageBox_summary" position="0,0" size="480,320" id="1">
+    <widget source="parent.Text" render="Label" position="10,10" size="460,220" font="VFD;40" halign="center" valign="center" />
+    <eLabel position="0,230" size="480,2" backgroundColor="#f0f0f0" />
+    <widget source="parent.selectedChoice" render="Label" position="10,235" size="460,70" font="VFD;50" foregroundColor="#fff889" halign="center" valign="center" />
+  </screen>
+  <!-- LCD screen ChoiceBox -->
+  <screen name="ChoiceBox_summary" position="0,0" size="480,320" id="1">
+    <widget source="parent.summary_list" render="Label" position="10,10" size="460,300" font="VFD;35" />
+  </screen>
+  <!-- LCD screen AdvancedFreePlayer -->
+  
+    <screen name="AdvancedFreePlayerInfobarSummary" position="0,0" size="480,320" id="1">
+    <widget source="session.CurrentService" render="j00zekLabel" position="15,10" size="450,220" font="VFD;40" halign="center" valign="center">
+      <convert type="ServiceName">Name</convert>
+    </widget>
+    <widget source="session.CurrentService" render="Progress" pixmap="BlackHarmony/gfx/progress_lcd.png" position="15,265" size="270,20" borderWidth="2">
+      <convert type="ServicePosition">Position</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="288,235" size="180,70" font="VFD;70" halign="right">
+      <convert type="ClockToText">Format:%H:%M</convert>
+    </widget>
+    <widget source="session.RecordState" render="FixedLabel" position="410,188" zPosition="3" size="55,42" text=" ">
+      <convert type="ConfigEntryTest">config.usage.blinking_rec_symbol_during_recording,True,CheckSourceBoolean</convert>
+      <convert type="ConditionalShowHide">Blink</convert>
+    </widget>
+    <widget source="session.RecordState" render="Pixmap" pixmap="BlackHarmony/icons/ico_rec_on.png" position="410,188" size="55,42" alphatest="blend">
+      <convert type="ConditionalShowHide" />
+    </widget>
+  </screen>
+</skin>

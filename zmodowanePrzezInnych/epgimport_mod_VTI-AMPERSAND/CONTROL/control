@@ -1,0 +1,13 @@
+Package: enigma2-plugin-extensions--j00zeks-epgimport-ampersand
+Version: 1.0-r50-20210502
+Description: enigma2-plugin-extensions-epgimport version 1.0-r50-20210502
+ wersja dostosowana do VTI przez kolegę Ampersand
+Section: base
+Priority: optional
+Maintainer: MiLo, rytec @ pli-images.org
+License: GPLv2
+Architecture: all
+OE: enigma2-plugin-extensions-epgimport
+Depends: python-lzma, libpython2.7-1.0 (>= 2.7.9), libc6 (>= 2.21), python-compression, python-shell
+Source: http://github.com/j00zek/eePlugins
+DestinationPath: /usr/lib/enigma2/python/Plugins/Extensions/OscamStatus

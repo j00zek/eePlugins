@@ -1,0 +1,81 @@
+<skin>
+<screen name="FileCommanderScreen" position="0,0" size="1920,1080" title=" " flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="0,0" zPosition="-10" size="1920,1080" pixmap="BlackHarmony/bg_design/cool.png"/>
+    <widget source="global.CurrentTime" render="Label" position="75,55" size="80,35" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="160,55" size="660,35" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+	<eLabel text="Eksplorator plików" position="817,55" size="1025,35" font="Roboto_HD; 27" halign="right" backgroundColor="black" transparent="1"/>
+	
+    <widget name="list_left_head1" position="105,135" size="848,75" font="Roboto_HD;27" valign="center" backgroundColor="background" transparent="1"/>
+	<widget source="list_left_head2" render="Listbox" position="105,218" size="848,45" selectionDisabled="1" foregroundColor="lemon" backgroundColor="background" transparent="1" >
+	<convert type="TemplatedMultiContent">
+			{"template": [
+				MultiContentEntryText(pos = (210, 0), size = (120, 45), font = 0, flags = RT_HALIGN_LEFT, text = 1), # index 1 is a symbolic mode
+				MultiContentEntryText(pos = (330, 0), size = (150, 45), font = 0, flags = RT_HALIGN_RIGHT, text = 11), # index 11 is the scaled size
+				MultiContentEntryText(pos = (480, 0), size = (360, 45), font = 0, flags = RT_HALIGN_RIGHT, text = 13), # index 13 is the modification time
+				],
+				"fonts": [gFont("Roboto_HD", 27)],
+				"itemHeight": 45,
+				"selectionEnabled": False
+			}
+	</convert>
+</widget>
+	<widget name="list_right_head1" position="968,135" size="848,75" font="Roboto_HD;27" valign="center" backgroundColor="background" transparent="1"/>
+	<widget source="list_right_head2" render="Listbox" position="968,218" size="848,45" backgroundColor="background" foregroundColor="lemon" selectionDisabled="1" transparent="1" >
+	<convert type="TemplatedMultiContent">
+			{"template": [
+				MultiContentEntryText(pos = (210, 0), size = (120, 45), font = 0, flags = RT_HALIGN_LEFT, text = 1), # index 1 is a symbolic mode
+				MultiContentEntryText(pos = (330, 0), size = (150, 45), font = 0, flags = RT_HALIGN_RIGHT, text = 11), # index 11 is the scaled size
+				MultiContentEntryText(pos = (480, 0), size = (360, 45), font = 0, flags = RT_HALIGN_RIGHT, text = 13), # index 13 is the modification time
+				],
+				"fonts": [gFont("Roboto_HD", 27)],
+				"itemHeight": 45,
+				"selectionEnabled": False
+				}
+	</convert>
+</widget>
+	<widget name="sort_left" position="113,218" size="150,33" font="Roboto_HD;27" halign="left"  backgroundColor="background" transparent="1"/>
+	<widget name="sort_right" position="975,218" size="150,33" font="Roboto_HD;27" halign="left" backgroundColor="background" transparent="1"/>
+	<eLabel position="105,210" size="1710,2" backgroundColor="#000090e6" />
+	<eLabel position="105,258" size="1710,2" backgroundColor="#000090e6" />
+	<eLabel position="960,151" size="2,780" backgroundColor="#000090e6" />
+    
+	<widget name="list_left" position="105,270" size="848,675" itemHeight="45" font="Roboto_HD; 35" scrollbarSliderBorderWidth="1" scrollbarWidth="6" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="scrollbarSliderbordercolor" scrollbarMode="showOnDemand" backgroundColor="transparent" foregroundColor="white" backgroundColorSelected="#ffd200"  transparent="1" selectionPixmap="BlackHarmony/menu/sel_860_45.png" />
+	
+	<widget name="list_right" position="968,270" size="848,675" itemHeight="45" font="Roboto_HD; 35" scrollbarSliderBorderWidth="1" scrollbarWidth="6" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="scrollbarSliderbordercolor" scrollbarMode="showOnDemand" backgroundColor="transparent" foregroundColor="white" backgroundColorSelected="#ffd200"  transparent="1" selectionPixmap="BlackHarmony/menu/sel_860_45.png" />
+    
+	<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="95,1001" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="430,1001" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="760,1001" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="1090,1001" size="35,27" alphatest="blend"/>
+	
+	<widget name="key_red" position="150,1000" size="200,27" transparent="1" font="Roboto_HD; 24" halign="left"/>
+	<widget name="key_green" position="480,1000" size="200,27"  transparent="1" font="Roboto_HD; 24" halign="left"/>
+	<widget name="key_yellow" position="810,1000" size="200,27" transparent="1" font="Roboto_HD; 24" halign="left"/>
+	<widget name="key_blue" position="1140,1000" size="200,27" transparent="1" font="Roboto_HD; 24" halign="left" />
+	
+	<ePixmap position="1540,999" size="60,30" pixmap="BlackHarmony/buttons/key_ok.png" alphatest="blend"/>
+    <ePixmap position="1665,999" size="60,30" pixmap="BlackHarmony/buttons/key_menu.png" alphatest="blend"/>
+    <ePixmap position="1789,999" size="60,30" pixmap="BlackHarmony/buttons/key_exit.png" alphatest="blend"/>
+	
+	 </screen>
+	 
+<screen name="FileCommanderContextMenu" position="462,128" size="1000,820" flags="wfNoBorder" backgroundColor="transparent" >
+	<ePixmap position="0,0" zPosition="-10" size="1000,820" pixmap="BlackHarmony/bg_design/small.png"/>
+	<widget source="global.CurrentTime" render="Label" position="45,30" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+    <convert type="ClockToText">Default</convert>
+</widget>
+    <widget source="global.CurrentTime" render="Label" position="129,30" size="460,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+</widget>
+    <eLabel text="Menu" position="661,30" size="280,30" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1"/>
+		
+		<widget name="menu" position="75,122" size="845,595" itemHeight="35" foregroundColor="white" backgroundColor="transparent" transparent="1" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_845_35.png" />
+		
+		
+		
+	</screen>
+</skin>

@@ -1,0 +1,6 @@
+<skin>
+  <screen name="SimpleSummary" position="0,0" size="100%,100%">
+    <widget backgroundColor="#000000" font="BHfDlcD;50" foregroundColor="yellow" halign="center" position="center,2%" render="Label" size="100%,55" source="parent.Title" noWrap="1" transparent="1" zPosition="1">
+    </widget>
+  </screen>
+</skin>

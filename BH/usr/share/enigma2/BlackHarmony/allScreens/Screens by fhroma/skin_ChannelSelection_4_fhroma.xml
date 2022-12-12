@@ -1,0 +1,64 @@
+<skin>
+   <screen name="ChannelSelection" position="center,center" size="1920,1080" title="Channel Selection" flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="0,1" zPosition="-7" size="1920,1080" pixmap="BlackHarmony/bg_design/channel_4.png" />
+<widget source="session.VideoPicture" render="Pig" position="1106,150" zPosition="3" size="744,508" backgroundColor="#ff000000" transparent="0">
+    <convert type="ConfigEntryTest"></convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+	  <ePixmap position="1092,105" zPosition="4" size="762,600" pixmap="BlackHarmony/bg_design/ramka760x460.png" alphatest="on" />
+    <widget source="global.CurrentTime" render="Label" position="75,35" size="100,35" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="180,35" size="360,35" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+    <widget source="Title" render="Label" position="200,110" size="1025,45" font="Roboto_HD; 27" backgroundColor="black" foregroundColor="yellow" transparent="1" halign="left"  />
+	 
+		<ePixmap position="1058,140" zPosition="2" size="35,680" pixmap="BlackHarmony/gfx/scroll.png" alphatest="blend" transparent="1" />
+    <widget name="list" position="55,155" size="1025,635" serviceItemHeight="45" selectionPixmap="BlackHarmony/menu/sel_1005_40.png" scrollbarMode="showOnDemand" enableWrapAround="1" colorServiceDescription="#99CC99" colorServiceDescriptionSelected="lemon" colorEventProgressbarBorder="border" colorEventProgressbarBorderSelected="border" picServiceEventProgressbar="BlackHarmony/gfx/progcl.png" foregroundColorServiceNotAvail="#777777" serviceNumberFont="Roboto_HD;28" serviceNameFont="Roboto_HD;28" serviceInfoFont="Roboto_HD;24"  transparent="0" />
+    <widget font="Roboto_HD; 26" position="1711,705" render="Label" size="90,30" source="ServiceEvent" transparent="1" zPosition="2" halign="left" backgroundColor="black">
+      <convert type="EventTime">Remaining</convert>
+      <convert type="RemainingToText">NoSeconds</convert>
+    </widget>
+    <widget source="ServiceEvent" render="Label" position="1145,705" size="100,35" font="Roboto_HD; 26" backgroundColor="background" transparent="1">
+      <convert type="EventTime">StartTime</convert>
+      <convert type="ClockToText" />
+    </widget>
+    <widget source="ServiceEvent" render="Label" position="1217,705" size="105,30" font="Roboto_HD; 26" backgroundColor="background" transparent="1">
+      <convert type="EventTime">EndTime</convert>
+      <convert type="ClockToText">Format:- %H:%M</convert>
+    </widget>
+    <widget source="ServiceEvent" render="Label" position="1205,45" size="635,20" font="Roboto_HD; 25" backgroundColor="dark_grey" transparent="1" halign="right" noWrap="1" valign="center" text="19.2E  DVB-S2  10627 27500 3/4 8PSK" zPosition="3">
+      <convert type="j00zekModServiceName2">%O  %s  %F %p %Y %f %M %b</convert>
+    </widget>
+    <widget render="j00zekModRunningText" source="ServiceEvent" options="movetype=running,startpoint=0,direction=top,steptime=90,repeat=4,startdelay=6000,wrap" halign="left" font="Roboto_HD; 24" backgroundColor="background" position="55,815" size="1025,140" transparent="1">
+      <convert type="j00zekModEventName">ExtendedDescription</convert>
+    </widget>
+	 <eLabel position="1318,719" size="376,2" backgroundColor="linie" foregroundColor="linie" />
+    <widget source="ServiceEvent" render="Progress" position="1318,717" size="376,6" pixmap="BlackHarmony/gfx/progress_cs.png" transparent="1">
+      <convert type="EventTime">Progress</convert>
+    </widget>
+    <widget source="ServiceEvent" render="Label" position="1260,650" size="445,50" zPosition="5" font="Roboto_HD; 38" backgroundColor="background" transparent="1" foregroundColor="#66CC99" halign="center">
+      <convert type="ServiceName">Name</convert>
+    </widget>
+		<widget source="ServiceEvent" render="Label" position="1230,740" size="500,35" zPosition="2" halign="center" font="Regular;28" foregroundColor="green" backgroundColor="transpBlack" transparent="1" >
+			<convert type="j00zekModEventName">Name</convert>
+					</widget>	
+   <eLabel position="70,800" size="960,1" backgroundColor="linie" foregroundColor="linie" />
+   <eLabel position="1130,800" size="690,1" backgroundColor="linie" foregroundColor="linie" />
+    <widget alphatest="blend" render="j00zekModEventListDisplay" position="1185,810" size="655,170" source="ServiceEvent" rowHeight="32" column0="0,70,green,Roboto_HD,24,0,0" column1="80,545,white,Roboto_HD,24,0,1" primetimeoffset="10">
+      <convert type="j00zekModEventList">eventcount=5</convert>
+    </widget>
+    <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="95,1001" size="35,27" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="430,1001" size="35,27" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="760,1001" size="35,27" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="1090,1001" size="35,27" alphatest="blend" />
+    <widget name="key_red" position="150,1000" size="240,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" valign="bottom" />
+    <widget name="key_green" position="480,1000" size="240,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <widget name="key_yellow" position="810,1000" size="240,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <widget name="key_blue" position="1140,1000" size="240,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <ePixmap position="1360,999" size="60,30" pixmap="BlackHarmony/buttons/key_ok.png" alphatest="blend" />
+    <ePixmap position="1540,999" size="60,30" pixmap="BlackHarmony/buttons/key_menu.png" alphatest="blend" />
+    <ePixmap position="1720,999" size="60,30" pixmap="BlackHarmony/buttons/key_info.png" alphatest="blend" />
+  </screen>
+</skin>

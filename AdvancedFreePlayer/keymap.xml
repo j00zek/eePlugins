@@ -1,0 +1,106 @@
+<keymap>
+  <map context="AdvancedFreePlayer">
+    <!-- openPLI PC , keyboard -->
+    <key id="KEY_ESC" mapto="ExitPlayer" flags="m" />
+    <key id="KEY_EXIT" mapto="ExitPlayer" flags="m" />
+    <key id="KEY_HOME" mapto="ExitPlayer" flags="m" />
+    <key id="KEY_STOP" mapto="ExitPlayer" flags="m" />
+    <key id="KEY_HELP" mapto="HelpScreen" flags="b" />      
+    <key id="KEY_MENU" mapto="HelpScreen" flags="b" />
+    <key id="KEY_UP" mapto="MoveSubsUp" flags="m" />
+    <key id="KEY_DOWN" mapto="MoveSubsDown" flags="m" />
+    <key id="KEY_LEFT" mapto="SetSmallerFont" flags="m" />
+    <key id="KEY_RIGHT" mapto="SetBiggerFont" flags="m" />
+    <key id="KEY_INFO" mapto="ToggleInfobar" flags="b" />
+    <key id="KEY_OK" mapto="ToggleInfobar" flags="m" />
+    <key id="KEY_GREEN" mapto="toggleFontBackground" flags="m" />
+    <key id="KEY_YELLOW" mapto="ToggleFont" flags="m" />
+    <key id="KEY_BLUE" mapto="ToggleFontColor" flags="m" />
+    <key id="KEY_RED" mapto="aspectChange" flags="m" />
+    <key id="KEY_PLAY" mapto="togglePause" flags="m" />
+    <key id="KEY_PAUSE" mapto="togglePause" flags="m" />
+    <key id="KEY_PLAYPAUSE" mapto="togglePause" flags="m" />
+
+    <key id="KEY_1" mapto="BackF30s" flags="m" />
+			<!--key id="KEY_2" mapto="key2" flags="m" /-->
+    <key id="KEY_3" mapto="FastF30s" flags="m" />
+    <key id="KEY_4" mapto="BackF120s" flags="m" />
+			<!--key id="KEY_5" mapto="key5" flags="m" /-->
+    <key id="KEY_6" mapto="FastF120s" flags="m" />
+    <key id="KEY_7" mapto="BackF300s" flags="m" />
+			<!--key id="KEY_8" mapto="key8" flags="m" /-->
+    <key id="KEY_9" mapto="FastF300s" flags="m" />
+			<!--key id="KEY_0" mapto="key0" flags="m" /-->
+
+    <key id="KEY_CHANNELUP" mapto="SeekUpSubtitles" flags="m" />
+    <key id="KEY_PAGEUP" mapto="SeekUpSubtitles" flags="m" />
+    <key id="KEY_CHANNELDOWN" mapto="SeekDownSubtitles" flags="m" />
+    <key id="KEY_PAGEDOWN" mapto="SeekDownSubtitles" flags="m" />
+
+    <key id="KEY_TV" mapto="ToggleSubtitles" flags="m" />
+    <key id="KEY_GOTO" mapto="ToggleSubtitles" flags="m" />
+    <key id="KEY_TEXT" mapto="SelectSubtitles" flags="m" />
+    <key id="KEY_RADIO" mapto="SelectSubtitles" flags="m" />
+    <key id="KEY_AUDIO" mapto="SelectAudio" flags="m" />
+  </map>
+	
+  <map context="AdvancedFreePlayerSelector">
+    <key id="KEY_OK" mapto="selectFile" flags="m" />
+    <key id="KEY_EXIT" mapto="ExitPlayer" flags="m" />
+    <key id="KEY_HOME" mapto="ExitPlayer" flags="m" />
+    <key id="KEY_ESC"  mapto="ExitPlayer" flags="m" />
+    <key id="KEY_PLAY" mapto="PlayMovie" flags="m" />
+    <key id="KEY_RED" mapto="playORdelete" flags="m" />
+    <key id="KEY_GREEN" mapto="runDMnapi" flags="m" />
+    <key id="KEY_TEXT" mapto="runDMnapi" flags="m" />
+    <key id="KEY_YELLOW" mapto="runConfig" flags="m" />
+    <key id="KEY_MENU" mapto="runConfig" flags="b" />
+    <key id="KEY_BLUE" mapto="setSort" flags="m" />
+    <key id="KEY_UP" mapto="lineUp" flags="m" />
+    <key id="KEY_DOWN" mapto="lineDown" flags="m" />
+    <key id="KEY_LEFT" mapto="pageUp" flags="m" />
+    <key id="KEY_RIGHT" mapto="pageDown" flags="m" />
+    <key id="KEY_PAGEUP" mapto="pageUp" flags="m" />
+    <key id="KEY_PAGEDOWN" mapto="pageDown" flags="m" />
+  </map>
+  
+  <map context="AdvancedFreePlayerInfobar">
+    <key id="KEY_ESC" mapto="CloseAndStop" flags="m" />
+    <key id="KEY_EXIT" mapto="CloseAndStop" flags="m" />
+    <key id="KEY_HOME" mapto="CloseAndStop" flags="m" />
+    <key id="KEY_OK" mapto="CloseInfobar" flags="m" />
+    <key id="KEY_INFO" mapto="CloseInfobar" flags="m" /> 
+    <!--key id="KEY_RED" mapto="CloseAndTogglePause" flags="m" /-->
+    <key id="KEY_PLAY" mapto="CloseAndTogglePause" flags="m" />
+    <key id="KEY_PAUSE" mapto="CloseAndTogglePause" flags="m" />
+    <key id="KEY_PLAYPAUSE" mapto="CloseAndTogglePause" flags="m" />
+    <key id="KEY_1" mapto="CloseInfobar" flags="m" />
+    <key id="KEY_3" mapto="CloseInfobar" flags="m" />
+    <key id="KEY_4" mapto="CloseInfobar" flags="m" />
+    <key id="KEY_6" mapto="CloseInfobar" flags="m" />
+    <key id="KEY_7" mapto="CloseInfobar" flags="m" />
+    <key id="KEY_9" mapto="CloseInfobar" flags="m" />
+  </map>
+  
+  <map context="AdvancedFreePlayerPauseInfobar">
+    <key id="KEY_ESC" mapto="CloseAndStop" flags="m" />
+    <key id="KEY_EXIT" mapto="CloseAndStop" flags="m" />
+    <key id="KEY_HOME" mapto="CloseAndStop" flags="m" />
+    <!--key id="KEY_RED" mapto="unPause" flags="m" /-->
+    <key id="KEY_PLAY" mapto="unPause" flags="m" />
+    <key id="KEY_PAUSE" mapto="unPause" flags="m" />
+    <key id="KEY_PLAYPAUSE" mapto="unPause" flags="m" />
+  </map>
+  
+  <map context="SubtitlesActions">
+    <key id="KEY_SUBTITLE" mapto="subtitles" flags="m" />
+    <key id="KEY_TEXT" mapto="subtitles" flags="m" />
+    <key id="KEY_YELLOW" mapto="subtitles" flags="m" />
+    <key id="KEY_RADIO" mapto="subtitles" flags="m" />
+  </map>
+  
+  <map context="AdvancedFreePlayerSeekActions">
+    <key id="KEY_REWIND" mapto="seekBackManual" flags="m" />
+    <key id="KEY_FASTFORWARD" mapto="seekFwdManual" flags="m" />
+  </map>`
+</keymap>

@@ -1,0 +1,12 @@
+Generalnie każdą wartość którą zwraca volumio po komendzie  http://<TU IP>/api/v1/getState można wyświetlić w skórce. 
+Przykładowe wywołanie:
+    <widget position="140,240" size="600,24" font="Regular;22" zPosition="5" transparent="1" foregroundColor="white" render="Label" source="session.CurrentService" valign="center">
+        <convert type="j00zekLCD4volumio">artist</convert>
+    </widget>
+
+gdzie grist to właśnie wartość zwracana przez volumio i może być użyta inna, jak np. title
+
+skin.xml i skinLCD.xml zawierają wywołania konkretnych parametrów i dodatkowych, obliczanych rzeczy jak pasek postępu.
+
+Żeby dane się odświerzały na dowolnym ekranie, jeden i TYLKO jeden konwerter musi mieć włączoną flagę DoRefreshDict
+Przykład "<convert type="j00zekLCD4volumio">title,DoRefreshDict</convert>"

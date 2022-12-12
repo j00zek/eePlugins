@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<skin>
+	<windowstyle id="1" type="skinned">
+		<color color="#000000" name="Background"/>
+		<color color="#ffffff" name="LabelForeground"/>
+		<color color="#000000" name="ListboxBackground"/>
+		<color color="#ffffff" name="ListboxForeground"/>
+		<color color="#000000" name="ListboxSelectedBackground"/>
+		<color color="#ffffff" name="ListboxSelectedForeground"/>
+		<color color="#000000" name="ListboxMarkedBackground"/>
+		<color color="#ffffff" name="ListboxMarkedForeground"/>
+		<color color="#000000" name="ListboxMarkedAndSelectedBackground"/>
+		<color color="#ffffff" name="ListboxMarkedAndSelectedForeground"/>
+		<color color="#ffffff" name="WindowTitleForeground"/>
+		<color color="#000000" name="WindowTitleBackground"/>
+	</windowstyle>
+	<fonts>
+		<!-- pick a funky name for the font, so we don't conflict  -->
+		<font filename="nmsbd.ttf" name="FdLcD" scale="100"/>
+	</fonts>
+
+<!-- standby -->
+        <screen name="StandbySummary" position="0,0" size="220,176">
+                <widget source="global.CurrentTime" render="Label" position="center,center" size="225,100" font="FdLcD;85" halign="center" noWrap="1">
+                        <convert type="ClockToText">Format:%-H:%M</convert>
+                </widget>
+        </screen>
+
+<!-- template -->
+	<screen name="SummaryClockPanel">
+                <widget source="global.CurrentTime" render="Label" position="center,center" size="225,100" font="FdLcD;85" halign="center" noWrap="1">
+                        <convert type="ClockToText">Format:%-H:%M</convert>
+                </widget>
+	</screen>
+
+<!-- main-->
+	<screen name="InfoBarSummary" position="0,0" size="220,176">
+                <panel name="SummaryClockPanel" />      
+	</screen>
+
+<!-- movieplayer-->
+	<screen name="InfoBarMoviePlayerSummary" position="0,0" size="220,176"> 
+                <panel name="SummaryClockPanel" />      
+    </screen>
+
+<!-- channelselection-->
+	<screen name="ChannelSelection_summary" position="fill">
+                <panel name="SummaryClockPanel" />      
+	</screen>
+
+<!-- menus-->
+	<screen name="MenuSummary" position="fill">
+                <panel name="SummaryClockPanel" />      
+	</screen>
+
+<!-- setup-->
+	<screen name="SetupSummary" position="0,0" size="220,176"> 
+                <panel name="SummaryClockPanel" />      
+	</screen>
+
+<!-- misc-->
+	<screen name="SimpleSummary" position="fill">
+                <panel name="SummaryClockPanel" />      
+	</screen>
+	<screen name="WizardSummary" position="fill">
+                <panel name="SummaryClockPanel" />      
+	</screen>
+	<screen name="VideoWizardSummary" position="fill">
+                <panel name="SummaryClockPanel" />      
+	</screen>
+
+
+<!-- Numberzap -->    
+ 	<screen name="NumberZap_summary" position="0,0" size="220,176">
+                <panel name="SummaryClockPanel" />      
+	</screen>
+
+<!-- RDS info -->
+	<screen name="RdsInfoDisplaySummary" position="fill">
+                <panel name="SummaryClockPanel" />      
+	</screen>
+	
+<!-- Plugin browser -->
+	<screen name="PluginBrowserSummary" position="fill">
+                <panel name="SummaryClockPanel" />      
+	</screen>
+
+<!-- JobView Summary -->
+	<screen name="JobView_summary" position="0,0" size="220,176">
+                <panel name="SummaryClockPanel" />      
+	</screen>
+
+	<screen name="EventView_summary" position="0,0" size="220,176">
+                <panel name="SummaryClockPanel" />      
+	</screen>
+
+	<screen name="EventViewSimple_summary" position="0,0" size="220,176">
+                <panel name="SummaryClockPanel" />      
+	</screen>
+	
+<!-- Servicescan -->
+	<screen name="ServiceScanSummary" position="0,0" size="220,176">
+                <panel name="SummaryClockPanel" />      
+	</screen> 
+
+<!-- EPG -->
+	<screen name="EPGExtensionsList_summary" position="0,0" size="220,176">
+                <panel name="SummaryClockPanel" />      
+	</screen> 
+	<screen name="GraphicalEPGPIG_summary" position="0,0" size="220,176">
+                <panel name="SummaryClockPanel" />      
+	</screen>
+	<screen name="IMDbLCDScreen" position="0,0" size="220,176">
+                <panel name="SummaryClockPanel" />      
+	</screen>
+	<screen name="GraphicalInfoBarEPG_summary" position="0,0" size="220,176">
+                <panel name="SummaryClockPanel" />      
+	</screen>
+	<screen name="EPGSelectionMulti_summary" position="0,0" size="220,176">
+                <panel name="SummaryClockPanel" />      
+	</screen>
+
+	<screen name="MessageBox_summary" position="0,0" size="220,176">
+                <panel name="SummaryClockPanel" />      
+	</screen>
+	<screen name="MessageBoxSimple_summary" position="0,0" size="220,176">
+                <panel name="SummaryClockPanel" />      
+	</screen>
+
+	<screen name="AboutSummary" position="0,0" size="220,176">
+                <panel name="SummaryClockPanel" />      
+	</screen>
+
+	<screen name="TimerEditListSummary" position="0,0" size="220,176">
+                <panel name="SummaryClockPanel" />      
+	</screen>
+
+	<screen name="WizardSummary" position="0,0" size="220,176">
+                <panel name="SummaryClockPanel" />      
+	</screen>
+	<screen name="LanguageWizardSummary" position="0,0" size="220,176">
+                <panel name="SummaryClockPanel" />      
+	</screen>
+	<screen name="VideoWizardSummary" position="fill">
+                <panel name="SummaryClockPanel" />      
+	</screen>
+
+<!-- DVD -->
+	<screen name="DVDSummary" position="fill">
+                <panel name="SummaryClockPanel" />      
+	</screen>
+	
+<!-- EMC-->
+	<screen name="EMCSelection_summary" position="0,0" size="220,176"> 
+                <panel name="SummaryClockPanel" />      
+	</screen>
+	<screen name="EMCMoviePlayerSummary" position="0,0" size="220,176"> 
+                <panel name="SummaryClockPanel" />      
+	</screen>
+	
+<!-- Mediaplayer -->
+	<screen name="MediaPlayerLCDScreen" position="0,0" size="220,176">
+                <panel name="SummaryClockPanel" />      
+	</screen>	
+		
+<!-- Infopanel -->
+	<screen name="Infopanel_summary" position="0,0" size="220,176">
+                <panel name="SummaryClockPanel" />      
+	</screen>
+	
+<!-- Quickmenü -->
+	<screen name="QuickMenu_summary" position="0,0" size="220,176">
+                <panel name="SummaryClockPanel" />      
+	</screen>
+	
+<!-- softwaremanagment -->
+	<screen name="BackupSelection_summary" position="0,0" size="220,176">
+                <panel name="SummaryClockPanel" />      
+	</screen>
+	<screen name="RestoreScreen_summary" position="0,0" size="220,176">
+                <panel name="SummaryClockPanel" />      
+	</screen>
+	<screen name="installedPlugins_summary" position="0,0" size="220,176">
+                <panel name="SummaryClockPanel" />      
+	</screen>
+	<screen name="RestartNetwork_summary" position="0,0" size="220,176">
+                <panel name="SummaryClockPanel" />      
+	</screen>
+	<screen name="RestorePlugins_summary" position="0,0" size="220,176">
+                <panel name="SummaryClockPanel" />      
+	</screen>
+	<screen name="RestoreMenu_summary" position="0,0" size="220,176">
+                <panel name="SummaryClockPanel" />      
+	</screen>
+</skin>
