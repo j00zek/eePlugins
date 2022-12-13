@@ -25,7 +25,7 @@ plugAbsPath=$(readlink -fn "$1")
 RunScriptBeforeBuild=`grep 'RunScriptBeforeBuild' < $plugAbsPath/CONTROL/control|cut -d ':' -f2|xargs`
 
 if [ ! -z $RunScriptBeforeBuild ] && [ -e $plugAbsPath/$RunScriptBeforeBuild ];then
-  echo "Running script before build"
+  echo "Uruchamianie skryptu poprzedzającego budowę paczki"
   $plugAbsPath/$RunScriptBeforeBuild
 fi
 
@@ -35,7 +35,8 @@ ExcludeFolder=`grep 'ExcludeFolder' < $plugAbsPath/CONTROL/control|cut -d ':' -f
 BuildType=`grep 'BuildType' < $plugAbsPath/CONTROL/control|cut -d ':' -f2|xargs`
 [ ! $BuildType ] && BuildType='Any'
 
-#sprawdzanie czy xmle nie maja bledow
+echo "sprawdzanie czy xml-e nie mają błędów"
+
 find $plugAbsPath -iname "*.xml" | 
   while read F 
   do
@@ -46,7 +47,9 @@ find $plugAbsPath -iname "*.xml" |
     fi
   done
 [ $? -gt 0 ] && exit 1
-#sprawdzanie czy py nie maja bledow
+
+echo "sprawdzanie czy py nie mają błędów"
+
 echo "import sys
 filename = sys.argv[1]
 #print(filename)
@@ -116,6 +119,8 @@ elif [ -e $plugAbsPath/Plugins/Extensions/MSNweather/version.py ];then echo "Ver
 #elif [ ! -z $versionFileName ] && [ `grep -c 'IPTV_VERSION=' < $versionFileName` -gt 0 ];then echo "$version" > "${versionFileName/.py/_eeP}"
 elif [ ! -z $versionFileName ] && [ -e $versionFileName ];then echo "Version='$version'" > $versionFileName
 fi
+
+echo "kompilacja plikow po"
 find $plugAbsPath/ -type f -name *.po  -exec bash -c 'msgfmt "$1" -o "${1%.po}".mo' - '{}' \;
 
 [ -e $ipkdir ] && sudo rm -rf $ipkdir
