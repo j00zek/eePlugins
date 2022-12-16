@@ -35,8 +35,8 @@ class Rijndael(BlockCipher):
         assert(keySize % 4 == 0 and NrTable[4].has_key(keySize / 4)), 'key size must be 16,20,24,29 or 32 bytes'
         assert(blockSize % 4 == 0 and NrTable.has_key(blockSize / 4)), 'block size must be 16,20,24,29 or 32 bytes'
 
-        self.Nb = self.blockSize / 4          # Nb is number of columns of 32 bit words
-        self.Nk = keySize / 4                 # Nk is the key length in 32-bit words
+        self.Nb = int(self.blockSize / 4)   # Nb is number of columns of 32 bit words
+        self.Nk = int(keySize / 4)          # Nk is the key length in 32-bit words
         self.Nr = NrTable[self.Nb][self.Nk] # The number of rounds (Nr) is a function of
                                             # the block (Nb) and key (Nk) sizes.
         if key != None:
@@ -113,7 +113,7 @@ def keyExpansion(algInstance, keyString):
         if (i % Nk) == 0:
             temp = temp[1:] + [temp[0]]  # RotWord(temp)
             temp = [Sbox[byte] for byte in temp]
-            temp[0] ^= Rcon[i / Nk]
+            temp[0] ^= Rcon[int(i / Nk)]
         elif Nk > 6 and i % Nk == 4:
             temp = [Sbox[byte] for byte in temp]  # SubWord(temp)
         w.append([w[i - Nk][byte] ^ temp[byte] for byte in range(4)])

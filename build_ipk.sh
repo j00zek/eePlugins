@@ -149,7 +149,10 @@ sudo chown -R root $ipkdir/
 cd /tmp
 sudo rm -rf /tmp/IPKG_BUILD* 2>/dev/null
 rm -f ~/tmp/$PluginName_lower*
+rm -f /tmp/$PluginName_lower*
 $myAbsPath/tools/ipkg-build.sh $ipkdir
+
+#ln -sf /repoRealPath/ ~/opkg-repository
 #echo $PluginName_lower
 if [ -d ~/opkg-repository ] && [ ! -z $PluginName_lower ];then
   rm -f ~/opkg-repository/$PluginName_lower*

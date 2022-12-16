@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
+import sys
 
+if sys.version_info[0] == 3:
+  xrange = range
 
 def EVP_BytesToKey(md, data, salt, keyLength, ivLength, count):
     assert(data)
@@ -26,7 +29,10 @@ def EVP_BytesToKey(md, data, salt, keyLength, ivLength, count):
             hashed = m.digest()
 
         keyNeeds = keyLength - len(key)
-        tmp = hashed
+        if sys.version_info[0] == 2:
+            tmp = hashed
+        else:
+            tmp = hashed.decode('utf-8', 'ignore')
         if keyNeeds > 0:
             key += tmp[:keyNeeds]
             tmp = tmp[keyNeeds:]
