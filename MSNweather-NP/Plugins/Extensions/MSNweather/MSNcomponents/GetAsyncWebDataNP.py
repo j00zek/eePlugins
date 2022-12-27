@@ -78,7 +78,7 @@ def IMGtoICON(imgFileName, skytext, currentInt, sunsetInt=None, sunriseInt=None)
         imgFileName = os.path.basename(imgFileName)
         retICON = iconsMap.get(utfTOansi(imgFileName), '')
     if retICON == '':
-        print('Brakuje ikony dla ', skytext, utfTOansi(skytext), os.path.basename(imgFileName))
+        print('Brakuje ikony dla skytext=%s, utfTOansi(skytext)=%s, imgFileName=%s' % (skytext, utfTOansi(skytext), os.path.basename(imgFileName)))
     return retICON
 
 
@@ -1838,6 +1838,11 @@ def msn_api(webContent, webFileName):
                 weekday = _(datetime.strptime(dailyDict['daily']['valid'][:10], '%Y-%m-%d').strftime("%a"))
                 monthday = dailyDict['daily']['valid'][8:10]
                 skytext = dailyDict['daily']['pvdrCap']
+                if skytext == '':
+                    try:
+                        skytext = dailyDict['daily']['day']['pvdrCap']
+                    except Exception:
+                        print('MSNAPI: Exception in getting skytext for %s' % dailyDict['daily'])
                 rainprecip = str(int(dailyDict['daily']['precip'])) + "%"
                 temp_high = str(int(dailyDict['daily']['tempHi'])) + "°"
                 temp_low = str(int(dailyDict['daily']['tempLo'])) + "°"
