@@ -542,12 +542,14 @@ class MSNWeatherEntryConfigScreen(ConfigListScreen, Screen):
                             errormessage = childs.attrib.get('errormessage').encode('utf-8', 'ignore')
                         break
             except Exception as e:
-                open("/tmp/.MSNdata/setupNPcitySearchCallback.EXCEPTION", "w").write('%s\n!!!!!!!!!!page content:\n%s' % (str(e),xmlstring))
+                open("/tmp/.MSNdata/setupNPcitySearchCallback.EXCEPTION", "w").write('EXCEPTION PARSING XML RESPONSE: %s\n!!!!!!!!!!page content:\n%s' % (str(e),xmlstring))
                 try:
                     xmlstring = ''
                     #FC = findInContent(webContent, 'div id="WeatherOverviewLocationName".*div class="labelWeather-E1_1"')
                     #weatherSearchFullName = getList([], FC, 'title="([^"]*)"')[0]
                     FC = findInContent(webContent, 'div id="WeatherOverviewLocationName".*}</script></div>')
+                    if FC == '':
+                        FC = findInContent(webContent, 'div id="WeatherOverviewLocationName".*</script></div>')
                     bdata = getList([], FC, 'loc=([^"&;]*)')[0]
                     data = json.loads(ensure_str(base64.b64decode(bdata)))
                     xmlstring += '<weatherdata xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">'
@@ -559,7 +561,7 @@ class MSNWeatherEntryConfigScreen(ConfigListScreen, Screen):
                     xmlstring += '/>'
                     xmlstring += '</weatherdata>'
                 except Exception as ex:
-                    open("/tmp/.MSNdata/webContent.Exception", "w").write('%s\n!!!!!!!!!!page content:\n%s' % (str(ex),ensure_str(webContent)))
+                    open("/tmp/.MSNdata/webContent.Exception", "w").write('EXCEPTION PARSING WEBCONTENT RESPONSE: %s\n!!!!!!!!!!page content:\n%s' % (str(ex),ensure_str(webContent)))
                     errormessage = _('City not found :(')
 
             if len(errormessage) != 0:
