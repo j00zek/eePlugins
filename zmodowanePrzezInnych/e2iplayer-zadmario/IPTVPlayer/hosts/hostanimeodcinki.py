@@ -258,7 +258,7 @@ class AnimeOdcinkiPL(CBaseHostClass):
         self.listSearchItems(cItem, 'list_episodes')
 
     def _encryptPlayerUrl(self, data):
-        printDBG("hostanimeodcinki._encryptPlayerUrl data[%s]" % data)
+        printDBG("hostanimeodcinki._encryptPlayerUrl data=%s" % data)
         decrypted = ''
         try:
             salt = a2b_hex(data["v"])

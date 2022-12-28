@@ -49,7 +49,8 @@ class Filman(CBaseHostClass, CaptchaHelper):
 
     def __init__(self):
         CBaseHostClass.__init__(self, {'history': 'Filman.online', 'cookie': 'filman.cookie'})
-        self.USER_AGENT = 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.0'
+        config.plugins.iptvplayer.cloudflare_user = ConfigText(default='Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.0', fixed_size=False)
+        self.USER_AGENT = config.plugins.iptvplayer.cloudflare_user.value
         self.MAIN_URL = 'https://filman.cc/'
         self.DEFAULT_ICON_URL = 'https://filman.cc/public/dist/images/logo.png'
         self.HTTP_HEADER = {'User-Agent': self.USER_AGENT, 'DNT': '1', 'Accept': 'text/html', 'Accept-Encoding': 'gzip, deflate', 'Referer': self.getMainUrl(), 'Origin': self.getMainUrl()}
@@ -71,19 +72,10 @@ class Filman(CBaseHostClass, CaptchaHelper):
         origBaseUrl = baseUrl
         baseUrl = self.cm.iriToUri(baseUrl)
 
-        def _getFullUrl(url):
-            if self.cm.isValidUrl(url):
-                return url
-            else:
-                return urljoin(baseUrl, url)
-        addParams['cloudflare_params'] = {'domain': self.up.getDomain(baseUrl), 'cookie_file': self.COOKIE_FILE, 'User-Agent': self.USER_AGENT, 'full_url_handle': _getFullUrl}
-        try:
-            retVal = self.cm.getPageCFProtection(baseUrl, addParams, post_data)
-        except Exception:
-            retVal = printExc()
-            self.sessionEx.open(MessageBox, "Błąd CFProtection '%s'" % retVal, type=MessageBox.TYPE_ERROR, timeout=10)
-            retVal = False, None
-        return retVal
+        sts, data = self.cm.getPageCFProtection(baseUrl, addParams, post_data)
+        if data.meta.get('cf_user', self.USER_AGENT) != self.USER_AGENT:
+            self.__init__()
+        return sts, data
 
     def setMainUrl(self, url):
         if self.cm.isValidUrl(url):
@@ -364,7 +356,7 @@ class Filman(CBaseHostClass, CaptchaHelper):
                 httpParams = dict(self.defaultParams)
                 httpParams['header'] = dict(httpParams['header'])
                 httpParams['header']['Referer'] = self.getFullUrl('/logowanie')
-                httpParams['header']['Cookie'] = cookieHeader
+                #httpParams['header']['Cookie'] = cookieHeader
 
                 if 'data-sitekey' in data:
                     sitekey = self.cm.ph.getSearchGroups(data, 'data\-sitekey="([^"]+?)"')[0]
@@ -374,7 +366,7 @@ class Filman(CBaseHostClass, CaptchaHelper):
                     if token != '':
                         post_data['g-recaptcha-response'] = token
 
-                sts, data = self.cm.getPage(self.getFullUrl('/logowanie'), httpParams, post_data)
+                sts, data = self.getPage(self.getFullUrl('/logowanie'), httpParams, post_data)
                 sts, data = self.getPage(self.getFullUrl('/logowanie'))
 
             if sts and '/wylogowanie' in data:

@@ -12,6 +12,7 @@
 
     2002-06-01
 """
+import sys
 
 try:
     from base import BlockCipher, padWithPadLen, noPadding
@@ -106,7 +107,11 @@ NrTable = {4: {4: 10, 5: 11, 6: 12, 7: 13, 8: 14},
 def keyExpansion(algInstance, keyString):
     """ Expand a string of size keySize into a larger array """
     Nk, Nb, Nr = algInstance.Nk, algInstance.Nb, algInstance.Nr # for readability
-    key = [ord(byte) for byte in keyString]  # convert string to list
+    if sys.version_info[0] == 2:
+        key = [ord(byte) for byte in keyString]  # convert string to list in py2
+    else:
+        key = [byte for byte in keyString]  # convert string to list in py3
+
     w = [[key[4 * i], key[4 * i + 1], key[4 * i + 2], key[4 * i + 3]] for i in range(Nk)]
     for i in range(Nk, Nb * (Nr + 1)):
         temp = w[i - 1]        # a four byte column

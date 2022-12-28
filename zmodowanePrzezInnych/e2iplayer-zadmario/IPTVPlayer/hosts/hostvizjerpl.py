@@ -20,6 +20,7 @@ try:
     import json
 except Exception:
     import simplejson as json
+from Components.config import config, ConfigText
 ###################################################
 
 
@@ -30,8 +31,9 @@ def gettytul():
 class Vizjer(CBaseHostClass):
 
     def __init__(self):
-        CBaseHostClass.__init__(self, {'history': 'Vizjer.pl', 'cookie': 'Vizjer.pl.cookie'})
-        self.USER_AGENT = 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.0'
+        CBaseHostClass.__init__(self, {'history': 'vizjer.pl', 'cookie': 'vizjer.pl.cookie'})
+        config.plugins.iptvplayer.cloudflare_user = ConfigText(default='Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.0', fixed_size=False)
+        self.USER_AGENT = config.plugins.iptvplayer.cloudflare_user.value
         self.MAIN_URL = 'https://vizjer.pl/'
 #        self.DEFAULT_ICON_URL = 'https://vizjer.pl/public/dist/images/logo.png'
         self.HTTP_HEADER = {'User-Agent': self.USER_AGENT, 'DNT': '1', 'Accept': 'text/html', 'Accept-Encoding': 'gzip, deflate', 'Referer': self.getMainUrl(), 'Origin': self.getMainUrl()}
@@ -45,15 +47,12 @@ class Vizjer(CBaseHostClass):
     def getPage(self, baseUrl, addParams={}, post_data=None):
         if addParams == {}:
             addParams = dict(self.defaultParams)
+        origBaseUrl = baseUrl
         baseUrl = self.cm.iriToUri(baseUrl)
-        sts, data = self.cm.getPage(baseUrl, addParams, post_data)
-        if not sts:
-            sts, data = self.cm.getPage('https://check.ddos-guard.net/check.js', addParams)
-            if sts:
-                jsurl = self.getFullUrl(self.cm.ph.getSearchGroups(data, '''src = ['"]([^"^']+?)['"]''')[0])
-                sts, data = self.cm.getPage(jsurl, addParams)
-                if sts:
-                    sts, data = self.cm.getPage(baseUrl, addParams, post_data)
+
+        sts, data = self.cm.getPageCFProtection(baseUrl, addParams, post_data)
+        if data.meta.get('cf_user', self.USER_AGENT) != self.USER_AGENT:
+            self.__init__()
         return sts, data
 
     def getFullIconUrl(self, url):
@@ -335,7 +334,7 @@ class Vizjer(CBaseHostClass):
 
     #MAIN MENU
         if name == None and category == '':
-            rm(self.COOKIE_FILE)
+#            rm(self.COOKIE_FILE)
             self.listMainMenu({'name': 'category'})
         elif 'list_cats' == category:
             self.listMovieFilters(self.currItem, 'list_sort')
