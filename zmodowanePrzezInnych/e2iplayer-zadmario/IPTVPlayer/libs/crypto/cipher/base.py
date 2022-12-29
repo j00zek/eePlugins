@@ -16,9 +16,11 @@
 try:
     from ..errors import DecryptNotBlockAlignedError
     from ..keyedHash.pbkdf2 import pbkdf2
+    from ..common import getOrdForVal
 except Exception:
     from Plugins.Extensions.IPTVPlayer.libs.crypto.errors import DecryptNotBlockAlignedError
     from Plugins.Extensions.IPTVPlayer.libs.crypto.keyedHash.pbkdf2 import pbkdf2
+    from Plugins.Extensions.IPTVPlayer.libs.crypto.common import getOrdForVal
 
 
 class BlockCipher:
@@ -33,11 +35,11 @@ class BlockCipher:
 
     def resetEncrypt(self):
         self.encryptBlockCount = 0
-        self.bytesToEncrypt = ''
+        self.bytesToEncrypt = b''
 
     def resetDecrypt(self):
         self.decryptBlockCount = 0
-        self.bytesToDecrypt = ''
+        self.bytesToDecrypt = b''
 
     def setPassphrase(self, passphrase):
         """ Use pbkdf2 to hash passphrase into a key """
@@ -129,7 +131,7 @@ class padWithPadLen(Pad):
         """ Remove padding from a binary string """
         if not(0 < len(paddedBinaryString)):
             raise DecryptNotBlockAlignedError('Expected More Data')
-        return paddedBinaryString[:-ord(paddedBinaryString[-1])]
+        return paddedBinaryString[:- getOrdForVal(paddedBinaryString[-1])]
 
 
 class noPadding(Pad):

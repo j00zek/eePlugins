@@ -12,15 +12,17 @@
 
     2002-06-01
 """
-import sys
 
 try:
     from base import BlockCipher, padWithPadLen, noPadding
+    from ..common import getOrdForVal
 except Exception:
     try:
         from .base import BlockCipher, padWithPadLen, noPadding
+        from ..common import getOrdForVal
     except Exception:
         from Plugins.Extensions.IPTVPlayer.libs.crypto.cipher.base import BlockCipher, padWithPadLen, noPadding
+        from Plugins.Extensions.IPTVPlayer.libs.crypto.common import getOrdForVal
 
 
 class Rijndael(BlockCipher):
@@ -80,7 +82,7 @@ class Rijndael(BlockCipher):
     def _toBlock(self, bs):
         """ Convert binary string to array of bytes, state[col][row]"""
         assert (len(bs) == 4 * self.Nb), 'Rijndarl blocks must be of size blockSize'
-        return [[ord(bs[4 * i]), ord(bs[4 * i + 1]), ord(bs[4 * i + 2]), ord(bs[4 * i + 3])] for i in range(self.Nb)]
+        return ([[getOrdForVal(bs[4 * i]), getOrdForVal(bs[4 * i + 1]), getOrdForVal(bs[4 * i + 2]), getOrdForVal(bs[4 * i + 3])] for i in range(self.Nb)])
 
     def _toBString(self, block):
         """ Convert block (array of bytes) to binary string """
@@ -107,10 +109,7 @@ NrTable = {4: {4: 10, 5: 11, 6: 12, 7: 13, 8: 14},
 def keyExpansion(algInstance, keyString):
     """ Expand a string of size keySize into a larger array """
     Nk, Nb, Nr = algInstance.Nk, algInstance.Nb, algInstance.Nr # for readability
-    if sys.version_info[0] == 2:
-        key = [ord(byte) for byte in keyString]  # convert string to list in py2
-    else:
-        key = [byte for byte in keyString]  # convert string to list in py3
+    key = [getOrdForVal(byte) for byte in keyString]  # convert string to list
 
     w = [[key[4 * i], key[4 * i + 1], key[4 * i + 2], key[4 * i + 3]] for i in range(Nk)]
     for i in range(Nk, Nb * (Nr + 1)):
