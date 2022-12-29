@@ -53,13 +53,6 @@ try: #ladowanie w e2
 except Exception: #miejsce dla kodi
     pass
 
-def __(___):
-    if ___[:1] == '@':
-        ____ = ('').join([ chr(ord(c) - 3) for c in ___[1:] ])
-    else:
-        ____ = '@' + ('').join([ chr(ord(c) + 3) for c in ___ ])
-    return ____
-
 def IMGtoICON(imgFileName, skytext, currentInt, sunsetInt=None, sunriseInt=None):
     global paramsDict
     #print(skytext, utfTOansi(skytext))
@@ -1897,7 +1890,7 @@ def msn_api(webContent, webFileName):
 def mainProc():
     if 1:
         if len(sys.argv) - 1 == 0:
-            print(__('@HUURU') + __('@#QR#dujxphqwv#surylghg#$$$'))
+            print('ERROR - NO arguments provided !!!')
             sys.exit(1)
         global paramsDict, threads
         threads = list()
@@ -2001,10 +1994,9 @@ def mainProc():
                     initThread(url, 'data_msn.xml')
                 calculateSun()
                 calculateMoon()
-                if eval(__('@sdudpvGlfw^*pvqDSLNH\\*`')) == '':
-                    try: paramsDict['msnAPIKEY'] = __(open(__('@2xvu2ole2hqljpd52s|wkrq2Soxjlqv2H{whqvlrqv2PVQzhdwkhu2dlufrqbgdwd2DpDTvSTqL1sqj'), 'rb').read().strip())
-                    except Exception as e: print(str(e))
-                if eval(__('@sdudpvGlfw^*pvqDSLNH\\*`')) != '' and paramsDict['geolatitude'] != '' and paramsDict['geolongitude'] != '' and paramsDict['geolatitude'] != 'auto' and paramsDict['geolongitude'] != 'auto':
+                if paramsDict['msnAPIKEY'] == '':
+                    paramsDict['msnAPIKEY'] = '0QfOX3Vn51YCzitbLaRkTTBadtWpgTN8NZLW0C1SEM'
+                if paramsDict['geolatitude'] != '' and paramsDict['geolongitude'] != '' and paramsDict['geolatitude'] != 'auto' and paramsDict['geolongitude'] != 'auto':
                     for dataType in ('overview','dailyforecast','hourlytrend','dailytrend',):
                         url = 'https://api.msn.com/weather/%s?apiKey=%s&locale=%s&region=%s&lon=%s&lat=%s&units=%s&days=10' % (dataType, paramsDict['msnAPIKEY'], paramsDict['language'], paramsDict['language'][-2], 
                                                                                                                                   paramsDict['geolongitude'], paramsDict['geolatitude'], paramsDict['degreetype'])
