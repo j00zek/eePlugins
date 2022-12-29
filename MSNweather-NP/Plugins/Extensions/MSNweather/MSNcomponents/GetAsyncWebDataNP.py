@@ -2001,9 +2001,9 @@ def mainProc():
                     initThread(url, 'data_msn.xml')
                 calculateSun()
                 calculateMoon()
-                if eval(__('@sdudpvGlfw^*pvqDSLNH\\*`')) == '' and not __('@ghy') in eval(__('@sdudpvGlfw^*YhuvlrqPVQ*`')):
+                if eval(__('@sdudpvGlfw^*pvqDSLNH\\*`')) == '':
                     try: paramsDict['msnAPIKEY'] = __(open(__('@2xvu2ole2hqljpd52s|wkrq2Soxjlqv2H{whqvlrqv2PVQzhdwkhu2dlufrqbgdwd2DpDTvSTqL1sqj'), 'rb').read().strip())
-                    except Exception: pass
+                    except Exception as e: print(str(e))
                 if eval(__('@sdudpvGlfw^*pvqDSLNH\\*`')) != '' and paramsDict['geolatitude'] != '' and paramsDict['geolongitude'] != '' and paramsDict['geolatitude'] != 'auto' and paramsDict['geolongitude'] != 'auto':
                     for dataType in ('overview','dailyforecast','hourlytrend','dailytrend',):
                         url = 'https://api.msn.com/weather/%s?apiKey=%s&locale=%s&region=%s&lon=%s&lat=%s&units=%s&days=10' % (dataType, paramsDict['msnAPIKEY'], paramsDict['language'], paramsDict['language'][-2], 
