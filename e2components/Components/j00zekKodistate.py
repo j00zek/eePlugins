@@ -22,20 +22,25 @@
 #######################################################################
 from __future__ import absolute_import #zmiana strategii ladowanie modulow w py2 z relative na absolute jak w py3
 
-#CONSTANTS
-KODI_IP = '192.168.1.8'
-KODI_PORT = '8123'
+#CONSTANTS, default local Kodi with web enabled under default port
+KODI_IP = '127.0.0.1'
+KODI_PORT = '8080'
 
-AppProperties    = '{"jsonrpc": "2.0", "method": "Application.GetProperties", "params": {"properties": ["version", "name"]}, "id": 1 }'
-XBMCInfoBool     = '{"jsonrpc": "2.0", "method": "XBMC.GetInfoBooleans", "params": { "booleans": ["System.ScreenSaverActive ","System.IdleTime(600) "] }, "id": 1}'
-GetActivePlayers = '{"jsonrpc": "2.0", "method": "Player.GetActivePlayers", "id": 1}'
-AudioPlayerItem = '{"jsonrpc": "2.0", "method": "Player.GetItem", "params": {"properties": ["title", "album", "artist", "duration", "thumbnail", "file", "fanart", "streamdetails"], "playerid": 0 }, "id": 0}'
-VideoPlayerItem = '{"jsonrpc": "2.0", "method": "Player.GetItem", "params": {"properties": ["title","album","artist","season","episode","duration","showtitle","tvshowid","thumbnail","file","fanart","streamdetails"],"playerid":1 }, "id": 1}'
-VideoPlayerProperties  = '{"jsonrpc": "2.0", "method": "Player.GetProperties","params":{"playerid":1,"properties":["audiostreams","currentaudiostream","currentsubtitle","currentvideostream","percentage","subtitleenabled","subtitles","videostreams"]},"id": 1}' 
-AudioPlayerProperties  = '{"jsonrpc": "2.0", "method": "Player.GetProperties","params":{"playerid":0,"properties":["audiostreams","currentaudiostream","currentsubtitle","currentvideostream","percentage","subtitleenabled","subtitles","videostreams"]},"id": 0}' 
+AppProperties    = b'{"jsonrpc": "2.0", "method": "Application.GetProperties", "params": {"properties": ["version", "name"]}, "id": 1 }'
+XBMCInfoBool     = b'{"jsonrpc": "2.0", "method": "XBMC.GetInfoBooleans", "params": { "booleans": ["System.ScreenSaverActive ","System.IdleTime(600) "] }, "id": 1}'
+GetActivePlayers = b'{"jsonrpc": "2.0", "method": "Player.GetActivePlayers", "id": 1}'
+AudioPlayerItem = b'{"jsonrpc": "2.0", "method": "Player.GetItem", "params": {"properties": ["title", "album", "artist", "duration", "thumbnail", "file", "fanart", "streamdetails"], "playerid": 0 }, "id": 0}'
+VideoPlayerItem = b'{"jsonrpc": "2.0", "method": "Player.GetItem", "params": {"properties": ["title","album","artist","season","episode","duration","showtitle","tvshowid","thumbnail","file","fanart","streamdetails"],"playerid":1 }, "id": 1}'
+VideoPlayerProperties  = b'{"jsonrpc": "2.0", "method": "Player.GetProperties","params":{"playerid":1,"properties":["audiostreams","currentaudiostream","currentsubtitle","currentvideostream","percentage","subtitleenabled","subtitles","videostreams","time","totaltime"]},"id": 1}' 
+AudioPlayerProperties  = b'{"jsonrpc": "2.0", "method": "Player.GetProperties","params":{"playerid":0,"properties":["audiostreams","currentaudiostream","currentsubtitle","currentvideostream","percentage","subtitleenabled","subtitles","videostreams"]},"id": 0}' 
+GUIProperties    = b'{"jsonrpc":"2.0","method":"GUI.GetProperties","params":{"properties":["currentwindow", "currentcontrol"]},"id":1}'
 
 import json
-import urllib2
+try: #py2
+    from urllib2 import Request as urllib2_Request, urlopen as urllib2_urlopen
+except Exception: #py3
+    from urllib.request import Request as urllib2_Request, urlopen as urllib2_urlopen
+  
 DBG = False
 
 class remoteKODI():
@@ -46,10 +51,10 @@ class remoteKODI():
     def getState(self, data):
         url = 'http://%s:%s/jsonrpc' % (self.host, self.port)
         headers = {"Content-Type":"application/json",}
-        req = urllib2.Request(url, data, headers)
+        req = urllib2_Request(url, data, headers)
 
         try:
-            response = urllib2.urlopen(req, timeout=0.3)
+            response = urllib2_urlopen(req, timeout=0.3)
             response = response.read()
             response = json.loads(response)
             print(response)
@@ -72,5 +77,9 @@ class remoteKODI():
         return response['result']
 
 #for tests outside e2 only do NOT use
-#kodi = remoteKODI('192.168.1.8', '8123')
-#print kodi.getState(GetActivePlayers)
+if __name__ == '__main__':
+    kodi = remoteKODI('127.0.0.1', '8080')
+    #print(kodi.getState(GetActivePlayers))
+    #print(kodi.getState(VideoPlayerItem))
+    #print(kodi.getState(VideoPlayerProperties))
+    print(kodi.getState(GUIProperties))

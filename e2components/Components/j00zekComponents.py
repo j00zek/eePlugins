@@ -22,6 +22,19 @@ def isPY2(): #from Components.j00zekComponents import isPY2 then use if isPY2()
             PYversion = True
     return PYversion
 
+def ensure_binary(text, encoding='utf-8', errors='strict'): #based on six library
+    if isPY2():
+        return text
+    else: #PY3
+        if isinstance(text, bytes):
+          return text
+        if isinstance(text, str):
+            try:
+                return text.encode(encoding, errors)
+            except Exception:
+                return text.encode(encoding, 'ignore')
+    return text
+
 def ensure_str(text, encoding='utf-8', errors='strict'): #from Components.j00zekComponents import ensure_str
     if type(text) is str:
         return text
@@ -143,4 +156,33 @@ def CHname_2_piconName(serName, iptvStream = False):
     piconName = unicodedata.normalize('NFKD', unicode(piconName, 'utf_8', errors='ignore')).encode('ASCII', 'ignore')
     piconName = re.sub('[^a-z0-9]', '', piconName.replace('&', 'and').replace('+', 'plus').replace('*', 'star'))
     return piconName
-      
+
+if isPY2():
+    from urlparse import urljoin, urlparse, urlunparse, urlsplit, urlunsplit, parse_qs, parse_qsl
+    from urllib2 import BaseHandler          as urllib2_BaseHandler,         build_opener        as urllib2_build_opener, \
+                        HTTPCookieProcessor   as urllib2_HTTPCookieProcessor, HTTPError           as urllib2_HTTPError, \
+                        HTTPHandler           as urllib2_HTTPHandler,         HTTPRedirectHandler as urllib2_HTTPRedirectHandler, \
+                        HTTPSHandler          as urllib2_HTTPSHandler,        ProxyHandler        as urllib2_ProxyHandler, \
+                        Request               as urllib2_Request,             URLError            as urllib2_URLError, \
+                        urlopen               as urllib2_urlopen,             install_opener      as urllib2_install_opener
+                        
+    from urllib import addinfourl             as urllib_addinfourl,           quote               as urllib_quote, \
+                       quote_plus             as urllib_quote_plus,           unquote             as urllib_unquote, \
+                       unquote_plus           as urllib_unquote_plus,         urlencode           as urllib_urlencode, \
+                       urlopen                as urllib_urlopen,              urlretrieve         as urllib_urlretrieve
+else:
+    from urllib.parse import urljoin, urlparse, urlunparse, urlsplit, urlunsplit, parse_qs, parse_qsl
+    from urllib.request import addinfourl     as urllib_addinfourl,           BaseHandler         as urllib2_BaseHandler, \
+                               build_opener   as urllib2_build_opener,        HTTPCookieProcessor as urllib2_HTTPCookieProcessor, \
+                               HTTPHandler    as urllib2_HTTPHandler,         HTTPRedirectHandler as urllib2_HTTPRedirectHandler, \
+                               HTTPSHandler   as urllib2_HTTPSHandler,        ProxyHandler        as urllib2_ProxyHandler, \
+                               Request        as urllib2_Request,             urlopen             as urllib2_urlopen, \
+                               urlopen        as urllib_urlopen,              urlretrieve         as urllib_urlretrieve, \
+                               install_opener as urllib2_install_opener
+    
+    from urllib.parse import quote            as urllib_quote,                quote_plus          as urllib_quote_plus, \
+                             unquote          as urllib_unquote,              unquote_plus        as urllib_unquote_plus, \
+                             urlencode           as urllib_urlencode
+    
+    from urllib.error import HTTPError        as urllib2_HTTPError,           URLError            as urllib2_URLError
+    

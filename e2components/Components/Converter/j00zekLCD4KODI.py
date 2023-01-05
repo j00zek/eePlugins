@@ -2,7 +2,7 @@
 #######################################################################
 #
 #    Converter for Enigma2
-#    Coded by j00zek (c)2018
+#    Coded by j00zek (c)2018-2023
 #
 #    Uszanuj moja prace i nie kasuj/zmieniaj informacji kto jest autorem konwertera
 #    Please respect my work and don't delete/change name of the converter author
@@ -35,22 +35,29 @@ from Components.Element import cached
 from Components.Language import language
 from datetime import timedelta
 from time import localtime
+import os
 
 #if enabled log into /tmp/e2components.log
-DBG = False
+DBG = True
 if DBG: from Components.j00zekComponents import j00zekDEBUG
 
 from Components.j00zekKodistate import remoteKODI, AppProperties, XBMCInfoBool, GetActivePlayers, \
-                                        AudioPlayerItem, VideoPlayerItem, VideoPlayerProperties, AudioPlayerProperties
-try:
+                                        AudioPlayerItem, VideoPlayerItem, VideoPlayerProperties, AudioPlayerProperties, GUIProperties
+if os.path.exists('/usr/lib/enigma2/python/Plugins/Extensions/ShareLCDwithKODI/plugin.py'):
     from Components.config import config
     KODI_IP = config.plugins.ShareLCDwithKODI.IP.value
     KODI_IP = '%s.%s.%s.%s' % (KODI_IP[0],KODI_IP[1],KODI_IP[2],KODI_IP[3])
     KODI_PORT = config.plugins.ShareLCDwithKODI.PORT.value
     if DBG: j00zekDEBUG('[j00zekLCD4KODI] using config from ShareLCDwithKODI plugin: %s:%s' %(KODI_IP,KODI_PORT))
-except Exception:
-    if DBG: j00zekDEBUG('[j00zekLCD4KODI] using config from j00zekKodistate: %s:%s' %(KODI_IP,KODI_PORT))
+elif os.path.exists('/usr/lib/enigma2/python/Plugins/Extensions/Kodi/plugin.py') or \
+     os.path.exists('/usr/lib/enigma2/python/Plugins/Extensions/Kodi/plugin.pyc'):
+    KODI_IP = '127.0.0.1'
+    KODI_PORT = '8080'
+    if DBG: j00zekDEBUG('[j00zekLCD4KODI] using config from local Kodi: %s:%s' %(KODI_IP,KODI_PORT))
+else:
     from Components.j00zekKodistate import KODI_IP, KODI_PORT
+    if DBG: j00zekDEBUG('[j00zekLCD4KODI] using config from j00zekKodistate: %s:%s' %(KODI_IP,KODI_PORT))
+    
 
 try:
     from Plugins.Extensions.DynamicLCDbrightnessInStandby.plugin import setKODIbrightness as setLCDbrightness, calculateLCDbrightness
@@ -335,6 +342,10 @@ class j00zekLCD4KODI(Poll, Converter, object):
                 KODIstateTable['title'] = KODIstateTable['PlayerItem']['item']['file']
                 
             KODIstateTable['duration'] = int(KODIstateTable['PlayerItem']['item']['streamdetails']['video'][0]['duration'])
+            if KODIstateTable['duration'] == 0:
+                KODIstateTable['duration'] = KODIstateTable['PlayerProperties']['totaltime']['hours'] * 3600
+                KODIstateTable['duration'] += KODIstateTable['PlayerProperties']['totaltime']['minutes'] * 60
+                KODIstateTable['duration'] += KODIstateTable['PlayerProperties']['totaltime']['seconds']
             KODIstateTable['progress'] = float(KODIstateTable['PlayerProperties']['percentage'])
              
         except Exception as e:
