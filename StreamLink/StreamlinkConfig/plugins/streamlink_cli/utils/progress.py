@@ -6,7 +6,7 @@ from shutil import get_terminal_size
 from string import Formatter as StringFormatter
 from threading import Event, RLock, Thread
 from time import time
-from typing import Callable, Deque, Dict, Iterable, Iterator, List, Optional, TextIO, Tuple, Union
+from typing import Callable, Deque, Dict, Iterable, List, Optional, TextIO, Tuple, Union
 
 from streamlink.compat import is_win32
 
@@ -242,25 +242,16 @@ class Progress(Thread):
     def close(self):
         self._wait.set()
 
-    def put(self, chunk: bytes):
+    def write(self, chunk: bytes):
         size = len(chunk)
         with self._lock:
             self.overall += size
             self.written += size
 
-    def iter(self, iterator: Iterator[bytes]) -> Iterator[bytes]:
-        self.start()
-        try:
-            for chunk in iterator:
-                self.put(chunk)
-                yield chunk
-        finally:
-            self.close()
-
     def run(self):
         self.started = time()
         try:
-            while not self._wait.wait(self.interval):
+            while not self._wait.wait(self.interval):  # pragma: no cover
                 self.update()
         finally:
             self.print_end()
