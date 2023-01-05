@@ -101,7 +101,6 @@ elif [ "$systemType" == 'openATV' ];then
 
 elif [ "$systemType" == 'openATV-7.1' ];then
   cat /usr/share/enigma2/BlackHarmony/TemplateXMLs/image-openATV_specific.xml|grep -v 'skin>' >> $BHfolder/skin.xml
-  cat /usr/share/enigma2/BlackHarmony/TemplateXMLs/image-openATV71_specific.xml|grep -v 'skin>' >> $BHfolder/skin.xml
 
 elif [ "$systemType" == 'BlackHole' ];then
   cat /usr/share/enigma2/BlackHarmony/TemplateXMLs/image-BlackHole_specific.xml|grep -v 'skin>' >> /$BHfolder/skin.xml

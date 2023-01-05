@@ -25,10 +25,14 @@
     <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="328,850" size="35,27" alphatest="blend"/>
     <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="615,850" size="35,27" alphatest="blend"/>
     <ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="902,850" size="35,27" alphatest="blend"/>
-    <widget name="key_red" position="91,849" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
-    <widget name="key_green" position="378,849" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
-    <widget name="key_yellow" position="665,849" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
-    <widget name="key_blue" position="952,849" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget name="key_red"                      position="91,849" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget source="key_red" render="Label"     position="91,849" size="250,27" noWrap="1" zPosition="+1" valign="center" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" objectTypes="key_red,StaticText" transparent="1" />
+    <widget name="key_green"                    position="378,849" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget source="key_green" render="Label"   position="378,849" size="250,27" noWrap="1" zPosition="+1" valign="center" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" objectTypes="key_green,StaticText" transparent="1" />
+    <widget name="key_yellow"                   position="665,849" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget source="key_yellow" render="Label"  position="665,849" size="250,27" noWrap="1" zPosition="+1" valign="center" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" objectTypes="key_yellow,StaticText" transparent="1" />
+    <widget name="key_blue"                     position="952,849" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget source="key_blue" render="Label"    position="952,849" size="250,27" noWrap="1" zPosition="+1" valign="center" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" objectTypes="key_blue,StaticText" transparent="1" />
   </screen>
   <screen name="SleepTimerEdit" position="center,center" size="1000,500" flags="wfNoBorder" title="Sleep Timer" backgroundColor="transparent">
     <ePixmap name="" position="0,0" size="1000,500" pixmap="BlackHarmony/bg_design/short.png" zPosition="0" />
