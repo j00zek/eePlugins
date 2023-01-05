@@ -2,7 +2,7 @@
 #######################################################################
 #
 #    Plugin for Enigma2
-#    Coded by j00zek (c)2018
+#    Coded by j00zek (c)2018-2023
 #
 #    Uszanuj moja prace i nie kasuj/zmieniaj informacji kto jest autorem konwertera
 #    Please respect my work and don't delete/change name of the converter author
@@ -19,7 +19,8 @@
 #     
 #######################################################################
  
-from __init__ import *
+from __future__ import absolute_import #zmiana strategii ladowania modulow w py2 z relative na absolute jak w py3
+from . import *
 _ = mygettext
 
 from Components.ActionMap import ActionMap
