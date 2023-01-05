@@ -1,4 +1,5 @@
-from __init__ import _
+from __future__ import absolute_import #zmiana strategii ladowania modulow w py2 z relative na absolute jak w py3
+from . import _
 from Plugins.Plugin import PluginDescriptor
 from Screens.Screen import Screen
 from Screens.MessageBox import MessageBox
@@ -353,7 +354,7 @@ class ClientDataScreen(Screen):
 
     def __init__(self, session, type, oServer, data):
         self.skin = ClientDataScreen.part1 + ClientDataScreen.ecmhistory + ClientDataScreen.part2
-        print self.skin
+        print(self.skin)
         self.session = session
         self.type = type
         self.oServer = oServer
@@ -455,7 +456,7 @@ class ClientDataScreen(Screen):
             self['progress%d' % i].setValue(val)
 
     def yellowPressed(self):
-        if self.type is not 'clients' and self.protocol.startswith('cccam'):
+        if self.type != 'clients' and self.protocol.startswith('cccam'):
             part = 'entitlement&label=' + self.name
             self.session.open(ReaderDataScreen, part, self.oServer)
 
@@ -1743,21 +1744,21 @@ class OscamStatus(Screen):
     def action(self):
         returnValue = self['menu'].getCurrent()[2]
         if returnValue is not None:
-            if returnValue is 'clients':
+            if returnValue == 'clients':
                 self.session.open(StatusDataScreen, 'clients', 'status', self.oServer)
-            elif returnValue is 'allClients':
+            elif returnValue == 'allClients':
                 self.session.open(UserstatsScreen, 'userstats', self.oServer)
-            elif returnValue is 'readers':
+            elif returnValue == 'readers':
                 self.session.open(StatusDataScreen, 'readers', 'status', self.oServer)
-            elif returnValue is 'allReaders':
+            elif returnValue == 'allReaders':
                 self.session.open(ReaderlistScreen, 'readerlist', self.oServer)
-            elif returnValue is 'log':
+            elif returnValue == 'log':
                 self.session.open(LogDataScreen, 'status&appendlog=1', self.oServer)
-            elif returnValue is 'info':
+            elif returnValue == 'info':
                 self.session.open(OscamDataScreen, 'status', self.oServer)
-            elif returnValue is 'setup':
+            elif returnValue == 'setup':
                 self.session.openWithCallback(self.SetupCB, OscamServerEntriesListConfigScreen)
-            elif returnValue is 'restart':
+            elif returnValue == 'restart':
                 self.session.open(OscamRestartScreen, 'status', self.oServer)
         return
 
