@@ -245,7 +245,8 @@ class Zaluknij(CBaseHostClass):
 
         for item in data:
 #            printDBG("Zaluknij.getLinksForVideo item[%s]" % item)
-            playerUrl = self.getFullUrl(self.cm.ph.getSearchGroups(item, '''href=['"]([^"^']+?)['"]''')[0])
+            playerUrl = ensure_str(base64.b64decode(self.cm.ph.getSearchGroups(item, '''data-iframe=['"]([^"^']+?)['"]''')[0])).replace('\\', '')
+            playerUrl = self.getFullUrl(self.cm.ph.getSearchGroups(playerUrl, '''src['"]:['"]([^"^']+?)['"]''')[0])
 #            params = dict(self.defaultParams)
 #            params['max_data_size'] = 0
 #            params['no_redirection'] = True

@@ -1001,7 +1001,7 @@ class common:
         return (status, response)
 
     def getPageCFProtection(self, baseUrl, params={}, post_data=None):
-        cf_user = params.get('User-Agent', '')
+        cf_user = params.get('header', {}).get('User-Agent', '')
         header = {'Referer': baseUrl, 'User-Agent': cf_user, 'Accept-Encoding': 'text'}
         header.update(params.get('header', {}))
         params.update({'with_metadata': True, 'use_cookie': True, 'save_cookie': True, 'load_cookie': True, 'cookiefile': params.get('cookiefile', ''), 'header': header})
@@ -1034,7 +1034,7 @@ class common:
                     printDBG(data)
                     printDBG('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<')
 
-                data = strwithmeta(data, {'cf_user': cf_user})
+        data = strwithmeta(data, {'cf_user': cf_user})
 
         return sts, data
 
