@@ -3,7 +3,7 @@
 #######################################################################
 #
 #    webMaps addon designed for skin BlackHarmony
-#    Coded by j00zek (c)2019-2021
+#    Coded by j00zek (c)2019-2023
 #
 #     
 ####################################################################### 
@@ -39,9 +39,9 @@ else: #py2
 import warnings
 warnings.filterwarnings('ignore', message='Unverified HTTPS request')
 
-
-def __(___):
-    return ('').join([ chr(ord(c) - 3) for c in ___[1:] ])
+import uuid
+os.system('rm -rf /tmp/.tpsc*')
+_MD_ = '/tmp/.tpsc%s' % uuid.uuid4().hex
 
 def decodeHTML(text):
     text = text.replace('%lf', '. ').replace('&#243;', 'ó')
@@ -89,12 +89,13 @@ def motionMaps(mapType, dirname):
         if not os.path.exists(dirname):
             os.mkdir(dirname)
         fileprefix = mapType[:1]
-        URL = '%s%s' % (__('#kwws=22zzz1pvq1frp2hq0xv2zhdwkhu2ixoovfuhhqpdsvBuhjlrq@hxursh)'), URL)
-        hdr = {'User-Agent': __('$Pr}lood2813#+Zlqgrzv#QW#4313,#DssohZheNlw286:169#+NKWPO/#olnh#Jhfnr,#Fkurph29713165;51473#Vdidul286:169#Hgjh24;14::96'), 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8', 
-           'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3', 
-           'Accept-Encoding': 'deflate, br', 
-           'Accept-Language': 'en-US,en;q=0.8', 
-           'Connection': 'keep-alive'}
+        URL = 'http://www.msn.com/en-us/weather/fullscreenmaps?region=europe&%s' % URL
+        hdr = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.140 Safari/537.36 Edge/18.17763', 
+               'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8', 
+               'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3', 
+               'Accept-Encoding': 'deflate, br', 
+               'Accept-Language': 'en-US,en;q=0.8', 
+               'Connection': 'keep-alive'}
         try:
             HTML = downloadWebPage(webURL = URL, doUnquote = True, HEADERS = hdr)
             if DBG:
@@ -104,11 +105,10 @@ def motionMaps(mapType, dirname):
         except Exception as e:
             printDEBUG('motionMaps()', str(e), 'mapsNP.log', DBG)
             open("/tmp/.MSNdata/mapsNP.HTML", "w").write(HTML)
-            return (
-             _('Error sychronizing web data'), [])
+            return ( _('Error sychronizing web data'), [] )
 
         if len(ImagesList) < 1:
-            return (_('Error analyzing web data'), [])
+            return ( _('Error analyzing web data'), [] )
         for imgURL in ImagesList:
             try:
                 filename = '%s_20%s.png' % (fileprefix, imgURL.split('-20')[1].split('-')[0])
@@ -136,14 +136,6 @@ def motionMaps(mapType, dirname):
         retVal = mapType
         ImagesToDownloadList.sort()
         return (_(retVal), ImagesToDownloadList)
-
-import uuid
-if os.path.exists(__('?2wps21rvfdp')):
-    os.system(__('gup#0ui#2wps21rvfdp21wsvf-'))
-    _MD_ = '%s/%s%s' % (__('?2wps21rvfdp'), __('11wsvf'), uuid.uuid4().hex)
-else:
-    os.system(__('eup#0ui#2wps21wsvf-'))
-    _MD_ = '%s/%s%s' % (__('12wps'), __('11wsvf'), uuid.uuid4().hex)
 
 class MSNweatherMaps(Screen):
     def __init__(self, session, currForecaCity=_('Unknown')):
@@ -201,13 +193,13 @@ class MSNweatherMaps(Screen):
         self.skin += '<widget name="key_1" position="%s,%s" zPosition="3" size="%s,%s" valign="center" halign="left" font="Regular;%s" transparent="1" foregroundColor="white" />' % (posXkeys, posYkeys - 5 * (keysHeight + keysSpace), keysWidth, keysHeight, keysFont)
         self.skin += '<ePixmap pixmap="BlackHarmony/buttons/key_9.png" position="%s,%s" size="35,27" alphatest="blend"/>\n' % (posXkeys - 40, posYkeys - 4 * (keysHeight + keysSpace))
         self.skin += '<widget name="key_9" position="%s,%s" zPosition="3" size="%s,%s" valign="center" halign="left" font="Regular;%s" transparent="1" foregroundColor="white" />' % (posXkeys, posYkeys - 4 * (keysHeight + keysSpace), keysWidth, keysHeight, keysFont)
-        self.skin += '<ePixmap pixmap="BlackHarmony/buttons/red.png" position="%s,%s" size="35,27" alphatest="blend"/>\n' % (posXkeys - 40, posYkeys - 3 * (keysHeight + keysSpace))
+        #self.skin += '<ePixmap pixmap="BlackHarmony/buttons/red.png" position="%s,%s" size="35,27" alphatest="blend"/>\n' % (posXkeys - 40, posYkeys - 3 * (keysHeight + keysSpace))
         self.skin += '<widget name="key_red" position="%s,%s" zPosition="3" size="%s,%s" valign="center" halign="left" font="Regular;%s" transparent="1" foregroundColor="white" />' % (posXkeys, posYkeys - 3 * (keysHeight + keysSpace), keysWidth, keysHeight, keysFont)
-        self.skin += '<ePixmap pixmap="BlackHarmony/buttons/green.png" position="%s,%s" size="35,27" alphatest="blend"/>\n' % (posXkeys - 40, posYkeys - 2 * (keysHeight + keysSpace))
+        #self.skin += '<ePixmap pixmap="BlackHarmony/buttons/green.png" position="%s,%s" size="35,27" alphatest="blend"/>\n' % (posXkeys - 40, posYkeys - 2 * (keysHeight + keysSpace))
         self.skin += '<widget name="key_green" position="%s,%s" zPosition="3" size="%s,%s" valign="center" halign="left" font="Regular;%s" transparent="1" foregroundColor="white" />\n' % (posXkeys, posYkeys - 2 * (keysHeight + keysSpace), keysWidth, keysHeight, keysFont)
-        self.skin += '<ePixmap pixmap="BlackHarmony/buttons/yellow.png" position="%s,%s" size="35,27" alphatest="blend"/>\n' % (posXkeys - 40, posYkeys - 1 * (keysHeight + keysSpace))
+        #self.skin += '<ePixmap pixmap="BlackHarmony/buttons/yellow.png" position="%s,%s" size="35,27" alphatest="blend"/>\n' % (posXkeys - 40, posYkeys - 1 * (keysHeight + keysSpace))
         self.skin += '<widget name="key_yellow" position="%s,%s" zPosition="3" size="%s,%s" valign="center" halign="left" font="Regular;%s" transparent="1" foregroundColor="white" />\n' % (posXkeys, posYkeys - 1 * (keysHeight + keysSpace), keysWidth, keysHeight, keysFont)
-        self.skin += '<ePixmap pixmap="BlackHarmony/buttons/blue.png" position="%s,%s" size="35,27" alphatest="blend"/>\n' % (posXkeys - 40, posYkeys)
+        #self.skin += '<ePixmap pixmap="BlackHarmony/buttons/blue.png" position="%s,%s" size="35,27" alphatest="blend"/>\n' % (posXkeys - 40, posYkeys)
         self.skin += '<widget name="key_blue" position="%s,%s" zPosition="3" size="%s,%s" valign="center" halign="left" font="Regular;%s" transparent="1" foregroundColor="white" />\n' % (posXkeys, posYkeys, keysWidth, keysHeight, keysFont)
         self.skin += '<widget name="ScalePic" position="%s,%s" zPosition="5" size="%s,%s" alphatest="blend" transparent="1" />\n' % (scaleX, scaleY, scaleW, scaleH)
         self.skin += '</screen>\n'
@@ -227,10 +219,10 @@ class MSNweatherMaps(Screen):
         self['ScalePic'] = Pixmap()
         self['Info'] = Label()
         self['TimeInfo'] = Label()
-        self['key_red'] = Label(_('Temperature'))
-        self['key_green'] = Label(_('Precipation'))
-        self['key_yellow'] = Label(_('Satellite'))
-        self['key_blue'] = Label(_('Cloud'))
+        self['key_red'] = Label() #Label(_('Temperature'))
+        self['key_green'] = Label() #Label(_('Precipation'))
+        self['key_yellow'] = Label() #Label(_('Satellite'))
+        self['key_blue'] = Label() #Label(_('Cloud'))
         self['key_9'] = Label(_('Storms'))
         self['key_1'] = Label(_('meteogram'))
         self.onLayoutFinish.append(self.__onLayoutFinish)
