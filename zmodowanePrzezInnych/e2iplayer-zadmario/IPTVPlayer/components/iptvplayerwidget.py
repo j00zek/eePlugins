@@ -1543,12 +1543,18 @@ class E2iPlayerWidget(Screen):
             self.loadHostData()
 
     def loadHostData(self):
-        self.session.summary.setText(self.hostName)
+        try:
+            self.session.summary.setText(self.hostName)
+        except Exception:
+            printExc()
         self.activePlayer = CMoviePlayerPerHost(self.hostName)
 
         # change logo for player
         self["playerlogo"].hide()
-        self.session.summary.LCD_hide('LCDlogo')
+        try:
+            self.session.summary.LCD_hide('LCDlogo')
+        except Exception:
+            printExc()
         try:
             hRet = self.host.getLogoPath()
             if hRet.status == RetHost.OK and len(hRet.value):
@@ -1623,6 +1629,7 @@ class E2iPlayerWidget(Screen):
         self.session.openWithCallback(self.selectLinksCallback, ChoiceBox, title=_("Select link"), list=options)
 
     def selectLinksCallback(self, retArg):
+        printDBG("selectLinksCallback: retArg = |%s|" % str(retArg))
         # retArg[0] - name
         # retArg[1] - url src
         # retArg[2] - urlNeedsResolve

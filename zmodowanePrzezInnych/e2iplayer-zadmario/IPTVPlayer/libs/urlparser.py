@@ -427,6 +427,8 @@ class urlparser:
                        'nxload.com': self.pp.parserNXLOADCOM,
                        #o
                        'odysee.com': self.pp.parserODYSEECOM,
+                       'olacast.live': self.pp.parserASSIAORG,
+                       'orangehost.online': self.pp.parserASSIAORG,
                        'ok.ru': self.pp.parserOKRU,
 #                       'oload.cloud':          self.pp.parserOPENLOADIO    ,
 #                       'oload.co':             self.pp.parserOPENLOADIO    ,
@@ -566,6 +568,7 @@ class urlparser:
                        'swirownia.com.usrfiles.com': self.pp.parserSWIROWNIA,
                        #t
                        'talbol.net': self.pp.parserTXNEWSNETWORK,
+                       'techclips.net': self.pp.parserTECHCLIPSNET,
                        'telerium.tv': self.pp.parserTELERIUMTV,
                        'teleriumtv.com': self.pp.parserTELERIUMTVCOM,
                        'theactionlive.com': self.pp.parserTHEACTIONLIVE,
@@ -14252,8 +14255,14 @@ class pageParser(CaptchaHelper):
         if not sts:
             return []
 
+        if 'function(h,u,n,t,e,r)' in data:
+            ff = re.findall('function\(h,u,n,t,e,r\).*?}\((".+?)\)\)', data, re.DOTALL)[0]
+            ff = ff.replace('"', '')
+            h, u, n, t, e, r = ff.split(',')
+            data = dehunt(h, int(u), n, int(t), int(e), int(r))
+
         urlTab = []
-        data = self.cm.ph.getDataBeetwenMarkers(data, 'Clappr.Player', ('</script', '>'), False)[1]
+        data = self.cm.ph.getDataBeetwenMarkers(data, 'Clappr.Player', ';', False)[1]
         url = self.cm.ph.getSearchGroups(data, '''source:\s?['"]([^"^']+?)['"]''')[0]
         url = strwithmeta(url, {'Origin': urlparser.getDomain(baseUrl, False), 'Referer': baseUrl, 'User-Agent': 'Wget/1.20.3 (linux-gnu)'})
         if url != '':
@@ -14297,8 +14306,8 @@ class pageParser(CaptchaHelper):
             'accept-language': 'en-US,en;q=0.9',
         }
         urlParams = {'header': headers}
-        post_data = {'pid': (str(pid)), 'ptxt': pdettxt}
-        urlk = 'https://%s/sdembed' % (edm) + '?v=' + str(zmid)
+        post_data = {'pid': (str(pid)), 'ptxt': pdettxt, 'v': str(zmid)}
+        urlk = 'https://%s/sd0embed' % (edm)
         sts, data = self.cm.getPage(urlk, urlParams, post_data)
         if not sts:
             return []
@@ -14306,57 +14315,37 @@ class pageParser(CaptchaHelper):
         SetIPTVPlayerLastHostError(errorMessage)
 #        printDBG("parserEMBEDSTREAMME data 2[%s]" % data)
 
-        skrypty = re.findall('<script>(.+?)<\/script>\\n', data, re.DOTALL)#<script>([^<]+)<\/script>',response_content,re.DOTALL)
+        ff = re.findall('eval\(function\(.*?,.*?,.*?,.*?,.*?,.*?\).*?}\((".+?)\)\)', data, re.DOTALL)[0]
+        if ff != '':
+            ff = ff.replace('"', '')
+            h, u, n, t, e, r = ff.split(',')
 
-        payload = """function abs() {%s};\n console.log(abs())"""
-        a = ''
-        for skrypt in skrypty:
-            if 'let' in skrypt and 'eval' in skrypt:
-                a = payload % (skrypt)
-                a = a[::-1].replace("eval"[::-1], "return"[::-1], 1)[::-1]
-                break
-        jscode = a.replace('let ', '')
-#        printDBG("parserEMBEDSTREAMME jscode[%s]" % jscode)
-        ret = js_execute(jscode, {'timeout_sec': '30 -m 0'})
+            cc = dehunt(h, int(u), n, int(t), int(e), int(r))
 
-        if ret['sts'] and 0 == ret['code']:
-            if 'function(h,u,n,t,e,r)' in ret['data']:
+            cc = cc.replace("\'", '"')
 
-                ff = re.findall('function\(h,u,n,t,e,r\).*?}\((".+?)\)\)', ret['data'], re.DOTALL)[0]
-                ff = ff.replace('"', '')
-                h, u, n, t, e, r = ff.split(',')
+            fil = re.findall('file:\s*window\.atob\((.+?)\)', cc, re.DOTALL)[0]
 
-                cc = dehunt(h, int(u), n, int(t), int(e), int(r))
+            src = re.findall(fil + '\s*=\s*"(.+?)"', cc, re.DOTALL)[0]
+            url = base64.b64decode(src)
 
-                cc = cc.replace("\'", '"')
+            headers = {
+                "Referer": urlk,
+                "Origin": qbc,
+                "User-Agent": 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.101 Safari/537.36',
+                "Accept-Language": "en",
+                "Accept": "application/json, text/javascript, */*; q=0.01",
+            }
+            urlParams = {'header': headers}
 
-                fil = re.findall('file:\s*window\.atob\((.+?)\)', cc, re.DOTALL)[0]
-
-                src = re.findall(fil + '\s*=\s*"(.+?)"', cc, re.DOTALL)[0]
-                url = base64.b64decode(src)
-
-                str1 = re.findall('"?stream="\s*\+\s*(\w+)\s*\+\s*"', cc, re.DOTALL)[0]
-                strName = re.findall('const\s*%s\s*=\s*"([^"]+)"' % (str1), cc, re.DOTALL)[0]
-
-                scode, expires = re.findall('formauthurl\({"scode":\s*"([^"]+)",\s"ts":\s(\d+)\}', cc, re.DOTALL)[0]
-
-                headers = {
-                    "Referer": urlk,
-                    "Origin": qbc,
-                    "User-Agent": 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.101 Safari/537.36',
-                    "Accept-Language": "en",
-                    "Accept": "application/json, text/javascript, */*; q=0.01",
-                }
-                urlParams = {'header': headers}
-
-                if url != '':
-                    url = strwithmeta(url, {'Origin': qbc, 'Referer': urlk, 'Accept-Language': 'en'})
-                    urlTab.extend(getDirectM3U8Playlist(url, checkContent=True, sortWithMaxBitrate=999999999))
-                    sts, m3u8_data = self.cm.getPage(url, urlParams)
-                    kurl = self.cm.ph.getSearchGroups(m3u8_data, '''URI=['"]([^"^']+?)['"]''')[0]
-                    sts, data = self.cm.getPage(kurl, urlParams)
-                    printDBG("parserEMBEDSTREAMME key.seckeyserv.me[%s]" % data)# cloudflare protection?
-                    printDBG("parserEMBEDSTREAMME m3u8[%s]" % m3u8_data)
+            if url != '':
+                url = strwithmeta(url, {'Origin': qbc, 'Referer': urlk, 'Accept-Language': 'en'})
+                urlTab.extend(getDirectM3U8Playlist(url, checkContent=True, sortWithMaxBitrate=999999999))
+#                sts, m3u8_data = self.cm.getPage(url, urlParams)
+#                kurl = self.cm.ph.getSearchGroups(m3u8_data, '''URI=['"]([^"^']+?)['"]''')[0]
+#                sts, data = self.cm.getPage(kurl, urlParams)
+#                printDBG("parserEMBEDSTREAMME key.seckeyserv.me[%s]" % data)# cloudflare protection?
+#                printDBG("parserEMBEDSTREAMME m3u8[%s]" % m3u8_data)
 
         return urlTab
 
@@ -14668,11 +14657,13 @@ class pageParser(CaptchaHelper):
             c2 = hexlify(x.encode('utf8')).decode('utf8')
             x = '{0}||{1}||{2}||streamsb'.format(makeid(12), c2, makeid(12))
             c3 = hexlify(x.encode('utf8')).decode('utf8')
-            return 'https://{0}/sources43/{1}/{2}'.format(urlparser.getDomain(baseUrl), c1, c3)
+#            return 'https://{0}/sources43/{1}/{2}'.format(urlparser.getDomain(baseUrl), c1, c3)
+            return 'https://{0}/sources49/{1}'.format(urlparser.getDomain(baseUrl), c1)
 
         eurl = get_embedurl(media_id)
-        urlParams['header']['watchsb'] = 'streamsb'
+        urlParams['header']['watchsb'] = 'sbstream'
         sts, data = self.cm.getPage(eurl, urlParams)
+        printDBG("parserSTREAMSB data[%s]" % data)
         if not sts:
             return False
 
@@ -15621,5 +15612,28 @@ class pageParser(CaptchaHelper):
         url = strwithmeta(url, {'Origin': urlparser.getDomain(baseUrl, False), 'Referer': baseUrl})
         if url != '':
             urlTab.append({'name': 'mp4', 'url': url})
+
+        return urlTab
+
+    def parserTECHCLIPSNET(self, baseUrl):
+        printDBG("parserTECHCLIPSNET baseUrl[%s]" % baseUrl)
+
+        HTTP_HEADER = self.cm.getDefaultHeader(browser='chrome')
+        referer = baseUrl.meta.get('Referer')
+        if referer:
+            HTTP_HEADER['Referer'] = referer
+        urlParams = {'header': HTTP_HEADER}
+        sts, data = self.cm.getPage(baseUrl, urlParams)
+        if not sts:
+            return []
+        cUrl = self.cm.meta['url']
+
+        data = self.cm.ph.getDataBeetwenNodes(data, ('<div', '>', 'player'), ('</script', '>'))[1]
+        serv = self.cm.ph.getSearchGroups(data, '''var servs\s?=\s?\[['"]([^"^']+?)['"]''')[0]
+        url = eval(self.cm.ph.getSearchGroups(data, '''[^/]source:\s?(['"][^,]+?['"]),''')[0])
+        urlTab = []
+        url = strwithmeta(url, {'Origin': urlparser.getDomain(baseUrl, False), 'Referer': cUrl})
+        if url != '':
+            urlTab.extend(getDirectM3U8Playlist(url, checkContent=True, sortWithMaxBitrate=999999999))
 
         return urlTab

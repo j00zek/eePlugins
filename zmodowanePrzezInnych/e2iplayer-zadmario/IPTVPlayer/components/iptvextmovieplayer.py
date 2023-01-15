@@ -1594,9 +1594,12 @@ class IPTVExtMoviePlayer(Screen):
         msgType = MessageBox.TYPE_INFO
         for item in data:
             #printDBG('item= %s' % item)
+            item = item.strip().replace('{"PLAYBACK_LENGTH":{"PLAYBACK_LENGTH":','{"PLAYBACK_LENGTH":').replace('{"PLAYBACK_LENGTH":{"J":','{"J":')
+            if item.endswith(':'):
+                item = item[:-1]
             if item.startswith('{'):
                 try:
-                    obj = json.loads(item.strip())
+                    obj = json.loads(item)
                     #printDBG("Status object [%r]" % obj)
                     key = list(obj.keys())[0]
                     obj = obj[key]

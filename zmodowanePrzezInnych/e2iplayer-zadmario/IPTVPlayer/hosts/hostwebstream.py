@@ -8,7 +8,7 @@ from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc, Ge
 from Plugins.Extensions.IPTVPlayer.libs.e2ijson import loads as json_loads, dumps as json_dumps
 
 from Plugins.Extensions.IPTVPlayer.libs.pCommon import CParsingHelper
-from Plugins.Extensions.IPTVPlayer.libs.urlparserhelper import getDirectM3U8Playlist, getF4MLinksWithMeta
+from Plugins.Extensions.IPTVPlayer.libs.urlparserhelper import getDirectM3U8Playlist, getF4MLinksWithMeta, getMPDLinksWithMeta
 from Plugins.Extensions.IPTVPlayer.libs.youtube_dl.utils import clean_html
 from Plugins.Extensions.IPTVPlayer.libs.teledunet import TeledunetParser
 from Plugins.Extensions.IPTVPlayer.libs.urlparser import urlparser
@@ -1156,14 +1156,37 @@ class HasBahCa(CBaseHostClass):
         data = CParsingHelper.getDataBeetwenNodes(data, ('<table', '>', 'ramowka'), ('</table', '>'))[1]
         data = self.cm.ph.getAllItemsBeetwenNodes(data, ('<td', '>'), ('</td', '>'))
         for item in data:
-            params = {'name': "strumyk_tv"}
             linkVideo = self.cm.ph.getSearchGroups(item, '''\shref=['"]([^"^']+?)['"]''')[0]
             if len(linkVideo) and not linkVideo.startswith('http'):
                 linkVideo = 'http://strims.top' + linkVideo
+            if linkVideo.endswith('/'):
+                params = {'name': "strumyk_cat"}
+            else:
+                params = {'name': "strumyk_tv"}
             params['url'] = urlparser.decorateUrl(linkVideo, {'Referer': url})
 #            params['icon'] = self.cm.ph.getSearchGroups(item, '''\ssrc=['"]([^"^']+?)['"]''')[0]
             params['title'] = self.cleanHtmlStr(item)
             self.addDir(params)
+
+    def getStrumykTvDirCat(self, url):
+        printDBG("getStrumykTvDirCat start")
+        sts, data = self.cm.getPage(url)
+        if not sts:
+            return
+        data = CParsingHelper.getDataBeetwenNodes(data, ('<table', '>', '-table'), ('</table', '>'))[1]
+        data = self.cm.ph.getAllItemsBeetwenNodes(data, ('<tr', '>'), ('</tr', '>'))
+        for item in data:
+            params = {'name': "strumyk_tv"}
+            params['title'] = self.cleanHtmlStr(item)
+            linkVideo = self.cm.ph.getSearchGroups(item, '''\shref=['"]([^"^']+?)['"]''')[0]
+            if len(linkVideo):
+                if not linkVideo.startswith('http'):
+                    linkVideo = 'http://strims.top' + linkVideo
+                params['url'] = urlparser.decorateUrl(linkVideo, {'Referer': url})
+#                params['icon'] = self.cm.ph.getSearchGroups(item, '''\ssrc=['"]([^"^']+?)['"]''')[0]
+                self.addDir(params)
+            else:
+                self.addMarker(params)
 
     def getStrumykTvDir(self, url):
         printDBG("StrumykTvDir start")
@@ -1174,7 +1197,7 @@ class HasBahCa(CBaseHostClass):
         tmp = CParsingHelper.getDataBeetwenNodes(data, ('<iframe', '>', 'src'), ('<script', '>'))[1]
         if not tmp:
             tmp = CParsingHelper.getDataBeetwenNodes(data, ('<noscript', '>'), ('<script', '>'))[1]
-        printDBG("StrumykTvDir data [%s]" % tmp)
+        #printDBG("StrumykTvDir data [%s]" % tmp)
         data = self.cm.ph.getAllItemsBeetwenNodes(tmp, ('<a', '>'), ('</a', '>'))
         if not data:
             linkVideo = self.cm.ph.getSearchGroups(tmp, '''src=['"]([^"^']+?)['"]''')[0]
@@ -1189,6 +1212,8 @@ class HasBahCa(CBaseHostClass):
             _url = self.cm.ph.getSearchGroups(item, '''\shref=['"]([^"^']+?)['"]''')[0]
             if _url.startswith('?'):
                 _url = url + _url
+            if not _url.startswith('http'):
+                _url = 'http://strims.top' + _url
             sts, data = self.cm.getPage(_url)
             if sts:
                 tmp = CParsingHelper.getDataBeetwenNodes(data, ('<iframe', '>', 'allowfullscreen'), ('</iframe', '>'))[1]
@@ -1203,10 +1228,17 @@ class HasBahCa(CBaseHostClass):
                     linkVideo = 'http:' + linkVideo
                 if len(linkVideo) and not linkVideo.startswith('http'):
                     linkVideo = 'http://strims.top' + linkVideo
-                    sts, tmp = self.cm.getPage(linkVideo)
-                    tmp = CParsingHelper.getDataBeetwenNodes(tmp, ('<iframe', '>', 'src'), ('</iframe', '>'))[1]
-                    linkVideo = self.cm.ph.getSearchGroups(tmp, '''src=['"]([^"^']+?)['"]''')[0]
-                    linkVideo = linkVideo.strip(' \n\t\r')
+                    sts, data = self.cm.getPage(linkVideo)
+                    tmp = CParsingHelper.getDataBeetwenNodes(data, ('<iframe', '>', 'src'), ('</iframe', '>'))[1]
+                    if len(tmp):
+                        linkVideo = self.cm.ph.getSearchGroups(tmp, '''src=['"]([^"^']+?)['"]''')[0]
+                        linkVideo = linkVideo.strip(' \n\t\r')
+                    else:
+                        tmp = self.cm.ph.getSearchGroups(data, '''eval\(unescape\(['"]([^"^']+?)['"]''')[0]
+                        tmp = urllib_unquote(tmp)
+                        linkVideo = self.cm.ph.getSearchGroups(tmp, '''['"]*(http[^'^"]+?\.m3u8[^'^"]*?)['"]''')[0]
+                        if '' == linkVideo:
+                            linkVideo = self.cm.ph.getSearchGroups(tmp, '''['"]*(http[^'^"]+?\.mpd[^'^"]*?)['"]''')[0].replace('\\', '')
                     if len(linkVideo) and linkVideo.startswith('//'):
                         linkVideo = 'http:' + linkVideo
                 linkVideo = linkVideo.replace('https://href.li/', '')
@@ -1223,6 +1255,8 @@ class HasBahCa(CBaseHostClass):
 
         if 'm3u8' in url and 'hlsplayer' not in url:
             urlsTab = getDirectM3U8Playlist(url, False)
+        elif 'mpd' in url:
+            urlsTab = getMPDLinksWithMeta(url, False)
         else:
             urlsTab.extend(self.up.getVideoLinkExt(url))
         return urlsTab
@@ -1318,6 +1352,8 @@ class HasBahCa(CBaseHostClass):
             self.getStrumykTvList(url)
         elif name == 'strumyk_tv':
             self.getStrumykTvDir(url)
+        elif name == 'strumyk_cat':
+            self.getStrumykTvDirCat(url)
 
         CBaseHostClass.endHandleService(self, index, refresh)
 
