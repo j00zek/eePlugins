@@ -4,7 +4,7 @@
 ###################################################
 from Plugins.Extensions.IPTVPlayer.components.iptvplayerinit import TranslateTXT as _
 from Plugins.Extensions.IPTVPlayer.components.ihost import CHostBase, CBaseHostClass
-from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc, rm
+from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc, rm, readCFG
 from Plugins.Extensions.IPTVPlayer.tools.iptvtypes import strwithmeta
 from Plugins.Extensions.IPTVPlayer.tools.e2ijs import js_execute
 ###################################################
@@ -30,8 +30,8 @@ from Screens.MessageBox import MessageBox
 ###################################################
 # Config options for HOST
 ###################################################
-config.plugins.iptvplayer.ogladajto_login = ConfigText(default="", fixed_size=False)
-config.plugins.iptvplayer.ogladajto_password = ConfigText(default="", fixed_size=False)
+config.plugins.iptvplayer.ogladajto_login = ConfigText(default=readCFG('ogladajto_login',""), fixed_size=False)
+config.plugins.iptvplayer.ogladajto_password = ConfigText(default=readCFG('ogladajto_password',""), fixed_size=False)
 
 
 def GetConfigList():

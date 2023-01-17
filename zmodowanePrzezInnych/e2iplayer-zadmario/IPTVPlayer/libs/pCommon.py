@@ -79,7 +79,8 @@ def EncodeGzipped(data):
 class NoRedirection(urllib2_HTTPRedirectHandler):
     def http_error_302(self, req, fp, code, msg, headers):
         infourl = urllib_addinfourl(fp, headers, req.get_full_url())
-        infourl.status = code
+        if isPY2(): #status attribute is missing in p3 version of the addinfourl
+            infourl.status = code
         infourl.code = code
         return infourl
     http_error_300 = http_error_302

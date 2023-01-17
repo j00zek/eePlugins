@@ -1879,3 +1879,18 @@ def defaultToolPath(fileName):
             return os.path.join(toolPath, fileName)
     
     return ""
+
+def readCFG(cfgName, defVal = ''):
+    for myPath in ['/etc/enigma2/IPTVplayer_defaults/', '/hdd/IPTVplayer_defaults/']:
+        if os.path.exists(myPath):
+            cfgPath = os.path.join(myPath,cfgName)
+            if os.path.exists(cfgPath):
+                return open(cfgPath, 'r').readline().strip()
+            else:
+                with open('/etc/enigma2/settings', 'r') as f:
+                    for line in f:
+                        line = line.strip()
+                        if line.startswith('config.plugins.iptvplayer.%s=' % cfgName):
+                            defVal = line.split('=')[1]
+                            open(cfgPath, 'w').write(defVal)
+    return defVal
