@@ -1306,7 +1306,13 @@ class common:
             printDBG("CORRECTED pageUrl: [%s]" % pageUrl)
 
         if None != post_data:
-            printDBG('pCommon - getURLRequestData() -> post data: ' + str(post_data))
+            post_dataTxt = {}
+            for item in post_data:
+                if 'username' in item.lower(): post_dataTxt[item] = 'userName'
+                elif 'password' in item.lower(): post_dataTxt[item] = 'userPassword'
+                elif 'token' in item.lower(): post_dataTxt[item] = 'userToken'
+                else: post_dataTxt[item] = post_data[item]
+            printDBG('pCommon - getURLRequestData() -> post data: ' + str(post_dataTxt))
             if params.get('raw_post_data', False):
                 dataPost = post_data
             elif params.get('multipart_post_data', False):

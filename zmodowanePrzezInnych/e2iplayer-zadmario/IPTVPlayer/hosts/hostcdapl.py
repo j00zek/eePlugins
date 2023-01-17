@@ -531,7 +531,7 @@ class cda(CBaseHostClass, CaptchaHelper):
                 break
 
             if self.loggedIn:
-                hash = hexlify(md5('%s@***@%s' % (self.login, self.password)).digest())
+                hash = hexlify(md5(ensure_binary('%s@***@%s' % (self.login, self.password))).digest())
                 WriteTextFile(loginCookie, hash)
 
         return self.loggedIn
