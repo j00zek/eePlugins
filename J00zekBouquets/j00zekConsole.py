@@ -108,7 +108,7 @@ class j00zekConsole(Screen):
     def dataAvail(self, myText):
         myText =  ensure_str(myText)
         #lastpage = self["text"].isAtLastPage()
-        #with open("/tmp/JB", "a") as f: f.write(myText)
+        printDBG(myText)
         if myText.find("zapTo(") > -1:
             dvbService = myText.split('zapTo(', 1)[1]
             if dvbService.find(")") > -1:
@@ -119,8 +119,9 @@ class j00zekConsole(Screen):
                 InfoBar.instance.servicelist.setCurrentSelection(serviceDVB)
                 InfoBar.instance.servicelist.zap()
                 myText = myText.replace("zapTo(%s)" % dvbService ,"Przełączanie na kanał nadający dane o numeracji...")
-            #with open("/tmp/JB", "a") as f: f.write("aaaa" + dvbService)
+            #printDBG("aaaa" + dvbService)
         tmpText = self["text"].getText()
+        printDBG('>>>>> linii w buforze: %s\n' % tmpText.count('\n'))
         if tmpText.count('\n') > 200: # za dlugie teksty powoduja ze wszystko ginie, jakby bufor sie przepelnia
             tmpText = "...\n" + "\n".join(tmpText.split("\n")[20:])
         self["text"].setText( tmpText + myText)

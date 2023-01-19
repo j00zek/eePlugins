@@ -62,9 +62,11 @@ j00zekConfig.Bouquets_dvbapi = ConfigYesNo(default = False) #we need to know wha
 BackupFile='KopiaListyKanalow.tar.gz'
 
 j00zekConfig.Znacznik = ConfigSelection(default = "#SERVICE 1:832:D:0:0:0:0:0:0:0:: ", 
-                                        choices = [("#SERVICE 1:832:D:0:0:0:0:0:0:0:: ", "Pomijaj"),
+                                        choices = [("#SERVICE 1:832:D:0:0:0:0:0:0:0:: ", "Znacznik 'Pomijaj'"),
                                                    ("#SERVICE 1:0:1:144B:5DC:13E:820000:0:0:0::---", "Wyświetlaj '---'"),
-                                                   ("#SERVICE 1:0:1:144B:5DC:13E:820000:0:0:0::<puste>", "Wyświetlaj '<puste>'")
+                                                   ("#SERVICE 1:0:1:144B:5DC:13E:820000:0:0:0::<puste>", "Wyświetlaj '<puste>'"),
+                                                   ("skasuj", "Lista bez pustych miejsc"),
+                                                   ("sortuj", "Lista ułożona alfabetycznie")
                                                   ])
 
 ##############################################################
@@ -119,12 +121,14 @@ class j00zekBouquets(Screen, ConfigListScreen):
         
         self.onLayoutFinish.append(self.layoutFinished)
 
+    
     def layoutFinished(self):
         self.setTitle("Wersja %s" % Info)
-        with open("/proc/sys/vm/drop_caches", "w") as f: f.write("1\n")
+        
         self.runSetup()
 
     def runSetup(self):
+        printDBG('----- Uruchomiono j00zekBouquets -----', 'w')
         self["key_blue"].setText(' ')
         self.list = [ ]
         self.list.append(getConfigListEntry('--- Synchronizacja z satelity ---', j00zekConfig.BouquetsEnabled))
@@ -266,9 +270,11 @@ class j00zekBouquets(Screen, ConfigListScreen):
         return
 
     def keyYellow(self):
+        printDBG('keyYellow() >>>\n')
         if j00zekConfig.BouquetsEnabled.value == False:
             return
         elif not os_path.exists('/usr/bin/dvbsnoop'):
+            printDBG('\t Brak dvbsnoop Spróbuj zainstalować z repozytorium. - kończę!!!\n')
             self.session.openWithCallback(self.doNothing ,MessageBox,"Brak dvbsnoop Spróbuj zainstalować z repozytorium. - kończę!!!", MessageBox.TYPE_INFO)
             return
         elif j00zekConfig.BouquetsNC.value != 'NA' or j00zekConfig.BouquetsCP.value != 'NA':
@@ -279,6 +285,7 @@ class j00zekBouquets(Screen, ConfigListScreen):
             self.session.nav.stopService()
             #cleaningLAMEDB
             if j00zekConfig.BouquetsClearLameDB.value != "norefresh":
+                printDBG('\t j00zekConfig.BouquetsClearLameDB.value != "norefresh"')
                 self.ClearLameDB()
                 self.BuildLameDB()
             else:
@@ -293,14 +300,17 @@ class j00zekBouquets(Screen, ConfigListScreen):
         return
 
     def keyYellowStep2(self):
+        printDBG('keyYellowStep2() >>>\ncmdlist = %s' % str(self.runlist))
         self.timer.callback.remove(self.keyYellowStep2)
         self.session.openWithCallback(self.keyYellowEndRun ,j00zekConsole, title = "j00zekBouquets v %s (%s, %s)" % (Info, j00zekConfig.BouquetsClearLameDB.value, j00zekConfig.BouquetsNC.value ) , cmdlist = self.runlist)
         
     def keyYellowEndRun(self, ret =0):
+        printDBG('keyYellowEndRun() >>>')
         self.reloadLAMEDB()
         self.ZapToPrevChannel()
 
     def ClearLameDB(self, ret =0):
+        printDBG('ClearLameDB() >>>')
         #e2 de facto dodaje nowe serwisy a nie przeladowuje lamedb, wiec musimy najperw wszystkie wykasowac...#
         #RESULT removeServices(int dvb_namespace=-1, int tsid=-1, int onid=-1, unsigned int orb_pos=0xFFFFFFFF);
         db = eDVBDB.getInstance()
@@ -317,15 +327,18 @@ class j00zekBouquets(Screen, ConfigListScreen):
                 db.removeServices(-1, ts, -1, 130)
 
     def BuildLameDB(self):
+        printDBG('BuildLameDB() >>>')
         # ... teraz dodac to co potrzebujemy :)            
         eDVBDB.getInstance().loadServicelist('%scomponents/j00zekBouquets.lamedb' % PluginPath)
         eDVBDB.getInstance().saveServicelist()
 
     def reloadLAMEDB(self):
+        printDBG('reloadLAMEDB() >>>')
         eDVBDB.getInstance().reloadServicelist()
         eDVBDB.getInstance().reloadBouquets()
 
     def ZapToService(self, ZapTo):
+        printDBG('ZapToService(%s) >>>' % str(ZapTo))
         service = eServiceReference(ZapTo)
         InfoBar.instance.servicelist.clearPath()
         InfoBar.instance.servicelist.enterPath(service)
@@ -333,6 +346,7 @@ class j00zekBouquets(Screen, ConfigListScreen):
         InfoBar.instance.servicelist.zap()
     
     def ZapToPrevChannel(self):
+        printDBG('ZapToPrevChannel() >>>')
         if InfoBar.instance.servicelist.getRoot() != self.prev_root: #already in correct bouquet?
             InfoBar.instance.servicelist.clearPath()
             if InfoBar.instance.servicelist.getRoot() != self.prev_root:
