@@ -559,9 +559,9 @@ class common:
         sts = False
 
         if isPY2():
-            buffer = StringIO()
+            CurrBuffer = StringIO()
         else:
-            buffer = BytesIO()
+            CurrBuffer = BytesIO()
         checkFromFirstBytes = params.get('check_first_bytes', [])
         fileHandler = None
         firstAttempt = [True]
@@ -590,8 +590,8 @@ class common:
             responseHeaders[name] = value
 
         def _breakConnection(toWriteData):
-            buffer.write(toWriteData)
-            if maxDataSize <= buffer.tell():
+            CurrBuffer.write(toWriteData)
+            if maxDataSize <= CurrBuffer.tell():
                 return 0
 
         def _bodyFunction(toWriteData):
@@ -621,10 +621,10 @@ class common:
 
             # if we should check start body data
             if len(checkFromFirstBytes):
-                buffer.write(toWriteData)
+                CurrBuffer.write(toWriteData)
                 toWriteData = None
                 valid = False
-                value = buffer.getvalue()
+                value = ensure_str(CurrBuffer.getvalue())
                 for toCheck in checkFromFirstBytes:
                     if len(toCheck) <= len(value):
                         if value.startswith(toCheck):
@@ -642,8 +642,8 @@ class common:
             if fileHandler != None and 0 == len(checkFromFirstBytes):
                 # all check were done so, we can start write data to file
                 try:
-                    if fileHandler.tell() == 0 and buffer.tell() > 0:
-                        fileHandler.write(buffer.getvalue())
+                    if fileHandler.tell() == 0 and CurrBuffer.tell() > 0:
+                        fileHandler.write(ensure_str(CurrBuffer.getvalue()))
 
                     if toWriteData != None:
                         fileHandler.write(toWriteData)
@@ -652,7 +652,7 @@ class common:
                     return 0 # wrong file handle
 
             if toWriteData != None and params['return_data']:
-                buffer.write(toWriteData)
+                CurrBuffer.write(toWriteData)
 
         def _terminateFunction(download_t, download_d, upload_t, upload_d):
             if IsThreadTerminated():
@@ -804,7 +804,7 @@ class common:
             elif maxDataSize >= 0:
                 curlSession.setopt(pycurl.WRITEFUNCTION, _breakConnection)
             else:
-                curlSession.setopt(pycurl.WRITEDATA, buffer)
+                curlSession.setopt(pycurl.WRITEDATA, CurrBuffer)
 
             curlSession.setopt(pycurl.NOPROGRESS, False)
             curlSession.setopt(pycurl.PROGRESSFUNCTION, _terminateFunction)
@@ -843,7 +843,7 @@ class common:
                 self.fillHeaderItems(metadata, responseHeaders, collectAllHeaders=params.get('collect_all_headers'))
 
                 if params['return_data']:
-                    out_data = buffer.getvalue()
+                    out_data = ensure_str(CurrBuffer.getvalue())
                 else:
                     out_data = ""
 
@@ -1122,13 +1122,13 @@ class common:
                 blockSize = addParams.get('block_size', 8192)
                 fileHandler = None
                 while True:
-                    buffer = downHandler.read(blockSize)
+                    CurrBuffer = downHandler.read(blockSize)
 
                     if len(checkFromFirstBytes):
-                        printDBG('saveWebFile() buffer.startswith "%s"' % buffer[:5])
+                        printDBG('saveWebFile() buffer.startswith "%s"' % CurrBuffer[:5])
                         OK = False
                         for item in checkFromFirstBytes:
-                            if buffer.startswith(ensure_binary(item)):
+                            if CurrBuffer.startswith(ensure_binary(item)):
                                 OK = True
                                 break
                         if not OK:
@@ -1136,13 +1136,13 @@ class common:
                         else:
                             checkFromFirstBytes = []
 
-                    if not buffer:
+                    if not CurrBuffer:
                         break
-                    downDataSize += len(buffer)
-                    if len(buffer):
+                    downDataSize += len(CurrBuffer)
+                    if len(CurrBuffer):
                         if fileHandler == None:
                             fileHandler = open(file_path, "wb")
-                        fileHandler.write(buffer)
+                        fileHandler.write(CurrBuffer)
                 if fileHandler != None:
                     fileHandler.close()
                 downHandler.close()

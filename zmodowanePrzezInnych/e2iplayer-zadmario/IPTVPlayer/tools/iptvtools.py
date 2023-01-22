@@ -1669,16 +1669,28 @@ def SetE2VideoMode(value):
 
 def ReadUint16(tmp, le=True):
     if le:
-        return ord(tmp[1]) << 8 | ord(tmp[0])
+        if isPY2():
+            return ord(tmp[1]) << 8 | ord(tmp[0])
+        else:
+            return tmp[1] << 8 | tmp[0]
     else:
-        return ord(tmp[0]) << 8 | ord(tmp[1])
-
+        if isPY2():
+            return ord(tmp[0]) << 8 | ord(tmp[1])
+        else:
+            return tmp[0] << 8 | tmp[1]
+          
 
 def ReadUint32(tmp, le=True):
     if le:
-        return ord(tmp[3]) << 24 | ord(tmp[2]) << 16 | ord(tmp[1]) << 8 | ord(tmp[0])
+        if isPY2():
+            return ord(tmp[3]) << 24 | ord(tmp[2]) << 16 | ord(tmp[1]) << 8 | ord(tmp[0])
+        else:
+            return tmp[3] << 24 | tmp[2] << 16 | tmp[1] << 8 | tmp[0]
     else:
-        return ord(tmp[0]) << 24 | ord(tmp[1]) << 16 | ord(tmp[2]) << 8 | ord(tmp[3])
+        if isPY2():
+            return ord(tmp[0]) << 24 | ord(tmp[1]) << 16 | ord(tmp[2]) << 8 | ord(tmp[3])
+        else:
+            return tmp[0] << 24 | tmp[1] << 16 | tmp[2] << 8 | tmp[3]
 
 
 def ReadGnuMIPSABIFP(elfFileName):
@@ -1702,7 +1714,10 @@ def ReadGnuMIPSABIFP(elfFileName):
         byte = 0
 
         while start < end:
-            byte = ord(data[start])
+            if isPY2():
+                byte = ord(data[start])
+            else:
+                byte = data[start]
             numRead += 1
 
             result |= (byte & 0x7f) << shift
@@ -1781,7 +1796,10 @@ def ReadGnuMIPSABIFP(elfFileName):
                                 if attrLen < 6:
                                     sectionLen = 0
                                     break
-                                tag = ord(contents[p])
+                                if isPY2():
+                                    tag = ord(contents[p])
+                                else:
+                                    tag = contents[p]
                                 p += 1
                                 size = ReadUint32(contents[p:])
                                 if size > attrLen:
