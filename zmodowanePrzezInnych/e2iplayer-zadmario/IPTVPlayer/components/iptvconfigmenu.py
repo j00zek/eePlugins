@@ -96,7 +96,7 @@ config.plugins.iptvplayer.plugin_autostart = ConfigYesNo(default=False)
 config.plugins.iptvplayer.plugin_autostart_method = ConfigSelection(default="wizard", choices=[("wizard", "wizard"), ("infobar", "infobar")])
 
 if isOPKGinstall():
-    config.plugins.iptvplayer.preferredupdateserver = ConfigSelection(default="4", choices=[("", _("Default")), ("1", "http://iptvplayer.vline.pl/"), ("2", _("http://zadmario.gitlab.io/")), ("3", _("private")), ("4", "opkg repo")])
+    config.plugins.iptvplayer.preferredupdateserver = ConfigSelection(default="4", choices=[("", _("Default")), ("4", "opkg repo")])
 else:
     config.plugins.iptvplayer.preferredupdateserver = ConfigSelection(default="2", choices=[("", _("Default")), ("1", "http://iptvplayer.vline.pl/"), ("2", _("http://zadmario.gitlab.io/")), ("3", _("private"))])
 config.plugins.iptvplayer.osk_type = ConfigSelection(default="", choices=[("", _("Auto")), ("system", _("System")), ("own", _("Own model"))])

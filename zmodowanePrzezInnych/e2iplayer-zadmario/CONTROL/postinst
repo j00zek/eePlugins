@@ -1,4 +1,23 @@
 #!/bin/sh
 [ -e /usr/lib/enigma2/python/Plugins/Extensions/scripts ] && rm -fr /usr/lib/enigma2/python/Plugins/Extensions/scripts
 [ -e /usr/lib/enigma2/python/Plugins/Extensions/version.pyc ] && rm -f /usr/lib/enigma2/python/Plugins/Extensions/version.pyc
+if [ -f /hdd/IPTVCache/UserAddons/opkg-postinst.sh ];then
+ chmod 775 /hdd/IPTVCache/UserAddons/opkg-postinst.sh
+ /hdd/IPTVCache/UserAddons/opkg-postinst.sh
+elif [ -e /hdd/IPTVCache/ ];then
+  mkdir -p /hdd/IPTVCache/UserAddons
+  echo "#tutaj wpisujemy skrypt uruchamiany PO instalacji/aktualizacji przez opkg
+#kopiowanie struktury katalogów do wtyczki. UWAGA: struktura katalogów musi być taka sama jak we wtyczce
+if [ -e /hdd/IPTVCache/UserAddons/icons ];then
+  echo Kopiowanie własnych ikon do katalogu icons
+  cp -rf /hdd/IPTVCache/UserAddons/icons/* /usr/lib/enigma2/python/Plugins/Extensions/IPTVPlayer/icons/
+fi
+if [ -e /hdd/IPTVCache/UserAddons/hosts ];then
+  echo Kopiowanie własnych hostów do katalogu hostss
+  cp -rf /hdd/IPTVCache/UserAddons/hosts/* /usr/lib/enigma2/python/Plugins/Extensions/IPTVPlayer/hosts/
+fi
+" > /hdd/IPTVCache/UserAddons/opkg-postinst.sh
+chmod 775 /hdd/IPTVCache/UserAddons/opkg-postinst.sh
+fi
+
 exit 0
