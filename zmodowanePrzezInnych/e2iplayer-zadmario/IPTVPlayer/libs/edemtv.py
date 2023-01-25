@@ -11,7 +11,7 @@ from Plugins.Extensions.IPTVPlayer.libs.urlparser import urlparser
 from Plugins.Extensions.IPTVPlayer.libs.urlparserhelper import getDirectM3U8Playlist
 from Plugins.Extensions.IPTVPlayer.components.ihost import CBaseHostClass
 ###################################################
-
+from Plugins.Extensions.IPTVPlayer.p2p3.manipulateStrings import ensure_binary
 ###################################################
 # FOREIGN import
 ###################################################
@@ -174,7 +174,7 @@ class EdemTvApi:
 
                 login = config.plugins.iptvplayer.edemtv_login.value
                 passwd = config.plugins.iptvplayer.edemtv_password.value
-                subdomain = md5(login + passwd).hexdigest()
+                subdomain = md5(ensure_binary(login + passwd)).hexdigest()
                 post_data = {'server_id': tries, 'name': subdomain}
                 params = dict(self.http_params)
                 params['header'] = HTTP_HEADER

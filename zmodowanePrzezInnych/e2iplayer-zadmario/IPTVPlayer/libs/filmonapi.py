@@ -8,7 +8,7 @@ from Plugins.Extensions.IPTVPlayer.libs.pCommon import common
 from Plugins.Extensions.IPTVPlayer.libs.urlparser import urlparser
 from Plugins.Extensions.IPTVPlayer.libs.e2ijson import loads as json_loads
 ###################################################
-
+from Plugins.Extensions.IPTVPlayer.p2p3.manipulateStrings import ensure_binary
 ###################################################
 # FOREIGN import
 ###################################################
@@ -172,7 +172,7 @@ class FilmOnComApi:
         if self.PREMIUM and None != self.session_key:
             postData = {}
             postData['login'] = self.LOGIN
-            postData['password'] = md5(self.PASSWORD).hexdigest()
+            postData['password'] = md5(ensure_binary(self.PASSWORD)).hexdigest()
             postData['sessionkey'] = self.session_key
             loginURL = FilmOnComApi.MAINURL + "/api/login?session_key=" + self.session_key
             sts, data = self.cm.getPage(loginURL, {}, postData)

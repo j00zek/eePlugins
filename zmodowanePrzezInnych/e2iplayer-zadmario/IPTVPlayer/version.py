@@ -1,3 +1,1 @@
-# -*- coding: utf-8 -*-
-#YYYY.MM.DD.DAY_RELEASE
-IPTV_VERSION="2023.01.23.01"
+Version='23.01.25.1438'

@@ -11,7 +11,7 @@ from Plugins.Extensions.IPTVPlayer.tools.iptvtypes import strwithmeta
 from Plugins.Extensions.IPTVPlayer.libs.pCommon import common
 from Plugins.Extensions.IPTVPlayer.libs.e2ijson import loads as json_loads
 ###################################################
-from Plugins.Extensions.IPTVPlayer.p2p3.manipulateStrings import ensure_str
+from Plugins.Extensions.IPTVPlayer.p2p3.manipulateStrings import ensure_str, ensure_binary
 ###################################################
 # FOREIGN import
 ###################################################
@@ -605,7 +605,7 @@ class HDFull(CBaseHostClass, CaptchaHelper):
             freshSession = False
             if sts and '/logout' in data:
                 printDBG("Check hash")
-                hash = hexlify(md5('%s@***@%s' % (self.login, self.password)).digest())
+                hash = hexlify(md5(ensure_binary('%s@***@%s' % (self.login, self.password))).digest())
                 prevHash = ReadTextFile(loginCookie)[1].strip()
 
                 printDBG("$hash[%s] $prevHash[%s]" % (hash, prevHash))

@@ -16,6 +16,7 @@ from Plugins.Extensions.IPTVPlayer.tools.e2ijs import js_execute
 from Plugins.Extensions.IPTVPlayer.libs.e2ijson import loads as json_loads
 ###################################################
 from Plugins.Extensions.IPTVPlayer.p2p3.UrlLib import urllib_quote
+from Plugins.Extensions.IPTVPlayer.p2p3.manipulateStrings import ensure_binary
 ###################################################
 # FOREIGN import
 ###################################################
@@ -88,7 +89,7 @@ class Sport365LiveApi:
         def derive_key_and_iv(password, salt, key_length, iv_length):
             d = d_i = ''
             while len(d) < key_length + iv_length:
-                d_i = md5(d_i + password + salt).digest()
+                d_i = md5(ensure_binary(d_i + password + salt)).digest()
                 d += d_i
             return d[:key_length], d[key_length:key_length + iv_length]
         bs = 16

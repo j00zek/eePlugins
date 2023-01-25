@@ -11,6 +11,7 @@ from Plugins.Extensions.IPTVPlayer.libs import ph
 from Plugins.Extensions.IPTVPlayer.libs.e2ijson import loads as json_loads
 ###################################################
 from Plugins.Extensions.IPTVPlayer.p2p3.UrlLib import urllib_quote
+from Plugins.Extensions.IPTVPlayer.p2p3.manipulateStrings import ensure_binary
 ###################################################
 # FOREIGN import
 ###################################################
@@ -454,7 +455,7 @@ class DixMax(CBaseHostClass):
             freshSession = False
             if sts and 'logout.php' in data:
                 printDBG("Check hash")
-                hash = hexlify(md5('%s@***@%s' % (self.login, self.password)).digest())
+                hash = hexlify(md5(ensure_binary('%s@***@%s' % (self.login, self.password))).digest())
                 prevHash = ReadTextFile(loginCookie)[1].strip()
 
                 printDBG("$hash[%s] $prevHash[%s]" % (hash, prevHash))

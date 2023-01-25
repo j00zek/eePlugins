@@ -11,6 +11,7 @@ from Plugins.Extensions.IPTVPlayer.libs import ph
 ###################################################
 from Plugins.Extensions.IPTVPlayer.libs.crypto.cipher.aes_cbc import AES_CBC
 from Plugins.Extensions.IPTVPlayer.p2p3.UrlLib import urllib_urlencode
+from Plugins.Extensions.IPTVPlayer.p2p3.manipulateStrings import ensure_binary
 ###################################################
 # FOREIGN import
 ###################################################
@@ -92,7 +93,7 @@ class HDStreams(CBaseHostClass):
         def derive_key_and_iv(password, salt, key_length, iv_length):
             d = d_i = ''
             while len(d) < key_length + iv_length:
-                d_i = md5(d_i + password + salt).digest()
+                d_i = md5(ensure_binary(d_i + password + salt)).digest()
                 d += d_i
             return d[:key_length], d[key_length:key_length + iv_length]
         bs = 16

@@ -1489,7 +1489,10 @@ def GetIPTVPlayerVerstion():
     try:
         from Plugins.Extensions.IPTVPlayer.version import IPTV_VERSION
     except Exception:
-        IPTV_VERSION = "XX.YY.ZZ"
+        try:
+            from Plugins.Extensions.IPTVPlayer.version import Version as IPTV_VERSION #from opkg
+        except Exception:
+            IPTV_VERSION = "XX.YY.ZZ"
     return IPTV_VERSION
 
 def GetIPTVPlayerVersion(): # just for compatibility

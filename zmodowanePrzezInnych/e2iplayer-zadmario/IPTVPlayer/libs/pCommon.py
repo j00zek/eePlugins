@@ -22,7 +22,7 @@ if isPY2():
         from StringIO import StringIO
 else:
     import http.cookiejar as cookielib
-    from io import StringIO, BytesIO
+    from io import BytesIO
     basestring = str
     file = open
     unichr = chr
@@ -67,7 +67,10 @@ def DecodeGzipped(data):
 
 
 def EncodeGzipped(data):
-    f = StringIO()
+    if isPY2():
+        f = StringIO()
+    else:
+        f = BytesIO()
     gzf = gzip.GzipFile(mode="wb", fileobj=f, compresslevel=1)
     gzf.write(data)
     gzf.close()
@@ -479,7 +482,10 @@ class common:
                 lineNeedFix = True
             if lineNeedFix:
                 lines[idx] = '\t'.join(fields)
-        cj._really_load(StringIO(''.join(lines)), cookiefile, ignore_discard=ignoreDiscard, ignore_expires=ignoreExpires)
+        if isPY2():
+            cj._really_load(StringIO(''.join(lines)), cookiefile, ignore_discard=ignoreDiscard, ignore_expires=ignoreExpires)
+        else:
+            cj._really_load(BytesIO(''.join(lines)), cookiefile, ignore_discard=ignoreDiscard, ignore_expires=ignoreExpires)
         return cj
 
     def clearCookie(self, cookiefile, leaveNames=[], removeNames=None, ignoreDiscard=True, ignoreExpires=False):
@@ -553,6 +559,9 @@ class common:
         if 'return_data' not in params:
             params['return_data'] = True
 
+        if 'save_to_file' in params: # some cleaning
+            params['save_to_file'] = params['save_to_file'].replace('//', '/')
+
         self.meta = {}
         metadata = self.meta
         out_data = None
@@ -624,7 +633,7 @@ class common:
                 CurrBuffer.write(toWriteData)
                 toWriteData = None
                 valid = False
-                value = ensure_str(CurrBuffer.getvalue())
+                value = ensure_binary(CurrBuffer.getvalue())
                 for toCheck in checkFromFirstBytes:
                     if len(toCheck) <= len(value):
                         if value.startswith(toCheck):
@@ -643,7 +652,7 @@ class common:
                 # all check were done so, we can start write data to file
                 try:
                     if fileHandler.tell() == 0 and CurrBuffer.tell() > 0:
-                        fileHandler.write(ensure_str(CurrBuffer.getvalue()))
+                        fileHandler.write(ensure_binary(CurrBuffer.getvalue()))
 
                     if toWriteData != None:
                         fileHandler.write(toWriteData)
@@ -800,10 +809,13 @@ class common:
             curlSession.setopt(pycurl.HEADERFUNCTION, _headerFunction)
 
             if fileHandler:
+                printDBG('pCommon - getPageWithPyCurl() -> fileHandler exists, pycurl.WRITEFUNCTION = _bodyFunction')
                 curlSession.setopt(pycurl.WRITEFUNCTION, _bodyFunction)
             elif maxDataSize >= 0:
+                printDBG('pCommon - getPageWithPyCurl() -> fileHandler exists, pycurl.WRITEFUNCTION = _breakConnection')
                 curlSession.setopt(pycurl.WRITEFUNCTION, _breakConnection)
             else:
+                printDBG('pCommon - getPageWithPyCurl() -> pycurl.WRITEDATA to CurrBuffer')
                 curlSession.setopt(pycurl.WRITEDATA, CurrBuffer)
 
             curlSession.setopt(pycurl.NOPROGRESS, False)
@@ -860,7 +872,10 @@ class common:
             if fileHandler:
                 fileHandler.close()
         except pycurl.error as e:
-            metadata['pycurl_error'] = (e[0], str(e[1]))
+            try:
+                metadata['pycurl_error'] = (e[0], str(e[1]))
+            except Exception:
+                metadata['pycurl_error'] = (e.args[0], e.args[1]) # it seems pycurl in p3 has different structure
             printExc()
         except Exception:
             printExc()
