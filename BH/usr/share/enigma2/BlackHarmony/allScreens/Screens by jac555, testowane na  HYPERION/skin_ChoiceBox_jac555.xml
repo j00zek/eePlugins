@@ -11,7 +11,7 @@
       <convert type="j00zekAlternateTitle">Input</convert>
     </widget>  
     <widget name="text" position="center,72" size="850,30" font="HD_Thin; 25" foregroundColor="lemon" backgroundColor="black" transparent="1" />
-    <widget name="list" position="center,110" size="1095,704" itemHeight="40" font="Roboto_HD; 27" backgroundColor="background" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_1095_40.png" enableWrapAround="1" scrollbarWidth="7" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="blue" scrollbarSliderBorderColor="blue" transparent="1" />
+    <widget name="list" position="center,110" size="1160,700" itemHeight="40" font="Roboto_HD; 27" backgroundColor="black" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_1200_40.png" enableWrapAround="1" scrollbarWidth="7" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="blue" scrollbarSliderBorderColor="blue" transparent="1" />
     <ePixmap position="137,850" size="60,30" pixmap="BlackHarmony/buttons/key_ok.png" alphatest="blend" />
     <ePixmap position="240,850" size="60,30" pixmap="BlackHarmony/buttons/key_exit.png" alphatest="blend" />
 </screen>

@@ -1,5 +1,5 @@
 <skin>
-<screen name="BPanel" position="center,125" size="1200,881" title="PKTeam BluePanel" backgroundColor="transpBlack">
+<screen name="BPanel" position="center,125" size="1200,881" title="HYPERION BluePanel" backgroundColor="transpBlack">
   <widget name="Level" position="223,1" size="675,45" font="Roboto_HD; 34" halign="center" valign="center" foregroundColor="blue" backgroundColor="background" />
   <widget name="Opis" position="29,751" size="1110,40" font="Roboto_HD; 28" halign="center" valign="center" foregroundColor="white" backgroundColor="background" />
   <widget source="global.Immidiet" render="Pixmap" position="44,55" size="230,160" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/frame.png" alphatest="blend" zPosition="-1">
@@ -86,11 +86,11 @@
   <widget name="I9" position="359,552" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/green.png" alphatest="blend" />
   <widget name="I10" position="653,552" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/yellow.png" alphatest="blend" />
   <widget name="I11" position="936,552" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/blue.png" alphatest="blend" />
-  <ePixmap position="431,796" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
+  <ePixmap position="center,796" zPosition="1" size="300,81" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
 </screen>
 
 
-<screen name="PKTinfoCenter" position="0,0" size="1920,1080" title="PKTeam Info Center" flags="wfNoBorder" backgroundColor="transparent">
+<screen name="PKTinfoCenter" position="0,0" size="1920,1080" title="HYPERION Info Center" flags="wfNoBorder" backgroundColor="transparent">
   <ePixmap position="0,0" zPosition="-10" size="1920,1080" pixmap="BlackHarmony/bg_design/big.png" />
   <widget source="Title" render="Label" position="1270,111" size="420,30" font="Roboto_HD; 27" halign="right" backgroundColor="background" transparent="1" foregroundColor="lemon">
   </widget>
@@ -168,13 +168,13 @@
   <widget name="Green" position="362,859" size="300,35" font="Roboto_HD;30" halign="left" valign="center" foregroundColor="green" backgroundColor="background" />
   <eLabel text="Processes" position="729,858" size="300,35" font="Roboto_HD;30" halign="left" valign="center" foregroundColor="yellow" backgroundColor="background" />
   <widget name="blue" position="1106,858" size="300,35" font="Roboto_HD;30" halign="left" valign="center" foregroundColor="blue" backgroundColor="background" />
-  <ePixmap position="732,722" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
+  <ePixmap position="center,722" zPosition="1" size="300,81" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
 </screen>
 
 
-<screen name="SpeedTest" position="center,center" size="1017,677" title="PKTeam Speed Test">
+<screen name="SpeedTest" position="center,center" size="1017,677" title="HYPERION Speed Test">
   <widget name="obrazek" position="43,4" size="929,446" font="Roboto_HD; 30" halign="center" valign="center" alphatest="blend" scale="on" foregroundColor="lemon" backgroundColor="background" />
-  <ePixmap position="322,517" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
+  <ePixmap position="center,517" zPosition="1" size="300,81" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
     <widget name="tekst" position="45,450" size="930,40" font="Regular;28" halign="center" valign="center" foregroundColor="lemon" />
     <widget source="session.CurrentService" render="j00zekPiconAnimation" position="180,620" zPosition="10" size="35,27" alphatest="blend"
                         initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True"
@@ -189,7 +189,7 @@
 </screen>
 
 
-<screen name="JDownloaderSetup" position="center,125" size="1200,881" title="PKTeam JDownloader Setup">
+<screen name="JDownloaderSetup" position="center,125" size="1200,881" title="HYPERION JDownloader Setup">
   <widget name="config" position="center,17" size="1055,435" font="Roboto_HD; 28" itemHeight="45" scrollbarMode="showOnDemand" scrollbarWidth="7" selectionPixmap="BlackHarmony/menu/sel_1055_45.png" scrollbarSliderBorderColor="blue" scrollbarSliderForegroundColor="blue" foregroundColor="blue" backgroundColor="background" />
     <widget source="session.CurrentService" render="j00zekPiconAnimation" position="75,835" zPosition="10" size="35,27" alphatest="blend"
                         initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0" random="True"
@@ -211,10 +211,10 @@
   <widget source="key_green" render="Label" position="365,835" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" />
   <widget source="key_yellow" render="Label" position="605,835" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" />
   <widget source="key_blue" render="Label" position="865,835" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" />
-  <ePixmap position="center,660" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
+  <ePixmap position="center,660" zPosition="1" size="300,81" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
 </screen>
 
-<screen name="VpnSetup" position="center,125" size="1200,881" title="PKTeam OpenVPN Manager">
+<screen name="VpnSetup" position="center,125" size="1200,881" title="HYPERION OpenVPN Manager">
   <widget name="config" position="75,17" size="1011,796" font="Roboto_HD; 28" itemHeight="45" scrollbarMode="showOnDemand" scrollbarWidth="7" selectionPixmap="BlackHarmony/menu/sel_1055_45.png" scrollbarSliderBorderColor="blue" scrollbarSliderForegroundColor="blue" foregroundColor="blue" backgroundColor="background" />
     <widget source="session.CurrentService" render="j00zekPiconAnimation" position="75,835" zPosition="10" size="35,27" alphatest="blend"
                         initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0" random="True"
@@ -239,7 +239,7 @@
 </screen>
 
 
-<screen name="PKTinforBarSetup" position="center,125" size="1200,881" title="PKTeam Skin Setup">
+<screen name="PKTinforBarSetup" position="center,125" size="1200,881" title="HYPERION Skin Setup">
   <widget name="config" position="center,5" size="1130,721" font="Roboto_HD; 26" itemHeight="40" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_1130_40.png" backgroundColor="background" foregroundColor="blue" transparent="1" />
   <widget name="bootlogo" position="728,633" size="424,250" zPosition="2" alphatest="on" />
   <widget name="obrazek" position="726,634" size="423,250" alphatest="on" backgroundColor="background" />
@@ -253,14 +253,14 @@
                         pixalter="BlackHarmony/buttons/key_green.png" />
   <widget source="key_red" render="Label" position="169,825" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="black" transparent="1" foregroundColor="white" />
   <widget source="key_green" render="Label" position="488,825" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="black" transparent="1" foregroundColor="white" />
-  <ePixmap position="240,745" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
+  <ePixmap position="center,745" zPosition="1" size="300,81" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
 </screen>
 
 
-<screen name="InstallIPTV" position="center,center" size="1200,663" title="PKTeam E2iPlayer Installer">
+<screen name="InstallIPTV" position="center,center" size="1200,663" title="HYPERION E2iPlayer Installer">
   <widget name="infoTXT" position="147,270" size="896,35" font="Roboto_HD;28" halign="center" valign="center" foregroundColor="blue" backgroundColor="background" />
   <widget name="devlist" position="146,367" size="920,40" font="Roboto_HD;30" itemHeight="40" selectionPixmap="BlackHarmony/menu/sel_920_40.png" valign="center" />
-  <ePixmap position="433,86" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
+  <ePixmap position="center,86" zPosition="1" size="300,81" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
   <ePixmap pixmap="BlackHarmony/buttons/key_left.png" position="82,371" size="50,35" alphatest="blend" />
   <ePixmap pixmap="BlackHarmony/buttons/key_right.png" position="1057,369" size="50,35" alphatest="blend" />
     <widget source="session.CurrentService" render="j00zekPiconAnimation" position="75,585" zPosition="10" size="35,27" alphatest="blend"
@@ -286,7 +286,7 @@
 </screen>
 
 
-<screen name="MemoryCleaner" position="center,125" size="1133,892" title="PKTeam Memory Cleaner">
+<screen name="MemoryCleaner" position="center,125" size="1133,892" title="HYPERION Memory Cleaner">
   <widget name="config" position="center,21" size="860,684" font="Roboto_HD; 28" itemHeight="45" scrollbarMode="showOnDemand" scrollbarWidth="7" scrollbarSliderBorderColor="blue" scrollbarSliderForegroundColor="blue" foregroundColor="blue" selectionPixmap="BlackHarmony/menu/sel_860_45.png" backgroundColor="background" />
     <widget source="session.CurrentService" render="j00zekPiconAnimation" position="75,835" zPosition="10" size="35,27" alphatest="blend"
                         initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0" random="True"
@@ -303,11 +303,11 @@
   <widget source="key_red" render="Label" position="115,835" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" />
   <widget source="key_green" render="Label" position="365,835" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" />
   <widget source="key_yellow" render="Label" position="605,835" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" />
-  <ePixmap position="center,711" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
+  <ePixmap position="center,711" zPosition="1" size="300,81" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
 </screen>
 
 
-<screen name="MakeBackup" position="center,125" size="1200,881" title="PKTeam Backup Manager">
+<screen name="MakeBackup" position="center,125" size="1200,881" title="HYPERION Backup Manager">
   <widget name="config" position="50,17" size="1110,796" font="Roboto_HD; 24" itemHeight="45" selectionPixmap="BlackHarmony/menu/sel_1140_45.png" scrollbarMode="showOnDemand" scrollbarWidth="7" scrollbarSliderBorderColor="blue" scrollbarSliderForegroundColor="blue" foregroundColor="blue" backgroundColor="background" />
     <widget source="session.CurrentService" render="j00zekPiconAnimation" position="75,835" zPosition="10" size="35,27" alphatest="blend"
                         initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True"
@@ -331,7 +331,7 @@
 </screen>
 
 
-<screen name="PluginBrowser" position="center,125" size="1200,881" title="PKTeam Plugin Browser">
+<screen name="PluginBrowser" position="center,125" size="1200,881" title="HYPERION Plugin Browser">
   <!-- Na openPLi i openVix nie dziala skalowanie pluginlist wiec nzawy sa ucinane na 440 pikselach -->
   <widget name="list" position="center,5" size="1095,820" itemHeight="75" scrollbarMode="showOnDemand" zPosition="1" enableWrapAround="1" scrollbarWidth="7" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="blue" scrollbarSliderBorderColor="blue" selectionPixmap="BlackHarmony/menu/sel_1095_75.png" backgroundColor="black" foregroundColor="white" foregroundColorSelected="blue" transparent="1">
       <convert type="TemplatedMultiContent">
@@ -361,54 +361,54 @@
 </screen>
 
 
-<screen name="PluginDownloadBrowser" position="center,125" size="1200,881" title="PKTeam Plugin Download Browser">
+<screen name="PluginDownloadBrowser" position="center,125" size="1200,881" title="HYPERION Plugin Download Browser">
     <widget name="list" font="Roboto_HD; 27" position="center,5" size="1095,770" itemHeight="75" scrollbarMode="showOnDemand" enableWrapAround="1" scrollbarWidth="7" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="blue" scrollbarSliderBorderColor="blue" selectionPixmap="BlackHarmony/menu/sel_1095_75.png" backgroundColor="black" foregroundColor="white" foregroundColorSelected="blue" transparent="1" />
-    <widget source="session.Event_Now" render="Progress" pixmap="BlackHarmony/gfx/progress_scan.png" position="350,790" size="525,20" borderWidth="2" borderColor="dark_grey" zPosition="1" transparent="0">
+    <widget source="session.Event_Now" render="Progress" pixmap="BlackHarmony/gfx/progress_scan.png" position="center,790" size="525,20" borderWidth="2" borderColor="dark_grey" zPosition="1" transparent="0">
       <convert type="j00zekModpliLayoutInfo">FleshInfo</convert>
     </widget>
-    <widget source="session.CurrentService" render="Label" position="340,815" size="700,40" zPosition="1" font="Roboto_HD;25" halign="left" valign="center" noWrap="0" foregroundColor="white" backgroundColor="black" transparent="1">
+    <widget source="session.CurrentService" render="Label" position="center,814" size="1096,68" zPosition="1" font="Roboto_HD;25" halign="center" noWrap="0" foregroundColor="white" backgroundColor="black" transparent="1">
       <convert type="j00zekModpliLayoutInfo">FleshInfo,Full</convert>
     </widget>
   </screen>
 
 
-<screen name="PKTConsole" position="center,125" size="1200,881" title="PKTeam Command execution...">
+<screen name="PKTConsole" position="center,125" size="1200,881" title="HYPERION Command execution...">
   <widget name="text" position="19,0" size="1160,800" font="Roboto_HD; 24" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="blue" scrollbarSliderBorderColor="lemon" backgroundColor="background" transparent="1" foregroundColor="blue" />
 </screen>
 
 
-<screen name="PKTinfoCenterYellow" position="center,125" size="1200,881" title="PKTeam IC_Proc">
+<screen name="PKTinfoCenterYellow" position="center,125" size="1200,881" title="HYPERION IC_Proc">
   <widget name="Proc" position="center,11" size="720,895" font="Roboto_HD;28" itemHeight="40" selectionPixmap="BlackHarmony/menu/sel_720_40.png" halign="left" foregroundColor="blue" backgroundColor="background" />
 </screen>
 
 
-<screen name="FlashExtender" position="363,125" size="1200,687" title="PKTeam Flash Extender">
+<screen name="FlashExtender" position="center,125" size="1200,881" title="HYPERION Flash Extender">
   <widget name="infoTXT" position="45,105" size="1110,40" font="Roboto_HD;30" halign="center" valign="center" foregroundColor="blue" backgroundColor="background" />
   <widget name="devlist" position="115,179" size="500,35" font="Roboto_HD;28" itemHeight="35" selectionPixmap="BlackHarmony/menu/sel_520_35.png" />
-  <ePixmap pixmap="BlackHarmony/gfx/hyperion-logo.png" position="422,378" size="324,68" alphatest="blend" />
+    <ePixmap position="center,711" zPosition="1" size="300,81" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
   <ePixmap pixmap="BlackHarmony/buttons/left.png" position="45,185" size="63,30" alphatest="blend" />
   <ePixmap pixmap="BlackHarmony/buttons/right.png" position="635,184" size="61,31" alphatest="blend" />
   <widget name="freeS" position="705,180" size="200,35" font="Roboto_HD; 28" halign="right" valign="center" foregroundColor="blue" backgroundColor="background" />
   <widget name="freespace" position="920,180" size="220,35" font="Roboto_HD; 28" halign="left" valign="center" backgroundColor="background" />
-    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="85,620" zPosition="10" size="35,27" alphatest="blend"
-                        initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,1" random="True"
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="75,835" zPosition="10" size="35,27" alphatest="blend"
+                        initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0" random="True"
                         pixmaps="BlackHarmony/skin_user_animButtons/key_red"
                         pixalter="BlackHarmony/buttons/key_red.png" />
-    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="348,620" zPosition="10" size="35,27" alphatest="blend"
-                        initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,2" random="True"
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="325,835" zPosition="10" size="35,27" alphatest="blend"
+                        initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,1" random="True"
                         pixmaps="BlackHarmony/skin_user_animButtons/key_green"
                         pixalter="BlackHarmony/buttons/key_green.png" />
-    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="615,620" zPosition="10" size="35,27" alphatest="blend"
-                        initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,3" random="True"
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="565,835" zPosition="10" size="35,27" alphatest="blend"
+                        initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,2" random="True"
                         pixmaps="BlackHarmony/skin_user_animButtons/key_yellow"
                         pixalter="BlackHarmony/buttons/key_yellow.png" />
-  <widget source="key_red" render="Label" position="131,620" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" />
-  <widget source="key_green" render="Label" position="398,620" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" />
-  <widget source="key_yellow" render="Label" position="663,620" size="400,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" />
+  <widget source="key_red" render="Label" position="115,835" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" />
+  <widget source="key_green" render="Label" position="365,835" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" />
+  <widget source="key_yellow" render="Label" position="605,835" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" />
 </screen>
 
 
-<screen name="InstallManager" position="center,125" size="1200,881" title="PKTeam Install Manager">
+<screen name="InstallManager" position="center,125" size="1200,881" title="HYPERION Install Manager">
   <widget name="device_note" position="41,46" size="1110,40" font="Roboto_HD;28" halign="center" valign="center" foregroundColor="blue" backgroundColor="background" />
   <widget name="devlist" position="121,129" size="970,45" font="Roboto_HD;30" itemHeight="45" selectionPixmap="BlackHarmony/menu/sel_1025_45.png" halign="center" valign="center" />
   <ePixmap pixmap="BlackHarmony/buttons/left.png" position="62,134" size="50,35" alphatest="blend" />
@@ -438,7 +438,7 @@
   <widget source="key_green" render="Label" position="365,835" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" />
   <widget source="key_yellow" render="Label" position="605,835" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" />
   <widget source="key_blue" render="Label" position="865,835" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" />
-  <ePixmap position="center,711" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
+  <ePixmap position="center,711" zPosition="1" size="300,81" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
 </screen>
 
 <screen name="ScreenEmu" position="center,125" size="1200,881" title="EMU Manager">
@@ -466,7 +466,7 @@
 </screen>
 
 
-<screen name="FilmwebReader" position="0,0" size="1920,1080" title="PKTeam FilmWeb" flags="wfNoBorder" backgroundColor="transparent">
+<screen name="FilmwebReader" position="0,0" size="1920,1080" title="HYPERION FilmWeb" flags="wfNoBorder" backgroundColor="transparent">
 		<ePixmap position="0,0" zPosition="-10" size="1929,1080" pixmap="BlackHarmony/bg_design/big.png" />
   <widget source="Title" render="Label" position="150,111" size="420,30" font="Roboto_HD; 27" halign="left" backgroundColor="background" transparent="1" foregroundColor="white">
   </widget>
@@ -500,7 +500,7 @@
 </screen>
 
 
-<screen name="ShowFilmweb" position="0,0" size="1920,1080" title="PKTeam FilmWeb" flags="wfNoBorder" backgroundColor="transparent">
+<screen name="ShowFilmweb" position="0,0" size="1920,1080" title="HYPERION FilmWeb" flags="wfNoBorder" backgroundColor="transparent">
 		<ePixmap position="0,0" zPosition="-10" size="1920,1080" pixmap="BlackHarmony/bg_design/big.png" />
   <widget source="Title" render="Label" position="150,111" size="420,30" font="Roboto_HD; 27" halign="left" backgroundColor="background" transparent="1" foregroundColor="white">
   </widget>
@@ -522,7 +522,7 @@
 		<widget name="filmInfo3" position="214,876" size="1171,45" font="Roboto_HD; 31" halign="center" valign="center" backgroundColor="background" foregroundColor="white" />
 </screen>
 
-<screen name="FWSetup" position="center,125" size="1200,881" title="PKTeam FilmWeb Config">
+<screen name="FWSetup" position="center,125" size="1200,881" title="HYPERION FilmWeb Config">
 		<widget name="config" position="center,42" size="920,668" font="Roboto_HD; 28" itemHeight="45" scrollbarMode="showOnDemand" scrollbarWidth="7" selectionPixmap="BlackHarmony/menu/sel_920_45.png" scrollbarSliderBorderColor="blue" scrollbarSliderForegroundColor="blue" foregroundColor="white" backgroundColor="background" />
     <widget source="session.CurrentService" render="j00zekPiconAnimation" position="75,835" zPosition="10" size="35,27" alphatest="blend"
                         initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0" random="True"
@@ -534,10 +534,10 @@
                         pixalter="BlackHarmony/buttons/key_green.png" />
 		<widget source="key_red" render="Label" position="115,835" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" />
 		<widget source="key_green" render="Label" position="363,835" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" />
-		<ePixmap position="center,734" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
+		<ePixmap position="center,734" zPosition="1" size="300,81" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
 </screen>
 
-<screen name="FPSetup" position="center,125" size="1200,720" title="PKTeam Front Panel Setup">
+<screen name="FPSetup" position="center,125" size="1200,720" title="HYPERION Front Panel Setup">
 		<widget name="config" position="center,30" size="920,489" font="Roboto_HD; 28" itemHeight="45" scrollbarMode="showOnDemand" scrollbarWidth="7" selectionPixmap="BlackHarmony/menu/sel_920_45.png" scrollbarSliderBorderColor="blue" scrollbarSliderForegroundColor="blue" foregroundColor="white" backgroundColor="background" />
     <widget source="session.CurrentService" render="j00zekPiconAnimation" position="86,626" zPosition="10" size="35,27" alphatest="blend"
                         initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0" random="True"
@@ -549,11 +549,11 @@
                         pixalter="BlackHarmony/buttons/key_green.png" />
 		<widget source="key_red" render="Label" position="125,624" size="200,39" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" />
 		<widget source="key_green" render="Label" position="372,624" size="200,40" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" />
-		<ePixmap position="center,535" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
+		<ePixmap position="center,535" zPosition="1" size="300,81" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
 </screen>
 
 
-<screen name="MakeSync" position="center,125" size="1200,881" title="PKTeam Sync Time">
+<screen name="MakeSync" position="center,125" size="1200,881" title="HYPERION Sync Time">
     <widget name="config" position="center,17" size="860,614" font="Roboto_HD; 28" itemHeight="45" scrollbarMode="showOnDemand" scrollbarWidth="7" selectionPixmap="BlackHarmony/menu/sel_860_45.png" scrollbarSliderBorderColor="blue" scrollbarSliderForegroundColor="blue" foregroundColor="white" backgroundColor="background" />
     <widget source="session.CurrentService" render="j00zekPiconAnimation" position="75,835" zPosition="10" size="35,27" alphatest="blend"
                         initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0" random="True"
@@ -570,11 +570,11 @@
   <widget source="key_red" render="Label" position="115,835" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" />
   <widget source="key_green" render="Label" position="365,835" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" />
   <widget source="key_blue" render="Label" position="865,835" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" />
-		<ePixmap position="center,655" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
+		<ePixmap position="center,655" zPosition="1" size="300,81" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
 </screen>
 
 
-<screen name="DlnaSetup" position="center,125" size="1200,881" title="PKTeam DLNA Manager">
+<screen name="DlnaSetup" position="center,125" size="1200,881" title="HYPERION DLNA Manager">
     <widget name="config" position="center,62" size="920,731" font="Roboto_HD; 28" itemHeight="45" selectionPixmap="BlackHarmony/menu/sel_920_45.png" scrollbarMode="showOnDemand" scrollbarWidth="7" scrollbarSliderBorderColor="blue" scrollbarSliderForegroundColor="blue" foregroundColor="white" backgroundColor="background" />
     <widget source="session.CurrentService" render="j00zekPiconAnimation" position="75,835" zPosition="10" size="35,27" alphatest="blend"
                         initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0" random="True"
@@ -594,7 +594,7 @@
 </screen>
 
 
-<screen name="DiskManager" position="center,125" size="1200,881" title="PKTeam Disk Manager">
+<screen name="DiskManager" position="center,125" size="1200,881" title="HYPERION Disk Manager">
 		<widget name="config" position="center,62" size="920,502" font="Roboto_HD; 28" itemHeight="45" selectionPixmap="BlackHarmony/menu/sel_920_45.png" scrollbarMode="showOnDemand" scrollbarWidth="7" scrollbarSliderBorderColor="blue" scrollbarSliderForegroundColor="blue" foregroundColor="white" backgroundColor="background" />
     <widget source="session.CurrentService" render="j00zekPiconAnimation" position="75,835" zPosition="10" size="35,27" alphatest="blend"
                         initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0" random="True"
@@ -620,7 +620,7 @@
 </screen>
 
 
-<screen name="SmbSetup" position="center,125" size="1200,881" title="PKTeam Samba Server Manager">
+<screen name="SmbSetup" position="center,125" size="1200,881" title="HYPERION Samba Server Manager">
 		<widget name="config" position="center,42" size="920,668" font="Roboto_HD; 28" itemHeight="45" selectionPixmap="BlackHarmony/menu/sel_920_45.png" scrollbarMode="showOnDemand" scrollbarWidth="7" scrollbarSliderBorderColor="blue" scrollbarSliderForegroundColor="blue" foregroundColor="white" backgroundColor="background" />
     <widget source="session.CurrentService" render="j00zekPiconAnimation" position="75,835" zPosition="10" size="35,27" alphatest="blend"
                         initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0" random="True"
@@ -642,11 +642,11 @@
   <widget source="key_green" render="Label" position="365,835" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" />
   <widget source="key_yellow" render="Label" position="605,835" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" />
   <widget source="key_blue" render="Label" position="865,835" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" />
-		<ePixmap position="431,734" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
+		<ePixmap position="center,734" zPosition="1" size="300,81" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
 </screen>
 
 
-<screen name="AutoStandby" position="center,125" size="1200,881" title="PKTeam Auto Standby">
+<screen name="AutoStandby" position="center,125" size="1200,881" title="HYPERION Auto Standby">
 		<widget name="config" position="center,17" size="920,576" font="Roboto_HD; 28" itemHeight="45" selectionPixmap="BlackHarmony/menu/sel_920_45.png" scrollbarMode="showOnDemand" scrollbarWidth="7" scrollbarSliderBorderColor="blue" scrollbarSliderForegroundColor="blue" foregroundColor="white" backgroundColor="background" />
     <widget source="session.CurrentService" render="j00zekPiconAnimation" position="75,835" zPosition="10" size="35,27" alphatest="blend"
                         initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0" random="True"
@@ -668,13 +668,13 @@
   <widget source="key_green" render="Label" position="365,835" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" />
   <widget source="key_yellow" render="Label" position="605,835" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" />
   <widget source="key_blue" render="Label" position="865,835" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" />
-		<ePixmap position="425,657" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
+		<ePixmap position="center,657" zPosition="1" size="300,81" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
 </screen>
 
 
-<screen name="SetPasswd" position="center,125" size="1200,881" title="PKTeam Set Password">
+<screen name="SetPasswd" position="center,125" size="1200,881" title="HYPERION Set Password">
 		<widget name="passwordstatus" position="center,317" size="920,35" font="Roboto_HD; 28" itemHeight="40" selectionPixmap="BlackHarmony/menu/sel_920_40.png" scrollbarMode="showOnDemand" />
-		<ePixmap position="center,121" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
+		<ePixmap position="center,121" zPosition="1" size="300,81" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
     <widget source="session.CurrentService" render="j00zekPiconAnimation" position="75,835" zPosition="10" size="35,27" alphatest="blend"
                         initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0" random="True"
                         pixmaps="BlackHarmony/skin_user_animButtons/key_red"
@@ -697,7 +697,7 @@
   <widget source="key_blue" render="Label" position="865,835" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" />
 </screen>
 
-<screen name="Entitlements" position="center,125" size="1200,881" title="PKTeam Entitlements for Internal Cards">
+<screen name="Entitlements" position="center,125" size="1200,881" title="HYPERION Entitlements for Internal Cards">
     <widget name="EntitlementsScrollLabel" position="center,8" size="1025,822" font="RegularLight; 24" itemHeight="45" selectionPixmap="BlackHarmony/menu/sel_1025_45.png" scrollbarMode="showOnDemand" scrollbarWidth="7" scrollbarSliderBorderColor="blue" scrollbarSliderForegroundColor="blue" foregroundColor="white" backgroundColor="background" />
     <widget source="session.CurrentService" render="j00zekPiconAnimation" position="75,835" zPosition="10" size="35,27" alphatest="blend"
                         initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0" random="True"
@@ -709,28 +709,28 @@
 
 
 
-<screen name="AboutOE" position="center,125" size="1200,881" title="PKTeam Image info" flags="wfNoBorder" backgroundColor="transparent">
-		<ePixmap position="855,473" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
-		<widget source="lab1" render="Label" position="center,110" size="652,50" halign="left" font="Roboto_HD; 32" foregroundColor="font_green" />
-		<widget source="lab2" render="Label" position="center,165" size="650,40" font="Roboto_HD; 26" halign="left" foregroundColor="white" />
-		<widget source="lab3" render="Label" position="center,208" size="650,40" font="Roboto_HD; 34" halign="left" foregroundColor="lemon" />
-		<widget name="AboutScrollLabel" font="Roboto_HD; 25" position="180,249" size="651,516" zPosition="2" halign="left" foregroundColor="white" />
+<screen name="AboutOE" position="center,125" size="1200,881" title="HYPERION Image info" >
+		<eLabel text="Image info" position="180,36" size="650,35" font="Roboto_HD; 30" halign="center" backgroundC="background" transparent="1" foregroundColor="lemon" />
+		<ePixmap position="855,473" zPosition="1" size="300,81" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" backgroundColor="transparent" />
+		<widget source="lab1" render="Label" position="180,110" size="650,50" halign="left" font="Roboto_HD; 33" foregroundColor="font_green" backgroundC="background" />
+		<widget source="lab2" render="Label" position="180,165" size="650,40" font="Roboto_HD; 26" halign="left" foregroundColor="lemon" backgroundC="background" />
+		<widget source="lab3" render="Label" position="180,208" size="650,40" font="Roboto_HD; 34" halign="left" foregroundColor="lemon" backgroundC="background" />
+		<widget name="AboutScrollLabel" font="Roboto_HD; 25" position="180,249" size="651,516" zPosition="2" halign="left" foregroundColor="lemon" backgroundC="background" />
     <widget source="session.CurrentService" render="j00zekPiconAnimation" position="325,835" zPosition="10" size="35,27" alphatest="blend"
                         initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,1" random="True"
                         pixmaps="BlackHarmony/skin_user_animButtons/key_green"
                         pixalter="BlackHarmony/buttons/key_green.png" />
-    <widget source="key_green" render="Label" position="365,835" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" />
+    <widget source="key_green" render="Label" position="365,835" size="300,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" />
 </screen>
 
 
-<screen name="SetDiskLabel" position="center,125" size="1200,881" title="PKTeam Set Disk Label">
-		<ePixmap position="center,679" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
+<screen name="SetDiskLabel" position="center,125" size="1200,881" title="HYPERION Set Disk Label">
+		<ePixmap position="center,679" zPosition="1" size="300,81" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
 		<widget name="devlist" position="735,109" size="400,35" font="Roboto_HD;28" itemHeight="35" selectionPixmap="BlackHarmony/menu/sel_735_35.png" scrollbarMode="showOnDemand" scrollbarWidth="7" scrollbarSliderBorderColor="blue" scrollbarSliderForegroundColor="blue" foregroundColor="white" backgroundColor="background" />
 		<ePixmap pixmap="BlackHarmony/buttons/arrow2.png" position="641,108" size="60,60" alphatest="blend" />
 		<widget name="listlabel" position="735,374" size="400,35" font="Roboto_HD;28" itemHeight="35" selectionPixmap="BlackHarmony/menu/sel_735_35.png" scrollbarMode="showOnDemand" scrollbarWidth="7" scrollbarSliderBorderColor="blue" scrollbarSliderForegroundColor="blue" foregroundColor="white" backgroundColor="background" />
 		<ePixmap pixmap="BlackHarmony/buttons/arrow1.png" position="643,367" size="60,60" alphatest="blend" />
-		<widget name="infoTXT" position="22,110" size="600,35" font="Roboto_HD;28" halign="left" valign="center" foregroundColor="white" backgroundColor="background" />
-		<widget name="labelname" position="20,236" size="600,35" font="Roboto_HD; 28" halign="left" valign="center" foregroundColor="white" backgroundColor="background" />
+		<widget name="infoTXT" position="22,110" size="600,35" font="Roboto_HD;28" halign="left" valign="center" foregroundColor="white" backgroundC="background" />
 		<widget name="disklabel" position="733,231" size="400,40" font="Roboto_HD; 30" halign="center" valign="center" foregroundColor="white" backgroundColor="background" />
 		<widget name="labeltoset" position="16,378" size="600,35" font="Roboto_HD; 28" halign="left" valign="center" foregroundColor="white" backgroundColor="background" />
     <widget source="session.CurrentService" render="j00zekPiconAnimation" position="75,835" zPosition="10" size="35,27" alphatest="blend"
@@ -756,25 +756,25 @@
 </screen>
 
 
-<screen name="Devices" position="center,125" size="1200,881" title="PKTeam device info">
+<screen name="Devices" position="center,125" size="1200,881" title="HYPERION device info">
 		<widget source="TunerHeader" render="Label" position="center,1" size="560,47" font="Bold; 30" transparent="0" zPosition="1" halign="center" foregroundColor="lemon" />
 		<widget source="nims" render="Label" position="center,47" size="631,466" font="Regular; 24" transparent="0" zPosition="1" noWrap="1" foregroundColor="white" />
 		<widget source="HDDHeader" render="Label" position="center,517" size="560,40" font="Bold; 30" transparent="0" zPosition="1" halign="center" foregroundColor="lemon" />
 		<widget source="hdd" render="Label" position="center,561" size="744,141" font="Regular; 24" transparent="0" zPosition="1" foregroundColor="white" />
 		<widget source="MountsHeader" render="Label" position="center,704" size="560,40" font="Bold; 30" transparent="0" zPosition="1" halign="center" foregroundColor="lemon" />
 		<widget source="mounts" render="Label" position="center,745" size="560,118" font="Regular; 24" transparent="0" zPosition="1" noWrap="1" foregroundColor="white" />
-		<ePixmap position="281,866" zPosition="1" size="center,49" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
+		<ePixmap position="center,866" zPosition="1" size="300,81" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
 </screen>
 
 
-<screen name="SystemMemoryInfo" position="center,125" size="1200,881" title="PKTeam System Memory Info">
+<screen name="SystemMemoryInfo" position="center,125" size="1200,881" title="HYPERION System Memory Info">
 		<widget source="lab1" render="Label" position="center,108" size="560,45" font="Bold; 30" halign="center" transparent="0" zPosition="2" foregroundColor="lemon" />
 		<widget source="lab2" render="Label" position="center,180" size="560,45" font="Roboto_HD; 26" halign="center" transparent="0" zPosition="2" foregroundColor="lemon" />
 		<widget name="AboutScrollLabel" position="center,241" size="560,490" font="Regular; 26" transparent="0" zPosition="1" scrollbarMode="showOnDemand" foregroundColor="white" />
 </screen>
 
 
-<screen name="SystemNetworkInfo" position="center,125" size="1200,881" title="PKTeam System Network Info">
+<screen name="SystemNetworkInfo" position="center,125" size="1200,881" title="HYPERION System Network Info">
 		<widget name="AboutScrollLabel" position="center,87" size="606,410" halign="center" valign="center" font="Regular; 26" transparent="1" foregroundColor="lemon" />
 		<eLabel name="" position="center,627" size="1100,2" backgroundColor="lemon" />
 		<widget source="IFtext" render="Label" position="135,668" size="158,45" zPosition="10" font="Regular; 24" halign="left" transparent="1" backgroundColor="transpBlack_1" foregroundColor="lemon" />
@@ -783,7 +783,7 @@
 		<widget name="statuspic" pixmaps="buttons/green.png,buttons/red.png" position="313,735" zPosition="10" size="31,28" transparent="1" alphatest="on" />
 </screen>
 
-<screen name="NTC" position="0,0" size="1920,1080" title="PKTeam NTC" flags="wfNoBorder" backgroundColor="transparent">
+<screen name="NTC" position="0,0" size="1920,1080" title="HYPERION NTC" flags="wfNoBorder" backgroundColor="transparent">
 		<ePixmap position="0,0" zPosition="-10" size="1920,1080" pixmap="BlackHarmony/bg_design/big.png" />
   <widget source="Title" render="Label" position="150,111" size="420,30" font="Roboto_HD; 27" halign="left" backgroundColor="background" transparent="1" foregroundColor="white">
   </widget>
@@ -810,11 +810,11 @@
 		<widget source="key_yellow" render="Label" position="1011,949" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
 		<widget source="key_blue" render="Label" position="1389,949" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
 		<ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="1688,949" size="61,30" alphatest="blend" />
-		<ePixmap position="center,842" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
+		<ePixmap position="center,842" zPosition="1" size="300,81" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
 </screen>
 
 
-<screen name="ntcSetup" position="center,125" size="1200,881" title="PKTeam NTC Config">
+<screen name="ntcSetup" position="center,125" size="1200,881" title="HYPERION NTC Config">
     <widget name="config" position="center,42" size="920,668" font="Roboto_HD; 28" itemHeight="45" selectionPixmap="BlackHarmony/menu/sel_920_45.png" scrollbarMode="showOnDemand" scrollbarWidth="7" scrollbarSliderBorderColor="blue" scrollbarSliderForegroundColor="blue" foregroundColor="white" backgroundColor="background" />
     <widget source="session.CurrentService" render="j00zekPiconAnimation" position="75,835" zPosition="10" size="35,27" alphatest="blend"
                         initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0" random="True"
@@ -836,13 +836,13 @@
   <widget source="key_green" render="Label" position="365,835" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" />
   <widget source="key_yellow" render="Label" position="605,835" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" />
   <widget source="key_blue" render="Label" position="865,835" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" />
-    <ePixmap position="center,734" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
+    <ePixmap position="center,734" zPosition="1" size="300,81" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
     <ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="1116,837" size="61,30" alphatest="blend" />
 </screen>
 
 
-<screen name="ChannelListUpdate" position="0,0" size="1920,1080" title="PKTeam Channel List Updater" flags="wfNoBorder" backgroundColor="transparent">
-		<ePixmap position="0,0" zPosition="-10" size="1920,1080" pixmap="BlackHarmony/bg_design/big.png" />
+<screen name="ChannelListUpdate" position="0,0" size="1920,1080" title="HYPERION Channel List Updater" flags="wfNoBorder" backgroundColor="transparent">
+  <ePixmap position="0,0" zPosition="-10" size="1920,1080" pixmap="BlackHarmony/bg_design/big.png" />
   <widget source="Title" render="Label" position="150,111" size="420,30" font="Roboto_HD; 27" halign="left" backgroundColor="background" transparent="1" foregroundColor="white">
   </widget>
 		<widget name="chlist" font="Roboto_HD; 26" position="178,273" size="1555,593" scrollbarMode="showOnDemand" itemHeight="35" selectionPixmap="BlackHarmony/menu/sel_1555_35.png" enableWrapAround="1" scrollbarWidth="7" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="blue" scrollbarSliderBorderColor="blue" backgroundColor="transpBlack" transparent="1" />
@@ -868,5 +868,39 @@
 		<widget source="key_yellow" render="Label" position="1011,949" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
 		<widget source="key_blue" render="Label" position="1389,949" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
 		<ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="1688,948" size="61,30" alphatest="blend" />
-	</screen>
+</screen>
+
+<screen name="SkinSelector" position="center,125" size="1200,881" title="HYPERION SkinSelector">
+		<widget name="preview" position="60,125" size="442,426" alphatest="on" zPosition="0" />
+    <widget source="skins" render="Listbox" position="572,115" size="520,512" itemHeight="35" font="Roboto_HD; 27" enableWrapAround="1" scrollbarWidth="7" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_520_35.png" backgroundColor="black" transparent="1">
+ 			<convert type="TemplatedMultiContent">
+				{
+				"template": [
+					MultiContentEntryText(pos = (0,0), size = (285,30), font = 0, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 1),
+					MultiContentEntryText(pos = (292,0), size = (185,30), font = 0, flags = RT_HALIGN_RIGHT | RT_VALIGN_CENTER, text = 2)
+				],
+				"fonts": [gFont("Regular",24)],
+				"itemHeight":35
+				}
+			</convert>
+		</widget>
+		<widget source="description" render="Label" position="177,664" size="845,32" zPosition="1" font="Regular;20" halign="center" transparent="1" valign="center" backgroundColor="background" />
+    <eLabel text="Wybierz swoją skórkę" position="center,8" size="921,53" font="Roboto_HD; 30" halign="center" backgroundColor="dark_grey" transparent="1" />
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="75,835" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0" random="True" pixmaps="BlackHarmony/skin_user_animButtons/key_red" pixalter="BlackHarmony/buttons/key_red.png" />
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="325,835" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,1" random="True" pixmaps="BlackHarmony/skin_user_animButtons/key_green" pixalter="BlackHarmony/buttons/key_green.png" />
+  <widget source="key_red" render="Label" position="115,835" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" />
+  <widget source="key_green" render="Label" position="365,835" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" />
+  <ePixmap position="center,743" zPosition="1" size="300,81" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
+</screen>
+
+
+
+<screen name="ChromiumEd" position="center,125" size="1200,881" title="Chromium">
+<widget name="config" position="32,0" size="1140,825" font="Regular; 26" itemHeight="45" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_1140_45.png" scrollbarSliderBorderWidth="1" scrollbarWidth="7" scrollbarSliderBorderColor="blue" scrollbarSliderForegroundColor="blue" foregroundColor="white" backgroundColor="background" />
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="75,850" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0" random="True" pixmaps="BlackHarmony/skin_user_animButtons/key_red" pixalter="BlackHarmony/buttons/key_red.png" />
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="325,850" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,1" random="True" pixmaps="BlackHarmony/skin_user_animButtons/key_green" pixalter="BlackHarmony/buttons/key_green.png" />
+  <widget source="key_red" render="Label" position="115,850" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" />
+  <widget source="key_green" render="Label" position="365,850" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" />
+</screen>
+
 </skin>

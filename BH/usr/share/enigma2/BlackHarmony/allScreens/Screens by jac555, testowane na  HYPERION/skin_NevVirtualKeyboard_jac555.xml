@@ -229,10 +229,10 @@
   
         <widget name="vkey_right" position="1402,479" size="68,68" alphatest="blend" transparent="1" zPosition="3" /> 
         <!-- info button -->
-        <ePixmap position="1384,547" size="38,38" pixmap="/usr/share/enigma2/NewVirtualKeyBoard/icons/nvk_hd/key_info.png" alphatest="blend" zPosition="3" />
+        <ePixmap position="1427,547" size="60,30" pixmap="BlackHarmony/buttons/key_infoo.png" alphatest="blend" />
 
         <!-- menu button -->
-        <ePixmap position="1432,547" size="38,38" pixmap="/usr/share/enigma2/NewVirtualKeyBoard/icons/nvk_hd/key_menu.png" alphatest="blend" zPosition="3" />
+        <ePixmap position="1361,547" size="60,30" pixmap="BlackHarmony/buttons/key_menu.png" alphatest="blend" />
        
         <widget name="historyheader" position="90,21" size="339,72" font="Regular;30" foregroundColor="#ffffff" backgroundColor="#16000000" noWrap="1" valign="center" halign="center"  transparent="0" zPosition="2" />
         <widget name="historyList" position="70,114" size="359,429" font="Regular;25" backgroundColor="#16000000" enableWrapAround="1" itemHeight="38" scrollbarMode="showOnDemand" foregroundColorSelected="blue" selectionPixmap="BlackHarmony/menu/sel_500_38.png" scrollbarWidth="5" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="blue" scrollbarSliderBorderColor="blue" transparent="0" zPosition="2" />
