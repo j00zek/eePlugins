@@ -37,7 +37,7 @@ class MSNweatherNP(Screen):
             if os.path.exists('/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/skins/%s' % config.plugins.MSNweatherNP.skinOrientation.value):
                 self.skin = open('/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/skins/%s' % config.plugins.MSNweatherNP.skinOrientation.value, 'r').read()
             else:
-                self.skin = open('/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/skins/skin_MSNweatherNP-horizontal.xml', 'r').read()
+                self.skin = open('/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/skins/skin_MSNweatherNP-TV_bg.xml', 'r').read()
         Screen.__init__(self, session)
         self.DEBUG('INIT', '>>>')
         self.title = _('MSN weather NP @j00zek %s' % Version)

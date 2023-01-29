@@ -20,11 +20,18 @@ DBG = False
 config.plugins.MSNweatherNP = ConfigSubsection()
 config.plugins.MSNweatherNP.FakeEntry = NoSave(ConfigNothing())
 config.plugins.MSNweatherNP.airlyLimits = NoSave(ConfigText(default='', fixed_size=False))
-choicesList = [
- (
-  'skin_MSNweatherNP-vertical.xml', _('Vertically')),
- (
-  'skin_MSNweatherNP-horizontal.xml', _('Horizontally'))]
+
+choicesList = []
+choicesList.append( ('skin_MSNweatherNP-TV_bg.xml', _('Live TV')) )
+defaultChoice = 'skin_MSNweatherNP-TV_bg.xml'
+
+if os.path.exists('/usr/lib/enigma2/python/Components/Converter/j00zekRefreshBingPicOfTheDay.py'):
+    choicesList.append( ('skin_MSNweatherNP-Bing_bg.xml', _('Bing picture')) )
+    defaultChoice = 'skin_MSNweatherNP-Bing_bg.xml'
+
+if os.path.exists('/usr/lib/enigma2/python/Components/Converter/MyMemoriesPictures.py'):
+    choicesList.append( ('skin_MSNweatherNP-MyMemories_bg.xml', _('MyMemories pictures')) )
+    defaultChoice = 'skin_MSNweatherNP-MyMemories_bg.xml'
 
 if os.path.exists('/usr/share/enigma2/BlackHarmony/allScreens/MSNweatherNP/'):
     for mFile in os.listdir('/usr/share/enigma2/BlackHarmony/allScreens/MSNweatherNP/'):
@@ -33,7 +40,7 @@ if os.path.exists('/usr/share/enigma2/BlackHarmony/allScreens/MSNweatherNP/'):
             sFile = 'BlackHarmony ' + _(sFile)
             choicesList.append((os.path.join('/usr/share/enigma2/BlackHarmony/allScreens/MSNweatherNP/', mFile), sFile))
 
-config.plugins.MSNweatherNP.skinOrientation = ConfigSelection(choices=choicesList, default='skin_MSNweatherNP-horizontal.xml')
+config.plugins.MSNweatherNP.skinOrientation = ConfigSelection(choices=choicesList, default = defaultChoice)
 
 config.plugins.MSNweatherNP.SensorsPriority = ConfigSelection(choices=[
  ('MSN,SmogTok,LO2,TS,Airly,GIOS,BleBox,OpenSense', 'MSN/F,SmogTok,LO2,TS,Airly,GIOS,BleBox,OpenSense'),
