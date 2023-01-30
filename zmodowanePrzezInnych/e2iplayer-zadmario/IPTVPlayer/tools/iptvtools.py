@@ -1860,8 +1860,7 @@ def is_port_in_use(pIP, pPORT):
     return res == 0
 
 def isOPKGinstall():
-    if os.path.exists('/var/lib/opkg/info/enigma2-plugin-extensions--j00zeks-e2iplayer-mod-zadmario.control') or \
-       os.path.exists('/var/lib/opkg/info/enigma2-plugin-extensions-e2iplayer.control'):
+    if os.path.exists('/var/lib/opkg/info/enigma2-plugin-extensions--j00zeks-e2iplayer-mod-zadmario.control'):
         return True
     else:
         return False
