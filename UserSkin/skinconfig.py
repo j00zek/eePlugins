@@ -638,7 +638,7 @@ class UserSkin_Config(Screen, ConfigListScreen):
 
     def changedEntry(self):
         self.updateEntries = True
-        if DBG == True: printDEBUG("[UserSkin:changedEntry]")
+        if DBG == True: printDEBUG("[skinconfig:changedEntry]")
         try:
             selectedItem = self["config"].getCurrent()
             if len(selectedItem) == 2:
@@ -656,7 +656,7 @@ class UserSkin_Config(Screen, ConfigListScreen):
         except Exception: pass
 
     def selectionChanged(self):
-        if DBG == True: printDEBUG("[UserSkin:selectionChanged]")
+        if DBG == True: printDEBUG("[skinconfig:selectionChanged]")
         try:
             selectedItem = self["config"].getCurrent()
             if len(selectedItem) == 2:
@@ -735,7 +735,7 @@ class UserSkin_Config(Screen, ConfigListScreen):
         
     
     def UpdatePreviewPicture(self, PreviewFileName):
-            if DBG == True: printDEBUG("[UserSkin:UpdatePreviewPicture] pic =" + PreviewFileName)
+            if DBG == True: printDEBUG("[skinconfig:UpdatePreviewPicture] pic =" + PreviewFileName)
             if isImageType('vuplus') == False: self["Picture"].instance.setScale(1)
             self["Picture"].instance.setPixmap(LoadPixmap(path=PreviewFileName))
             self["Picture"].show()
@@ -1400,7 +1400,7 @@ class TreeUserSkinScreens(Screen):
      
     def PreviewTimerCB(self):
         def UpdatePreviewPicture(PreviewFileName):
-            printDEBUG("[UserSkin:PreviewTimerCB:] UpdatePreviewPicture('%s')" % PreviewFileName )
+            printDEBUG("[skinconfig:PreviewTimerCB:] UpdatePreviewPicture('%s')" % PreviewFileName )
             if isImageType('vuplus') == False: self["PreviewPicture"].instance.setScale(1)
             self["PreviewPicture"].instance.setPixmap(LoadPixmap(path=PreviewFileName))
             self["PreviewPicture"].show()
@@ -1408,15 +1408,15 @@ class TreeUserSkinScreens(Screen):
 
         def webPreview(response = None):
             if not self.PreviewAnimsDelay is None:
-                printDEBUG("[UserSkin:PreviewTimerCB] downloaded '%s%s.jpg'" % (self.PreviewsURL, self.PreviewAnims[self.PreviewAnimCurrent]) )
+                printDEBUG("[skinconfig:PreviewTimerCB] downloaded '%s%s.jpg'" % (self.PreviewsURL, self.PreviewAnims[self.PreviewAnimCurrent]) )
                 UpdatePreviewPicture(self.PreviewAnims[self.PreviewAnimCurrent])
                 self.PreviewTimer.start(self.PreviewAnimsDelay,False)
             else:
-                printDEBUG("[UserSkin:PreviewTimerCB] downloaded '%s%s.jpg'" % (self.PreviewsURL, pic) )
+                printDEBUG("[skinconfig:PreviewTimerCB] downloaded '%s%s.jpg'" % (self.PreviewsURL, pic) )
                 UpdatePreviewPicture('/tmp/preview.jpg')
         
         def getPIC(picName):
-            #printDEBUG("[UserSkin:PreviewTimerCB] getPIC('%s')" % picName )
+            #printDEBUG("[skinconfig:PreviewTimerCB] getPIC('%s')" % picName )
             if path.exists('/tmp/preview.jpg'):
                 remove('/tmp/preview.jpg')
             if not self.PreviewAnims is None:
@@ -1442,7 +1442,7 @@ class TreeUserSkinScreens(Screen):
         myInfoFile=SkinPath + "allInfos/" + pic + ".txt"
         if not path.exists(myInfoFile):
             myInfoFile="/usr/share/enigma2/HomarLCDskins/allInfos/" + pic + ".txt"
-        printDEBUG("[UserSkin:PreviewTimerCB] myInfoFile='BH|HMR folder/%s.txt'" % pic )
+        printDEBUG("[skinconfig:PreviewTimerCB] myInfoFile='BH|HMR folder/%s.txt'" % pic )
         self["PreviewInfo"].setText(processInfo(myInfoFile))
         #picture
         if not self.PreviewAnims is None:
@@ -1460,7 +1460,7 @@ class TreeUserSkinScreens(Screen):
                     try:
                         self.PreviewAnimsDelay = int(line)
                     except Exception as e:
-                        printDEBUG("[UserSkin:PreviewTimerCB] self.PreviewAnimsDelay exception: %s" % str(e) )
+                        printDEBUG("[skinconfig:PreviewTimerCB] self.PreviewAnimsDelay exception: %s" % str(e) )
                         self.PreviewAnimsDelay = 100
                 else:
                     if self.PreviewAnims is None:
@@ -1481,7 +1481,7 @@ class TreeUserSkinScreens(Screen):
             if self.PreviewsURL is not None:
                 getPIC('%s%s.jpg' % (self.PreviewsURL, pic))
             else:
-                printDEBUG("[UserSkin:PreviewTimerCB] '%s.jpg' not found" % pic )
+                printDEBUG("[skinconfig:PreviewTimerCB] '%s.jpg' not found" % pic )
                 self["PreviewPicture"].hide()
     
     def runMenuEntry(self):
@@ -1625,42 +1625,53 @@ class TreeUserSkinScreens(Screen):
         return
 
     def keyBlue(self):
-        printDEBUG("[keyBlue] >>> ")
+        printDEBUG("[skinconfig:keyBlue] >>> ")
         previewSkin = None
+        previewSnip = None
         selection = self["filelist"].getSelection()
         if selection is None or selection[1] == True: # isDir
             return
-        selectedXML = self.filelist.getCurrentDirectory() + '/' + self.filelist.getFilename()
-        printDEBUG("[keyBlue] selectedXML= %s" % selectedXML)
+        selectedXML = os.path.join(self.filelist.getCurrentDirectory(), self.filelist.getFilename())
+        printDEBUG("[skinconfig:keyBlue] selectedXML= %s" % selectedXML)
         if path.exists(selectedXML):
-            printDEBUG("[keyBlue] selectedXML exists")
+            printDEBUG("[skinconfig:keyBlue] selectedXML exists")
             import xml.etree.cElementTree as ET
-            root = ET.parse(self.filelist.getCurrentDirectory() + '/' + self.filelist.getFilename()).getroot()
-            NumberOfScreens = len(root.findall('screen'))
-            printDEBUG("[keyBlue] repo='%s', NumberOfScreens= %s" % (repo, NumberOfScreens))
-            if not self.shownPreview is None:
-                previewSkin = """
-<screen name="UserSkinPreviewSkin" backgroundColor="transparent" flags="wfNoBorder" position="0,0" size="1920,1080">
-  <widget source="global.CurrentTime" render="j00zekPixmap" pixmap="%s" position="0,0" size="1920,1080" alphatest="blend"/>
-</screen>""" % self.shownPreview
-            if repo == 'd' and NumberOfScreens == 1:
+            root = ET.parse(selectedXML)
+            if root.getroot().tag == 'screen' and root.getroot().attrib['name'] in ('InfoBar','SecondInfoBar'):
+                previewSkin = open(selectedXML, "r").read().replace('name="%s"' % root.getroot().attrib['name'],'name="UserSkinPreviewSkin"')
+            else:
                 try:
                     for myScreen in root.findall('screen'):
-                        printDEBUG("[keyBlue] myScreen= %s" % myScreen.attrib['name'])
+                        printDEBUG("[skinconfig:keyBlue] myScreen= %s" % myScreen.attrib['name'])
                         if myScreen.attrib['name'] in ('InfoBar','SecondInfoBar'):
-                            printDEBUG("[keyBlue] reading %s" % myScreen.attrib['name'])
+                            printDEBUG("[skinconfig:keyBlue] reading %s as UserSkinPreviewSkin" % myScreen.attrib['name'])
                             previewSkin = open(selectedXML, "r").read().replace('name="%s"' % myScreen.attrib['name'],'name="UserSkinPreviewSkin"')
                             break
                 except Exception as e:
-                    printDEBUG("[keyBlue] Exception: %s" % str(e))
-            if not previewSkin is None:
-                self.session.openWithCallback(self.doNothing, UserSkinPreviewSkin, previewSkin, selectedXML)
+                    printDEBUG("[skinconfig:keyBlue] Exception: %s" % str(e))
+
+            if not self.shownPreview is None:
+                previewSnip = """
+<screen name="UserSkinPreviewSkin" backgroundColor="transparent" flags="wfNoBorder" position="0,0" size="1920,1080">
+  <widget source="global.CurrentTime" render="j00zekPixmap" pixmap="%s" position="0,0" size="1920,1080" alphatest="blend"/>
+</screen>""" % self.shownPreview
+
+            if previewSkin is None:
+                if not previewSnip in None:
+                    self.session.openWithCallback(self.doNothing, UserSkinPreviewSkin, previewSnip, selectedXML)
+            else:
+                try:
+                    self.session.openWithCallback(self.doNothing, UserSkinPreviewSkin, previewSkin, selectedXML)
+                except Exception as e:
+                    printDEBUG("[skinconfig:keyBlue] Exception displaying live screen: %s" % str(e))
+                    if not previewSnip in None:
+                        self.session.openWithCallback(self.doNothing, UserSkinPreviewSkin, previewSnip, selectedXML)
 
 ################################################################################################################################################################
 class UserSkinPreviewSkin(Screen):
     def __init__(self, session, previewSkin, selectedXML):
-        printDEBUG("[UserSkinPreviewSkin:__init__] >>> ")
-        if FullDBG: printDEBUG("[keyBlue] previewSkin= %s" % previewSkin)
+        printDEBUG("[skinconfig:UserSkinPreviewSkin:__init__] >>> ")
+        if FullDBG: printDEBUG("[skinconfig:keyBlue] previewSkin= %s" % previewSkin)
         self.skin = previewSkin.replace("<skin>","").replace("</skin>","")
         self.grabFile = "/tmp/%s.jpg" % path.basename(selectedXML)[:-4]
         self.session = session
@@ -1673,4 +1684,3 @@ class UserSkinPreviewSkin(Screen):
             }, -1)
     def doGrab(self):
         system('grab -dj 85 %s' % self.grabFile )
-        

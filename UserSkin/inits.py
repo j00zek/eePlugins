@@ -10,7 +10,7 @@ for opkgPath in ('/etc/opkg/opkg-j00zka.conf','/etc/opkg/user-feed.conf','/etc/o
       f.close()
       if 'http://j00zek.one.pl/opkg-j00zka ' in fc:
         repo='p'
-      elif 'prywatne_repo_developerskie_j00zka_korzystajac_ZGADZASZ_sie_ze_cos_moze_niedzialac_i_NIE_bedziesz_miec_pretensji' in fc:
+      elif 'dev' in fc:
         repo='d'
   
 from Plugins.Extensions.UserSkin.version import Version

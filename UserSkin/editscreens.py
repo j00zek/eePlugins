@@ -4,7 +4,7 @@
 #
 # maintainer: j00zek @2015
 #
-# Uszanuj czyj¹ pracê i NIE przyw³aszczaj sobie autorstwa!
+# Uszanuj czyjąś pracę i NIE przywłaszczaj sobie autorstwa!
 
 #This plugin is free software, you are allowed to
 #modify it (if you keep the license),
