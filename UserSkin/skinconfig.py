@@ -1626,8 +1626,8 @@ class TreeUserSkinScreens(Screen):
 
     def keyBlue(self):
         printDEBUG("[skinconfig:keyBlue] >>> ")
-        previewSkin = None
-        previewSnip = None
+        previewSkin = ""
+        previewSnip = ""
         selection = self["filelist"].getSelection()
         if selection is None or selection[1] == True: # isDir
             return
@@ -1656,15 +1656,15 @@ class TreeUserSkinScreens(Screen):
   <widget source="global.CurrentTime" render="j00zekPixmap" pixmap="%s" position="0,0" size="1920,1080" alphatest="blend"/>
 </screen>""" % self.shownPreview
 
-            if previewSkin is None:
-                if not previewSnip in None:
+            if previewSkin == "":
+                if previewSnip != "":
                     self.session.openWithCallback(self.doNothing, UserSkinPreviewSkin, previewSnip, selectedXML)
             else:
                 try:
                     self.session.openWithCallback(self.doNothing, UserSkinPreviewSkin, previewSkin, selectedXML)
                 except Exception as e:
                     printDEBUG("[skinconfig:keyBlue] Exception displaying live screen: %s" % str(e))
-                    if not previewSnip in None:
+                    if previewSnip != "":
                         self.session.openWithCallback(self.doNothing, UserSkinPreviewSkin, previewSnip, selectedXML)
 
 ################################################################################################################################################################
