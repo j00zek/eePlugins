@@ -1,13 +1,10 @@
 # -*- coding: utf-8 -*-
-
-import re
-import json
-import base64
+#
 
 ###################################################
 # LOCAL import
 ###################################################
-from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc, GetIconDir, eConnectCallback,   E2PrioFix, GetPyScriptCmd, getDebugMode, get_ip, is_port_in_use
+from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc, GetIconDir, eConnectCallback, E2PrioFix, GetPyScriptCmd, getDebugMode, get_ip, is_port_in_use
 from Plugins.Extensions.IPTVPlayer.components.iptvplayerinit import TranslateTXT as _
 ###################################################
 
@@ -19,6 +16,14 @@ from Screens.Screen import Screen
 from Components.Label import Label
 from Components.ActionMap import ActionMap
 
+from Plugins.Extensions.IPTVPlayer.p2p3.manipulateStrings import ensure_str, ensure_binary
+
+try:
+    import json
+except Exception:
+    import simplejson as json
+import re
+import base64
 ###################################################
 
 
@@ -154,7 +159,7 @@ class UnCaptchaReCaptchaMyE2iWidget(Screen):
     def startExecution(self):
         captcha = {'siteKey': self.sitekey, 'sameOrigin': True, 'siteUrl': self.referer, 'contextUrl': '/'.join(self.referer.split('/')[:3]), 'boundToDomain': True, 'stoken': None, 'captchaType': self.captchaType}
         try:
-            captcha = base64.b64encode(json.dumps(captcha).encode()).decode()
+            captcha = ensure_str(base64.b64encode(ensure_binary(json.dumps(captcha))))
         except Exception:
             printExc()
 
