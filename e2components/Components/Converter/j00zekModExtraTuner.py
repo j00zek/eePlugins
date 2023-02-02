@@ -7,8 +7,19 @@ from Components.config import config, ConfigText
 from Components.Converter.Converter import Converter
 from Components.Element import cached
 from ServiceReference import ServiceReference
-from enigma import eServiceCenter, eServiceReference, iServiceInformation, iPlayableService, eDVBFrontendParametersSatellite, eDVBFrontendParametersCable
-import gettext
+from enigma import eServiceCenter, eServiceReference, iServiceInformation, eDVBFrontendParametersSatellite, eDVBFrontendParametersCable
+#import gettext
+
+DBG = False
+FULLDBG = False
+
+try:
+    if DBG: from Components.j00zekComponents import j00zekDEBUG
+except Exception:
+    DBG = False
+
+if DBG == False:
+    FULLDBG = False
 
 class j00zekModExtraTuner(Converter, object):
     TUNERINFO = 0
@@ -34,21 +45,29 @@ class j00zekModExtraTuner(Converter, object):
         service = self.source.service
         info = service and service.info()
         if not info:
+            if DBG: j00zekDEBUG("[j00zekModExtraTuner:getText] no service.info(), returning ''")
             return ""
         text = ""
         name = info.getName().replace('\xc2\x86', '').replace('\xc2\x87', '')
+        if FULLDBG: j00zekDEBUG("[j00zekModExtraTuner:getText] info.getName() =  '%s'" % name)
 
         if self.type == self.TUNERINFO:
+            if DBG: j00zekDEBUG("[j00zekModExtraTuner:getText] self.type == self.TUNERINFO")
             tunerinfo = self.getTunerInfo(service)
             text = tunerinfo
         elif self.type == self.SERVICENAME:
+            if DBG: j00zekDEBUG("[j00zekModExtraTuner:getText] self.type == self.SERVICENAME")
             orbital = self.getOrbitalPosition(info)
             text = "%s  (%s)" % (name, orbital)
         elif self.type == self.SERVICENUMBER:
-            number = self.getServiceNumber(name, info.getInfoString(iServiceInformation.sServiceref))
+            if DBG: j00zekDEBUG("[j00zekModExtraTuner:getText] self.type == self.SERVICENUMBER")
+            refNumber = info.getInfoString(iServiceInformation.sServiceref)
+            number = self.getServiceNumber(name, refNumber)
             text = number
         elif self.type == self.SERVICENUMBERNAME:
-            number = self.getServiceNumber(name, info.getInfoString(iServiceInformation.sServiceref))
+            if DBG: j00zekDEBUG("[j00zekModExtraTuner:getText] self.type == self.SERVICENUMBERNAME")
+            refNumber = info.getInfoString(iServiceInformation.sServiceref)
+            number = self.getServiceNumber(name, refNumber)
             text = "%s. %s" % (number, name)
 
         return text
@@ -59,6 +78,7 @@ class j00zekModExtraTuner(Converter, object):
         Converter.changed(self, what)
         
     def getServiceNumber(self, name, ref):
+        if DBG: j00zekDEBUG("[j00zekModExtraTuner:getServiceNumber]")
         list = []
         fields = ref.split(':')
         if not fields or len(fields) < 3: #recordings...
@@ -76,25 +96,44 @@ class j00zekModExtraTuner(Converter, object):
         return number
 
     def getListFromRef(self, ref):
+        if DBG: j00zekDEBUG('[j00zekModExtraTuner:getListFromRef]')
         list = []
         
         serviceHandler = eServiceCenter.getInstance()
-        services = serviceHandler.list(ref)
-        bouquets = services and services.getContent("SN", True)
-        
-        for bouquet in bouquets:
-            services = serviceHandler.list(eServiceReference(bouquet[0]))
-            channels = services and services.getContent("SN", True)
-            for channel in channels:
-                if not channel[0].startswith("1:64:"): # Ignore marker
-                    list.append(channel[1].replace('\xc2\x86', '').replace('\xc2\x87', ''))
+        if serviceHandler:
+            if FULLDBG: j00zekDEBUG('[j00zekModExtraTuner:getListFromRef] serviceHandler loaded')
+            services = serviceHandler.list(ref)
+            if services:
+                if FULLDBG: j00zekDEBUG('[j00zekModExtraTuner:getListFromRef] services loaded')
+                bouquets = services and services.getContent("SN", True)
+                if bouquets:
+                    if FULLDBG: j00zekDEBUG('[j00zekModExtraTuner:getListFromRef] bouquets loaded')
+                    for bouquet in bouquets:
+                        if FULLDBG: j00zekDEBUG('[j00zekModExtraTuner:getListFromRef] bouquet = %s' % str(bouquet))
+                        newServices = serviceHandler.list(eServiceReference(bouquet[0]))
+                        if newServices:
+                            if FULLDBG: j00zekDEBUG('[j00zekModExtraTuner:getListFromRef] newServices loaded')
+                            try:
+                                channels = newServices and newServices.getContent("SN", True)
+                            except Exception as e:
+                                channels = None
+                                if DBG: j00zekDEBUG('[j00zekModExtraTuner:getListFromRef] EXCEPTION loading channels: %s' % str(e))
+                            if channels:
+                                if FULLDBG: j00zekDEBUG('[j00zekModExtraTuner:getListFromRef] channels loaded')
+                                for channel in channels:
+                                    if FULLDBG: j00zekDEBUG('[j00zekModExtraTuner:getListFromRef] channel = %s' % str(channel))
+                                    if not channel[0].startswith("1:64:"): # Ignore marker
+                                        list.append(channel[1].replace('\xc2\x86', '').replace('\xc2\x87', ''))
         
         return list
 
 
     def getLists(self):
-        self.tv_list = self.getListFromRef(eServiceReference('1:7:1:0:0:0:0:0:0:0:(type == 1) || (type == 17) || (type == 195) || (type == 25) FROM BOUQUET "bouquets.tv" ORDER BY bouquet'))
-        self.radio_list = self.getListFromRef(eServiceReference('1:7:2:0:0:0:0:0:0:0:(type == 2) FROM BOUQUET "bouquets.radio" ORDER BY bouquet'))
+        try:
+            self.tv_list = self.getListFromRef(eServiceReference('1:7:1:0:0:0:0:0:0:0:(type == 1) || (type == 17) || (type == 195) || (type == 25) FROM BOUQUET "bouquets.tv" ORDER BY bouquet'))
+            self.radio_list = self.getListFromRef(eServiceReference('1:7:2:0:0:0:0:0:0:0:(type == 2) FROM BOUQUET "bouquets.radio" ORDER BY bouquet'))
+        except Exception as e:
+            if DBG: j00zekDEBUG('[j00zekModExtraTuner:getLists] %s' % str(e))
 
     def getOrbitalPosition(self, info):
         transponderData = info.getInfoObject(iServiceInformation.sTransponderData)

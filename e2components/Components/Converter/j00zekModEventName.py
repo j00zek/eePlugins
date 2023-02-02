@@ -12,10 +12,47 @@ except Exception:
         return ''
 
 DBG = False
+FULLDBG = True
+
 try:
     if DBG: from Components.j00zekComponents import j00zekDEBUG
 except Exception:
     DBG = False
+
+if DBG == False:
+    FULLDBG = False
+
+def getExtendedMovieDescription(ref): # taken from MovieInfoParser.py coded by plnick@vuplus-support.org
+        f = None
+        extended_desc = ""
+        name = ""
+        extensions = (".txt", ".info")
+        info_file = path.realpath(ref.getPath())
+        name = path.basename(info_file)
+        ext_pos = name.rfind('.')
+        if ext_pos > 0:
+                name = (name[:ext_pos]).replace("_", " ")
+        else:
+                name = name.replace("_", " ")
+        for ext in extensions:
+                if path.exists(info_file + ext):
+                        f = info_file + ext
+                        break
+        if not f:
+                ext_pos = info_file.rfind('.')
+                name_len = len(info_file)
+                ext_len = name_len - ext_pos
+                if ext_len <= 5:
+                        info_file = info_file[:ext_pos]
+                        for ext in extensions:
+                                if path.exists(info_file + ext):
+                                        f = info_file + ext
+                                        break
+        if f:
+                with open(f, "r") as txtfile:
+                        extended_desc = txtfile.read()
+
+        return (name, extended_desc)
 
 class j00zekModEventName(Poll, Converter, object):
     NAME = 0
@@ -73,6 +110,11 @@ class j00zekModEventName(Poll, Converter, object):
         else:
             self.type = self.NAME
 
+    def setPoll(self, intervalMS, isEnabled, info):
+        self.poll_interval = intervalMS
+        self.poll_enabled = isEnabled
+        if DBG and info != '': j00zekDEBUG(info)
+
     @cached
     def getBoolean(self):
         event = self.source.event
@@ -89,21 +131,37 @@ class j00zekModEventName(Poll, Converter, object):
     def getText(self):
         event = self.source.event
         if event is None:
-            if self.WaitForEvent == True:
-                if DBG: j00zekDEBUG("[j00zekModEventName:getText] event is None, wating 100ms")
-                self.poll_enabled = True
-                self.WaitForEvent = False
-            else:
-                self.poll_enabled = False
-                if DBG: j00zekDEBUG("[j00zekModEventName:getText] event is None")
+            try:
+                #recorded movie description
+                if hasattr(self.source, 'service') and self.type in (self.SHORT_DESCRIPTION , self.EXTENDED_DESCRIPTION, self.FULL_DESCRIPTION):
+                    service = self.source.service
+                    if service:
+                        ret = getExtendedMovieDescription(service)
+                        self.setPoll(1000,False,"[j00zekModEventName:getText] event is None, movie description found")
+                        return ret[1]
+                #recorded movie name
+                elif self.type == self.NAME and hasattr(self.source, 'service'):
+                    service = self.source.getCurrentService()
+                    if service and service.type in (4097,5001,5002):
+                        sname = service.getPath().split('/')[-1].rsplit('.', 1)[0].replace('_', ' ')
+                        self.setPoll(1000,False,"[j00zekModEventName:getText] event is None, movie name found")
+                        return sname
+                elif self.WaitForEvent == True:
+                    self.setPoll(100,True,"[j00zekModEventName:getText] event is None, wating 100ms")
+                    self.WaitForEvent = False
+                    return ""
+            except Exception as e:
+                if DBG: j00zekDEBUG("[j00zekModEventName:getText] exception" % str(e))
+            self.setPoll(1000,False,"[j00zekModEventName:getText] event is None, polling every second")
             return ""
         else:
-            if DBG: j00zekDEBUG("[j00zekModEventName:getText] event data found")
+            self.setPoll(1000,False,"")
             self.WaitForEvent = True #for next event
-            self.poll_enabled = False
             
         if self.type == self.NAME:
-            return event.getEventName()
+            retVal = event.getEventName()
+            if FULLDBG: j00zekDEBUG("[j00zekModEventName:getText] self.type == self.NAME = '%s'" % retVal)
+            return retVal
         elif self.type == self.SRATING:
             rating = event.getParentalData()
             if rating is None:
@@ -139,7 +197,7 @@ class j00zekModEventName(Poll, Converter, object):
             else:
                 return getGenreStringSub(genre.getLevel1(), genre.getLevel2())
         elif self.type == self.EPGPIC:
-            if DBG: j00zekDEBUG("[j00zekModEventName:getText] self.type == self.EPGPIC, returning '%s'" % self.picFileName)
+            if FULLDBG: j00zekDEBUG("[j00zekModEventName:getText] self.type == self.EPGPIC = '%s'" % self.picFileName)
             return self.picFileName
         elif self.type == self.NAME_NOW:
             return pgettext("now/next: 'now' event label", "Now") + ": " + event.getEventName()
@@ -176,8 +234,8 @@ class j00zekModEventName(Poll, Converter, object):
                 return _("undefined")
             return ""
         elif self.type in (self.SHORT_DESCRIPTION , self.EXTENDED_DESCRIPTION, self.FULL_DESCRIPTION):
-            description = event.getShortDescription()
-            extended = event.getExtendedDescription()
+            description = str(event.getShortDescription()).strip()
+            extended = str(event.getExtendedDescription()).strip()
             if config.plugins.j00zekCC.enTMDBratingFirst.value:
                 tmdbRating = 'TBC'
             else:
@@ -185,13 +243,14 @@ class j00zekModEventName(Poll, Converter, object):
             if config.plugins.j00zekCC.enDescrType.value == '1' or self.type == self.SHORT_DESCRIPTION:
                 return tmdbRating + description.strip()
             elif config.plugins.j00zekCC.enDescrType.value == '2' or self.type == self.EXTENDED_DESCRIPTION:
-                return extended or description
+                retVal = extended or description
+                if DBG: j00zekDEBUG("[j00zekModEventName:getText] self.type == self.EXTENDED_DESCRIPTION = '%s'" % retVal)
+                return retVal
             elif config.plugins.j00zekCC.enDescrType.value == '3' or self.type == self.FULL_DESCRIPTION:
                 if description and extended:
-                    if description.replace('\n','') == extended.replace('\n',''):
+                    if description[0:20] == extended[0:20]:
                         return extended
-                    description += '\n'
-                return tmdbRating + description + extended
+                return tmdbRating + description + '\n' + extended
             elif config.plugins.j00zekCC.enDescrType.value == '4':
                 if description and extended: 
                     extendedCut = extended[:len(description) + 10].replace('\n',' ').strip().replace('  ',' ').split(' ')
