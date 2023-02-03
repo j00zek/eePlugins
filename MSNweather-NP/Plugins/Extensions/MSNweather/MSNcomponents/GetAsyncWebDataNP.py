@@ -326,7 +326,7 @@ def manageCurrenDataWeatherItem(doUpdate=False, keyName=None, colorCode=None, in
             #danych pomiarowych portalu Jakość Powietrza oraz w aplikacji mobilnej "Jakość Powietrza w Polsce" przeliczone są na mg/m3)
             if units == '':
                 units = 'mg/m3'
-            colorCode, Info = airQualityInfo(keyName, val)
+            colorCode, Info = airQualityInfo(keyName, val / 1000)
             if Info == '':
                 valInfo = colorCode + val + units
             else:
@@ -2334,11 +2334,15 @@ def mainProc():
                         #GIOS Wyniki pomiarów wszystkich zanieczyszczeń  udostępnianych poprzez API wyświetlane są w jednostce μg/m3 również wyniki pomiarów CO - tlenku węgla
                         #(również wyniki pomiarów CO - tlenku węgla, dla którego wyniki pomiarów prezentowane na mapie bieżących 
                         #danych pomiarowych portalu Jakość Powietrza oraz w aplikacji mobilnej "Jakość Powietrza w Polsce" przeliczone są na mg/m3)
-                        units = 'μg/m3'
                         inList = True
                         name = key
                         lname = name.replace('PM2.5', 'PM25').lower()
-                        val = int(round(tmpDict['sensors'][key]))
+                        if lname == 'co':
+                            units = 'mg/m3'
+                            val = round(tmpDict['sensors'][key] / 1000 , 2)
+                        else:
+                            units = 'μg/m3'
+                            val = int(round(tmpDict['sensors'][key]))
                         valCLR, valIDX = airQualityInfo(lname, val, retLevel=True)
                         if valIDX > airIndex:
                             airIndex = valIDX
