@@ -1,8 +1,8 @@
 <skin>
-	<fonts>
-    <font filename="/usr/share/enigma2/BlackHarmony/fonts/nmsbd.ttf" name="FdLcD" scale="100"/>
+  <fonts>
+   <font filename="/usr/share/enigma2/BlackHarmony/fonts/nmsbd.ttf" name="FdLcD" scale="100"/>
    <font filename="/usr/share/enigma2/BlackHarmony/fonts/roboto.ttf" name="VFD" scale="100" />
-	</fonts>
+  </fonts>
 	
 	  <screen name="EMCMoviePlayerSummary" position="0,0" size="140,32" id="1">
     <widget source="session.CurrentService" render="GP2ChNameRoller" position="2,5" size="1000,32" font="VFD;18" valign="center" noWrap="1" >

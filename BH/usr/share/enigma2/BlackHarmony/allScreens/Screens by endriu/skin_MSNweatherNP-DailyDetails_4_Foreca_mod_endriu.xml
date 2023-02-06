@@ -4,13 +4,13 @@
     </widget>
     <ePixmap position="0,0" zPosition="-10" size="1920,1080" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/bg_1902x1080.png" transparent="1" alphatest="blend"/>
     <!-- header -->
-    <widget source="global.CurrentTime" render="Label" position="85,70" size="80,35" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+    <widget source="global.CurrentTime" render="Label" position="85,70" size="80,35" font="robotoMSN; 27" backgroundColor="black" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <widget source="global.CurrentTime" render="Label" position="170,70" size="460,35" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+    <widget source="global.CurrentTime" render="Label" position="170,70" size="460,35" font="robotoMSN; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
       <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
     </widget>
-    <widget source="session.CurrentService" render="Label" position="1395,70" size="420,35" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1" >
+    <widget source="session.CurrentService" render="Label" position="1395,70" size="420,35" font="robotoMSN; 27" halign="right" backgroundColor="dark_grey" transparent="1" >
 		<convert type="j00zekAlternateTitle">Detailed forecast</convert>
     </widget>
 <!-- TOP LEFT-->
@@ -38,7 +38,7 @@
 						MultiContentEntryPixmapAlphaBlend(pos = (0, 100), size = (30, 30), png = 8),
                         MultiContentEntryText(pos = (35, 100), size = (226, 25), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 9, color=0xf2f2f2, color_sel=0xf2f2f2),
                         ],
-                        "fonts": [gFont("Regular", 24), gFont("Regular", 20)],
+                        "fonts": [gFont("regularMSN", 24), gFont("regularMSN", 20)],
                         "itemHeight": 150,
 						"selectionEnabled": False
                     }
@@ -78,14 +78,14 @@
 
                         MultiContentEntryText(pos = (0, 280),   size = (1150, 40), font=1, flags = RT_HALIGN_CENTER|RT_VALIGN_CENTER, text = 21, color=0xffff66, color_sel=0xffff66),
                         ],
-                        "fonts": [gFont("Regular", 22), gFont("Regular", 24)],
+                        "fonts": [gFont("regularMSN", 22), gFont("regularMSN", 24)],
                         "itemHeight": 320,
 						"selectionEnabled": False
                     }
         </convert>
 	</widget>
 <!--HOURLY DATA-->
-    <widget position="100,616" size="350,30" zPosition="3" halign="left" valign="top" render="Label" source="session.j00zekMSNWeather" font="Roboto_HD; 24" transparent="1" foregroundColor="green">
+    <widget position="100,616" size="350,30" zPosition="3" halign="left" valign="top" render="Label" source="session.j00zekMSNWeather" font="robotoMSN; 24" transparent="1" foregroundColor="green">
       <convert type="j00zekMSNWeather">RUN|['hourlyData']['title']</convert>
     </widget>
     <ePixmap pixmap="BlackHarmony/gfx/line.png" position="420,630" size="1200,2" zPosition="3" transparent="1" alphatest="blend"/>
@@ -113,7 +113,7 @@
                         
                         MultiContentEntryText(pos = (10, 160), size = (260, 75), font=0, flags = RT_HALIGN_CENTER|RT_VALIGN_CENTER|RT_WRAP, text = 8, color=0xf2f2f2, color_sel=0xf2f2f2),
                         ],
-                        "fonts": [gFont("Regular", 24), gFont("Regular", 22)],
+                        "fonts": [gFont("regularMSN", 24), gFont("regularMSN", 22)],
                         "itemHeight": 280,
 						"selectionEnabled": False
                     }
@@ -137,7 +137,7 @@
                         
                         MultiContentEntryText(pos = (10, 160), size = (260, 75), font=0, flags = RT_HALIGN_CENTER|RT_VALIGN_CENTER|RT_WRAP, text = 8, color=0xf2f2f2, color_sel=0xf2f2f2),
                         ],
-                        "fonts": [gFont("Regular", 24), gFont("Regular", 22)],
+                        "fonts": [gFont("regularMSN", 24), gFont("regularMSN", 22)],
                         "itemHeight": 280,
 						"selectionEnabled": False
                     }
@@ -161,7 +161,7 @@
                         
                         MultiContentEntryText(pos = (10, 160), size = (260, 75), font=0, flags = RT_HALIGN_CENTER|RT_VALIGN_CENTER|RT_WRAP, text = 8, color=0xf2f2f2, color_sel=0xf2f2f2),
                         ],
-                        "fonts": [gFont("Regular", 24), gFont("Regular", 22)],
+                        "fonts": [gFont("regularMSN", 24), gFont("regularMSN", 22)],
                         "itemHeight": 280,
 						"selectionEnabled": False
                     }
@@ -185,7 +185,7 @@
                         
                         MultiContentEntryText(pos = (10, 160), size = (260, 75), font=0, flags = RT_HALIGN_CENTER|RT_VALIGN_CENTER|RT_WRAP, text = 8, color=0xf2f2f2, color_sel=0xf2f2f2),
                         ],
-                        "fonts": [gFont("Regular", 24), gFont("Regular", 22)],
+                        "fonts": [gFont("regularMSN", 24), gFont("regularMSN", 22)],
                         "itemHeight": 280,
 						"selectionEnabled": False
                     }
@@ -209,7 +209,7 @@
                         
                         MultiContentEntryText(pos = (10, 160), size = (260, 75), font=0, flags = RT_HALIGN_CENTER|RT_VALIGN_CENTER|RT_WRAP, text = 8, color=0xf2f2f2, color_sel=0xf2f2f2),
                         ],
-                        "fonts": [gFont("Regular", 24), gFont("Regular", 22)],
+                        "fonts": [gFont("regularMSN", 24), gFont("regularMSN", 22)],
                         "itemHeight": 280,
 						"selectionEnabled": False
                     }
@@ -233,7 +233,7 @@
                         
                         MultiContentEntryText(pos = (10, 160), size = (260, 75), font=0, flags = RT_HALIGN_CENTER|RT_VALIGN_CENTER|RT_WRAP, text = 8, color=0xf2f2f2, color_sel=0xf2f2f2),
                         ],
-                        "fonts": [gFont("Regular", 24), gFont("Regular", 22)],
+                        "fonts": [gFont("regularMSN", 24), gFont("regularMSN", 22)],
                         "itemHeight": 280,
 						"selectionEnabled": False
                     }
@@ -246,7 +246,7 @@
 		initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" 
 		pixmaps="BlackHarmony/skin_user_animButtons/key_red"
 		pixalter="BlackHarmony/buttons/key_red.png" />
-    <widget name="key_red" position="150,980" size="350,35" font="Roboto_HD; 24" backgroundColor="black" transparent="1"/>
+    <widget name="key_red" position="150,980" size="350,35" font="robotoMSN; 24" backgroundColor="black" transparent="1"/>
 
     <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/key_left.png" position="1550,980" size="35,27" alphatest="blend"/>
     <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/key_right.png" position="1600,980" size="35,27" alphatest="blend"/>
