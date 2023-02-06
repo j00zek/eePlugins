@@ -4,6 +4,9 @@ from Components.config import config
 from Components.Converter.Converter import Converter
 from Components.Element import cached
 from Components.Converter.Poll import Poll
+from Components.j00zekSkinTranslatedLabels import translate as _
+#from enigma import eServiceCenter
+import os
 
 try: #obejscie dla VTI 11, ktore nie ma konwertera genre
     from Components.Converter.genre import getGenreStringSub
@@ -27,15 +30,15 @@ def getExtendedMovieDescription(ref): # taken from MovieInfoParser.py coded by p
         extended_desc = ""
         name = ""
         extensions = (".txt", ".info")
-        info_file = path.realpath(ref.getPath())
-        name = path.basename(info_file)
+        info_file = os.path.realpath(ref.getPath())
+        name = os.path.basename(info_file)
         ext_pos = name.rfind('.')
         if ext_pos > 0:
                 name = (name[:ext_pos]).replace("_", " ")
         else:
                 name = name.replace("_", " ")
         for ext in extensions:
-                if path.exists(info_file + ext):
+                if os.path.exists(info_file + ext):
                         f = info_file + ext
                         break
         if not f:
@@ -45,7 +48,7 @@ def getExtendedMovieDescription(ref): # taken from MovieInfoParser.py coded by p
                 if ext_len <= 5:
                         info_file = info_file[:ext_pos]
                         for ext in extensions:
-                                if path.exists(info_file + ext):
+                                if os.path.exists(info_file + ext):
                                         f = info_file + ext
                                         break
         if f:
