@@ -132,8 +132,13 @@ class MSNWeatherNP(Converter, object):
                     self.extension = dd[3]
                     
     def EXCEPTIONDEBUG(self, myFUNC = '' , myText = '' ):
+        try:
+            import traceback
+            myText += '\n=========================\n' & traceback.format_exc()
+        except Exception:
+            pass
         from Plugins.Extensions.MSNweather.debug import printDEBUG
-        printDEBUG( myFUNC , myText , 'MSNWeatherConverter.log' )
+        printDEBUG( myFUNC , myText, 'MSNWeatherConverter.log' )
             
     def DEBUG(self, myFUNC = '' , myText = '' ):
         try:
@@ -211,29 +216,30 @@ class MSNWeatherNP(Converter, object):
             try:
                 mode2 = self.mode2.split(',')
                 self.DEBUG('DAILYDICT','len(mode) =%s' % str(len(mode2)))
-                if len(mode2) >= 2:
+                if len(mode2) > 1:
                     dictTree = "['dailyData']"
                     record = mode2[0]
                     #self.DEBUG('DAILYDICT ','record: %s' % str(record))
                     item =  mode2[1]
                     #self.DEBUG('DAILYDICT ','item: %s' % str(item))
-                    day = int(record.split('=')[1])
-                    Month = _((datetime.date.today() + datetime.timedelta(days=day)).strftime("%b"))
-                    dictTree += "['%s']" % record
-                    recordDict = self.source.dictWeather(dictTree)
-                    #self.DEBUG('DAILYDICT ','recordDict:%s' % str(recordDict))
-                    if item ==  'date':
-                        weekday = recordDict['weekday']
-                        monthday = recordDict['monthday']
-                        retText = str('%s. %s %s' % (weekday, monthday, Month))
-                    elif item ==  'info':
-                        temp_high = recordDict['temp_high']
-                        temp_low = recordDict['temp_low']
-                        rainprecip = recordDict['rainprecip']
-                        skytext = recordDict['skytext']
-                        retText = str('%s/ %s/ %s\n%s' % (temp_high, temp_low, rainprecip, skytext))
-                    elif item in ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9'):
-                        retText = str('%s' % recordDict[int(item)].strip())
+                    if record.split('=') > 1:
+                        day = int(record.split('=')[1])
+                        Month = _((datetime.date.today() + datetime.timedelta(days=day)).strftime("%b"))
+                        dictTree += "['%s']" % record
+                        recordDict = self.source.dictWeather(dictTree)
+                        #self.DEBUG('DAILYDICT ','recordDict:%s' % str(recordDict))
+                        if item ==  'date':
+                            weekday = recordDict['weekday']
+                            monthday = recordDict['monthday']
+                            retText = str('%s. %s %s' % (weekday, monthday, Month))
+                        elif item ==  'info':
+                            temp_high = recordDict['temp_high']
+                            temp_low = recordDict['temp_low']
+                            rainprecip = recordDict['rainprecip']
+                            skytext = recordDict['skytext']
+                            retText = str('%s/ %s/ %s\n%s' % (temp_high, temp_low, rainprecip, skytext))
+                        elif item in ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9'):
+                            retText = str('%s' % recordDict[int(item)].strip())
             except Exception as e:
                 self.EXCEPTIONDEBUG('getText(DAILYDICT) ','Exception %s' % str(e))
         elif self.mode == self.HOURLYDICT:

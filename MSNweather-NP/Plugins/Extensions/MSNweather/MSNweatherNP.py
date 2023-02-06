@@ -13,7 +13,7 @@ from Components.Renderer.j00zekMSNWeatherPixmap import j00zekMSNWeatherPixmap
 from Components.Label import Label
 from Components.Sources.List import List
 from Components.Sources.StaticText import StaticText
-from enigma import eTimer, ePicLoad
+from enigma import eTimer, ePicLoad, addFont
 from Plugins.Plugin import PluginDescriptor
 from Screens.MessageBox import MessageBox
 from Screens.Screen import Screen
@@ -24,13 +24,15 @@ import time, os
 if PyMajorVersion > 2:
     from importlib import reload
 
-DBG = False
+DBG = True
 
 WeatherMSNComp = None
 
 class MSNweatherNP(Screen):
     def __init__(self, session):
         self.DEBUG('INIT', '>>>')
+        addFont("/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/skins/regular.ttf", "regularMSN", 110, False)
+        addFont("/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/skins/roboto.ttf", "robotoMSN", 100, False)
         if config.plugins.MSNweatherNP.skinOrientation.value.startswith('/') and os.path.exists(config.plugins.MSNweatherNP.skinOrientation.value):
             self.skin = open(config.plugins.MSNweatherNP.skinOrientation.value, 'r').read()
         else:

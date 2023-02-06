@@ -326,7 +326,7 @@ def manageCurrenDataWeatherItem(doUpdate=False, keyName=None, colorCode=None, in
             #danych pomiarowych portalu Jakość Powietrza oraz w aplikacji mobilnej "Jakość Powietrza w Polsce" przeliczone są na mg/m3)
             if units == '':
                 units = 'mg/m3'
-            colorCode, Info = airQualityInfo(keyName, val / 1000)
+            colorCode, Info = airQualityInfo(keyName, float(val) / 1000)
             if Info == '':
                 valInfo = colorCode + val + units
             else:
@@ -2339,7 +2339,7 @@ def mainProc():
                         lname = name.replace('PM2.5', 'PM25').lower()
                         if lname == 'co':
                             units = 'mg/m3'
-                            val = round(tmpDict['sensors'][key] / 1000 , 2)
+                            val = round(float(tmpDict['sensors'][key]) / 1000 , 2)
                         else:
                             units = 'μg/m3'
                             val = int(round(tmpDict['sensors'][key]))
