@@ -48,11 +48,11 @@ class Pixiv(Plugin):
     _user_dict_schema = validate.Schema(
         {
             "user": {
-                "unique_name": validate.text,
-                "name": validate.text
+                "unique_name": str,
+                "name": str,
             },
             validate.optional("hls_movie"): {
-                "url": validate.text
+                "url": str,
             }
         }
     )
@@ -111,7 +111,7 @@ class Pixiv(Plugin):
             if item["owner"]["user"]["unique_name"] == self.match.group("user"):
                 return item
 
-        raise NoStreamsError(self.url)
+        raise NoStreamsError
 
     def _get_streams(self):
         login_session_id = self.get_option("sessionid")

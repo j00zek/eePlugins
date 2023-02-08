@@ -5,6 +5,7 @@ import platform
 import re
 import signal
 import sys
+import warnings
 from contextlib import closing, suppress
 from gettext import gettext
 from pathlib import Path
@@ -13,7 +14,7 @@ from typing import Any, Dict, List, Optional, Type, Union
 
 import streamlink.logger as logger
 from streamlink import NoPluginError, PluginError, StreamError, Streamlink, __version__ as streamlink_version
-from streamlink.exceptions import FatalPluginError
+from streamlink.exceptions import FatalPluginError, StreamlinkDeprecationWarning
 from streamlink.plugin import Plugin, PluginOptions
 from streamlink.stream.stream import Stream, StreamIO
 from streamlink.utils.named_pipe import NamedPipe
@@ -609,7 +610,10 @@ def load_plugins(dirs: List[Path], showwarning: bool = True):
         if directory.is_dir():
             success = streamlink.load_plugins(str(directory))
             if success and type(directory) is DeprecatedPath:
-                log.warning(f"Loaded plugins from deprecated path, see CLI docs for how to migrate: {directory}")
+                warnings.warn(
+                    f"Loaded plugins from deprecated path, see CLI docs for how to migrate: {directory}",
+                    StreamlinkDeprecationWarning,
+                )
         elif showwarning:
             log.warning(f"Plugin path {directory} does not exist or is not a directory!")
 
@@ -643,7 +647,7 @@ def setup_config_args(parser, ignore_unknown=False):
     config_files = []
 
     if args.config:
-        # We want the config specified last to get highest priority
+        # We want the config specified last to get the highest priority
         config_files.extend(
             config_file
             for config_file in map(lambda path: Path(path).expanduser(), reversed(args.config))
@@ -652,9 +656,12 @@ def setup_config_args(parser, ignore_unknown=False):
 
     else:
         # Only load first available default config
-        for config_file in filter(lambda path: path.is_file(), CONFIG_FILES):
+        for config_file in filter(lambda path: path.is_file(), CONFIG_FILES):  # pragma: no branch
             if type(config_file) is DeprecatedPath:
-                log.warning(f"Loaded config from deprecated path, see CLI docs for how to migrate: {config_file}")
+                warnings.warn(
+                    f"Loaded config from deprecated path, see CLI docs for how to migrate: {config_file}",
+                    StreamlinkDeprecationWarning,
+                )
             config_files.append(config_file)
             break
 
@@ -662,12 +669,15 @@ def setup_config_args(parser, ignore_unknown=False):
         # Only load first available plugin config
         with suppress(NoPluginError):
             pluginname, pluginclass, resolved_url = streamlink.resolve_url(args.url)
-            for config_file in CONFIG_FILES:
+            for config_file in CONFIG_FILES:  # pragma: no branch
                 config_file = config_file.with_name(f"{config_file.name}.{pluginname}")
                 if not config_file.is_file():
                     continue
                 if type(config_file) is DeprecatedPath:
-                    log.warning(f"Loaded plugin config from deprecated path, see CLI docs for how to migrate: {config_file}")
+                    warnings.warn(
+                        f"Loaded plugin config from deprecated path, see CLI docs for how to migrate: {config_file}",
+                        StreamlinkDeprecationWarning,
+                    )
                 config_files.append(config_file)
                 break
 
@@ -716,11 +726,6 @@ def setup_plugin_args(session: Streamlink, parser: ArgumentParser):
                     if pargdest != action.dest:
                         continue
                     defaults[pargdest] = action.default
-
-                    # add plugin to global argument
-                    plugins = getattr(action, "plugins", [])
-                    plugins.append(pname)
-                    setattr(action, "plugins", plugins)
 
         plugin.options = PluginOptions(defaults)
 
@@ -845,6 +850,7 @@ def setup_logger_and_console(stream=sys.stdout, filename=None, level="info", jso
         style="{",
         format=f"{'[{asctime}]' if verbose else ''}[{{name}}][{{levelname}}] {{message}}",
         datefmt=f"%H:%M:%S{'.%f' if verbose else ''}",
+        capture_warnings=True,
     )
 
     console = ConsoleOutput(streamhandler.stream, json)
