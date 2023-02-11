@@ -493,6 +493,7 @@ class urlparser:
                        #s
                        'samaup.cc': self.pp.parserUPLOAD,
                        'sawlive.tv': self.pp.parserSAWLIVETV,
+                       'sbchill.com': self.pp.parserSTREAMSB,
                        'sbembed.com': self.pp.parserSTREAMSB,
                        'sbembed1.com': self.pp.parserSTREAMSB,
                        'sbfull.com': self.pp.parserSTREAMSB,
@@ -565,6 +566,7 @@ class urlparser:
                        'supervideo.tv': self.pp.parserONLYSTREAMTV,
                        'suprafiles.org': self.pp.parserUPLOAD,
                        'suspents.info': self.pp.parserFASTVIDEOIN,
+                       'svetacdn.in': self.pp.parserSVETACDNIN,
                        'swirownia.com.usrfiles.com': self.pp.parserSWIROWNIA,
                        #t
                        'talbol.net': self.pp.parserTXNEWSNETWORK,
@@ -668,6 +670,9 @@ class urlparser:
                        'vidload.net': self.pp.parserVIDLOADNET,
                        'vidlox.me': self.pp.parserVIDLOXTV,
                        'vidlox.tv': self.pp.parserVIDLOXTV,
+                       'vidmoly.me': self.pp.parserVIDMOLYME,
+                       'vidmoly.net': self.pp.parserVIDMOLYME,
+                       'vidmoly.to': self.pp.parserVIDMOLYME,
                        'vidnode.net': self.pp.parserVIDNODENET,
                        'vidoo.tv': self.pp.parserONLYSTREAMTV,
                        'vidoza.co': self.pp.parserVIDOZANET,
@@ -12658,9 +12663,9 @@ class pageParser(CaptchaHelper):
         if 'embed' not in baseUrl:
             video_id = self.cm.ph.getSearchGroups(baseUrl + '/', '/([A-Za-z0-9]{12})[/.]')[0]
             printDBG("parserVIDSTODOME video_id[%s]" % video_id)
-            url = 'https://vidtodo.com/embed-{0}.html'.format(video_id)
+            baseUrl = 'https://vidtodo.com/embed-{0}.html'.format(video_id)
 
-        return self.parserONLYSTREAMTV(strwithmeta(url, {'Referer': baseUrl}))
+        return self.parserONLYSTREAMTV(strwithmeta(baseUrl, {'Referer': baseUrl}))
 
     def parserCLOUDVIDEOTV(self, baseUrl):
         printDBG("parserCLOUDVIDEOTV baseUrl[%r]" % baseUrl)
@@ -14658,7 +14663,7 @@ class pageParser(CaptchaHelper):
             x = '{0}||{1}||{2}||streamsb'.format(makeid(12), c2, makeid(12))
             c3 = hexlify(x.encode('utf8')).decode('utf8')
 #            return 'https://{0}/sources43/{1}/{2}'.format(urlparser.getDomain(baseUrl), c1, c3)
-            return 'https://{0}/sources49/{1}'.format(urlparser.getDomain(baseUrl), c1)
+            return 'https://{0}/sources50/{1}'.format(urlparser.getDomain(baseUrl), c1)
 
         eurl = get_embedurl(media_id)
         urlParams['header']['watchsb'] = 'sbstream'
@@ -15633,6 +15638,54 @@ class pageParser(CaptchaHelper):
         url = eval(self.cm.ph.getSearchGroups(data, '''[^/]source:\s?(['"][^,]+?['"]),''')[0])
         urlTab = []
         url = strwithmeta(url, {'Origin': urlparser.getDomain(baseUrl, False), 'Referer': cUrl})
+        if url != '':
+            urlTab.extend(getDirectM3U8Playlist(url, checkContent=True, sortWithMaxBitrate=999999999))
+
+        return urlTab
+
+    def parserSVETACDNIN(self, baseUrl):
+        printDBG("parserSVETACDNIN baseUrl[%s]" % baseUrl)
+
+        HTTP_HEADER = self.cm.getDefaultHeader(browser='chrome')
+        referer = baseUrl.meta.get('Referer')
+        if referer:
+            HTTP_HEADER['Referer'] = referer
+        urlParams = {'header': HTTP_HEADER}
+        sts, data = self.cm.getPage(baseUrl, urlParams)
+        if not sts:
+            return []
+        cUrl = self.cm.meta['url']
+
+        data = self.cm.ph.getSearchGroups(data, '''id="files" value=['"]([^"^']+?)['"]''')[0]
+        data = re.findall('\[(\d*p)\]([^,^\s]*)[,\s]', data)
+        urlTab = []
+        for item in data:
+            url = item[1].replace('\/', '/')
+            if url.startswith('//'):
+                url = 'http:' + url
+            url = strwithmeta(url, {'Origin': urlparser.getDomain(baseUrl, False), 'Referer': cUrl})
+            if url != '':
+                urlTab.append({'name': item[0], 'url': url})
+
+        return urlTab
+
+    def parserVIDMOLYME(self, baseUrl):
+        printDBG("parserVIDMOLYME baseUrl[%r]" % baseUrl)
+        Referer = strwithmeta(baseUrl).meta.get('Referer', baseUrl)
+        HTTP_HEADER = self.cm.getDefaultHeader(browser='chrome')
+
+        baseUrl = strwithmeta(baseUrl)
+        if 'embed' not in baseUrl:
+            video_id = self.cm.ph.getSearchGroups(baseUrl + '/', '/([A-Za-z0-9]{12})[/.]')[0]
+            printDBG("parserVIDMOLYME video_id[%s]" % video_id)
+            baseUrl = urlparser.getDomain(baseUrl, False) + '/embed-{0}.html'.format(video_id)
+        sts, data = self.cm.getPage(baseUrl, {'header': HTTP_HEADER})
+        if not sts:
+            return False
+
+        urlTab = []
+        url = self.cm.ph.getSearchGroups(data, '''sources[^'^"]*?['"]([^'^"]+?)['"]''')[0]
+        url = strwithmeta(url, {'Origin': urlparser.getDomain(baseUrl, False), 'Referer': baseUrl})
         if url != '':
             urlTab.extend(getDirectM3U8Playlist(url, checkContent=True, sortWithMaxBitrate=999999999))
 
