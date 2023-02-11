@@ -17,6 +17,7 @@ from streamlink.stream.stream import Stream
 from streamlink.utils.l10n import Language
 from streamlink.utils.parse import parse_xml
 
+
 log = logging.getLogger(__name__)
 
 
@@ -188,7 +189,7 @@ class DASHStream(Stream):
         video_representation: Optional[Representation] = None,
         audio_representation: Optional[Representation] = None,
         period: float = 0,
-        **args
+        **args,
     ):
         """
         :param streamlink.Streamlink session: Streamlink session instance
@@ -233,7 +234,7 @@ class DASHStream(Stream):
         cls,
         session,
         url_or_manifest: str,
-        **args
+        **args,
     ) -> Dict[str, "DASHStream"]:
         """
         Parse a DASH manifest file and return its streams.
@@ -243,7 +244,7 @@ class DASHStream(Stream):
         :param args: Additional keyword arguments passed to :meth:`requests.Session.request`
         """
 
-        if url_or_manifest.startswith('<?xml'):
+        if url_or_manifest.startswith("<?xml"):
             mpd = MPD(parse_xml(url_or_manifest, ignore_ns=True))
         else:
             res = session.http.get(url_or_manifest, **session.http.valid_request_args(**args))
@@ -293,7 +294,7 @@ class DASHStream(Stream):
 
         log.debug("Available languages for DASH audio streams: {0} (using: {1})".format(
             ", ".join(available_languages) or "NONE",
-            lang or "n/a"
+            lang or "n/a",
         ))
 
         # if the language is given by the stream, filter out other languages that do not match
@@ -309,7 +310,7 @@ class DASHStream(Stream):
                 stream_name.append("{:0.0f}{}".format(vid.height or vid.bandwidth_rounded, "p" if vid.height else "k"))
             if audio and len(audio) > 1:
                 stream_name.append("a{:0.0f}k".format(aud.bandwidth))
-            ret.append(('+'.join(stream_name), stream))
+            ret.append(("+".join(stream_name), stream))
 
         # rename duplicate streams
         dict_value_list = defaultdict(list)
@@ -336,9 +337,9 @@ class DASHStream(Stream):
                 if n == 0:
                     ret_new[q] = items[n]
                 elif n == 1:
-                    ret_new[f'{q}_alt'] = items[n]
+                    ret_new[f"{q}_alt"] = items[n]
                 else:
-                    ret_new[f'{q}_alt{n}'] = items[n]
+                    ret_new[f"{q}_alt{n}"] = items[n]
         return ret_new
 
     def open(self):

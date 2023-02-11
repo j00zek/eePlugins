@@ -12,11 +12,12 @@ from streamlink.plugin import Plugin, pluginargument, pluginmatcher
 from streamlink.plugin.api import validate
 from streamlink.stream.hls import HLSStream
 
+
 log = logging.getLogger(__name__)
 
 
 @pluginmatcher(re.compile(
-    r"https?://sketch\.pixiv\.net/@?(?P<user>[^/]+)"
+    r"https?://sketch\.pixiv\.net/@?(?P<user>[^/]+)",
 ))
 @pluginargument(
     "sessionid",
@@ -53,27 +54,27 @@ class Pixiv(Plugin):
             },
             validate.optional("hls_movie"): {
                 "url": str,
-            }
-        }
+            },
+        },
     )
 
     _user_schema = validate.Schema(
         {
             "owner": _user_dict_schema,
             "performers": [
-                validate.any(_user_dict_schema, None)
-            ]
-        }
+                validate.any(_user_dict_schema, None),
+            ],
+        },
     )
 
     _data_lives_schema = validate.Schema(
         {
             "data": {
-                "lives": [_user_schema]
-            }
+                "lives": [_user_schema],
+            },
         },
         validate.get("data"),
-        validate.get("lives")
+        validate.get("lives"),
     )
 
     api_lives = "https://sketch.pixiv.net/api/lives.json"
@@ -89,8 +90,8 @@ class Pixiv(Plugin):
     def _login_using_session_id_and_device_token(self, session_id, device_token):
         self.session.http.get(self.login_url_get)
 
-        self.session.http.cookies.set('PHPSESSID', session_id, domain='.pixiv.net', path='/')
-        self.session.http.cookies.set('device_token', device_token, domain='.pixiv.net', path='/')
+        self.session.http.cookies.set("PHPSESSID", session_id, domain=".pixiv.net", path="/")
+        self.session.http.cookies.set("device_token", device_token, domain=".pixiv.net", path="/")
 
         self.save_cookies()
         log.info("Successfully set sessionId and deviceToken")

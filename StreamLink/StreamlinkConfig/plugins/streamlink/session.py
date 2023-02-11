@@ -13,10 +13,11 @@ from streamlink.exceptions import NoPluginError, PluginError, StreamlinkDeprecat
 from streamlink.logger import StreamlinkLogger
 from streamlink.options import Options
 from streamlink.plugin.api.http_session import HTTPSession
-from streamlink.plugin.plugin import Matcher, NORMAL_PRIORITY, NO_PRIORITY, Plugin
+from streamlink.plugin.plugin import NO_PRIORITY, NORMAL_PRIORITY, Matcher, Plugin
 from streamlink.utils.l10n import Localization
 from streamlink.utils.module import load_module
 from streamlink.utils.url import update_scheme
+
 
 # Ensure that the Logger class returned is Streamslink's for using the API (for backwards compatibility)
 logging.setLoggerClass(StreamlinkLogger)
@@ -105,7 +106,7 @@ class StreamlinkOptions(Options):
 
     def _set_http_attr_key_equals_value(self, key, value):
         getattr(self.session.http, self._OPTIONS_HTTP_ATTRS[key]).update(
-            value if isinstance(value, dict) else dict(self._parse_key_equals_value_string(value))
+            value if isinstance(value, dict) else dict(self._parse_key_equals_value_string(value)),
         )
 
     def _set_http_attr(self, key, value):
@@ -189,7 +190,7 @@ class Streamlink:
 
     def __init__(
         self,
-        options: Optional[Dict[str, Any]] = None
+        options: Optional[Dict[str, Any]] = None,
     ):
         """
         :param options: Custom options

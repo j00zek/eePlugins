@@ -17,11 +17,12 @@ from streamlink.stream.ffmpegmux import MuxedStream
 from streamlink.stream.hls import HLSStream
 from streamlink.stream.http import HTTPStream
 
+
 log = logging.getLogger(__name__)
 
 
 @pluginmatcher(re.compile(
-    r"https?://(player\.vimeo\.com/video/\d+|(www\.)?vimeo\.com/.+)"
+    r"https?://(player\.vimeo\.com/video/\d+|(www\.)?vimeo\.com/.+)",
 ))
 class Vimeo(Plugin):
     _config_url_re = re.compile(r'(?:"config_url"|\bdata-config-url)\s*[:=]\s*(".+?")')
@@ -46,13 +47,13 @@ class Vimeo(Plugin):
                     validate.optional("dash"): {"cdns": {str: {"url": validate.url()}}},
                     validate.optional("hls"): {"cdns": {str: {"url": validate.url()}}},
                     validate.optional("progressive"): validate.all(
-                        [{"url": validate.url(), "quality": str}]
+                        [{"url": validate.url(), "quality": str}],
                     ),
                 },
                 validate.optional("text_tracks"): validate.all(
-                    [{"url": str, "lang": str}]
+                    [{"url": str, "lang": str}],
                 ),
-            }
+            },
         },
     )
     _player_schema = validate.Schema(

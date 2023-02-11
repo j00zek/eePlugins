@@ -20,7 +20,7 @@ log = logging.getLogger(__name__)
 
 
 @pluginmatcher(re.compile(
-    r"https?://twitcasting\.tv/(?P<channel>[^/]+)"
+    r"https?://twitcasting\.tv/(?P<channel>[^/]+)",
 ))
 @pluginargument(
     "password",
@@ -35,14 +35,14 @@ class TwitCasting(Plugin):
     _STREAM_INFO_SCHEMA = validate.Schema({
         validate.optional("movie"): {
             "id": int,
-            "live": bool
+            "live": bool,
         },
         validate.optional("fmp4"): {
             "host": str,
             "proto": str,
             "source": bool,
-            "mobilesource": bool
-        }
+            "mobilesource": bool,
+        },
     })
 
     def __init__(self, *args, **kwargs):
@@ -71,7 +71,7 @@ class TwitCasting(Plugin):
         else:
             mode = "base"  # Low quality
 
-        if (proto == '') or (host == '') or (not movie_id):
+        if (proto == "") or (host == "") or (not movie_id):
             raise PluginError(f"No stream available for user {self.channel}")
 
         real_stream_url = self._STREAM_REAL_URL.format(proto=proto, host=host, movie_id=movie_id, mode=mode)
@@ -125,7 +125,7 @@ class TwitCastingReader(StreamIO):
             self.buffer,
             stream.session,
             stream.url,
-            origin="https://twitcasting.tv/"
+            origin="https://twitcasting.tv/",
         )
 
     def open(self):
@@ -139,7 +139,7 @@ class TwitCastingReader(StreamIO):
         return self.buffer.read(
             size,
             block=self.wsclient.is_alive(),
-            timeout=self.timeout
+            timeout=self.timeout,
         )
 
 

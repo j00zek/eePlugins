@@ -25,6 +25,7 @@ from streamlink.plugin.api import useragents, validate
 from streamlink.stream.hls import HLSStream, HLSStreamReader, HLSStreamWriter
 from streamlink.utils.url import update_qsd
 
+
 log = logging.getLogger(__name__)
 
 
@@ -42,9 +43,9 @@ class AbemaTVHLSStream(HLSStream):
 
 
 class AbemaTVLicenseAdapter(BaseAdapter):
-    '''
+    """
     Handling abematv-license:// protocol to get real video key_data.
-    '''
+    """
 
     STRTABLE = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
 
@@ -71,26 +72,26 @@ class AbemaTVLicenseAdapter(BaseAdapter):
             "osLang": "ja_JP",
             "osTimezone": "Asia/Tokyo",
             "appId": "tv.abema",
-            "appVersion": "3.27.1"
+            "appVersion": "3.27.1",
         }
         auth_header = {"Authorization": f"Bearer {self.usertoken}"}
         res = self._session.http.get(self._MEDIATOKEN_API, params=params,
                                      headers=auth_header)
         jsonres = self._session.http.json(res,
                                           schema=self._MEDIATOKEN_SCHEMA)
-        mediatoken = jsonres['token']
+        mediatoken = jsonres["token"]
 
         res = self._session.http.post(self._LICENSE_API,
                                       params={"t": mediatoken},
                                       json={"kv": "a", "lt": ticket})
         jsonres = self._session.http.json(res,
                                           schema=self._LICENSE_SCHEMA)
-        cid = jsonres['cid']
-        k = jsonres['k']
+        cid = jsonres["cid"]
+        k = jsonres["k"]
 
         res = sum(self.STRTABLE.find(k[i]) * (58 ** (len(k) - 1 - i)) for i in range(len(k)))
 
-        encvideokey = struct.pack('>QQ', res >> 64, res & 0xffffffffffffffff)
+        encvideokey = struct.pack(">QQ", res >> 64, res & 0xffffffffffffffff)
 
         # HKEY:
         # RC4KEY = unhexlify('DB98A8E7CECA3424D975280F90BD03EE')
@@ -140,9 +141,11 @@ class AbemaTV(Plugin):
 
     _SLOTM3U8 = "https://vod-abematv.akamaized.net/slot/{0}/playlist.m3u8"
 
-    SECRETKEY = (b"v+Gjs=25Aw5erR!J8ZuvRrCx*rGswhB&qdHd_SYerEWdU&a?3DzN9B"
-                 b"Rbp5KwY4hEmcj5#fykMjJ=AuWz5GSMY-d@H7DMEh3M@9n2G552Us$$"
-                 b"k9cD=3TxwWe86!x#Zyhe")
+    SECRETKEY = (
+          b"v+Gjs=25Aw5erR!J8ZuvRrCx*rGswhB&qdHd_SYerEWdU&a?3DzN9B"
+        + b"Rbp5KwY4hEmcj5#fykMjJ=AuWz5GSMY-d@H7DMEh3M@9n2G552Us$$"
+        + b"k9cD=3TxwWe86!x#Zyhe"
+    )
 
     _USER_SCHEMA = validate.Schema({"profile": {"userId": str}, "token": str})
 
@@ -163,7 +166,7 @@ class AbemaTV(Plugin):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.session.http.headers.update({'User-Agent': useragents.CHROME})
+        self.session.http.headers.update({"User-Agent": useragents.CHROME})
 
     def _generate_applicationkeysecret(self, deviceid):
         deviceid = deviceid.encode("utf-8")  # for python3
@@ -223,7 +226,7 @@ class AbemaTV(Plugin):
                      "applicationKeySecret": appkeysecret}
         res = self.session.http.post(self._USER_API, json=json_data)
         jsonres = self.session.http.json(res, schema=self._USER_SCHEMA)
-        self.usertoken = jsonres['token']  # for authorzation
+        self.usertoken = jsonres["token"]  # for authorzation
 
         matchresult = self.match
         if matchresult.group("onair"):

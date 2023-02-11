@@ -11,6 +11,7 @@ from streamlink.plugin import Plugin, pluginmatcher
 from streamlink.plugin.api import validate
 from streamlink.stream.hls import HLSStream
 
+
 log = logging.getLogger(__name__)
 
 
@@ -33,7 +34,7 @@ class Mixcloud(Plugin):
                         }
                     }
                 """,
-                "variables": {"user": {"username": self.match.group("user")}}
+                "variables": {"user": {"username": self.match.group("user")}},
             },
             schema=validate.Schema(
                 validate.parse_json(),

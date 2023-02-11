@@ -15,11 +15,12 @@ from streamlink.stream.hls import HLSStream
 from streamlink.utils.parse import parse_qsd
 from streamlink.utils.url import update_scheme
 
+
 log = logging.getLogger(__name__)
 
 
 @pluginmatcher(re.compile(
-    r"https?://(?:www\.)?earthcam\.com/"
+    r"https?://(?:www\.)?earthcam\.com/",
 ))
 class EarthCam(Plugin):
     def _get_streams(self):

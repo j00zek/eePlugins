@@ -14,11 +14,12 @@ from streamlink.plugin.api import validate
 from streamlink.stream.hls import HLSStream
 from streamlink.utils.url import update_qsd
 
+
 log = logging.getLogger(__name__)
 
 
 @pluginmatcher(re.compile(
-    r"https?://(?:www\.)?raiplay\.it/dirette/(\w+)/?"
+    r"https?://(?:www\.)?raiplay\.it/dirette/(\w+)/?",
 ))
 class RaiPlay(Plugin):
     _DEFAULT_MEDIAPOLIS_OUTPUT = "64"

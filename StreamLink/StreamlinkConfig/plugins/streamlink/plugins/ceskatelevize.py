@@ -14,6 +14,7 @@ from streamlink.plugin import Plugin, pluginmatcher
 from streamlink.plugin.api import validate
 from streamlink.stream.dash import DASHStream
 
+
 log = logging.getLogger(__name__)
 
 
@@ -123,7 +124,7 @@ class Ceskatelevize(Plugin):
                             "quality": "web",
                         }],
                     },
-                    separators=(',', ':'),
+                    separators=(",", ":"),
                 ),
             },
             schema=validate.Schema(

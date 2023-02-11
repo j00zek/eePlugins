@@ -9,7 +9,7 @@ from itertools import count, repeat
 from typing import Optional
 from urllib.parse import urljoin, urlparse, urlsplit, urlunparse, urlunsplit
 
-from isodate import Duration, UTC as utc, parse_datetime, parse_duration  # type: ignore[import]
+from isodate import UTC as utc, Duration, parse_datetime, parse_duration  # type: ignore[import]
 
 
 log = logging.getLogger(__name__)
@@ -125,7 +125,7 @@ class MPDNode:
     def __str__(self):
         return "<{tag} {attrs}>".format(
             tag=self.__tag__,
-            attrs=" ".join("@{}={}".format(attr, getattr(self, attr)) for attr in self.attributes)
+            attrs=" ".join("@{}={}".format(attr, getattr(self, attr)) for attr in self.attributes),
         )
 
     def attr(self, key, default=None, parser=None, required=False, inherited=False):
@@ -146,14 +146,15 @@ class MPDNode:
             return default
 
     def children(self, cls, minimum=0, maximum=None):
-
         children = self.node.findall(cls.__tag__)
         if len(children) < minimum or (maximum and len(children) > maximum):
             raise MPDParsingError("expected to find {}/{} required [{}..{})".format(
                 self.__tag__, cls.__tag__, minimum, maximum or "unbound"))
 
-        return list(map(lambda x: cls(x[1], root=self.root, parent=self, i=x[0], base_url=self.base_url),
-                        enumerate(children)))
+        return [
+            cls(child, root=self.root, parent=self, i=i, base_url=self.base_url)
+            for i, child in enumerate(children)
+        ]
 
     def only_child(self, cls, minimum=0):
         children = self.children(cls, minimum=minimum, maximum=1)
@@ -383,7 +384,7 @@ class SegmentTemplate(MPDNode):
 
     def __init__(self, node, root=None, parent=None, *args, **kwargs):
         super().__init__(node, root, parent, *args, **kwargs)
-        self.defaultSegmentTemplate = self.walk_back_get_attr('segmentTemplate')
+        self.defaultSegmentTemplate = self.walk_back_get_attr("segmentTemplate")
 
         self.initialization = self.attr("initialization", parser=MPDParsers.segment_template)
         self.media = self.attr("media", parser=MPDParsers.segment_template)
@@ -465,8 +466,8 @@ class SegmentTemplate(MPDNode):
                 self.startNumber
                 + int(
                     (since_start - suggested_delay - self.root.minBufferTime).total_seconds()
-                    / self.duration_seconds
-                )
+                    / self.duration_seconds,
+                ),
             )
 
             # the time the segment number is available at NOW

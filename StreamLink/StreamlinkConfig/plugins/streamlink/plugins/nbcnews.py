@@ -11,11 +11,12 @@ from streamlink.plugin import Plugin, pluginmatcher
 from streamlink.plugin.api import validate
 from streamlink.stream.hls import HLSStream
 
+
 log = logging.getLogger(__name__)
 
 
 @pluginmatcher(re.compile(
-    r"https?://(?:www\.)?nbcnews\.com/now"
+    r"https?://(?:www\.)?nbcnews\.com/now",
 ))
 class NBCNews(Plugin):
     URL_API = "https://api-leap.nbcsports.com/feeds/assets/{}?application=NBCNews&format=nbc-player&platform=desktop"

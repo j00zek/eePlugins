@@ -7,6 +7,7 @@ from urllib.parse import urlparse
 
 # noinspection PyPackageRequirements
 from Crypto.Cipher import AES
+
 # noinspection PyPackageRequirements
 from Crypto.Util.Padding import unpad
 from requests import Response
@@ -16,11 +17,12 @@ from streamlink.buffers import RingBuffer
 from streamlink.exceptions import StreamError
 from streamlink.stream.ffmpegmux import FFMPEGMuxer, MuxedStream
 from streamlink.stream.filtered import FilteredStream
-from streamlink.stream.hls_playlist import ByteRange, Key, M3U8, Map, Media, Segment, load as load_hls_playlist
+from streamlink.stream.hls_playlist import M3U8, ByteRange, Key, Map, Media, Segment, load as load_hls_playlist
 from streamlink.stream.http import HTTPStream
 from streamlink.stream.segmented import SegmentedStreamReader, SegmentedStreamWorker, SegmentedStreamWriter
 from streamlink.utils.cache import LRUCache
 from streamlink.utils.formatter import Formatter
+
 
 log = logging.getLogger(__name__)
 
@@ -114,7 +116,7 @@ class HLSStreamWriter(SegmentedStreamWriter):
                 key_uri,
                 exception=StreamError,
                 retries=self.retries,
-                **self.reader.request_params
+                **self.reader.request_params,
             )
             res.encoding = "binary/octet-stream"
             self.key_data = res.content
@@ -216,8 +218,7 @@ class HLSStreamWriter(SegmentedStreamWriter):
                 # Also check if the output will be resumed after data has already been written to the buffer before.
                 if sequence.segment.discontinuity or is_paused and written_once:
                     log.warning(
-                        "Encountered a stream discontinuity. "
-                        "This is unsupported and will result in incoherent output data."
+                        "Encountered a stream discontinuity. This is unsupported and will result in incoherent output data.",
                     )
 
                 # unblock reader thread after writing data to the buffer
@@ -406,7 +407,7 @@ class HLSStreamWorker(SegmentedStreamWorker):
         try:
             self.reload_playlist()
         except StreamError as err:
-            log.error(f'{err}')
+            log.error(f"{err}")
             self.reader.close()
             return
 
@@ -420,12 +421,16 @@ class HLSStreamWorker(SegmentedStreamWorker):
             self.playlist_sequence = self.duration_to_sequence(self.duration_offset_start, self.playlist_sequences)
 
         if self.playlist_sequences:
-            log.debug(f"First Sequence: {self.playlist_sequences[0].num}; "
-                      f"Last Sequence: {self.playlist_sequences[-1].num}")
-            log.debug(f"Start offset: {self.duration_offset_start}; "
-                      f"Duration: {self.duration_limit}; "
-                      f"Start Sequence: {self.playlist_sequence}; "
-                      f"End Sequence: {self.playlist_end}")
+            log.debug("; ".join([
+                f"First Sequence: {self.playlist_sequences[0].num}",
+                f"Last Sequence: {self.playlist_sequences[-1].num}",
+            ]))
+            log.debug("; ".join([
+                f"Start offset: {self.duration_offset_start}",
+                f"Duration: {self.duration_limit}",
+                f"Start Sequence: {self.playlist_sequence}",
+                f"End Sequence: {self.playlist_end}",
+            ]))
 
         total_duration = 0
         while not self.closed:
@@ -487,7 +492,7 @@ class MuxedHLSStream(MuxedStream):
         multivariant: Optional[M3U8] = None,
         force_restart: bool = False,
         ffmpeg_options: Optional[Dict[str, Any]] = None,
-        **args
+        **args,
     ):
         """
         :param streamlink.Streamlink session: Streamlink session instance
@@ -508,7 +513,7 @@ class MuxedHLSStream(MuxedStream):
             else:
                 tracks.append(audio)
         maps.extend(f"{i}:a" for i in range(1, len(tracks)))
-        substreams = map(lambda url: HLSStream(session, url, force_restart=force_restart, **args), tracks)
+        substreams = [HLSStream(session, url, force_restart=force_restart, **args) for url in tracks]
         ffmpeg_options = ffmpeg_options or {}
 
         super().__init__(session, *substreams, format="mpegts", maps=maps, **ffmpeg_options)
@@ -546,7 +551,7 @@ class HLSStream(HTTPStream):
         force_restart: bool = False,
         start_offset: float = 0,
         duration: Optional[float] = None,
-        **args
+        **args,
     ):
         """
         :param streamlink.Streamlink session_: Streamlink session instance
@@ -625,7 +630,7 @@ class HLSStream(HTTPStream):
         name_fmt: Optional[str] = None,
         start_offset: float = 0,
         duration: Optional[float] = None,
-        **request_params
+        **request_params,
     ) -> Dict[str, Union["HLSStream", "MuxedHLSStream"]]:
         """
         Parse a variant playlist and return its streams.
@@ -764,7 +769,7 @@ class HLSStream(HTTPStream):
                     force_restart=force_restart,
                     start_offset=start_offset,
                     duration=duration,
-                    **request_params
+                    **request_params,
                 )
             else:
                 stream = cls(
@@ -774,7 +779,7 @@ class HLSStream(HTTPStream):
                     force_restart=force_restart,
                     start_offset=start_offset,
                     duration=duration,
-                    **request_params
+                    **request_params,
                 )
 
             streams[stream_name] = stream

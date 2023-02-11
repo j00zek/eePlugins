@@ -14,6 +14,7 @@ from streamlink_cli.compat import stdout
 from streamlink_cli.constants import PLAYER_ARGS_INPUT_DEFAULT, PLAYER_ARGS_INPUT_FALLBACK, SUPPORTED_PLAYERS
 from streamlink_cli.utils import Formatter
 
+
 if is_win32:
     import msvcrt
 
@@ -55,7 +56,7 @@ class FileOutput(Output):
         self,
         filename: Optional[Path] = None,
         fd: Optional[BinaryIO] = None,
-        record: Optional["FileOutput"] = None
+        record: Optional["FileOutput"] = None,
     ):
         super().__init__()
         self.filename = filename
@@ -88,10 +89,10 @@ class FileOutput(Output):
 class PlayerOutput(Output):
     PLAYER_TERMINATE_TIMEOUT = 10.0
 
-    _re_player_args_input = re.compile("|".join(map(
-        lambda const: re.escape(f"{{{const}}}"),
-        [PLAYER_ARGS_INPUT_DEFAULT, PLAYER_ARGS_INPUT_FALLBACK]
-    )))
+    _re_player_args_input = re.compile("|".join(
+        re.escape(f"{{{const}}}")
+        for const in [PLAYER_ARGS_INPUT_DEFAULT, PLAYER_ARGS_INPUT_FALLBACK]
+    ))
 
     def __init__(self, cmd, args="", filename=None, quiet=True, kill=True,
                  call=False, http=None, namedpipe=None, record=None, title=None):
@@ -169,7 +170,7 @@ class PlayerOutput(Output):
             # vlc
             if self.player_name == "vlc":
                 # see https://wiki.videolan.org/Documentation:Format_String/, allow escaping with \$
-                self.title = self.title.replace("$", "$$").replace(r'\$$', "$")
+                self.title = self.title.replace("$", "$$").replace(r"\$$", "$")
                 extra_args.extend(["--input-title-format", self.title])
 
             # mpv
@@ -183,13 +184,13 @@ class PlayerOutput(Output):
                     # PotPlayer - About - Command Line
                     # You can specify titles for URLs by separating them with a backslash (\) at the end of URLs.
                     # eg. "http://...\title of this url"
-                    self.title = self.title.replace('"', '')
-                    filename = filename[:-1] + '\\' + self.title + filename[-1]
+                    self.title = self.title.replace('"', "")
+                    filename = filename[:-1] + "\\" + self.title + filename[-1]
 
         # format args via the formatter, so that invalid/unknown variables don't raise a KeyError
         argsformatter = Formatter({
             PLAYER_ARGS_INPUT_DEFAULT: lambda: filename,
-            PLAYER_ARGS_INPUT_FALLBACK: lambda: filename
+            PLAYER_ARGS_INPUT_FALLBACK: lambda: filename,
         })
         args = argsformatter.title(self.args)
         cmd = self.cmd

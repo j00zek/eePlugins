@@ -16,6 +16,7 @@ from streamlink.plugin import Plugin, pluginmatcher
 from streamlink.plugin.api import validate
 from streamlink.stream.hls import HLSStream
 
+
 log = logging.getLogger(__name__)
 
 
@@ -56,7 +57,7 @@ class OnePlusOneHLS(HLSStream):
 
             self._url = parsed._replace(
                 netloc=self._first_netloc,
-                path="/".join(list(path_parts))
+                path="/".join(list(path_parts)),
             ).geturl()
         return self._url
 
@@ -111,7 +112,7 @@ class OnePlusOneAPI:
 
 
 @pluginmatcher(re.compile(
-    r"https?://1plus1\.video/(?:\w{2}/)?tvguide/[^/]+/online"
+    r"https?://1plus1\.video/(?:\w{2}/)?tvguide/[^/]+/online",
 ))
 class OnePlusOne(Plugin):
     def _get_streams(self):

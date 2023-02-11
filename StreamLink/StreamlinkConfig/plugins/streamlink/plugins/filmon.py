@@ -18,6 +18,7 @@ from streamlink.plugin.api.http_session import TLSSecLevel1Adapter
 from streamlink.stream.hls import HLSStream, HLSStreamReader, HLSStreamWorker
 from streamlink.stream.http import HTTPStream
 
+
 log = logging.getLogger(__name__)
 
 _StreamData = Tuple[str, str, int]
@@ -103,7 +104,7 @@ class FilmOnAPI:
             "url": validate.url(),
             "watch-timeout": int,
         },
-        validate.union_get("quality", "url", "watch-timeout")
+        validate.union_get("quality", "url", "watch-timeout"),
     )
 
     def __init__(self, session):
@@ -167,7 +168,7 @@ class FilmOnAPI:
 class Filmon(Plugin):
     quality_weights = {
         "high": 720,
-        "low": 480
+        "low": 480,
     }
 
     TIME_CHANNEL = 60 * 60 * 24 * 365

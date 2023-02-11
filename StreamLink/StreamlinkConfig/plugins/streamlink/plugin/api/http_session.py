@@ -72,10 +72,10 @@ class HTTPSession(Session):
     def __init__(self):
         super().__init__()
 
-        self.headers['User-Agent'] = useragents.FIREFOX
+        self.headers["User-Agent"] = useragents.FIREFOX
         self.timeout = 20.0
 
-        self.mount('file://', FileAdapter())
+        self.mount("file://", FileAdapter())
 
     @classmethod
     def determine_json_encoding(cls, sample):
@@ -157,7 +157,7 @@ class HTTPSession(Session):
                     timeout=timeout,
                     proxies=proxies,
                     *args,
-                    **kwargs
+                    **kwargs,
                 )
                 if raise_for_status and res.status_code not in acceptable_status:
                     res.raise_for_status()

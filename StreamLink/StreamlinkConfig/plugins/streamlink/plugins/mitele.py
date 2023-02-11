@@ -14,11 +14,12 @@ from streamlink.stream.hls import HLSStream
 from streamlink.utils.parse import parse_qsd
 from streamlink.utils.url import update_qsd
 
+
 log = logging.getLogger(__name__)
 
 
 @pluginmatcher(re.compile(
-    r"https?://(?:www\.)?mitele\.es/directo/(?P<channel>[\w-]+)"
+    r"https?://(?:www\.)?mitele\.es/directo/(?P<channel>[\w-]+)",
 ))
 class Mitele(Plugin):
     URL_CARONTE = "https://caronte.mediaset.es/delivery/channel/mmc/{channel}/mtweb"

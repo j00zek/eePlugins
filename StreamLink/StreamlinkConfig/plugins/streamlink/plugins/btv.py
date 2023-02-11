@@ -12,11 +12,12 @@ from streamlink.plugin import Plugin, pluginmatcher
 from streamlink.plugin.api import validate
 from streamlink.stream.hls import HLSStream
 
+
 log = logging.getLogger(__name__)
 
 
 @pluginmatcher(re.compile(
-    r"https?://(?:www\.)?btvplus\.bg/live/?"
+    r"https?://(?:www\.)?btvplus\.bg/live/?",
 ))
 class BTV(Plugin):
     URL_API = "https://btvplus.bg/lbin/v3/btvplus/player_config.php"

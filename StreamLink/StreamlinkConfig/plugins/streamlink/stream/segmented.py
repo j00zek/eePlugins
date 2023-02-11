@@ -9,6 +9,7 @@ from typing import Any, Optional
 from streamlink.buffers import RingBuffer
 from streamlink.stream.stream import Stream, StreamIO
 
+
 log = logging.getLogger(__name__)
 
 
@@ -253,5 +254,5 @@ class SegmentedStreamReader(StreamIO):
         return self.buffer.read(
             size,
             block=self.writer.is_alive(),
-            timeout=self.timeout
+            timeout=self.timeout,
         )
