@@ -205,6 +205,10 @@
   </widget>	
  <widget source="global.CurrentTime" render="Label" position="1825,802" size="45,35" font="LCD; 35" halign="left" backgroundColor="black" transparent="1" >
     <convert type="ClockToText">Format:%S</convert>
+  </widget>
+  <widget source="session.CurrentService" render="Pixmap" position="1837,848" zPosition="2" size="20,20" pixmap="BlackHarmony/icons/update.png" alphatest="blend">
+    <convert type="j00zekOPKGupgradeCheck" />
+	<convert type="ConditionalShowHide">Blink</convert>
   </widget> 
     
 	<!-- TunerInfo -->
@@ -234,9 +238,9 @@
   
 <eLabel position="1427,967" size="434,2" backgroundColor="linie" />
 
- <widget source="session.CurrentService" render="j00zekLabel" backgroundColor="background" font="Regular; 25" halign="center"  position="1425,974" size="440,70" transparent="1" zPosition="3">
+ <widget source="session.CurrentService" render="j00zekLabel" backgroundColor="background" font="Regular; 27" halign="center" valign="center" position="1420,970" size="450,77" transparent="1" zPosition="3">
       <convert type="j00zekModServiceName2">UseCFG</convert>
-    </widget>
+    </widget>	
 
   <!--ikony-->
    
@@ -286,10 +290,7 @@
     <convert type="j00zekModServiceInfoEX">SubtitlesAvailable</convert>
       <convert type="ConditionalShowHide" />
     </widget>
- <widget source="session.CurrentService" render="Pixmap" position="1837,848" zPosition="2" size="20,20" pixmap="BlackHarmony/icons/update.png" alphatest="blend">
-    <convert type="j00zekOPKGupgradeCheck" />
-	<convert type="ConditionalShowHide">Blink</convert>
-  </widget>   
+   
   
 </screen>
 </skin>

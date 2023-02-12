@@ -9,12 +9,7 @@
  <widget source="session.CurrentService" render="j00zekLabel" position="40,690" size="1840,100" font="HD_Thin; 85" noWrap="1" backgroundColor="black" transparent="1" halign="left" valign="center" foregroundColor="#66CCCC" >
     <convert type="j00zekModExtraTuner">ServiceNumberName</convert>
    </widget>
- <widget source="session.CurrentService" render="Pixmap" position="1357,805" zPosition="2" size="20,20" pixmap="BlackHarmony/icons/update.png" alphatest="blend">
-    <convert type="j00zekOPKGupgradeCheck" />
-	<convert type="ConditionalShowHide">Blink</convert>
-  </widget> 
-  
- <widget source="session.Event_Now" render="Label" position="450,802" size="117,83" font="Regular; 30" halign="center" valign="center" backgroundColor="black" transparent="1" >
+  <widget source="session.Event_Now" render="Label" position="450,802" size="117,83" font="Regular; 30" halign="center" valign="center" backgroundColor="black" transparent="1" >
       <convert type="EventTime">StartTime</convert>
       <convert type="ClockToText">Default</convert>
     </widget>
@@ -99,6 +94,10 @@
   </widget>	
  <widget source="global.CurrentTime" render="Label" position="1825,802" size="45,35" font="LCD; 35" halign="left" backgroundColor="black" transparent="1" >
     <convert type="ClockToText">Format:%S</convert>
+  </widget>
+  <widget source="session.CurrentService" render="Pixmap" position="1837,848" zPosition="2" size="20,20" pixmap="BlackHarmony/icons/update.png" alphatest="blend">
+    <convert type="j00zekOPKGupgradeCheck" />
+	<convert type="ConditionalShowHide">Blink</convert>
   </widget> 
     
 	<!-- TunerInfo -->
@@ -128,9 +127,9 @@
   
 <eLabel position="1427,967" size="434,2" backgroundColor="linie" />
 
- <widget source="session.CurrentService" render="j00zekLabel" backgroundColor="background" font="Regular; 25" halign="center"  position="1425,974" size="440,70" transparent="1" zPosition="3">
+ <widget source="session.CurrentService" render="j00zekLabel" backgroundColor="background" font="Regular; 27" halign="center" valign="center" position="1420,970" size="450,77" transparent="1" zPosition="3">
       <convert type="j00zekModServiceName2">UseCFG</convert>
-    </widget>	
+    </widget>		
   
      <!--ikony-->
    

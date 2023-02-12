@@ -81,14 +81,59 @@
 		pixmaps="BlackHarmony/skin_user_animButtons/key_blue"
 		pixalter="BlackHarmony/buttons/key_blue.png" />
     <widget backgroundColor="dark_grey" font="Roboto_HD; 24" halign="left" name="key_red" position="80,1020" size="240,27" transparent="1" valign="bottom" zPosition="1" />
-    <widget backgroundColor="dark_grey" font="Roboto_HD; 24" halign="left" name="key_green" position="420,1020" size="240,27" transparent="1" zPosition="1" />
+    <widget backgroundColor="dark_grey" font="Roboto_HD; 24" halign="left" name="key_green" position="420,1007" size="240,54" transparent="1" zPosition="1" />
     <widget backgroundColor="dark_grey" font="Roboto_HD; 24" halign="left" name="key_yellow" position="770,1020" size="240,27" transparent="1" zPosition="1" />
     <widget backgroundColor="dark_grey" font="Roboto_HD; 24" halign="left" name="key_blue" position="1130,1020" size="240,27" transparent="1" zPosition="1" />
 	<ePixmap alphatest="blend" pixmap="BlackHarmony/buttons/menu.png" position="1575,1019" size="60,30" />
     <ePixmap alphatest="blend" pixmap="BlackHarmony/buttons/key_info.png" position="1655,1019" size="60,30" />
     <ePixmap alphatest="blend" pixmap="BlackHarmony/buttons/left.png" position="1735,1019" size="60,30" />
     <ePixmap alphatest="blend" pixmap="BlackHarmony/buttons/right.png" position="1815,1019" size="60,30" />
+	</screen>
 	
-	 
+<!-- EPGSearch -->
+  
+  <parameters>
+  <parameter name="EPGlistText3" value="30,2,1930,40" />
+  </parameters>
+ 
+<screen name="EPGSearch" position="center,center" size="1920,1080" title="EPG Selection" flags="wfNoBorder" backgroundColor="transparent">
+        <ePixmap position="0,0" zPosition="-5" size="1920,1080" pixmap="BlackHarmony/bg_design/emc.png" />
+    <widget source="global.CurrentTime" render="Label" position="75,55" size="100,35" font="Roboto_HD; 28" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="160,55" size="660,40" font="Roboto_HD; 28" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+    <eLabel text="EPG Search" position="1017,55" size="840,35" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1"/>
+    
+	<widget name="list" position="75,153" size="1060,675" itemHeight="75" font="Roboto_HD; 31" scrollbarMode="showOnDemand" enableWrapAround="1" scrollbarWidth="8" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" selectionPixmap="BlackHarmony/menu/sel_1095_75.png" backgroundColor="transpBlack" transparent="1"/>
+
+    <widget render="j00zekModRunningText" source="Event" options="movetype=running,startpoint=0,direction=top,steptime=90,repeat=2,startdelay=6000,wrap" halign="left" font="Roboto_HD; 29" backgroundColor="background" position="1178,150" size="668,700" transparent="1">
+      <convert type="j00zekModEventName">ExtendedDescription</convert>
+    </widget>
+    
+	<widget backgroundColor="black" font="Roboto_HD; 26" foregroundColor="white" position="1210,900" render="Label" size="80,30" source="Event" transparent="1">
+      <convert type="EventTime">StartTime</convert>
+      <convert type="ClockToText"/>
+    </widget>
+    <widget backgroundColor="black" font="Roboto_HD; 26" foregroundColor="white" position="1290,900" render="Label" size="125,30" source="Event" transparent="1">
+      <convert type="EventTime">EndTime</convert>
+      <convert type="ClockToText">Format:- %H:%M</convert>
+    </widget>
+    <widget backgroundColor="background" font="Roboto_HD; 26" foregroundColor="green" halign="right" position="1616,900" render="Label" size="170,30" source="Event" transparent="1">
+      <convert type="EventTime">Remaining</convert>
+      <convert type="RemainingToText">InMinutes</convert>
+    </widget>
+    <widget name="popup" position="75,850" size="1060,110" zPosition="3" font="Roboto_HD; 28" halign="left" valign="center" foregroundColor="light_yellow" backgroundColor="background" transparent="1"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="80,991" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="470,991" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="860,991" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="1250,991" size="35,27" alphatest="blend"/>
+    <widget name="key_red" position="130,990" size="240,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <widget name="key_green" position="520,983" size="240,54" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget name="key_yellow" position="910,990" size="240,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget name="key_blue" position="1300,990" size="240,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <ePixmap position="1670,989" size="60,30" pixmap="BlackHarmony/buttons/key_ok.png" alphatest="blend"/>
+    <ePixmap position="1780,989" size="60,30" pixmap="BlackHarmony/buttons/key_exit.png" alphatest="blend"/>
   </screen>
-</skin>
+  </skin>

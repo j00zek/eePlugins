@@ -1,8 +1,6 @@
-Ładna belka na całość ekranu u góry.
-Zawiera:
+Ładna belka na całość ekranu u góry zawiera:
 - aktualne dane pogodowe
+- wschód i zachód słońca,fazę księżyca
 - pogodę na 3 następne dni
-- wschód i zachód słońca
-- fazę księżyca
-- własne informacje z pliku "BH-UserDailyinfo.txt"
+- informacje z pliku "BH-UserDailyinfo.txt"(należy edytować plik w /etc/enigma2)
 - możliwość wyświetlania własnego zdjęcia na każdy dzień
