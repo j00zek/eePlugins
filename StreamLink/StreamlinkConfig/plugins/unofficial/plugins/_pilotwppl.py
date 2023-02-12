@@ -6,7 +6,8 @@ import re
 from streamlink.plugin import Plugin
 from streamlink.plugin.api import useragents
 #from streamlink.plugin.api.utils import itertags
-from streamlink.stream._hls4wp import HLSStream
+#from streamlink.stream._hls4wp import HLSStream
+from streamlink.stream.hls import HLSStream
 from streamlink.stream.dash import DASHStream
 from streamlink.stream.file import FileStream
 from streamlink.utils import update_scheme
