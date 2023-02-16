@@ -16,6 +16,8 @@ from Plugins.Extensions.IPTVPlayer.libs.gledajfilmDecrypter import gledajfilmDec
 from Plugins.Extensions.IPTVPlayer.libs.crypto.cipher.aes import AES
 from Plugins.Extensions.IPTVPlayer.libs.crypto.cipher.aes_cbc import AES_CBC
 from Plugins.Extensions.IPTVPlayer.libs.crypto.cipher.base import noPadding
+from Plugins.Extensions.IPTVPlayer.libs import pbkdf2
+from Plugins.Extensions.IPTVPlayer.libs import pyaes
 from Plugins.Extensions.IPTVPlayer.libs.youtube_dl.utils import unescapeHTML, clean_html
 from Plugins.Extensions.IPTVPlayer.libs.urlparserhelper import unpackJSPlayerParams, unpackJS, \
                                                                JS_FromCharCode, \
@@ -61,7 +63,7 @@ from xml.etree import cElementTree
 from random import random, randint, randrange, choice as random_choice
 from Plugins.Extensions.IPTVPlayer.p2p3.UrlParse import urlparse, urlunparse, parse_qs
 from binascii import hexlify, unhexlify, a2b_hex
-from hashlib import md5, sha256
+from hashlib import md5, sha256, sha512
 from Components.config import config
 
 from Plugins.Extensions.IPTVPlayer.libs.youtube_dl.extractor.mtv import GametrailersIE
@@ -208,6 +210,7 @@ class urlparser:
                        'cda.pl': self.pp.parserCDA,
                        'cfiles.net': self.pp.parserUPLOAD,
                        'chefti.info': self.pp.parserEXASHARECOM,
+                       'chillx.top': self.pp.parserCHILLXTOP,
                        'clicknupload.link': self.pp.parserUPLOAD,
                        'clicknupload.org': self.pp.parserUPLOAD,
                        'clickopen.win': self.pp.parserCLICKOPENWIN,
@@ -289,6 +292,7 @@ class urlparser:
                        'filenuke.com': self.pp.parserFILENUKE,
                        'fileone.tv': self.pp.parserFILEONETV,
                        'filepup.net': self.pp.parserFILEPUPNET,
+                       'filevids.tk': self.pp.parserCHILLXTOP,
                        'filez.tv': self.pp.parserFILEZTV,
                        'firedrive.com': self.pp.parserFIREDRIVE,
                        'flashcast.pw': self.pp.parseCASTFLASHPW,
@@ -15688,5 +15692,45 @@ class pageParser(CaptchaHelper):
         url = strwithmeta(url, {'Origin': urlparser.getDomain(baseUrl, False), 'Referer': baseUrl})
         if url != '':
             urlTab.extend(getDirectM3U8Playlist(url, checkContent=True, sortWithMaxBitrate=999999999))
+
+        return urlTab
+
+    def parserCHILLXTOP(self, baseUrl):
+        printDBG("parserCHILLXTOP baseUrl[%s]" % baseUrl)
+
+        HTTP_HEADER = self.cm.getDefaultHeader(browser='chrome')
+        referer = baseUrl.meta.get('Referer')
+        if referer:
+            HTTP_HEADER['Referer'] = referer
+        urlParams = {'header': HTTP_HEADER}
+        sts, data = self.cm.getPage(baseUrl, urlParams)
+        if not sts:
+            return []
+        cUrl = self.cm.meta['url']
+
+        edata = self.cm.ph.getSearchGroups(data, '''MasterJS\s*=\s*['"]([^'^"]+?)['"]''')[0]
+        if edata:
+            edata = base64.b64decode(edata)
+            edata = json_loads(edata)
+            key = '\x34\x56\x71\x45\x33\x23\x4e\x37\x7a\x74\x26\x48\x45\x50\x5e\x61'
+            ct = edata.get('ciphertext', False)
+            salt = codecs.decode(edata.get('salt'), 'hex')
+            iv = codecs.decode(edata.get('iv'), 'hex')
+            secret = pbkdf2.PBKDF2(key, salt, 999, sha512).read(32)
+            decryptor = pyaes.Decrypter(pyaes.AESModeOfOperationCBC(secret, iv))
+            data = decryptor.feed(base64.b64decode(ct))
+            data += decryptor.feed()
+
+        url = self.cm.ph.getSearchGroups(data, '''source[^'^"]*?['"]([^'^"]+?)['"]''')[0]
+        urlTab = []
+        sub_tracks = []
+        subData = self.cm.ph.getDataBeetwenMarkers(data, 'previewThumbnails:', '}', False)[1]
+        subData = self.cm.getFullUrl(self.cm.ph.getSearchGroups(subData, '''src:\s?['"]([^'^"]+?)['"]''')[0], cUrl)
+        if (subData.endswith('.srt') or subData.endswith('.vtt')):
+            sub_tracks.append({'title': 'attached', 'url': subData, 'lang': 'unk', 'format': 'srt'})
+        url = urlparser.decorateUrl(url, {'iptv_proto': 'm3u8', 'User-Agent': urlParams['header']['User-Agent'], 'Referer': cUrl, 'Origin': urlparser.getDomain(cUrl, False)})
+#        url = strwithmeta(url, {'Origin': urlparser.getDomain(baseUrl, False), 'Referer': cUrl, 'external_sub_tracks': sub_tracks})
+        if url != '':
+            urlTab.extend(getDirectM3U8Playlist(url, cookieParams={'header': urlParams['header']}))
 
         return urlTab

@@ -3,7 +3,7 @@
 import re
 from Plugins.Extensions.IPTVPlayer.libs.youtube_dl.utils import clean_html as yt_clean_html
 from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printExc
-from Plugins.Extensions.IPTVPlayer.p2p3.manipulateStrings import ensure_str
+from Plugins.Extensions.IPTVPlayer.p2p3.manipulateStrings import ensure_binary, ensure_str
 from Plugins.Extensions.IPTVPlayer.p2p3.pVer import isPY2
 if not isPY2():
     basestring = str
@@ -64,7 +64,21 @@ def search(data, pattern, flags=0, limits=-1):
         reObj = pattern
     if limits == -1:
         limits = reObj.groups
-    match = reObj.search(data)
+    if isPY2():
+        match = reObj.search(data)
+    else: #PY3 compares only data with the same type
+        if type(pattern) == type(data):
+            match = reObj.search(data)
+        elif isinstance(pattern, basestring):
+            match = reObj.search(ensure_str(data))
+        elif isinstance(pattern, bytes):
+            match = reObj.search(ensure_binary(data))
+        else:
+            try: # just blind try
+                match = reObj.search(data)
+            except Exception:
+                printExc('EXCEPTION: unknown types: type(pattern)=%s vs type(data)=%s' % (str(type(pattern)),str(type(data))))
+
     for idx in range(limits):
         try:
             value = match.group(idx + 1)

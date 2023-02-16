@@ -568,7 +568,7 @@ class E2iPlayerBufferingWidget(Screen):
             else:
                 percentage = (100 * localSize) / remoteSize
 
-        self["percentage"].setText(str(percentage))
+        self["percentage"].setText(str(int(percentage)))
         self["icon"].nextFrame()
 
         # check if we start movie player
