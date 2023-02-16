@@ -15723,13 +15723,7 @@ class pageParser(CaptchaHelper):
 
         url = self.cm.ph.getSearchGroups(data, '''source[^'^"]*?['"]([^'^"]+?)['"]''')[0]
         urlTab = []
-        sub_tracks = []
-        subData = self.cm.ph.getDataBeetwenMarkers(data, 'previewThumbnails:', '}', False)[1]
-        subData = self.cm.getFullUrl(self.cm.ph.getSearchGroups(subData, '''src:\s?['"]([^'^"]+?)['"]''')[0], cUrl)
-        if (subData.endswith('.srt') or subData.endswith('.vtt')):
-            sub_tracks.append({'title': 'attached', 'url': subData, 'lang': 'unk', 'format': 'srt'})
         url = urlparser.decorateUrl(url, {'iptv_proto': 'm3u8', 'User-Agent': urlParams['header']['User-Agent'], 'Referer': cUrl, 'Origin': urlparser.getDomain(cUrl, False)})
-#        url = strwithmeta(url, {'Origin': urlparser.getDomain(baseUrl, False), 'Referer': cUrl, 'external_sub_tracks': sub_tracks})
         if url != '':
             urlTab.extend(getDirectM3U8Playlist(url, cookieParams={'header': urlParams['header']}))
 
