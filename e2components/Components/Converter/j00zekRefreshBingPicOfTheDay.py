@@ -35,7 +35,7 @@ class j00zekRefreshBingPicOfTheDay(Converter, object):
     @cached
     def getText(self):
         if config.plugins.j00zekCC.PiPbackground.value == 'n':
-            return ''
+            return '/usr/share/enigma2/BlackHarmony/bg_design/bg_pure_black_1920x1080.png'
         elif config.plugins.j00zekCC.PiPbackground.value == 'b' and os.path.exists(self.BingPic):
             return self.BingPic
         else:
