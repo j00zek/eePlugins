@@ -94,7 +94,7 @@ def buildMlist( FirstAsSelectable = False ):
     Mlist.append(getConfigListEntry(""))
     Mlist.append(getConfigListEntry('\c00289496' + _("---EXPERIMANTAL OPTIONS---")))
     Mlist.append(getConfigListEntry(_("Own icons and anims renderer:"), config.plugins.j00zekCC.iconsANDanims))
-    
+    Mlist.append(getConfigListEntry(_("PiP background::"), config.plugins.j00zekCC.PiPbackground))
     return Mlist
   
 ######################################################################################

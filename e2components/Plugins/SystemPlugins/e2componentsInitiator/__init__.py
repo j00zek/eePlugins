@@ -152,3 +152,4 @@ config.plugins.j00zekCC.ciFormat = ConfigSelection(default = "", choices = [("",
 
 config.plugins.j00zekCC.iconsANDanims = ConfigYesNo(default = False)
 #ConfigText(default = _("none")) #("", _(""))
+config.plugins.j00zekCC.PiPbackground = ConfigSelection(default = "b", choices = [("n", _("no background")), ("b", _("Bing"))])
