@@ -1,0 +1,56 @@
+<skin>
+<screen name="MoviePlayer" position="center,center" size="1920,1080" title="InfoBar" flags="wfNoBorder" backgroundColor="transparent">
+  <ePixmap position="220,850" zPosition="-1" size="1529,213" pixmap="BlackHarmony/bg_design/infobarmovie.png" />
+  <widget source="session.CurrentService" render="j00zekModAudioIcon" path="icons/audio" position="1260,981" size="60,20" zPosition="4" alphatest="blend">
+    <convert type="j00zekModAudioInfo">AudioIcon</convert>
+  </widget>
+  <ePixmap position="1382,981" size="36,20" pixmap="BlackHarmony/icons/ico_format_off.png" zPosition="1" alphatest="blend" />
+  <widget source="session.CurrentService" render="Pixmap" position="1382,981" size="36,20" pixmap="BlackHarmony/icons/ico_format_on.png" zPosition="2" alphatest="blend">
+    <convert type="ServiceInfo">IsWidescreen</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <ePixmap position="1338,981" size="29,20" pixmap="BlackHarmony/icons/ico_hd_off.png" zPosition="1" alphatest="blend" />
+  <widget source="session.CurrentService" render="Pixmap" position="1338,981" size="29,20" pixmap="BlackHarmony/icons/ico_hd_on.png" zPosition="2" alphatest="blend">
+    <convert type="ServiceInfo">VideoWidth</convert>
+    <convert type="ValueRange">721,1980</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget source="session.CurrentService" render="Label" position="285,890" size="1135,40" font="HD_Thin; 32" valign="center" noWrap="1" backgroundColor="black" transparent="1">
+    <convert type="ServiceName">Name</convert>
+  </widget>
+  <widget source="session.RecordState" render="Pixmap" position="1226,981" size="20,20" zPosition="2" pixmap="BlackHarmony/icons/ico_rec_on2.png" alphatest="blend">
+    <convert type="ConditionalShowHide">Blink</convert>
+  </widget>
+  <ePixmap position="1226,981" size="20,20" zPosition="1" pixmap="BlackHarmony/icons/ico_rec_off2.png" alphatest="blend" />
+  <widget backgroundColor="black" font="Roboto_HD; 26" halign="center" position="635,978" render="Label" size="380,30" source="global.CurrentTime" transparent="1" valign="center">
+    <convert type="ClockToText">Format: %a, %d.%m.%Y  %H:%M:%S</convert>
+  </widget>
+  <widget source="session.CurrentService" render="Progress" position="285,953" zPosition="1" size="1135,6" pixmap="BlackHarmony/gfx/bar_ber.png" transparent="1">
+    <convert type="ServicePosition">Position</convert>
+  </widget>
+  <widget source="session.CurrentService" render="j00zekModPositionGauge" position="285,953" zPosition="2" size="1135,6" transparent="1">
+    <convert type="ServicePosition">Gauge</convert>
+  </widget>
+  <widget source="session.CurrentService" render="Label" position="285,978" size="110,30" font="Roboto_HD; 26" halign="left" backgroundColor="black" transparent="1" foregroundColor="yellow">
+    <convert type="ServicePosition">Position</convert>
+  </widget>
+  <widget source="session.CurrentService" render="Label" position="505,978" size="110,30" font="Roboto_HD; 26" halign="right" backgroundColor="black" transparent="1" foregroundColor="green">
+    <convert type="ServicePosition">Remaining,Negate</convert>
+  </widget>
+  <widget source="session.CurrentService" render="Label" font="Roboto_HD; 26" position="1027,978" size="170,30" halign="left" backgroundColor="black" transparent="1" foregroundColor="light_yellow">
+    <convert type="j00zekVideoResolution">VideoResolution</convert>
+  </widget>
+  <widget source="session.CurrentService" render="Label" position="395,978" size="110,30" font="Roboto_HD; 26" halign="center" backgroundColor="black" transparent="1">
+    <convert type="ServicePosition">Length</convert>
+  </widget>
+  <widget source="session.CurrentService" render="j00zekModCover" position="1482,806" size="190,255" zPosition="3" alphatest="blend" />
+  
+  <eLabel backgroundColor="black" position="1473,796" size="210,275" zPosition="1" />
+  <eLabel text="NO COVER" position="1478,898" size="200,100" font="Cyfry; 60" backgroundColor="black" halign="center" transparent="1" zPosition="2" valign="center" foregroundColor="linie" />
+
+<eLabel name="new eLabel" position="1680,797" size="1,272" foregroundColor="linie" backgroundColor="linie" zPosition="2" />
+<eLabel name="new eLabel" position="1474,1068" size="207,1" foregroundColor="linie" backgroundColor="linie" zPosition="2" />
+<eLabel name="new eLabel" position="1474,798" size="1,270" foregroundColor="linie" backgroundColor="linie" zPosition="2" />
+<eLabel name="new eLabel" position="1474,797" size="207,1" foregroundColor="linie" backgroundColor="linie" zPosition="2" />
+</screen>
+  </skin>

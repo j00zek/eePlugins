@@ -1,11 +1,14 @@
 <skin>
-<screen name="MovieSelection" position="0,0" size="1920,1080" title="" backgroundColor="transparent" flags="wfNoBorder">
-    <ePixmap position="0,-1" zPosition="-10" size="1920,1080" pixmap="BlackHarmony/bg_design/mainbg1920x1080x24.png" transparent="1" />
+  <screen name="MovieSelection" position="0,0" size="1920,1080" title="" backgroundColor="transparent" flags="wfNoBorder">
+      <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" size="1920,1080" zPosition="-15" alphatest="blend">
+    <convert type="j00zekRefreshBingPicOfTheDay"></convert>
+  </widget>
+  <ePixmap position="0,-1" zPosition="-10" size="1920,1080" pixmap="BlackHarmony/bg_design/mainbg1920x1080x24.png" transparent="1" alphatest="blend" />
     <widget source="global.CurrentTime" render="Label" position="920,50" size="920,50" font="Regular;42" valign="center" halign="center" backgroundColor="transpBlack" transparent="1">
       <convert type="ClockToText">Format:%A  %e  %B  %Y   %H:%M </convert>
     </widget>
 
-<ePixmap position="576,130" size="10,600" zPosition="4" pixmap="BlackHarmony/gfx/linia_IB_md.png" alphatest="blend" />
+  <ePixmap position="576,130" size="10,600" zPosition="4" pixmap="BlackHarmony/gfx/linia_IB_md.png" alphatest="blend" />
 
 
 
@@ -31,14 +34,14 @@
       <convert type="ClockToText">Format:%H:%M</convert>
     </widget>
 
-<eLabel backgroundColor="cyan" position="140,517" size="305,10" transparent="0" zPosition="1" foregroundColor="black" />
+  <eLabel backgroundColor="cyan" position="140,517" size="305,10" transparent="0" zPosition="1" foregroundColor="black" />
 
-<eLabel position="580,140" size="1320,2" backgroundColor="foreground" foregroundColor="foreground" name="linia extra2" />
+  <eLabel position="580,140" size="1320,2" backgroundColor="foreground" foregroundColor="foreground" name="linia extra2" />
 
         <widget name="list" position="582,155" size="1320,585" scrollbarMode="showNever" selectionPixmap="BlackHarmony/menu/sel_1340_45.png" transparent="1" />
     <widget source="Service" render="Label" position="220,770" size="480,34" font="Regular; 28" halign="center" backgroundColor="black" transparent="1" foregroundColor="green">
   <convert type="MovieInfo">RecordServiceName</convert>
-</widget>
+  </widget>
     <widget source="Service" render="Label" position="24,620" size="546,114" font="Regular; 32" backgroundColor="black" valign="center" halign="center" transparent="1" foregroundColor="lemon">
       <convert type="j00zekModEventName">Name</convert>
     </widget>

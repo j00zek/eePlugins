@@ -1,9 +1,12 @@
 <screen name="ChannelSelection" position="0,0" size="1920,1080" title=" " flags="wfNoBorder" backgroundColor="transparent">
-  <ePixmap position="0,0" zPosition="-7" size="1920,1080" pixmap="BlackHarmony/bg_design/bg_black-l_1920x1080.png" />
+  <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" size="1920,1080" zPosition="-15" alphatest="blend">
+    <convert type="j00zekRefreshBingPicOfTheDay"></convert>
+  </widget>
+  <ePixmap position="0,0" zPosition="-7" size="1920,1080" pixmap="BlackHarmony/bg_design/bg_black-l_1920x1080.png" alphatest="blend" />
   <widget source="session.VideoPicture" render="Pig" position="57,74" size="530,301" backgroundColor="transparent" />
-<widget alphatest="blend" position="57,274" render="j00zekPicons" picontype="picon" size="166,100" source="session.CurrentService" transparent="1" zPosition="4">
-  <convert type="ServiceName">Reference</convert>
-</widget>
+  <widget alphatest="blend" position="57,274" render="j00zekPicons" picontype="picon" size="166,100" source="session.CurrentService" transparent="1" zPosition="4">
+    <convert type="ServiceName">Reference</convert>
+  </widget>
   <widget source="global.CurrentTime" render="Label" position="0,0" size="172,66" font="RegularLight; 33" foregroundColor="white" valign="top" halign="left" backgroundColor="black" transparent="1">
     <convert type="ClockToText">Default</convert>
   </widget>

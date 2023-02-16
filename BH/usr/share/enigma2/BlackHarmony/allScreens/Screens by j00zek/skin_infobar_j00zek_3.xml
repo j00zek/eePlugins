@@ -1,5 +1,5 @@
 <screen backgroundColor="transparent" flags="wfNoBorder" name="InfoBar" position="0,0" size="1920,1080" title="InfoBar">
-    <ePixmap pixmap="BlackHarmony/bg_design/j00zekInfobar1800x196.png" position="60,850" size="1800,196" zPosition="-10" />
+    <ePixmap pixmap="BlackHarmony/bg_design/infobarTransparent1800x196.png" position="60,850" size="1800,196" zPosition="-10" />
     <!-- Pikona -->
     <widget alphatest="blend" position="90,880" render="j00zekPicons" picontype="picon" size="220,132" source="session.CurrentService" transparent="1" zPosition="4">
         <convert type="ServiceName">Reference</convert>

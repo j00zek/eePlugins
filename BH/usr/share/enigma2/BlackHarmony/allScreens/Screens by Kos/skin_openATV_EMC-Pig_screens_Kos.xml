@@ -1,5 +1,8 @@
 <skin>
   <screen name="MoviePlayer" position="center,center" size="1920,1080" title="InfoBar" flags="wfNoBorder" backgroundColor="transparent">
+  <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" size="1920,1080" zPosition="-15" alphatest="blend">
+    <convert type="j00zekRefreshBingPicOfTheDay"></convert>
+  </widget>
     <ePixmap position="220,850" zPosition="-1" size="1529,213" pixmap="BlackHarmony/bg_design/infobarmovie.png"/>
     <widget source="session.CurrentService" render="j00zekModAudioIcon" path="BlackHarmony/icons/audio" position="1260,981" size="60,20" zPosition="4" alphatest="blend">
       <convert type="VAudioInfo">AudioIcon</convert>

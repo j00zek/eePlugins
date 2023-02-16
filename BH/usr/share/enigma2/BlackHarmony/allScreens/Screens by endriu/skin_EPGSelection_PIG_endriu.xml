@@ -1,10 +1,13 @@
 <skin>
    <screen name="EPGSelection" backgroundColor="transparent" flags="wfNoBorder" position="center,center" size="1920,1080" title="EPG Selection">
-    <ePixmap pixmap="BlackHarmony/bg_design/EPGPig.png" position="0,1" size="1920,1080" zPosition="-7" />
+    <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" size="1920,1080" zPosition="-15" alphatest="blend">
+      <convert type="j00zekRefreshBingPicOfTheDay"></convert>
+    </widget>
+    <ePixmap pixmap="BlackHarmony/bg_design/EPGPig.png" position="0,1" size="1920,1080" zPosition="-7" alphatest="blend" />
   
   <!--data godzina tytuł-->
   
-  <widget source="global.CurrentTime" render="Label" position="45,30" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+    <widget source="global.CurrentTime" render="Label" position="45,30" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
     <widget source="global.CurrentTime" render="Label" position="140,30" size="660,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">

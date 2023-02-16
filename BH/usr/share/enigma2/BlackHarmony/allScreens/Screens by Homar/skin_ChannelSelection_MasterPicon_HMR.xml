@@ -1,15 +1,18 @@
 <skin>
    <screen name="ChannelSelection" position="center,center" size="1920,1080" title="Channel Selection" flags="wfNoBorder" backgroundColor="transparent">
-    <ePixmap position="0,1" zPosition="-7" size="1920,1080" pixmap="BlackHarmony/bg_design/cs_full.png" />
+    <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" size="1920,1080" zPosition="-15" alphatest="blend">
+      <convert type="j00zekRefreshBingPicOfTheDay"></convert>
+    </widget>
+    <ePixmap position="0,1" zPosition="-7" size="1920,1080" pixmap="BlackHarmony/bg_design/cs_full.png" alphatest="blend" />
     <widget source="global.CurrentTime" render="Label" position="1594,162" size="185,64" font="Roboto_HD;54" halign="center" backgroundColor="black" transparent="1">
-  <convert type="ClockToText">Default</convert>
-</widget>
+      <convert type="ClockToText">Default</convert>
+    </widget>
     <widget source="global.CurrentTime" render="Label" position="1513,226" size="350,38" font="Roboto_HD; 32" foregroundColor="lemon" halign="center" backgroundColor="black" transparent="1">
-  <convert type="ClockToText">Format:%A </convert>
-</widget>
+      <convert type="ClockToText">Format:%A </convert>
+    </widget>
     <widget source="global.CurrentTime" render="Label" position="1513,270" size="350,38" font="Roboto_HD; 32" foregroundColor="lemon" halign="center" backgroundColor="black" transparent="1">
-  <convert type="ClockToText">Format:%d.%m.%Y</convert>
-</widget>
+      <convert type="ClockToText">Format:%d.%m.%Y</convert>
+    </widget>
     
     <widget name="list" position="57,180" size="675,780" serviceItemHeight="65" scrollbarMode="showNever" selectionPixmap="BlackHarmony/menu/sel_675_80.png" enableWrapAround="1" colorServiceDescription="light_yellow" colorServiceDescriptionSelected="lemon" colorEventProgressbarBorder="dark_grey" colorEventProgressbarBorderSelected="dark_grey" picServiceEventProgressbar="BlackHarmony/gfx/progcl.png" foregroundColorServiceNotAvail="#777777" serviceNumberFont="Roboto_HD;30" serviceNameFont="Roboto_HD;30" serviceInfoFont="Roboto_HD;27" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" transparent="0" />
     <widget font="Roboto_HD; 26" position="1173,940" render="Label" size="90,30" source="ServiceEvent" transparent="1" zPosition="2" halign="left" backgroundColor="black" foregroundColor="green">
@@ -31,7 +34,7 @@
       <convert type="EventTime">Progress</convert>
     </widget>
 
-<eLabel backgroundColor="cyan" position="941,953" size="218,4" transparent="0" zPosition="2" foregroundColor="black" />
+    <eLabel backgroundColor="cyan" position="941,953" size="218,4" transparent="0" zPosition="2" foregroundColor="black" />
     <widget source="ServiceEvent" render="Label" position="769,530" size="480,70" font="HD_Thin; 30" backgroundColor="black" transparent="1" halign="center" foregroundColor="light_yellow">
       <convert type="j00zekModEventName">Name</convert>
     </widget>

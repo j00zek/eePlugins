@@ -49,6 +49,7 @@
   </colors>
   <windowstyle type="skinned" id="0">
     <title offset="33,22" font="Roboto_HD;26"/>
+    <configList entryFont="Roboto_HD;22" valueFont="Roboto_HD;22" /> <!-- dodano 2023-02-19 -->
     <color name="Background" color="background"/>
     <color name="LabelForeground" color="white"/>
     <color name="ListboxBackground" color="background"/>

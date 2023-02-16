@@ -1,6 +1,9 @@
 <skin>
   <screen name="EMCMediaCenter" position="center,center" size="1920,1080" title=" " flags="wfNoBorder" backgroundColor="transparent">
-    <ePixmap position="220,850" zPosition="-1" size="1529,213" pixmap="BlackHarmony/bg_design/infobarmovie.png" />
+    <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" size="1920,1080" zPosition="-15" alphatest="blend">
+      <convert type="j00zekRefreshBingPicOfTheDay"></convert>
+    </widget>
+    <ePixmap position="220,850" zPosition="-1" size="1529,213" pixmap="BlackHarmony/bg_design/infobarmovie.png" alphatest="blend" />
     <ePixmap position="1261,981" size="57,20" pixmap="BlackHarmony/icons/ico_dolby_off.png" zPosition="1" alphatest="blend" />
     <widget source="session.CurrentService" render="Pixmap" position="1261,981" size="57,20" pixmap="BlackHarmony/icons/ico_dolby_on.png" zPosition="2" alphatest="blend">
       <convert type="ServiceInfo">IsMultichannel</convert>

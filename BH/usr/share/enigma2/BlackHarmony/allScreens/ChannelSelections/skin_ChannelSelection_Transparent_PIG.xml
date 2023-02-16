@@ -1,6 +1,9 @@
 <skin>
 <screen name="ChannelSelection" position="center,center" size="1920,1080" title="Channel Selection" flags="wfNoBorder" backgroundColor="transparent">
-  <ePixmap position="0,1" zPosition="-7" size="1920,1080" pixmap="BlackHarmony/bg_design/cs_xpicon_pig.png" />
+  <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" size="1920,1080" zPosition="-10" alphatest="blend">
+    <convert type="j00zekRefreshBingPicOfTheDay"></convert>
+  </widget>
+  <ePixmap position="0,1" zPosition="-7" size="1920,1080" pixmap="BlackHarmony/bg_design/cs_xpicon_pig.png" alphatest="blend" />
   <widget source="global.CurrentTime" render="Label" position="50,50" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
     <convert type="ClockToText">Default</convert>
   </widget>

@@ -88,7 +88,10 @@
   <eLabel text="OpenATV" position="722,43" size="420,88" font="Replacement; 65" halign="center" backgroundColor="dark_grey" transparent="1" foregroundColor="lemon" />
 </screen>
 <screen name="SoftwarePanel" position="center,center" size="1980,1080" backgroundColor="transparent" flags="wfNoBorder">
-  <ePixmap position="-5,center" zPosition="-7" size="1922,1080" pixmap="BlackHarmony/bg_design/cool.png" />
+    <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" size="1920,1080" zPosition="-15" alphatest="blend">
+      <convert type="j00zekRefreshBingPicOfTheDay"></convert>
+    </widget>
+  <ePixmap position="-5,center" zPosition="-7" size="1922,1080" pixmap="BlackHarmony/bg_design/cool.png"  alphatest="blend" />
   <eLabel text="Aktualizacja Online OpenATV" position="1114,68" size="747,43" font="Regular; 27" halign="right" backgroundColor="black" transparent="1" />
   <eLabel text="OpenATV" position="326,825" size="420,88" font="Replacement; 65" halign="center" backgroundColor="dark_grey" transparent="1" foregroundColor="lemon" />
   <widget source="session.VideoPicture" render="Pig" position="104,258" size="891,518" backgroundColor="transparent" zPosition="1" />

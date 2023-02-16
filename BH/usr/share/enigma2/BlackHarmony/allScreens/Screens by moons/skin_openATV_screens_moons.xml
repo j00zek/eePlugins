@@ -172,7 +172,10 @@
     <ePixmap position="1720,999" size="60,30" pixmap="BlackHarmony/buttons/key_info.png" alphatest="blend" />
   </screen>
   <screen name="GraphicalEPGPIG" position="center,center" size="1920,1080" title="Electronic Program Guide" flags="wfNoBorder" backgroundColor="transparent">
-    <ePixmap position="0,1" zPosition="-7" size="1920,1080" pixmap="BlackHarmony/bg_design/cool.png" />
+    <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" size="1920,1080" zPosition="-15" alphatest="blend">
+      <convert type="j00zekRefreshBingPicOfTheDay"></convert>
+    </widget>
+    <ePixmap position="0,1" zPosition="-7" size="1920,1080" pixmap="BlackHarmony/bg_design/cool.png" alphatest="blend" />
     <widget source="global.CurrentTime" render="Label" position="75,55" size="80,35" font="Roboto_HD;27" backgroundColor="black" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
@@ -649,7 +652,10 @@ self.instance.move(ePoint(int(deskwidth - newwidth)/2,int(deskheight - newheight
     </widget>
   </screen>
   <screen name="SoftwarePanel" position="center,center" size="1922,1080" backgroundColor="transparent" flags="wfNoBorder">
-    <ePixmap position="0,0" zPosition="-7" size="1922,1080" pixmap="BlackHarmony/bg_design/cool.png" />
+    <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" size="1920,1080" zPosition="-15" alphatest="blend">
+      <convert type="j00zekRefreshBingPicOfTheDay"></convert>
+    </widget>
+    <ePixmap position="0,0" zPosition="-7" size="1922,1080" pixmap="BlackHarmony/bg_design/cool.png" alphatest="blend" />
     <widget source="Title" render="Label" position="1114,68" size="747,43" font="Regular; 27" halign="right" backgroundColor="black" transparent="1" />
     <eLabel text="OpenATV" position="326,825" size="420,88" font="Replacement; 65" halign="center" backgroundColor="dark_grey" transparent="1" />
     <ePixmap pixmap="BlackHarmony/gfx/linia_IB_md.png" position="1041,170" size="1,650" alphatest="blend" />

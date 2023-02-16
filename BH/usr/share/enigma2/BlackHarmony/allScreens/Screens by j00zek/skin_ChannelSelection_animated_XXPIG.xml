@@ -1,5 +1,8 @@
 <screen name="ChannelSelection" position="50,27" size="1920,1080" title="Channel Selection" flags="wfNoBorder" backgroundColor="transparent">
-    <ePixmap position="0,0" size="1920,1080" zPosition="-10" pixmap="BlackHarmony/bg_design/j00zekCListBack1920x1080_bez_ramki.png" />
+  <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" size="1920,1080" zPosition="-15" alphatest="blend">
+    <convert type="j00zekRefreshBingPicOfTheDay"></convert>
+  </widget>
+    <ePixmap position="0,0" size="1920,1080" zPosition="-10" pixmap="BlackHarmony/bg_design/j00zekCListBack1920x1080_bez_ramki.png" alphatest="blend" />
     <!--PIG-->
     <eLabel position="980,10" size="835,469" zPosition="3" backgroundColor="transparent" /> 
     <widget source="session.VideoPicture" render="Pig" position="980,10" zPosition="3" size="835,469" backgroundColor="transparent" /> 

@@ -2,9 +2,12 @@
    <screen name="SecondInfoBar" backgroundColor="transparent" flags="wfNoBorder"  position="center,center" size="1920,1080" >
     <ePixmap pixmap="BlackHarmony/bg_design/EPGPig.png" position="0,0" size="1920,1080" zPosition="-7" />
     
-	<eLabel backgroundColor="linie"  position="58,155" size="1804,2" zPosition="1" />
+	<eLabel backgroundColor="linie"  position="205,165" size="600,1" zPosition="1" />
+	<eLabel backgroundColor="linie"  position="1140,165" size="600,1" zPosition="1" />
+	<eLabel backgroundColor="linie"  position="108,200" size="800,1" zPosition="1" />
+	<eLabel backgroundColor="linie"  position="1020,200" size="800,1" zPosition="1" />
 	<eLabel backgroundColor="linie"  position="58,560" size="1804,2" zPosition="1" />
- 	<eLabel backgroundColor="linie"  position="958,188" size="2,340" zPosition="1" />
+ 	<eLabel backgroundColor="linie"  position="958,110" size="2,437" zPosition="1" />
 		 
 		 <!--info teraz-->
 	 
@@ -30,11 +33,18 @@
     <convert type="EventTime">Remaining</convert>
     <convert type="RemainingToText">InMinutes</convert>
      </widget>
-  <widget backgroundColor="background" font="Regular; 33" foregroundColor="#66cc99" position="58,106" render="j00zekLabel" size="880,45" source="session.Event_Now" transparent="1">
+  <widget source="session.Event_Now" render="j00zekLabel" backgroundColor="background" foregroundColor="#66cc99" font="Regular; 32" halign="center" valign="center" position="55,104" size="890,60" transparent="1">
     <convert type="j00zekModEventName">Name</convert>
   </widget>
+  
+  <widget source="session.Event_Now" render="j00zekLabel" position="82,168" size="840,32" transparent="1" zPosition="1" font="Regular; 28" halign="left" valign="center" foregroundColor="green" backgroundColor="black" >
+    <convert type="j00zekModEventName">Genre</convert>
+    </widget>
+  <widget source="session.Event_Now" render="j00zekLabel" position="82,168" size="840,32" transparent="1" zPosition="1" font="Regular; 28" halign="right" valign="center" foregroundColor="light_red" backgroundColor="black" >
+    <convert type="j00zekModEventName">Rating</convert>
+    </widget>
 
-    <widget source="session.Event_Now" render="j00zekModRunningText" backgroundColor="transpBlack" font="Regular;35" options="movetype=running,startpoint=0,direction=top,steptime=100,repeat=2,startdelay=11000,wrap" position="58,170"  size="890,376" transparent="2">
+    <widget source="session.Event_Now" render="j00zekModRunningText" backgroundColor="transpBlack" font="Regular;32" options="movetype=running,startpoint=0,direction=top,steptime=100,repeat=2,startdelay=11000,wrap" position="58,215"  size="885,340" transparent="2">
       <convert type="j00zekModEventName">ExtendedDescription</convert>
     </widget>
   
@@ -55,11 +65,18 @@
     <convert type="EventTime">Remaining</convert>
     <convert type="RemainingToText">InMinutes</convert>
   </widget>
-  <widget backgroundColor="black" font="Regular; 33" foregroundColor="yellow" position="980,106" render="j00zekLabel" size="880,45" source="session.Event_Next" transparent="1">
+  <widget source="session.Event_Next" render="j00zekLabel" backgroundColor="black" foregroundColor="yellow" font="Regular; 32" position="980,104" size="890,60" halign="center" valign="center" transparent="1">
     <convert type="j00zekModEventName">Name</convert>
   </widget>
+  
+  <widget source="session.Event_Next" render="j00zekLabel" position="1004,168" size="840,32" transparent="1" zPosition="1" font="Regular; 28" halign="left" valign="center" foregroundColor="green" backgroundColor="black" >
+    <convert type="j00zekModEventName">Genre</convert>
+    </widget>
+  <widget source="session.Event_Next" render="j00zekLabel" position="1004,168" size="840,32" transparent="1" zPosition="1" font="Regular; 28" halign="right" valign="center" foregroundColor="light_red" backgroundColor="black" >
+    <convert type="j00zekModEventName">Rating</convert>
+    </widget>
 
-     <widget source="session.Event_Next" render="j00zekModRunningText" backgroundColor="transpBlack" font="Regular;35" options="movetype=running,startpoint=0,direction=top,steptime=100,repeat=2,startdelay=11000,wrap" position="980,170"  size="890,376" transparent="2">
+     <widget source="session.Event_Next" render="j00zekModRunningText" backgroundColor="transpBlack" font="Regular;32" options="movetype=running,startpoint=0,direction=top,steptime=100,repeat=2,startdelay=11000,wrap" position="980,215"  size="890,340" transparent="2">
       <convert type="j00zekModEventName">ExtendedDescription</convert>
     </widget> 
 	 

@@ -1,10 +1,13 @@
 <skin>
    <screen name="ChannelSelection" position="center,center" size="1920,1080" title="Channel Selection" flags="wfNoBorder" backgroundColor="transparent">
-    <ePixmap position="0,1" zPosition="-7" size="1920,1080" pixmap="BlackHarmony/bg_design/channel_4.png" />
-<widget source="session.VideoPicture" render="Pig" position="1106,150" zPosition="3" size="744,508" backgroundColor="#ff000000" transparent="0">
-    <convert type="ConfigEntryTest"></convert>
-    <convert type="ConditionalShowHide" />
-  </widget>
+    <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" size="1920,1080" zPosition="-15" alphatest="blend">
+      <convert type="j00zekRefreshBingPicOfTheDay"></convert>
+    </widget>
+    <ePixmap position="0,1" zPosition="-7" size="1920,1080" pixmap="BlackHarmony/bg_design/EPGPig.png" alphatest="blend" />
+    <widget source="session.VideoPicture" render="Pig" position="1106,150" zPosition="3" size="744,508" backgroundColor="#ff000000" transparent="0">
+      <convert type="ConfigEntryTest"></convert>
+      <convert type="ConditionalShowHide" />
+    </widget>
 	  <ePixmap position="1092,105" zPosition="4" size="762,600" pixmap="BlackHarmony/bg_design/ramka760x460.png" alphatest="on" />
     <widget source="global.CurrentTime" render="Label" position="75,35" size="100,35" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
       <convert type="ClockToText">Default</convert>

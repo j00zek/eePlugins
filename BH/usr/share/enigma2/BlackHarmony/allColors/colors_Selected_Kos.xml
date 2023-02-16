@@ -38,16 +38,17 @@
   </colors>
   <windowstyle type="skinned" id="0">
     <title offset="33,22" font="Roboto_HD;26"/>
+    <configList entryFont="Roboto_HD;22" valueFont="Roboto_HD;22" /> <!-- dodano 2023-02-19 -->
     <color name="Background" color="background"/>
-	<color name="LabelForeground" color="white"/>
+    <color name="LabelForeground" color="white"/>
     <color name="ListboxBackground" color="background"/>
-	<color name="ListboxForeground" color="white"/>
-	<color name="ListboxSelectedBackground" color="#00191919"/>
-	<color name="ListboxSelectedForeground" color="#00a2c300"/> 
-	<color name="ListboxMarkedBackground" color="#25191919"/>
-	<color name="ListboxMarkedForeground" color="#FFFFFF"/>
-	<color name="ListboxMarkedAndSelectedBackground" color="black"/>
-	<color name="ListboxMarkedAndSelectedForeground" color="orange"/>
+    <color name="ListboxForeground" color="white"/>
+    <color name="ListboxSelectedBackground" color="#00191919"/>
+    <color name="ListboxSelectedForeground" color="#00a2c300"/> 
+    <color name="ListboxMarkedBackground" color="#25191919"/>
+    <color name="ListboxMarkedForeground" color="#FFFFFF"/>
+    <color name="ListboxMarkedAndSelectedBackground" color="black"/>
+    <color name="ListboxMarkedAndSelectedForeground" color="orange"/>
     <color name="WindowTitleForeground" color="foreground"/>
     <color name="WindowTitleBackground" color="background"/>
     <borderset name="bsWindow">

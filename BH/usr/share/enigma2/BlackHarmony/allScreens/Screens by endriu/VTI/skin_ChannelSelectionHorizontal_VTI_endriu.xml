@@ -13,7 +13,10 @@
    </parameters>
 
 <screen name="ChannelSelectionHorizontal" position="center,center" size="1920,1080" title="Channel Selection" flags="wfNoBorder" backgroundColor="transparent">
-    <ePixmap position="0,1" zPosition="-7" size="1920,1080" pixmap="BlackHarmony/bg_design/EPGPig.png" />
+  <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" size="1920,1080" zPosition="-15" alphatest="blend">
+    <convert type="j00zekRefreshBingPicOfTheDay"></convert>
+  </widget>
+    <ePixmap position="0,1" zPosition="-7" size="1920,1080" pixmap="BlackHarmony/bg_design/EPGPig.png" alphatest="blend" />
 	
  <!--nazwa bukietu i programu-->
   
