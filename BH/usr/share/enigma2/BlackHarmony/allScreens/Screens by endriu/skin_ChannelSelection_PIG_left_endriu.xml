@@ -1,9 +1,9 @@
 <skin>
    <screen backgroundColor="transparent" flags="wfNoBorder" name="ChannelSelection" position="center,center" size="1920,1080" title="Channel Selection">
-    <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" size="1920,1080" zPosition="-15" alphatest="blend">
+    <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" size="1920,1080" zPosition="-10" alphatest="blend">
       <convert type="j00zekRefreshBingPicOfTheDay"></convert>
     </widget>
-    <ePixmap pixmap="BlackHarmony/bg_design/EPGPig.png" position="0,1" size="1920,1080" zPosition="-7" alphatest="blend" />
+   <ePixmap pixmap="BlackHarmony/bg_design/EPGPig.png" position="0,0" size="1920,1080" zPosition="-7" alphatest="blend" />
   
 	 <!--nazwa programu, bukietu-->
   
@@ -25,13 +25,13 @@
     <convert type="ConfigEntryTest"></convert>
     <convert type="ConditionalShowHide" />
     </widget>
-	<widget alphatest="blend" position="66,464" render="j00zekPicons" picontype="picon" size="100,60" source="session.CurrentService" transparent="1" zPosition="4">
+	<widget alphatest="blend" position="66,464" render="j00zekPicons" picontype="picon" size="100,60" source="ServiceEvent" transparent="1" zPosition="4">
   <convert type="ServiceName">Reference</convert>
 </widget>
 	
 		<!--Aktualne wydarzenie po kolei od gory-->
 	
-	<widget backgroundColor="transpBlack" font="Regular;30" foregroundColor="blue" halign="center" position="50,540" render="j00zekModTypeLabel" size="725,40" source="ServiceEvent" transparent="1" zPosition="5">
+	<widget backgroundColor="transpBlack" font="Regular;32" foregroundColor="blue" halign="center" position="50,540" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=90,repeat=99,startdelay=2000" size="725,40" source="ServiceEvent" transparent="1" zPosition="5">
 			<convert type="j00zekModEventName">Name</convert>
 		</widget>	
 	<widget backgroundColor="background" font="Roboto_HD; 26" position="65,590" render="Label" size="100,35" source="ServiceEvent" transparent="1" zPosition="5">
@@ -53,8 +53,15 @@
       <convert type="EventTime">Remaining</convert>
       <convert type="RemainingToText">NoSeconds</convert>
     </widget>
-    <eLabel backgroundColor="linie" position="90,630" size="665,1" />
-   <widget backgroundColor="background" font="Roboto_HD; 30" halign="left" options="movetype=running,startpoint=0,direction=top,steptime=90,repeat=4,startdelay=6000,wrap" position="60,640" render="j00zekModRunningText" size="725,240" source="ServiceEvent" transparent="1">
+	<eLabel backgroundColor="linie" position="90,630" size="665,1" />
+	<widget source="ServiceEvent" render="j00zekLabel" position="57,635" size="620,30" transparent="1" zPosition="1" font="Regular; 28" halign="left" valign="center" foregroundColor="green" backgroundColor="black" >
+    <convert type="j00zekModEventName">Genre</convert>
+    </widget>
+  <widget source="ServiceEvent" render="j00zekLabel" position="57,635" size="735,30" transparent="1" zPosition="1" font="Regular; 28" halign="right" valign="center" foregroundColor="light_red" backgroundColor="black" >
+    <convert type="j00zekModEventName">Rating</convert>
+    </widget>
+    
+   <widget backgroundColor="background" font="Roboto_HD; 30" halign="left" options="movetype=running,startpoint=0,direction=top,steptime=90,repeat=4,startdelay=6000,wrap" position="60,675" render="j00zekModRunningText" size="725,210" source="ServiceEvent" transparent="1">
       <convert type="j00zekModEventName">ExtendedDescription</convert>
     </widget>
 		
@@ -69,7 +76,7 @@
 	
 	<eLabel backgroundColor="linie" position="804,123" size="1,844" />
 	
-	<widget name="list" position="805,125" size="1060,840" colorEventProgressbarBorder="border" colorEventProgressbarBorderSelected="border" colorServiceDescription="pastel" colorServiceDescriptionSelected="lemon" enableWrapAround="1" foregroundColorSelected="#66CCCC" foregroundColorServiceNotAvail="#777777"  picServiceEventProgressbar="BlackHarmony/gfx/progcl_mario.png" scrollbarWidth="6" scrollbarMode="showOnDemand" scrollbarSliderBorderColor="#3b3e3f" scrollbarSliderForegroundColor="#e6e6e6" selectionPixmap="BlackHarmony/menu/sel_1060_60.png" serviceInfoFont="Roboto_HD;35" serviceItemHeight="53" serviceNameFont="Roboto_HD;35" serviceNumberFont="Roboto_HD;30"  transparent="1" />
+	<widget name="list" position="815,125" size="1050,840" colorEventProgressbarBorder="border" colorEventProgressbarBorderSelected="border" colorServiceDescription="pastel" colorServiceDescriptionSelected="lemon" enableWrapAround="1" foregroundColorSelected="#66CCCC" foregroundColorServiceNotAvail="#777777"  picServiceEventProgressbar="BlackHarmony/gfx/progcl_mario.png" scrollbarWidth="6" scrollbarMode="showOnDemand" scrollbarSliderBorderColor="#3b3e3f" scrollbarSliderForegroundColor="#e6e6e6" selectionPixmap="BlackHarmony/menu/sel_1060_60.png" serviceInfoFont="Roboto_HD;35" serviceItemHeight="53" serviceNameFont="Roboto_HD;35" serviceNumberFont="Roboto_HD;30"  transparent="1" />
 	
 <!--przyciski-->
 	
@@ -77,25 +84,25 @@
 		initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0" random="True"
 		pixmaps="BlackHarmony/skin_user_animButtons/key_red"
 		pixalter="BlackHarmony/buttons/key_red.png" />
-	<widget name="key_red" position="80,1020" size="240,27" font="Roboto_HD; 24" backgroundColor="black" transparent="1" halign="left" valign="center"/>
 	
 	<widget source="session.CurrentService" render="j00zekPiconAnimation" position="325,1021" zPosition="10" size="35,27" alphatest="blend"
 		initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,1" random="True"
 		pixmaps="BlackHarmony/skin_user_animButtons/key_green"
 		pixalter="BlackHarmony/buttons/key_green.png" />
-    <widget name="key_green" position="370,1020" size="240,27" font="Roboto_HD; 24" backgroundColor="black" transparent="1" halign="left" valign="center"/>
     
-	<widget source="session.CurrentService" render="j00zekPiconAnimation" position="620,1021" zPosition="10" size="35,27" alphatest="blend"
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="620,1021" zPosition="10" size="35,27" alphatest="blend"
 		initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,2" random="True"
 		pixmaps="BlackHarmony/skin_user_animButtons/key_yellow"
 		pixalter="BlackHarmony/buttons/key_yellow.png" />
-    <widget name="key_yellow" position="670,1020" size="240,27" font="Roboto_HD; 24" backgroundColor="black" transparent="1" halign="left" valign="center"/>
-	
+    
 	<widget source="session.CurrentService" render="j00zekPiconAnimation" position="930,1021" zPosition="10" size="35,27" alphatest="blend"
 		initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,3" random="True"
 		pixmaps="BlackHarmony/skin_user_animButtons/key_blue"
 		pixalter="BlackHarmony/buttons/key_blue.png" />
-	<widget name="key_blue" position="980,1020" size="240,27" font="Roboto_HD; 24" backgroundColor="black" transparent="1" halign="left" valign="center"/>	
+    <widget backgroundColor="dark_grey" font="Roboto_HD; 24" halign="left" name="key_red" position="80,1020" size="240,27" transparent="1" valign="bottom" zPosition="1" />
+    <widget backgroundColor="dark_grey" font="Roboto_HD; 24" halign="left" name="key_green" position="370,1020" size="240,27" transparent="1" zPosition="1" />
+    <widget backgroundColor="dark_grey" font="Roboto_HD; 24" halign="left" name="key_yellow" position="670,1020" size="240,27" transparent="1" zPosition="1" />
+    <widget backgroundColor="dark_grey" font="Roboto_HD; 24" halign="left" name="key_blue" position="980,1020" size="240,27" transparent="1" zPosition="1" />
     <ePixmap alphatest="blend" pixmap="BlackHarmony/buttons/key_ok.png" position="1120,1019" size="60,30" />
     <ePixmap alphatest="blend" pixmap="BlackHarmony/buttons/key_menu.png" position="1200,1019" size="60,30" />
     <ePixmap alphatest="blend" pixmap="BlackHarmony/buttons/key_info.png" position="1280,1019" size="60,30" />
@@ -115,7 +122,7 @@
     <convert type="j00zekShareBlinkingClock" />
     <convert type="ConditionalShowHide">Blink</convert>
     </widget>
-  <widget source="global.CurrentTime" render="Label" position="1772,985" size="65,60" font="LCD; 60" halign="center" backgroundColor="black" transparent="1" foregroundColor="#66CCCC">
+  <widget source="global.CurrentTime" render="Label" position="1772,985" size="60,60" font="LCD; 60" halign="center" backgroundColor="black" transparent="1" foregroundColor="#66CCCC">
     <convert type="ClockToText">Format:%M</convert>
     </widget>	
   <widget source="global.CurrentTime" render="Label" position="1840,993" size="45,35" font="LCD; 35" halign="left" backgroundColor="black" transparent="1" >

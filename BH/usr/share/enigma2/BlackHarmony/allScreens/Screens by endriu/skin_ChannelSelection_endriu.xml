@@ -3,15 +3,15 @@
     <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" size="1920,1080" zPosition="-10" alphatest="blend">
       <convert type="j00zekRefreshBingPicOfTheDay"></convert>
     </widget>
-    <ePixmap pixmap="BlackHarmony/bg_design/EPGPig.png" position="0,1" size="1920,1080" zPosition="-7" alphatest="blend" alphatest="blend" />
+   <ePixmap pixmap="BlackHarmony/bg_design/EPGPig.png" position="0,0" size="1920,1080" zPosition="-7" alphatest="blend" />
   
   <!--nazwa bukietu,programu i podgląd-->
   
-    <widget backgroundColor="black" font="Roboto_HD; 38" foregroundColor="yellow" halign="center" valign="center" position="40,10" render="j00zekLabel" size="1030,95" source="Title" transparent="1" />
-    <widget source="session.CurrentService" render="j00zekLabel" backgroundColor="background" foregroundColor="#00ff6215" position="1080,46" size="110,35" font="Regular; 30" halign="left" transparent="1" zPosition="3">
+   <widget backgroundColor="black" font="Roboto_HD; 38" foregroundColor="lemon" halign="center" valign="center" position="40,10" render="j00zekLabel" size="1030,95" source="Title" transparent="1" />
+   <widget source="session.CurrentService" render="j00zekLabel" backgroundColor="background" foregroundColor="blue" position="1080,46" size="110,35" font="Regular; 30" halign="left" transparent="1" zPosition="3">
       <convert type="j00zekModServiceName2">%s</convert>
     </widget>
-    <widget backgroundColor="background" font="Roboto_HD; 38" foregroundColor="#000090e6" halign="center" valign="center" position="1198,15" render="j00zekLabel" size="680,85" source="ServiceEvent" transparent="1" zPosition="5">
+   <widget backgroundColor="background" font="Roboto_HD; 38" foregroundColor="lemon" halign="center" valign="center" position="1198,15" render="j00zekLabel" size="680,85" source="ServiceEvent" transparent="1" zPosition="5">
       <convert type="ServiceName">Name</convert>
     </widget>
 	<eLabel backgroundColor="linie"  position="1135,122" size="725,2" zPosition="4" />
@@ -22,7 +22,7 @@
     <convert type="ConfigEntryTest"></convert>
     <convert type="ConditionalShowHide" />
     </widget>
-    <widget alphatest="blend" position="1145,464" render="j00zekPicons" picontype="picon" size="100,60" source="session.CurrentService" transparent="1" zPosition="4">
+    <widget alphatest="blend" position="1145,464" render="j00zekPicons" picontype="picon" size="100,60" source="ServiceEvent" transparent="1" zPosition="4">
       <convert type="ServiceName">Reference</convert>
     </widget>
 
@@ -32,7 +32,7 @@
 
   <!--Aktualne wydarzenie po kolei od gory-->
 
-    <widget backgroundColor="transpBlack" font="Regular;30" foregroundColor="#00ff6215" halign="center" position="1135,540" render="j00zekModTypeLabel" size="725,40" source="ServiceEvent" transparent="1" zPosition="5">
+    <widget source="ServiceEvent" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=90,repeat=99,startdelay=2000" backgroundColor="transpBlack" font="Regular;30" foregroundColor="blue" halign="center" position="1135,540" size="725,40" transparent="1" zPosition="5">
       <convert type="j00zekModEventName">Name</convert>
     </widget>	
 	<widget backgroundColor="background" font="Roboto_HD; 26" position="1150,590" render="Label" size="100,35" source="ServiceEvent" transparent="1" zPosition="5">
@@ -55,18 +55,25 @@
       <convert type="RemainingToText">NoSeconds</convert>
     </widget>
     <eLabel backgroundColor="linie" foregroundColor="lemon" position="1150,630" size="690,1" />
-   <widget backgroundColor="background" font="Roboto_HD; 30" halign="left" options="movetype=running,startpoint=0,direction=top,steptime=90,repeat=4,startdelay=6000,wrap" position="1135,640" render="j00zekModRunningText" size="725,240" source="ServiceEvent" transparent="1">
+	<widget source="ServiceEvent" render="j00zekLabel" position="1135,635" size="620,30" transparent="1" zPosition="1" font="Regular; 28" halign="left" valign="center" foregroundColor="green" backgroundColor="black" >
+    <convert type="j00zekModEventName">Genre</convert>
+    </widget>
+  <widget source="ServiceEvent" render="j00zekLabel" position="1135,635" size="720,30" transparent="1" zPosition="1" font="Regular; 28" halign="right" valign="center" foregroundColor="light_red" backgroundColor="black" >
+    <convert type="j00zekModEventName">Rating</convert>
+    </widget>
+	
+   <widget backgroundColor="background" font="Roboto_HD; 30" halign="left" options="movetype=running,startpoint=0,direction=top,steptime=90,repeat=4,startdelay=6000,wrap" position="1135,670" render="j00zekModRunningText" size="725,210" source="ServiceEvent" transparent="1">
       <convert type="j00zekModEventName">ExtendedDescription</convert>
     </widget>
 		
     <!--Nastepne audycje-->
 	 
-	 <eLabel backgroundColor="linie" foregroundColor="lemon" position="1150,897" size="690,1" />
-    <widget alphatest="blend" column0="0,80,green,Roboto_HD,30,0,0" column1="95,620,white,Roboto_HD,30,0,1" position="1135,900" primetimeoffset="10" render="j00zekModEventListDisplay" rowHeight="32" size="720,170" source="ServiceEvent">
+	 <eLabel backgroundColor="linie" position="1150,897" size="690,1" />
+    <widget alphatest="blend" column0="0,80,blue,Roboto_HD,30,0,0" column1="95,620,white,Roboto_HD,30,0,1" position="1135,900" primetimeoffset="10" render="j00zekModEventListDisplay" rowHeight="32" size="720,170" source="ServiceEvent">
       <convert type="j00zekModEventList">eventcount=2</convert>
     </widget>
-
-<!--przyciski-->
+	
+	<!--przyciski-->
 	
 	<widget source="session.CurrentService" render="j00zekPiconAnimation" position="35,1021" zPosition="10" size="35,27" alphatest="blend"
 		initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0" random="True"
