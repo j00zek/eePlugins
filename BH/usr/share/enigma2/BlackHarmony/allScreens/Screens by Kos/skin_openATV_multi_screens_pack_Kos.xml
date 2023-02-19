@@ -6434,7 +6434,7 @@ self['config'].l.setSeperation(int(300*f))
     </widget>
     <widget source="Title" render="Label" position="1030,50" size="420,30" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1"/>
     <widget name="headertext" position="70,170" zPosition="1" size="1100,40" font="Roboto_HD; 32" transparent="1" backgroundColor="black" foregroundColor="light_yellow"/>
-    <widget name="statustext" position="415,430" zPosition="1" size="1020,90" font="Regular;20" halign="center" valign="center" transparent="1" backgroundColor="black"/>
+    <widget name="statustext" position="415,430" zPosition="1" size="1020,120" font="Regular;20" halign="center" valign="center" transparent="1" backgroundColor="black"/>
     <widget name="list" position="415,230" zPosition="2" size="1020,480" font="Roboto_HD; 26" itemHeight="40" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_1020_40.png" backgroundColor="black" transparent="1"/>
     <widget name="console" position="415,735" zPosition="1" size="1020,170" font="Roboto_HD; 24" transparent="1" backgroundColor="black" foregroundColor="light_yellow"/>
     <widget name="cover" zPosition="2" position="75,339" size="315,425" alphatest="blend" backgroundColor="black"/>

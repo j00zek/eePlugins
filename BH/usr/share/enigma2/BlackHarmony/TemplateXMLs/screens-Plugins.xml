@@ -900,7 +900,7 @@
     </widget>
     <eLabel text="IPTV Player" position="1030,50" size="420,30" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1"/>
     <widget name="headertext" position="70,170" zPosition="1" size="1100,40" font="Roboto_HD; 32" transparent="1" backgroundColor="background" foregroundColor="light_yellow"/>
-    <widget name="statustext" position="415,430" zPosition="1" size="1020,90" font="Regular;20" halign="center" valign="center" transparent="1" backgroundColor="background"/>
+    <widget name="statustext" position="415,430" zPosition="1" size="1020,120" font="Regular;20" halign="center" valign="center" transparent="1" backgroundColor="background"/>
     <widget name="list" position="415,230" zPosition="2" size="1020,480" font="Roboto_HD; 26" itemHeight="40" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" scrollbarMode="showOnDemand" backgroundColor="transpBlack" selectionPixmap="BlackHarmony/menu/sel_1020_40.png" transparent="1"/>
     <widget name="console" position="415,735" zPosition="1" size="1020,170" font="Roboto_HD; 24" transparent="1" backgroundColor="background" foregroundColor="light_yellow"/>
     <widget name="cover" zPosition="2" position="75,339" size="315,425" alphatest="blend" backgroundColor="background"/>
@@ -1274,36 +1274,6 @@
   </widget>
   </screen>
   <!-- ########## IPTVplayer akka E2iplayer ########## -->
-  <screen name="IPTVPlayerWidget" position="center,center" size="1522,1022" title=" " flags="wfNoBorder" backgroundColor="transparent">
-    <ePixmap position="0,0" zPosition="-10" size="1522,1022" pixmap="BlackHarmony/bg_design/wizard.png" />
-    <widget source="global.CurrentTime" render="Label" position="44,50" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
-      <convert type="ClockToText">Default</convert>
-    </widget>
-    <widget source="global.CurrentTime" render="Label" position="129,50" size="460,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
-      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
-    </widget>
-    <widget source="Title" render="Label" position="830,50" size="620,30" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1" />
-    <widget name="headertext" position="70,170" zPosition="1" size="1100,40" font="Roboto_HD; 32" transparent="1" backgroundColor="background" foregroundColor="light_yellow" />
-    <widget name="statustext" position="415,430" zPosition="1" size="1020,90" font="Regular;20" halign="center" valign="center" transparent="1" backgroundColor="background" />
-    <widget name="list" position="415,230" zPosition="2" size="1020,480" font="Roboto_HD; 27" itemHeight="40" selectionPixmap="BlackHarmony/menu/sel_1095_40.png" enableWrapAround="1" scrollbarMode="showOnDemand" transparent="1" />
-    <widget name="console" position="415,735" zPosition="1" size="1020,170" font="Roboto_HD; 24" transparent="1" backgroundColor="background" foregroundColor="light_yellow" valign="center" halign="center" />
-    <widget name="cover" zPosition="2" position="75,339" size="315,425" alphatest="blend" backgroundColor="background" />
-    <widget name="playerlogo" zPosition="4" position="1315,170" size="120,40" alphatest="blend" />
-    <widget name="sequencer" position="61,163" zPosition="6" size="1383,751" font="Regular;160" halign="center" valign="center" transparent="1" backgroundColor="background" />
-    <widget name="spinner" zPosition="2" position="876,493" size="16,16" transparent="1" alphatest="blend" />
-    <widget name="spinner_1" zPosition="1" position="892,493" size="16,16" transparent="1" alphatest="blend" />
-    <widget name="spinner_2" zPosition="1" position="908,493" size="16,16" transparent="1" alphatest="blend" />
-    <widget name="spinner_3" zPosition="1" position="924,493" size="16,16" transparent="1" alphatest="blend" />
-    <widget name="spinner_4" zPosition="1" position="940,493" size="16,16" transparent="1" alphatest="blend" />
-    <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="89,953" size="35,27" alphatest="blend" />
-    <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="432,953" size="35,27" alphatest="blend" />
-    <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="778,954" size="35,27" alphatest="blend" />
-    <ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="1143,954" size="35,27" alphatest="blend" />
-    <widget source="key_red" render="Label" position="139,953" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
-    <widget source="key_green" render="Label" position="483,953" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
-    <widget source="key_yellow" render="Label" position="828,954" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
-    <widget source="key_blue" render="Label" position="1194,953" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
-  </screen>
   <screen name="IPTVSubDownloaderWidget" position="center,center" size="1090,580" title="IPTV Player v%s">
     <ePixmap position="5,545" zPosition="4" size="35,27" pixmap="BlackHarmony/buttons/key_red.png" transparent="1" alphatest="on" />
     <widget render="Label" source="key_red" position="59,545" size="210,27" zPosition="5" backgroundColor="black" font="Roboto_HD; 24" halign="left" transparent="1" foregroundColor="white" shadowColor="black" shadowOffset="-1,-1" />

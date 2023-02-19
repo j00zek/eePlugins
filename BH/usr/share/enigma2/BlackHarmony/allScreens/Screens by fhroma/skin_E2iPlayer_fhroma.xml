@@ -22,7 +22,7 @@
     <widget name="spinner_4" zPosition="1" position="602,717" size="16,16" transparent="1" alphatest="blend" />
 			
 			 <widget name="headertext" position="110,160" zPosition="1" size="900,80" font="Roboto_HD; 32" transparent="1" backgroundColor="background" foregroundColor="light_yellow" />
-    <widget name="statustext" position="210,750" zPosition="1" size="750,90" font="Regular;20" halign="center" valign="center" transparent="1" backgroundColor="background" />
+    <widget name="statustext" position="210,750" zPosition="1" size="750,120" font="Regular;20" halign="center" valign="center" transparent="1" backgroundColor="background" />
     <widget name="console" position="110,800" zPosition="1" size="950,170" font="Roboto_HD; 26" transparent="1" backgroundColor="background" foregroundColor="lemon" halign="left" />
    
 			

@@ -10,7 +10,7 @@
     </widget>
     <eLabel text="IPTV Player" position="1424,60" size="420,30" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1" />
     <widget name="headertext" position="80,143" zPosition="1" size="900,40" font="Roboto_HD; 32" transparent="1" backgroundColor="background" foregroundColor="light_yellow" />
-    <widget name="statustext" position="415,350" zPosition="1" size="750,90" font="Regular;20" halign="center" valign="center" transparent="1" backgroundColor="background" />
+    <widget name="statustext" position="415,350" zPosition="1" size="750,120" font="Regular;20" halign="center" valign="center" transparent="1" backgroundColor="background" />
     <widget name="list" position="110,199" selectionPixmap="BlackHarmony/menu/sel_1555_35.png" zPosition="2" size="1300,488" font="Roboto_HD; 26" itemHeight="40" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" scrollbarMode="showOnDemand" backgroundColor="transpBlack" transparent="1" />
     <widget name="console" position="110,761" zPosition="1" size="1737,170" font="Roboto_HD; 30" transparent="1" backgroundColor="background" foregroundColor="lemon" halign="left" />
     <widget name="cover" zPosition="2" position="1500,202" size="335,455" alphatest="blend" backgroundColor="background" />
