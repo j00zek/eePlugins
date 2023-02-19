@@ -4,7 +4,7 @@
 ###################################################
 from Plugins.Extensions.IPTVPlayer.components.iptvplayerinit import TranslateTXT as _
 from Plugins.Extensions.IPTVPlayer.components.ihost import CHostBase, CBaseHostClass
-from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc, rm
+from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc, rm, checkWebSiteStatus
 from Plugins.Extensions.IPTVPlayer.tools.iptvtypes import strwithmeta
 from Plugins.Extensions.IPTVPlayer.tools.e2ijs import js_execute
 from Plugins.Extensions.IPTVPlayer.libs.e2ijson import loads as json_loads
@@ -18,6 +18,10 @@ from Plugins.Extensions.IPTVPlayer.p2p3.manipulateStrings import ensure_str
 ###################################################
 import re
 import base64
+###################################################
+# E2 GUI COMMPONENTS
+###################################################
+from Screens.MessageBox import MessageBox
 ###################################################
 
 
@@ -54,12 +58,12 @@ class Kinomoc(CBaseHostClass):
         printDBG("Kinomoc.listMainMenu")
 
         MAIN_CAT_TAB = [{'category': 'list_items', 'title': _('Movies'), 'url': self.getFullUrl('/filmy/')},
-#                        {'category': 'list_items', 'title': _('Movies') + ' ENG', 'url': self.getFullUrl('/quality/filmy-w-wersji-eng/')},
-#                        {'category': 'list_items', 'title': _('Children'), 'url': self.getFullUrl('/genre/anime-bajki/')},
+#                       {'category': 'list_items', 'title': _('Movies') + ' ENG', 'url': self.getFullUrl('/quality/filmy-w-wersji-eng/')},
+#                       {'category': 'list_items', 'title': _('Children'), 'url': self.getFullUrl('/genre/anime-bajki/')},
                         {'category': 'list_items', 'title': _('Series'), 'url': self.getFullUrl('/serials/')},
-#                        {'category': 'list_years', 'title': _('Filter By Year'), 'url': self.getFullUrl('/filmy-online-pl/')},
+#                       {'category': 'list_years', 'title': _('Filter By Year'), 'url': self.getFullUrl('/filmy-online-pl/')},
                         {'category': 'list_cats',  'title': _('Movies genres'), 'url': self.getFullUrl('/filmy/')},
-#                        {'category':'list_az',        'title': _('Alphabetically'),    'url':self.MAIN_URL},
+#                       {'category':'list_az',        'title': _('Alphabetically'),    'url':self.MAIN_URL},
                         {'category': 'search', 'title': _('Search'), 'search_item': True},
                         {'category': 'search_history', 'title': _('Search history')}, ]
         self.listsTab(MAIN_CAT_TAB, cItem)
@@ -253,10 +257,14 @@ class Kinomoc(CBaseHostClass):
         for item in tmp:
             id = self.cm.ph.getSearchGroups(item, '''id=['"]([^"^']+?)['"]''')[0]
             playerUrl = self.getFullUrl(self.cm.ph.getSearchGroups(item, '''src=['"]([^"^']+?)['"]''')[0])
-            name =  self.cleanHtmlStr(self.cm.ph.getDataBeetwenNodes(data, ('<li', '>', id), ('</li', '>'))[1])
-            if playerUrl == '':
+            tmp =  self.cm.ph.getDataBeetwenNodes(data, ('<li', '>', id), ('</li', '>'))[1]
+            name = self.cleanHtmlStr(tmp)
+            if playerUrl == '' or name == '':
                 continue
-            retTab.append({'name': name, 'url': strwithmeta(playerUrl, {'Referer': url}), 'need_resolve': 1})
+            if 'active' in tmp:
+                retTab.insert(0, {'name': name, 'url': strwithmeta(playerUrl, {'Referer': url}), 'need_resolve': 1})
+            else:
+                retTab.append({'name': name, 'url': strwithmeta(playerUrl, {'Referer': url}), 'need_resolve': 1})
 
         if len(retTab) < 1:
             retTab.append({'name': self.up.getDomain(url), 'url': strwithmeta(url, {'Referer': url}), 'need_resolve': 1})
@@ -326,7 +334,11 @@ class Kinomoc(CBaseHostClass):
     #MAIN MENU
         if name == None and category == '':
             rm(self.COOKIE_FILE)
-            self.listMainMenu({'name': 'category'})
+            webState, MSG, ERR = checkWebSiteStatus(self.MAIN_URL, self.HTTP_HEADER, 2)
+            if webState:
+                self.listMainMenu({'name': 'category'})
+            else:
+                self.sessionEx.open(MessageBox, "%s: %s" % (_(MSG), ERR), type=MessageBox.TYPE_INFO, timeout=10)
         elif 'list_cats' == category:
             self.listMovieFilters(self.currItem, 'list_items')
         elif 'list_years' == category:

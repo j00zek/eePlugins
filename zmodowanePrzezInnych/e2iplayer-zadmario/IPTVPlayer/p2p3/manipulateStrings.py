@@ -15,7 +15,10 @@ def strDecode(text,  setErrors = 'strict'):
         if isinstance(text, str):
             retVal = text
         else:
-            retVal = text.decode(encoding='utf-8', errors=setErrors)
+            try:
+                retVal = text.decode(encoding='utf-8', errors=setErrors)
+            except Exception:
+                retVal = text.decode(encoding='utf-8', errors='ignore')
     return retVal
 
 def iterDictItems(myDict):
@@ -71,4 +74,4 @@ def ensure_str(text, encoding='utf-8', errors='strict'): #based on six library
                 return text.decode(encoding, errors)
             except Exception:
                 return text.decode(encoding, 'ignore')
-    return text # strwithmeta type defined in e2iplayer goes thorugh it
+    return text # strwithmeta type defined in e2iplayer goes through it

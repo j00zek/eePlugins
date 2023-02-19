@@ -13,7 +13,7 @@ if not isPY2():
     basestring = str
     unicode = str
     from functools import cmp_to_key
-from Plugins.Extensions.IPTVPlayer.p2p3.UrlLib import urllib2_urlopen
+from Plugins.Extensions.IPTVPlayer.p2p3.UrlLib import urllib2_urlopen, urllib2_Request, urllib2_URLError, urllib2_HTTPError
 from Plugins.Extensions.IPTVPlayer.p2p3.manipulateStrings import strDecode, iterDictItems, ensure_str
 ###################################################
 
@@ -1463,8 +1463,21 @@ def byteify(inData, noneReplacement=None, baseTypesAsString=False):
     else:
         return inData
 
+LASTExcMSG = ''
+
+def clearExcMSG():
+    global LASTExcMSG
+    LASTExcMSG = ''
+
+def getExcMSG(clearExcMSG = True):
+    global LASTExcMSG
+    retMSG = LASTExcMSG
+    if clearExcMSG:
+        LASTExcMSG = ''
+    return retMSG
 
 def printExc(msg='', WarnOnly = False):
+    global LASTExcMSG
     printDBG("===============================================")
     if WarnOnly or msg.startswith('WARNING'):
         printDBG("                    WARNING                    ")
@@ -1483,6 +1496,7 @@ def printExc(msg='', WarnOnly = False):
         retMSG = exc_formatted.splitlines()[-1]
     except Exception:
         retMSG = ''
+    LASTExcMSG = retMSG
     return retMSG #returns the error description to possibly use in main code. E.g. inform about failed login
 
 def GetIPTVPlayerVerstion():
@@ -1914,3 +1928,28 @@ def readCFG(cfgName, defVal = ''):
                             defVal = line.split('=')[1]
                             open(cfgPath, 'w').write(defVal)
     return defVal
+
+def checkWebSiteStatus(URL, HEADERS = None, TIMEOUT = 1):
+    global LASTExcMSG
+    if HEADERS is None:
+        HEADERS = { 'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:88.0) Gecko/20100101 Firefox/88.0',
+                        'Accept-Charset': 'utf-8',
+                        'Content-Type': 'text/html; charset=utf-8'
+                      }
+    req = urllib2_Request(URL, headers=HEADERS)
+    try:
+        response = urllib2_urlopen(req, timeout=TIMEOUT)
+    except urllib2_HTTPError as e:
+        LASTExcMSG = str(e)
+        return (False, "Website returned error", str(e.code))
+    except urllib2_URLError as e:
+        LASTExcMSG = str(e)
+        return (False, 'Website NOT available', str(e.reason))
+    except socket.timeout as e:
+        LASTExcMSG = str(e)
+        return (False, 'Website overloaded and dont respond timely', str('Timeout %ss' % TIMEOUT))
+    except Exception as e:
+        LASTExcMSG = str(e)
+        return (False, 'EXCEPTION', str(e))
+    else:
+        return (True, '', None)
