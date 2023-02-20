@@ -37,33 +37,39 @@ class j00zekModEventList(Converter, object):
         Converter.__init__(self, type)
         self.epgcache = eEPGCache.getInstance()
         self.primetime = 0
-        self.eventcount = 0
+        self.eventCount = 0
         self.eventNo = 0
-        self.singleEventMode = False
-        self.eventTimeOnly = False
-        self.eventNameOnly = False
+        self.retTime = True
+        self.retName = True
+        self.retDuration = True
+        self.retFormat = ''
         self.firstEventColor = ''
         
         if (len(type)):
             args = type.split(',')
-            i = 0
-            while i <= len(args)-1:
-                type_c, value = args[i].split('=')
+            for arg in args:
+                if '=' in arg:
+                    type_c, value = arg.split('=')
+                else:
+                    type_c = arg
+                    value = ''
                 if type_c == "eventcount":
-                    self.eventcount = int(value)            
+                    self.eventCount = int(value)
+                    self.eventNo = 0
                 elif type_c == "primetime" and value == "yes":
                     self.primetime = 1
-                elif type_c == "singleEventMode" and value == "yes":
-                    self.singleEventMode = True
                 elif type_c == "eventNo":
                     self.eventNo = int(value)
-                elif type_c == "eventTimeOnly" and value == "yes":
-                    self.eventTimeOnly = True
-                elif type_c == "eventNameOnly" and value == "yes":
-                    self.eventNameOnly = True
+                    self.eventCount = self.eventNo
+                elif type_c == "noTime":
+                    self.retTime = False
+                elif type_c == "NoName":
+                    self.retName = False
+                elif type_c == "NoDuration":
+                    self.retDuration = False
                 elif type_c == "firstEventColor":
                     self.firstEventColor = value
-                i +=1              
+
     @cached
     def getContent(self):
         contentList = []
@@ -75,10 +81,11 @@ class j00zekModEventList(Converter, object):
         if curEvent:
             if not self.epgcache.startTimeQuery(eServiceReference(ref.toString()), curEvent.getBeginTime() + curEvent.getDuration()):
                 i = 1
-                while i <= (self.eventcount):
+                while i <= (self.eventCount):
                     event = self.epgcache.getNextTimeEntry()
-                    if event is not None:
-                        contentList.append(self.getEventTuple(event),)
+                    if self.eventNo == 0 or i == self.eventNo:
+                        if event is not None:
+                            contentList.append(self.getEventTuple(event),)
                     i +=1
                 if self.primetime == 1:
                     now = localtime(time())
@@ -93,11 +100,44 @@ class j00zekModEventList(Converter, object):
         return contentList
 
     def getEventTuple(self,event):
-        time = "%s" % (strftime("%H:%M", localtime(event.getBeginTime())))
-        title = event.getEventName()
-        duration = "%d min" % (event.getDuration() / 60)
+        time = ''
+        title = ''
+        duration = ''
+        if self.retTime:
+            time = "%s" % (strftime("%H:%M", localtime(event.getBeginTime())))
+        if self.retName:
+            title = event.getEventName()
+        if self.retDuration:
+            duration = "%d min" % int(event.getDuration() / 60)
+        #print('j00zekModEventList.getEventTuple',time,title,duration)
         return (time,title,duration)
 
     def changed(self, what):
         if what[0] != self.CHANGED_SPECIFIC:
             Converter.changed(self, what)
+
+    @cached
+    def getText(self):
+        contentList = self.getContent()
+        for item in contentList:
+            if self.retFormat == '':
+                if self.retTime:
+                    if self.retDuration and self.retName:
+                        return '%s (%s) - %s\n' % (item[0], item[2], item[1])
+                    elif self.retDuration and not self.retName:
+                        return '%s (%s)' % (item[0], item[2])
+                    elif not self.retDuration and self.retName:
+                        return '%s - %s\n' % (item[0], item[1])
+                    else:
+                        return item[0]
+                elif self.retDuration:
+                    if self.retName:
+                        return '%s (%s)' % (item[1], item[2])
+                    else:
+                        return item[2]
+                elif self.retName:
+                    return item[1]
+                else:
+                    return ''
+
+    text = property(getText)

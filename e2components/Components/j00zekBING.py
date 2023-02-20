@@ -33,6 +33,7 @@ else:
 import urllib
 import requests
 from os.path import exists as OsPathExists
+from os import system as OsSystem
 
 def getPicOfTheDay(CountryCode = 'pl_PL', downloadPathAndFileName = '/usr/share/enigma2/BlackHarmony/icons/BingPicOfTheDay.jpg'):
     retVal = False
@@ -50,6 +51,7 @@ def getPicOfTheDay(CountryCode = 'pl_PL', downloadPathAndFileName = '/usr/share/
                     url = 'http://www.bing.com' + images[i]['url']
                     urlretrieve(url, downloadPathAndFileName)
                     if OsPathExists(downloadPathAndFileName):
+                        OsSystem('ffmpeg -y -i %s %s 2>/dev/null &' % (downloadPathAndFileName,downloadPathAndFileName.replace('.jpg','.png')))
                         retVal = True
                         break
     except Exception as e:
