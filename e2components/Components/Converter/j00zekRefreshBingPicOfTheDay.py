@@ -21,6 +21,13 @@ class j00zekRefreshBingPicOfTheDay(Converter, object):
         self.BingPic_png = '/usr/share/enigma2/BlackHarmony/icons/BingPicOfTheDay.png'
         self.Init = True
         self.isVTI = os.path.exists('/usr/lib/enigma2/python/Plugins/SystemPlugins/VTIPanel/')
+        try:
+            if open("/proc/stb/info/brandname", "r").read().lower().strip() == 'zgemma':
+                self.isZGEMMA = True
+            else:
+                self.isZGEMMA = False
+        except Exception:
+            self.isZGEMMA = False
         self.checkTimer = eTimer()
         self.checkTimer.callback.append(self.refreshPic)
         self.checkTimer.start(10000, True)
@@ -36,11 +43,11 @@ class j00zekRefreshBingPicOfTheDay(Converter, object):
         
     @cached
     def getText(self):
-        if config.plugins.j00zekCC.PiPbackground.value == 'n':
+        if config.plugins.j00zekCC.PiPbackground.value == 'n' and self.isVTI:
             return '/usr/share/enigma2/BlackHarmony/bg_design/bg_pure_black_1920x1080.png'
         elif not self.isVTI and os.path.exists(self.BingPic_png):
             return self.BingPic_png
-        elif os.path.exists(self.BingPic_jpg):
+        elif os.path.exists(self.BingPic_jpg) and not self.isZGEMMA:
             return self.BingPic_jpg
         else:
             return self.AlternatePicPath
