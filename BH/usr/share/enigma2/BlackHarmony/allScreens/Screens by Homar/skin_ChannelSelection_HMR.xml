@@ -1,9 +1,8 @@
 <skin>
    <screen name="ChannelSelection" position="center,center" size="1920,1080" title="Channel Selection" flags="wfNoBorder" backgroundColor="transparent">
-      <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" size="1920,1080" zPosition="-15" alphatest="blend">
-        <convert type="j00zekRefreshBingPicOfTheDay"></convert>
+    <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" zPosition="-10" size="1920,1080">
+      <convert type="j00zekRefreshBingPicOfTheDay">/usr/share/enigma2/BlackHarmony/bg_design/EPGPig.png</convert>
     </widget>
-    <ePixmap position="0,1" zPosition="-7" size="1920,1080" pixmap="BlackHarmony/bg_design/EPGPig.png" alphatest="blend" />
     <widget source="session.VideoPicture" render="Pig" position="1132,200" zPosition="3" size="685,415" backgroundColor="#ff000000" transparent="0">
       <convert type="ConfigEntryTest"></convert>
       <convert type="ConditionalShowHide" />

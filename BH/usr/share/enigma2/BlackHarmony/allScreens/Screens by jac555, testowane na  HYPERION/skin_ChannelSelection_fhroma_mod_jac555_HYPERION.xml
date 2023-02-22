@@ -1,8 +1,7 @@
 <screen name="ChannelSelection" position="0,0" size="1920,1080" title=" " flags="wfNoBorder" backgroundColor="transparent">
-  <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" size="1920,1080" zPosition="-15" alphatest="blend">
-    <convert type="j00zekRefreshBingPicOfTheDay"></convert>
-  </widget>
-  <ePixmap position="0,0" zPosition="-7" size="1920,1080" pixmap="BlackHarmony/bg_design/cs.png" alphatest="blend" />
+    <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" zPosition="-10" size="1920,1080">
+      <convert type="j00zekRefreshBingPicOfTheDay">/usr/share/enigma2/BlackHarmony/bg_design/cs.png</convert>
+    </widget>
   <widget source="session.VideoPicture" render="Pig" position="1162,0" size="758,430" backgroundColor="transparent" />
   <widget alphatest="blend" position="1170,290" render="j00zekPicons" picontype="picon" size="220,132" source="session.CurrentService" transparent="1" zPosition="4">
     <convert type="ServiceName">Reference</convert>

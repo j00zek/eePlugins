@@ -1,9 +1,8 @@
 <skin>
  <screen name="SHOUTcastWidget" position="center,center" size="1920,1080" title=" " flags="wfNoBorder" backgroundColor="transparent">
-    <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" zPosition="-10" size="1920,1080" pixmap="BlackHarmony/icons/BingPicOfTheDay.jpg" alphatest="blend">
-      <convert type="j00zekRefreshBingPicOfTheDay"></convert>
+    <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" zPosition="-10" size="1920,1080">
+      <convert type="j00zekRefreshBingPicOfTheDay">/usr/share/enigma2/BlackHarmony/bg_design/info.png</convert>
     </widget>
-	<ePixmap position="0,0" zPosition="-10" size="1920,1080" pixmap="BlackHarmony/bg_design/info.png" transparent="2" alphatest="blend" />
     <widget source="global.CurrentTime" render="Label" position="110,80" size="100,35" font="Roboto_HD; 28" backgroundColor="black" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>

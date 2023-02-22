@@ -1,8 +1,7 @@
 <screen name="ChannelSelection" position="center,center" size="1920,1110" title="Channel Selection" flags="wfNoBorder" backgroundColor="black">
-  <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" size="1920,1080" zPosition="-15" alphatest="blend">
-    <convert type="j00zekRefreshBingPicOfTheDay"></convert>
-  </widget>
-  <ePixmap position="0,1" zPosition="-7" size="1920,10110" pixmap="BlackHarmony/bg_design/cs_pig.png" alphatest="blend" />
+    <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" zPosition="-10" size="1920,1080">
+      <convert type="j00zekRefreshBingPicOfTheDay">/usr/share/enigma2/BlackHarmony/bg_design/cs.png</convert>
+    </widget>
   <widget source="global.CurrentTime" render="Label" position="50,50" size="120,30" font="Roboto_HD; 30" backgroundColor="black" transparent="1">
     <convert type="ClockToText">Format:%H:%M:%S</convert>
   </widget>

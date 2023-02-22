@@ -1,9 +1,8 @@
 <skin>
   <screen name="MovieSelection" position="0,0" size="1920,1080" title="" backgroundColor="transparent" flags="wfNoBorder">
-      <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" size="1920,1080" zPosition="-15" alphatest="blend">
-    <convert type="j00zekRefreshBingPicOfTheDay"></convert>
-  </widget>
-  <ePixmap position="0,-1" zPosition="-10" size="1920,1080" pixmap="BlackHarmony/bg_design/mainbg1920x1080x24.png" transparent="1" alphatest="blend" />
+    <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" zPosition="-10" size="1920,1080">
+      <convert type="j00zekRefreshBingPicOfTheDay">/usr/share/enigma2/BlackHarmony/bg_design/mainbg1920x1080x24.png</convert>
+    </widget>
     <widget source="global.CurrentTime" render="Label" position="920,50" size="920,50" font="Regular;42" valign="center" halign="center" backgroundColor="transpBlack" transparent="1">
       <convert type="ClockToText">Format:%A  %e  %B  %Y   %H:%M </convert>
     </widget>

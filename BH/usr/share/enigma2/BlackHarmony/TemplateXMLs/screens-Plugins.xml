@@ -264,10 +264,9 @@
     <widget source="key_blue" render="Label" position="763,759" size="180,26" zPosition="1" font="Roboto_HD;24" halign="left" foregroundColor="white" backgroundColor="dark_grey" transparent="1"/>
   </screen>
 <screen name="MSNweather" position="0,0" size="1920,1080" title=" " flags="wfNoBorder" backgroundColor="black">
-    <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" zPosition="-10" size="1920,1080" pixmap="BlackHarmony/icons/BingPicOfTheDay.jpg" alphatest="blend">
-      <convert type="j00zekRefreshBingPicOfTheDay"></convert>
+    <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" zPosition="-10" size="1920,1080">
+      <convert type="j00zekRefreshBingPicOfTheDay">/usr/share/enigma2/BlackHarmony/bg_design/bg_1920x1080.png</convert>
     </widget>
-    <ePixmap position="0,0" zPosition="-10" size="1920,1080" pixmap="BlackHarmony/bg_design/bg_1902x1080.png" transparent="1" alphatest="blend"/>
     <!-- header -->
     <widget source="global.CurrentTime" render="Label" position="85,70" size="80,35" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
       <convert type="ClockToText">Default</convert>
@@ -1411,7 +1410,7 @@
   <!-- PlutoTV by endriu -->
   <screen name="PlutoTV" position="0,0" size="1920,1080" title="Pluto TV" flags="wfNoBorder" backgroundColor="black">
     <ePixmap position="0,0" size="1920,1080" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PlutoTV/images/plutotv-fhd.png" zPosition="-10" alphatest="blend" />
-    <ePixmap position="0,0" zPosition="-10" size="1920,1080" pixmap="BlackHarmony/bg_design/bg_1902x1080.png" transparent="1" alphatest="blend"/>
+    <ePixmap position="0,0" zPosition="-10" size="1920,1080" pixmap="BlackHarmony/bg_design/bg_1920x1080.png" transparent="1" alphatest="blend"/>
 <!-- data godzina -->
     <widget source="global.CurrentTime" render="Label" position="85,70" size="80,35" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
       <convert type="ClockToText">Default</convert>

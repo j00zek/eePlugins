@@ -12,10 +12,9 @@
    </parameters>
   
   <screen name="VerticalEPGView_FHD" position="center,center" size="1920,1080" title="" flags="wfNoBorder" backgroundColor="transparent">
-    <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" size="1920,1080" zPosition="-15" alphatest="blend">
-      <convert type="j00zekRefreshBingPicOfTheDay"></convert>
+    <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" zPosition="-10" size="1920,1080">
+      <convert type="j00zekRefreshBingPicOfTheDay">/usr/share/enigma2/BlackHarmony/bg_design/EPGPig.png</convert>
     </widget>
-    <ePixmap position="0,1" zPosition="-7" size="1920,1080" pixmap="BlackHarmony/bg_design/EPGPig.png" alphatest="blend" />
 	
 	<widget source="global.CurrentTime" render="Label" position="75,25" size="80,35" font="Roboto_HD;27" backgroundColor="black" transparent="1">
     <convert type="ClockToText">Default</convert>

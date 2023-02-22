@@ -1,9 +1,8 @@
 <skin>
    <screen name="SecondInfoBar" backgroundColor="transparent" flags="wfNoBorder"  position="center,center" size="1920,1080" >
-    <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" size="1920,1080" zPosition="-10" alphatest="blend">
-      <convert type="j00zekRefreshBingPicOfTheDay"></convert>
+    <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" zPosition="-10" size="1920,1080">
+      <convert type="j00zekRefreshBingPicOfTheDay">/usr/share/enigma2/BlackHarmony/bg_design/EPGPig.png</convert>
     </widget>
-   <ePixmap pixmap="BlackHarmony/bg_design/EPGPig.png" position="0,0" size="1920,1080" zPosition="-7" alphatest="blend" />
     
 	<eLabel backgroundColor="linie"  position="205,165" size="600,1" zPosition="1" />
 	<eLabel backgroundColor="linie"  position="1140,165" size="600,1" zPosition="1" />

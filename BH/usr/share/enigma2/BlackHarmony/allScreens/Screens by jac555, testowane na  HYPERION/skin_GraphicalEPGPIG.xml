@@ -1,8 +1,7 @@
  <screen name="GraphicalEPGPIG" position="center,center" size="1920,1080" title="Electronic Program Guide" flags="wfNoBorder" backgroundColor="transparent">
-    <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" size="1920,1080" zPosition="-15" alphatest="blend">
-      <convert type="j00zekRefreshBingPicOfTheDay"></convert>
+    <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" zPosition="-10" size="1920,1080">
+      <convert type="j00zekRefreshBingPicOfTheDay">/usr/share/enigma2/BlackHarmony/bg_design/cool.png</convert>
     </widget>
-    <ePixmap position="0,0" zPosition="-7" size="1920,1080" pixmap="BlackHarmony/bg_design/cool.png" alphatest="blend" />
     <eLabel position="70,623" size="1780,2" backgroundColor="#4fc8f0" />
     <widget source="global.CurrentTime" render="Label" position="75,55" size="80,35" font="Roboto_HD;27" backgroundColor="black" transparent="1">
       <convert type="ClockToText">Default</convert>
