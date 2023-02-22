@@ -96,3 +96,4 @@ if __name__ == '__main__':
             elif param == 'downloadPathAndFileName': downloadPathAndFileName = value
             elif param == 'mergePic': mergePic = value
     getPicOfTheDay(CountryCode,downloadPathAndFileName,mergePic)
+    #with open("/tmp/bing.log", "a") as f: f.write(str(sys.argv))
