@@ -1,5 +1,5 @@
   <screen name="MSNweatherNP" position="0,0" size="1920,1080" title=" " flags="wfNoBorder" backgroundColor="black">
-    <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" zPosition="-10" size="1920,1080" pixmap="BlackHarmony/icons/BingPicOfTheDay.jpg" alphatest="blend">
+    <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" zPosition="-10" size="1920,1080" pixmap="BlackHarmony/icons/BingPicOfTheDay.jpg">
       <convert type="MyMemoriesPictures"></convert>
     </widget>
     <ePixmap position="0,0" zPosition="-10" size="1920,1080" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/bg_1902x1080.png" transparent="1" alphatest="blend"/>
@@ -11,7 +11,7 @@
       <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
     </widget>
     <widget source="session.CurrentService" render="Label" position="1395,70" size="420,35" font="robotoMSN; 27" halign="right" backgroundColor="dark_grey" transparent="1" >
-		<convert type="j00zekTranslator">MSN weather</convert>
+                <convert type="j00zekTranslator">MSN weather</convert>
     </widget>
     <widget source="currentData_airIndexAdvice" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=90,repeat=99,startdelay=2000" position="120,120" size="500,30" font="HD_Thin; 26" transparent="1" backgroundColor="black"/>
     <widget source="statustext" render="Label" position="720,120" size="480,30" font="HD_Thin; 28" halign="center" valign="center" transparent="1" backgroundColor="black" foregroundColor="red"/>
@@ -21,50 +21,50 @@
     <widget source="currentData_temperature" render="Label" font="robotoMSN; 40" position="370,244" size="140,45" backgroundColor="black" zPosition="3" transparent="1" valign="center" foregroundColor="light_yellow"/>
     <widget source="currentData_skytext"     render="j00zekLabel" position="120,340" size="400,60" font="HD_Thin; 26" halign="center" valign="center" transparent="1" backgroundColor="black"/>
 <!-- top second from left -->
-	<widget source="currentData_WeatherinfoList" render="Listbox" position="620,180" size="400,270" scrollbarMode="showNever" transparent="1" backgroundColor="black">
-		<convert type="TemplatedMultiContent">
+        <widget source="currentData_WeatherinfoList" render="Listbox" position="620,180" size="400,270" scrollbarMode="showNever" transparent="1" backgroundColor="black">
+                <convert type="TemplatedMultiContent">
                     {"template": [
                         MultiContentEntryText(pos = (2, 2), size = (396, 28), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 0),
                         MultiContentEntryText(pos = (2, 2), size = (396, 28), font=1, flags = RT_HALIGN_RIGHT|RT_VALIGN_CENTER, text = 1),
                         ],
                         "fonts": [gFont("regularMSN", 22), gFont("regularMSN", 22)],
                         "itemHeight": 26,
-						"selectionEnabled": False
+                                                "selectionEnabled": False
                     }
         </convert>
-	</widget>
+        </widget>
     <!--widget source="airQualityTitle" render="Label" position="1240,180" size="320,30" font="robotoMSN; 27" halign="center" valign="center" foregroundColor="light_yellow" backgroundColor="dark_grey" transparent="1" /-->
     <widget source="currentData_airQualityAccellPixmap" render="j00zekPixmap" alphatest="blend" position="1140,170" size="55,55" transparent="1" zPosition="3"/>
-	<widget source="currentData_airIndexInfo" render="j00zekModRunningText" position="1200,170" size="440,55"  options="movetype=running,startpoint=0,direction=left,steptime=90,repeat=99,startdelay=2000" foregroundColor="light_yellow" backgroundColor="black" font="robotoMSN; 30" zPosition="5" halign="left" valign="center" transparent="1" />
-	<widget source="currentData_infoList" render="Listbox" position="1140,225" size="520,225" scrollbarMode="showNever" transparent="1" backgroundColor="black">
-		<convert type="TemplatedMultiContent">
+        <widget source="currentData_airIndexInfo" render="j00zekModRunningText" position="1200,170" size="440,55"  options="movetype=running,startpoint=0,direction=left,steptime=90,repeat=99,startdelay=2000" foregroundColor="light_yellow" backgroundColor="black" font="robotoMSN; 30" zPosition="5" halign="left" valign="center" transparent="1" />
+        <widget source="currentData_infoList" render="Listbox" position="1140,225" size="520,225" scrollbarMode="showNever" transparent="1" backgroundColor="black">
+                <convert type="TemplatedMultiContent">
                     {"template": [
                         MultiContentEntryText(pos = (2, 2), size = (496, 30), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 0),
                         MultiContentEntryText(pos = (2, 2), size = (496, 30), font=1, flags = RT_HALIGN_RIGHT|RT_VALIGN_CENTER, text = 1),
                         ],
                         "fonts": [gFont("regularMSN", 24), gFont("regularMSN", 24)],
                         "itemHeight": 30,
-						"selectionEnabled": False
+                                                "selectionEnabled": False
                     }
         </convert>
-	</widget>
+        </widget>
 <!-- top right -->
         <!-- WSCHOD -->
         <ePixmap pixmap="BlackHarmony/icons/Weather/wsch.png" position="1700,175" zPosition="1" size="99,50" alphatest="blend" />
-		<widget source="sunrise_time" render="Label" position="1700,227" size="100,35" font="HD_Thin; 22" halign="center" transparent="1" backgroundColor="black"/>
+                <widget source="sunrise_time" render="Label" position="1700,227" size="100,35" font="HD_Thin; 22" halign="center" transparent="1" backgroundColor="black"/>
         <!-- ZACHOD -->
         <ePixmap pixmap="BlackHarmony/icons/Weather/zach.png" position="1700,265" zPosition="1" size="99,50" alphatest="blend" />
-		<widget source="sunset_time" render="Label" position="1700,317" size="100,35" font="HD_Thin; 22" halign="center" transparent="1" backgroundColor="black"/>
+                <widget source="sunset_time" render="Label" position="1700,317" size="100,35" font="HD_Thin; 22" halign="center" transparent="1" backgroundColor="black"/>
         <!-- MOON -->
         <widget source="global.CurrentTime" render="j00zekPicons" position="1725,355" size="50,50" path="/usr/share/enigma2/BlackHarmony/icons" picontype="MoonPhase" showdefaultpic="no" zPosition="8"  alphatest="blend">
             <convert type="j00zekMoon">obraz</convert>
         </widget>
-		<widget source="moon_iluminatedPerc" render="Label" position="1700,407" size="100,30" zPosition="1" font="regularMSN;22" halign="center" transparent="1" backgroundColor="background" foregroundColor="grey"/>
+                <widget source="moon_iluminatedPerc" render="Label" position="1700,407" size="100,30" zPosition="1" font="regularMSN;22" halign="center" transparent="1" backgroundColor="background" foregroundColor="grey"/>
 <!--HOURLY DATA-->
     <ePixmap pixmap="BlackHarmony/gfx/line.png" position="420,455" size="1200,2" zPosition="3" transparent="1" alphatest="blend"/>
     <widget position="100,440" size="350,30" zPosition="3" halign="left" valign="top" render="j00zekLabel" source="hourlyData_title" font="robotoMSN; 24" transparent="1" foregroundColor="green"/>
     <!-- h0 -->
-    <widget source="hourlyRecord_0_Summary" 	   render="j00zekLabel" position="90,470" size="150,190" zPosition="3" halign="center" valign="top" font="robotoMSN; 22" transparent="1" backgroundColor="black"/>
+    <widget source="hourlyRecord_0_Summary"        render="j00zekLabel" position="90,470" size="150,190" zPosition="3" halign="center" valign="top" font="robotoMSN; 22" transparent="1" backgroundColor="black"/>
     <widget source="hourlyRecord_0_WeatherPixmap"  render="j00zekMSNWeatherPixmap" alphatest="blend"  position="140,500" size="50,50" zPosition="5" transparent="1"/>
     <!-- h1 -->
     <widget source="hourlyRecord_1_Summary"        render="j00zekLabel" position="250,470" size="150,190" zPosition="3" halign="center" valign="top" font="robotoMSN; 22" transparent="1" backgroundColor="black"/>
@@ -137,34 +137,34 @@
 <!-- dolna belka -->
     <!--ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/key_red.png" position="100,980" size="35,27" alphatest="blend"/-->
     <widget source="session.CurrentService" render="j00zekPiconAnimation" position="100,980" zPosition="10" size="35,27" alphatest="blend"
-			initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0" random="True"
-			pixmaps="BlackHarmony/skin_user_animButtons/key_red"
-			pixalter="/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/key_red.png"
-	/>
+                        initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0" random="True"
+                        pixmaps="BlackHarmony/skin_user_animButtons/key_red"
+                        pixalter="/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/key_red.png"
+        />
     <widget name="key_red" position="150,980" size="350,35" font="robotoMSN; 24" backgroundColor="black" transparent="1"/>
 
     <!--ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/key_green.png" position="400,980" size="35,27" alphatest="blend"/-->
     <widget source="session.CurrentService" render="j00zekPiconAnimation" position="400,980" zPosition="10" size="35,27" alphatest="blend"
-			initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,1" random="True"
-			pixmaps="BlackHarmony/skin_user_animButtons/key_green"
-			pixalter="/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/key_green.png"
-	/>
+                        initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,1" random="True"
+                        pixmaps="BlackHarmony/skin_user_animButtons/key_green"
+                        pixalter="/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/key_green.png"
+        />
     <widget name="key_green" position="450,980" size="350,35" font="robotoMSN; 24" backgroundColor="black" transparent="1"/>
 
     <!--ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/key_yellow.png" position="700,980" size="35,27" alphatest="blend"/-->
     <widget source="session.CurrentService" render="j00zekPiconAnimation" position="700,980" zPosition="10" size="35,27" alphatest="blend"
-			initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True"  chainid="BTN,2" random="True"
-			pixmaps="BlackHarmony/skin_user_animButtons/key_yellow"
-			pixalter="/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/key_yellow.png"
-	/>
+                        initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True"  chainid="BTN,2" random="True"
+                        pixmaps="BlackHarmony/skin_user_animButtons/key_yellow"
+                        pixalter="/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/key_yellow.png"
+        />
     <widget name="key_yellow" position="750,980" size="350,35" font="robotoMSN; 24" backgroundColor="black" transparent="1"/>
 
     <!--ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/key_blue.png" position="1000,980" size="35,27" alphatest="blend"/-->
     <widget source="session.CurrentService" render="j00zekPiconAnimation" position="1000,980" zPosition="10" size="35,27" alphatest="blend"
-			initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,3" random="True"
-			pixmaps="BlackHarmony/skin_user_animButtons/key_blue"
-			pixalter="/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/key_blue.png"
-	/>
+                        initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,3" random="True"
+                        pixmaps="BlackHarmony/skin_user_animButtons/key_blue"
+                        pixalter="/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/key_blue.png"
+        />
     <widget name="key_blue" position="1050,980" size="350,35" font="robotoMSN; 24" backgroundColor="black" transparent="1"/>
 
     <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/key_left.png" position="1250,980" size="35,27" alphatest="blend"/>

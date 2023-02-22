@@ -1,8 +1,7 @@
   <screen name="MSNweatherDailyDetails" position="0,0" size="1920,1080" title=" " flags="wfNoBorder" backgroundColor="black">
-    <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" zPosition="-10" size="1920,1080" pixmap="BlackHarmony/icons/BingPicOfTheDay.jpg" alphatest="blend">
-      <convert type="j00zekRefreshBingPicOfTheDay"></convert>
+    <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" zPosition="-10" size="1920,1080">
+      <convert type="j00zekRefreshBingPicOfTheDay">/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/bg_1902x1080.png</convert>
     </widget>
-    <ePixmap position="0,0" zPosition="-10" size="1920,1080" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/bg_1902x1080.png" transparent="1" alphatest="blend"/>
     <!-- header -->
     <widget source="global.CurrentTime" render="Label" position="85,70" size="80,35" font="robotoMSN; 27" backgroundColor="black" transparent="1">
       <convert type="ClockToText">Default</convert>
@@ -11,40 +10,40 @@
       <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
     </widget>
     <widget source="session.CurrentService" render="Label" position="1395,70" size="420,35" font="robotoMSN; 27" halign="right" backgroundColor="dark_grey" transparent="1" >
-		<convert type="j00zekAlternateTitle">Detailed forecast</convert>
+      <convert type="j00zekAlternateTitle">Detailed forecast</convert>
     </widget>
 <!-- TOP LEFT-->
-	<widget source="day_date" render="Label" position="169,180" size="276,30" font="HD_Thin; 22" halign="center" valign="center" transparent="1" backgroundColor="black" noWrap="1" />
+    <widget source="day_date" render="Label" position="169,180" size="276,30" font="HD_Thin; 22" halign="center" valign="center" transparent="1" backgroundColor="black" noWrap="1" />
     <widget name="day_icon" position="243,212" size="128,128" zPosition="5" alphatest="blend"/>
-	<widget source="day_skytext" render="j00zekLabel" position="169,340" size="276,60" font="HD_Thin; 26" halign="center" valign="center" transparent="1" backgroundColor="black"/>
-	<widget source="day_infoList" render="Listbox" position="169,410" size="276,240" scrollbarMode="showNever" transparent="1" backgroundColor="black">
-		<convert type="TemplatedMultiContent">
+    <widget source="day_skytext" render="j00zekLabel" position="169,340" size="276,60" font="HD_Thin; 26" halign="center" valign="center" transparent="1" backgroundColor="black"/>
+    <widget source="day_infoList" render="Listbox" position="169,410" size="276,240" scrollbarMode="showNever" transparent="1" backgroundColor="black">
+      <convert type="TemplatedMultiContent">
                     {"template": [
                         MultiContentEntryPixmapAlphaBlend(pos = (0, 0), size = (20, 25), png = 0),
                         MultiContentEntryText(pos = (25, 0), size = (90, 25), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 1, color=0xf2f2f2, color_sel=0xf2f2f2),
                         
-						MultiContentEntryPixmapAlphaBlend(pos = (92, 0), size = (20, 25), png = 2),
+                                                MultiContentEntryPixmapAlphaBlend(pos = (92, 0), size = (20, 25), png = 2),
                         MultiContentEntryText(pos = (118, 0), size = (90, 25), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 3, color=0xf2f2f2, color_sel=0xf2f2f2),
                         
-						MultiContentEntryPixmapAlphaBlend(pos = (184, 0), size = (20, 50), png = 4),
+                                                MultiContentEntryPixmapAlphaBlend(pos = (184, 0), size = (20, 50), png = 4),
                         MultiContentEntryText(pos = (209, 0), size = (90, 25), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 5, color=0xf2f2f2, color_sel=0xf2f2f2),
                         
-						MultiContentEntryPixmapAlphaBlend(pos = (0, 60), size = (25, 25), png = 6),
+                                                MultiContentEntryPixmapAlphaBlend(pos = (0, 60), size = (25, 25), png = 6),
                         MultiContentEntryText(pos = (35, 60), size = (226, 25), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 7, color=0xf2f2f2, color_sel=0xf2f2f2),
                         
-						MultiContentEntryPixmapAlphaBlend(pos = (0, 120), size = (25, 25), png = 8),
+                                                MultiContentEntryPixmapAlphaBlend(pos = (0, 120), size = (25, 25), png = 8),
                         MultiContentEntryText(pos = (35, 120), size = (226, 25), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 9, color=0xf2f2f2, color_sel=0xf2f2f2),
                         ],
                         "fonts": [gFont("regularMSN", 24), gFont("regularMSN", 20)],
                         "itemHeight": 150,
-						"selectionEnabled": False
+                                                "selectionEnabled": False
                     }
-        </convert>
-	</widget>
+      </convert>
+    </widget>
 <!-- TOP MIDDLE-->
     <widget source="Day_Forecast" render="Label" position="620,180" size="1150,90" font="HD_Thin; 30" halign="center" valign="center" transparent="1" backgroundColor="black"/>
-	<widget source="details_List" render="Listbox" position="620,300" size="1150,300" scrollbarMode="showOnDemand" transparent="1" backgroundColor="black">
-		<convert type="TemplatedMultiContent">
+        <widget source="details_List" render="Listbox" position="620,300" size="1150,300" scrollbarMode="showOnDemand" transparent="1" backgroundColor="black">
+                <convert type="TemplatedMultiContent">
                     {"template": [
                         MultiContentEntryText(pos = (0, 0),    size = (450, 40), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 0, color=0xf2f2f2, color_sel=0xf2f2f2),
                         MultiContentEntryText(pos = (0, 0),    size = (450, 40), font=1, flags = RT_HALIGN_RIGHT|RT_VALIGN_CENTER, text = 1, color=0x99ff99, color_sel=0x99ff99),
@@ -77,17 +76,17 @@
                         ],
                         "fonts": [gFont("regularMSN", 22), gFont("regularMSN", 24)],
                         "itemHeight": 300,
-						"selectionEnabled": False
+                                                "selectionEnabled": False
                     }
         </convert>
-	</widget>
+        </widget>
 <!--HOURLY DATA-->
     <ePixmap pixmap="BlackHarmony/gfx/line.png" position="520,620" size="1200,2" zPosition="3" transparent="1" alphatest="blend"/>
     <ePixmap pixmap="BlackHarmony/gfx/line.png" position="200,630" size="1200,2" zPosition="3" transparent="1" alphatest="blend"/>
     <widget position="100,440" size="350,30" zPosition="3" halign="left" valign="top" render="Label" source="hourlyData_title" font="robotoMSN; 24" transparent="1" foregroundColor="green"/>
     <!-- h0 -->
-	<widget source="h0_infoList" render="Listbox" position="100,660" size="270,280" scrollbarMode="showOnDemand" transparent="1" backgroundColor="black">
-		<convert type="TemplatedMultiContent">
+        <widget source="h0_infoList" render="Listbox" position="100,660" size="270,280" scrollbarMode="showOnDemand" transparent="1" backgroundColor="black">
+                <convert type="TemplatedMultiContent">
                     {"template": [
                         MultiContentEntryText(pos = (0, 0), size = (280, 25), font=1, flags = RT_HALIGN_CENTER|RT_VALIGN_CENTER, text = 0, color=0xf2f2f2, color_sel=0xf2f2f2),
                         MultiContentEntryPixmapAlphaBlend(pos = (0, 30), size = (128,128), png = 1),
@@ -95,23 +94,23 @@
                         MultiContentEntryPixmapAlphaBlend(pos = (140, 60), size = (30, 30), png = 2),
                         MultiContentEntryText(pos = (180, 60), size = (90, 30), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 3, color=0xf2f2f2, color_sel=0xf2f2f2),
                         
-						MultiContentEntryPixmapAlphaBlend(pos = (140, 90), size = (30, 30), png = 4),
+                                                MultiContentEntryPixmapAlphaBlend(pos = (140, 90), size = (30, 30), png = 4),
                         MultiContentEntryText(pos = (180, 90), size = (90, 30), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 5, color=0xf2f2f2, color_sel=0xf2f2f2),
                         
-						MultiContentEntryPixmapAlphaBlend(pos = (140, 120), size = (30, 30), png = 6),
+                                                MultiContentEntryPixmapAlphaBlend(pos = (140, 120), size = (30, 30), png = 6),
                         MultiContentEntryText(pos = (180, 120), size = (90, 25), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 7, color=0xf2f2f2, color_sel=0xf2f2f2),
                         
                         MultiContentEntryText(pos = (10, 160), size = (260, 110), font=0, flags = RT_HALIGN_CENTER|RT_VALIGN_CENTER|RT_WRAP, text = 8, color=0xf2f2f2, color_sel=0xf2f2f2),
                         ],
                         "fonts": [gFont("regularMSN", 24), gFont("regularMSN", 22)],
                         "itemHeight": 280,
-						"selectionEnabled": False
+                                                "selectionEnabled": False
                     }
         </convert>
-	</widget>
+        </widget>
     <!-- h1 -->
-	<widget source="h1_infoList" render="Listbox" position="390,660" size="270,280" scrollbarMode="showOnDemand" transparent="1" backgroundColor="black">
-		<convert type="TemplatedMultiContent">
+        <widget source="h1_infoList" render="Listbox" position="390,660" size="270,280" scrollbarMode="showOnDemand" transparent="1" backgroundColor="black">
+                <convert type="TemplatedMultiContent">
                     {"template": [
                         MultiContentEntryText(pos = (0, 0), size = (280, 25), font=1, flags = RT_HALIGN_CENTER|RT_VALIGN_CENTER, text = 0, color=0xf2f2f2, color_sel=0xf2f2f2),
                         MultiContentEntryPixmapAlphaBlend(pos = (0, 30), size = (128,128), png = 1),
@@ -119,23 +118,23 @@
                         MultiContentEntryPixmapAlphaBlend(pos = (140, 60), size = (30, 30), png = 2),
                         MultiContentEntryText(pos = (180, 60), size = (90, 30), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 3, color=0xf2f2f2, color_sel=0xf2f2f2),
                         
-						MultiContentEntryPixmapAlphaBlend(pos = (140, 90), size = (30, 30), png = 4),
+                                                MultiContentEntryPixmapAlphaBlend(pos = (140, 90), size = (30, 30), png = 4),
                         MultiContentEntryText(pos = (180, 90), size = (90, 30), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 5, color=0xf2f2f2, color_sel=0xf2f2f2),
                         
-						MultiContentEntryPixmapAlphaBlend(pos = (140, 120), size = (30, 30), png = 6),
+                                                MultiContentEntryPixmapAlphaBlend(pos = (140, 120), size = (30, 30), png = 6),
                         MultiContentEntryText(pos = (180, 120), size = (90, 25), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 7, color=0xf2f2f2, color_sel=0xf2f2f2),
                         
                         MultiContentEntryText(pos = (10, 160), size = (260, 110), font=0, flags = RT_HALIGN_CENTER|RT_VALIGN_CENTER|RT_WRAP, text = 8, color=0xf2f2f2, color_sel=0xf2f2f2),
                         ],
                         "fonts": [gFont("regularMSN", 24), gFont("regularMSN", 22)],
                         "itemHeight": 280,
-						"selectionEnabled": False
+                                                "selectionEnabled": False
                     }
         </convert>
-	</widget>
+        </widget>
     <!-- h2 -->
-	<widget source="h2_infoList" render="Listbox" position="680,660" size="270,280" scrollbarMode="showOnDemand" transparent="1" backgroundColor="black">
-		<convert type="TemplatedMultiContent">
+        <widget source="h2_infoList" render="Listbox" position="680,660" size="270,280" scrollbarMode="showOnDemand" transparent="1" backgroundColor="black">
+                <convert type="TemplatedMultiContent">
                     {"template": [
                         MultiContentEntryText(pos = (0, 0), size = (280, 25), font=1, flags = RT_HALIGN_CENTER|RT_VALIGN_CENTER, text = 0, color=0xf2f2f2, color_sel=0xf2f2f2),
                         MultiContentEntryPixmapAlphaBlend(pos = (0, 30), size = (128,128), png = 1),
@@ -143,23 +142,23 @@
                         MultiContentEntryPixmapAlphaBlend(pos = (140, 60), size = (30, 30), png = 2),
                         MultiContentEntryText(pos = (180, 60), size = (90, 30), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 3, color=0xf2f2f2, color_sel=0xf2f2f2),
                         
-						MultiContentEntryPixmapAlphaBlend(pos = (140, 90), size = (30, 30), png = 4),
+                                                MultiContentEntryPixmapAlphaBlend(pos = (140, 90), size = (30, 30), png = 4),
                         MultiContentEntryText(pos = (180, 90), size = (90, 30), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 5, color=0xf2f2f2, color_sel=0xf2f2f2),
                         
-						MultiContentEntryPixmapAlphaBlend(pos = (140, 120), size = (30, 30), png = 6),
+                                                MultiContentEntryPixmapAlphaBlend(pos = (140, 120), size = (30, 30), png = 6),
                         MultiContentEntryText(pos = (180, 120), size = (90, 25), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 7, color=0xf2f2f2, color_sel=0xf2f2f2),
                         
                         MultiContentEntryText(pos = (10, 160), size = (260, 110), font=0, flags = RT_HALIGN_CENTER|RT_VALIGN_CENTER|RT_WRAP, text = 8, color=0xf2f2f2, color_sel=0xf2f2f2),
                         ],
                         "fonts": [gFont("regularMSN", 24), gFont("regularMSN", 22)],
                         "itemHeight": 280,
-						"selectionEnabled": False
+                                                "selectionEnabled": False
                     }
         </convert>
-	</widget>
+        </widget>
     <!-- h3 -->
-	<widget source="h3_infoList" render="Listbox" position="970,660" size="270,280" scrollbarMode="showOnDemand" transparent="1" backgroundColor="black">
-		<convert type="TemplatedMultiContent">
+        <widget source="h3_infoList" render="Listbox" position="970,660" size="270,280" scrollbarMode="showOnDemand" transparent="1" backgroundColor="black">
+                <convert type="TemplatedMultiContent">
                     {"template": [
                         MultiContentEntryText(pos = (0, 0), size = (280, 25), font=1, flags = RT_HALIGN_CENTER|RT_VALIGN_CENTER, text = 0, color=0xf2f2f2, color_sel=0xf2f2f2),
                         MultiContentEntryPixmapAlphaBlend(pos = (0, 30), size = (128,128), png = 1),
@@ -167,23 +166,23 @@
                         MultiContentEntryPixmapAlphaBlend(pos = (140, 60), size = (30, 30), png = 2),
                         MultiContentEntryText(pos = (180, 60), size = (90, 30), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 3, color=0xf2f2f2, color_sel=0xf2f2f2),
                         
-						MultiContentEntryPixmapAlphaBlend(pos = (140, 90), size = (30, 30), png = 4),
+                                                MultiContentEntryPixmapAlphaBlend(pos = (140, 90), size = (30, 30), png = 4),
                         MultiContentEntryText(pos = (180, 90), size = (90, 30), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 5, color=0xf2f2f2, color_sel=0xf2f2f2),
                         
-						MultiContentEntryPixmapAlphaBlend(pos = (140, 120), size = (30, 30), png = 6),
+                                                MultiContentEntryPixmapAlphaBlend(pos = (140, 120), size = (30, 30), png = 6),
                         MultiContentEntryText(pos = (180, 120), size = (90, 25), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 7, color=0xf2f2f2, color_sel=0xf2f2f2),
                         
                         MultiContentEntryText(pos = (10, 160), size = (260, 110), font=0, flags = RT_HALIGN_CENTER|RT_VALIGN_CENTER|RT_WRAP, text = 8, color=0xf2f2f2, color_sel=0xf2f2f2),
                         ],
                         "fonts": [gFont("regularMSN", 24), gFont("regularMSN", 22)],
                         "itemHeight": 280,
-						"selectionEnabled": False
+                                                "selectionEnabled": False
                     }
         </convert>
-	</widget>
+        </widget>
     <!-- h4 -->
-	<widget source="h4_infoList" render="Listbox" position="1260,660" size="270,280" scrollbarMode="showOnDemand" transparent="1" backgroundColor="black">
-		<convert type="TemplatedMultiContent">
+        <widget source="h4_infoList" render="Listbox" position="1260,660" size="270,280" scrollbarMode="showOnDemand" transparent="1" backgroundColor="black">
+                <convert type="TemplatedMultiContent">
                     {"template": [
                         MultiContentEntryText(pos = (0, 0), size = (280, 25), font=1, flags = RT_HALIGN_CENTER|RT_VALIGN_CENTER, text = 0, color=0xf2f2f2, color_sel=0xf2f2f2),
                         MultiContentEntryPixmapAlphaBlend(pos = (0, 30), size = (128,128), png = 1),
@@ -191,23 +190,23 @@
                         MultiContentEntryPixmapAlphaBlend(pos = (140, 60), size = (30, 30), png = 2),
                         MultiContentEntryText(pos = (180, 60), size = (90, 30), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 3, color=0xf2f2f2, color_sel=0xf2f2f2),
                         
-						MultiContentEntryPixmapAlphaBlend(pos = (140, 90), size = (30, 30), png = 4),
+                                                MultiContentEntryPixmapAlphaBlend(pos = (140, 90), size = (30, 30), png = 4),
                         MultiContentEntryText(pos = (180, 90), size = (90, 30), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 5, color=0xf2f2f2, color_sel=0xf2f2f2),
                         
-						MultiContentEntryPixmapAlphaBlend(pos = (140, 120), size = (30, 30), png = 6),
+                                                MultiContentEntryPixmapAlphaBlend(pos = (140, 120), size = (30, 30), png = 6),
                         MultiContentEntryText(pos = (180, 120), size = (90, 25), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 7, color=0xf2f2f2, color_sel=0xf2f2f2),
                         
                         MultiContentEntryText(pos = (10, 160), size = (260, 110), font=0, flags = RT_HALIGN_CENTER|RT_VALIGN_CENTER|RT_WRAP, text = 8, color=0xf2f2f2, color_sel=0xf2f2f2),
                         ],
                         "fonts": [gFont("regularMSN", 24), gFont("regularMSN", 22)],
                         "itemHeight": 280,
-						"selectionEnabled": False
+                                                "selectionEnabled": False
                     }
         </convert>
-	</widget>
+        </widget>
     <!-- h5 -->
-	<widget source="h5_infoList" render="Listbox" position="1550,660" size="270,280" scrollbarMode="showOnDemand" transparent="1" backgroundColor="black">
-		<convert type="TemplatedMultiContent">
+        <widget source="h5_infoList" render="Listbox" position="1550,660" size="270,280" scrollbarMode="showOnDemand" transparent="1" backgroundColor="black">
+                <convert type="TemplatedMultiContent">
                     {"template": [
                         MultiContentEntryText(pos = (0, 0), size = (280, 25), font=1, flags = RT_HALIGN_CENTER|RT_VALIGN_CENTER, text = 0, color=0xf2f2f2, color_sel=0xf2f2f2),
                         MultiContentEntryPixmapAlphaBlend(pos = (0, 30), size = (128,128), png = 1),
@@ -215,27 +214,27 @@
                         MultiContentEntryPixmapAlphaBlend(pos = (140, 60), size = (30, 30), png = 2),
                         MultiContentEntryText(pos = (180, 60), size = (90, 30), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 3, color=0xf2f2f2, color_sel=0xf2f2f2),
                         
-						MultiContentEntryPixmapAlphaBlend(pos = (140, 90), size = (30, 30), png = 4),
+                                                MultiContentEntryPixmapAlphaBlend(pos = (140, 90), size = (30, 30), png = 4),
                         MultiContentEntryText(pos = (180, 90), size = (90, 30), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 5, color=0xf2f2f2, color_sel=0xf2f2f2),
                         
-						MultiContentEntryPixmapAlphaBlend(pos = (140, 120), size = (30, 30), png = 6),
+                                                MultiContentEntryPixmapAlphaBlend(pos = (140, 120), size = (30, 30), png = 6),
                         MultiContentEntryText(pos = (180, 120), size = (90, 25), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 7, color=0xf2f2f2, color_sel=0xf2f2f2),
                         
                         MultiContentEntryText(pos = (10, 160), size = (260, 110), font=0, flags = RT_HALIGN_CENTER|RT_VALIGN_CENTER|RT_WRAP, text = 8, color=0xf2f2f2, color_sel=0xf2f2f2),
                         ],
                         "fonts": [gFont("regularMSN", 24), gFont("regularMSN", 22)],
                         "itemHeight": 280,
-						"selectionEnabled": False
+                                                "selectionEnabled": False
                     }
         </convert>
-	</widget>
+        </widget>
 <!-- dolna belka -->
     <widget source="session.CurrentService" render="j00zekPiconAnimation" position="100,980" zPosition="10" size="35,27" alphatest="blend"
-			initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True"
-			pixmaps="BlackHarmony/skin_user_animButtons/key_red"
-			pixalter="/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/key_red.png"
-	/>
-	<!--ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/key_red.png" position="100,980" size="35,27" alphatest="blend"/-->
+                        initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True"
+                        pixmaps="BlackHarmony/skin_user_animButtons/key_red"
+                        pixalter="/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/key_red.png"
+        />
+        <!--ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/key_red.png" position="100,980" size="35,27" alphatest="blend"/-->
     <widget name="key_red" position="150,980" size="350,35" font="robotoMSN; 24" backgroundColor="black" transparent="1"/>
 
     <!--ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/icons/key_green.png" position="500,980" size="35,27" alphatest="blend"/>
