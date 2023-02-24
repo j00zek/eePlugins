@@ -727,6 +727,7 @@ class urlparser:
                        'wholecloud.net': self.pp.parserWHOLECLOUD,
                        'widestream.io': self.pp.parserWIDESTREAMIO,
                        'wiiz.tv': self.pp.parserWIIZTV,
+                       'wikisport.click': self.pp.parserWIKISPORTCLICK,
                        'wolfstream.tv': self.pp.parserCLIPWATCHINGCOM,
 #                       'woof.tube': self.pp.parserVERYSTREAM,
                        'wrzuta.pl': self.pp.parserWRZUTA,
@@ -15726,5 +15727,52 @@ class pageParser(CaptchaHelper):
         url = urlparser.decorateUrl(url, {'iptv_proto': 'm3u8', 'User-Agent': urlParams['header']['User-Agent'], 'Referer': cUrl, 'Origin': urlparser.getDomain(cUrl, False)})
         if url != '':
             urlTab.extend(getDirectM3U8Playlist(url, cookieParams={'header': urlParams['header']}))
+
+        return urlTab
+
+    def parserWIKISPORTCLICK(self, baseUrl):
+        printDBG("parserWIKISPORTCLICK baseUrl[%s]" % baseUrl)
+
+        HTTP_HEADER = self.cm.getDefaultHeader(browser='chrome')
+        referer = baseUrl.meta.get('Referer')
+        if referer:
+            HTTP_HEADER['Referer'] = referer
+        urlParams = {'header': HTTP_HEADER}
+        sts, data = self.cm.getPage(baseUrl, urlParams)
+        if not sts:
+            return []
+
+        tmp = self.cm.ph.getAllItemsBeetwenNodes(data, ('<script', '>'), ('</script', '>'), False)
+        tmp = '\n'.join(tmp)
+
+        scriptUrl = self.cm.ph.getSearchGroups(data, '''<script[^>]+?src=['"]([^'^"]+?wiki\.js[^'^"]*?)['"]''')[0]
+        if scriptUrl.startswith('//'):
+            scriptUrl = 'https:' + scriptUrl
+        sts, data = self.cm.getPage(scriptUrl, urlParams)
+        if not sts:
+            return []
+
+        if data != '' and tmp != '':
+            jscode = base64.b64decode('''dmFyIG5hdmlnYXRvcj17dXNlckFnZW50OiJkZXNrdG9wIn07d2luZG93PXRoaXM7ZG9jdW1lbnQ9e307ZG9jdW1lbnQud3JpdGU9ZnVuY3Rpb24oKXtwcmludChhcmd1bWVudHNbMF0pO307YXRvYj1mdW5jdGlvbihlKXtlLmxlbmd0aCU0PT0zJiYoZSs9Ij0iKSxlLmxlbmd0aCU0PT0yJiYoZSs9Ij09IiksZT1EdWt0YXBlLmRlYygiYmFzZTY0IixlKSxkZWNUZXh0PSIiO2Zvcih2YXIgdD0wO3Q8ZS5ieXRlTGVuZ3RoO3QrKylkZWNUZXh0Kz1TdHJpbmcuZnJvbUNoYXJDb2RlKGVbdF0pO3JldHVybiBkZWNUZXh0fTs=''')
+            jscode += tmp
+            jscode += data
+            ret = js_execute(jscode)
+            if ret['sts'] and 0 == ret['code']:
+                tmp = ret['data'].strip()
+
+        tmpUrl = self.cm.ph.getSearchGroups(tmp, '''<iframe[^>]+?src=['"]([^"^']+?)['"]''', 1, True)[0]
+        HTTP_HEADER['Referer'] = baseUrl
+        urlParams = {'header': HTTP_HEADER}
+        sts, data = self.cm.getPage(tmpUrl, urlParams)
+        if not sts:
+            return []
+
+        data = eval(re.findall('return\((\[.+?\])', data)[0])
+        data = ''.join(data).replace('\/', '/')
+
+        urlTab = []
+        if 'm3u8' in data:
+            hlsUrl = strwithmeta(data, {'Origin': urlparser.getDomain(tmpUrl, False), 'Referer': tmpUrl})
+            urlTab.extend(getDirectM3U8Playlist(hlsUrl, checkExt=False, variantCheck=True, checkContent=True, sortWithMaxBitrate=99999999))
 
         return urlTab
