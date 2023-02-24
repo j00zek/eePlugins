@@ -6,21 +6,21 @@
     <widget backgroundColor="black" font="HD_Thin; 30" halign="right" position="1340,15" render="Label" size="180,60" source="global.CurrentTime" valign="bottom" transparent="1" noWrap="1" foregroundColor="lemon" >
       <convert type="ClockToText">Format:%A</convert>
     </widget>
-  <widget backgroundColor="black" font="LCD; 35" foregroundColor="lemon" position="1520,15" render="Label" size="155,60" source="global.CurrentTime" halign="right" valign="bottom" transparent="1">
+    <widget backgroundColor="black" font="LCD; 35" foregroundColor="lemon" position="1520,15" render="Label" size="155,60" source="global.CurrentTime" halign="right" valign="bottom" transparent="1">
       <convert type="ClockToText">Format:%d.%m.%Y</convert>
       </widget>
-  <widget source="global.CurrentTime" render="Label" position="1695,25" size="65,60" font="LCD; 60" halign="center" valign="bottom" backgroundColor="black" transparent="1" foregroundColor="#66CCCC">
-    <convert type="ClockToText">Format:%H</convert>
+    <widget source="global.CurrentTime" render="Label" position="1695,25" size="65,60" font="LCD; 60" halign="center" valign="bottom" backgroundColor="black" transparent="1" foregroundColor="#66CCCC">
+      <convert type="ClockToText">Format:%H</convert>
     </widget>
-  <widget source="global.CurrentTime" render="FixedLabel" text=":" font="Regular;30" position="1755,20" size="12,60" halign="center" valign="center" zPosition="3" foregroundColor="#66CCCC" transparent="1">
-    <convert type="j00zekShareBlinkingClock" />
-    <convert type="ConditionalShowHide">Blink</convert>
+    <widget source="global.CurrentTime" render="FixedLabel" text=":" font="Regular;30" position="1755,20" size="12,60" halign="center" valign="center" zPosition="3" foregroundColor="#66CCCC" transparent="1">
+      <convert type="j00zekShareBlinkingClock" />
+      <convert type="ConditionalShowHide">Blink</convert>
     </widget>
-  <widget source="global.CurrentTime" render="Label" position="1767,25" size="65,60" font="LCD; 60" halign="center" valign="bottom" backgroundColor="black" transparent="1" foregroundColor="#66CCCC">
-    <convert type="ClockToText">Format:%M</convert>
+    <widget source="global.CurrentTime" render="Label" position="1767,25" size="65,60" font="LCD; 60" halign="center" valign="bottom" backgroundColor="black" transparent="1" foregroundColor="#66CCCC">
+      <convert type="ClockToText">Format:%M</convert>
     </widget>
-  <widget source="global.CurrentTime" render="Label" position="1835,25" size="45,60" font="LCD; 35" halign="left" valign="top" backgroundColor="black" transparent="1" >
-    <convert type="ClockToText">Format:%S</convert>
+    <widget source="global.CurrentTime" render="Label" position="1835,25" size="45,60" font="LCD; 35" halign="left" valign="top" backgroundColor="black" transparent="1" >
+      <convert type="ClockToText">Format:%S</convert>
     </widget> 
 <!--nazwa bukietu,programu i podgląd-->
     <widget backgroundColor="black" font="Roboto_HD; 38" foregroundColor="yellow" halign="center" valign="center" position="40,10" render="j00zekLabel" size="1030,95" source="Title" transparent="1" />
@@ -29,8 +29,8 @@
     <eLabel backgroundColor="linie"  position="1133,122" size="2,413" zPosition="4" />
     <eLabel backgroundColor="linie"  position="1860,122" size="2,413" zPosition="4" />
     <widget backgroundColor="picture" position="1135,124" render="Pig" size="725,409" source="session.VideoPicture" transparent="0" zPosition="3">
-    <convert type="ConfigEntryTest"></convert>
-    <convert type="ConditionalShowHide" />
+      <convert type="ConfigEntryTest"></convert>
+      <convert type="ConditionalShowHide" />
     </widget>
     <widget alphatest="blend" position="1145,464" render="j00zekPicons" picontype="picon" size="100,60" source="session.CurrentService" transparent="1" zPosition="4">
       <convert type="ServiceName">Reference</convert>
@@ -70,14 +70,23 @@
       <convert type="RemainingToText">NoSeconds</convert>
     </widget>
     <eLabel backgroundColor="linie" foregroundColor="lemon" position="1150,630" size="690,1" />
-   <widget source="ServiceEvent" render="j00zekModRunningText" backgroundColor="background" font="Roboto_HD; 30" halign="left" options="movetype=running,startpoint=0,direction=top,steptime=90,repeat=4,startdelay=6000,wrap" position="1135,640" size="725,240"  transparent="1">
+    <widget source="ServiceEvent" render="j00zekModRunningText" backgroundColor="background" font="Roboto_HD; 30" halign="left" options="movetype=running,startpoint=0,direction=top,steptime=90,repeat=4,startdelay=6000,wrap" position="1135,640" size="725,240"  transparent="1">
       <convert type="j00zekModEventName">ExtendedDescription</convert>
     </widget>
 
     <!--Nastepne audycje-->
      <eLabel backgroundColor="linie" foregroundColor="lemon" position="1150,897" size="690,1" />
-    <widget alphatest="blend" column0="0,80,green,Roboto_HD,28,0,0" column1="95,620,white,Roboto_HD,28,0,1" position="1135,900" primetimeoffset="10" render="j00zekModEventListDisplay" rowHeight="30" size="720,170" source="ServiceEvent">
-      <convert type="j00zekModEventList">eventcount=3</convert>
+    <widget alphatest="blend" column0="0,80,green,Roboto_HD,28,0,0" column1="95,620,white,Roboto_HD,28,0,1" position="1135,900" primetimeoffset="10" render="j00zekModEventListDisplay" rowHeight="30" size="90,170" source="ServiceEvent">
+      <convert type="j00zekModEventList">eventcount=3,NoName,NoDuration</convert>
+    </widget>
+    <widget source="ServiceEvent" render="j00zekModRunningText" options="movetype=swimming,startpoint=0,direction=left,steptime=40,repeat=99,startdelay=2000" backgroundColor="transpBlack" font="Roboto_HD;26" foregroundColor="white" halign="left" position="1230,900" size="625,30" transparent="1" zPosition="5">
+      <convert type="j00zekModEventList">eventNo=1,noTime,NoDuration</convert>
+    </widget>
+    <widget source="ServiceEvent" render="j00zekModRunningText" options="movetype=swimming,startpoint=0,direction=left,steptime=40,repeat=99,startdelay=2000" backgroundColor="transpBlack" font="Roboto_HD;26" foregroundColor="white" halign="left" position="1230,930" size="625,30" transparent="1" zPosition="5">
+      <convert type="j00zekModEventList">eventNo=2,noTime,NoDuration</convert>
+    </widget>
+    <widget source="ServiceEvent" render="j00zekModRunningText" options="movetype=swimming,startpoint=0,direction=left,steptime=40,repeat=99,startdelay=2000" backgroundColor="transpBlack" font="Roboto_HD;26" foregroundColor="white" halign="left" position="1230,960" size="625,30" transparent="1" zPosition="5">
+      <convert type="j00zekModEventList">eventNo=3,noTime,NoDuration</convert>
     </widget>
 
 <!--przyciski-->
