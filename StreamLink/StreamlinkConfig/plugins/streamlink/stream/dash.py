@@ -10,7 +10,7 @@ from typing import Dict, Optional
 from urllib.parse import urlparse, urlunparse
 
 from streamlink import PluginError, StreamError
-from streamlink.stream.dash_manifest import MPD, Representation, Segment, freeze_timeline, utc
+from streamlink.stream.dash_manifest import MPD, Representation, Segment, freeze_timeline
 from streamlink.stream.ffmpegmux import FFMPEGMuxer
 from streamlink.stream.segmented import SegmentedStreamReader, SegmentedStreamWorker, SegmentedStreamWriter
 from streamlink.stream.stream import Stream
@@ -19,6 +19,8 @@ from streamlink.utils.parse import parse_xml
 
 
 log = logging.getLogger(__name__)
+
+UTC = datetime.timezone.utc
 
 
 class DASHStreamWriter(SegmentedStreamWriter):
@@ -29,14 +31,14 @@ class DASHStreamWriter(SegmentedStreamWriter):
     def _get_segment_name(segment: Segment) -> str:
         return Path(urlparse(segment.url).path).resolve().name
 
-    def fetch(self, segment, retries=None):
+    def fetch(self, segment: Segment, retries: Optional[int] = None):
         if self.closed or not retries:
             return
 
         try:
             request_args = copy.deepcopy(self.reader.stream.args)
             headers = request_args.pop("headers", {})
-            now = datetime.datetime.now(tz=utc)
+            now = datetime.datetime.now(tz=UTC)
             if segment.available_at > now:
                 time_to_wait = (segment.available_at - now).total_seconds()
                 fname = self._get_segment_name(segment)
@@ -45,19 +47,18 @@ class DASHStreamWriter(SegmentedStreamWriter):
                     log.debug(f"Waiting for segment: {fname} aborted")
                     return
 
-            if segment.range:
-                start, length = segment.range
-                if length:
-                    end = start + length - 1
-                else:
-                    end = ""
+            if segment.byterange:
+                start, length = segment.byterange
+                end = str(start + length - 1) if length else ""
                 headers["Range"] = f"bytes={start}-{end}"
 
-            return self.session.http.get(segment.url,
-                                         timeout=self.timeout,
-                                         exception=StreamError,
-                                         headers=headers,
-                                         **request_args)
+            return self.session.http.get(
+                segment.url,
+                timeout=self.timeout,
+                exception=StreamError,
+                headers=headers,
+                **request_args,
+            )
         except StreamError as err:
             log.error(f"Failed to open segment {segment.url}: {err}")
             return self.fetch(segment, retries - 1)

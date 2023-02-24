@@ -4,8 +4,9 @@ import re
 from streamlink.plugin import Plugin
 from streamlink.plugin.api import useragents
 from streamlink.utils import update_scheme
-from streamlink.stream._ffmpegmux import FFMPEGMuxer
-from streamlink.stream._hlsdl import HLSDL
+#from streamlink.stream._ffmpegmux import FFMPEGMuxer #20230223
+from streamlink.stream.ffmpegmux import FFMPEGMuxer #20230223
+#from streamlink.stream._hlsdl import HLSDL #20230223
 from streamlink.stream.file import FileStream
 
 log = logging.getLogger(__name__)
