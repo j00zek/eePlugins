@@ -194,11 +194,14 @@ class j00zekModEventName(Poll, Converter, object):
                     age += 3
                     return _("Minimum age %d years") % age
         elif self.type == self.GENRE:
-            genre = event.getGenreData()
-            if genre is None:
-                return ""
-            else:
-                return getGenreStringSub(genre.getLevel1(), genre.getLevel2())
+            try:
+                genre = event.getGenreData()
+                if genre is None:
+                    return ""
+                else:
+                    return getGenreStringSub(genre.getLevel1(), genre.getLevel2())
+            except Exception:
+                return ''
         elif self.type == self.EPGPIC:
             if FULLDBG: j00zekDEBUG("[j00zekModEventName:getText] self.type == self.EPGPIC = '%s'" % self.picFileName)
             return self.picFileName

@@ -33,8 +33,8 @@ from time import localtime, strftime, mktime, time
 from datetime import datetime, timedelta
 
 class j00zekModEventList(Converter, object):
-    def __init__(self, type):
-        Converter.__init__(self, type)
+    def __init__(self, argstr):
+        Converter.__init__(self, argstr)
         self.epgcache = eEPGCache.getInstance()
         self.primetime = 0
         self.eventCount = 0
@@ -45,8 +45,8 @@ class j00zekModEventList(Converter, object):
         self.retFormat = ''
         self.firstEventColor = ''
         
-        if (len(type)):
-            args = type.split(',')
+        if (len(argstr)):
+            args = argstr.lower().split(',')
             for arg in args:
                 if '=' in arg:
                     type_c, value = arg.split('=')
@@ -58,14 +58,14 @@ class j00zekModEventList(Converter, object):
                     self.eventNo = 0
                 elif type_c == "primetime" and value == "yes":
                     self.primetime = 1
-                elif type_c == "eventNo":
+                elif type_c == "eventno":
                     self.eventNo = int(value)
                     self.eventCount = self.eventNo
-                elif type_c == "noTime":
+                elif type_c == "notime":
                     self.retTime = False
-                elif type_c == "NoName":
+                elif type_c == "noname":
                     self.retName = False
-                elif type_c == "NoDuration":
+                elif type_c == "noduration":
                     self.retDuration = False
                 elif type_c == "firstEventColor":
                     self.firstEventColor = value

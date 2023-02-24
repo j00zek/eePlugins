@@ -21,16 +21,33 @@
 
 from __future__ import absolute_import #zmiana strategii ladowanie modulow w py2 z relative na absolute jak w py3
 try:
-    from Components.j00zekComponents import isINETworking, isPY2
+    from Components.j00zekComponents import isINETworking, isPY2, j00zekDEBUG
 except Exception:
-    from j00zekComponents import isINETworking, isPY2
+    from j00zekComponents import isINETworking, isPY2, j00zekDEBUG
 
-if isPY2() == True:
+if isPY2():
     from urllib import urlretrieve
 else:
     from urllib.request import urlretrieve
 
 import json, os, requests, sys, time, urllib
+
+DBG = True
+
+try:
+    from PIL import Image
+    usePIL = True
+except Exception:
+    usePIL = False
+    if isPY2():
+        os.system('opkg update;opkg install python-pillow python-imaging')
+    else:
+        os.system('opkg update;opkg install python3-pillow')
+    try:
+        from PIL import Image
+        usePIL = True
+    except Exception as e:
+        if DBG: j00zekDEBUG('getPicOfTheDay EXCEPTION:%s' % str(e))
 
 def getPicOfTheDay(CountryCode = 'pl_PL', downloadPathAndFileName = '/usr/share/enigma2/BlackHarmony/icons/BingPicOfTheDay.jpg', mergePic = ''):
     retVal = False
@@ -67,9 +84,8 @@ def getPicOfTheDay(CountryCode = 'pl_PL', downloadPathAndFileName = '/usr/share/
         print('no bing picture, nothing to merge to %s' % mergePic)
     elif retVal == False and os.path.exists(mergedPic) and (int(time.time()) - int(os.path.getmtime(mergedPic))) < 86400:
         print('to early to merge new bing pic of the day')
-    else:
+    elif usePIL:
         try:
-            from PIL import Image
             background = Image.open(downloadPathAndFileName)
             foreground = Image.open(mergePic)
             background.paste(foreground, (0, 0), foreground.convert('RGBA'))
@@ -78,7 +94,7 @@ def getPicOfTheDay(CountryCode = 'pl_PL', downloadPathAndFileName = '/usr/share/
             print('bing pic merged to %s and saved as %s' % (mergePic, mergedPic))
         except Exception as e:
             print(str(e))
-            os.system('opkg update; opkg install python3-pillow;opkg install python-pillow')
+            if DBG: j00zekDEBUG('getPicOfTheDay EXCEPTION:%s' % str(e))
     return retVal
 
 
