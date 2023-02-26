@@ -16,66 +16,75 @@
   
   <!--podgląd-->
     
-	<eLabel backgroundColor="linie"  position="60,122" size="725,2" zPosition="4" />
-	<eLabel backgroundColor="linie"  position="60,533" size="725,2" zPosition="4" />
-	<eLabel backgroundColor="linie"  position="58,122" size="2,413" zPosition="4" />
-	<eLabel backgroundColor="linie"  position="785,122" size="2,413" zPosition="4" />
-	<widget backgroundColor="picture" position="60,124" render="Pig" size="725,409" source="session.VideoPicture" transparent="0" zPosition="3">
+	<eLabel backgroundColor="linie"  position="60,132" size="725,2" zPosition="4" />
+	<eLabel backgroundColor="linie"  position="60,543" size="725,2" zPosition="4" />
+	<eLabel backgroundColor="linie"  position="58,132" size="2,413" zPosition="4" />
+	<eLabel backgroundColor="linie"  position="785,132" size="2,413" zPosition="4" />
+	<widget backgroundColor="picture" position="60,134" render="Pig" size="725,409" source="session.VideoPicture" transparent="0" zPosition="3">
     <convert type="ConfigEntryTest"></convert>
     <convert type="ConditionalShowHide" />
     </widget>
-	<widget alphatest="blend" position="66,464" render="j00zekPicons" picontype="picon" size="100,60" source="ServiceEvent" transparent="1" zPosition="4">
+	<widget alphatest="blend" position="66,474" render="j00zekPicons" picontype="picon" size="100,60" source="ServiceEvent" transparent="1" zPosition="4">
   <convert type="ServiceName">Reference</convert>
 </widget>
 	
 		<!--Aktualne wydarzenie po kolei od gory-->
 	
-	<widget backgroundColor="transpBlack" font="Regular;32" foregroundColor="blue" halign="center" position="50,540" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=90,repeat=99,startdelay=2000" size="725,40" source="ServiceEvent" transparent="1" zPosition="5">
+	<widget backgroundColor="transpBlack" font="Regular;32" foregroundColor="blue" halign="center" position="50,550" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=90,repeat=99,startdelay=2000" size="725,40" source="ServiceEvent" transparent="1" zPosition="5">
 			<convert type="j00zekModEventName">Name</convert>
 		</widget>	
-	<widget backgroundColor="background" font="Roboto_HD; 26" position="65,590" render="Label" size="100,35" source="ServiceEvent" transparent="1" zPosition="5">
+	<widget backgroundColor="background" font="Roboto_HD; 26" position="65,600" render="Label" size="100,35" source="ServiceEvent" transparent="1" zPosition="5">
       <convert type="EventTime">StartTime</convert>
       <convert type="ClockToText" />
     </widget>
-    <widget backgroundColor="background" font="Roboto_HD; 26" position="145,590" render="Label" size="105,30" source="ServiceEvent" transparent="1" zPosition="5">
+    <widget backgroundColor="background" font="Roboto_HD; 26" position="145,600" render="Label" size="105,30" source="ServiceEvent" transparent="1" zPosition="5">
       <convert type="EventTime">EndTime</convert>
       <convert type="ClockToText">Format:- %H:%M</convert>
     </widget>
-	<eLabel backgroundColor="linie" foregroundColor="linie" position="250,606" size="380,1" zPosition="4" />
-    <widget pixmap="BlackHarmony/gfx/Progress_color_dots_380x12.png" position="250,600" render="Progress" size="380,12" source="ServiceEvent" transparent="1" zPosition="5">
+	<eLabel backgroundColor="linie" foregroundColor="linie" position="250,616" size="380,1" zPosition="4" />
+    <widget pixmap="BlackHarmony/gfx/Progress_color_dots_380x12.png" position="250,610" render="Progress" size="380,12" source="ServiceEvent" transparent="1" zPosition="5">
       <convert type="EventTime">Progress</convert>
     </widget>
-	<widget pointer="BlackHarmony/gfx/seekbutton.png:14,1" position="250,599" render="j00zekModPositionGauge" size="380,14" source="ServiceEvent" transparent="1" zPosition="6">
+	<widget pointer="BlackHarmony/gfx/seekbutton.png:14,1" position="250,609" render="j00zekModPositionGauge" size="380,14" source="ServiceEvent" transparent="1" zPosition="6">
       <convert type="j00zekModEventPosition">Gauge</convert>
     </widget>
-	<widget backgroundColor="black" font="Roboto_HD; 26" halign="left" position="655,590" render="Label" size="90,30" source="ServiceEvent" transparent="1" zPosition="5">
+	<widget backgroundColor="black" font="Roboto_HD; 26" halign="left" position="655,600" render="Label" size="90,30" source="ServiceEvent" transparent="1" zPosition="5">
       <convert type="EventTime">Remaining</convert>
       <convert type="RemainingToText">NoSeconds</convert>
     </widget>
-	<eLabel backgroundColor="linie" position="90,630" size="665,1" />
-	<widget source="ServiceEvent" render="j00zekLabel" position="57,635" size="620,30" transparent="1" zPosition="1" font="Regular; 28" halign="left" valign="center" foregroundColor="green" backgroundColor="black" >
+	<eLabel backgroundColor="linie" position="90,640" size="665,1" />
+	<widget source="ServiceEvent" render="j00zekLabel" position="57,645" size="620,30" transparent="1" zPosition="1" font="Regular; 28" halign="left" valign="center" foregroundColor="green" backgroundColor="black" >
     <convert type="j00zekModEventName">Genre</convert>
     </widget>
-  <widget source="ServiceEvent" render="j00zekLabel" position="57,635" size="735,30" transparent="1" zPosition="1" font="Regular; 28" halign="right" valign="center" foregroundColor="light_red" backgroundColor="black" >
+  <widget source="ServiceEvent" render="j00zekLabel" position="57,645" size="735,30" transparent="1" zPosition="1" font="Regular; 28" halign="right" valign="center" foregroundColor="light_red" backgroundColor="black" >
     <convert type="j00zekModEventName">Rating</convert>
     </widget>
     
-   <widget backgroundColor="background" font="Roboto_HD; 30" halign="left" options="movetype=running,startpoint=0,direction=top,steptime=90,repeat=4,startdelay=6000,wrap" position="60,675" render="j00zekModRunningText" size="725,210" source="ServiceEvent" transparent="1">
+   <widget backgroundColor="background" font="Roboto_HD; 30" halign="left" options="movetype=running,startpoint=0,direction=top,steptime=90,repeat=4,startdelay=6000,wrap" position="60,680" render="j00zekModRunningText" size="725,190" source="ServiceEvent" transparent="1">
       <convert type="j00zekModEventName">ExtendedDescription</convert>
     </widget>
 		
     <!--Nastepne audycje-->
 	 
-	 <eLabel backgroundColor="linie" position="90,897" size="665,1" />
-    <widget alphatest="blend" column0="0,80,blue,Roboto_HD,30,0,0" column1="95,620,white,Roboto_HD,30,0,1" position="60,900" primetimeoffset="10" render="j00zekModEventListDisplay" rowHeight="32" size="720,170" source="ServiceEvent">
-      <convert type="j00zekModEventList">eventcount=2</convert>
+	 <eLabel backgroundColor="linie" position="90,887" size="665,1" />
+    <widget alphatest="blend" column0="0,80,blue,Roboto_HD,28,0,0" column1="95,620,white,Roboto_HD,28,0,1" position="60,890" primetimeoffset="10" render="j00zekModEventListDisplay" rowHeight="30" size="90,170" source="ServiceEvent">
+      <convert type="j00zekModEventList">eventcount=3,NoName,NoDuration</convert>
+    </widget>
+    <widget source="ServiceEvent" render="j00zekModRunningText" options="movetype=swimming,startpoint=0,direction=left,steptime=40,repeat=99,startdelay=2000" backgroundColor="transpBlack" font="Roboto_HD;26" foregroundColor="white" halign="left" position="155,890" size="625,32" transparent="1" zPosition="5">
+      <convert type="j00zekModEventList">eventNo=1,noTime,NoDuration</convert>
+    </widget>
+    <widget source="ServiceEvent" render="j00zekModRunningText" options="movetype=swimming,startpoint=0,direction=left,steptime=40,repeat=99,startdelay=2000" backgroundColor="transpBlack" font="Roboto_HD;26" foregroundColor="white" halign="left" position="155,922" size="625,32" transparent="1" zPosition="5">
+      <convert type="j00zekModEventList">eventNo=2,noTime,NoDuration</convert>
+    </widget>
+    <widget source="ServiceEvent" render="j00zekModRunningText" options="movetype=swimming,startpoint=0,direction=left,steptime=40,repeat=99,startdelay=2000" backgroundColor="transpBlack" font="Roboto_HD;26" foregroundColor="white" halign="left" position="155,954" size="625,32" transparent="1" zPosition="5">
+      <convert type="j00zekModEventList">eventNo=3,noTime,NoDuration</convert>
     </widget>
 	
 	<!--lista kanałów-->
 	
-	<eLabel backgroundColor="linie" position="804,123" size="1,844" />
+	<eLabel backgroundColor="linie" position="804,133" size="1,844" />
 	
-	<widget name="list" position="815,125" size="1050,840" colorEventProgressbarBorder="border" colorEventProgressbarBorderSelected="border" colorServiceDescription="pastel" colorServiceDescriptionSelected="lemon" enableWrapAround="1" foregroundColorSelected="#66CCCC" foregroundColorServiceNotAvail="#777777"  picServiceEventProgressbar="BlackHarmony/gfx/progcl_mario.png" scrollbarWidth="6" scrollbarMode="showOnDemand" scrollbarSliderBorderColor="#3b3e3f" scrollbarSliderForegroundColor="#e6e6e6" selectionPixmap="BlackHarmony/menu/sel_1060_60.png" serviceInfoFont="Roboto_HD;35" serviceItemHeight="53" serviceNameFont="Roboto_HD;35" serviceNumberFont="Roboto_HD;30"  transparent="1" />
+	<widget name="list" position="815,135" size="1050,840" colorEventProgressbarBorder="border" colorEventProgressbarBorderSelected="border" colorServiceDescription="pastel" colorServiceDescriptionSelected="lemon" enableWrapAround="1" foregroundColorSelected="#66CCCC" foregroundColorServiceNotAvail="#777777"  picServiceEventProgressbar="BlackHarmony/gfx/progcl_mario.png" scrollbarWidth="6" scrollbarMode="showOnDemand" scrollbarSliderBorderColor="#3b3e3f" scrollbarSliderForegroundColor="#e6e6e6" selectionPixmap="BlackHarmony/menu/sel_1060_60.png" serviceInfoFont="Roboto_HD;35" serviceItemHeight="53" serviceNameFont="Roboto_HD;35" serviceNumberFont="Roboto_HD;30"  transparent="1" />
 	
 <!--przyciski-->
 	

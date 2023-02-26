@@ -77,7 +77,7 @@
  <widget source="session.j00zekMSNWeather" render="Label" font="Regular; 20" position="1065,54" size="50,30" backgroundColor="black" foregroundColor="#0000cbf6" zPosition="3" transparent="1" halign="right" >
     <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=1']['temp_low']|C</convert>
   </widget>
- <widget source="session.j00zekMSNWeather" render="j00zekLabel" font="Regular; 22" position="1115,30" size="152,54" backgroundColor="black" zPosition="3" transparent="1" valign="center" halign="center">
+ <widget source="session.j00zekMSNWeather" render="j00zekModRunningText" options="movetype=running,startpoint=10,direction=top,steptime=20,repeat=2,startdelay=0,wrap" font="Regular; 22" position="1115,30" size="152,54" backgroundColor="black" zPosition="3" transparent="1" valign="center" halign="center">
     <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=1']['skytext']| </convert>
    </widget>
   
@@ -96,7 +96,7 @@
  <widget source="session.j00zekMSNWeather" render="Label" font="Regular; 20" position="1369,54" size="50,30" backgroundColor="black" foregroundColor="#0000cbf6" zPosition="3" transparent="1" halign="right" >
     <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=2']['temp_low']|C</convert>
   </widget>
- <widget source="session.j00zekMSNWeather" render="j00zekLabel" font="Regular; 22" position="1419,30" size="152,54" backgroundColor="black" zPosition="3" transparent="1" valign="center" halign="center">
+ <widget source="session.j00zekMSNWeather" render="j00zekModRunningText" options="movetype=running,startpoint=10,direction=top,steptime=20,repeat=2,startdelay=0,wrap" font="Regular; 22" position="1419,30" size="152,54" backgroundColor="black" zPosition="3" transparent="1" valign="center" halign="center">
     <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=2']['skytext']| </convert>
    </widget>
 	
@@ -115,7 +115,7 @@
  <widget source="session.j00zekMSNWeather" render="Label" font="Regular; 20" position="1677,54" size="50,30" backgroundColor="black" foregroundColor="#0000cbf6" zPosition="3" transparent="1" halign="right" >
     <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=3']['temp_low']|C</convert>
   </widget>
- <widget source="session.j00zekMSNWeather" render="j00zekLabel" font="Regular; 22" position="1727,30" size="155,54" backgroundColor="black" zPosition="3" transparent="1" valign="center" halign="center">
+ <widget source="session.j00zekMSNWeather" render="j00zekModRunningText" options="movetype=running,startpoint=10,direction=top,steptime=20,repeat=2,startdelay=0,wrap" font="Regular; 22" position="1727,30" size="155,54" backgroundColor="black" zPosition="3" transparent="1" valign="center" halign="center">
     <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=3']['skytext']| </convert>
    </widget>
 

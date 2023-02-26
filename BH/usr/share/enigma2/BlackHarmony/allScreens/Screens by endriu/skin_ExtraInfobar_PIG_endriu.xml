@@ -4,14 +4,7 @@
       <convert type="j00zekRefreshBingPicOfTheDay">/usr/share/enigma2/BlackHarmony/bg_design/EPGPig.png</convert>
     </widget>
     
-	<eLabel backgroundColor="linie"  position="205,165" size="600,1" zPosition="1" />
-	<eLabel backgroundColor="linie"  position="1140,165" size="600,1" zPosition="1" />
-	<eLabel backgroundColor="linie"  position="108,200" size="800,1" zPosition="1" />
-	<eLabel backgroundColor="linie"  position="1020,200" size="800,1" zPosition="1" />
-	<eLabel backgroundColor="linie"  position="58,560" size="1804,2" zPosition="1" />
- 	<eLabel backgroundColor="linie"  position="958,110" size="2,437" zPosition="1" />
-		 
-		 <!--info teraz-->
+	<!--info teraz-->
 	 
   <widget source="session.CurrentService" render="Label"  backgroundColor="black" font="Regular; 35" foregroundColor="blue" position="50,37" size="100,40" transparent="1" >
           <convert type="j00zekTranslator">Now</convert>
@@ -35,23 +28,25 @@
     <convert type="EventTime">Remaining</convert>
     <convert type="RemainingToText">InMinutes</convert>
      </widget>
-  <widget source="session.Event_Now" render="j00zekLabel" backgroundColor="background" foregroundColor="#66cc99" font="Regular; 32" halign="center" valign="center" position="55,104" size="890,60" transparent="1">
+	 <eLabel backgroundColor="linie"  position="205,185" size="600,1" zPosition="1" />
+  <widget source="session.Event_Now" render="j00zekLabel" backgroundColor="background" foregroundColor="#66cc99" font="Regular; 32" halign="center" valign="center" position="55,124" size="890,60" transparent="1">
     <convert type="j00zekModEventName">Name</convert>
   </widget>
   
-  <widget source="session.Event_Now" render="j00zekLabel" position="82,168" size="840,32" transparent="1" zPosition="1" font="Regular; 28" halign="left" valign="center" foregroundColor="green" backgroundColor="black" >
+  <widget source="session.Event_Now" render="j00zekLabel" position="82,184" size="840,32" transparent="1" zPosition="1" font="Regular; 28" halign="left" valign="center" foregroundColor="green" backgroundColor="black" >
     <convert type="j00zekModEventName">Genre</convert>
     </widget>
-  <widget source="session.Event_Now" render="j00zekLabel" position="82,168" size="840,32" transparent="1" zPosition="1" font="Regular; 28" halign="right" valign="center" foregroundColor="light_red" backgroundColor="black" >
+  <widget source="session.Event_Now" render="j00zekLabel" position="82,184" size="840,32" transparent="1" zPosition="1" font="Regular; 28" halign="right" valign="center" foregroundColor="light_red" backgroundColor="black" >
     <convert type="j00zekModEventName">Rating</convert>
     </widget>
-
-    <widget source="session.Event_Now" render="j00zekModRunningText" backgroundColor="transpBlack" font="Regular;32" options="movetype=running,startpoint=0,direction=top,steptime=100,repeat=2,startdelay=11000,wrap" position="58,215"  size="885,340" transparent="2">
+   <eLabel backgroundColor="linie"  position="108,220" size="800,1" zPosition="1" />
+    <widget source="session.Event_Now" backgroundColor="transpBlack" font="Regular;32" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=top,steptime=100,repeat=2,startdelay=11000,wrap" position="58,235"  size="885,320" transparent="2">
       <convert type="j00zekModEventName">ExtendedDescription</convert>
     </widget>
   
    <!--info potem-->
    
+   <eLabel backgroundColor="linie"  position="958,130" size="2,417" zPosition="1" />
  <widget source="session.CurrentService" render="Label" backgroundColor="black" font="Regular; 35" foregroundColor="blue" position="997,37" size="115,40" transparent="1" >
           <convert type="j00zekTranslator">later</convert>
         </widget>
@@ -67,23 +62,25 @@
     <convert type="EventTime">Remaining</convert>
     <convert type="RemainingToText">InMinutes</convert>
   </widget>
-  <widget source="session.Event_Next" render="j00zekLabel" backgroundColor="black" foregroundColor="yellow" font="Regular; 32" position="980,104" size="890,60" halign="center" valign="center" transparent="1">
+  <eLabel backgroundColor="linie"  position="1140,185" size="600,1" zPosition="1" />
+  <widget source="session.Event_Next" render="j00zekLabel" backgroundColor="black" foregroundColor="yellow" font="Regular; 32" position="980,124" size="890,60" halign="center" valign="center" transparent="1">
     <convert type="j00zekModEventName">Name</convert>
   </widget>
   
-  <widget source="session.Event_Next" render="j00zekLabel" position="1004,168" size="840,32" transparent="1" zPosition="1" font="Regular; 28" halign="left" valign="center" foregroundColor="green" backgroundColor="black" >
+  <widget source="session.Event_Next" render="j00zekLabel" position="1004,184" size="840,32" transparent="1" zPosition="1" font="Regular; 28" halign="left" valign="center" foregroundColor="green" backgroundColor="black" >
     <convert type="j00zekModEventName">Genre</convert>
     </widget>
-  <widget source="session.Event_Next" render="j00zekLabel" position="1004,168" size="840,32" transparent="1" zPosition="1" font="Regular; 28" halign="right" valign="center" foregroundColor="light_red" backgroundColor="black" >
+  <widget source="session.Event_Next" render="j00zekLabel" position="1004,184" size="840,32" transparent="1" zPosition="1" font="Regular; 28" halign="right" valign="center" foregroundColor="light_red" backgroundColor="black" >
     <convert type="j00zekModEventName">Rating</convert>
     </widget>
-
-     <widget source="session.Event_Next" render="j00zekModRunningText" backgroundColor="transpBlack" font="Regular;32" options="movetype=running,startpoint=0,direction=top,steptime=100,repeat=2,startdelay=11000,wrap" position="980,215"  size="890,340" transparent="2">
+   <eLabel backgroundColor="linie"  position="1020,220" size="800,1" zPosition="1" />
+     <widget source="session.Event_Next" render="j00zekModRunningText" backgroundColor="transpBlack" font="Regular;32" options="movetype=running,startpoint=0,direction=top,steptime=100,repeat=2,startdelay=11000,wrap" position="980,235"  size="890,320" transparent="2">
       <convert type="j00zekModEventName">ExtendedDescription</convert>
     </widget> 
 	 
 <!--podgląd,nr i nazwa kanału--> 
 	
+	<eLabel backgroundColor="linie"  position="58,560" size="1804,2" zPosition="1" />
   <widget backgroundColor="picture" position="58,572" render="Pig" size="710,400" source="session.VideoPicture" transparent="0" zPosition="3">
     <convert type="ConfigEntryTest"></convert>
     <convert type="ConditionalShowHide" />
