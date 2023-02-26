@@ -1717,7 +1717,7 @@ def msn_api(webContent, webFileName):
                 units = ''
                 inList = True
                 name = _('Cloud cover')
-                val = str(int(overviewDict['current']['rh']))
+                val = str(int(overviewDict['current']['cloudCover']))
                 units = unitsDict.get('cloudCover', '%')
                 valInfo = colorCode + val + units
                 manageCurrenDataWeatherItem(doUpdate, keyName, colorCode, inList, name, source, val, units, valInfo)
@@ -1789,6 +1789,23 @@ def msn_api(webContent, webFileName):
                 keyName = 'observationtime'
                 val = ISO3339toDATETIME(overviewDict['current']['created'],0)
                 paramsDict['dictWeather']['currentData'][keyName] = {'name': _('MSN sync time'), 'date': val[0], 'time': val[1], 'datetime': '%s %s' % (val[0],val[1]), 'inList': False}
+            if 0: #aqi akka airindex (https://www.eea.europa.eu/)
+                keyName = 'airIndex'
+                colorCode = ''
+                level = ''
+                name = ''
+                iconfilename = ''
+                info = ''
+                advice = ''
+                val = ''
+                valInfo = ''
+                paramsDict['dictWeather']['currentData'][keyName] = {'colorCode': colorCode, 'level': level, 'name': name, 
+                           'iconfilename': iconfilename, 
+                           'info': info, 
+                           'advice': advice, 
+                           'val': val, 
+                           'valInfo': valInfo, 
+                           'source': 'MSN'}
             ##### Forecast godzinny #####
             keyName='Forecast godzinny'
             HourID = 0

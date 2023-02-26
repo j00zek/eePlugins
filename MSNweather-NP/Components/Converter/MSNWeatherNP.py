@@ -72,8 +72,8 @@ class MSNWeatherNP(Converter, object):
     CURRENTDICT = 36
     METEOGRAM = 37
 
-    def __init__(self, type):
-        Converter.__init__(self, type)
+    def __init__(self, argsstr):
+        Converter.__init__(self, argsstr)
         self.index = None
         self.mode = None
         self.mode2 = ''
@@ -82,27 +82,27 @@ class MSNWeatherNP(Converter, object):
         self.indexTXT = None
         self.dictWeather = {}
         self.dictWeatherRUNs = []
-        if type == "city": self.mode = self.CITY
-        elif type == "observationtime": self.mode = self.OBSERVATIONTIME
-        elif type == "observationpoint": self.mode = self.OBSERVATIONPOINT
-        elif type == "temperature_current": self.mode = self.TEMPERATURE_CURRENT
-        elif type == "feelslike": self.mode = self.FEELSLIKE
-        elif type == "humidity": self.mode = self.HUMIDITY
-        elif type == "winddisplay": self.mode = self.WINDDISPLAY
-        elif type.startswith("METEOGRAM"):
+        if argsstr == "city": self.mode = self.CITY
+        elif argsstr == "observationtime": self.mode = self.OBSERVATIONTIME
+        elif argsstr == "observationpoint": self.mode = self.OBSERVATIONPOINT
+        elif argsstr == "temperature_current": self.mode = self.TEMPERATURE_CURRENT
+        elif argsstr == "feelslike": self.mode = self.FEELSLIKE
+        elif argsstr == "humidity": self.mode = self.HUMIDITY
+        elif argsstr == "winddisplay": self.mode = self.WINDDISPLAY
+        elif argsstr.startswith("METEOGRAM"):
             self.mode = self.METEOGRAM
-        elif type.startswith("DailyRecord="):
+        elif argsstr.startswith("DailyRecord="):
             self.mode = self.DAILYDICT
-            self.mode2 = type.replace('Daily','')
-        elif type.startswith("HourlyRecord="):
+            self.mode2 = argsstr.replace('Daily','')
+        elif argsstr.startswith("HourlyRecord="):
             self.mode = self.HOURLYDICT
-            self.mode2 = type.replace('Hourly','')
-        elif type.startswith("Current"):
+            self.mode2 = argsstr.replace('Hourly','')
+        elif argsstr.startswith("Current"):
             self.mode = self.CURRENTDICT
-            self.mode2 = type.replace('Current','')
-        elif type.startswith("RUN|") or type.startswith("GET|"):
+            self.mode2 = argsstr.replace('Current','')
+        elif argsstr.startswith("RUN|") or argsstr.startswith("GET|"):
             try:
-                self.dictWeatherRUNs = type.split('|')
+                self.dictWeatherRUNs = argsstr.split('|')
                 self.dictWeatherRUNs.pop(0)
                 if len(self.dictWeatherRUNs) > 0:
                     self.mode = self.WEATHERDICT
@@ -113,17 +113,17 @@ class MSNWeatherNP(Converter, object):
             except Exception as e:
                 self.EXCEPTIONDEBUG('__init__ Exception enumarating RUN|GET %s' % str(e))
         else:
-            if type.find("weathericon") != -1: self.mode = self.ICON
-            elif type.find("temperature_high") != -1: self.mode = self.TEMPERATURE_HEIGH
-            elif type.find("temperature_low") != -1: self.mode = self.TEMPERATURE_LOW
-            elif type.find("temperature_heigh_low") != -1: self.mode = self.TEMPERATURE_HEIGH_LOW
-            elif type.find("temperature_text") != -1: self.mode = self.TEMPERATURE_TEXT
-            elif type.find("weekday") != -1: self.mode = self.WEEKDAY
-            elif type.find("weekshortday") != -1: self.mode = self.WEEKSHORTDAY
-            elif type.find("date") != -1: self.mode = self.DATE
-            elif type.find("fulldate") != -1: self.mode = self.FULLDATE
+            if argsstr.find("weathericon") != -1: self.mode = self.ICON
+            elif argsstr.find("temperature_high") != -1: self.mode = self.TEMPERATURE_HEIGH
+            elif argsstr.find("temperature_low") != -1: self.mode = self.TEMPERATURE_LOW
+            elif argsstr.find("temperature_heigh_low") != -1: self.mode = self.TEMPERATURE_HEIGH_LOW
+            elif argsstr.find("temperature_text") != -1: self.mode = self.TEMPERATURE_TEXT
+            elif argsstr.find("weekday") != -1: self.mode = self.WEEKDAY
+            elif argsstr.find("weekshortday") != -1: self.mode = self.WEEKSHORTDAY
+            elif argsstr.find("date") != -1: self.mode = self.DATE
+            elif argsstr.find("fulldate") != -1: self.mode = self.FULLDATE
             if self.mode is not None:
-                dd = type.split(",")
+                dd = argsstr.split(",")
                 if len(dd) >= 2:
                     self.indexTXT = dd[1]
                     self.index = self.getIndex(self.indexTXT)
@@ -134,7 +134,7 @@ class MSNWeatherNP(Converter, object):
     def EXCEPTIONDEBUG(self, myFUNC = '' , myText = '' ):
         try:
             import traceback
-            myText += '\n=========================\n' & traceback.format_exc()
+            myText += '\n=========================\n%s' % traceback.format_exc()
         except Exception:
             pass
         from Plugins.Extensions.MSNweather.debug import printDEBUG
@@ -222,7 +222,7 @@ class MSNWeatherNP(Converter, object):
                     #self.DEBUG('DAILYDICT ','record: %s' % str(record))
                     item =  mode2[1]
                     #self.DEBUG('DAILYDICT ','item: %s' % str(item))
-                    if record.split('=') > 1:
+                    if len(record.split('=')) > 1:
                         day = int(record.split('=')[1])
                         Month = _((datetime.date.today() + datetime.timedelta(days=day)).strftime("%b"))
                         dictTree += "['%s']" % record
@@ -241,7 +241,7 @@ class MSNWeatherNP(Converter, object):
                         elif item in ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9'):
                             retText = str('%s' % recordDict[int(item)].strip())
             except Exception as e:
-                self.EXCEPTIONDEBUG('getText(DAILYDICT) ','Exception %s' % str(e))
+                self.EXCEPTIONDEBUG('getText(DAILYDICT) ','mode2=%s,\n\tException %s' % (self.mode2 , str(e)))
         elif self.mode == self.HOURLYDICT:
             try:
                 mode2 =  self.mode2.split(',')
