@@ -166,33 +166,39 @@ class j00zekModEventName(Poll, Converter, object):
             if FULLDBG: j00zekDEBUG("[j00zekModEventName:getText] self.type == self.NAME = '%s'" % retVal)
             return retVal
         elif self.type == self.SRATING:
-            rating = event.getParentalData()
-            if rating is None:
-                return ""
-            else:
-                country = rating.getCountryCode()
-                age = rating.getRating()
-                if age == 0:
-                    return _("All ages")
-                elif age > 15:
-                    return _("bc%s") % age
+            try:
+                rating = event.getParentalData()
+                if rating is None:
+                    return ""
                 else:
-                    age += 3
-                    return " %d+" % age
+                    country = rating.getCountryCode()
+                    age = rating.getRating()
+                    if age == 0:
+                        return _("All ages")
+                    elif age > 15:
+                        return _("bc%s") % age
+                    else:
+                        age += 3
+                        return " %d+" % age
+            except Exception:
+                return ''
         elif self.type == self.RATING:
-            rating = event.getParentalData()
-            if rating is None:
-                return ""
-            else:
-                country = rating.getCountryCode()
-                age = rating.getRating()
-                if age == 0:
-                    return _("Rating undefined")
-                elif age > 15:
-                    return _("Rating defined by broadcaster - %d") % age
+            try:
+                rating = event.getParentalData()
+                if rating is None:
+                    return ""
                 else:
-                    age += 3
-                    return _("Minimum age %d years") % age
+                    country = rating.getCountryCode()
+                    age = rating.getRating()
+                    if age == 0:
+                        return _("Rating undefined")
+                    elif age > 15:
+                        return _("Rating defined by broadcaster - %d") % age
+                    else:
+                        age += 3
+                        return _("Minimum age %d years") % age
+            except Exception:
+                return ''
         elif self.type == self.GENRE:
             try:
                 genre = event.getGenreData()
