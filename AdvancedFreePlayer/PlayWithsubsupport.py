@@ -165,7 +165,7 @@ class AdvancedFreePlayer(Screen, InfoBarBase, SubsSupport, InfoBarSeek):
     SHOWNSUBTITLE = 6
     HIDDENSUBTITLE = 7
 
-    def __init__(self, session, openmovie, opensubtitle, rootID, LastPlayedService, URLlinkName='', movieTitle='', LastPosition = 0):
+    def __init__(self, session, openmovie, opensubtitle, rootID, LastPlayedService, URLlinkName='', movieTitle='', LastPosition = 0, srtList = []):
 
         self.session = session
         self.statusScreen = self.session.instantiateDialog(StatusScreen)

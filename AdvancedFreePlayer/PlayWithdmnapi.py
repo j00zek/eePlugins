@@ -125,12 +125,11 @@ class AdvancedFreePlayer(Screen):
     SHOWNSUBTITLE = 6
     HIDDENSUBTITLE = 7
 
-    def __init__(self, session,openmovie,opensubtitle, rootID, LastPlayedService, URLlinkName = '', movieTitle='', LastPosition = 0, movieDescription='', movieCover=''):
+    def __init__(self, session,openmovie,opensubtitle, rootID, LastPlayedService, URLlinkName = '', movieTitle='', LastPosition = 0, srtList = []):
         self.session = session
         self.statusScreen = self.session.instantiateDialog(StatusScreen)
         
-        self.movieDescription = movieDescription
-        self.movieCover = movieCover
+        self.srtList = srtList
         self.URLlinkName = URLlinkName
         self.frameon = 1 / 24
         self.seeksubtitle = 0
@@ -149,7 +148,11 @@ class AdvancedFreePlayer(Screen):
         else:
             self.movieTitle = movieTitle
             
-        self.opensubtitle = opensubtitle
+        if opensubtitle == '' and len(self.srtList) > 0:
+            self.opensubtitle = self.srtList[0][1] # srtList format <name>.<url>
+        else:
+            self.opensubtitle = opensubtitle
+        
         self.rootID = int(rootID)
         self.LastPlayedService = LastPlayedService
         self.subtitle = []
@@ -253,9 +256,13 @@ class AdvancedFreePlayer(Screen):
         self.currentWidth = getDesktop(0).size().width()
         
         self.onShown.remove(self.__LayoutFinish)
-        print("--> Loading subtitles")
-        self.loadsubtitle()
-        print("End of __LayoutFinish")
+        
+        if self.opensubtitle != '':
+            printDEBUG("--> Downloading online subtitles")
+            self.downloadSubtitle()
+            printDEBUG("--> Loading subtitles")
+            self.loadSubtitle()
+        printDEBUG("End of __LayoutFinish")
         
         self.ShowJumpTimer = eTimer()
         self.ShowJumpTimer.callback.append(self.ShowJumpTimerCallBack)
@@ -484,25 +491,29 @@ class AdvancedFreePlayer(Screen):
             l = l.strip()
         return l
         
-    def loadsubtitle(self):
-        with open("/proc/sys/vm/drop_caches", "w") as f: f.write("1\n")
-        if self.opensubtitle.startswith('http://') and path.exists('/usr/bin/curl') and self.opensubtitle.endswith('.srt'):
+    def downloadSubtitle(self):
+        if not path.exists('/usr/bin/curl'):
+            printDEBUG("Missing curl - downloading not possible")
+            return
+        with open("/proc/sys/vm/drop_caches", "w") as f: f.write("1")
+        if self.opensubtitle.startswith('http://') and self.opensubtitle.endswith('.srt'):
             printDEBUG("Downloading http srt subtitles from %s" % self.opensubtitle)
             system('curl -kLs  %s -o /tmp/afpsubs.srt' % self.opensubtitle) 
             self.opensubtitle = '/tmp/afpsubs.srt'
-        elif self.opensubtitle.startswith('ftp://') and path.exists('/usr/bin/curl') and self.opensubtitle.endswith('.srt'):
+        elif self.opensubtitle.startswith('ftp://') and self.opensubtitle.endswith('.srt'):
             printDEBUG("Downloading ftp srt subtitles from %s" % self.opensubtitle)
             system('curl -kLs --ftp-pasv %s -o /tmp/afpsubs.srt' % self.opensubtitle)
             self.opensubtitle = '/tmp/afpsubs.srt'
-        elif self.opensubtitle.startswith('http://') and path.exists('/usr/bin/curl') and self.opensubtitle.endswith('.txt'):
+        elif self.opensubtitle.startswith('http://') and self.opensubtitle.endswith('.txt'):
             printDEBUG("Downloading http txt subtitles from %s" % self.opensubtitle)
             system('curl -kLs  %s -o /tmp/afpsubs.txt' % self.opensubtitle) 
             self.opensubtitle = '/tmp/afpsubs.txt'
-        elif self.opensubtitle.startswith('ftp://') and path.exists('/usr/bin/curl') and self.opensubtitle.endswith('.txt'):
+        elif self.opensubtitle.startswith('ftp://') and self.opensubtitle.endswith('.txt'):
             printDEBUG("Downloading ftp txt subtitles from %s" % self.opensubtitle)
             system('curl -kLs --ftp-pasv %s -o /tmp/afpsubs.txt' % self.opensubtitle)
             self.opensubtitle = '/tmp/afpsubs.txt'
-            
+      
+    def loadSubtitle(self):
         if path.exists(self.opensubtitle):
             # >>> Detect encoding through BOM
             encoding=None

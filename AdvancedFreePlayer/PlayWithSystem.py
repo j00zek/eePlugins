@@ -4,7 +4,7 @@ from enigma import eServiceReference
 from Screens.InfoBar import MoviePlayer as systemMoviePlayer
 
 class AdvancedFreePlayer(systemMoviePlayer):
-    def __init__(self, session,openmovie,opensubtitle, rootID, LastPlayedService, URLlinkName = '', movieTitle='', LastPosition = 0):
+    def __init__(self, session,openmovie,opensubtitle, rootID, LastPlayedService, URLlinkName = '', movieTitle='', LastPosition = 0, srtList = []):
         self.session = session
         #if '://' not in uri: uri = 'file://' + uri
         fileRef = eServiceReference(int(rootID),0,openmovie)
