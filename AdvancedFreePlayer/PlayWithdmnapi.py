@@ -141,6 +141,7 @@ class AdvancedFreePlayer(Screen):
         self.stateplay = ""
         self.stateinfo = self.VISIBLE
         self.openmovie = openmovie
+        self.useDMNAPI = True
         
         if movieTitle == '':
             self.movieTitle = getNameWithoutExtension(path.basename(self.openmovie))
@@ -149,6 +150,7 @@ class AdvancedFreePlayer(Screen):
             self.movieTitle = movieTitle
             
         if opensubtitle == '' and len(self.srtList) > 0:
+            printDEBUG('Selecting first subtitles URL from srtList', 'AdvancedFreePlayer.__init__')
             self.opensubtitle = self.srtList[0][1] # srtList format <name>.<url>
         else:
             self.opensubtitle = opensubtitle
@@ -493,8 +495,10 @@ class AdvancedFreePlayer(Screen):
         
     def downloadSubtitle(self):
         if not path.exists('/usr/bin/curl'):
-            printDEBUG("Missing curl - downloading not possible")
-            return
+            system('opkg update;opkg install curl')
+            if not path.exists('/usr/bin/curl'):
+                printDEBUG("Missing curl - downloading not possible")
+                return
         with open("/proc/sys/vm/drop_caches", "w") as f: f.write("1")
         if self.opensubtitle.startswith('http://') and self.opensubtitle.endswith('.srt'):
             printDEBUG("Downloading http srt subtitles from %s" % self.opensubtitle)
@@ -1079,15 +1083,29 @@ class AdvancedFreePlayer(Screen):
             
         self.play()
         
+    def srtListSelectionCallback(self, retVal = None):
+        printDEBUG('>>>', 'AdvancedFreePlayer.srtListSelectionCallback')
+        if retVal:
+            printDEBUG(str(retVal), 'AdvancedFreePlayer.srtListSelectionCallback')
+            self.opensubtitle = retVal[1]
+            self.downloadSubtitle()
+            self.loadSubtitle()
+            self.statusScreen.setStatus(_('Loaded subtitles: %s') % retVal[0])
+        self.play()
+
     def SelectSubtitles(self):
                 
         self.pause(False)
-        try:
-            from Plugins.Extensions.DMnapi.DMnapisubs import DMnapisubs
-            self.session.openWithCallback(self.dmnapisubsCallback, DMnapisubs, self.openmovie, save = False)
-        except:
-            printDEBUG("Exception loading DMnapi!!!")
-
+        if self.useDMNAPI:
+            try:
+                from Plugins.Extensions.DMnapi.DMnapisubs import DMnapisubs
+                self.session.openWithCallback(self.dmnapisubsCallback, DMnapisubs, self.openmovie, save = False)
+            except:
+                self.useDMNAPI = False
+                printDEBUG("Exception loading DMnapi!!!", 'AdvancedFreePlayer.SelectSubtitles')
+        if len(self.srtList) > 1:
+            self.session.openWithCallback(self.srtListSelectionCallback, ChoiceBox, title = _("Select subtitles"), list = self.srtList)
+            return
 ##################################################################### CHANGE FONT SIZE >>>>>>>>>>
     def setFontSize(self, fontSize):
         if self.opensubtitle == '':

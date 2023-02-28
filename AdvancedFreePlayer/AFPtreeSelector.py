@@ -43,9 +43,9 @@ try:
 except Exception:
     if sys.platform != 'win32':
         if PyMajorVersion == 2:
-            exec('opkg install python-requests')
+            os.system('opkg install python-requests')
         elif PyMajorVersion >= 3:
-            exec('opkg install python3-requests')
+            os.system('opkg install python3-requests')
         try:
             import requests
         except Exception:
@@ -194,10 +194,11 @@ class AdvancedFreePlayerStarter(Screen):
 
 class AdvancedFreePlayerStart(Screen):
     def __init__(self, session):
-        #printDEBUG("AdvancedFreePlayerStart >>>")
+        #printDEBUG("AdvancedFreePlayerStart >>>", 'AdvancedFreePlayerStart.__init__')
         self.openmovie = ''
         self.opensubtitle = ''
         self.URLlinkName = ''
+        self.srtList = []
         self.movietxt = _('Movie: ')
         self.subtitletxt = _('Subtitle: ')
         self.rootID = myConfig.MultiFramework.value
@@ -278,7 +279,7 @@ class AdvancedFreePlayerStart(Screen):
         self.GetCoverTimer.start(50, True)
 
     def __onShown(self):
-        printDEBUG("__onShown()")
+        printDEBUG("__onShown()", 'AdvancedFreePlayerStart.__onShown')
         self.session.summary.LCD_showLogo()
     
     def buildmatchingPattern(self):
@@ -300,7 +301,7 @@ class AdvancedFreePlayerStart(Screen):
             elif myConfig.TextFilesOnFileList.value == True and  EXTENSIONS[myExtension] == "text":
                 tmpPart += "|" + myExtension
         matchingPattern += tmpPart[1:] + ")(?!\.(cuts|ap$|meta$|sc$|wget$))"
-        printDEBUG("matchingPattern=%s" % matchingPattern)
+        printDEBUG("matchingPattern=%s" % matchingPattern, 'AdvancedFreePlayerStart.buildmatchingPattern')
         self.currentFileNameFilter = myConfig.FileNameFilter.value
         return matchingPattern
     
@@ -512,10 +513,10 @@ class AdvancedFreePlayerStart(Screen):
             #initiate player
             self.session.openWithCallback(EndPlayer,AdvancedFreePlayer,self.openmovie,self.opensubtitle,
                                             self.rootID,self.LastPlayedService,self.URLlinkName,
-                                            self.movieTitle, self.lastPosition * 90 * 1000 * 60)
+                                            self.movieTitle, self.lastPosition * 90 * 1000 * 60, self.srtList)
             return
         else:
-            printDEBUG("StartPlayer>>> File %s does not exist :(" % self.openmovie)
+            printDEBUG("StartPlayer>>> File %s does not exist :(" % self.openmovie, 'AdvancedFreePlayerStart.StartPlayer')
 
     def runConfigRet(self):
         doRefresh = False
@@ -536,18 +537,18 @@ class AdvancedFreePlayerStart(Screen):
                     if os.path.exists(FullPathSource) and os.path.isdir(FullPathSource):
                         FullPathDest = os.path.join(currDir, myConfig.FileListSelectedItem.value)
                         if FullPathDest.strip() != currDir:
-                            printDEBUG("Renaming directory...\n\t %s\n\t %s" % (FullPathSource,FullPathDest))
+                            printDEBUG("Renaming directory...\n\t %s\n\t %s" % (FullPathSource,FullPathDest), 'AdvancedFreePlayerStart.runConfigRet')
                             ClearMemory()
                             os.system('mv -f %s %s' % (FullPathSource, FullPathDest))
                     else:
-                        printDEBUG("'%s' does not exist. Renaming impossible" % FullPathSource)
+                        printDEBUG("'%s' does not exist. Renaming impossible" % FullPathSource, 'AdvancedFreePlayerStart.runConfigRet')
                 else: #isFile
                     sourceNamePartToReplace = self.FileListSelectedItem + '.'
                     for f in os.listdir(currDir):
                         sourceFile = os.path.join(currDir, f)
                         if os.path.isfile(sourceFile) and sourceNamePartToReplace in f:
                             destFile = sourceFile.replace(sourceNamePartToReplace, myConfig.FileListSelectedItem.value + '.')
-                            printDEBUG("Renaming...\n\t %s\n\t %s" % (sourceFile, destFile ))
+                            printDEBUG("Renaming...\n\t %s\n\t %s" % (sourceFile, destFile ), 'AdvancedFreePlayerStart.runConfigRet')
                             ClearMemory()
                             os.system('mv -f %s %s' % (sourceFile, destFile))
 
@@ -561,13 +562,13 @@ class AdvancedFreePlayerStart(Screen):
         return
 
     def setSort(self):
-        printDEBUG('AFPstart.sort(sortType="%s")' % self.sortType)
+        printDEBUG('AFPstart.sort(sortType="%s")' % self.sortType, 'AdvancedFreePlayerStart.setSort')
         if self.sortType == 'dateasc':    self.sortType = 'datedesc'
         elif self.sortType == 'datedesc': self.sortType = 'name'
         else:                             self.sortType = 'dateasc'
 
         #wyswietalnie info
-        printDEBUG('\t after change sortType="%s"' % self.sortType)
+        printDEBUG('\t after change sortType="%s"' % self.sortType, 'AdvancedFreePlayerStart.setSort')
         if self.sortType == 'dateasc':
             self["key_blue"].setText(_("Sorted by date ascending"))
         elif self.sortType == 'datedesc':
@@ -605,12 +606,13 @@ class AdvancedFreePlayerStart(Screen):
             elif not d.endswith('/'):
                 d +='/'
             f = self.filelist.getFilename()
-            printDEBUG("self.selectFile>> " + d + f)
+            printDEBUG("self.selectFile>> " + d + f, 'AdvancedFreePlayerStart.selectFile')
             temp = self.getExtension(f)
-            printDEBUG("self.getExtension(%s) = '%s'" %(f,temp))
+            printDEBUG("self.getExtension(%s) = '%s'" %(f,temp), 'AdvancedFreePlayerStart.selectFile')
             if temp == ".url":
                 self.opensubtitle = ''
                 self.openmovie = ''
+                self.srtList = []
                 with open(d + f,'r') as UrlContent:
                     for data in UrlContent:
                         #printDEBUG(data)
@@ -619,8 +621,12 @@ class AdvancedFreePlayerStart(Screen):
                             self.URLlinkName = d + f
                         elif data.find('srtURL=') > -1:
                             self.opensubtitle = data.split('=')[1].strip()
+                        elif data.find('srtURL') > -1:
+                            srtName = data.split('=')[0].replace('srtURL','').replace('-','').replace('_','').strip()
+                            srtURL = data.split('=')[1].strip()
+                            self.srtList.append((srtName,srtURL))
                     UrlContent.close()
-                printDEBUG("myConfig.KeyOK.value='%s', self.openmovie='%s', self.opensubtitle='%s'" % (myConfig.KeyOK.value, self.openmovie, self.opensubtitle))
+                printDEBUG("myConfig.KeyOK.value='%s', self.openmovie='%s', self.opensubtitle='%s', self.srtList%s" % (myConfig.KeyOK.value, self.openmovie, self.opensubtitle, str(self.srtList)), 'AdvancedFreePlayerStart.selectFile')
                 if myConfig.KeyOK.value == 'playmovie' and self.openmovie != '':
                     self.PlayMovie()
                     return
