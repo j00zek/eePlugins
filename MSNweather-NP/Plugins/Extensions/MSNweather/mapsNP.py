@@ -25,7 +25,7 @@ from datetime import datetime
 from enigma import getDesktop, ePoint, eSize, eTimer
 from Screens.Screen import Screen
 from Tools.LoadPixmap import LoadPixmap
-import os, requests, sys, time, re
+import os, sys, time, re
 
 PyMajorVersion = sys.version_info.major
 
@@ -33,8 +33,19 @@ if PyMajorVersion >= 3:
     unicode = str
     from urllib.request import urlretrieve as urllib_urlretrieve
     from urllib.parse import unquote as urllib_unquote, quote as urllib_quote
+    try:
+        import requests
+    except Exception:
+        os.system('opkg update;opkg install python3-requests')
+        import requests
 else: #py2
     from urllib import urlretrieve as urllib_urlretrieve, unquote as urllib_unquote, quote as urllib_quote
+    try:
+        import requests
+    except Exception:
+        os.system('opkg update;opkg install python-requests')
+        import requests
+
 
 import warnings
 warnings.filterwarnings('ignore', message='Unverified HTTPS request')

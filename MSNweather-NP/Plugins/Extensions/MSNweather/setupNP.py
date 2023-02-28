@@ -1,14 +1,25 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import #zmiana strategii ladowania modulow w py2 z relative na absolute jak w py3
-import base64, json, os, re, requests, sys, warnings
+import base64, json, os, re, sys, warnings
 
 warnings.filterwarnings('ignore', message='Unverified HTTPS request')
 PyMajorVersion = sys.version_info.major
 
 if PyMajorVersion == 3:
     from urllib.parse import quote as urllib_quote, unquote as urllib_unquote
+    try:
+        import requests
+    except Exception:
+        os.system('opkg update;opkg install python3-requests')
+        import requests
+      
 else:
     from urllib import quote as urllib_quote,  unquote as urllib_unquote
+    try:
+        import requests
+    except Exception:
+        os.system('opkg update;opkg install python-requests')
+        import requests
 
 from . import _ , readCFG
 from Plugins.Extensions.MSNweather.MSNcomponents.mappings import clr
