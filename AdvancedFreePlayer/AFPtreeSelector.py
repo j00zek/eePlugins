@@ -199,6 +199,8 @@ class AdvancedFreePlayerStart(Screen):
         self.opensubtitle = ''
         self.URLlinkName = ''
         self.srtList = []
+        self.coverURL = ''
+        self.descrURL = ''
         self.movietxt = _('Movie: ')
         self.subtitletxt = _('Subtitle: ')
         self.rootID = myConfig.MultiFramework.value
@@ -312,6 +314,8 @@ class AdvancedFreePlayerStart(Screen):
         self["filelist"].refresh()
     
     def buttonsNames(self):
+        self.coverURL = ''
+        self.descrURL = ''
         selection = self["filelist"].getSelection()
         if selection is not None and selection[1] == True and self["filelist"].getSelectedIndex() == 0:
             self["key_red"].setText("")
@@ -581,6 +585,7 @@ class AdvancedFreePlayerStart(Screen):
 
     def selectFile(self):
         selection = self["filelist"].getSelection()
+        printDBG(">>> selection = '%s'" % str(selection),'AdvancedFreePlayerStart.selectFile')
         if selection is None:
             return
         elif selection[1] == True: # isDir
@@ -689,19 +694,37 @@ class AdvancedFreePlayerStart(Screen):
         return reVal
       
     def SetLocalDescriptionAndCover(self, MovieNameWithPath):
+        printDEBUG('MovieNameWithPath = %s' % MovieNameWithPath,'SetLocalDescriptionAndCover')
         FoundCover = False
         FoundDescr = False
         if MovieNameWithPath == '':
             self.setDescription('')
             return FoundCover, FoundDescr
         
+        if MovieNameWithPath[-4:] == '.url':
+            printDEBUG('Loading data for %s' % MovieNameWithPath,'SetLocalDescriptionAndCover')
+            with open(MovieNameWithPath,'r') as UrlContent:
+                for data in UrlContent:
+                    if data.find('coverURL=') > -1:
+                        self.coverURL = data.split('=')[1].strip()
+                    elif data.find('descrURL=') > -1:
+                        self.descrURL = data.split('=')[1].strip()
+
         temp = getNameWithoutExtension(MovieNameWithPath)
         WebCoverFile='/tmp/%s.AFP.jpg' % getNameWithoutExtension(self.filelist.getFilename())
         ### COVER ###
+        printDBG("self.coverURL = '%s'" % self.coverURL)
         if os.path.exists(temp + '.jpg'):
             self.setCover(temp + '.jpg')
             FoundCover = True
         elif os.path.exists(WebCoverFile) and myConfig.PermanentCoversDescriptons.value == False:
+            self.setCover(WebCoverFile)
+            FoundCover = True
+        elif self.coverURL != '':
+            coverBytes = downloadWebPage(self.coverURL)
+            with open(WebCoverFile, 'wb') as f:
+                f.write(coverBytes)
+                f.close()
             self.setCover(WebCoverFile)
             FoundCover = True
         else:
@@ -709,7 +732,39 @@ class AdvancedFreePlayerStart(Screen):
         WebDescrFile='/tmp/%s.AFP.txt' % getNameWithoutExtension(self.filelist.getFilename())
         
         ### DESCRIPTION from EIT ###
-        if os.path.exists(temp + '.eit'):
+        #printDBG("self.descrURL = '%s'" % self.descrURL)
+                
+        ChannelName = ''
+        myDescr = ''
+        if os.path.exists(MovieNameWithPath + '.meta'):
+            printDBG("Reading description from .meta")
+            with open(MovieNameWithPath + '.meta','r') as descrTXT:
+                tmpList = descrTXT.readlines()
+                descrTXT.close()
+                if tmpList[0].find('::') > -1:
+                    ChannelName = _('From: %s\n') % tmpList[0].split('::')[1].strip()
+                try:
+                    tmpData = int(tmpList[3].strip())
+                    tmpData = datetime.datetime.fromtimestamp(tmpData)
+                    myDescr += _('Recorded: %s\n') % str(tmpData)
+                except Exception as e:
+                    printDBG("EXCEPTION reading description from .meta: %s" % str(e))
+                myDescr += ChannelName + '\n'
+                try:
+                    tmpData = int(int(tmpList[5].strip()) / 90000)
+                    if tmpData > 0:
+                        tmpH = int(tmpData / 3600)
+                        tmpM = int((tmpData - tmpH * 3600) / 60)
+                        tmpS = tmpData - tmpH * 3600 - tmpM * 60
+                        myDescr += _('Lenght: %02d:%02d:%02d\n\n') % (tmpH, tmpM, tmpS)
+                except Exception as e:
+                    printDBG("EXCEPTION reading description from .meta: %s" % str(e))
+                myDescr += tmpList[2].replace('FilmWeb:','\nFilmWeb:').replace('  ','\n')
+            
+        if not os.path.exists(temp + '.eit') and os.path.exists(MovieNameWithPath + '.meta'):
+            self.setDescription(myDescr)
+            FoundDescr = True
+        elif os.path.exists(temp + '.eit'):
             def parseMJD(MJD):
                 # Parse 16 bit unsigned int containing Modified Julian Date,
                 # as per DVB-SI spec
@@ -726,14 +781,6 @@ class AdvancedFreePlayerStart(Screen):
 
             import struct
 
-            ChannelName = ''
-            if os.path.exists(MovieNameWithPath + '.meta'):
-                with open(MovieNameWithPath + '.meta','r') as descrTXT:
-                    tmpTXT = descrTXT.readline()
-                    if tmpTXT.find('::') > -1:
-                        ChannelName = _('From: %s\n') % tmpTXT.split('::')[1].strip()
-                    descrTXT.close()
-                
             if PyMajorVersion == 2: openingType = 'r'
             else: openingType = 'rb'
 
@@ -814,6 +861,13 @@ class AdvancedFreePlayerStart(Screen):
                 else:
                     self.setDescription(myDescr)
                     FoundDescr = True
+        elif self.descrURL != '':
+            descrTXT = downloadWebPage(self.coverURL, True)
+            with open(WebDescrFile, 'w') as f:
+                f.write(descrTXT)
+                f.close()
+            self.setCover(WebDescrFile)
+            FoundDescr = True
         else:
             self.setDescription('')
             FoundDescr = False
@@ -849,7 +903,7 @@ class AdvancedFreePlayerStart(Screen):
         
     def setCover(self, FileName):
         if FileName in ('','hideCover') or not os.path.exists(FileName):
-            printDEBUG("setCover hide cover for '%s'" % FileName)
+            printDEBUG(" hide cover", 'AdvancedFreePlayerStart.setCover')
             #self["Cover"].updateIcon('dummyCover')
             self["Cover"].hide()
             try:
@@ -865,7 +919,7 @@ class AdvancedFreePlayerStart(Screen):
             self["Cover"].show()
     
     def GetCoverTimerCB(self, AlternateMovieName = ''):
-        printDEBUG("GetCoverTimerCB >>>")
+        printDEBUG(" >>>", 'AFPstart.GetCoverTimerCB')
         self.GetCoverTimer.stop()
         if self.gettingDataFromWEB == True:
             printDEBUG("GetCoverTimerCB|AFP is processing webdata, waiting %s ms." % self.ShowDelay)
@@ -873,6 +927,7 @@ class AdvancedFreePlayerStart(Screen):
             return
         #wybrano katalog
         if not self["filelist"].getSelection() is None and self["filelist"].getSelection()[1] == True and not self["filelist"].getSelection()[0] is None: # isDir
+            printDEBUG("IF <wybrano katalog> branch", 'AFPstart.GetCoverTimerCB')
             self.setDescription('')
             self.setCover('hideCover')
             # do zmiany nazwy, dla katalogu podajemy cala nazwe
@@ -913,6 +968,7 @@ class AdvancedFreePlayerStart(Screen):
             return
         
         # wybrano plik
+        printDEBUG("<wybrano plik> branch", 'AFPstart.GetCoverTimerCB')
         # do zmiany nazwy, dla plikow, nie podajemy rozszerzenia
         try:
             self.FileListSelectedItem = os.path.splitext( self.filelist.getFilename() )[0]
@@ -923,12 +979,13 @@ class AdvancedFreePlayerStart(Screen):
         extension = self.getExtension(self.filelist.getFilename())[1:]
         
         if PyMajorVersion == 2:
-            if not EXTENSIONS.has_key(extension) or EXTENSIONS[extension] != "movie":
+            if not EXTENSIONS.has_key(extension) or (EXTENSIONS[extension] != "movie" and EXTENSIONS[extension] != "movieurl"):
                 self.setCover('hideCover')
                 self.setDescription('')
                 return
         else:
-            if not extension in EXTENSIONS or EXTENSIONS[extension] != "movie":
+            if not extension in EXTENSIONS or (EXTENSIONS[extension] != "movie" and EXTENSIONS[extension] != "movieurl"):
+                printDEBUG("'%s' not in EXTENSIONS" % extension, 'AFPstart.GetCoverTimerCB')
                 self.setCover('hideCover')
                 self.setDescription('')
                 return
@@ -937,9 +994,10 @@ class AdvancedFreePlayerStart(Screen):
            
         ### LOCAL Descriptions and Covers###
         if myConfig.AutoDownloadCoversDescriptions.value == False:
+            printDEBUG(" AutoDownloadCoversDescriptions disabled", 'AFPstart.GetCoverTimerCB')
             return
         elif AlternateMovieName == '':
-            myMovie, movieYear =cleanFile(self.filelist.getFilename())
+            myMovie, movieYear = cleanFile(self.filelist.getFilename())
             self.movieTitle = myMovie
             FoundCover, FoundDescr = self.SetLocalDescriptionAndCover(self.filelist.getCurrentDirectory() + self.filelist.getFilename())
             if (FoundCover and FoundDescr): #no need to download data if both found locally ;)
@@ -976,13 +1034,15 @@ class AdvancedFreePlayerStart(Screen):
             
         def readTmBD(data, movieYear, isMovie,myMovie):
             printDEBUG("[readTmBD] >>>") #DEBUG
-            f = open('/tmp/TmBD.AFP.webdata', 'w')
-            f.write(data)
-            f.close
+            with open('/tmp/TmBD.AFP.webdata', 'w') as f:
+                f.write(data)
+                f.close
             if isMovie == True:
+                printDEBUG("[readTmBD] isMovie branch") #DEBUG
                 try: 
                     jsonDict = json.loads(data)
-                except:
+                except Exception as e:
+                    printDEBUG("EXCEPTION: %s" % str(e)) #DEBUG
                     self.gettingDataFromWEB = False
                     return
                 data=None # some cleanup, just in case
@@ -1002,7 +1062,7 @@ class AdvancedFreePlayerStart(Screen):
                     selectedIndexScore = 0
                     currIndex = 0
                     myMovieLC = ensure_str(myMovie).lower()
-                    if jsonDict['total_results'] > 1:
+                    if jsonDict['total_results'] >= 1:
                         try:
                             for myItem in jsonDict['results']:
                                 currScore = 0
@@ -1062,6 +1122,7 @@ class AdvancedFreePlayerStart(Screen):
                             self.gettingDataFromWEB = False
                 
                 else:
+                    printDBG("NO 'total_results' in jsonDict :(")
                     self.gettingDataFromWEB = False
                     return
             else: #dane seriali sa w xml-u!!!!
@@ -1120,12 +1181,13 @@ class AdvancedFreePlayerStart(Screen):
             url = "http://thetvdb.com/api/GetSeries.php?seriesname=%s&language=%s" % (HTML(seriesName),myConfig.coverfind_language.value)
             isMovie = False
         else:
+            printDEBUG("http://api.themoviedb.org") #DEBUG
             url = "http://api.themoviedb.org/3/search/movie?api_key=8789cfd3fbab7dccf1269c3d7d867aff&query=%s&language=%s" % (HTML(myMovie),myConfig.coverfind_language.value)
             isMovie = True
         if self.gettingDataFromWEB == True:
             printDEBUG("[GetFromTMDBbyName] getPage running, skip '%s'this time" % url) #DEBUG
         else:
-            printDEBUG("[GetFromTMDBbyName] url: " + url) #DEBUG
+            printDEBUG("Selected url: " + url) #DEBUG
             self.gettingDataFromWEB = True
             readTmBD(downloadWebPage(webURL = url, doUnquote = True , HEADERS={}), movieYear, isMovie,myMovie)
             #getPage(url, headers={'Content-Type':'application/x-www-form-urlencoded'}).addCallback(readTmBD,movieYear,isMovie,myMovie).addErrback(dataError,errorType='getting data')

@@ -253,7 +253,7 @@ class AdvancedFreePlayer(Screen):
             self.session.nav.playService(self.LastPlayedService, forceRestart=True)
 
     def __LayoutFinish(self):
-        #print("--> Start of __LayoutFinish")
+        printDEBUG("--> Start of __LayoutFinish")
         self.currentHeight= getDesktop(0).size().height()
         self.currentWidth = getDesktop(0).size().width()
         
@@ -264,10 +264,12 @@ class AdvancedFreePlayer(Screen):
             self.downloadSubtitle()
             printDEBUG("--> Loading subtitles")
             self.loadSubtitle()
-        printDEBUG("End of __LayoutFinish")
+        else:
+            self.go()
         
         self.ShowJumpTimer = eTimer()
         self.ShowJumpTimer.callback.append(self.ShowJumpTimerCallBack)
+        printDEBUG("End of __LayoutFinish")
 
     def ShowJump(self, seconds, subtitlesSeek = False):
         self.showJumpNumber += seconds #seconds can be positiove or negative
