@@ -1,14 +1,884 @@
-  <screen name="SkinSelector" position="462,128" size="1000,820" title=" " flags="wfNoBorder" backgroundColor="transparent">
-    <ePixmap position="-1,0" zPosition="-10" size="1000,820" pixmap="BlackHarmony/bg_design/small.png"/>
-    <widget source="global.CurrentTime" render="Label" position="45,30" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
-      <convert type="ClockToText">Default</convert>
-    </widget>
-    <widget source="global.CurrentTime" render="Label" position="130,30" size="290,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
-      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
-    </widget>
-    <widget name="preview" position="75,179" size="280,210" scale="aspect" alphatest="blend"/>
-    <widget source="skins" render="Listbox" position="372,150" size="520,480" itemHeight="35" font="Roboto_HD; 27" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_520_35.png" backgroundColor="black" transparent="1">
-      <convert type="TemplatedMultiContent">
+<skin>
+	<!-- >>>>>>>>>> PKT_zukonMOD_specific <<<<<<<<<< -->
+	<screen name="PluginBrowser" position="345,93" size="1232,908" title=" " flags="wfNoBorder" backgroundColor="transparent">
+		<ePixmap position="0,0" zPosition="-10" size="1232,908" pixmap="BlackHarmony/bg_design/mainbg.png"/>
+		<widget source="global.CurrentTime" render="Label" position="33,27" size="90,43" font="Cyfry; 40" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="124,31" size="460,36" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<widget source="session.CurrentService" render="Label" position="860,25" size="320,30" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1" foregroundColor="font_light_grey">
+			<convert type="j00zekAlternateTitle">Plugin browser</convert>
+		</widget>
+		<!-- Na openPLi i openVix nie dziala skalowanie pluginlist wiec nzawy sa ucinane na 440 pikselach -->
+		<widget name="list" position="65,147" scrollbarMode="showOnDemand" size="1095,630" itemHeight="70" zPosition="3" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" selectionPixmap="BlackHarmony/menu/sel_1095_70.png" backgroundColor="background" transparent="1">
+			<!--convert type="TemplatedMultiContent">{"template": 
+                        [
+                            MultiContentEntryText(pos = (55, 8), size = (1020, 35), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 0),
+                            MultiContentEntryText(pos = (55, 45), size = (1020, 35), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 2),
+                            MultiContentEntryPixmapAlphaTest(pos = (5, 20), size = (48, 48), png = 4), # index 4 is the status pixmap
+                        ],
+                        "fonts": [gFont("Regular", 26),gFont("Regular", 22)],
+                        "itemHeight": 70
+                    }</convert-->
+		</widget>
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="41,850" size="35,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="348,850" size="35,27" alphatest="blend"/>
+		<!--ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="615,850" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="902,850" size="35,27" alphatest="blend"/-->
+		<widget objectTypes="key_red,Label,Button" name="key_red" position="91,849" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+		<widget objectTypes="key_red,StaticText" source="key_red" render="Label" position="91,849" size="250,27" zPosition="2" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+		<widget objectTypes="key_green,Label,Button" name="key_green" position="400,850" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+		<widget objectTypes="key_green,StaticText" source="key_green" render="Label" position="400,851" size="250,27" zPosition="2" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+		<!--widget name="yellow" position="665,849" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget name="blue" position="952,849" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/-->
+	</screen>
+	<!-- About -->
+	<screen name="About" position="345,93" size="1232,908" title="About" flags="wfNoBorder" backgroundColor="transparent">
+		<eLabel text="About" position="960,26" size="220,30" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1"/>
+		<ePixmap position="0,0" zPosition="-10" size="1232,908" pixmap="BlackHarmony/bg_design/mainbg.png"/>
+		<ePixmap position="885,584" zPosition="1" size="280,210" pixmap="BlackHarmony/prev.png" alphatest="blend"/>
+		<widget source="global.CurrentTime" render="Label" position="33,27" size="90,43" font="Cyfry; 40" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="124,31" size="460,36" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<widget name="AboutScrollLabel" font="Regular; 25" position="66,122" size="750,625" zPosition="2" halign="left" transparent="1"/>
+		<ePixmap position="851,365" zPosition="1" size="320,90" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend"/>
+		<!--eLabel backgroundColor="black" font="Roboto_HD; 26" foregroundColor="lemon" position="65,760" size="210,32" text="Support for skin:" transparent="1" />
+    <eLabel backgroundColor="black" font="Roboto_HD; 26" foregroundColor="white" position="285,759" size="430,32" text="www.sat-4-all.com" transparent="1" /-->
+		<widget source="session.CurrentService" render="Label" position="885,741" size="280,30" font="HD_Thin; 28" halign="center" backgroundColor="background" transparent="1" zPosition="5" foregroundColor="light_yellow">
+			<convert type="j00zekOPKGversionBHcheck"/>
+		</widget>
+	</screen>
+	<!-- PKT BluePanel -->
+	<screen name="BPanel" position="0,0" size="1920,1080" title="HYPERION BluePanel" flags="wfNoBorder" backgroundColor="transparent">
+		<ePixmap position="0,0" zPosition="-10" size="1920,1080" pixmap="BlackHarmony/bg_design/bg_1920x1080.png"/>
+		<widget source="Title" render="Label" position="1392,90" size="420,40" font="Roboto_HD; 30" halign="center" backgroundColor="background" transparent="1"/>
+		<widget source="global.CurrentTime" render="Label" position="83,90" size="90,40" font="Cyfry; 40" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="172,90" size="460,40" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<widget name="Level" position="454,83" size="675,55" font="Roboto_HD; 45" halign="center" valign="center" foregroundColor="data" backgroundColor="transpBlack_1" transparent="1"/>
+		<widget name="Opis" position="226,975" size="1110,40" font="Roboto_HD; 28" halign="center" valign="center" foregroundColor="data" backgroundColor="transpBlack_1" transparent="1"/>
+		<widget source="global.Immidiet" render="Pixmap" position="246,210" size="230,160" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/frame.png" alphatest="blend" zPosition="-1">
+			<convert type="BP_PKT">frame</convert>
+			<convert type="ValueRange">0,0</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="global.Immidiet" render="Pixmap" position="529,213" size="230,160" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/frame.png" alphatest="blend" zPosition="-1">
+			<convert type="BP_PKT">frame</convert>
+			<convert type="ValueRange">1,1</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="global.Immidiet" render="Pixmap" position="803,208" size="230,160" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/frame.png" alphatest="blend" zPosition="-1">
+			<convert type="BP_PKT">frame</convert>
+			<convert type="ValueRange">2,2</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="global.Immidiet" render="Pixmap" position="1083,202" size="230,160" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/frame.png" alphatest="blend" zPosition="-1">
+			<convert type="BP_PKT">frame</convert>
+			<convert type="ValueRange">3,3</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="global.Immidiet" render="Pixmap" position="251,455" size="230,160" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/frame.png" alphatest="blend" zPosition="-1">
+			<convert type="BP_PKT">frame</convert>
+			<convert type="ValueRange">4,4</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="global.Immidiet" render="Pixmap" position="528,458" size="230,160" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/frame.png" alphatest="blend" zPosition="-1">
+			<convert type="BP_PKT">frame</convert>
+			<convert type="ValueRange">5,5</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="global.Immidiet" render="Pixmap" position="810,456" size="230,160" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/frame.png" alphatest="blend" zPosition="-1">
+			<convert type="BP_PKT">frame</convert>
+			<convert type="ValueRange">6,6</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="global.Immidiet" render="Pixmap" position="1089,455" size="230,160" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/frame.png" alphatest="blend" zPosition="-1">
+			<convert type="BP_PKT">frame</convert>
+			<convert type="ValueRange">7,7</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="global.Immidiet" render="Pixmap" position="247,701" size="230,160" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/frame.png" alphatest="blend" zPosition="-1">
+			<convert type="BP_PKT">frame</convert>
+			<convert type="ValueRange">8,8</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="global.Immidiet" render="Pixmap" position="527,702" size="230,160" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/frame.png" alphatest="blend" zPosition="-1">
+			<convert type="BP_PKT">frame</convert>
+			<convert type="ValueRange">9,9</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="global.Immidiet" render="Pixmap" position="811,698" size="230,160" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/frame.png" alphatest="blend" zPosition="-1">
+			<convert type="BP_PKT">frame</convert>
+			<convert type="ValueRange">10,10</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget source="global.Immidiet" render="Pixmap" position="1096,698" size="230,161" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/frame.png" alphatest="blend" zPosition="-1">
+			<convert type="BP_PKT">frame</convert>
+			<convert type="ValueRange">11,11</convert>
+			<convert type="ConditionalShowHide"/>
+		</widget>
+		<widget name="0" position="230,366" size="260,90" font="Roboto_HD; 32" halign="center" valign="top" foregroundColor="lemon" transparent="1"/>
+		<widget name="1" position="510,369" size="260,90" font="Roboto_HD; 32" halign="center" valign="top" foregroundColor="lemon" transparent="1"/>
+		<widget name="2" position="789,371" size="260,90" font="Roboto_HD; 32" halign="center" valign="top" foregroundColor="lemon" transparent="1"/>
+		<widget name="3" position="1069,363" size="260,90" font="Roboto_HD; 32" halign="center" valign="top" foregroundColor="lemon" transparent="1"/>
+		<widget name="4" position="230,614" size="260,90" font="Roboto_HD; 32" halign="center" valign="top" foregroundColor="lemon" transparent="1"/>
+		<widget name="5" position="511,615" size="260,90" font="Roboto_HD; 32" halign="center" valign="top" foregroundColor="lemon" transparent="1"/>
+		<widget name="6" position="795,612" size="260,90" font="Roboto_HD; 32" halign="center" valign="top" foregroundColor="lemon" transparent="1"/>
+		<widget name="7" position="1074,611" size="260,90" font="Roboto_HD; 32" halign="center" valign="top" foregroundColor="lemon" transparent="1"/>
+		<widget name="8" position="230,859" size="260,90" font="Roboto_HD; 32" halign="center" valign="top" foregroundColor="lemon" transparent="1"/>
+		<widget name="9" position="510,862" size="260,90" font="Roboto_HD; 32" halign="center" valign="top" foregroundColor="lemon" transparent="1"/>
+		<widget name="10" position="795,861" size="260,90" font="Roboto_HD; 32" halign="center" valign="top" foregroundColor="lemon" transparent="1"/>
+		<widget name="11" position="1076,862" size="260,90" font="Roboto_HD; 32" halign="center" valign="top" foregroundColor="lemon" transparent="1"/>
+		<widget name="I0" position="270,245" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/hdd.png" alphatest="blend"/>
+		<widget name="I1" position="560,252" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/system.png" alphatest="blend"/>
+		<widget name="I2" position="830,245" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/multi.png" alphatest="blend"/>
+		<widget name="I3" position="1120,245" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/plugins.png" alphatest="blend"/>
+		<widget name="I4" position="270,490" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/settings.png" alphatest="blend"/>
+		<widget name="I5" position="560,490" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/network.png" alphatest="blend"/>
+		<widget name="I6" position="830,490" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/actual.png" alphatest="blend"/>
+		<widget name="I7" position="1120,490" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/info.png" alphatest="blend"/>
+		<widget name="I8" position="270,740" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/addons.png" alphatest="blend"/>
+		<widget name="I9" position="560,740" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/green.png" alphatest="blend"/>
+		<widget name="I10" position="830,740" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/yellow.png" alphatest="blend"/>
+		<widget name="I11" position="1120,740" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/blue.png" alphatest="blend"/>
+		<ePixmap position="1426,510" zPosition="1" size="320,90" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend"/>
+	</screen>
+	<!-- PKT Console -->
+	<screen name="PKTConsole" position="384,90" size="1225,900" title="Command execution..." flags="wfNoBorder" backgroundColor="transparent">
+		<widget source="Title" render="Label" position="753,30" size="420,40" font="Roboto_HD; 30" halign="center" backgroundColor="dark_grey" transparent="1"/>
+		<ePixmap position="0,0" zPosition="-10" size="1225,900" pixmap="BlackHarmony/bg_design/mainbg.png"/>
+		<widget source="global.CurrentTime" render="Label" position="33,30" size="90,40" font="Cyfry; 40" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="124,30" size="469,40" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<widget name="text" position="70,139" size="1084,648" font="Console; 30" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="lemon" scrollbarSliderBorderColor="lemon" backgroundColor="background" transparent="1" foregroundColor="white"/>
+	</screen>
+	<!-- PKT Ic -->
+	<screen name="PKTinfoCenter" position="0,0" size="1920,1080" title="Infocenter" flags="wfNoBorder" backgroundColor="transparent">
+		<ePixmap position="-1,0" zPosition="-10" size="1990,1070" pixmap="BlackHarmony/bg_design/cs.png"/>
+		<widget source="Title" render="Label" position="1321,42" size="420,59" font="Roboto_HD; 40" halign="center" backgroundColor="background" transparent="1" foregroundColor="font_light_grey"/>
+		<widget source="global.CurrentTime" render="Label" position="70,47" size="90,43" font="Cyfry; 40" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="160,54" size="460,36" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<widget name="EnigmaVersion" position="126,148" size="967,63" font="HD_Thin; 45" halign="center" valign="center" foregroundColor="light_grey" backgroundColor="background" transparent="1"/>
+		<widget name="CPUus" position="174,237" size="180,35" font="Roboto_HD; 28" halign="left" foregroundColor="data" backgroundColor="background" transparent="1"/>
+		<widget name="CPUusage" position="373,239" size="180,35" font="Cyfry; 28" halign="left" transparent="1"/>
+		<widget name="CPU" position="615,238" size="450,35" font="ChoiceBoxDescription" halign="left" foregroundColor="orange" transparent="1"/>
+		<widget name="CPUtemp" position="172,278" size="180,35" font="Roboto_HD;28" foregroundColor="cyan" transparent="1"/>
+		<widget name="CPUt" position="373,280" size="180,35" font="Cyfry;28" halign="left" transparent="1"/>
+		<widget name="MEMus" position="171,322" size="180,35" font="Roboto_HD;28" halign="left" foregroundColor="cyan" transparent="1"/>
+		<widget name="MEMusage" position="373,322" size="180,35" font="Cyfry;28" halign="left" transparent="1"/>
+		<widget name="MEMfr" position="619,293" size="180,35" font="Roboto_HD; 28" halign="left" transparent="1" backgroundColor="background" foregroundColor="cyan"/>
+		<widget name="MEMfree" position="840,294" size="180,35" font="Cyfry;28" halign="left" transparent="1"/>
+		<widget name="SWAPus" position="171,367" size="180,35" font="Roboto_HD; 28" halign="left" foregroundColor="cyan" transparent="1"/>
+		<widget name="SWAPused" position="370,367" size="180,35" font="Cyfry;28" halign="left" transparent="1"/>
+		<widget name="SWAP" position="619,337" size="180,35" font="Roboto_HD; 28" halign="left" transparent="1" backgroundColor="background" foregroundColor="cyan"/>
+		<widget name="SWAPsize" position="838,336" size="180,35" font="Cyfry; 28" halign="left" transparent="1"/>
+		<widget name="Where" position="171,411" size="180,35" font="Roboto_HD; 28" halign="left" foregroundColor="cyan" transparent="1"/>
+		<widget name="WhereMod" position="368,411" size="180,35" font="Cyfry;28" halign="left" transparent="1"/>
+		<widget name="UPt" position="619,380" size="180,35" font="Roboto_HD; 28" halign="left" foregroundColor="cyan" transparent="1"/>
+		<widget name="UPtime" position="838,380" size="180,35" font="Cyfry; 28" halign="left" transparent="1"/>
+		<widget name="SYS" position="171,455" size="180,35" font="Roboto_HD;26" halign="left" foregroundColor="cyan" transparent="1"/>
+		<widget name="SYSuse" position="369,452" size="180,35" font="Cyfry; 28" halign="left" transparent="1"/>
+		<widget name="SYSf" position="621,428" size="180,35" font="Roboto_HD; 28" halign="left" foregroundColor="cyan" transparent="1"/>
+		<widget name="SYSfree" position="838,427" size="180,35" font="Cyfry; 28" halign="left" transparent="1"/>
+		<widget name="HDD" position="169,505" size="180,35" font="Roboto_HD;28" halign="left" foregroundColor="cyan" transparent="1"/>
+		<widget name="HDDmount" position="370,505" size="180,35" font="Cyfry; 28" halign="left" transparent="1"/>
+		<widget name="HDDmodel" position="620,471" size="450,35" font="Roboto_HD; 28" halign="left" foregroundColor="orange" transparent="1"/>
+		<widget name="HDDsi" position="168,544" size="180,35" font="Roboto_HD; 28" halign="left" foregroundColor="cyan" transparent="1"/>
+		<widget name="HDDsize" position="371,547" size="180,35" font="Cyfry; 28" halign="left" transparent="1"/>
+		<widget name="HDDfr" position="619,510" size="180,35" font="Roboto_HD; 28" halign="left" foregroundColor="cyan" transparent="1"/>
+		<widget name="HDDfree" position="841,510" size="180,35" font="Cyfry; 28" halign="left" transparent="1"/>
+		<widget name="HDDt" position="168,543" size="180,35" font="Roboto_HD; 28" halign="left" foregroundColor="cyan" transparent="1"/>
+		<widget name="HDDtemp" position="370,547" size="180,35" font="Cyfry; 28" halign="left"/>
+		<widget name="Movie" position="167,629" size="220,35" font="Roboto_HD; 28" halign="left" foregroundColor="cyan" transparent="1"/>
+		<widget name="MovieFr" position="394,628" size="180,35" font="Cyfry; 28" halign="left" transparent="1"/>
+		<widget name="MovieFree" position="624,612" size="180,35" font="Roboto_HD; 28" halign="left" foregroundColor="cyan" backgroundColor="background" transparent="1"/>
+		<widget name="MovieT" position="168,681" size="180,35" font="Roboto_HD; 28" halign="left" foregroundColor="cyan" backgroundColor="background" transparent="1"/>
+		<widget name="MovieTemp" position="370,679" size="180,35" font="Cyfry; 28" halign="left" backgroundColor="background" transparent="1"/>
+		<widget name="NetIP" position="167,587" size="180,35" font="Roboto_HD; 28" halign="left" foregroundColor="cyan" transparent="1"/>
+		<widget name="IP" position="369,587" size="221,35" font="Cyfry; 28" halign="left" transparent="1"/>
+		<eLabel text="SNR:" position="175,745" size="80,35" font="Roboto_HD; 28" halign="left" foregroundColor="orange" backgroundColor="background" transparent="1"/>
+		<ePixmap position="266,750" size="473,26" zPosition="1" pixmap="BlackHarmony/gfx/bar_snr_470x25.png" alphatest="blend" transparent="1"/>
+		<widget source="session.FrontendStatus" render="Progress" position="263,748" size="475,32" zPosition="2" pixmap="BlackHarmony/gfx/bar_snr_470x25.png" transparent="0">
+			<convert type="FrontendInfo">SNR</convert>
+		</widget>
+		<widget source="session.FrontendStatus" render="Label" position="763,745" size="100,35" font="Cyfry; 30" halign="left" backgroundColor="background" transparent="1">
+			<convert type="FrontendInfo">SNR</convert>
+		</widget>
+		<ePixmap position="268,805" size="473,26" zPosition="1" pixmap="BlackHarmony/gfx/bar_snr_470x25.png" alphatest="blend" transparent="1"/>
+		<eLabel text="AGC:" position="174,801" size="80,35" font="Roboto_HD; 28" halign="left" foregroundColor="orange" backgroundColor="background" transparent="1"/>
+		<widget source="session.FrontendStatus" render="Label" position="764,798" size="100,35" font="Cyfry; 30" halign="left" backgroundColor="background" transparent="1">
+			<convert type="FrontendInfo">AGC</convert>
+		</widget>
+		<widget source="session.FrontendStatus" render="Progress" position="264,801" size="478,34" zPosition="2" pixmap="BlackHarmony/gfx/bar_snr_470x25.png" transparent="0">
+			<convert type="FrontendInfo">AGC</convert>
+		</widget>
+		<widget name="BR" position="1250,271" size="550,35" font="Roboto_HD;28" halign="left" foregroundColor="cyan" transparent="1"/>
+		<widget name="CR" position="1250,311" size="550,350" font="Roboto_HD; 28" halign="left" foregroundColor="cyan" backgroundColor="background" transparent="1" zPosition="1"/>
+		<widget name="AR" position="1252,352" size="180,35" font="Roboto_HD; 28" halign="left" foregroundColor="cyan" transparent="1"/>
+		<widget name="MAX" position="1253,389" size="180,35" font="Roboto_HD; 28" halign="left" foregroundColor="cyan" transparent="1"/>
+		<widget name="MIN" position="1252,426" size="180,35" font="Roboto_HD; 28" halign="left" foregroundColor="cyan" transparent="1"/>
+		<widget name="vcur" position="1462,315" size="130,35" font="Cyfry; 28" halign="center" foregroundColor="orange" transparent="1"/>
+		<widget name="vavg" position="1463,351" size="130,35" font="Cyfry; 28" halign="center" transparent="1"/>
+		<widget name="vmax" position="1463,388" size="130,35" font="Cyfry; 28" halign="center" transparent="1"/>
+		<widget name="vmin" position="1463,426" size="130,35" font="Cyfry;28" halign="center" transparent="1"/>
+		<widget name="acur" position="1610,315" size="180,35" font="Cyfry; 28" halign="center" foregroundColor="orange" transparent="1"/>
+		<widget name="aavg" position="1610,352" size="180,35" font="Cyfry; 28" halign="center" transparent="1"/>
+		<widget name="amax" position="1611,389" size="180,35" font="Cyfry; 28" halign="center" transparent="1"/>
+		<widget name="amin" position="1612,426" size="180,35" font="Cyfry; 28" halign="center" transparent="1"/>
+		<widget name="OscamShow" position="1688,822" size="137,55" alphatest="on" transparent="1" zPosition="-1" scale="on"/>
+		<widget name="_oscam" position="1696,825" size="98,51" font="Roboto_HD; 22" halign="left" noWrap="1" backgroundColor="background" transparent="1"/>
+		<widget name="Green" position="1233,992" size="160,35" font="Roboto_HD;30" halign="left" valign="center" foregroundColor="font_green" backgroundColor="background" transparent="1"/>
+		<eLabel text="Processes" position="1443,992" size="160,35" font="Roboto_HD;30" halign="left" valign="center" foregroundColor="yellow" backgroundColor="background" transparent="1"/>
+		<widget name="Blue" position="1651,993" size="160,35" font="Roboto_HD;30" halign="left" valign="center" foregroundColor="data" backgroundColor="background" transparent="1"/>
+		<ePixmap position="1381,827" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="1191,997" size="35,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="1404,997" size="35,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="1611,998" size="35,27" alphatest="blend"/>
+	</screen>
+	<!-- PKT Yellow -->
+	<screen name="PKTinfoCenterYellow" position="584,100" size="747,898" title="IC_Proc">
+		<widget name="Proc" position="30,11" size="690,843" font="Roboto_HD;28" itemHeight="40" halign="left" foregroundColor="white" backgroundColor="transpBlack_1" transparent="1"/>
+	</screen>
+	<!-- PKT Flashext -->
+	<screen name="FlashExtender" position="center,center" size="1230,900" title="HYPERION Flash Extender" flags="wfNoBorder" backgroundColor="transparent">
+		<ePixmap position="0,0" zPosition="-10" size="1230,900" pixmap="BlackHarmony/bg_design/mainbg.png"/>
+		<widget source="Title" render="Label" position="753,30" size="420,40" font="Roboto_HD; 30" halign="center" backgroundColor="dark_grey" transparent="1" foregroundColor="font_light_grey"/>
+		<ePixmap position="55,271" zPosition="-10" size="1095,70" pixmap="BlackHarmony/menu/sel_1095_70.png"/>
+		<widget source="global.CurrentTime" render="Label" position="33,30" size="90,40" font="Cyfry; 40" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="124,30" size="460,40" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<widget name="infoTXT" position="58,269" size="1097,70" font="Replacement; 40" halign="center" valign="center" foregroundColor="lemon" backgroundColor="background" transparent="1"/>
+		<widget name="devlist" font="Roboto_HD; 30" position="113,471" size="568,45" itemHeight="45" halign="center" valign="center" selectionPixmap="BlackHarmony/menu/sel_565_45.png" backgroundColor="transpBlack" transparent="1"/>
+		<ePixmap pixmap="BlackHarmony/gfx/hyperion-logo.png" position="441,657" size="324,68" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/left.png" position="40,482" size="63,30" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/right.png" position="690,480" size="61,31" alphatest="blend"/>
+		<widget name="freeS" position="772,476" size="153,35" font="Roboto_HD; 28" halign="right" valign="center" foregroundColor="orange" backgroundColor="background" transparent="1"/>
+		<widget name="freespace" position="938,477" size="220,35" font="Cyfry; 28" halign="left" valign="center" backgroundColor="background" transparent="1"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="99,849" size="35,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="450,849" size="35,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="784,849" size="35,27" alphatest="blend"/>
+		<widget source="key_red" render="Label" position="139,840" size="200,40" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+		<widget source="key_green" render="Label" position="492,840" size="200,40" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+		<widget source="key_yellow" render="Label" position="826,840" size="339,40" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+	</screen>
+	<!-- PKT Dlna -->
+	<screen name="DlnaSetup" position="345,93" size="1230,900" title="HYPERION DLNA Manager" flags="wfNoBorder" backgroundColor="transparent">
+		<widget source="Title" render="Label" position="767,30" size="420,40" font="Roboto_HD; 30" halign="center" backgroundColor="dark_grey" transparent="1" foregroundColor="font_light_grey"/>
+		<ePixmap position="0,0" zPosition="-10" size="1230,900" pixmap="BlackHarmony/bg_design/mainbg.png"/>
+		<widget source="global.CurrentTime" render="Label" position="33,30" size="90,40" font="Cyfry; 40" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="124,30" size="460,40" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<widget name="config" font="Roboto_HD; 28" position="153,139" size="943,654" scrollbarMode="showOnDemand" itemHeight="40" selectionPixmap="BlackHarmony/menu/sel_1555_35.png" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" backgroundColor="transpBlack" transparent="1"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="82,850" size="35,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="326,850" size="35,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="633,850" size="35,27" alphatest="blend"/>
+		<widget source="key_red" render="Label" position="118,850" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+		<widget source="key_green" render="Label" position="365,850" size="262,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+		<widget source="key_yellow" render="Label" position="673,850" size="400,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+	</screen>
+	<!-- PKT Install Manager - Disk Manager -->
+	<screen name="DiskManager" position="345,93" size="1230,900" title="Install Manager - Disk Manager" flags="wfNoBorder" backgroundColor="transparent">
+		<widget source="Title" render="Label" position="593,30" size="610,40" font="Roboto_HD; 30" halign="center" backgroundColor="dark_grey" transparent="1" foregroundColor="font_light_grey"/>
+		<ePixmap position="0,0" zPosition="-10" size="1230,900" pixmap="BlackHarmony/bg_design/mainbg.png"/>
+		<widget source="global.CurrentTime" render="Label" position="33,30" size="90,40" font="Cyfry; 40" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="124,30" size="460,40" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<widget name="config" font="Roboto_HD; 28" position="153,139" size="943,654" scrollbarMode="showOnDemand" itemHeight="40" selectionPixmap="BlackHarmony/menu/sel_1555_35.png" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" backgroundColor="transpBlack" transparent="1"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="45,850" size="35,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="294,850" size="35,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="538,850" size="35,27" alphatest="blend"/>
+		<widget source="key_blue" render="Label" position="854,850" size="268,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="818,847" size="35,27" alphatest="blend"/>
+		<widget source="key_red" render="Label" position="87,850" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white"/>
+		<widget source="key_green" render="Label" position="333,850" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white"/>
+		<widget source="key_yellow" render="Label" position="579,850" size="237,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white"/>
+		<ePixmap pixmap="BlackHarmony/buttons/menu.png" position="1129,850" size="61,30" alphatest="blend"/>
+	</screen>
+	<!-- PKTeam Samba Server Manager -->
+	<screen name="SmbSetup" position="345,93" size="1230,900" title="HYPERION Samba Server Manager" flags="wfNoBorder" backgroundColor="transparent">
+		<widget source="Title" render="Label" position="637,30" size="550,40" font="Roboto_HD; 30" halign="center" backgroundColor="dark_grey" transparent="1"/>
+		<ePixmap position="0,0" zPosition="-10" size="1230,900" pixmap="BlackHarmony/bg_design/mainbg.png"/>
+		<widget source="global.CurrentTime" render="Label" position="33,30" size="90,40" font="Cyfry; 40" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="124,30" size="460,40" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<widget name="config" font="Roboto_HD; 28" position="153,139" size="943,654" scrollbarMode="showOnDemand" itemHeight="40" selectionPixmap="BlackHarmony/menu/sel_1555_35.png" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" backgroundColor="transpBlack" transparent="1"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="82,850" size="35,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="323,850" size="35,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="567,850" size="35,27" alphatest="blend"/>
+		<widget source="key_blue" render="Label" position="835,850" size="268,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="797,850" size="35,27" alphatest="blend"/>
+		<widget source="key_red" render="Label" position="118,850" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+		<widget source="key_green" render="Label" position="362,850" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+		<widget source="key_yellow" render="Label" position="608,850" size="177,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+	</screen>
+	<!-- PKT Auto Standby -->
+	<screen name="AutoStandby" position="345,93" size="1000,820" title="HYPERION Auto Standby" flags="wfNoBorder" backgroundColor="transparent">
+		<widget source="Title" render="Label" position="597,30" size="381,40" font="Roboto_HD; 30" halign="center" backgroundColor="dark_grey" transparent="1" foregroundColor="font_light_grey"/>
+		<ePixmap position="0,0" zPosition="-10" size="1000,820" pixmap="BlackHarmony/bg_design/short.png"/>
+		<widget source="global.CurrentTime" render="Label" position="33,30" size="90,40" font="Cyfry; 40" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="124,30" size="460,40" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<widget name="config" font="Roboto_HD; 28" position="62,132" size="875,189" scrollbarMode="showOnDemand" itemHeight="40" selectionPixmap="BlackHarmony/menu/sel_1555_35.png" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" backgroundColor="transpBlack" transparent="1"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="48,430" size="35,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="311,430" size="35,27" alphatest="blend"/>
+		<widget source="key_red" render="Label" position="83,430" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+		<widget source="key_green" render="Label" position="350,430" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+	</screen>
+	<!-- PKTeam FrontPanel Setup 2.6 -->
+	<screen name="FPSetup" position="345,93" size="1230,900" title="HYPERION FrontPanel Setup" flags="wfNoBorder" backgroundColor="transparent">
+		<widget source="Title" render="Label" position="637,30" size="550,40" font="Roboto_HD; 30" halign="center" backgroundColor="dark_grey" transparent="1"/>
+		<ePixmap position="0,0" zPosition="-10" size="1230,900" pixmap="BlackHarmony/bg_design/mainbg.png"/>
+		<widget source="global.CurrentTime" render="Label" position="33,30" size="90,40" font="Cyfry; 40" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="124,30" size="460,40" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<widget name="config" font="Roboto_HD; 28" position="153,139" size="943,654" scrollbarMode="showOnDemand" itemHeight="40" selectionPixmap="BlackHarmony/menu/sel_1555_35.png" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" backgroundColor="transpBlack" transparent="1"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="82,850" size="35,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="323,850" size="35,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="567,850" size="35,27" alphatest="blend"/>
+		<widget source="key_blue" render="Label" position="900,850" size="268,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="862,850" size="35,27" alphatest="blend"/>
+		<widget source="key_red" render="Label" position="118,850" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+		<widget source="key_green" render="Label" position="362,850" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+		<widget source="key_yellow" render="Label" position="612,850" size="246,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+	</screen>
+	<!-- PKT Sync Time -->
+	<screen name="MakeSync" position="center,center" size="1230,900" title="HYPERION Sync Time" flags="wfNoBorder" backgroundColor="transparent">
+		<widget source="Title" render="Label" position="637,30" size="550,40" font="Roboto_HD; 30" halign="center" backgroundColor="dark_grey" transparent="1"/>
+		<ePixmap position="0,0" zPosition="-10" size="1230,900" pixmap="BlackHarmony/bg_design/mainbg.png"/>
+		<widget source="global.CurrentTime" render="Label" position="33,30" size="90,40" font="Cyfry; 40" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="124,30" size="460,40" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<widget name="config" font="Roboto_HD; 28" position="153,240" size="943,403" scrollbarMode="showOnDemand" itemHeight="40" selectionPixmap="BlackHarmony/menu/sel_1555_35.png" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" backgroundColor="transpBlack" transparent="1"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="266,850" size="35,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="532,850" size="35,27" alphatest="blend"/>
+		<widget source="key_blue" render="Label" position="835,850" size="268,36" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="791,850" size="35,27" alphatest="blend"/>
+		<widget source="key_red" render="Label" position="316,850" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+		<widget source="key_green" render="Label" position="576,850" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+	</screen>
+	<!-- PKT Speed Test -->
+	<screen name="SpeedTest" position="center,center" size="1250,785" title="HYPERION Speed Test" flags="wfNoBorder" backgroundColor="transparent">
+		<ePixmap position="0,0" zPosition="-10" size="1250,785" pixmap="BlackHarmony/gfx/spedtest.png"/>
+		<widget name="obrazek" position="340,86" size="580,370" font="Roboto_HD; 30" halign="center" valign="center" alphatest="blend" scale="on" backgroundColor="transpBlack_1"/>
+		<widget name="tekst" position="241,459" size="786,37" font="Roboto_HD; 40" halign="center" valign="center" backgroundColor="background" transparent="1" foregroundColor="green_epg"/>
+		<ePixmap position="463,693" zPosition="1" size="311,64" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="35,718" size="35,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="926,714" size="35,27" alphatest="blend"/>
+		<widget source="key_red" render="Label" position="73,716" size="243,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+		<widget source="key_green" render="Label" position="968,713" size="241,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+	</screen>
+	<!-- PKT Set Password -->
+	<screen name="SetPasswd" position="center,center" size="1000,820" title="HYPERION Set Password" flags="wfNoBorder" backgroundColor="transparent">
+		<widget source="Title" render="Label" position="597,30" size="381,40" font="Roboto_HD; 30" halign="center" backgroundColor="dark_grey" transparent="1" foregroundColor="font_light_grey"/>
+		<ePixmap position="0,0" zPosition="-10" size="1000,820" pixmap="BlackHarmony/bg_design/short.png"/>
+		<widget source="global.CurrentTime" render="Label" position="33,30" size="90,40" font="Cyfry; 40" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="124,30" size="460,40" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<widget name="passwordstatus" font="Roboto_HD; 27" position="75,140" size="845,151" itemHeight="35" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_845_35.png" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" backgroundColor="transpBlack" transparent="1"/>
+		<ePixmap position="346,303" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="32,430" size="35,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="283,430" size="35,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="530,430" size="35,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_OK.png" position="874,430" size="60,30" alphatest="blend"/>
+		<widget source="key_red" render="Label" position="75,430" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="black" transparent="1"/>
+		<widget source="key_green" render="Label" position="321,430" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="black" transparent="1"/>
+		<widget source="key_yellow" render="Label" position="570,430" size="218,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="black" transparent="1"/>
+	</screen>
+	<!-- PKT JDownloader Setup v1.4 -->
+	<screen name="JDownloaderSetup" position="center,center" size="1230,900" title="HYPERION JDownloader Setup" flags="wfNoBorder" backgroundColor="transparent">
+		<widget source="Title" render="Label" position="637,30" size="550,40" font="Roboto_HD; 30" halign="center" backgroundColor="dark_grey" transparent="1" foregroundColor="font_light_grey"/>
+		<ePixmap position="0,0" zPosition="-10" size="1230,900" pixmap="BlackHarmony/bg_design/mainbg.png"/>
+		<widget source="global.CurrentTime" render="Label" position="33,30" size="90,40" font="Cyfry; 40" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="124,30" size="460,40" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<widget name="config" font="Roboto_HD; 28" position="146,219" size="943,461" scrollbarMode="showOnDemand" itemHeight="40" selectionPixmap="BlackHarmony/menu/sel_1555_35.png" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" backgroundColor="transpBlack" transparent="1"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="57,850" size="35,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="310,850" size="35,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="564,850" size="35,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="845,851" size="35,27" alphatest="blend"/>
+		<widget source="key_red" render="Label" position="99,850" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+		<widget source="key_green" render="Label" position="353,850" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+		<widget source="key_yellow" render="Label" position="612,850" size="218,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+		<widget source="key_blue" render="Label" position="893,850" size="268,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+	</screen>
+	<!-- PKTeam OpenVPN Manager v1.5 -->
+	<screen name="VpnSetup" position="345,93" size="1230,900" title="HYPERION OpenVPN Manager" flags="wfNoBorder" backgroundColor="transparent">
+		<widget source="Title" render="Label" position="637,30" size="550,40" font="Roboto_HD; 30" halign="center" backgroundColor="dark_grey" transparent="1" foregroundColor="font_light_grey"/>
+		<ePixmap position="0,0" zPosition="-10" size="1230,900" pixmap="BlackHarmony/bg_design/mainbg.png"/>
+		<widget source="global.CurrentTime" render="Label" position="33,30" size="90,40" font="Cyfry; 40" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="124,30" size="460,40" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<widget name="config" font="Roboto_HD; 28" position="146,219" size="943,461" scrollbarMode="showOnDemand" itemHeight="40" selectionPixmap="BlackHarmony/menu/sel_1555_35.png" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" backgroundColor="transpBlack" transparent="1"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="57,850" size="35,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="310,850" size="35,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="564,850" size="35,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="845,851" size="35,27" alphatest="blend"/>
+		<widget source="key_red" render="Label" position="99,850" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+		<widget source="key_green" render="Label" position="353,850" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+		<widget source="key_yellow" render="Label" position="612,850" size="218,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+		<widget source="key_blue" render="Label" position="893,850" size="268,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+	</screen>
+	<!-- PKT E2iPlayer Installer v1.0 -->
+	<screen name="InstallIPTV" position="345,93" size="1000,820" title="HYPERION E2iPlayer Installer" flags="wfNoBorder" backgroundColor="transparent">
+		<widget source="Title" render="Label" position="597,30" size="381,40" font="Roboto_HD; 27" halign="center" backgroundColor="dark_grey" transparent="1" foregroundColor="font_light_grey"/>
+		<ePixmap position="0,0" zPosition="-10" size="1001,820" pixmap="BlackHarmony/bg_design/short.png"/>
+		<widget source="global.CurrentTime" render="Label" position="33,30" size="90,40" font="Cyfry; 40" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="124,30" size="460,40" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<widget name="infoTXT" position="47,164" size="900,60" font="Replacement; 40" halign="center" valign="center" foregroundColor="lemon" backgroundColor="background" transparent="1"/>
+		<widget name="devlist" font="Roboto_HD; 30" position="200,268" size="565,45" itemHeight="45" halign="center" valign="center" selectionPixmap="BlackHarmony/menu/sel_565_45.png" backgroundColor="transpBlack" transparent="1"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_left.png" position="141,270" size="44,35" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_right.png" position="793,270" size="44,35" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="29,430" size="35,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="228,430" size="35,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="461,430" size="35,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="699,430" size="35,27" alphatest="blend"/>
+		<widget source="key_red" render="Label" position="62,430" size="159,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+		<widget source="key_green" render="Label" position="267,430" size="189,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+		<widget source="key_yellow" render="Label" position="496,430" size="199,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+		<widget source="key_blue" render="Label" position="742,430" size="218,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+	</screen>
+	<!-- PKT Entitlements for Internal Cards v1.3 -->
+	<screen name="Entitlements" position="345,93" size="1230,900" title="HYPERION Entitlements for Internal Cards" flags="wfNoBorder" backgroundColor="transparent">
+		<widget source="Title" render="Label" position="597,30" size="598,40" font="Roboto_HD; 30" halign="center" backgroundColor="dark_grey" transparent="1" foregroundColor="font_light_grey"/>
+		<ePixmap position="0,0" zPosition="-10" size="1230,900" pixmap="BlackHarmony/bg_design/mainbg.png"/>
+		<widget source="global.CurrentTime" render="Label" position="33,30" size="90,40" font="Cyfry; 40" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="124,30" size="460,40" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<widget name="EntitlementsScrollLabel" font="RegularLight; 28" position="70,133" size="1093,634" scrollbarMode="showOnDemand" itemHeight="40" selectionPixmap="BlackHarmony/menu/sel_1555_35.png" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" backgroundColor="transpBlack" transparent="1"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="113,850" size="35,27" alphatest="blend"/>
+		<widget source="key_red" render="Label" position="154,850" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+	</screen>
+	<!-- PKT EMU manager -->
+	<screen name="ScreenEmu" position="0,0" size="1920,1080" title="EMU manager" flags="wfNoBorder" backgroundColor="transparent">
+		<ePixmap position="0,0" zPosition="-10" size="1920,1085" pixmap="BlackHarmony/bg_design/menu_icon.png"/>
+		<widget source="Title" render="Label" position="423,172" size="420,63" font="Replacement; 40" halign="center" backgroundColor="dark_grey" transparent="1" foregroundColor="font_light_grey"/>
+		<widget source="global.CurrentTime" render="Label" position="1137,260" size="90,42" font="Cyfry; 40" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="1228,263" size="419,40" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<widget name="selectCAM" position="834,308" size="109,38" font="Roboto_HD; 26" foregroundColor="orange" backgroundColor="background" transparent="1"/>
+		<widget name="Mlist" font="Roboto_HD; 30" position="353,305" size="414,40" itemHeight="40" halign="center" valign="center" selectionPixmap="BlackHarmony/menu/sel_500_38.png" backgroundColor="transpBlack" transparent="1"/>
+		<widget name="counter" position="908,307" size="88,40" font="Cyfry; 30" backgroundColor="background" transparent="1"/>
+		<ePixmap pixmap="BlackHarmony/menu/sel_565_45.png" position="321,421" size="600,50" alphatest="on" zPosition="-1" scale="on"/>
+		<widget name="actifcam" position="325,425" size="590,40" font="Roboto_HD; 30" backgroundColor="transpBlack_1" foregroundColor="orange" halign="center" valign="center" transparent="1"/>
+		<widget name="Autorestart" position="336,605" size="225,44" font="Regular; 24" backgroundColor="background" foregroundColor="yellow" halign="center" valign="center" transparent="1"/>
+		<ePixmap pixmap="BlackHarmony/menu/sel_565_45.png" position="326,708" size="600,50" alphatest="on" zPosition="-1" scale="on"/>
+		<widget name="actnewcs" position="331,713" size="590,40" font="Roboto_HD; 30" backgroundColor="transpBlack_1" foregroundColor="orange" halign="center" valign="center" transparent="1"/>
+		<widget name="Svr" position="380,803" size="186,44" font="Roboto_HD; 24" backgroundColor="background" foregroundColor="cyan" halign="center" valign="center" transparent="1"/>
+		<widget name="ecminfo" position="1127,389" size="520,379" font="Roboto_HD; 22" halign="center" valign="center" backgroundColor="background" transparent="1"/>
+		<ePixmap pixmap="BlackHarmony/buttons/left.png" position="291,309" size="56,35" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/right.png" position="771,309" size="58,35" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="340,509" size="35,26" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="624,509" size="32,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="622,613" size="33,29" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="665,814" size="32,28" alphatest="blend"/>
+		<widget source="key_red" render="Label" position="384,500" size="130,40" zPosition="1" font="Roboto_HD; 28" halign="center" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="red"/>
+		<widget source="key_green" render="Label" position="674,501" size="144,40" zPosition="1" font="Roboto_HD; 28" halign="center" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="green"/>
+		<widget source="key_yellow" render="Label" position="669,606" size="152,40" zPosition="1" font="Roboto_HD; 28" halign="center" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="yellow"/>
+		<widget source="key_blue" render="Label" position="711,807" size="148,40" zPosition="1" font="Roboto_HD; 28" halign="center" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="cyan"/>
+		<ePixmap position="1231,820" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend"/>
+	</screen>
+	<!-- PKT Memory Cleaner -->
+	<screen name="MemoryCleaner" position="345,93" size="1000,820" title="HYPERION Memory Cleaner" flags="wfNoBorder" backgroundColor="transparent">
+		<widget source="Title" render="Label" position="597,30" size="381,40" font="Roboto_HD; 27" halign="center" backgroundColor="dark_grey" transparent="1" foregroundColor="font_light_grey"/>
+		<ePixmap position="0,0" zPosition="-10" size="1000,820" pixmap="BlackHarmony/bg_design/short.png"/>
+		<widget source="global.CurrentTime" render="Label" position="33,30" size="90,40" font="Cyfry; 40" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="124,30" size="460,40" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<widget name="config" font="Roboto_HD; 27" position="75,140" size="845,151" itemHeight="35" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_845_35.png" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" backgroundColor="transpBlack" transparent="1"/>
+		<ePixmap position="346,303" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="32,430" size="35,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="283,430" size="35,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="530,430" size="35,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_OK.png" position="874,430" size="60,30" alphatest="blend"/>
+		<widget source="key_red" render="Label" position="75,430" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="black" transparent="1"/>
+		<widget source="key_green" render="Label" position="321,430" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="black" transparent="1"/>
+		<widget source="key_yellow" render="Label" position="570,430" size="218,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="black" transparent="1"/>
+	</screen>
+	<!-- PKT Backup Manager -->
+	<screen name="MakeBackup" position="345,93" size="1230,900" title="HYPERION Backup Manager" flags="wfNoBorder" backgroundColor="transparent">
+		<widget source="Title" render="Label" position="767,30" size="420,40" font="Roboto_HD; 30" halign="center" backgroundColor="dark_grey" transparent="1"/>
+		<ePixmap position="0,0" zPosition="-10" size="1230,900" pixmap="BlackHarmony/bg_design/mainbg.png"/>
+		<widget source="global.CurrentTime" render="Label" position="33,30" size="90,40" font="Cyfry; 40" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="124,30" size="460,40" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<widget name="config" font="Roboto_HD; 28" position="136,122" size="969,681" scrollbarMode="showOnDemand" itemHeight="40" selectionPixmap="BlackHarmony/menu/sel_1555_35.png" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" backgroundColor="transpBlack" transparent="1"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="82,850" size="35,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="322,850" size="35,27" alphatest="blend"/>
+		<widget source="key_red" render="Label" position="118,850" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+		<widget source="key_green" render="Label" position="363,850" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+	</screen>
+	<!-- PKT Skin Setup -->
+	<screen name="PKTinforBarSetup" position="0,0" size="1902,1080" title="PKT Skin Setup" flags="wfNoBorder" backgroundColor="transparent">
+		<ePixmap position="0,0" zPosition="-10" size="1902,1080" pixmap="BlackHarmony/bg_design/cs_xpicon.png"/>
+		<widget source="Title" render="Label" position="1424,30" size="420,40" font="Roboto_HD; 30" halign="center" backgroundColor="dark_grey" transparent="1"/>
+		<widget source="global.CurrentTime" render="Label" position="74,30" size="90,40" font="Cyfry; 40" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="165,30" size="460,40" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<widget name="config" font="Roboto_HD; 30" position="89,179" size="1002,765" scrollbarMode="showOnDemand" itemHeight="40" selectionPixmap="BlackHarmony/menu/sel_1555_35.png" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" backgroundColor="transpBlack" transparent="1"/>
+		<widget name="bootlogo" position="1343,440" size="424,250" zPosition="2" alphatest="on"/>
+		<widget name="obrazek" position="1330,441" size="423,250" alphatest="on" backgroundColor="transpBlack_1"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="1291,890" size="35,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="1587,890" size="35,27" alphatest="blend"/>
+		<widget source="key_red" render="Label" position="1338,890" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white"/>
+		<widget source="key_green" render="Label" position="1640,890" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white"/>
+		<ePixmap position="1375,202" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend"/>
+	</screen>
+	<!-- PKTinfo -->
+	<screen name="PKTinfo" position="581,31" size="715,1000" title="PKTinfo" flags="wfNoBorder" backgroundColor="transparent">
+		<widget source="Title" render="Label" position="142,937" size="420,40" font="Roboto_HD; 30" halign="center" backgroundColor="background" transparent="1"/>
+		<ePixmap position="2,1" zPosition="-10" size="715,1000" pixmap="BlackHarmony/bg_design/bg_710x950.png"/>
+		<widget source="global.CurrentTime" render="Label" position="33,30" size="90,40" font="Cyfry; 40" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="124,30" size="460,40" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<widget source="Naglowek" render="Label" position="91,144" size="526,50" font="Replacement; 30" halign="center" valign="center" backgroundColor="background" transparent="1" foregroundColor="lemon"/>
+		<widget source="wersja" render="Label" position="109,201" size="483,50" font="Roboto_HD; 26" halign="center" valign="center" foregroundColor="lemon" backgroundColor="background" transparent="1"/>
+		<widget source="rev" render="Label" position="66,257" size="571,50" font="Roboto_HD; 26" halign="center" valign="center" foregroundColor="lemon" backgroundColor="background" transparent="1"/>
+		<widget source="kontakt" render="Label" position="31,315" size="646,235" font="Roboto_HD; 24" halign="center" valign="center" backgroundColor="background" transparent="1" foregroundColor="lemon"/>
+		<widget source="licence" render="Label" position="31,558" size="650,351" font="Roboto_HD; 24" halign="center" valign="center" backgroundColor="background" transparent="1" foregroundColor="lemon"/>
+	</screen>
+	<!-- PKT PKT Install Manager -->
+	<screen name="InstallManager" position="0,0" size="1920,1080" title="HYPERION Install Manager" flags="wfNoBorder" backgroundColor="transparent">
+		<widget source="Title" render="Label" position="1406,60" size="420,40" font="Roboto_HD; 30" halign="center" backgroundColor="dark_grey" transparent="1"/>
+		<ePixmap position="0,0" zPosition="-10" size="1920,1080" pixmap="BlackHarmony/bg_design/cool.png"/>
+		<widget source="global.CurrentTime" render="Label" position="85,60" size="90,40" font="Cyfry; 40" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="174,60" size="460,40" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<widget name="device_note" position="381,240" size="1090,50" font="Replacement; 30" halign="center" valign="center" foregroundColor="green" backgroundColor="transpBlack_1" transparent="1"/>
+		<widget name="devlist" font="Roboto_HD; 30" position="267,328" size="703,45" itemHeight="45" halign="center" valign="center" selectionPixmap="BlackHarmony/menu/sel_720_40.png" backgroundColor="transpBlack" transparent="1"/>
+		<widget name="imgName" position="1055,329" size="600,40" font="Roboto_HD; 28" halign="right" valign="center" foregroundColor="orange" transparent="1"/>
+		<widget name="image_note" position="390,906" size="1086,50" font="Replacement; 28" halign="center" valign="center" foregroundColor="lemon" backgroundColor="transpBlack_1" transparent="1"/>
+		<widget name="imagelist" font="Roboto_HD; 28" position="373,402" size="1119,475" scrollbarMode="showOnDemand" itemHeight="40" selectionPixmap="BlackHarmony/menu/sel_1555_35.png" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" backgroundColor="transpBlack" transparent="1"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="168,1000" size="35,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="459,1000" size="35,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="777,1000" size="35,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="1159,1000" size="35,27" alphatest="blend"/>
+		<widget source="key_red" render="Label" position="217,1000" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+		<widget source="key_green" render="Label" position="503,1000" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+		<widget source="key_yellow" render="Label" position="819,1000" size="302,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+		<widget source="key_blue" render="Label" position="1208,1000" size="268,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+		<ePixmap pixmap="BlackHarmony/buttons/menu.png" position="1783,1000" size="65,30" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_ok.png" position="1717,1000" size="65,30" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_up.png" position="1558,1000" size="65,30" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_down.png" position="1623,1000" size="65,30" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/left.png" position="199,340" size="61,30" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/right.png" position="982,340" size="60,30" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/menu/sel_1095_50.png" position="388,909" size="1090,50" backgroundColor="transpBlack_1" alphatest="on" zPosition="-1" scale="on"/>
+		<ePixmap pixmap="BlackHarmony/menu/sel_660_40.png" position="1054,328" size="600,40" backgroundColor="transpBlack_1" alphatest="on" zPosition="-1" scale="on"/>
+		<ePixmap pixmap="BlackHarmony/menu/sel_1095_50.png" position="380,240" size="1090,50" backgroundColor="transpBlack_1" alphatest="on" zPosition="-1" scale="on"/>
+		<ePixmap position="781,150" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend"/>
+	</screen>
+	<!-- PKT AboutOE -->
+	<screen name="AboutOE" position="500,40" size="715,1000" title="Image info" flags="wfNoBorder" backgroundColor="transparent">
+		<widget source="Title" render="Label" position="142,150" size="420,40" font="Roboto_HD; 30" halign="center" backgroundColor="background" transparent="1"/>
+		<ePixmap position="0,0" zPosition="-10" size="715,1000" pixmap="BlackHarmony/bg_design/bg_710x950.png"/>
+		<widget source="global.CurrentTime" render="Label" position="33,27" size="90,43" font="Cyfry; 40" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="124,31" size="460,36" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<widget source="lab1" render="Label" position="31,197" size="652,54" halign="left" font="Roboto_HD; 32" foregroundColor="lemon" transparent="1"/>
+		<widget source="lab2" render="Label" position="31,261" size="650,40" font="Roboto_HD; 26" halign="center" foregroundColor="lemon" transparent="1"/>
+		<widget source="lab3" render="Label" position="29,311" size="650,40" font="Roboto_HD; 34" halign="center" foregroundColor="lemon" transparent="1"/>
+		<widget name="AboutScrollLabel" font="Roboto_HD; 25" position="30,360" size="651,540" zPosition="2" halign="left" foregroundColor="lemon" transparent="1"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="16,944" size="35,27" alphatest="blend"/>
+		<widget source="key_green" render="Label" position="56,939" size="200,40" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="black" transparent="1" foregroundColor="lemon"/>
+	</screen>
+	<!-- PKT PKT Set Disk Label -->
+	<screen name="SetDiskLabel" position="center,center" size="1920,1080" title="Hyperion Set Disk Label" flags="wfNoBorder" backgroundColor="transparent">
+		<widget source="Title" render="Label" position="1326,90" size="420,40" font="Roboto_HD; 30" halign="center" backgroundColor="dark_grey" transparent="1"/>
+		<ePixmap position="1,-1" zPosition="-10" size="1920,1080" pixmap="BlackHarmony/bg_design/big.png"/>
+		<widget source="global.CurrentTime" render="Label" position="189,90" size="90,40" font="Cyfry; 40" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="279,90" size="460,40" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<ePixmap position="796,754" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend"/>
+		<widget name="devlist" font="Roboto_HD; 30" position="1090,367" size="566,45" itemHeight="45" halign="center" valign="center" selectionPixmap="BlackHarmony/menu/sel_565_45.png" backgroundColor="transpBlack" transparent="1"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_left.png" position="1014,375" size="42,30" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_right.png" position="1679,372" size="40,30" alphatest="blend"/>
+		<ePixmap position="330,364" zPosition="-10" size="567,47" pixmap="BlackHarmony/menu/sel_565_45.png"/>
+		<ePixmap position="330,556" zPosition="-10" size="567,47" pixmap="BlackHarmony/menu/sel_565_45.png"/>
+		<ePixmap position="330,462" zPosition="-10" size="567,47" pixmap="BlackHarmony/menu/sel_565_45.png"/>
+		<ePixmap position="1094,463" zPosition="-10" size="567,47" pixmap="BlackHarmony/menu/sel_565_45.png"/>
+		<widget name="listlabel" font="Roboto_HD; 30" position="1095,558" size="565,45" itemHeight="45" halign="center" valign="center" selectionPixmap="BlackHarmony/menu/sel_565_45.png" backgroundColor="transpBlack" transparent="1"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_up.png" position="1021,568" size="45,30" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_down.png" position="1685,568" size="38,30" alphatest="blend"/>
+		<widget name="infoTXT" position="332,364" size="563,46" font="Roboto_HD;28" halign="left" valign="center" backgroundColor="background" transparent="1"/>
+		<widget name="labelname" position="332,462" size="565,48" font="Roboto_HD; 28" halign="left" valign="center" backgroundColor="background" transparent="1"/>
+		<widget name="disklabel" position="1095,465" size="563,43" font="Roboto_HD; 30" halign="center" valign="center" foregroundColor="orange" backgroundColor="background" transparent="1"/>
+		<widget name="labeltoset" position="331,554" size="565,51" font="Roboto_HD; 28" halign="left" valign="center" backgroundColor="background" transparent="1"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="270,950" size="35,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="528,950" size="35,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="852,950" size="35,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="1190,950" size="35,27" alphatest="blend"/>
+		<widget source="key_red" render="Label" position="306,950" size="159,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+		<widget source="key_green" render="Label" position="566,950" size="189,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+		<widget source="key_yellow" render="Label" position="890,950" size="199,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+		<widget source="key_blue" render="Label" position="1229,950" size="218,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+	</screen>
+	<!-- PKT device info -->
+	<screen name="Devices" position="center,center" size="850,1080" title="Hyperion device info" flags="wfNoBorder" backgroundColor="transparent">
+		<widget source="Title" render="Label" position="521,30" size="313,40" font="Roboto_HD; 30" halign="center" backgroundColor="dark_grey" transparent="1"/>
+		<ePixmap position="center,center" zPosition="-10" size="850,1080" pixmap="BlackHarmony/bg_design/zap_history.png"/>
+		<widget source="global.CurrentTime" render="Label" position="33,30" size="90,40" font="Cyfry; 40" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="124,30" size="460,40" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<widget source="TunerHeader" render="Label" position="145,140" size="560,62" font="Replacement; 30" transparent="1" zPosition="1" halign="center" foregroundColor="lemon"/>
+		<widget source="nims" render="Label" position="108,213" size="631,357" font="Roboto_HD; 28" transparent="1" zPosition="1" noWrap="1" foregroundColor="lemon" halign="center"/>
+		<widget source="HDDHeader" render="Label" position="146,581" size="560,43" font="Replacement; 30" transparent="1" zPosition="1" halign="center" foregroundColor="lemon"/>
+		<widget source="hdd" render="Label" position="89,634" size="675,157" font="Roboto_HD; 28" transparent="1" zPosition="1" foregroundColor="lemon"/>
+		<widget source="MountsHeader" render="Label" position="155,796" size="560,45" font="Replacement; 30" transparent="1" zPosition="1" halign="center" foregroundColor="lemon"/>
+		<widget source="mounts" render="Label" position="98,850" size="669,161" font="Roboto_HD; 28" transparent="1" zPosition="1" noWrap="1" foregroundColor="lemon" valign="center" halign="center"/>
+	</screen>
+	<!-- PKT SystemMemoryInfo -->
+	<screen name="SystemMemoryInfo" position="center,center" size="850,1080" title="Hyperion Memory" flags="wfNoBorder" backgroundColor="transparent">
+		<widget source="Title" render="Label" position="521,30" size="313,40" font="Roboto_HD; 30" halign="center" backgroundColor="dark_grey" transparent="1"/>
+		<ePixmap position="center,center" zPosition="-10" size="850,1080" pixmap="BlackHarmony/bg_design/zap_history.png"/>
+		<widget source="global.CurrentTime" render="Label" position="33,30" size="90,40" font="Cyfry; 40" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="124,30" size="460,40" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<widget source="lab1" render="Label" position="159,250" size="560,45" font="Bold; 30" transparent="1" zPosition="2" foregroundColor="lemon"/>
+		<widget source="lab2" render="Label" position="158,335" size="560,45" font="Roboto_HD; 26" transparent="1" zPosition="2" foregroundColor="lemon" halign="center"/>
+		<widget name="AboutScrollLabel" position="159,404" size="560,490" font="Regular; 26" transparent="1" zPosition="1" scrollbarMode="showOnDemand" foregroundColor="lemon" halign="left"/>
+	</screen>
+	<!-- PKT SystemNetworkInfo -->
+	<screen name="SystemNetworkInfo" position="204,34" size="1522,1022" title=" " flags="wfNoBorder" backgroundColor="transparent">
+		<ePixmap position="0,0" zPosition="-10" size="1522,1022" pixmap="BlackHarmony/bg_design/network.png"/>
+		<widget source="global.CurrentTime" render="Label" position="68,60" size="90,40" font="Cyfry; 40" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="159,60" size="460,40" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<widget name="AboutScrollLabel" position="768,211" size="606,410" valign="left" font="Regular; 26" transparent="1" foregroundColor="lemon"/>
+		<eLabel name="" position="791,665" size="562, 2" backgroundColor="light_grey"/>
+		<widget source="IFtext" render="Label" position="772,707" size="158,45" zPosition="10" font="Regular; 24" halign="left" transparent="1" backgroundColor="transpBlack_1" foregroundColor="lemon"/>
+		<widget source="IF" render="Label" position="953,706" size="430,45" zPosition="10" font="Regular; 26" halign="left" transparent="1" backgroundColor="transpBlack_1" foregroundColor="lemon"/>
+		<widget source="Statustext" render="Label" position="769,787" size="161,45" zPosition="10" font="Regular;24" halign="left" transparent="1" backgroundColor="transpBlack_1" foregroundColor="lemon"/>
+		<widget name="statuspic" pixmaps="buttons/seen.png,buttons/red.png" position="964,790" zPosition="10" size="41,43" transparent="1" alphatest="on"/>
+		<ePixmap position="219,401" size="250,250" pixmap="BlackHarmony/menu/network.png" alphatest="blend"/>
+		<ePixmap position="191,763" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend"/>
+	</screen>
+	<!-- PKTeam FilmWebReader v1.1 -->
+	<screen name="FilmwebReader" position="0,0" size="1920,1080" title="Hyperion FilmWebReader" flags="wfNoBorder" backgroundColor="transparent">
+		<ePixmap position="0,0" zPosition="-10" size="1920,1080" pixmap="BlackHarmony/bg_design/big.png"/>
+		<widget source="Title" render="Label" position="1329,95" size="420,40" font="Roboto_HD; 30" halign="center" backgroundColor="dark_grey" transparent="1"/>
+		<widget source="global.CurrentTime" render="Label" position="149,95" size="90,40" font="Cyfry; 40" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="238,95" size="460,40" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<widget name="infoTXT" position="178,194" size="150,40" font="Regular; 32" halign="left" valign="center" foregroundColor="cyan" transparent="1"/>
+		<widget name="eventName" position="339,193" size="1060,40" font="Roboto_HD; 32" halign="left" valign="center" transparent="1"/>
+		<widget name="listaFilmow" position="174,280" size="1104,600" font="Roboto_HD; 30" itemHeight="40" selectionPixmap="BlackHarmony/menu/sel_1555_35.png" scrollbarMode="showOnDemand" scrollbarWidth="7" scrollbarSliderBorderColor="description" scrollbarSliderForegroundColor="description" transparent="1"/>
+		<widget name="picture" position="1323,280" size="400,600" zPosition="1" font="Roboto_HD; 16"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="158,950" size="35,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="557,950" size="35,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="961,950" size="35,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="1338,950" size="35,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="1688,950" size="61,30" alphatest="blend"/>
+		<widget source="key_red" render="Label" position="209,950" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+		<widget source="key_green" render="Label" position="607,950" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+		<widget source="key_yellow" render="Label" position="1011,950" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+		<widget source="key_blue" render="Label" position="1389,950" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+	</screen>
+	<screen name="ShowFilmweb" position="center,center" size="1920,1080" title="Hyperion FilmwebReader Show" flags="wfNoBorder" backgroundColor="transparent">
+		<ePixmap position="0,5" zPosition="-10" size="1917,1076" pixmap="BlackHarmony/bg_design/big.png"/>
+		<widget source="Title" render="Label" position="1284,95" size="460,40" font="Roboto_HD; 30" halign="center" backgroundColor="dark_grey" transparent="1"/>
+		<widget source="global.CurrentTime" render="Label" position="174,95" size="90,40" font="Cyfry; 40" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="264,95" size="460,40" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<widget name="okladka" position="1349,279" size="388,590" zPosition="1" font="Roboto_HD; 16"/>
+		<widget name="filmInfo" position="193,179" size="1250,45" font="Roboto_HD; 34" halign="center" valign="center" foregroundColor="cyan" transparent="1"/>
+		<widget name="filmInfo2" position="191,228" size="1250,40" font="Roboto_HD; 26" halign="center" valign="center" foregroundColor="cyan" transparent="1"/>
+		<widget source="description" render="RunningText" position="190,635" size="622,230" font="Roboto_HD; 26" backgroundColor="background" foregroundColor="cyan" options="movetype=running,direction=top,step=1,oneshot=1200,always=0,steptime=150,startpoint=2,wrap" transparent="1"/>
+		<widget source="ekipa" render="RunningText" position="845,635" size="450,233" font="Roboto_HD; 26" backgroundColor="background" foregroundColor="cyan" options="movetype=running,direction=top,step=1,oneshot=1200,always=0,steptime=150,startpoint=2,wrap" transparent="1"/>
+		<widget name="obsada0" position="194,275" size="180,240"/>
+		<widget name="obsada0n" position="192,525" size="180,100" font="Roboto_HD; 22" halign="center" valign="center" backgroundColor="background" transparent="1"/>
+		<widget name="obsada1" position="436,275" size="180,240"/>
+		<widget name="obsada1n" position="436,525" size="180,100" font="Roboto_HD; 22" halign="center" valign="center" backgroundColor="background" transparent="1"/>
+		<widget name="obsada2" position="666,275" size="180,240"/>
+		<widget name="obsada2n" position="665,525" size="180,100" font="Roboto_HD; 22" halign="center" valign="center" backgroundColor="background" transparent="1"/>
+		<widget name="obsada3" position="887,275" size="180,240"/>
+		<widget name="obsada3n" position="892,525" size="180,100" font="Roboto_HD; 22" halign="center" valign="center" backgroundColor="background" transparent="1"/>
+		<widget name="obsada4" position="1116,275" size="180,240"/>
+		<widget name="obsada4n" position="1115,525" size="180,100" font="Roboto_HD; 22" halign="center" valign="center" backgroundColor="background" transparent="1"/>
+		<widget name="filmInfo3" position="214,876" size="1171,40" font="Roboto_HD; 26" halign="center" valign="center" foregroundColor="cyan" transparent="1"/>
+	</screen>
+	<screen name="FWSetup" position="345,93" size="1230,900" title="HYPERION FilmwebReader Config" flags="wfNoBorder" backgroundColor="transparent">
+		<widget source="Title" render="Label" position="681,30" size="506,40" font="Roboto_HD; 30" halign="center" backgroundColor="dark_grey" transparent="1"/>
+		<ePixmap position="0,0" zPosition="-10" size="1230,898" pixmap="BlackHarmony/bg_design/mainbg.png"/>
+		<widget source="global.CurrentTime" render="Label" position="33,30" size="90,40" font="Cyfry; 40" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="124,30" size="460,40" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<widget name="config" font="Roboto_HD; 28" position="138,218" size="969,482" scrollbarMode="showOnDemand" itemHeight="40" selectionPixmap="BlackHarmony/menu/sel_1555_35.png" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" backgroundColor="transpBlack" transparent="1"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="82,850" size="35,30" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="322,850" size="35,30" alphatest="blend"/>
+		<widget source="key_red" render="Label" position="118,850" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+		<widget source="key_green" render="Label" position="363,850" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+	</screen>
+	<!-- PKT Channel List Updater v1.7 -->
+	<screen name="ChannelListUpdate" position="center,center" size="1920,1080" title="Hyperion Channel List Updater" flags="wfNoBorder" backgroundColor="transparent">
+		<ePixmap position="0,0" zPosition="-10" size="1920,1080" pixmap="BlackHarmony/bg_design/big.png"/>
+		<widget source="Title" render="Label" position="1284,95" size="460,40" font="Roboto_HD; 30" halign="center" backgroundColor="dark_grey" transparent="1"/>
+		<widget source="global.CurrentTime" render="Label" position="175,95" size="90,40" font="Cyfry; 40" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="267,95" size="460,40" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<widget name="chlist" font="Roboto_HD; 26" position="178,273" size="1555,593" scrollbarMode="showOnDemand" itemHeight="35" selectionPixmap="BlackHarmony/menu/sel_1555_35.png" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" backgroundColor="transpBlack" transparent="1"/>
+		<widget name="infoTXT" position="422,195" size="1110,60" font="Replacement; 40" halign="center" valign="center" foregroundColor="lemon" transparent="1"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="158,950" size="35,30" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="557,950" size="35,30" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="961,950" size="35,30" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="1361,950" size="35,30" alphatest="blend"/>
+		<widget source="key_red" render="Label" position="209,950" size="250,30" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+		<widget source="key_green" render="Label" position="607,950" size="250,30" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+		<widget source="key_yellow" render="Label" position="1011,950" size="250,30" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+		<widget source="key_blue" render="Label" position="1411,950" size="250,30" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="1688,948" size="61,30" alphatest="blend"/>
+	</screen>
+	<!-- PKTeam NTC v1.1 -->
+	<screen name="NTC" position="center,center" size="1920,1080" title="Hyperion NTC" flags="wfNoBorder" backgroundColor="transparent">
+		<ePixmap position="0,0" zPosition="-10" size="1920,1080" pixmap="BlackHarmony/bg_design/big.png"/>
+		<widget source="Title" render="Label" position="1284,95" size="460,40" font="Roboto_HD; 30" halign="center" backgroundColor="dark_grey" transparent="1"/>
+		<widget source="global.CurrentTime" render="Label" position="164,95" size="90,40" font="Cyfry; 40" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="254,95" size="460,40" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<widget name="config" font="Roboto_HD; 26" position="177,189" size="1555,205" scrollbarMode="showOnDemand" itemHeight="35" selectionPixmap="BlackHarmony/menu/sel_1555_35.png" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" backgroundColor="transpBlack" transparent="1"/>
+		<widget name="MUXlist" font="Roboto_HD; 26" position="179,421" size="1555,416" scrollbarMode="showOnDemand" itemHeight="35" selectionPixmap="BlackHarmony/menu/sel_1555_35.png" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" backgroundColor="transpBlack" transparent="1"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="158,950" size="35,30" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="557,950" size="35,30" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="961,950" size="35,30" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="1361,950" size="35,30" alphatest="blend"/>
+		<widget source="key_red" render="Label" position="209,950" size="250,30" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+		<widget source="key_green" render="Label" position="607,950" size="250,30" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+		<widget source="key_yellow" render="Label" position="1011,950" size="250,30" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+		<widget source="key_blue" render="Label" position="1411,950" size="250,30" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="1688,950" size="61,30" alphatest="blend"/>
+		<ePixmap position="782,842" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend"/>
+	</screen>
+	<screen name="ntcSetup" position="center,center" size="1230,900" title="HYPERION NTC Config" flags="wfNoBorder" backgroundColor="transparent">
+		<ePixmap position="center,center" zPosition="-10" size="1230,900" pixmap="BlackHarmony/bg_design/mainbg.png"/>
+		<widget source="Title" render="Label" position="724,30" size="460,40" font="Roboto_HD; 30" halign="center" backgroundColor="dark_grey" transparent="1"/>
+		<widget source="global.CurrentTime" render="Label" position="33,30" size="90,40" font="Cyfry; 40" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="124,30" size="460,40" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<widget name="config" font="Roboto_HD; 26" position="82,161" size="1078,526" scrollbarMode="showOnDemand" itemHeight="35" selectionPixmap="BlackHarmony/menu/sel_1555_35.png" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" backgroundColor="transpBlack" transparent="1"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="78,850" size="35,30" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="323,850" size="35,30" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="566,850" size="35,30" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="826,850" size="35,30" alphatest="blend"/>
+		<widget source="key_red" render="Label" position="115,850" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+		<widget source="key_green" render="Label" position="363,850" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+		<widget source="key_yellow" render="Label" position="603,850" size="214,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+		<widget source="key_blue" render="Label" position="865,850" size="227,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+		<ePixmap position="431,734" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="1116,850" size="61,30" alphatest="blend"/>
+	</screen>
+	<screen name="SkinSelector" position="462,128" size="1000,820" title=" " flags="wfNoBorder" backgroundColor="transparent">
+		<ePixmap position="-1,0" zPosition="-10" size="1000,820" pixmap="BlackHarmony/bg_design/small.png"/>
+		<widget source="global.CurrentTime" render="Label" position="33,30" size="90,40" font="Cyfry; 40" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="124,30" size="460,40" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<widget name="preview" position="76,291" size="280,210" scale="aspect" alphatest="blend"/>
+		<widget source="skins" render="Listbox" position="392,150" size="520,480" itemHeight="35" font="Roboto_HD; 27" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_520_35.png" backgroundColor="black" transparent="1">
+			<convert type="TemplatedMultiContent">
           {"template": [
                  MultiContentEntryText(pos = (10,0), size = (540,40), font = 0, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 1),
                  MultiContentEntryText(pos = (560,0), size = (540,40), font = 0, flags = RT_HALIGN_RIGHT | RT_VALIGN_CENTER, text = 2)
@@ -17,14 +887,151 @@
                  "itemHeight":35
           }
       </convert>
-    </widget>
-    <widget source="description" render="Label" position="76,650" size="845,32" font="Roboto_HD; 26" halign="center" backgroundColor="transpBlack" transparent="1" foregroundColor="light_yellow"/>
-    <eLabel text="Choose your Skin" position="460,30" size="480,30" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1"/>
-    <widget name="Preview" position="75,327" size="280,210" scale="aspect" alphatest="blend"/>
-    <widget name="SkinList" position="392,150" size="520,480" itemHeight="35" font="Roboto_HD; 27" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_520_35.png" backgroundColor="black" transparent="1"/>
-    <widget source="introduction" render="Label" position="75,676" size="845,32" font="Roboto_HD; 26" halign="center" backgroundColor="transpBlack" transparent="1" foregroundColor="light_yellow"/>
-    <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="47,760" size="35,27" alphatest="blend"/>
-    <widget source="key_red" render="Label" position="87,759" size="180,27" zPosition="1" font="Roboto_HD; 24" halign="left" foregroundColor="white" backgroundColor="dark_grey" transparent="1"/>
-    <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="291,761" size="35,27" alphatest="blend"/>
-    <widget source="key_green" render="Label" position="339,760" size="180,27" zPosition="1" font="Roboto_HD; 24" halign="left" foregroundColor="white" backgroundColor="dark_grey" transparent="1"/>
-  </screen>
+		</widget>
+		<widget source="description" render="Label" position="78,650" size="845,32" font="Roboto_HD; 26" halign="center" backgroundColor="transpBlack" transparent="1" foregroundColor="light_yellow"/>
+		<eLabel text="Choose your Skin" position="464,30" size="480,40" font="Roboto_HD; 30" halign="right" backgroundColor="dark_grey" transparent="1"/>
+		<widget name="Preview" position="74,287" size="280,210" scale="aspect" alphatest="blend"/>
+		<widget name="SkinList" position="392,150" size="520,480" itemHeight="35" font="Roboto_HD; 27" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_520_35.png" backgroundColor="black" transparent="1"/>
+		<widget source="introduction" render="Label" position="78,688" size="845,32" font="Roboto_HD; 26" halign="center" backgroundColor="transpBlack" transparent="1" foregroundColor="light_yellow"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="47,760" size="35,30" alphatest="blend"/>
+		<widget source="key_red" render="Label" position="87,760" size="180,30" zPosition="1" font="Roboto_HD; 24" halign="left" foregroundColor="white" backgroundColor="dark_grey" transparent="1"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="291,760" size="35,30" alphatest="blend"/>
+		<widget source="key_green" render="Label" position="339,760" size="180,30" zPosition="1" font="Roboto_HD; 24" halign="left" foregroundColor="white" backgroundColor="dark_grey" transparent="1"/>
+	</screen>
+	<screen name="ChromiumEd" position="462,128" size="1000,820" title=" " flags="wfNoBorder" backgroundColor="transparent">
+		<ePixmap position="0,0" zPosition="-10" size="1000,820" pixmap="BlackHarmony/bg_design/small.png"/>
+		<widget source="global.CurrentTime" render="Label" position="33,30" size="90,40" font="Cyfry; 40" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="124,30" size="460,40" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<eLabel text="Chromium" position="460,30" size="480,40" font="Roboto_HD; 30" halign="right" backgroundColor="dark_grey" transparent="1"/>
+		<widget name="config" position="73,140" size="850,560" font="Roboto_HD; 26" itemHeight="35" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_850_35.png" backgroundColor="background" transparent="1"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="273,760" size="35,30" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="499,760" size="35,30" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="723,760" size="35,30" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="44,760" size="35,30" alphatest="blend"/>
+		<widget source="key_green" render="Label" position="313,760" size="180,30" zPosition="1" font="Roboto_HD; 24" halign="left" foregroundColor="white" backgroundColor="dark_grey" transparent="1"/>
+		<widget source="key_yellow" render="Label" position="538,760" size="180,30" zPosition="1" font="Roboto_HD;24" halign="left" foregroundColor="white" backgroundColor="dark_grey" transparent="1"/>
+		<widget source="key_blue" render="Label" position="763,760" size="180,30" zPosition="1" font="Roboto_HD;24" halign="left" foregroundColor="white" backgroundColor="dark_grey" transparent="1"/>
+		<widget source="key_red" render="Label" position="85,760" size="180,30" zPosition="1" font="Roboto_HD;24" halign="left" foregroundColor="white" backgroundColor="dark_grey" transparent="1"/>
+	</screen>
+	<screen name="MSNWeatherPlugin" position="0,0" size="1920,1080" title="MSN weather" flags="wfNoBorder" backgroundColor="transparent">
+		<ePixmap position="0,0" zPosition="-10" size="1920,1080" pixmap="BlackHarmony/bg_design/pogoda.png" transparent="0" scale="on"/>
+		<widget source="global.CurrentTime" render="Label" position="119,71" size="90,40" font="Cyfry; 40" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="210,70" size="460,40" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<eLabel position="962,170" size="3,800" backgroundColor="lemon" zPosition="1"/>
+		<eLabel position="1428,170" size="4,700" backgroundColor="lemon" zPosition="1"/>
+		<eLabel position="954,498" size="20,20" backgroundColor="lemon" zPosition="2"/>
+		<eLabel position="1420,498" size="20,20" backgroundColor="lemon" zPosition="2"/>
+		<eLabel position="70,506" size="1770,4" backgroundColor="lemon" zPosition="1"/>
+		<ePixmap position="1274,891" size="327,80" zPosition="3" pixmap="BlackHarmony/gfx/hyperion-logo.png" transparent="1" alphatest="blend"/>
+		<ePixmap position="787,357" size="38,110" zPosition="3" pixmap="BlackHarmony/weather_icons/temp.png" transparent="1" alphatest="blend"/>
+		<ePixmap position="97,568" size="77,70" zPosition="3" pixmap="BlackHarmony/weather_icons/wind.png" transparent="1" alphatest="blend"/>
+		<ePixmap position="842,624" size="70,68" zPosition="3" pixmap="BlackHarmony/weather_icons/umbrella.png" transparent="1" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/menu.png" position="1602,1013" size="65,35" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_exit.png" position="1739,1012" size="65,33" alphatest="blend"/>
+		<widget source="caption" render="Label" position="103,158" size="815,86" zPosition="1" halign="center" font="Regular;53" foregroundColor="yellow" backgroundColor="transpBlack" transparent="1"/>
+		<widget source="observationtime" render="Label" position="169,696" size="675,48" zPosition="1" halign="center" font="Regular;36" foregroundColor="yellow" backgroundColor="transpBlack" transparent="1"/>
+		<widget source="observationpoint" render="Label" position="170,755" size="675,214" zPosition="1" halign="center" font="Regular;36" foregroundColor="green" backgroundColor="transpBlack" transparent="1"/>
+		<widget source="currentTemp" render="Label" position="521,348" size="252,98" zPosition="1" halign="center" font="Regular;78" foregroundColor="red" backgroundColor="transpBlack" transparent="1"/>
+		<widget source="feelsliketemp" render="Label" position="446,452" size="419,40" zPosition="1" halign="center" font="Regular;36" foregroundColor="cyan" backgroundColor="transpBlack" transparent="1"/>
+		<widget source="condition" render="Label" position="173,525" size="660,45" zPosition="4" halign="center" valign="center" font="Regular;39" foregroundColor="cyan" backgroundColor="transpBlack" transparent="1"/>
+		<widget source="wind_condition" render="Label" position="173,580" size="660,45" zPosition="4" halign="center" valign="center" font="Regular;39" foregroundColor="cyan" backgroundColor="transpBlack" transparent="1"/>
+		<widget source="humidity" render="Label" position="175,631" size="660,45" zPosition="1" halign="center" valign="center" font="Regular;39" foregroundColor="cyan" backgroundColor="transpBlack" transparent="1"/>
+		<widget source="weekday1" render="Label" position="373,241" size="570,115" zPosition="1" halign="center" valign="center" font="Regular;45" foregroundColor="green" backgroundColor="transpBlack" transparent="1"/>
+		<widget source="weekday2" render="Label" position="1032,156" size="330,80" zPosition="1" halign="center" valign="center" font="Regular;36" foregroundColor="blue" backgroundColor="transpBlack" transparent="1"/>
+		<widget source="weekday2_temp" render="Label" position="1031,420" size="330,80" zPosition="1" halign="center" valign="center" font="Regular;30" foregroundColor="green" backgroundColor="transpBlack" transparent="1"/>
+		<widget source="weekday3" render="Label" position="1498,156" size="330,80" zPosition="1" halign="center" valign="center" font="Regular;36" foregroundColor="blue" backgroundColor="transpBlack" transparent="1"/>
+		<widget source="weekday3_temp" render="Label" position="1499,421" size="330,80" zPosition="1" halign="center" valign="center" font="Regular;30" foregroundColor="green" backgroundColor="transpBlack" transparent="1"/>
+		<widget source="weekday4" render="Label" position="1032,518" size="330,80" zPosition="1" halign="center" valign="center" font="Regular;36" foregroundColor="blue" backgroundColor="transpBlack" transparent="1"/>
+		<widget source="weekday4_temp" render="Label" position="1032,798" size="330,80" zPosition="1" halign="center" valign="center" font="Regular;30" foregroundColor="green" backgroundColor="transpBlack" transparent="1"/>
+		<widget source="weekday5" render="Label" position="1499,518" size="330,80" zPosition="1" halign="center" valign="center" font="Regular;36" foregroundColor="blue" backgroundColor="transpBlack" transparent="1"/>
+		<widget source="weekday5_temp" render="Label" position="1499,798" size="330,80" zPosition="1" halign="center" valign="center" font="Regular;30" foregroundColor="green" backgroundColor="transpBlack" transparent="1"/>
+		<!--screen name="weather2_common1"-->
+		<widget name="currenticon" position="175,247" size="250,250" zPosition="1" alphatest="blend"/>
+		<!--screen name="weather2_common2"-->
+		<widget name="weekday2_icon" position="1107,234" size="180,180" zPosition="1" alphatest="blend"/>
+		<!--screen name="weather2_common3"-->
+		<widget name="weekday3_icon" position="1573,236" size="180,180" zPosition="1" alphatest="blend"/>
+		<!--screen name="weather2_common4"-->
+		<widget name="weekday4_icon" position="1107,608" size="180,180" zPosition="1" alphatest="blend"/>
+		<!--screen name="weather2_common5"-->
+		<widget name="weekday5_icon" position="1573,608" size="180,180" zPosition="1" alphatest="blend"/>
+	</screen>
+	<screen name="AnimationSetupConfig" position="345,93" size="1230,900" title="HYPERION Animation Settings" flags="wfNoBorder" backgroundColor="transparent">
+		<widget source="Title" render="Label" position="707,30" size="480,40" font="Roboto_HD; 30" halign="center" backgroundColor="dark_grey" transparent="1"/>
+		<ePixmap position="0,0" zPosition="-10" size="1230,900" pixmap="BlackHarmony/bg_design/mainbg.png"/>
+		<widget source="global.CurrentTime" render="Label" position="33,30" size="90,40" font="Cyfry; 40" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="124,30" size="460,40" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<widget name="config" font="Roboto_HD; 28" position="143,224" size="969,466" scrollbarMode="showOnDemand" itemHeight="40" selectionPixmap="BlackHarmony/menu/sel_1555_35.png" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" backgroundColor="transpBlack" transparent="1"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="82,850" size="35,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="322,850" size="35,27" alphatest="blend"/>
+		<widget source="key_red" render="Label" position="118,850" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+		<widget source="key_green" render="Label" position="363,850" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+	</screen>
+	<screen name="AnimmenuScreenMain" position="345,93" size="1230,900" title="HYPERION Animation menu config" flags="wfNoBorder" backgroundColor="transparent">
+		<widget source="Title" render="Label" position="665,30" size="522,40" font="Roboto_HD; 30" halign="center" backgroundColor="dark_grey" transparent="1"/>
+		<ePixmap position="0,0" zPosition="-10" size="1230,900" pixmap="BlackHarmony/bg_design/mainbg.png"/>
+		<widget source="global.CurrentTime" render="Label" position="33,30" size="90,40" font="Cyfry; 40" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="124,30" size="460,40" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<widget name="config" font="Roboto_HD; 28" position="138,196" size="970,506" scrollbarMode="showOnDemand" itemHeight="40" selectionPixmap="BlackHarmony/menu/sel_1555_35.png" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" backgroundColor="transpBlack" transparent="1"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="82,850" size="35,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="322,850" size="35,27" alphatest="blend"/>
+		<widget source="key_red" render="Label" position="118,850" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+		<widget source="key_green" render="Label" position="363,850" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+	</screen>
+	<screen name="AnimationSetupScreen" position="345,93" size="1230,900" title="HYPERION Animation Setup" flags="wfNoBorder" backgroundColor="transparent">
+		<widget source="Title" render="Label" position="767,30" size="420,40" font="Roboto_HD; 30" halign="center" backgroundColor="dark_grey" transparent="1"/>
+		<ePixmap position="0,0" zPosition="-10" size="1230,900" pixmap="BlackHarmony/bg_design/mainbg.png"/>
+		<widget source="global.CurrentTime" render="Label" position="33,30" size="90,40" font="Cyfry; 40" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="124,30" size="460,40" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<widget name="config" font="Roboto_HD; 28" position="137,199" size="969,522" scrollbarMode="showOnDemand" itemHeight="40" selectionPixmap="BlackHarmony/menu/sel_1555_35.png" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" backgroundColor="transpBlack" transparent="1"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="82,850" size="35,27" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="322,850" size="35,27" alphatest="blend"/>
+		<widget source="key_red" render="Label" position="118,850" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+		<widget source="key_green" render="Label" position="363,850" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+	</screen>
+	<screen name="PermanentClockMenu" position="345,93" size="1230,900" title="HYPERION Permanent Clock" flags="wfNoBorder" backgroundColor="transparent">
+		<widget source="Title" render="Label" position="681,30" size="506,40" font="Roboto_HD; 30" halign="center" backgroundColor="dark_grey" transparent="1"/>
+		<ePixmap position="0,0" zPosition="-10" size="1230,898" pixmap="BlackHarmony/bg_design/mainbg.png"/>
+		<widget source="global.CurrentTime" render="Label" position="33,30" size="90,40" font="Cyfry; 40" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="124,30" size="460,40" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<widget name="list" font="Roboto_HD; 28" position="138,218" size="969,482" scrollbarMode="showOnDemand" itemHeight="40" selectionPixmap="BlackHarmony/menu/sel_1555_35.png" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" backgroundColor="transpBlack" transparent="1"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="82,850" size="35,30" alphatest="blend"/>
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="322,850" size="35,30" alphatest="blend"/>
+		<widget source="key_red" render="Label" position="118,850" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+		<widget source="key_green" render="Label" position="363,850" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="white"/>
+	</screen>
+	<screen name="Permanent ClockScreen" position="56,93" size="120,40" zPosition="10" backgroundColor="black" flags="wfNoBorder">
+		<widget source="global.CurrentTime" render="Label" position="0,0" size="119,39" font="Cyfry; 36" backgroundColor="black" foregroundColor="lemon" valign="center" halign="center" transparent="1">
+			<convert type="ClockToText">WithSeconds</convert>
+		</widget>
+	</screen>
+	<screen name="Permanent ClockPositioner" position="56,93" size="120,40" zPosition="10" backgroundColor="black" flags="wfNoBorder">
+		<widget source="global.CurrentTime" render="Label" position="0,0" size="119,39" font="Cyfry; 36" backgroundColor="black" foregroundColor="lemon" valign="center" halign="center" transparent="1">
+			<convert type="ClockToText">WithSeconds</convert>
+		</widget>
+	</screen>
+</skin>
