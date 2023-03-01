@@ -141,7 +141,6 @@ class AdvancedFreePlayer(Screen):
         self.stateplay = ""
         self.stateinfo = self.VISIBLE
         self.openmovie = openmovie
-        self.useDMNAPI = True
         
         if movieTitle == '':
             self.movieTitle = getNameWithoutExtension(path.basename(self.openmovie))
@@ -264,6 +263,7 @@ class AdvancedFreePlayer(Screen):
             self.downloadSubtitle()
             printDEBUG("--> Loading subtitles")
             self.loadSubtitle()
+            self.statusScreen.setStatus(_('Subtitles loaded'))
         else:
             self.go()
         
@@ -1073,41 +1073,52 @@ class AdvancedFreePlayer(Screen):
         self.close()
 
 ##################################################################### RELOADING SUBTITLES >>>>>>>>>>
-    def dmnapisubsCallback(self, answer=None):
-        printDEBUG("SelectSubtitles:dmnapiCallback")
-        if answer:
-            with open('/tmp/afpsubs.srt','w') as mysrt:
-                mysrt.write(answer)
-                mysrt.close
-            self.opensubtitle = '/tmp/afpsubs.srt'
-            self.loadsrt()
-            self.enablesubtitle = True
-            
-        self.play()
-        
-    def srtListSelectionCallback(self, retVal = None):
-        printDEBUG('>>>', 'AdvancedFreePlayer.srtListSelectionCallback')
-        if retVal:
-            printDEBUG(str(retVal), 'AdvancedFreePlayer.srtListSelectionCallback')
-            self.opensubtitle = retVal[1]
-            self.downloadSubtitle()
-            self.loadSubtitle()
-            self.statusScreen.setStatus(_('Loaded subtitles: %s') % retVal[0])
-        self.play()
-
     def SelectSubtitles(self):
+        def dmnapisubsCallback(answer=None):
+            printDEBUG("SelectSubtitles:dmnapiCallback")
+            if answer:
+                with open('/tmp/afpsubs.srt','w') as mysrt:
+                    mysrt.write(answer)
+                    mysrt.close
+                self.opensubtitle = '/tmp/afpsubs.srt'
+                self.loadsrt()
+                self.enablesubtitle = True
+                self.statusScreen.setStatus(_('Subtitles from DMNAPI loaded'))
+            self.play()
+        
+        def srtListSelectionCallback(retVal = None):
+            printDEBUG('>>>', 'AdvancedFreePlayer.srtListSelectionCallback')
+            if retVal:
+                printDEBUG(str(retVal), 'AdvancedFreePlayer.srtListSelectionCallback')
+                if retVal[1] == 'useDMNAPI':
+                    self.session.openWithCallback(dmnapisubsCallback, DMnapisubs, self.openmovie, save = False)
+                else:
+                    self.opensubtitle = retVal[1]
+                    self.downloadSubtitle()
+                    self.loadSubtitle()
+                    self.enablesubtitle = True
+                    self.statusScreen.setStatus(_('Loaded subtitles: %s') % retVal[0])
+            self.play()
                 
         self.pause(False)
-        if self.useDMNAPI:
-            try:
-                from Plugins.Extensions.DMnapi.DMnapisubs import DMnapisubs
-                self.session.openWithCallback(self.dmnapisubsCallback, DMnapisubs, self.openmovie, save = False)
-            except:
-                self.useDMNAPI = False
-                printDEBUG("Exception loading DMnapi!!!", 'AdvancedFreePlayer.SelectSubtitles')
+        try:
+            from Plugins.Extensions.DMnapi.DMnapisubs import DMnapisubs
+            useDMNAPI = True
+        except:
+            useDMNAPI = False
+            printDEBUG("Exception loading DMnapi!!!", 'AdvancedFreePlayer.SelectSubtitles')
+        
+        if useDMNAPI:
+            if len(self.srtList) == 0:
+                self.session.openWithCallback(dmnapisubsCallback, DMnapisubs, self.openmovie, save = False)
+            else:
+                dList = self.srtList.insert(0, (_('download from DMNAPI'), 'useDMNAPI'))
+        else:
+            dList = self.srtList
         if len(self.srtList) > 1:
-            self.session.openWithCallback(self.srtListSelectionCallback, ChoiceBox, title = _("Select subtitles"), list = self.srtList)
-            return
+            self.session.openWithCallback(srtListSelectionCallback, ChoiceBox, title = _("Select subtitles"), list = dList)
+        self.play()
+
 ##################################################################### CHANGE FONT SIZE >>>>>>>>>>
     def setFontSize(self, fontSize):
         if self.opensubtitle == '':
