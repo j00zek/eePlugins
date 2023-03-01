@@ -10226,7 +10226,7 @@ self["list"].instance.resize(eSize(*listsize))
 # center window
 newwidth = wsize[0]
 newheight = wsize[1]
-self.instance.move(ePoint(int(deskwidth - newwidth)/2,int(deskheight - newheight)/2))
+self.instance.move( ePoint( int((deskwidth - newwidth)/2),int((deskheight - newheight)/2) ) )
         </applet>
   </screen>
   <screen name="MessageBoxExt" zPosition="11" position="center,center" size="790,10" title="Message">
@@ -10311,7 +10311,7 @@ self["list"].instance.resize(eSize(*listsize))
 # center window
 newwidth = wsize[0]
 newheight = wsize[1]
-self.instance.move(ePoint(int(deskwidth - newwidth)/2,int(deskheight - newheight)/2))
+self.instance.move( ePoint( int((deskwidth - newwidth)/2) ,int((deskheight - newheight)/2) ) )
         </applet>
   </screen>
 
