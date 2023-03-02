@@ -57,21 +57,53 @@ def IMGtoICON(imgFileName, skytext, currentInt, sunsetInt=None, sunriseInt=None)
     global paramsDict
     #print(skytext, utfTOansi(skytext))
     retICON = ''
+    foundBy = '?'
+      
     if sunsetInt is None:
         sunsetInt = int(paramsDict['sunset']['TZhr'])
         sunriseInt = int(paramsDict['sunrise']['TZhr'])
+        
+    if currentInt >= sunriseInt and currentInt <= sunsetInt:
+        DayOrNight = 'D'
+    else:
+        DayOrNight = 'N'
+
     if skytext != '':
-        retICON = iconsMap.get(utfTOansi(skytext), '')
-    if isinstance(retICON, list):
-        if currentInt >= sunriseInt and currentInt <= sunsetInt:
-            retICON = retICON[0]
-        else:
-            retICON = retICON[1]
-    elif retICON == '':
+        retICON = skytext2skycode(utfTOansi(skytext))
+        if retICON != '':
+            foundBy = 'S'
+            if '|' in retICON:
+                retICON = retICON.split('|')
+                if DayOrNight == 'D':
+                    retICON = retICON[0]
+                else:
+                    retICON = retICON[1]
+    
+    if retICON == '':
         imgFileName = os.path.basename(imgFileName)
         retICON = iconsMap.get(utfTOansi(imgFileName), '')
-    if retICON == '':
-        print('Brakuje ikony dla skytext=%s, utfTOansi(skytext)=%s, imgFileName=%s' % (skytext, utfTOansi(skytext), os.path.basename(imgFileName)))
+        if retICON == '':
+            print('Brakuje ikony dla skytext=%s, utfTOansi(skytext)=%s, imgFileName=%s' % (skytext, utfTOansi(skytext), os.path.basename(imgFileName)))
+        else:
+            foundBy = 'F'
+    
+    if os.path.exists('/hdd/MSN_icons_mappings.csv'):
+        csvFile = '/hdd/MSN_icons_mappings.csv'
+    else:
+        csvFile = '/tmp/.MSNdata/MSN_icons_mappings.csv'
+        if not os.path.exists(csvFile):
+            with open(csvFile, 'w') as f: # for statistics header: msn_icon,D/N,sky_icon,skytext
+                f.write('msn_icon,D/N,foundBy,sky_icon,skytext\n')
+                f.close()
+    lineToAppend = '%s,%s,%s,%s,%s' % (os.path.basename(imgFileName),DayOrNight,foundBy,retICON,utfTOansi(skytext))
+    with open(csvFile, 'r+') as f: # for statistics header: msn_icon,D/N,sky_icon,skytext
+        for line in f:
+            if line.strip() == lineToAppend:
+                lineToAppend = ''
+                break
+        if lineToAppend != '':
+            f.write('%s\n' % lineToAppend)
+        f.close()
     return retICON
 
 
@@ -94,12 +126,28 @@ def localeInit(lang, langPath):
         lang = lang[:2]
         os.environ['LANGUAGE'] = lang
         gettext.bindtextdomain('MSNweather', langPath)
+        gettext.bindtextdomain('skytext2skycode', langPath)
+        gettext.bindtextdomain('airQuality', langPath)
     except Exception as e:
         print('EXCEPTION in localeInit ', str(e))
 
+def param2name(txt):
+    txtL = txt.lower()
+    retVal = gettext.dgettext('airQuality', txtL)
+    if retVal == txtL:
+        return txt.upper()
+    else:
+        return retVal
 
 def _(txt):
     return gettext.dgettext('MSNweather', txt)
+
+def skytext2skycode(skytext):
+    retVal = gettext.dgettext('skytext2skycode', skytext)
+    if retVal == skytext:
+        return ''
+    else:
+        return retVal
 
 def findInContent(ContentString, reFindString):
     retTxt = ''
@@ -2244,7 +2292,7 @@ def mainProc():
                             name = val['name']
                             lname = name.lower()
                             name = name.replace('PM25', 'PM2.5')
-                            longname = _(paramsNames.get(name, name))
+                            longname = param2name(name)
                             val = str(int(round(val['value'])))
                             valInfo = None
                             units = None
@@ -2278,7 +2326,7 @@ def mainProc():
                             name = key
                             lname = name.replace('PM2.5', 'PM25').lower()
                             val = tsDict[(key + 'Value')]
-                            longname = _(paramsNames.get(name, name))
+                            longname = param2name(name)
                             manageCurrenDataWeatherItem(doUpdate=override, keyName=lname, colorCode=colorCode, inList=inList, name=_(name), source='TS', val=val, units=units, valInfo=valInfo, longName=longname)
 
                 return
@@ -2334,7 +2382,7 @@ def mainProc():
                             name = key
                             lname = name.replace('PM2.5', 'PM25').lower()
                             val = tmpDict[key]
-                            longname = _(paramsNames.get(name, name))
+                            longname = param2name(name)
                             manageCurrenDataWeatherItem(doUpdate=override, keyName=lname, colorCode=colorCode, inList=inList, name=_(name), source='Looko2', val=val, units=units, valInfo=valInfo, longName=longname)
                 return
 
@@ -2364,7 +2412,7 @@ def mainProc():
                         if valIDX > airIndex:
                             airIndex = valIDX
                             airCLR = valCLR
-                        longname = _(paramsNames.get(name, name))
+                        longname = param2name(name)
                         manageCurrenDataWeatherItem(doUpdate=override, keyName=lname, colorCode=colorCode, inList=inList, name=_(name), source='GIOŚ', val=str(val), units=units, valInfo=valInfo, longName=longname)
 
                     paramsDict['dictWeather']['currentData']['giosobservationpoint'] = paramsDict[('giosInfo_%s.json' % paramsDict['currEntryID'])]
@@ -2445,7 +2493,7 @@ def mainProc():
                         name = idx['type']
                         lname = name.replace('2.5', '25').lower()
                         val = int(round(idx['value']))
-                        longname = _(paramsNames.get(name, name))
+                        longname = param2name(name)
                         manageCurrenDataWeatherItem(doUpdate=override, keyName=lname, colorCode=colorCode, inList=inList, name=_(name), source='Blebox', val=str(val), units=units, valInfo=valInfo, longName=longname)
                 return
 
@@ -2488,7 +2536,7 @@ def mainProc():
                             if valIDX > airIndex:
                                 airIndex = valIDX
                                 airCLR = valCLR
-                            longname = _(paramsNames.get(name, name))
+                            longname = param2name(name)
                         else:
                             inList = False
                         manageCurrenDataWeatherItem(doUpdate=override, keyName=lname, colorCode=colorCode, inList=inList, name=_(name), source='OpenSense', val=str(val), units=units, valInfo=valInfo, longName=longname)
@@ -2603,7 +2651,7 @@ def mainProc():
                             inList = False
                         
                         val = int(round(idx['VALUE']))
-                        longname = _(paramsNames.get(name, name))
+                        longname = param2name(name)
                         manageCurrenDataWeatherItem(doUpdate=override, keyName=lname, colorCode=colorCode, inList=inList, name=_(name), source='smogTok', val=str(val), units=units, valInfo=valInfo, longName=longname)
 
 
