@@ -178,6 +178,7 @@ class urlparser:
                        'aparat.com': self.pp.parserAPARATCOM,
                        'api.video.mail.ru': self.pp.parserVIDEOMAIL,
                        'archive.org': self.pp.parserARCHIVEORG,
+                       'ashortl.ink': self.pp.parserVIDMOLYME,
                        'assia.org': self.pp.parserASSIAORG,
                        'assia2.com': self.pp.parserASSIAORG,
                        'assia22.com': self.pp.parserASSIAORG,
@@ -14379,7 +14380,7 @@ class pageParser(CaptchaHelper):
         sts, data = self.cm.getPage(url, urlParams)
         if not sts:
             return []
-        printDBG("parserEMBEDSTREAMME data[%s]" % data)
+        printDBG("parserDADDYLIVE data[%s]" % data)
         urlTab = []
         data = self.cm.ph.getDataBeetwenMarkers(data, 'Clappr.Player', ('</script', '>'), False)[1]
         url = self.cm.ph.getSearchGroups(data, '''source:\s?['"]([^"^']+?)['"]''')[0]
@@ -15687,10 +15688,11 @@ class pageParser(CaptchaHelper):
         sts, data = self.cm.getPage(baseUrl, {'header': HTTP_HEADER})
         if not sts:
             return False
+        cUrl = self.cm.meta['url']
 
         urlTab = []
         url = self.cm.ph.getSearchGroups(data, '''sources[^'^"]*?['"]([^'^"]+?)['"]''')[0]
-        url = strwithmeta(url, {'Origin': urlparser.getDomain(baseUrl, False), 'Referer': baseUrl})
+        url = strwithmeta(url, {'Origin': urlparser.getDomain(cUrl, False), 'Referer': cUrl})
         if url != '':
             urlTab.extend(getDirectM3U8Playlist(url, checkContent=True, sortWithMaxBitrate=999999999))
 
