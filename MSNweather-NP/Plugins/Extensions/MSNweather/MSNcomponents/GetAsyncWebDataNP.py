@@ -1672,7 +1672,7 @@ def msn_api(webContent, webFileName):
                 inList = True
                 name = _('Wind')
                 val = str(int(currentDict.get('windSpd', 0)))
-                if val > 0:
+                if int(val) > 0:
                     units = unitsDict.get('speed', 'km/h')
                     valInfo = None
                     manageCurrenDataWeatherItem(doUpdate, keyName, colorCode, inList, name, source, val, units, valInfo)
