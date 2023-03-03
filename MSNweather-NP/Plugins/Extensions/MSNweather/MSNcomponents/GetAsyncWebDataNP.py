@@ -1593,6 +1593,7 @@ def msn_api(webContent, webFileName):
             keyName = 'N/A'
             #sourceDict = overviewDict['responses'][0]['source']
             overviewDict = overviewDict['responses'][0]['weather'][0]
+            currentDict = overviewDict['current']
             if 1: #alerty
                 keyName = 'alerts'
                 colorCode = ''
@@ -1621,7 +1622,7 @@ def msn_api(webContent, webFileName):
                 valInfo = ''
                 units = ''
                 name = _('Current information')
-                val = overviewDict['current']['cap']
+                val = currentDict.get('cap', '')
                 valInfo = colorCode + val + units
                 manageCurrenDataWeatherItem(doUpdate, keyName, colorCode, inList, name, source, val, units, valInfo)
             if 1: #temperature
@@ -1670,10 +1671,11 @@ def msn_api(webContent, webFileName):
                 units = ''
                 inList = True
                 name = _('Wind')
-                val = str(int(overviewDict['current']['windSpd']))
-                units = unitsDict.get('speed', 'km/h')
-                valInfo = None
-                manageCurrenDataWeatherItem(doUpdate, keyName, colorCode, inList, name, source, val, units, valInfo)
+                val = str(int(currentDict.get('windSpd', 0)))
+                if val > 0:
+                    units = unitsDict.get('speed', 'km/h')
+                    valInfo = None
+                    manageCurrenDataWeatherItem(doUpdate, keyName, colorCode, inList, name, source, val, units, valInfo)
             if 1: #wind_gust
                 keyName = 'wind_gust'
                 source = 'MSNAPI'
