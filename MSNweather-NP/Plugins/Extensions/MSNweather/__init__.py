@@ -43,7 +43,10 @@ def readCFG(cfgName, defVal = ''):
     return retValue
 
 def localeInit():
-    gettext.bindtextdomain(PluginLanguageDomain, resolveFilename(SCOPE_PLUGINS, PluginLanguagePath))
+    langPath = resolveFilename(SCOPE_PLUGINS, PluginLanguagePath)
+    gettext.bindtextdomain(PluginLanguageDomain, langPath)
+    gettext.bindtextdomain('skytext2skycode', langPath)
+    gettext.bindtextdomain('airQuality', langPath)
 
 def _(txt):
     if gettext.dgettext(PluginLanguageDomain, txt):
