@@ -1104,7 +1104,7 @@ class AdvancedFreePlayer(Screen):
         try:
             from Plugins.Extensions.DMnapi.DMnapisubs import DMnapisubs
             useDMNAPI = True
-        except:
+        except Exception:
             useDMNAPI = False
             printDEBUG("Exception loading DMnapi!!!", 'AdvancedFreePlayer.SelectSubtitles')
         
@@ -1112,11 +1112,12 @@ class AdvancedFreePlayer(Screen):
             if len(self.srtList) == 0:
                 self.session.openWithCallback(dmnapisubsCallback, DMnapisubs, self.openmovie, save = False)
             else:
-                dList = self.srtList.insert(0, (_('download from DMNAPI'), 'useDMNAPI'))
-        else:
-            dList = self.srtList
-        if len(self.srtList) > 1:
-            self.session.openWithCallback(srtListSelectionCallback, ChoiceBox, title = _("Select subtitles"), list = dList)
+                dList = self.srtList
+                dList = dList.insert(0, (_('download from DMNAPI'), 'useDMNAPI'))
+                self.session.openWithCallback(srtListSelectionCallback, ChoiceBox, title = _("Select subtitles"), list = dList)
+        elif len(self.srtList) > 1:
+            self.session.openWithCallback(srtListSelectionCallback, ChoiceBox, title = _("Select subtitles"), list = self.srtList)
+
         self.play()
 
 ##################################################################### CHANGE FONT SIZE >>>>>>>>>>

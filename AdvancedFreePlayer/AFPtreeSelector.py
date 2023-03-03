@@ -313,9 +313,13 @@ class AdvancedFreePlayerStart(Screen):
         self["filelist"].changeDir(myConfig.FileListLastFolder.value)
         self["filelist"].refresh()
     
-    def buttonsNames(self):
+    def cleanCoverAndDescr(self):
         self.coverURL = ''
         self.descrURL = ''
+        self.setDescription('')
+        self.setCover('hideCover')
+    
+    def buttonsNames(self):
         selection = self["filelist"].getSelection()
         if selection is not None and selection[1] == True and self["filelist"].getSelectedIndex() == 0:
             self["key_red"].setText("")
@@ -338,6 +342,7 @@ class AdvancedFreePlayerStart(Screen):
             self["filelist"].pageUp()
         self.buttonsNames()
         printDEBUG("pageUp SelectedIndex()='%s'" % (self["filelist"].getSelectedIndex()))
+        self.cleanCoverAndDescr()
         self.GetCoverTimer.start(self.ShowDelay,False)
 
 
@@ -349,6 +354,7 @@ class AdvancedFreePlayerStart(Screen):
             self["filelist"].pageDown()
         self.buttonsNames()
         printDEBUG("pageDown SelectedIndex()='%s'" % (self["filelist"].getSelectedIndex()))
+        self.cleanCoverAndDescr()
         self.GetCoverTimer.start(self.ShowDelay,False)
 
     def lineUp(self):
@@ -359,6 +365,7 @@ class AdvancedFreePlayerStart(Screen):
             self["filelist"].up()
         self.buttonsNames()
         printDEBUG("lineUp SelectedIndex()='%s'" % (self["filelist"].getSelectedIndex()))
+        self.cleanCoverAndDescr()
         self.GetCoverTimer.start(self.ShowDelay,False)
 
     def lineDown(self):
@@ -369,6 +376,7 @@ class AdvancedFreePlayerStart(Screen):
             self["filelist"].down()
         self.buttonsNames()
         printDEBUG("lineDown SelectedIndex()='%s'" % (self["filelist"].getSelectedIndex()))
+        self.cleanCoverAndDescr()
         self.GetCoverTimer.start(self.ShowDelay,False)
 
     def playORdelete(self):
@@ -523,9 +531,11 @@ class AdvancedFreePlayerStart(Screen):
             printDEBUG("StartPlayer>>> File %s does not exist :(" % self.openmovie, 'AdvancedFreePlayerStart.StartPlayer')
 
     def runConfigRet(self):
+        printDEBUG('runConfigRet >>>')
         doRefresh = False
         #obsluga zmiany filtra
         if self.currentFileNameFilter != myConfig.FileNameFilter.value:
+            printDEBUG('obsluga zmiany filtra >>>')
             doRefresh = True
             if myConfig.FileNameFilter.value == '':
                 self["myFilter"].setText(_('Fitering disabled'))
@@ -534,27 +544,30 @@ class AdvancedFreePlayerStart(Screen):
             self["filelist"].setMatchingPattern(self.buildmatchingPattern())
         #obsluga zmiany nazwy
         if myConfig.FileListSelectedItem.value != '' and myConfig.FileListSelectedItem.value != self.FileListSelectedItem:
-                doRefresh = True
-                currDir = self.filelist.getCurrentDirectory().strip()
-                if self["filelist"].getSelection()[1] == True: # isDir
-                    FullPathSource = os.path.join(currDir, self.FileListSelectedItem)
-                    if os.path.exists(FullPathSource) and os.path.isdir(FullPathSource):
-                        FullPathDest = os.path.join(currDir, myConfig.FileListSelectedItem.value)
-                        if FullPathDest.strip() != currDir:
-                            printDEBUG("Renaming directory...\n\t %s\n\t %s" % (FullPathSource,FullPathDest), 'AdvancedFreePlayerStart.runConfigRet')
-                            ClearMemory()
-                            os.system('mv -f %s %s' % (FullPathSource, FullPathDest))
-                    else:
+            #printDEBUG('obsluga zmiany nazwy >>>')
+            doRefresh = True
+            currDir = self.filelist.getCurrentDirectory().strip()
+            if self["filelist"].getSelection()[1] == True: # isDir
+                printDEBUG('obsluga zmiany nazwy katalogu >>>')
+                FullPathSource = os.path.join(currDir, self.FileListSelectedItem)
+                if os.path.exists(FullPathSource) and os.path.isdir(FullPathSource):
+                    FullPathDest = os.path.join(currDir, myConfig.FileListSelectedItem.value)
+                    if FullPathDest.strip() != currDir:
+                        printDEBUG("Renaming directory...\n\t %s\n\t %s" % (FullPathSource,FullPathDest), 'AdvancedFreePlayerStart.runConfigRet')
+                        ClearMemory()
+                        os.system('mv -f %s %s' % (FullPathSource, FullPathDest))
+                else:
                         printDEBUG("'%s' does not exist. Renaming impossible" % FullPathSource, 'AdvancedFreePlayerStart.runConfigRet')
-                else: #isFile
-                    sourceNamePartToReplace = self.FileListSelectedItem + '.'
-                    for f in os.listdir(currDir):
-                        sourceFile = os.path.join(currDir, f)
-                        if os.path.isfile(sourceFile) and sourceNamePartToReplace in f:
-                            destFile = sourceFile.replace(sourceNamePartToReplace, myConfig.FileListSelectedItem.value + '.')
-                            printDEBUG("Renaming...\n\t %s\n\t %s" % (sourceFile, destFile ), 'AdvancedFreePlayerStart.runConfigRet')
-                            ClearMemory()
-                            os.system('mv -f %s %s' % (sourceFile, destFile))
+            else: #isFile
+                printDEBUG('obsluga zmiany nazwy plikuów >>>')
+                sourceNamePartToReplace = self.FileListSelectedItem + '.'
+                for f in os.listdir(currDir):
+                    sourceFile = os.path.join(currDir, f)
+                    if os.path.isfile(sourceFile) and sourceNamePartToReplace in f:
+                        destFile = sourceFile.replace(sourceNamePartToReplace, myConfig.FileListSelectedItem.value + '.')
+                        printDEBUG("Renaming...\n\t %s\n\t %s" % (sourceFile, destFile ), 'AdvancedFreePlayerStart.runConfigRet')
+                        ClearMemory()
+                        os.system('mv -f "%s" "%s"' % (sourceFile, destFile))
 
         #finalnie odswierzamy liste, jesli to potrzebne
         if doRefresh:
@@ -711,9 +724,9 @@ class AdvancedFreePlayerStart(Screen):
                         self.descrURL = data.split('=')[1].strip()
 
         temp = getNameWithoutExtension(MovieNameWithPath)
-        WebCoverFile='/tmp/%s.AFP.jpg' % getNameWithoutExtension(self.filelist.getFilename())
+        WebCoverFile = '/tmp/%s.AFP.jpg' % getNameWithoutExtension(self.filelist.getFilename())
         ### COVER ###
-        printDBG("self.coverURL = '%s'" % self.coverURL)
+        #printDBG("self.coverURL = '%s'" % self.coverURL)
         if os.path.exists(temp + '.jpg'):
             self.setCover(temp + '.jpg')
             FoundCover = True
@@ -721,6 +734,7 @@ class AdvancedFreePlayerStart(Screen):
             self.setCover(WebCoverFile)
             FoundCover = True
         elif self.coverURL != '':
+            printDBG("downloading cover from '%s' to '%s'" % (self.coverURL, WebCoverFile))
             coverBytes = downloadWebPage(self.coverURL)
             with open(WebCoverFile, 'wb') as f:
                 f.write(coverBytes)
@@ -729,6 +743,7 @@ class AdvancedFreePlayerStart(Screen):
             FoundCover = True
         else:
             self.setCover('hideCover')
+        
         WebDescrFile='/tmp/%s.AFP.txt' % getNameWithoutExtension(self.filelist.getFilename())
         
         ### DESCRIPTION from EIT ###
@@ -862,11 +877,9 @@ class AdvancedFreePlayerStart(Screen):
                     self.setDescription(myDescr)
                     FoundDescr = True
         elif self.descrURL != '':
-            descrTXT = downloadWebPage(self.coverURL, True)
-            with open(WebDescrFile, 'w') as f:
-                f.write(descrTXT)
-                f.close()
-            self.setCover(WebDescrFile)
+            printDBG("downloading description from '%s'" % self.descrURL)
+            myDescr = downloadWebPage(self.descrURL, True)
+            self.setDescription(myDescr)
             FoundDescr = True
         else:
             self.setDescription('')
@@ -904,16 +917,17 @@ class AdvancedFreePlayerStart(Screen):
     def setCover(self, FileName):
         if FileName in ('','hideCover') or not os.path.exists(FileName):
             printDEBUG(" hide cover", 'AdvancedFreePlayerStart.setCover')
-            #self["Cover"].updateIcon('dummyCover')
+            self["Cover"].updateIcon('/usr/lib/enigma2/python/Plugins/Extensions/AdvancedFreePlayer/pic/noCover')
             self["Cover"].hide()
             try:
+                self.session.summary.LCD_showPic('LCDpic', '/usr/lib/enigma2/python/Plugins/Extensions/AdvancedFreePlayer/pic/noCover')
                 self.session.summary.LCD_hide('LCDpic')
             except Exception:
                 pass
         else:
             self["Cover"].updateIcon(FileName)
             try:
-              self.session.summary.LCD_showPic('LCDpic', FileName)
+                self.session.summary.LCD_showPic('LCDpic', FileName)
             except Exception:
                 pass
             self["Cover"].show()
@@ -1088,7 +1102,7 @@ class AdvancedFreePlayerStart(Screen):
                     # pobieranie danych dla wybranego filmu
                     myItem = jsonDict['results'][selectedIndex]
                     if not myItem['poster_path'] is None:
-                        coverPath=myItem['poster_path'].encode('ascii','ignore')
+                        coverPath = ensure_str(myItem['poster_path'], encoding='ascii', errors='ignore')
                     overview=myItem['overview']
                     release_date=myItem['release_date']
                     id=myItem['id']
@@ -1206,7 +1220,7 @@ class AdvancedFreePlayerStart(Screen):
                     runlist.append( ('chmod 755 %s/scripts/Update*.sh' % PluginPath) )
                     runlist.append( ('cp -a %s/scripts/UpdateDMnapi.sh /tmp/AFPUpdate.sh' % PluginPath) ) #to have clear path of updating this script too ;)
                     runlist.append( ('/tmp/AFPUpdate.sh %s "%s"' % (config.plugins.AdvancedFreePlayer.Version.value,PluginInfo)) )
-                    from AFPconfig import AdvancedFreePlayerConsole
+                    from Plugins.Extensions.AdvancedFreePlayer.AFPconfig import AdvancedFreePlayerConsole
                     self.session.openWithCallback(doNothing, AdvancedFreePlayerConsole, title = _("Installing DMnapi plugin"), cmdlist = runlist)
                     return
             self.session.openWithCallback(goUpdate, MessageBox,_("Do you want to install DMnapi plugin?"),  type = MessageBox.TYPE_YESNO, timeout = 10, default = False)
