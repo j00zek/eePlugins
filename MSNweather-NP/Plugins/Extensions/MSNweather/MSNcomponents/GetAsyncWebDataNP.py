@@ -31,7 +31,7 @@ except Exception:
         elif PyMajorVersion >= 3:
             exec('opkg install python3-requests')
 
-import io, json, gettext, os, re, sys, time, threading, urllib, requests
+import io, json, gettext, os, re, sys, time, threading, urllib, requests, traceback
 
 try: 
     from mappings import * #laduje poprawnie przy uruchomieniu z konsoli
@@ -53,7 +53,7 @@ try: #ladowanie w e2
 except Exception: #miejsce dla kodi
     pass
 
-def IMGtoICON(imgFileName, skytext, currentInt, sunsetInt=None, sunriseInt=None):
+def IMGtoICON(imgFileName, skytext, currentInt, sunsetInt=None, sunriseInt=None, fcode = ''):
     global paramsDict
     #print(skytext, utfTOansi(skytext))
     retICON = ''
@@ -68,7 +68,7 @@ def IMGtoICON(imgFileName, skytext, currentInt, sunsetInt=None, sunriseInt=None)
     else:
         DayOrNight = 'N'
 
-    if skytext != '':
+    if not skytext is None and skytext != '':
         retICON = skytext2skycode(utfTOansi(skytext))
         if retICON != '':
             foundBy = 'S'
@@ -93,9 +93,9 @@ def IMGtoICON(imgFileName, skytext, currentInt, sunsetInt=None, sunriseInt=None)
         csvFile = '/tmp/.MSNdata/MSN_icons_mappings.csv'
         if not os.path.exists(csvFile):
             with open(csvFile, 'w') as f: # for statistics header: msn_icon,D/N,sky_icon,skytext
-                f.write('msn_icon,D/N,foundBy,sky_icon,skytext\n')
+                f.write('msn_icon,D/N,foundBy,sky_icon,fcode,skytext\n')
                 f.close()
-    lineToAppend = '%s,%s,%s,%s,%s' % (os.path.basename(imgFileName),DayOrNight,foundBy,retICON,utfTOansi(skytext))
+    lineToAppend = '%s,%s,%s,%s,%s,%s' % (os.path.basename(imgFileName),DayOrNight,foundBy,retICON,fcode,utfTOansi(skytext))
     with open(csvFile, 'r+') as f: # for statistics header: msn_icon,D/N,sky_icon,skytext
         for line in f:
             if line.strip() == lineToAppend:
@@ -1822,7 +1822,7 @@ def msn_api(webContent, webFileName):
                 manageCurrenDataWeatherItem(doUpdate, keyName, colorCode, inList, name, source, val, units, valInfo)
             if 1: #skycode
                 keyName = 'skycode'
-                val = IMGtoICON('noDescription', paramsDict['dictWeather']['currentData']['skytext']['val'], int(datetime.now().strftime('%H')))
+                val = IMGtoICON('noDescription', paramsDict['dictWeather']['currentData']['skytext']['val'], int(datetime.now().strftime('%H')), fcode = currentDict.get('symbol', ''))
                 paramsDict['dictWeather']['currentData'][keyName] = {'val': val, 'name': val, 'valInfo': val, 'inList': False}
             if 1: #iconfilename
                 keyName = 'iconfilename'
@@ -1839,23 +1839,33 @@ def msn_api(webContent, webFileName):
                 keyName = 'observationtime'
                 val = ISO3339toDATETIME(overviewDict['current']['created'],0)
                 paramsDict['dictWeather']['currentData'][keyName] = {'name': _('MSN sync time'), 'date': val[0], 'time': val[1], 'datetime': '%s %s' % (val[0],val[1]), 'inList': False}
-            if 0: #aqi akka airindex (https://www.eea.europa.eu/)
-                keyName = 'airIndex'
-                colorCode = ''
-                level = ''
-                name = ''
-                iconfilename = ''
-                info = ''
-                advice = ''
-                val = ''
-                valInfo = ''
-                paramsDict['dictWeather']['currentData'][keyName] = {'colorCode': colorCode, 'level': level, 'name': name, 
-                           'iconfilename': iconfilename, 
-                           'info': info, 
-                           'advice': advice, 
-                           'val': val, 
-                           'valInfo': valInfo, 
-                           'source': 'MSN'}
+            if 1: #aqi airquality (https://www.eea.europa.eu/)
+                if currentDict.get('primaryPollutant', '') != '':
+                    source = 'MSNAPI'
+                    doUpdate = True
+                    inList = True
+                    name = currentDict['primaryPollutant'].split(' ')[0]
+                    val = int(currentDict['primaryPollutant'].split(' ')[1])
+                    units = currentDict['primaryPollutant'].split(' ')[2]
+                    longname = param2name(name)
+                    keyName = name.replace('.','').lower()
+                    colorCode = ''
+                    valInfo = '%s%s' % (colorCode, val)
+                    manageCurrenDataWeatherItem(doUpdate=True, keyName=keyName, colorCode=colorCode, inList=inList, name=_(name), source=source, val=str(val), units=units, valInfo=valInfo, longName=longname)
+                    val = int(currentDict.get('aqi', ''))
+                    colorCode = ''
+                    valInfo = '%s%s' % (colorCode, val)
+                    paramsDict['dictWeather']['currentData']['airIndex'] = {'colorCode': colorCode, 
+                                                                            'level': currentDict.get('aqiSeverity', ''), 
+                                                                            'name': 'EEA_aqi', 
+                                                                            'iconfilename': '', 
+                                                                            'info': '', 
+                                                                            'advice': '', 
+                                                                            'val': str(val), 
+                                                                            'valInfo': valInfo, 
+                                                                            'source': 'MSNAPI'}
+
+
             ##### Forecast godzinny #####
             keyName='Forecast godzinny'
             HourID = 0
@@ -1874,8 +1884,8 @@ def msn_api(webContent, webFileName):
                             imgurl = 'http:' + imgurl
                         print('\t%s does not exist. Downloading from %s' % (imgfilename, imgurl))
                         urllib_urlretrieve(imgurl, imgfilename)
-                    iconfilename = '%s%s' % (paramsDict['iconPath'], IMGtoICON(imgfilename, skytext, int(ltime)))
-                    skycode = IMGtoICON(imgfilename, skytext, int(ltime)).replace('.png','')
+                    skycode = IMGtoICON(imgfilename, skytext, int(ltime), fcode = Line.get('symbol', '')).replace('.png','')
+                    iconfilename = '%s%s.png' % (paramsDict['iconPath'], skycode)
                     temperature = str(int(Line['temp'])) + "°"
                     rainprecip = str(int(Line['precip'])) + "%"
                     summary = str(_('%s\n\n\n%s\nTemp. %s\nRain %s') % (ltime, skytext, temperature, rainprecip))
@@ -1912,8 +1922,12 @@ def msn_api(webContent, webFileName):
                         imgurl = 'http:' + imgurl
                     print('\t%s does not exist. Downloading from %s' % (imgfilename, imgurl))
                     urllib_urlretrieve(imgurl, imgfilename)
-                skycode = IMGtoICON(imgfilename, skytext, 12).replace('.png','')
-                iconfilename = '%s%s' % (paramsDict['iconPath'], IMGtoICON(imgfilename, skytext, 12))
+                try:
+                    fcode = dailyDict['daily']['day']['symbol']
+                except Exception:
+                    fcode = ''
+                skycode = IMGtoICON(imgfilename, skytext, 12, fcode = fcode).replace('.png','')
+                iconfilename = '%s%s.png' % (paramsDict['iconPath'], skycode)
                 Month = _((date.today() + timedelta(days=id)).strftime("%b"))
                 date_summary = str('%s. %s %s' % (weekday, monthday, Month))
                 summary = str('%s/ %s/ %s\n%s' % (temp_high, temp_low, rainprecip, skytext))
@@ -1945,7 +1959,8 @@ def msn_api(webContent, webFileName):
         saveJsonDict(paramsDict['dictWeatherfile'], paramsDict['dictWeather'], False, True)
         
     except Exception as e:
-        print('\tEXCEPTION analysing %s/%s:' % (dataType,keyName), str(e))
+        print('\tmsn_api() EXCEPTION analysing %s/%s:' % (dataType,keyName), str(e))
+        print(traceback.format_exc())
         saveJsonDict('dictMSNweather_%s_%s.json' %(dataType,paramsDict['currEntryID']), dataDict, False, True)
     
         
