@@ -1845,7 +1845,7 @@ def msn_api(webContent, webFileName):
                     doUpdate = True
                     inList = True
                     name = currentDict['primaryPollutant'].split(' ')[0]
-                    val = int(currentDict['primaryPollutant'].split(' ')[1])
+                    val = int(round(float(currentDict['primaryPollutant'].split(' ')[1]),0))
                     units = currentDict['primaryPollutant'].split(' ')[2]
                     longname = param2name(name)
                     keyName = name.replace('.','').lower()
