@@ -60,6 +60,7 @@ def decodeHTML(text):
     text = text.replace('%lf', '. ').replace('&#243;', 'ó')
     text = text.replace('&#176;', '°').replace('&lt;', '<').replace('&gt;', '>').replace('&quot;', '"').replace('&apos;', "'").replace('&#65282;', '"').replace('&#xFF02;', '"')
     text = text.replace('&#228;', 'ä').replace('&#196;', 'Ă').replace('&#246;', 'ö').replace('&#214;', 'Ö').replace('&#252;', 'ü').replace('&#220;', 'Ü').replace('&#223;', 'ß')
+    text = text.replace('&#34;', '"')
     return text
 
 def ensure_str(text, encoding='utf-8', errors='strict'): #based on six library
@@ -1208,12 +1209,22 @@ class AdvancedFreePlayerStart(Screen):
         
 ##################################################################### SUBTITLES >>>>>>>>>>
     def runDMnapi(self):
+        def doNothing():
+            pass
         if self.DmnapiInstalled == True:
-            self.DMnapi()
-            self["filelist"].refresh()
+            if myConfig.KeyOK.value == "playmovie" and myConfig.TextFilesOnFileList.value == False:
+                myMSG = _("Change OK button behavior and enable 'Show subtitles files on the list' in configuration or use DMNAPI available under TEXT button when playing the movie.")
+                self.session.openWithCallback(doNothing, MessageBox, myMSG,  type = MessageBox.TYPE_INFO, timeout = 10, default = False)
+            elif myConfig.KeyOK.value == "playmovie":
+                myMSG = _("Change OK button behavior in configuration or use DMNAPI available under TEXT button when playing the movie.")
+                self.session.openWithCallback(doNothing, MessageBox, myMSG,  type = MessageBox.TYPE_INFO, timeout = 10, default = False)
+            elif myConfig.TextFilesOnFileList.value == False:
+                myMSG = _("Enable 'Show subtitles files on the list' in configuration or use DMNAPI available under TEXT button when playing the movie.")
+                self.session.openWithCallback(doNothing, MessageBox, myMSG,  type = MessageBox.TYPE_INFO, timeout = 10, default = False)
+            else:
+                self.DMnapi()
+                self["filelist"].refresh()
         else:
-            def doNothing():
-                pass
             def goUpdate(ret):
                 if ret is True:
                     runlist = []

@@ -1112,8 +1112,8 @@ class AdvancedFreePlayer(Screen):
             if len(self.srtList) == 0:
                 self.session.openWithCallback(dmnapisubsCallback, DMnapisubs, self.openmovie, save = False)
             else:
-                dList = self.srtList
-                dList = dList.insert(0, (_('download from DMNAPI'), 'useDMNAPI'))
+                dList = self.srtList.copy()
+                dList.insert(0, (_('download from DMNAPI'), 'useDMNAPI'))
                 self.session.openWithCallback(srtListSelectionCallback, ChoiceBox, title = _("Select subtitles"), list = dList)
         elif len(self.srtList) > 1:
             self.session.openWithCallback(srtListSelectionCallback, ChoiceBox, title = _("Select subtitles"), list = self.srtList)
