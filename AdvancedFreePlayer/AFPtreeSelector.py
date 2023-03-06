@@ -1209,7 +1209,7 @@ class AdvancedFreePlayerStart(Screen):
         
 ##################################################################### SUBTITLES >>>>>>>>>>
     def runDMnapi(self):
-        def doNothing():
+        def doNothing(ret = None):
             pass
         if self.DmnapiInstalled == True:
             if myConfig.KeyOK.value == "playmovie" and myConfig.TextFilesOnFileList.value == False:
