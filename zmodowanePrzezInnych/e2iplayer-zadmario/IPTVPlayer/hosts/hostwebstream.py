@@ -1159,7 +1159,7 @@ class HasBahCa(CBaseHostClass):
             linkVideo = self.cm.ph.getSearchGroups(item, '''\shref=['"]([^"^']+?)['"]''')[0]
             if len(linkVideo) and not linkVideo.startswith('http'):
                 linkVideo = 'http://strims.top' + linkVideo
-            if linkVideo.endswith('/'):
+            if linkVideo.endswith('/') and 'class="f1' not in item:
                 params = {'name': "strumyk_cat"}
             else:
                 params = {'name': "strumyk_tv"}
