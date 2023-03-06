@@ -25,11 +25,14 @@ def cleanFile(text, ReturnMovieYear = True, metaFileName = ''):
         # removing found text and everything after it, its's probably a garbage
         cutlist = ['x264','h264','720p','1080p','1080i','2160','PAL','GERMAN','ENGLiSH','ENG', 'RUS', 'WS','DVDRiP','UNRATED','RETAIL','Web-DL','DL','LD','MiC','MD','DVDR','BDRiP','BLURAY','DTS','UNCUT',
                 'ANiME','AC3MD','AC3','AC3D','TS','DVDSCR','COMPLETE','INTERNAL','DTSD','XViD','DIVX','DUBBED','LINE.DUBBED','DD51','DVDR9','DVDR5','AVC','WEBHDTVRiP','WEBHDRiP','WEBRiP',
-                'WEBHDTV','WebHD','HDTVRiP','HDRiP','HDTV','ITUNESHD','REPACK','SYNC','REAL','PROPER','SUBBED','PLSUBBED']
+                'WEBHDTV','WebHD','HDTVRiP','HDRiP','HDTV','ITUNESHD','REPACK','SYNC','REAL','PROPER','SUBBED','PLSUBBED','READNFO','HMAX','REMASTERED','INT']
     
+        prefixesList = ['MULTI\.',''] # some "normal" words used in connection with cutList words are garbage too
+        
         for word in cutlist:
             #text = re.sub('(\_|\-|\.|\+)'+word+'(\_|\-|\.|\+)','+', text, flags=re.I)
-            text = re.sub('(\_|\-|\.|\+)'+word+'(\_|\-|\.|\+).*','.', text, flags=re.I) #assumtion is that everything after garbage is a garbadge too. ;)
+            for prefixWord in prefixesList:
+                text = re.sub('(\_|\-|\.|\+)'+prefixWord+word+'(\_|\-|\.|\+).*','.', text, flags=re.I) #assumtion is that everything after garbage is a garbadge too. ;)
         #text = re.sub('(\_|\-|\.|\+)[12][0-9][0-9][0-9]\+.*','', text, flags=re.I) #if there is plus sign after date, date is most probably the garbage, so removing it ;)
     
         #let's take a year, if exists
