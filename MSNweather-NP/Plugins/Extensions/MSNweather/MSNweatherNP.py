@@ -168,7 +168,7 @@ class MSNweatherNP(Screen):
         if self.weatherData is not None:
             self.weatherData.cancel()
             self.weatherData = None
-        if config.plugins.MSNweatherNP.DebugEnabled.value and not 'dev' in Version:
+        if config.plugins.MSNweatherNP.DebugEnabled.value:
             os.system('tar -czf /tmp/MSNdata_logs.tar.gz /tmp/.MSNdata/*')
         return
 

@@ -870,10 +870,7 @@ class MSNWeatherConfiguration(Screen, ConfigListScreen):
             ConfigList.append(getConfigListEntry('- ' + _('Description:'), config.plugins.MSNweatherNP.AC2inf))
         ConfigList.append(getConfigListEntry(''))
         ConfigList.append(getConfigListEntry('\\c00289496' + _('*** Debuging options ***')))
-        if 'dev' in Version:
-            ConfigList.append(getConfigListEntry(_('Debug to /tmp/.MSNdata (require restart):'), config.plugins.MSNweatherNP.DebugEnabled))
-        else:
-            ConfigList.append(getConfigListEntry(_('Debug to /tmp/MSNdata_logs.tar.gz (requires restart):'), config.plugins.MSNweatherNP.DebugEnabled))
+        ConfigList.append(getConfigListEntry(_('Debug to /tmp/MSNdata_logs.tar.gz (requires restart):'), config.plugins.MSNweatherNP.DebugEnabled))
         if config.plugins.MSNweatherNP.DebugEnabled.value:
             ConfigList.append(getConfigListEntry(_('Debug log file size:'), config.plugins.MSNweatherNP.DebugSize))
         try:

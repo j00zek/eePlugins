@@ -892,3 +892,15 @@ msgstr "Klucz API Airly %s:"
 
 msgid "Debug to /tmp/MSNdata_logs.tar.gz (requires restart):"
 msgstr "Logowanie do /tmp/MSNdata_logs.tar.gz (wymagany restart):"
+
+msgid "\toutdated THINGSPEAK data (%s), exiting."
+msgstr "\tnieaktualne dane THINGSPEAK (%s), opuszczam."
+
+msgid "\tloadingTHINGSPEAK data..."
+msgstr "\tladowanie danych THINGSPEAK..."
+
+msgid "\tAirly data outdated, exiting."
+msgstr "\tnieaktualne dane airly, opuszczam."
+
+msgid "\twrong Airly API key, exiting."
+msgstr "\tbłędny klucz API dla airly, opuszczam."

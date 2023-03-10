@@ -79,7 +79,14 @@ def IMGtoICON(imgFileName, skytext, currentInt, sunsetInt=None, sunriseInt=None,
                 else:
                     retICON = retICON[1]
     
-    if retICON == '':
+    if retICON == '' and fcode != '': # mapowanie przez kod foreca
+        fcode = fcode.lower()
+        if fcode.endswith('.png'):
+            retICON = iconsMap.get(fcode, '')
+        else:
+            retICON = iconsMap.get( '%s.png' % fcode, '')
+    
+    if retICON == '': # mapowanie przez ikone MSN
         imgFileName = os.path.basename(imgFileName)
         retICON = iconsMap.get(utfTOansi(imgFileName), '')
         if retICON == '':
@@ -324,7 +331,7 @@ def ISO3339toDATETIME(ISO3339time, offset=0):
         if systemTZ != timeOffset:
             date = (datetime(Y, M, D, h, m) + timedelta(hours=systemTZ - timeOffset)).strftime('%d/%m/%Y')
             time = (datetime(Y, M, D, h, m) + timedelta(hours=systemTZ - timeOffset)).strftime('%H:%M')
-        if defDBG: print('\t ISO3339toDATETIME(%s) > systemTZ = %s, timeOffset = %s >>> %s' %(ISO3339time, systemTZ, timeOffset, (datetime(Y, M, D, h, m) + timedelta(hours=systemTZ - timeOffset)) ))
+        if defDBG: print('\t ISO3339toDATETIME(%s) > systemTZ=%s, timeOffset=%s >>> localDate=%s, localTime=%s' %(ISO3339time, systemTZ, timeOffset, date, time ))
     except Exception as e:
         print("EXCEPTION in ISO3339toDATETIME('%s'): %s" % (ISO3339time, str(e)))
     return (date, time)
@@ -2258,11 +2265,14 @@ def mainProc():
                     if len(airlyData) == 0:
                         print('\tbrak danych airly, opuszczam.')
                         return
-                    if airlyData.get('message', '') == 'UNAUTHORIZED':
-                        print('\tbłędny klucz API dla airly, opuszczam.')
+                    elif airlyData.get('message', '') == 'UNAUTHORIZED':
+                        print(_('\twrong Airly API key, exiting.'))
                         return
-                    if str(airlyData.get('current', {}).get('fromDateTime', ''))[:10] != str(datetime.now().strftime('%Y-%m-%d')):
-                        print('\tnieaktualne dane airly, opuszczam.')
+                    elif airlyData.get('errorCode', '') != '':
+                        print('\t%s' % airlyData.get('message', airlyData.get('errorCode')))
+                        return
+                    elif str(airlyData.get('current', {}).get('fromDateTime', ''))[:10] != str(datetime.now().strftime('%Y-%m-%d')):
+                        print(_('\tAirly data outdated, exiting.'))
                         return
                     paramsDict['dictWeather']['currentData']['airlyobservationpoint'] = paramsDict[('airlyInfo_%s.json' % paramsDict['currEntryID'])]['address']
                     print('\tladowanie danych airly...')
@@ -2326,13 +2336,11 @@ def mainProc():
                 if paramsDict['airThingSpeakChannelID'] != '' and len(paramsDict.get('thingSpeakItems','')) > 0:
                     tsDict = paramsDict['thingSpeakItems']
                     if str(tsDict.get('ObservationTime', ''))[:10] != str(datetime.now().strftime('%Y-%m-%d')):
-                        print('\tnieaktualne dane THINGSPEAK (%s), opuszczam.' % str(tsDict.get('ObservationTime', ''))[:10])
+                        print(_('\toutdated THINGSPEAK data (%s), exiting.') % str(tsDict.get('ObservationTime', ''))[:10])
                         return
-                    print('\tladowanie danych THINGSPEAK...')
+                    print(_('\tloadingTHINGSPEAK data...'))
                     paramsDict['dictWeather']['currentData']['tsobservationpoint'] = {'val': tsDict['name'], 'valInfo': tsDict['description']}
                     date, time = ISO3339toDATETIME(tsDict['ObservationTime'])
-                    if str(date) != paramsDict['dictWeather']['currentData']['observationtime']:
-                        return
                     paramsDict['dictWeather']['currentData']['tsobservationtime'] = {'name': _('TS sync time'), 'date': str(date), 'time': str(time), 'datetime': '%s %s' % (str(date), str(time)), 'inList': False}
                     for key in tsDict:
                         if key.startswith('PM') and not key.endswith('Name') and not key.endswith('Value'):
