@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: j00zekOPKGmanager\n"
 "POT-Creation-Date: 2021-09-28 10:00+0100\n"
-"PO-Revision-Date: 2016-04-13 14:21+0200\n"
+"PO-Revision-Date: 2022-03-10 11:13+0200\n"
 "Last-Translator: 沙鸥\n"
 "Language-Team: j00zek\n"
 "Language: zh\n"
@@ -39,13 +39,13 @@ msgid "Apply"
 msgstr "应用"
 
 msgid "Are you sure to install %s package with %s size?"
-msgstr "您确定要安装大小包吗？"
+msgstr "您确定要安装大小包吗?"
 
 msgid "Are you sure to install %s package?"
-msgstr "您确定要安软件包吗？"
+msgstr "您确定要安软件包吗?"
 
-msgid "Are you sure, you want delete %s package?"
-msgstr "确定要删 %s 包吗？"
+msgid "Are you sure, you want delete % package?"
+msgstr "确定要删 % 包吗?"
 
 msgid "Cancel"
 msgstr "取消"
@@ -54,16 +54,16 @@ msgid "Delete"
 msgstr "删除"
 
 msgid "Do you want to run '%s'? (package size %s)"
-msgstr "是否要运行 '%s'？（包大 %s）"
+msgstr "是否要运行 '%s'? (包大 %s)"
 
 msgid "Do you want to upgrade %s package?"
-msgstr "要升包吗？"
+msgstr "是否要升级 %s软件包?"
 
 msgid "Do you want to upgrade all packages?"
-msgstr "是否要升级所有软件包？"
+msgstr "是否要升级所有软件包?"
 
 msgid "Downloading"
-msgstr "下载"
+msgstr "下载中"
 
 msgid "ERROR connecting to OPKG"
 msgstr "连接时出错"
@@ -72,7 +72,7 @@ msgid "ERROR connecting to the internet"
 msgstr "连接时出错"
 
 msgid "ERROR updating OPKG"
-msgstr "更时出错"
+msgstr "更新时出错"
 
 msgid "Inflating"
 msgstr "膨胀"
@@ -103,7 +103,7 @@ msgid ""
 "Start OPKG manager?"
 msgstr ""
 "新的实施准备安装\n"
-"启动OPKG管理器?"
+"启动软件更新管理器?"
 
 msgid "New directory"
 msgstr "新目录"
@@ -140,7 +140,7 @@ msgid "Reinstall"
 msgstr "重新安装"
 
 msgid "Remove some packages, or upgade from console!"
-msgstr "移除一些包，或者从控制台向上移动!"
+msgstr "移除一些软件包，或从控制台升级!"
 
 msgid "Select option"
 msgstr "选择选项"
@@ -149,16 +149,16 @@ msgid "Select package"
 msgstr "选择程序包"
 
 msgid "Show DVB USB modules only"
-msgstr "仅显模块"
+msgstr "仅显示DVB USB模块"
 
 msgid "Show DVB-T modules only"
-msgstr "仅显模块"
+msgstr "仅显示DVB-T USB模块"
 
 msgid "Show all Neutrino elements only"
-msgstr "仅显示所有中微子元素"
+msgstr "仅显示所有Neutrino 要素"
 
 msgid "Show all openPLI elements only"
-msgstr "仅显示所元素"
+msgstr "仅显示所有openPLI元素"
 
 msgid "Show all packages"
 msgstr "显示所有程序包"
@@ -167,16 +167,16 @@ msgid "Show extension plugins only"
 msgstr "仅显示扩展插件"
 
 msgid "Show j00zek's plugins only"
-msgstr "仅显的插件"
+msgstr "仅显示j00zek的插件"
 
 msgid "Show kernel modules only"
 msgstr "仅显示内核模块"
 
 msgid "Show openPLI plugins only"
-msgstr "仅显插件"
+msgstr "仅显示openPLI的插件"
 
 msgid "Show openPLI skins only"
-msgstr "仅显外观"
+msgstr "仅显示openPLI的皮肤"
 
 msgid "Show system plugins only"
 msgstr "仅显示系统插件"
@@ -209,7 +209,7 @@ msgid "install %s"
 msgstr "安装 %s"
 
 msgid "show Python modules only"
-msgstr "仅显模块"
+msgstr "仅显示Python模块"
 
 msgid "show channels only"
 msgstr "仅显示频道"
@@ -221,13 +221,27 @@ msgid "show language packets only"
 msgstr "仅显示语言包"
 
 msgid "show oscam packages only"
-msgstr "仅显软件包"
+msgstr "仅显示oscam软件包"
 
 msgid "show picons only"
-msgstr "仅显示图片"
+msgstr "仅显示picons"
 
 msgid "show system libraries only"
 msgstr "仅显示系统库"
 
 msgid "upgrade %s"
 msgstr "升级 %s"
+
+msgid "Show j00zek's skins only"
+msgstr "只显示j00zek制作的皮肤"
+
+msgid "Show Black Harmony components only"
+msgstr "只显示Black Harmony的驱动(components)"
+
+msgid "Show animated picons only"
+msgstr "只显示animated picons(动画图片)"
+
+msgid "Force uninstall"
+msgstr "强制卸载"
+
+
