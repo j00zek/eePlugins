@@ -1,6 +1,7 @@
 <skin>
 <screen name="MSNweatherNP" position="0,0" size="1920,1080" title=" " flags="wfNoBorder" backgroundColor="black">
-    <ePixmap position="0,0" zPosition="-10" size="1920,1080" pixmap="BlackHarmony/bg_design/EPGPig.png" transparent="1" alphatest="blend" />    <widget source="statustext" render="Label" position="0,1041" size="1920,28" font="Roboto_HD; 22" halign="center" valign="bottom" transparent="1" backgroundColor="black" foregroundColor="red" />
+    <ePixmap position="0,0" zPosition="-7" size="1920,1080" pixmap="BlackHarmony/bg_design/EPGPig2.png" />
+  <widget source="statustext" render="Label" position="0,1041" size="1920,28" font="Roboto_HD; 22" halign="center" valign="bottom" transparent="1" backgroundColor="black" foregroundColor="red" />
 
   <!--godzina,data-->
      <widget source="global.CurrentTime" render="Label" position="30,23" size="93,40" font="Roboto_HD; 31" backgroundColor="black" transparent="1">
@@ -221,7 +222,7 @@
 
 <!-- Daily Details pod OK -->
     <screen name="advDailyDetails" position="0,0" size="1920,1080" title=" " flags="wfNoBorder" backgroundColor="black">
-    <ePixmap position="0,0" zPosition="-10" size="1920,1080" pixmap="BlackHarmony/bg_design/EPGPig.png" transparent="1" alphatest="blend" />
+    <ePixmap position="0,0" zPosition="-10" size="1920,1080" pixmap="BlackHarmony/bg_design/EPGPig2.png" />
 
     <!-- header -->
     <widget source="global.CurrentTime" render="Label" position="35,30" size="80,35" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
