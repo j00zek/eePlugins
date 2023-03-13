@@ -97,6 +97,8 @@ def initWeatherPluginEntryConfig(i=0):
     s.openSenseID = ConfigText(default= readCFG('openSenseID.%s' % i , ''), visible_width=100, fixed_size=False)
     s.smogTokID = ConfigText(default= readCFG('smogTokID.%s' % i , 'Geo'), visible_width=100, fixed_size=False)
 
+    s.PurpleAirID = ConfigText(default= readCFG('PurpleAirID.%s' % i , ''), visible_width=100, fixed_size=False)
+
     s.entryType = ConfigSelection(choices=[('main', _('local')), ('client', _('remote'))], default='main')
     s.mainEntryADDR = ConfigIP(default=[0, 0, 0, 0])
     s.mainEntryUSER = ConfigText(default='root', visible_width=100, fixed_size=False)
@@ -362,6 +364,8 @@ class MSNWeatherEntryConfigScreen(ConfigListScreen, Screen):
              getConfigListEntry(_('blebox sensor ID (OK)'), self.current.bleboxID),
              getConfigListEntry(_('openSense sensor ID (OK)'), self.current.openSenseID),
              getConfigListEntry(_('smogOK sensor ID (OK)'), self.current.smogTokID),
+             getConfigListEntry(_('PurpleAir sensor ID (OK)'), self.current.PurpleAirID),
+             
              getConfigListEntry('\\c00289496' + _('--- OPTIONAL, NOT REQUIRED ---'), config.plugins.MSNweatherNP.FakeEntry),
              getConfigListEntry(_('Meteogram for www.foreca.net/<this part>'), self.current.Fcity)]
         self['config'].list = cfglist
@@ -843,6 +847,7 @@ class MSNWeatherConfiguration(Screen, ConfigListScreen):
         ConfigList.append(getConfigListEntry(_('Default skin background:'), config.plugins.MSNweatherNP.skinOrientation))
         ConfigList.append(getConfigListEntry(_('MSNWeather API key:'), config.plugins.MSNweatherNP.msnAPIKEY))
         ConfigList.append(getConfigListEntry(_('Airly API key %s:') % config.plugins.MSNweatherNP.airlyLimits.value, config.plugins.MSNweatherNP.airlyAPIKEY))
+        ConfigList.append(getConfigListEntry(_('PurpleAir API key:'), config.plugins.MSNweatherNP.purpleAirAPIKEY))
         ConfigList.append(getConfigListEntry(_('Sensors priority:'), config.plugins.MSNweatherNP.SensorsPriority))
         ConfigList.append(getConfigListEntry(_('Daily icons type:'), config.plugins.MSNweatherNP.IconsType))
         ConfigList.append(getConfigListEntry(_('Hourly icons type:'), config.plugins.MSNweatherNP.hIconsType))

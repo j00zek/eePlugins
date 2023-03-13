@@ -243,15 +243,15 @@ class advDailyDetails(Screen):
             #windIcon = self.getWindIcon(str(dictdetails.get('windDir', str(dictdetails.get('winddir', '?')) )))
             
             self.DEBUG('\t', 'podsumowanie dnia')
-            self['day_date'].text = _('Prognoza na %s, %s') % (weekday , str(dailyDict['daily']['valid'][:10]))
+            self['day_date'].text = _('Forecast %s, %s') % (weekday , str(dailyDict['daily']['valid'][:10]))
             self['day_tempHi'].text = str(int(dailyDict['daily']['tempHi'])) + '‎°'
             self['day_tempLo'].text = str(int(dailyDict['daily']['tempLo'])) + '‎°'
             self['day_UV'].text = str(dailyDict['daily']['uvDesc'])
 
             #info dla księżyca
-            self['moonriseLabel'].text = _('Wschód księżyca')
+            self['moonriseLabel'].text = _('Moonrise')
             self['moonrise'].text = str(dailyDict['almanac']['moonrise'][11:16])
-            self['moonsetLabel'].text = _('Zachód księżyca')
+            self['moonsetLabel'].text = _('Moonset')
             self['moonset'].text = str(dailyDict['almanac']['moonset'][11:16])
             self['moonPhase'].text = str(dailyDict['almanac']['moonPhase'])
 
@@ -285,7 +285,7 @@ class advDailyDetails(Screen):
                 summaryDayInfo += _(' and went down at %s. ') % sunset
             summaryDayInfo += _('Day will take %s%s and %s') % (clr['B'], self.infoGodzin(dayLengthH), self.infoMinut(dayLengthM))
             
-            summaryDayInfo += textMainColor + ', będzie dłuższy od najkrótszego o ' + clr['G']
+            summaryDayInfo += textMainColor + _(', will be longer than the shortest by ') + clr['G']
             if DayDiffTimesDict['diffToShortesttHours'] != 0:
                 summaryDayInfo += self.infoGodzin(DayDiffTimesDict['diffToShortesttHours']) + ' i '
 
@@ -295,27 +295,27 @@ class advDailyDetails(Screen):
                 summaryDayInfo += ' i ' + self.infoSekund(DayDiffTimesDict['diffToShortestSeconds'])
             
             
-            summaryDayInfo += ' ' + textMainColor + 'i krótszy od najdłuższego o ' + clr['R']
+            summaryDayInfo += ' ' + textMainColor + _('and shortest than the longest by ') + clr['R']
             if DayDiffTimesDict['diffToLongestHours'] != 0:
                 summaryDayInfo += self.infoGodzin(DayDiffTimesDict['diffToLongestHours']) + ' i '
             summaryDayInfo += self.infoMinut(DayDiffTimesDict['diffToLongestMinutes'])
             if DayDiffTimesDict['diffToLongestHours'] == 0:
                 summaryDayInfo += ' i ' + self.infoSekund(DayDiffTimesDict['diffToLongestSeconds'])
             
-            summaryDayInfo += clr['Gray'] + '\n' + 'W ostatnich ' + str(int(dictTrend['aggYears'])) + ' latach w tym dniu...'
+            summaryDayInfo += clr['Gray'] + '\n' + _('In last %s days, this day...') % str(int(dictTrend['aggYears']))
             for condition in dictTrend['conditions']:
                 if condition['days'] > 0:
                     if condition['type'] == 'Rain':
-                        summaryDayInfo += clr['Gray'] + '\n' + '- deszcz padał ' + str(int(condition['days'])) + ' dni, średnie opady ' + str(dictTrend['avgPrecip'])
+                        summaryDayInfo += clr['Gray'] + '\n' + _('- was raining %s days, in average %s') % (str(int(condition['days'])), str(dictTrend['avgPrecip']))
                         summaryDayInfo += clr['Gray'] + ', maksymalne ' + str(dictTrend['recPrecip']) + ' w ' + str(dictTrend['precipDate'][:4]) + 'r'
                     elif condition['type'] == 'Snow':
-                        summaryDayInfo += clr['Gray'] + '\n' + '- śnieg padał ' + str(int(condition['days'])) + ' dni, średnie opady ' + str(dictTrend['avgSnow'])
+                        summaryDayInfo += clr['Gray'] + '\n' + _('- was snowing %s days, in average %s') % (str(int(condition['days'])), str(dictTrend['avgSnow']))
                         summaryDayInfo += clr['Gray'] + ', maksymalne ' + str(dictTrend['recSnow']) + ' w ' + str(dictTrend['snowDate'][:4]) + 'r'
                     else:
                         summaryDayInfo += clr['Gray'] + '\n- ' + _(str(condition['type'])) + ' padal ' + str(int(condition['days'])) + ' dni, '
             if summaryDayInfo[:-2] == ', ':
                 summaryDayInfo = summaryDayInfo[:-2]
-            summaryDayInfo += clr['Gray'] + '\n' + '- Średnia temperatura maksymalna wynosiła %s%s°C%s, najwyższa zanotowana %s%s°C%s w %s%sr' % (clr['R'], 
+            summaryDayInfo += clr['Gray'] + '\n' + _('- Average highest temperature was %s%s°C%s, highest observed %s%s°C%s in %s%s') % (clr['R'], 
                                                                                                                                              str(int(dictTrend['tempHi'])), 
                                                                                                                                              clr['Gray'],
                                                                                                                                              clr['R'],
@@ -323,7 +323,7 @@ class advDailyDetails(Screen):
                                                                                                                                              clr['Gray'],
                                                                                                                                              clr['Y'],
                                                                                                                                              str(dictTrend['hiDate'])[:4])
-            summaryDayInfo += clr['Gray'] + '\n' + '- Średnia temperatura minimalna wynosiła %s%s°C%s, najniższa zanotowana %s%s°C%s w %s%sr' % (clr['B'], 
+            summaryDayInfo += clr['Gray'] + '\n' + _('- Average lowest temperature was %s%s°C%s, lowest observed %s%s°C%s in %s%s') % (clr['B'], 
                                                                                                                                              str(int(dictTrend['tempLo'])), 
                                                                                                                                              clr['Gray'],
                                                                                                                                              clr['B'],

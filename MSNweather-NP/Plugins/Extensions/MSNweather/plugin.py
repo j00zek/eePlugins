@@ -60,6 +60,9 @@ config.plugins.MSNweatherNP.entrycount = ConfigInteger(0)
 config.plugins.MSNweatherNP.currEntry = NoSave(ConfigInteger(0))
 config.plugins.MSNweatherNP.callbacksCount = NoSave(ConfigInteger(0))
 config.plugins.MSNweatherNP.Entry = ConfigSubList()
+
+config.plugins.MSNweatherNP.purpleAirAPIKEY = ConfigPassword(default= readCFG('purpleAirAPIKEY'), visible_width=100, fixed_size=False)
+
 #ikony dzienne
 availableOptions = [
      (
