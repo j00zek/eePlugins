@@ -1,6 +1,8 @@
 <skin>
 <screen name="MSNweatherNP" position="0,0" size="1920,1080" title=" " flags="wfNoBorder" backgroundColor="black">
-    <ePixmap position="0,0" zPosition="-7" size="1920,1080" pixmap="BlackHarmony/bg_design/EPGPig2.png" />
+    <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" zPosition="-10" size="1920,1080">
+      <convert type="j00zekRefreshBingPicOfTheDay">/usr/share/enigma2/BlackHarmony/bg_design/EPGPig.png</convert>
+    </widget>
   <widget source="statustext" render="Label" position="0,1041" size="1920,28" font="Roboto_HD; 22" halign="center" valign="bottom" transparent="1" backgroundColor="black" foregroundColor="red" />
 
   <!--godzina,data-->
@@ -222,7 +224,9 @@
 
 <!-- Daily Details pod OK -->
     <screen name="advDailyDetails" position="0,0" size="1920,1080" title=" " flags="wfNoBorder" backgroundColor="black">
-    <ePixmap position="0,0" zPosition="-10" size="1920,1080" pixmap="BlackHarmony/bg_design/EPGPig2.png" />
+    <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" zPosition="-10" size="1920,1080">
+      <convert type="j00zekRefreshBingPicOfTheDay">/usr/share/enigma2/BlackHarmony/bg_design/EPGPig.png</convert>
+    </widget>
 
     <!-- header -->
     <widget source="global.CurrentTime" render="Label" position="35,30" size="80,35" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
