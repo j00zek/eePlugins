@@ -195,24 +195,24 @@
 
 <!-- dolna belka -->
         
-        <ePixmap pixmap="BlackHarmony/buttons/key_left.png" position="80,980" size="35,27" alphatest="blend"/>
-    <eLabel text="Location" position="120,980" size="130,35" font="robotoMSN;24" halign="left" backgroundColor="black" transparent="1"/>
-        <ePixmap pixmap="BlackHarmony/buttons/key_right.png" position="250,980" size="35,27" alphatest="blend"/>
-    <ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="295,980" size="60,30" alphatest="blend"/>
-        <ePixmap pixmap="BlackHarmony/buttons/key_ok.png" position="365,980" size="60,30" alphatest="blend"/>
-        <eLabel text="View details" position="430,963" size="200,65" font="robotoMSN;24" halign="left" valign="center" transparent="1" backgroundColor="black"/>
+        <ePixmap pixmap="BlackHarmony/buttons/key_left.png" position="75,980" size="40,30" alphatest="blend"/>
+    <eLabel text="Location" position="114,963" size="137,65" font="robotoMSN;24" halign="center" valign="center" backgroundColor="black" transparent="1"/>
+        <ePixmap pixmap="BlackHarmony/buttons/key_right.png" position="250,980" size="40,30" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="305,980" size="60,30" alphatest="blend"/>
+        <ePixmap pixmap="BlackHarmony/buttons/key_ok.png" position="385,980" size="60,30" alphatest="blend"/>
+        <eLabel text="View details" position="450,963" size="200,65" font="robotoMSN;24" halign="left" valign="center" transparent="1" backgroundColor="black"/>
 
 <!--przyciski-->        
         
-  <widget source="session.CurrentService" render="j00zekPiconAnimation" position="650,980" zPosition="10" size="35,27" alphatest="blend"
+  <widget source="session.CurrentService" render="j00zekPiconAnimation" position="670,980" zPosition="10" size="35,27" alphatest="blend"
         initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0"
         pixmaps="BlackHarmony/skin_user_animButtons/key_red"
         pixalter="BlackHarmony/buttons/key_red.png" />
-  <widget source="session.CurrentService" render="j00zekPiconAnimation" position="980,980" zPosition="10" size="35,27" alphatest="blend"
+  <widget source="session.CurrentService" render="j00zekPiconAnimation" position="990,980" zPosition="10" size="35,27" alphatest="blend"
         initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,1"
         pixmaps="BlackHarmony/skin_user_animButtons/key_green"
         pixalter="BlackHarmony/buttons/key_green.png" />
-  <widget source="session.CurrentService" render="j00zekPiconAnimation" position="1310,980" zPosition="10" size="35,27" alphatest="blend"
+  <widget source="session.CurrentService" render="j00zekPiconAnimation" position="1315,980" zPosition="10" size="35,27" alphatest="blend"
         initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,2"
         pixmaps="BlackHarmony/skin_user_animButtons/key_yellow"
         pixalter="BlackHarmony/buttons/key_yellow.png" />
@@ -220,9 +220,9 @@
         initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,3"
         pixmaps="BlackHarmony/skin_user_animButtons/key_blue"
         pixalter="BlackHarmony/buttons/key_blue.png" />
-  <widget name="key_red" position="690,963" size="289,65" font="robotoMSN; 24" backgroundColor="black" transparent="1" halign="left" valign="center"/>
-  <widget name="key_green" position="1020,963" size="289,65" font="robotoMSN; 24" backgroundColor="black" transparent="1" halign="left" valign="center"/>
-  <widget name="key_yellow" position="1350,963" size="289,65" font="robotoMSN; 24" backgroundColor="black" transparent="1" halign="left" valign="center"/>
+  <widget name="key_red" position="705,963" size="289,65" font="robotoMSN; 24" backgroundColor="black" transparent="1" halign="left" valign="center"/>
+  <widget name="key_green" position="1030,963" size="289,65" font="robotoMSN; 24" backgroundColor="black" transparent="1" halign="left" valign="center"/>
+  <widget name="key_yellow" position="1355,963" size="289,65" font="robotoMSN; 24" backgroundColor="black" transparent="1" halign="left" valign="center"/>
   <widget name="key_blue" position="1680,963" size="150,65" font="robotoMSN; 24" backgroundColor="black" transparent="1" halign="left" valign="center"/>
         
   </screen>  
