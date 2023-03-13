@@ -76,8 +76,8 @@ else
 fi
 
 #deprecated in ATV7.1 attributes
-if [ "$systemType" == 'openATV-7.1' ];then
-  echo "Working with deprecated in ATV7.1 attributes"
+if [ "$systemType" == 'openATV-7.1' ] || [ "$systemType" == 'openATV-7.2' ];then
+  echo "Working with deprecated in $systemType attributes"
   find /usr/share/enigma2/BlackHarmony/ -iname *.xml|while read f; 
   do
     #echo "$f"
@@ -130,7 +130,7 @@ elif [ "$systemType" == 'PKT' ];then
 
 elif [ "$systemType" == 'zukonMOD' ];then
   cat /usr/share/enigma2/BlackHarmony/TemplateXMLs/image-openATV_specific.xml|grep -v 'skin>' >> $BHfolder/skin.xml
-  cat /usr/share/enigma2/BlackHarmony/TemplateXMLs/image-PKT_specific.xml|grep -v 'skin>' >> $BHfolder/skin.xml
+  #cat /usr/share/enigma2/BlackHarmony/TemplateXMLs/image-PKT_specific.xml|grep -v 'skin>' >> $BHfolder/skin.xml
   cat /usr/share/enigma2/BlackHarmony/TemplateXMLs/image-PKT_zukonMOD_specific.xml|grep -v 'skin>' >> $BHfolder/skin.xml
 
 elif [ "$systemType" == 'openPLI-7' ];then

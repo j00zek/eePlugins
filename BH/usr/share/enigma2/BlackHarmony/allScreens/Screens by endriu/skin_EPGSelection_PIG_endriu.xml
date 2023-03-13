@@ -13,53 +13,59 @@
       <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
     </widget>
     <eLabel text="Single EPG" position="1060,30" size="820,30" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1"/>
-	 
-  <!--podgląd-->
+	
+<!--podgląd-->
     
-	<eLabel backgroundColor="linie"  position="60,122" size="725,2" zPosition="4" />
-	<eLabel backgroundColor="linie"  position="60,533" size="725,2" zPosition="4" />
-	<eLabel backgroundColor="linie"  position="58,122" size="2,413" zPosition="4" />
-	<eLabel backgroundColor="linie"  position="785,122" size="2,413" zPosition="4" />
-	<widget backgroundColor="picture" position="60,124" render="Pig" size="725,409" source="session.VideoPicture" transparent="0" zPosition="3">
+	<eLabel backgroundColor="linie"  position="60,132" size="725,2" zPosition="4" />
+	<eLabel backgroundColor="linie"  position="60,543" size="725,2" zPosition="4" />
+	<eLabel backgroundColor="linie"  position="58,132" size="2,413" zPosition="4" />
+	<eLabel backgroundColor="linie"  position="785,132" size="2,413" zPosition="4" />
+	<widget backgroundColor="picture" position="60,134" render="Pig" size="725,409" source="session.VideoPicture" transparent="0" zPosition="3">
     <convert type="ConfigEntryTest"></convert>
     <convert type="ConditionalShowHide" />
     </widget>
 	
 <!--Picona i nazwa-->
 	
-	<widget alphatest="blend" position="58,554" render="j00zekPicons" picontype="picon" size="220,132" source="Service">
+	<widget alphatest="blend" position="58,564" render="j00zekPicons" picontype="picon" size="220,132" source="Service">
       <convert type="j00zekModServiceName2">Reference</convert>
     </widget>
-	<widget source="Service" render="j00zekLabel" position="290,554" size="500,75" font="HD_Thin; 34" backgroundColor="background" transparent="1" foregroundColor="light_yellow" halign="center">
+	<widget source="Service" render="j00zekLabel" position="290,564" size="500,75" font="HD_Thin; 34" backgroundColor="background" transparent="1" foregroundColor="light_yellow" halign="center">
       <convert type="ServiceName">Name</convert>
     </widget>
 	
 <!--godzina-->
 	
-	<widget backgroundColor="black" font="Roboto_HD; 30" foregroundColor="white" position="300,630" render="Label" size="110,50" source="Event" transparent="1">
+	<widget backgroundColor="black" font="Roboto_HD; 30" foregroundColor="white" position="300,640" render="Label" size="110,50" source="Event" transparent="1">
       <convert type="EventTime">StartTime</convert>
       <convert type="ClockToText"/>
     </widget>
-    <widget backgroundColor="black" font="Roboto_HD; 30" foregroundColor="white" position="395,630" render="Label" size="125,50" source="Event" transparent="1">
+    <widget backgroundColor="black" font="Roboto_HD; 30" foregroundColor="white" position="395,640" render="Label" size="125,50" source="Event" transparent="1">
       <convert type="EventTime">EndTime</convert>
       <convert type="ClockToText">Format:- %H:%M</convert>
     </widget>
-    <widget backgroundColor="background" font="Roboto_HD; 30" foregroundColor="green" halign="right" position="290,630" render="Label" size="480,50" source="Event" transparent="1">
+    <widget backgroundColor="background" font="Roboto_HD; 30" foregroundColor="green" halign="right" position="290,640" render="Label" size="480,50" source="Event" transparent="1">
       <convert type="EventTime">Remaining</convert>
       <convert type="RemainingToText">InMinutes</convert>
     </widget>
 	
 <!--Opis-->
 	
-	<eLabel backgroundColor="linie" position="58,700" size="733,1" />
-	<widget render="j00zekModRunningText" source="Event" options="movetype=running,startpoint=0,direction=top,steptime=90,repeat=2,startdelay=6000,wrap" halign="left" font="Roboto_HD; 29" backgroundColor="background" position="58,715" size="733,250" transparent="1">
+	<eLabel backgroundColor="linie" position="58,710" size="733,1" />
+	<widget source="Event" render="j00zekLabel" position="58,719" size="733,32" transparent="1" zPosition="1" font="Regular; 27" halign="left" valign="center" foregroundColor="green" backgroundColor="black" >
+    <convert type="j00zekModEventName">Genre</convert>
+    </widget>
+  <widget source="Event" render="j00zekLabel" position="58,719" size="733,32" transparent="1" zPosition="1" font="Regular; 27" halign="right" valign="center" foregroundColor="light_red" backgroundColor="black" >
+    <convert type="j00zekModEventName">Rating</convert>
+    </widget>
+	<widget render="j00zekModRunningText" source="Event" options="movetype=running,startpoint=0,direction=top,steptime=90,repeat=2,startdelay=6000,wrap" halign="left" font="Roboto_HD; 29" backgroundColor="background" position="58,755" size="733,220" transparent="1">
       <convert type="j00zekModEventName">ExtendedDescription</convert>
     </widget>
     
 <!--lista -->
 	
-	<eLabel backgroundColor="linie" position="804,123" size="1,844" />
-	<widget name="list" position="815,118" size="1055,855" itemHeight="45" font="Roboto_HD; 31" scrollbarMode="showOnDemand" enableWrapAround="1" scrollbarWidth="6" scrollbarSliderBorderWidth="1" foregroundColorSelected="#fcd93a" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" selectionPixmap="BlackHarmony/menu/sel_1055_45.png" backgroundColor="transpBlack" transparent="1"/>
+	<eLabel backgroundColor="linie" position="804,133" size="1,844" />
+	<widget name="list" position="815,128" size="1045,855" itemHeight="45" font="Roboto_HD; 31" scrollbarMode="showOnDemand" enableWrapAround="1" scrollbarWidth="6" scrollbarSliderBorderWidth="1" foregroundColorSelected="#fcd93a" scrollbarSliderForegroundColor="blue" scrollbarSliderBorderColor="blue" selectionPixmap="BlackHarmony/menu/sel_1055_45.png" backgroundColor="transpBlack" transparent="1"/>
 	
 <!--przyciski-->
 	
@@ -68,28 +74,42 @@
 		pixmaps="BlackHarmony/skin_user_animButtons/key_red"
 		pixalter="BlackHarmony/buttons/key_red.png" />
 	
-	<widget source="session.CurrentService" render="j00zekPiconAnimation" position="375,1021" zPosition="10" size="35,27" alphatest="blend"
+	<widget source="session.CurrentService" render="j00zekPiconAnimation" position="365,1021" zPosition="10" size="35,27" alphatest="blend"
 		initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,1" random="True"
 		pixmaps="BlackHarmony/skin_user_animButtons/key_green"
 		pixalter="BlackHarmony/buttons/key_green.png" />
     
-    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="720,1021" zPosition="10" size="35,27" alphatest="blend"
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="700,1021" zPosition="10" size="35,27" alphatest="blend"
 		initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,2" random="True"
 		pixmaps="BlackHarmony/skin_user_animButtons/key_yellow"
 		pixalter="BlackHarmony/buttons/key_yellow.png" />
     
-	<widget source="session.CurrentService" render="j00zekPiconAnimation" position="1080,1021" zPosition="10" size="35,27" alphatest="blend"
+	<widget source="session.CurrentService" render="j00zekPiconAnimation" position="1050,1021" zPosition="10" size="35,27" alphatest="blend"
 		initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,3" random="True"
 		pixmaps="BlackHarmony/skin_user_animButtons/key_blue"
 		pixalter="BlackHarmony/buttons/key_blue.png" />
-    <widget backgroundColor="dark_grey" font="Roboto_HD; 24" halign="left" name="key_red" position="80,1020" size="240,27" transparent="1" valign="bottom" zPosition="1" />
-    <widget backgroundColor="dark_grey" font="Roboto_HD; 24" halign="left" name="key_green" position="420,1007" size="240,54" transparent="1" zPosition="1" />
-    <widget backgroundColor="dark_grey" font="Roboto_HD; 24" halign="left" name="key_yellow" position="770,1020" size="240,27" transparent="1" zPosition="1" />
-    <widget backgroundColor="dark_grey" font="Roboto_HD; 24" halign="left" name="key_blue" position="1130,1020" size="240,27" transparent="1" zPosition="1" />
-	<ePixmap alphatest="blend" pixmap="BlackHarmony/buttons/menu.png" position="1575,1019" size="60,30" />
-    <ePixmap alphatest="blend" pixmap="BlackHarmony/buttons/key_info.png" position="1655,1019" size="60,30" />
-    <ePixmap alphatest="blend" pixmap="BlackHarmony/buttons/left.png" position="1735,1019" size="60,30" />
-    <ePixmap alphatest="blend" pixmap="BlackHarmony/buttons/right.png" position="1815,1019" size="60,30" />
+    <widget objectTypes="key_red,Label,Button" name="key_red" position="80,1020" size="240,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <widget objectTypes="key_red,StaticText" source="key_red" render="Label" position="80,1020" size="240,27" zPosition="2" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <widget objectTypes="key_green,Label,Button" name="key_green" position="410,1007" size="300,54" zPosition="1" font="Roboto_HD; 24" halign="left" valign="center" backgroundColor="dark_grey" transparent="1"/>
+    <widget objectTypes="key_green,StaticText" source="key_green" render="Label" position="410,1007" size="300,54" zPosition="2" font="Roboto_HD; 24" halign="left" valign="center" backgroundColor="dark_grey" transparent="1"/>
+    <widget objectTypes="key_yellow,Label,Button" name="key_yellow" position="750,1020" size="240,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget objectTypes="key_yellow,StaticText" source="key_yellow" render="Label" position="750,1020" size="240,27" zPosition="2" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget objectTypes="key_blue,Label,Button" name="key_blue" position="1100,1020" size="240,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget objectTypes="key_blue,StaticText" source="key_blue" render="Label" position="1100,1020" size="240,27" zPosition="2" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+	
+	<ePixmap position="1345,1005" size="40,30" pixmap="BlackHarmony/buttons/key_ch-.png" alphatest="blend" />
+	<widget source="session.CurrentService" render="j00zekLabel" backgroundColor="black" font="Regular;24" halign="center" position="1385,1005" size="270,30" transparent="1">
+          <convert type="j00zekTranslator">Change channels</convert>
+     </widget>
+	<ePixmap position="1655,1005" size="40,30" pixmap="BlackHarmony/buttons/key_ch+.png" alphatest="blend" />
+	
+	<ePixmap position="1345,1037" size="40,30" pixmap="BlackHarmony/buttons/key_left.png" alphatest="blend" />
+	<widget source="session.CurrentService" render="j00zekLabel" backgroundColor="black" font="Regular;24" halign="center" position="1385,1037" size="270,30" transparent="1">
+          <convert type="j00zekTranslator">Change bouquet</convert>
+     </widget>
+	<ePixmap position="1655,1037" size="40,30" pixmap="BlackHarmony/buttons/key_right.png" alphatest="blend" />
+	<ePixmap position="1805,1005" size="60,30" pixmap="BlackHarmony/buttons/key_menu.png" alphatest="blend" />
+    <ePixmap position="1805,1037" size="60,30" pixmap="BlackHarmony/buttons/key_info.png" alphatest="blend" />
 	</screen>
 	
 <!-- EPGSearch -->
