@@ -1,0 +1,4 @@
+<screen name="UnhandledKey" flags="wfNoBorder" position="center,20" size="140,140" title="UnhandledKey" zPosition="10" backgroundColor="transparent">
+    <!--widget name="UnhandledKeyPixmap" pixmap="BlackHarmony/gfx/unhandled-key.png" position="0,0" size="52,64" alphatest="off"/-->
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" pixdelay="10" loopdelay="60" loop="True" lockpath="True" dontcache="True" pixmaps="BlackHarmony/icons/no/" position="0,0" zPosition="10" size="140,140" alphatest="off" />
+  </screen>
