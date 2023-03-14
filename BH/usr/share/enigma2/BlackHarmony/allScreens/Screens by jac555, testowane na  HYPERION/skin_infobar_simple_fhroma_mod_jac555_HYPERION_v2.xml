@@ -14,7 +14,13 @@
   </widget>
   <eLabel text="-" position="420,889" size="20,36" font="HD_Thin; 30" halign="left" backgroundColor="black" transparent="1" foregroundColor="light_grey" />
 
-
+   <widget render="Label" source="session.Event_Now" position="960,927" size="550,25" transparent="1" zPosition="1" font="HD_Thin; 19" halign="right" foregroundColor="green" backgroundColor="black">
+      <convert type="j00zekModEventName">ExtendedDescription</convert>
+    </widget>
+    <widget render="Label" source="session.Event_Next" position="960,1020" size="550,45" transparent="1" zPosition="1" font="HD_Thin; 18" halign="right" foregroundColor="#c9c9c9" backgroundColor="black">
+      <convert type="j00zekModEventName">ExtendedDescription</convert>
+    </widget>
+	
   <widget source="session.Event_Now" render="Label" position="446,869" size="900,76" font="HD_Thin; 32" halign="left" valign="center" backgroundColor="black" transparent="1">
     <convert type="j00zekModEventName">Name</convert>
   </widget>

@@ -1,7 +1,5 @@
- <screen name="GraphicalEPGPIG" position="center,center" size="1920,1080" title="Electronic Program Guide" flags="wfNoBorder" backgroundColor="transparent">
-    <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" zPosition="-10" size="1920,1080">
-      <convert type="j00zekRefreshBingPicOfTheDay">/usr/share/enigma2/BlackHarmony/bg_design/cool.png</convert>
-    </widget>
+<screen name="GraphicalEPGPIG" position="center,center" size="1920,1080" title="Electronic Program Guide" flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="0,0" zPosition="-7" size="1920,1080" pixmap="BlackHarmony/bg_design/cool.png" />
     <eLabel position="70,623" size="1780,2" backgroundColor="#4fc8f0" />
     <widget source="global.CurrentTime" render="Label" position="75,55" size="80,35" font="Roboto_HD;27" backgroundColor="black" transparent="1">
       <convert type="ClockToText">Default</convert>
@@ -61,4 +59,4 @@
     <ePixmap position="1789,1010" size="60,30" pixmap="BlackHarmony/buttons/key_ok.png" alphatest="blend" />
     <ePixmap position="1650,1010" size="60,30" pixmap="BlackHarmony/buttons/key_menu.png" alphatest="blend" />
     <ePixmap position="1720,1010" size="60,30" pixmap="BlackHarmony/buttons/key_info.png" alphatest="blend" />
-  </screen>
+</screen>
