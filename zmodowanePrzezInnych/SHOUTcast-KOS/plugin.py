@@ -2,6 +2,7 @@
 # mod by Kos, j00zek
 
 # List of changes:
+# 16.03.2023 - added render for LCDScreen station text, fix crash log menu
 # 15.12.2022 - support for py3
 # 04.10.2020 - added audio codec & bitrate to genere --> favorites, Yellow button stations from shoutcast.com
 # 24.12.2019 - improved display of tags in the station list, improved 'def ok_pressed'
@@ -1155,8 +1156,8 @@ class SHOUTcastWidget(Screen):
                 title = ('\c00289496'+_('Title: ') + ('\c00?25=01''%s') % sTitle)
                 print('[SHOUTcast] Title: %s ' % title)
                 self['titel'].setText(title)
-                self.session.summary.setText(title)
-                self.session.summary.setSongName(sTitle)
+                self.summaries.setText(title)
+                self.summaries.setSongName(sTitle)
             else:
                 print('[SHOUTcast] Ignoring useless updated info provided by streamengine!')
         return
@@ -1445,34 +1446,34 @@ class SHOUTcastLCDScreen(Screen):
     if ssw >= 800 and ssh >= 480:
         skin = """
     <screen position="0,0" size="800,480" title=" ">
-        <widget name="text1" position="10,0"  size="800,110" font="Regular;50" halign="center" valign="center" backgroundColor="#20000000" foregroundColor="#0174DF" transparent="1"/>
+        <widget source="text1" render="Label" position="10,0"  size="800,110" font="Regular;50" halign="center" valign="center" backgroundColor="#20000000" foregroundColor="#0174DF" transparent="1"/>
         <widget source="text2" render="Label" position="10,110" size="800,90" font="Regular;40" halign="center" valign="center" backgroundColor="#20000000" foregroundColor="#FFBF00" transparent="1"/>
         <widget name="songPic" position="0,0" zPosition="4" size="800,480" alphatest="blend" />
     </screen>"""
     elif ssw >= 480 and ssh >= 320:
         skin = """
     <screen position="0,0" size="480,320" title=" ">
-        <widget name="text1" position="10,10" zPosition="2" size="460,90" font="Regular;40" halign="center" valign="top" foregroundColor="#0174DF" transparent="1"/>
+        <widget source="text1" render="Label" position="10,10" zPosition="2" size="460,90" font="Regular;40" halign="center" valign="top" foregroundColor="#0174DF" transparent="1"/>
         <widget source="text2" render="Label" position="10,230" zPosition="2" size="460,80" font="Regular;35" halign="center" valign="bottom" foregroundColor="#FFBF00" transparent="1"/>
         <widget name="songPic" position="0,0" zPosition="1" size="480,320" alphatest="blend" />
     </screen>"""
     elif ssw >= 220 and ssh >= 176:
         skin = """
     <screen position="0,0" size="220,176" title=" ">
-        <widget name="text1" position="5,0" size="210,50" font="Regular;24" halign="center" valign="center" backgroundColor="#20000000" foregroundColor="#0174DF" transparent="1"/>
+        <widget source="text1" render="Label" position="5,0" size="210,50" font="Regular;24" halign="center" valign="center" backgroundColor="#20000000" foregroundColor="#0174DF" transparent="1"/>
         <widget source="text2" render="Label" position="5,80" size="210,50" font="Regular;22" halign="center" valign="center" backgroundColor="#20000000" foregroundColor="#FFBF00" transparent="1"/>
         <widget name="songPic" position="0,0" size="220,176" zPosition="4" alphatest="blend" />
     </screen>"""
     else:
         skin = """
     <screen position="0,0" size="132,64" title="SHOUTcast">
-        <widget name="text1" position="4,0" size="132,14" font="Regular;12" halign="center" valign="center"/>
+        <widget source="text1" render="Label" position="4,0" size="132,14" font="Regular;12" halign="center" valign="center"/>
         <widget source="text2" render="Label" position="4,14" size="132,49" font="Regular;10" halign="center" valign="center"/>
     </screen>"""
 
     def __init__(self, session, parent):
         Screen.__init__(self, session)
-        self['text1'] = Label('SHOUTcast')
+        self['text1'] = StaticText()
         self['text2'] = StaticText()
         if self.hasLCD:
             try: self['songPic'] = Cover()

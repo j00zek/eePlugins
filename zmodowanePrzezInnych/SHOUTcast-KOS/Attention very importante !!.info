@@ -18,8 +18,13 @@ Info dla tworzących skórki, ekrany.
 
 
 
-<!-- Shoutcast skin_display-->
+<!-- Shoutcast skin_display VFD-->
 
 	<screen name="SHOUTcastLCDScreen" size="132,64">
-		 <widget source="text2" render="RollerCharLCD" position="0,0" size="120,20" font="Regular;18" halign="left" noWrap="1"  />
+		 <widget source="text2" render="RollerCharLCDLong" position="0,0" size="120,20" font="Regular;18" halign="left" noWrap="1"  />
 	</screen>
+	
+<!-- Shoutcast skin_display LCD-->	
+	
+	<widget source="text1" render="Label" position="20,30" size="380,60" font="FdLcD;40" halign="left" valign="center" foregroundColor="#FFFFFF" transparent="1"/>
+    <widget source="text2" render="Label" position="20,180" size="380,60" font="FdLcD;40" halign="left" valign="center" foregroundColor="#FFFFFF" transparent="1"/>
