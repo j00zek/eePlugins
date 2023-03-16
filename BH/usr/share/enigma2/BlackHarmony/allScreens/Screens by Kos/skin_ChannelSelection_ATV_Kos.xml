@@ -28,7 +28,7 @@
     <widget source="ServiceEvent" render="Label" position="750,55" size="400,35" font="Roboto_HD; 25" halign="center" foregroundColor="#00F0A30A" backgroundColor="black" transparent="1">
       <convert type="j00zekModServiceName2">Provider</convert>
     </widget>
-    <widget render="j00zekModRunningText" source="ServiceEvent" options="movetype=running,startpoint=0,direction=top,steptime=90,repeat=2,startdelay=6000,wrap" position="1185,465" size="655,265" halign="left" font="Roboto_HD; 28" backgroundColor="black" transparent="1">
+    <widget render="j00zekModRunningText" source="ServiceEvent" options="movetype=running,startpoint=0,direction=top,steptime=90,repeat=2,startdelay=10000,wrap" position="1185,465" size="655,265" halign="left" font="Roboto_HD; 28" backgroundColor="black" transparent="1">
       <convert type="j00zekModEventName">FullDescription</convert>
     </widget>
     <widget source="ServiceEvent" render="j00zekPixmap" position="1358,768" size="376,5" zPosition="-1" alphatest="blend">
