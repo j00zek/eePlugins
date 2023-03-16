@@ -348,7 +348,7 @@ msgid "Last 6h"
 msgstr "最近6小时"
 
 msgid "Last Quarter"
-msgstr "上个季度"
+msgstr "下弦月"
 
 msgid "Last hour"
 msgstr "最后一小时"
@@ -992,9 +992,6 @@ msgstr ",最大值"
 msgid " w "
 msgstr "在"
 
-msgid "\n- śnieg padał "
-msgstr "\n- śnieg padał "
-
 msgid " padal "
 msgstr "下雨了"
 
@@ -1114,3 +1111,51 @@ msgstr "Bing每日壁纸"
 
 msgid "Debug to /tmp/MSNdata_logs.tar.gz (requires restart):"
 msgstr "调试文件保存到/tmp/MSNdata_logs.tar.gz (需要重启):"
+
+msgid "auto "
+msgstr "自动"
+
+msgid "PurpleAir API key"
+msgstr "PurpleAir API密钥"
+
+msgid "Sun "
+msgstr "太阳"
+
+msgid "will rise at %s"
+msgstr "升起的时间为: %s"
+
+msgid "rose at %s"
+msgstr "升起的时间为: %s"
+
+msgid " and goes down at %s. "
+msgstr "日落时间为: %s."
+
+msgid "Day will take %s%s and %s"
+msgstr "今天白天的时间为 %s%s & %s."
+
+msgid "%s godzin"
+msgstr "%s 小时"
+
+msgid ", will be longer than the shortest by "
+msgstr ",将比最短的那一天要长"
+
+msgid "and shortest than the longest by "
+msgstr "比最长的要短"
+
+msgid "In last %s days, this day..."
+msgstr "在最近几十年内,最近的这 %s天:"
+
+msgid "- was raining %s days, in average %s"
+msgstr "- 正在下雨的天数为 %s天, 平均降水量为 %s"
+
+msgid "- was snowing %s days, in average %s"
+msgstr "- 正在下雪的时间为 %s 为,降雪量为 %s"
+
+msgid "- Average highest temperature was %s%s°C%s, highest observed %s%s°C%s in %s%s"
+msgstr "- 平均最高温度为 %s%s°C%s, 记录最高 %s%s°C,%s 在 %s%s年."
+
+msgid "- Average lowest temperature was %s%s°C%s, lowest observed %s%s°C%s in %s%s"
+msgstr "- 平均最低温度为 %s%s°C%s, 记录最低 %s%s°C,%s 在 %s%s年."
+
+msgid "Forecast %s, %s"
+msgstr "天气预报 %s, %s"

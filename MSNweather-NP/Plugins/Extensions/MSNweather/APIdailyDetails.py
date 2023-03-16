@@ -209,19 +209,19 @@ class advDailyDetails(Screen):
         return retDict
 
     def infoGodzin(self, valInt):
-        if valInt == 1:         return '%s godzinę' % valInt
-        elif valInt in [2,3,4]: return '%s godziny' % valInt
-        else:                   return '%s godzin' % valInt
+        if valInt == 1:         return _('1 hour')
+        elif valInt in [2,3,4]: return _('%s hour(s)') % valInt
+        else:                   return _('%s hours') % valInt
     
     def infoMinut(self, valInt):
-        if valInt == 1: return '%s minutę' % valInt
-        elif valInt in [2,3,4,22,23,24,32,33,34,42,43,44,52,53,54]: return '%s minuty' % valInt
-        else:           return '%s minut' % valInt
+        if valInt == 1: return _('1 minute')
+        elif valInt in [2,3,4,22,23,24,32,33,34,42,43,44,52,53,54]: return _('%s minute(s)') % valInt
+        else:           return _('%s minutes') % valInt
     
     def infoSekund(self, valInt):
-        if valInt == 1: return '%s sekundę' % valInt
-        elif valInt in [2,3,4,22,23,24,32,33,34,42,43,44,52,53,54]: return '%s sekundy' % valInt
-        else:           return '%s sekund' % valInt
+        if valInt == 1: return _('1 second')
+        elif valInt in [2,3,4,22,23,24,32,33,34,42,43,44,52,53,54]: return _('%s second(s)') % valInt
+        else:           return _('%s seconds') % valInt
     
     def updateInfo(self):
         self.DEBUG('updateInfo()', '>>>')
