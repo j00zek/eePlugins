@@ -87,7 +87,9 @@ def buildMlist( FirstAsSelectable = False ):
     #self.list.append(getConfigListEntry(_("XXXX"), XXXX ))
     #
     Mlist.append(getConfigListEntry(""))
-    Mlist.append(getConfigListEntry('\c00289496' + _("---User paths---")))
+    #Mlist.append(getConfigListEntry('\c00289496' + _("---User paths---")))
+    Mlist.append(getConfigListEntry('\c00289496' + _("--- Picons ---")))
+    Mlist.append(getConfigListEntry(_("No picons on /hdd or /media/hdd:"), config.plugins.j00zekCC.NoPiconsOnHDD ))
     Mlist.append(getConfigListEntry(_("Picons animations user path:"), config.plugins.j00zekCC.PiconAnimation_UserPath ))
     Mlist.append(getConfigListEntry(_("Alternate user icons path:"), config.plugins.j00zekCC.AlternateUserIconsPath))
     

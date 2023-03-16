@@ -63,7 +63,10 @@ def addPiconPath(mountpoint):
         return
     global searchPaths
     try:
-        if mountpoint not in searchPaths:
+        if config.plugins.j00zekCC.NoPiconsOnHDD.value and mountpoint in ['/hdd','/media/hdd']:
+            print('Excluding /hdd, /media/hdd from picons searchPaths')
+            return
+        elif mountpoint not in searchPaths:
             if DBG: j00zekDEBUG('[j00zekPicons] mountpoint not in searchPaths')
             for pp in os.listdir(mountpoint):
                 lpp = os.path.join(mountpoint, pp) + '/'
@@ -213,9 +216,11 @@ def getPiconName(serviceName, selfPiconType):
                         if DBG:  j00zekDEBUG('[j00zekPicons:getPiconName] Exception %s' % str(e))
                 if not pngname:
                     if name.endswith('hd'):
-                        pngname = findPicon(name[:-2], selfPiconType, serviceName)
+                        pngname = findPicon(name[:-2].strip(), selfPiconType, serviceName)
                     elif name.endswith('hevc'):
                         pngname = findPicon(name[:-4], selfPiconType, serviceName)
+                    else:
+                        pngname = findPicon(name, selfPiconType, serviceName + 'hd')
             if not pngname:
                 if DBG: j00zekDEBUG('[j00zekPicons:getPiconName] service name not found in lamedb, trying provided name')
                 pngname = findPicon(serviceName, selfPiconType, serviceName)

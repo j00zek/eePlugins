@@ -70,6 +70,7 @@ config.plugins.j00zekCC.zzPiconsStyle = ConfigSelection(default = "Transparent%2
                                                                                 ("Transparent%202/8bit/400x170", "Transparent 2"),
                                                                                 ("White%202/8bit/400x170", "White 2"),
                                                                               ])
+config.plugins.j00zekCC.NoPiconsOnHDD = ConfigYesNo(default = True)
 config.plugins.j00zekCC.PiconsMissingDownload = ConfigYesNo(default = False)
 config.plugins.j00zekCC.DeleteDownloaded = NoSave(ConfigYesNo(default = False))
 
