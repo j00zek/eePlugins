@@ -155,35 +155,37 @@ def getPiconName(serviceName, selfPiconType):
         if DBG: j00zekDEBUG('[j00zekPicons:getPiconName] selfPiconType = %s' % selfPiconType)
     if not pngname:
         name = 'unknown'
-        fields = GetWithAlternative(serviceName).split(':', 10)[:10]
-        if fields and len(fields) >= 10:
-            sname = '_'.join(fields)
-            pngname = findPicon(sname, selfPiconType, serviceName)
-            if not pngname and not fields[6].endswith("0000"):
-                #remove "sub-network" from namespace
-                fields[6] = fields[6][:-4] + "0000"
-                pngname = findPicon('_'.join(fields), selfPiconType, serviceName)
-            if not pngname and fields[0] != '1':
-                #fallback to 1 for other reftypes
-                fields[0] = '1'
-                pngname = findPicon('_'.join(fields), selfPiconType, serviceName)
-            if not pngname and fields[2] != '1':
-                #fallback to 1 for services with different service types
-                fields[2] = '1'
-                pngname = findPicon('_'.join(fields), selfPiconType, serviceName)
-            if pngname and isVTI and os.path.islink(pngname): #to delete incorrect references
-                name = getName(serviceName)
-                cname = os.path.abspath(pngname)
-                cname = os.path.realpath(cname)
-                cname = os.path.basename(cname)
-                cname = os.path.splitext(cname)[0]
-                if cname != name:
-                    if DBG: j00zekDEBUG('[j00zekPicons:getPiconName] %s != %s, deleting' % (cname,name))
-                    try:
-                        os.remove(pngname)
-                        pngname = None
-                    except Exception:
-                        pass
+        fields = GetWithAlternative(serviceName)
+        if fields:
+            fields = fields.split(':', 10)[:10]
+            if len(fields) >= 10:
+                sname = '_'.join(fields)
+                pngname = findPicon(sname, selfPiconType, serviceName)
+                if not pngname and not fields[6].endswith("0000"):
+                    #remove "sub-network" from namespace
+                    fields[6] = fields[6][:-4] + "0000"
+                    pngname = findPicon('_'.join(fields), selfPiconType, serviceName)
+                if not pngname and fields[0] != '1':
+                    #fallback to 1 for other reftypes
+                    fields[0] = '1'
+                    pngname = findPicon('_'.join(fields), selfPiconType, serviceName)
+                if not pngname and fields[2] != '1':
+                    #fallback to 1 for services with different service types
+                    fields[2] = '1'
+                    pngname = findPicon('_'.join(fields), selfPiconType, serviceName)
+                if pngname and isVTI and os.path.islink(pngname): #to delete incorrect references
+                    name = getName(serviceName)
+                    cname = os.path.abspath(pngname)
+                    cname = os.path.realpath(cname)
+                    cname = os.path.basename(cname)
+                    cname = os.path.splitext(cname)[0]
+                    if cname != name:
+                        if DBG: j00zekDEBUG('[j00zekPicons:getPiconName] %s != %s, deleting' % (cname,name))
+                        try:
+                            os.remove(pngname)
+                            pngname = None
+                        except Exception:
+                            pass
     if not pngname:
         if DBG: j00zekDEBUG('[j00zekPicons:getPiconName] pngname not found by sname')
         fields = sname.split('_', 6)
