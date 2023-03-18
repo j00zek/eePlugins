@@ -173,7 +173,7 @@ class UnCaptchaReCaptchaMyE2iWidget(Screen):
 
         cmd = GetPyScriptCmd('mye2iserver') + ' "%s" "%s" "%s"' % (captcha, self.ip_address, self.port)
 
-        self["console"].setText(('Please Open site:\n\n{0}:{1}'.format(self.ip_address, self.port)))
+        self["console"].setText(_('Please Open site:\nhttp://{0}:{1}\nin a web browser with the MyE2i extension installed').format(self.ip_address, self.port))
 
         self.workconsole['console'] = eConsoleAppContainer()
         self.workconsole['close_conn'] = eConnectCallback(self.workconsole['console'].appClosed, self._scriptClosed)

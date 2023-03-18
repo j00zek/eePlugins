@@ -79,6 +79,7 @@ from Plugins.Extensions.IPTVPlayer.p2p3.UrlLib import urllib_quote
 from Plugins.Extensions.IPTVPlayer.p2p3.pVer import isPY2, pVersion
 if not isPY2():
     basestring = str
+    from imp import reload
 ######################################################
 gDownloadManager = None
 
@@ -1323,6 +1324,7 @@ class E2iPlayerWidget(Screen):
                     title = self.hostsAliases.get('host' + hostName, '')
                     if not title:
                         _temp = __import__('Plugins.Extensions.IPTVPlayer.hosts.host' + hostName, globals(), locals(), ['gettytul'], 0) #both p2&p3 accepts absolute imports (level=0)
+                        reload(_temp) #to assure we're using latest code, e.g. during dev
                         title = _temp.gettytul()
                 except Exception:
                     printExc('get host name exception for host "%s"' % hostName)
@@ -1517,6 +1519,7 @@ class E2iPlayerWidget(Screen):
         self.hostFavTypes = []
         try:
             _temp = __import__('Plugins.Extensions.IPTVPlayer.hosts.host' + self.hostName, globals(), locals(), ['IPTVHost'], 0) #both p2&p3 accepts absolute imports (level=0)
+            reload(_temp) #to assure we're using latest code, e.g. during dev
             self.host = _temp.IPTVHost()
             if not isinstance(self.host, IHost):
                 printDBG("Host [%r] does not inherit from IHost" % self.hostName)
