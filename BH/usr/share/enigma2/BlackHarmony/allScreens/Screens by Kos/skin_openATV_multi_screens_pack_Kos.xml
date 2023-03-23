@@ -1942,14 +1942,26 @@ self.instance.resize(eSize(*wsize))
       <convert type="j00zekTranslator">Exit</convert>
     </widget> 
   </screen>
-  <!--screen name="Devices" position="center,center" size="700,550">
-    <widget source="TunerHeader" render="Label" position="0,0" size="560,30" font="Bold; 23" zPosition="1" halign="left" backgroundColor="black" transparent="1"/>
-    <widget source="nims" render="Label" position="0,30" size="560,150" font="Regular;21" zPosition="1" noWrap="1" backgroundColor="black" transparent="1"/>
-    <widget source="HDDHeader" render="Label" position="0,180" size="560,30" font="Bold;23" zPosition="1" halign="left" backgroundColor="black" transparent="1"/>
-    <widget source="hdd" render="Label" position="0,209" size="620,180" font="Regular;18" zPosition="1" backgroundColor="black" transparent="1"/>
-    <widget source="MountsHeader" render="Label" position="0,390" size="560,30" font="Bold;23" zPosition="1" halign="left" backgroundColor="black" transparent="1"/>
-    <widget source="mounts" render="Label" position="0,420" size="560,145" font="Regular;21" zPosition="1" noWrap="1" backgroundColor="black" transparent="1"/>
-  </screen-->
+  <screen name="SoftwareUpdateChanges" position="center,center" size="1232,908" title="OE Changes" flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="0,0" zPosition="-10" size="1232,908" pixmap="BlackHarmony/bg_design/mainbg.png" />
+    <widget source="global.CurrentTime" render="Label" position="45,25" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="130,25" size="360,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+    <widget source="Title" render="Label" position="960,25" size="220,35" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1" />
+    <widget name="text" position="65,130" size="700,540" font="Roboto_HD; 24" zPosition="3" backgroundColor="black" transparent="1" />
+    <eLabel text="OPEN SOURCE" position="790,130" size="380,55" font="HD_Thin; 50" halign="center" zPosition="1" backgroundColor="black" transparent="1"/>
+    <eLabel text="https://github.com/openatv" position="790,470" size="380,30" font="Roboto_HD; 20" halign="center" zPosition="1" backgroundColor="black" transparent="1"/>
+    <eLabel text="https://github.com/oe-alliance" position="790,520" size="380,30" font="Roboto_HD; 20" halign="center" zPosition="1" backgroundColor="black" transparent="1"/>
+    <ePixmap position="852,195" size="256,256" zPosition="10" pixmap="MetrixHD/icons/menu_information_about.png" transparent="1" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="50,850" size="35,27" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="410,850" size="35,27" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_exit.png" position="1100,850" size="60,30" alphatest="blend" />
+    <widget name="key_red" position="90,850" size="130,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <widget name="key_yellow" position="450,850" size="400,30" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+  </screen>
   <screen name="Devices" position="462,128" size="1000,820" title=" " flags="wfNoBorder" backgroundColor="transparent">
     <ePixmap position="0,0" zPosition="-10" size="1000,820" pixmap="BlackHarmony/bg_design/small.png"/>
     <widget source="Title" render="Label" position="560,30" size="380,35" zPosition="1" halign="right" font="Roboto_HD; 27" foregroundColor="white" backgroundColor="black" transparent="1" />
@@ -7389,7 +7401,7 @@ self['config'].l.setSeperation(int(300*f))
   <!--DynamicLCDbrightnessInStandbyConfiguration-->
   <screen name="DynamicLCDbrightnessInStandbyConfiguration" position="345,93" size="1232,908" title=" " flags="wfNoBorder" backgroundColor="transparent">
     <ePixmap position="0,0" zPosition="-10" size="1232,908" pixmap="BlackHarmony/bg_design/mainbg.png"/>
-    <widget source="global.CurrentTime" render="Label" position="47,25" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+    <widget source="global.CurrentTime" render="Label" position="40,25" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
     <widget source="global.CurrentTime" render="Label" position="125,25" size="360,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
@@ -7399,8 +7411,8 @@ self['config'].l.setSeperation(int(300*f))
     <widget name="config" position="65,145" size="1095,630" font="Roboto_HD; 27" itemHeight="35" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_1095_35.png" backgroundColor="black" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" transparent="1"/>
     <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="41,850" size="35,27" alphatest="blend"/>
     <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="328,850" size="35,27" alphatest="blend"/>
-    <widget name="key_red" position="91,849" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
-    <widget name="key_green" position="378,849" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget source="key_red" render="Label" position="91,849" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget source="key_green" render="Label" position="378,849" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
   </screen>
   <!-- >>>>>>>>>> openATV SPECIFIC SCREENS <<<<<<<<<< -->
   <screen name="QuickMenu" position="center,center" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent" >
@@ -8618,26 +8630,6 @@ self['config'].l.setSeperation(int(300*f))
     <widget source="key_red" render="Label" position="80,750" size="170,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
     <widget source="key_green" render="Label" position="310,750" size="170,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
     <ePixmap position="875,748" size="60,30" zPosition="10" pixmap="BlackHarmony/buttons/key_exit.png" alphatest="blend" transparent="1"/>
-  </screen>
-  <screen name="SoftwareUpdateChanges" position="center,center" size="1232,908" title="OE Changes" flags="wfNoBorder" backgroundColor="transparent">
-    <ePixmap position="0,0" zPosition="-10" size="1232,908" pixmap="BlackHarmony/bg_design/mainbg.png" />
-    <widget source="global.CurrentTime" render="Label" position="45,25" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
-      <convert type="ClockToText">Default</convert>
-    </widget>
-    <widget source="global.CurrentTime" render="Label" position="130,25" size="360,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
-      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
-    </widget>
-    <widget source="Title" render="Label" position="960,25" size="220,35" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1" />
-    <widget name="text" position="65,130" size="700,540" font="Roboto_HD; 24" zPosition="3" backgroundColor="black" transparent="1" />
-    <eLabel text="OPEN SOURCE" position="790,130" size="380,55" font="HD_Thin; 50" halign="center" zPosition="1" backgroundColor="black" transparent="1"/>
-    <eLabel text="https://github.com/openatv" position="790,470" size="380,30" font="Roboto_HD; 20" halign="center" zPosition="1" backgroundColor="black" transparent="1"/>
-    <eLabel text="https://github.com/oe-alliance" position="790,520" size="380,30" font="Roboto_HD; 20" halign="center" zPosition="1" backgroundColor="black" transparent="1"/>
-    <ePixmap position="852,195" size="256,256" zPosition="10" pixmap="MetrixHD/icons/menu_information_about.png" transparent="1" alphatest="blend" />
-    <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="50,850" size="35,27" alphatest="blend" />
-    <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="410,850" size="35,27" alphatest="blend" />
-    <ePixmap pixmap="BlackHarmony/buttons/key_exit.png" position="1100,850" size="60,30" alphatest="blend" />
-    <widget name="key_red" position="90,850" size="130,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
-    <widget name="key_yellow" position="450,850" size="400,30" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
   </screen>
   <screen name="SetupCronConf" position="center,center" size="1000,820" title="Cron Manager" flags="wfNoBorder" backgroundColor="transparent">
     <ePixmap position="0,0" zPosition="-10" size="1000,820" pixmap="BlackHarmony/bg_design/small.png" />
