@@ -18,6 +18,7 @@ from streamlink.exceptions import FatalPluginError, StreamlinkDeprecationWarning
 from streamlink.plugin import Plugin, PluginOptions
 from streamlink.stream.stream import Stream, StreamIO
 from streamlink.utils.named_pipe import NamedPipe
+from streamlink.utils.times import LOCAL as LOCALTIMEZONE
 from streamlink_cli.argparser import ArgumentParser, build_parser, setup_session_options
 from streamlink_cli.compat import DeprecatedPath, importlib_metadata, stdout
 from streamlink_cli.console import ConsoleOutput, ConsoleUserInputRequester
@@ -51,7 +52,7 @@ def get_formatter(plugin: Plugin):
             "category": lambda: plugin.get_category(),
             "game": lambda: plugin.get_category(),
             "title": lambda: plugin.get_title(),
-            "time": lambda: datetime.now(),
+            "time": lambda: datetime.now(tz=LOCALTIMEZONE),
         },
         {
             "time": lambda dt, fmt: dt.strftime(fmt),
@@ -312,7 +313,7 @@ def open_stream(stream):
     try:
         stream_fd = stream.open()
     except StreamError as err:
-        raise StreamError(f"Could not open stream: {err}")
+        raise StreamError(f"Could not open stream: {err}") from err
 
     # Read 8192 bytes before proceeding to check for errors.
     # This is to avoid opening the output unnecessarily.
@@ -321,7 +322,7 @@ def open_stream(stream):
         prebuffer = stream_fd.read(8192)
     except OSError as err:
         stream_fd.close()
-        raise StreamError(f"Failed to read data from stream: {err}")
+        raise StreamError(f"Failed to read data from stream: {err}") from err
 
     if not prebuffer:
         stream_fd.close()
@@ -411,12 +412,12 @@ def handle_stream(plugin: Plugin, streams: Dict[str, Stream], stream_name: str) 
 
         formatter = get_formatter(plugin)
 
-        for stream_name in [stream_name] + alt_streams:
-            stream = streams[stream_name]
+        for name in [stream_name] + alt_streams:
+            stream = streams[name]
             stream_type = type(stream).shortname()
 
             if stream_type in args.player_passthrough and not file_output:
-                log.info(f"Opening stream: {stream_name} ({stream_type})")
+                log.info(f"Opening stream: {name} ({stream_type})")
                 success = output_stream_passthrough(stream, formatter)
             elif args.player_external_http:
                 return output_stream_http(
@@ -430,7 +431,7 @@ def handle_stream(plugin: Plugin, streams: Dict[str, Stream], stream_name: str) 
             elif args.player_continuous_http and not file_output:
                 return output_stream_http(plugin, streams, formatter)
             else:
-                log.info(f"Opening stream: {stream_name} ({stream_type})")
+                log.info(f"Opening stream: {name} ({stream_type})")
                 success = output_stream(stream, formatter)
 
             if success:
@@ -501,17 +502,13 @@ def format_valid_streams(plugin: Plugin, streams: Dict[str, Stream]) -> str:
     delimiter = ", "
     validstreams = []
 
-    for name, stream in sorted(streams.items(),
-                               key=lambda stream: plugin.stream_weight(stream[0])):
+    for name, stream in sorted(streams.items(), key=lambda s: plugin.stream_weight(s[0])):
         if name in STREAM_SYNONYMS:
             continue
 
-        def synonymfilter(n):
-            return stream is streams[n] and n is not name
+        synonyms = [key for key, value in streams.items() if stream is value and key != name]
 
-        synonyms = list(filter(synonymfilter, streams.keys()))
-
-        if len(synonyms) > 0:
+        if synonyms:
             joined = delimiter.join(synonyms)
             name = f"{name} ({joined})"
 
@@ -613,6 +610,7 @@ def load_plugins(dirs: List[Path], showwarning: bool = True):
                 warnings.warn(
                     f"Loaded plugins from deprecated path, see CLI docs for how to migrate: {directory}",
                     StreamlinkDeprecationWarning,
+                    stacklevel=1,
                 )
         elif showwarning:
             log.warning(f"Plugin path {directory} does not exist or is not a directory!")
@@ -661,6 +659,7 @@ def setup_config_args(parser, ignore_unknown=False):
                 warnings.warn(
                     f"Loaded config from deprecated path, see CLI docs for how to migrate: {config_file}",
                     StreamlinkDeprecationWarning,
+                    stacklevel=1,
                 )
             config_files.append(config_file)
             break
@@ -677,6 +676,7 @@ def setup_config_args(parser, ignore_unknown=False):
                     warnings.warn(
                         f"Loaded plugin config from deprecated path, see CLI docs for how to migrate: {config_file}",
                         StreamlinkDeprecationWarning,
+                        stacklevel=1,
                     )
                 config_files.append(config_file)
                 break
@@ -834,7 +834,7 @@ def setup_logger_and_console(stream=sys.stdout, filename=None, level="info", jso
     global console
 
     if filename == "-":
-        filename = LOG_DIR / f"{datetime.now()}.log"
+        filename = LOG_DIR / f"{datetime.now(tz=LOCALTIMEZONE)}.log"
     elif filename:
         filename = Path(filename).expanduser().resolve()
 

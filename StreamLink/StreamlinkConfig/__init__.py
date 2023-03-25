@@ -63,6 +63,7 @@ config.plugins.streamlinkSRV.StandbyMode = ConfigEnableDisable(default = False)
 config.plugins.streamlinkSRV.streamlinkProxy1 = ConfigText(default = readCFG('streamlinkProxy1'), fixed_size = False)
 
 config.plugins.streamlinkSRV.useWrappers = ConfigSelection(default = "n", choices = [("n", "No"), ("m", "Yes, try modify bouquets"), ("y", "Yes, don't modify bouquets"),])
+config.plugins.streamlinkSRV.Verify4Wrappers = ConfigSelection(default = "n", choices = [("n", "No"), ("y", "Yes"),])
 
 # pilot.wp.pl
 config.plugins.streamlinkSRV.WPusername = ConfigText(readCFG('WPusername'), fixed_size = False)

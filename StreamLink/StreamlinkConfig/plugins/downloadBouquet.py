@@ -72,6 +72,8 @@ if __name__ == '__main__':
                 items[0] = framework
                 if not useWrappers:
                     items[1] = items[1].replace('YT-DLP%3a//',streamlinkURL).replace('YT-DL%3a//',streamlinkURL).replace('streamlink%3a//',streamlinkURL)
+                elif 'YT-DL' in items[1] or 'streamlink%3a//' in items[1]:
+                    items[0] = '4097' #wrappery tylko z oryginalnym frameworkiem
                 fw.write('#SERVICE %s\n' % ':'.join(items))
             elif line.strip() != '':
                 fw.write('%s\n' % line)
