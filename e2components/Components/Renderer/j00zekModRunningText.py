@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 ################################################################################
 #
 # j00zek: dynamic change of font included via additional optiona 
@@ -353,7 +354,7 @@ class j00zekModRunningText(Renderer):
             self.scroll_label.resize(eSize(self.txfont.pointSize * len(self.txtext),self.H)) # stupid workaround, have no better idea right now...
 
         if self.direction in (LEFT,RIGHT) or not (self.txtflags & RT_WRAP):
-            if self.currType == RUNNING: #2023-03-26 dodanie szerokości tylko przy running, przy swimming pasujące w punkt teksty trzęsą się
+            if self.currType == RUNNING: #2023-03-26 dodanie szerokosci tylko przy running, przy swimming pasujace w punkt teksty trzesa sie
                 text_width +=10
         
         self.mStop = None
