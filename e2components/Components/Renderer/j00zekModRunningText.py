@@ -353,7 +353,8 @@ class j00zekModRunningText(Renderer):
             self.scroll_label.resize(eSize(self.txfont.pointSize * len(self.txtext),self.H)) # stupid workaround, have no better idea right now...
 
         if self.direction in (LEFT,RIGHT) or not (self.txtflags & RT_WRAP):
-            text_width +=10
+            if self.currType == RUNNING: #2023-03-26 dodanie szerokości tylko przy running, przy swimming pasujące w punkt teksty trzęsą się
+                text_width +=10
         
         self.mStop = None
         # text height correction if necessary:
