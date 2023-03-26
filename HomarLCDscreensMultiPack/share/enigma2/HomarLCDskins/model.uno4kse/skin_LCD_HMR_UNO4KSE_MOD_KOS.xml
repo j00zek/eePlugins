@@ -1,7 +1,7 @@
 <skin>
   <!-- LCD-Skin by HOMAR UNO4KSE -->
   <!-- 23.02.2019 -->
-  <!-- 22.03.2023 Mod by @Kos -->
+  <!-- 23.03.2023 Mod by @Kos -->
     <fonts>
         <font filename="/usr/share/enigma2/HomarLCDskins/fonts/BoldCondensed.ttf" name="VFD" scale="100"/>
         <font filename="/usr/share/enigma2/HomarLCDskins/fonts/MyriadPro-Regular.otf" name="RegularLCD" scale="100"/>
@@ -521,10 +521,6 @@
 		<widget source="session.CurrentService" render="Label" position="180,200" size="200,40" font="VFD;40" halign="right" valign="center" foregroundColor="#FFFFFF" backgroundColor="black" transparent="1">
 			<convert type="ServicePosition">Remaining,Negate,ShowHours</convert>
 		</widget>
-		<!--widget source="session.RecordState" render="FixedLabel" text="REC" font="VFD;18" halign="center" position="50,47" size="81,18" >
-			<convert type="ConfigEntryTest">config.usage.blinking_display_clock_during_recording,True,CheckSourceBoolean</convert>
-			<convert type="ConditionalShowHide">Blink</convert>
-		</widget-->
 		<widget source="session.RecordState" render="Pixmap" pixmap="HomarLCDskins/Homar_UNO4KSE/Homar_2.png" position="140,210" size="80,20" zPosition="3" alphatest="blend">
             <convert type="ConfigEntryTest">config.usage.blinking_rec_symbol_during_recording,True,CheckSourceBoolean</convert>
             <convert type="ConditionalShowHide">Blink</convert>
@@ -534,18 +530,18 @@
 <!-- MediaPlayer -->
     <screen name="MediaPlayerLCDScreen" position="0,0" size="400,240" id="1">
       <ePixmap pixmap="HomarLCDskins/Homar_UNO4KSE/Homar_1.png" position="0,0" size="400,240" zPosition="-1" alphatest="blend" />
-        <widget name="text1" position="20,25" size="380,115" font="VFD;35" halign="left" valign="top" transparent="1" />
-        <widget source="session.CurrentService" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=0,startdelay=200,always=0,oneshot=0" position="16,145" size="400,58" font="VFD;52" foregroundColor="HMRname" noWrap="1" halign="left" valign="top" transparent="1" zPosition="2">
+        <widget name="text1" position="20,25" size="380,115" font="VFD;40" halign="left" valign="top" foregroundColor="light_yellow" backgroundColor="black" transparent="1" />
+        <widget source="session.CurrentService" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=2,startdelay=10000" position="16,145" size="400,58" font="VFD;52" foregroundColor="HMRname" noWrap="1" halign="left" valign="top" transparent="1" zPosition="2">
             <convert type="j00zekModServiceName2">Name</convert>
         </widget>
-        <widget source="session.CurrentService" render="Progress" pixmap="HomarLCDskins/Homar_UNO4KSE/Homar_LCD1.png" position="110,210" size="195,30" borderColor="#7A7D80" foregroundColor="#007FFF" transparent="1"> 
+        <widget source="session.CurrentService" render="Progress" pixmap="HomarLCDskins/Homar_UNO4KSE/Homar_LCD1.png" position="110,210" size="195,30" borderWidth="4" borderColor="#7A7D80" foregroundColor="#007FFF" transparent="1"> 
             <convert type="ServicePosition">Position</convert>
         </widget>
-        <widget source="session.CurrentService" render="Label" position="270,195" size="130,58" font="VFD;40" transparent="1" halign="right" valign="center">
-            <convert type="ServicePosition">Remaining,Negate,ShowHours,ShowNoSeconds</convert>
+        <widget source="session.CurrentService" render="j00zekLabel" position="16,195" size="130,58" font="VFD;40" halign="left" valign="center" foregroundColor="#FFFFFF" backgroundColor="black" transparent="1">
+            <convert type="ServicePosition">Position</convert>
         </widget>
-        <widget source="session.CurrentService" render="Label" position="16,195" size="130,58" font="VFD;40" transparent="1" halign="left" valign="center">
-            <convert type="ServicePosition">Position,ShowNoSeconds,ShowHours</convert>
+        <widget source="session.CurrentService" render="j00zekLabel" position="265,195" size="130,58" font="VFD;40" halign="right" valign="center" foregroundColor="#FFFFFF" backgroundColor="black" transparent="1">
+            <convert type="ServicePosition">Remaining</convert>
         </widget>
     </screen>
 

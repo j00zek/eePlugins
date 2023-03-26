@@ -72,7 +72,10 @@
     <alias name="SetList" font="Roboto_HD" size="27" height="40"/>
     <alias name="FileListMulti" font="Roboto_HD" size="24" height="45"/>
     <alias name="SelectionList" font="Roboto_HD" size="27" height="45" />
-    <alias name="PlayList" font="Roboto_HD" size="26" height="40"/>
+    <alias name="PlayList" font="Roboto_HD" size="27" height="40"/>
+    <alias name="PlayListMulti" font="Roboto_HD" size="28" height="40" />
+    <alias name="SongList" font="Roboto_HD" size="28" height="40" />
+    <alias name="SongListMulti" font="Roboto_HD" size="28" height="40" />
     <alias name="ServiceInfo" font="Roboto_HD" size="27" height="40" />
     <alias name="ChoiceBoxDescription" font="Roboto_HD" size="26" height="40"/>
     <alias name="TextNormal" font="Roboto_HD" size="26" height="40"/>
@@ -121,6 +124,10 @@
 	<parameter name="FileListMultiName" value="60,2,640,28"/>
 	<parameter name="FileListMultiIcon" value="30,4,20,20"/>
 	<parameter name="FileListMultiLock" value="2,0,25,25"/>
+	<!--            MediaPlayer                      -->
+	<parameter name="PicturePlayerThumb" value="35,190,30,200,20,14"/>
+    <parameter name="PlayListName" value="40,2,660,30"/>
+	<parameter name="PlayListIcon" value="10,7,16,16"/>
 	<!--             VTi Image start                         -->
     <parameter name="AudioSelectionSliderSeparation" value="275" />
     <parameter name="ConfigListSliderSeparation" value="250" />
