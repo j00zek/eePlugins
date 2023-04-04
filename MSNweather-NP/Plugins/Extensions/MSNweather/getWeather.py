@@ -166,6 +166,7 @@ class getWeather:
          "pluginPath='%s'" % '/usr/lib/enigma2/python/Plugins/Extensions/MSNweather',
          "msnAPIKEY='%s'" % config.plugins.MSNweatherNP.msnAPIKEY.value,
          "airlyAPIKEY='%s'" % config.plugins.MSNweatherNP.airlyAPIKEY.value,
+         "purpleAirAPIKEY='%s'" % config.plugins.MSNweatherNP.purpleAirAPIKEY.value,
          "BuildHistograms='%s'" % config.plugins.MSNweatherNP.BuildHistograms.value,
          "DEBUG='%s'" % config.plugins.MSNweatherNP.DebugEnabled.value,
          "HistoryPeriod='%s'" % config.plugins.MSNweatherNP.HistoryPeriod.value,
@@ -179,6 +180,7 @@ class getWeather:
          "airlyID='%s'" % weatherPluginEntry.airlyID.value,
          "airOpenSenseID='%s'" % weatherPluginEntry.openSenseID.value,
          "airSmogTokID='%s'" % weatherPluginEntry.smogTokID.value,
+         "PurpleAirID='%s'" % weatherPluginEntry.PurpleAirID.value,
          "airThingSpeakChannelID='%s'" % weatherPluginEntry.thingSpeakChannelID.value,
          "city='%s'" % weatherPluginEntry.city.value,
          "degreetype='%s'" % weatherPluginEntry.degreetype.value,
@@ -192,9 +194,10 @@ class getWeather:
          "weatherSearchFullName='%s'" % weatherPluginEntry.weatherSearchFullName.value,
          "mainEntryID='%s'" % weatherPluginEntry.mainEntryID.value,
          "mainEntryADDR='%s'" % '%s.%s.%s.%s' % (weatherPluginEntry.mainEntryADDR.value[0],
-          weatherPluginEntry.mainEntryADDR.value[1],
-          weatherPluginEntry.mainEntryADDR.value[2],
-          weatherPluginEntry.mainEntryADDR.value[3]),
+                                                 weatherPluginEntry.mainEntryADDR.value[1],
+                                                 weatherPluginEntry.mainEntryADDR.value[2],
+                                                 weatherPluginEntry.mainEntryADDR.value[3]
+                                                ),
          "mainEntryPASS='%s'" % weatherPluginEntry.mainEntryPASS.value,
          "mainEntryUSER='%s'" % weatherPluginEntry.mainEntryUSER.value]
         self.GetAsyncWebDataDEBUG('INIT', '.GetAsyncWebData.execute >>>')
