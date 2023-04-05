@@ -1700,4 +1700,21 @@
 	<ePixmap position="820,750" size="60,30" zPosition="10" pixmap="BlackHarmony/buttons/key_ok.png" transparent="1" alphatest="blend" />
     <ePixmap position="895,750" size="60,30" zPosition="10" pixmap="BlackHarmony/buttons/key_exit.png" transparent="1" alphatest="blend" />
 </screen>
+<!--ScriptMultiboot by gutosie screen by endriu-->
+   <screen name="ScriptNeo" position="460,130" size="1000,820" backgroundColor="transparent" title="Select SLOT Image" flags="wfNoBorder">
+	<ePixmap position="-2,0" zPosition="-10" size="1000,820" pixmap="BlackHarmony/bg_design/small.png"/>
+	<widget source="global.CurrentTime" render="Label" position="45,40" size="90,40" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="150,40" size="460,40" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+	<widget source="Title" render="Label" position="522,40" size="420,40" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1"/>
+	
+	<widget name="list" render="Listbox" position="61,127" size="877,585" scrollbarMode="showOnDemand" itemHeight="45" font="Regular; 35" selectionPixmap="BlackHarmony/menu/sel_920_45.png" enableWrapAround="1" transparent="1">
+	<convert type="StringList" />
+          </widget>
+    <ePixmap alphatest="blend" pixmap="BlackHarmony/buttons/key_ok.png" position="700,755" size="60,30" />
+    <ePixmap alphatest="blend" pixmap="BlackHarmony/buttons/key_exit.png" position="900,755" size="60,30" />
+	</screen>
 </skin>
