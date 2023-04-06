@@ -133,6 +133,8 @@ mv -f $ipkdir$PluginPath/CONTROL $ipkdir/
 if [ ! -z $ExcludeFolder ] && [ -e $ipkdir/$ExcludeFolder ];then
   rm -rf $ipkdir/$ExcludeFolder
 fi
+[ -f $ipkdir/README.md ] && rm -f $ipkdir/README.md
+
 #ls $ipkdir/$ExcludeFolder
 #if [ -e $ipkdir/usr/lib/enigma2/python ];then
 find $ipkdir/ -iname "*.py" | 
