@@ -58,7 +58,10 @@ config.plugins.streamlinkSRV.ClearLogFile = ConfigEnableDisable(default = True)
 config.plugins.streamlinkSRV.logPath = ConfigSelection(default = "/tmp", choices = [("/home/root", "/home/root"), ("/tmp", "/tmp"), ("/hdd", "/hdd"), ])
 config.plugins.streamlinkSRV.PortNumber = ConfigSelection(default = "8088", choices = [("8088", "8088"), ("88", "88"), ])
 config.plugins.streamlinkSRV.bufferPath = ConfigText(default = "/tmp", fixed_size = False)
+
 config.plugins.streamlinkSRV.Recorder = ConfigEnableDisable(default = False)
+config.plugins.streamlinkSRV.RecordMaxTime = ConfigSelection(default = "120", choices = [("120", "2h"), ("180", "3h"),])
+
 config.plugins.streamlinkSRV.StandbyMode = ConfigEnableDisable(default = False)
 config.plugins.streamlinkSRV.streamlinkProxy1 = ConfigText(default = readCFG('streamlinkProxy1'), fixed_size = False)
 
