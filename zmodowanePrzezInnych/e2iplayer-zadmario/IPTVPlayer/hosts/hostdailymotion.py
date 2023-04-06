@@ -12,6 +12,7 @@ from Plugins.Extensions.IPTVPlayer.p2p3.UrlLib import urllib_quote
 ###################################################
 # FOREIGN import
 ###################################################
+import re
 from datetime import timedelta
 import time
 from Components.config import config, ConfigSelection, getConfigListEntry
@@ -180,13 +181,14 @@ class Dailymotion(CBaseHostClass):
             if not sts:
                 return ''
 
-            data = ph.find(data, '__PLAYER_CONFIG__', '</script>', flags=0)[1]
-            data = ph.search(data, '"api"\s*?:\s*?(\{[^\}]+?\})\,')[0]
-            try:
-                data = json_loads(data)
-                self.authData.update(data)
-            except Exception:
-                printExc()
+            data = re.compile('''return h.*;var r=['"]([^"^']+?)['"],o=['"]([^"^']+?)['"].*,v=.*__API_ENDPOINT__[^"^']+?['"]([^"^']+?)['"].*,h=.*__AUTH_ENDPOINT__[^"^']+?['"]([^"^']+?)['"]''').findall(data)
+            for item in data:
+                self.authData['auth_url'] = item[3]
+                self.authData['url'] = item[2]
+                self.authData['client_secret'] = item[1]
+                self.authData['client_id'] = item[0]
+            self.authData['grant_type'] = 'client_credentials'
+
 
         if self.authData.get('expires', 0) < int(time.time()):
             params = dict(self.defaultParams)

@@ -809,11 +809,16 @@ class HasBahCa(CBaseHostClass):
         tmp = CParsingHelper.getDataBeetwenNodes(data, ('<iframe', '>', 'src'), ('<script', '>'))[1]
         if not tmp:
             tmp = CParsingHelper.getDataBeetwenNodes(data, ('<noscript', '>'), ('<script', '>'))[1]
-        #printDBG("StrumykTvDir data [%s]" % tmp)
         data = self.cm.ph.getAllItemsBeetwenNodes(tmp, ('<a', '>'), ('</a', '>'))
         if not data:
             linkVideo = self.cm.ph.getSearchGroups(tmp, '''src=['"]([^"^']+?)['"]''')[0]
             linkVideo = linkVideo.strip(' \n\t\r')
+            if linkVideo.startswith('/live/'):
+                sts, tmp = self.cm.getPage('http://strims.top' + linkVideo)
+                if not sts:
+                    return []
+                linkVideo = self.cm.ph.getSearchGroups(tmp, '''src=['"]([^"^']+?)['"]''')[0]
+                linkVideo = linkVideo.strip(' \n\t\r')
             if len(linkVideo):
                 params = {'name': "strims.top"}
                 params['url'] = urlparser.decorateUrl(linkVideo, {'Referer': url})
