@@ -1,26 +1,24 @@
-<skin>
-<screen name="HistoryZapSelector" position="center,center" size="1232,908" title="History zap..." flags="wfNoBorder" NoAnimationAfter="1" backgroundColor="transparent">
-  <ePixmap position="1,3" zPosition="-10" size="1232,908" pixmap="BlackHarmony/bg_design/mainbg.png" />
-  <widget source="global.CurrentTime" render="Label" position="1079,14" size="111,44" font="Roboto_HD; 34" backgroundColor="black" transparent="1">
+<screen name="HistoryZapSelector" position="center,center" size="1354,1022" title="History zap..." flags="wfNoBorder" NoAnimationAfter="1" backgroundColor="transparent">
+  <ePixmap position="0,0" zPosition="-10" size="1354,1022" pixmap="BlackHarmony/bg_design/yt.png" />
+  <widget source="global.CurrentTime" render="Label" position="40,45" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
     <convert type="ClockToText">Default</convert>
   </widget>
-  <widget source="global.CurrentTime" render="Label" position="708,22" size="360,30" halign="right" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+  <widget source="global.CurrentTime" render="Label" position="126,45" size="460,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
     <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
   </widget>
-<widget source="menu" render="Listbox" position="38,89" size="1150,769" selectionPixmap="BlackHarmony/menu/sel_1200_105.png" scrollbarWidth="7" scrollbarSliderBorderWidth="1" scrollbarSliderBorderColor="blue" scrollbarSliderForegroundColor="blue" scrollbarMode="showOnDemand">
+<widget source="menu" render="Listbox" position="center,158" size="1200,760" selectionPixmap="BlackHarmony/menu/sel_1200_105.png" scrollbarWidth="7" scrollbarSliderBorderWidth="1" scrollbarSliderBorderColor="blue" scrollbarSliderForegroundColor="blue" backgroundColor="black" transparent="1" scrollbarMode="showOnDemand">
     <convert type="TemplatedMultiContent">
         {"template": [
-          MultiContentEntryText(pos = (130, 33), size = (15, 33), font = 1, flags = RT_HALIGN_CENTER | RT_VALIGN_CENTER, text = 1), # Current Service
-          MultiContentEntryText(pos = (163, 3), size = (625, 38), font = 1, flags = RT_HALIGN_LEFT | RT_VALIGN_TOP, text = 2), # Servicename
-          MultiContentEntryText(pos = (163, 40), size = (1100, 33), font = 2, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER | RT_WRAP, text = 3), # Eventname
-          MultiContentEntryText(pos = (563, 76), size = (525, 32), font = 3, flags = RT_HALIGN_RIGHT, text = 5), # Eventtime
-          MultiContentEntryPixmapAlphaBlend(pos = (12, 12), size = (120, 77), png=6, flags = BT_SCALE) # picon
+          MultiContentEntryText(pos = (130, 33), size = (20, 33), font = 1, flags = RT_HALIGN_CENTER | RT_VALIGN_CENTER, text = 1), # Current Service
+          MultiContentEntryText(pos = (168, 3), size = (625, 38), font = 1, flags = RT_HALIGN_LEFT | RT_VALIGN_TOP, text = 2), # Servicename
+          MultiContentEntryText(pos = (168, 40), size = (1100, 33), font = 2, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER | RT_WRAP, text = 3), # Eventname
+          MultiContentEntryText(pos = (600, 76), size = (525, 32), font = 3, flags = RT_HALIGN_RIGHT, text = 5), # Eventtime
+          MultiContentEntryPixmapAlphaBlend(pos = (5, 12), size = (120, 77), png=6, flags = BT_SCALE) # picon
         ],
-        "fonts": [gFont("Regular", 20), gFont("Regular", 30), gFont("Regular", 26), gFont("Regular", 20)],
-        "itemHeight": 110
+        "fonts": [gFont("Regular", 21), gFont("Regular", 30), gFont("Regular", 26), gFont("Regular", 21)],
+        "itemHeight": 105
         }
       </convert>
   </widget>
-<eLabel text="Historia zmiany kanałów" position="15,17" size="437,34" font="Roboto_HD; 27" halign="left" backgroundColor="dark_grey" transparent="1" />
+<eLabel text="Historia zmiany kanałów" position="855,45" size="465,30" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1" />
 </screen>
-</skin>
