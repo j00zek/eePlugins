@@ -30,7 +30,17 @@ if isPY2():
 else:
     from urllib.request import urlretrieve
 
-import json, os, requests, sys, time, urllib
+import json, os, sys, time
+
+try:
+    import requests
+except Exception:
+    if isPY2():
+        os.system('opkg install python-requests')
+    elif PyMajorVersion >= 3:
+        os.system('opkg install python3-requests')
+    import requests
+
 
 DBG = True
 
