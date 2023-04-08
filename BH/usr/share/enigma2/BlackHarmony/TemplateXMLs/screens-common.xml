@@ -1847,7 +1847,7 @@
     <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="47,760" size="35,27" alphatest="blend"/>
     <widget source="key_red" render="Label" position="87,759" size="180,27" zPosition="1" font="Roboto_HD; 24" halign="left" foregroundColor="white" backgroundColor="dark_grey" transparent="1"/>
   </screen>
-  <screen name="Standby" position="5,0" size="1920,1080" title="Standby" flags="wfNoBorder"/>
+  <screen name="Standby" position="0,0" size="1920,1080" title="Standby" flags="wfNoBorder"/>
   <screen name="SubservicesQuickzap" position="595,895" size="560,100" title="Subservices" backgroundColor="transparent" flags="wfNoBorder">
     <eLabel text="Subservices" position="0,0" size="790,32" font="Roboto_HD; 26" halign="center" valign="center" backgroundColor="black" foregroundColor="light_yellow"/>
     <widget name="CurrentSubserviceNumber" position="0,32" size="100,48" font="Roboto_HD; 26" halign="center" valign="center" backgroundColor="black" foregroundColor="lemon"/>
