@@ -35,7 +35,7 @@ class fakeSourcesMSNWaether(Source):
     
 try:
     from Components.Sources.MSNWeatherNP import MSNWeatherNP as j00zekMSNWeather
-    open("/tmp/j00zekMSNWeather.log", "w").write('j00zekMSNWeather imported')
+    #open("/tmp/j00zekMSNWeather.log", "w").write('j00zekMSNWeather imported')
 except Exception as e:
     j00zekMSNWeather = fakeSourcesMSNWaether
-    open("/tmp/j00zekMSNWeather.txt", "w").write('%s\n' % str(e))
+    #open("/tmp/j00zekMSNWeather.txt", "w").write('%s\n' % str(e))

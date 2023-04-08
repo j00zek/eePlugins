@@ -9,7 +9,7 @@ from Components.config import config
 from Components.Console import Console
 import os
 
-DBG = True
+DBG = False
 if DBG: from Components.j00zekComponents import j00zekDEBUG
 
 class j00zekRefreshBingPicOfTheDay(Converter, object):
