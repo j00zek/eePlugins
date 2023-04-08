@@ -231,7 +231,7 @@
     <!--eLabel text="MSN weather Config" position="460,30" size="480,30" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1"/-->
     <widget render="Label" source="city" position="75,135" size="425,35" font="Roboto_HD; 26" halign="left" foregroundColor="light_yellow"/>
     <widget render="Label" source="degreetype" position="500,135" size="425,35" font="Roboto_HD; 26" halign="left" foregroundColor="light_yellow"/>
-    <widget name="entrylist" position="75,195" size="850,500" itemHeight="45" font0="Roboto_HD;40" font1="Roboto_HD;35" DimText0="5, 0, 740, 45, 0" DimText1="750, 0, 80, 45, 1" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_850_35.png" backgroundColor="transpBlack" transparent="1"/>
+    <widget name="entrylist" position="75,195" size="850,500" itemHeight="45" font0="Roboto_HD;40" font1="Roboto_HD;35" DimText0="5, 0, 740, 45, 0" DimText1="750, 0, 80, 45, 1" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_850_45.png" backgroundColor="transpBlack" transparent="1"/>
     <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="47,760" size="35,27" alphatest="blend"/>
     <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="273,760" size="35,27" alphatest="blend"/>
     <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="499,760" size="35,27" alphatest="blend"/>
