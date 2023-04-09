@@ -1,9 +1,7 @@
 <skin>
-<screen name="MSNweatherNP" position="0,0" size="1920,1080" title=" " flags="wfNoBorder" backgroundColor="black">
-    <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" zPosition="-10" size="1920,1080">
-      <convert type="j00zekRefreshBingPicOfTheDay">/usr/share/enigma2/BlackHarmony/bg_design/EPGPig.png</convert>
-    </widget>
-  <widget source="statustext" render="Label" position="0,1041" size="1920,28" font="Roboto_HD; 22" halign="center" valign="bottom" transparent="1" backgroundColor="black" foregroundColor="red" />
+<screen name="MSNweatherNP" position="0,0" size="1920,1080" title=" " backgroundColor="black">    
+    <ePixmap position="0,0" zPosition="-10" size="1920,1080" pixmap="BlackHarmony/bg_design/mainbg1920x1080x24.png" />
+  <widget source="statustext" render="Label" position="0,1050" size="1920,30" font="Roboto_HD; 22" halign="center" valign="bottom" backgroundColor="black" transparent="1" foregroundColor="red" />
 
   <!--godzina,data-->
      <widget source="global.CurrentTime" render="Label" position="30,23" size="93,40" font="Roboto_HD; 31" backgroundColor="black" transparent="1">
@@ -223,10 +221,8 @@
 </screen>
 
 <!-- Daily Details pod OK -->
-    <screen name="advDailyDetails" position="0,0" size="1920,1080" title=" " flags="wfNoBorder" backgroundColor="black">
-    <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" zPosition="-10" size="1920,1080">
-      <convert type="j00zekRefreshBingPicOfTheDay">/usr/share/enigma2/BlackHarmony/bg_design/EPGPig.png</convert>
-    </widget>
+    <screen name="advDailyDetails" position="0,0" size="1920,1080" title=" " backgroundColor="black">
+    <ePixmap position="0,0" zPosition="-10" size="1920,1080" pixmap="BlackHarmony/bg_design/mainbg1920x1080x24.png" />
 
     <!-- header -->
     <widget source="global.CurrentTime" render="Label" position="35,30" size="80,35" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
