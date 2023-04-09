@@ -1,4 +1,4 @@
-<skin>
+l<skin>
     <screen name="NewVirtualKeyBoard" position="center,476" size="1920,630" title="E2iStream virtual keyboard" backgroundColor="#34000000" flags="wfNoBorder">
         
         <eLabel position="450,21" size="1020,72" backgroundColor="#16000000" transparent="0"/>
@@ -252,5 +252,23 @@
     <screen name="vkOptionsScreen" position="center,center" size="900,720" backgroundColor="#16000000" transparent="0" title="Addkey">
         <widget name="menu" position="5,5" size="900,720" backgroundColor="#16000000" itemHeight="70" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_920_70.png" scrollbarWidth="4" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="blue" scrollbarSliderBorderColor="blue" zPosition="1" transparent="0" />
     </screen>
-    
+
+<screen name="nvKeyboardSetup" position="center,125" size="1200,881" title="New Virtual Keyboard Settings">
+  <widget name="config" position="center,17" size="1055,435" font="Roboto_HD; 28" itemHeight="45" selectionPixmap="BlackHarmony/menu/sel_1055_45.png" scrollbarMode="showOnDemand" enableWrapAround="1" scrollbarWidth="7" scrollbarSliderBorderWidth="1" scrollbarSliderBorderColor="blue" scrollbarSliderForegroundColor="blue" foregroundColor="white" backgroundColor="background" />
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="75,835" zPosition="10" size="35,27" alphatest="blend"
+                        initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0" random="True"
+                        pixmaps="BlackHarmony/skin_user_animButtons/key_red"
+                        pixalter="BlackHarmony/buttons/key_red.png" />
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="325,835" zPosition="10" size="35,27" alphatest="blend"
+                        initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,1" random="True"
+                        pixmaps="BlackHarmony/skin_user_animButtons/key_green"
+                        pixalter="BlackHarmony/buttons/key_green.png" />
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="565,835" zPosition="10" size="35,27" alphatest="blend"
+                        initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,2" random="True"
+                        pixmaps="BlackHarmony/skin_user_animButtons/key_yellow"
+                        pixalter="BlackHarmony/buttons/key_yellow.png" />
+				<eLabel position="115,835" zPosition="4" size="300,38" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" text="Cancel" />
+				<eLabel position="365,835" zPosition="4" size="300,38" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" text="Save" />
+				<eLabel position="605,835" zPosition="4" size="420,38" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" text="Virtual keyboard" />
+    </screen>
 </skin>
