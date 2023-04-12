@@ -5,10 +5,13 @@ from Plugins.Plugin import PluginDescriptor
 from . import mygettext as _ , DBGlog
 
 import os, sys
+
 if sys.version_info.major > 2: #PyMajorVersion
     from importlib import reload
 
 import Screens.Standby
+
+DBG = True
 
 def runCMD(myCMD):
     DBGlog('CMD: %s' % myCMD)
@@ -63,14 +66,29 @@ def sessionstart(reason, session = None):
         config.misc.standbyCounter.addNotifier(SLconfigStandbyCounterChanged, initial_call=False)
         initProxy()
 
+def timermenu(menuid, **kwargs):
+    DBGlog("timermenu(%s)" % str(menuid))
+    if menuid == "timermenu":
+        return [(_("Streamlink Timers"), mainRecorder, "streamlinktimer", None)]
+    else:
+        return []
 
+def mainRecorder(session, **kwargs):
+    DBGlog("mainRecorder()")
+    import Plugins.Extensions.StreamlinkConfig.StreamlinkRecorder
+    reload(Plugins.Extensions.StreamlinkConfig.StreamlinkRecorder)
+    session.open(Plugins.Extensions.StreamlinkConfig.StreamlinkRecorder.StreamlinkRecorderScreen)
 
 def main(session, **kwargs):
+    DBGlog("main")
     import Plugins.Extensions.StreamlinkConfig.StreamlinkConfiguration
     reload(Plugins.Extensions.StreamlinkConfig.StreamlinkConfiguration)
     session.open(Plugins.Extensions.StreamlinkConfig.StreamlinkConfiguration.StreamlinkConfiguration)
 
 def Plugins(path, **kwargs):
-    return [PluginDescriptor(name=_("Streamlink Configuration"), where = PluginDescriptor.WHERE_PLUGINMENU, icon="logo.png", fnc = main, needsRestart = False),
+    myList = [PluginDescriptor(name=_("Streamlink Configuration"), where = PluginDescriptor.WHERE_PLUGINMENU, icon="logo.png", fnc = main, needsRestart = False),
             PluginDescriptor(name="StreamlinkConfig", where = PluginDescriptor.WHERE_SESSIONSTART, fnc = sessionstart, needsRestart = False, weight = -1)
            ]
+    if config.plugins.streamlinkSRV.Recorder.value == True:
+        myList.append(PluginDescriptor(name="StreamlinkRecorder", description=_("StreamlinkRecorder"), where = [PluginDescriptor.WHERE_MENU], fnc=timermenu))
+    return myList
