@@ -3,6 +3,7 @@ import re
 from os import path
 
 def cleanFile(text, ReturnMovieYear = True, metaFileName = ''):
+    re._MAXCACHE = 500
     if text.endswith('.ts'):
         if metaFileName != '' and path.exists(metaFileName):
             with open(metaFileName,'r') as descrTXT:
