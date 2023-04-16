@@ -1,4 +1,4 @@
-l<skin>
+<skin>
     <screen name="NewVirtualKeyBoard" position="center,476" size="1920,630" title="E2iStream virtual keyboard" backgroundColor="#34000000" flags="wfNoBorder">
         
         <eLabel position="450,21" size="1020,72" backgroundColor="#16000000" transparent="0"/>
@@ -267,8 +267,10 @@ l<skin>
                         initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,2" random="True"
                         pixmaps="BlackHarmony/skin_user_animButtons/key_yellow"
                         pixalter="BlackHarmony/buttons/key_yellow.png" />
-				<eLabel position="115,835" zPosition="4" size="300,38" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" text="Cancel" />
-				<eLabel position="365,835" zPosition="4" size="300,38" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" text="Save" />
+				<eLabel position="115,835" zPosition="4" size="300,38" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" text="Cancel" />
+
+				<eLabel position="365,835" zPosition="4" size="300,38" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" text="Save" />
+
 				<eLabel position="605,835" zPosition="4" size="420,38" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" text="Virtual keyboard" />
     </screen>
 </skin>

@@ -18,15 +18,14 @@ class j00zekModEventPosition(Poll, Converter, object):
     def getPosition(self):
         event = self.source.event
         if event is None:
-            return
+            return 0
         else:
             now = int(time())
             start_time = event.getBeginTime()
             duration = event.getDuration()
             if start_time <= now <= start_time + duration and duration > 0:
-                return now - start_time
+                return int(now - start_time)
             return 0
-            return
 
     @cached
     def getLength(self):
