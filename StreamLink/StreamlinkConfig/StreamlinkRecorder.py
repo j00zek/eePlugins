@@ -36,7 +36,7 @@ from Screens.Screen import Screen
 
 from ServiceReference import ServiceReference
 
-import os, traceback #traceback.format_exc()
+import io, os, traceback #traceback.format_exc()
 
 try:
     import json
@@ -56,18 +56,18 @@ class StreamlinkRecorderScreen(Screen):
                         <ePixmap position="5,365" zPosition="4" size="140,40" pixmap="skin_default/buttons/red.png" transparent="1" alphatest="on" />
                         <widget name="key_red" position="5,365" zPosition="5" size="140,40" valign="center" halign="center" font="Regular;21" transparent="1" foregroundColor="white" shadowColor="black" shadowOffset="-1,-1" />
                         <ePixmap position="150,365" zPosition="4" size="140,40" pixmap="skin_default/buttons/green.png" transparent="1" alphatest="on" />
-                        <widget name="key_red" position="150,365" zPosition="5" size="140,40" valign="center" halign="center" font="Regular;21" transparent="1" foregroundColor="white" shadowColor="black" shadowOffset="-1,-1" />
+                        <widget name="key_green" position="150,365" zPosition="5" size="140,40" valign="center" halign="center" font="Regular;21" transparent="1" foregroundColor="white" shadowColor="black" shadowOffset="-1,-1" />
                         <ePixmap position="295,365" zPosition="4" size="140,40" pixmap="skin_default/buttons/yellow.png" transparent="1" alphatest="on" />
-                        <widget name="key_red" position="295,365" zPosition="5" size="140,40" valign="center" halign="center" font="Regular;21" transparent="1" foregroundColor="white" shadowColor="black" shadowOffset="-1,-1" />
+                        <widget name="key_yellow" position="295,365" zPosition="5" size="140,40" valign="center" halign="center" font="Regular;21" transparent="1" foregroundColor="white" shadowColor="black" shadowOffset="-1,-1" />
                         <ePixmap position="440,365" zPosition="4" size="140,40" pixmap="skin_default/buttons/blue.png" transparent="1" alphatest="on" />
-                        <widget name="key_red" position="440,365" zPosition="5" size="140,40" valign="center" halign="center" font="Regular;21" transparent="1" foregroundColor="white" shadowColor="black" shadowOffset="-1,-1" />
+                        <widget name="key_blue" position="440,365" zPosition="5" size="140,40" valign="center" halign="center" font="Regular;21" transparent="1" foregroundColor="white" shadowColor="black" shadowOffset="-1,-1" />
                 </screen>"""
 
     def __init__(self, session):
         Screen.__init__(self, session)
         DBGlog("StreamlinkRecorderScreen.__init__() >>>")
         self.setTitle(_("Streamlink Recorder"))
-
+        DBGlog("StreamlinkRecorderScreen.__init__2() >>>")
         self["actions"] = ActionMap(["StreamlinkRecorderScreen"],
                                     {
                                         "green": self.AddTimer,
@@ -76,8 +76,8 @@ class StreamlinkRecorderScreen(Screen):
                                         "red": self.InstantRecord,
                                         "cancel": self.exit,
                                         "ok": self.keyOK,
-                                    }, -1)
-
+                                    }, -2)
+        DBGlog("StreamlinkRecorderScreen.__init__3() >>>")
         self["InfoLine"] = Label("")
         self["timersList"] = Label('')
         self["key_green"] = Label(_("Add"))
@@ -93,13 +93,13 @@ class StreamlinkRecorderScreen(Screen):
     def LayoutFinished(self, *args):
         DBGlog("StreamlinkRecorderScreen.LayoutFinished() >>>")
         if not os.path.exists(self.RecordingsJsonPath):
-            self["InfoLine"] = _('No Streamlink timers found')
+            self["InfoLine"].setText(_('No Streamlink timers found'))
         else:
             self.RecordingsDict = self.readJson()
-            self["InfoLine"] = _('No Streamlink timers defined')
+            self["InfoLine"].setText(_('No Streamlink timers defined'))
         
         if DBG and len(self.RecordingsDict) == 0:
-            self.RecordingsDict['starttimeepoc'] = {'lenInSec': 7200, 'chName':'channel Name', 'info':'info', 'descr':'description'}
+            self.RecordingsDict[1672531200] = {'lenInMin': 120, 'chName':'channel Name', 'info':'info', 'descr':'description'}
 
     def AddTimer(self):
         DBGlog("StreamlinkRecorderScreen.AddTimer() >>>")
@@ -116,9 +116,6 @@ class StreamlinkRecorderScreen(Screen):
         #    return
         #self.session.openWithCallback( deleteTimerConfirmed, MessageBox, _("Do you really want to delete the timer \n%s ?") % sel.name)
         pass
-
-    def InstantRecord(self):
-        DBGlog("StreamlinkRecorderScreen.InstantRecord() >>>")
 
     def exit(self):
         DBGlog("StreamlinkRecorderScreen.exit() >>>")
@@ -137,10 +134,33 @@ class StreamlinkRecorderScreen(Screen):
             with open(self.RecordingsJsonPath, 'r') as (json_file):
                 data = json_file.read()
                 json_file.close()
-            retDict = json.loads(data)
+            try:
+                retDict = json.loads(data)
+            except Exception:
+                os.remove(self.RecordingsJsonPath)
         return retDict
 
     def saveJsonDict(self, doSort=True):
+        myKeys = list(self.RecordingsDict.keys())
+        myKeys.sort()
+        
         with io.open(self.RecordingsJsonPath, 'w', encoding='utf8') as (outfile):
             json_data = json.dumps(self.RecordingsDict, indent=4, sort_keys=True, ensure_ascii=False)
-            outfile.write(unicode(json_data))
+            outfile.write(str(json_data))
+
+    def doNothing(self, ret = False):
+        DBGlog('StreamlinkRecorderScreen.doNothing >>>')
+        return
+        
+    def InstantRecord(self):
+        DBGlog("StreamlinkRecorderScreen.InstantRecord() >>>")
+        length = 120 * 60 #to have in seconds
+        ChannelName = self.session.nav.getCurrentlyPlayingServiceReference().toString()
+        if 'http%3a//127.0.0.1' not in ChannelName:
+            self.session.openWithCallback(self.doNothing,MessageBox, _("This is NOT Streamlink service!"), MessageBox.TYPE_INFO, timeout = 5)
+            DBGlog("\t ChannelName='%s' is not Streamlink service, end." % str(ChannelName))
+            return
+        else:
+            EventName =  ''
+            EventDescr = ''
+            DBGlog("\t ChannelName='%s'" % str(ChannelName))
