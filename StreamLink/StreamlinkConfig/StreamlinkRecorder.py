@@ -36,7 +36,7 @@ from Screens.Screen import Screen
 
 from ServiceReference import ServiceReference
 
-import io, os, traceback #traceback.format_exc()
+import io, os, time, traceback #traceback.format_exc()
 
 try:
     import json
@@ -98,9 +98,6 @@ class StreamlinkRecorderScreen(Screen):
             self.RecordingsDict = self.readJson()
             self["InfoLine"].setText(_('No Streamlink timers defined'))
         
-        if DBG and len(self.RecordingsDict) == 0:
-            self.RecordingsDict[1672531200] = {'lenInMin': 120, 'chName':'channel Name', 'info':'info', 'descr':'description'}
-
     def AddTimer(self):
         DBGlog("StreamlinkRecorderScreen.AddTimer() >>>")
 
@@ -138,29 +135,76 @@ class StreamlinkRecorderScreen(Screen):
                 retDict = json.loads(data)
             except Exception:
                 os.remove(self.RecordingsJsonPath)
+        #remove old records
+        keysToDelete = []
+        for key in retDict:
+            if int(key) <= int(time.time()):
+                if int(key) + int(retDict[key]['RecEventDuration']) <= int(time.time()):
+                    keysToDelete.append(key)
+        for key in keysToDelete:
+            del retDict[key]
         return retDict
 
-    def saveJsonDict(self, doSort=True):
+    def saveJsonDict(self, doSort=False):
         myKeys = list(self.RecordingsDict.keys())
-        myKeys.sort()
-        
-        with io.open(self.RecordingsJsonPath, 'w', encoding='utf8') as (outfile):
-            json_data = json.dumps(self.RecordingsDict, indent=4, sort_keys=True, ensure_ascii=False)
-            outfile.write(str(json_data))
+        try:
+            myKeys.sort()
+        except Exception:
+            DBGlog("Exception sorting '%s': %s" % (str(myKeys), str(traceback.format_exc())))
+
+        try:
+            with io.open(self.RecordingsJsonPath, 'w', encoding='utf8') as (outfile):
+                json_data = json.dumps(self.RecordingsDict, indent=4, sort_keys=doSort, ensure_ascii=False)
+                outfile.write(str(json_data))
+        except Exception:
+            DBGlog("Exception writing json file '%s': %s" % (str(myKeys), str(traceback.format_exc())))
 
     def doNothing(self, ret = False):
         DBGlog('StreamlinkRecorderScreen.doNothing >>>')
-        return
         
+    def getEventInfo(self, whatInfo):
+        if whatInfo == 'RecEventStartTime':     return self.RecCurrentEventData[1]
+        elif whatInfo == 'RecEventDuration':    return self.RecCurrentEventData[2]
+        elif whatInfo == 'RecCurrentTime':      return self.RecCurrentEventData[3]
+        elif whatInfo == 'RecEventName':        return self.RecCurrentEventData[4]
+        elif whatInfo == 'RecEventDescr':       return self.RecCurrentEventData[6]
+        elif whatInfo == 'RecChannelReference': return self.RecCurrentEventData[7]
+        elif whatInfo == 'RecChannelName':      return self.RecCurrentEventData[8]
+    
+    def doRecord(self, ret = False):
+        DBGlog('StreamlinkRecorderScreen.doRecord(ret=%s) >>>' % str(ret))
+        self.RecordingsDict = self.readJson()
+        if ret and len(self.RecCurrentEventData) >= 8:
+            if self.getEventInfo('RecEventStartTime') <= int(time.time()):
+                DBGlog("\t Instant recording:")
+                DBGlog("\t\t Program: %s" % self.getEventInfo('RecEventName'))
+                DBGlog("\t\t duration: %s s" % (self.getEventInfo('RecEventDuration') - (self.getEventInfo('RecCurrentTime') - self.getEventInfo('RecEventStartTime'))))
+                DBGlog("\t\t from: %s" % self.getEventInfo('RecChannelName'))
+                DBGlog("\t\t Description: %s" % self.getEventInfo('RecEventDescr'))
+            else:
+                DBGlog("\t Scheduled recording:")
+        self.RecordingsDict[str(self.getEventInfo('RecEventStartTime'))] = {'RecEventDuration': self.getEventInfo('RecEventDuration'),
+                                                                       'RecEventName': self.getEventInfo('RecEventName'),
+                                                                       'RecChannelReference': self.getEventInfo('RecChannelReference'),
+                                                                       'RecChannelName': self.getEventInfo('RecChannelName'),
+                                                                       'RecEventDescr': self.getEventInfo('RecEventDescr'),
+                                                                      }
+        self.saveJsonDict()
+
     def InstantRecord(self):
         DBGlog("StreamlinkRecorderScreen.InstantRecord() >>>")
         length = 120 * 60 #to have in seconds
-        ChannelName = self.session.nav.getCurrentlyPlayingServiceReference().toString()
-        if 'http%3a//127.0.0.1' not in ChannelName:
-            self.session.openWithCallback(self.doNothing,MessageBox, _("This is NOT Streamlink service!"), MessageBox.TYPE_INFO, timeout = 5)
-            DBGlog("\t ChannelName='%s' is not Streamlink service, end." % str(ChannelName))
+        ChannelRef = self.session.nav.getCurrentlyPlayingServiceReference().toString()
+        if 'http%3a//127.0.0.1' not in ChannelRef:
+            self.session.openWithCallback(self.doNothing,MessageBox, _("This is NOT Streamlink service!"), MessageBox.TYPE_ERROR, timeout = 5)
+            DBGlog("\t ChannelRef='%s' is not Streamlink service, end." % str(ChannelRef))
             return
         else:
-            EventName =  ''
-            EventDescr = ''
-            DBGlog("\t ChannelName='%s'" % str(ChannelName))
+            try:
+                self.RecCurrentEventData = eEPGCache.getInstance().lookupEvent(['IBDCTSERNX', (ChannelRef, 0, -1)])[0]
+                DBGlog("=========== currentEventData ==============\n%s" % str(self.RecCurrentEventData))
+            except Exception:
+                DBGlog(str(traceback.format_exc()))
+            self.session.openWithCallback(self.doRecord,MessageBox, _("Do you want to record\n '%s'\n from %s?") % (self.getEventInfo('RecEventName'), 
+                                                                                                                    self.getEventInfo('RecChannelName')
+                                                                                                                    ), MessageBox.TYPE_YESNO, timeout = 15)
