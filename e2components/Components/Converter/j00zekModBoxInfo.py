@@ -19,10 +19,17 @@ except:
 
 def _(text):
     if language.getLanguage()[:2] == 'pl':
-        tmp = text.replace('Size','Wielkość').replace('Used','zajęte').replace('Available','wolne').replace('free','wolne').replace('in Use','wykorzystano').replace('No infos available','Brak informacji')
-    else:
-        tmp = _(text)
-    return tmp
+        translationDict = {'in Use':            'wykorzystano',
+                           'Load average: %s':  'Średnie obciążenie: %s',
+                           'MemFree: %s':       'Pamięć: %s',
+                           'No infos available':"Brak informacji",
+                           "N/A":               "???",
+                           "Size: %s, Used: %s (%s), Available: %s": "Wielkość: %s, zajęte: %s (%s), wolne: %s",
+                           'Uptime: %s': 'Czas pracy: %s',
+                           }
+    else: 
+        translationDict = {}
+    return translationDict.get(text, text)
 
 class j00zekModBoxInfo(Poll, Converter, object):
     BOXTYPE = 0
@@ -55,15 +62,14 @@ class j00zekModBoxInfo(Poll, Converter, object):
         retTXT = ''
         try:
             box_info = HardwareInfoVu().get_device_name().upper()
-            retTXT = "VU+ %s" % box_info
+            retTXT = _("VU+ %s") % box_info
         except Exception:
             try:
-                box_info = HardwareInfo().get_device_name().upper()
-                if self.justValue: retTXT = box_info
-                else: retTXT = "Model: %s" % box_info
+                box_info = HardwareInfo().get_friendly_name().upper()  ##get_device_name - get_vu_device_name - get_device_model - get_friendly_name - get_device_version
             except Exception:
-                if self.justValue: retTXT = "N/A"
-                else: retTXT = "Model: N/A"
+                box_info = _("N/A")
+            if self.justValue: retTXT = box_info
+            else: retTXT = _("Model: %s") % box_info
         return retTXT
 
     def getLoadAverage(self):
@@ -72,10 +78,10 @@ class j00zekModBoxInfo(Poll, Converter, object):
             with open("/proc/loadavg", 'r') as file:
                 load_info = file.read().split()[0:3]
             if self.justValue: retTXT =  "%s" % (', '.join(load_info))
-            else: retTXT =  "Load average: %s" % (', '.join(load_info))
+            else: retTXT =  _("Load average: %s") % (', '.join(load_info))
         except Exception:
-            if self.justValue: retTXT =  "N/A"
-            else: retTXT =  "Load average: N/A"
+            if self.justValue: retTXT =  _("N/A")
+            else: retTXT =  _("Load average: %s") % _("N/A")
         return retTXT
 
     def getMemInfo(self):
@@ -88,10 +94,10 @@ class j00zekModBoxInfo(Poll, Converter, object):
             usedMeM = totalMem - freeMem
             usedPercent = "%d %%" % int(usedMeM * 100 / totalMem)
             retTXT =  _("Size: %s, Used: %s (%s), Available: %s") % (self.formatFileSize(totalMem), self.formatFileSize(usedMeM), usedPercent, self.formatFileSize(freeMem))
-            if not self.justValue: retTXT =  "MemFree: " + retTXT
+            if not self.justValue: retTXT =  _("MemFree: %s") % retTXT
         except Exception:
-            if self.justValue: retTXT = "N/A"
-            else: retTXT =  "MemFree: N/A"
+            if self.justValue: retTXT = _("N/A")
+            else: retTXT =  _("MemFree: %s") % _("N/A")
         return retTXT
 
     def getUptime(self):
@@ -112,11 +118,21 @@ class j00zekModBoxInfo(Poll, Converter, object):
                 if days > 0:
                     uptime += str(days) + " " + (days == 1 and "dzień" or "dni" ) + ", "
                 if len(uptime) > 0 or hours > 0:
-                    uptime += str(hours) + " " + (hours == 1 and "godzina" or "godzin" ) + ", "
+                    if hours == 1:
+                        uptime += str(hours) + " godzina, "
+                    elif hours in (2,3,4):
+                        uptime += str(hours) + " godziny, "
+                    else:
+                        uptime += str(hours) + " godzin, "
                 if len(uptime) > 0 or minutes > 0:
-                    uptime += str(minutes) + " " + (minutes == 1 and "minuta" or "minut" )
+                    if minutes == 1:
+                        uptime += str(minutes) + " minuta"
+                    elif minutes in (2,3,4):
+                        uptime += str(minutes) + " minuty"
+                    else:
+                        uptime += str(minutes) + " minut"
                 if self.justValue: retTXT = "%s" % uptime
-                else: retTXT =  "Czas pracy: %s" % uptime
+                else: retTXT =  _("Uptime: %s") % uptime
             else:
                 if days > 0:
                     uptime += str(days) + " " + (days == 1 and "day" or "days" ) + ", "
@@ -125,7 +141,7 @@ class j00zekModBoxInfo(Poll, Converter, object):
                 if len(uptime) > 0 or minutes > 0:
                     uptime += str(minutes) + " " + (minutes == 1 and "minute" or "minutes" )
                 if self.justValue: retTXT = "%s" % uptime
-                else: retTXT =  "Uptime: %s" % uptime
+                else: retTXT =  _("Uptime: %s") % uptime
         except Exception:
             pass
         return retTXT
