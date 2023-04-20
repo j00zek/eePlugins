@@ -60,6 +60,8 @@ def sessionstart(reason, session = None):
         os.remove("/tmp/StreamlinkConfig.log")
     DBGlog("autostart")
     runCMD('/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/bin/re-initiate.sh;streamlinkSRV restart;killall -9 streamlinkProxy.py')
+    if config.plugins.streamlinkSRV.Verify4Wrappers.value == 'y':
+        runCMD('/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/bin/autoCorrectFramework4Wrappers.sh')
     from Screens.Standby import inStandby
     if reason == 0 and config.plugins.streamlinkSRV.StandbyMode.value == True:
         DBGlog('reason == 0 and StandbyMode enabled')
