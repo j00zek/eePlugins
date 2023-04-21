@@ -598,21 +598,21 @@
     backgroundColor="black"
     transparent="1" />
     <widget name="timeline_now" position="30,130" zPosition="10" size="20,158" pixmap="BlackHarmony/gfx/timeline-now1.png" alphatest="blend" />
-    <ePixmap pixmap="BlackHarmony/buttons/red.png" position="95,1021" size="35,27" alphatest="blend" />
-    <ePixmap pixmap="BlackHarmony/buttons/green.png" position="430,1021" size="35,27" alphatest="blend" />
-    <ePixmap pixmap="BlackHarmony/buttons/yellow.png" position="760,1021" size="35,27" alphatest="blend" />
-    <ePixmap pixmap="BlackHarmony/buttons/blue.png" position="1090,1021" size="35,27" alphatest="blend" />
-    <widget objectTypes="key_red,Label,Button" name="key_red" position="150,1020" size="240,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" valign="bottom" />
-	<widget objectTypes="key_red,StaticText" source="key_red" render="Label" position="150,1020" size="240,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" valign="bottom" />
-    <widget objectTypes="key_green,Label,Button" name="key_green" position="480,1020" size="240,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
-	<widget objectTypes="key_green,StaticText" source="key_green" render="Label" position="480,1020" size="240,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
-    <widget objectTypes="key_yellow,Label,Button" name="key_yellow" position="810,1005" size="240,55" zPosition="1" font="Roboto_HD; 24" halign="left" valign="center" backgroundColor="dark_grey" transparent="1" />
-	<widget objectTypes="key_yellow,StaticText" source="key_yellow" render="Label" position="810,1005" size="240,55" zPosition="1" font="Roboto_HD; 24" halign="left" valign="center" backgroundColor="dark_grey" transparent="1" />
-    <widget objectTypes="key_blue,Label,Button" name="key_blue" position="1140,1005" size="480,55" zPosition="1" font="Roboto_HD; 24" halign="left" valign="center" backgroundColor="dark_grey" transparent="1" />
-	<widget objectTypes="key_blue,StaticText" source="key_blue" render="Label" position="1140,1005" size="480,55" zPosition="1" font="Roboto_HD; 24" halign="left" valign="center" backgroundColor="dark_grey" transparent="1" />
-    <ePixmap position="1789,1019" size="60,30" pixmap="BlackHarmony/buttons/key_infoo.png" alphatest="blend" />
-    <ePixmap position="1650,1019" size="60,30" pixmap="BlackHarmony/buttons/key_menu.png" alphatest="blend" />
-    <ePixmap position="1720,1019" size="60,30" pixmap="BlackHarmony/buttons/key_info.png" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/red.png" position="45,305" size="35,27" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/green.png" position="380,305" size="35,27" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/yellow.png" position="710,305" size="35,27" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/blue.png" position="1040,305" size="35,27" alphatest="blend" />
+    <widget objectTypes="key_red,Label,Button" name="key_red" position="100,290" size="240,54" zPosition="1" font="Roboto_HD; 24" halign="left" valign="center" backgroundColor="dark_grey" transparent="1"  />
+	<widget objectTypes="key_red,StaticText" source="key_red" render="Label" position="100,290" size="240,54" zPosition="1" font="Roboto_HD; 24" halign="left" valign="center" backgroundColor="dark_grey" transparent="1"  />
+    <widget objectTypes="key_green,Label,Button" name="key_green" position="430,290" size="240,54" zPosition="1" font="Roboto_HD; 24" halign="left" valign="center" backgroundColor="dark_grey" transparent="1" />
+	<widget objectTypes="key_green,StaticText" source="key_green" render="Label" position="430,290" size="240,54" zPosition="1" font="Roboto_HD; 24" halign="left" valign="center" backgroundColor="dark_grey" transparent="1" />
+    <widget objectTypes="key_yellow,Label,Button" name="key_yellow" position="760,290" size="240,54" zPosition="1" font="Roboto_HD; 24" halign="left" valign="center" backgroundColor="dark_grey" transparent="1" />
+	<widget objectTypes="key_yellow,StaticText" source="key_yellow" render="Label" position="760,290" size="240,54" zPosition="1" font="Roboto_HD; 24" halign="left" valign="center" backgroundColor="dark_grey" transparent="1" />
+    <widget objectTypes="key_blue,Label,Button" name="key_blue" position="1090,290" size="480,54" zPosition="1" font="Roboto_HD; 24" halign="left" valign="center" backgroundColor="dark_grey" transparent="1" />
+	<widget objectTypes="key_blue,StaticText" source="key_blue" render="Label" position="1090,290" size="480,54" zPosition="1" font="Roboto_HD; 24" halign="left" valign="center" backgroundColor="dark_grey" transparent="1" />
+    <ePixmap position="1610,304" size="60,30" pixmap="BlackHarmony/buttons/key_ok.png" alphatest="blend" />
+	<ePixmap position="1680,304" size="60,30" pixmap="BlackHarmony/buttons/key_info.png" alphatest="blend" />
+	<ePixmap position="1749,304" size="60,30" pixmap="BlackHarmony/buttons/key_menu.png" alphatest="blend" />
  </screen>
  <screen name="InfoBarEventView" position="30,20" size="1920,1080" title="InfoBar Event View" backgroundColor="transparent" flags="wfNoBorder">
 	<ePixmap position="0,0" size="1920,1080" zPosition="-7" pixmap="BlackHarmony/bg_design/epg_text.png"/>
