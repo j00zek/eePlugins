@@ -15,7 +15,7 @@ except Exception:
         return ''
 
 DBG = False
-FULLDBG = True
+FULLDBG = False
 
 try:
     if DBG: from Components.j00zekComponents import j00zekDEBUG
@@ -146,15 +146,30 @@ class j00zekModEventName(Poll, Converter, object):
                 elif self.type == self.NAME and hasattr(self.source, 'service'):
                     service = self.source.getCurrentService()
                     if service and service.type in (4097,5001,5002):
-                        sname = service.getPath().split('/')[-1].rsplit('.', 1)[0].replace('_', ' ')
-                        self.setPoll(1000,False,"[j00zekModEventName:getText] event is None, movie name found")
+                        sname = service.getPath()
+                        if DBG: j00zekDEBUG("[j00zekModEventName:getText] event is None sname = '%s'" % sname)
+                        if sname.startswith('http://127.0.0.1'):
+                            sname = _("Streamlink IPTV stream")
+                            if DBG: j00zekDEBUG("[j00zekModEventName:getText] event is None & is iptv service, returning '%s'" % sname)
+                        elif sname.startswith('YT-DL'):
+                            sname = _("wrapped YT-IPTV stream")
+                            if DBG: j00zekDEBUG("[j00zekModEventName:getText] event is None & is iptv service, returning '%s'" % sname)
+                        elif sname.startswith('streamlink'):
+                            sname = _("wrapped IPTV stream")
+                            if DBG: j00zekDEBUG("[j00zekModEventName:getText] event is None & is iptv service, returning '%s'" % sname)
+                        elif sname.startswith('http'):
+                            sname = _("direct IPTV stream")
+                            if DBG: j00zekDEBUG("[j00zekModEventName:getText] event is None & is iptv service, returning '%s'" % sname)
+                        else:
+                            sname = sname.split('/')[-1].rsplit('.', 1)[0].replace('_', ' ')
+                            self.setPoll(1000,False,"[j00zekModEventName:getText] event is None, movie name found")
                         return sname
                 elif self.WaitForEvent == True:
                     self.setPoll(100,True,"[j00zekModEventName:getText] event is None, wating 100ms")
                     self.WaitForEvent = False
                     return ""
             except Exception as e:
-                if DBG: j00zekDEBUG("[j00zekModEventName:getText] exception" % str(e))
+                if DBG: j00zekDEBUG("[j00zekModEventName:getText] EXCEPTION: %s" % str(e))
             self.setPoll(1000,False,"[j00zekModEventName:getText] event is None, polling every second")
             return ""
         else:

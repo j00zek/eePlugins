@@ -42,7 +42,7 @@ except Exception:
     import requests
 
 
-DBG = True
+DBG = False
 
 try:
     from PIL import Image
