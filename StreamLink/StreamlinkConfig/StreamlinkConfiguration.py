@@ -74,10 +74,13 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         else:
             Mlist.append(getConfigListEntry('\c00289496' + _("*** Available IPTV bouquets ***"), config.plugins.streamlinkSRV.One))
             if self.VisibleSection == 1:
+                fileslist = []
+                self.setButtonsNames()
                 for f in sorted(os.listdir("/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/IPTVbouquets"), key=str.lower):
                     if f.startswith('OFF') or f.endswith('OFF') or f.endswith('OFF-not updated'):
                         pass
                     elif os.path.exists('/etc/enigma2/%s' % f):
+                        fileslist.append(f)
                         Mlist.append(getConfigListEntry(_("Press OK to remove: %s") % f , config.plugins.streamlinkSRV.removeBouquet))
                     else:
                         Mlist.append(getConfigListEntry(_("Press OK to add: %s") % f , config.plugins.streamlinkSRV.installBouquet))
@@ -85,6 +88,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                     if f.startswith('generate_') and f.endswith('.py'):
                         bname = f[9:-3]
                         if os.path.exists('/etc/enigma2/%s' % bname):
+                            fileslist.append(bname)
                             Mlist.append(getConfigListEntry(_("Press OK to remove: %s") % bname , config.plugins.streamlinkSRV.removeBouquet))
                         else:
                             Mlist.append(getConfigListEntry(_("Press OK to create: %s") % bname , config.plugins.streamlinkSRV.generateBouquet))
@@ -97,15 +101,32 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                         fUrl = f[0]
                         bname = _('%s (%s)') % (f[1], f[2])
                         if os.path.exists('/etc/enigma2/%s' % f[1]):
+                            fileslist.append(f[1])
                             Mlist.append(getConfigListEntry(_("Press OK to remove: %s") % f[1] , config.plugins.streamlinkSRV.removeBouquet))
                         else:
                             Mlist.append(getConfigListEntry(_("Press OK to download: %s") % bname , config.plugins.streamlinkSRV.downloadBouquet, fUrl))
                 else:
                     Mlist.append(getConfigListEntry(_("Support of azman IPTV lists:"), config.plugins.streamlinkSRV.azmanEnabled))
-                    
+
+                Mlist.append(getConfigListEntry('\c00009898' + _('Unmanaged IPTV bouquets')))
+                for f in sorted(os.listdir("/etc/enigma2"), key=str.lower):
+                    if f.startswith('userbouquet.') and f.endswith('.tv') and not f in fileslist and not f in ['userbouquet.LastScanned.tv','userbouquet.WPPL.tv']:
+                        DBGlog(f)
+                        with open('/etc/enigma2/%s' % f, 'r') as fp:
+                            try:
+                                fpc = fp.read()
+                            except Exception:
+                                pass
+                            fp.close()
+                            services = fpc.count('#SERVICE ') - fpc.count('64:0:0:0:0:0:0:0:0::')
+                            IPTVservices = services - fpc.count('::')
+                            if IPTVservices > 0:
+                                Mlist.append(getConfigListEntry(_("%s with %s/%s IPTV services") % (f, IPTVservices, services) , config.plugins.streamlinkSRV.unmanagedBouquet))
+
             Mlist.append(getConfigListEntry(""))
             Mlist.append(getConfigListEntry('\c00289496' + _("*** %s configuration ***") % 'pilot.wp.pl', config.plugins.streamlinkSRV.Two))
             if self.VisibleSection == 2:
+                self.setButtonsNames()
                 Mlist.append(getConfigListEntry(_("Username:"), config.plugins.streamlinkSRV.WPusername))
                 Mlist.append(getConfigListEntry(_("Password:"), config.plugins.streamlinkSRV.WPpassword))
                 Mlist.append(getConfigListEntry(_("Check login credentials"), config.plugins.streamlinkSRV.WPlogin))
@@ -118,6 +139,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                 Mlist.append(getConfigListEntry(""))
                 Mlist.append(getConfigListEntry('\c00289496' + _("*** remote E2 helper ***"), config.plugins.streamlinkSRV.Three))
                 if self.VisibleSection == 3:
+                    self.setButtonsNames()
                     Mlist.append(getConfigListEntry(_("IP address:"), config.plugins.streamlinkSRV.remoteE2address))
                     Mlist.append(getConfigListEntry(_("Streaming port:"), config.plugins.streamlinkSRV.remoteE2port))
                     Mlist.append(getConfigListEntry(_("Username:"), config.plugins.streamlinkSRV.remoteE2username))
@@ -128,6 +150,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                 Mlist.append(getConfigListEntry(""))
                 Mlist.append(getConfigListEntry('\c00289496' + _("*** Deamon configuration ***"), config.plugins.streamlinkSRV.Four))
                 if self.VisibleSection == 4 or config.plugins.streamlinkSRV.enabled.value == False:
+                    self.setButtonsNames()
                     Mlist.append(getConfigListEntry(_("Enable deamon:"), config.plugins.streamlinkSRV.enabled))
                     Mlist.append(getConfigListEntry(_("Port number (127.0.0.1:X):"), config.plugins.streamlinkSRV.PortNumber))
                     Mlist.append(getConfigListEntry(_("Log level:"), config.plugins.streamlinkSRV.logLevel))
@@ -148,6 +171,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                 Mlist.append(getConfigListEntry(""))
                 Mlist.append(getConfigListEntry('\c00289496' + _("*** /etc/streamlink/config ***"), config.plugins.streamlinkSRV.Five))
                 if self.VisibleSection == 5:
+                    self.setButtonsNames()
                     for cfg in getStreamlinkConfig():
                         if cfg.startswith('ffmpeg-ffmpeg='):
                             Mlist.append(getConfigListEntry("ffmpeg-ffmpeg=" , config.plugins.streamlinkSRV.streamlinkconfigFFMPEG))
@@ -185,7 +209,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
             self["key_green"] = Label(_("Save"))
             self["key_blue"] = Label(_("Restart daemon"))
             if os.path.exists('/usr/lib/python2.7'):
-                self["key_yellow"] = Label(_("Check status"))
+                self["key_yellow"] = Label()
             elif os.path.exists('/tmp/streamlinkSRV.log'):
                 self["key_yellow"] = Label(_("Show log"))
         else:
@@ -257,6 +281,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         self.VisibleSection -= 1
         if self.VisibleSection < 1:
             self.VisibleSection = 5
+        self.setButtonsNames()
         self.refreshBuildList()
         
     def nextConf(self):
@@ -264,8 +289,17 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         self.VisibleSection += 1
         if self.VisibleSection > 5:
             self.VisibleSection = 1
+        self.setButtonsNames()
         self.refreshBuildList()
-        
+
+    def setButtonsNames(self):
+        if self.VisibleSection == 0:
+            pass
+        elif self.VisibleSection == 1:
+            self["key_yellow"].setText(_("Userbouquets tools"))
+        else:
+            self["key_yellow"].setText(_("Check status"))
+    
     def layoutFinished(self):
         self.VisibleSection = 0
         self.DoBuildList.start(10, True)
