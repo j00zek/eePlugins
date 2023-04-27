@@ -57,8 +57,8 @@
     <key id="KEY_RIGHT"  mapto="right"        flags="mr" />
     <key id="KEY_UP"     mapto="right"        flags="m" />
     <key id="KEY_DOWN"   mapto="left"         flags="m" />
-    <key id="KEY_ENTER"  mapto="right"        flags="m" />
-    <key id="KEY_OK"     mapto="right"        flags="m" />
+    <key id="KEY_ENTER"  mapto="PlayPause"    flags="m" />
+    <key id="KEY_OK"     mapto="PlayPause"    flags="m" />
     <key id="KEY_RED"    mapto="red"          flags="m" />
     <key id="KEY_GREEN"  mapto="PlayPause"    flags="m" />
     <key id="KEY_YELLOW" mapto="PlayPause"    flags="m" />

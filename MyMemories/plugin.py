@@ -397,11 +397,15 @@ class picshow(Screen):
     def showThumb(self):
         if not self.filelist.canDescent():
             if self.filelist.getCurrentDirectory() and self.filelist.getFilename():
-                if config.mymemories.autoRotate.value and autorotate(self.filelist.getCurrentDirectory() + self.filelist.getFilename()):
+                #if DBG: printDEBUG("self.filelist.getFilename() = '%s'" % self.filelist.getFilename())
+                thumbFileName = self.filelist.getFilename()
+                if not thumbFileName.startswith('/'):
+                    thumbFileName = os.path.join(self.filelist.getCurrentDirectory(), thumbFileName)
+                if config.mymemories.autoRotate.value and autorotate(thumbFileName):
                     if self.picload.getThumbnail('/tmp/rotated.jpg') == 1:
                         self.ThumbTimer.start(500, True)
                 else:
-                    if self.picload.getThumbnail(self.filelist.getCurrentDirectory() + self.filelist.getFilename()) == 1:
+                    if self.picload.getThumbnail(thumbFileName) == 1:
                         self.ThumbTimer.start(500, True)
 
     def selectionChanged(self):
@@ -779,7 +783,7 @@ class Pic_Thumb(Screen):
         self.paintFrame()
 
     def paintFrame(self):
-        #vtilog("index=" + str(self.index))
+        if DBG: printDEBUG("index=" + str(self.index))
         if self.maxentry < self.index or self.index < 0:
             return
 
@@ -872,18 +876,21 @@ class Pic_Thumb(Screen):
 
 class Pic_Full_View(Screen):
     def __init__(self, session, filelist, index, path):
-
+        if DBG: printDEBUG("Pic_Full_View.__init__ >>>")
         self.textcolor = config.mymemories.textcolor.value
         self.bgcolor = config.mymemories.bgcolor.value
         space = config.mymemories.picMargin.value
         size_w = getDesktop(0).size().width()
         size_h = getDesktop(0).size().height()
 
-        self.skin = "<screen position=\"0,0\" size=\"" + str(size_w) + "," + str(size_h) + "\" flags=\"wfNoBorder\" > \
-            <eLabel position=\"0,0\" zPosition=\"0\" size=\""+ str(size_w) + "," + str(size_h) + "\" backgroundColor=\""+ self.bgcolor +"\" /><widget name=\"pic\" position=\"" + str(space) + "," + str(space) + "\" size=\"" + str(size_w-(space*2)) + "," + str(size_h-(space*2)) + "\" zPosition=\"1\" alphatest=\"on\" /> \
-            <widget name=\"point\" position=\""+ str(space+5) + "," + str(space+2) + "\" size=\"20,20\" zPosition=\"2\" pixmap=\"skin_default/icons/record.png\" alphatest=\"on\" /> \
-            <widget name=\"play_icon\" position=\""+ str(space+25) + "," + str(space+2) + "\" size=\"20,20\" zPosition=\"2\" pixmap=\"skin_default/icons/ico_mp_play.png\"  alphatest=\"on\" /> \
-            <widget source=\"file\" render=\"Label\" position=\""+ str(space+45) + "," + str(space) + "\" size=\""+ str(size_w-(space*2)-50) + ",25\" font=\"Regular;20\" halign=\"left\" foregroundColor=\"" + self.textcolor + "\" zPosition=\"2\" noWrap=\"1\" transparent=\"1\" /></screen>"
+        self.skin = '<screen position="0,0" size="%s,%s" flags="wfNoBorder" >' % (str(size_w) , str(size_h))
+        self.skin += '<eLabel position="0,0" zPosition="0" size="%s,%s" backgroundColor="%s" />' % (str(size_w) , str(size_h), self.bgcolor)
+        self.skin += '<widget name="pic" position="%s,%s" size="%s,%s" zPosition="1" alphatest="on" />' % (str(space) , str(space), str(size_w-(space*2)) , str(size_h-(space*2)) )
+        self.skin += '<widget name="point" position="%s,%s" size="20,20" zPosition="2" pixmap="skin_default/icons/record.png" alphatest="on" />' % (str(space+5) , str(space+5))
+        self.skin += '<widget name="play_icon" position="%s,%s" size="20,20" zPosition="2" pixmap="skin_default/icons/ico_mp_play.png"  alphatest="on" />' % (str(space+25) , str(space+5))
+        self.skin += '<widget name="pause_icon" position="%s,%s" size="20,20" zPosition="2" pixmap="skin_default/icons/ico_mp_pause.png" alphatest="on" />' % (str(space+25) , str(space+5))
+        self.skin += '<widget source="file" render="Label" position="%s,%s" size="%s,25" font="Regular;20" halign="left" foregroundColor="%s" zPosition="2" noWrap="1" transparent="1" />' % ( str(space+45) , str(space), str(size_w-(space*2)-50), self.textcolor )
+        self.skin +='</screen>'
 
         Screen.__init__(self, session)
 
@@ -902,6 +909,7 @@ class Pic_Full_View(Screen):
         self["point"] = Pixmap()
         self["pic"] = Pixmap()
         self["play_icon"] = Pixmap()
+        self["pause_icon"] = Pixmap()
         self["file"] = StaticText(_("please wait, loading picture..."))
 
         self.old_index = 0
@@ -914,7 +922,10 @@ class Pic_Full_View(Screen):
         for x in filelist:
             if len(filelist[0]) == 3: #orig. filelist
                 if x[0][1] == False:
-                    self.filelist.append(path + x[0][0])
+                    if x[0][0].startswith('/'):
+                        self.filelist.append(x[0][0])
+                    else:
+                        self.filelist.append(os.path.join(path , x[0][0]))
                 else:
                     self.dirlistcount += 1
             elif len(filelist[0]) == 2: #scanlist
@@ -945,6 +956,7 @@ class Pic_Full_View(Screen):
         if DBG: printDEBUG("class Pic_Full_View initiated, pictures=%s" % len(self.filelist))
 
     def setPicloadConf(self):
+        if DBG: printDEBUG("Pic_Full_View.setPicloadConf() >>>")
         sc = getScale()
         self.picload.setPara([self["pic"].instance.size().width(), self["pic"].instance.size().height(), sc[0], sc[1], 0, int(config.mymemories.resize.value), self.bgcolor])
 
@@ -954,6 +966,7 @@ class Pic_Full_View(Screen):
         self.start_decode()
 
     def ShowPicture(self):
+        if DBG: printDEBUG("Pic_Full_View.ShowPicture() >>>")
         if self.shownow and len(self.currPic):
             self.shownow = False
             self["file"].setText(self.currPic[0])
@@ -965,6 +978,7 @@ class Pic_Full_View(Screen):
             self.start_decode()
 
     def finish_decode(self, picInfo=""):
+        if DBG: printDEBUG("Pic_Full_View.finish_decode(picInfo='%s')" % picInfo)
         self["point"].hide()
         ptr = self.picload.getData()
         if ptr != None:
@@ -985,6 +999,7 @@ class Pic_Full_View(Screen):
 
     def start_decode(self):
         selItem = self.filelist[self.index]
+        if DBG: printDEBUG("Pic_Full_View.start_decode(selItem='%s')" % selItem)
         if selItem.lower().endswith('.mp4'):
             if DBG: printDEBUG("mp4 not playable by picture decoder")
             return
@@ -1006,7 +1021,7 @@ class Pic_Full_View(Screen):
             self.index = self.maxentry
 
     def slidePic(self):
-        vtilog("slide to next Picture index=" + str(self.lastindex))
+        if DBG: printDEBUG("slide to next Picture index=" + str(self.lastindex))
         if config.mymemories.loop.value==False and self.lastindex == self.maxentry:
             self.PlayPause()
         self.shownow = True
@@ -1016,9 +1031,11 @@ class Pic_Full_View(Screen):
         if self.slideTimer.isActive():
             self.slideTimer.stop()
             self["play_icon"].hide()
+            self["pause_icon"].show()
         else:
             self.slideTimer.start(config.mymemories.slidetime.value*1000)
             self["play_icon"].show()
+            self["pause_icon"].hide()
             self.nextPic()
 
     def prevPic(self):
