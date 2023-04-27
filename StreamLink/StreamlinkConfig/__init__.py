@@ -61,13 +61,13 @@ config.plugins.streamlinkSRV.PortNumber = ConfigSelection(default = "8088", choi
 config.plugins.streamlinkSRV.bufferPath = ConfigText(default = "/tmp", fixed_size = False)
 
 config.plugins.streamlinkSRV.Recorder = ConfigEnableDisable(default = False)
-config.plugins.streamlinkSRV.RecordMaxTime = ConfigSelection(default = "120", choices = [("120", "2h"), ("180", "3h"),])
+config.plugins.streamlinkSRV.RecordMaxTime = ConfigSelection(default = "120", choices = [("120", _("2h")), ("180", _("3h")),])
 
 config.plugins.streamlinkSRV.StandbyMode = ConfigEnableDisable(default = False)
 config.plugins.streamlinkSRV.streamlinkProxy1 = ConfigText(default = readCFG('streamlinkProxy1'), fixed_size = False)
 
-config.plugins.streamlinkSRV.useWrappers = ConfigSelection(default = "n", choices = [("n", "No"), ("m", "Yes, try modify bouquets"), ("y", "Yes, don't modify bouquets"),])
-config.plugins.streamlinkSRV.Verify4Wrappers = ConfigSelection(default = "n", choices = [("n", "No"), ("y", "Yes"),])
+config.plugins.streamlinkSRV.useWrappers = ConfigSelection(default = "n", choices = [("n", _("No")), ("m", _("Yes, try modify bouquets")), ("y", _("Yes, don't modify bouquets")),])
+config.plugins.streamlinkSRV.Verify4Wrappers = ConfigSelection(default = "n", choices = [("n", _("No")), ("y", _("Yes")),])
 
 # pilot.wp.pl
 config.plugins.streamlinkSRV.WPusername = ConfigText(readCFG('WPusername'), fixed_size = False)
