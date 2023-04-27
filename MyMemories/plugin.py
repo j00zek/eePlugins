@@ -35,6 +35,24 @@ if [ -f /tmp/mybootlogo.m1v ];then
 fi
 """ # podaje sie pelna sciezka do jpg , orginalne bootlogo /usr/share/bootlogo.mvi
 
+moveWebCamFiles="""
+#!/bin/bash
+camsFolder=%s
+bkpFolder=$camsFolder/bkp/
+mkdir -p $bkpFolder
+cd $camsFolder
+find $camsFolder -type f -mtime +%s -exec rm -f {} +
+for f in `find $camsFolder -type f`;
+do
+        if [ `echo $f|grep -c "$bkpFolder"` -eq 0 ];then
+                f2=`echo $f|sed "s;$camsFolder;;"|sed "s;/;_;g"|sed "s;\[.*\];;g"|sed "s;_jpg_;-;g"|sed "s;_dav_;-;g"`
+                mv -f $f $bkpFolder/$f2
+                echo "mv -f $f $bkpFolder/$f2"
+        fi
+done
+find $camsFolder -type d -empty -delete
+"""
+
 pyVersion = sys.version_info[0]
 
 def isPY2():
@@ -91,7 +109,7 @@ if pathExists('/usr/lib/enigma2/python/Plugins/Extensions/AdvancedFreePlayer/AFP
 if os.path.exists('/hdd/kamerki'):
     config.mymemories.webcamMode = ConfigEnableDisable(default=True)
     config.mymemories.webcamRootDir = ConfigDirectory(default='/hdd/kamerki')
-    config.mymemories.webcamCleanFiles = ConfigInteger(default=7, limits=(0, 21))
+    config.mymemories.webcamCleanFiles = ConfigInteger(default=21, limits=(7, 21))
 else:
     config.mymemories.webcamMode = ConfigEnableDisable(default=True)
     config.mymemories.webcamRootDir = ConfigDirectory(default='/hdd/webcamFiles')
@@ -233,6 +251,8 @@ def leaveStandby():
             MyMemoriesWakeUpPicDialog.start_decode()
             setAlpha(255) #disable Alpha 
             MyMemoriesWakeUpPicDialog.show()
+            if config.mymemories.webcamMode.value == True:
+                open("/tmp/manageWebcams.sh", "w").write(moveWebCamFiles % (config.mymemories.webcamRootDir.value, config.mymemories.webcamCleanFiles.value))
         else:
             if DBG: printDEBUG('leaveStandby() %s does not exists' %config.mymemories.currWakeUpPic.value )
 
