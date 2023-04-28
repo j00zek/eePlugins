@@ -51,7 +51,12 @@ class j00zekModTestConnection(Converter, object):
         if self.testDisabled:
             return
         else:
-            if self.testThread is None or not self.testThread.isAlive():
+            try:
+                is_testThread_Alive = self.testThread.isAlive()
+            except Exception: #python 3.9+
+                is_testThread_Alive = self.testThread.is_alive()
+            
+            if self.testThread is None or not is_testThread_Alive:
                 self.testThread = Thread(target=self.test)
                 self.testThread.start()
                 if self.testPause > 0:
@@ -61,18 +66,18 @@ class j00zekModTestConnection(Converter, object):
             return
 
     def get_iface_list(self):
-        names = array.array('B', '\x00' * BYTES)
+        names = array.array('B', b'\x00' * BYTES)
         sck = socket(AF_INET, SOCK_DGRAM)
         bytelen = struct.unpack('iL', fcntl.ioctl(sck.fileno(), SIOCGIFCONF, struct.pack('iL', BYTES, names.buffer_info()[0])))[0]
         sck.close()
         namestr = names.tostring()
-        return [ namestr[i:i + 32].split('\x00', 1)[0] for i in range(0, bytelen, 32) ]
+        return [ namestr[i:i + 32].split(b'\x00', 1)[0] for i in range(0, bytelen, 32) ]
 
     def test(self):
         prevOK = self.testOK
         link = 'down'
         for iface in self.get_iface_list():
-            if 'lo' in iface:
+            if b'lo' in iface:
                 continue
             if os_path.exists('/sys/class/net/%s/operstate' % iface):
                 fd = open('/sys/class/net/%s/operstate' % iface, 'r')
