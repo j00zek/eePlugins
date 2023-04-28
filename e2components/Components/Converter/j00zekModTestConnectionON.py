@@ -51,12 +51,15 @@ class j00zekModTestConnectionON(Converter, object):
         if self.testDisabled:
             return
         else:
-            try:
-                is_testThread_Alive = self.testThread.isAlive()
-            except Exception: #python 3.9+
-                is_testThread_Alive = self.testThread.is_alive()
+            if self.testThread is None:
+                is_testThread_Alive = False
+            else:
+                try:
+                    is_testThread_Alive = self.testThread.isAlive()
+                except Exception: #python 3.9+
+                    is_testThread_Alive = self.testThread.is_alive()
             
-            if self.testThread is None or not is_testThread_Alive:
+            if not is_testThread_Alive:
                 self.testThread = Thread(target=self.test)
                 self.testThread.start()
                 if self.testPause > 0:
