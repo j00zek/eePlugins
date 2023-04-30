@@ -1,7 +1,7 @@
 <skin>
   <!-- LCD-Skin by HOMAR UNO4KSE -->
   <!-- 23.02.2019 -->
-  <!-- 23.03.2023 Mod by @Kos -->
+  <!-- 25.04.2023 Mod by @Kos -->
     <fonts>
         <font filename="/usr/share/enigma2/HomarLCDskins/fonts/BoldCondensed.ttf" name="VFD" scale="100"/>
         <font filename="/usr/share/enigma2/HomarLCDskins/fonts/MyriadPro-Regular.otf" name="RegularLCD" scale="100"/>
@@ -16,6 +16,7 @@
         <color name="HMRstartTime" value="#ffff66"/>
         <color name="HMRname" value="#ffff00"/>
         <color name="HMRendTime" value="#ff3333"/>
+        <color name="light_yellow" value="#FDE456"/>
     </colors>
     <windowstyle type="skinned" id="1">
         <color name="Background" color="#000000" />
@@ -293,6 +294,21 @@
         <eLabel position="0,120" size="400,3" backgroundColor="#00FFFFFF" />
         <widget source="desc" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=top,steptime=70,repeat=0,startdelay=6000,wrap" font="VFD;36" position="20,120" size="360,130" halign="center" valign="center" backgroundColor="black" transparent="1">
         </widget>
+    </screen>
+
+<!-- MountManager -->
+    <screen name="DevicesPanelSummary" position="0,0" size="400,240" id="1">
+      <ePixmap pixmap="HomarLCDskins/Homar_UNO4KSE/Homar_1.png" position="0,0" size="400,240" zPosition="-1" alphatest="blend" />
+        <widget source="entry" render="j00zekLabel" position="10,10" size="390,50" font="VFD;32" halign="left" valign="center" foregroundColor="light_yellow" backgroundColor="black" transparent="1"/>
+        <widget source="desc" render="j00zekLabel" position="10,80" size="390,160" font="VFD;32" halign="left" valign="center" backgroundColor="black" transparent="1"/>
+    </screen>
+
+<!-- NetworkServices -->
+    <screen name="NetworkServicesSummary" position="0,0" size="400,240" id="1">
+      <ePixmap pixmap="HomarLCDskins/Homar_UNO4KSE/Homar_1.png" position="0,0" size="400,240" zPosition="-1" alphatest="blend" />
+        <widget source="title" render="j00zekLabel" position="20,10" size="360,80" font="VFD;42" halign="center" valign="top" foregroundColor="HMRname" backgroundColor="black" transparent="1"/>
+        <widget source="status_summary" render="j00zekLabel" position="20,80" size="360,100" font="VFD;34" halign="center" valign="top" foregroundColor="white" backgroundColor="black" transparent="1"/>
+        <widget source="autostartstatus_summary" render="j00zekLabel" position="20,150" size="360,100" font="VFD;34" halign="center" valign="center" foregroundColor="light_yellow" backgroundColor="black" transparent="1"/>
     </screen>
 
 <!-- Simple -->
@@ -645,6 +661,48 @@
         </widget>
         <widget source="session.CurrentService" render="Label" font="VFD;48" position="130,190" size="260,55" halign="right" valign="center" zPosition="1" noWrap="1" foregroundColor="light_yellow" backgroundColor="black" transparent="1">
             <convert type="j00zekE2iPlayer">RemindedMinutes</convert>
+        </widget>
+    </screen>
+
+<!-- RdsInfoDisplay -->
+    <screen name="RdsInfoDisplaySummary" position="0,0" size="400,240" id="1">
+      <ePixmap pixmap="HomarLCDskins/Homar_UNO4KSE/Homar_4.png" position="0,0" size="400,240" zPosition="-1" alphatest="blend" />
+        <widget source="session.CurrentService" render="j00zekPiconAnimation" pixmaps="HomarLCDskins/common/animated" position="10,10" size="280,135" zPosition="5" transparent="1" alphatest="blend" />
+        <widget source="session.CurrentService" render="Picon" position="10,10" size="280,135" zPosition="4" alphatest="blend" transparent="1">
+            <convert type="j00zekModServiceName2">Reference</convert>
+        </widget>
+        <widget source="message" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=40" position="10,145" size="390,58" zPosition="4" font="VFD;52" noWrap="1" halign="left" valign="top" foregroundColor="HMRname" backgroundColor="black" transparent="1"/>
+        <widget source="global.CurrentTime" render="Label" position="10,195" size="130,58" zPosition="4" font="VFD;40" halign="left" valign="center" foregroundColor="white" backgroundColor="black" transparent="1">
+            <convert type="ClockToText">Format:%H:%M</convert>
+        </widget>
+        <eLabel position="108,210" size="195,30" backgroundColor="#36454F" zPosition="2" />
+        <widget source="session.Event_Now" render="Progress" pixmap="HomarLCDskins/Homar_UNO4KSE/Homar_LCD1.png" position="108,210" size="195,30" zPosition="3" borderWidth="6" borderColor="#7A7D80" foregroundColor="#36454F" transparent="1">
+            <convert type="EventTime">Progress</convert>
+        </widget>
+        <widget source="session.Event_Now" render="j00zekModPositionGauge" position="102,210" size="195,24" zPosition="3" pointer="HomarLCDskins/Homar_UNO4KSE/LCD_Gauge.png:1,1" transparent="1">
+            <convert type="j00zekModEventPosition">Gauge</convert>
+        </widget>
+        <widget source="session.Event_Now" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=50,repeat=0,startdelay=10000" noWrap="1" position="308,200" size="90,48" zPosition="3" font="VFD;40" halign="right" valign="center" foregroundColor="white" backgroundColor="black" transparent="1">
+            <convert type="EventTime">Remaining</convert>
+            <convert type="RemainingToText">InMinutes</convert>
+        </widget>
+        <widget source="session.j00zekMSNWeather" render="j00zekMSNWeatherPixmap" position="300,30" size="80,80" zPosition="2" alphatest="blend" transparent="1">
+            <convert type="j00zekMSNWeather">weathericon,current</convert>
+        </widget>
+        <widget source="session.j00zekMSNWeather" render="j00zekLabel" noWrap="1" position="300,100" size="100,55" font="VFD; 48" halign="left" valign="center" zPosition="2" foregroundColor="#00CFFF" backgroundColor="black" transparent="1">
+ 		    <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
+        </widget>
+        <widget source="session.RecordState" render="Pixmap" pixmap="HomarLCDskins/Homar_UNO4KSE/Homar_2.png" position="300,10" size="80,20" zPosition="4" alphatest="blend">
+            <convert type="ConfigEntryTest">config.usage.blinking_rec_symbol_during_recording,True,CheckSourceBoolean</convert>
+            <convert type="ConditionalShowHide">Blink</convert>
+        </widget>
+        <widget source="session.CurrentService" render="Pixmap" pixmap="HomarLCDskins/Homar_UNO4KSE/VTI.png" position="300,10" size="80,20" zPosition="3" alphatest="blend">
+            <convert type="j00zekOPKGupgradeCheck"/>
+            <convert type="ConditionalShowHide">Blink</convert>
+        </widget>
+<!-- Timeshift -->
+        <widget source="session.CurrentService" render="Progress" pixmap="HomarLCDskins/Homar_UNO4KSE/Homar_LCD1.png" position="108,210" size="195,30" borderWidth="6" borderColor="#7A7D80" zPosition="4" transparent="2" >
+            <convert type="ServicePosition">Position</convert>
         </widget>
     </screen>
 
