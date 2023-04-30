@@ -729,7 +729,7 @@ class urlparser:
                        #x
                        'xage.pl': self.pp.parserXAGEPL,
                        'xstreamcdn.com': self.pp.parserXSTREAMCDNCOM,
-                       'xvideoshare.live': self.pp.parserVIDEOBIN,
+                       'xvideoshare.live': self.pp.parserONLYSTREAMTV,
                        'xvidstage.com': self.pp.parserXVIDSTAGECOM,
                        #y
                        'yocast.tv': self.pp.parserYOCASTTV,
