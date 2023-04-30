@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: enigma2-plugins 3.2.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-08-06 00:57+0000\n"
-"PO-Revision-Date: 2020-10-06 06:11+0100\n"
+"PO-Revision-Date: 2023-04-11 21:59+0100\n"
 "Last-Translator: @Kos\n"
 "Language-Team: SHOUTcast\n"
 "Language: pl\n"
@@ -84,17 +84,17 @@ msgstr "Połączony:"
 msgid "Could not play %s"
 msgstr "Nie można odtworzyć %s"
 
-msgid "Cover Position H:"
-msgstr "Okładka Pozycja H:"
+msgid "Cover Position H: *"
+msgstr "Okładka Pozycja H: *"
 
-msgid "Cover Position V:"
-msgstr "Okładka Pozycja V:"
+msgid "Cover Position V: *"
+msgstr "Okładka Pozycja V: *"
 
-msgid "Cover Size H:"
-msgstr "Okładka Rozmiar H:"
+msgid "Cover Size H: *"
+msgstr "Okładka Rozmiar H: *"
 
-msgid "Cover Size V:"
-msgstr "Okładka Rozmiar V:"
+msgid "Cover Size V: *"
+msgstr "Okładka Rozmiar V: *"
 
 msgid "Cover from:"
 msgstr "Okładka z:"
@@ -191,6 +191,12 @@ msgstr "- ( Włoskie )"
 msgid "Loading station list, please wait ..."
 msgstr "Ładowanie listy stacji, proszę czekać ..."
 
+msgid "listen to shoutcast internet-radio"
+msgstr "Słuchaj radia internetowego SHOUTcast"
+
+msgid "listen to shoutcast internet-radio - %s"
+msgstr "Słuchaj radia internetowego SHOUTcast - %s"
+
 msgid "Menu PiP"
 msgstr "Menu PiP"
 
@@ -223,6 +229,9 @@ msgstr "- ( Polskie )"
 
 msgid "Random stations"
 msgstr "- ( Stacje losowe )"
+
+msgid "* = Restart Required"
+msgstr "* = Wymagane ponowne uruchomienie"
 
 msgid "Record"
 msgstr "Nagraj"
@@ -293,10 +302,10 @@ msgid "Station List number:"
 msgstr "Lista Stacji nr:"
 
 msgid ""
-"Station List number: ( 1 - Poland ) ( 2 - Trance ) ( 3 - Dance ) ( 4 - "
+"Station List number:  ( 1 - Poland ) ( 2 - Trance ) ( 3 - Dance ) ( 4 - "
 "Techno ) ( 5 - 90s ) ( 6 - Random stations ) ( 7 - All Stations )"
 msgstr ""
-"Lista Stacji nr: ( 1 - Polskie ) ( 2 - Trance ) ( 3 - Dance ) ( 4 - "
+"Lista Stacji nr:  ( 1 - Polskie ) ( 2 - Trance ) ( 3 - Dance ) ( 4 - "
 "Techno ) ( 5 - Lata 90'te' ) ( 6 - Stacje losowe ) ( 7 - Wszystkie Stacje )"
 
 msgid "Station list from %s %s"
@@ -378,9 +387,6 @@ msgstr "gatunku %s"
 
 msgid "genre: ( %s )"
 msgstr "gatunku: ( %s )"
-
-msgid "listen to shoutcast internet-radio"
-msgstr "Słuchaj radia internetowego SHOUTcast"
 
 msgid "n/a"
 msgstr "Brak Tytulu"
