@@ -2,6 +2,7 @@
 from __future__ import absolute_import #zmiana strategii ladowanie modulow w py2 z relative na absolute jak w py3
 from Plugins.Extensions.StreamlinkConfig.__init__ import mygettext as _ , readCFG , DBGlog
 from Plugins.Extensions.StreamlinkConfig.version import Version
+from Plugins.Extensions.StreamlinkConfig.plugins.azmanIPTVsettings import get_azmanIPTVsettings
 import os
 # GUI (Screens)
 from Components.ActionMap import ActionMap
@@ -56,12 +57,12 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                             <widget name="key_blue"   position="865,630" zPosition="2" size="200,30" foregroundColor="blue"   valign="center" halign="left" font="Regular;22" transparent="1" />
                           </screen>"""
     else:
-        skin = """<screen name="StreamlinkConfiguration" position="center,center" size="700,200" title="Streamlink configuration">
-                            <widget name="config"   position="20,20" size="640,145" zPosition="1" scrollbarMode="showOnDemand" />
-                            <widget name="key_red"    position="20,150" zPosition="2" size="150,30" foregroundColor="red" valign="center" halign="left" font="Regular;22" transparent="1" />
-                            <widget name="key_green"  position="170,150" zPosition="2" size="150,30" foregroundColor="green" valign="center" halign="left" font="Regular;22" transparent="1" />
-                            <widget name="key_yellow" position="360,150" zPosition="2" size="150,30" foregroundColor="yellow" valign="center" halign="left" font="Regular;22" transparent="1" />
-                            <widget name="key_blue"   position="500,150" zPosition="2" size="150,30" foregroundColor="blue" valign="center" halign="left" font="Regular;22" transparent="1" />
+        skin = """<screen name="StreamlinkConfiguration" position="center,center" size="700,400" title="Streamlink configuration">
+                            <widget name="config"   position="20,20" size="640,325" zPosition="1" scrollbarMode="showOnDemand" />
+                            <widget name="key_red"    position="20,350" zPosition="2" size="150,30" foregroundColor="red" valign="center" halign="left" font="Regular;22" transparent="1" />
+                            <widget name="key_green"  position="170,350" zPosition="2" size="150,30" foregroundColor="green" valign="center" halign="left" font="Regular;22" transparent="1" />
+                            <widget name="key_yellow" position="360,350" zPosition="2" size="150,30" foregroundColor="yellow" valign="center" halign="left" font="Regular;22" transparent="1" />
+                            <widget name="key_blue"   position="500,350" zPosition="2" size="150,30" foregroundColor="blue" valign="center" halign="left" font="Regular;22" transparent="1" />
                           </screen>"""
     def buildList(self):
         DBGlog('buildList >>> self.VisibleSection = %s' % self.VisibleSection )
@@ -75,7 +76,6 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
             Mlist.append(getConfigListEntry('\c00289496' + _("*** Available IPTV bouquets ***"), config.plugins.streamlinkSRV.One))
             if self.VisibleSection == 1:
                 fileslist = []
-                self.setButtonsNames()
                 for f in sorted(os.listdir("/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/IPTVbouquets"), key=str.lower):
                     if f.startswith('OFF') or f.endswith('OFF') or f.endswith('OFF-not updated'):
                         pass
@@ -92,25 +92,10 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                             Mlist.append(getConfigListEntry(_("Press OK to remove: %s") % bname , config.plugins.streamlinkSRV.removeBouquet))
                         else:
                             Mlist.append(getConfigListEntry(_("Press OK to create: %s") % bname , config.plugins.streamlinkSRV.generateBouquet))
-                if config.plugins.streamlinkSRV.azmanEnabled.value == True:
-                    from Plugins.Extensions.StreamlinkConfig.plugins.azmanIPTVsettings import get_azmanIPTVsettings
-                    azman = get_azmanIPTVsettings()
-                    Mlist.append(getConfigListEntry('\c00009898' + azman['title']))
-                    azman = azman['userbouquets']
-                    for f in sorted(azman):
-                        fUrl = f[0]
-                        bname = _('%s (%s)') % (f[1], f[2])
-                        if os.path.exists('/etc/enigma2/%s' % f[1]):
-                            fileslist.append(f[1])
-                            Mlist.append(getConfigListEntry(_("Press OK to remove: %s") % f[1] , config.plugins.streamlinkSRV.removeBouquet))
-                        else:
-                            Mlist.append(getConfigListEntry(_("Press OK to download: %s") % bname , config.plugins.streamlinkSRV.downloadBouquet, fUrl))
-                else:
-                    Mlist.append(getConfigListEntry(_("Support of azman IPTV lists:"), config.plugins.streamlinkSRV.azmanEnabled))
 
                 Mlist.append(getConfigListEntry('\c00009898' + _('Unmanaged IPTV bouquets')))
                 for f in sorted(os.listdir("/etc/enigma2"), key=str.lower):
-                    if f.startswith('userbouquet.') and f.endswith('.tv') and not f in fileslist and not f in ['userbouquet.LastScanned.tv','userbouquet.WPPL.tv']:
+                    if f.startswith('userbouquet.') and f.endswith('.tv') and not 'azman' in f and not f in fileslist and not f in ['userbouquet.LastScanned.tv','userbouquet.WPPL.tv']:
                         DBGlog(f)
                         with open('/etc/enigma2/%s' % f, 'r') as fp:
                             try:
@@ -121,12 +106,11 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                             services = fpc.count('#SERVICE ') - fpc.count('64:0:0:0:0:0:0:0:0::')
                             IPTVservices = services - fpc.count('::')
                             if IPTVservices > 0:
-                                Mlist.append(getConfigListEntry(_("%s with %s/%s IPTV services") % (f, IPTVservices, services) , config.plugins.streamlinkSRV.unmanagedBouquet))
+                                Mlist.append(getConfigListEntry(_("OK to change: %s with %s/%s IPTV services") % (f, IPTVservices, services) , config.plugins.streamlinkSRV.unmanagedBouquet))
 
             Mlist.append(getConfigListEntry(""))
             Mlist.append(getConfigListEntry('\c00289496' + _("*** %s configuration ***") % 'pilot.wp.pl', config.plugins.streamlinkSRV.Two))
             if self.VisibleSection == 2:
-                self.setButtonsNames()
                 Mlist.append(getConfigListEntry(_("Username:"), config.plugins.streamlinkSRV.WPusername))
                 Mlist.append(getConfigListEntry(_("Password:"), config.plugins.streamlinkSRV.WPpassword))
                 Mlist.append(getConfigListEntry(_("Check login credentials"), config.plugins.streamlinkSRV.WPlogin))
@@ -136,21 +120,34 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                 Mlist.append(getConfigListEntry(_("Press OK to create %s bouquet") % "userbouquet.WPPL.tv", config.plugins.streamlinkSRV.WPbouquet))
         
             if os.path.islink('/usr/sbin/streamlinkSRV') and 'StreamlinkConfig/' in os.readlink('/usr/sbin/streamlinkSRV'):
-                Mlist.append(getConfigListEntry(""))
-                Mlist.append(getConfigListEntry('\c00289496' + _("*** remote E2 helper ***"), config.plugins.streamlinkSRV.Three))
-                if self.VisibleSection == 3:
-                    self.setButtonsNames()
-                    Mlist.append(getConfigListEntry(_("IP address:"), config.plugins.streamlinkSRV.remoteE2address))
-                    Mlist.append(getConfigListEntry(_("Streaming port:"), config.plugins.streamlinkSRV.remoteE2port))
-                    Mlist.append(getConfigListEntry(_("Username:"), config.plugins.streamlinkSRV.remoteE2username))
-                    Mlist.append(getConfigListEntry(_("Password:"), config.plugins.streamlinkSRV.remoteE2password))
-                    Mlist.append(getConfigListEntry(_("Wakeup if remote E2 in standby:"), config.plugins.streamlinkSRV.remoteE2wakeup))
-                    Mlist.append(getConfigListEntry(_("Zap before stream workarround:"), config.plugins.streamlinkSRV.remoteE2zap))
+                if config.plugins.streamlinkSRV.azmanEnabled.value == True:
+                    Mlist.append(getConfigListEntry(""))
+                    Mlist.append(getConfigListEntry('\c00289496' + "*** azman IPTV lists from github ***",config.plugins.streamlinkSRV.Three))
+                    if self.VisibleSection == 3:
+                        azman = get_azmanIPTVsettings()['userbouquets']
+                        for f in sorted(azman):
+                            fUrl = f[0]
+                            bname = _('%s (%s)') % (f[1], f[2])
+                            if os.path.exists('/etc/enigma2/%s' % f[1]):
+                                fileslist.append(f[1])
+                                Mlist.append(getConfigListEntry(_("Press OK to remove: %s") % f[1] , config.plugins.streamlinkSRV.removeBouquet))
+                            else:
+                                Mlist.append(getConfigListEntry(_("Press OK to download: %s") % bname , config.plugins.streamlinkSRV.downloadBouquet, fUrl))
+            
+                elif os.path.islink('/usr/sbin/streamlinkSRV') and 'StreamlinkConfig/' in os.readlink('/usr/sbin/streamlinkSRV'):
+                    Mlist.append(getConfigListEntry(""))
+                    Mlist.append(getConfigListEntry('\c00289496' + _("*** remote E2 helper ***"), config.plugins.streamlinkSRV.Three))
+                    if self.VisibleSection == 3:
+                        Mlist.append(getConfigListEntry(_("IP address:"), config.plugins.streamlinkSRV.remoteE2address))
+                        Mlist.append(getConfigListEntry(_("Streaming port:"), config.plugins.streamlinkSRV.remoteE2port))
+                        Mlist.append(getConfigListEntry(_("Username:"), config.plugins.streamlinkSRV.remoteE2username))
+                        Mlist.append(getConfigListEntry(_("Password:"), config.plugins.streamlinkSRV.remoteE2password))
+                        Mlist.append(getConfigListEntry(_("Wakeup if remote E2 in standby:"), config.plugins.streamlinkSRV.remoteE2wakeup))
+                        Mlist.append(getConfigListEntry(_("Zap before stream workarround:"), config.plugins.streamlinkSRV.remoteE2zap))
         
                 Mlist.append(getConfigListEntry(""))
                 Mlist.append(getConfigListEntry('\c00289496' + _("*** Deamon configuration ***"), config.plugins.streamlinkSRV.Four))
                 if self.VisibleSection == 4 or config.plugins.streamlinkSRV.enabled.value == False:
-                    self.setButtonsNames()
                     Mlist.append(getConfigListEntry(_("Enable deamon:"), config.plugins.streamlinkSRV.enabled))
                     Mlist.append(getConfigListEntry(_("Port number (127.0.0.1:X):"), config.plugins.streamlinkSRV.PortNumber))
                     Mlist.append(getConfigListEntry(_("Log level:"), config.plugins.streamlinkSRV.logLevel))
@@ -171,7 +168,6 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                 Mlist.append(getConfigListEntry(""))
                 Mlist.append(getConfigListEntry('\c00289496' + _("*** /etc/streamlink/config ***"), config.plugins.streamlinkSRV.Five))
                 if self.VisibleSection == 5:
-                    self.setButtonsNames()
                     for cfg in getStreamlinkConfig():
                         if cfg.startswith('ffmpeg-ffmpeg='):
                             Mlist.append(getConfigListEntry("ffmpeg-ffmpeg=" , config.plugins.streamlinkSRV.streamlinkconfigFFMPEG))
@@ -186,13 +182,15 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
 
     def __init__(self, session, args=None):
         DBGlog('%s' % '__init__')
+        self.doAction = None
         self.VisibleSection = 0
-        self.DoBuildList = eTimer()
-        self.DoBuildList.callback.append(self.buildList)
         if os.path.exists('/usr/sbin/streamlinkSRV') and os.path.islink('/usr/sbin/streamlinkSRV') and 'StreamlinkConfig/' in os.readlink('/usr/sbin/streamlinkSRV'):
             self.mySL = True
         else:
             self.mySL = False
+        
+        self.DoBuildList = eTimer()
+        self.DoBuildList.callback.append(self.buildList)
         
         Screen.__init__(self, session)
         self.session = session
@@ -233,6 +231,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         if 0:
             if not self.selectionChanged in self["config"].onSelectionChanged:
                 self["config"].onSelectionChanged.append(self.selectionChanged)
+        
         self.onLayoutFinish.append(self.layoutFinished)
         self.doAction = None
 
@@ -281,7 +280,6 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         self.VisibleSection -= 1
         if self.VisibleSection < 1:
             self.VisibleSection = 5
-        self.setButtonsNames()
         self.refreshBuildList()
         
     def nextConf(self):
@@ -289,16 +287,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         self.VisibleSection += 1
         if self.VisibleSection > 5:
             self.VisibleSection = 1
-        self.setButtonsNames()
         self.refreshBuildList()
-
-    def setButtonsNames(self):
-        if self.VisibleSection == 0:
-            pass
-        elif self.VisibleSection == 1:
-            self["key_yellow"].setText(_("Userbouquets tools"))
-        else:
-            self["key_yellow"].setText(_("Check status"))
     
     def layoutFinished(self):
         self.VisibleSection = 0
@@ -309,7 +298,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
             self.choicesList = [("gstreamer (root 4097)","4097"),("ServiceApp gstreamer (root 5001)","5001"), ("ServiceApp ffmpeg (root 5002)","5002"),("Hardware (root 1) wymagany do PIP","1")]
         else:
             self.choicesList = [("gstreamer (root 4097)","4097"),("Hardware (root 1) wymagany do PIP","1"),(_("ServiceApp not installed!"), None)]
-
+        
     def changedEntry(self):
         DBGlog('%s' % 'changedEntry()')
         try:
@@ -402,7 +391,16 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                     url2bouquet = selectedItem[2]
                     #DBGlog('url2bouquet=%s' % url2bouquet)
                     self.doAction = ('downloadBouquet.py', bouquetFileName, url2bouquet, )
-                    
+                elif currItem == config.plugins.streamlinkSRV.unmanagedBouquet: #modify local bouquet
+                    DBGlog('currItem == config.plugins.streamlinkSRV.unmanagedBouquet')
+                    #wybrany bukiet
+                    bouquetFileName = currInfo.split(': ',1)[1].split(' ',1)[0].strip()
+                    self.cleanBouquets_tvradio()
+                    self.session.openWithCallback(self.localBouquetSelectedAction, ChoiceBox, title = _("What to do?"), list = [(_("Try to find correct reference to enable EPG"),"e"),
+                                                                                                                                (_("Change framework"),"f"), 
+                                                                                                                                (_("Change Streamlink connection type"),"sl")
+                                                                                                                                ])
+                    return
                 ####
                 DBGlog('%s' % str(self.doAction))
                 if not self.doAction is None:
@@ -424,6 +422,43 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         except Exception as e:
             DBGlog('%s' % str(e))
 
+    def localBouquetChangeFramework(self, ret ):
+        if ret is None:
+            DBGlog("localBouquetChangeFramework(ret ='%s')" % str(ret))
+        else:
+            self.doAction = self.doAction + ('f',)
+            self.doAction = self.doAction + (ret[1],)
+            self.session.openWithCallback(self.retFromCMD ,Console, title = _('Modifying bouquet...'), cmdlist = [ ' '.join(self.doAction) ])
+
+    def localBouquetChangeSLType(self, ret ):
+        if ret is None:
+            DBGlog("localBouquetchangeSLType(ret ='%s')" % str(ret))
+        else:
+            self.doAction = self.doAction + ('sl',)
+            self.doAction = self.doAction + (ret[1],)
+            self.session.openWithCallback(self.retFromCMD ,Console, title = _('Modifying bouquet...'), cmdlist = [ ' '.join(self.doAction) ])
+
+    def localBouquetSelectedAction(self, ret):
+        curIndex = self["config"].getCurrentIndex()
+        selectedItem = self["config"].list[curIndex]
+        bouquetFileName = selectedItem[0].split(': ',1)[1].split(' ',1)[0].strip()
+        
+        self.doAction = ('/usr/bin/python', '/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/plugins/changeLocalBouquet.py', bouquetFileName, )
+        
+        if ret is None:
+            DBGlog("localBouquetSelectedAction(ret ='%s')" % str(ret))
+            return
+        elif ret[1] == 'f': #Change framework
+            self.session.openWithCallback(self.localBouquetChangeFramework, ChoiceBox, title = _("Select Multiframework"), list = self.choicesList)
+        elif ret[1] == 'e': #Try to find correct reference to enable EPG
+            self.doAction = self.doAction + ('e',)
+            self.session.openWithCallback(self.retFromCMD ,Console, title = _('Modifying bouquet...'), cmdlist = [ ' '.join(self.doAction) ])
+            return
+        elif ret[1] == 'sl': #Change Streamlink connection type
+            self.session.openWithCallback(self.localBouquetChangeSLType, ChoiceBox, title = _("Select Streamlink connection type"), list = [(_("Use streamlinkSRV"),"SRV"), (_("Use Wrappers"),"wrapper"), 
+                                                                                                                           (_("Use direct connection"),"direct")
+                                                                                                                           ])
+        
     def cleanBouquets_tvradio(self): #clean bouquets.tv from non existing files
         for TypBukietu in('/etc/enigma2/bouquets.tv','/etc/enigma2/bouquets.radio'):
             f = ''

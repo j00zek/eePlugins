@@ -44,6 +44,7 @@ config.plugins.streamlinkSRV.Two = NoSave(ConfigNothing())
 config.plugins.streamlinkSRV.Three = NoSave(ConfigNothing())
 config.plugins.streamlinkSRV.Four = NoSave(ConfigNothing())
 config.plugins.streamlinkSRV.Five = NoSave(ConfigNothing())
+config.plugins.streamlinkSRV.Six = NoSave(ConfigNothing())
 
 config.plugins.streamlinkSRV.enabled = ConfigYesNo(default = False)
 config.plugins.streamlinkSRV.logLevel = ConfigSelection(default = "info", choices = [("none", _("none")),
@@ -93,8 +94,7 @@ config.plugins.streamlinkSRV.azmanEnabled = ConfigEnableDisable(default = False)
 
 def DBGlog(text):
     if config.plugins.streamlinkSRV.logLevel.value == 'none':
-        pass
-    elif config.plugins.streamlinkSRV.logLevel.value == 'info':
-        print(text)
+        print('StreamlinkConfiguration: %s' % text)
     else:
+        print('StreamlinkConfiguration: %s' % text)
         open("/tmp/StreamlinkConfig.log", "a").write('%s\n' % str(text))
