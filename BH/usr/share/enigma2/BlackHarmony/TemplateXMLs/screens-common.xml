@@ -8701,19 +8701,18 @@
         <eLabel text="Podgląd" position="1115,951" size="140,27" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
   </screen>
 <!-- HistoryZapDescriptionDurationBarPicon by endriu -->
-  <screen name="FullEntryNumber" position="center,center" size="1000,820" title=" " flags="wfNoBorder" backgroundColor="transparent" >
-        <ePixmap position="center,center" zPosition="-10" size="1000,820" pixmap="BlackHarmony/bg_design/small.png" />
-          <widget source="global.CurrentTime" render="Label" position="45,30" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+  <screen name="FullEntryNumber" position="center,center" size="1522,1022" title=" " flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="center,center" zPosition="-10" size="1522,1022" pixmap="BlackHarmony/bg_design/wizard.png" />
+    <widget source="global.CurrentTime" render="Label" position="40,35" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <widget source="global.CurrentTime" render="Label" position="130,30" size="290,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+    <widget source="global.CurrentTime" render="Label" position="125,35" size="460,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
       <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
-    </widget>           
-                        
-                        <widget name="text" font="Regular;26" position="46,115" size="301,610" zPosition="2" halign="left" backgroundColor="dark_grey" transparent="1" />
-                        <widget name="text1" font="Regular;26" position="347,115" size="301,610" zPosition="2" halign="left" backgroundColor="dark_grey" transparent="1" />
-                        <widget name="text2" font="Regular;26" position="648,115" size="301,610" zPosition="2" halign="left" backgroundColor="dark_grey" transparent="1" />
-        <ePixmap alphatest="blend" pixmap="BlackHarmony/buttons/key_exit.png" position="889,755" size="60,30" />                
+    </widget>
+    <widget name="text" font="Regular;32" position="64,160" size="463,752" zPosition="2" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <widget name="text1" font="Regular;32" position="527,160" size="463,752" zPosition="2" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <widget name="text2" font="Regular;32" position="990,160" size="463,752" zPosition="2" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <ePixmap alphatest="blend" pixmap="BlackHarmony/buttons/key_exit.png" position="1409,950" size="60,30" />                
   </screen>
 <!-- HistoryZapDescriptionDurationBarPicon by endriu -->
   <screen name="SetupZapSelectorScreen" position="center,center" size="1000,820" flags="wfNoBorder" backgroundColor="transparent"  >

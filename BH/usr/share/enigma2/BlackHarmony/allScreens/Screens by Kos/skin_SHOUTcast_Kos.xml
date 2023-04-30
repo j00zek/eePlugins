@@ -24,7 +24,7 @@
 	  <convert type="ServicePosition">Remaining</convert>
 	</widget>
     <widget name="console" position="882,865" zPosition="1" size="560,50" font="Roboto_HD; 18" halign="left" backgroundColor="black" transparent="1"/>
-    <widget name="cover" zPosition="2" position="1015,191" size="300,300" alphatest="blend" backgroundColor="transparent"/>
+    <widget name="cover" zPosition="2" position="930,190" size="450,320" alphatest="blend" backgroundColor="transparent"/>
     <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="65,955" size="35,27" alphatest="blend"/>
     <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="389,955" size="35,27" alphatest="blend"/>
     <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="734,955" size="35,27" alphatest="blend"/>
@@ -44,6 +44,7 @@
       <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
     </widget>
     <widget name="description" position="65,627" size="1095,160" font="Roboto_HD; 27" zPosition="2" halign="center" valign="center" foregroundColor="light_yellow" backgroundColor="black" transparent="1"/>
+    <widget name="descriptionn" position="65,720" size="1095,160" font="Roboto_HD; 27" zPosition="3" halign="left" valign="center" foregroundColor="#FFFFFF" backgroundColor="black" transparent="1"/>
     <widget source="Title" render="Label" position="860,25" size="320,35" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1"/>
     <widget name="config" itemHeight="35" font="Roboto_HD; 26" position="65,140" size="1095,640" scrollbarMode="showOnDemand" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" selectionPixmap="BlackHarmony/menu/sel_1095_35.png" backgroundColor="black" transparent="1"/>
     <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="41,850" size="35,27" alphatest="blend"/>
