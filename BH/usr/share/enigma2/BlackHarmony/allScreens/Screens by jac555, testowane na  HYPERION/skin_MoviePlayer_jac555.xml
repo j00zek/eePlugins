@@ -1,0 +1,78 @@
+<screen name="MoviePlayer" position="center,center" size="1920,1080" title="InfoBar" flags="wfNoBorder" backgroundColor="transparent">
+  <ePixmap position="center,850" zPosition="-1" size="1529,213" pixmap="BlackHarmony/bg_design/infobarmovie.png" />
+  <widget source="session.CurrentService" render="j00zekModAudioIcon" path="icons/audio" position="301,1000" size="60,20" zPosition="4" alphatest="blend">
+    <convert type="j00zekModAudioInfo">AudioIcon</convert>
+  </widget>
+  <ePixmap position="467,1000" size="36,20" pixmap="BlackHarmony/icons/ico_format_off.png" zPosition="1" alphatest="blend" />
+  <widget source="session.CurrentService" render="Pixmap" position="467,1000" size="36,20" pixmap="BlackHarmony/icons/ico_format_on.png" zPosition="2" alphatest="blend">
+    <convert type="ServiceInfo">IsWidescreen</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <ePixmap position="230,1000" size="57,20" zPosition="1" pixmap="BlackHarmony/icons/ico_dolby_off.png" alphatest="blend" />
+  <widget source="session.CurrentService" render="Pixmap" position="230,1000" size="57,20" zPosition="2" pixmap="BlackHarmony/icons/ico_dolby_on.png" alphatest="blend">
+    <convert type="ServiceInfo">IsMultichannel</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+    <ePixmap position="375,1000" size="29,20" zPosition="1" pixmap="BlackHarmony/icons/ico_hd_off.png" alphatest="blend" />
+    <widget source="session.CurrentService" render="Pixmap" position="375,1000" size="29,20" zPosition="2" pixmap="BlackHarmony/icons/ico_hd_on.png" alphatest="blend">
+      <convert type="j00zekModServiceInfoEX">VideoWidth</convert>
+      <convert type="ValueRange">721,1980</convert>
+      <convert type="ConditionalShowHide" />
+    </widget>
+<widget alphatest="blend" pixmap="BlackHarmony/icons/ico_uhd_on.png" position="417,1000" render="Pixmap" size="37,20" source="session.CurrentService" zPosition="4">
+    <convert type="j00zekModServiceInfoEX">VideoHeight</convert>
+    <convert type="ValueRange">1081,2160</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget alphatest="blend" pixmap="BlackHarmony/icons/ico_hd_on_1080.png" position="417,1000" render="Pixmap" size="37,20" source="session.CurrentService" zPosition="4">
+    <convert type="j00zekModServiceInfoEX">VideoHeight</convert>
+    <convert type="ValueRange">1001,1080</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+    <widget alphatest="blend" pixmap="BlackHarmony/icons/ico_hd_on_960.png" position="417,1000" render="Pixmap" size="37,20" source="session.CurrentService" zPosition="3">
+      <convert type="j00zekModServiceInfoEX">VideoWidth</convert>
+      <convert type="ValueRange">960,1000</convert>
+      <convert type="ConditionalShowHide" />
+    </widget>
+  <widget alphatest="blend" pixmap="BlackHarmony/icons/ico_hd_on_720.png" position="417,1000" render="Pixmap" size="37,20" source="session.CurrentService" zPosition="2">
+    <convert type="j00zekModServiceInfoEX">VideoHeight</convert>
+    <convert type="ValueRange">720,1000</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget alphatest="blend" pixmap="BlackHarmony/icons/ico_sd_on_576.png" position="417,1000" render="Pixmap" size="37,20" source="session.CurrentService" zPosition="1">
+    <convert type="j00zekModServiceInfoEX">VideoWidth</convert>
+    <convert type="ValueRange">0,1279</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget source="session.CurrentService" render="j00zekLabel" position="243,884" size="1190,55" font="HD_Thin; 35" valign="center" noWrap="1" backgroundColor="black" transparent="1" halign="center">
+    <convert type="ServiceName">Name</convert>
+  </widget>
+  <widget source="session.RecordState" render="Pixmap" position="1644,872" size="38,38" pixmap="BlackHarmony/icons/recsign.png" alphatest="blend">
+  <convert type="ConditionalShowHide">Blink</convert>
+</widget>
+<widget source="session.CurrentService" render="Label" position="532,998" size="128,26" font="Roboto_HD; 23" foregroundColor="lemon" backgroundColor="black" halign="right" valign="center" transparent="1" zPosition="2" text="pol">
+  <convert type="j00zekModAudioInfo">AudioCodec</convert>
+</widget>
+  <widget backgroundColor="black" font="Roboto_HD; 23" halign="right" position="1055,998" render="Label" size="380,26" source="global.CurrentTime" transparent="1" valign="center">
+    <convert type="ClockToText">Format: %a, %d.%m.%Y  %H:%M:%S</convert>
+  </widget>
+  <widget source="session.CurrentService" render="Progress" position="260,953" zPosition="1" size="1139,6" pixmap="BlackHarmony/gfx/progress_mario.png" transparent="1">
+    <convert type="ServicePosition">Position</convert>
+  </widget>
+  <widget source="session.CurrentService" render="j00zekModPositionGauge" position="260,953" zPosition="2" size="1139,6" transparent="1">
+    <convert type="ServicePosition">Gauge</convert>
+  </widget>
+  <widget source="session.CurrentService" render="Label" position="260,959" size="110,25" font="Roboto_HD; 22" halign="left" backgroundColor="black" transparent="1" foregroundColor="yellow">
+    <convert type="ServicePosition">Position</convert>
+  </widget>
+  <widget source="session.CurrentService" render="Label" position="1289,959" size="110,25" font="Roboto_HD; 22" halign="right" backgroundColor="black" transparent="1" foregroundColor="red">
+    <convert type="ServicePosition">Remaining,Negate</convert>
+  </widget>
+  <widget source="session.CurrentService" render="Label" font="Roboto_HD; 23" position="681,998" size="229,26" halign="left" backgroundColor="black" transparent="1" foregroundColor="light_yellow">
+    <convert type="j00zekVideoResolution">VideoResolution</convert>
+  </widget>
+  <widget source="session.CurrentService" render="Label" position="771,959" size="110,40" font="Roboto_HD; 35" halign="center" backgroundColor="black" foregroundColor="green" transparent="1">
+    <convert type="ServicePosition">Length</convert>
+  </widget>
+  <widget source="session.CurrentService" render="j00zekModCover" position="3,757" size="190,255" zPosition="2" alphatest="blend" />
+</screen>

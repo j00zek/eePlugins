@@ -18,7 +18,7 @@
   <widget source="menu" render="MyAnimmenu" path="/usr/share/enigma2/FullHDLine/menu/" position="1237,462" size="300,300" alphatest="blend" transparent="1" scale="on">
     <convert type="MyAnimmenuconv" />
   </widget>
-  <widget source="title" render="Label" position="301,148" size="671,70" font="HD_Thin; 55" halign="center" foregroundColor="light_yellow" backgroundColor="black" transparent="1" />
+  <widget source="Title" render="Label" position="301,148" size="671,70" font="HD_Thin; 55" halign="center" foregroundColor="light_yellow" backgroundColor="black" transparent="1" />
   <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="340,807" size="135,135" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
     <convert type="j00zekMSNWeather">weathericon,current</convert>
   </widget>
@@ -60,7 +60,7 @@
   <widget source="menu" render="MyAnimmenu" path="/usr/share/enigma2/FullHDLine/menu/" position="1237,462" size="300,300" alphatest="blend" transparent="1" scale="on">
     <convert type="MyAnimmenuconv" />
   </widget>
-  <widget source="title" render="Label" position="301,148" size="671,70" font="HD_Thin; 55" halign="center" foregroundColor="light_yellow" backgroundColor="black" transparent="1" />
+  <widget source="Title" render="Label" position="301,148" size="671,70" font="HD_Thin; 55" halign="center" foregroundColor="light_yellow" backgroundColor="black" transparent="1" />
   <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="340,807" size="135,135" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
     <convert type="j00zekMSNWeather">weathericon,current</convert>
   </widget>
@@ -103,7 +103,7 @@
   <widget source="menu" render="MyAnimmenu" path="/usr/share/enigma2/FullHDLine/menu/" position="1237,462" size="300,300" alphatest="blend" transparent="1" scale="on">
     <convert type="MyAnimmenuconv" />
   </widget>
-  <widget source="title" render="Label" position="301,148" size="671,70" font="HD_Thin; 55" halign="center" foregroundColor="light_yellow" backgroundColor="black" transparent="1" />
+  <widget source="Title" render="Label" position="301,148" size="671,70" font="HD_Thin; 55" halign="center" foregroundColor="light_yellow" backgroundColor="black" transparent="1" />
   <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="340,807" size="135,135" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
     <convert type="j00zekMSNWeather">weathericon,current</convert>
   </widget>
@@ -145,7 +145,7 @@
   <widget source="menu" render="MyAnimmenu" path="/usr/share/enigma2/FullHDLine/menu/" position="1237,462" size="300,300" alphatest="blend" transparent="1" scale="on">
     <convert type="MyAnimmenuconv" />
   </widget>
-   <widget source="title" render="Label" position="301,148" size="671,70" font="HD_Thin; 55" halign="center" foregroundColor="light_yellow" backgroundColor="black" transparent="1" />
+   <widget source="Title" render="Label" position="301,148" size="671,70" font="HD_Thin; 55" halign="center" foregroundColor="light_yellow" backgroundColor="black" transparent="1" />
   <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="340,807" size="135,135" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
     <convert type="j00zekMSNWeather">weathericon,current</convert>
   </widget>
@@ -187,7 +187,7 @@
   <widget source="menu" render="MyAnimmenu" path="/usr/share/enigma2/FullHDLine/menu/" position="1237,462" size="300,300" alphatest="blend" transparent="1" scale="on">
     <convert type="MyAnimmenuconv" />
   </widget>
-  <widget source="title" render="Label" position="301,148" size="671,70" font="HD_Thin; 55" halign="center" foregroundColor="light_yellow" backgroundColor="black" transparent="1" />
+  <widget source="Title" render="Label" position="301,148" size="671,70" font="HD_Thin; 55" halign="center" foregroundColor="light_yellow" backgroundColor="black" transparent="1" />
   <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="340,807" size="135,135" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
     <convert type="j00zekMSNWeather">weathericon,current</convert>
   </widget>
@@ -229,7 +229,7 @@
   <widget source="menu" render="MyAnimmenu" path="/usr/share/enigma2/FullHDLine/menu/" position="1237,462" size="300,300" alphatest="blend" transparent="1" scale="on">
     <convert type="MyAnimmenuconv" />
   </widget>
-  <widget source="title" render="Label" position="301,148" size="671,70" font="HD_Thin; 55" halign="center" foregroundColor="light_yellow" backgroundColor="black" transparent="1" />
+  <widget source="Title" render="Label" position="301,148" size="671,70" font="HD_Thin; 55" halign="center" foregroundColor="light_yellow" backgroundColor="black" transparent="1" />
   <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="340,807" size="135,135" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
     <convert type="j00zekMSNWeather">weathericon,current</convert>
   </widget>
@@ -271,7 +271,7 @@
   <widget source="menu" render="MyAnimmenu" path="/usr/share/enigma2/FullHDLine/menu/" position="1237,462" size="300,300" alphatest="blend" transparent="1" scale="on">
     <convert type="MyAnimmenuconv" />
   </widget>
-  <widget source="title" render="Label" position="301,148" size="671,70" font="HD_Thin; 55" halign="center" foregroundColor="light_yellow" backgroundColor="black" transparent="1" />
+  <widget source="Title" render="Label" position="301,148" size="671,70" font="HD_Thin; 55" halign="center" foregroundColor="light_yellow" backgroundColor="black" transparent="1" />
   <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="340,807" size="135,135" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
     <convert type="j00zekMSNWeather">weathericon,current</convert>
   </widget>
@@ -313,7 +313,7 @@
   <widget source="menu" render="MyAnimmenu" path="/usr/share/enigma2/FullHDLine/menu/" position="1237,462" size="300,300" alphatest="blend" transparent="1" scale="on">
     <convert type="MyAnimmenuconv" />
   </widget>
-  <widget source="title" render="Label" position="301,148" size="671,70" font="HD_Thin; 55" halign="center" foregroundColor="light_yellow" backgroundColor="black" transparent="1" />
+  <widget source="Title" render="Label" position="301,148" size="671,70" font="HD_Thin; 55" halign="center" foregroundColor="light_yellow" backgroundColor="black" transparent="1" />
   <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="340,807" size="135,135" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
     <convert type="j00zekMSNWeather">weathericon,current</convert>
   </widget>
@@ -355,7 +355,7 @@
   <widget source="menu" render="MyAnimmenu" path="/usr/share/enigma2/FullHDLine/menu/" position="1237,462" size="300,300" alphatest="blend" transparent="1" scale="on">
     <convert type="MyAnimmenuconv" />
   </widget>
-  <widget source="title" render="Label" position="301,148" size="671,70" font="HD_Thin; 55" halign="center" foregroundColor="light_yellow" backgroundColor="black" transparent="1" />
+  <widget source="Title" render="Label" position="301,148" size="671,70" font="HD_Thin; 55" halign="center" foregroundColor="light_yellow" backgroundColor="black" transparent="1" />
   <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="340,807" size="135,135" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
     <convert type="j00zekMSNWeather">weathericon,current</convert>
   </widget>
@@ -397,7 +397,7 @@
   <widget source="menu" render="MyAnimmenu" path="/usr/share/enigma2/FullHDLine/menu/" position="1237,462" size="300,300" alphatest="blend" transparent="1" scale="on">
     <convert type="MyAnimmenuconv" />
   </widget>
-  <widget source="title" render="Label" position="301,148" size="671,70" font="HD_Thin; 55" halign="center" foregroundColor="light_yellow" backgroundColor="black" transparent="1" />
+  <widget source="Title" render="Label" position="301,148" size="671,70" font="HD_Thin; 55" halign="center" foregroundColor="light_yellow" backgroundColor="black" transparent="1" />
   <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="340,807" size="135,135" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
     <convert type="j00zekMSNWeather">weathericon,current</convert>
   </widget>
@@ -439,7 +439,7 @@
   <widget source="menu" render="MyAnimmenu" path="/usr/share/enigma2/FullHDLine/menu/" position="1237,462" size="300,300" alphatest="blend" transparent="1" scale="on">
     <convert type="MyAnimmenuconv" />
   </widget>
-  <widget source="title" render="Label" position="301,148" size="671,70" font="HD_Thin; 55" halign="center" foregroundColor="light_yellow" backgroundColor="black" transparent="1" />
+  <widget source="Title" render="Label" position="301,148" size="671,70" font="HD_Thin; 55" halign="center" foregroundColor="light_yellow" backgroundColor="black" transparent="1" />
   <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="340,807" size="135,135" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
     <convert type="j00zekMSNWeather">weathericon,current</convert>
   </widget>
@@ -481,7 +481,7 @@
   <widget source="menu" render="MyAnimmenu" path="/usr/share/enigma2/FullHDLine/menu/" position="1237,462" size="300,300" alphatest="blend" transparent="1" scale="on">
     <convert type="MyAnimmenuconv" />
   </widget>
-  <widget source="title" render="Label" position="301,148" size="671,70" font="HD_Thin; 55" halign="center" foregroundColor="light_yellow" backgroundColor="black" transparent="1" />
+  <widget source="Title" render="Label" position="301,148" size="671,70" font="HD_Thin; 55" halign="center" foregroundColor="light_yellow" backgroundColor="black" transparent="1" />
   <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="340,807" size="135,135" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
     <convert type="j00zekMSNWeather">weathericon,current</convert>
   </widget>
@@ -523,7 +523,7 @@
   <widget source="menu" render="MyAnimmenu" path="/usr/share/enigma2/FullHDLine/menu/" position="1237,462" size="300,300" alphatest="blend" transparent="1" scale="on">
     <convert type="MyAnimmenuconv" />
   </widget>
-  <widget source="title" render="Label" position="301,148" size="671,70" font="HD_Thin; 55" halign="center" foregroundColor="light_yellow" backgroundColor="black" transparent="1" />
+  <widget source="Title" render="Label" position="301,148" size="671,70" font="HD_Thin; 55" halign="center" foregroundColor="light_yellow" backgroundColor="black" transparent="1" />
   <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="340,807" size="135,135" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
     <convert type="j00zekMSNWeather">weathericon,current</convert>
   </widget>
@@ -565,7 +565,7 @@
   <widget source="menu" render="MyAnimmenu" path="/usr/share/enigma2/FullHDLine/menu/" position="1237,462" size="300,300" alphatest="blend" transparent="1" scale="on">
     <convert type="MyAnimmenuconv" />
   </widget>
-  <widget source="title" render="Label" position="301,148" size="671,70" font="HD_Thin; 55" halign="center" foregroundColor="light_yellow" backgroundColor="black" transparent="1" />
+  <widget source="Title" render="Label" position="301,148" size="671,70" font="HD_Thin; 55" halign="center" foregroundColor="light_yellow" backgroundColor="black" transparent="1" />
   <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="340,807" size="135,135" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
     <convert type="j00zekMSNWeather">weathericon,current</convert>
   </widget>
@@ -605,7 +605,7 @@
   <widget source="menu" render="MyAnimmenu" path="/usr/share/enigma2/FullHDLine/menu/" position="1237,462" size="300,300" alphatest="blend" transparent="1" scale="on">
     <convert type="MyAnimmenuconv" />
   </widget>
-  <widget source="title" render="Label" position="301,148" size="671,70" font="HD_Thin; 55" halign="center" foregroundColor="light_yellow" backgroundColor="black" transparent="1" />
+  <widget source="Title" render="Label" position="301,148" size="671,70" font="HD_Thin; 55" halign="center" foregroundColor="light_yellow" backgroundColor="black" transparent="1" />
   <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="340,807" size="135,135" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
     <convert type="j00zekMSNWeather">weathericon,current</convert>
   </widget>
@@ -646,7 +646,7 @@
   <widget source="menu" render="MyAnimmenu" path="/usr/share/enigma2/FullHDLine/menu/" position="1237,462" size="300,300" alphatest="blend" transparent="1" scale="on">
     <convert type="MyAnimmenuconv" />
   </widget>
-  <widget source="title" render="Label" position="301,148" size="671,70" font="HD_Thin; 55" halign="center" foregroundColor="light_yellow" backgroundColor="black" transparent="1" />
+  <widget source="Title" render="Label" position="301,148" size="671,70" font="HD_Thin; 55" halign="center" foregroundColor="light_yellow" backgroundColor="black" transparent="1" />
   <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="340,807" size="135,135" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
     <convert type="j00zekMSNWeather">weathericon,current</convert>
   </widget>
@@ -686,7 +686,7 @@
   <widget source="menu" render="MyAnimmenu" path="/usr/share/enigma2/FullHDLine/menu/" position="1237,462" size="300,300" alphatest="blend" transparent="1" scale="on">
     <convert type="MyAnimmenuconv" />
   </widget>
-  <widget source="title" render="Label" position="301,148" size="671,70" font="HD_Thin; 55" halign="center" foregroundColor="light_yellow" backgroundColor="black" transparent="1" />
+  <widget source="Title" render="Label" position="301,148" size="671,70" font="HD_Thin; 55" halign="center" foregroundColor="light_yellow" backgroundColor="black" transparent="1" />
   <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="340,807" size="135,135" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
     <convert type="j00zekMSNWeather">weathericon,current</convert>
   </widget>
@@ -727,7 +727,7 @@
   <widget source="menu" render="MyAnimmenu" path="/usr/share/enigma2/FullHDLine/menu/" position="1237,462" size="300,300" alphatest="blend" transparent="1" scale="on">
     <convert type="MyAnimmenuconv" />
   </widget>
-  <widget source="title" render="Label" position="301,148" size="671,70" font="HD_Thin; 55" halign="center" foregroundColor="light_yellow" backgroundColor="black" transparent="1" />
+  <widget source="Title" render="Label" position="301,148" size="671,70" font="HD_Thin; 55" halign="center" foregroundColor="light_yellow" backgroundColor="black" transparent="1" />
   <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="340,807" size="135,135" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
     <convert type="j00zekMSNWeather">weathericon,current</convert>
   </widget>
