@@ -1,0 +1,10 @@
+Package: j00zeks-opkg-feed
+Priority: optional
+Section: utils
+Depends:
+Description: publiczne repozytorium j00zka
+Maintainer: j00zek
+Source: http://github.com/j00zek/eePlugins
+Version: 1.2
+Architecture: all
+DestinationPath: /

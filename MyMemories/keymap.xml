@@ -1,0 +1,71 @@
+<keymap>
+  <map context="MyMemoriesSetupActions">
+    <key id="KEY_ENTER"  mapto="ok"       flags="m" />
+    <key id="KEY_OK"     mapto="ok"       flags="m" />
+    <key id="KEY_EXIT"   mapto="cancel"   flags="m" />
+    <key id="KEY_ESC"    mapto="cancel"   flags="m" />
+    <key id="KEY_RED"    mapto="cancel"   flags="m" />
+    <key id="KEY_LEFT"   mapto="left"     flags="mr" />
+    <key id="KEY_RIGHT"  mapto="right"    flags="mr" />
+    <key id="KEY_GREEN"  mapto="save"     flags="m" />
+    <key id="KEY_BLUE"   mapto="key_blue" flags="m" />
+  </map>`
+  <map context="MyMemoriesWakeUpPicActions">
+    <key id="KEY_ENTER"  mapto="cancel" flags="m" />
+    <key id="KEY_OK"     mapto="cancel" flags="m" />
+    <key id="KEY_EXIT"   mapto="cancel" flags="m" />
+    <key id="KEY_ESC"    mapto="cancel" flags="m" />
+    <key id="KEY_LEFT"   mapto="cancel" flags="m" />
+    <key id="KEY_RIGHT"  mapto="cancel" flags="m" />
+    <key id="KEY_UP"     mapto="cancel" flags="m" />
+    <key id="KEY_DOWN"   mapto="cancel" flags="m" />
+    <key id="KEY_RED"    mapto="cancel" flags="m" />
+    <key id="KEY_GREEN"  mapto="cancel" flags="m" />
+    <key id="KEY_YELLOW" mapto="cancel" flags="m" />
+    <key id="KEY_BLUE"   mapto="cancel" flags="m" />
+  </map>`
+  <map context="Pic_ExifActions">
+    <key id="KEY_ENTER"  mapto="cancel" flags="m" />
+    <key id="KEY_OK"     mapto="cancel" flags="m" />
+    <key id="KEY_EXIT"   mapto="cancel" flags="m" />
+    <key id="KEY_ESC"    mapto="cancel" flags="m" />
+    <key id="KEY_LEFT"   mapto="cancel" flags="m" />
+    <key id="KEY_RIGHT"  mapto="cancel" flags="m" />
+    <key id="KEY_UP"     mapto="cancel" flags="m" />
+    <key id="KEY_DOWN"   mapto="cancel" flags="m" />
+    <key id="KEY_RED"    mapto="cancel" flags="m" />
+    <key id="KEY_GREEN"  mapto="cancel" flags="m" />
+    <key id="KEY_YELLOW" mapto="cancel" flags="m" />
+    <key id="KEY_BLUE"   mapto="cancel" flags="m" />
+  </map>`
+  <map context="Pic_ThumbActions">
+    <key id="KEY_EXIT"   mapto="cancel"       flags="m" />
+    <key id="KEY_ESC"    mapto="cancel"       flags="m" />
+    <key id="KEY_RED"    mapto="cancel"       flags="m" />
+    <key id="KEY_LEFT"   mapto="left"         flags="mr" />
+    <key id="KEY_RIGHT"  mapto="right"        flags="mr" />
+    <key id="KEY_UP"     mapto="up"           flags="m" />
+    <key id="KEY_DOWN"   mapto="down"         flags="m" />
+    <key id="KEY_GREEN"  mapto="showPic_Exif" flags="m" />
+    <key id="KEY_ENTER"  mapto="showPic_Exif" flags="m" />
+    <key id="KEY_OK"     mapto="showPic_Exif" flags="m" />
+  </map>`
+  <map context="Pic_Full_View_Actions">
+    <key id="KEY_EXIT"   mapto="cancel"       flags="m" />
+    <key id="KEY_ESC"    mapto="cancel"       flags="m" />
+    <key id="KEY_LEFT"   mapto="left"         flags="mr" />
+    <key id="KEY_RIGHT"  mapto="right"        flags="mr" />
+    <key id="KEY_UP"     mapto="right"        flags="m" />
+    <key id="KEY_DOWN"   mapto="left"         flags="m" />
+    <key id="KEY_ENTER"  mapto="PlayPause"    flags="m" />
+    <key id="KEY_OK"     mapto="PlayPause"    flags="m" />
+    <key id="KEY_RED"    mapto="red"          flags="m" />
+    <key id="KEY_GREEN"  mapto="PlayPause"    flags="m" />
+    <key id="KEY_YELLOW" mapto="PlayPause"    flags="m" />
+    <key id="KEY_BLUE"   mapto="blue"         flags="m" />
+    <key id="KEY_INFO"   mapto="showPic_Exif" flags="m" /> 
+    <key id="KEY_PLAY"   mapto="PlayPause"    flags="m" /> 
+    <key id="KEY_PAUSE"  mapto="PlayPause"    flags="m" /> 
+    <key id="KEY_PLAYPAUSE" mapto="PlayPause" flags="m" /> 
+  </map>`
+</keymap>
