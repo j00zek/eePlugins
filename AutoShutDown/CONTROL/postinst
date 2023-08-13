@@ -1,0 +1,11 @@
+#!/bin/sh
+if `grep -q 'osd.language=pl_PL' </etc/enigma2/settings`; then
+  echo ""
+  echo "Wtyczka AutoShutDown zainstalowana. Przeładuj teraz GUI!"
+  echo ""
+else
+  echo ""
+  echo "AutoShutDown plugin successfully installed. You should restart GUI!"
+  echo ""
+fi 
+exit 0
