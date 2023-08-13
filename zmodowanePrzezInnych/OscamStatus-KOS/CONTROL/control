@@ -1,0 +1,10 @@
+Package: enigma2-plugin-extensions--j00zeks-oscamstatus-mod-kos
+Priority: optional
+Section: utils
+Depends: 
+Description: wersja zmodyfikowana przez kolegę Kos
+Maintainer: j00zek
+Source: http://github.com/j00zek/eePlugins
+Version: 23.01.02.0607
+Architecture: all
+DestinationPath: /usr/lib/enigma2/python/Plugins/Extensions/OscamStatus

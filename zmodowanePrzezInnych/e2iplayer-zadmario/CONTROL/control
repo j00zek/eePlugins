@@ -1,0 +1,12 @@
+Package: enigma2-plugin-extensions--j00zeks-e2iplayer-mod-zadmario
+Priority: optional
+Section: utils
+Depends: 
+Description: E2Iplayer - wersja kolegi zadmario
+Maintainer: zadmario
+Source: https://gitlab.com/zadmario/e2iplayer
+Version: 23.08.12.0739
+Architecture: all
+DestinationPath: /usr/lib/enigma2/python/Plugins/Extensions
+ExcludeFolder: usr/lib/enigma2/python/Plugins/Extensions/scripts
+RunScriptBeforeBuild: scripts/getOnlineFiles.sh

@@ -1,0 +1,237 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: j00zekOPKGmanager\n"
+"POT-Creation-Date: 2016-01-07 12:00+0100\n"
+"PO-Revision-Date: 2021-02-28 19:51+0100\n"
+"Language-Team: j00zek\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.2\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: de\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+msgid "Alternate OPKG manager"
+msgstr "Alternativer OPKG-Manager"
+
+msgid "Install, update, upgade all ipk packages from GUI"
+msgstr "Installieren, aktualisieren und aktualisieren Sie alle IPK-Pakete über die GUI"
+
+msgid ""
+"New actualization ready to install\n"
+"Start OPKG manager?"
+msgstr ""
+"Neue Aktualisierung bereit zur Installation\n"
+"OPKG-Manager starten?"
+
+msgid "Install Local package"
+msgstr "Lokales Paket Installieren"
+
+msgid "You will be later prompted for file selection."
+msgstr "Du wirst später zur Dateiauswahl aufgefordert."
+
+msgid "ERROR connecting to OPKG"
+msgstr "ERROR Verbindung mit opkg"
+
+msgid "Neigther internet nor service is working :("
+msgstr "Internetverbindung oder Dienst funktioniert nicht :("
+
+msgid "OPKG manager"
+msgstr "OPKG-Manager"
+
+msgid "Select option"
+msgstr "Option wählen"
+
+msgid "New directory"
+msgstr "Neuer Ordner"
+
+msgid "Cancel"
+msgstr "Anulieren"
+
+msgid "Apply"
+msgstr "Installieren"
+
+msgid "Internal flash"
+msgstr "Flash-Speicher"
+
+msgid "Select package"
+msgstr "Paket auswählen"
+
+msgid "Refresh list"
+msgstr "Liste aktualisieren"
+
+msgid "Options"
+msgstr "Optionen"
+
+msgid "Upgrading all packages...."
+msgstr "Alle Pakete aktualisieren...."
+
+msgid "Are you sure, you want delete %s package?"
+msgstr "Paket definitiv entfernen %s?"
+
+msgid ""
+"Only %d MB left!!!\n"
+"At least 8MB is required to safely install and upgrade packages."
+msgstr ""
+"Nur noch %d MB freier Speicher!!!\n"
+"Minimum 8 MB, um die meisten Pakete sicher zu installieren oder zu aktualisieren."
+
+msgid "Remove some packages, or upgade from console!"
+msgstr "Entferne einige Pakete oder aktualisiere sie von der Konsole!"
+
+msgid "Too many packages and too small free space for upgrade!!!"
+msgstr "Zu viele Pakete zum Upgrade und zu wenig Speicherplatz !!!"
+
+msgid "Do you want to upgrade all packages?"
+msgstr "Möchtest du wirklich alle Pakete aktualisieren?"
+
+msgid "Do you want to upgrade %s package?"
+msgstr "Sicher das Paket aktualisieren %s?"
+
+msgid "Are you sure to install %s package?"
+msgstr "Sicher das Paket installieren %s?"
+
+msgid "Are you sure to install %s package with %s size?"
+msgstr "Sicher das Paket installieren %s von Größe %s?"
+
+msgid "Do you want to run '%s'? (package size %s)"
+msgstr "Sicher das ausführen '%s'? (Paketgröße %s)"
+
+msgid "Upgrading all packages..."
+msgstr "Alle Pakete aktualisieren..."
+
+msgid "Post upgrade cleanup..."
+msgstr "Bereinigung nach dem Upgrade..."
+
+msgid ""
+"After changes in opkg, tuner has to be restarted.\n"
+" Restart now?"
+msgstr ""
+"Das System muss nach Veränderungen in OPKG neu starten.\n"
+"Neustart jetzt?"
+
+msgid "Trying to download a new packetlist. Please wait..."
+msgstr "Versuch, eine neue Paketliste herunterzuladen. Bitte warten...."
+
+msgid "Package list update"
+msgstr "Aktualisierung der Paketliste"
+
+msgid "Upgrade packages"
+msgstr "Pakete aktualisieren"
+
+msgid "Recommended update installed packages"
+msgstr "Empfohlenes Update installierter Pakete"
+
+msgid "Show openPLI plugins only"
+msgstr "Nur openPLI-Plugins anzeigen"
+
+msgid "Show openPLI skins only"
+msgstr "Nur openPLI-Skins anzeigen"
+
+msgid "Show all openPLI elements only"
+msgstr "Nur alle openPLI-Elemente anzeigen"
+
+msgid "Show all Neutrino elements only"
+msgstr "Nur alle Neutrino-Elemente anzeigen"
+
+msgid "show oscam packages only"
+msgstr "Nur Oscam-Pakete anzeigen"
+
+msgid "show fonts only"
+msgstr "Nur Schriftarten anzeigen"
+
+msgid "show picons only"
+msgstr "Nur Picons anzeigen"
+
+msgid "show language packets only"
+msgstr "Nur Sprachpakete anzeigen"
+
+msgid "show system libraries only"
+msgstr "Nur Systembibliotheken anzeigen"
+
+msgid "show Python modules only"
+msgstr "Nur Python-Module anzeigen"
+
+msgid "Show DVB-T modules only"
+msgstr "Nur DVB-T-Module anzeigen"
+
+msgid "Show kernel modules only"
+msgstr "Nur Kernelmodule anzeigen"
+
+msgid "Show all packages"
+msgstr "Alle Pakete anzeigen"
+
+msgid "Install local packet"
+msgstr "Lokales Paket Installieren"
+
+msgid "Delete"
+msgstr "Löschen"
+
+msgid "delete %s"
+msgstr "Löschen %s"
+
+msgid "Reinstall"
+msgstr "Reinstall"
+
+msgid "Install"
+msgstr "Installieren"
+
+msgid "install %s"
+msgstr "Installieren %s"
+
+msgid "Upgrade"
+msgstr "Aktualisierung"
+
+msgid "upgrade %s"
+msgstr "Aktualisierung %s"
+
+msgid "Show system plugins only"
+msgstr "Nur System-Plugins anzeigen"
+
+msgid "Show extension plugins only"
+msgstr "Nur Erweiterungs-Plugins anzeigen"
+
+msgid "Show j00zek's plugins only"
+msgstr "Nur die Plugins von j00zek anzeigen"
+
+msgid "ERROR connecting to the internet"
+msgstr "Kein Internet"
+
+msgid "OPKG server does not response on pings :("
+msgstr "Der OPKG-Server antwortet nicht auf Pings :("
+
+msgid "ERROR updating OPKG"
+msgstr "FEHLER beim Aktualisieren von OPKG"
+
+msgid "'opkg update' command returned an error %i :("
+msgstr "Befehl 'opkg update' hat einen Fehler %i :("
+
+msgid "show channels only"
+msgstr "Nur Kanäle anzeigen"
+
+msgid "Show DVB USB modules only"
+msgstr "Nur DVB-USB-Module anzeigen"
+
+msgid ""
+"\n"
+"Use up/down arrows to scroll text. OK closes window"
+msgstr ""
+"\n"
+"Mit Aufwärts- / Abwärtspfeile, um durch den Text zu scrollen. OK schließt das Fenster"
+
+msgid "Downloading"
+msgstr "Download"
+
+msgid "Inflating"
+msgstr "Verarbeitung"
+
+msgid "Installing"
+msgstr "Installieren"
+
+msgid "Force uninstall"
+msgstr "Deinstallation erzwingen"
