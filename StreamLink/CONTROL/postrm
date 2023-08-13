@@ -1,0 +1,28 @@
+#!/bin/sh
+pythonType='unknown'
+if [ -e /usr/lib/python2.7 ]; then
+  pythonType='python2.7'
+elif [ -e /usr/lib/python3.9 ]; then
+  pythonType='python3.9'
+elif [ -e /usr/lib/python3.10 ]; then
+  pythonType='python3.10'
+fi
+
+[ -e /etc/init.d/streamlinkSRV ] && [ -e /var/run/streamlink.pid ] && /etc/init.d/streamlinkSRV stop
+[ -e /etc/init.d/streamlinkSRV ] && rm -f /etc/init.d/streamlinkSRV
+[ -e /etc/rc3.d/S50streamlinkSRV ] && rm -f /etc/rc3.d/S50streamlinkSRV
+[ -e /etc/rc4.d/S50streamlinkSRV ] && rm -f /etc/rc4.d/S50streamlinkSRV
+
+if [ $pythonType != 'unknown' ];then
+  [ -L "/usr/lib/$pythonType/site-packages/streamlink" ] && rm -rf "/usr/lib/$pythonType/site-packages/streamlink"
+  [ -e "/usr/lib/$pythonType/site-packages/streamlink" ] && find -L "/usr/lib/$pythonType/site-packages/streamlink" -name *.py* -type l -exec  rm {} +
+  [ -L "/usr/lib/$pythonType/site-packages/emukodi" ] && rm -rf "/usr/lib/$pythonType/site-packages/emukodi"
+  [ -L "/usr/lib/$pythonType/site-packages/streamlink_cli" ] && rm -rf "/usr/lib/$pythonType/site-packages/streamlink_cli"
+  [ -e "/usr/lib/$pythonType/site-packages/streamlink-fake.dist-info" ] && rm -rf "/usr/lib/$pythonType/site-packages/streamlink-fake.dist-info"
+fi
+if [ `ps -ef 2>&1 |grep -v grep|grep opkg|grep -c remove` -ge 1 ] || [ `ps -l 2>&1 |grep -v grep|grep opkg|grep -c remove` -ge 1 ];then
+  rm -rf /usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig
+  [ -L /usr/sbin/streamlink ] && rm -f /usr/sbin/streamlink
+  [ -L /usr/sbin/streamlinkSRV ] && rm -f /usr/sbin/streamlinkSRV
+fi
+exit 0
