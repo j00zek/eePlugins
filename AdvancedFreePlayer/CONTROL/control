@@ -1,0 +1,10 @@
+Package: enigma2-plugin-extensions--j00zeks-advancedfreeplayer
+Priority: optional
+Section: utils
+Depends: 
+Description: plays videos using system and serviceapp routines, also downloads covers and movie infos from tmdb
+Maintainer: j00zek
+Source: http://github.com/j00zek/eePlugins
+Version: 23.06.11.0618
+Architecture: all
+DestinationPath: /usr/lib/enigma2/python/Plugins/Extensions/AdvancedFreePlayer

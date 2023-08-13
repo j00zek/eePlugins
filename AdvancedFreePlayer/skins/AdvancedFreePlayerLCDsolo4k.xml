@@ -1,0 +1,14 @@
+<screen name="AdvancedFreePlayerInfobarSummary" position="0,0" size="480,320" id="1">
+  <widget source="session.CurrentService" render="j00zekLabel" minFontSize="32" position="0,5" size="480,165" font="Regular;50" halign="center" valign="center" foregroundColor="#FFFF00" >
+    <convert type="ServiceName">Name</convert>
+  </widget>
+  <widget source="session.CurrentService" render="Progress" position="20,215" size="440,10" borderWidth="1" >
+    <convert type="ServicePosition">Position</convert>
+  </widget>
+  <widget source="session.CurrentService" render="Label" position="300,230" size="180,60" font="Regular;60" halign="right" valign="center" >
+    <convert type="ServicePosition">Remaining,ShowNoSeconds</convert>
+  </widget>
+  <widget source="global.CurrentTime" render="Label" position="10,230" size="200,80" font="FdLcD;70" halign="center" valign="center" noWrap="1">
+    <convert type="ClockToText"></convert>
+  </widget>
+</screen>
