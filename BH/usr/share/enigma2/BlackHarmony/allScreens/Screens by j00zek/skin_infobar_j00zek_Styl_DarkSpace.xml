@@ -1,0 +1,61 @@
+<screen backgroundColor="transparent" flags="wfNoBorder" name="InfoBar" position="0,0" size="1920,1080" title="InfoBar">
+        <ePixmap pixmap="BlackHarmony/bg_design/infobarDarekSpace1844x171x230.png" position="60,870" size="1800,171" zPosition="-10" />
+        <!-- Pikona -->
+        <widget alphatest="blend" position="114,886" render="j00zekPicons" picontype="picon" size="220,132" source="session.CurrentService" transparent="1" zPosition="4">
+                <convert type="ServiceName">Reference</convert>
+        </widget>
+        <!-- czas -->
+        <widget source="global.CurrentTime" render="Label" position="1560,889" size="300,60" valign="center" halign="center" font="HD_Thin;55" foregroundColor="light_yellow" backgroundColor="black" transparent="1">
+                <convert type="ClockToText">Default</convert>
+        </widget>
+        <!-- Obecny program -->
+        <widget source="session.Event_Now" render="Label" position="420,870" size="115,85" font="HD_Thin; 32" valign="center" halign="left" backgroundColor="black" transparent="1">
+                <convert type="EventTime">StartTime</convert>
+                <convert type="ClockToText">Default</convert>
+        </widget>
+        <eLabel text="-" position="420,870" size="115,85" font="HD_Thin; 30" valign="center" halign="right" backgroundColor="black" transparent="1" foregroundColor="light_grey" />
+        <widget source="session.Event_Now" render="j00zekLabel" cfgContext="EN" position="550,870" size="800,85" font="HD_Thin; 42" valign="center" halign="left" backgroundColor="black" transparent="1" noWrap="1">
+                <convert type="j00zekModEventName">Name</convert>
+        </widget>
+        <widget source="session.Event_Now" render="Label" position="1360,870" size="180,85" font="HD_Thin; 32" valign="center" halign="right" backgroundColor="black" transparent="1">
+                <convert type="EventTime">Remaining</convert>
+                <convert type="RemainingToText">InMinutes</convert>
+        </widget>
+        <!-- pasek postepu -->
+        <ePixmap pixmap="BlackHarmony/gfx/progress_gray.png" position="420,952" size="1120,6" zPosition="-5" alphatest="blend" />
+        <widget source="session.Event_Now" render="Progress" position="420,952" size="1120,6" zPosition="1" pixmap="BlackHarmony/gfx/progress_ib.png" transparent="1">
+                <convert type="EventTime">Progress</convert>
+        </widget>
+        <!-- Nastepny program -->
+        <widget source="session.Event_Next" render="Label" position="420,955" size="115,85" font="HD_Thin; 32" valign="center" halign="left" foregroundColor="light_grey" backgroundColor="black" transparent="1">
+                <convert type="EventTime">StartTime</convert>
+                <convert type="ClockToText">Default</convert>
+        </widget>
+        <eLabel text="-" position="420,955" size="115,85" font="HD_Thin; 30" valign="center" halign="right" foregroundColor="light_grey" backgroundColor="black" transparent="1" />
+        <widget source="session.Event_Next" render="j00zekLabel" cfgContext="EN" position="550,955" size="800,85" font="HD_Thin; 42" valign="center" halign="left" backgroundColor="black" transparent="1" foregroundColor="light_grey" noWrap="1">
+                <convert type="j00zekModEventName">Name</convert>
+        </widget>
+        <widget source="session.Event_Next" render="Label" position="1360,955" size="180,85" font="HD_Thin; 32" valign="center" halign="right" foregroundColor="light_grey" backgroundColor="black" transparent="1">
+                <convert type="EventTime">Duration</convert>
+                <convert type="ClockToText">InMinutes</convert>
+        </widget>
+        <!-- stan nagrywania -->
+        <widget source="session.RecordState" render="Pixmap" position="1823,871" size="34,34" zPosition="2" pixmap="BlackHarmony/icons/rec_corner_68x68.png" alphatest="blend" transparent="1">
+                <convert type="ConditionalShowHide">Blink</convert>
+        </widget>
+  <!--widget source="session.CurrentService" render="j00zekFrontEndIcon" position="1655,100" size="88,40" zPosition="3" alphatest="blend"/--> 
+        <!-- status tunera -->
+        <!--eLabel text="SNR:" position="1650,100" size="115,25" font="Roboto_HD; 22" backgroundColor="black" halign="left" transparent="1" />
+        <widget source="session.FrontendStatus" render="Label" position="1655,100" size="115,25" font="Roboto_HD; 22" halign="right" backgroundColor="black" transparent="1" zPosition="1" foregroundColor="green">
+                <convert type="FrontendInfo">SNR</convert>
+        </widget>
+        <eLabel text="AGC:" position="1650,130" size="115,25" font="Roboto_HD; 22" backgroundColor="black" halign="left" transparent="1" />
+        <widget source="session.FrontendStatus" render="Label" position="1655,130" size="115,25" font="Roboto_HD; 22" halign="right" backgroundColor="black" transparent="1" zPosition="1" foregroundColor="green">
+                <convert type="FrontendInfo">AGC</convert>
+        </widget-->
+        <!-- wykorzystanie glowic -->
+        
+        <widget source="session.FrontendInfo" render="Label" position="1560,1000" size="300,25" zPosition="3" font="Roboto_HD;22" halign="center" backgroundColor="black" transparent="1">
+                <convert type="j00zekModFrontendInfo2">ACTIVE_BUSY_AVAILABLE_TUNER_COLORS,0x0000FF00,0x00FFFF00,0x007F7F7F</convert>
+        </widget>
+</screen>

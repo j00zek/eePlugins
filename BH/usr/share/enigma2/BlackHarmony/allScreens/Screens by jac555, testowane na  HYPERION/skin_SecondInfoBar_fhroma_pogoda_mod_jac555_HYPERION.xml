@@ -1,0 +1,335 @@
+<screen name="SecondInfoBar" backgroundColor="transparent" flags="wfNoBorder" position="0,0" size="1920,1080">
+  <ePixmap position="5,5" zPosition="-2" size="1920,699" pixmap="BlackHarmony/bg_design/secondinfobar2.png" />
+  <ePixmap position="30,680" zPosition="-2" size="1860,400" pixmap="BlackHarmony/bg_design/infobar_rw.png" />
+  <widget source="session.CurrentService" render="Pixmap" position="1398,807" zPosition="3" size="20,20" pixmap="BlackHarmony/icons/update.png" alphatest="blend">
+    <convert type="j00zekOPKGupgradeCheck" />
+    <convert type="ConditionalShowHide">Blink</convert>
+  </widget>
+<widget alphatest="blend" pixmap="BlackHarmony/icons/ico_wifi_on.png" position="1249,810" render="Pixmap" size="44,20" source="session.CurrentService" transparent="1" zPosition="3">
+      <convert type="j00zekModRouteInfo">Wifi</convert>
+      <convert type="ConditionalShowHide" />
+    </widget>
+   <widget alphatest="blend" pixmap="BlackHarmony/icons/ico_lan_on.png" position="1260,810" render="Pixmap" size="17,20" source="session.CurrentService" transparent="1" zPosition="2">
+      <convert type="j00zekModRouteInfo">Lan</convert>
+      <convert type="ConditionalShowHide" />
+    </widget>
+  <ePixmap position="1082,810" size="57,20" zPosition="1" pixmap="BlackHarmony/icons/ico_dolby_off.png" alphatest="blend" />
+  <widget source="session.CurrentService" render="Pixmap" position="1082,810" size="57,20" zPosition="2" pixmap="BlackHarmony/icons/ico_dolby_on.png" alphatest="blend">
+    <convert type="ServiceInfo">IsMultichannel</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <ePixmap position="1031,810" size="36,20" zPosition="1" pixmap="BlackHarmony/icons/ico_format_off.png" alphatest="blend" />
+  <widget source="session.CurrentService" render="Pixmap" position="1031,810" size="36,20" zPosition="2" pixmap="BlackHarmony/icons/ico_format_on.png" alphatest="blend">
+    <convert type="ServiceInfo">IsWidescreen</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+<widget source="session.CurrentService" render="Label" position="1231,835" size="133,29" font="Regular; 19" foregroundColor="lemon" backgroundColor="black" halign="right" valign="center" transparent="1" zPosition="2" text="pol">
+  <convert type="j00zekModAudioInfo">AudioCodec</convert>
+</widget>
+    <widget source="session.CurrentService" render="j00zekModAudioIcon" path="icons/audio" position="1300,810" size="60,20" zPosition="4" alphatest="blend">
+      <convert type="j00zekModAudioInfo">AudioIcon</convert>
+    </widget>
+  <widget alphatest="blend" pixmap="BlackHarmony/icons/ico_uhd_on.png" position="940,810" render="Pixmap" size="37,20" source="session.CurrentService" zPosition="4">
+    <convert type="j00zekModServiceInfoEX">VideoHeight</convert>
+    <convert type="ValueRange">1081,2160</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget alphatest="blend" pixmap="BlackHarmony/icons/ico_hd_on_1080.png" position="940,810" render="Pixmap" size="37,20" source="session.CurrentService" zPosition="4">
+    <convert type="j00zekModServiceInfoEX">VideoHeight</convert>
+    <convert type="ValueRange">1001,1080</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+    <widget alphatest="blend" pixmap="BlackHarmony/icons/ico_hd_on_960.png" position="940,810" render="Pixmap" size="37,20" source="session.CurrentService" zPosition="3">
+      <convert type="j00zekModServiceInfoEX">VideoWidth</convert>
+      <convert type="ValueRange">960,1000</convert>
+      <convert type="ConditionalShowHide" />
+    </widget>
+  <widget alphatest="blend" pixmap="BlackHarmony/icons/ico_hd_on_720.png" position="940,810" render="Pixmap" size="37,20" source="session.CurrentService" zPosition="2">
+    <convert type="j00zekModServiceInfoEX">VideoHeight</convert>
+    <convert type="ValueRange">720,1000</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget alphatest="blend" pixmap="BlackHarmony/icons/ico_sd_on_576.png" position="940,810" render="Pixmap" size="37,20" source="session.CurrentService" zPosition="1">
+    <convert type="j00zekModServiceInfoEX">VideoWidth</convert>
+    <convert type="ValueRange">0,1279</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+    <ePixmap position="989,810" size="29,20" zPosition="1" pixmap="BlackHarmony/icons/ico_hd_off.png" alphatest="blend" />
+    <widget source="session.CurrentService" render="Pixmap" position="989,810" size="29,20" zPosition="2" pixmap="BlackHarmony/icons/ico_hd_on.png" alphatest="blend">
+      <convert type="j00zekModServiceInfoEX">VideoWidth</convert>
+      <convert type="ValueRange">721,1980</convert>
+      <convert type="ConditionalShowHide" />
+    </widget>
+  <ePixmap position="1154,810" size="26,20" zPosition="1" pixmap="BlackHarmony/icons/ico_crypt_off.png" alphatest="blend" />
+  <widget source="session.CurrentService" render="Pixmap" position="1154,810" size="26, 20" zPosition="2" pixmap="BlackHarmony/icons/ico_crypt_on.png" alphatest="blend">
+    <convert type="ServiceInfo">IsCrypted</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <ePixmap position="1195,810" size="44,20" zPosition="1" pixmap="BlackHarmony/icons/ico_hbbtv_on.png" alphatest="blend" />
+  <widget source="session.CurrentService" render="Pixmap" position="1195,810" size="44,20" zPosition="2" pixmap="BlackHarmony/icons/ico_hbbtv_off.png" alphatest="blend">
+    <convert type="j00zekModServiceInfoEX">HasHBBTV</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget source="session.CurrentService" render="Label" position="65,805" size="860,45" font="HD_Thin; 38" noWrap="1" foregroundColor="lemon" backgroundColor="black" transparent="1" halign="center">
+    <convert type="j00zekModExtraTuner">ServiceNumberName</convert>
+  </widget>
+  <eLabel text="SNR:" position="1408,998" size="55,25" font="Roboto_HD; 22" backgroundColor="black" halign="left" transparent="1" />
+  <widget source="session.FrontendStatus" render="Label" position="1820,998" size="60,25" font="Roboto_HD; 22" halign="left" backgroundColor="black" transparent="1" zPosition="1" foregroundColor="green">
+    <convert type="FrontendInfo">SNR</convert>
+  </widget>
+  <eLabel text="AGC:" position="1408,1025" size="55,25" font="Roboto_HD; 22" backgroundColor="black" halign="left" transparent="1" />
+  <widget source="session.FrontendStatus" render="Label" position="1820,1025" size="60,25" font="Roboto_HD; 22" halign="left" backgroundColor="black" transparent="1" zPosition="1" foregroundColor="green">
+    <convert type="FrontendInfo">AGC</convert>
+  </widget>
+      <widget source="session.FrontendStatus" render="Progress" position="1465,1010" size="345,8" zPosition="1" pixmap="BlackHarmony/gfx/bar_snr_345x8.png" transparent="1">
+      <convert type="FrontendInfo">SNR</convert>
+    </widget>
+    <widget source="session.FrontendStatus" render="Progress" position="1465,1037" size="345,8" zPosition="1" pixmap="BlackHarmony/gfx/bar_snr_345x8.png" transparent="1">
+      <convert type="FrontendInfo">AGC</convert>
+    </widget>
+<widget source="session.CurrentService" render="Label" position="1604,918" size="252,25" font="Regular;22" backgroundColor="background" valign="center" halign="right" transparent="1">
+<convert type="ServiceName">Provider</convert>
+</widget>
+  <widget source="session.CurrentService" render="Label" position="1413,876" zPosition="1" size="460,25" font="Roboto_HD; 22" halign="center" backgroundColor="black" transparent="1">
+    <convert type="j00zekModExtraTuner">TunerInfo</convert>
+  </widget>
+  <widget source="session.Event_Now" render="Progress" position="460,940" zPosition="1" size="885,6" pixmap="BlackHarmony/gfx/progress_mario.png" transparent="1">
+    <convert type="EventTime">Progress</convert>
+  </widget>
+  <widget source="session.Event_Now" render="Label" position="470,880" size="105,36" font="HD_Thin; 32" halign="left" backgroundColor="black" transparent="1">
+    <convert type="EventTime">StartTime</convert>
+    <convert type="ClockToText">Default</convert>
+  </widget>
+  <eLabel text="-" position="572,880" size="20,36" font="HD_Thin; 30" halign="left" backgroundColor="black" transparent="1" foregroundColor="light_grey" />
+  <widget source="session.Event_Now" render="Label" position="597,861" size="650,76" font="HD_Thin; 28" halign="left" valign="center" backgroundColor="black" transparent="1">
+    <convert type="j00zekModEventName">Name</convert>
+</widget>
+  <widget source="session.Event_Now" render="Label" position="1200,880" size="170,36" font="HD_Thin; 26" halign="right" backgroundColor="black" transparent="1">
+    <convert type="EventTime">Remaining</convert>
+    <convert type="RemainingToText">InMinutes</convert>
+  </widget>
+  <widget source="session.Event_Next" render="Label" position="470,965" size="105,36" font="HD_Thin; 32" halign="left" foregroundColor="#808080" backgroundColor="black" transparent="1">
+    <convert type="EventTime">StartTime</convert>
+    <convert type="ClockToText">Default</convert>
+  </widget>
+  <eLabel text="-" position="572,965" size="20,36" font="HD_Thin; 30" halign="left" foregroundColor="#808080" backgroundColor="black" transparent="1" />
+  <widget source="session.Event_Next" render="Label" position="597,946" size="650,80" font="RegularLight; 27" halign="left" valign="center" backgroundColor="black" transparent="1" foregroundColor="#c9c9c9">
+    <convert type="j00zekModEventName">Name</convert>
+</widget>
+  <widget source="session.Event_Next" render="Label" position="1200,965" size="170,36" font="HD_Thin; 26" halign="right" foregroundColor="#808080" backgroundColor="black" transparent="1">
+    <convert type="EventTime">Duration</convert>
+    <convert type="ClockToText">InMinutes</convert>
+  </widget>
+<widget source="session.CurrentService" render="j00zekPiconAnimation" pixmaps="animatedZZPicons" position="55,851" size="400,170" zPosition="5" transparent="1" alphatest="blend" />
+  <widget alphatest="blend" position="55,851" render="j00zekPicons" picontype="zzpicon" size="400,170" source="session.CurrentService" transparent="1" zPosition="4">
+    <convert type="ServiceName">Reference</convert>
+  </widget>
+  <widget source="global.CurrentTime" render="Label" position="1393,722" size="280,56" font="HD_Thin; 53" halign="right" backgroundColor="black" transparent="1">
+    <convert type="ClockToText">Default</convert>
+  </widget>
+<widget source="global.CurrentTime" render="Label" position="1680,726" size="100,50" font="HD_Thin; 35" halign="left" foregroundColor="lemon" backgroundColor="black" transparent="1">
+    <convert type="ClockToText">Format:%S</convert>
+    </widget>
+<widget backgroundColor="black" font="HD_Thin; 31" halign="center" position="1420,805" render="Label" size="414,62" source="global.CurrentTime" transparent="1" foregroundColor="lemon" valign="center">
+    <convert type="ClockToText">Format:%A %d %B %Y </convert>
+  </widget>
+  <eLabel name="new eLabel" position="514,1025" size="45,25" font="Roboto_HD; 21" foregroundColor="green" backgroundColor="black" text="CA:" transparent="1" halign="right" />
+  <widget source="session.CurrentService" render="Label" position="565,1025" zPosition="2" size="70,25" font="Roboto_HD; 21" valign="top" halign="left" transparent="1" backgroundColor="black">
+    <convert type="j00zekModExtraInfo">CaidID</convert>
+  </widget>
+  <eLabel text="SID:" font="Roboto_HD; 21" position="620,1025" size="50,25" backgroundColor="black" transparent="1" halign="right" foregroundColor="yellow" />
+  <widget source="session.CurrentService" render="Label" position="677,1025" size="60,25" font="Roboto_HD; 21" halign="left" backgroundColor="black" transparent="1">
+    <convert type="j00zekModExtraInfo">sid</convert>
+  </widget>
+  <widget source="session.CurrentService" render="Label" position="700,1025" zPosition="2" size="590,25" font="Roboto_HD; 21" valign="top" halign="right" transparent="1" backgroundColor="black">
+    <convert type="j00zekModExtraInfo">Source</convert>
+  </widget>
+  <!-- wykorzystanie glowic -->
+  <widget source="session.FrontendInfo" render="Label" position="1412,918" zPosition="1" size="284,25" font="Roboto_HD; 22" halign="center" foregroundColor="white" backgroundColor="black" transparent="1">
+    <convert type="j00zekModFrontendInfo2">ACTIVE_BUSY_AVAILABLE_TUNER_COLORS,0x0000FF00,0x00FFFF00,0x00DCDCDC</convert>
+  </widget>
+  <widget source="session.RecordState" render="Pixmap" position="1834,806" size="38,38" zPosition="2" pixmap="BlackHarmony/icons/recsign.png" alphatest="blend">
+    <convert type="ConditionalShowHide">Blink</convert>
+  </widget>
+  <widget source="session.CurrentService" render="FixedLabel" text="FTA" font="Roboto_HD; 21" position="1290,1025" size="80,25" halign="center" backgroundColor="black" foregroundColor="yellow" zPosition="1" valign="center" transparent="1">
+    <convert type="j00zekModServiceInfoEX">IsFta</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget source="session.CurrentService" render="FixedLabel" text="NET" font="Roboto_HD; 21" position="1290,1025" size="80,25" halign="center" backgroundColor="black" foregroundColor="green" zPosition="2" valign="center" transparent="1">
+    <convert type="j00zekModCaidInfo2">Net</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget source="session.CurrentService" render="FixedLabel" text="CRD" font="Roboto_HD; 21" position="1290,1025" size="80,25" halign="center" backgroundColor="black" foregroundColor="blue" zPosition="3" valign="center" transparent="1">
+    <convert type="j00zekModCaidInfo2">Crd</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget source="session.CurrentService" render="FixedLabel" text="EMU" font="Roboto_HD; 21" position="1290,1025" size="80,25" halign="center" backgroundColor="black" foregroundColor="orange" zPosition="4" valign="center" transparent="1">
+    <convert type="j00zekModCaidInfo2">Emu</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+ <eLabel text="BTR:" position="1657,962" size="65,25" font="Roboto_HD; 22" backgroundColor="black" halign="left" transparent="1" foregroundColor="yellow" />
+  <widget source="session.CurrentService" render="Label" position="1727,961" size="150,25" font="Roboto_HD; 22" halign="left" backgroundColor="black" transparent="1">
+    <convert type="j00zekBitrate_BH">VideoBitrateUnits</convert>
+  </widget>
+<widget source="session.CurrentService" render="j00zekLabel" backgroundColor="background" font="Roboto_HD; 21" halign="left" position="49,1025" size="436,25" transparent="1" zPosition="3">
+      <convert type="j00zekModServiceName2">UseCFG</convert>
+    </widget>
+  <eLabel text="RSV:" position="1409,962" size="65,25" font="Roboto_HD; 22" backgroundColor="black" halign="left" transparent="1" foregroundColor="lemon" />
+  <widget source="session.CurrentService" render="Label" position="1480,962" size="170,25" font="Roboto_HD; 22" halign="left" backgroundColor="black" transparent="1" foregroundColor="white">
+    <convert type="j00zekVideoResolution">VideoResolution</convert>
+  </widget>
+   <widget render="j00zekModRunningText" source="session.Event_Now" options="movetype=running,startpoint=0,direction=top,steptime=90,repeat=3,startdelay=6000,wrap" halign="left" font="Roboto_HD; 25" zPosition="1" foregroundColor="foreground" backgroundColor="black" position="60,90" size="885,250" transparent="1">
+      <convert type="j00zekModEventName">ExtendedDescription</convert>
+    </widget>
+    <widget render="j00zekModRunningText" source="session.Event_Next" options="movetype=running,startpoint=0,direction=top,steptime=90,repeat=3,startdelay=6000,wrap" halign="left" font="Roboto_HD; 25" zPosition="1" foregroundColor="white" backgroundColor="black" position="60,440" size="880,225" transparent="1">
+      <convert type="j00zekModEventName">ExtendedDescription</convert>
+    </widget>
+    <widget backgroundColor="black" font="HD_Thin; 28" halign="left" valign="center" position="160,35" render="j00zekLabel" size="620,55" source="session.Event_Now" zPosition="1" transparent="1" foregroundColor="blue">
+      <convert type="j00zekModEventName">Name</convert>
+    </widget>
+    <widget backgroundColor="black" font="HD_Thin; 28" halign="left" valign="center" position="160,385" render="j00zekLabel" size="620,55" source="session.Event_Next" zPosition="1" transparent="1" foregroundColor="yellow">
+      <convert type="j00zekModEventName">Name</convert>
+    </widget>
+    <widget backgroundColor="black" font="HD_Thin; 26" halign="right" position="785,40" render="j00zekLabel" size="145,50" source="session.Event_Now" transparent="1" foregroundColor="blue">
+      <convert type="EventTime">Remaining</convert>
+      <convert type="RemainingToText">InMinutes</convert>
+    </widget>
+    <widget backgroundColor="black" font="HD_Thin; 26" halign="right" position="785,390" render="j00zekLabel" size="145,50" source="session.Event_Next" transparent="1" foregroundColor="yellow">
+      <convert type="EventTime">Remaining</convert>
+      <convert type="RemainingToText">InMinutes</convert>
+    </widget>
+    <widget source="session.CurrentService" render="j00zekLabel" position="50,40" size="130,50" font="HD_Thin; 30" halign="left" backgroundColor="black" transparent="1" foregroundColor="green">
+      <convert type="j00zekTranslator">Now:</convert>
+    </widget>
+    <widget source="session.CurrentService" render="j00zekLabel" position="50,390" size="135,50" font="HD_Thin; 30" halign="left" backgroundColor="black" transparent="1" foregroundColor="red">
+      <convert type="j00zekTranslator">Next:</convert>
+    </widget>
+  <!-- prawa strona - pogoda -->
+    <widget noWrap="1" font="HD_Thin; 41" render="Label" position="990,27" size="610,64" source="session.j00zekMSNWeather" zPosition="3" halign="left" valign="bottom" transparent="1" foregroundColor="lemon" backgroundColor="black">
+      <convert type="j00zekMSNWeather">city</convert>
+    </widget>
+	<widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="970,453" size="150,150" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
+    <convert type="j00zekMSNWeather">DailyRecord=1</convert>
+  </widget>
+ <widget source="session.CurrentService" font="HD_Thin; 24" render="Label" position="930,378" size="225,35" backgroundColor="black" noWrap="1" valign="center" halign="center" transparent="1" foregroundColor="lemon">
+    <convert type="j00zekTranslator">Tomorrow</convert>
+    </widget>
+	 <ePixmap position="1010,415" size="70,28" pixmap="BlackHarmony/weather_icons/temp_high_low1.png" alphatest="blend" zPosition="22" />
+ <widget source="session.j00zekMSNWeather" font="HD_Thin; 23" render="Label" position="934,415" size="75,35" foregroundColor="#00db0000" backgroundColor="black" zPosition="3" transparent="1" halign="right">
+    <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=1']['temp_high']|C </convert>
+   </widget>
+ <widget source="session.j00zekMSNWeather" font="HD_Thin; 23" render="Label" position="1082,415" size="75,35" foregroundColor="#0000cbf6" backgroundColor="black" zPosition="3" transparent="1" halign="left">
+    <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=1']['temp_low']|C</convert>
+  </widget>
+ <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="1150,453" size="150,150" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
+      <convert type="j00zekMSNWeather">DailyRecord=2</convert>
+    </widget>
+	 <ePixmap position="1190,415" size="70,28" pixmap="BlackHarmony/weather_icons/temp_high_low1.png" alphatest="blend" zPosition="22" />
+ <widget backgroundColor="black" foregroundColor="lemon" halign="center" valign="center" noWrap="1" font="HD_Thin; 24" render="Label" position="1110,378" size="225,35" source="session.j00zekMSNWeather" transparent="1" zPosition="3">
+    <convert type="j00zekMSNWeather">DailyRecord=2,date</convert>
+    </widget>
+ <widget source="session.j00zekMSNWeather" font="HD_Thin; 23" render="Label" position="1114,415" size="75,35" backgroundColor="black" foregroundColor="#00db0000" zPosition="3" transparent="1" halign="right">
+    <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=2']['temp_high']|C </convert>
+   </widget>
+ <widget source="session.j00zekMSNWeather" font="HD_Thin; 23" render="Label" position="1262,415" size="75,35" backgroundColor="black" foregroundColor="#0000cbf6" zPosition="3" transparent="1" halign="left">
+    <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=2']['temp_low']|C</convert>
+  </widget>
+ <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="1330,453" size="150,150" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
+      <convert type="j00zekMSNWeather">DailyRecord=3</convert>
+    </widget>
+ <widget backgroundColor="black" foregroundColor="lemon" halign="center" valign="center" noWrap="1" font="HD_Thin; 24" render="Label" position="1290,378" size="225,35" source="session.j00zekMSNWeather" transparent="1" zPosition="3">
+      <convert type="j00zekMSNWeather">DailyRecord=3,date</convert>
+    </widget>
+	 <ePixmap position="1370,415" size="70,28" pixmap="BlackHarmony/weather_icons/temp_high_low1.png" alphatest="blend" zPosition="22" />
+ <widget source="session.j00zekMSNWeather" font="HD_Thin; 23" render="Label" position="1294,415" size="75,35" backgroundColor="black" foregroundColor="#00db0000" zPosition="3" transparent="1" halign="right">
+    <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=3']['temp_high']|C </convert>
+   </widget>
+ <widget source="session.j00zekMSNWeather" font="HD_Thin; 23" render="Label" position="1441,415" size="75,35" backgroundColor="black" foregroundColor="#0000cbf6" zPosition="3" transparent="1" halign="left">
+    <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=3']['temp_low']|C</convert>
+  </widget>
+	 <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="1510,453" size="150,150" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
+      <convert type="j00zekMSNWeather">DailyRecord=4</convert>
+    </widget>
+ <widget backgroundColor="black" foregroundColor="lemon" halign="center" valign="center" noWrap="1" font="HD_Thin; 24" render="Label" position="1470,378" size="225,35" source="session.j00zekMSNWeather" transparent="1" zPosition="3">
+      <convert type="j00zekMSNWeather">DailyRecord=4,date</convert>
+    </widget>
+	 <ePixmap position="1550,415" size="70,28" pixmap="BlackHarmony/weather_icons/temp_high_low1.png" alphatest="blend" zPosition="22" />
+ <widget source="session.j00zekMSNWeather" font="HD_Thin; 23" render="Label" position="1474,415" size="75,35" backgroundColor="black" foregroundColor="#00db0000" zPosition="3" transparent="1" halign="right">
+    <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=4']['temp_high']|C </convert>
+   </widget>
+ <widget source="session.j00zekMSNWeather" font="HD_Thin; 23" render="Label" position="1621,415" size="75,35" backgroundColor="black" foregroundColor="#0000cbf6" zPosition="3" transparent="1" halign="left">
+    <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=4']['temp_low']|C</convert>
+  </widget>
+    <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="990,90" size="245,245" halign="center" valign="center" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
+      <convert type="j00zekMSNWeather">weathericon,current</convert>
+    </widget>
+    <widget noWrap="1" backgroundColor="black" font="HD_Thin; 40" render="Label" position="1265,98" size="201,60" source="session.j00zekMSNWeather" zPosition="3" halign="left" valign="center" transparent="1">
+      <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
+    </widget>
+    <widget noWrap="1" backgroundColor="background" font="HD_Thin; 29" render="Label" position="1265,159" size="494,50" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1">
+      <convert type="j00zekMSNWeather">temperature_text,current</convert>
+    </widget>
+    <ePixmap position="1439,216" size="70,28" pixmap="BlackHarmony/weather_icons/temp_high_low1.png" alphatest="blend" zPosition="22" />
+    <eLabel name="new eLabel" position="1264,210" size="90,40" font="HD_Thin; 28" foregroundColor="white" backgroundColor="black" transparent="1" halign="right" text="maks." />
+    <widget noWrap="1" backgroundColor="black" font="HD_Thin; 30" render="Label" position="1363,210" size="90,40" foregroundColor="podsw" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1">
+  <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=0']['temp_high']|C</convert>
+    </widget>
+    <eLabel name="new eLabel" position="1505,210" size="78,40" font="HD_Thin; 28" foregroundColor="white" backgroundColor="black" transparent="1" halign="right" text="min." />
+    <widget noWrap="1" backgroundColor="black" font="HD_Thin; 30" render="Label" position="1591,210" size="90,40" foregroundColor="podsw" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1">
+      <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=0']['temp_low']|C</convert>
+    </widget>
+    <widget noWrap="1" backgroundColor="background" font="HD_Thin; 28" render="Label" position="1324,266" size="338,40" source="session.j00zekMSNWeather" zPosition="8" halign="left" transparent="1">
+      <convert type="j00zekMSNWeather">RUN|['currentData']['wind_speed']['valInfo']</convert>
+    </widget>
+    <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="1470,266" size="35,35" source="session.j00zekMSNWeather" zPosition="3" transparent="1">
+    <convert type="j00zekMSNWeather">RUN|['currentData']['wind_dir']['valInfo']</convert>
+  </widget>
+    <ePixmap pixmap="BlackHarmony/weather_icons/wind.png" position="1258,258" zPosition="1" size="68,60" alphatest="blend" name="lend" />
+    <ePixmap pixmap="BlackHarmony/weather_icons/humidity_outdoor.png" position="1283,328" zPosition="1" size="36,39" alphatest="blend" />
+    <widget noWrap="1" backgroundColor="background" font="HD_Thin; 28" render="Label" position="1328,310" size="106,50" source="session.j00zekMSNWeather" zPosition="8" halign="left" transparent="1" valign="bottom">
+      <convert type="j00zekMSNWeather">RUN|['currentData']['humidity']['valInfo']</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="1770,235" size="100,30" font="HD_Thin; 22" halign="center" valign="center" transparent="1" backgroundColor="black">
+      <convert type="j00zekSun">wschod</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="1770,330" size="100,30" font="HD_Thin; 22" halign="center" valign="center" transparent="1" backgroundColor="black" foregroundColor="grey">
+      <convert type="j00zekSun">zachod</convert>
+    </widget>
+    <widget source="session.CurrentService" render="j00zekLabel" position="1710,237" size="75,25" font="HD_Thin; 22" backgroundColor="black" halign="left" transparent="1">
+      <convert type="j00zekTranslator">Sunrise:</convert>
+    </widget>
+    <widget source="session.CurrentService" render="j00zekLabel" position="1710,332" size="75,25" font="HD_Thin; 22" backgroundColor="black" halign="left" transparent="1">
+      <convert type="j00zekTranslator">Sunset:</convert>
+    </widget>
+  <ePixmap pixmap="BlackHarmony/icons/Weather/wsch.png" position="1770,175" zPosition="1" size="99,50" alphatest="blend" />
+  <ePixmap pixmap="BlackHarmony/icons/Weather/zach.png" position="1770,270" zPosition="1" size="101,50" alphatest="blend" />
+  <widget backgroundColor="background" font="Regular; 20" foregroundColor="light_yellow" halign="right" position="1600,25" render="Label" size="264,30" source="global.CurrentTime" transparent="1" zPosition="1">
+<convert type="j00zekMoon">faza</convert>
+</widget> 
+<widget alphatest="on" path="/usr/share/enigma2/BlackHarmony/icons" picontype="MoonPhase" position="1739,56" render="j00zekPicons" showdefaultpic="no" size="120,120" source="global.CurrentTime" zPosition="8">
+<convert type="j00zekMoon">obraz</convert>
+</widget>
+<widget backgroundColor="background" font="Regular;20" foregroundColor="yellow" halign="right" position="1635,108" render="Label" size="100,35" source="global.CurrentTime" transparent="1" zPosition="1">
+<convert type="j00zekMoon">oswietlenie</convert>
+</widget>
+   <ePixmap pixmap="BlackHarmony/weather_icons/barometr.png" position="1448,334" zPosition="1" size="25,25" alphatest="blend" />
+    <widget source="session.j00zekMSNWeather" render="Label" position="1479,332" size="226,30" font="Regular;24" zPosition="2" halign="left" valign="center" foregroundColor="lemon" backgroundColor="background" transparent="1" noWrap="1">
+      <convert type="j00zekMSNWeather">RUN|['currentData']['pressure']['valInfo']</convert>
+  </widget>
+    <widget source="session.CurrentService" render="j00zekLabel" position="955,615" size="255,28" font="Roboto_HD; 19" backgroundColor="black" foregroundColor="green" halign="left" transparent="1">
+      <convert type="j00zekTranslator">Name-day:</convert>
+    </widget>
+  <widget source="global.CurrentTime" render="Label" position="954,638" size="375,33" font="Roboto_HD; 19" halign="left" transparent="1" backgroundColor="black" zPosition="3" noWrap="1">
+    <convert type="j00zekModimieniny" />
+  </widget>
+<!--AIRLY-->
+    <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="1714,514" size="140,140" source="session.j00zekMSNWeather" transparent="1" zPosition="3">
+        <convert type="j00zekMSNWeather">RUN|['currentData']['airIndex']['iconfilename']</convert>
+    </widget>
+    <widget foregroundColor="black" backgroundColor="foreground" font="HD_Thin; 29" render="Label" position="1714,514" size="140,140" source="session.j00zekMSNWeather" zPosition="5" halign="center" valign="bottom" transparent="1">
+    <convert type="j00zekMSNWeather">RUN|['currentData']['airIndex']['val']</convert>
+     </widget>
+    <widget position="1684,357" size="196,157" source="session.j00zekMSNWeather" render="j00zekLabel" font="Regular; 23" backgroundColor="background" halign="center" valign="bottom" transparent="1" zPosition="10">
+        <convert type="j00zekMSNWeather">RUN|['currentData']['airIndex']['info']|, |0x00c1ff63|['currentData']['airIndex']['advice']</convert>
+      </widget>
+</screen>

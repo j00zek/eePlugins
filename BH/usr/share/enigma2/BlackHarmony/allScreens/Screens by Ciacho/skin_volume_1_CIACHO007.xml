@@ -1,0 +1,7 @@
+<skin>
+ <screen name="Volume" position="710,65" size="500,66" title="Volume" zPosition="1" flags="wfNoBorder" backgroundColor="transparent">
+  <ePixmap position="0,0" zPosition="1" size="500,66" pixmap="BlackHarmony/gfx/vol_back.png" transparent="1" />
+  <widget name="Volume" position="72,30" zPosition="2" size="343,6" pixmap="BlackHarmony/gfx/bar_ber.png" transparent="1" />
+  <widget backgroundColor="background" font="Roboto_HD;28" foregroundColor="white" halign="left" position="423,12" render="j00zekModVolumeText" size="60,40" source="global.CurrentTime" transparent="1" valign="center" zPosition="20" />
+</screen>
+</skin>

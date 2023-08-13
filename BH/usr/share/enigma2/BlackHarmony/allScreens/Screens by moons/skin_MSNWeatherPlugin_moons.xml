@@ -1,0 +1,69 @@
+<skin>
+  <screen name="MSNWeatherPlugin" position="center,center" size="1522,1022" title=" " flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="0,0" zPosition="-10" size="1522,1022" pixmap="BlackHarmony/bg_design/pogoda.png" />
+    <widget source="global.CurrentTime" render="Label" position="45,50" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="130,50" size="460,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+    <widget source="Title" render="Label" position="1025,50" size="420,30" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1" />
+    <widget render="Label" source="observationtime" font="Roboto_HD; 26" position="1040,200" size="390,70" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="center" foregroundColor="green" />
+    <widget render="Label" source="currentTemp" font="Roboto_HD; 40" position="285,234" size="140,45" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="center" foregroundColor="light_yellow" />
+    <widget render="Label" source="feelsliketemp" font="Roboto_HD; 26" position="130,361" size="340,35" backgroundColor="black" zPosition="3" transparent="1" valign="center" halign="center" />
+    <widget render="Label" source="caption" font="HD_Thin; 28" position="1040,280" size="390,80" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="center" foregroundColor="light_yellow" />
+    <widget render="Label" source="observationpoint" font="Roboto_HD; 24" position="1040,372" size="390,80" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="top" />
+    <widget name="currenticon" position="131,202" size="128,128" zPosition="1" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/weather_icons/temp_high_low.png" position="826,229" size="28,70" zPosition="3" transparent="1" alphatest="blend" />
+    <widget source="session.j00zekMSNWeather" render="Label" font="Regular; 32" position="620,222" size="300,40" backgroundColor="black" zPosition="3" transparent="1" valign="center" halign="center">
+      <convert type="j00zekMSNWeather">temperature_high,current</convert>
+    </widget>
+    <widget source="session.j00zekMSNWeather" render="Label" font="Regular; 32" position="620,266" size="300,40" backgroundColor="black" zPosition="3" transparent="1" valign="center" halign="center">
+      <convert type="j00zekMSNWeather">temperature_low,current</convert>
+    </widget>
+    <widget source="session.j00zekMSNWeather" render="Label" font="Roboto_HD; 26" position="130,406" size="340,70" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="center">
+      <convert type="j00zekMSNWeather">temperature_text,day1</convert>
+    </widget>
+    <ePixmap pixmap="BlackHarmony/weather_icons/wind.png" position="548,340" size="60,60" zPosition="3" transparent="1" alphatest="blend" />
+    <widget render="Label" source="wind_condition" font="Roboto_HD; 26" position="620,330" size="300,70" backgroundColor="black" zPosition="3" transparent="1" valign="center" halign="center" />
+    <ePixmap pixmap="BlackHarmony/weather_icons/umbrella.png" position="932,411" size="50,54" zPosition="3" transparent="1" alphatest="blend" />
+    <widget render="Label" source="humidity" font="Roboto_HD; 26" position="620,416" size="300,54" backgroundColor="black" zPosition="3" transparent="1" valign="center" halign="center" />
+    <widget source="session.j00zekMSNWeather" render="Label" font="Roboto_HD; 26" position="133,552" size="180,45" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="center">
+      <convert type="j00zekMSNWeather">weekshortday,day2</convert>
+    </widget>
+    <widget source="session.j00zekMSNWeather" render="Label" font="Roboto_HD; 26" position="209,555" size="180,45" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="center">
+      <convert type="j00zekMSNWeather">date,day2</convert>
+    </widget>
+    <widget name="weekday2_icon" position="208,620" size="128,128" zPosition="1" alphatest="blend" />
+    <widget render="Label" source="weekday2_temp" font="Roboto_HD; 26" position="150,760" size="240,110" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="top" />
+    <widget source="session.j00zekMSNWeather" render="Label" font="Roboto_HD; 26" position="448,552" size="180,45" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="center">
+      <convert type="j00zekMSNWeather">weekshortday,day3</convert>
+    </widget>
+    <widget source="session.j00zekMSNWeather" render="Label" font="Roboto_HD; 26" position="524,555" size="180,45" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="center">
+      <convert type="j00zekMSNWeather">date,day3</convert>
+    </widget>
+    <widget name="weekday3_icon" position="526,620" size="128,128" zPosition="1" alphatest="blend" />
+    <widget render="Label" source="weekday3_temp" font="Roboto_HD; 26" position="465,760" size="250,110" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="top" />
+    <widget source="session.j00zekMSNWeather" render="Label" font="Roboto_HD; 26" position="774,552" size="180,45" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="center">
+      <convert type="j00zekMSNWeather">weekshortday,day4</convert>
+    </widget>
+    <widget source="session.j00zekMSNWeather" render="Label" font="Roboto_HD; 26" position="850,555" size="180,45" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="center">
+      <convert type="j00zekMSNWeather">date,day4</convert>
+    </widget>
+    <widget name="weekday4_icon" position="851,620" size="128,128" zPosition="1" alphatest="blend" />
+    <widget render="Label" source="weekday4_temp" font="Roboto_HD; 26" position="791,760" size="250,110" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="top" />
+    <widget source="session.j00zekMSNWeather" render="Label" font="Roboto_HD; 26" position="1098,552" size="180,45" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="center">
+      <convert type="j00zekMSNWeather">weekshortday,day5</convert>
+    </widget>
+    <widget source="session.j00zekMSNWeather" render="Label" font="Roboto_HD; 26" position="1174,555" size="180,45" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="center">
+      <convert type="j00zekMSNWeather">date,day5</convert>
+    </widget>
+    <widget name="weekday5_icon" position="1171,620" size="128,128" zPosition="1" alphatest="blend" />
+    <widget render="Label" source="weekday5_temp" font="Roboto_HD; 26" position="1115,760" size="250,110" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="top" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="50,950" size="35,27" alphatest="blend" />
+    <ePixmap position="1340,950" size="60,30" pixmap="BlackHarmony/buttons/key_menu.png" alphatest="blend" zPosition="1" />
+    <widget source="session.CurrentService" render="j00zekLabel" position="87,950" size="180,27" zPosition="1" font="Roboto_HD; 24" halign="left" foregroundColor="white" backgroundColor="dark_grey" transparent="1" >
+      <convert type="j00zekTranslator">Exit</convert>
+    </widget> 
+  </screen>
+ </skin>

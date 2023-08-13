@@ -1,0 +1,134 @@
+<skin>
+  <screen name="PlayerSelectorWidget" position="0,0" size="1920,1080" title="E2iPlayer" flags="wfNoBorder" backgroundColor="transparent">
+    <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" zPosition="-10" size="1920,1080">
+      <convert type="j00zekRefreshBingPicOfTheDay">/usr/share/enigma2/BlackHarmony/bg_design/EPGPig.png</convert>
+    </widget>
+    <widget source="Title" render="Label" position="1100,50" size="726,32" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1"/>
+    <widget source="global.CurrentTime" render="Label" position="81,50" size="80,32" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="164,50" size="460,32" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+    <eLabel backgroundColor="linie"  position="1169,132" size="691,2" zPosition="4" />
+    <eLabel backgroundColor="linie"  position="1169,523" size="691,2" zPosition="4" />
+    <eLabel backgroundColor="linie"  position="1167,132" size="2,393" zPosition="4" />
+    <eLabel backgroundColor="linie"  position="1860,132" size="2,393" zPosition="4" />
+    <widget backgroundColor="picture" position="1168,133" render="Pig" size="689,388" source="session.VideoPicture" transparent="0" zPosition="3">
+      <convert type="ConfigEntryTest"></convert>
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <ePixmap pixmap="BlackHarmony/allScreens/Screens by endriu/icons/IPTV.png" position="1320,656" size="400,218" alphatest="blend"/>
+
+    <widget name="marker" zPosition="2" position="62,127" size="180,180" transparent="1" alphatest="blend" />
+    <widget name="cover_11" zPosition="4" position="85,150" size="135,135" transparent="1" alphatest="blend" />
+    <widget name="cover_21" zPosition="4" position="265,150" size="135,135" transparent="1" alphatest="blend" />
+    <widget name="cover_31" zPosition="4" position="445,150" size="135,135" transparent="1" alphatest="blend" />
+    <widget name="cover_41" zPosition="4" position="625,150" size="135,135" transparent="1" alphatest="blend" />
+    <widget name="cover_51" zPosition="4" position="805,150" size="135,135" transparent="1" alphatest="blend" />
+    <widget name="cover_61" zPosition="4" position="985,150" size="135,135" transparent="1" alphatest="blend" />
+    <widget name="cover_71" zPosition="4" position="1165,150" size="135,135" transparent="1" alphatest="blend" />
+    <widget name="cover_81" zPosition="4" position="1345,150" size="135,135" transparent="1" alphatest="blend" />
+
+    <widget name="cover_12" zPosition="4" position="85,318" size="135,135" transparent="1" alphatest="blend" />
+    <widget name="cover_22" zPosition="4" position="265,318" size="135,135" transparent="1" alphatest="blend" />
+    <widget name="cover_32" zPosition="4" position="445,318" size="135,135" transparent="1" alphatest="blend" />
+    <widget name="cover_42" zPosition="4" position="625,318" size="135,135" transparent="1" alphatest="blend" />
+    <widget name="cover_52" zPosition="4" position="805,318" size="135,135" transparent="1" alphatest="blend" />
+    <widget name="cover_62" zPosition="4" position="985,318" size="135,135" transparent="1" alphatest="blend" />
+    <widget name="cover_72" zPosition="4" position="1165,318" size="135,135" transparent="1" alphatest="blend" />
+    <widget name="cover_82" zPosition="4" position="1345,318" size="135,135" transparent="1" alphatest="blend" />
+
+    <widget name="cover_13" zPosition="4" position="85,486" size="135,135" transparent="1" alphatest="blend" />
+    <widget name="cover_23" zPosition="4" position="265,486" size="135,135" transparent="1" alphatest="blend" />
+    <widget name="cover_33" zPosition="4" position="445,486" size="135,135" transparent="1" alphatest="blend" />
+    <widget name="cover_43" zPosition="4" position="625,486" size="135,135" transparent="1" alphatest="blend" />
+    <widget name="cover_53" zPosition="4" position="805,486" size="135,135" transparent="1" alphatest="blend" />
+    <widget name="cover_63" zPosition="4" position="985,486" size="135,135" transparent="1" alphatest="blend" />
+    <widget name="cover_73" zPosition="4" position="1165,486" size="135,135" transparent="1" alphatest="blend" />
+    <widget name="cover_83" zPosition="4" position="1345,486" size="135,135" transparent="1" alphatest="blend" />
+
+    <widget name="cover_14" zPosition="4" position="85,654" size="135,135" transparent="1" alphatest="blend" />
+    <widget name="cover_24" zPosition="4" position="265,654" size="135,135" transparent="1" alphatest="blend" />
+    <widget name="cover_34" zPosition="4" position="445,654" size="135,135" transparent="1" alphatest="blend" />
+    <widget name="cover_44" zPosition="4" position="625,654" size="135,135" transparent="1" alphatest="blend" />
+    <widget name="cover_54" zPosition="4" position="805,654" size="135,135" transparent="1" alphatest="blend" />
+    <widget name="cover_64" zPosition="4" position="985,654" size="135,135" transparent="1" alphatest="blend" />
+    <widget name="cover_74" zPosition="4" position="1165,654" size="135,135" transparent="1" alphatest="blend" />
+    <widget name="cover_84" zPosition="4" position="1345,654" size="135,135" transparent="1" alphatest="blend" />
+
+    <widget name="page_marker" zPosition="3" position="540,828" size="16,16" transparent="1" alphatest="blend" />	
+    <ePixmap zPosition="2" position="540,828" size="16,16" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/IPTVPlayer/icons/radio_button_off.png" transparent="1" alphatest="blend" />
+    <ePixmap zPosition="2" position="556,828" size="16,16" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/IPTVPlayer/icons/radio_button_off.png" transparent="1" alphatest="blend" />
+    <ePixmap zPosition="2" position="572,828" size="16,16" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/IPTVPlayer/icons/radio_button_off.png" transparent="1" alphatest="blend" />
+    <ePixmap zPosition="2" position="588,828" size="16,16" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/IPTVPlayer/icons/radio_button_off.png" transparent="1" alphatest="blend" />
+    <ePixmap zPosition="2" position="604,828" size="16,16" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/IPTVPlayer/icons/radio_button_off.png" transparent="1" alphatest="blend" />
+    <ePixmap zPosition="2" position="620,828" size="16,16" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/IPTVPlayer/icons/radio_button_off.png" transparent="1" alphatest="blend" />
+    <ePixmap zPosition="2" position="636,828" size="16,16" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/IPTVPlayer/icons/radio_button_off.png" transparent="1" alphatest="blend" />
+    <ePixmap zPosition="2" position="652,828" size="16,16" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/IPTVPlayer/icons/radio_button_off.png" transparent="1" alphatest="blend" />
+    <ePixmap zPosition="2" position="668,828" size="16,16" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/IPTVPlayer/icons/radio_button_off.png" transparent="1" alphatest="blend" />
+
+    <widget name="statustext" position="55,855" size="1090,120" font="Regular;45" backgroundColor="transpBlack" halign="center" valign="center" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="1600,1020" size="60,30" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_ok.png" position="1700,1020" size="60,30" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_exit.png" position="1800,1020" size="60,30" alphatest="blend"/>
+  </screen>
+   
+  <screen name="E2iPlayerWidget" position="0,0" size="1920,1080" title=" " flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="1,0" zPosition="-5" size="1920,1080" pixmap="BlackHarmony/bg_design/emc.png" />
+    <widget source="session.CurrentService" render="j00zekLabel" position="980,55" size="870,30" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1">
+      <convert type="j00zekAlternateTitle">E2iPlayer</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="75,55" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="160,55" size="660,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+    <widget name="sequencer" position="90,199" zPosition="6" size="1040,488" font="Regular;160" halign="center" valign="center" transparent="1" backgroundColor="background" />
+    <widget name="headertext" position="90,160" zPosition="1" size="1040,80" font="Roboto_HD; 32" transparent="1" backgroundColor="background" foregroundColor="light_yellow" halign="center" valign="center" />
+    <widget name="list"  position="90,260" size="1040,480" font="Roboto_HD;38" itemHeight="40" scrollbarMode="showOnDemand" scrollbarWidth="10" selectionPixmap="BlackHarmony/menu/sel_1095_40.png"  transparent="1" />
+    <widget name="statustext" position="210,750" zPosition="1" size="750,90" font="Regular;27" halign="center" valign="center" transparent="1" backgroundColor="background" />
+    <widget name="spinner" zPosition="2" position="538,717" size="16,16" transparent="1" alphatest="blend" />
+    <widget name="spinner_1" zPosition="1" position="554,717" size="16,16" transparent="1" alphatest="blend" />
+    <widget name="spinner_2" zPosition="1" position="570,717" size="16,16" transparent="1" alphatest="blend" />
+    <widget name="spinner_3" zPosition="1" position="586,717" size="16,16" transparent="1" alphatest="blend" />
+    <widget name="spinner_4" zPosition="1" position="602,717" size="16,16" transparent="1" alphatest="blend" />
+
+    <widget name="console" position="90,745" zPosition="1" size="1040,210" font="Roboto_HD; 26" transparent="1" backgroundColor="background" foregroundColor="lemon" halign="center" />
+    <widget name="cover" position="1270,290" size="480,620" zPosition="3" alphatest="blend" />
+    <widget name="playerlogo" zPosition="4" position="1355,155" size="300,100" alphatest="blend" />
+   
+    <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="95,1001" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="430,1001" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="760,1001" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="1090,1001" size="35,27" alphatest="blend"/>
+    <widget source="key_red" render="Label" position="150,1000" size="240,32" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <widget name="key_green_ext" position="480,1000" size="240,32" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <widget source="key_yellow" render="Label" position="810,1000" size="240,32" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <widget source="key_blue" render="Label" position="1140,1000" size="240,32" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+  </screen>
+
+  <screen name="IPTVDMWidget" position="345,0" size="1232,1080" title=" " flags="wfNoBorder" backgroundColor="transparent">
+   <ePixmap position="0,0" zPosition="-10" size="1232,1080" pixmap="BlackHarmony/bg_design/setup.png"/>
+    <widget source="global.CurrentTime" render="Label" position="40,25" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="125,25" size="460,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+    <eLabel text="Menadżer pobierania E2iPlayer" position="760,25" size="420,30" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1"/>
+
+   <widget name="titel" position="65,122" zPosition="1" size="1095,60" font="Regular;30" halign="center" backgroundColor="dark_grey" transparent="1"/>
+   <widget name="list" position="65,200" size="1095,770" zPosition="2" font="Roboto_HD; 26" itemHeight="110" enableWrapAround="1" scrollbarWidth="6" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" scrollbarMode="showOnDemand" backgroundColor="transpBlack" selectionPixmap="BlackHarmony/menu/sel_1095_110.png" transparent="1"/>
+   
+   <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="40,1020" size="35,27" alphatest="blend"/>
+   <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="320,1020" size="35,27" alphatest="blend"/>
+   <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="645,1020" size="35,27" alphatest="blend"/>
+   <ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="945,1020" size="35,27" alphatest="blend"/>
+   <widget source="key_red" render="Label" position="80,1019" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+   <widget source="key_green" render="Label" position="360,1019" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+   <widget source="key_yellow" render="Label" position="685,1019" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+   <widget source="key_blue" render="Label" position="990,1019" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>          
+  </screen>   
+</skin>   

@@ -1,0 +1,23 @@
+<skin>
+<screen name="InfoBar" position="0,0" size="1920,1080" title="InfoBar" flags="wfNoBorder" backgroundColor="transparent">
+   <widget source="session.CurrentService" render="Label" position="91,717" size="580,48" font="HD_Thin; 35" valign="top" noWrap="1" backgroundColor="black" transparent="1" halign="center">
+  <convert type="j00zekModExtraTuner">ServiceNumberName</convert>
+</widget>
+  <ePixmap position="75,698" zPosition="-2" size="700,321" pixmap="BlackHarmony/bg_design/pogoda_20.png" />
+  <widget source="global.CurrentTime" render="Label" position="511,950" size="140,48" font="HD_Thin; 40" halign="right" backgroundColor="black" transparent="1" valign="center">
+    <convert type="ClockToText">Default</convert>
+  </widget>
+  <widget alphatest="blend" position="180,770" render="j00zekPicons" picontype="zzpicon" size="400,170" source="session.CurrentService" transparent="1" zPosition="4">
+    <convert type="ServiceName">Reference</convert>
+  </widget>
+  <widget backgroundColor="black" font="HD_Thin; 30" halign="left" position="105,949" render="Label" size="255,48" source="global.CurrentTime" transparent="1" valign="center" noWrap="1" foregroundColor="lemon">
+    <convert type="ClockToText">Format:%d %b. %Y </convert>
+  </widget>
+<widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="352,950" size="50,50" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
+  <convert type="j00zekMSNWeather">weathericon,current</convert>
+</widget>
+<widget noWrap="1" backgroundColor="black" font="HD_Thin; 24" render="Label" position="409,950" size="60,26" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1">
+  <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
+</widget>
+</screen>
+</skin>

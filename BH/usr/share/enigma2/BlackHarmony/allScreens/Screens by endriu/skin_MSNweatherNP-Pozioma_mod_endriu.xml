@@ -1,0 +1,228 @@
+<screen name="MSNweatherNP" position="0,0" size="1920,1080" title=" " flags="wfNoBorder" backgroundColor="black">
+    <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" zPosition="-10" size="1920,1080">
+      <convert type="j00zekRefreshBingPicOfTheDay">/usr/share/enigma2/BlackHarmony/bg_design/bg_1920x1080.png</convert>
+    </widget>
+    
+<!--godzina,data-->
+    
+     <widget source="global.CurrentTime" render="Label" position="85,70" size="80,35" font="robotoMSN; 27" backgroundColor="black" transparent="1">
+        <convert type="ClockToText">Default</convert>
+        </widget>
+     <widget source="global.CurrentTime" render="Label" position="170,70" size="460,35" font="robotoMSN; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+        <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+        </widget>
+     <widget source="session.CurrentService" render="Label" position="1395,70" size="420,35" font="robotoMSN; 27" halign="right" backgroundColor="dark_grey" transparent="1" >
+       <convert type="j00zekTranslator">MSN weather</convert>
+        </widget>
+        
+  <!--lokalizacja,airly info-->
+        
+    <widget source="caption" render="Label" position="90,114" size="500,35" font="HD_Thin; 30" halign="left" valign="center" transparent="1" backgroundColor="black" foregroundColor="#000090e6"/>
+    <widget source="currentData_AllObservationTimes" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=20,repeat=99,startdelay=2000" position="90,148" size="370,27" font="robotoMSN;23" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="center" foregroundColor="#00fffe9e"/>  
+    <widget source="statustext" render="Label" position="490,55" size="940,70" font="HD_Thin; 30" halign="center" valign="center" transparent="1" backgroundColor="black" foregroundColor="red"/>
+	<widget source="currentData_airIndexAdvice" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=10,repeat=99,startdelay=2000" halign="center" position="560,125" size="800,35" font="HD_Thin; 30" transparent="1" backgroundColor="black"/>
+	
+   <!--aktualna pogoda-->
+   
+    <widget source="currentData_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="168,185" size="148,148" transparent="1" zPosition="5"/>	
+    <widget render="Label" source="currentData_temperature" font="robotoMSN; 40" position="320,234" size="120,55" backgroundColor="black" zPosition="3" transparent="1" halign="center" foregroundColor="light_yellow"/>
+    <widget source="currentData_skytext" render="j00zekLabel" position="95,330" size="350,100" font="HD_Thin; 30" halign="center" valign="center" transparent="1" backgroundColor="black"/>
+   
+   <!--aktualne dane-->
+        
+    <widget source="currentData_WeatherinfoList" render="Listbox" position="475,182" size="360,260" scrollbarMode="showOnDemand" scrollbarWidth="6" transparent="1" backgroundColor="black">
+       <convert type="TemplatedMultiContent">
+          {"template": [
+           MultiContentEntryText(pos = (2, 1), size = (326, 26), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 0),
+           MultiContentEntryText(pos = (2, 1), size = (326, 26), font=1, flags = RT_HALIGN_RIGHT|RT_VALIGN_CENTER, text = 1),
+           ],
+           "fonts": [gFont("robotoMSN", 23), gFont("robotoMSN", 23)],
+           "itemHeight": 26,
+               "selectionEnabled": False
+                   }
+    </convert>
+       </widget>
+       
+<!--słońce,księżyc-->
+        
+    <ePixmap pixmap="BlackHarmony/icons/Weather/slonce22.png" position="850,168" zPosition="1" size="360,140" alphatest="blend" />
+        
+<!-- WSCHOD -->
+        
+    <widget source="sunrise_time" render="Label" position="840,308" size="85,24" font="robotoMSN; 22" halign="center" valign="center" transparent="1" backgroundColor="black"/>
+              
+<!--długość dnia-->      
+
+    <widget source="session.j00zekMSNWeather" render="Label" position="810,176" size="160,23" font="robotoMSN; 22" halign="center" transparent="1" backgroundColor="black">
+     <convert type="j00zekMSNWeather">RUN|+|['currentData']['sun']['dayLength']['time2shortest']</convert>
+       </widget>
+    <widget source="session.j00zekMSNWeather" render="Label" position="1094,176" size="160,23" font="robotoMSN; 22" halign="center" transparent="1" backgroundColor="black">
+      <convert type="j00zekMSNWeather">RUN|-|['currentData']['sun']['dayLength']['time2longest']</convert>
+      </widget>
+    <widget render="Label" position="940,268" size="183,24" source="session.j00zekMSNWeather" font="robotoMSN; 22" halign="center" valign="center" backgroundColor="black" transparent="1" zPosition="3">
+      <convert type="j00zekMSNWeather">RUN|0x0045b701|['currentData']['sun']['dayLength']['time']</convert>
+       </widget>  
+ 
+ <!-- ZACHOD -->
+        
+    <widget source="sunset_time" render="Label" position="1134,308" size="85,24" font="robotoMSN; 22" halign="center" valign="center" transparent="1" backgroundColor="black"/>
+
+<!-- MOON -->
+                
+    <ePixmap pixmap="BlackHarmony/icons/Weather/ksiezyc2.png" position="850,292" zPosition="1" size="360,130" alphatest="blend" />
+    <widget source="global.CurrentTime" render="j00zekPicons" position="989,293" size="80,80" path="/usr/share/enigma2/BlackHarmony/icons" picontype="MoonPhase" showdefaultpic="no" zPosition="8" alphatest="blend">
+     <convert type="j00zekMoon">obraz</convert>
+      </widget>
+    <widget source="session.j00zekMSNWeather" render="Label" position="840,422" size="85,25" font="robotoMSN; 22" halign="center" valign="center" transparent="1" backgroundColor="black" >
+     <convert type="j00zekMSNWeather">RUN|['currentData']['moon']['moonrise']['TZtime']</convert>
+      </widget>
+     <widget source="session.j00zekMSNWeather" render="Label" position="1134,422" size="85,25" font="robotoMSN; 22" halign="center" valign="center" transparent="1" backgroundColor="black" >
+     <convert type="j00zekMSNWeather">RUN|['currentData']['moon']['moonset']['TZtime']</convert>
+        </widget>
+                
+    <widget source="moon_iluminatedPerc" render="Label" position="940,372" size="183,25" zPosition="1" font="robotoMSN;22" halign="center" transparent="1" backgroundColor="black" />
+    <widget source="session.j00zekMSNWeather" render="j00zekLabel" position="930,397" size="200,50" zPosition="1" font="robotoMSN;24" halign="center" valign="center" transparent="1" backgroundColor="black" >
+     <convert type="j00zekMSNWeather">RUN|0x66CCCC|['currentData']['moon']['phase_name']</convert>
+      </widget>       
+                
+<!--AIRLY-->
+    
+   <eLabel text="Airly limit:" position="1620,140" size="207,25" font="robotoMSN;22" halign="left" backgroundColor="black" transparent="1"/>
+   <widget backgroundColor="black" font="robotoMSN; 22" render="Label" position="1620,140" size="207,25" source="session.j00zekMSNWeather" zPosition="5" halign="right" valign="center" transparent="1">
+   <convert type="j00zekMSNWeather">RUN|0x0045b701|['currentData']['airlyLimitsDailyRemaining']|0x00e6ffe6|/|['currentData']['airlyLimitsDaily']</convert>
+      </widget>
+   <widget source="currentData_airIndexInfo" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=10,repeat=99,startdelay=2000" position="1290,185" size="500,30" font="HD_Thin; 25" halign="center" transparent="1" backgroundColor="black"/>
+   <widget source="currentData_airQualityAccellPixmap" render="j00zekPixmap" alphatest="blend" position="1255,240" size="100,100" transparent="1" zPosition="3"/>
+   <widget source="currentData_infoList" render="Listbox" position="1370,220" size="435,156" scrollbarMode="showOnDemand" scrollbarWidth="6" transparent="1" backgroundColor="black">
+     <convert type="TemplatedMultiContent">
+       {"template": [
+         MultiContentEntryText(pos = (2, 1), size = (423, 26), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 0),
+         MultiContentEntryText(pos = (2, 1), size = (423, 26), font=1, flags = RT_HALIGN_RIGHT|RT_VALIGN_CENTER, text = 1),
+         ],
+         "fonts": [gFont("robotoMSN", 23), gFont("robotoMSN", 23)],
+         "itemHeight": 26,
+         "selectionEnabled": False
+                    }
+        </convert>
+            </widget>
+        <widget source="session.CurrentService" render="Label" backgroundColor="black" font="robotoMSN;23" halign="left" position="1260,390" size="100,25" transparent="1" foregroundColor="#66CCCC">
+      <convert type="j00zekTranslator">Source:</convert>
+        </widget>
+        <widget backgroundColor="black" font="robotoMSN;23" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=30,repeat=99,startdelay=2000" position="1360,390" size="437,25" source="session.j00zekMSNWeather" zPosition="3" halign="right" transparent="1">
+        <convert type="j00zekMSNWeather">RUN|['currentData']['activeSources']['names']</convert>
+        </widget>
+        <widget backgroundColor="black" font="robotoMSN;23" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=30,repeat=99,startdelay=2000"  position="1260,415" size="537,27" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1">
+        <convert type="j00zekMSNWeather">RUN|0x00fffe9e|['currentData']['activeSources']['observationpoints']</convert>
+        </widget>
+
+<!--pogoda godzinowa-->
+    
+        <ePixmap pixmap="BlackHarmony/gfx/line.png" position="420,450" size="1200,2" zPosition="3" transparent="1" alphatest="blend"/>
+    <widget position="100,435" size="350,30" zPosition="3" halign="left" valign="top" render="Label" source="hourlyData_title" font="robotoMSN; 24" transparent="1" foregroundColor="green"/>
+    <!-- h0 -->
+    <widget position="90,470" size="150,205" zPosition="3" halign="center" valign="top" render="j00zekLabel" source="hourlyRecord_0_Summary" font="robotoMSN; 22" transparent="1" backgroundColor="black"/>
+    <widget source="hourlyRecord_0_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="140,490" size="50,50" zPosition="5" transparent="1"/>
+	<!-- h1 -->
+    <widget position="249,470" size="150,205" zPosition="3" halign="center" valign="top" render="j00zekLabel" source="hourlyRecord_1_Summary" font="robotoMSN; 22" transparent="1" backgroundColor="black"/>
+    <widget source="hourlyRecord_1_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="299,490" size="50,50" zPosition="5" transparent="1"/>
+	<!-- h2 -->
+    <widget position="408,470" size="150,200" zPosition="3" halign="center" valign="top" render="j00zekLabel" source="hourlyRecord_2_Summary" font="robotoMSN; 22" transparent="1" backgroundColor="black"/>
+    <widget source="hourlyRecord_2_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="458,490" size="50,50" zPosition="5" transparent="1"/>
+    <!-- h3 -->
+    <widget position="567,470" size="150,200" zPosition="3" halign="center" valign="top" render="j00zekLabel" source="hourlyRecord_3_Summary" font="robotoMSN; 22" transparent="1" backgroundColor="black"/>
+    <widget source="hourlyRecord_3_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="617,490" size="50,50" zPosition="5" transparent="1"/>
+    <!-- h4 -->
+    <widget position="726,470" size="150,200" zPosition="3" halign="center" valign="top" render="j00zekLabel" source="hourlyRecord_4_Summary" font="robotoMSN; 22" transparent="1" backgroundColor="black"/>
+    <widget source="hourlyRecord_4_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="776,490" size="50,50" zPosition="5" transparent="1"/>
+    <!-- h5 -->
+    <widget position="885,470" size="150,200" zPosition="3" halign="center" valign="top" render="j00zekLabel" source="hourlyRecord_5_Summary" font="robotoMSN; 22" transparent="1" backgroundColor="black"/>
+    <widget source="hourlyRecord_5_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="935,490" size="50,50" zPosition="5" transparent="1"/>
+    <!-- h6 -->
+    <widget position="1044,470" size="150,200" zPosition="3" halign="center" valign="top" render="j00zekLabel" source="hourlyRecord_6_Summary" font="robotoMSN; 22" transparent="1" backgroundColor="black"/>
+    <widget source="hourlyRecord_6_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="1094,490" size="50,50" zPosition="5" transparent="1"/>
+    <!-- h7 -->
+    <widget position="1203,470" size="150,200" zPosition="3" halign="center" valign="top" render="j00zekLabel" source="hourlyRecord_7_Summary" font="robotoMSN; 22" transparent="1" backgroundColor="black"/>
+    <widget source="hourlyRecord_7_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="1253,490" size="50,50" zPosition="5" transparent="1"/>
+    <!-- h8 -->
+    <widget position="1362,470" size="150,200" zPosition="3" halign="center" valign="top" render="j00zekLabel" source="hourlyRecord_8_Summary" font="robotoMSN; 22" transparent="1" backgroundColor="black"/>
+    <widget source="hourlyRecord_8_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="1412,490" size="50,50" zPosition="5" transparent="1"/>
+    <!-- h9 -->
+    <widget position="1521,470" size="150,200" zPosition="3" halign="center" valign="top" render="j00zekLabel" source="hourlyRecord_9_Summary" font="robotoMSN; 22" transparent="1" backgroundColor="black"/>
+    <widget source="hourlyRecord_9_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="1571,490" size="50,50" zPosition="5" transparent="1"/>
+    <!-- h10 -->
+    <widget position="1680,470" size="150,200" zPosition="3" halign="center" valign="top" render="j00zekLabel" source="hourlyRecord_10_Summary" font="robotoMSN; 22" transparent="1" backgroundColor="black"/>
+    <widget source="hourlyRecord_10_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="1730,490" size="50,50" zPosition="5" transparent="1"/>
+    <ePixmap pixmap="BlackHarmony/gfx/line.png" position="300,670" size="1200,2" zPosition="3" transparent="1" alphatest="blend"/>
+
+<!--Pogoda dzienna-->
+
+<!--TODAY-->
+    <widget source="daily_0_date_summary" render="Label" font="robotoMSN; 26" position="100,680" size="190,30" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="center"/>
+    <widget source="daily_0_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="128,710" size="128,128" transparent="1" zPosition="5"/>
+    <widget source="daily_0_summary" render="j00zekLabel" font="robotoMSN; 26" position="100,840" size="190,115" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="top"/>
+<!--DAY1-->
+    <widget source="daily_1_date_summary" render="Label" font="robotoMSN; 26" position="290,680" size="190,30" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="center"/>
+    <widget source="daily_1_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="318,710" size="128,128" transparent="1" zPosition="5"/>
+    <widget source="daily_1_summary" render="j00zekLabel" font="robotoMSN; 26" position="290,840" size="190,115" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="top"/>
+<!--DAY2-->
+    <widget source="daily_2_date_summary" render="Label" font="robotoMSN; 26" position="480,680" size="190,30" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="center"/>
+    <widget source="daily_2_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="508,710" size="128,128" transparent="1" zPosition="5"/>
+    <widget source="daily_2_summary" render="j00zekLabel" font="robotoMSN; 26" position="480,840" size="190,115" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="top"/>
+<!--DAY3-->
+    <widget source="daily_3_date_summary" render="Label" font="robotoMSN; 26" position="670,680" size="190,30" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="center"/>
+    <widget source="daily_3_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="698,710" size="128,128" transparent="1" zPosition="5"/>
+    <widget source="daily_3_summary" render="j00zekLabel" font="robotoMSN; 26" position="670,840" size="190,115" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="top"/>
+<!--DAY4-->
+    <widget source="daily_4_date_summary" render="Label" font="robotoMSN; 26" position="860,680" size="190,30" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="center"/>
+    <widget source="daily_4_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="888,710" size="128,128" transparent="1" zPosition="5"/>
+    <widget source="daily_4_summary" render="j00zekLabel" font="robotoMSN; 26" position="860,840" size="190,115" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="top"/>
+<!--DAY5-->
+    <widget source="daily_5_date_summary" render="Label" font="robotoMSN; 26" position="1050,680" size="190,30" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="center"/>
+    <widget source="daily_5_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="1078,710" size="128,128" transparent="1" zPosition="5"/>
+    <widget source="daily_5_summary" render="j00zekLabel" font="robotoMSN; 26" position="1050,840" size="190,115" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="top"/>
+<!--DAY6-->
+    <widget source="daily_6_date_summary" render="Label" font="robotoMSN; 26" position="1240,680" size="190,30" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="center"/>
+    <widget source="daily_6_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="1268,710" size="128,128" transparent="1" zPosition="5"/>
+    <widget source="daily_6_summary" render="j00zekLabel" font="robotoMSN; 26" position="1240,840" size="190,115" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="top"/>
+<!--DAY7-->
+    <widget source="daily_7_date_summary" render="Label" font="robotoMSN; 26" position="1430,680" size="190,30" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="center"/>
+    <widget source="daily_7_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="1458,710" size="128,128" transparent="1" zPosition="5"/>
+    <widget source="daily_7_summary" render="j00zekLabel" font="robotoMSN; 26" position="1430,840" size="190,115" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="top"/>
+<!--DAY8-->
+    <widget source="daily_8_date_summary" render="Label" font="robotoMSN; 26" position="1620,680" size="190,30" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="center"/>
+    <widget source="daily_8_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="1648,710" size="128,128" transparent="1" zPosition="5"/>
+    <widget source="daily_8_summary" render="j00zekLabel" font="robotoMSN; 26" position="1620,840" size="190,115" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="top"/>
+
+<!-- dolna belka -->
+        
+        <ePixmap pixmap="BlackHarmony/buttons/key_left.png" position="75,980" size="40,30" alphatest="blend"/>
+    <eLabel text="Location" position="114,963" size="137,65" font="robotoMSN;24" halign="center" valign="center" backgroundColor="black" transparent="1"/>
+        <ePixmap pixmap="BlackHarmony/buttons/key_right.png" position="250,980" size="40,30" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="305,980" size="60,30" alphatest="blend"/>
+        <ePixmap pixmap="BlackHarmony/buttons/key_ok.png" position="385,980" size="60,30" alphatest="blend"/>
+        <eLabel text="View details" position="450,963" size="200,65" font="robotoMSN;24" halign="left" valign="center" transparent="1" backgroundColor="black"/>
+
+<!--przyciski-->        
+        
+  <widget source="session.CurrentService" render="j00zekPiconAnimation" position="670,980" zPosition="10" size="35,27" alphatest="blend"
+        initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0"
+        pixmaps="BlackHarmony/skin_user_animButtons/key_red"
+        pixalter="BlackHarmony/buttons/key_red.png" />
+  <widget source="session.CurrentService" render="j00zekPiconAnimation" position="990,980" zPosition="10" size="35,27" alphatest="blend"
+        initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,1"
+        pixmaps="BlackHarmony/skin_user_animButtons/key_green"
+        pixalter="BlackHarmony/buttons/key_green.png" />
+  <widget source="session.CurrentService" render="j00zekPiconAnimation" position="1315,980" zPosition="10" size="35,27" alphatest="blend"
+        initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,2"
+        pixmaps="BlackHarmony/skin_user_animButtons/key_yellow"
+        pixalter="BlackHarmony/buttons/key_yellow.png" />
+  <widget source="session.CurrentService" render="j00zekPiconAnimation" position="1640,980" zPosition="10" size="35,27" alphatest="blend"
+        initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,3"
+        pixmaps="BlackHarmony/skin_user_animButtons/key_blue"
+        pixalter="BlackHarmony/buttons/key_blue.png" />
+  <widget name="key_red" position="705,963" size="289,65" font="robotoMSN; 24" backgroundColor="black" transparent="1" halign="left" valign="center"/>
+  <widget name="key_green" position="1030,963" size="289,65" font="robotoMSN; 24" backgroundColor="black" transparent="1" halign="left" valign="center"/>
+  <widget name="key_yellow" position="1355,963" size="289,65" font="robotoMSN; 24" backgroundColor="black" transparent="1" halign="left" valign="center"/>
+  <widget name="key_blue" position="1680,963" size="150,65" font="robotoMSN; 24" backgroundColor="black" transparent="1" halign="left" valign="center"/>
+        
+  </screen>  

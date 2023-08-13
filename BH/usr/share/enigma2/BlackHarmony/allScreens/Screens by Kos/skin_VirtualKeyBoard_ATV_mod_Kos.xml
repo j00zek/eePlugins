@@ -1,0 +1,31 @@
+<skin>
+  <screen name="VirtualKeyBoard" position="345,93" size="1232,908" zPosition="10" title=" " flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="0,0" zPosition="-10" size="1232,908" pixmap="BlackHarmony/bg_design/mainbg.png"/>
+    <widget source="global.CurrentTime" render="Label" position="40,25" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="125,25" size="360,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+    <widget name="language" conditional="language" position="550,25" size="200,30" font="Roboto_HD; 27" halign="center" backgroundColor="dark_grey" transparent="1"/>
+    <widget source="Title" render="Label" position="860,25" size="320,30" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1"/>
+    <widget name="header" position="85,155" size="1055,40" font="Roboto_HD;28" halign="center" noWrap="1" foregroundColor="light_yellow" backgroundColor="black" transparent="1"/>
+    <widget name="prompt" position="85,155" size="1055,40" font="Roboto_HD;28" halign="center" noWrap="1" foregroundColor="light_yellow" backgroundColor="black" transparent="1"/>
+    <eLabel position="82,238" size="1061,62" zPosition="1" backgroundColor="white"/>
+    <eLabel position="85,242" size="1055,56" zPosition="2" backgroundColor="black"/>
+    <widget name="text" position="85,242" size="1055,56" zPosition="3" font="Roboto_HD;40" noWrap="1" halign="right" backgroundColor="black" transparent="1"/>
+    <widget name="list" position="140,380" size="1000,370" selectionDisabled="1" backgroundColor="black" transparent="1"/>
+    <widget name="mode" conditional="mode" position="80,300" size="200,30" font="Roboto_HD; 27" halign="left" backgroundColor="black" transparent="1"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="41,850" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="288,850" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="535,850" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="772,850" size="35,27" alphatest="blend"/>
+    <ePixmap position="990,850" size="60,30" pixmap="BlackHarmony/buttons/key_text.png" alphatest="blend"/>
+    <ePixmap position="1060,850" size="60,30" pixmap="BlackHarmony/buttons/key_infoo.png" alphatest="blend"/>
+    <ePixmap position="1130,850" size="60,30" pixmap="BlackHarmony/buttons/key_help.png" alphatest="blend"/>
+    <widget source="key_red" render="Label" position="91,849" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget source="key_green" render="Label" position="338,849" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget source="key_yellow" render="Label" position="585,849" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget source="key_blue" render="Label" position="822,849" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+  </screen>
+</skin>

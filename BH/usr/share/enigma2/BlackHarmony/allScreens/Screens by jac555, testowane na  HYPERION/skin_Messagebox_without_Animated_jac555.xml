@@ -1,0 +1,262 @@
+<skin>
+<screen name="MessageBox" position="center,center" size="790,10" title="Message">
+    <widget name="text" position="110,8" size="790,0" font="Roboto_HD; 30" halign="center" transparent="1" />
+    <widget name="ErrorPixmap" pixmap="BlackHarmony/icons/input_error.png" position="5,5" size="100,100" alphatest="blend"/>
+    <widget name="QuestionPixmap" pixmap="BlackHarmony/icons/input_question.png" position="5,5" size="100,100" alphatest="blend"/>
+    <widget name="InfoPixmap" pixmap="BlackHarmony/icons/info.png" scale="on" position="5,5" size="100,100" alphatest="blend"/>
+    <widget name="list" font="Roboto_HD; 27" position="15,70" size="750,0"  backgroundColor="background" itemHeight="35" selectionPixmap="BlackHarmony/menu/sel_750_35.png" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" transparent="1"/>
+    <applet type="onLayoutFinish">
+# this should be factored out into some helper code, but currently demonstrates applets.
+from enigma import eSize, ePoint
+
+orgwidth = self.instance.size().width()
+orgheight = self.instance.size().height()
+orgpos = self.instance.position()
+textsize = self["text"].getSize()
+
+# y size still must be fixed in font stuff...
+textsize = (textsize[0] + 80, textsize[1] + 80)
+offset = 20
+#if self.type == self.TYPE_YESNO:
+#        offset = 80
+wsizex = textsize[0] + 120
+wsizey = textsize[1] + offset
+if (790 &gt; wsizex):
+        wsizex = 790
+
+# resize label
+self["text"].instance.resize(eSize(*textsize))
+
+# move list
+count = len(self.list)
+listsize = (wsizex - 20, 35 * count)
+self["list"].instance.move(ePoint(10, textsize[1] + 10 ))
+self["list"].instance.resize(eSize(*listsize))
+
+# resize window
+wsize = (wsizex, wsizey + listsize[1] + 10)
+self.instance.resize(eSize(*wsize))
+
+# center window
+newwidth = wsize[0]
+newheight = wsize[1]
+self.instance.move(ePoint(orgpos.x() + int((orgwidth - newwidth)/2) , orgpos.y() + int((orgheight - newheight)/2) ))
+    </applet>
+</screen>
+
+
+<screen name="MessageBoxSimple" zPosition="11" position="center,center" size="790,10" title="Message">
+  <widget name="text" position="110,8" size="790,0" font="Roboto_HD; 30" halign="center" backgroundColor="black" transparent="1" />
+  <widget name="ErrorPixmap" pixmap="BlackHarmony/icons/input_error.png" position="5,5" size="100,100" alphatest="blend" />
+  <widget name="QuestionPixmap" pixmap="BlackHarmony/icons/input_question.png" position="5,5" size="100,100" alphatest="blend" />
+  <widget name="InfoPixmap" pixmap="BlackHarmony/icons/info.png" scale="on" position="5,5" size="100,100" alphatest="blend" />
+  <widget name="list" font="Roboto_HD; 27" position="15,70" size="750,330" itemHeight="35" selectionPixmap="BlackHarmony/menu/sel_750_35.png" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" backgroundColor="black" transparent="1" />
+  <applet type="onLayoutFinish">
+# this should be factored out into some helper code,but currently demonstrates applets.
+from enigma import eSize,ePoint, getDesktop
+#orgwidth = self.instance.size().width()
+#orgheight = self.instance.size().height()
+#---
+offset_listposx = 10
+offset_listposy = 40
+offset_listwidth = 10
+offset_listheight = 40
+offset_textwidth = 35
+offset_textheight = 20
+min_width = 280
+min_height = 93
+#----
+deskwidth = getDesktop(0).size().width()
+deskheight = getDesktop(0).size().height()
+textsize = self["text"].getSize()
+textwidth = textsize[0] + offset_textwidth
+textheight = textsize[1] + offset_textheight
+
+listwidth = 0
+listheight = 0
+
+if self.list:
+        try:
+                for i in self.list:
+                        if len(i[0]) &gt; listwidth:
+                                listwidth = len(i[0])
+                listwidth = listwidth * offset_listwidth
+                listheight = len(self.list) * offset_listheight
+        except:
+                pass
+
+if (min_height &gt;textheight):
+        textheight = min_height
+if (min_width &gt;textwidth):
+        textwidth = min_width
+if (listheight &gt;0):
+        offset = 31
+else:
+        offset = 21
+if (textwidth &gt;listwidth):
+        wsizex = textwidth + offset_listposx * 12
+else:
+        textwidth = listwidth - offset_listposx * 11
+        wsizex = listwidth + offset_listposx
+
+wsizey = textheight + listheight + offset
+
+if (wsizey &gt;deskheight):
+        textheight = deskheight - listheight - offset
+        wsizey = textheight + listheight + offset
+
+if (wsizex &gt;deskwidth):
+        textwidth = deskwidth - offset_listposx * 12
+        listwidth = wsizex = deskwidth
+
+wsize = (wsizex,wsizey)
+
+# resize
+self.instance.resize(eSize(*wsize))
+
+# resize label
+textsize = (textwidth,textheight)
+self["text"].instance.resize(eSize(*textsize))
+
+# move list
+listsize = (wsizex - offset_listposx * 2,listheight)
+self["list"].instance.move(ePoint(offset_listposx,textheight + offset_listposy))
+self["list"].instance.resize(eSize(*listsize))
+
+# center window
+newwidth = wsize[0]
+newheight = wsize[1]
+self.instance.move( ePoint( int((deskwidth - newwidth)/2),int((deskheight - newheight)/2) ) )
+        </applet>
+</screen>
+
+
+
+<screen name="MessageBoxExt" zPosition="11" position="center,center" size="790,10" title="Message">
+  <widget name="text" position="110,8" size="790,0" font="Roboto_HD; 30" halign="center" backgroundColor="black" transparent="1" />
+    <widget name="ErrorPixmap" pixmap="BlackHarmony/icons/input_error.png" position="5,5" size="100,100" alphatest="blend" />
+    <widget name="QuestionPixmap" pixmap="BlackHarmony/icons/input_question.png" position="5,5" size="100,100" alphatest="blend" />
+    <widget name="InfoPixmap" pixmap="BlackHarmony/icons/info.png" scale="on" position="5,5" size="100,100" alphatest="blend" />
+  <widget name="list" font="Roboto_HD; 27" position="15,70" size="750,330" itemHeight="35" selectionPixmap="BlackHarmony/menu/sel_750_35.png" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" backgroundColor="black" transparent="1" />
+  <applet type="onLayoutFinish">
+# this should be factored out into some helper code,but currently demonstrates applets.
+from enigma import eSize,ePoint, getDesktop
+#orgwidth = self.instance.size().width()
+#orgheight = self.instance.size().height()
+#---
+offset_listposx = 10
+offset_listposy = 40
+offset_listwidth = 10
+offset_listheight = 40
+offset_textwidth = 35
+offset_textheight = 20
+min_width = 280
+min_height = 93
+#----
+deskwidth = getDesktop(0).size().width()
+deskheight = getDesktop(0).size().height()
+textsize = self["text"].getSize()
+textwidth = textsize[0] + offset_textwidth
+textheight = textsize[1] + offset_textheight
+
+listwidth = 0
+listheight = 0
+
+if self.list:
+        try:
+                for i in self.list:
+                        if len(i[0]) &gt; listwidth:
+                                listwidth = len(i[0])
+                listwidth = listwidth * offset_listwidth
+                listheight = len(self.list) * offset_listheight
+        except:
+                pass
+
+if (min_height &gt;textheight):
+        textheight = min_height
+if (min_width &gt;textwidth):
+        textwidth = min_width
+if (listheight &gt;0):
+        offset = 31
+else:
+        offset = 21
+if (textwidth &gt;listwidth):
+        wsizex = textwidth + offset_listposx * 12
+else:
+        textwidth = listwidth - offset_listposx * 11
+        wsizex = listwidth + offset_listposx
+
+wsizey = textheight + listheight + offset
+
+if (wsizey &gt;deskheight):
+        textheight = deskheight - listheight - offset
+        wsizey = textheight + listheight + offset
+
+if (wsizex &gt;deskwidth):
+        textwidth = deskwidth - offset_listposx * 12
+        listwidth = wsizex = deskwidth
+
+wsize = (wsizex,wsizey)
+
+# resize
+self.instance.resize(eSize(*wsize))
+
+# resize label
+textsize = (textwidth,textheight)
+self["text"].instance.resize(eSize(*textsize))
+
+# move list
+listsize = (wsizex - offset_listposx * 2,listheight)
+self["list"].instance.move(ePoint(offset_listposx,textheight + offset_listposy))
+self["list"].instance.resize(eSize(*listsize))
+
+# center window
+newwidth = wsize[0]
+newheight = wsize[1]
+self.instance.move( ePoint( int((deskwidth - newwidth)/2) ,int((deskheight - newheight)/2) ) )
+        </applet>
+</screen>
+
+<screen name="MessageBoxTemplate" zPosition="11" position="center,center" size="1000,822" title="MessageBox Template">
+  <widget name="text" position="110,8" size="900,0" font="Roboto_HD; 27" backgroundColor="black" halign="center" transparent="1" />
+  <widget name="list" font="Roboto_HD; 27" position="15,70" size="750,0" itemHeight="35" selectionPixmap="BlackHarmony/menu/sel_750_35.png" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" backgroundColor="black" transparent="1" />
+    <widget name="ErrorPixmap" pixmap="BlackHarmony/icons/input_error.png" position="5,5" size="100,100" alphatest="blend" />
+    <widget name="QuestionPixmap" pixmap="BlackHarmony/icons/input_question.png" position="5,5" size="100,100" alphatest="blend" />
+    <widget name="InfoPixmap" pixmap="BlackHarmony/icons/info.png" scale="on" position="5,5" size="100,100" alphatest="blend" />
+  <applet type="onLayoutFinish">
+# this should be factored out into some helper code, but currently demonstrates applets.
+from enigma import eSize, ePoint
+
+orgwidth = self.instance.size().width()
+orgpos = self.instance.position()
+textsize = self["text"].getSize()
+
+# y size still must be fixed in font stuff...
+textsize = (textsize[0] + 80, textsize[1] + 80)
+offset = 20
+#if self.type == self.TYPE_YESNO:
+#        offset = 80
+wsizex = textsize[0] + 120
+wsizey = textsize[1] + offset
+if (600 &gt; wsizex):
+        wsizex = 600
+
+# resize label
+self["text"].instance.resize(eSize(*textsize))
+
+# move list
+count = len(self.list)
+listsize = (wsizex - 20, 35 * count)
+self["list"].instance.move(ePoint(10, textsize[1]))
+self["list"].instance.resize(eSize(*listsize))
+
+# resize window
+wsize = (wsizex, wsizey + listsize[1])
+self.instance.resize(eSize(*wsize))
+
+# center window
+newwidth = wsize[0]
+self.instance.move(ePoint(orgpos.x() + int((orgwidth - newwidth)/2),orgpos.y()))
+                </applet>
+</screen>
+</skin>
