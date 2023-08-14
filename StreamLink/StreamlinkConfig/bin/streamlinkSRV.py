@@ -2,12 +2,12 @@
 #
 # Linux Python3 Streamlink Daemon with native client
 #
-# j00zek 2020-2022
+# j00zek 2020-2023
 #                                          
 # License: GPLv2+
 #
 
-__version__ = "1.2"
+__version__ = "1.3"
 import atexit
 import errno
 import logging
@@ -166,7 +166,11 @@ def useCLI(http, url, argstr, quality, useAddr):
                     elif 'FileCache:' in outLine:
                         retData = outLine.strip().split(':')
                         processCLI.kill()
-                        sendCachedFile(http, send_headers=True, pid=int(retData[1]), file2send=retData[2], maxWaitTime=int(retData[3]) )
+                        if len(retData) >= 4:
+                            mWaitTime = int(retData[3])
+                        else:
+                            mWaitTime = 10
+                        sendCachedFile(http, send_headers=True, pid=int(retData[1]), file2send=retData[2], maxWaitTime = mWaitTime )
                         return
                     elif 'wperror-403' in outLine:
                         processCLI.kill()
