@@ -114,8 +114,8 @@
 		<widget name="CPUt" position="414,294" size="180,35" font="Roboto_HD; 26" halign="left" transparent="1" />
 		<widget name="Where" render="j00zekLabel" noWrap="1" position="180,237" size="220,35" font="Roboto_HD; 26" halign="right" foregroundColor="cyan" transparent="1" />
 		<widget name="WhereMod" position="414,237" size="180,35" font="Roboto_HD; 26" halign="left" transparent="1" />
-		<widget name="UPt" position="610,237" size="75,35" font="Roboto_HD; 28" halign="right" foregroundColor="cyan" transparent="1" />
-		<widget name="UPtime" position="695,237" size="220,35" font="Roboto_HD; 28" halign="left" transparent="1" />
+		<widget name="UPt" position="579,237" size="193,35" font="Roboto_HD; 28" halign="right" foregroundColor="cyan" transparent="1" />
+		<widget name="UPtime" position="780,237" size="220,35" font="Roboto_HD; 28" halign="left" transparent="1" />
 		<widget name="HDD" position="354,620" size="180,35" font="Roboto_HD;28" halign="right" foregroundColor="cyan" transparent="1" />
 		<widget name="HDDmount" position="550,620" size="230,35" font="Roboto_HD; 28" halign="left" transparent="1" />
 		<widget name="HDDmodel" position="180,580" size="800,35" font="Roboto_HD; 28" halign="center" foregroundColor="orange" transparent="1" />
@@ -178,7 +178,7 @@
 		<widget name="amin" position="1512,426" size="180,35" font="Cyfry; 28" halign="center" transparent="1" />
 
   <widget source="session.CurrentService" render="Label" position="180,360" size="800,35" font="Roboto_HD; 28" halign="center" noWrap="1">
-    <convert type="CpuUsage">CPU: $0   (core #1: $1, core #2: $2)</convert>
+    <convert type="CpuUsage">CPU: $0   (c#1:$1 / c#2:$2 / c#3:$3 / c#4:$4)</convert>
   </widget>
   <ePixmap pixmap="BlackHarmony/gfx/progress_gray.png" position="180,396" size="800,6" alphatest="blend" zPosition="-1" />
   <widget source="session.Event_Now" render="Progress" position="180,396" size="800,6" pixmap="BlackHarmony/gfx/progress_mario.png" transparent="1">
@@ -555,10 +555,10 @@
                         initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,3" random="True"
                         pixmaps="BlackHarmony/skin_user_animButtons/key_blue"
                         pixalter="BlackHarmony/buttons/key_blue.png" />
-		<widget source="key_red" render="Label" position="209,949" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
-		<widget source="key_green" render="Label" position="607,949" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
-		<widget source="key_yellow" render="Label" position="1011,949" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
-		<widget source="key_blue" render="Label" position="1389,949" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+		<widget source="key_red" render="Label" position="209,949" size="250,30" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+		<widget source="key_green" render="Label" position="607,949" size="250,30" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+		<widget source="key_yellow" render="Label" position="1011,949" size="250,30" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+		<widget source="key_blue" render="Label" position="1389,949" size="250,30" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
 </screen>
 
 
@@ -855,10 +855,10 @@
                         initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,3" random="True"
                         pixmaps="BlackHarmony/skin_user_animButtons/key_blue"
                         pixalter="BlackHarmony/buttons/key_blue.png" />
-		<widget source="key_red" render="Label" position="209,949" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
-		<widget source="key_green" render="Label" position="607,949" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
-		<widget source="key_yellow" render="Label" position="1011,949" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
-		<widget source="key_blue" render="Label" position="1389,949" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+		<widget source="key_red" render="Label" position="209,949" size="250,30" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+		<widget source="key_green" render="Label" position="607,949" size="250,30" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+		<widget source="key_yellow" render="Label" position="1011,949" size="250,30" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+		<widget source="key_blue" render="Label" position="1389,949" size="250,30" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
 		<ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="1688,949" size="61,30" alphatest="blend" />
 		<ePixmap position="center,842" zPosition="1" size="300,81" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
 </screen>
@@ -913,10 +913,10 @@
                         initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,3" random="True"
                         pixmaps="BlackHarmony/skin_user_animButtons/key_blue"
                         pixalter="BlackHarmony/buttons/key_blue.png" />
-		<widget source="key_red" render="Label" position="209,949" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
-		<widget source="key_green" render="Label" position="607,949" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
-		<widget source="key_yellow" render="Label" position="1011,949" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
-		<widget source="key_blue" render="Label" position="1389,949" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+		<widget source="key_red" render="Label" position="209,949" size="250,30" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+		<widget source="key_green" render="Label" position="607,949" size="250,30" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+		<widget source="key_yellow" render="Label" position="1011,949" size="250,30" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+		<widget source="key_blue" render="Label" position="1389,949" size="250,30" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
 		<ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="1688,948" size="61,30" alphatest="blend" />
 </screen>
 
@@ -998,9 +998,9 @@
     <widget source="session.CurrentService" render="j00zekPiconAnimation" position="58,750" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0" random="True" pixmaps="BlackHarmony/skin_user_animButtons/key_red" pixalter="BlackHarmony/buttons/key_red.png" />
     <widget source="session.CurrentService" render="j00zekPiconAnimation" position="357,750" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,1" random="True" pixmaps="BlackHarmony/skin_user_animButtons/key_green" pixalter="BlackHarmony/buttons/key_green.png" />
     <widget source="session.CurrentService" render="j00zekPiconAnimation" position="661,750" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,2" random="True" pixmaps="BlackHarmony/skin_user_animButtons/key_yellow" pixalter="BlackHarmony/buttons/key_yellow.png" />
-		<widget source="key_red" render="Label" position="109,749" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
-		<widget source="key_green" render="Label" position="407,749" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
-		<widget source="key_yellow" render="Label" position="711,749" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+		<widget source="key_red" render="Label" position="109,749" size="250,30" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+		<widget source="key_green" render="Label" position="407,749" size="250,30" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+		<widget source="key_yellow" render="Label" position="711,749" size="250,30" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
 </screen>
 
 <screen name="NimSetup" position="center,center" size="1000,820" title=" " flags="wfNoBorder">
@@ -1016,9 +1016,9 @@
     <widget source="session.CurrentService" render="j00zekPiconAnimation" position="58,750" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0" random="True" pixmaps="BlackHarmony/skin_user_animButtons/key_red" pixalter="BlackHarmony/buttons/key_red.png" />
     <widget source="session.CurrentService" render="j00zekPiconAnimation" position="357,750" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,1" random="True" pixmaps="BlackHarmony/skin_user_animButtons/key_green" pixalter="BlackHarmony/buttons/key_green.png" />
     <widget source="session.CurrentService" render="j00zekPiconAnimation" position="661,750" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,2" random="True" pixmaps="BlackHarmony/skin_user_animButtons/key_yellow" pixalter="BlackHarmony/buttons/key_yellow.png" />
-		<widget source="key_red" render="Label" position="109,749" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
-		<widget source="key_green" render="Label" position="407,749" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
-		<widget source="key_yellow" render="Label" position="711,749" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+		<widget source="key_red" render="Label" position="109,749" size="250,30" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+		<widget source="key_green" render="Label" position="407,749" size="250,30" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+		<widget source="key_yellow" render="Label" position="711,749" size="250,30" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
 </screen>
 
 </skin>
