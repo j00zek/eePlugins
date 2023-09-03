@@ -12,7 +12,10 @@ from Screens.InputBox import InputBox
 from Screens.MessageBox import MessageBox
 
 from Components.ActionMap import ActionMap
-from Components.AVSwitch import eAVSwitch
+try:
+    from Components.AVSwitch import eAVSwitch
+except Exception:
+    from Components.AVSwitch import iAVSwitch as eAVSwitch
 from Components.Label import Label
 #from Components.Pixmap import Pixmap
 from Components.ServiceEventTracker import ServiceEventTracker

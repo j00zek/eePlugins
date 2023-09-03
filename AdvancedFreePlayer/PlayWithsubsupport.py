@@ -10,7 +10,10 @@ from Screens.Screen import Screen
 from Screens.ChoiceBox import ChoiceBox
 from Screens.InputBox import InputBox
 from Screens.MessageBox import MessageBox
-from Components.AVSwitch import eAVSwitch
+try:
+    from Components.AVSwitch import eAVSwitch
+except Exception:
+    from Components.AVSwitch import iAVSwitch as eAVSwitch
 from Components.Label import Label
 from Components.ActionMap import ActionMap
 from Components.Pixmap import Pixmap
