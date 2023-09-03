@@ -12,4 +12,4 @@ def _get_version() -> str:
 
 # The following _get_version() call will get replaced by versioningit with a static version string when building streamlink
 # `pip install .` / `pip wheel .` / `python setup.py build` / `python setup.py bdist_wheel` / etc.
-__version__ = '6.0.1 (2023-08-02)'
+__version__ = '6.1.0 (2023-08-16)'
