@@ -9,7 +9,7 @@
 		<widget source="global.CurrentTime" render="Label" position="250,90" size="460,40" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
 			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
 		</widget>
-		<widget source="pluginGrid" render="Listbox" position="center,175" size="1600,736" conditional="pluginGrid" listOrientation="grid" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarBorderWidth="1" scrollbarForegroundColor="blue" scrollbarBorderColor="blue" selectionPixmap="BlackHarmony/gfx/marker320x184.png" moveBackgroundColor="#000000">
+		<widget source="pluginGrid" render="Listbox" position="center,175" size="1600,736" conditional="pluginGrid" listOrientation="grid" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarBorderWidth="1" scrollbarForegroundColor="blue" scrollbarBorderColor="blue" selectionPixmap="BlackHarmony/allScreens/Screens by jac555, testowane na  HYPERION/icons/marker320x184.png" moveBackgroundColor="#000000">
 			<convert type="TemplatedMultiContent">
 				{
 				"template":
