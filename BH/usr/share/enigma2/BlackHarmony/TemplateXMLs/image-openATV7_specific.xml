@@ -767,4 +767,166 @@
     <widget objectTypes="key_blue,Label,Button" name="key_blue" position="952,1019" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
     <widget objectTypes="key_blue,StaticText" source="key_blue" render="Label" position="952,1019" size="250,27" zPosition="2" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>  
   </screen>
+<!--  Setup window -->
+  <screen name="Setup" position="345,93" size="1232,908" title="Setup" flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="0,0" zPosition="-10" size="1232,908" pixmap="BlackHarmony/bg_design/mainbg.png"/>
+    <widget source="global.CurrentTime" render="Label" position="40,25" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="125,25" size="460,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+    <widget source="session.CurrentService" render="Label" position="960,25" size="220,30" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1">
+      <convert type="j00zekAlternateTitle">Setup</convert>
+    </widget>
+    <widget name="config" position="65,140" size="1095,640" font="Roboto_HD; 27" itemHeight="40" enableWrapAround="1" scrollbarWidth="10" scrollbarBorderWidth="1" scrollbarForegroundColor="#e6e6e6" scrollbarBorderColor="#3b3e3f" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_1095_40.png" backgroundColor="black" transparent="1"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="41,850" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="328,850" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="615,850" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="902,850" size="35,27" alphatest="blend"/>
+    <widget source="key_red" render="Label" position="91,849" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget source="key_green" render="Label" position="378,849" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget name="key_yellow" position="665,849" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget name="key_blue" position="952,849" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <!-- smieci ATV sobie wymaga nie wiem po co... -->
+    <widget name="footnote" position="0,0" size="0,0" alphatest="blend" font="Regular;20" valign="center" transparent="1" zPosition="-15"/>
+    <widget name="description" position="0,0" size="0,0" alphatest="blend" font="Regular;20" valign="center" transparent="1" zPosition="-15"/> 
+    <widget name="setupimage" position="0,0" size="0,0" alphatest="blend" conditional="setupimage" transparent="1" />
+    <widget name="HelpWindow" position="0,0" size="0,0" alphatest="blend" conditional="HelpWindow" transparent="1" zPosition="+1" /> 
+  </screen>
+<!-- >>>>>>>>>> screens GraphicalEPG for OpenATV korekta j00zek <<<<<<<<<< -->
+  <screen name="GraphicalEPG" position="center,center" size="1920,1080" title="Electronic Program Guide" flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="0,1" zPosition="-7" size="1920,1080" pixmap="BlackHarmony/bg_design/cool.png" />
+    <eLabel position="68,723" size="1770,3" backgroundColor="yellow" />
+    <widget source="global.CurrentTime" render="Label" position="75,55" size="80,35" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="160,55" size="660,35" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+    <widget source="Title" render="Label" position="818,55" size="1025,35" font="Roboto_HD; 27" backgroundColor="black" transparent="1" halign="right" valign="center" />
+    <widget name="timeline_text" position="77,142" size="1750,49" selectionDisabled="1" foregroundColor="white" backgroundColor="background" transparent="1" font="Roboto_HD; 15" />
+    <widget name="list" position="84,210" size="1758,470" itemHeight="40" zPosition="3" EntryNowBackgroundColor="green_epg" EntryBorderColor="#3b3e3f" EntryBackgroundColor="background" EntryBackgroundColorSelected="red" EntryNowBackgroundColorSelected="#ffd200" scrollbarMode="showOnDemand" EntryRecColor="red" foregroundColorSelected="white" enableWrapAround="1" scrollbarWidth="10" scrollbarBorderWidth="1" scrollbarForegroundColor="#e6e6e6" scrollbarBorderColor="#3b3e3f" transparent="1" />
+    <widget name="timeline_now" position="80,210" zPosition="4" size="15,470" pixmap="BlackHarmony/gfx/timeline-ct1.png" alphatest="blend" />
+    <widget source="Event" render="Label" position="244,675" size="1100,46" font="HD_Thin; 34" foregroundColor="light_yellow" backgroundColor="background" transparent="1" valign="bottom">
+      <convert type="j00zekModEventName">Name</convert>
+    </widget>
+    <widget source="Event" render="Label" position="64,690" size="75,30" font="Roboto_HD; 25" halign="right" backgroundColor="background" transparent="1" foregroundColor="green">
+      <convert type="EventTime">StartTime</convert>
+      <convert type="ClockToText">
+    </convert>
+    </widget>
+    <widget source="Event" render="Label" position="138,690" size="95,30" font="Roboto_HD; 25" backgroundColor="background" transparent="1" foregroundColor="green">
+      <convert type="EventTime">EndTime</convert>
+      <convert type="ClockToText">Format:- %H:%M</convert>
+    </widget>
+    <widget source="Event" render="Label" position="1371,690" size="125,30" font="Roboto_HD; 25" foregroundColor="green" backgroundColor="background" transparent="1" halign="right">
+      <convert type="EventTime">Remaining</convert>
+      <convert type="RemainingToText">InMinutes</convert>
+    </widget>
+    <widget render="j00zekModRunningText" source="Event" options="movetype=running,startpoint=0,direction=top,steptime=100,repeat=4,startdelay=8000,wrap" foregroundColor="white" backgroundColor="background" position="68,739" size="1782,216" font="Roboto_HD; 29" transparent="1">
+      <convert type="j00zekModEventName">ExtendedDescription</convert>
+    </widget>
+    <widget name="JumpInterval" position="978,148" size="200,25" zPosition="5" halign="right" font="Roboto_HD; 22" backgroundColor="background" foregroundColor="green" transparent="1" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="95,1001" size="35,27" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="430,1001" size="35,27" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="760,1001" size="35,27" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="1090,1001" size="35,27" alphatest="blend" />
+    <widget name="key_red" position="150,1000" size="240,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" valign="center" />
+        <widget source="key_red" render="Label" position="150,1000" size="240,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" valign="center" />
+    <widget name="key_green" position="480,1000" size="240,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" valign="center" />
+        <widget source="key_green" render="Label" position="480,1000" size="240,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" valign="center" />
+    <widget name="key_yellow" position="810,983" size="240,55" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" valign="center" />
+        <widget source="key_yellow" render="Label" position="810,983" size="240,55" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" valign="center" />
+    <widget name="key_blue" position="1140,983" size="480,55" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" valign="center" />
+        <widget source="key_blue" render="Label" position="1140,983" size="480,55" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" valign="center" />
+    <ePixmap position="1789,999" size="60,30" pixmap="BlackHarmony/buttons/key_ok.png" alphatest="blend" />
+    <ePixmap position="1650,999" size="60,30" pixmap="BlackHarmony/buttons/key_menu.png" alphatest="blend" />
+    <ePixmap position="1720,999" size="60,30" pixmap="BlackHarmony/buttons/key_info.png" alphatest="blend" />
+  </screen>
+  <screen name="GraphicalEPGPIG" position="center,center" size="1920,1080" title="Electronic Program Guide" flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="0,1" zPosition="-7" size="1920,1080" pixmap="BlackHarmony/bg_design/cool.png" />
+    <eLabel position="68,623" size="1770,3" backgroundColor="yellow" />
+    <widget source="global.CurrentTime" render="Label" position="75,55" size="80,35" font="Roboto_HD;27" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="160,55" size="660,35" font="Roboto_HD;27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+    <widget source="Title" render="Label" position="818,55" size="1025,35" font="Roboto_HD;27" backgroundColor="black" transparent="1" halign="right" valign="center" />
+    <widget name="timeline_text" position="77,142" size="1750,49" selectionDisabled="1" foregroundColor="white" backgroundColor="background" transparent="1" font="Roboto_HD;15" />
+    <widget name="list" position="84,210" size="1758,370" itemHeight="35" zPosition="3" EntryNowBackgroundColor="green_epg" EntryBorderColor="#3b3e3f" EntryBackgroundColor="background" EntryBackgroundColorSelected="red" EntryNowBackgroundColorSelected="#ffd200" scrollbarMode="showOnDemand" EntryRecColor="red" foregroundColorSelected="white" enableWrapAround="1" scrollbarWidth="10" scrollbarBorderWidth="1" scrollbarForegroundColor="#e6e6e6" scrollbarBorderColor="#3b3e3f" transparent="1" />
+    <widget name="timeline_now" position="80,210" zPosition="4" size="15,370" pixmap="BlackHarmony/gfx/timeline-ct1.png" alphatest="blend" />
+    <widget source="Event" render="Label" position="244,575" size="1100,46" font="HD_Thin;34" foregroundColor="light_yellow" backgroundColor="background" transparent="1" valign="bottom">
+      <convert type="j00zekModEventName">Name</convert>
+    </widget>
+    <widget source="Event" render="Label" position="64,590" size="75,30" font="Roboto_HD;25" halign="right" backgroundColor="background" transparent="1" foregroundColor="green">
+      <convert type="EventTime">StartTime</convert>
+      <convert type="ClockToText">
+    </convert>
+    </widget>
+    <widget source="Event" render="Label" position="138,590" size="95,30" font="Roboto_HD;25" backgroundColor="background" transparent="1" foregroundColor="green">
+      <convert type="EventTime">EndTime</convert>
+      <convert type="ClockToText">Format:- %H:%M</convert>
+    </widget>
+    <widget source="Event" render="Label" position="1371,590" size="125,30" font="Roboto_HD;25" foregroundColor="green" backgroundColor="background" transparent="1" halign="right">
+      <convert type="EventTime">Remaining</convert>
+      <convert type="RemainingToText">InMinutes</convert>
+    </widget>
+    <widget render="j00zekModRunningText" source="Event" options="movetype=running,startpoint=0,direction=top,steptime=100,repeat=4,startdelay=8000,wrap" foregroundColor="white" backgroundColor="background" position="68,639" size="1222,316" font="Roboto_HD; 27" transparent="1">
+      <convert type="j00zekModEventName">ExtendedDescription</convert>
+    </widget>
+    <widget source="session.VideoPicture" render="Pig" position="1295,639" zPosition="3" size="560,315" backgroundColor="transparent" /> 
+    <widget name="JumpInterval" position="978,148" size="200,25" zPosition="5" halign="right" font="Roboto_HD;22" backgroundColor="background" foregroundColor="green" transparent="1" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="95,1001" size="35,27" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="430,1001" size="35,27" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="760,1001" size="35,27" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="1090,1001" size="35,27" alphatest="blend" />
+    <widget name="key_red" position="150,1000" size="240,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" valign="center" />
+        <widget source="key_red" render="Label" position="150,1000" size="240,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" valign="center" />
+    <widget name="key_green" position="480,1000" size="240,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" valign="center" />
+        <widget source="key_green" render="Label" position="480,1000" size="240,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" valign="center" />
+    <widget name="key_yellow" position="810,983" size="240,55" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" valign="center" />
+        <widget source="key_yellow" render="Label" position="810,983" size="240,55" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" valign="center" />
+    <widget name="key_blue" position="1140,983" size="480,55" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" valign="center" />
+        <widget source="key_blue" render="Label" position="1140,983" size="480,55" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" valign="center" />
+    <ePixmap position="1789,999" size="60,30" pixmap="BlackHarmony/buttons/key_ok.png" alphatest="blend" />
+    <ePixmap position="1650,999" size="60,30" pixmap="BlackHarmony/buttons/key_menu.png" alphatest="blend" />
+    <ePixmap position="1720,999" size="60,30" pixmap="BlackHarmony/buttons/key_info.png" alphatest="blend" />
+  </screen>
+  <screen name="PluginBrowser" position="345,93" size="1232,908" title=" " flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="0,0" zPosition="-10" size="1232,908" pixmap="BlackHarmony/bg_design/mainbg.png"/>
+    <widget source="global.CurrentTime" render="Label" position="40,25" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="125,25" size="460,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+    <eLabel text="Plugin browser" position="860,25" size="320,30" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1"/>
+    <!-- Na openPLi i openVix nie dziala skalowanie pluginlist wiec nzawy sa ucinane na 440 pikselach -->
+    <widget name="list" position="65,147" scrollbarMode="showOnDemand" size="1095,630" zPosition="3" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" selectionPixmap="BlackHarmony/menu/sel_1095_70.png" backgroundColor="background" transparent="1">
+      <convert type="TemplatedMultiContent">{"template": 
+                        [
+                            MultiContentEntryText(pos = (55, 8), size = (1020, 35), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 0),
+                            MultiContentEntryText(pos = (55, 45), size = (1020, 35), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 2),
+                            MultiContentEntryPixmapAlphaTest(pos = (5, 20), size = (48, 48), png = 4), # index 4 is the status pixmap
+                        ],
+                        "fonts": [gFont("Regular", 26),gFont("Regular", 22)],
+                        "itemHeight": 70
+                    }</convert>
+    </widget>
+    <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="41,850" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="328,850" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="615,850" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="902,850" size="35,27" alphatest="blend"/>
+    <widget name="key_red"                      position="91,849" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget source="key_red" render="Label"     position="91,849" size="250,27" noWrap="1" zPosition="+1" valign="center" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" objectTypes="key_red,StaticText" transparent="1" />
+    <widget name="key_green"                    position="378,849" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget source="key_green" render="Label"   position="378,849" size="250,27" noWrap="1" zPosition="+1" valign="center" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" objectTypes="key_green,StaticText" transparent="1" />
+    <widget name="key_yellow"                   position="665,849" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget source="key_yellow" render="Label"  position="665,849" size="250,27" noWrap="1" zPosition="+1" valign="center" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" objectTypes="key_yellow,StaticText" transparent="1" />
+    <widget name="key_blue"                     position="952,849" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget source="key_blue" render="Label"    position="952,849" size="250,27" noWrap="1" zPosition="+1" valign="center" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" objectTypes="key_blue,StaticText" transparent="1" />
+  </screen>
+
 </skin>
