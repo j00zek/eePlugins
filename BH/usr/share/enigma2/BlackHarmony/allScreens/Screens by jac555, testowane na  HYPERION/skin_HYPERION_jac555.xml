@@ -9,93 +9,93 @@
 		<widget source="global.CurrentTime" render="Label" position="172,70" size="460,40" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
 			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
 		</widget>
-		<widget name="Level" position="center,63" size="675,57" font="Roboto_HD; 47" halign="center" valign="center" foregroundColor="white" backgroundColor="transpBlack_1" transparent="1" />
+		<widget name="Level" position="496,61" size="800,57" font="Roboto_HD; 47" halign="center" valign="center" foregroundColor="white" backgroundColor="transpBlack_1" transparent="1" />
 		<widget name="Opis" position="226,975" size="1110,40" font="Roboto_HD; 28" halign="center" valign="center" foregroundColor="data" backgroundColor="transpBlack_1" transparent="1" />
-		<widget source="global.Immidiet" render="Pixmap" position="245,190" size="230,160" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/frame.png" alphatest="blend" zPosition="-1">
+		<widget source="global.Immidiet" render="Pixmap" position="135,200" size="320,184" pixmap="BlackHarmony/allScreens/Screens by jac555, testowane na  HYPERION/icons/marker320x184.png" alphatest="blend" zPosition="-1">
 			<convert type="BP_PKT">frame</convert>
 			<convert type="ValueRange">0,0</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="global.Immidiet" render="Pixmap" position="529,190" size="230,160" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/frame.png" alphatest="blend" zPosition="-1">
+		<widget source="global.Immidiet" render="Pixmap" position="475,200" size="320,184" pixmap="BlackHarmony/allScreens/Screens by jac555, testowane na  HYPERION/icons/marker320x184.png" alphatest="blend" zPosition="-1">
 			<convert type="BP_PKT">frame</convert>
 			<convert type="ValueRange">1,1</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="global.Immidiet" render="Pixmap" position="803,190" size="230,160" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/frame.png" alphatest="blend" zPosition="-1">
+		<widget source="global.Immidiet" render="Pixmap" position="815,200" size="320,184" pixmap="BlackHarmony/allScreens/Screens by jac555, testowane na  HYPERION/icons/marker320x184.png" alphatest="blend" zPosition="-1">
 			<convert type="BP_PKT">frame</convert>
 			<convert type="ValueRange">2,2</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="global.Immidiet" render="Pixmap" position="1083,190" size="230,160" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/frame.png" alphatest="blend" zPosition="-1">
+		<widget source="global.Immidiet" render="Pixmap" position="1155,200" size="320,184" pixmap="BlackHarmony/allScreens/Screens by jac555, testowane na  HYPERION/icons/marker320x184.png" alphatest="blend" zPosition="-1">
 			<convert type="BP_PKT">frame</convert>
 			<convert type="ValueRange">3,3</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="global.Immidiet" render="Pixmap" position="245,435" size="230,160" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/frame.png" alphatest="blend" zPosition="-1">
+		<widget source="global.Immidiet" render="Pixmap" position="135,445" size="320,184" pixmap="BlackHarmony/allScreens/Screens by jac555, testowane na  HYPERION/icons/marker320x184.png" alphatest="blend" zPosition="-1">
 			<convert type="BP_PKT">frame</convert>
 			<convert type="ValueRange">4,4</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="global.Immidiet" render="Pixmap" position="529,435" size="230,160" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/frame.png" alphatest="blend" zPosition="-1">
+		<widget source="global.Immidiet" render="Pixmap" position="475,445" size="320,184" pixmap="BlackHarmony/allScreens/Screens by jac555, testowane na  HYPERION/icons/marker320x184.png" alphatest="blend" zPosition="-1">
 			<convert type="BP_PKT">frame</convert>
 			<convert type="ValueRange">5,5</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="global.Immidiet" render="Pixmap" position="803,435" size="230,160" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/frame.png" alphatest="blend" zPosition="-1">
+		<widget source="global.Immidiet" render="Pixmap" position="815,445" size="320,184" pixmap="BlackHarmony/allScreens/Screens by jac555, testowane na  HYPERION/icons/marker320x184.png" alphatest="blend" zPosition="-1">
 			<convert type="BP_PKT">frame</convert>
 			<convert type="ValueRange">6,6</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="global.Immidiet" render="Pixmap" position="1083,435" size="230,160" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/frame.png" alphatest="blend" zPosition="-1">
+		<widget source="global.Immidiet" render="Pixmap" position="1155,445" size="320,184" pixmap="BlackHarmony/allScreens/Screens by jac555, testowane na  HYPERION/icons/marker320x184.png" alphatest="blend" zPosition="-1">
 			<convert type="BP_PKT">frame</convert>
 			<convert type="ValueRange">7,7</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="global.Immidiet" render="Pixmap" position="245,680" size="230,160" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/frame.png" alphatest="blend" zPosition="-1">
+		<widget source="global.Immidiet" render="Pixmap" position="135,690" size="320,184" pixmap="BlackHarmony/allScreens/Screens by jac555, testowane na  HYPERION/icons/marker320x184.png" alphatest="blend" zPosition="-1">
 			<convert type="BP_PKT">frame</convert>
 			<convert type="ValueRange">8,8</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="global.Immidiet" render="Pixmap" position="529,680" size="230,160" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/frame.png" alphatest="blend" zPosition="-1">
+		<widget source="global.Immidiet" render="Pixmap" position="475,690" size="320,184" pixmap="BlackHarmony/allScreens/Screens by jac555, testowane na  HYPERION/icons/marker320x184.png" alphatest="blend" zPosition="-1">
 			<convert type="BP_PKT">frame</convert>
 			<convert type="ValueRange">9,9</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="global.Immidiet" render="Pixmap" position="803,680" size="230,160" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/frame.png" alphatest="blend" zPosition="-1">
+		<widget source="global.Immidiet" render="Pixmap" position="815,690" size="320,184" pixmap="BlackHarmony/allScreens/Screens by jac555, testowane na  HYPERION/icons/marker320x184.png" alphatest="blend" zPosition="-1">
 			<convert type="BP_PKT">frame</convert>
 			<convert type="ValueRange">10,10</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget source="global.Immidiet" render="Pixmap" position="1083,680" size="230,160" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/frame.png" alphatest="blend" zPosition="-1">
+		<widget source="global.Immidiet" render="Pixmap" position="1155,690" size="320,184" pixmap="BlackHarmony/allScreens/Screens by jac555, testowane na  HYPERION/icons/marker320x184.png" alphatest="blend" zPosition="-1">
 			<convert type="BP_PKT">frame</convert>
 			<convert type="ValueRange">11,11</convert>
 			<convert type="ConditionalShowHide" />
 		</widget>
-		<widget name="0" position="230,350" size="260,90" font="Roboto_HD; 32" halign="center" valign="top" foregroundColor="lemon" transparent="1" />
-		<widget name="1" position="510,350" size="260,90" font="Roboto_HD; 32" halign="center" valign="top" foregroundColor="lemon" transparent="1" />
-		<widget name="2" position="790,350" size="260,90" font="Roboto_HD; 32" halign="center" valign="top" foregroundColor="lemon" transparent="1" />
-		<widget name="3" position="1069,350" size="260,90" font="Roboto_HD; 32" halign="center" valign="top" foregroundColor="lemon" transparent="1" />
-		<widget name="4" position="230,595" size="260,90" font="Roboto_HD; 32" halign="center" valign="top" foregroundColor="lemon" transparent="1" />
-		<widget name="5" position="510,595" size="260,90" font="Roboto_HD; 32" halign="center" valign="top" foregroundColor="lemon" transparent="1" />
-		<widget name="6" position="790,595" size="260,90" font="Roboto_HD; 32" halign="center" valign="top" foregroundColor="lemon" transparent="1" />
-		<widget name="7" position="1069,595" size="260,90" font="Roboto_HD; 32" halign="center" valign="top" foregroundColor="lemon" transparent="1" />
-		<widget name="8" position="230,840" size="260,90" font="Roboto_HD; 32" halign="center" valign="top" foregroundColor="lemon" transparent="1" />
-		<widget name="9" position="510,840" size="260,90" font="Roboto_HD; 32" halign="center" valign="top" foregroundColor="lemon" transparent="1" />
-		<widget name="10" position="790,840" size="260,90" font="Roboto_HD; 32" halign="center" valign="top" foregroundColor="lemon" transparent="1" />
-		<widget name="11" position="1069,840" size="260,90" font="Roboto_HD; 32" halign="center" valign="top" foregroundColor="lemon" transparent="1" />
-		<widget name="I0" position="270,225" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/hdd.png" alphatest="blend" />
-		<widget name="I1" position="554,225" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/system.png" alphatest="blend" />
-		<widget name="I2" position="828,225" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/multi.png" alphatest="blend" />
-		<widget name="I3" position="1108,225" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/plugins.png" alphatest="blend" />
-		<widget name="I4" position="270,470" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/settings.png" alphatest="blend" />
-		<widget name="I5" position="554,470" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/network.png" alphatest="blend" />
-		<widget name="I6" position="828,470" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/actual.png" alphatest="blend" />
-		<widget name="I7" position="1108,470" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/info.png" alphatest="blend" />
-		<widget name="I8" position="270,720" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/addons.png" alphatest="blend" />
-		<widget name="I9" position="554,720" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/green.png" alphatest="blend" />
-		<widget name="I10" position="828,720" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/yellow.png" alphatest="blend" />
-		<widget name="I11" position="1108,720" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/blue.png" alphatest="blend" />
-		<ePixmap position="1426,510" zPosition="1" size="320,90" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
+		<widget name="0" position="135,305" size="320,75" render="j00zekLabel" font="HD_Thin; 31" halign="center" valign="center" foregroundColor="lemon" transparent="1" />
+		<widget name="1" position="475,305" size="320,75" render="j00zekLabel" font="HD_Thin; 31" halign="center" valign="center" foregroundColor="lemon" transparent="1" />
+		<widget name="2" position="815,305" size="320,75" render="j00zekLabel" font="HD_Thin; 31" halign="center" valign="center" foregroundColor="lemon" transparent="1" />
+		<widget name="3" position="1155,305" size="320,75" render="j00zekLabel" font="HD_Thin; 31" halign="center" valign="center" foregroundColor="lemon" transparent="1" />
+		<widget name="4" position="135,550" size="320,75" render="j00zekLabel" font="HD_Thin; 31" halign="center" valign="center" foregroundColor="lemon" transparent="1" />
+		<widget name="5" position="475,550" size="320,75" render="j00zekLabel" font="HD_Thin; 31" halign="center" valign="center" foregroundColor="lemon" transparent="1" />
+		<widget name="6" position="815,550" size="320,75" render="j00zekLabel" font="HD_Thin; 31" halign="center" valign="center" foregroundColor="lemon" transparent="1" />
+		<widget name="7" position="1155,550" size="320,75" render="j00zekLabel" font="HD_Thin; 31" halign="center" valign="center" foregroundColor="lemon" transparent="1" />
+		<widget name="8" position="135,795" size="320,75" render="j00zekLabel" font="HD_Thin; 31" halign="center" valign="center" foregroundColor="lemon" transparent="1" />
+		<widget name="9" position="475,795" size="320,75" render="j00zekLabel" font="HD_Thin; 31" halign="center" valign="center" foregroundColor="lemon" transparent="1" />
+		<widget name="10" position="815,795" size="320,75" render="j00zekLabel" font="HD_Thin; 31" halign="center" valign="center" foregroundColor="lemon" transparent="1" />
+		<widget name="11" position="1155,795" size="320,75" render="j00zekLabel" font="HD_Thin; 31" halign="center" valign="center" foregroundColor="lemon" transparent="1" />
+		<widget name="I0" position="205,210" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/hdd.png" alphatest="blend" />
+		<widget name="I1" position="545,210" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/system.png" alphatest="blend" />
+		<widget name="I2" position="885,210" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/multi.png" alphatest="blend" />
+		<widget name="I3" position="1225,210" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/plugins.png" alphatest="blend" />
+		<widget name="I4" position="205,455" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/settings.png" alphatest="blend" />
+		<widget name="I5" position="545,455" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/network.png" alphatest="blend" />
+		<widget name="I6" position="885,455" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/actual.png" alphatest="blend" />
+		<widget name="I7" position="1225,455" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/info.png" alphatest="blend" />
+		<widget name="I8" position="205,700" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/addons.png" alphatest="blend" />
+		<widget name="I9" position="545,700" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/green.png" alphatest="blend" />
+		<widget name="I10" position="885,700" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/yellow.png" alphatest="blend" />
+		<widget name="I11" position="1225,700" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/blue.png" alphatest="blend" />
+		<ePixmap position="1510,500" zPosition="1" size="300,81" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
 </screen>
 
 	<!-- PKT Ic -->
@@ -158,7 +158,7 @@
 		<widget name="Green" position="1233,992" size="160,35" font="Roboto_HD;30" halign="left" valign="center" foregroundColor="font_green" backgroundColor="background" transparent="1" />
 		<eLabel text="Processes" position="1443,992" size="160,35" font="Roboto_HD;30" halign="left" valign="center" foregroundColor="yellow" backgroundColor="background" transparent="1" />
 		<widget name="Blue" position="1651,992" size="160,35" font="Roboto_HD;30" halign="left" valign="center" foregroundColor="data" backgroundColor="background" transparent="1" />
-		<ePixmap position="1292,161" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
+		<ePixmap position="1292,161" zPosition="1" size="300,81" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
 		<widget source="session.CurrentService" render="j00zekPiconAnimation" position="1191,998" size="35,27" zPosition="10" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" pixmaps="BlackHarmony/skin_user_animButtons/key_green" pixalter="BlackHarmony/buttons/key_green.png" />
 		<widget source="session.CurrentService" render="j00zekPiconAnimation" position="1404,998" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,2" random="True" pixmaps="BlackHarmony/skin_user_animButtons/key_yellow" pixalter="BlackHarmony/buttons/key_yellow.png" />
 		<widget source="session.CurrentService" render="j00zekPiconAnimation" position="1611,998" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,3" random="True" pixmaps="BlackHarmony/skin_user_animButtons/key_blue" pixalter="BlackHarmony/buttons/key_blue.png" />
@@ -1020,5 +1020,34 @@
 		<widget source="key_green" render="Label" position="407,749" size="250,30" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
 		<widget source="key_yellow" render="Label" position="711,749" size="250,30" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
 </screen>
+
+<screen name="Setup" position="345,93" size="1232,908" title="Setup" flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="0,0" zPosition="-10" size="1232,908" pixmap="BlackHarmony/bg_design/mainbg.png"/>
+    <widget source="global.CurrentTime" render="Label" position="40,25" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="125,25" size="460,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+    <widget source="session.CurrentService" render="Label" position="960,25" size="220,30" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1">
+      <convert type="j00zekAlternateTitle">Setup</convert>
+    </widget>
+    <widget name="config" position="65,140" size="1095,640" font="Roboto_HD; 27" itemHeight="40" enableWrapAround="1" scrollbarWidth="10" scrollbarBorderWidth="1" scrollbarForegroundColor="#e6e6e6" scrollbarBorderColor="#3b3e3f" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_1095_40.png" backgroundColor="black" transparent="1"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="41,850" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="328,850" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="615,850" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="902,850" size="35,27" alphatest="blend"/>
+    <widget source="key_red" render="Label" position="91,849" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget source="key_green" render="Label" position="378,849" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget name="key_yellow" position="665,849" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget name="key_blue" position="952,849" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <!-- smieci ATV sobie wymaga nie wiem po co... -->
+    <widget name="footnote" position="0,0" size="0,0" alphatest="blend" font="Regular;20" valign="center" transparent="1" zPosition="-15"/>
+    <widget name="description" position="0,0" size="0,0" alphatest="blend" font="Regular;20" valign="center" transparent="1" zPosition="-15"/> 
+    <widget name="setupimage" position="0,0" size="0,0" alphatest="blend" conditional="setupimage" transparent="1" />
+    <widget name="HelpWindow" position="0,0" size="0,0" alphatest="blend" conditional="HelpWindow" transparent="1" zPosition="+1" /> 
+  </screen>
+
+
 
 </skin>
