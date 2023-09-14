@@ -1049,4 +1049,47 @@
     <widget name="setupimage" position="0,0" size="0,0" alphatest="blend" conditional="setupimage" transparent="1" />
     <widget name="HelpWindow" position="0,0" size="0,0" alphatest="blend" conditional="HelpWindow" transparent="1" zPosition="+1" /> 
   </screen>
+
+<screen name="LocaleSelection" position="345,93" size="1232,908" title="About" flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="0,0" zPosition="-10" size="1232,908" pixmap="BlackHarmony/bg_design/mainbg.png"/>
+    <widget source="global.CurrentTime" render="Label" position="40,25" size="80,32" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="125,25" size="460,32" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+    <widget source="Title" render="Label" position="630,25" size="550,32" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1"/>
+		<widget name="icons" position="0,0" size="64,26" pixmaps="icons/menu_download.png,icons/menu_off.png,icons/menu_on.png" alphatest="blend"/>
+   <widget source="locales" render="Listbox" position="50,125" size="1130,630" enableWrapAround="1" scrollbarWidth="7" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="blue" scrollbarSliderBorderColor="blue" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_1130_40.png" backgroundColor="black" transparent="1">
+      <convert type="TemplatedMultiContent">
+        {
+                                "template":
+                                        [
+                                        MultiContentEntryPixmapAlphaBlend(pos = (5, 6), size = (56, 28), flags = BT_SCALE, png = 0),  # Flag.
+                                        MultiContentEntryText(pos = (80, 3), size = (350, 34), font = 0, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 1),  # Language name (Native).
+                                        MultiContentEntryText(pos = (430, 3), size = (330, 34), font = 0, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 2),  # Lanuage name (English).
+                                        # MultiContentEntryText(pos = (760, 3), size = (75, 34), font = 0, flags = RT_HALIGN_CENTER | RT_VALIGN_CENTER, text = 3),  # Locale name.
+                                        MultiContentEntryText(pos = (835, 3), size = (75, 34), font = 0, flags = RT_HALIGN_CENTER | RT_VALIGN_CENTER, text = 4),  # Package name.
+                                        MultiContentEntryPixmapAlphaBlend(pos = (980, 13), size = (40, 14), flags = BT_SCALE, png = 5)  # Status icon.
+                                        ],
+                                "fonts": [gFont("Roboto_HD",24)],
+                                "itemHeight": 40
+                                }
+      </convert>
+    </widget>
+    <widget source="description" render="Label" position="50,760" size="1130,60" font="Roboto_HD;24" halign="center" backgroundColor="black" foregroundColor="blue" valign="center" transparent="1" />       
+    <!--przyciski-->    
+    <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="41,850" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="328,850" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="615,850" size="35,27" alphatest="blend"/>
+    <widget objectTypes="key_red,Label,Button" name="key_red" position="91,849" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget objectTypes="key_red,StaticText" source="key_red" render="Label" position="91,849" size="200,27" zPosition="2" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget objectTypes="key_green,Label,Button" name="key_green" position="378,849" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget objectTypes="key_green,StaticText" source="key_green" render="Label" position="378,849" size="200,27" zPosition="2" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget objectTypes="key_yellow,Label,Button" name="key_yellow" position="665,849" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget objectTypes="key_yellow,StaticText" source="key_yellow" render="Label" position="665,849" size="200,27" zPosition="2" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="935,850" size="60,30" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_infoo.png" position="1035,850" size="60,30" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_help.png" position="1135,850" size="60,30" alphatest="blend"/>   
+  </screen>
 </skin>
