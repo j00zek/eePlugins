@@ -130,7 +130,7 @@
 <widget source="global.CurrentTime" render="Label" position="1680,726" size="100,50" font="HD_Thin; 35" halign="left" foregroundColor="lemon" backgroundColor="black" transparent="1">
     <convert type="ClockToText">Format:%S</convert>
     </widget>
-<widget backgroundColor="black" font="HD_Thin; 31" halign="center" position="1420,805" render="Label" size="414,62" source="global.CurrentTime" transparent="1" foregroundColor="lemon" valign="center">
+<widget backgroundColor="black" font="HD_Thin; 31" halign="center" position="1420,805" render="j00zekLabel" size="414,62" source="global.CurrentTime" transparent="1" foregroundColor="lemon" valign="center">
     <convert type="ClockToText">Format:%A %d %B %Y </convert>
   </widget>
   <eLabel name="new eLabel" position="514,1025" size="45,25" font="Roboto_HD; 21" foregroundColor="green" backgroundColor="black" text="CA:" transparent="1" halign="right" />
