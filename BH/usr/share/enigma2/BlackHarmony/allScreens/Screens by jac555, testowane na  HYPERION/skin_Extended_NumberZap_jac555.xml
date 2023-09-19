@@ -1,5 +1,5 @@
 <screen name="NumberZapExt" position="center,center" size="800,190" title=" ">
-  <widget name="chPicon" position="409,3" size="400,170" alphatest="on" zPosition="2" />
+  <widget name="chPicon" position="409,3" size="400,170" alphatest="blend" zPosition="2" />
   <widget name="chNum" position="0,3" size="410,60" halign="center" font="HD_Thin; 45" foregroundColor="white" />
   <widget name="number" position="0,5" size="80,40" valign="top" halign="left" font="RegularLight; 18" foregroundColor="#808080" />
   <eLabel position="0,63" size="410,1" transparent="1" zPosition="5" backgroundColor="#003aad" />
