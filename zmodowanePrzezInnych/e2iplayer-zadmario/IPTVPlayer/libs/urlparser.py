@@ -39,7 +39,7 @@ from Plugins.Extensions.IPTVPlayer.iptvdm.iptvdh import DMHelper
 from Plugins.Extensions.IPTVPlayer.components.asynccall import iptv_execute, MainSessionWrapper
 from Plugins.Extensions.IPTVPlayer.tools.e2ijs import js_execute, js_execute_ext
 from Plugins.Extensions.IPTVPlayer.libs.e2ijson import loads as json_loads, dumps as json_dumps
-from Plugins.Extensions.IPTVPlayer.libs.aadecode import AADecoder
+from Plugins.Extensions.IPTVPlayer.libs import aadecode
 from Screens.MessageBox import MessageBox
 ###################################################
 from Plugins.Extensions.IPTVPlayer.p2p3.pVer import isPY2
@@ -275,6 +275,7 @@ class urlparser:
                        'embedsb.com': self.pp.parserSTREAMSB,
                        'embedstream.me': self.pp.parserEMBEDSTREAMME,
                        'embeducaster.com': self.pp.parserUCASTERCOM,
+                       'embedwish.com': self.pp.parserONLYSTREAMTV,
                        'estream.to': self.pp.parserESTREAMTO,
                        'evoload.io': self.pp.parserEVOLOADIO,
                        'exashare.com': self.pp.parserEXASHARECOM,
@@ -637,12 +638,16 @@ class urlparser:
                        #v
                        'vcstream.to': self.pp.parserVCSTREAMTO,
                        'veehd.com': self.pp.parserVEEHDCOM,
+                       'vembed.net': self.pp.parserVIDGUARDTO,
                        'veoh.com': self.pp.parserVEOHCOM,
                        'veuclips.com': self.pp.parserVEUCLIPS,
                        'veuclips.com': self.pp.parserVIUCLIPS,
                        'veuclipstoday.tk': self.pp.parserVIUCLIPS,
                        'vev.io': self.pp.parserTHEVIDEOME,
                        'vevo.com': self.pp.parserVEVO,
+                       'vgembed.com': self.pp.parserVIDGUARDTO,
+                       'vgfplay.com': self.pp.parserVIDGUARDTO,
+                       'vid-guard.com': self.pp.parserVIDGUARDTO,
                        'vid.ag': self.pp.parserVIDAG,
                        'vid.gg': self.pp.parserVIDGGTO,
                        'vid.me': self.pp.parserVIDME,
@@ -675,6 +680,7 @@ class urlparser:
                        'vidfile.net': self.pp.parserVIDFILENET,
                        'vidflare.com': self.pp.parserVIDFLARECOM,
                        'vidgg.to': self.pp.parserVIDGGTO,
+                       'vidguard.to': self.pp.parserVIDGUARDTO,
                        'vidia.tv': self.pp.parserONLYSTREAMTV,
                        'vidload.co': self.pp.parserVIDLOADCO,
                        'vidload.net': self.pp.parserVIDLOADNET,
@@ -737,6 +743,7 @@ class urlparser:
                        'widestream.io': self.pp.parserWIDESTREAMIO,
                        'wiiz.tv': self.pp.parserWIIZTV,
                        'wikisport.click': self.pp.parserWIKISPORTCLICK,
+                       'wishfast.top': self.pp.parserONLYSTREAMTV,
                        'wolfstream.tv': self.pp.parserCLIPWATCHINGCOM,
                        'wrzuta.pl': self.pp.parserWRZUTA,
                        'wstream.video': self.pp.parserWSTREAMVIDEO,
@@ -15583,3 +15590,45 @@ class pageParser(CaptchaHelper):
         printDBG("parserFILEMOONSX baseUrl[%s]" % baseUrl)
 
         return self.parserONLYSTREAMTV(strwithmeta(baseUrl.replace('/d/', '/e/'), baseUrl.meta))
+
+    def parserVIDGUARDTO(self, baseUrl):
+        printDBG("parserVIDGUARDTO baseUrl[%s]" % baseUrl)
+
+        def sig_decode(url):
+            sig = url.split('sig=')[1].split('&')[0]
+            t = ''
+            for v in unhexlify(sig):
+                t += chr((v if isinstance(v, int) else ord(v)) ^ 2)
+            t = list(base64.b64decode(t + '==')[:-5][::-1])
+            for i in range(0, len(t) - 1, 2):
+                t[i + 1], t[i] = t[i], t[i + 1]
+            t = ''.join(chr((i if isinstance(i, int) else ord(i))) for i in t)
+            url = url.replace(sig, ''.join(t)[:-5])
+            return url
+
+        HTTP_HEADER = self.cm.getDefaultHeader(browser='chrome')
+        referer = baseUrl.meta.get('Referer')
+        if referer:
+            HTTP_HEADER['Referer'] = referer
+        urlParams = {'header': HTTP_HEADER}
+        sts, data = self.cm.getPage(baseUrl, urlParams)
+        if not sts:
+            return []
+        cUrl = self.cm.meta['url']
+
+        urlTab = []
+        r = re.search(r'<script\s*src="(/assets/videojs/ad/[^"]+)', data)
+        if r:
+            HTTP_HEADER['Referer'] = baseUrl
+            urlParams = {'header': HTTP_HEADER}
+            sts, data = self.cm.getPage(self.cm.getFullUrl(r.group(1), self.cm.getBaseUrl(baseUrl)), urlParams)
+            if not sts:
+                return []
+            aa_decoded = aadecode.decode(data, alt=True)
+            sources = json_loads(aa_decoded[11:]).get('stream')
+            sources = [(x.get('Label'), x.get('URL')) for x in sources]
+            for item in sources:
+                url = strwithmeta(sig_decode(item[1]), {'Origin': urlparser.getDomain(baseUrl, False), 'Referer': cUrl})
+                urlTab.append({'name': item[0], 'url': url})
+
+        return urlTab
