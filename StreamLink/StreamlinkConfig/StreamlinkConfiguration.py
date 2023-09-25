@@ -163,9 +163,13 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                     Mlist.append(getConfigListEntry(_("Autocorrect framework for Wrappers:"), config.plugins.streamlinkSRV.Verify4Wrappers))
                     Mlist.append(getConfigListEntry(_(" !!! EXPERIMENTAL OPTION(S) !!!")))
                     Mlist.append(getConfigListEntry(_("Support VLC:"), config.plugins.streamlinkSRV.VLCusingLUA))
+                    
                     Mlist.append(getConfigListEntry(_("Recorder mode:"), config.plugins.streamlinkSRV.Recorder))
                     if config.plugins.streamlinkSRV.Recorder.value == True:
                         Mlist.append(getConfigListEntry(_("Maximum record time:"), config.plugins.streamlinkSRV.RecordMaxTime))
+
+                    Mlist.append(getConfigListEntry(_("Refresh Generated bouquets in standby:"), config.plugins.streamlinkSRV.RefreshGeneratedBouquets))
+                    
                     Mlist.append(getConfigListEntry(_("stop deamon on standby:"), config.plugins.streamlinkSRV.StandbyMode))
                     if config.plugins.streamlinkSRV.StandbyMode.value == True:
                         Mlist.append(getConfigListEntry(_("proxy (http://127.0.0.1:8818) for channel:"), config.plugins.streamlinkSRV.streamlinkProxy1))

@@ -47,7 +47,10 @@ def SLconfigLeaveStandbyInitDaemon():
 
 def SLconfigStandbyCounterChanged(configElement):
     DBGlog('standbyCounterChanged() >>>')
-    runCMD('streamlinkSRV stop;killall -9 streamlinkProxy.py')
+    if config.plugins.streamlinkSRV.StandbyMode.value == True:
+        runCMD('streamlinkSRV stop;killall -9 streamlinkProxy.py')
+    if config.plugins.streamlinkSRV.RefreshGeneratedBouquets.value == True:
+        DBGlog('refreshing TBC')
     try:
         if SLconfigLeaveStandbyInitDaemon not in Screens.Standby.inStandby.onClose:
             Screens.Standby.inStandby.onClose.append(SLconfigLeaveStandbyInitDaemon)
@@ -63,7 +66,7 @@ def sessionstart(reason, session = None):
     if config.plugins.streamlinkSRV.Verify4Wrappers.value == 'y':
         runCMD('/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/bin/autoCorrectFramework4Wrappers.sh')
     from Screens.Standby import inStandby
-    if reason == 0 and config.plugins.streamlinkSRV.StandbyMode.value == True:
+    if reason == 0 and config.plugins.streamlinkSRV.StandbyMode.value == True or config.plugins.streamlinkSRV.RefreshGeneratedBouquets.value == True:
         DBGlog('reason == 0 and StandbyMode enabled')
         config.misc.standbyCounter.addNotifier(SLconfigStandbyCounterChanged, initial_call=False)
         initProxy()
