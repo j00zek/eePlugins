@@ -21,7 +21,7 @@ class SuggestionsProvider:
         return _("Filmweb Suggestions")
 
     def getSuggestions(self, text, locale):
-        url = 'https://www.filmweb.pl/api/v1/live/search?query=' + urllib_quote(text)
+        url = 'https://www.filmweb.pl/api/v1/live/search?query=' + urllib_quote(text).lower()
         sts, data = self.cm.getPage(url)
         if sts:
             retList = []
