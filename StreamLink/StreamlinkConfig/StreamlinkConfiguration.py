@@ -170,6 +170,8 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
 
                     Mlist.append(getConfigListEntry(_("Refresh Generated bouquets in standby:"), config.plugins.streamlinkSRV.RefreshGeneratedBouquets))
                     
+                    Mlist.append(getConfigListEntry(_("Use IPTVExtMoviePlayer for URL's with:"), config.plugins.streamlinkSRV.IPTVExtMoviePlayer))
+                    
                     Mlist.append(getConfigListEntry(_("stop deamon on standby:"), config.plugins.streamlinkSRV.StandbyMode))
                     if config.plugins.streamlinkSRV.StandbyMode.value == True:
                         Mlist.append(getConfigListEntry(_("proxy (http://127.0.0.1:8818) for channel:"), config.plugins.streamlinkSRV.streamlinkProxy1))
