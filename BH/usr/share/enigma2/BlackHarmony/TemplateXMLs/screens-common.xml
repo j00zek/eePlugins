@@ -10072,8 +10072,10 @@ from enigma import eSize, ePoint
 if DBG: open("/tmp/MessageBox.log", "w").write('%s\n' % self.text)
 
 animPosition = (0, 0)
-animWidth = self["QuestionPixmap"].instance.size().width()
-animHeight = self["QuestionPixmap"].instance.size().height()
+try: animWidth = self["QuestionPixmap"].instance.size().width()
+except Exception: animWidth = 140
+try: animHeight = self["QuestionPixmap"].instance.size().height()
+except Exception: animHeight = 140
 WindowWidth = self.instance.size().width()
 windowHeight = self.instance.size().height()
 orgWindowPos = self.instance.position()
