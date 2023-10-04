@@ -170,7 +170,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
 
                     Mlist.append(getConfigListEntry(_("Refresh Generated bouquets in standby:"), config.plugins.streamlinkSRV.RefreshGeneratedBouquets))
                     
-                    Mlist.append(getConfigListEntry(_("Use IPTVExtMoviePlayer for URL's with:"), config.plugins.streamlinkSRV.IPTVExtMoviePlayer))
+                    Mlist.append(getConfigListEntry(_("IPTVExtMoviePlayer:// reacts on URL's with:"), config.plugins.streamlinkSRV.IPTVExtMoviePlayer))
                     
                     Mlist.append(getConfigListEntry(_("stop deamon on standby:"), config.plugins.streamlinkSRV.StandbyMode))
                     if config.plugins.streamlinkSRV.StandbyMode.value == True:
