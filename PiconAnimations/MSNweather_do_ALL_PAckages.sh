@@ -6,7 +6,7 @@ for paczka in deszcz_bez_parasolki deszcz_nad_parasolka deszcz_pod_parasolka
 do
   [ -e $MainPAth ] && rm -rf $MainPAth
   cp -rf $myAbsPath/MSNweather_wspolna_baza $MainPAth
-  cp -rf $myAbsPath/MSNweather_dodatkowe_MAXX/* $MainPAth
+  cp -rf $myAbsPath/MSNweather_dodatkowe/* $MainPAth
   
   cp -rf $myAbsPath/MSNweather_dodatkowe_$paczka/* $MainPAth
   
