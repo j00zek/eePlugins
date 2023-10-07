@@ -5,7 +5,7 @@
 --]]
 
 -- tuner configuration
-local tuner_IP = "192.168.1.5"
+local tuner_IP = "192.168.33.5"
 local username = ""
 local password = ""
 

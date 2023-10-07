@@ -39,7 +39,7 @@ def zap(session, service, **kwargs):
                     if zapIPTVExtMoviePlayer is None:
                         try:
                             from Plugins.Extensions.IPTVPlayer.components.iptvextmovieplayer import IPTVExtMoviePlayer
-                            zapIPTVExtMoviePlayer = True
+                            zapIPTVExtMoviePlayer = IPTVExtMoviePlayer
                         except ImportError as e:
                             print("[ChannelSelection] zap > IPTVExtMoviePlayerWrapper importing IPTVPlayer component error '%s'" % str(e))
                     if zapIPTVExtMoviePlayer:
@@ -51,12 +51,12 @@ def zap(session, service, **kwargs):
                         playerVal = 'eplayer' # extgstplayer
                         gstAdditionalParams = {}
                         if 1:
-                            session.openWithCallback(leaveMoviePlayer, IPTVExtMoviePlayer, url, titleOfMovie, None, playerVal, gstAdditionalParams)
+                            session.openWithCallback(leaveMoviePlayer, zapIPTVExtMoviePlayer, url, titleOfMovie, None, playerVal, gstAdditionalParams)
                         else:
                             #from Components.config import config
                             bufferingPath = config.plugins.iptvplayer.bufferingPath.value
                             downloadingPath = config.plugins.iptvplayer.NaszaSciezka.value
-                            bufferSize = config.plugins.iptvplayer.requestedBuffSize.value * 1024 * 1024 * 2
+                            bufferSize = config.plugins.iptvplayer.requestedBuffSize.value * 1024 * 1024
                             from Plugins.Extensions.IPTVPlayer.iptvdm.iptvbuffui import E2iPlayerBufferingWidget
                             session.openWithCallback(leaveMoviePlayer, E2iPlayerBufferingWidget, url, bufferingPath, downloadingPath, titleOfMovie, playerVal, bufferSize, gstAdditionalParams)
         except Exception as e:
