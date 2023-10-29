@@ -44,14 +44,11 @@
     <convert type="ServicePosition">Length</convert>
   </widget>
   <widget source="session.CurrentService" render="j00zekModCover" position="1482,806" size="190,255" zPosition="3" alphatest="blend" />
-  
   <eLabel backgroundColor="black" position="1473,796" size="210,275" zPosition="1" />
-  
-
-<eLabel name="new eLabel" position="1680,797" size="1,272" foregroundColor="linie" backgroundColor="linie" zPosition="2" />
-<eLabel name="new eLabel" position="1474,1068" size="207,1" foregroundColor="linie" backgroundColor="linie" zPosition="2" />
-<eLabel name="new eLabel" position="1474,798" size="1,270" foregroundColor="linie" backgroundColor="linie" zPosition="2" />
-<eLabel name="new eLabel" position="1474,797" size="207,1" foregroundColor="linie" backgroundColor="linie" zPosition="2" />
-<ePixmap position="1529,889" zPosition="2" size="100,100" pixmap="BlackHarmony/icons/input_error.png" transparent="1" alphatest="blend" />
+  <eLabel name="new eLabel" position="1680,797" size="1,272" foregroundColor="linie" backgroundColor="linie" zPosition="2" />
+  <eLabel name="new eLabel" position="1474,1068" size="207,1" foregroundColor="linie" backgroundColor="linie" zPosition="2" />
+  <eLabel name="new eLabel" position="1474,798" size="1,270" foregroundColor="linie" backgroundColor="linie" zPosition="2" />
+  <eLabel name="new eLabel" position="1474,797" size="207,1" foregroundColor="linie" backgroundColor="linie" zPosition="2" />
+  <ePixmap position="1491,811" zPosition="2" size="170,245" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/No-Cover_ciacho.png" transparent="1" alphatest="blend" />
 </screen>
   </skin>
