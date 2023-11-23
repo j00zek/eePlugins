@@ -51,14 +51,14 @@ class Fullmatchtv(CBaseHostClass):
         if sts:
             data = self.cm.ph.getDataBeetwenNodes(data, ('<div', '>', 'td-mobile-content'), ('</div', '>'))[1]
             printDBG("fullmatchtv.listMainMenu data[%s]" % data)
-            data = self.cm.ph.getAllItemsBeetwenMarkers(data, '<a', '</a>')
+            data = self.cm.ph.getAllItemsBeetwenMarkers(data, '<li', '</a>')
             for item in data:
                 nextCategory = ''
                 url = self.getFullUrl(self.cm.ph.getSearchGroups(item, '''\shref=['"]([^'^"]+?)['"]''')[0])
                 if 'category' not in url:
                     url = url.replace('.com', '.com/category')
                 title = self.cleanHtmlStr(item)
-                if url == '' or title == 'Home':
+                if url == '' or title == 'Home' or 'menu-item-0' in item:
                     continue
                 nextCategory = 'list_items'
                 printDBG(">>>>>>>>>>>>>>>>> title[%s] url[%s]" % (title, url))

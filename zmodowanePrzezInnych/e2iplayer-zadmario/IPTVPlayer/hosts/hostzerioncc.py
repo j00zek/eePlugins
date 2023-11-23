@@ -6,7 +6,7 @@ from Plugins.Extensions.IPTVPlayer.components.iptvplayerinit import TranslateTXT
 from Plugins.Extensions.IPTVPlayer.components.ihost import CHostBase, CBaseHostClass
 from Plugins.Extensions.IPTVPlayer.tools.iptvtools import printDBG, printExc, rm
 from Plugins.Extensions.IPTVPlayer.tools.iptvtypes import strwithmeta
-from Plugins.Extensions.IPTVPlayer.tools.e2ijs import js_execute
+from Plugins.Extensions.IPTVPlayer.components.captcha_helper import CaptchaHelper
 ###################################################
 from Plugins.Extensions.IPTVPlayer.p2p3.UrlLib import urllib_quote_plus
 from Plugins.Extensions.IPTVPlayer.p2p3.manipulateStrings import ensure_str
@@ -27,7 +27,7 @@ def gettytul():
     return 'https://zerion.cc/'
 
 
-class Zerioncc(CBaseHostClass):
+class Zerioncc(CBaseHostClass, CaptchaHelper):
 
     def __init__(self):
         CBaseHostClass.__init__(self, {'history': 'zerion.cc', 'cookie': 'zerion.cc.cookie'})
@@ -71,7 +71,7 @@ class Zerioncc(CBaseHostClass):
         MAIN_CAT_TAB = [{'category': 'list_sort', 'title': _('Series'), 'url': self.getFullUrl('/seriale')},
 #                        {'category': 'list_items', 'title': _('Children'), 'url': self.getFullUrl('/dla-dzieci/')},
 #                        {'category':'list_years',     'title': _('Movies by year'), 'url':self.MAIN_URL},
-#                        {'category': 'list_cats', 'title': _('Movies genres'), 'url': self.getFullUrl('/filmy-online/')},
+                        {'category': 'list_cats', 'title': _('Genres'), 'url': self.getFullUrl('/seriale')},
 #                        {'category':'list_az',        'title': _('Alphabetically'), 'url':self.MAIN_URL},
                         {'category': 'search', 'title': _('Search'), 'search_item': True},
                         {'category': 'search_history', 'title': _('Search history')}, ]
@@ -95,10 +95,10 @@ class Zerioncc(CBaseHostClass):
 #        if not sts: return
 
         # fill cats
-        dat = self.cm.ph.getDataBeetwenMarkers(data, '<ul id="filter-category"', '</ul>', False)[1]
-        dat = re.compile('<li[^>]+?data-id="([^"]+?)".*?<a[^>]*?>(.+?)</a>').findall(dat)
+        dat = self.cm.ph.getDataBeetwenMarkers(data, '<div class="genres"', '</ul>', False)[1]
+        dat = re.compile('<li[^>]+?data-num="([^"]+?)".*?>(.+?)</li>').findall(dat)
         for item in dat:
-            self.cacheMovieFilters['cats'].append({'title': self.cleanHtmlStr(item[1]), 'url': cItem['url'] + 'category:%s/' % item[0]})
+            self.cacheMovieFilters['cats'].append({'title': self.cleanHtmlStr(item[1]), 'genres': item[0]})
 
         # fill years
 #        dat = self.cm.ph.getDataBeetwenMarkers(data, '<ul class="dropdown-menu year-dropdown"', '</ul>', False)[1]
@@ -138,8 +138,11 @@ class Zerioncc(CBaseHostClass):
 
         url = cItem['url']
         sort = cItem.get('sort', '')
-        if sort not in url:
+        genres = cItem.get('genres', '')
+        if sort != '':
             url = url + '?sort=' + sort
+        if genres != '':
+            url = url + '&gen=' + genres
 
         if '?' in url:
             url += '&'
@@ -203,6 +206,8 @@ class Zerioncc(CBaseHostClass):
             tabItems = []
             for item in sItem:
                 url = self.getFullUrl(self.cm.ph.getSearchGroups(item, '''\shref=['"]([^'^"]+?)['"]''')[0])
+                if not url:
+                    continue
                 title = self.cleanHtmlStr(self.cm.ph.getDataBeetwenNodes(item, ('<h4', '>', 'title'), ('</h4', '>'))[1])
                 icon = self.getFullIconUrl(self.cm.ph.getSearchGroups(item, '''src=['"]([^"^']+?)['"]''')[0])
                 desc = self.cleanHtmlStr(item)
@@ -245,30 +250,45 @@ class Zerioncc(CBaseHostClass):
 
         params['header']['Referer'] = cUrl
         sts, data = self.getPage(url, params)
+#        printDBG("Zerioncc.getLinksForVideo data[%s]" % data)
         if not sts:
             return []
 
         cUrl = data.meta['url']
         self.setMainUrl(cUrl)
         csrfToken = self.cm.ph.getSearchGroups(data, '''var\s_csrf\s=\s['"]([^"^']+?)['"]''')[0]
-        data = self.cm.ph.getAllItemsBeetwenNodes(data, ('<tr', '>'), ('</tr', '>'))
+        sithc = self.cm.ph.getSearchGroups(data, '''var\ssithc\s=\s['"]([^"^']+?)['"]''')[0]
+        data = self.cm.ph.getAllItemsBeetwenNodes(data, ('<table', '>'), ('</table', '>'))
 
-        for item in data:
-#            printDBG("Zerioncc.getLinksForVideo item[%s]" % item)
-            if 'data-id' not in item:
-                continue
-            data_id = self.cm.ph.getSearchGroups(item, '''data-id=['"]([^"^']+?)['"]''')[0]
-            name = self.cleanHtmlStr(item)
-            post_data = {'id': data_id}
-            params['header']['X-CSRF-Token'] = csrfToken
-            sts, data = self.getPage('https://zerion.cc/api/series/get-embed', params, post_data)
-            printDBG("Zerioncc.getLinksForVideo data[%s]" % data)
-            if not sts:
-                continue
-            playerUrl = self.cm.ph.getSearchGroups(data, '''['"]url['"]:['"]([^"^']+?)['"]''')[0]
-            if playerUrl == '':
-                continue
-            retTab.append({'name': name, 'url': strwithmeta(playerUrl, {'Referer': url}), 'need_resolve': 1})
+        for tItem in data:
+#            printDBG("Zerioncc.getLinksForVideo tItem[%s]" % tItem)
+            tmp = self.cm.ph.getAllItemsBeetwenNodes(tItem, ('<tr', '>'), ('</tr', '>'))
+            lang = self.cm.ph.getSearchGroups(tItem, '''data-key=['"]([^"^']+?)['"]''')[0]
+            for item in tmp:
+#                printDBG("Zerioncc.getLinksForVideo item[%s]" % item)
+                if 'data-id' not in item:
+                    continue
+                data_id = self.cm.ph.getSearchGroups(item, '''data-id=['"]([^"^']+?)['"]''')[0]
+                name = self.cleanHtmlStr(item).replace('Oglądaj', '') + '[%s]' % lang
+                post_data = {'id': data_id}
+                params['header']['X-CSRF-Token'] = csrfToken
+                sts, data = self.getPage('https://zerion.cc/api/series/get-embed', params, post_data)
+                printDBG("Zerioncc.getLinksForVideo data[%s]" % data)
+                if not sts:
+                    continue
+                if '"captcha":true' in data:
+                    token, errorMsgTab = self.processCaptcha(sithc, cUrl, captchaType="cf_re")
+                    if token != '':
+                        post_data_cf = {'hres': token}
+                        sts, data = self.getPage('https://zerion.cc/api/link/validate-captcha', params, post_data_cf)
+                        printDBG("Zerioncc.getLinksForVideo data cf[%s]" % data)
+                        sts, data = self.getPage('https://zerion.cc/api/series/get-embed', params, post_data)
+                        printDBG("Zerioncc.getLinksForVideo data[%s]" % data)
+
+                playerUrl = self.cm.ph.getSearchGroups(data, '''['"]url['"]:['"]([^"^']+?)['"]''')[0]
+                if playerUrl == '':
+                    continue
+                retTab.append({'name': name, 'url': strwithmeta(playerUrl, {'Referer': url}), 'need_resolve': 1})
 
         if len(retTab):
             self.cacheLinks[cacheKey] = retTab
