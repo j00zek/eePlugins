@@ -340,35 +340,61 @@ defaultIconsData = {
                     }
 iconsMap={
     #Mapowanie poprzez svg (foreca) https://svgtopng.com/
-    'd0000.png' : '34.png',
-    'd1000.png' : '34.png',
-    'd2000.png' : '30.png',
+    'd0000.png' : '34.png', #slonecznie
+    'd1000.png' : '34.png', #przewaznieslonecznie
+    'd2000.png' : '30.png', #czesciowoslonecznie
     'd2100.png' : '9.png',
-    'd3000.png' : '82.png',
-    'd3100.png' : '9.png',
+    'd2120.png' : '9.png',  #niewielkieopadysniegu
+    'd2220.png' : '9.png',  #opadysniegu
+    'd3000.png' : '82.png', #duzezachmurzenie
+    'd3100.png' : '9.png',  #lekkieprzelotneopadydeszczu, slabeopadydeszczu
     'd3101.png' : '75.png', #lekkie przelotnie opady deszczu / wiatr
+    'd3110.png' : '9.png',  #lekkieprzelotneopadydeszczuzesniegiem
+    'd3120.png' : '9.png',  #niewielkieopadysniegu, lekkieprzelotneopadysniegu
     'd3200.png' : '9.png',
+    'd3220.png' : '9.png',  #opadysniegu
     'd3400.png' : '35.png',
     'd4000.png' : '26.png',
-    'd4100.png' : '9.png',
-    'd4200.png' : '11.png',
-    'd4300.png' : '9.png',
+    'd4100.png' : '9.png',  #slabeopadydeszczu
+    'd4200.png' : '11.png', #opadydeszczu
+    'd4201.png' : '9.png',  #deszcz/wiat
+    'd4210.png' : '111.png',#deszczzesniegiem
+    'd4211.png' : '111.png',#deszczzesniegiem
+    'd4220.png' : '9.png',  #snieg
+    'd4300.png' : '9.png',  #ulewnydeszcz
+    'd4301.png' : '9.png',  #deszcz
+    'd4311.png' : '111.png',#deszczzesniegiem
+    'd4320.png' : '9.png',  #obfiteopadysniegu, snieg
     'd4400.png' : '37.png',
     'd2400.png' : '35.png',
+    'd6000.png' : '19.png', #mgla
 
-    'n1000.png' : '31.png',
-    'n2000.png' : '29.png',
-    'n3000.png' : '83.png',
-    'n3100.png' : '9.png',
+    'n0000.png' : '31.png', #bezchmurnie
+    'n1000.png' : '31.png', #przewazniebezchmurnie
+    'n2000.png' : '29.png', #zachmurzeniemale
+    'n2120.png' : '13.png', #niewielkieopadysniegu
+    'n3000.png' : '83.png', #duzezachmurzenie
+    'n3100.png' : '9.png',  #niewielkieopadydeszczu
+    'n3110.png' : '9.png',  #lekkideszczzesniegiem
+    'n3120.png' : '13.png', #niewielkieopadysniegu
+    'n3121.png' : '13.png', #niewielkieopadysniegu
     'n3200.png' : '11.png',
-    'n4000.png' : '83.png',
-    'n4100.png' : '9.png',
-    'n4200.png' : '11.png',
-    'n4300.png' : '12.png',
+    'n4000.png' : '83.png', #zachmurzeniecalkowite
+    'n4100.png' : '9.png',  #
+    'n4121.png' : '13.png', #niewielkieopadysniegu
+    'n4200.png' : '11.png', #deszcz
+    'n4201.png' : '11.png', #deszcz/wiatr, deszcz
+    'n4210.png' : '16.png', #deszczzesniegiem
+    'n4220.png' : '16.png', #snieg
+    'n4300.png' : '12.png', #deszcz
+    'n4301.png' : '12.png', #deszcz
+    'n4310.png' : '16.png', #deszczzesniegiem
+    'n4320.png' : '16.png', #obfiteopadysniegu, snieg
+    'n4321.png' : '16.png', #snieg
 
     'd000.png' : '32.png',
     'd100.png' : '34.png',
-    'd200.png' : '28.png', #Częściowe zachmurzenie
+    'd200.png' : '28.png',  #Częściowe zachmurzenie
     'd210.png' : '72.png', 
     'd211.png' : '71.png',
     'd212.png' : '84.png',
