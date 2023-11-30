@@ -5,14 +5,13 @@ from enigma import ePixmap, eTimer
 from Tools.Directories import fileExists
 from Components.config import config
 import os
-# >>> musismy ladowac z pelnej sciezki bo konwerter jet uruchamany z innego kataouog mimo ze jest tutaj
 from Plugins.Extensions.DGWeather.components.utils import *
 
-class dgWeatherAnimatedMoon(Renderer):
-    __module__ = __name__
+DBG = True
 
+class dgWeatherAnimatedMoon(Renderer):
     def __init__(self):
-        write_log('Renderer.dgWeatherAnimatedMoon().__init__() >>>')
+        if DBG: write_log('Renderer.dgWeatherAnimatedMoon().__init__() >>>')
         Renderer.__init__(self)
         self.path = '/usr/lib/enigma2/python/Plugins/Extensions/DGWeather/weather/animatedmoon'
         self.pixdelay = 350
@@ -38,20 +37,11 @@ class dgWeatherAnimatedMoon(Renderer):
     GUI_WIDGET = ePixmap
 
     def changed(self, what):
-        #write_log('Renderer.dgWeatherAnimatedMoon().changed() >>>')
+        if DBG: write_log('Renderer.dgWeatherAnimatedMoon().changed() >>>')
         if self.instance:
-            sname = ''
-            ext = ''
             if what[0] != self.CHANGED_CLEAR:
-                try:
-                    ext = self.source.iconfilename
-                    if ext != '':
-                        sname = os.path.split(ext)[1]
-                        sname = sname.replace('')
-                except:
-                    sname = self.source.text
-                write_log('Renderer.dgWeatherAnimatedMoon().changed() sname = "%s"' % sname)
-
+                sname = self.source.iconfilename
+                if DBG: write_log('Renderer.dgWeatherAnimatedMoon().changed() sname = "%s"' % sname)
                 self.runAnim(sname)
 
     def runAnim(self, id):
@@ -61,7 +51,7 @@ class dgWeatherAnimatedMoon(Renderer):
             pathanimicon = '%s/%s/a' % (self.path, id)
             path = '%s/%s' % (self.path, id)
             dir_work = os.listdir(path)
-            if config.plugins.visual.animatedWeather.value == 'animated':
+            if config.plugins.dgWeather.animatedWeather.value == 'animated':
                 total = len(dir_work)
             else:
                 total = 1
@@ -71,7 +61,7 @@ class dgWeatherAnimatedMoon(Renderer):
             pathanimicon = '%s/NA/a' % self.path
             path = '%s/NA' % self.path
             dir_work = os.listdir(path)
-            if config.plugins.visual.animatedWeather.value == 'animated':
+            if config.plugins.dgWeather.animatedWeather.value == 'animated':
                 total = len(dir_work)
             else:
                 total = 1

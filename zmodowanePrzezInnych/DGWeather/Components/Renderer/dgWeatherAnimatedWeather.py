@@ -1,37 +1,41 @@
-# Embedded file name: /usr/lib/enigma2/python/Components/Renderer/darkAnimatedWeather.py
 from Components.Renderer.Renderer import Renderer
 from Tools.LoadPixmap import LoadPixmap
 from Tools.Directories import SCOPE_SKIN_IMAGE, SCOPE_CURRENT_SKIN, fileExists, resolveFilename
 from enigma import ePixmap, eTimer
 from Components.config import config
 import os
-# >>> musismy ladowac z pelnej sciezki bo konwerter jet uruchamany z innego kataouog mimo ze jest tutaj
 from Plugins.Extensions.DGWeather.components.utils import *
 
-class dgWeatherAnimatedWeather(Renderer):
-    __module__ = __name__
+DBG = False
 
+class dgWeatherAnimatedWeather(Renderer):
     def __init__(self):
-        write_log('Renderer.dgWeatherAnimatedWeather().__init__() >>>')
+        if DBG: write_log('Renderer.dgWeatherAnimatedWeather().__init__() >>>')
         Renderer.__init__(self)
         self.path = '/usr/lib/enigma2/python/Plugins/Extensions/DGWeather/weather/AnimatedWeatherPixmap'
         self.pixdelay = 100
         self.control = 1
         self.ftpcontrol = 0
         self.slideicon = None
-        self.txt_naim = {'17': '0',
-         '35': '0',
-         '16': '14',
-         '42': '14',
-         '43': '14',
-         '40': '18',
-         '24': '23',
-         '29': '27',
-         '33': '27',
-         '30': '28',
-         '34': '28',
-         '38': '37',
-         '25': '44'}
+        self.txt_naim = {'1':  '0',
+                         '2':  '0',
+                         '3':  '0',
+                         '4':  '0',
+                         '9':  '8',
+                         '16': '14',
+                         '17': '0',
+                         '24': '23',
+                         '25': '44',
+                         '29': '27',
+                         '30': '28',
+                         '33': '27',
+                         '34': '28',
+                         '35': '0',
+                         '38': '37',
+                         '40': '18',
+                         '42': '14',
+                         '43': '14',
+                        }
         return
 
     def applySkin(self, desktop, parent):
@@ -54,28 +58,15 @@ class dgWeatherAnimatedWeather(Renderer):
     GUI_WIDGET = ePixmap
 
     def changed(self, what):
-        #write_log('Renderer.dgWeatherAnimatedWeather().changed() >>>')
+        if DBG: write_log('Renderer.dgWeatherAnimatedWeather().changed() >>>')
         if self.instance:
-            sname = ''
-            ext = ''
-            name = ''
+            if DBG: write_log('Renderer.dgWeatherAnimatedWeather().changed() self.instance')
             if what[0] != self.CHANGED_CLEAR:
-                try:
-                    ext = self.source.iconfilename
-                    if ext != '':
-                        sname = os.path.split(ext)[1]
-                        sname = sname.replace('.gif', '')
-                except:
-                    sname = self.source.text
-
-            if sname == '1' or sname == '2' or sname == '3' or sname == '4':
-                name = '0'
-            elif sname == '9':
-                name = '8'
-            else:
+                if DBG: write_log('Renderer.dgWeatherAnimatedWeather().changed() self.CHANGED_CLEAR')
+                sname = self.source.iconfilename
                 name = self.txt_naim.get(sname, sname)
-            write_log('Renderer.dgWeatherAnimatedWeather().changed() name = "%s"' % name)
-            self.runAnim(name)
+                if DBG: write_log('Renderer.dgWeatherAnimatedWeather().changed() name = "%s"' % name)
+                self.runAnim(name)
 
     def runAnim(self, id):
         global total
@@ -84,7 +75,7 @@ class dgWeatherAnimatedWeather(Renderer):
             pathanimicon = '%s/%s/a' % (self.path, id)
             path = '%s/%s' % (self.path, id)
             dir_work = os.listdir(path)
-            if config.plugins.visual.animatedWeather.value == 'animated':
+            if config.plugins.dgWeather.animatedWeather.value == 'animated':
                 total = len(dir_work)
             else:
                 total = 1
@@ -94,7 +85,7 @@ class dgWeatherAnimatedWeather(Renderer):
             pathanimicon = '%s/NA/a' % self.path
             path = '%s/NA' % self.path
             dir_work = os.listdir(path)
-            if config.plugins.visual.animatedWeather.value == 'animated':
+            if config.plugins.dgWeather.animatedWeather.value == 'animated':
                 total = len(dir_work)
             else:
                 total = 1

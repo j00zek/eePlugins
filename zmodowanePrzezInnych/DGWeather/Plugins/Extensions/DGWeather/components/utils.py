@@ -69,7 +69,7 @@ def LoadJsonDict(fileName, retDictIfError = {}):
     if os.path.exists(filePathName):
         try:
             with open(filePathName) as json_data:
-                write_log("LoadJsonDict(%s)" % os.path.join(logFolder,fileName))
+                #write_log("LoadJsonDict(%s)" % os.path.join(logFolder,fileName))
                 return(json.load(json_data))
         except Exception as e:
             Exc_log("EXCEPTION '%s' in LoadJsonDict() for %s" % (str(e), fileName))
@@ -83,7 +83,7 @@ def reLoadJsonDict(fileName, lastDict, DiffSeconds = 60 ):
     if os.path.exists(filePathName) and fileTimeStamp(fileName) > LastTimeStamp:
         try:
             with open(filePathName) as json_data:
-                write_log("LoadJsonDict(%s)" % filePathName)
+                #write_log("reLoadJsonDict(%s)" % filePathName)
                 return(json.load(json_data))
         except Exception as e:
             Exc_log("EXCEPTION '%s' in reLoadJsonDict() for %s" % (str(e), fileName))

@@ -321,6 +321,12 @@ class WeatherData:
                                                                             config.plugins.dgWeather.CountryCode.value
                                                                            )
                                         )
+                #dopasowanie WeatherInfo
+                for key, value in self.WeatherInfo.items():
+                    #write_log('%s = %s' %(key,value))
+                    if key.endswith('Code'):      self.WeatherInfo[key] = self.ConvertIconCode(value)
+                    if key.endswith('Picon'):     self.WeatherInfo[key] = self.convertIconName(value)
+                    if key.endswith('moonPhase'): self.WeatherInfo[key] = self.moonphase(value)[0]
             #pobieranie z OpenWeathermap
             elif config.plugins.dgWeather.Provider.value == 'OpenWeathermap' and config.plugins.dgWeather.OpenWeathermap_apikey.value != '':
                 write_log('WeatherData.GetWeather() OpenWeatherDict...')
@@ -330,6 +336,12 @@ class WeatherData:
                                                        config.plugins.dgWeather.CountryCode.value
                                                       )
                                         )
+                #dopasowanie WeatherInfo
+                for key, value in self.WeatherInfo.items():
+                    write_log('%s = %s' %(key,value))
+                    if key.endswith('Code'):      self.WeatherInfo[key] = self.ConvertIconCode(value)
+                    if key.endswith('Picon'):     self.WeatherInfo[key] = self.convertIconName(value)
+                    if key.endswith('moonPhase'): self.WeatherInfo[key] = self.moonphase(value)[0]
             
             #pobieranie z airly
             if config.plugins.dgWeather.airlyAPIKEY.value != '' and config.plugins.dgWeather.airlyID.value != '':
@@ -350,12 +362,6 @@ class WeatherData:
                 except Exception as e:
                     Exc_log('Exception loading airly dict: %s' % str(e))
             
-            #manipulacja WeatherInfo
-            for key, value in self.WeatherInfo.items():
-                write_log('%s = %s' %(key,value))
-                if key.endswith('Code'):      self.WeatherInfo[key] = self.ConvertIconCode(value)
-                if key.endswith('Picon'):     self.WeatherInfo[key] = self.convertIconName(value)
-                if key.endswith('moonPhase'): self.WeatherInfo[key] = self.moonphase(value)[0]
             #zapisujemy wynikowy json do  przez konwerter
             saveJsonDict('WeatherInfoDict.json', self.WeatherInfo) # zeby wiedziec co jest dostepne
             write_log('GetWeather() <<<')
