@@ -19,16 +19,13 @@ from Plugins.Extensions.DGWeather.components.getGeoInfo import getGeoInfo
 from Plugins.Extensions.DGWeather.components.getVisualWeather import getVisualCrossingDict
 from Plugins.Extensions.DGWeather.components.getOpenWeather import OpenWeatherDict
 
-wdays = [_('Sunday'), _('Monday'), _('Tuesday'), _('Wednesday'), _('Thursday'), _('Friday'), _('Saturday')]
-swdays = [_('Sun'), _('Mon'), _('Tue'), _('Wed'), _('Thu'), _('Fri'), _('Sat')]
 dsunits = 'si'
-
-numbers = '.' + str(config.plugins.dgWeather.numbers.value) + 'f'
 
 weather_data = None
 
 class WeatherData:
     def __init__(self):
+        self.numbers = '.%sf' % str(config.plugins.dgWeather.numbers.value)
         #pewne dane sa niezmienne bez sensu jest je odswierzac.
         getGeoInfo(config.plugins.dgWeather.geolatitude.value, config.plugins.dgWeather.geolongitude.value)
         addressDict = LoadJsonDict('GeoInfo.json').get('address',{})
@@ -303,15 +300,12 @@ class WeatherData:
             #inicjacja kolejnego odswierzenia
             self.timer.start(timeout, True)
             
-            #obliczenia faz ksiezyca
-            self.WeatherInfo['currentMoonPhase'] = self.moonphase()[0]
-            self.WeatherInfo['currentMoonPicon'] = self.moonphase()[1]
 
             #jak brak koordynatow to nie ma co pobierac
             if config.plugins.dgWeather.geolatitude.value == '' or config.plugins.dgWeather.geolongitude.value == '':
                 write_log('!!!!! BRAK geolatitude lub geolongitude !!!!!')
                 return
-                
+            
             #pobieranie z VisualWeather
             if config.plugins.dgWeather.Provider.value == 'VisualWeather' and config.plugins.dgWeather.VisualWeather_apikey.value != '':
                 write_log('WeatherData.GetWeather() VisualCrossingDict...')
@@ -321,12 +315,33 @@ class WeatherData:
                                                                             config.plugins.dgWeather.CountryCode.value
                                                                            )
                                         )
+                
+                #obliczenia faz ksiezyca
+                moonData = self.moonphase(self.WeatherInfo['currentMoonPhase'])
+                self.WeatherInfo['currentMoonPicon'] = moonData[1]
+                self.WeatherInfo['PiconMoon'] = moonData[1]
+                write_log('self.WeatherInfo[PiconMoon] = %s' % self.WeatherInfo['PiconMoon'])
+
                 #dopasowanie WeatherInfo
                 for key, value in self.WeatherInfo.items():
                     #write_log('%s = %s' %(key,value))
-                    if key.endswith('Code'):      self.WeatherInfo[key] = self.ConvertIconCode(value)
-                    if key.endswith('Picon'):     self.WeatherInfo[key] = self.convertIconName(value)
-                    if key.endswith('moonPhase'): self.WeatherInfo[key] = self.moonphase(value)[0]
+                    if key ==   'atmoVisibility':   self.WeatherInfo[key] = self.convert_km_miles(value)
+                    elif key == 'astroDaySoltice':  self.WeatherInfo[key] = self.convertAstroSun(value)
+                    elif key == 'dewPoint':         self.WeatherInfo[key] = self.convertTemperature(value)
+                    elif key == 'downloadDate':     self.WeatherInfo[key] = strftime('%Y-%m-%d', localtime(value))
+                    elif key == 'downloadTime':     self.WeatherInfo[key] = strftime('%H:%M:%S', localtime(value))
+                    elif key == 'windChill':        self.WeatherInfo[key] = self.convertTemperature(value)
+                    
+                    elif key.endswith('Code'):      self.WeatherInfo[key] = self.ConvertIconCode(value)
+                    elif key.endswith('Day'):       self.WeatherInfo[key] = self.convertCurrentDay(value)
+                    elif key.endswith('Hour'):      self.WeatherInfo[key] = self.convertHMStoHM(value)
+                    elif key.endswith('moonPhase'): self.WeatherInfo[key] = self.moonphase(value)[0]
+                    elif key.endswith('Picon'):     self.WeatherInfo[key] = self.convertIconName(value)
+                    elif key.endswith('Pressure'):  self.WeatherInfo[key] = self.convertPressure(value)
+                    elif key.endswith('windGust'):  self.WeatherInfo[key] = self.convertwindSpeed(value)
+                    elif key.endswith('windSpeed'): self.WeatherInfo[key] = self.convertwindSpeed(value)
+                    elif key.endswith('Temp'):      self.WeatherInfo[key] = self.convertTemperature(value)
+                
             #pobieranie z OpenWeathermap
             elif config.plugins.dgWeather.Provider.value == 'OpenWeathermap' and config.plugins.dgWeather.OpenWeathermap_apikey.value != '':
                 write_log('WeatherData.GetWeather() OpenWeatherDict...')
@@ -337,11 +352,7 @@ class WeatherData:
                                                       )
                                         )
                 #dopasowanie WeatherInfo
-                for key, value in self.WeatherInfo.items():
-                    write_log('%s = %s' %(key,value))
-                    if key.endswith('Code'):      self.WeatherInfo[key] = self.ConvertIconCode(value)
-                    if key.endswith('Picon'):     self.WeatherInfo[key] = self.convertIconName(value)
-                    if key.endswith('moonPhase'): self.WeatherInfo[key] = self.moonphase(value)[0]
+                    
             
             #pobieranie z airly
             if config.plugins.dgWeather.airlyAPIKEY.value != '' and config.plugins.dgWeather.airlyID.value != '':
@@ -369,652 +380,116 @@ class WeatherData:
 
     def returnWeatherDict(self):
         return self.WeatherInfo
- 
-    def GotDGWeatherData(self, data = None):
-        write_log('GotDGWeatherData >>>')
-        #write_log('Data : ' + str(data))
-        if data is not None:
-            try:
-                parsed_json = json.loads(data)
-                #for k, v in parsed_json.items():
-                #    write_log(str(k) + ':' + str(v))
-            except Exception as ex:
-                Exc_log('EXCEPTION parsowania json: ' + str(ex))
-                write_log('Data : ' + str(data))
-                return
-                
-            #current data
-            try:
-                CurrentDict = parsed_json.get('currently',{})
+#!!!!!!!!!!!!! UZYTE
 
-                write_log('\t assigning current data')
-                self.WeatherInfo['timezone'] = _(str(parsed_json.get('timezone', '---')))
-                if config.plugins.dgWeather.winddirection.value == 'short':
-                    self.WeatherInfo['windDirection'] = str(self.ConvertDirectionShort(CurrentDict.get('windBearing','')))
-                else:
-                    self.WeatherInfo['windDirection'] = str(self.ConvertDirectionLong(CurrentDict.get('windBearing','')))
-                self.WeatherInfo['atmoHumidity'] = format(float(CurrentDict.get('humidity',0)) * 100, '.0f') + ' %'
-                if config.plugins.dgWeather.windspeedUnit.value == 'mp/h':
-                    self.WeatherInfo['atmoVisibility'] = format(float(CurrentDict.get('visibility',0)) * 0.62137, str(numbers)) + _(' miles')
-                else:
-                    self.WeatherInfo['atmoVisibility'] = format(float(CurrentDict.get('visibility',0)), str(numbers)) + _(' km')
-                self.WeatherInfo['uvIndex'] = format(float(CurrentDict.get('uvIndex',0)), '.0f') + ' / 10'
-                self.WeatherInfo['downloadDate'] = self.convertCurrentDate(CurrentDict.get('time',''))
-                self.WeatherInfo['downloadTime'] = self.convertCurrentTime(CurrentDict.get('time',''))
-                self.WeatherInfo['windChill'] = self.convertTemperature(CurrentDict.get('apparentTemperature',''))
-                self.WeatherInfo['dewPoint'] = self.convertTemperature(CurrentDict.get('dewPoint',''))
-                self.WeatherInfo['currentlywindSpeed'] = self.convertwindSpeed(CurrentDict.get('windSpeed',''))
-                self.WeatherInfo['currentlywindGust'] = self.convertwindSpeed(CurrentDict.get('windGust',''))
-                self.WeatherInfo['currentPressure'] = self.convertPressure(CurrentDict.get('pressure',''))
-                self.WeatherInfo['currentWeatherCode'] = self.ConvertIconCode(CurrentDict.get('icon',''))
-                self.WeatherInfo['currentWeatherText'] = str(CurrentDict.get('summary',''))
-                self.WeatherInfo['currentProbability'] = format(float(CurrentDict.get('precipProbability',0)) * 100, str(numbers)) + ' %'
-                self.WeatherInfo['currentcloudCover'] = format(float(CurrentDict.get('cloudCover',0)) * 100, str(numbers)) + ' %'
-                self.WeatherInfo['currentlyIntensity'] = format(float(CurrentDict.get('precipIntensity',0)), '.4f') + _(' mm/h')
-                self.WeatherInfo['currentOzoneText'] = format(float(CurrentDict.get('ozone',0)), str(numbers)) + _(' DU')
-            except Exception as ex:
-                Exc_log('EXCEPTION: ' + str(ex))
-
-            #hourly data
-            try:
-                write_log('\t assigning hourly data')
-                hourlyDict = parsed_json.get('hourly',{})
-                self.WeatherInfo['W-Info-h'] = str(hourlyDict.get('summary','---'))
-                hourly = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11']
-                for hour in hourly:
-                    ahour = int(hour) + 1
-                    if hour == '0':
-                        hour = ''
-                    self.WeatherInfo['forecastHourly' + hour + 'Hour'] = self.convertAstroSun(hourlyDict['data'][ahour]['time'])
-                    self.WeatherInfo['forecastHourly' + hour + 'Temp'] = self.convertTemperature(hourlyDict['data'][ahour]['temperature'])
-                    self.WeatherInfo['forecastHourly' + hour + 'windSpeed'] = self.convertwindSpeed(hourlyDict['data'][ahour]['windSpeed'])
-                    self.WeatherInfo['forecastHourly' + hour + 'Pressure'] = self.convertPressure(hourlyDict['data'][ahour]['pressure'])
-                    self.WeatherInfo['forecastHourly' + hour + 'Humidity'] = format(float(hourlyDict['data'][ahour]['humidity']) * 100, '.0f') + ' %'
-                    self.WeatherInfo['forecastHourly' + hour + 'Cloud'] = format(float(hourlyDict['data'][ahour]['cloudCover']) * 100, str(numbers)) + ' %'
-                    self.WeatherInfo['forecastHourly' + hour + 'Text'] = self.convertWeatherText(hourlyDict['data'][ahour]['summary'])
-                    self.WeatherInfo['forecastHourly' + hour + 'Picon'] = self.convertIconName(hourlyDict['data'][ahour]['icon'])
-            except Exception as ex:
-                Exc_log('EXCEPTION: ' + str(ex))
-
-            #daily data
-            write_log('\t assigning forecastToday data')
-            dailyDict = parsed_json.get('daily',{})
-            dailyData = dailyDict.get('data',[{},{},{},{},{},{},{},{}])
-            #write_log('dailyData:\n%s\n' % json.dumps(dailyData))
-            dayDict = dailyData[0]
-            try:
-                self.WeatherInfo['W-Info'] = str(dailyDict.get('summary',''))
-                if dayDict.get('sunriseTime',0) != 0 and dayDict.get('sunsetTime',0) != 0:
-                    self.WeatherInfo['astroDayLength'] = self.convertAstroDayLength(float(dayDict['sunsetTime'] - dayDict['sunriseTime']) - 10800)
-                    self.WeatherInfo['astroSunrise'] = self.convertAstroSun(dayDict['sunriseTime'])
-                    self.WeatherInfo['astroSunset'] = self.convertAstroSun(dayDict['sunsetTime'])
-                    self.WeatherInfo['astroDaySoltice'] = self.convertAstroSun(float(dayDict['sunsetTime'] + dayDict['sunriseTime']) * 0.5)
-            except Exception as ex:
-                Exc_log('EXCEPTION in astroDay...: ' + str(ex))
-                write_log('dayDict:\n%s\n' % json.dumps(dayDict))
-            try:
-                if not dayDict.get('time', None) is None: self.WeatherInfo['forecastTodayDay'] = self.convertCurrentDay(dayDict['time'])
-                if not dayDict.get('time', None) is None: self.WeatherInfo['forecastTodayDate'] = self.convertCurrentDate(dayDict['time'])
-                if not dayDict.get('summary', None) is None: self.WeatherInfo['forecastTodayText'] = self.convertWeatherText(dayDict['summary'])
-                if not dayDict.get('icon', None) is None: self.WeatherInfo['forecastTodayPicon'] = self.convertIconName(dayDict['icon'])
-                if not dayDict.get('temperatureMax', None) is None: self.WeatherInfo['forecastTodayTempMax'] = self.convertTemperature(dayDict['temperatureMax'])
-                if not dayDict.get('temperatureMin', None) is None: self.WeatherInfo['forecastTodayTempMin'] = self.convertTemperature(dayDict['temperatureMin'])
-                if not dayDict.get('windSpeed', None) is None: self.WeatherInfo['forecastTodaywindSpeed'] = self.convertwindSpeed(dayDict['windSpeed'])
-                if not dayDict.get('windGust', None) is None: self.WeatherInfo['forecastTodaywindGust'] = self.convertwindSpeed(dayDict['windGust'])
-                if not dayDict.get('pressure', None) is None: self.WeatherInfo['forecastTodayPressure'] = self.convertPressure(dayDict['pressure'])
-                if not dayDict.get('icon', None) is None: self.WeatherInfo['forecastTodayCode'] = self.ConvertIconCode(dayDict['icon'])
-                if not dayDict.get('precipProbability', None) is None: self.WeatherInfo['forecastTodayProbability'] = format(float(dayDict['precipProbability']) * 100, str(numbers)) + ' %'
-                if not dayDict.get('cloudCover', None) is None: self.WeatherInfo['forecastTodaycloudCover'] = format(float(dayDict['cloudCover']) * 100, str(numbers)) + ' %'
-                if not dayDict.get('precipIntensity', None) is None: self.WeatherInfo['forecastTodayIntensity'] = format(float(dayDict['precipIntensity']), str(numbers)) + _(' mm')
-                if not dayDict.get('ozone', None) is None: self.WeatherInfo['forecastTodayOzoneText'] = format(float(dayDict['ozone']), str(numbers)) + _(' DU')
-                if not dayDict.get('moonPhase', None) is None: self.WeatherInfo['forecastTodaymoonPhase'] = self.convertMoon(float(dayDict['moonPhase']))
-                if not dayDict.get('moonPhase', None) is None: self.WeatherInfo['PiconMoon'] = self.convertPiconMoon(float(dayDict['moonPhase']))
-            except Exception as ex:
-                Exc_log('EXCEPTION in forecastToday: ' + str(ex))
-                write_log('dayDict:\n%s\n' % json.dumps(dayDict))
-                
-            write_log('\t assigning forecastTomorrow data')
-            try:
-                days = ['0', '1', '2', '3', '4', '5', '6']
-                for day in days:
-                    aday = int(day) + 1
-                    dayDict = dailyData[aday]
-                    if day == '0':
-                        day = ''
-                    if not dayDict.get('time', None) is None: self.WeatherInfo['forecastTomorrow' + day + 'Day'] = self.convertCurrentDay(dayDict['time'])
-                    if not dayDict.get('time', None) is None: self.WeatherInfo['forecastTomorrow' + day + 'Date'] = self.convertCurrentDate(dayDict['time'])
-                    if not dayDict.get('summary', None) is None: self.WeatherInfo['forecastTomorrow' + day + 'Text'] = self.convertWeatherText(dayDict['summary'])
-                    if not dayDict.get('icon', None) is None: self.WeatherInfo['forecastTomorrow' + day + 'Picon'] = self.convertIconName(dayDict['icon'])
-                    if not dayDict.get('temperatureMax', None) is None: self.WeatherInfo['forecastTomorrow' + day + 'TempMax'] = self.convertTemperature(dayDict['temperatureMax'])
-                    if not dayDict.get('temperatureMin', None) is None: self.WeatherInfo['forecastTomorrow' + day + 'TempMin'] = self.convertTemperature(dayDict['temperatureMin'])
-                    if not dayDict.get('windSpeed', None) is None: self.WeatherInfo['forecastTomorrow' + day + 'windSpeed'] = self.convertwindSpeed(dayDict['windSpeed'])
-                    if not dayDict.get('pressure', None) is None: self.WeatherInfo['forecastTomorrow' + day + 'Pressure'] = self.convertPressure(dayDict['pressure'])
-                    if not dayDict.get('precipProbability', None) is None: self.WeatherInfo['forecastTomorrow' + day + 'Probability'] = format(float(dayDict['precipProbability']) * 100, str(numbers)) + ' %'
-                    if not dayDict.get('cloudCover', None) is None: self.WeatherInfo['forecastTomorrow' + day + 'cloudCover'] = format(float(dayDict['cloudCover']) * 100, str(numbers)) + ' %'
-            except Exception as ex:
-                Exc_log('EXCEPTION: ' + str(ex))
-            
-            for k, v in self.WeatherInfo.items():
-                write_log('WeatherInfo : ' + str(k) + ':' + str(v))
-        return
-
-    def GotDGWeatherWeatherData(self, data = None):
-        write_log('###################################### DGWeather Data ################################################')
-        #write_log('Data : ' + str(data))
-        if data is not None:
-            try:
-                parsed_json = json.loads(data)
-                for k, v in parsed_json.items():
-                    write_log(str(k) + ':' + str(v))
-
-                write_log(str(len(parsed_json['list'])))
-                write_log('###################################### DGWeather ################################################')
-                for k, v in parsed_json['list'][0].items():
-                    write_log(str(k) + ':' + str(v))
-
-                self.WeatherInfo['forecastTomorrow4Date'] = ' '
-                self.WeatherInfo['forecastTomorrow4Day'] = ' '
-                self.WeatherInfo['forecastTomorrow4Code'] = ' '
-                self.WeatherInfo['forecastTomorrow4Picon'] = ' '
-                self.WeatherInfo['forecastTomorrow4TempMax'] = ' '
-                self.WeatherInfo['forecastTomorrow4TempMin'] = ' '
-                self.WeatherInfo['forecastTomorrow4Text'] = ' '
-                hourly = ['0',
-                 '1',
-                 '2',
-                 '3',
-                 '4',
-                 '5',
-                 '6',
-                 '7']
-                for hour in hourly:
-                    ahour = int(hour)
-                    if hour == '0':
-                        hour = ''
-                    self.WeatherInfo['forecastHourly' + hour + 'Hour'] = str(parsed_json['list'][ahour]['dt_txt'])
-                    self.WeatherInfo['forecastHourly' + hour + 'Temp'] = self.convertTemperature(parsed_json['list'][ahour]['main']['temp'])
-                    self.WeatherInfo['forecastHourly' + hour + 'Humidity'] = format(float(parsed_json['list'][ahour]['main']['humidity']), '.0f') + ' %'
-                    self.WeatherInfo['forecastHourly' + hour + 'Cloud'] = format(float(parsed_json['list'][ahour]['clouds']['all'])) + ' %'
-                    self.WeatherInfo['forecastHourly' + hour + 'windSpeed'] = self.convertwindSpeed(parsed_json['list'][ahour]['wind']['speed'])
-                    self.WeatherInfo['forecastHourly' + hour + 'Picon'] = self.convertOWMIconName(parsed_json['list'][ahour]['weather'][0]['icon'])
-                    self.WeatherInfo['forecastHourly' + hour + 'Text'] = str(parsed_json['list'][ahour]['weather'][0]['description'])
-                    self.WeatherInfo['forecastHourly' + hour + 'Pressure'] = self.convertPressure(parsed_json['list'][ahour]['main']['pressure'])
-                    if 'rain' in parsed_json['list'][ahour]:
-                        self.WeatherInfo['forecastHourly' + hour + 'Intensity'] = str(parsed_json['list'][ahour]['rain']['3h']) + _(' mm/3h')
-                    elif 'snow' in parsed_json['list'][ahour]:
-                        self.WeatherInfo['forecastHourly' + hour + 'Intensity'] = str(parsed_json['list'][ahour]['snow']['3h']) + _(' mm/3h')
-                    else:
-                        self.WeatherInfo['forecastHourly' + hour + 'Intensity'] = '0' + _(' mm/3h')
-
-                i = 0
-                next_day = 0
-                sNOW = datetime.datetime.now().strftime('%d.%m.%Y')
-                while i < 8:
-                    if str(self.convertCurrentDateLong(parsed_json['list'][i]['dt'])) != sNOW:
-                        next_day = i
-                        write_log('morgen startet bei Index ' + str(next_day))
-                        break
-                    i += 1
-
-                self.WeatherInfo['forecastTodayDay'] = self.convertCurrentDay(parsed_json['list'][0]['dt'])
-                self.WeatherInfo['forecastTodayDate'] = self.convertCurrentDate(parsed_json['list'][0]['dt'])
-                i = 0
-                icons = []
-                description = []
-                clouds = []
-                wspeed = []
-                pressure = []
-                humidity = []
-                tempmin = 100
-                tempmax = -100
-                if int(next_day) > 0:
-                    while i < int(next_day):
-                        icons.append(parsed_json['list'][i]['weather'][0]['icon'])
-                        description.append(parsed_json['list'][i]['weather'][0]['description'])
-                        clouds.append(format(float(parsed_json['list'][i]['clouds']['all'])))
-                        wspeed.append(parsed_json['list'][i]['wind']['speed'])
-                        pressure.append(parsed_json['list'][i]['main']['pressure'])
-                        humidity.append(format(float(parsed_json['list'][i]['main']['humidity'])))
-                        if float(parsed_json['list'][i]['main']['temp']) < tempmin:
-                            tempmin = float(parsed_json['list'][i]['main']['temp'])
-                        if float(parsed_json['list'][i]['main']['temp']) > tempmax:
-                            tempmax = float(parsed_json['list'][i]['main']['temp'])
-                        i += 1
-
-                    self.WeatherInfo['forecastTodayCode'] = str(self.ConvertIconCode(icons[int(len(icons) / 2)]))
-                    self.WeatherInfo['forecastTodayPicon'] = str(self.convertOWMIconName(icons[int(len(icons) / 2)]))
-                    self.WeatherInfo['forecastTodayText'] = str(description[int(len(description) / 2)])
-                    self.WeatherInfo['forecastTodayTempMax'] = self.convertTemperature(tempmax)
-                    self.WeatherInfo['forecastTodayTempMin'] = self.convertTemperature(tempmin)
-                    self.WeatherInfo['forecastTodaycloudCover'] = str(clouds[int(len(clouds) / 2)]) + ' %'
-                    self.WeatherInfo['forecastTodaywindSpeed'] = str(self.convertwindSpeed(wspeed[int(len(wspeed) / 2)]))
-                    self.WeatherInfo['forecastTodayPressure'] = str(self.convertPressure(pressure[int(len(pressure) / 2)]))
-                    self.WeatherInfo['forecastTodayHumidity'] = str(humidity[int(len(humidity) / 2)]) + ' %'
-                else:
-                    while i < 8:
-                        icons.append(parsed_json['list'][i]['weather'][0]['icon'])
-                        description.append(parsed_json['list'][i]['weather'][0]['description'])
-                        clouds.append(format(float(parsed_json['list'][i]['clouds']['all'])))
-                        wspeed.append(parsed_json['list'][i]['wind']['speed'])
-                        pressure.append(parsed_json['list'][i]['main']['pressure'])
-                        humidity.append(format(float(parsed_json['list'][i]['main']['humidity'])))
-                        if float(parsed_json['list'][i]['main']['temp']) < tempmin:
-                            tempmin = float(parsed_json['list'][i]['main']['temp'])
-                        if float(parsed_json['list'][i]['main']['temp']) > tempmax:
-                            tempmax = float(parsed_json['list'][i]['main']['temp'])
-                        i += 1
-
-                    self.WeatherInfo['forecastTodayCode'] = str(self.ConvertIconCode(icons[int(len(icons) / 2)]))
-                    self.WeatherInfo['forecastTodayPicon'] = str(self.convertOWMIconName(icons[int(len(icons) / 2)]))
-                    self.WeatherInfo['forecastTodayText'] = str(description[int(len(description) / 2)])
-                    self.WeatherInfo['forecastTodayTempMax'] = self.convertTemperature(tempmax)
-                    self.WeatherInfo['forecastTodayTempMin'] = self.convertTemperature(tempmin)
-                    self.WeatherInfo['forecastTodaycloudCover'] = str(clouds[int(len(clouds) / 2)]) + ' %'
-                    self.WeatherInfo['forecastTodaywindSpeed'] = str(self.convertwindSpeed(wspeed[int(len(wspeed) / 2)]))
-                    self.WeatherInfo['forecastTodayPressure'] = str(self.convertPressure(pressure[int(len(pressure) / 2)]))
-                    self.WeatherInfo['forecastTodayHumidity'] = str(humidity[int(len(humidity) / 2)]) + ' %'
-                if next_day == 0:
-                    next_day = 8
-                i = next_day
-                icons = []
-                description = []
-                clouds = []
-                wspeed = []
-                pressure = []
-                humidity = []
-                tempmin = 100
-                tempmax = -100
-                self.WeatherInfo['forecastTomorrowDay'] = self.convertCurrentDay(parsed_json['list'][i]['dt'])
-                self.WeatherInfo['forecastTomorrowDate'] = self.convertCurrentDate(parsed_json['list'][i]['dt'])
-                while i < int(next_day + 8):
-                    icons.append(parsed_json['list'][i]['weather'][0]['icon'])
-                    description.append(parsed_json['list'][i]['weather'][0]['description'])
-                    clouds.append(format(float(parsed_json['list'][i]['clouds']['all'])))
-                    wspeed.append(parsed_json['list'][i]['wind']['speed'])
-                    pressure.append(parsed_json['list'][i]['main']['pressure'])
-                    humidity.append(format(float(parsed_json['list'][i]['main']['humidity'])))
-                    if float(parsed_json['list'][i]['main']['temp']) < tempmin:
-                        tempmin = float(parsed_json['list'][i]['main']['temp'])
-                    if float(parsed_json['list'][i]['main']['temp']) > tempmax:
-                        tempmax = float(parsed_json['list'][i]['main']['temp'])
-                    i += 1
-
-                self.WeatherInfo['forecastTomorrowCode'] = str(self.ConvertIconCode(icons[int(len(icons) / 2)]))
-                self.WeatherInfo['forecastTomorrowPicon'] = str(self.convertOWMIconName(icons[int(len(icons) / 2)]))
-                self.WeatherInfo['forecastTomorrowText'] = str(description[int(len(description) / 2)])
-                self.WeatherInfo['forecastTomorrowcloudCover'] = str(clouds[int(len(clouds) / 2)]) + ' %'
-                self.WeatherInfo['forecastTomorrowTempMax'] = self.convertTemperature(tempmax)
-                self.WeatherInfo['forecastTomorrowTempMin'] = self.convertTemperature(tempmin)
-                self.WeatherInfo['forecastTomorrowwindSpeed'] = str(self.convertwindSpeed(wspeed[int(len(wspeed) / 2)]))
-                self.WeatherInfo['forecastTomorrowPressure'] = str(self.convertPressure(pressure[int(len(pressure) / 2)]))
-                self.WeatherInfo['forecastTomorrowHumidity'] = str(humidity[int(len(humidity) / 2)]) + ' %'
-                if next_day == 8:
-                    next_day = 16
-                else:
-                    next_day = next_day + 8
-                day = 0
-                for aday in range(0, 4):
-                    day += 1
-                    i = next_day + aday * 8
-                    nd = i
-                    icons = []
-                    description = []
-                    clouds = []
-                    wspeed = []
-                    pressure = []
-                    humidity = []
-                    tempmin = 100
-                    tempmax = -100
-                    if i < int(len(parsed_json['list'])):
-                        self.WeatherInfo['forecastTomorrow' + str(day) + 'Day'] = self.convertCurrentDay(parsed_json['list'][i]['dt'])
-                        self.WeatherInfo['forecastTomorrow' + str(day) + 'Date'] = self.convertCurrentDate(parsed_json['list'][i]['dt'])
-                        while i < int(nd + 8) and i < int(len(parsed_json['list'])):
-                            icons.append(parsed_json['list'][i]['weather'][0]['icon'])
-                            description.append(parsed_json['list'][i]['weather'][0]['description'])
-                            clouds.append(format(float(parsed_json['list'][i]['clouds']['all'])))
-                            wspeed.append(parsed_json['list'][i]['wind']['speed'])
-                            pressure.append(parsed_json['list'][i]['main']['pressure'])
-                            humidity.append(format(float(parsed_json['list'][i]['main']['humidity'])))
-                            if float(parsed_json['list'][i]['main']['temp']) < tempmin:
-                                tempmin = float(parsed_json['list'][i]['main']['temp'])
-                            if float(parsed_json['list'][i]['main']['temp']) > tempmax:
-                                tempmax = float(parsed_json['list'][i]['main']['temp'])
-                            i += 1
-
-                        self.WeatherInfo['forecastTomorrow' + str(day) + 'Text'] = str(description[int(len(description) / 2)])
-                        self.WeatherInfo['forecastTomorrow' + str(day) + 'Code'] = str(self.ConvertIconCode(icons[int(len(icons) / 2)]))
-                        self.WeatherInfo['forecastTomorrow' + str(day) + 'Picon'] = str(self.convertOWMIconName(icons[int(len(icons) / 2)]))
-                        self.WeatherInfo['forecastTomorrow' + str(day) + 'cloudCover'] = str(clouds[int(len(clouds) / 2)]) + ' %'
-                        self.WeatherInfo['forecastTomorrow' + str(day) + 'TempMax'] = self.convertTemperature(tempmax)
-                        self.WeatherInfo['forecastTomorrow' + str(day) + 'TempMin'] = self.convertTemperature(tempmin)
-                        self.WeatherInfo['forecastTomorrow' + str(day) + 'windSpeed'] = str(self.convertwindSpeed(wspeed[int(len(wspeed) / 2)]))
-                        self.WeatherInfo['forecastTomorrow' + str(day) + 'Pressure'] = str(self.convertPressure(pressure[int(len(pressure) / 2)]))
-                        self.WeatherInfo['forecastTomorrow' + str(day) + 'Humidity'] = str(humidity[int(len(humidity) / 2)]) + ' %'
-
-            except Exception as ex:
-                Exc_log('Mistake in GotDGWeatherWeatherData : ' + str(ex))
-
-        return
-
-    def GotCurrentDGWeatherWeatherData(self, data = None):
-        write_log('###################################### Current DGWeather Data ################################################')
-        write_log('Data : ' + str(data))
-        if data is not None:
-            try:
-                parsed_json = json.loads(data)
-                self.WeatherInfo['currentCountry'] = str(parsed_json['sys']['country'])
-                if 'deg' in parsed_json['wind']:
-                    if config.plugins.dgWeather.winddirection.value == 'short':
-                        self.WeatherInfo['windDirection'] = str(self.ConvertDirectionShort(parsed_json['wind']['deg']))
-                    else:
-                        self.WeatherInfo['windDirection'] = str(self.ConvertDirectionLong(parsed_json['wind']['deg']))
-                else:
-                    self.WeatherInfo['windDirection'] = '--'
-                self.WeatherInfo['currentlywindSpeed'] = self.convertwindSpeed(parsed_json['wind']['speed'])
-                self.WeatherInfo['currentPressure'] = self.convertPressure(parsed_json['main']['pressure'])
-                self.WeatherInfo['currentcloudCover'] = format(float(parsed_json['clouds']['all'])) + ' %'
-                self.WeatherInfo['atmoHumidity'] = format(float(parsed_json['main']['humidity']), '.0f') + ' %'
-                if 'visibility' in parsed_json:
-                    if config.plugins.dgWeather.windspeedUnit.value == 'mp/h':
-                        self.WeatherInfo['atmoVisibility'] = format(float(parsed_json['visibility']) / 1000 * 0.62137, str(numbers)) + _(' miles')
-                    else:
-                        self.WeatherInfo['atmoVisibility'] = format(float(parsed_json['visibility']) / 1000, str(numbers)) + _(' km')
-                else:
-                    self.WeatherInfo['atmoVisibility'] = '--'
-                self.WeatherInfo['astroSunrise'] = self.convertAstroSun(parsed_json['sys']['sunrise'])
-                self.WeatherInfo['astroSunset'] = self.convertAstroSun(parsed_json['sys']['sunset'])
-                self.WeatherInfo['astroDaySoltice'] = self.convertAstroSun(float(parsed_json['sys']['sunset'] + parsed_json['sys']['sunrise']) * 0.5)
-                self.WeatherInfo['astroDayLength'] = self.convertAstroDayLength(float(parsed_json['sys']['sunset'] - parsed_json['sys']['sunrise']) - 10800)
-                self.WeatherInfo['downloadDate'] = self.convertCurrentDateLong(parsed_json['dt'])
-                self.WeatherInfo['downloadTime'] = self.convertCurrentTime(parsed_json['dt'])
-                self.WeatherInfo['currentWeatherText'] = str(parsed_json['weather'][0]['description'])
-                write_log('###################################### Current DGWeather ################################################')
-                for k, v in parsed_json.items():
-                    write_log(str(k) + ':' + str(v))
-
-            except Exception as ex:
-                Exc_log('Mistake in GotCurrentDGWeatherWeatherData : ' + str(ex))
-
-        return
+    def convertHMStoHM(self, HMS):
+        if HMS.startswith('0'): return HMS[1:len(HMS)-3]
+        else: return HMS[:len(HMS)-3]
 
     def convertPressure(self, pressure):
-        if config.plugins.dgWeather.pressureUnit.value == 'mmHg':
-            pressure = format(pressure * 0.75, str(numbers)) + _(' mmHg')
-        if config.plugins.dgWeather.pressureUnit.value == 'mBar':
-            pressure = format(pressure, str(numbers)) + _(' mBar')
-        if config.plugins.dgWeather.pressureUnit.value == 'hPa':
-            pressure = format(pressure, str(numbers)) + _(' hPa')
+        if config.plugins.dgWeather.pressureUnit.value == 'mmHg': return '%s mmHg' % format(pressure * 0.75, self.numbers)
+        if config.plugins.dgWeather.pressureUnit.value == 'mBar': return '%s mBar' % format(pressure, self.numbers)
+        if config.plugins.dgWeather.pressureUnit.value == 'hPa':  return '%s hPa'  % format(pressure, self.numbers)
         return str(pressure)
+
+    def convert_km_miles(self, value):
+        if config.plugins.dgWeather.windspeedUnit.value == 'mp/h': return _('%s miles') % format(float(value) * 0.62137, self.numbers)
+        else: return _('%s km') % format(float(value), self.numbers)
 
     def convertwindSpeed(self, windSpeed):
         if config.plugins.dgWeather.windspeedUnit.value == 'm/s':
-            windSpeed = format(windSpeed, str(numbers)) + _(' m/s')
+            windSpeed = format(windSpeed, self.numbers) + _(' m/s')
         if config.plugins.dgWeather.windspeedUnit.value == 'km/h':
-            windSpeed = format(windSpeed * 3.6, str(numbers)) + _(' km/h')
+            windSpeed = format(windSpeed * 3.6, self.numbers) + _(' km/h')
         if config.plugins.dgWeather.windspeedUnit.value == 'mp/h':
-            windSpeed = format(windSpeed * 0.447, str(numbers)) + _(' mp/h')
+            windSpeed = format(windSpeed * 0.447, self.numbers) + _(' mp/h')
         if config.plugins.dgWeather.windspeedUnit.value == 'ft/s':
-            windSpeed = format(windSpeed * 0.3048, str(numbers)) + _(' ft/s')
+            windSpeed = format(windSpeed * 0.3048, self.numbers) + _(' ft/s')
         return str(windSpeed)
 
     def convertTemperature(self, temp):
-        if config.plugins.dgWeather.tempUnit.value == 'Celsius':
-            temp = format(temp, str(numbers)) + ' °C'
-        elif config.plugins.dgWeather.tempUnit.value == 'Fahrenheit':
-            temp = format(temp * 1.8 + 32, str(numbers)) + ' °F'
-        return str(temp)
-
-    def ConvertDirectionShort(self, direction):
-        dir = int(direction)
-        if 0 <= dir <= 20:
-            direction = _('N')
-        elif 21 <= dir <= 35:
-            direction = _('N-NE')
-        elif 36 <= dir <= 55:
-            direction = _('NE')
-        elif 56 <= dir <= 70:
-            direction = _('E-NE')
-        elif 71 <= dir <= 110:
-            direction = _('E')
-        elif 111 <= dir <= 125:
-            direction = _('E-SE')
-        elif 126 <= dir <= 145:
-            direction = _('SE')
-        elif 146 <= dir <= 160:
-            direction = _('S-SE')
-        elif 161 <= dir <= 200:
-            direction = _('S')
-        elif 201 <= dir <= 215:
-            direction = _('S-SW')
-        elif 216 <= dir <= 235:
-            direction = _('SW')
-        elif 236 <= dir <= 250:
-            direction = _('W-SW')
-        elif 251 <= dir <= 290:
-            direction = _('W')
-        elif 291 <= dir <= 305:
-            direction = _('W-NW')
-        elif 306 <= dir <= 325:
-            direction = _('NW')
-        elif 326 <= dir <= 340:
-            direction = _('N-NW')
-        elif 341 <= dir <= 360:
-            direction = _('N')
-        else:
-            direction = _('N/A')
-        return str(direction)
-
-    def ConvertDirectionLong(self, direction):
-        dir = int(direction)
-        if 0 <= dir <= 20:
-            direction = _('North')
-        elif 21 <= dir <= 35:
-            direction = _('North-Northeast')
-        elif 36 <= dir <= 55:
-            direction = _('Northeast')
-        elif 56 <= dir <= 70:
-            direction = _('East-Northeast')
-        elif 71 <= dir <= 110:
-            direction = _('East')
-        elif 111 <= dir <= 125:
-            direction = _('East-Southeast')
-        elif 126 <= dir <= 145:
-            direction = _('Southeast')
-        elif 146 <= dir <= 160:
-            direction = _('South-Southeast')
-        elif 161 <= dir <= 200:
-            direction = _('South')
-        elif 201 <= dir <= 215:
-            direction = _('South-Southwest')
-        elif 216 <= dir <= 235:
-            direction = _('Southwest')
-        elif 236 <= dir <= 250:
-            direction = _('West-Southwest')
-        elif 251 <= dir <= 290:
-            direction = _('West')
-        elif 291 <= dir <= 305:
-            direction = _('West-Northwest')
-        elif 306 <= dir <= 325:
-            direction = _('Northwest')
-        elif 326 <= dir <= 340:
-            direction = _('North-Northwest')
-        elif 341 <= dir <= 360:
-            direction = _('North')
-        else:
-            direction = _('N/A')
-        return str(direction)
-
-    def convertIconName(self, IconName):
-        if IconName == 'sleet':
-            return '7'
-        elif IconName == 'wind':
-            return '23'
-        elif IconName == 'fog':
-            return '20'
-        elif IconName == 'partly-cloudy-night':
-            return '29'
-        elif IconName == 'cloudy':
-            return '26'
-        elif IconName == 'clear-night':
-            return '31'
-        elif IconName == 'clear-day':
-            return '32'
-        elif IconName == 'partly-cloudy-day':
-            return '30'
-        elif IconName == 'rain':
-            return '12'
-        elif IconName == 'snow':
-            return '14'
-        else:
-            if log:
-                write_log(_('missing IconName : ') + str(IconName))
-            return '3200'
-
-    def convertWeatherText(self, WeatherText):
-        return str(_(WeatherText.replace('-', ' ')))
-
-    def convertAstroSun(self, val):
-        value = datetime.datetime.fromtimestamp(int(val))
-        return value.strftime('%_H:%M')
-
-    def convertAstroDayLength(self, val):
-        value = datetime.datetime.fromtimestamp(int(val))
-        return value.strftime(_('%_H h. %_M min.'))
-
-    def convertCurrentDate(self, val):
-        value = datetime.datetime.fromtimestamp(int(val))
-        if config.plugins.dgWeather.WeekDay.value == 'dm':
-            return value.strftime('%_d.%m')
-        else:
-            return value.strftime('%_d.%m.%Y')
-
-    def convertCurrentDateLong(self, val):
-        value = datetime.datetime.fromtimestamp(int(val))
-        return value.strftime('%_d.%m.%Y')
-
-    def convertCurrentTime(self, val):
-        value = datetime.datetime.fromtimestamp(int(val))
-        return value.strftime('%_H:%M:%S')
+        if config.plugins.dgWeather.tempUnit.value == 'Celsius': return '%s °C' % format(temp, self.numbers)
+        elif config.plugins.dgWeather.tempUnit.value == 'Fahrenheit': return '%s °F' % format(temp * 1.8 + 32, self.numbers)
+        else: return temp
 
     def convertCurrentDay(self, val):
-        value = int(datetime.datetime.fromtimestamp(int(val)).strftime('%w'))
-        return wdays[value]
+        wdays = [_('Sunday'), _('Monday'), _('Tuesday'), _('Wednesday'), _('Thursday'), _('Friday'), _('Saturday')]
+        swdays = [_('Sun'), _('Mon'), _('Tue'), _('Wed'), _('Thu'), _('Fri'), _('Sat')]
+        value = wdays[int(datetime.datetime.fromtimestamp(int(val)).strftime('%w'))]
+        write_log('GetWeather().convertCurrentDay(%s) = %s' % (val,value))
+        return value
 
-    def convertDateTime(self, val):
-        value = datetime.datetime.fromtimestamp(int(val))
-        return value.strftime('%d.%m.%Y %_H:%M:%S')
+    def convertIconName(self, IconName):
+        IconName = str(IconName)
+        if IconName ==   'clear-day':   return '32'
+        elif IconName == 'clear-night': return '31'
+        elif IconName == 'cloudy':      return '26'
+        elif IconName == 'fog':         return '20'
+        elif IconName == 'partly-cloudy-day':   return '30'
+        elif IconName == 'partly-cloudy-night': return '29'
+        elif IconName == 'rain':  return '12'
+        elif IconName == 'sleet': return '7'
+        elif IconName == 'snow':  return '14'
+        elif IconName == 'wind':  return '23'
+        write_log('MISSING IconName: "%s"' % IconName)
+        return '3200'
         
     def ConvertIconCode(self, IconName):
-        if IconName == '01d':
-            return 'B'
-        elif IconName == '02d':
-            return 'H'
-        elif IconName == '03d':
-            return 'H'
-        elif IconName == '04d':
-            return 'N'
-        elif IconName == '05d':
-            return 'Q'
-        elif IconName == '06d':
-            return 'O'
-        elif IconName == '07d':
-            return 'U'
-        elif IconName == '08d':
-            return 'W'
-        elif IconName == '09d':
-            return 'X'
-        elif IconName == '10d':
-            return 'Q'
-        elif IconName == '11d':
-            return 'S'
-        elif IconName == '12d':
-            return 'X'
-        elif IconName == '13d':
-            return 'W'
-        elif IconName == '14d':
-            return 'O'
-        elif IconName == '15d':
-            return 'N'
-        elif IconName == '20d':
-            return 'E'
-        elif IconName == '21d':
-            return 'E'
-        elif IconName == '22d':
-            return 'Z'
-        elif IconName == '23d':
-            return 'T'
-        elif IconName == '30d':
-            return 'S'
-        elif IconName == '31d':
-            return 'S'
-        elif IconName == '32d':
-            return 'T'
-        elif IconName == '33d':
-            return 'W'
-        elif IconName == '34d':
-            return 'W'
-        elif IconName == '40d':
-            return 'H'
-        elif IconName == '46d':
-            return 'Q'
-        elif IconName == '47d':
-            return 'Q'
-        elif IconName == '48d':
-            return 'U'
-        elif IconName == '49d':
-            return 'T'
-        elif IconName == '50d':
-            return 'M'
-        elif IconName == '01n':
-            return 'C'
-        elif IconName == '02n':
-            return 'I'
-        elif IconName == '03n':
-            return 'I'
-        elif IconName == '04n':
-            return 'N'
-        elif IconName == '05n':
-            return 'O'
-        elif IconName == '06n':
-            return 'I'
-        elif IconName == '07n':
-            return 'U'
-        elif IconName == '08n':
-            return 'U'
-        elif IconName == '09n':
-            return 'Q'
-        elif IconName == '10n':
-            return 'U'
-        elif IconName == '11n':
-            return 'I'
-        elif IconName == '13n':
-            return 'U'
-        elif IconName == '40n':
-            return 'Q'
-        elif IconName == '41n':
-            return 'U'
-        elif IconName == 'sleet':
-            return 'W'
-        elif IconName == 'wind':
-            return 'F'
-        elif IconName == 'fog':
-            return 'M'
-        elif IconName == 'partly-cloudy-night':
-            return 'I'
-        elif IconName == 'cloudy':
-            return 'H'
-        elif IconName == 'clear-night':
-            return 'C'
-        elif IconName == 'clear-day':
-            return 'B'
-        elif IconName == 'partly-cloudy-day':
-            return 'H'
-        elif IconName == 'rain':
-            return 'X'
-        elif IconName == 'snow':
-            return 'W'
-        else:
-            return ')'
+        if IconName == '01d':   return 'B'
+        elif IconName == '02d': return 'H'
+        elif IconName == '03d': return 'H'
+        elif IconName == '04d': return 'N'
+        elif IconName == '05d': return 'Q'
+        elif IconName == '06d': return 'O'
+        elif IconName == '07d': return 'U'
+        elif IconName == '08d': return 'W'
+        elif IconName == '09d': return 'X'
+        elif IconName == '10d': return 'Q'
+        elif IconName == '11d': return 'S'
+        elif IconName == '12d': return 'X'
+        elif IconName == '13d': return 'W'
+        elif IconName == '14d': return 'O'
+        elif IconName == '15d': return 'N'
+        elif IconName == '20d': return 'E'
+        elif IconName == '21d': return 'E'
+        elif IconName == '22d': return 'Z'
+        elif IconName == '23d': return 'T'
+        elif IconName == '30d': return 'S'
+        elif IconName == '31d': return 'S'
+        elif IconName == '32d': return 'T'
+        elif IconName == '33d': return 'W'
+        elif IconName == '34d': return 'W'
+        elif IconName == '40d': return 'H'
+        elif IconName == '46d': return 'Q'
+        elif IconName == '47d': return 'Q'
+        elif IconName == '48d': return 'U'
+        elif IconName == '49d': return 'T'
+        elif IconName == '50d': return 'M'
+        elif IconName == '01n': return 'C'
+        elif IconName == '02n': return 'I'
+        elif IconName == '03n': return 'I'
+        elif IconName == '04n': return 'N'
+        elif IconName == '05n': return 'O'
+        elif IconName == '06n': return 'I'
+        elif IconName == '07n': return 'U'
+        elif IconName == '08n': return 'U'
+        elif IconName == '09n': return 'Q'
+        elif IconName == '10n': return 'U'
+        elif IconName == '11n': return 'I'
+        elif IconName == '13n': return 'U'
+        elif IconName == '40n': return 'Q'
+        elif IconName == '41n': return 'U'
+        elif IconName == 'clear-day':   return 'B'
+        elif IconName == 'clear-night': return 'C'
+        elif IconName == 'cloudy': return 'H'
+        elif IconName == 'fog':    return 'M'
+        elif IconName == 'partly-cloudy-day':   return 'H'
+        elif IconName == 'partly-cloudy-night': return 'I'
+        elif IconName == 'rain':  return 'X'
+        elif IconName == 'sleet': return 'W'
+        elif IconName == 'snow':  return 'W'
+        elif IconName == 'wind':  return 'F'
+        return ')'
 
     def moonphase(self, phase = None):
         picon = ''
@@ -1141,6 +616,423 @@ class WeatherData:
         elif phase > 0.92 and illumperc > 95:
             picon = '100'
         return (ptext, picon)
+
+
+#  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!DO SKASOWANIA
+    def GotDGWeatherData(self, data = None):
+        write_log('GotDGWeatherData >>>')
+        #write_log('Data : ' + str(data))
+        if data is not None:
+            try:
+                parsed_json = json.loads(data)
+                #for k, v in parsed_json.items():
+                #    write_log(str(k) + ':' + str(v))
+            except Exception as ex:
+                Exc_log('EXCEPTION parsowania json: ' + str(ex))
+                write_log('Data : ' + str(data))
+                return
+                
+            #current data
+            try:
+                CurrentDict = parsed_json.get('currently',{})
+
+                write_log('\t assigning current data')
+                self.WeatherInfo['timezone'] = _(str(parsed_json.get('timezone', '---')))
+                if config.plugins.dgWeather.winddirection.value == 'short':
+                    self.WeatherInfo['windDirection'] = str(self.ConvertDirectionShort(CurrentDict.get('windBearing','')))
+                else:
+                    self.WeatherInfo['windDirection'] = str(self.ConvertDirectionLong(CurrentDict.get('windBearing','')))
+                self.WeatherInfo['atmoHumidity'] = format(float(CurrentDict.get('humidity',0)) * 100, '.0f') + ' %'
+                    
+                self.WeatherInfo['uvIndex'] = format(float(CurrentDict.get('uvIndex',0)), '.0f') + ' / 10'
+                self.WeatherInfo['downloadDate'] = self.convertCurrentDate(CurrentDict.get('time',''))
+                self.WeatherInfo['downloadTime'] = self.convertCurrentTime(CurrentDict.get('time',''))
+                self.WeatherInfo['currentWeatherText'] = str(CurrentDict.get('summary',''))
+                self.WeatherInfo['currentProbability'] = format(float(CurrentDict.get('precipProbability',0)) * 100, self.numbers) + ' %'
+                self.WeatherInfo['currentcloudCover'] = format(float(CurrentDict.get('cloudCover',0)) * 100, self.numbers) + ' %'
+                self.WeatherInfo['currentlyIntensity'] = format(float(CurrentDict.get('precipIntensity',0)), '.4f') + _(' mm/h')
+                self.WeatherInfo['currentOzoneText'] = format(float(CurrentDict.get('ozone',0)), self.numbers) + _(' DU')
+            except Exception as ex:
+                Exc_log('EXCEPTION: ' + str(ex))
+
+            #hourly data
+            try:
+                write_log('\t assigning hourly data')
+                hourlyDict = parsed_json.get('hourly',{})
+                self.WeatherInfo['W-Info-h'] = str(hourlyDict.get('summary','---'))
+                hourly = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11']
+                for hour in hourly:
+                    ahour = int(hour) + 1
+                    if hour == '0':
+                        hour = ''
+                    self.WeatherInfo['forecastHourly' + hour + 'Hour'] = self.convertAstroSun(hourlyDict['data'][ahour]['time'])
+                    self.WeatherInfo['forecastHourly' + hour + 'Humidity'] = format(float(hourlyDict['data'][ahour]['humidity']) * 100, '.0f') + ' %'
+                    self.WeatherInfo['forecastHourly' + hour + 'Cloud'] = format(float(hourlyDict['data'][ahour]['cloudCover']) * 100, self.numbers) + ' %'
+                    self.WeatherInfo['forecastHourly' + hour + 'Text'] = self.convertWeatherText(hourlyDict['data'][ahour]['summary'])
+            except Exception as ex:
+                Exc_log('EXCEPTION: ' + str(ex))
+
+            #daily data
+            write_log('\t assigning forecastToday data')
+            dailyDict = parsed_json.get('daily',{})
+            dailyData = dailyDict.get('data',[{},{},{},{},{},{},{},{}])
+            #write_log('dailyData:\n%s\n' % json.dumps(dailyData))
+            dayDict = dailyData[0]
+            try:
+                self.WeatherInfo['W-Info'] = str(dailyDict.get('summary',''))
+                if dayDict.get('sunriseTime',0) != 0 and dayDict.get('sunsetTime',0) != 0:
+                    self.WeatherInfo['astroDayLength'] = self.convertAstroDayLength(float(dayDict['sunsetTime'] - dayDict['sunriseTime']) - 10800)
+                    self.WeatherInfo['astroSunrise'] = self.convertAstroSun(dayDict['sunriseTime'])
+                    self.WeatherInfo['astroSunset'] = self.convertAstroSun(dayDict['sunsetTime'])
+                    self.WeatherInfo['astroDaySoltice'] = self.convertAstroSun(float(dayDict['sunsetTime'] + dayDict['sunriseTime']) * 0.5)
+            except Exception as ex:
+                Exc_log('EXCEPTION in astroDay...: ' + str(ex))
+                write_log('dayDict:\n%s\n' % json.dumps(dayDict))
+            try:
+                if not dayDict.get('summary', None) is None: self.WeatherInfo['forecastTodayText'] = self.convertWeatherText(dayDict['summary'])
+                if not dayDict.get('precipProbability', None) is None: self.WeatherInfo['forecastTodayProbability'] = format(float(dayDict['precipProbability']) * 100, self.numbers) + ' %'
+                if not dayDict.get('cloudCover', None) is None: self.WeatherInfo['forecastTodaycloudCover'] = format(float(dayDict['cloudCover']) * 100, self.numbers) + ' %'
+                if not dayDict.get('precipIntensity', None) is None: self.WeatherInfo['forecastTodayIntensity'] = format(float(dayDict['precipIntensity']), self.numbers) + _(' mm')
+                if not dayDict.get('ozone', None) is None: self.WeatherInfo['forecastTodayOzoneText'] = format(float(dayDict['ozone']), self.numbers) + _(' DU')
+                if not dayDict.get('moonPhase', None) is None: self.WeatherInfo['PiconMoon'] = self.convertPiconMoon(float(dayDict['moonPhase']))
+            except Exception as ex:
+                Exc_log('EXCEPTION in forecastToday: ' + str(ex))
+                write_log('dayDict:\n%s\n' % json.dumps(dayDict))
+                
+            write_log('\t assigning forecastTomorrow data')
+            try:
+                days = ['0', '1', '2', '3', '4', '5', '6']
+                for day in days:
+                    aday = int(day) + 1
+                    dayDict = dailyData[aday]
+                    if day == '0':
+                        day = ''
+                    if not dayDict.get('time', None) is None: self.WeatherInfo['forecastTomorrow' + day + 'Date'] = self.convertCurrentDate(dayDict['time'])
+                    if not dayDict.get('summary', None) is None: self.WeatherInfo['forecastTomorrow' + day + 'Text'] = self.convertWeatherText(dayDict['summary'])
+                    if not dayDict.get('precipProbability', None) is None: self.WeatherInfo['forecastTomorrow' + day + 'Probability'] = format(float(dayDict['precipProbability']) * 100, self.numbers) + ' %'
+                    if not dayDict.get('cloudCover', None) is None: self.WeatherInfo['forecastTomorrow' + day + 'cloudCover'] = format(float(dayDict['cloudCover']) * 100, self.numbers) + ' %'
+            except Exception as ex:
+                Exc_log('EXCEPTION: ' + str(ex))
+            
+            for k, v in self.WeatherInfo.items():
+                write_log('WeatherInfo : ' + str(k) + ':' + str(v))
+        return
+
+    def GotDGWeatherWeatherData(self, data = None):
+        write_log('###################################### DGWeather Data ################################################')
+        #write_log('Data : ' + str(data))
+        if data is not None:
+            try:
+                parsed_json = json.loads(data)
+                for k, v in parsed_json.items():
+                    write_log(str(k) + ':' + str(v))
+
+                write_log(str(len(parsed_json['list'])))
+                write_log('###################################### DGWeather ################################################')
+                for k, v in parsed_json['list'][0].items():
+                    write_log(str(k) + ':' + str(v))
+
+                self.WeatherInfo['forecastTomorrow4Date'] = ' '
+                self.WeatherInfo['forecastTomorrow4Day'] = ' '
+                self.WeatherInfo['forecastTomorrow4Code'] = ' '
+                self.WeatherInfo['forecastTomorrow4Picon'] = ' '
+                self.WeatherInfo['forecastTomorrow4TempMax'] = ' '
+                self.WeatherInfo['forecastTomorrow4TempMin'] = ' '
+                self.WeatherInfo['forecastTomorrow4Text'] = ' '
+                hourly = ['0',
+                 '1',
+                 '2',
+                 '3',
+                 '4',
+                 '5',
+                 '6',
+                 '7']
+                for hour in hourly:
+                    ahour = int(hour)
+                    if hour == '0':
+                        hour = ''
+                    self.WeatherInfo['forecastHourly' + hour + 'Hour'] = str(parsed_json['list'][ahour]['dt_txt'])
+                    self.WeatherInfo['forecastHourly' + hour + 'Humidity'] = format(float(parsed_json['list'][ahour]['main']['humidity']), '.0f') + ' %'
+                    self.WeatherInfo['forecastHourly' + hour + 'Cloud'] = format(float(parsed_json['list'][ahour]['clouds']['all'])) + ' %'
+                    self.WeatherInfo['forecastHourly' + hour + 'Picon'] = self.convertOWMIconName(parsed_json['list'][ahour]['weather'][0]['icon'])
+                    self.WeatherInfo['forecastHourly' + hour + 'Text'] = str(parsed_json['list'][ahour]['weather'][0]['description'])
+                    if 'rain' in parsed_json['list'][ahour]:
+                        self.WeatherInfo['forecastHourly' + hour + 'Intensity'] = str(parsed_json['list'][ahour]['rain']['3h']) + _(' mm/3h')
+                    elif 'snow' in parsed_json['list'][ahour]:
+                        self.WeatherInfo['forecastHourly' + hour + 'Intensity'] = str(parsed_json['list'][ahour]['snow']['3h']) + _(' mm/3h')
+                    else:
+                        self.WeatherInfo['forecastHourly' + hour + 'Intensity'] = '0' + _(' mm/3h')
+
+                i = 0
+                next_day = 0
+                sNOW = datetime.datetime.now().strftime('%d.%m.%Y')
+                while i < 8:
+                    if str(self.convertCurrentDateLong(parsed_json['list'][i]['dt'])) != sNOW:
+                        next_day = i
+                        write_log('morgen startet bei Index ' + str(next_day))
+                        break
+                    i += 1
+
+                self.WeatherInfo['forecastTodayDay'] = self.convertCurrentDay(parsed_json['list'][0]['dt'])
+                self.WeatherInfo['forecastTodayDate'] = self.convertCurrentDate(parsed_json['list'][0]['dt'])
+                i = 0
+                icons = []
+                description = []
+                clouds = []
+                wspeed = []
+                pressure = []
+                humidity = []
+                tempmin = 100
+                tempmax = -100
+                if int(next_day) > 0:
+                    while i < int(next_day):
+                        icons.append(parsed_json['list'][i]['weather'][0]['icon'])
+                        description.append(parsed_json['list'][i]['weather'][0]['description'])
+                        clouds.append(format(float(parsed_json['list'][i]['clouds']['all'])))
+                        wspeed.append(parsed_json['list'][i]['wind']['speed'])
+                        pressure.append(parsed_json['list'][i]['main']['pressure'])
+                        humidity.append(format(float(parsed_json['list'][i]['main']['humidity'])))
+                        if float(parsed_json['list'][i]['main']['temp']) < tempmin:
+                            tempmin = float(parsed_json['list'][i]['main']['temp'])
+                        if float(parsed_json['list'][i]['main']['temp']) > tempmax:
+                            tempmax = float(parsed_json['list'][i]['main']['temp'])
+                        i += 1
+
+                    self.WeatherInfo['forecastTodayPicon'] = str(self.convertOWMIconName(icons[int(len(icons) / 2)]))
+                    self.WeatherInfo['forecastTodayText'] = str(description[int(len(description) / 2)])
+                    self.WeatherInfo['forecastTodaycloudCover'] = str(clouds[int(len(clouds) / 2)]) + ' %'
+                    self.WeatherInfo['forecastTodayHumidity'] = str(humidity[int(len(humidity) / 2)]) + ' %'
+                else:
+                    while i < 8:
+                        icons.append(parsed_json['list'][i]['weather'][0]['icon'])
+                        description.append(parsed_json['list'][i]['weather'][0]['description'])
+                        clouds.append(format(float(parsed_json['list'][i]['clouds']['all'])))
+                        wspeed.append(parsed_json['list'][i]['wind']['speed'])
+                        pressure.append(parsed_json['list'][i]['main']['pressure'])
+                        humidity.append(format(float(parsed_json['list'][i]['main']['humidity'])))
+                        if float(parsed_json['list'][i]['main']['temp']) < tempmin:
+                            tempmin = float(parsed_json['list'][i]['main']['temp'])
+                        if float(parsed_json['list'][i]['main']['temp']) > tempmax:
+                            tempmax = float(parsed_json['list'][i]['main']['temp'])
+                        i += 1
+
+                    self.WeatherInfo['forecastTodayPicon'] = str(self.convertOWMIconName(icons[int(len(icons) / 2)]))
+                    self.WeatherInfo['forecastTodayText'] = str(description[int(len(description) / 2)])
+                    self.WeatherInfo['forecastTodaycloudCover'] = str(clouds[int(len(clouds) / 2)]) + ' %'
+                    self.WeatherInfo['forecastTodayHumidity'] = str(humidity[int(len(humidity) / 2)]) + ' %'
+                if next_day == 0:
+                    next_day = 8
+                i = next_day
+                icons = []
+                description = []
+                clouds = []
+                wspeed = []
+                pressure = []
+                humidity = []
+                tempmin = 100
+                tempmax = -100
+                self.WeatherInfo['forecastTomorrowDate'] = self.convertCurrentDate(parsed_json['list'][i]['dt'])
+                while i < int(next_day + 8):
+                    icons.append(parsed_json['list'][i]['weather'][0]['icon'])
+                    description.append(parsed_json['list'][i]['weather'][0]['description'])
+                    clouds.append(format(float(parsed_json['list'][i]['clouds']['all'])))
+                    wspeed.append(parsed_json['list'][i]['wind']['speed'])
+                    pressure.append(parsed_json['list'][i]['main']['pressure'])
+                    humidity.append(format(float(parsed_json['list'][i]['main']['humidity'])))
+                    if float(parsed_json['list'][i]['main']['temp']) < tempmin:
+                        tempmin = float(parsed_json['list'][i]['main']['temp'])
+                    if float(parsed_json['list'][i]['main']['temp']) > tempmax:
+                        tempmax = float(parsed_json['list'][i]['main']['temp'])
+                    i += 1
+
+                self.WeatherInfo['forecastTomorrowPicon'] = str(self.convertOWMIconName(icons[int(len(icons) / 2)]))
+                self.WeatherInfo['forecastTomorrowText'] = str(description[int(len(description) / 2)])
+                self.WeatherInfo['forecastTomorrowcloudCover'] = str(clouds[int(len(clouds) / 2)]) + ' %'
+                self.WeatherInfo['forecastTomorrowHumidity'] = str(humidity[int(len(humidity) / 2)]) + ' %'
+                if next_day == 8:
+                    next_day = 16
+                else:
+                    next_day = next_day + 8
+                day = 0
+                for aday in range(0, 4):
+                    day += 1
+                    i = next_day + aday * 8
+                    nd = i
+                    icons = []
+                    description = []
+                    clouds = []
+                    wspeed = []
+                    pressure = []
+                    humidity = []
+                    tempmin = 100
+                    tempmax = -100
+                    if i < int(len(parsed_json['list'])):
+                        self.WeatherInfo['forecastTomorrow' + str(day) + 'Date'] = self.convertCurrentDate(parsed_json['list'][i]['dt'])
+                        while i < int(nd + 8) and i < int(len(parsed_json['list'])):
+                            icons.append(parsed_json['list'][i]['weather'][0]['icon'])
+                            description.append(parsed_json['list'][i]['weather'][0]['description'])
+                            clouds.append(format(float(parsed_json['list'][i]['clouds']['all'])))
+                            wspeed.append(parsed_json['list'][i]['wind']['speed'])
+                            pressure.append(parsed_json['list'][i]['main']['pressure'])
+                            humidity.append(format(float(parsed_json['list'][i]['main']['humidity'])))
+                            if float(parsed_json['list'][i]['main']['temp']) < tempmin:
+                                tempmin = float(parsed_json['list'][i]['main']['temp'])
+                            if float(parsed_json['list'][i]['main']['temp']) > tempmax:
+                                tempmax = float(parsed_json['list'][i]['main']['temp'])
+                            i += 1
+
+                        self.WeatherInfo['forecastTomorrow' + str(day) + 'Text'] = str(description[int(len(description) / 2)])
+                        self.WeatherInfo['forecastTomorrow' + str(day) + 'Picon'] = str(self.convertOWMIconName(icons[int(len(icons) / 2)]))
+                        self.WeatherInfo['forecastTomorrow' + str(day) + 'cloudCover'] = str(clouds[int(len(clouds) / 2)]) + ' %'
+                        self.WeatherInfo['forecastTomorrow' + str(day) + 'Humidity'] = str(humidity[int(len(humidity) / 2)]) + ' %'
+
+            except Exception as ex:
+                Exc_log('Mistake in GotDGWeatherWeatherData : ' + str(ex))
+
+        return
+
+    def GotCurrentDGWeatherWeatherData(self, data = None):
+        write_log('###################################### Current DGWeather Data ################################################')
+        write_log('Data : ' + str(data))
+        if data is not None:
+            try:
+                parsed_json = json.loads(data)
+                self.WeatherInfo['currentCountry'] = str(parsed_json['sys']['country'])
+                if 'deg' in parsed_json['wind']:
+                    if config.plugins.dgWeather.winddirection.value == 'short':
+                        self.WeatherInfo['windDirection'] = str(self.ConvertDirectionShort(parsed_json['wind']['deg']))
+                    else:
+                        self.WeatherInfo['windDirection'] = str(self.ConvertDirectionLong(parsed_json['wind']['deg']))
+                else:
+                    self.WeatherInfo['windDirection'] = '--'
+                self.WeatherInfo['currentcloudCover'] = format(float(parsed_json['clouds']['all'])) + ' %'
+                self.WeatherInfo['atmoHumidity'] = format(float(parsed_json['main']['humidity']), '.0f') + ' %'
+                self.WeatherInfo['astroSunrise'] = self.convertAstroSun(parsed_json['sys']['sunrise'])
+                self.WeatherInfo['astroSunset'] = self.convertAstroSun(parsed_json['sys']['sunset'])
+                self.WeatherInfo['astroDaySoltice'] = self.convertAstroSun(float(parsed_json['sys']['sunset'] + parsed_json['sys']['sunrise']) * 0.5)
+                self.WeatherInfo['astroDayLength'] = self.convertAstroDayLength(float(parsed_json['sys']['sunset'] - parsed_json['sys']['sunrise']) - 10800)
+                self.WeatherInfo['downloadDate'] = self.convertCurrentDateLong(parsed_json['dt'])
+                self.WeatherInfo['downloadTime'] = self.convertCurrentTime(parsed_json['dt'])
+                self.WeatherInfo['currentWeatherText'] = str(parsed_json['weather'][0]['description'])
+                write_log('###################################### Current DGWeather ################################################')
+                for k, v in parsed_json.items():
+                    write_log(str(k) + ':' + str(v))
+
+            except Exception as ex:
+                Exc_log('Mistake in GotCurrentDGWeatherWeatherData : ' + str(ex))
+
+        return
+
+    def ConvertDirectionShort(self, direction):
+        dir = int(direction)
+        if 0 <= dir <= 20:
+            direction = _('N')
+        elif 21 <= dir <= 35:
+            direction = _('N-NE')
+        elif 36 <= dir <= 55:
+            direction = _('NE')
+        elif 56 <= dir <= 70:
+            direction = _('E-NE')
+        elif 71 <= dir <= 110:
+            direction = _('E')
+        elif 111 <= dir <= 125:
+            direction = _('E-SE')
+        elif 126 <= dir <= 145:
+            direction = _('SE')
+        elif 146 <= dir <= 160:
+            direction = _('S-SE')
+        elif 161 <= dir <= 200:
+            direction = _('S')
+        elif 201 <= dir <= 215:
+            direction = _('S-SW')
+        elif 216 <= dir <= 235:
+            direction = _('SW')
+        elif 236 <= dir <= 250:
+            direction = _('W-SW')
+        elif 251 <= dir <= 290:
+            direction = _('W')
+        elif 291 <= dir <= 305:
+            direction = _('W-NW')
+        elif 306 <= dir <= 325:
+            direction = _('NW')
+        elif 326 <= dir <= 340:
+            direction = _('N-NW')
+        elif 341 <= dir <= 360:
+            direction = _('N')
+        else:
+            direction = _('N/A')
+        return str(direction)
+
+    def ConvertDirectionLong(self, direction):
+        dir = int(direction)
+        if 0 <= dir <= 20:
+            direction = _('North')
+        elif 21 <= dir <= 35:
+            direction = _('North-Northeast')
+        elif 36 <= dir <= 55:
+            direction = _('Northeast')
+        elif 56 <= dir <= 70:
+            direction = _('East-Northeast')
+        elif 71 <= dir <= 110:
+            direction = _('East')
+        elif 111 <= dir <= 125:
+            direction = _('East-Southeast')
+        elif 126 <= dir <= 145:
+            direction = _('Southeast')
+        elif 146 <= dir <= 160:
+            direction = _('South-Southeast')
+        elif 161 <= dir <= 200:
+            direction = _('South')
+        elif 201 <= dir <= 215:
+            direction = _('South-Southwest')
+        elif 216 <= dir <= 235:
+            direction = _('Southwest')
+        elif 236 <= dir <= 250:
+            direction = _('West-Southwest')
+        elif 251 <= dir <= 290:
+            direction = _('West')
+        elif 291 <= dir <= 305:
+            direction = _('West-Northwest')
+        elif 306 <= dir <= 325:
+            direction = _('Northwest')
+        elif 326 <= dir <= 340:
+            direction = _('North-Northwest')
+        elif 341 <= dir <= 360:
+            direction = _('North')
+        else:
+            direction = _('N/A')
+        return str(direction)
+
+    def convertWeatherText(self, WeatherText):
+        return str(_(WeatherText.replace('-', ' ')))
+
+    def convertAstroSun(self, val):
+        write_log('convertAstroSun(%s)' % val)
+        value = datetime.datetime.fromtimestamp(int(val))
+        return value.strftime('%_H:%M')
+
+    def convertAstroDayLength(self, val):
+        value = datetime.datetime.fromtimestamp(int(val))
+        return value.strftime(_('%_H h. %_M min.'))
+
+    def convertCurrentDate(self, val):
+        value = datetime.datetime.fromtimestamp(int(val))
+        if config.plugins.dgWeather.WeekDay.value == 'dm':
+            return value.strftime('%_d.%m')
+        else:
+            return value.strftime('%_d.%m.%Y')
+
+    def convertCurrentDateLong(self, val):
+        value = datetime.datetime.fromtimestamp(int(val))
+        return value.strftime('%_d.%m.%Y')
+
+    def convertCurrentTime(self, val):
+        value = datetime.datetime.fromtimestamp(int(val))
+        return value.strftime('%_H:%M:%S')
+
+    def convertDateTime(self, val):
+        value = datetime.datetime.fromtimestamp(int(val))
+        return value.strftime('%d.%m.%Y %_H:%M:%S')
 
     def convertOWMIconName(self, IconName):
         if IconName == '01d':

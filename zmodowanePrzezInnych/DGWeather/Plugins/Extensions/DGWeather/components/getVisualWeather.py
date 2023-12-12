@@ -50,7 +50,7 @@ def buildDGweatherDict(sourceDict):
     write_log('buildDGweatherDict() >>>')
     dgDict = {} #LoadJsonDict('dgWeatherDict.json') #aktualizacja
     if 1:
-        dgDict['timezone'] = dgDict.get('timezone','')
+        dgDict['timezone'] = sourceDict.get('timezone','')
         #dane z ALERTS
         tmpDict = sourceDict.get('alerts', {})
         if len(tmpDict) > 0: dgDict['alerts'] = tmpDict[0].get('event','')
@@ -61,15 +61,21 @@ def buildDGweatherDict(sourceDict):
         Hlength = int(dayLengthEpoc / 3600)
         Mlength = int((dayLengthEpoc - Hlength * 3600) / 60)
         Slength = dayLengthEpoc - Hlength * 3600 - Mlength * 60
+        if Mlength < 10: Mlength = '0%s' % Mlength
+        if Slength < 10: Slength = '0%s' % Slength
 
         dgDict['atmoVisibility'] =      tmpDict.get('visibility', 0)
         dgDict['astroDayLength'] =      "%s:%s:%s" % (Hlength, Mlength, Slength)
         dgDict['astroSunrise'] =        tmpDict.get('sunrise', 0)
         dgDict['astroSunset'] =         tmpDict.get('sunset', 0)
+        dgDict['astroDaySoltice'] =     float(tmpDict.get('sunsetEpoch', 0) + tmpDict.get('sunriseEpoch', 0)) * 0.5
         dgDict['atmoHumidity'] =        tmpDict.get('humidity', 0)
+        dgDict['downloadDate'] =        tmpDict.get('datetimeEpoch', 0)
+        dgDict['downloadTime'] =        tmpDict.get('datetimeEpoch', 0)
 
         dgDict['currentcloudCover'] =   tmpDict.get('cloudcover', 0)
         dgDict['currentlyIntensity'] =  tmpDict.get('precip', 0)
+        dgDict['currentMoonPhase'] =    tmpDict.get('moonphase', 0)
         dgDict['currentPrecip'] =       tmpDict.get('precip', 0)
         dgDict['currentPressure'] =     tmpDict.get('pressure', 0)
         dgDict['currentProbability'] =  tmpDict.get('precipprob', 0)
@@ -102,7 +108,7 @@ def buildDGweatherDict(sourceDict):
                 break
             dgDict[currDay[1] + 'Pressure'] =   dayDict.get('pressure' , '?')
             dgDict[currDay[1] + 'Code'] =       dayDict.get('icon' , '?')
-            dgDict[currDay[1] + 'Day'] =        dayDict.get('CoTo' , '?') #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            dgDict[currDay[1] + 'Day'] =        dayDict.get('datetimeEpoch' , '?')
             dgDict[currDay[1] + 'Date'] =       dayDict.get('datetime' , '?')
             dgDict[currDay[1] + 'TempMin'] =    dayDict.get('tempmin' , '?')
             dgDict[currDay[1] + 'TempMax'] =    dayDict.get('tempmax' , '?')
@@ -133,13 +139,10 @@ def buildDGweatherDict(sourceDict):
                     dgDict[currHour[1] + 'Picon'] =     hourDict.get('icon' , '?')
                     dgDict[currHour[1] + 'Cloud'] =     hourDict.get('cloudcover' , '?')
                     dgDict[currHour[1] + 'Intensity'] = hourDict.get('precip' , '?')
-
     else:
         dgDict['W-Info'] = ''
         dgDict['W-Info-h'] = ''
         dgDict['astroDaySoltice'] = ''
-        dgDict['downloadDate'] = ''
-        dgDict['downloadTime'] = ''
         dgDict['currentOzoneText'] = ''
         dgDict['PiconMoon'] = ''
 

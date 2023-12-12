@@ -8,7 +8,7 @@
         <widget source="session.CurrentService" render="Label" position="1000, 290" size="275, 50" font="Regular; 45" halign="center" valign="center" noWrap="1" backgroundColor="background" foregroundColor="#0000ff00" transparent="1">
                 <convert type="DGWeather2">windChill</convert>
         </widget>
-        <widget source="session.CurrentService" render="dgWeatherAnimatedWeather" position="820,87" size="150,150" zPosition="1" transparent="1" alphatest="blend">
+        <widget source="global.CurrentTime" render="dgWeatherAnimatedWeather" position="820,87" size="150,150" zPosition="5" transparent="1" alphatest="blend">
                 <convert type="DGWeather2">currentWeatherPicon</convert>
         </widget>
         <widget source="session.CurrentService" render="Label" position="770,245" size="250,60" font="Regular; 26" halign="center" foregroundColor="yellow" backgroundColor="background" transparent="1">
@@ -32,7 +32,7 @@
                 <convert type="DGWeather2">astroDayLength</convert>
         </widget>
 
-        <widget source="session.CurrentService" render="dgWeatherAnimatedMoon" position="1560,112" size="200,200" zPosition="2" alphatest="blend">
+        <widget source="global.CurrentTime" render="dgWeatherAnimatedMoon" position="1560,112" size="200,200" zPosition="5" alphatest="blend">
                 <convert type="DGWeather2">PiconMoon</convert> 
         </widget>
         <widget source="session.CurrentService" render="Label" position="1515, 330" size="300, 36" font="Regular; 26" halign="center" noWrap="1" backgroundColor="background" transparent="1">
@@ -80,11 +80,11 @@
                 <convert type="DGWeather2">uvIndex</convert>
         </widget>
 
-        <widget source="ozonetxt" render="Label" position="400, 180" size="160,35" font="Regular; 24" halign="right" noWrap="1" backgroundColor="background" transparent="1" />
+        <!--widget source="ozonetxt" render="Label" position="400, 180" size="160,35" font="Regular; 24" halign="right" noWrap="1" backgroundColor="background" transparent="1" />
         <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/DGWeather/weather/ozone.png" position="575, 180" size="30,30" transparent="1" alphatest="blend" />
         <widget source="session.CurrentService" render="Label" position="620, 180" size="170,35" font="Regular; 24" halign="left" foregroundColor="#00b0b0c0" backgroundColor="background" transparent="1" noWrap="1">
                 <convert type="DGWeather2">currentOzoneText</convert>
-        </widget>
+        </widget-->
         <widget source="dewpointtxt" render="Label" position="400, 210" size="160, 35" font="Regular; 24" halign="right" noWrap="1" backgroundColor="background" transparent="1" />
         <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/DGWeather/weather/thermo1.png" position="575, 210" size="30,30" transparent="1" alphatest="blend" />
         <widget source="session.CurrentService" render="Label" position="620, 210" size="170, 35" font="Regular; 24" halign="left" foregroundColor="#00b0b0c0" backgroundColor="background" transparent="1" noWrap="1">
@@ -134,7 +134,7 @@
         <widget source="session.CurrentService" render="Label" position="103, 480" size="130,25" font="Regular; 20" halign="right" noWrap="1" backgroundColor="background" foregroundColor="#0000ff00" transparent="1">
                 <convert type="DGWeather2">forecastHourlyTemp</convert>
         </widget>
-        <widget source="session.CurrentService" render="dgWeatherAnimatedWeather" position="85,490" size="75, 75" transparent="1" alphatest="blend">
+        <widget source="global.CurrentTime" render="dgWeatherAnimatedWeather" position="85,490" size="75, 75"  zPosition="5" transparent="1" alphatest="blend">
                 <convert type="DGWeather2">forecastHourlyPicon</convert>
         </widget>
         <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/DGWeather/weather/cloudcover.png" position="48, 510" size="30,30" transparent="1" alphatest="blend" />
@@ -163,7 +163,7 @@
         <widget source="session.CurrentService" render="Label" position="305, 480" size="130,25" font="Regular; 20" halign="right" noWrap="1" backgroundColor="background" foregroundColor="#0000ff00" transparent="1">
                 <convert type="DGWeather2">forecastHourly1Temp</convert>
         </widget>
-        <widget source="session.CurrentService" render="dgWeatherAnimatedWeather" position="285,490" size="75, 75" transparent="1" alphatest="blend">
+        <widget source="global.CurrentTime" render="dgWeatherAnimatedWeather" position="285,490" size="75, 75" zPosition="5" transparent="1" alphatest="blend">
                 <convert type="DGWeather2">forecastHourly1Picon</convert>
         </widget>
         <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/DGWeather/weather/cloudcover.png" position="250, 510" size="30,30" transparent="1" alphatest="blend" />
@@ -192,7 +192,7 @@
         <widget source="session.CurrentService" render="Label" position="525, 480" size="100,25" font="Regular; 20" halign="right" noWrap="1" backgroundColor="background" foregroundColor="#0000ff00" transparent="1">
                 <convert type="DGWeather2">forecastHourly2Temp</convert>
         </widget>
-        <widget source="session.CurrentService" render="dgWeatherAnimatedWeather" position="485,490" size="75, 75" transparent="1" alphatest="blend">
+        <widget source="global.CurrentTime" render="dgWeatherAnimatedWeather" position="485,490" size="75, 75" zPosition="5" transparent="1" alphatest="blend">
                 <convert type="DGWeather2">forecastHourly2Picon</convert>
         </widget>
         <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/DGWeather/weather/cloudcover.png" position="450, 510" size="30,30" transparent="1" alphatest="blend" />
@@ -221,7 +221,7 @@
         <widget source="session.CurrentService" render="Label" position="705, 480" size="130,25" font="Regular; 20" halign="right" noWrap="1" backgroundColor="background" foregroundColor="#0000ff00" transparent="1">
                 <convert type="DGWeather2">forecastHourly3Temp</convert>
         </widget>
-        <widget source="session.CurrentService" render="dgWeatherAnimatedWeather" position="685,490" size="75, 75" transparent="1" alphatest="blend">
+        <widget source="global.CurrentTime" render="dgWeatherAnimatedWeather" position="685,490" size="75, 75" zPosition="5" transparent="1" alphatest="blend">
                 <convert type="DGWeather2">forecastHourly3Picon</convert>
         </widget>
         <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/DGWeather/weather/cloudcover.png" position="650, 510" size="30,30" transparent="1" alphatest="blend" />
@@ -250,7 +250,7 @@
         <widget source="session.CurrentService" render="Label" position="905, 480" size="130,25" font="Regular; 20" halign="right" noWrap="1" backgroundColor="background" foregroundColor="#0000ff00" transparent="1">
                 <convert type="DGWeather2">forecastHourly4Temp</convert>
         </widget>
-        <widget source="session.CurrentService" render="dgWeatherAnimatedWeather" position="885,490" size="75, 75" transparent="1" alphatest="blend">
+        <widget source="global.CurrentTime" render="dgWeatherAnimatedWeather" position="885,490" size="75, 75" zPosition="5" transparent="1" alphatest="blend">
                 <convert type="DGWeather2">forecastHourly4Picon</convert>
         </widget>
         <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/DGWeather/weather/cloudcover.png" position="850, 510" size="30,30" transparent="1" alphatest="blend" />
@@ -279,7 +279,7 @@
         <widget source="session.CurrentService" render="Label" position="1105, 480" size="130, 25" font="Regular; 20" halign="right" noWrap="1" backgroundColor="background" foregroundColor="#0000ff00" transparent="1">
                 <convert type="DGWeather2">forecastHourly5Temp</convert>
         </widget>
-        <widget source="session.CurrentService" render="dgWeatherAnimatedWeather" position="1085,490" size="75, 75" transparent="1" alphatest="blend">
+        <widget source="global.CurrentTime" render="dgWeatherAnimatedWeather" position="1085,490" size="75, 75" zPosition="5" transparent="1" alphatest="blend">
                 <convert type="DGWeather2">forecastHourly5Picon</convert>
         </widget>
         <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/DGWeather/weather/cloudcover.png" position="1050, 510" size="30,30" transparent="1" alphatest="blend" />
@@ -308,7 +308,7 @@
         <widget source="session.CurrentService" render="Label" position="1305, 480" size="130,25" font="Regular; 20" halign="right" noWrap="1" backgroundColor="background" foregroundColor="#0000ff00" transparent="1">
                 <convert type="DGWeather2">forecastHourly6Temp</convert>
         </widget>
-        <widget source="session.CurrentService" render="dgWeatherAnimatedWeather" position="1285,490" size="75, 75" transparent="1" alphatest="blend">
+        <widget source="global.CurrentTime" render="dgWeatherAnimatedWeather" position="1285,490" size="75, 75" zPosition="5" transparent="1" alphatest="blend">
                 <convert type="DGWeather2">forecastHourly6Picon</convert>
         </widget>
         <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/DGWeather/weather/cloudcover.png" position="1250, 510" size="30,30" transparent="1" alphatest="blend" />
@@ -337,7 +337,7 @@
         <widget source="session.CurrentService" render="Label" position="1505, 480" size="130,25" font="Regular; 20" halign="right" noWrap="1" backgroundColor="background" foregroundColor="#0000ff00" transparent="1">
                 <convert type="DGWeather2">forecastHourly7Temp</convert>
         </widget>
-        <widget source="session.CurrentService" render="dgWeatherAnimatedWeather" position="1485,490" size="75, 75" transparent="1" alphatest="blend">
+        <widget source="global.CurrentTime" render="dgWeatherAnimatedWeather" position="1485,490" size="75, 75" zPosition="5" transparent="1" alphatest="blend">
                 <convert type="DGWeather2">forecastHourly7Picon</convert>
         </widget>
         <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/DGWeather/weather/cloudcover.png" position="1450, 510" size="30,30" transparent="1" alphatest="blend" />
@@ -366,7 +366,7 @@
         <widget source="session.CurrentService" render="Label" position="1705, 480" size="130,25" font="Regular; 20" halign="right" noWrap="1" backgroundColor="background" foregroundColor="#0000ff00" transparent="1">
                 <convert type="DGWeather2">forecastHourly8Temp</convert>
         </widget>
-        <widget source="session.CurrentService" render="dgWeatherAnimatedWeather" position="1685,490" size="75, 75" transparent="1" alphatest="blend">
+        <widget source="global.CurrentTime" render="dgWeatherAnimatedWeather" position="1685,490" size="75, 75" zPosition="5" transparent="1" alphatest="blend">
                 <convert type="DGWeather2">forecastHourly8Picon</convert>
         </widget>
         <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/DGWeather/weather/cloudcover.png" position="1650, 510" size="30,30" transparent="1" alphatest="blend" />
@@ -406,7 +406,7 @@
         <widget source="session.CurrentService" render="Label" position="153, 765" size="110, 30" font="Regular; 20" halign="right" foregroundColor="#009fd00b" backgroundColor="background" transparent="1" noWrap="1">
                 <convert type="DGWeather2">forecastTodayTempMax</convert>
         </widget>
-        <widget source="session.CurrentService" render="dgWeatherAnimatedWeather" position="95,780" size="80, 80" transparent="1" alphatest="blend">
+        <widget source="global.CurrentTime" render="dgWeatherAnimatedWeather" position="95,780" size="80, 80" zPosition="5" transparent="1" alphatest="blend">
                 <convert type="DGWeather2">forecastTodayPicon</convert>
         </widget>
         <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/DGWeather/weather/cloudcover.png" position="43, 795" size="30,30" transparent="1" alphatest="blend" />
@@ -440,7 +440,7 @@
         <widget source="session.CurrentService" render="Label" position="385, 765" size="110, 30" font="Regular; 20" halign="right" foregroundColor="#009fd00b" backgroundColor="background" transparent="1" noWrap="1">
                 <convert type="DGWeather2">forecastTomorrowTempMax</convert>
         </widget>
-        <widget source="session.CurrentService" render="dgWeatherAnimatedWeather" position="325,780" size="80, 80" transparent="1" alphatest="blend">
+        <widget source="global.CurrentTime" render="dgWeatherAnimatedWeather" position="325,780" size="80, 80" zPosition="5" transparent="1" alphatest="blend">
                 <convert type="DGWeather2">forecastTomorrowPicon</convert>
         </widget>
         <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/DGWeather/weather/cloudcover.png" position="280, 795" size="30,30" transparent="1" alphatest="blend" />
@@ -474,7 +474,7 @@
         <widget source="session.CurrentService" render="Label" position="610, 765" size="110, 30" font="Regular; 20" halign="right" foregroundColor="#009fd00b" backgroundColor="background" transparent="1" noWrap="1">
                 <convert type="DGWeather2">forecastTomorrow1TempMax</convert>
         </widget>
-        <widget source="session.CurrentService" render="dgWeatherAnimatedWeather" position="555,780" size="80, 80" transparent="1" alphatest="blend">
+        <widget source="global.CurrentTime" render="dgWeatherAnimatedWeather" position="555,780" size="80, 80" zPosition="5" transparent="1" alphatest="blend">
                 <convert type="DGWeather2">forecastTomorrow1Picon</convert>
         </widget>
         <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/DGWeather/weather/cloudcover.png" position="510, 795" size="30,30" transparent="1" alphatest="blend" />
@@ -508,7 +508,7 @@
         <widget source="session.CurrentService" render="Label" position="840, 765" size="110, 30" font="Regular; 20" halign="right" foregroundColor="#009fd00b" backgroundColor="background" transparent="1" noWrap="1">
                 <convert type="DGWeather2">forecastTomorrow2TempMax</convert>
         </widget>
-        <widget source="session.CurrentService" render="dgWeatherAnimatedWeather" position="785,780" size="80, 80" transparent="1" alphatest="blend">
+        <widget source="global.CurrentTime" render="dgWeatherAnimatedWeather" position="785,780" size="80, 80" zPosition="5" transparent="1" alphatest="blend">
                 <convert type="DGWeather2">forecastTomorrow2Picon</convert>
         </widget>
         <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/DGWeather/weather/cloudcover.png" position="740, 795" size="30,30" transparent="1" alphatest="blend" />
@@ -542,7 +542,7 @@
         <widget source="session.CurrentService" render="Label" position="1070, 765" size="110, 30" font="Regular; 20" halign="right" foregroundColor="#009fd00b" backgroundColor="background" transparent="1" noWrap="1">
                 <convert type="DGWeather2">forecastTomorrow3TempMax</convert>
         </widget>
-        <widget source="session.CurrentService" render="dgWeatherAnimatedWeather" position="1015,780" size="80, 80" transparent="1" alphatest="blend">
+        <widget source="global.CurrentTime" render="dgWeatherAnimatedWeather" position="1015,780" size="80, 80" zPosition="5" transparent="1" alphatest="blend">
                 <convert type="DGWeather2">forecastTomorrow3Picon</convert>
         </widget>
         <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/DGWeather/weather/cloudcover.png" position="970, 795" size="30,30" transparent="1" alphatest="blend" />
@@ -576,7 +576,7 @@
         <widget source="session.CurrentService" render="Label" position="1300, 765" size="110, 30" font="Regular; 20" halign="right" foregroundColor="#009fd00b" backgroundColor="background" transparent="1" noWrap="1">
                 <convert type="DGWeather2">forecastTomorrow4TempMax</convert>
         </widget>
-        <widget source="session.CurrentService" render="dgWeatherAnimatedWeather" position="1245,780" size="80, 80" transparent="1" alphatest="blend">
+        <widget source="global.CurrentTime" render="dgWeatherAnimatedWeather" position="1245,780" size="80, 80" zPosition="5" transparent="1" alphatest="blend">
                 <convert type="DGWeather2">forecastTomorrow4Picon</convert>
         </widget>
         <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/DGWeather/weather/cloudcover.png" position="1200, 795" size="30,30" transparent="1" alphatest="blend" />
@@ -610,7 +610,7 @@
         <widget source="session.CurrentService" render="Label" position="1530, 765" size="110, 30" font="Regular; 20" halign="right" foregroundColor="#009fd00b" backgroundColor="background" transparent="1" noWrap="1">
                 <convert type="DGWeather2">forecastTomorrow5TempMax</convert>
         </widget>
-        <widget source="session.CurrentService" render="dgWeatherAnimatedWeather" position="1475,780" size="80, 80" transparent="1" alphatest="blend">
+        <widget source="global.CurrentTime" render="dgWeatherAnimatedWeather" position="1475,780" size="80, 80" zPosition="5" transparent="1" alphatest="blend">
                 <convert type="DGWeather2">forecastTomorrow5Picon</convert>
         </widget>
         <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/DGWeather/weather/cloudcover.png" position="1430, 795" size="30,30" transparent="1" alphatest="blend" />
@@ -644,7 +644,7 @@
         <widget source="session.CurrentService" render="Label" position="1760, 765" size="110, 30" font="Regular; 20" halign="right" foregroundColor="#009fd00b" backgroundColor="background" transparent="1" noWrap="1">
                 <convert type="DGWeather2">forecastTomorrow6TempMax</convert>
         </widget>
-        <widget source="session.CurrentService" render="dgWeatherAnimatedWeather" position="1705,780" size="80, 80" transparent="1" alphatest="blend">
+        <widget source="global.CurrentTime" render="dgWeatherAnimatedWeather" position="1705,780" size="80, 80" zPosition="5" transparent="1" alphatest="blend">
                 <convert type="DGWeather2">forecastTomorrow6Picon</convert>
         </widget>
         <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/DGWeather/weather/cloudcover.png" position="1660, 795" size="30,30" transparent="1" alphatest="blend" />
@@ -676,7 +676,7 @@
         <!-- Airly Info Start -->
 
 
-        <widget position="465,5" size="155,155" source="session.CurrentService" render="dgWeatherAirlyPicon" alphatest="blend" transparent="1" zPosition="9">
+        <widget position="465,5" size="155,155" source="global.CurrentTime" render="dgWeatherAirlyPicon" alphatest="blend" transparent="1" zPosition="9">
         <convert type="DGWeather2">indexBackPNG</convert>
         </widget>
         <widget position="465,5" size="155,155" source="session.CurrentService" render="Label" font="Regular; 45"  backgroundColor="background" halign="center" valign="center" noWrap="1" transparent="1" zPosition="10">
@@ -697,7 +697,7 @@
         <widget position="135,80" size="300,50" source="session.CurrentService" render="Label"  font="Regular; 32" foregroundColor="red" backgroundColor="background" halign="left" valign="center" noWrap="1" transparent="1" zPosition="10">
         <convert type="DGWeather2">pres</convert>
         </widget>
-        <eLabel text="Airly Poland" position="627,10" size="280,45" font="Regular; 32" zPosition="1" halign="left" valign="top" foregroundColor="#608080" backgroundColor="background" transparent="1" />
+        <eLabel text="Airly Poland" position="627,10" size="280,45" font="Regular; 32" zPosition="5" halign="left" valign="top" foregroundColor="#608080" backgroundColor="background" transparent="1" />
 
 
         <!-- Airly Info End-->

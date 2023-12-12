@@ -58,11 +58,11 @@ class dgWeatherAnimatedWeather(Renderer):
     GUI_WIDGET = ePixmap
 
     def changed(self, what):
-        if DBG: write_log('Renderer.dgWeatherAnimatedWeather().changed() >>>')
-        if self.instance:
-            if DBG: write_log('Renderer.dgWeatherAnimatedWeather().changed() self.instance')
-            if what[0] != self.CHANGED_CLEAR:
-                if DBG: write_log('Renderer.dgWeatherAnimatedWeather().changed() self.CHANGED_CLEAR')
+        if what[0] == self.CHANGED_CLEAR:
+            if DBG: write_log('Renderer.dgWeatherAnimatedWeather().changed(self.CHANGED_CLEAR)')
+        else:
+            if self.instance:
+                if DBG: write_log('Renderer.dgWeatherAnimatedWeather().changed() self.instance')
                 sname = self.source.iconfilename
                 name = self.txt_naim.get(sname, sname)
                 if DBG: write_log('Renderer.dgWeatherAnimatedWeather().changed() name = "%s"' % name)
@@ -72,6 +72,7 @@ class dgWeatherAnimatedWeather(Renderer):
         global total
         animokicon = False
         if fileExists('%s/%s' % (self.path, id)):
+            if DBG: write_log('Renderer.dgWeatherAnimatedWeather().runAnim() fileExists(%s/%s)' % (self.path, id))
             pathanimicon = '%s/%s/a' % (self.path, id)
             path = '%s/%s' % (self.path, id)
             dir_work = os.listdir(path)
@@ -95,6 +96,7 @@ class dgWeatherAnimatedWeather(Renderer):
             self.picsicon = []
             for x in range(self.slideicon):
                 self.picsicon.append(LoadPixmap(pathanimicon + str(x) + '.png'))
+                if DBG: write_log('Renderer.dgWeatherAnimatedWeather().runAnim() self.picsicon.append(%s%s.png)' % (pathanimicon, str(x)))
 
             self.timericon = eTimer()
             self.timericon.callback.append(self.timerEvent)
@@ -108,7 +110,7 @@ class dgWeatherAnimatedWeather(Renderer):
         try:
             self.instance.setPixmap(self.picsicon[self.slideicon - 1])
         except:
-            pass
+            Exc_log()
 
         self.slideicon = self.slideicon - 1
         self.timericon.start(self.pixdelay, True)

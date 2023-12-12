@@ -15,15 +15,12 @@ class DGWeather2(Converter, object):
     def __init__(self, type):
         Converter.__init__(self, type)
         self.type = type
-        if WeatherDict is None:
-            write_log('\t init WeatherDict')
-            self.reloadWeatherDict(True)
-        return
-
+        if DBG: write_log('Converter.DGWeather2().__init__(type="%s")' % self.type)
+ 
     def reloadWeatherDict(self, doLoad = False):
         if DBG: write_log('Converter.DGWeather2().reloadWeatherDict() >>>')
         global WeatherDict
-        if doLoad:
+        if doLoad or WeatherDict is None:
             if DBG: write_log('Converter.DGWeather2().reloadWeatherDict() LoadJsonDict(WeatherInfoDict.json)')
             WeatherDict = LoadJsonDict('WeatherInfoDict.json')
         else:
