@@ -100,6 +100,8 @@ def buildDGweatherDict(sourceDict):
                           (6, "forecastHourly6"), (7, "forecastHourly7"), (8, "forecastHourly8")
                          ]
         
+        nowHour = int(time.strftime("%H"))
+        if nowHour > 15: nowHour = 15
         for currDay in dayToNameList:
             try:
                 dayDict = tmpDict[currDay[0]]
@@ -126,19 +128,21 @@ def buildDGweatherDict(sourceDict):
                 hoursDict = dayDict.get('hours', [])
                 for currHour in hourToNameList:
                     try:
-                        hourDict = hoursDict[currHour[0]]
+                        hourDict = hoursDict[currHour[0] + nowHour]
                     except Exception as e:
                         Exc_log(str(e))
                         break
-                    dgDict[currHour[1] + 'Hour'] =      hourDict.get('datetime' , '?')
-                    dgDict[currHour[1] + 'Temp'] =      hourDict.get('temp' , '?')
-                    dgDict[currHour[1] + 'windSpeed'] = hourDict.get('windspeed' , '?')
-                    dgDict[currHour[1] + 'Pressure'] =  hourDict.get('pressure' , '?')
-                    dgDict[currHour[1] + 'Humidity'] =  hourDict.get('humidity' , '?')
-                    dgDict[currHour[1] + 'Text'] =      hourDict.get('conditions' , '?')
-                    dgDict[currHour[1] + 'Picon'] =     hourDict.get('icon' , '?')
-                    dgDict[currHour[1] + 'Cloud'] =     hourDict.get('cloudcover' , '?')
-                    dgDict[currHour[1] + 'Intensity'] = hourDict.get('precip' , '?')
+                    print(hourDict.get('datetime' , '00:00:00').split(':')[0])
+                    if int(hourDict.get('datetime' , '00:00:00').split(':')[0]) >= nowHour:
+                        dgDict[currHour[1] + 'Hour'] =      hourDict.get('datetime' , '?')
+                        dgDict[currHour[1] + 'Temp'] =      hourDict.get('temp' , '?')
+                        dgDict[currHour[1] + 'windSpeed'] = hourDict.get('windspeed' , '?')
+                        dgDict[currHour[1] + 'Pressure'] =  hourDict.get('pressure' , '?')
+                        dgDict[currHour[1] + 'Humidity'] =  hourDict.get('humidity' , '?')
+                        dgDict[currHour[1] + 'Text'] =      hourDict.get('conditions' , '?')
+                        dgDict[currHour[1] + 'Picon'] =     hourDict.get('icon' , '?')
+                        dgDict[currHour[1] + 'Cloud'] =     hourDict.get('cloudcover' , '?')
+                        dgDict[currHour[1] + 'Intensity'] = hourDict.get('precip' , '?')
     else:
         dgDict['W-Info'] = ''
         dgDict['W-Info-h'] = ''

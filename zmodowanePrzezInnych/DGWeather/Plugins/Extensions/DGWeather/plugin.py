@@ -17,14 +17,16 @@ def main(session, **kwargs):
     else:
         session.open(SettingsView)
 
+weather_data = None
+
 def AutoStart(reason, **kwargs):
+    global weather_data
     if reason == 0: # Enigma start
         try:
             os.system('echo "SYSTEM RESTARTED" > /tmp/dgWeather/dgWeather.log')
-            try:
-                WeatherData().GetWeather()
-            except Exception:
-                pass
+            if weather_data is None:
+                weather_data = WeatherData()
+                weather_data.GetWeather()
             write_log('AutoStart() zainicjowano weather_data')
         except Exception:
             Exc_log()
