@@ -649,6 +649,7 @@ class urlparser:
                        'ustream.tv': self.pp.parserUSTREAMTV,
                        'ustreamix.com': self.pp.parserUSTREAMIXCOM,
                        #v
+                       'v6embed.xyz': self.pp.parserVIDGUARDTO,
                        'vcstream.to': self.pp.parserVCSTREAMTO,
                        'veehd.com': self.pp.parserVEEHDCOM,
                        'vembed.net': self.pp.parserVIDGUARDTO,
