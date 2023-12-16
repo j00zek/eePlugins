@@ -38,7 +38,6 @@ if not os.path.exists('/etc/enigma2/DGWeather'):
 
 #Wszystkie ustawienia w jednym miejscu
 config.plugins.dgWeather = ConfigSubsection()
-config.plugins.dgWeather.refreshesCount = NoSave(ConfigInteger(default=0))
 
 config.plugins.dgWeather.tempUnit = ConfigSelection(default='Celsius', choices=[('Celsius', _('Celsius')), ('Fahrenheit', _('Fahrenheit'))])
 config.plugins.dgWeather.windspeedUnit = ConfigSelection(default='km/h', choices=[('km/h', _(' km/h')), ('m/s', _(' m/s')), ('mp/h', _(' mp/h')), ('ft/s', _(' ft/s'))])
@@ -50,7 +49,7 @@ else:
 config.plugins.dgWeather.CountryCode = ConfigSelection(default=defVal, choices=[('de', _('German')), ('ru', _('Russian')), ('en', _('English')), ('zh', _('Chines')), ('pl', _('Polish'))])
 config.plugins.dgWeather.refreshInterval = ConfigNumber(default=60)
 config.plugins.dgWeather.numbers = ConfigSelection(default='1', choices=['0', '1', '2'])
-config.plugins.dgWeather.Provider = ConfigSelection(default='VisualWeather', choices=['VisualWeather']) #, 'OpenWeathermap','VisualWeather > OpenWeathermap','OpenWeathermap > VisualWeather'])
+config.plugins.dgWeather.Provider = ConfigSelection(default='VisualWeather', choices=['VisualWeather', 'OpenWeathermap','WeatherBit'])
 
 config.plugins.dgWeather.pressureUnit = ConfigSelection(default='mmHg', choices=[('mmHg', _(' mmHg')), ('mBar', _(' mBar')), ('hPa', _(' hPa'))])
 config.plugins.dgWeather.WeekDay = ConfigSelection(default='dm', choices=[('dm', _('d.m.')), ('dmy', _('d.m.y.'))])

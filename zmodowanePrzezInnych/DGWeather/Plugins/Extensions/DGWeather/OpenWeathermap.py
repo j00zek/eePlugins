@@ -7,9 +7,9 @@ import skin
 
 from Plugins.Extensions.DGWeather.components.utils import *
 
-class VisualWeather(Screen):
+class OpenWeathermap(Screen):
     def __init__(self, session, args = None):
-        self.skin = loadskin('VisualWeather.xml')
+        self.skin = loadskin('OpenWeathermap.xml')
         Screen.__init__(self, session)
         self.session = session
         self['key_red'] = StaticText('')

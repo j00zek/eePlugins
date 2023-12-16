@@ -153,3 +153,4 @@ if __name__ == '__main__': # wychwytuje sytuacje gdy skrypt odpalany z konsoli
     else:
         dict = OpenWeatherDict(APIKEY, latitude, longitude, CountryCode)
         buildDGweatherDict(dict)
+    

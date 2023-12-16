@@ -17,7 +17,8 @@ from Plugins.Extensions.DGWeather.components.utils import *
 from Plugins.Extensions.DGWeather.components.getAirly import getAirlyDict
 from Plugins.Extensions.DGWeather.components.getGeoInfo import getGeoInfo
 from Plugins.Extensions.DGWeather.components.getVisualWeather import getVisualCrossingDict
-from Plugins.Extensions.DGWeather.components.getOpenWeather import OpenWeatherDict
+from Plugins.Extensions.DGWeather.components.getOpenWeather import getOpenWeatherDict
+from Plugins.Extensions.DGWeather.components.getWeatherBit import getWeatherBitDict
 
 dsunits = 'si'
 
@@ -294,9 +295,7 @@ class WeatherData:
             if os.path.isfile(logFile) and os.stat(logFile).st_size >= 100000: #kasowanie tylko jak log wiekszy od 100KB
                 os.remove(logFile)
                 write_log('----- LOG ZA DUZY, SKROCONO -----')
-            else:
-                write_log('----- GetWeather() >>> -----')
-            write_log('GetWeather() >>>')
+            write_log('----- GetWeather() >>> -----')
             #inicjacja kolejnego odswierzenia
             self.timer.start(timeout, True)
             
@@ -316,6 +315,8 @@ class WeatherData:
                                                                            )
                                         )
                 
+                #ikona serwisu
+                self.WeatherInfo['currentProviderIcon'] = '/usr/lib/enigma2/python/Plugins/Extensions/DGWeather/weather/VisualWeather.png'
                 #obliczenia faz ksiezyca
                 moonData = self.moonphase(self.WeatherInfo['currentMoonPhase'])
                 self.WeatherInfo['currentMoonPicon'] = moonData[1]
@@ -345,14 +346,28 @@ class WeatherData:
             #pobieranie z OpenWeathermap
             elif config.plugins.dgWeather.Provider.value == 'OpenWeathermap' and config.plugins.dgWeather.OpenWeathermap_apikey.value != '':
                 write_log('WeatherData.GetWeather() OpenWeatherDict...')
-                self.WeatherInfo.update(OpenWeatherDict(config.plugins.dgWeather.OpenWeathermap_apikey.value,
-                                                       config.plugins.dgWeather.geolatitude.value,
-                                                       config.plugins.dgWeather.geolongitude.value,
-                                                       config.plugins.dgWeather.CountryCode.value
-                                                      )
+                self.WeatherInfo.update(getOpenWeatherDict(config.plugins.dgWeather.OpenWeathermap_apikey.value,
+                                                            config.plugins.dgWeather.geolatitude.value,
+                                                            config.plugins.dgWeather.geolongitude.value,
+                                                            config.plugins.dgWeather.CountryCode.value
+                                                           )
                                         )
                 #dopasowanie WeatherInfo
+                for key, value in self.WeatherInfo.items():
+                    pass
                     
+            #pobieranie z WeatherBit
+            elif config.plugins.dgWeather.Provider.value == 'WeatherBit' and config.plugins.dgWeather.OpenWeathermap_apikey.value != '':
+                write_log('WeatherData.GetWeather() WeatherBit...')
+                self.WeatherInfo.update(getWeatherBitDict(config.plugins.dgWeather.OpenWeathermap_apikey.value,
+                                                          config.plugins.dgWeather.geolatitude.value,
+                                                          config.plugins.dgWeather.geolongitude.value,
+                                                          config.plugins.dgWeather.CountryCode.value
+                                                         )
+                                        )
+                #dopasowanie WeatherInfo
+                for key, value in self.WeatherInfo.items():
+                    pass
             
             #pobieranie z airly
             if config.plugins.dgWeather.airlyAPIKEY.value != '' and config.plugins.dgWeather.airlyID.value != '':

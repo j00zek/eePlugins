@@ -5,8 +5,9 @@ from Components.ConfigList import ConfigListScreen
 from Components.Sources.StaticText import StaticText
 from Components.config import config, getConfigListEntry, ConfigNothing
 from Plugins.Extensions.DGWeather.WeatherConfig import WeatherConfig
-from Plugins.Extensions.DGWeather.VisualWeather import VisualWeather
+from Plugins.Extensions.DGWeather.WeatherDetails import WeatherDetails
 import skin
+from importlib import reload
 
 from Plugins.Extensions.DGWeather.components.utils import * 
 
@@ -51,8 +52,21 @@ class SettingsView(Screen, ConfigListScreen):
         return
 
     def key_blue(self):
-        write_log('SettingsView().key_blue() >>>') 
-        self.session.open(VisualWeather)
+        if config.plugins.dgWeather.Provider.value == 'VisualWeather':
+            write_log('SettingsView().key_blue() opening VisualWeather') 
+            import Plugins.Extensions.DGWeather.VisualWeather
+            reload(Plugins.Extensions.DGWeather.VisualWeather)
+            self.session.open(Plugins.Extensions.DGWeather.VisualWeather.VisualWeather)
+        elif config.plugins.dgWeather.Provider.value == 'OpenWeathermap':
+            write_log('SettingsView().key_blue() opening OpenWeathermap') 
+            import Plugins.Extensions.DGWeather.OpenWeathermap
+            reload(Plugins.Extensions.DGWeather.OpenWeathermap)
+            self.session.open(Plugins.Extensions.DGWeather.OpenWeathermap.OpenWeathermap)
+        elif config.plugins.dgWeather.Provider.value == 'WeatherBit':
+            write_log('SettingsView().key_blue() opening WeatherBit') 
+            import Plugins.Extensions.DGWeather.WeatherBit
+            reload(Plugins.Extensions.DGWeather.WeatherBit)
+            self.session.open(Plugins.Extensions.DGWeather.WeatherBit.WeatherBit)
 
     def cancel(self):
         self.close()
