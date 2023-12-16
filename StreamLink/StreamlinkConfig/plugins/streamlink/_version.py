@@ -12,4 +12,4 @@ def _get_version() -> str:
     return get_version(project_dir=Path(streamlink.__file__).parents[2])
 
 
-__version__ = '6.4.1 (2023-11-22)'
+__version__ = '6.5.0 (2023-12-16)'
