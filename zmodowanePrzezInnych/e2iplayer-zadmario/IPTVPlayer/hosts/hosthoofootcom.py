@@ -200,7 +200,7 @@ class HoofootCom(CBaseHostClass):
         data = self.cm.ph.getAllItemsBeetwenNodes(data, ('<table>', '<tr>'), ('<div id="port"', '>'))
         for item in data:
             url = self.cm.ph.getSearchGroups(item, '''href=['"]([^'^"]+?)['"]''')[0]
-            if '' == url:
+            if 'match' not in url:
                 continue
             icon = self.cm.ph.getSearchGroups(item, '''src=['"]([^'^"^>]+?\.jpg)['"]''')[0]
             title = self.cleanHtmlStr(self.cm.ph.getSearchGroups(item, '''alt=['"]([^'^"]+?)['"]''')[0])
@@ -232,7 +232,7 @@ class HoofootCom(CBaseHostClass):
             return urlTab
 
         tmpTab = []
-        tmp = self.cm.ph.getDataBeetwenMarkers(data, 'Alternatives', '</div>', False)[1]
+        tmp = self.cm.ph.getDataBeetwenMarkers(data, 'descruta', '</div>', False)[1]
         tmp = self.cm.ph.getAllItemsBeetwenMarkers(tmp, '<a ', '</a>')
         n_link = 0
         for item in tmp:
