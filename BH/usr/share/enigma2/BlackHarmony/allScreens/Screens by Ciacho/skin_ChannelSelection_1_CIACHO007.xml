@@ -1,8 +1,8 @@
 <skin>
-  <screen name="ChannelSelection" position="center,center" size="1920,1080" title="Channel Selection" flags="wfNoBorder" backgroundColor="black">
-    <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" zPosition="-10" size="1920,1080">
-      <convert type="j00zekRefreshBingPicOfTheDay">/usr/share/enigma2/BlackHarmony/bg_design/cs.png</convert>
-    </widget>
+<screen name="ChannelSelection" position="center,center" size="1920,1080" title="Channel Selection" flags="wfNoBorder" backgroundColor="black">
+  <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" zPosition="-10" size="1920,1080">
+    <convert type="j00zekRefreshBingPicOfTheDay">/usr/share/enigma2/BlackHarmony/bg_design/cs.png</convert>
+  </widget>
   <widget source="global.CurrentTime" render="Label" position="75,55" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
     <convert type="ClockToText">Default</convert>
   </widget>
@@ -10,11 +10,11 @@
     <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
   </widget>
   <widget source="Title" render="Label" position="95,160" size="1025,35" font="Roboto_HD; 30" backgroundColor="black" transparent="1" halign="left" foregroundColor="light_yellow" />
-  <widget name="list" position="95,227" size="1025,720" serviceItemHeight="45" selectionPixmap="BlackHarmony/menu/sel_1005_40.png" scrollbarMode="showOnDemand" enableWrapAround="1" colorServiceDescription="pastel" colorServiceDescriptionSelected="lemon" colorEventProgressbarBorder="border" colorEventProgressbarBorderSelected="border" picServiceEventProgressbar="BlackHarmony/gfx/progcl.png" foregroundColorServiceNotAvail="#777777" serviceNumberFont="Roboto_HD;32" serviceNameFont="Roboto_HD;32" serviceInfoFont="Roboto_HD;29" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" transparent="1" />
+  <widget name="list" position="95,227" size="1025,720" serviceItemHeight="45" selectionPixmap="BlackHarmony/menu/sel_1005_40.png" scrollbarMode="showOnDemand" enableWrapAround="1" colorServiceDescription="pastel" colorServiceDescriptionSelected="lemon" colorEventProgressbarBorder="border" colorEventProgressbarBorderSelected="border" picServiceEventProgressbar="BlackHarmony/gfx/progcl.png" foregroundColorServiceNotAvail="#777777" serviceNumberFont="Roboto_HD;32" serviceNameFont="Roboto_HD;32" serviceInfoFont="Roboto_HD;29" scrollbarWidth="10" scrollbarBorderWidth="1" scrollbarForegroundColor="#e6e6e6" scrollbarBorderColor="#3b3e3f" transparent="1" />
   <widget font="Roboto_HD; 26" position="1740,756" render="Label" size="110,30" source="ServiceEvent" transparent="1" zPosition="2" halign="left" backgroundColor="black">
-  <convert type="EventTime">Remaining</convert>
-  <convert type="RemainingToText">NoSeconds</convert>
-</widget>
+    <convert type="EventTime">Remaining</convert>
+    <convert type="RemainingToText">NoSeconds</convert>
+  </widget>
   <widget source="ServiceEvent" render="Label" position="1185,756" size="80,30" font="Roboto_HD; 26" backgroundColor="background" transparent="1">
     <convert type="EventTime">StartTime</convert>
     <convert type="ClockToText" />
@@ -30,17 +30,32 @@
     <convert type="j00zekModEventName">ExtendedDescription</convert>
   </widget>
   <widget source="ServiceEvent" render="Progress" position="1358,768" size="376,6" pixmap="BlackHarmony/gfx/bar_ber.png" transparent="1">
-  <convert type="EventTime">Progress</convert>
-</widget>
-  <widget source="ServiceEvent" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" position="1185,420" size="655,35" font="HD_Thin; 30" backgroundColor="black" transparent="1" halign="left" noWrap="1" foregroundColor="light_yellow">
+    <convert type="EventTime">Progress</convert>
+  </widget>
+  <widget source="ServiceEvent" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" position="1185,420" size="655,35" font="HD_Thin; 30" backgroundColor="black" transparent="1" halign="center" noWrap="1" foregroundColor="light_yellow">
     <convert type="j00zekModEventName">Name</convert>
   </widget>
   <widget backgroundColor="background" font="HD_Thin; 34" halign="center" position="1185,365" render="Label" size="655,38" source="ServiceEvent" transparent="1" valign="center" foregroundColor="green">
     <convert type="ServiceName">Name</convert>
   </widget>
-  <widget alphatest="blend" render="j00zekModEventListDisplay" position="1185,810" size="655,140" source="ServiceEvent" rowHeight="32" column0="0,80,green,Roboto_HD,25,0,0" column1="80,545,white,Roboto_HD,25,0,1" primetimeoffset="10">
-    <convert type="j00zekModEventList">primetime=yes,eventcount=4</convert>
+  <widget alphatest="blend" column0="0,80,blue,Roboto_HD,28,0,0" column1="95,620,white,Roboto_HD,28,0,1" position="1185,826" primetimeoffset="10" render="j00zekModEventListDisplay" rowHeight="30" size="90,120" source="ServiceEvent">
+    <convert type="j00zekModEventList">eventcount=4,NoName,NoDuration</convert>
   </widget>
+  <widget alphatest="blend" column0="0,80,green,Roboto_HD,28,0,0" column1="95,620,white,Roboto_HD,28,0,1" position="1185,826" primetimeoffset="10" render="j00zekModEventListDisplay" rowHeight="30" size="90,120" source="ServiceEvent">
+    <convert type="j00zekModEventList">eventcount=4,NoName,NoDuration</convert>
+  </widget>
+  <widget source="ServiceEvent" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=99,startdelay=2000" backgroundColor="transpBlack" font="Roboto_HD;26" foregroundColor="white" halign="left" position="1280,827" size="570,32" transparent="1" zPosition="5">
+  <convert type="j00zekModEventList">eventNo=1,noTime,NoDuration</convert>
+</widget>
+  <widget source="ServiceEvent" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=99,startdelay=2000" backgroundColor="transpBlack" font="Roboto_HD;26" foregroundColor="white" halign="left" position="1280,857" size="570,32" transparent="1" zPosition="5">
+  <convert type="j00zekModEventList">eventNo=2,noTime,NoDuration</convert>
+</widget>
+  <widget source="ServiceEvent" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=99,startdelay=2000" backgroundColor="transpBlack" font="Roboto_HD;26" foregroundColor="white" halign="left" position="1280,887" size="570,32" transparent="1" zPosition="5">
+  <convert type="j00zekModEventList">eventNo=3,noTime,NoDuration</convert>
+</widget>
+  <widget source="ServiceEvent" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=99,startdelay=2000" backgroundColor="transpBlack" font="Roboto_HD;26" foregroundColor="white" halign="left" position="1280,917" size="570,32" transparent="1" zPosition="5">
+  <convert type="j00zekModEventList">eventNo=4,noTime,NoDuration</convert>
+</widget>
   <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="95,1001" size="35,27" alphatest="blend" />
   <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="430,1001" size="35,27" alphatest="blend" />
   <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="760,1001" size="35,27" alphatest="blend" />

@@ -28,7 +28,7 @@
   <widget source="Service" render="j00zekLabel" position="1123,440" size="740,40" font="Regular; 34" backgroundColor="background" transparent="1" foregroundColor="green" halign="center" zPosition="5">
     <convert type="ServiceName">Name</convert>
   </widget>
-  <widget render="j00zekModRunningText" source="Event" options="movetype=running,startpoint=0,direction=top,steptime=90,repeat=2,startdelay=6000,wrap" position="1123,490" size="740,40" font="Regular; 30" backgroundColor="black" transparent="1" halign="center" noWrap="1" foregroundColor="light_yellow">
+  <widget render="j00zekModRunningText" source="Event" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" position="1123,490" size="740,40" font="Regular; 30" backgroundColor="black" transparent="1" halign="center" noWrap="1" foregroundColor="light_yellow">
   <convert type="j00zekModEventName">Name</convert>
 </widget>
   <!--godzina-->
@@ -41,23 +41,23 @@
     <convert type="ClockToText">Format:- %H:%M</convert>
   </widget>
   <widget backgroundColor="background" font="Regular; 30" foregroundColor="white" halign="right" position="1608,540" render="Label" size="250,50" source="Event" transparent="1">
-  <convert type="EventTime">Remaining</convert>
-  <convert type="RemainingToText">InMinutes</convert>
-</widget>
+    <convert type="EventTime">Remaining</convert>
+    <convert type="RemainingToText">InMinutes</convert>
+  </widget>
   <!--Opis-->
   <eLabel backgroundColor="linie" position="1125,585" size="733,1" />
   <widget source="Event" render="j00zekLabel" position="1125,590" size="733,32" transparent="1" zPosition="1" font="Regular; 27" halign="left" valign="center" foregroundColor="green" backgroundColor="black">
     <convert type="j00zekModEventName">Genre</convert>
   </widget>
   <widget source="Event" render="j00zekLabel" position="1125,590" size="733,32" transparent="1" zPosition="1" font="Regular; 27" halign="right" valign="center" foregroundColor="light_red" backgroundColor="black">
-  <convert type="j00zekModEventName">Rating</convert>
-</widget>
+    <convert type="j00zekModEventName">Rating</convert>
+  </widget>
   <widget render="j00zekModRunningText" source="Event" options="movetype=running,startpoint=0,direction=top,steptime=90,repeat=2,startdelay=6000,wrap" halign="center" font="Regular; 28" backgroundColor="background" position="1125,640" size="733,345" transparent="1" foregroundColor="font_light_grey">
-  <convert type="j00zekModEventName">ExtendedDescription</convert>
-</widget>
+    <convert type="j00zekModEventName">ExtendedDescription</convert>
+  </widget>
   <!--lista -->
   <eLabel backgroundColor="linie" position="1114,133" size="1,844" />
-  <widget name="list" position="58,128" size="1045,855" itemHeight="45" font="HD_Thin; 25" scrollbarMode="showOnDemand" enableWrapAround="1" scrollbarWidth="6" scrollbarSliderBorderWidth="1" foregroundColorSelected="green" scrollbarSliderForegroundColor="white" scrollbarSliderBorderColor="white" selectionPixmap="BlackHarmony/menu/sel_1055_45.png" backgroundColor="transpBlack" transparent="1" />
+  <widget name="list" position="58,128" size="1045,855" itemHeight="45" font="HD_Thin; 25" scrollbarMode="showOnDemand" enableWrapAround="1" scrollbarWidth="6" scrollbarBorderWidth="1" foregroundColorSelected="green" scrollbarForegroundColor="white" scrollbarBorderColor="white" selectionPixmap="BlackHarmony/menu/sel_1055_45.png" backgroundColor="transpBlack" transparent="1" />
   <!--przyciski-->
   <widget source="session.CurrentService" render="j00zekPiconAnimation" position="35,1021" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0" random="True" pixmaps="BlackHarmony/skin_user_animButtons/key_red" pixalter="BlackHarmony/buttons/key_red.png" />
   <widget source="session.CurrentService" render="j00zekPiconAnimation" position="365,1021" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,1" random="True" pixmaps="BlackHarmony/skin_user_animButtons/key_green" pixalter="BlackHarmony/buttons/key_green.png" />
