@@ -66,14 +66,16 @@ config.plugins.dgWeather.geoLocationName = ConfigText(default=defVal)
 #konfiguracja dla serwisu VisualWeather
 defVal = open('/etc/enigma2/DGWeather/VisualWeather_apikey', 'r').read().strip()
 config.plugins.dgWeather.VisualWeather_apikey = ConfigText(default=defVal)
-defVal = open('/etc/enigma2/DGWeather/VisualWeather_city', 'r').read().strip()
-config.plugins.dgWeather.VisualWeather_city = ConfigText(default=defVal, fixed_size = False)
 
 #konfiguracja dla serwisu OpenWeathermap
 defVal = open('/etc/enigma2/DGWeather/OpenWeathermap_apikey', 'r').read().strip()
 config.plugins.dgWeather.OpenWeathermap_apikey = ConfigText(default=defVal)
 defVal = open('/etc/enigma2/DGWeather/OpenWeathermap_idcity', 'r').read().strip()
 config.plugins.dgWeather.OpenWeathermap_idcity = ConfigText(default=defVal, fixed_size = False)
+
+#konfiguracja dla serwisu WeatherBit
+defVal = open('/etc/enigma2/DGWeather/WeatherBit_apikey', 'r').read().strip()
+config.plugins.dgWeather.WeatherBit_apikey = ConfigText(default=defVal)
 
 #konfiguracja dla serwisu Airly
 if os.path.exists('/etc/enigma2/Airly/api.txt'): defVal = open('/etc/enigma2/Airly/api.txt', 'r').readline().strip()

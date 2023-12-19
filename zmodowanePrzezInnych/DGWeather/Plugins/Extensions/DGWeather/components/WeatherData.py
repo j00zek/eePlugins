@@ -357,9 +357,9 @@ class WeatherData:
                     pass
                     
             #pobieranie z WeatherBit
-            elif config.plugins.dgWeather.Provider.value == 'WeatherBit' and config.plugins.dgWeather.OpenWeathermap_apikey.value != '':
+            elif config.plugins.dgWeather.Provider.value == 'WeatherBit' and config.plugins.dgWeather.WeatherBit_apikey.value != '':
                 write_log('WeatherData.GetWeather() WeatherBit...')
-                self.WeatherInfo.update(getWeatherBitDict(config.plugins.dgWeather.OpenWeathermap_apikey.value,
+                self.WeatherInfo.update(getWeatherBitDict(config.plugins.dgWeather.WeatherBit_apikey.value,
                                                           config.plugins.dgWeather.geolatitude.value,
                                                           config.plugins.dgWeather.geolongitude.value,
                                                           config.plugins.dgWeather.CountryCode.value

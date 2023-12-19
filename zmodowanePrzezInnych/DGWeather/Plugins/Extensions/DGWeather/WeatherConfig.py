@@ -70,18 +70,20 @@ class WeatherConfig(Screen, ConfigListScreen):
         self.list.append(getConfigListEntry(_('StartScreen'), config.plugins.dgWeather.StartScreen))
         self.list.append(getConfigListEntry(_('Weather Picon'), config.plugins.dgWeather.animatedWeather))
         self.list.append(getConfigListEntry(_('Provider'), config.plugins.dgWeather.Provider))
-        self.list.append(getConfigListEntry(tab + _('Number of decimal places'), config.plugins.dgWeather.numbers))
+        self.list.append(getConfigListEntry(_('Number of decimal places'), config.plugins.dgWeather.numbers))
         self.list.append(getConfigListEntry(_('Refresh interval'), config.plugins.dgWeather.refreshInterval))
         self.list.append(getConfigListEntry(_('Language (weather descriptions)'), config.plugins.dgWeather.CountryCode))
         #geo
         self.list.append(getConfigListEntry(_('Location latitude)'), config.plugins.dgWeather.geolatitude))
         self.list.append(getConfigListEntry(_('Location longitude)'), config.plugins.dgWeather.geolongitude))
-        self.list.append(getConfigListEntry(_('Location name)'), config.plugins.dgWeather.geoLocationName))
+        #self.list.append(getConfigListEntry(_('Location name)'), config.plugins.dgWeather.geoLocationName))
         #airly
         self.list.append(getConfigListEntry(_('Airly location ID'), config.plugins.dgWeather.airlyID))
         self.list.append(getConfigListEntry(_('Airly APIKEY'), config.plugins.dgWeather.airlyAPIKEY))
-        self.list.append(getConfigListEntry(tab + _('VisualWeather API-Key'), config.plugins.dgWeather.VisualWeather_apikey))
-        self.list.append(getConfigListEntry(tab + _('OpenWeathermap API-Key'), config.plugins.dgWeather.OpenWeathermap_apikey))
+        #klucze API
+        self.list.append(getConfigListEntry(_('VisualWeather API-Key'), config.plugins.dgWeather.VisualWeather_apikey))
+        self.list.append(getConfigListEntry(_('OpenWeathermap API-Key'), config.plugins.dgWeather.OpenWeathermap_apikey))
+        self.list.append(getConfigListEntry(_('WeatherBit API-Key'), config.plugins.dgWeather.WeatherBit_apikey))
         self['config'].list = self.list
         self['config'].l.setList(self.list)
 
