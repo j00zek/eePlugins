@@ -353,8 +353,24 @@ class WeatherData:
                                                            )
                                         )
                 #dopasowanie WeatherInfo
+                self.WeatherInfo['currentMoonPhase'] = self.moonphase()[0]
+                self.WeatherInfo['currentMoonPicon'] = self.moonphase()[1]
                 for key, value in self.WeatherInfo.items():
-                    pass
+                    write_log('%s = %s' %(key,value))
+                    if key ==   'atmoVisibility':   self.WeatherInfo[key] = self.convert_km_miles(value)
+                    elif key == 'astroDaySoltice':  self.WeatherInfo[key] = self.convertAstroSun(value)
+                    elif key == 'downloadDate':     self.WeatherInfo[key] = strftime('%Y-%m-%d', localtime(value))
+                    elif key == 'downloadTime':     self.WeatherInfo[key] = strftime('%H:%M:%S', localtime(value))
+                    elif key == 'windChill':        self.WeatherInfo[key] = self.convertTemperature(value)
+                    
+                    elif key.endswith('Date'):      self.WeatherInfo[key] = self.convertEPOCtoYMD(value)
+                    elif key.endswith('Code'):      self.WeatherInfo[key] = self.ConvertIconCode(value)
+                    elif key.endswith('Day'):       self.WeatherInfo[key] = self.convertCurrentDay(value)
+                    elif key.endswith('Hour'):      self.WeatherInfo[key] = self.convertHMStoHM(value)
+                    elif key.endswith('Picon'):     self.WeatherInfo[key] = self.convertIconName(value)
+                    elif key.endswith('Pressure'):  self.WeatherInfo[key] = self.convertPressure(value)
+                    elif key.endswith('windSpeed'): self.WeatherInfo[key] = self.convertwindSpeed(value)
+                    elif key.endswith('Temp'):      self.WeatherInfo[key] = self.convertTemperature(value)
                     
             #pobieranie z WeatherBit
             elif config.plugins.dgWeather.Provider.value == 'WeatherBit' and config.plugins.dgWeather.WeatherBit_apikey.value != '':
@@ -395,43 +411,62 @@ class WeatherData:
 
     def returnWeatherDict(self):
         return self.WeatherInfo
-#!!!!!!!!!!!!! UZYTE
 
+    def convertEPOCtoYMD(self, value):
+        try:
+            return strftime('%Y-%m-%d', localtime(value))
+        except Exception:
+            return ''
+    
     def convertHMStoHM(self, HMS):
-        if HMS.startswith('0'): return HMS[1:len(HMS)-3]
-        else: return HMS[:len(HMS)-3]
+        try:
+            if HMS.startswith('0'): return HMS[1:len(HMS)-3]
+            else: return HMS[:len(HMS)-3]
+        except Exception:
+            return ''
 
     def convertPressure(self, pressure):
-        if config.plugins.dgWeather.pressureUnit.value == 'mmHg': return '%s mmHg' % format(pressure * 0.75, self.numbers)
-        if config.plugins.dgWeather.pressureUnit.value == 'mBar': return '%s mBar' % format(pressure, self.numbers)
-        if config.plugins.dgWeather.pressureUnit.value == 'hPa':  return '%s hPa'  % format(pressure, self.numbers)
+        try:
+            if config.plugins.dgWeather.pressureUnit.value == 'mmHg': return '%s mmHg' % format(pressure * 0.75, self.numbers)
+            if config.plugins.dgWeather.pressureUnit.value == 'mBar': return '%s mBar' % format(pressure, self.numbers)
+            if config.plugins.dgWeather.pressureUnit.value == 'hPa':  return '%s hPa'  % format(pressure, self.numbers)
+        except Exception:
+            pass
         return str(pressure)
 
     def convert_km_miles(self, value):
-        if config.plugins.dgWeather.windspeedUnit.value == 'mp/h': return _('%s miles') % format(float(value) * 0.62137, self.numbers)
-        else: return _('%s km') % format(float(value), self.numbers)
+        try:
+            if config.plugins.dgWeather.windspeedUnit.value == 'mp/h': return _('%s miles') % format(float(value) * 0.62137, self.numbers)
+            else: return _('%s km') % format(float(value), self.numbers)
+        except Exception:
+            return ''
 
     def convertwindSpeed(self, windSpeed):
-        if config.plugins.dgWeather.windspeedUnit.value == 'm/s':
-            windSpeed = format(windSpeed, self.numbers) + _(' m/s')
-        if config.plugins.dgWeather.windspeedUnit.value == 'km/h':
-            windSpeed = format(windSpeed * 3.6, self.numbers) + _(' km/h')
-        if config.plugins.dgWeather.windspeedUnit.value == 'mp/h':
-            windSpeed = format(windSpeed * 0.447, self.numbers) + _(' mp/h')
-        if config.plugins.dgWeather.windspeedUnit.value == 'ft/s':
-            windSpeed = format(windSpeed * 0.3048, self.numbers) + _(' ft/s')
+        try:
+            if config.plugins.dgWeather.windspeedUnit.value == 'm/s':  windSpeed = format(windSpeed, self.numbers) + _(' m/s')
+            if config.plugins.dgWeather.windspeedUnit.value == 'km/h': windSpeed = format(windSpeed * 3.6, self.numbers) + _(' km/h')
+            if config.plugins.dgWeather.windspeedUnit.value == 'mp/h': windSpeed = format(windSpeed * 0.447, self.numbers) + _(' mp/h')
+            if config.plugins.dgWeather.windspeedUnit.value == 'ft/s': windSpeed = format(windSpeed * 0.3048, self.numbers) + _(' ft/s')
+        except Exception:
+            pass
         return str(windSpeed)
 
     def convertTemperature(self, temp):
-        if config.plugins.dgWeather.tempUnit.value == 'Celsius': return '%s °C' % format(temp, self.numbers)
-        elif config.plugins.dgWeather.tempUnit.value == 'Fahrenheit': return '%s °F' % format(temp * 1.8 + 32, self.numbers)
-        else: return temp
+        try:
+            if config.plugins.dgWeather.tempUnit.value == 'Celsius': return '%s °C' % format(temp, self.numbers)
+            elif config.plugins.dgWeather.tempUnit.value == 'Fahrenheit': return '%s °F' % format(temp * 1.8 + 32, self.numbers)
+            else: return temp
+        except Exception:
+            return ''
 
     def convertCurrentDay(self, val):
-        wdays = [_('Sunday'), _('Monday'), _('Tuesday'), _('Wednesday'), _('Thursday'), _('Friday'), _('Saturday')]
-        swdays = [_('Sun'), _('Mon'), _('Tue'), _('Wed'), _('Thu'), _('Fri'), _('Sat')]
-        value = wdays[int(datetime.datetime.fromtimestamp(int(val)).strftime('%w'))]
-        write_log('GetWeather().convertCurrentDay(%s) = %s' % (val,value))
+        try:
+            wdays = [_('Sunday'), _('Monday'), _('Tuesday'), _('Wednesday'), _('Thursday'), _('Friday'), _('Saturday')]
+            swdays = [_('Sun'), _('Mon'), _('Tue'), _('Wed'), _('Thu'), _('Fri'), _('Sat')]
+            value = swdays[int(datetime.datetime.fromtimestamp(int(val)).strftime('%w'))]
+            write_log('GetWeather().convertCurrentDay(%s) = %s' % (val,value))
+        except Exception:
+            value = ''
         return value
 
     def convertIconName(self, IconName):
@@ -446,6 +481,51 @@ class WeatherData:
         elif IconName == 'sleet': return '7'
         elif IconName == 'snow':  return '14'
         elif IconName == 'wind':  return '23'
+        elif IconName == '01d':   return '32'
+        elif IconName == '02d':   return '34'
+        elif IconName == '03d':   return '28'
+        elif IconName == '04d':   return '26'
+        elif IconName == '05d':   return '39'
+        elif IconName == '06d':   return '37'
+        elif IconName == '07d':   return '5'
+        elif IconName == '08d':   return '13'
+        elif IconName == '09d':   return '12'
+        elif IconName == '10d':   return '12'
+        elif IconName == '11d':   return '38'
+        elif IconName == '12d':   return '5'
+        elif IconName == '13d':   return '14'
+        elif IconName == '14d':   return '17'
+        elif IconName == '15d':   return '19'
+        elif IconName == '20d':   return '37'
+        elif IconName == '21d':   return '37'
+        elif IconName == '22d':   return '3'
+        elif IconName == '23d':   return '5'
+        elif IconName == '30d':   return '38'
+        elif IconName == '31d':   return '38'
+        elif IconName == '32d':   return '5'
+        elif IconName == '33d':   return '13'
+        elif IconName == '34d':   return '14'
+        elif IconName == '40d':   return '39'
+        elif IconName == '46d':   return '11'
+        elif IconName == '47d':   return '11'
+        elif IconName == '48d':   return '5'
+        elif IconName == '49d':   return '6'
+        elif IconName == '50d':   return '20'
+        elif IconName == '01n':   return '31'
+        elif IconName == '02n':   return '29'
+        elif IconName == '03n':   return '27'
+        elif IconName == '04n':   return '26'
+        elif IconName == '05n':   return '47'
+        elif IconName == '06n':   return '47'
+        elif IconName == '07n':   return '46'
+        elif IconName == '08n':   return '46'
+        elif IconName == '09n':   return '12'
+        elif IconName == '10n':   return '12'
+        elif IconName == '11n':   return '47'
+        elif IconName == '13n':   return '14'
+        elif IconName == '40n':   return '12'
+        elif IconName == '41n':   return '46'
+        elif IconName == '50n':   return '20'
         write_log('MISSING IconName: "%s"' % IconName)
         return '3200'
         

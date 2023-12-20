@@ -9,6 +9,7 @@ if '/usr/lib/enigma2/python/Plugins/Extensions/DGWeather/components/' not in sys
     sys.path.append('/usr/lib/enigma2/python/Plugins/Extensions/DGWeather/components/')
 
 from utils import *
+from datetime import datetime
 
 def getOpenWeatherDict(APIKEY, lat, long, CountryCode):
     dict = OpenWeatherDict(APIKEY, lat, long, CountryCode)
@@ -23,7 +24,7 @@ def OpenWeatherDict(APIKEY, lat, long, CountryCode):
         write_log('OWM-URL : ' + str(url))
         webContent = downloadWebPage(url)
         if 'Invalid API key' in webContent:
-            self.WeatherInfo['currentWeatherText'] = _('WRONG API KEY')
+            dgDict['currentWeatherText'] = _('WRONG API KEY')
             write_log('WRONG openweathermap API KEY')
         else:
             naszDict['forecast'] = json.loads(webContent)
@@ -42,8 +43,7 @@ def OpenWeatherDict(APIKEY, lat, long, CountryCode):
 def buildDGweatherDict(sourceDict):
     write_log('buildDGweatherDict() >>>')
     dgDict = {} #LoadJsonDict('dgWeatherDict.json') #aktualizacja
-    if 1:
-        #aktualne dane
+    if 1: #aktualne dane
         tmpDict = sourceDict.get('current', {})
         dgDict['timezone'] = tmpDict.get('timezone','')
         dgDict['atmoVisibility'] =      tmpDict.get('visibility', 0)
@@ -55,6 +55,7 @@ def buildDGweatherDict(sourceDict):
         dgDict['astroDayLength'] =      "%s:%s:%s" % (Hlength, Mlength, Slength)
         dgDict['astroSunrise'] =        tmpDict.get('sys', {}).get('sunrise', 0)
         dgDict['astroSunset'] =         tmpDict.get('sys', {}).get('sunset', 0)
+        dgDict['astroDaySoltice'] =     float(dgDict['astroSunset'] + dgDict['astroSunrise']) * 0.5
         
         dgDict['atmoHumidity'] =        tmpDict.get('main', {}).get('humidity', 0)
         #
@@ -70,69 +71,180 @@ def buildDGweatherDict(sourceDict):
         dgDict['currentlywindSpeed'] =  tmpDict.get('wind', {}).get('speed', 0)
         dgDict['windChill'] =           tmpDict.get('main', {}).get('feels_like', 0)
         dgDict['windDirection'] =       tmpDict.get('wind', {}).get('deg', 0)
-    else:
-        dgDict['currentlyIntensity'] =  tmpDict.get('precip', 0)
-        dgDict['currentPrecip'] =       tmpDict.get('precip', 0)
 
-        dgDict['currentProbability'] =  tmpDict.get('precipprob', 0)
-        dgDict['currentlywindGust'] =   tmpDict.get('windgust', 0)
-        dgDict['uvIndex'] =             tmpDict.get('uvindex', 0)
-        dgDict['dewPoint'] =            tmpDict.get('dew', 0)
-        #aktualne dzienne i godzinowe
-        tmpDict = sourceDict.get('days', [])
-        AvailableDays = len(tmpDict)
-        dayToNameList = [(0, "forecastToday"), (1, "forecastTomorrow"), (2, "forecastTomorrow1"), (3, "forecastTomorrow2"), 
-                         (4, "forecastTomorrow3"), (5, "forecastTomorrow4"), (6, "forecastTomorrow5"), (7, "forecastTomorrow6")
-                        ]
+        try:
+            dgDict['currentlywindGust'] = sourceDict['forecast']['list'][0]['wind']['gust']
+        except Exception as e:
+            print(e)
+
+    if 1: #dane godzinowe
         hourToNameList = [(0, "forecastHourly"),  (1, "forecastHourly1"), (2, "forecastHourly2"), 
                           (3, "forecastHourly3"), (4, "forecastHourly4"), (5, "forecastHourly5"), 
                           (6, "forecastHourly6"), (7, "forecastHourly7"), (8, "forecastHourly8")
                          ]
-        
-        for currDay in dayToNameList:
+        tmpDict = sourceDict.get('forecast', {}).get('list', [])
+        for currHour in hourToNameList:
             try:
-                dayDict = tmpDict[currDay[0]]
+                hourDict = tmpDict[currHour[0]]
             except Exception as e:
                 Exc_log(str(e))
                 break
-            dgDict[currDay[1] + 'Pressure'] =   dayDict.get('pressure' , '?')
-            dgDict[currDay[1] + 'Code'] =       dayDict.get('icon' , '?')
-            dgDict[currDay[1] + 'Day'] =        dayDict.get('datetimeEpoch' , '?')
-            dgDict[currDay[1] + 'Date'] =       dayDict.get('datetime' , '?')
-            dgDict[currDay[1] + 'TempMin'] =    dayDict.get('tempmin' , '?')
-            dgDict[currDay[1] + 'TempMax'] =    dayDict.get('tempmax' , '?')
-            dgDict[currDay[1] + 'Text'] =       dayDict.get('conditions' , '?')
-            dgDict[currDay[1] + 'Picon'] =      dayDict.get('icon' , '?')
-            dgDict[currDay[1] + 'windSpeed'] =  dayDict.get('windspeed' , '?')
-            dgDict[currDay[1] + 'windGust'] =   dayDict.get('windgust' , '?')
-            dgDict[currDay[1] + 'moonPhase'] =  dayDict.get('moonphase' , '?')
-            dgDict[currDay[1] + 'Probability']= dayDict.get('precipprob' , '?')
-            dgDict[currDay[1] + 'Intensity'] =  dayDict.get('precip' , '?')
-            dgDict[currDay[1] + 'cloudCover'] = dayDict.get('cloudcover' , '?')
-            dgDict[currDay[1] + 'Humidity'] =   dayDict.get('humidity' , '?')
+            dgDict[currHour[1] + 'Hour'] =      hourDict.get('dt_txt' , '?')
+            dgDict[currHour[1] + 'Temp'] =      hourDict.get('main' , {}).get('temp' , '?')
+            dgDict[currHour[1] + 'Humidity'] =  hourDict.get('main' , {}).get('humidity' , '?')
+            dgDict[currHour[1] + 'Cloud'] =     hourDict.get('clouds' , {}).get('all' , '?')
+            dgDict[currHour[1] + 'windSpeed'] = hourDict.get('wind' , {}).get('speed' , 0)
+            dgDict[currHour[1] + 'Picon'] =     hourDict.get('weather' , [])[0].get('icon' , '?')
+            dgDict[currHour[1] + 'Text'] =      hourDict.get('weather' , [])[0].get('description' , '?')
+            dgDict[currHour[1] + 'Pressure'] =  hourDict.get('main' , {}).get('pressure' , '?')
+            dgDict[currHour[1] + 'Intensity'] = float(hourDict.get('rain' , {}).get('3h' , 0)) + float(hourDict.get('snow' , {}).get('3h' , 0))
             
-            if currDay[0] == 0:
-                hoursDict = dayDict.get('hours', [])
-                for currHour in hourToNameList:
-                    try:
-                        hourDict = hoursDict[currHour[0]]
-                    except Exception as e:
-                        Exc_log(str(e))
-                        break
-                    dgDict[currHour[1] + 'Hour'] =      hourDict.get('datetime' , '?')
-                    dgDict[currHour[1] + 'Temp'] =      hourDict.get('temp' , '?')
-                    dgDict[currHour[1] + 'windSpeed'] = hourDict.get('windspeed' , '?')
-                    dgDict[currHour[1] + 'Pressure'] =  hourDict.get('pressure' , '?')
-                    dgDict[currHour[1] + 'Humidity'] =  hourDict.get('humidity' , '?')
-                    dgDict[currHour[1] + 'Text'] =      hourDict.get('conditions' , '?')
-                    dgDict[currHour[1] + 'Picon'] =     hourDict.get('icon' , '?')
-                    dgDict[currHour[1] + 'Cloud'] =     hourDict.get('cloudcover' , '?')
-                    dgDict[currHour[1] + 'Intensity'] = hourDict.get('precip' , '?')
-        dgDict['W-Info'] = ''
-        dgDict['W-Info-h'] = ''
-        dgDict['astroDaySoltice'] = ''
-        dgDict['currentOzoneText'] = ''
-        dgDict['PiconMoon'] = ''
+    if 1: #dane dzienne agregowane z godzinowych
+        tmpDict = sourceDict.get('forecast', {}).get('list', [])
+        i = 0
+        next_day = 0
+        sNOW = datetime.now().strftime('%Y-%m-%d')
+        while i < 8:
+            if tmpDict[i]['dt_txt'].split(' ')[0] != sNOW:
+                next_day = i
+                break
+            i += 1
+        write_log('next day starts at Index ' + str(next_day))
+
+        dgDict['forecastTodayDay'] = tmpDict[0]['dt']
+        dgDict['forecastTodayDate'] = tmpDict[0]['dt']
+        i = 0
+        icons = []
+        description = []
+        clouds = []
+        wspeed = []
+        pressure = []
+        humidity = []
+        tempmin = 100
+        tempmax = -100
+        if int(next_day) > 0:
+            while i < int(next_day):
+                icons.append(tmpDict[i]['weather'][0]['icon'])
+                description.append(tmpDict[i]['weather'][0]['description'])
+                clouds.append(format(float(tmpDict[i]['clouds']['all'])))
+                wspeed.append(tmpDict[i]['wind']['speed'])
+                pressure.append(tmpDict[i]['main']['pressure'])
+                humidity.append(format(float(tmpDict[i]['main']['humidity'])))
+                if float(tmpDict[i]['main']['temp']) < tempmin:
+                    tempmin = float(tmpDict[i]['main']['temp'])
+                if float(tmpDict[i]['main']['temp']) > tempmax:
+                    tempmax = float(tmpDict[i]['main']['temp'])
+                i += 1
+
+            dgDict['forecastTodayCode'] = icons[int(len(icons) / 2)]
+            dgDict['forecastTodayPicon'] = icons[int(len(icons) / 2)]
+            dgDict['forecastTodayText'] = description[int(len(description) / 2)]
+            dgDict['forecastTodayTempMax'] = tempmax
+            dgDict['forecastTodayTempMin'] = tempmin
+            dgDict['forecastTodaycloudCover'] = clouds[int(len(clouds) / 2)]
+            dgDict['forecastTodaywindSpeed'] = wspeed[int(len(wspeed) / 2)]
+            dgDict['forecastTodayPressure'] = pressure[int(len(pressure) / 2)]
+            dgDict['forecastTodayHumidity'] = humidity[int(len(humidity) / 2)]
+        else:
+            while i < 8:
+                icons.append(tmpDict[i]['weather'][0]['icon'])
+                description.append(tmpDict[i]['weather'][0]['description'])
+                clouds.append(format(float(tmpDict[i]['clouds']['all'])))
+                wspeed.append(tmpDict[i]['wind']['speed'])
+                pressure.append(tmpDict[i]['main']['pressure'])
+                humidity.append(format(float(tmpDict[i]['main']['humidity'])))
+                if float(tmpDict[i]['main']['temp']) < tempmin:
+                    tempmin = float(tmpDict[i]['main']['temp'])
+                if float(tmpDict[i]['main']['temp']) > tempmax:
+                    tempmax = float(tmpDict[i]['main']['temp'])
+                i += 1
+
+            dgDict['forecastTodayCode'] = icons[int(len(icons) / 2)]
+            dgDict['forecastTodayPicon'] = icons[int(len(icons) / 2)]
+            dgDict['forecastTodayText'] = description[int(len(description) / 2)]
+            dgDict['forecastTodayTempMax'] = tempmax
+            dgDict['forecastTodayTempMin'] = tempmin
+            dgDict['forecastTodaycloudCover'] = clouds[int(len(clouds) / 2)]
+            dgDict['forecastTodaywindSpeed'] = wspeed[int(len(wspeed) / 2)]
+            dgDict['forecastTodayPressure'] = pressure[int(len(pressure) / 2)]
+            dgDict['forecastTodayHumidity'] = humidity[int(len(humidity) / 2)]
+        if next_day == 0:
+            next_day = 8
+        i = next_day
+        icons = []
+        description = []
+        clouds = []
+        wspeed = []
+        pressure = []
+        humidity = []
+        tempmin = 100
+        tempmax = -100
+        dgDict['forecastTomorrowDay'] = tmpDict[i]['dt']
+        dgDict['forecastTomorrowDate'] = tmpDict[i]['dt']
+        while i < int(next_day + 8):
+            icons.append(tmpDict[i]['weather'][0]['icon'])
+            description.append(tmpDict[i]['weather'][0]['description'])
+            clouds.append(format(float(tmpDict[i]['clouds']['all'])))
+            wspeed.append(tmpDict[i]['wind']['speed'])
+            pressure.append(tmpDict[i]['main']['pressure'])
+            humidity.append(format(float(tmpDict[i]['main']['humidity'])))
+            if float(tmpDict[i]['main']['temp']) < tempmin:
+                tempmin = float(tmpDict[i]['main']['temp'])
+            if float(tmpDict[i]['main']['temp']) > tempmax:
+                tempmax = float(tmpDict[i]['main']['temp'])
+            i += 1
+
+        dgDict['forecastTomorrowCode'] = icons[int(len(icons) / 2)]
+        dgDict['forecastTomorrowPicon'] = icons[int(len(icons) / 2)]
+        dgDict['forecastTomorrowText'] = description[int(len(description) / 2)]
+        dgDict['forecastTomorrowcloudCover'] = clouds[int(len(clouds) / 2)]
+        dgDict['forecastTomorrowTempMax'] = tempmax
+        dgDict['forecastTomorrowTempMin'] = tempmin
+        dgDict['forecastTomorrowwindSpeed'] = wspeed[int(len(wspeed) / 2)]
+        dgDict['forecastTomorrowPressure'] = pressure[int(len(pressure) / 2)]
+        dgDict['forecastTomorrowHumidity'] = humidity[int(len(humidity) / 2)]
+        if next_day == 8:
+            next_day = 16
+        else:
+            next_day = next_day + 8
+        day = 0
+        for aday in range(0, 4):
+            day += 1
+            i = next_day + aday * 8
+            nd = i
+            icons = []
+            description = []
+            clouds = []
+            wspeed = []
+            pressure = []
+            humidity = []
+            tempmin = 100
+            tempmax = -100
+            if i < int(len(tmpDict)):
+                dgDict['forecastTomorrow' + str(day) + 'Day'] = tmpDict[i]['dt']
+                dgDict['forecastTomorrow' + str(day) + 'Date'] = tmpDict[i]['dt']
+                while i < int(nd + 8) and i < int(len(tmpDict)):
+                    icons.append(tmpDict[i]['weather'][0]['icon'])
+                    description.append(tmpDict[i]['weather'][0]['description'])
+                    clouds.append(format(float(tmpDict[i]['clouds']['all'])))
+                    wspeed.append(tmpDict[i]['wind']['speed'])
+                    pressure.append(tmpDict[i]['main']['pressure'])
+                    humidity.append(format(float(tmpDict[i]['main']['humidity'])))
+                    if float(tmpDict[i]['main']['temp']) < tempmin:
+                        tempmin = float(tmpDict[i]['main']['temp'])
+                    if float(tmpDict[i]['main']['temp']) > tempmax:
+                        tempmax = float(tmpDict[i]['main']['temp'])
+                    i += 1
+
+                dgDict['forecastTomorrow' + str(day) + 'Text'] = description[int(len(description) / 2)]
+                dgDict['forecastTomorrow' + str(day) + 'Code'] = icons[int(len(icons) / 2)]
+                dgDict['forecastTomorrow' + str(day) + 'Picon'] = icons[int(len(icons) / 2)]
+                dgDict['forecastTomorrow' + str(day) + 'cloudCover'] = clouds[int(len(clouds) / 2)]
+                dgDict['forecastTomorrow' + str(day) + 'TempMax'] = tempmax
+                dgDict['forecastTomorrow' + str(day) + 'TempMin'] = tempmin
+                dgDict['forecastTomorrow' + str(day) + 'windSpeed'] = wspeed[int(len(wspeed) / 2)]
+                dgDict['forecastTomorrow' + str(day) + 'Pressure'] = pressure[int(len(pressure) / 2)]
+                dgDict['forecastTomorrow' + str(day) + 'Humidity'] = humidity[int(len(humidity) / 2)]
 
     saveJsonDict('dgWeatherDict.json', dgDict) #kontrola WeatherInfoDict
     return dgDict
