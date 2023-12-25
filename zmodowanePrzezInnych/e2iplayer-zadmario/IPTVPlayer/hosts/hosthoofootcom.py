@@ -263,6 +263,8 @@ class HoofootCom(CBaseHostClass):
 
         data = self.cm.ph.getDataBeetwenMarkers(data, 'id="player"', '</div>', False)[1]
         videoUrl = self.cm.ph.getSearchGroups(data, '''href=['"]([^'^"]+?)['"]''')[0]
+        if videoUrl == '':
+            videoUrl = self.cm.ph.getSearchGroups(data, '''src=['"]([^'^"]+?)['"]''')[0]
 
         printDBG(videoUrl)
         if videoUrl.startswith('//'):
