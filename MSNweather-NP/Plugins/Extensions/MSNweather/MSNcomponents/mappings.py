@@ -351,7 +351,9 @@ iconsMap={
     'd3101.png' : '75.png', #lekkie przelotnie opady deszczu / wiatr
     'd3110.png' : '9.png',  #lekkieprzelotneopadydeszczuzesniegiem
     'd3120.png' : '9.png',  #niewielkieopadysniegu, lekkieprzelotneopadysniegu
+    'd3121.png' : '9.png',  #lekkieprzelotneopadysniegu/wiatr 
     'd3200.png' : '9.png',
+    'd3211.png' : '9.png',  #przelotneopadydeszczuzesniegiem/wiatr 
     'd3220.png' : '9.png',  #opadysniegu
     'd3400.png' : '35.png',
     'd4000.png' : '26.png',
@@ -372,6 +374,7 @@ iconsMap={
     'n0000.png' : '31.png', #bezchmurnie
     'n1000.png' : '31.png', #przewazniebezchmurnie
     'n2000.png' : '29.png', #zachmurzeniemale
+    'n2001.png' : '29.png', #zachmurzeniemale/wiatr
     'n2120.png' : '13.png', #niewielkieopadysniegu
     'n3000.png' : '83.png', #duzezachmurzenie
     'n3100.png' : '9.png',  #niewielkieopadydeszczu
