@@ -93,8 +93,5 @@ if [ -e "/usr/lib/$pythonType/site-packages/streamlink" ];then
     echo "Modyfikuję streamlink_cli/main.py ..."
     sed -i 's/\(from socks import __version__ as socks_version\)/\n#j00zek_patch 1\ntry: \1\nexcept Exception: from websocket import __version__ as socks_version\n/' /usr/lib/$pythonType/site-packages/streamlink_cli/main.py
   fi
-
-  #przygotowanie wersji pod WP
-  cat /usr/lib/$pythonType/site-packages/streamlink/stream/hls.py|sed 's/ffmpegmux import/_ffmpegmux4wp import/' > /usr/lib/$pythonType/site-packages/streamlink/stream/_hls4wp.py
 fi
 exit 0

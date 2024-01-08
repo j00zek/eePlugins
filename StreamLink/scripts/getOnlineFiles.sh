@@ -40,3 +40,18 @@ rm -rf ~/streamlink-master*
 wget -q https://raw.githubusercontent.com/openatv/enigma2/7.1/lib/python/Plugins/Extensions/StreamlinkWrapper/plugin.py -O $myAbsPath/../StreamlinkWrapper/plugin.py
 wget -q https://raw.githubusercontent.com/openatv/enigma2/7.1/lib/python/Plugins/Extensions/YTDLPWrapper/plugin.py -O $myAbsPath/../YTDLPWrapper/plugin.py
 wget -q https://raw.githubusercontent.com/openatv/enigma2/7.1/lib/python/Plugins/Extensions/YTDLWrapper/plugin.py -O $myAbsPath/../YTDLWrapper/plugin.py
+
+#drm
+rm -rf ~/streamlink-master* 2 >/dev/null
+rm -rf ~/streamlink-drm-master* 2 >/dev/null
+
+wget -q https://github.com/ImAleeexx/streamlink-drm/archive/refs/heads/master.zip -O ~/streamlink-master.zip
+[ $? -gt 0 ] && exit 0
+unzip -q ~/streamlink-master.zip
+
+mkdir -p $SLpath/plugins/streamlink-drm/
+rm -rf $SLpath/plugins/streamlink-drm/*
+mkdir -p $SLpath/plugins/streamlink-drm/streamlink
+cp -rf ~/streamlink-drm-master/src/streamlink/* $SLpath/plugins/streamlink-drm/streamlink
+mkdir -p $SLpath/plugins/streamlink-drm/streamlink_cli
+cp -rf ~/streamlink-drm-master/src/streamlink_cli/* $SLpath/plugins/streamlink-drm/streamlink_cli
