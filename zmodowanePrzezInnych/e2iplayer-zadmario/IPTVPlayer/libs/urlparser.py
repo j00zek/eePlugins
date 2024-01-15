@@ -277,6 +277,7 @@ class urlparser:
                        'embedsb.com': self.pp.parserSTREAMSB,
                        'embedstream.me': self.pp.parserEMBEDSTREAMME,
                        'embeducaster.com': self.pp.parserUCASTERCOM,
+                       'embedv.net': self.pp.parserVIDGUARDTO,
                        'embedwish.com': self.pp.parserONLYSTREAMTV,
                        'estream.to': self.pp.parserESTREAMTO,
                        'evoload.io': self.pp.parserEVOLOADIO,
@@ -319,6 +320,7 @@ class urlparser:
                        'forstreams.com': self.pp.parserVIUCLIPS,
                        'freedisc.pl': self.pp.parserFREEDISC,
                        'freefeds.click': self.pp.parserASSIAORG,
+                       'fslinks.org': self.pp.parserVIDGUARDTO,
                        'furher.in': self.pp.parserONLYSTREAMTV,
                        'fviplions.com': self.pp.parserONLYSTREAMTV,
                        'fxstream.biz': self.pp.parserFXSTREAMBIZ,
@@ -332,6 +334,7 @@ class urlparser:
                        'gloria.tv': self.pp.parserGLORIATV,
                        'godzlive.com': self.pp.parserCASTFREEME,
                        'gogoanime.to': self.pp.parserGOGOANIMETO,
+                       'golassiahub.com': self.pp.parserASSIAORG,
                        'goldvod.tv': self.pp.parserGOLDVODTV,
                        'goodcast.co': self.pp.parserGOODCASTCO,
                        'goodrtmp.com': self.pp.parserGOODRTMP,
@@ -742,6 +745,7 @@ class urlparser:
                        'vsports.pt': self.pp.parserVSPORTSPT,
                        'vtbe.net': self.pp.parserONLYSTREAMTV,
                        'vtbe.to': self.pp.parserONLYSTREAMTV,
+                       'vtplay.net': self.pp.parserONLYSTREAMTV,
                        'vtube.network': self.pp.parserONLYSTREAMTV,
                        'vtube.to': self.pp.parserONLYSTREAMTV,
                        'vup.to': self.pp.parserONLYSTREAMTV,
@@ -15634,19 +15638,28 @@ class pageParser(CaptchaHelper):
         cUrl = self.cm.meta['url']
 
         urlTab = []
-        r = re.search(r'<script\s*src="(/assets/videojs/ad/[^"]+)', data)
+        r = re.search(r'eval\("window\.ADBLOCKER\s*=\s*false;\\n(.+?);"\);</script', data)
         if r:
-            HTTP_HEADER['Referer'] = baseUrl
-            urlParams = {'header': HTTP_HEADER}
-            sts, data = self.cm.getPage(self.cm.getFullUrl(r.group(1), self.cm.getBaseUrl(baseUrl)), urlParams)
-            if not sts:
-                return []
-            aa_decoded = aadecode.decode(data, alt=True)
-            sources = json_loads(aa_decoded[11:]).get('stream')
-            sources = [(x.get('Label'), x.get('URL')) for x in sources]
-            for item in sources:
-                url = strwithmeta(sig_decode(item[1]), {'Origin': urlparser.getDomain(baseUrl, False), 'Referer': cUrl})
-                urlTab.append({'name': item[0], 'url': url})
+            r = r.group(1).replace('\\u002b', '+')
+            r = r.replace('\\u0027', "'")
+            r = r.replace('\\u0022', '"')
+            r = r.replace('\\/', '/')
+            r = r.replace('\\\\', '\\')
+            r = r.replace('\\"', '"')
+            aa_decoded = aadecode.decode(r, alt=True)
+            stream_url = json_loads(aa_decoded[11:]).get('stream')
+            if stream_url:
+                if isinstance(stream_url, list):
+                    sources = [(x.get('Label'), x.get('URL')) for x in stream_url]
+                    for item in sources:
+                        url = item[1]
+                        if not url.startswith('https://'):
+                            url = re.sub(':/*', '://', url)
+                        url = strwithmeta(sig_decode(url), {'Origin': urlparser.getDomain(baseUrl, False), 'Referer': cUrl})
+                        urlTab.append({'name': item[0], 'url': url})
+                else:
+                    url = strwithmeta(sig_decode(stream_url), {'Origin': urlparser.getDomain(baseUrl, False), 'Referer': cUrl})
+                    urlTab.append({'name': 'mp4', 'url': url})
 
         return urlTab
 

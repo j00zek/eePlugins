@@ -11,7 +11,7 @@ if [ $? -gt 0 ];then
   exit 1
 fi
 unzip -q ~/e2iplayer-master.zip
-cp -rf ~/e2iplayer-master/IPTVPlayer $myAbsPath/../
+cp -prf ~/e2iplayer-master/IPTVPlayer $myAbsPath/../
 sync
 rm -rf ~/e2iplayer-master*
 #infoversion
