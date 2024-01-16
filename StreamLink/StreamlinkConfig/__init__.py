@@ -94,6 +94,9 @@ config.plugins.streamlinkSRV.remoteE2password = ConfigPassword(default = "root")
 config.plugins.streamlinkSRV.remoteE2zap = ConfigEnableDisable(default = False)
 config.plugins.streamlinkSRV.remoteE2wakeup = ConfigEnableDisable(default = False)
 
+# kodi
+config.plugins.streamlinkSRV.support4kodi = ConfigEnableDisable(default = False)
+
 def DBGlog(text):
     if config.plugins.streamlinkSRV.logLevel.value == 'none':
         print('StreamlinkConfiguration: %s' % text)

@@ -161,9 +161,9 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                     Mlist.append(getConfigListEntry(_("Buffer path:"), config.plugins.streamlinkSRV.bufferPath))
                     Mlist.append(getConfigListEntry(_("Allow Wrappers in lists:"), config.plugins.streamlinkSRV.useWrappers))
                     Mlist.append(getConfigListEntry(_("Autocorrect framework for Wrappers:"), config.plugins.streamlinkSRV.Verify4Wrappers))
+                    #EXPERIMENTAL OPTIONS
                     Mlist.append(getConfigListEntry(_(" !!! EXPERIMENTAL OPTION(S) !!!")))
-                    Mlist.append(getConfigListEntry(_("Support VLC:"), config.plugins.streamlinkSRV.VLCusingLUA))
-                    
+                   
                     Mlist.append(getConfigListEntry(_("Recorder mode:"), config.plugins.streamlinkSRV.Recorder))
                     if config.plugins.streamlinkSRV.Recorder.value == True:
                         Mlist.append(getConfigListEntry(_("Maximum record time:"), config.plugins.streamlinkSRV.RecordMaxTime))
@@ -175,7 +175,9 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                     Mlist.append(getConfigListEntry(_("stop deamon on standby:"), config.plugins.streamlinkSRV.StandbyMode))
                     if config.plugins.streamlinkSRV.StandbyMode.value == True:
                         Mlist.append(getConfigListEntry(_("proxy (http://127.0.0.1:8818) for channel:"), config.plugins.streamlinkSRV.streamlinkProxy1))
-        
+
+                    Mlist.append(getConfigListEntry(_("Support VLC:"), config.plugins.streamlinkSRV.VLCusingLUA))
+                    Mlist.append(getConfigListEntry(_("Support KODI:"), config.plugins.streamlinkSRV.support4kodi))
                 Mlist.append(getConfigListEntry(""))
                 Mlist.append(getConfigListEntry('\c00289496' + _("*** /etc/streamlink/config ***"), config.plugins.streamlinkSRV.Five))
                 if self.VisibleSection == 5:
