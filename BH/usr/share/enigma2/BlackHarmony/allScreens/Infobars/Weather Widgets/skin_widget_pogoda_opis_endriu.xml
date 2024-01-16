@@ -71,13 +71,13 @@
     </widget>
  <ePixmap pixmap="BlackHarmony/weather_icons/temp.png" position="1045,30" size="20,50" zPosition="3" transparent="1" alphatest="blend" />
  <!--eLabel text="-20:C" backgroundColor="black" font="Regular; 20" halign="right" position="1065,30" size="50,25"  transparent="1" zPosition="2" /-->
- <widget source="session.j00zekMSNWeather" render="Label" font="Regular; 20" position="1065,30" size="50,30" backgroundColor="black" foregroundColor="#00db0000" zPosition="3" transparent="1" halign="right" >
+ <widget source="session.j00zekMSNWeather" render="Label" font="Regular; 20" position="1065,30" size="55,30" backgroundColor="black" foregroundColor="#00db0000" zPosition="3" transparent="1" halign="right" >
     <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=1']['temp_high']|C </convert>
    </widget>
- <widget source="session.j00zekMSNWeather" render="Label" font="Regular; 20" position="1065,54" size="50,30" backgroundColor="black" foregroundColor="#0000cbf6" zPosition="3" transparent="1" halign="right" >
+ <widget source="session.j00zekMSNWeather" render="Label" font="Regular; 20" position="1065,54" size="55,30" backgroundColor="black" foregroundColor="#0000cbf6" zPosition="3" transparent="1" halign="right" >
     <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=1']['temp_low']|C</convert>
   </widget>
- <widget source="session.j00zekMSNWeather" render="j00zekModRunningText" options="movetype=running,startpoint=10,direction=top,steptime=20,repeat=2,startdelay=0,wrap" font="Regular; 22" position="1115,30" size="152,54" backgroundColor="black" zPosition="3" transparent="1" valign="center" halign="center">
+ <widget source="session.j00zekMSNWeather" render="j00zekModRunningText" options="movetype=running,startpoint=10,direction=top,steptime=20,repeat=2,startdelay=0,wrap" font="Regular; 22" position="1120,30" size="145,54" backgroundColor="black" zPosition="3" transparent="1" valign="center" halign="center">
     <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=1']['skytext']| </convert>
    </widget>
   
@@ -90,13 +90,13 @@
  <widget backgroundColor="black" foregroundColor="lemon" halign="center" valign="center" noWrap="1" position="1349,5" size="225,25" font="Regular; 23" render="Label" source="session.j00zekMSNWeather" transparent="1" zPosition="3">
     <convert type="j00zekMSNWeather">DailyRecord=2,date</convert>
     </widget>
- <widget source="session.j00zekMSNWeather" render="Label" font="Regular; 20" position="1369,30" size="50,30" backgroundColor="black" foregroundColor="#00db0000" zPosition="3" transparent="1" halign="right" >
+ <widget source="session.j00zekMSNWeather" render="Label" font="Regular; 20" position="1369,30" size="55,30" backgroundColor="black" foregroundColor="#00db0000" zPosition="3" transparent="1" halign="right" >
     <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=2']['temp_high']|C </convert>
    </widget>
- <widget source="session.j00zekMSNWeather" render="Label" font="Regular; 20" position="1369,54" size="50,30" backgroundColor="black" foregroundColor="#0000cbf6" zPosition="3" transparent="1" halign="right" >
+ <widget source="session.j00zekMSNWeather" render="Label" font="Regular; 20" position="1369,54" size="55,30" backgroundColor="black" foregroundColor="#0000cbf6" zPosition="3" transparent="1" halign="right" >
     <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=2']['temp_low']|C</convert>
   </widget>
- <widget source="session.j00zekMSNWeather" render="j00zekModRunningText" options="movetype=running,startpoint=10,direction=top,steptime=20,repeat=2,startdelay=0,wrap" font="Regular; 22" position="1419,30" size="152,54" backgroundColor="black" zPosition="3" transparent="1" valign="center" halign="center">
+ <widget source="session.j00zekMSNWeather" render="j00zekModRunningText" options="movetype=running,startpoint=10,direction=top,steptime=20,repeat=2,startdelay=0,wrap" font="Regular; 22" position="1424,30" size="150,54" backgroundColor="black" zPosition="3" transparent="1" valign="center" halign="center">
     <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=2']['skytext']| </convert>
    </widget>
 	
@@ -109,13 +109,13 @@
       <convert type="j00zekMSNWeather">DailyRecord=3,date</convert>
     </widget>
  <ePixmap pixmap="BlackHarmony/weather_icons/temp.png" position="1657,30" size="20,50" zPosition="3" transparent="1" alphatest="blend" />
- <widget source="session.j00zekMSNWeather" render="Label" font="Regular; 20" position="1677,30" size="50,30" backgroundColor="black" foregroundColor="#00db0000" zPosition="3" transparent="1" halign="right" >
+ <widget source="session.j00zekMSNWeather" render="Label" font="Regular; 20" position="1677,30" size="55,30" backgroundColor="black" foregroundColor="#00db0000" zPosition="3" transparent="1" halign="right" >
     <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=3']['temp_high']|C </convert>
    </widget>
- <widget source="session.j00zekMSNWeather" render="Label" font="Regular; 20" position="1677,54" size="50,30" backgroundColor="black" foregroundColor="#0000cbf6" zPosition="3" transparent="1" halign="right" >
+ <widget source="session.j00zekMSNWeather" render="Label" font="Regular; 20" position="1677,54" size="55,30" backgroundColor="black" foregroundColor="#0000cbf6" zPosition="3" transparent="1" halign="right" >
     <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=3']['temp_low']|C</convert>
   </widget>
- <widget source="session.j00zekMSNWeather" render="j00zekModRunningText" options="movetype=running,startpoint=10,direction=top,steptime=20,repeat=2,startdelay=0,wrap" font="Regular; 22" position="1727,30" size="155,54" backgroundColor="black" zPosition="3" transparent="1" valign="center" halign="center">
+ <widget source="session.j00zekMSNWeather" render="j00zekModRunningText" options="movetype=running,startpoint=10,direction=top,steptime=20,repeat=2,startdelay=0,wrap" font="Regular; 22" position="1734,30" size="146,54" backgroundColor="black" zPosition="3" transparent="1" valign="center" halign="center">
     <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=3']['skytext']| </convert>
    </widget>
 
