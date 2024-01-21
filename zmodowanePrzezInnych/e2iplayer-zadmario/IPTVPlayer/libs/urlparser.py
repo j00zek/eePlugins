@@ -1789,7 +1789,7 @@ class pageParser(CaptchaHelper):
                     printDBG(">> \t%s \t%s \t%s \t%s" % (cookie.domain, cookie.path, cookie.name, cookie.value))
 
             # prepare extended link
-            retUrl = strwithmeta(inUrl)
+            retUrl = strwithmeta(inUrl.replace('0"d.','.'))
             retUrl.meta['User-Agent'] = HTTP_HEADER['User-Agent']
             retUrl.meta['Referer'] = referer
             retUrl.meta['Cookie'] = ' '.join(cookies)
