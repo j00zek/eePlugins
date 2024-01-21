@@ -34,6 +34,8 @@ from Components.SystemInfo import SystemInfo
 from .server import KodiExtRequestHandler, UDSServer
 from Tools.BoundFunction import boundFunction
 
+from .jUtils import printDBG, printExc
+printDBG('--- LOG INIT ---', 'a')
 
 try:
     from Components.SystemInfo import BoxInfo
@@ -207,7 +209,7 @@ def SaveDesktopInfo():
         _g_dh = getDesktop(0).size().height()
     except:
         _g_dw, _g_dh = 1280, 720
-    print("[XBMC] Desktop size [%dx%d]" % (_g_dw, _g_dh))
+    printDBG("plugin.SaveDesktopInfo() XBMC Desktop size [%dx%d]" % (_g_dw, _g_dh))
     if not fileExists('/tmp/dw.info'):
         os.system('touch /tmp/dw.info')
     os.system('chmod 755 /tmp/dw.info')
@@ -233,31 +235,31 @@ def fhd(num, factor=1.5):
 
 
 def FBLock():
-    print("[KodiLauncher] FBLock")
+    printDBG("plugin.[KodiLauncher] FBLock")
     fbClass.getInstance().lock()
 
 
 def FBUnlock():
-    print("[KodiLauncher] FBUnlock")
+    printDBG("plugin.[KodiLauncher] FBUnlock")
     fbClass.getInstance().unlock()
 
 
 def RCLock():
-    print("[KodiLauncher] RCLock")
+    printDBG("plugin.[KodiLauncher] RCLock")
     eRCInput.getInstance().lock()
 
 
 def RCUnlock():
-    print("[KodiLauncher] RCUnlock")
+    printDBG("plugin.[KodiLauncher] RCUnlock")
     eRCInput.getInstance().unlock()
 
 
 def kodiStopped(data, retval, extraArgs):
-    print('[KodiLauncher] kodi stopped: retval = %d' % retval)
+    printDBG('plugin.[KodiLauncher] kodi stopped: retval = %d' % retval)
 
 
 def kodiResumeStopped(data, retval, extraArgs):
-    print('[KodiLauncher] kodi resume script stopped: retval = %d' % retval)
+    printDBG('plugin.[KodiLauncher] kodi resume script stopped: retval = %d' % retval)
     if retval > 0:
         KODI_LAUNCHER.stop()
 #        <eLabel name="" position="1400,1020" size="445,45" text=" " font="RegularHD; 20"  backgroundColor="#001E1C1C"/>
@@ -422,8 +424,10 @@ class KodiVideoPlayer(InfoBarBase, InfoBarShowHide, SubsSupportStatus, SubsSuppo
         # load meta info from json file provided by Kodi Enigma2Player
         try:
             meta = json.load(open(KODIEXTIN, "r"))
+            printDBG('plugin.KodiVideoPlayer().__init__() Kodi Enigma2Player provided meta info %s in %s file' % (open(KODIEXTIN, "r"), KODIEXTIN))
         except Exception as e:
             self.logger.error("failed to load meta from %s: %s", KODIEXTIN, str(e))
+            printDBG("plugin.KodiVideoPlayer().__init__() failed to load meta from %s: %s" % (KODIEXTIN, str(e)))
             meta = {}
         self.__image = Meta(meta).getImage()
         self["image"] = WebPixmap(self.__image, caching=True)
@@ -700,6 +704,7 @@ class VideoInfoView(Screen):
         # load meta info from json file provided by Kodi Enigma2Player
         try:
             meta = json.load(open(KODIEXTIN, "r"))
+            printDBG('plugin.VideoInfoView().__init__() Kodi Enigma2Player provided meta info %s in %s file' % (open(KODIEXTIN, "r"), KODIEXTIN))
         except Exception as e:
             self.logger.error("failed to load meta from %s: %s", KODIEXTIN, str(e))
             meta = {}
@@ -760,8 +765,11 @@ class E2KodiExtServer(UDSServer):
     def handleExitMessage(self, status, data):
         self.messageIn.put((True, None))
         self.stopTimer = eTimer()
-        self.stopTimer.callback.append(KODI_LAUNCHER.stop)
-        self.stopTimer.start(500, True)
+        try:
+            self.stopTimer.callback.append(KODI_LAUNCHER.stop)
+            self.stopTimer.start(500, True)
+        except exception as e:
+            printExc("=====KODI_LAUNCHER state: '%s'=====" % str(KODI_LAUNCHER))
 
     def handlePlayStatusMessage(self, status, data):
         position = getPlayPositionInSeconds(SESSION)
@@ -899,57 +907,68 @@ class KodiLauncher(Screen):
             if isinstance(data, bytes):
                 data = data.decode()
             procs = data.split('\n')
+            printDBG("Command 'ps -ef | grep kodi-stb | grep -v grep' returns %s" % data)
             if len(procs) > 0:
                 for p in procs:
-                    if 'kodi.bin' in p:
+                    if 'kodi-stb' in p:
                         if kodiProc is not None:
-                            print('[KodiLauncher] startup - there are more kodi processes running!')
+                            printDBG('plugin.[KodiLauncher().startup() there are more kodi processes running!')
                             return self.stop()
                         kodiProc = p.split()
             if kodiProc is not None:
                 kodiPid = int(kodiProc[0])
-                print("[KodiLauncher] startup: kodi is running, pid = %d , resuming..." % kodiPid)
+                printDBG("plugin.KodiLauncher().startup() kodi is running, pid = %d , resuming..." % kodiPid)
                 self.resumeKodi(kodiPid)
             else:
-                print("[KodiLauncher] startup: kodi is not running, starting...")
+                printDBG("plugin.KodiLauncher().startup() kodi is not running, starting...")
                 self.startKodi()
 
         self._checkConsole = Console()
-        self._checkConsole.ePopen("ps | grep kodi.bin | grep -v grep", psCallback)
+        self._checkConsole.ePopen("ps -ef | egrep 'kodi-stb' | grep -v grep", psCallback)
 
     def startKodi(self):
+        printDBG("plugin.KodiLauncher().startKodi(KODIRUN_SCRIPT = %s) >>>" % KODIRUN_SCRIPT)
         self._startConsole = Console()
         self._startConsole.ePopen(KODIRUN_SCRIPT, kodiStopped)
 
     def resumeKodi(self, pid):
+        printDBG("plugin.KodiLauncher().resumeKodi(pid = %d) >>>" % pid)
         self._resumeConsole = Console()
         self._resumeConsole.ePopen(KODIRESUME_SCRIPT % pid, kodiResumeStopped)
 
     def stop(self):
+        printDBG("plugin.KodiLauncher().stop() >>>")
         FBUnlock()
         setaudio.switch()
         setresolution.switch()
-        if self.previousService:
-            self.session.nav.playService(self.previousService)
         try:
-            if os.path.exists('/media/hdd/.kodi/'):
-                os.system('rm -rf /media/hdd/kodi_crashlog*.log')
-            else:
-                os.system('rm -rf /tmp/kodi/kodi_crashlog*.log')
-        except:
-            pass
-        self.close()
+            if self.previousService:
+                self.session.nav.playService(self.previousService)
+        except Exception as e:
+            printExc("=====KODI_LAUNCHER state: '%s'=====" % str(KODI_LAUNCHER))
+        #try:
+        #    if os.path.exists('/media/hdd/.kodi/'):
+        #        os.system('rm -rf /media/hdd/kodi_crashlog*.log')
+        #    else:
+        #        os.system('rm -rf /tmp/kodi/kodi_crashlog*.log')
+        #except:
+        #    pass
+        try:
+            self.close()
+        except Exception as e:
+            printExc("=====KODI_LAUNCHER state: '%s'=====" % str(KODI_LAUNCHER))
 
 
 def autoStart(reason, **kwargs):
-    print("[KodiLauncher] autoStart - reason = %d" % reason)
+    printDBG("plugin.[KodiLauncher] autoStart - reason = %d" % reason)
     global SERVER_THREAD
     global SERVER
     if reason == 0:
-        try:
-            os.remove(KODIEXT_SOCKET)
-        except OSError:
-            pass
+        if os.path.exists(KODIEXT_SOCKET):
+            try:
+                os.remove(KODIEXT_SOCKET)
+            except OSError:
+                printExc()
         SERVER = E2KodiExtServer()
         SERVER_THREAD = threading.Thread(target=SERVER.serve_forever)
         SERVER_THREAD.start()
@@ -959,6 +978,7 @@ def autoStart(reason, **kwargs):
 
 
 def startLauncher(session, **kwargs):
+    printDBG("plugin.[KodiLauncher] startLauncher")
     setaudio.ReadData()
     setaudio.switch(True)
     setresolution.ReadData()

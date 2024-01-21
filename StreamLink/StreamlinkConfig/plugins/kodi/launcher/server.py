@@ -12,6 +12,17 @@ print("E2KODI_DEBUG_LVL = ", loglevel)
 
 logging.basicConfig(level=loglevel, format='%(name)s: %(message)s',)
 
+from .jUtils import printDBG
+printDBG("server.py E2KODI_DEBUG_LVL = %s" % loglevel)
+
+opcodeName = { 0: "OP_CODE_EXIT", 
+               1: "OP_CODE_PLAY", 
+               2: "OP_CODE_PLAY_STATUS", 
+               3: "OP_CODE_PLAY_STOP", 
+               4: "OP_CODE_SWITCH_TO_ENIGMA2", 
+               5: "OP_CODE_SWITCH_TO_KODI", 
+            }
+
 class KodiExtRequestHandler(socketserver.BaseRequestHandler):
 
     def __init__(self, request, client_address, server):
@@ -27,12 +38,14 @@ class KodiExtRequestHandler(socketserver.BaseRequestHandler):
         else:
             data = None
         self.logger.debug('recv()-> opcode = %d, status = %d, data = %s', opcode, status, str(data))
+        printDBG('server.KodiExtRequestHandler().handle() recv()-> opcode = %d (%s), status = %d, data = %s' % (opcode, opcodeName.get(opcode, 'OP_CODE_UKNOWN'), status, str(data)))
         status, data = self.handle_request(opcode, status, data)
         if data is not None:
             datalen = len(data)
         else:
             datalen = 0
         self.logger.debug('send()-> opcode = %d, status = %d, data = %s', opcode, status, str(data))
+        printDBG('server.KodiExtRequestHandler().handle() send()-> opcode = %d (%s), status = %d, data = %s' % (opcode, opcodeName.get(opcode, 'OP_CODE_UKNOWN'), status, str(data)))
         header = struct.pack('ibi', opcode, status, datalen)
         self.request.send(header)
         if datalen > 0:
@@ -46,5 +59,6 @@ class UDSServer(socketserver.UnixStreamServer):
 
     def __init__(self, server_address, handler_class=KodiExtRequestHandler):
         self.logger = logging.getLogger('UDSServer')
+        printDBG("server.UDSServer.__init__(server_address = %s)" % server_address)
         self.allow_reuse_address = True
         socketserver.UnixStreamServer.__init__(self, server_address, handler_class)

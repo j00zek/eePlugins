@@ -18,6 +18,7 @@ import six
 from skin import parseColor
 from enigma import iPlayableService, ePicLoad, ePixmap, eTimer, getDesktop
 
+from .jUtils import printDBG
 
 def toString(text):
     if text is None:
@@ -74,6 +75,7 @@ class WebPixmap(GUIComponent):
     GUI_WIDGET = ePixmap
 
     def __init__(self, default=None, cachedir='/tmp/', caching=True):
+        printDBG("e2utils.WebPixmap().__init__() >>>")
         GUIComponent.__init__(self)
         self.caching = caching
         self.cachedir = cachedir
@@ -151,6 +153,7 @@ class WebPixmap(GUIComponent):
 
 class BufferIndicatorDetailed(Screen):
     def __init__(self, session, updateIntervalInMs=500):
+        printDBG("e2utils.BufferIndicatorDetailed().__init__() >>>")
         desktopWidth = getDesktop(0).size().width()
         offset = 20
         screenWidth = desktopWidth - (2 * offset)
@@ -186,6 +189,7 @@ class BufferIndicatorDetailed(Screen):
         self.updateTimer.start(self.updateIntervalInMs)
 
     def updateStatus(self):
+        printDBG("e2utils.updateStatus().updateStatus() >>>")
         if self.shown:
             service = self.session.nav.getCurrentService()
             iStreamed = service and service.streamed()
@@ -235,6 +239,7 @@ class InfoBarAspectChange(object):
 
 
     def __init__(self):
+        printDBG("e2utils.InfoBarAspectChange().__init__() >>>")
         self.postAspectChange = []
         self.aspectChanged = False
         try:
@@ -265,6 +270,7 @@ class InfoBarAspectChange(object):
         return "%s: %s\n%s: %s" % (_("Aspect"), aspectStr, _("Policy"), policyStr)
 
     def setAspect(self, aspect, policy, policy2):
+        printDBG("e2utils.InfoBarAspectChange().setAspect() >>>")
         print('aspect: %s policy: %s policy2: %s' % (str(aspect), str(policy), str(policy2)))
         if aspect:
             try:
@@ -285,6 +291,7 @@ class InfoBarAspectChange(object):
             f()
 
     def toggleAspectRatio(self):
+        printDBG("e2utils.InfoBarAspectChange().toggleAspectRatio() >>>")
         self.aspectChanged = True
         modeIdx = self.V_MODES.index(self.currentAVMode)
         if modeIdx + 1 == len(self.V_MODES):
@@ -305,6 +312,7 @@ class InfoBarAspectChange(object):
 
 class MyAudioSelection(AudioSelection):
     def __init__(self, session, infobar=None, page='audio'):
+        printDBG("e2utils.MyAudioSelection().__init__() >>>")
         try:
             AudioSelection.__init__(self, session, infobar, page)
         except Exception:
@@ -318,6 +326,7 @@ class MyAudioSelection(AudioSelection):
 
 class StatusScreen(Screen):
     def __init__(self, session):
+        printDBG("e2utils.StatusScreen().__init__() >>>")
         Screen.__init__(self, session)
         self.stand_alone = True
         self.delayTimer = eTimer()
@@ -334,18 +343,21 @@ class StatusScreen(Screen):
         self.onClose.append(self.delayTimer.stop)
 
     def setStatus(self, text, color="yellow"):
+        printDBG("e2utils.StatusScreen().setStatus() >>>")
         self['status'].setText(text)
         self['status'].instance.setForegroundColor(parseColor(color))
         self.show()
         self.delayTimer.start(self.delayTimerDelay, True)
 
     def hideStatus(self):
+        printDBG("e2utils.StatusScreen().hideStatus() >>>")
         self.hide()
         self['status'].setText("")
 
 # pretty much openpli's one but simplified
 class InfoBarSubservicesSupport(object):
     def __init__(self):
+        printDBG("e2utils.InfoBarSubservicesSupport().__init__() >>>")
         self["InfoBarSubservicesActions"] = HelpableActionMap(self,
                 "ColorActions", { "green": (self.showSubservices, _("Show subservices"))}, -2)
         self.__timer = eTimer()
@@ -381,6 +393,7 @@ class InfoBarSubservicesSupport(object):
             self.session.nav.playService(service_ref[1])
 
     def __seekToCurrentPosition(self):
+        printDBG("e2utils.InfoBarSubservicesSupport().__seekToCurrentPosition() >>>")
         if getPlayPositionPts(self.session) is None:
             self.__timer.start(500, True)
         else:
