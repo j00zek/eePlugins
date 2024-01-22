@@ -38,16 +38,16 @@ def cleanCMD(forceKill = True): #czyszczenie smieci
     clearCache()
     CMDs = []
     if forceKill == True:
-        CMDs.append("[ `ps -ef|grep -v grep|grep -c ffmpeg` -gt 0 ] && (ps -ef|grep -v grep|grep ffmpeg|awk '{print $2}'|xargs kill)")
-    CMDs.append("kill `netstat -peanut|grep 8808|grep -oE 'LISTEN[ ]+[0-9]+'|grep -oE '[0-9]+'` 2>/dev/null")
-    CMDs.append('killall hlsdl 2>/dev/null')
-    CMDs.append('if [ `ps -ef|grep -v grep|grep -c ffmpeg` -eq 0 ];then')
-    CMDs.append(' rm -f /tmp/ffmpeg-*')
-    CMDs.append(' rm -f /tmp/streamlinkpipe-*')
-    CMDs.append('fi')
-    CMDs.append('if [ -e /var/run/processPID.pid ];then pid=`cat /var/run/processPID.pid`;[ -e /proc/$pid ] && kill $pid || rm -f /var/run/processPID.pid;fi')
-    CMDs.append('[ -e /tmp/stream.ts ] && rm -f /tmp/stream.ts')
-    CMDs.append("find /tmp/ -maxdepth 1 -mmin +180 -name 'streamlinkpipe-*' -exec rm -- '{}' \;")
+        CMDs.append(r"[ `ps -ef|grep -v grep|grep -c ffmpeg` -gt 0 ] && (ps -ef|grep -v grep|grep ffmpeg|awk '{print $2}'|xargs kill)")
+    CMDs.append(r"kill `netstat -peanut|grep 8808|grep -oE 'LISTEN[ ]+[0-9]+'|grep -oE '[0-9]+'` 2>/dev/null")
+    CMDs.append(r'killall hlsdl 2>/dev/null')
+    CMDs.append(r'if [ `ps -ef|grep -v grep|grep -c ffmpeg` -eq 0 ];then')
+    CMDs.append(r' rm -f /tmp/ffmpeg-*')
+    CMDs.append(r' rm -f /tmp/streamlinkpipe-*')
+    CMDs.append(r'fi')
+    CMDs.append(r'if [ -e /var/run/processPID.pid ];then pid=`cat /var/run/processPID.pid`;[ -e /proc/$pid ] && kill $pid || rm -f /var/run/processPID.pid;fi')
+    CMDs.append(r'[ -e /tmp/stream.ts ] && rm -f /tmp/stream.ts')
+    CMDs.append(r"find /tmp/ -maxdepth 1 -mmin +180 -name 'streamlinkpipe-*' -exec rm -- '{}' \;")
     os.system('\n'.join(CMDs))
 
 def GetBufferPath():

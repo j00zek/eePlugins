@@ -11,7 +11,9 @@ if [ -e /etc/opkg/opkg-j00zka.conf ]; then
   fi
 fi
 
-if [ -e /usr/lib/python3.11 ]; then
+if [ -e /usr/lib/python3.12 ]; then
+  exit 0
+elif [ -e /usr/lib/python3.11 ]; then
   exit 0
 elif [ -e /usr/lib/python3.10 ]; then
   exit 0
