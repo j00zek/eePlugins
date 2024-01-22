@@ -79,7 +79,7 @@ from Plugins.Extensions.IPTVPlayer.p2p3.UrlLib import urllib_quote
 from Plugins.Extensions.IPTVPlayer.p2p3.pVer import isPY2, pVersion
 if not isPY2():
     basestring = str
-    from imp import reload
+    from importlib import reload
 ######################################################
 gDownloadManager = None
 
