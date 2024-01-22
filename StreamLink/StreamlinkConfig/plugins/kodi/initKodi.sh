@@ -17,13 +17,15 @@ if [ `grep -c 'config.plugins.streamlinkSRV.support4kodi=True' < /etc/enigma2/se
                         cp -f /usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/plugins/kodi/launcher/$f.py /usr/lib/enigma2/python/Plugins/Extensions/Kodi/$f.py
                 done
         else
-                echo 'Najpierw musisz mieć zainstalowaną wtyczkę nigma2-plugin-extensions-kodi!!!'
+                echo 'Najpierw musisz mieć zainstalowaną wtyczkę enigma2-plugin-extensions-kodi!!!'
         fi
-else
+elif [ -e /usr/lib/enigma2/python/Plugins/Extensions/Kodi ]; then
         for f in "${StringArray[@]}"
         do
-                [ -e /usr/lib/enigma2/python/Plugins/Extensions/Kodi/$f.pyc.org ] && mv -f /usr/lib/enigma2/python/Plugins/Extensions/Kodi/$f.pyc.org /usr/lib/enigma2/python/Plugins/Extensions/Kodi/$f.pyc
+                if [ -e /usr/lib/enigma2/python/Plugins/Extensions/Kodi/$f.pyc.org ];then
+                  mv -f /usr/lib/enigma2/python/Plugins/Extensions/Kodi/$f.pyc.org /usr/lib/enigma2/python/Plugins/Extensions/Kodi/$f.pyc
+                  echo "Oryginalna wersja skryptu $f.pyc przywrócona"
+                fi
                 [ -e /usr/lib/enigma2/python/Plugins/Extensions/Kodi/$f.py ] && rm -f /usr/lib/enigma2/python/Plugins/Extensions/Kodi/$f.py
-                echo "Oryginalna wersja skryptu $f.pyc przywrócona"
         done
 fi

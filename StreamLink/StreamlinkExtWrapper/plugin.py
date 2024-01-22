@@ -2,7 +2,6 @@ from Plugins.Plugin import PluginDescriptor
 
 IPTVExtMoviePlayer = None
 KodiLauncher = None
-ChromiumLauncher = None
 
 def zap(session, service, **kwargs):
     def leaveIPTVExtMoviePlayer(answer=None, lastPosition=None, clipLength=None, *args, **kwargs):
@@ -29,7 +28,7 @@ def zap(session, service, **kwargs):
                         except ImportError as e:
                             print("[ChannelSelection] zap > StreamlinkExtWrapper importing IPTVPlayer component error '%s'" % str(e))
                     if IPTVExtMoviePlayer:
-                        print("[ChannelSelection] zap > StreamlinkExtWrapper url '%s'" % url)
+                        print("[ChannelSelection] zap > StreamlinkExtWrapper:IPTVExtMoviePlayer url '%s'" % url)
                         try:
                             titleOfMovie = serviceString.split(":")[11]
                         except Exception:
@@ -47,6 +46,8 @@ def zap(session, service, **kwargs):
                             session.openWithCallback(leaveIPTVExtMoviePlayer, E2iPlayerBufferingWidget, url, bufferingPath, downloadingPath, titleOfMovie, playerVal, bufferSize, gstAdditionalParams)
                 elif url.startswith("kodi://"):
                     url = url[7:]
+                    print("[ChannelSelection] zap > StreamlinkExtWrapper:kodi url='%s'" % url)
+                    global KodiLauncher
                     try:
                         from Plugins.Extensions.Kodi.plugin import startLauncher
                         KodiLauncher = startLauncher
@@ -55,6 +56,17 @@ def zap(session, service, **kwargs):
                         print("[ChannelSelection] zap > StreamlinkExtWrapper importing IPTVPlayer component error '%s'" % str(e))
                 elif url.startswith("chrome://"):
                     url = url[9:]
+                    print("[ChannelSelection] zap > StreamlinkExtWrapper:chrome url='%s'" % url)
+                    try:
+                        from Plugins.Extensions.Chromium.plugin import main
+                        from base64 import b64decode
+                        from Components.config import config
+                        oldVal = config.plugins.Chromium.presets[0].portal.value
+                        config.plugins.Chromium.presets[0].portal.value = b64decode(url) #'https://player.pl/live/tvn-w-domu-online,8759889'
+                        main(session)
+                        config.plugins.Chromium.presets[0].portal.value = oldVal
+                    except ImportError as e:
+                        print("[ChannelSelection] zap > StreamlinkExtWrapper importing IPTVPlayer component error '%s'" % str(e))
         except Exception as e:
             print("[ChannelSelection] zap > StreamlinkExtWrapper failed %s" % str(e))
     return (None, errormsg)
