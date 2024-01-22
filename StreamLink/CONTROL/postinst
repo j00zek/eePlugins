@@ -39,5 +39,7 @@ else
   fi
 fi
 rm -rf /usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/scripts 2 > /dev/null
+#kodi
+/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/plugins/kodi/initKodi.sh
 
 exit 0

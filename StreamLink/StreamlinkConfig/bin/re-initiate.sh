@@ -2,7 +2,9 @@
 plugBinDir='/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig'
 
 pythonType='unknown'
-if [ -e /usr/lib/python3.11 ]; then
+if [ -e /usr/lib/python3.12 ]; then
+  pythonType='python3.12'
+elif [ -e /usr/lib/python3.11 ]; then
   pythonType='python3.11'
 elif [ -e /usr/lib/python3.10 ]; then
   pythonType='python3.10'
