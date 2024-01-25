@@ -392,12 +392,14 @@ class urlparser:
                        'live.bvbtotal.de': self.pp.parserLIVEBVBTOTALDE,
                        'liveall.tv': self.pp.paserLIVEALLTV,
                        'liveleak.com': self.pp.parserLIVELEAK,
-                       'liveonlinetv247.info': self.pp.parserLIVEONLINE247,
+                       #'liveonlinetv247.info': self.pp.parserLIVEONLINE247, < duplicate, next line used by python
                        'liveonlinetv247.info': self.pp.parserLIVEONLINETV247,
                        'liveonlinetv247.net': self.pp.parserLIVEONLINE247,
                        'liveonscore.to': self.pp.parserLIVEONSCORETV,
                        'lookhd.xyz': self.pp.parserTXNEWSNETWORK,
                        'louishide.com': self.pp.parserONLYSTREAMTV,
+                       'lulustream.com': self.pp.parserONLYSTREAMTV,
+                       'lylxan.com': self.pp.parserONLYSTREAMTV,
                        #m
                        'mastarti.com': self.pp.parserMOONWALKCC,
                        'matchat.online': self.pp.parserMATCHATONLINE,
@@ -650,6 +652,7 @@ class urlparser:
                        'upvid.mobi': self.pp.parserUPFILEMOBI,
                        'upvideo.cc': self.pp.parserONLYSTREAMTV,
                        'upzone.cc': self.pp.parserUPZONECC,
+                       'uqload.io': self.pp.parserASSIAORG,
                        'userload.co': self.pp.parserUSERLOADCO,
                        'userscloud.com': self.pp.parserUSERSCLOUDCOM,
                        'ustream.tv': self.pp.parserUSTREAMTV,
@@ -1789,7 +1792,7 @@ class pageParser(CaptchaHelper):
                     printDBG(">> \t%s \t%s \t%s \t%s" % (cookie.domain, cookie.path, cookie.name, cookie.value))
 
             # prepare extended link
-            retUrl = strwithmeta(inUrl.replace('0"d.','.'))
+            retUrl = strwithmeta(inUrl)
             retUrl.meta['User-Agent'] = HTTP_HEADER['User-Agent']
             retUrl.meta['Referer'] = referer
             retUrl.meta['Cookie'] = ' '.join(cookies)
@@ -1874,7 +1877,7 @@ class pageParser(CaptchaHelper):
                         dat = 'https://' + str(dat) + '.mp4'
                     if not dat.endswith('.mp4'):
                         dat += '.mp4'
-                    dat = dat.replace("0)sss", "")
+                    dat = dat.replace("0)sss", "").replace('0"d.','.')
                 except Exception:
                     dat = ''
                     printExc()
@@ -1889,7 +1892,8 @@ class pageParser(CaptchaHelper):
             jsdata = self.jscode.get('data', '')
             jscode = self.cm.ph.getSearchGroups(jsdata, '''var\s([a-zA-Z]+?,[a-zA-Z]+?,[a-zA-Z]+?,[a-zA-Z]+?,[a-zA-Z]+?,.*?);''')[0]
             tmp = jscode.split(',')
-            jscode = self.cm.ph.getSearchGroups(jsdata, '''(var\s[a-zA-Z]+?,[a-zA-Z]+?,[a-zA-Z]+?,[a-zA-Z]+?,[a-zA-Z]+?,.*?;)''')[0]
+            jscode = ensure_str(base64.b64decode('''ZnVuY3Rpb24gbGEoYSl7fTs='''))
+            jscode += self.cm.ph.getSearchGroups(jsdata, '''(var\s[a-zA-Z]+?,[a-zA-Z]+?,[a-zA-Z]+?,[a-zA-Z]+?,[a-zA-Z]+?,.*?;)''')[0]
             for item in tmp:
                 jscode += self.cm.ph.getSearchGroups(jsdata, '(%s=function\(.*?};)' % item)[0]
             jscode += "file = '%s';" % dat
@@ -14093,10 +14097,13 @@ class pageParser(CaptchaHelper):
 
         urlTab = []
         data = self.cm.ph.getDataBeetwenMarkers(data, 'Clappr.Player', ';', False)[1]
-        url = self.cm.ph.getSearchGroups(data, '''source:\s?['"]([^"^']+?)['"]''')[0]
+        url = self.cm.ph.getSearchGroups(data, '''sources?:.*?['"]([^"^']+?)['"]''')[0]
         url = strwithmeta(url, {'Origin': urlparser.getDomain(baseUrl, False), 'Referer': baseUrl, 'User-Agent': 'Wget/1.20.3 (linux-gnu)'})
         if url != '':
-            urlTab.extend(getDirectM3U8Playlist(url, checkContent=True, sortWithMaxBitrate=999999999))
+            if 'm3u8' in url:
+                urlTab.extend(getDirectM3U8Playlist(url, checkExt=False, variantCheck=True, checkContent=True, sortWithMaxBitrate=99999999))
+            else:
+                urlTab.append({'name': 'mp4', 'url': url})
 
         return urlTab
 
