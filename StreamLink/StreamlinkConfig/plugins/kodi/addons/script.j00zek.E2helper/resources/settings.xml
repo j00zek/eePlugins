@@ -1,0 +1,9 @@
+<!-- https://kodi.wiki/view/Add-on_settings -->
+<settings>
+  <category label="Take tam pierdoły">
+​​​​​​    <setting id="DebugEnabled" label="Debug addon" type="bool" default="true" enable="true" />
+​​​​​​    <setting id="ShutdownKODI" label="Shutdown KODI at playback stop" type="bool" default="true" enable="true" />
+	<!--setting id="load_MSN_defaults" type="action" label="Wczytaj kopie konfiguracje" action="RunScript(special://home/addons/weather.MSNweatherNP/resources/lib/MSN_defaults.py,load)"/>
+​​​​​​	<setting id="save_MSN_defaults" type="action" label="Zrób kopie konfiguracji"    action="RunScript(special://home/addons/weather.MSNweatherNP/resources/lib/MSN_defaults.py,save)"/-->
+  </category>
+</settings>

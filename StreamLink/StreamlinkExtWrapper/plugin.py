@@ -1,4 +1,5 @@
 from Plugins.Plugin import PluginDescriptor
+from base64 import b64decode as F6236346465636F6465F
 
 IPTVExtMoviePlayer = None
 KodiLauncher = None
@@ -54,6 +55,13 @@ def zap(session, service, **kwargs):
                         session.openWithCallback(leaveKodiLauncher, startLauncher)
                     except ImportError as e:
                         print("[ChannelSelection] zap > StreamlinkExtWrapper importing IPTVPlayer component error '%s'" % str(e))
+                elif url.startswith("mpd://"):
+                    url = url[6:]
+                    print("[ChannelSelection] zap > StreamlinkExtWrapper:mpd url='%s'" % url)
+                    try:
+                        return (F6236346465636F6465F(url), errormsg)
+                    except ImportError as e:
+                        print("[ChannelSelection] zap > StreamlinkExtWrapper mpd component error '%s'" % str(e))
                 elif url.startswith("chrome://"):
                     url = url[9:]
                     print("[ChannelSelection] zap > StreamlinkExtWrapper:chrome url='%s'" % url)
@@ -66,7 +74,8 @@ def zap(session, service, **kwargs):
                         main(session)
                         config.plugins.Chromium.presets[0].portal.value = oldVal
                     except ImportError as e:
-                        print("[ChannelSelection] zap > StreamlinkExtWrapper importing IPTVPlayer component error '%s'" % str(e))
+                        errormsg = str(e)
+                        print("[ChannelSelection] zap > StreamlinkExtWrapper chrome component error '%s'" % errormsg)
         except Exception as e:
             print("[ChannelSelection] zap > StreamlinkExtWrapper failed %s" % str(e))
     return (None, errormsg)
