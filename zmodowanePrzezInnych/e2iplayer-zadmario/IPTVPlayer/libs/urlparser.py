@@ -262,6 +262,7 @@ class urlparser:
                        'doodstream.com': self.pp.parserDOOD,
                        'dotstream.tv': self.pp.parserDOTSTREAMTV,
                        'droonws.xyz': self.pp.parserTXNEWSNETWORK,
+                       'dropload.io': self.pp.parserONLYSTREAMTV,
                        'dwn.so': self.pp.parserDWN,
                        #e
                        'easyload.io': self.pp.parserEASYLOAD,
