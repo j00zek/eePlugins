@@ -5,7 +5,6 @@ from Components.ConfigList import ConfigListScreen
 from Components.Sources.StaticText import StaticText
 from Components.config import config, getConfigListEntry, ConfigNothing
 from Plugins.Extensions.DGWeather.WeatherConfig import WeatherConfig
-from Plugins.Extensions.DGWeather.WeatherDetails import WeatherDetails
 import skin
 from importlib import reload
 
