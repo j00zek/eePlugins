@@ -115,6 +115,11 @@ def findPicon(sName, selfPiconType, serviceName):
                 lastPiconsDict[findPiconTypeName] = pngname
                 if DBG: j00zekDEBUG('[j00zekPicons:findPicon] lastPiconsDict[%s] = %s' % (findPiconTypeName, pngname) )
                 break
+            elif pathExists(sPath + sName + 'hd.png'): #channel name without hd but picon name with hd
+                pngname = sPath + sName + '.png'
+                lastPiconsDict[findPiconTypeName] = pngname
+                if DBG: j00zekDEBUG('[j00zekPicons:findPicon] lastPiconsDict[%s] = %s' % (findPiconTypeName, pngname) )
+                break
             elif pathExists(sPath + sName + '.gif'):
                 pngname = sPath + sName + '.gif'
                 lastPiconsDict[findPiconTypeName] = pngname
