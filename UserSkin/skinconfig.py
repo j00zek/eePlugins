@@ -47,8 +47,11 @@ from os import listdir, remove, rename, system, path, symlink, chdir, rmdir, mkd
 import os
 import shutil
 import re
-import requests
-
+try:
+    import requests
+except Exception:
+    os.system('opkg update;opkg install python3-requests') #openPLi doesn't have it installed
+    
 from sys import version_info
 PyMajorVersion = version_info.major
 
