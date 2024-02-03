@@ -375,6 +375,7 @@ class urlparser:
                        'jacvideo.com': self.pp.parseJACVIDEOCOM,
                        'jawcloud.co': self.pp.parserJAWCLOUDCO,
                        'jetload.net': self.pp.parserJETLOADNET,
+                       'johntryopen.com': self.pp.parserMATCHATONLINE,
                        'jokerswidget.org': self.pp.parserJOKERSWIDGETORG,
                        'junkyvideo.com': self.pp.parserJUNKYVIDEO,
                        'justupload.io': self.pp.parserJUSTUPLOAD,
