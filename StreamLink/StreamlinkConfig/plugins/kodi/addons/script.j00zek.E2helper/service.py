@@ -1,4 +1,5 @@
 #https://xbmc.github.io/docs.kodi.tv/master/kodi-dev-kit/group__python__xbmc.html
+import os
 import xbmc
 #from resources.MyService import MonitorService
 
@@ -21,7 +22,7 @@ class MyPlayer(xbmc.Player):
     def onPlayBackStopped(self):
         # This works
         xbmc.log("[E2helper] onPlayBackStopped", level=xbmc.LOGINFO)
-        #xbmc.shutdown() nie wyłącza tylko minimalizuje na windzie
+        #xbmc.shutdown() #nie wyłącza tylko minimalizuje na windzie
         xbmc.executebuiltin('Quit')
 
     def onPlayBackPaused(self):
@@ -31,15 +32,22 @@ class MyPlayer(xbmc.Player):
         xbmc.log("[E2helper] onPlayBackResumed", level=xbmc.LOGINFO)
 
 player=MyPlayer()
-player.play("plugin://plugin.video.pgobox/?mode=playtvs&&url=1456452%7Ctv&&page=0&&moviescount=0&&movie=True&&name=POLSAT+SPORT+HD")
+if os.path.exists('/tmp/playInKodi.url'):
+    xbmc.log("[E2helper] /tmp/playInKodi.url exists :)", level=xbmc.LOGINFO)
+    with open('/tmp/playInKodi.url','r') as f:
+        myURL=f.read()
+        f.close()
+        xbmc.log("[E2helper] xontent to play '%s'" % myURL, level=xbmc.LOGINFO)
+        if myURL.startswith('plugin'):
+            player.play(myURL)
 
-while(1):
-    if xbmc.Player().isPlayingVideo():
-        VIDEO = 1
-    else:
-        VIDEO = 0
+    while(1):
+        if xbmc.Player().isPlayingVideo():
+            VIDEO = 1
+        else:
+            VIDEO = 0
 
-    xbmc.sleep(500) #in ms
+        xbmc.sleep(500) #in ms
 
 #MonitorService().runLoop()
 #xbmc.log("[MSNweather] service.py ends", level=xbmc.LOGINFO)

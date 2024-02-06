@@ -1,35 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addon id="script.j00zek.E2helper" version="2023.01.25" name="E2helper" provider-name="j00zek">
     <requires>
-        <import addon="xbmc.addon" 				 version="12.0.0"/>
-		<import addon="xbmc.python"              version="3.0.0"/>
-		<import addon="script.module.requests"   version="2.22.0"/>
-		<import addon="script.module.dateutil" 	 version="2.8.1"/>
-        <import addon="script.module.simplejson" version="3.3.0"/>
-        <import addon="script.module.twisted"    version="13.2.1"/> 
-	</requires>
-	<extension point="xbmc.service" 		library="service.py" />
-	<!--extension point="xbmc.python.weather" 	library="default.py"/-->
-	<extension point="xbmc.addon.metadata">
-		<summary lang="en">E2helper</summary>
-		<summary lang="pl">E2helper</summary>
-		<description lang="en">Improves interopperability between E2 and KODI</description>
-		<description lang="pl">Poprawia współpracę pomiędzy E2 i KODI</description>
-		<!--disclaimer lang="en"></disclaimer>
-		<disclaimer lang="pl"></disclaimer-->
-		<!--news></news-->
+        <import addon="xbmc.addon"                               version="12.0.0"/>
+                <import addon="xbmc.python"              version="3.0.0"/>
+        </requires>
+        <extension point="xbmc.service"                 library="service.py" />
+        <!--extension point="xbmc.python.weather"       library="default.py"/-->
+        <extension point="xbmc.addon.metadata">
+                <summary lang="en">E2helper</summary>
+                <summary lang="pl">E2helper</summary>
+                <description lang="en">Improves interopperability between E2 and KODI</description>
+                <description lang="pl">Poprawia współpracę pomiędzy E2 i KODI</description>
+                <!--disclaimer lang="en"></disclaimer>
+                <disclaimer lang="pl"></disclaimer-->
+                <!--news></news-->
          <language></language>
-		<platform>all</platform>
-		<license></license>
-		<forum></forum>
-		<website></website>
-		<email></email>
-		<source></source>
-		<news></news>
-		<assets>
-			<icon></icon>
-			<fanart></fanart>
-			<screenshot></screenshot>
-		</assets>
-	</extension>
+                <platform>all</platform>
+                <license></license>
+                <forum></forum>
+                <website></website>
+                <email></email>
+                <source></source>
+                <news></news>
+                <assets>
+                        <icon></icon>
+                        <fanart></fanart>
+                        <screenshot></screenshot>
+                </assets>
+        </extension>
 </addon>
