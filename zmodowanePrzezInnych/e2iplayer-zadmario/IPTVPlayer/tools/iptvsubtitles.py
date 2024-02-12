@@ -12,7 +12,7 @@ from Plugins.Extensions.IPTVPlayer.libs.pCommon import CParsingHelper
 #    print("%s" % data)
 
 ###################################################
-
+from Plugins.Extensions.IPTVPlayer.p2p3.manipulateStrings import strDecode, iterDictItems, ensure_str
 ###################################################
 # FOREIGN import
 ###################################################
@@ -233,7 +233,7 @@ class IPTVSubtitlesHandler:
 
                 from Plugins.Extensions.IPTVPlayer.libs.iptvsubparser import _subparser as subparser
                 with codecs.open(filePath, 'r', encoding, 'replace') as fp:
-                    subText = fp.read().encode('utf-8')
+                    subText = ensure_str(fp.read())
                 # if in subtitles will be line {1}{1}f_fps
                 # for example {1}{1}23.976 and we set microsecperframe = 0
                 # then microsecperframe will be calculated as follow: llroundf(1000000.f / f_fps)
@@ -282,7 +282,7 @@ class IPTVSubtitlesHandler:
         if not sts:
             try:
                 with codecs.open(filePath, 'r', encoding, 'replace') as fp:
-                    subText = fp.read().encode('utf-8')
+                    subText = ensure_str(fp.read())
                     if filePath.endswith('.srt'):
                         self.subAtoms = self._srtToAtoms(subText)
                         sts = True

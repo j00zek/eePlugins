@@ -231,6 +231,7 @@ class urlparser:
                        'cloudyfiles.me': self.pp.parserUPLOAD,
                        'cloudyfiles.org': self.pp.parserUPLOAD,
                        'cloudyvideos.com': self.pp.parserCLOUDYVIDEOS,
+                       'compensationcoincide.net': self.pp.parserONLYSTREAMTV,
                        'content.peteava.ro': self.pp.parserPETEAVA,
                        'coolcast.eu': self.pp.parserCOOLCASTEU,
                        'crichd.tv': self.pp.parserCRICHDTV,
@@ -411,6 +412,7 @@ class urlparser:
                        'mcloud.to': self.pp.parserMYCLOUDTO,
                        'mdbekjwqa.pw': self.pp.parserMIXDROP,
                        'mdy48tn97.com': self.pp.parserMIXDROP,
+                       'mdzsmutpcvykb.net': self.pp.parserMIXDROP,
                        'mediafire.com': self.pp.parserMEDIAFIRECOM,
                        'mediasetplay.mediaset.it': self.pp.parserMEDIASET,
                        'megadrive.co': self.pp.parserMEGADRIVECO,
@@ -522,6 +524,7 @@ class urlparser:
                        'rumble.com': self.pp.parserRUMBLECOM,
                        'rutube.ru': self.pp.parserRUTUBE,
                        #s
+                       's2watch.link': self.pp.parserGOUNLIMITEDTO,
                        'samaup.cc': self.pp.parserUPLOAD,
                        'sawlive.tv': self.pp.parserSAWLIVETV,
                        'sbchill.com': self.pp.parserSTREAMSB,
@@ -723,6 +726,7 @@ class urlparser:
                        'vidshare.tv': self.pp.parserVIDSHARETV,
                        'vidspace.io': self.pp.parserVIDEOSPACE,
                        'vidspot.net': self.pp.parserVIDSPOT,
+                       'vidsrc.pro': self.pp.parserVIDSRCPRO,
                        'vidsso.com': self.pp.parserVIDSSO,
                        'vidstodo.me': self.pp.parserVIDSTODOME,
                        'vidstream.in': self.pp.parserVIDSTREAM,
@@ -772,6 +776,7 @@ class urlparser:
                        'widestream.io': self.pp.parserWIDESTREAMIO,
                        'wiiz.tv': self.pp.parserWIIZTV,
                        'wikisport.click': self.pp.parserWIKISPORTCLICK,
+                       'wikisport.se': self.pp.parserWIKISPORTCLICK,
                        'wishfast.top': self.pp.parserONLYSTREAMTV,
                        'wolfstream.tv': self.pp.parserCLIPWATCHINGCOM,
                        'wrzuta.pl': self.pp.parserWRZUTA,
@@ -13722,7 +13727,7 @@ class pageParser(CaptchaHelper):
         #$.get('/pass_md5/3526522-87-9-1595176733-d1cadb0bad545cdcc61809e26c0ccf93/p3yuk59uqm525k1zc9boovu4'
         #function makePlay(){for(var a="",t="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",n=t.length,o=0;10>o;o++)a+=t.charAt(Math.floor(Math.random()*n));return a+"?token=p3yuk59uqm525k1zc9boovu4&expiry="+Date.now();};
         pass_md5_url = self.cm.ph.getSearchGroups(data, "\$\.get\('(/pass_md5[^']+?)'")[0]
-        makePlay = self.cm.ph.getSearchGroups(data, "(function\s*makePlay.+?\{.*?\};)")[0]
+        makePlay = re.findall('(function\s*makePlay.+?\{.*?\};)', data, re.DOTALL)[0]
         if pass_md5_url and makePlay:
             pass_md5_url = self.cm.getFullUrl(pass_md5_url, self.cm.getBaseUrl(baseUrl))
             sts, new_url = self.cm.getPage(pass_md5_url, httpParams)
@@ -15618,6 +15623,8 @@ class pageParser(CaptchaHelper):
 
         urlTab = []
         if 'm3u8' in data:
+            if ':////' in data:
+                data = data.replace(':////', '://')
             hlsUrl = strwithmeta(data, {'Origin': urlparser.getDomain(tmpUrl, False), 'Referer': tmpUrl})
             urlTab.extend(getDirectM3U8Playlist(hlsUrl, checkExt=False, variantCheck=True, checkContent=True, sortWithMaxBitrate=99999999))
         return urlTab
@@ -15697,3 +15704,52 @@ class pageParser(CaptchaHelper):
             urlTab.extend(getDirectM3U8Playlist(m3u8, checkExt=False, variantCheck=True, checkContent=True, sortWithMaxBitrate=99999999))
 
         return urlTab
+
+    def parserVIDSRCPRO(self, baseUrl):
+        printDBG("parserVIDSRCPRO baseUrl [%s]" % baseUrl)
+
+        HTTP_HEADER = self.cm.getDefaultHeader(browser='chrome')
+        referer = baseUrl.meta.get('Referer')
+        if referer:
+            HTTP_HEADER['Referer'] = referer
+        urlParams = {'header': HTTP_HEADER}
+        sts, data = self.cm.getPage(baseUrl, urlParams)
+        if not sts:
+            return []
+
+        data = self.cm.ph.getSearchGroups(data, '''selector:.+?(\{.*?)\)''')[0]
+#        printDBG("parserVIDSRCPRO data [%s]" % data)
+
+        urlsTab = []
+
+        data = self.cm.ph.getAllItemsBeetwenMarkers(data, '{', '}')
+        for item in data:
+            url = self.cm.ph.getSearchGroups(item, '''['"]url['"]:['"]([^'^"]+?)['"]''')[0]
+            url = 'https://vidsrc.pro/e/%s?token=' % url
+            sts, data = self.cm.getPage(url, urlParams)
+            if '"source":' in data:
+                break
+
+        data = json_loads(data)
+        hlsUrl = data.get('source', '')
+
+        subTracks = []
+        tracks = data.get('subtitles', '')
+        for track in tracks:
+#            printDBG("parserVIDSRCPRO track [%s]" % track)
+            srtUrl = track.get('file', '')
+            if srtUrl == '':
+                continue
+            srtLabel = track.get('label', '')
+            srtFormat = srtUrl[-3:]
+            params = {'title': srtLabel, 'url': srtUrl, 'lang': srtLabel.lower()[:3], 'format': srtFormat}
+#            printDBG(str(params))
+            subTracks.append(params)
+
+        if hlsUrl != '':
+            params = {'iptv_proto': 'm3u8', 'Referer': baseUrl, 'Origin': urlparser.getDomain(baseUrl, False)}
+            params['external_sub_tracks'] = subTracks
+            hlsUrl = urlparser.decorateUrl(hlsUrl, params)
+            urlsTab.extend(getDirectM3U8Playlist(hlsUrl, checkExt=False, checkContent=True, sortWithMaxBitrate=999999999))
+
+        return urlsTab

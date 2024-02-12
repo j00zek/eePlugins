@@ -1562,7 +1562,7 @@ def IsSubtitlesParserExtensionCanBeUsed():
             if '' != subparser.version():
                 return True
     except Exception:
-        printExc()
+        printExc('WARNING')
     return False
 
 
