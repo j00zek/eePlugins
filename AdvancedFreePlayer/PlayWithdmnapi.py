@@ -967,7 +967,7 @@ class AdvancedFreePlayer(Screen):
                         textWidth = tempLen 
                         
             printDEBUG(text)
-            self["afpSubtitles"].setText(text.encode('utf-8'))
+            self["afpSubtitles"].setText(text)
             textWidth *= int(self.fontsize * 0.75) # The best would be to calculate real width, but don't know how to do it. :(
             center = int( (self.currentWidth - textWidth) /2 )
             self["afpSubtitles"].instance.resize(eSize(textWidth, linesNO * self.SubtitleLineHeight) )
