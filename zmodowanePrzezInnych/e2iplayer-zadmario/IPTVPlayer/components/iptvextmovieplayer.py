@@ -800,7 +800,7 @@ class IPTVExtMoviePlayer(Screen):
                 self.extPlayerCmddDispatcher.setAudioTrack(ret['track_id'])
 
     def selectSubtitle(self):
-        printDBG("selectSubtitle")
+        printDBG("IPTVExtMoviePlayer.selectSubtitle")
         options = []
 
         currIdx = self.metaHandler.getSubtitleIdx() + 1
@@ -846,6 +846,7 @@ class IPTVExtMoviePlayer(Screen):
                 options.append(IPTVChoiceBoxItem(title, "", {'other': 'download_suggested', 'track': item}))
         options.append(IPTVChoiceBoxItem(_('Load'), "", {'other': 'load'}))
         options.append(IPTVChoiceBoxItem(_('Download'), "", {'other': 'download'}))
+        printDBG("IPTVExtMoviePlayer.selectSubtitle options = %s" % str(options))
         self.openChild(boundFunction(self.childClosed, self.selectSubtitleCallback), IPTVChoiceBoxWidget, {'width': 600, 'current_idx': currIdx, 'title': _("Select subtitles track"), 'options': options})
 
     def selectSubtitleCallback(self, ret):
@@ -1123,11 +1124,11 @@ class IPTVExtMoviePlayer(Screen):
 
                     lW = textSize[0] + self.subConfig['font_size'] / 2
                     lH = lineHeight #textSize[1] + self.subConfig['font_size'] / 2
-                    self[subLabel].instance.resize(eSize(lW, lH))
+                    self[subLabel].instance.resize(eSize(int(lW), int(lH)))
                     if not subOnTopHack:
-                        self[subLabel].instance.move(ePoint(int((desktopW - lW) / 2), desktopH - y - lH))
+                        self[subLabel].instance.move(ePoint(int((desktopW - lW) / 2), int(desktopH - y - lH)))
                     else:
-                        self[subLabel].instance.move(ePoint(int((desktopW - lW) / 2), y))
+                        self[subLabel].instance.move(ePoint(int((desktopW - lW) / 2),int(y)))
                     y += lH + self.subConfig['line_spacing']
                     self[subLabel].show()
                 except Exception:
