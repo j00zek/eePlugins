@@ -1487,17 +1487,26 @@ class TreeUserSkinScreens(Screen):
                 printDEBUG("[skinconfig:PreviewTimerCB] '%s.jpg' not found" % pic )
                 self["PreviewPicture"].hide()
     
+    def installComponentsFromOPKG(self, ret = False):
+        if DBG == True: printDEBUG("installComponentsFromOPKG >>>")
+        if ret == True:
+            if 'Ciacho' in self["filelist"].getSelection()[0]:
+                pkgName = 'e2-j00zeks-bh-addon-userspacks-screensbyciacho'
+            os.system('opkg update;opkg install %s;sync' % pkgName)
+            self.keyOk()
+
     def runMenuEntry(self):
         selection = self["filelist"].getSelection()
         if selection is None:
             return
         elif selection[1] == True: # isDir
-            if selection[0] is not None and self.filelist.getCurrentDirectory() is not None and \
-                    len(selection[0]) > len(self.filelist.getCurrentDirectory()) or self.LastFolderSelected == None:
+            printDEBUG("SkinConfig.TreeUserSkinScreens.runMenuEntry() selection = %s" % str(selection))
+            if self.filelist.getCurrentDirectory() is not None and \
+                  len(selection[0]) > len(self.filelist.getCurrentDirectory()) or self.LastFolderSelected == None:
                 self.LastFolderSelected = selection[0]
                 self["filelist"].changeDir(selection[0], "FakeFolderName")
             else:
-                print("Folder Down")
+                printDEBUG("Folder Down")
                 self["filelist"].changeDir(selection[0], self.LastFolderSelected)
             return
         else: #file selected

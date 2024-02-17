@@ -182,6 +182,8 @@ class FileList(MenuList):
             for x in directories:
                 if not (self.inhibitMounts and self.getMountpoint(x) in self.inhibitMounts) and not self.inParentDirs(x, self.inhibitDirs):
                     name = x.split('/')[-2]
+                    if not listdir(x):
+                        name += _(' (install from OPKG)')
                     self.list.append(FileEntryComponent(name = name, absolute = x, isDir = True, DimText0 = self.DimText0, DimText1=self.DimText1, DimPIC=self.DimPIC))
 
         if self.showFiles:
