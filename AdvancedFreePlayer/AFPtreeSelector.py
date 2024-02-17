@@ -16,7 +16,11 @@ from Components.ActionMap import ActionMap
 try:
     from Components.j00zekAccellPixmap import j00zekAccellPixmap
 except Exception:
-    from j00zekAccellPixmap import j00zekAccellPixmap
+    try:
+        from Plugins.Extensions.AdvancedFreePlayer.j00zekAccellPixmap import j00zekAccellPixmap
+    except Exception:
+        from j00zekAccellPixmap import j00zekAccellPixmap
+
 from Components.Label import Label
 #from Components.Pixmap import Pixmap
 from Components.Sources.StaticText import StaticText
