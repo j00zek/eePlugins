@@ -1478,12 +1478,15 @@ def getExcMSG(clearExcMSG = True):
 
 def printExc(msg='', WarnOnly = False):
     global LASTExcMSG
+    isWarning = False
     printDBG("===============================================")
     if WarnOnly:
         printDBG("                    WARNING")
+        isWarning = True
     elif msg.startswith('WARNING'):
         printDBG("                    WARNING")
         msg = msg[7:]
+        isWarning = True
     elif msg.startswith('EXCEPTION'):
         printDBG("                    EXCEPTION")
         msg = msg[9:]
@@ -1501,7 +1504,8 @@ def printExc(msg='', WarnOnly = False):
         retMSG = exc_formatted.splitlines()[-1]
     except Exception:
         retMSG = ''
-    LASTExcMSG = retMSG
+    if not isWarning:
+        LASTExcMSG = retMSG
     return retMSG #returns the error description to possibly use in main code. E.g. inform about failed login
 
 def GetIPTVPlayerVerstion():
