@@ -1,5 +1,68 @@
 <skin>
-<screen name="InfoBar" position="center,52" size="1920,1080" title="InfoBar" flags="wfNoBorder" backgroundColor="transparent">
+<screen name="SecondInfoBar" backgroundColor="transparent" flags="wfNoBorder" position="0,52" size="1920,1080">
+  <ePixmap position="9,-2" zPosition="-2" size="1920,699" pixmap="BlackHarmony/allScreens/Screens by Ciacho/bg_design/secondinfobar_ciacho_1.png" />
+  <widget source="session.CurrentService" render="j00zekLabel" backgroundColor="black" font="HD_Thin; 27" foregroundColor="green" position="75,35" size="90,40" transparent="1">
+    <convert type="j00zekTranslator">Now:</convert>
+  </widget>
+  <widget backgroundColor="black" font="HD_Thin; 27" foregroundColor="white" halign="right" position="165,35" render="Label" size="90,40" source="session.Event_Now" transparent="1">
+    <convert type="EventTime">StartTime</convert>
+    <convert type="ClockToText">Default</convert>
+  </widget>
+  <widget backgroundColor="black" font="HD_Thin; 27" foregroundColor="white" halign="left" position="266,35" render="Label" size="105,40" source="session.Event_Now" transparent="1">
+    <convert type="EventTime">EndTime</convert>
+    <convert type="ClockToText">Format:- %H:%M</convert>
+  </widget>
+  <widget backgroundColor="black" font="HD_Thin; 27" foregroundColor="white" halign="right" position="745,35" render="Label" size="180,40" source="session.Event_Now" transparent="1">
+    <convert type="EventTime">Remaining</convert>
+    <convert type="RemainingToText">InMinutes</convert>
+  </widget>
+  <widget backgroundColor="background" font="HD_Thin; 32" foregroundColor="light_yellow" position="75,90" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" size="850,40" source="session.Event_Now" halign="center" transparent="1">
+    <convert type="j00zekModEventName">Name</convert>
+  </widget>
+  <widget backgroundColor="black" font="Roboto_HD; 28" foregroundColor="white" position="75,150" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=top,steptime=100,startdelay=4000,wrap,always=0" size="850,440" source="session.Event_Now" transparent="1">
+    <convert type="j00zekModEventName">ExtendedDescription</convert>
+  </widget>
+  <widget source="session.CurrentService" render="j00zekLabel" backgroundColor="black" font="HD_Thin; 27" foregroundColor="blue" position="997,35" size="100,40" transparent="1">
+    <convert type="j00zekTranslator">Next:</convert>
+  </widget>
+  <widget backgroundColor="black" font="HD_Thin; 27" halign="right" position="1097,35" render="Label" size="90,40" source="session.Event_Next" transparent="1">
+    <convert type="EventTime">StartTime</convert>
+    <convert type="ClockToText">Default</convert>
+  </widget>
+  <widget backgroundColor="black" font="HD_Thin; 27" halign="left" position="1197,35" render="Label" size="105,40" source="session.Event_Next" transparent="1">
+    <convert type="EventTime">EndTime</convert>
+    <convert type="ClockToText">Format:- %H:%M</convert>
+  </widget>
+  <widget backgroundColor="black" font="HD_Thin; 27" halign="right" position="1668,35" render="Label" size="180,40" source="session.Event_Next" transparent="1">
+    <convert type="EventTime">Remaining</convert>
+    <convert type="RemainingToText">InMinutes</convert>
+  </widget>
+  <widget backgroundColor="black" font="HD_Thin; 32" foregroundColor="light_yellow" position="997,90" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" size="850,40" source="session.Event_Next" halign="center" transparent="1">
+    <convert type="j00zekModEventName">Name</convert>
+  </widget>
+  <widget backgroundColor="black" font="Roboto_HD; 28" position="997,150" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=top,steptime=100,startdelay=4000,wrap,always=0" size="850,440" source="session.Event_Next" transparent="1">
+    <convert type="j00zekModEventName">ExtendedDescription</convert>
+  </widget>
+  <ePixmap position="63,140" zPosition="10" size="870,1" pixmap="BlackHarmony/gfx/linia_md.png" />
+  <ePixmap position="987,80" zPosition="10" size="870,1" pixmap="BlackHarmony/gfx/linia_md.png" />
+  <ePixmap position="63,80" zPosition="10" size="870,1" pixmap="BlackHarmony/gfx/linia_md.png" />
+  <ePixmap position="987,140" zPosition="10" size="870,1" pixmap="BlackHarmony/gfx/linia_md.png" />
+  <widget source="session.Event_Now" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" position="75,615" size="600,36" transparent="1" zPosition="1" font="HD_Thin; 28" halign="left" foregroundColor="green" backgroundColor="black" valign="bottom">
+    <convert type="j00zekModEventName">Genre</convert>
+  </widget>
+  <widget source="session.Event_Now" render="Label" position="775,615" size="150,36" transparent="1" zPosition="1" font="HD_Thin; 28" halign="right" foregroundColor="light_red" backgroundColor="black" valign="bottom">
+    <convert type="j00zekModEventName">Rating</convert>
+  </widget>
+  <widget source="session.Event_Next" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" position="997,615" size="600,36" transparent="1" zPosition="1" font="HD_Thin; 28" halign="left" foregroundColor="green" backgroundColor="black" valign="bottom">
+    <convert type="j00zekModEventName">Genre</convert>
+  </widget>
+  <widget source="session.Event_Next" render="Label" position="1697,615" size="150,36" transparent="1" zPosition="1" font="HD_Thin; 28" halign="right" foregroundColor="light_red" backgroundColor="black" valign="bottom">
+    <convert type="j00zekModEventName">Rating</convert>
+  </widget>
+  <widget source="session.CurrentService" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" position="820,842" zPosition="1" size="525,25" font="Roboto_HD; 20" halign="right" backgroundColor="black" transparent="1" foregroundColor="linie">
+    <convert type="j00zekModExtraTuner">TunerInfo</convert>
+  </widget>
+  <!--##########################################-->
   <ePixmap position="29,721" zPosition="-2" size="1900,300" pixmap="BlackHarmony/bg_design/infobar.png" />
   <ePixmap position="120,825" zPosition="10" size="1200,1" pixmap="BlackHarmony/gfx/line.png" />
   <widget source="session.CurrentService" render="Pixmap" position="45,794" zPosition="3" size="20,20" pixmap="BlackHarmony/icons/update.png" alphatest="blend">
@@ -43,7 +106,7 @@
     <convert type="j00zekModFrontendInfo2">AGC</convert>
   </widget>
   <ePixmap position="1410,825" zPosition="10" size="450,1" pixmap="BlackHarmony/gfx/linia_IB.png" />
-  <widget source="session.Event_Now" render="Progress" position="313,880" zPosition="1" size="1032,6" pixmap="BlackHarmony/gfx/progress_emc_rec.png" transparent="1">
+  <widget source="session.Event_Now" render="Progress" position="313,880" zPosition="1" size="1032,6" pixmap="BlackHarmony/allScreens/Screens by Ciacho/gfx/progress_1140_25_ciacho_1.png" transparent="1">
     <convert type="EventTime">Progress</convert>
   </widget>
   <widget source="session.Event_Now" render="Label" position="310,895" size="105,36" font="HD_Thin; 32" halign="left" backgroundColor="black" transparent="1">
@@ -56,12 +119,6 @@
   </widget>
   <widget source="session.Event_Now" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" position="436,895" size="700,36" font="HD_Thin; 32" halign="left" backgroundColor="black" transparent="1">
     <convert type="j00zekModEventName">Name</convert>
-  </widget>
-  <widget source="session.Event_Now" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" position="820,838" size="370,36" transparent="1" zPosition="1" font="HD_Thin; 28" halign="right" foregroundColor="green" backgroundColor="black" valign="bottom">
-    <convert type="j00zekModEventName">Genre</convert>
-  </widget>
-  <widget source="session.Event_Now" render="Label" position="1193,838" size="150,36" transparent="1" zPosition="1" font="HD_Thin; 28" halign="right" foregroundColor="light_red" backgroundColor="black" valign="bottom">
-    <convert type="j00zekModEventName">Rating</convert>
   </widget>
   <widget source="session.Event_Now" render="Label" position="1143,895" size="200,36" font="HD_Thin; 32" halign="right" backgroundColor="black" transparent="1">
     <convert type="EventTime">Remaining</convert>
@@ -174,8 +231,8 @@
   <ePixmap alphatest="blend" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/czarne104_64_ciacho.png" position="721,750" size="104,64" zPosition="4" />
   <ePixmap alphatest="blend" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/ramkaszara.png" position="725,752" size="95,55" zPosition="5" />
   <widget source="session.CurrentService" render="j00zekModAudioIcon" path="allScreens/Screens by Ciacho/icons" position="730,766" size="85,28" zPosition="6" alphatest="blend">
-  <convert type="j00zekModAudioInfo">AudioIcon</convert>
-</widget>
+    <convert type="j00zekModAudioInfo">AudioIcon</convert>
+  </widget>
   <ePixmap position="829,750" size="104,64" zPosition="1" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/ico_dolby_off_ciacho.png" alphatest="blend" />
   <widget alphatest="blend" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/sub_on_ciacho.png" position="937,750" render="Pixmap" size="104,64" source="session.CurrentService" zPosition="2">
     <convert type="j00zekModServiceInfoEX">SubtitlesAvailable</convert>

@@ -193,7 +193,7 @@ echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 echo "            pakowanie rozszerzen"
 echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 extensionsPath=/DuckboxDisk/github/eePlugins/BHextensions
-find "$extensionsPath" -maxdepth 2 -mindepth 2 -type d | 
+find "$extensionsPath" ! -path '*usersPacks*' -maxdepth 2 -mindepth 2 -type d | 
 while read F 
 do
   if [ -e "$F/CONTROL/control" ];then
@@ -202,6 +202,31 @@ do
     echo $pkgPathFolderName
     sed -i "s;DestinationPath:.*$;DestinationPath: $pkgPathFolderName;" "$F/CONTROL/control"
     
+    #nazwa paczki
+    pathName=`dirname "$F"`
+    pkgFolderName=`basename "$F"`
+    pkgName=`echo $pkgFolderName| tr '[:upper:]' '[:lower:]'|sed -r 's/[_\.]+/-/g'`
+    pkgPathName=`basename $pathName| tr '[:upper:]' '[:lower:]'|sed -r 's/[_\.]+/-/g'`
+    sed -i "s;\(Package:\).*;\1 e2-j00zeks-bh-addon-$pkgPathName-$pkgName;" "$F/CONTROL/control"
+
+    #opis
+    if [ `grep -c 'Description: $' < "$F/CONTROL/control"` -gt 0 ];then
+      sed -i "s;\(Description:\).*;\1 $pkgPathName;" "$F/CONTROL/control"
+    fi
+    grep "Package:" < "$F/CONTROL/control"
+    
+    /DuckboxDisk/github/eePlugins/build_ipk.sh "$F" > /dev/null
+  fi
+done
+
+echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+echo "            pakowanie usersPacks"
+echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+extensionsPath=/DuckboxDisk/github/eePlugins/BHextensions/usersPacks/
+find "$extensionsPath" -maxdepth 1 -mindepth 1 -type d | 
+while read F 
+do
+  if [ -e "$F/CONTROL/control" ];then
     #nazwa paczki
     pathName=`dirname "$F"`
     pkgFolderName=`basename "$F"`
