@@ -2,7 +2,6 @@
 #
 # j00zek: this file has changed name just to avoid errors using opkg (situation when file was installed by different pockage)
 #
-from __future__ import absolute_import #zmiana strategii ladowanie modulow w py2 z relative na absolute jak w py3
 from Components.Converter.Converter import Converter
 from Components.Element import cached
 from Components.Converter.Poll import Poll
@@ -48,7 +47,7 @@ class j00zekModHddTempInfo(Poll, Converter, object):
                                 temp = ''
                         
             if temp != '0' and temp != '':
-                self.currentTemp = "%s%sC" % (temp, unichr(176).encode('utf-8'))
+                self.currentTemp = "%s%sC" % (temp, chr(176))
         return self.currentTemp
     
     text = property(getText)
