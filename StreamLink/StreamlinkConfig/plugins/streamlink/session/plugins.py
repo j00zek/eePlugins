@@ -179,7 +179,7 @@ class StreamlinkPlugins:
             if lookup is None:
                 continue
             mod, plugin = lookup
-            if name in self._plugins:
+            if name in self._plugins or name in self._matchers:
                 log.info(f"Plugin {name} is being overridden by {mod.__file__}")
             plugins[name] = plugin
 
@@ -317,7 +317,7 @@ class StreamlinkPluginsData:
             if not plugindata.get("arguments"):
                 continue
             arguments = Arguments()
-            for a in plugindata.get("arguments") or []:
+            for a in reversed(plugindata.get("arguments") or []):
                 if argument := cls._build_argument(a):
                     arguments.add(argument)
 

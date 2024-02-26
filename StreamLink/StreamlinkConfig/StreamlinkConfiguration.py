@@ -42,6 +42,12 @@ def getStreamlinkConfig():
         cfg = []
     return cfg
 
+def isCDM():
+    try:
+        from  pywidevinecdm.checkCDMvalidity import testDevice
+        return testDevice()
+    except Exception:
+        return False
 config.plugins.streamlinkSRV.streamlinkconfig = NoSave(ConfigNothing())
 config.plugins.streamlinkSRV.streamlinkconfigFFMPEG = NoSave(ConfigSelection(default = getCurrFF(), choices = getFFlist()))
 
@@ -179,13 +185,16 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                     Mlist.append(getConfigListEntry(_("Support VLC:"), config.plugins.streamlinkSRV.VLCusingLUA))
                     Mlist.append(getConfigListEntry(_("Support KODI:"), config.plugins.streamlinkSRV.support4kodi))
                 Mlist.append(getConfigListEntry(""))
-                Mlist.append(getConfigListEntry('\c00289496' + _("*** /etc/streamlink/config ***"), config.plugins.streamlinkSRV.Five))
-                if self.VisibleSection == 5:
-                    for cfg in getStreamlinkConfig():
-                        if cfg.startswith('ffmpeg-ffmpeg='):
-                            Mlist.append(getConfigListEntry("ffmpeg-ffmpeg=" , config.plugins.streamlinkSRV.streamlinkconfigFFMPEG))
-                        else:
-                            Mlist.append(getConfigListEntry( cfg , config.plugins.streamlinkSRV.streamlinkconfig))
+                if isCDM():
+                    Mlist.append(getConfigListEntry('\c00289496' + _("*** Widevine CDM ***"), config.plugins.streamlinkSRV.Five))
+                else:
+                    Mlist.append(getConfigListEntry('\c00289496' + _("*** /etc/streamlink/config ***"), config.plugins.streamlinkSRV.Five))
+                    if self.VisibleSection == 5:
+                        for cfg in getStreamlinkConfig():
+                            if cfg.startswith('ffmpeg-ffmpeg='):
+                                Mlist.append(getConfigListEntry("ffmpeg-ffmpeg=" , config.plugins.streamlinkSRV.streamlinkconfigFFMPEG))
+                            else:
+                                Mlist.append(getConfigListEntry( cfg , config.plugins.streamlinkSRV.streamlinkconfig))
             else:
                 Mlist.append(getConfigListEntry(""))
                 Mlist.append(getConfigListEntry('\c00981111' + _("*** not compliant Deamon found ***")))
