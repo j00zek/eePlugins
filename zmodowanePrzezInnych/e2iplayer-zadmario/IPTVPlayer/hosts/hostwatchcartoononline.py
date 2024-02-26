@@ -16,6 +16,10 @@ import re
 from Plugins.Extensions.IPTVPlayer.p2p3.UrlParse import urlparse
 ###################################################
 
+def GetConfigList():
+    optionList = []
+    return optionList
+
 
 def gettytul():
     return 'https://watchcartoononline.com/'

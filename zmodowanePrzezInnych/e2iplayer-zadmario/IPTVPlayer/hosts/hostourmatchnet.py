@@ -20,6 +20,10 @@ except Exception:
 from Components.config import config
 ###################################################
 
+def GetConfigList():
+    optionList = []
+    return optionList
+
 
 def gettytul():
     return 'http://ourmatch.net/'

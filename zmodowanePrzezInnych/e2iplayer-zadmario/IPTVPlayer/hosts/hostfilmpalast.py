@@ -16,6 +16,10 @@ from Plugins.Extensions.IPTVPlayer.p2p3.UrlParse import urljoin
 ###################################################
 ###################################################
 
+def GetConfigList():
+    optionList = []
+    return optionList
+
 
 def gettytul():
     return 'http://filmpalast.to/'

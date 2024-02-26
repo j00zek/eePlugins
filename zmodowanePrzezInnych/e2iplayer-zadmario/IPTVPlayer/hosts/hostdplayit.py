@@ -18,6 +18,10 @@ import re
 from datetime import datetime, tzinfo
 ###################################################
 
+def GetConfigList():
+    optionList = []
+    return optionList
+
 
 def gettytul():
     return 'https://it.dplay.com/'

@@ -19,6 +19,10 @@ from Plugins.Extensions.IPTVPlayer.p2p3.UrlLib import urllib_quote, urllib_quote
 import re
 ###################################################
 
+def GetConfigList():
+    optionList = []
+    return optionList
+
 
 def gettytul():
     return 'http://fenixsite.com/'

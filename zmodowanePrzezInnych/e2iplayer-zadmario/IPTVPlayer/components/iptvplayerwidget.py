@@ -643,7 +643,7 @@ class E2iPlayerWidget(Screen):
             if(len(host.GetConfigList()) > 0):
                 options.append((_("Configure host"), "HostConfig"))
         except Exception:
-            printExc()
+            printExc('WARNING')
         options.append((_("Info"), "info"))
         options.append((_("Download manager"), "IPTVDM"))
         self.session.openWithCallback(self.blue_pressed_next, ChoiceBox, title=_("Select option"), list=options)

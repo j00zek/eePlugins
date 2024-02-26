@@ -18,6 +18,10 @@ import re
 import datetime
 ###################################################
 
+def GetConfigList():
+    optionList = []
+    return optionList
+
 
 def gettytul():
     return 'http://raiplay.it/'

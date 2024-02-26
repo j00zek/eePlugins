@@ -15,6 +15,10 @@ from Plugins.Extensions.IPTVPlayer.p2p3.UrlLib import urllib_unquote
 
 ###################################################
 
+def GetConfigList():
+    optionList = []
+    return optionList
+
 
 def gettytul():
     return 'http://szene-streamz.com/'

@@ -17,6 +17,9 @@ except Exception:
     import simplejson as json
 ###################################################
 
+def GetConfigList():
+    optionList = []
+    return optionList
 
 def gettytul():
     return 'http://kabaret.tworzymyhistorie.pl/'

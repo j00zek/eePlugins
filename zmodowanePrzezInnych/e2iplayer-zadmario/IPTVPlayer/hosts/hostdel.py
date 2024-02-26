@@ -17,6 +17,10 @@ import re
 import time
 ###################################################
 
+def GetConfigList():
+    optionList = []
+    return optionList
+
 
 def gettytul():
     return 'https://del.org/'

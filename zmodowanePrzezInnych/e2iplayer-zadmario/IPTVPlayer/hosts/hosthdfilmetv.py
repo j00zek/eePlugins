@@ -23,6 +23,10 @@ except Exception:
 from copy import deepcopy
 ###################################################
 
+def GetConfigList():
+    optionList = []
+    return optionList
+
 
 def gettytul():
     return 'https://hdfilme.cx/'

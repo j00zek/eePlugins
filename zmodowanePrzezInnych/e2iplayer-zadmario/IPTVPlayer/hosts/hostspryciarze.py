@@ -13,6 +13,10 @@ import re
 import copy
 ###################################################
 
+def GetConfigList():
+    optionList = []
+    return optionList
+
 
 def gettytul():
     return 'https://spryciarze.pl/'

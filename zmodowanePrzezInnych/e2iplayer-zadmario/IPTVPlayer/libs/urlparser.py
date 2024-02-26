@@ -747,7 +747,7 @@ class urlparser:
                        'vkprime.com': self.pp.parserONLYSTREAMTV,
                        'vod-share.com': self.pp.parserVODSHARECOM,
                        'vodlocker.com': self.pp.parserVODLOCKER,
-                       'voe.sx': self.pp.parserMATCHATONLINE,
+                       'voe.sx': self.pp.parserVOESX,
                        'voodaith7e.com': self.pp.parserYOUWATCH,
                        'voodc.com': self.pp.parserVOODCCOM,
                        'vshare.eu': self.pp.parserVSHAREEU,
@@ -15717,6 +15717,14 @@ class pageParser(CaptchaHelper):
         if not sts:
             return []
 
+        sitekey = ph.search(data, '''grecaptcha.execute\(['"]([^"^']+?)['"]''')[0]
+        if sitekey != '':
+            token, errorMsgTab = self.processCaptcha(sitekey, baseUrl, captchaType="INVISIBLE")
+            if token == '':
+                SetIPTVPlayerLastHostError('\n'.join(errorMsgTab))
+                return False
+        else:
+            token = ''
         data = self.cm.ph.getSearchGroups(data, '''selector:.+?(\{.*?)\)''')[0]
 #        printDBG("parserVIDSRCPRO data [%s]" % data)
 
@@ -15725,8 +15733,11 @@ class pageParser(CaptchaHelper):
         data = self.cm.ph.getAllItemsBeetwenMarkers(data, '{', '}')
         for item in data:
             url = self.cm.ph.getSearchGroups(item, '''['"]url['"]:['"]([^'^"]+?)['"]''')[0]
-            url = 'https://vidsrc.pro/e/%s?token=' % url
+            HTTP_HEADER['Referer'] = baseUrl
+            urlParams = {'header': HTTP_HEADER}
+            url = 'https://vidsrc.pro/api/e/%s?token=undefined&captcha=%s' % (url, token)
             sts, data = self.cm.getPage(url, urlParams)
+#            printDBG("parserVIDSRCPRO data e [%s]" % data)
             if '"source":' in data:
                 break
 
@@ -15753,3 +15764,29 @@ class pageParser(CaptchaHelper):
             urlsTab.extend(getDirectM3U8Playlist(hlsUrl, checkExt=False, checkContent=True, sortWithMaxBitrate=999999999))
 
         return urlsTab
+
+    def parserVOESX(self, baseUrl):
+        printDBG("parserVOESX baseUrl[%r]" % baseUrl)
+        sts, data = self.cm.getPage(baseUrl)
+        if not sts:
+            return False
+
+        r = re.search(r"let\s[^']*'([^']+)", data)
+        if r:
+            r = ensure_str(base64.b64decode(r.group(1)))
+            if r.startswith('}'):
+                data = ''
+                for item in reversed(range(len(r))):
+                    data += r[item]
+                r = data
+            r = json_loads(r)
+            hlsUrl = r.get('file')
+            if hlsUrl.startswith('//'):
+                hlsUrl = 'http:' + hlsUrl
+            if self.cm.isValidUrl(hlsUrl):
+                params = {'iptv_proto': 'm3u8', 'Referer': baseUrl, 'Origin': urlparser.getDomain(baseUrl, False)}
+                hlsUrl = urlparser.decorateUrl(hlsUrl, params)
+                return getDirectM3U8Playlist(hlsUrl, checkExt=False, checkContent=True, sortWithMaxBitrate=999999999)
+
+        return False
+

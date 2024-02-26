@@ -17,6 +17,10 @@ except Exception:
 from datetime import datetime
 ###################################################
 
+def GetConfigList():
+    optionList = []
+    return optionList
+
 
 def gettytul():
     return 'https://gamato-movies.com/'

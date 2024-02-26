@@ -38,6 +38,10 @@ def GetConfigList():
     return optionList
 ###################################################
 
+def GetConfigList():
+    optionList = []
+    return optionList
+
 
 def gettytul():
     return 'https://skstream.info/'
