@@ -1889,6 +1889,13 @@ def isOPKGinstall():
     else:
         return False
 
+def hasCDM():
+    try:
+        from pywidevinecdm.checkCDMvalidity import testDevice
+        return testDevice()
+    except Exception:
+        return False
+
 def getIPTVplayerOPKGVersion():
     global CACHED_DATA_DICT
     if None == CACHED_DATA_DICT.get('IPTVplayerOPKGVersion', None):
@@ -1925,7 +1932,7 @@ def defaultToolPath(fileName):
     return ""
 
 def readCFG(cfgName, defVal = ''):
-    for myPath in ['/etc/enigma2/IPTVplayer_defaults/', '/hdd/IPTVplayer_defaults/']:
+    for myPath in ['/etc/enigma2/IPTVplayer_defaults/', '/hdd/IPTVCache/IPTVplayer_defaults/', '/etc/streamlink/']:
         if os.path.exists(myPath):
             cfgPath = os.path.join(myPath,cfgName)
             if os.path.exists(cfgPath):
