@@ -826,9 +826,11 @@ def log_current_arguments(session: Streamlink, parser: argparse.ArgumentParser):
                 sensitive.add(parg.argument_name(pname))
 
     log.debug("Arguments:")
+    seen = set()
     for action in parser._actions:
-        if not hasattr(args, action.dest):
+        if not hasattr(args, action.dest) or action.dest in seen:
             continue
+        seen.add(action.dest)
         value = getattr(args, action.dest)
         if action.default != value:
             name = next(  # pragma: no branch
@@ -863,10 +865,7 @@ def setup_logger_and_console(stream=sys.stdout, filename=None, level="info", jso
     console = ConsoleOutput(streamhandler.stream, json)
 
 
-def main():
-    error_code = 0
-    parser = build_parser()
-
+def setup(parser: ArgumentParser) -> None:
     setup_args(parser, ignore_unknown=True)
     # call argument set up as early as possible to load args from config files
     setup_config_args(parser, ignore_unknown=True)
@@ -903,6 +902,10 @@ def main():
     setup_session_options(streamlink, args)
 
     setup_signals()
+
+
+def run(parser: ArgumentParser) -> int:
+    error_code = 0
 
     if args.version_check or args.auto_version_check:
         try:
@@ -953,4 +956,11 @@ def main():
             + "Use -h/--help to see the available options or read the manual at https://streamlink.github.io",
         )
 
+    return error_code
+
+
+def main():
+    parser = build_parser()
+    setup(parser)
+    error_code = run(parser)
     sys.exit(error_code)
