@@ -10,49 +10,45 @@
   <widget source="global.CurrentTime" render="Label" position="140,30" size="660,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
     <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
   </widget>
-  <eLabel text="Single EPG" position="1060,30" size="820,30" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1" />
+  <eLabel text="Single EPG" position="45,30" size="1790,30" font="Roboto_HD; 27" halign="center" backgroundColor="dark_grey" transparent="1" />
   <!--podgląd-->
-  <eLabel backgroundColor="linie" position="1400,432" size="450,2" zPosition="4" />
-  <eLabel backgroundColor="linie" position="1400,132" size="450,2" zPosition="4" />
-  <eLabel backgroundColor="linie" position="1848,132" size="2,300" zPosition="4" />
-  <eLabel backgroundColor="linie" position="1400,132" size="2,300" zPosition="4" />
-  <widget backgroundColor="picture" position="1400,134" render="Pig" size="450,300" source="session.VideoPicture" transparent="0" zPosition="3">
+  <widget backgroundColor="picture" position="1125,128" render="Pig" size="743,400" source="session.VideoPicture" transparent="0" zPosition="3">
     <convert type="ConfigEntryTest">
     </convert>
     <convert type="ConditionalShowHide" />
   </widget>
   <!--Picona i nazwa-->
-  <widget alphatest="blend" position="1148,219" render="j00zekPicons" picontype="picon" size="220,132" source="Service" zPosition="5">
+  <widget alphatest="blend" position="1680,20" render="j00zekPicons" picontype="picon" size="150,90" source="Service" zPosition="5">
     <convert type="j00zekModServiceName2">Reference</convert>
   </widget>
-  <widget source="Service" render="j00zekLabel" position="1123,440" size="740,40" font="Regular; 34" backgroundColor="background" transparent="1" foregroundColor="green" halign="center" zPosition="5">
+  <widget source="Service" render="j00zekLabel" position="1125,540" size="733,40" font="Regular; 34" backgroundColor="background" transparent="1" foregroundColor="green" halign="center" zPosition="5">
     <convert type="ServiceName">Name</convert>
   </widget>
-  <widget render="j00zekModRunningText" source="Event" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" position="1123,490" size="740,40" font="Regular; 30" backgroundColor="black" transparent="1" halign="center" noWrap="1" foregroundColor="light_yellow">
-  <convert type="j00zekModEventName">Name</convert>
-</widget>
+  <widget render="j00zekModRunningText" source="Event" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" position="1125,590" size="733,40" font="Regular; 30" backgroundColor="black" transparent="1" halign="center" noWrap="1" foregroundColor="light_yellow">
+    <convert type="j00zekModEventName">Name</convert>
+  </widget>
   <!--godzina-->
-  <widget backgroundColor="black" font="Regular; 30" position="1123,540" render="Label" size="110,50" source="Event" transparent="1">
+  <widget backgroundColor="black" font="Regular; 30" position="1125,640" render="Label" size="110,50" source="Event" transparent="1">
     <convert type="EventTime">StartTime</convert>
     <convert type="ClockToText" />
   </widget>
-  <widget backgroundColor="black" font="Regular; 30" position="1212,540" render="Label" size="125,50" source="Event" transparent="1">
+  <widget backgroundColor="black" font="Regular; 30" position="1214,640" render="Label" size="125,50" source="Event" transparent="1">
     <convert type="EventTime">EndTime</convert>
     <convert type="ClockToText">Format:- %H:%M</convert>
   </widget>
-  <widget backgroundColor="background" font="Regular; 30" foregroundColor="white" halign="right" position="1608,540" render="Label" size="250,50" source="Event" transparent="1">
+  <widget backgroundColor="background" font="Regular; 30" foregroundColor="white" halign="right" position="1608,640" render="Label" size="250,50" source="Event" transparent="1">
     <convert type="EventTime">Remaining</convert>
     <convert type="RemainingToText">InMinutes</convert>
   </widget>
   <!--Opis-->
-  <eLabel backgroundColor="linie" position="1125,585" size="733,1" />
-  <widget source="Event" render="j00zekLabel" position="1125,590" size="733,32" transparent="1" zPosition="1" font="Regular; 27" halign="left" valign="center" foregroundColor="green" backgroundColor="black">
+  <eLabel backgroundColor="linie" position="1125,695" size="733,1" />
+  <widget source="Event" render="j00zekLabel" position="1125,700" size="733,32" transparent="1" zPosition="1" font="Regular; 27" halign="left" valign="center" foregroundColor="green" backgroundColor="black">
     <convert type="j00zekModEventName">Genre</convert>
   </widget>
-  <widget source="Event" render="j00zekLabel" position="1125,590" size="733,32" transparent="1" zPosition="1" font="Regular; 27" halign="right" valign="center" foregroundColor="light_red" backgroundColor="black">
+  <widget source="Event" render="j00zekLabel" position="1125,700" size="733,32" transparent="1" zPosition="1" font="Regular; 27" halign="right" valign="center" foregroundColor="light_red" backgroundColor="black">
     <convert type="j00zekModEventName">Rating</convert>
   </widget>
-  <widget render="j00zekModRunningText" source="Event" options="movetype=running,startpoint=0,direction=top,steptime=90,repeat=2,startdelay=6000,wrap" halign="center" font="Regular; 28" backgroundColor="background" position="1125,640" size="733,345" transparent="1" foregroundColor="font_light_grey">
+  <widget render="j00zekModRunningText" source="Event" options="movetype=running,startpoint=0,direction=top,steptime=90,repeat=2,startdelay=6000,wrap" halign="center" font="Regular; 28" backgroundColor="background" position="1125,740" size="733,245" transparent="1" foregroundColor="font_light_grey">
     <convert type="j00zekModEventName">ExtendedDescription</convert>
   </widget>
   <!--lista -->
