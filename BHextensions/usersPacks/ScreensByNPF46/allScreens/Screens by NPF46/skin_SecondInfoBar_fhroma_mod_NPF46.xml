@@ -2,7 +2,6 @@
 <screen name="SecondInfoBar" backgroundColor="transparent" flags="wfNoBorder" position="0,52" size="1920,1080">
   <ePixmap position="10,5" zPosition="-2" size="1920,699" pixmap="BlackHarmony/bg_design/secondinfobar.png" />
 
-
   <!--##########################################-->
     <ePixmap position="30,721" zPosition="-2" size="1900,300" pixmap="BlackHarmony/bg_design/infobar_medium.png" />
 
@@ -59,7 +58,7 @@
   </widget>
   <widget source="session.Event_Now" render="Label" position="470,815" size="105,36" font="HD_Thin; 32" halign="left" backgroundColor="black" transparent="1">
     <convert type="EventTime">StartTime</convert>
-    <convert type="ClockToText">Default</convert>
+    <convert type="ClockToText">Format:%_H:%M</convert>
   </widget>
   <eLabel text="-" position="572,815" size="20,36" font="HD_Thin; 30" halign="left" backgroundColor="black" transparent="1" foregroundColor="white" />
   <widget source="session.Event_Now" render="Label" position="596,815" size="630,40" font="HD_Thin; 32" halign="left" backgroundColor="black" transparent="1">
@@ -67,11 +66,11 @@
   </widget>
   <widget source="session.Event_Now" render="Label" position="1193,815" size="170,36" font="HD_Thin; 32" halign="right" backgroundColor="black" transparent="1">
     <convert type="EventTime">Remaining</convert>
-    <convert type="RemainingToText">InMinutes</convert>
+    <convert type="RemainingToText">NoSeconds</convert>
   </widget>
   <widget source="session.Event_Next" render="Label" position="470,891" size="105,36" font="HD_Thin; 32" halign="left" foregroundColor="#00c0f000" backgroundColor="black" transparent="1">
     <convert type="EventTime">StartTime</convert>
-    <convert type="ClockToText">Default</convert>
+    <convert type="ClockToText">Format:%_H:%M</convert>
   </widget>
   <eLabel text="-" position="572,891" size="20,36" font="HD_Thin; 30" halign="left" foregroundColor="#00fffe9e" backgroundColor="black" transparent="1" />
   <widget source="session.Event_Next" render="Label" position="596,891" size="630,40" font="HD_Thin; 32" halign="left" backgroundColor="black" transparent="1" foregroundColor="#00c0f000">
@@ -79,7 +78,7 @@
   </widget>
   <widget source="session.Event_Next" render="Label" position="1193,891" size="170,36" font="HD_Thin; 32" halign="right" foregroundColor="#00fffe9e" backgroundColor="black" transparent="1">
     <convert type="EventTime">Duration</convert>
-    <convert type="ClockToText">InMinutes</convert>
+    <convert type="ClockToText">Format:%_H:%M</convert>
   </widget>
   <ePixmap position="1295,750" size="44,20" zPosition="1" pixmap="BlackHarmony/icons/ico_hbbtv_on.png" alphatest="blend" />
   <widget source="session.CurrentService" render="Pixmap" position="1295,750" size="44,20" zPosition="2" pixmap="BlackHarmony/icons/ico_hbbtv_off.png" alphatest="blend">
@@ -87,7 +86,7 @@
     <convert type="ConditionalShowHide" />
   </widget>
   <widget source="global.CurrentTime" render="Label" position="1712,736" size="150,48" font="HD_Thin; 46" halign="left" backgroundColor="black" transparent="1" valign="center">
-    <convert type="ClockToText">Default</convert>
+    <convert type="ClockToText">Format:%_H:%M</convert>
   </widget>
   <widget alphatest="blend" position="55,786" render="j00zekPicons" picontype="zzpicon" size="400,170" source="session.CurrentService" transparent="1" zPosition="4">
     <convert type="ServiceName">Reference</convert>
@@ -243,9 +242,6 @@
   
   
   
-  
-  
-  
   <widget source="session.RecordState" render="Pixmap" position="780,752" size="25,25" zPosition="2" pixmap="BlackHarmony/icons/ico_rec_on.png" alphatest="blend">
     <convert type="ConditionalShowHide">Blink</convert>
   </widget>
@@ -398,15 +394,15 @@
     </widget>
   <widget backgroundColor="black" font="Regular; 27" foregroundColor="cyan" halign="right" position="165,55" render="Label" size="90,40" source="session.Event_Now" transparent="1">
     <convert type="EventTime">StartTime</convert>
-    <convert type="ClockToText">Default</convert>
+    <convert type="ClockToText">Format:%_H:%M</convert>
   </widget>
   <widget backgroundColor="black" font="Regular; 27" foregroundColor="cyan" halign="left" position="266,55" render="Label" size="105,40" source="session.Event_Now" transparent="1">
     <convert type="EventTime">EndTime</convert>
-    <convert type="ClockToText">Format:- %H:%M</convert>
+    <convert type="ClockToText">Format:- %_H:%M</convert>
   </widget>
   <widget backgroundColor="black" font="Regular; 27" foregroundColor="cyan" halign="right" position="745,55" render="Label" size="180,40" source="session.Event_Now" transparent="1">
     <convert type="EventTime">Remaining</convert>
-    <convert type="RemainingToText">InMinutes</convert>
+    <convert type="RemainingToText">NoSeconds</convert>
   </widget>
   <widget backgroundColor="background" font="Regular; 32" foregroundColor="#00db0000" position="75,123" render="Label" size="850,40" source="session.Event_Now" transparent="1">
     <convert type="j00zekModEventName">Name</convert>
@@ -421,15 +417,15 @@
     </widget>
   <widget backgroundColor="black" font="Regular; 27" halign="right" position="1097,55" render="Label" size="90,40" source="session.Event_Next" transparent="1">
     <convert type="EventTime">StartTime</convert>
-    <convert type="ClockToText">Default</convert>
+    <convert type="ClockToText">Format:%_H:%M</convert>
   </widget>
   <widget backgroundColor="black" font="Regular; 27" halign="left" position="1197,55" render="Label" size="105,40" source="session.Event_Next" transparent="1">
     <convert type="EventTime">EndTime</convert>
-    <convert type="ClockToText">Format:- %H:%M</convert>
+    <convert type="ClockToText">Format:- %_H:%M</convert>
   </widget>
   <widget backgroundColor="black" font="Regular; 27" halign="right" position="1668,55" render="Label" size="180,40" source="session.Event_Next" transparent="1">
     <convert type="EventTime">Remaining</convert>
-    <convert type="RemainingToText">InMinutes</convert>
+    <convert type="RemainingToText">NoSeconds</convert>
   </widget>
   <widget backgroundColor="black" font="Regular; 32" foregroundColor="#00db0000" position="997,123" render="Label" size="850,40" source="session.Event_Next" transparent="1">
     <convert type="j00zekModEventName">Name</convert>

@@ -16,6 +16,11 @@
     <convert type="ServiceInfo">IsWidescreen</convert>
     <convert type="ConditionalShowHide" />
   </widget>
+  <ePixmap position="1295,800" size="44,20" zPosition="1" pixmap="BlackHarmony/icons/ico_hbbtv_on.png" alphatest="blend" />
+  <widget source="session.CurrentService" render="Pixmap" position="1295,800" size="44,20" zPosition="2" pixmap="BlackHarmony/icons/ico_hbbtv_off.png" alphatest="blend">
+    <convert type="j00zekModServiceInfoEX">HasHBBTV</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
   <ePixmap position="1474,1561" size="29,20" zPosition="1" pixmap="BlackHarmony/icons/ico_hd_off.png" alphatest="blend" />
   <widget source="session.CurrentService" render="Pixmap" position="1087,800" size="29,20" zPosition="2" pixmap="BlackHarmony/icons/ico_hd_on.png" alphatest="blend">
     <convert type="ServiceInfo">VideoWidth</convert>
@@ -63,7 +68,7 @@
   </widget>
   <widget source="session.Event_Now" render="Label" position="1193,865" size="170,36" font="HD_Thin; 32" halign="right" backgroundColor="black" transparent="1">
     <convert type="EventTime">Remaining</convert>
-    <convert type="RemainingToText">InMinutes</convert>
+    <convert type="RemainingToText">NoSeconds</convert>
   </widget>
   <widget source="session.Event_Next" render="Label" position="470,941" size="105,36" font="HD_Thin; 32" halign="left" foregroundColor="#00c0f000" backgroundColor="black" transparent="1">
     <convert type="EventTime">StartTime</convert>
@@ -75,15 +80,10 @@
   </widget>
   <widget source="session.Event_Next" render="Label" position="1193,941" size="170,36" font="HD_Thin; 32" halign="right" foregroundColor="#00c0f000" backgroundColor="black" transparent="1">
     <convert type="EventTime">Duration</convert>
-    <convert type="ClockToText">InMinutes</convert>
-  </widget>
-  <ePixmap position="1295,750" size="44,20" zPosition="1" pixmap="BlackHarmony/icons/ico_hbbtv_on.png" alphatest="blend" />
-  <widget source="session.CurrentService" render="Pixmap" position="1295,800" size="44,20" zPosition="2" pixmap="BlackHarmony/icons/ico_hbbtv_off.png" alphatest="blend">
-    <convert type="j00zekModServiceInfoEX">HasHBBTV</convert>
-    <convert type="ConditionalShowHide" />
+    <convert type="ClockToText">Format:%_H:%M</convert>
   </widget>
   <widget source="global.CurrentTime" render="Label" position="1712,786" size="150,48" font="HD_Thin; 46" halign="left" backgroundColor="black" transparent="1" valign="center">
-    <convert type="ClockToText">Default</convert>
+    <convert type="ClockToText">Format:%_H:%M</convert>
   </widget>
   <widget alphatest="blend" position="55,836" render="j00zekPicons" picontype="zzpicon" size="400,170" source="session.CurrentService" transparent="1" zPosition="4">
     <convert type="ServiceName">Reference</convert>
