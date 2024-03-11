@@ -634,7 +634,7 @@ class TvpVod(CBaseHostClass, CaptchaHelper):
         if asset_id == '':
             asset_id = self.cm.ph.getSearchGroups(data, 'class="playerContainer"[^>]+?data-id="([0-9]+?)"')[0]
         if '' == asset_id:
-            asset_id = self.cm.ph.getSearchGroups(data, 'data\-video-\id="([0-9]+?)"')[0]
+            asset_id = self.cm.ph.getSearchGroups(data, 'data\-video\-id="([0-9]+?)"')[0]
         if '' == asset_id:
             asset_id = self.cm.ph.getSearchGroups(data, "object_id:'([0-9]+?)'")[0]
         if '' == asset_id:

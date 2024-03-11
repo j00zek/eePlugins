@@ -20,8 +20,7 @@ from Plugins.Extensions.IPTVPlayer.tools.e2ijs import js_execute_ext, is_js_cach
 from Plugins.Extensions.IPTVPlayer.p2p3.manipulateStrings import ensure_str
 
 class CYTSignAlgoExtractor:
-    # MAX RECURSION Depth for security
-    MAX_REC_DEPTH = 5
+    MAX_REC_DEPTH = 5 # MAX RECURSION Depth for security
     RE_FUNCTION_NAMES = re.compile('[ =(,]([a-zA-Z$]+?)\([a-z0-9,]*?\)')
     RE_OBJECTS = re.compile('[ =(,;]([a-zA-Z$]+?)\.([a-zA-Z$]+?)\(')
     RE_MAIN = re.compile('([a-zA-Z0-9$]+)\(')
@@ -424,6 +423,10 @@ class YoutubeIE(object):
             player_response = webpage
         try:
             player_captions = player_response['captions']['playerCaptionsTracklistRenderer']['captionTracks']
+        except Exception:
+            printDBG('youtube - _get_automatic_captions(): [captionTracks] NOT found in player_response')
+            return sub_tracks
+        try:
             for lang in player_captions:
                 printDBG("_get_automatic_captions %s" % lang)
                 sub_url = urllib_unquote_plus(lang['baseUrl'])
@@ -499,7 +502,7 @@ class YoutubeIE(object):
                 videoInfoparams = {}
                 http_params = {'header': {'User-Agent': 'com.google.android.youtube/17.31.35 (Linux; U; Android 12)', 'Content-Type': 'application/json', 'Origin': 'https://www.youtube.com', 'X-YouTube-Client-Name': '3', 'X-YouTube-Client-Version': '17.31.35'}}
                 http_params['raw_post_data'] = True
-                post_data = "{'videoId': '%s', 'params': 'CgIQBg', 'context': {'client': {'hl': 'en', 'clientVersion': '17.31.35', 'clientName': 'ANDROID', 'androidSdkVersion': 31, 'osName': 'Android', 'osVersion': '12',}}}" % video_id
+                post_data = "{'videoId': '%s', 'params': 'CgIQBg', 'context': {'client': {'hl': 'en', 'clientVersion': '19.09.37', 'clientName': 'ANDROID', 'androidSdkVersion': 31, 'osName': 'Android', 'osVersion': '12',}}}" % video_id
                 sts, video_webpage = self.cm.getPage(url, http_params, post_data)
                 if sts:
                     if allowAgeGate and 'LOGIN_REQUIRED' in video_webpage:
