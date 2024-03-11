@@ -74,7 +74,7 @@ def zap(session, service, **kwargs):
                         main(session)
                         config.plugins.Chromium.presets[0].portal.value = oldVal
                     except ImportError as e:
-                        errormsg = str(e)
+                        errormsg = 'BRAK zainstalowanego dodatku Chromium2!!!'
                         print("[ChannelSelection] zap > StreamlinkExtWrapper chrome component error '%s'" % errormsg)
         except Exception as e:
             print("[ChannelSelection] zap > StreamlinkExtWrapper failed %s" % str(e))
