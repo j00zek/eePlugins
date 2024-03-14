@@ -45,7 +45,7 @@ class IPTVSubtitlesHandler:
         self.subAtoms = []
         self.pailsOfAtoms = {}
         self.CAPACITY = 10 * 1000 # 10s
-        printDBG("IPTVSubtitlesHandler.__init__ self.CAPACITY = %s" % self.CAPACITY )
+        printDBG("IPTVSubtitlesHandler.__init__ self.CAPACITY = %s" % self.CAPACITY)
 
     def _srtClearText(self, text):
         return re.sub('<[^>]*>', '', text)
@@ -87,9 +87,12 @@ class IPTVSubtitlesHandler:
             try:
                 st = srtText[idx].strip('\n \t') #remove empty leading lines
                 st = st.split('\n')
-                if len(st) < 2: continue #less than two items are for sure garbage, so let's skip
-                while st[0] ==  '': st.pop(0)
-                while not ' --> ' in st[0]: st.pop(0) #remove line numbers and other unused lines existing before time
+                if len(st) < 2:
+                    continue #less than two items are for sure garbage, so let's skip
+                while st[0] == '':
+                    st.pop(0)
+                while not ' --> ' in st[0]:
+                    st.pop(0) #remove line numbers and other unused lines existing before time
                 if 1: #tests only
                     printDBG("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
                     printDBG(st)
@@ -138,7 +141,7 @@ class IPTVSubtitlesHandler:
         ret = '\n'.join(subsText)
         #time2 = time.time()
         #printDBG('>>>>>>>>>>getSubtitlesFromSubAtoms function took %0.3f ms' % ((time2-time1)*1000.0))
-        printDBG("OpenSubOrg.getSubtitlesFromSubAtoms(%s) returns [%s]" % (currTimeMS,ret))
+        printDBG("OpenSubOrg.getSubtitlesFromSubAtoms(%s) returns [%s]" % (currTimeMS, ret))
         return ret
 
     def getSubtitles(self, currTimeMS, prevMarker):
@@ -147,20 +150,20 @@ class IPTVSubtitlesHandler:
         subsText = []
         tmp = currTimeMS / self.CAPACITY
         tmpList = self.pailsOfAtoms.get(tmp, [])
-        
+
         if len(tmpList) == 0:
             return [], self.getSubtitlesFromSubAtoms(currTimeMS)
         else:
-            printDBG("OpenSubOrg.getSubtitles tmp = %s, len(tmpList) = %s" % (tmp,len(tmpList)))
+            printDBG("OpenSubOrg.getSubtitles tmp = %s, len(tmpList) = %s" % (tmp, len(tmpList)))
             ret = None
             validAtomsIdexes = []
             for idx in tmpList:
                 item = self.subAtoms[idx]
                 if currTimeMS >= item['start'] and currTimeMS < item['end']:
                     validAtomsIdexes.append(idx)
-                
+
             marker = validAtomsIdexes
-            printDBG("OpenSubOrg.getSubtitles marker[%s] prevMarker[%s] %.1fs" % (marker, prevMarker, currTimeMS/1000.0))
+            printDBG("OpenSubOrg.getSubtitles marker[%s] prevMarker[%s] %.1fs" % (marker, prevMarker, currTimeMS / 1000.0))
             if prevMarker != marker:
                 for idx in validAtomsIdexes:
                     item = self.subAtoms[idx]
@@ -206,7 +209,7 @@ class IPTVSubtitlesHandler:
             else:
                 printDBG("IPTVSubtitlesHandler._saveToCache subtitles list empty - nothing to save")
                 removeCacheFile(orgFilePath) #just in case we have garbage cached
-                    
+
         except Exception:
             printExc('EXCEPTION in OpenSubOrg._saveToCache')
 
@@ -224,7 +227,7 @@ class IPTVSubtitlesHandler:
                 self.pailsOfAtoms[tmp] = [idx]
             elif idx not in self.pailsOfAtoms[tmp]:
                 self.pailsOfAtoms[tmp].append(idx)
-        self.pailsOfAtoms = dict(sorted( self.pailsOfAtoms.items()))
+        self.pailsOfAtoms = dict(sorted(self.pailsOfAtoms.items()))
         if 1: #for tests
             with codecs.open('/tmp/pailsOfAtoms.json', 'w', 'utf-8') as fp:
                   fp.write(json.dumps(self.pailsOfAtoms))
@@ -377,7 +380,7 @@ class IPTVEmbeddedSubtitlesHandler:
                 validAtomsIdexes.append(idx)
 
         marker = validAtomsIdexes
-        printDBG("OpenSubOrg.getSubtitles marker[%s] prevMarker[%s] %.1fs" % (marker, prevMarker, currTimeMS/1000.0))
+        printDBG("OpenSubOrg.getSubtitles marker[%s] prevMarker[%s] %.1fs" % (marker, prevMarker, currTimeMS / 1000.0))
         if prevMarker != marker:
             for idx in validAtomsIdexes:
                 item = self.subAtoms[idx]

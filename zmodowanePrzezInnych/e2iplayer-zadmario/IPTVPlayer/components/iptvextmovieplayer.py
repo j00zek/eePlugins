@@ -1128,7 +1128,7 @@ class IPTVExtMoviePlayer(Screen):
                     if not subOnTopHack:
                         self[subLabel].instance.move(ePoint(int((desktopW - lW) / 2), int(desktopH - y - lH)))
                     else:
-                        self[subLabel].instance.move(ePoint(int((desktopW - lW) / 2),int(y)))
+                        self[subLabel].instance.move(ePoint(int((desktopW - lW) / 2), int(y)))
                     y += lH + self.subConfig['line_spacing']
                     self[subLabel].show()
                 except Exception:
@@ -1200,7 +1200,7 @@ class IPTVExtMoviePlayer(Screen):
         self['lengthTimeLabel'].setText(str(timedelta(seconds=newLength)))
 
     def playbackUpdateInfo(self, stsObj):
-        #fix TypeError: '>' not supported between instances of 'NoneType' and 'int' 
+        #fix TypeError: '>' not supported between instances of 'NoneType' and 'int'
         try:
             # workaround for missing playback length info for under muxing MKV
             if self.playback['Length'] > 0 and self.downloader != None and self.downloader.getName() == 'ffmpeg':
@@ -1294,7 +1294,7 @@ class IPTVExtMoviePlayer(Screen):
                     self.playback[key] = val
                     printDBG(">>> playback[%s] = %s" % (key, val))
         except Exception:
-            printExc(WarnOnly = True)
+            printExc(WarnOnly=True)
 
     def doGoToSeek(self):
         self.playback['GoToSeekTimer'].stop()
@@ -1556,7 +1556,7 @@ class IPTVExtMoviePlayer(Screen):
                         params['progressive'] = False
 
                 except Exception:
-                    printExc(WarnOnly = True)
+                    printExc(WarnOnly=True)
                 try:
                     DAR = float(obj.get('an', 1) * params['width']) / float(obj.get('ad', 1) * params['height'])
                     aTab = []
@@ -1583,7 +1583,7 @@ class IPTVExtMoviePlayer(Screen):
         if None == data or self.isClosing:
             return
         data = ensure_str(data)
-        data = data.replace('"ifd"',"'ifd'")
+        data = data.replace('"ifd"', "'ifd'")
         if None == self.playerBinaryInfo['version']:
             self.playerBinaryInfo['data'] += data
         data = self.responseData + data
@@ -1599,7 +1599,7 @@ class IPTVExtMoviePlayer(Screen):
         msgType = MessageBox.TYPE_INFO
         for item in data:
             #printDBG('item= %s' % item)
-            item = item.strip().replace('{"PLAYBACK_LENGTH":{"PLAYBACK_LENGTH":','{"PLAYBACK_LENGTH":').replace('{"PLAYBACK_LENGTH":{"J":','{"J":')
+            item = item.strip().replace('{"PLAYBACK_LENGTH":{"PLAYBACK_LENGTH":', '{"PLAYBACK_LENGTH":').replace('{"PLAYBACK_LENGTH":{"J":', '{"J":')
             if item.endswith(':'):
                 item = item[:-1]
             if item.startswith('{'):

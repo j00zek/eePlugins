@@ -23,7 +23,7 @@ from __future__ import print_function
 import sys
 if sys.version_info[0] == 3: #Python3
    unicode = str
-    
+
 import socket
 
 from base64 import encodestring as base64encode

@@ -93,7 +93,7 @@ class IconMenager:
         else:
             if self.workThread != None and self.workThread.Thread.is_alive():
                 self.stopThread = True
-          
+
         self.lockDQ.release()
 
     def runWorkThread(self):

@@ -108,9 +108,9 @@ class IPTVVirtualKeyBoardWithCaptcha(Screen):
 
         self["header"] = Label(title)
         if isPY2():
-            self["text"] = Input(text = text.decode("utf-8", 'ignore')) #str > unicode
+            self["text"] = Input(text=text.decode("utf-8", 'ignore')) #str > unicode
         else:
-            self["text"] = Input(text = ensure_str(text)) #in p3 str is always unicode, ensure_str used in case it would be a bytes.
+            self["text"] = Input(text=ensure_str(text)) #in p3 str is always unicode, ensure_str used in case it would be a bytes.
         self["list"] = VirtualKeyBoardList([])
 
         self["actions"] = NumberActionMap(["OkCancelActions", "WizardActions", "ColorActions", "KeyboardInputActions", "InputBoxActions", "InputAsciiActions"],

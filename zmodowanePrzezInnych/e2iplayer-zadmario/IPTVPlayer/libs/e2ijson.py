@@ -54,7 +54,7 @@ def loads(inputString, noneReplacement=None, baseTypesAsString=False, utf8=True)
             outDict = json.loads(inputString)
     else:
         outDict = json.loads(inputString)
-    
+
     if utf8 or noneReplacement != None or baseTypesAsString != False:
         return byteify(outDict, noneReplacement, baseTypesAsString)
     else:

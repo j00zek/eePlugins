@@ -47,6 +47,7 @@ config.plugins.iptvplayer.serienstreamto_login = ConfigText(default="", fixed_si
 config.plugins.iptvplayer.serienstreamto_password = ConfigText(default="", fixed_size=False)
 config.plugins.iptvplayer.serienstreamto_host = ConfigText(default=DEFAULTHOST, fixed_size=False)
 
+
 def GetConfigList():
     optionList = []
     optionList.append(getConfigListEntry(_("Your language preference:"), config.plugins.iptvplayer.serienstreamto_langpreference))
@@ -60,6 +61,7 @@ def GetConfigList():
 
 def gettytul():
     return config.plugins.iptvplayer.serienstreamto_host.value
+
 
 class SerienStreamTo(CBaseHostClass, CaptchaHelper):
 
@@ -706,6 +708,7 @@ class SerienStreamTo(CBaseHostClass, CaptchaHelper):
             desc = cItem.get('desc', '')
 
         return [{'title': ph.clean_html(title), 'text': ph.clean_html(desc), 'images': icons, 'other_info': {'custom_items_list': itemsList}}]
+
 
 class IPTVHost(CHostBase):
 

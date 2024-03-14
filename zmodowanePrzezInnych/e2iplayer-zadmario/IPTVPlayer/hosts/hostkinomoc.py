@@ -23,6 +23,7 @@ import base64
 from Screens.MessageBox import MessageBox
 ###################################################
 
+
 def GetConfigList():
     optionList = []
     return optionList
@@ -65,7 +66,7 @@ class Kinomoc(CBaseHostClass):
 #                       {'category': 'list_items', 'title': _('Children'), 'url': self.getFullUrl('/genre/anime-bajki/')},
                         {'category': 'list_items', 'title': _('Series'), 'url': self.getFullUrl('/serials/')},
 #                       {'category': 'list_years', 'title': _('Filter By Year'), 'url': self.getFullUrl('/filmy-online-pl/')},
-                        {'category': 'list_cats',  'title': _('Movies genres'), 'url': self.getFullUrl('/filmy/')},
+                        {'category': 'list_cats', 'title': _('Movies genres'), 'url': self.getFullUrl('/filmy/')},
 #                       {'category':'list_az',        'title': _('Alphabetically'),    'url':self.MAIN_URL},
                         {'category': 'search', 'title': _('Search'), 'search_item': True},
                         {'category': 'search_history', 'title': _('Search history')}, ]
@@ -261,7 +262,7 @@ class Kinomoc(CBaseHostClass):
         for item in tmp:
             id = self.cm.ph.getSearchGroups(item, '''id=['"]([^"^']+?)['"]''')[0]
             playerUrl = self.getFullUrl(self.cm.ph.getSearchGroups(item, '''src=['"]([^"^']+?)['"]''')[0])
-            tmp =  self.cm.ph.getDataBeetwenNodes(data, ('<li', '>', id), ('</li', '>'))[1]
+            tmp = self.cm.ph.getDataBeetwenNodes(data, ('<li', '>', id), ('</li', '>'))[1]
             name = self.cleanHtmlStr(tmp)
             if playerUrl == '' or name == '':
                 continue

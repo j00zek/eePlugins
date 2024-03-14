@@ -39,6 +39,7 @@ __all__ = ["WebSocketApp"]
 if sys.version_info[0] == 3: #Python3
    unicode = str
 
+
 class WebSocketApp(object):
     """
     Higher level of APIs are provided.

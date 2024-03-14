@@ -148,11 +148,13 @@ def runMain(session, nextFunction=doRunMain):
         else:
             printDBG('allToolsFromOPKG() >>> All required packages installed :)')
             return True
-    
-    for DBGfile in ['/hdd/iptv.dbg','/tmp/iptv.dbg','/home/root/logs/iptv.dbg', '/tmp/print.log']:
+
+    for DBGfile in ['/hdd/iptv.dbg', '/tmp/iptv.dbg', '/home/root/logs/iptv.dbg', '/tmp/print.log']:
         if os.path.exists(DBGfile):
-            try: os.remove(DBGfile)
-            except Exception: pass
+            try:
+                os.remove(DBGfile)
+            except Exception:
+                pass
 
     wgetpath = IsExecutable(config.plugins.iptvplayer.wgetpath.value)
     rtmpdumppath = IsExecutable(config.plugins.iptvplayer.rtmpdumppath.value)

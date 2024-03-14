@@ -422,7 +422,8 @@ class E2iPlayerWidget(Screen):
         try:
             asynccall.gMainFunctionsQueueTab[0].setProcFun(None)
             asynccall.gMainFunctionsQueueTab[0].clearQueue()
-            with open("/proc/sys/vm/drop_caches", "w") as f: f.write("1")
+            with open("/proc/sys/vm/drop_caches", "w") as f:
+                f.write("1")
         except Exception:
             printExc()
         self.activePlayer = None
@@ -1617,7 +1618,7 @@ class E2iPlayerWidget(Screen):
                 lastErrorMsg = GetIPTVPlayerLastHostError()
                 if '' != lastErrorMsg:
                     message += "\n" + _('Last error: "%s"') % lastErrorMsg
-                lastExcMSG =  getExcMSG(True)
+                lastExcMSG = getExcMSG(True)
                 if lastExcMSG != '':
                     message += "\n" + _("Last Exception error: '%s'") % lastExcMSG
                 self.session.open(MessageBox, message, type=MessageBox.TYPE_INFO, timeout=10)
@@ -2135,7 +2136,7 @@ class E2iPlayerWidget(Screen):
             lastErrorMsg = GetIPTVPlayerLastHostError()
             if lastErrorMsg != '':
                 disMessage += "\n" + _('Last error: "%s"') % lastErrorMsg
-            lastExcMSG =  getExcMSG(True)
+            lastExcMSG = getExcMSG(True)
             if lastExcMSG != '':
                 disMessage += "\n" + _('Last Exception error: "%s"') % lastExcMSG
 

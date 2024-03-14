@@ -23,16 +23,20 @@ import traceback
 import urllib
 import signal
 
+
 def signal_handler(sig, frame):
     os.kill(os.getpid(), signal.SIGTERM)
 
+
 signal.signal(signal.SIGINT, signal_handler)
+
 
 def updateStatus(pType, pData, pCode=None):
     if isinstance(pData, bytes):
         pData = pData.decode()
     obj = {'type': pType, 'data': pData, 'code': pCode}
     sys.stderr.write("\n%s\n" % json.dumps(obj).encode('utf-8'))
+
 
 def redirect_handler_factory(url):
 
@@ -80,6 +84,7 @@ def redirect_handler_factory(url):
             SimpleHTTPRequestHandler.do_GET(self)
     return RedirectHandler
 
+
 if __name__ == "__main__":
     try:
         if len(sys.argv) < 1:
@@ -98,9 +103,9 @@ if __name__ == "__main__":
 
         SocketServer.TCPServer.allow_reuse_address = True
         if captchaType == 'CF':
-            httpd =  SocketServer.TCPServer((IP, PORT), redirect_handler_factory('%s#e2itcf_sep_c=%s' % (siteUrl, siteKey)))
+            httpd = SocketServer.TCPServer((IP, PORT), redirect_handler_factory('%s#e2itcf_sep_c=%s' % (siteUrl, siteKey)))
         else:
-            httpd =  SocketServer.TCPServer((IP, PORT), redirect_handler_factory('%s/#e2it?k=%s&st=%s' % (siteUrl, siteKey, captchaType)))
+            httpd = SocketServer.TCPServer((IP, PORT), redirect_handler_factory('%s/#e2it?k=%s&st=%s' % (siteUrl, siteKey, captchaType)))
         print("Http Server Serving at port", PORT)
         httpd.serve_forever()
     except Exception:

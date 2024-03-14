@@ -77,7 +77,7 @@ def search(data, pattern, flags=0, limits=-1):
             try: # just blind try
                 match = reObj.search(data)
             except Exception:
-                printExc('EXCEPTION: unknown types: type(pattern)=%s vs type(data)=%s' % (str(type(pattern)),str(type(data))))
+                printExc('EXCEPTION: unknown types: type(pattern)=%s vs type(data)=%s' % (str(type(pattern)), str(type(data))))
 
     for idx in range(limits):
         try:

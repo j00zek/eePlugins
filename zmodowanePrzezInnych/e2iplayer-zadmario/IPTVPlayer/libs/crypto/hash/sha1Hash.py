@@ -13,6 +13,7 @@ try:
 except Exception:
     from Plugins.Extensions.IPTVPlayer.libs.crypto.hash.hash import Hash
 
+
 class SHA1(Hash):
 
     def __init__(self):

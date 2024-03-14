@@ -4,11 +4,12 @@
 # just change:
 #   from urlib import
 # to:
-#   from Plugins.Extensions.IPTVPlayer.p2p3.manipulateStrings import 
+#   from Plugins.Extensions.IPTVPlayer.p2p3.manipulateStrings import
 #
 from Plugins.Extensions.IPTVPlayer.p2p3.pVer import isPY2
 
-def strDecode(text,  setErrors = 'strict'):
+
+def strDecode(text, setErrors='strict'):
     if isPY2():
         retVal = text
     else: #PY3
@@ -21,11 +22,13 @@ def strDecode(text,  setErrors = 'strict'):
                 retVal = text.decode(encoding='utf-8', errors='ignore')
     return retVal
 
+
 def iterDictItems(myDict):
     if isPY2():
         return myDict.iteritems()
     else:
         return myDict.items()
+
 
 def iterDictKeys(myDict):
     if isPY2():
@@ -33,18 +36,21 @@ def iterDictKeys(myDict):
     else: #PY3
         return myDict.keys()
 
+
 def iterDictValues(myDict):
     if isPY2():
         return myDict.itervalues()
     else: #PY3
         return myDict.values()
 
-def strEncode(text,  encoding = 'utf-8'):
+
+def strEncode(text, encoding='utf-8'):
     if isPY2():
         retVal = text
     else: #PY3
         retVal = text.encode(encoding)
     return retVal
+
 
 def ensure_binary(text, encoding='utf-8', errors='strict'): #based on six library
     if isPY2():
@@ -58,6 +64,7 @@ def ensure_binary(text, encoding='utf-8', errors='strict'): #based on six librar
             except Exception:
                 return text.encode(encoding, 'ignore')
     return text
+
 
 def ensure_str(text, encoding='utf-8', errors='strict'): #based on six library
     if type(text) is str:

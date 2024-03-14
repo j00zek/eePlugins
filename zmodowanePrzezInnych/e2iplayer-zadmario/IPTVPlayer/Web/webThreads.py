@@ -22,6 +22,7 @@ if not isPY2():
     basestring = str
 ######################################################
 
+
 def _async_raise(tid, exctype):
     """raises the exception, performs cleanup if needed"""
     if not inspect.isclass(exctype):

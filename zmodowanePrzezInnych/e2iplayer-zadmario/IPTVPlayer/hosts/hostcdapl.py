@@ -38,6 +38,7 @@ config.plugins.iptvplayer.cda_acc_token = ConfigText('', fixed_size=False)
 config.plugins.iptvplayer.cda_refr_token = ConfigText('', fixed_size=False)
 config.plugins.iptvplayer.cda_login_id = ConfigText('', fixed_size=False)
 
+
 def GetConfigList():
     optionList = []
     optionList.append(getConfigListEntry("Login:", config.plugins.iptvplayer.cda_login))
@@ -468,7 +469,7 @@ class cda(CBaseHostClass, CaptchaHelper):
             freshSession = False
             if sts and '/logout' in data:
                 printDBG("Check hash")
-                hash = hexlify(md5(ensure_binary('%s@***@%s' % (self.login, self.password))).digest() )
+                hash = hexlify(md5(ensure_binary('%s@***@%s' % (self.login, self.password))).digest())
                 prevHash = ReadTextFile(loginCookie)[1].strip()
 
                 printDBG("$hash[%s] $prevHash[%s]" % (hash, prevHash))

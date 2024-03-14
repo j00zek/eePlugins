@@ -1117,7 +1117,7 @@ class common:
                         if 0 == len(checkFromFirstBytes):
                             downHandler.close()
                         OK = False
-            
+
             if OK and 'subtypes' in addParams:
                 OK = False
                 #printDBG('!!!!! downHandler.headers: %s!!!!!' % downHandler.headers )
@@ -1132,7 +1132,6 @@ class common:
                             printDBG("common.getFile found '%s' subtype in header" % item)
                             OK = True
                             break
-                    
 
             printDBG('saveWebFile() OK=%s, checkFromFirstBytes=%s' % (str(OK), checkFromFirstBytes))
             if OK or len(checkFromFirstBytes):
@@ -1201,7 +1200,7 @@ class common:
             # but it seems it breaks other scenarios
             # also documentation says req should be a string. :(
             # NEEDS FURTHER INVESTIGATION !!!
-    
+
             if len(customOpeners) > 0:
                 opener = urllib2_build_opener(*customOpeners)
                 if timeout != None:
@@ -1320,7 +1319,7 @@ class common:
         #pageUrl: [https://yt3.ggpht.com/ytc/AMLnZu8d_ae-Ne1CeYtv1ARy9IngDnVVKh2nUaYg16tgqQ=s88-c-k-c0x00ffffff-no-rj","width":88,"height":88},{"url":"https://yt3.ggpht.com/ytc/AMLnZu8d_ae-Ne1CeYtv1ARy9IngDnVVKh2nUaYg16tgqQ=s176-c-k-c0x00ffffff-no-rj","width":176,"height":176}]},"trackingParams":"CCcQq6cCIhMIi-e74LeW-gIVyACJCh2OnAFM","accessibility":{"accessibilityData":{"label":"Pretending I Can't Sing In Public And Then Surprising Everyone😱 \"give me a kiss\" OUT NOW🌎🎵 Crash Adams 2 tygodnie temu"}}}},"nextItemButton":{"buttonRenderer":{"trackingParams":"CCYQqKQCIhMIi-e74LeW-gIVyACJCh2OnAFM"}},"prevItemButton":{"buttonRenderer":{"trackingParams":"CCUQqaQCIhMIi-e74LeW-gIVyACJCh2OnAFM"}},"style":"REEL_PLAYER_OVERLAY_STYLE_SHORTS","trackingParams":"CCQQsLUEIhMIi-e74LeW-gIVyACJCh2OnAFM"}},"params":"CBYwAg%3D%3D","sequenceProvider":"REEL_WATCH_SEQUENCE_PROVIDER_RPC","sequenceParams":"CgtXUC1oSE16QmxmUSoCGBY%3D"}},"ownerBadges":[{"metadataBadgeRenderer":{"icon":{"iconType":"OFFICIAL_ARTIST_BADGE"},"style":"BADGE_STYLE_TYPE_VERIFIED_ARTIST","tooltip":"Oficjalny kanał wykonawcy","trackingParams":"CCAQnaQHGBoiEwiL57vgt5b6AhXIAIkKHY6cAUw=","accessibilityData":{"label":"Oficjalny kanał wykonawcy"}}}],"ownerText":{"runs":[{"text":"Crash Adams","navigationEndpoint":{"clickTrackingParams":"CCAQnaQHGBoiEwiL57vgt5b6AhXIAIkKHY6cAUw=","commandMetadata":{"webCommandMetadata":{"url":"/channel/UCAxCk_CU0lnz6vJyslY9-Tw","webPageType":"WEB_PAGE_TYPE_CHANNEL","rootVe":3611,"apiUrl":"/youtubei/v1/browse"}},"browseEndpoint":{"browseId":"UCAxCk_CU0lnz6vJyslY9-Tw","canonicalBaseUrl":"/channel/UCAxCk_CU0lnz6vJyslY9-Tw"}}}]},"shortBylineText":{"runs":[{"text":"Crash Adams","navigationEndpoint":{"clickTrackingParams":"CCAQnaQHGBoiEwiL57vgt5b6AhXIAIkKHY6cAUw=","commandMetadata":{"webCommandMetadata":{"url":"/channel/UCAxCk_CU0lnz6vJyslY9-Tw","webPageType":"WEB_PAGE_TYPE_CHANNEL","rootVe":3611,"apiUrl":"/youtubei/v1/browse"}},"browseEndpoint":{"browseId":"UCAxCk_CU0lnz6vJyslY9-Tw","canonicalBaseUrl":"/channel/UCAxCk_CU0lnz6vJyslY9-Tw"}}}]},"trackingParams":"CCAQnaQHGBoiEwiL57vgt5b6AhXIAIkKHY6cAUxA9KuG5syj6P9Y","showActionMenu":false,"shortViewCountText":{"accessibility":{"accessibilityData":{"label":"14 milionów wyświetleń"}},"simpleText":"14 mln wyświetleń"},"menu":{"menuRenderer":{"items":[{"menuServiceItemRenderer":{"text":{"runs":[{"text":"Dodaj do kolejki"}]},"icon":{"iconType":"ADD_TO_QUEUE_TAIL"},"serviceEndpoint":{"clickTrackingParams":"CCMQ_pgEGAciEwiL57vgt5b6AhXIAIkKHY6cAUw=","commandMetadata":{"webCommandMetadata":{"sendPost":true}},"signalServiceEndpoint":{"signal":"CLIENT_SIGNAL","actions":[{"clickTrackingParams":"CCMQ_pgEGAciEwiL57vgt5b6AhXIAIkKHY6cAUw=","addToPlaylistCommand":{"openMiniplayer":true,"videoId":"WP-hHMzBlfQ","listType":"PLAYLIST_EDIT_LIST_TYPE_QUEUE","onCreateListCommand":{"clickTrackingParams":"CCMQ_pgEGAciEwiL57vgt5b6AhXIAIkKHY6cAUw=","commandMetadata":{"webCommandMetadata":{"sendPost":true,"apiUrl":"/youtubei/v1/playlist/create"}},"createPlaylistServiceEndpoint":{"videoIds":["WP-hHMzBlfQ"],"params":"CAQ%3D"}},"videoIds":["WP-hHMzBlfQ"]}}]}},"trackingParams":"CCMQ_pgEGAciEwiL57vgt5b6AhXIAIkKHY6cAUw="}}],"trackingParams":"CCAQnaQHGBoiEwiL57vgt5b6AhXIAIkKHY6cAUw=","accessibility":{"accessibilityData":{"label":"Menu czynności"}}}},"channelThumbnailSupportedRenderers":{"channelThumbnailWithLinkRenderer":{"thumbnail":{"thumbnails":[{"url":"https://yt3.ggpht.com/ytc/AMLnZu8d_ae-Ne1CeYtv1ARy9IngDnVVKh2nUaYg16tgqQ=s88-c-k-c0x00ffffff-no-rj","width":68,"height":68}]},"navigationEndpoint":{"clickTrackingParams":"CCAQnaQHGBoiEwiL57vgt5b6AhXIAIkKHY6cAUw=","commandMetadata":{"webCommandMetadata":{"url":"/channel/UCAxCk_CU0lnz6vJyslY9-Tw","webPageType":"WEB_PAGE_TYPE_CHANNEL","rootVe":3611,"apiUrl":"/youtubei/v1/browse"}},"browseEndpoint":{"browseId":"UCAxCk_CU0lnz6vJyslY9-Tw"}},"accessibility":{"accessibilityData":{"label":"Przejdź na kanał"}}}},"thumbnailOverlays":[{"thumbnailOverlayTimeStatusRenderer":{"text":{"accessibility":{"accessibilityData":{"label":"Shorts"}},"simpleText":"SHORTS"},"style":"SHORTS","icon":{"iconType":"YOUTUBE_SHORTS_FILL_NO_TRIANGLE_RED_16"}}},{"thumbnailOverlayToggleButtonRenderer":{"isToggled":false,"untoggledIcon":{"iconType":"WATCH_LATER"},"toggledIcon":{"iconType":"CHECK"},"untoggledTooltip":"Do obejrzenia","toggledTooltip":"Dodano","untoggledServiceEndpoint":{"clickTrackingParams":"CCIQ-ecDGAIiEwiL57vgt5b6AhXIAIkKHY6cAUw=","commandMetadata":{"webCommandMetadata":{"sendPost":true,"apiUrl":"/youtubei/v1/browse/edit_playlist"}},"playlistEditEndpoint":{"playlistId":"WL","actions":[{"addedVideoId":"WP-hHMzBlfQ","action":"ACTION_ADD_VIDEO"}]}},"toggledServiceEndpoint":{"clickTrackingParams":"CCIQ-ecDGAIiEwiL57vgt5b6AhXIAIkKHY6cAUw=","commandMetadata":{"webCommandMetadata":{"sendPost":true,"apiUrl":"/youtubei/v1/browse/edit_playlist"}},"playlistEditEndpoint":{"playlistId":"WL","actions":[{"action":"ACTION_REMOVE_VIDEO_BY_VIDEO_ID","removedVideoId":"WP-hHMzBlfQ"}]}},"untoggledAccessibility":{"accessibilityData":{"label":"Do obejrzenia"}},"toggledAccessibility":{"accessibilityData":{"label":"Dodano"}},"trackingParams":"CCIQ-ecDGAIiEwiL57vgt5b6AhXIAIkKHY6cAUw="}},{"thumbnailOverlayToggleButtonRenderer":{"untoggledIcon":{"iconType":"ADD_TO_QUEUE_TAIL"},"toggledIcon":{"iconType":"PLAYLIST_ADD_CHECK"},"untoggledTooltip":"Dodaj do kolejki","toggledTooltip":"Dodano","untoggledServiceEndpoint":{"clickTrackingParams":"CCEQx-wEGAMiEwiL57vgt5b6AhXIAIkKHY6cAUw=","commandMetadata":{"webCommandMetadata":{"sendPost":true}},"signalServiceEndpoint":{"signal":"CLIENT_SIGNAL","actions":[{"clickTrackingParams":"CCEQx-wEGAMiEwiL57vgt5b6AhXIAIkKHY6cAUw=","addToPlaylistCommand":{"openMiniplayer":true,"videoId":"WP-hHMzBlfQ","listType":"PLAYLIST_EDIT_LIST_TYPE_QUEUE","onCreateListCommand":{"clickTrackingParams":"CCEQx-wEGAMiEwiL57vgt5b6AhXIAIkKHY6cAUw=","commandMetadata":{"webCommandMetadata":{"sendPost":true,"apiUrl":"/youtubei/v1/playlist/create"}},"createPlaylistServiceEndpoint":{"videoIds":["WP-hHMzBlfQ"],"params":"CAQ%3D"}},"videoIds":["WP-hHMzBlfQ"]}}]}},"untoggledAccessibility":{"accessibilityData":{"label":"Dodaj do kolejki"}},"toggledAccessibility":{"accessibilityData":{"label":"Dodano"}},"trackingParams":"CCEQx-wEGAMiEwiL57vgt5b6AhXIAIkKHY6cAUw="}},{"thumbnailOverlayNowPlayingRenderer":{"text":{"runs":[{"text":"Teraz odtwarzane"}]}}}]}},{"videoRenderer":{"videoId":"1hkdTiMj_M4","thumbnail":{"thumbnails":[{"url":"https://i.ytimg.com/vi/1hkdTiMj_M4/hqdefault.jpg?sqp=-oaymwEbCNIBEHZIVfKriqkDDggBFQAAiEIYAXABwAEG\u0026rs=AOn4CLAP9P5vUJaPX3ebR7b0yV33Hc5KSw","width":210,"height":118},{"url":"https://i.ytimg.com/vi/1hkdTiMj_M4/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg]
         #IconMenager.processDQ should be analyzed more deeply, now silly workarround
         if '","' in pageUrl: # points incorrectly formatted dict or list
-            pageUrl = pageUrl.split('"',1)[0] #" is incorrect char for url, shouldn't be there so removing it and everything after it
+            pageUrl = pageUrl.split('"', 1)[0] #" is incorrect char for url, shouldn't be there so removing it and everything after it
             printDBG("CORRECTED pageUrl: [%s]" % pageUrl)
 
         if None != post_data:
@@ -1360,7 +1359,7 @@ class common:
                     self.fillHeaderItems(metadata, response.info(), True, collectAllHeaders=params.get('collect_all_headers'))
                 except Exception:
                     pass
-                
+
                 max = params.get('max_data_size', -1)
                 if max == -1:
                     data = response.read()
@@ -1441,7 +1440,7 @@ class common:
                     encoding = self.ph.getSearchGroups(metadata['content-type'], '''charset=([A-Za-z0-9\-]+)''', 1, True)[0].strip().upper()
 
                 if encoding == '' and params.get('search_charset', False):
-                    encoding = self.ph.getSearchGroups(strDecode(data,'ignore'), '''(<meta[^>]+?Content-Type[^>]+?>)''', ignoreCase=True)[0]
+                    encoding = self.ph.getSearchGroups(strDecode(data, 'ignore'), '''(<meta[^>]+?Content-Type[^>]+?>)''', ignoreCase=True)[0]
                     encoding = self.ph.getSearchGroups(encoding, '''charset=([A-Za-z0-9\-]+)''', 1, True)[0].strip().upper()
                 if encoding not in ['', 'UTF-8']:
                     printDBG(">> encoding[%s]" % encoding)

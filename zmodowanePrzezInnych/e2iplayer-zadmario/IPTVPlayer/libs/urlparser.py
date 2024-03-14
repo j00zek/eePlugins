@@ -236,7 +236,7 @@ class urlparser:
                        'coolcast.eu': self.pp.parserCOOLCASTEU,
                        'crichd.tv': self.pp.parserCRICHDTV,
                        'cricplay2.xyz': self.pp.parserASSIAORG,
-                       'cryptodialynews.com':   self.pp.parserTXNEWSNETWORK,
+                       'cryptodialynews.com': self.pp.parserTXNEWSNETWORK,
                        #d
                        'd0000d.com': self.pp.parserDOOD,
                        'daaidaij.com': self.pp.parserMOONWALKCC,
@@ -260,7 +260,7 @@ class urlparser:
                        'dood.to': self.pp.parserDOOD,
                        'dood.watch': self.pp.parserDOOD,
                        'dood.ws': self.pp.parserDOOD,
-                       'dood.yt': self.pp.parserDOOD, 
+                       'dood.yt': self.pp.parserDOOD,
                        'doodstream.com': self.pp.parserDOOD,
                        'dotstream.tv': self.pp.parserDOTSTREAMTV,
                        'droonws.xyz': self.pp.parserTXNEWSNETWORK,
@@ -1887,7 +1887,7 @@ class pageParser(CaptchaHelper):
                         dat = 'https://' + str(dat) + '.mp4'
                     if not dat.endswith('.mp4'):
                         dat += '.mp4'
-                    dat = dat.replace("0)sss", "").replace('0"d.','.')
+                    dat = dat.replace("0)sss", "").replace('0"d.', '.')
                 except Exception:
                     dat = ''
                     printExc()
@@ -14811,7 +14811,6 @@ class pageParser(CaptchaHelper):
                 a71[1] = a73[1]
             return re.sub('[012567]', replacer, bytes2str(unpad(blocks2bytes(a74))))
 
-
         sts, data = self.cm.getPage('https://%s/api/make/hash/%s' % (domain, video_id), urlParams)
         if not sts:
             return False
@@ -14848,7 +14847,7 @@ class pageParser(CaptchaHelper):
     def parserSTREAMCRYPTNET(self, baseUrl):
         printDBG("parserSTREAMCRYPTNET baseUrl[%s]" % baseUrl)
 
-        sts, data = self.cm.getPage(baseUrl, {'header':{'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36'}, 'use_cookie':1, 'save_cookie':1,'load_cookie':1, 'cookiefile': GetCookieDir("streamcrypt.cookie"), 'with_metadata':1})
+        sts, data = self.cm.getPage(baseUrl, {'header': {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36'}, 'use_cookie': 1, 'save_cookie': 1, 'load_cookie': 1, 'cookiefile': GetCookieDir("streamcrypt.cookie"), 'with_metadata': 1})
         #if not sts:
         #    return []
 
@@ -14856,7 +14855,7 @@ class pageParser(CaptchaHelper):
         printDBG('redirect to url: %s' % red_url)
 
         if red_url == baseUrl:
-            red_url = re.findall("URL=([^\"]+)",data)[0]
+            red_url = re.findall("URL=([^\"]+)", data)[0]
 
         return urlparser().getVideoLinkExt(red_url)
 
@@ -15701,7 +15700,7 @@ class pageParser(CaptchaHelper):
         sts, data = self.cm.getPage(embed_url, urlParams)
         if not sts:
             return []
-        m3u8 = re.findall(r'"file": \'(.+?)\'',  data)[0]
+        m3u8 = re.findall(r'"file": \'(.+?)\'', data)[0]
         if 'm3u8' in data:
             urlTab.extend(getDirectM3U8Playlist(m3u8, checkExt=False, variantCheck=True, checkContent=True, sortWithMaxBitrate=99999999))
 

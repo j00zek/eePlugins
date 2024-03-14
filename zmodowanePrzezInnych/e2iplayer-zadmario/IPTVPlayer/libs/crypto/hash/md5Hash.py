@@ -9,6 +9,7 @@ try:
 except Exception:
     from Plugins.Extensions.IPTVPlayer.libs.crypto.hash.hash import Hash
 
+
 class MD5(Hash):
 
     def __init__(self):

@@ -30,6 +30,7 @@ from Plugins.Extensions.IPTVPlayer.p2p3.pVer import isPY2
 from Plugins.Extensions.IPTVPlayer.p2p3.Widgets import getWidgetText, innerWidgetTextRight
 ###################################################
 
+
 class E2iInput(Input):
     def __init__(self, *args, **kwargs):
         self.e2iTimeoutCallback = None

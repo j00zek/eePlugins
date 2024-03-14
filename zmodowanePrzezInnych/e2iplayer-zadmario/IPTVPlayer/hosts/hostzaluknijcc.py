@@ -22,9 +22,11 @@ except Exception:
     import simplejson as json
 ###################################################
 
+
 def GetConfigList():
     optionList = []
     return optionList
+
 
 def gettytul():
     return 'https://zaluknij.cc/'
@@ -63,7 +65,7 @@ class Zaluknij(CBaseHostClass):
 #                        {'category': 'list_items', 'title': _('Children'), 'url': self.getFullUrl('/genre/anime-bajki/')},
                         {'category': 'list_items', 'title': _('Series'), 'url': self.getFullUrl('/series/index/')},
                         {'category': 'list_years', 'title': _('Filter By Year'), 'url': self.getFullUrl('/filmy-online/')},
-                        {'category': 'list_cats',  'title': _('Movies genres'), 'url': self.getFullUrl('/filmy-online/')},
+                        {'category': 'list_cats', 'title': _('Movies genres'), 'url': self.getFullUrl('/filmy-online/')},
 #                        {'category':'list_az',        'title': _('Alphabetically'),    'url':self.MAIN_URL},
                         {'category': 'search', 'title': _('Search'), 'search_item': True},
                         {'category': 'search_history', 'title': _('Search history')}, ]
@@ -144,7 +146,6 @@ class Zaluknij(CBaseHostClass):
             nextPage = True
         else:
             nextPage = False
-
 
         if 'wyszukiwarka?phrase=' in cItem['url']:
             data = self.cm.ph.getDataBeetwenNodes(data, ('<div', '>', 'advanced-search'), ('<footer', '>'))[1]

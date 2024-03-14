@@ -34,12 +34,14 @@ from Components.config import config, ConfigText, ConfigSelection, getConfigList
 config.plugins.iptvplayer.filman_login = ConfigText(default="", fixed_size=False)
 config.plugins.iptvplayer.filman_password = ConfigText(default="", fixed_size=False)
 
+
 def GetConfigList():
     optionList = []
     optionList.append(getConfigListEntry("Filman login:", config.plugins.iptvplayer.filman_login))
     optionList.append(getConfigListEntry("Filman hasło:", config.plugins.iptvplayer.filman_password))
     return optionList
 ###################################################
+
 
 def gettytul():
     return 'https://filman.cc/'
@@ -176,7 +178,7 @@ class Filman(CBaseHostClass, CaptchaHelper):
         else:
             nextPage = False
 
-        data = self.cm.ph.getDataBeetwenNodes(data, ('<div', '>', 'wrapper') , ('<footer', '>'))[1] # exclude header and footer
+        data = self.cm.ph.getDataBeetwenNodes(data, ('<div', '>', 'wrapper'), ('<footer', '>'))[1] # exclude header and footer
 
         if 'phrase=' in cItem['url']:
             data = self.cm.ph.getAllItemsBeetwenNodes(data, ('<a', '>', 'data-title='), ('</a', '>'))

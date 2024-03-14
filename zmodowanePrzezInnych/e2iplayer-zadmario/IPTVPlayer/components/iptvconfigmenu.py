@@ -183,7 +183,7 @@ config.plugins.iptvplayer.opensuborg_password = ConfigText(default="", fixed_siz
 config.plugins.iptvplayer.napisy24pl_login = ConfigText(default="", fixed_size=False)
 config.plugins.iptvplayer.napisy24pl_password = ConfigText(default="", fixed_size=False)
 
-config.plugins.iptvplayer.debugprint = ConfigSelection(default="", choices=[("", _("no")), ("console", _("yes, to console")), 
+config.plugins.iptvplayer.debugprint = ConfigSelection(default="", choices=[("", _("no")), ("console", _("yes, to console")),
                                                                             ("debugfile", _("yes, to file /hdd/iptv.dbg")),
                                                                             ("/tmp/iptv.dbg", _("yes, to file /tmp/iptv.dbg")),
                                                                             ("/home/root/logs/iptv.dbg", _("yes, to file /home/root/logs/iptv.dbg")),
@@ -343,8 +343,8 @@ class ConfigMenu(ConfigBaseWidget):
         self.setTitle(_("E2iPlayer - settings"))
 
     @staticmethod
-    def fillConfigList(list, hiddenOptions=False, basicConfVisible = True, prxyConfVisible = False, buffConfVisible = False, downConfVisible = False, 
-                                                  captConfVisible = False, subtConfVisible = False, playConfVisible = False, otherConfVisible = False):
+    def fillConfigList(list, hiddenOptions=False, basicConfVisible=True, prxyConfVisible=False, buffConfVisible=False, downConfVisible=False,
+                                                  captConfVisible=False, subtConfVisible=False, playConfVisible=False, otherConfVisible=False):
         if hiddenOptions:
             list.append(getConfigListEntry('\\c00289496' + _("----- HIDDEN OPTIONS -----"), config.plugins.iptvplayer.FakeEntry))
             list.append(getConfigListEntry(_("Last checked version"), config.plugins.iptvplayer.updateLastCheckedVersion))
@@ -367,7 +367,7 @@ class ConfigMenu(ConfigBaseWidget):
             list.append(getConfigListEntry("Auto start method", config.plugins.iptvplayer.plugin_autostart_method))
             list.append(getConfigListEntry("Prefer hlsld for playlist with alt. media", config.plugins.iptvplayer.prefer_hlsdl_for_pls_with_alt_media))
             list.append(getConfigListEntry(_("Hosts List Type-NOT FINISHED"), config.plugins.iptvplayer.hostsListType))
-            
+
         list.append(getConfigListEntry('\\c00289496' + _("----- BASIC CONFIGURATION (OK) -----"), config.plugins.iptvplayer.basicConfVisible))
         if basicConfVisible: #BASIC CONFIGURATION
             list.append(getConfigListEntry(_("Auto check for plugin update"), config.plugins.iptvplayer.autoCheckForUpdate))
@@ -379,7 +379,7 @@ class ConfigMenu(ConfigBaseWidget):
                 list.append(getConfigListEntry(_("%s password") % 'E2iPlayer', config.plugins.iptvplayer.iptvplayer_password))
             if config.plugins.iptvplayer.preferredupdateserver.value != '4':
                 list.append(getConfigListEntry(_("Update"), config.plugins.iptvplayer.fakeUpdate))
-        
+
             list.append(getConfigListEntry(_("Virtual Keyboard type"), config.plugins.iptvplayer.osk_type))
             if config.plugins.iptvplayer.osk_type.value == 'own':
                 list.append(getConfigListEntry(_("    Background color"), config.plugins.iptvplayer.osk_background_color))
@@ -412,7 +412,7 @@ class ConfigMenu(ConfigBaseWidget):
 
             list.append(getConfigListEntry(_("Use the PyCurl for HTTP(S) requests"), config.plugins.iptvplayer.usepycurl))
             list.append(getConfigListEntry(_("https - validate SSL certificates"), config.plugins.iptvplayer.httpssslcertvalidation))
-            
+
         list.append(getConfigListEntry('\\c00289496' + _("----- PROXIES CONFIGURATION (OK) -----"), config.plugins.iptvplayer.prxyConfVisible))
         if prxyConfVisible: #PROXIES CONFIGURATION
             list.append(getConfigListEntry(_("Alternative proxy server (1)"), config.plugins.iptvplayer.alternative_proxy1))
@@ -548,7 +548,7 @@ class ConfigMenu(ConfigBaseWidget):
 
     def runSetup(self):
         self.list = []
-        ConfigMenu.fillConfigList(self.list, self.isHiddenOptionsUnlocked(), self.basicConfVisible, self.prxyConfVisible, self.buffConfVisible, self.downConfVisible, 
+        ConfigMenu.fillConfigList(self.list, self.isHiddenOptionsUnlocked(), self.basicConfVisible, self.prxyConfVisible, self.buffConfVisible, self.downConfVisible,
                                                                              self.captConfVisible, self.subtConfVisible, self.playConfVisible, self.otherConfVisible)
         ConfigBaseWidget.runSetup(self)
 

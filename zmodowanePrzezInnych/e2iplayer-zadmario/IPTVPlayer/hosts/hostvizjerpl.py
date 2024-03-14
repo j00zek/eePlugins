@@ -22,6 +22,7 @@ except Exception:
 from Components.config import config, ConfigText
 ###################################################
 
+
 def GetConfigList():
     optionList = []
     return optionList
