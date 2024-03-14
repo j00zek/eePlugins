@@ -1339,8 +1339,7 @@ class common:
             else:
                 dataPost = urllib_urlencode(post_data)
 
-            if not isPY2():
-                dataPost = dataPost.encode()
+            dataPost = ensure_binary(dataPost)
             req = urllib2_Request(pageUrl, dataPost, headers)
         else:
             req = urllib2_Request(pageUrl, None, headers)
