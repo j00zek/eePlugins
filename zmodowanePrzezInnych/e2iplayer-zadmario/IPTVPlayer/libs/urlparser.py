@@ -48,7 +48,7 @@ if not isPY2():
     xrange = range
     from functools import cmp_to_key
 from Plugins.Extensions.IPTVPlayer.p2p3.UrlLib import urllib_unquote, urllib_quote_plus, urllib_urlencode, urllib_quote
-from Plugins.Extensions.IPTVPlayer.p2p3.manipulateStrings import ensure_str
+from Plugins.Extensions.IPTVPlayer.p2p3.manipulateStrings import ensure_str, ensure_binary
 ###################################################
 # FOREIGN import
 ###################################################
@@ -15556,18 +15556,26 @@ class pageParser(CaptchaHelper):
             return []
         cUrl = self.cm.meta['url']
 
-        edata = self.cm.ph.getSearchGroups(data, '''MasterJS\s*=\s*['"]([^'^"]+?)['"]''')[0]
+        def cryptoJS_AES_decrypt(encrypted, password, salt):
+            def derive_key_and_iv(password, salt, key_length, iv_length):
+                d = d_i = b''
+                while len(d) < key_length + iv_length:
+                    d_i = md5(d_i + password + salt).digest()
+                    d += d_i
+                return d[:key_length], d[key_length:key_length + iv_length]
+            bs = 16
+            key, iv = derive_key_and_iv(ensure_binary(password), ensure_binary(salt), 32, 16)
+            cipher = AES_CBC(key=key, keySize=32)
+            return cipher.decrypt(encrypted, iv)
+
+        key = '\x61\x37\x69\x67\x62\x70\x49\x41\x70\x61\x6a\x44\x79\x4e\x65'
+        edata = re.search("JScripts\s*=\s*'([^']+)", data)
         if edata:
-            edata = base64.b64decode(edata)
-            edata = json_loads(edata)
-            key = '\x34\x56\x71\x45\x33\x23\x4e\x37\x7a\x74\x26\x48\x45\x50\x5e\x61'
-            ct = edata.get('ciphertext', False)
-            salt = codecs.decode(edata.get('salt'), 'hex')
-            iv = codecs.decode(edata.get('iv'), 'hex')
-            secret = pbkdf2.PBKDF2(key, salt, 999, sha512).read(32)
-            decryptor = pyaes.Decrypter(pyaes.AESModeOfOperationCBC(secret, iv))
-            data = decryptor.feed(base64.b64decode(ct))
-            data += decryptor.feed()
+            edata = json_loads(edata.group(1))
+            ciphertext = base64.b64decode(edata.get('ct', False))
+            iv = a2b_hex(edata.get('iv'))
+            salt = a2b_hex(edata.get('s'))
+            data = cryptoJS_AES_decrypt(ciphertext, key, salt).replace('\\', '')
             #printDBG("parserCHILLXTOP data[%s]" % data)
 
         url = self.cm.ph.getSearchGroups(data, '''source[^'^"]*?['"]([^'^"]+?)['"]''')[0]
