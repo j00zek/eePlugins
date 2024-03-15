@@ -51,7 +51,18 @@ unzip -q ~/streamlink-master.zip
 
 mkdir -p $SLpath/plugins/streamlink-drm/
 rm -rf $SLpath/plugins/streamlink-drm/*
-mkdir -p $SLpath/plugins/streamlink-drm/streamlink
-cp -rf ~/streamlink-drm-master/src/streamlink/* $SLpath/plugins/streamlink-drm/streamlink
-mkdir -p $SLpath/plugins/streamlink-drm/streamlink_cli
-cp -rf ~/streamlink-drm-master/src/streamlink_cli/* $SLpath/plugins/streamlink-drm/streamlink_cli
+#mkdir -p $SLpath/plugins/streamlink-drm/streamlink
+#cp -rf ~/streamlink-drm-master/src/streamlink/* $SLpath/plugins/streamlink-drm/streamlink
+#mkdir -p $SLpath/plugins/streamlink-drm/streamlink_cli
+#cp -rf ~/streamlink-drm-master/src/streamlink_cli/* $SLpath/plugins/streamlink-drm/streamlink_cli
+
+#fix for DRM
+sed -i 's/raise PluginError\(.*DRM"\)/log.debug\1/' $SLpath/plugins/streamlink/stream/dash/dash.py
+
+sed -i '/start_at_zero = session.options.get.*/a\        deckey = session.options.get("decryption_key")\n        deckey2 = session.options.get("decryption_key_2") or deckey\n        log.debug(f"Decryption key parsed: {deckey}")\n        log.debug(f"Decryption key 2 parsed: {deckey2}")\n        cur_deckey = deckey' $SLpath/plugins/streamlink/stream/ffmpegmux.py
+sed -i '/for np in self\.pipes:/a\            if cur_deckey:\n                self._cmd.extend(["-decryption_key", cur_deckey])\n                if cur_deckey == deckey:\n                    cur_deckey = deckey2\n                else:\n                    cur_deckey = deckey\n            self._cmd.extend(['-thread_queue_size', '32768'])' $SLpath/plugins/streamlink/stream/ffmpegmux.py
+
+sed -i '/transport.add_argument("--http-stream-timeout"/a\    transport_ffmpeg.add_argument(\n        "-decryption_key",\n        metavar="FILENAME",\n        help="""\n       Use a CENC decryption key to decrypt the media that ffmpeg receives as\n        an input from the DASH streaming that you play with streamlink.\n        Example: -decryption_key "<hex key>"\n        """\n    )\n    transport_ffmpeg.add_argument(\n        "-decryption_key_2",\n        metavar="FILENAME",\n        help="""\n        Use a CENC decryption key to decrypt the media that ffmpeg receives as\n        an input from the DASH streaming that you play with streamlink.\n        This key will be used for the second track only.\n        Example: -decryption_key_2 "<hex key>"\n        """\n    )' $SLpath/plugins/streamlink_cli/argparser.py
+sed -i '/"hls_audio_select", "hls-audio-select", None),/a\    ("decryption_key", "decryption_key", None),\n    ("decryption_key_2", "decryption_key_2", None),' $SLpath/plugins/streamlink_cli/argparser.py
+
+sed -i '/"ffmpeg-ffmpeg":.*/a\            "decryption_key": None,\n            "decryption_key_2": None,\n' $SLpath/plugins/streamlink/session/options.py

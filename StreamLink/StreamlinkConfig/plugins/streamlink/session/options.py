@@ -326,6 +326,9 @@ class StreamlinkOptions(Options):
             "hls-audio-select": [],
             "dash-manifest-reload-attempts": 3,
             "ffmpeg-ffmpeg": None,
+            "decryption_key": None,
+            "decryption_key_2": None,
+
             "ffmpeg-no-validation": False,
             "ffmpeg-verbose": False,
             "ffmpeg-verbose-path": None,
