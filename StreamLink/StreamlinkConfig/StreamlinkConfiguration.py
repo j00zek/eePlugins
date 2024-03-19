@@ -49,6 +49,7 @@ def isCDM():
     except Exception:
         return False
 config.plugins.streamlinkSRV.streamlinkconfig = NoSave(ConfigNothing())
+config.plugins.streamlinkSRV.streamlinkDRMconfig = NoSave(ConfigNothing())
 config.plugins.streamlinkSRV.streamlinkconfigFFMPEG = NoSave(ConfigSelection(default = getCurrFF(), choices = getFFlist()))
 
 
@@ -133,7 +134,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
             if os.path.islink('/usr/sbin/streamlinkSRV') and 'StreamlinkConfig/' in os.readlink('/usr/sbin/streamlinkSRV'):
                 if 1: # https://github.com/azman26
                     Mlist.append(getConfigListEntry(""))
-                    Mlist.append(getConfigListEntry('\c00289496' + "*** azman IPTV lists from github ***",config.plugins.streamlinkSRV.Three))
+                    Mlist.append(getConfigListEntry('\c00289496' + _("*** azman IPTV lists from github ***"),config.plugins.streamlinkSRV.Three))
                     if self.VisibleSection == 3:
                         azman = get_azmanIPTVsettings()['userbouquets']
                         for f in sorted(azman):
@@ -166,35 +167,55 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                     Mlist.append(getConfigListEntry(_("Save log file in:"), config.plugins.streamlinkSRV.logPath))
                     Mlist.append(getConfigListEntry(_("Buffer path:"), config.plugins.streamlinkSRV.bufferPath))
                     Mlist.append(getConfigListEntry(_("Allow Wrappers in lists:"), config.plugins.streamlinkSRV.useWrappers))
-                    Mlist.append(getConfigListEntry(_("Autocorrect framework for Wrappers:"), config.plugins.streamlinkSRV.Verify4Wrappers))
+                    #Mlist.append(getConfigListEntry(_("Autocorrect framework for Wrappers:"), config.plugins.streamlinkSRV.Verify4Wrappers))
                     #EXPERIMENTAL OPTIONS
-                    Mlist.append(getConfigListEntry(_(" !!! EXPERIMENTAL OPTION(S) !!!")))
+                    #Mlist.append(getConfigListEntry(_(" !!! EXPERIMENTAL OPTION(S) !!!")))
                    
-                    Mlist.append(getConfigListEntry(_("Recorder mode:"), config.plugins.streamlinkSRV.Recorder))
-                    if config.plugins.streamlinkSRV.Recorder.value == True:
-                        Mlist.append(getConfigListEntry(_("Maximum record time:"), config.plugins.streamlinkSRV.RecordMaxTime))
+                    #Mlist.append(getConfigListEntry(_("Recorder mode:"), config.plugins.streamlinkSRV.Recorder))
+                    #if config.plugins.streamlinkSRV.Recorder.value == True:
+                    #    Mlist.append(getConfigListEntry(_("Maximum record time:"), config.plugins.streamlinkSRV.RecordMaxTime))
 
-                    Mlist.append(getConfigListEntry(_("Refresh Generated bouquets in standby:"), config.plugins.streamlinkSRV.RefreshGeneratedBouquets))
+                    #Mlist.append(getConfigListEntry(_("Refresh Generated bouquets in standby:"), config.plugins.streamlinkSRV.RefreshGeneratedBouquets))
                     
-                    Mlist.append(getConfigListEntry(_("IPTVExtMoviePlayer:// reacts on URL's with:"), config.plugins.streamlinkSRV.IPTVExtMoviePlayer))
+                    #Mlist.append(getConfigListEntry(_("IPTVExtMoviePlayer:// reacts on URL's with:"), config.plugins.streamlinkSRV.IPTVExtMoviePlayer))
                     
                     Mlist.append(getConfigListEntry(_("stop deamon on standby:"), config.plugins.streamlinkSRV.StandbyMode))
-                    if config.plugins.streamlinkSRV.StandbyMode.value == True:
-                        Mlist.append(getConfigListEntry(_("proxy (http://127.0.0.1:8818) for channel:"), config.plugins.streamlinkSRV.streamlinkProxy1))
 
-                    Mlist.append(getConfigListEntry(_("Support VLC:"), config.plugins.streamlinkSRV.VLCusingLUA))
-                    Mlist.append(getConfigListEntry(_("Support KODI:"), config.plugins.streamlinkSRV.support4kodi))
+                    #Mlist.append(getConfigListEntry(_("Support VLC:"), config.plugins.streamlinkSRV.VLCusingLUA))
+                    #Mlist.append(getConfigListEntry(_("Support KODI:"), config.plugins.streamlinkSRV.support4kodi))
                 Mlist.append(getConfigListEntry(""))
+                
                 if isCDM():
                     Mlist.append(getConfigListEntry('\c00289496' + _("*** Widevine CDM ***"), config.plugins.streamlinkSRV.Five))
-                else:
-                    Mlist.append(getConfigListEntry('\c00289496' + _("*** /etc/streamlink/config ***"), config.plugins.streamlinkSRV.Five))
+                    for cfgFile in ['cda/password','cda/login','player/login','player/password']:
+                        if not os.path.exists('/etc/streamlink/%s' % cfgFile):
+                            os.system('mkdir -p /etc/streamlink/%s; touch /etc/streamlink/%s' % (cfgFile.split('/')[0],cfgFile))
                     if self.VisibleSection == 5:
-                        for cfg in getStreamlinkConfig():
-                            if cfg.startswith('ffmpeg-ffmpeg='):
-                                Mlist.append(getConfigListEntry("ffmpeg-ffmpeg=" , config.plugins.streamlinkSRV.streamlinkconfigFFMPEG))
-                            else:
-                                Mlist.append(getConfigListEntry( cfg , config.plugins.streamlinkSRV.streamlinkconfig))
+                        #cda
+                        if os.path.exists('/etc/streamlink/cda/login') and os.path.exists('/etc/streamlink/cda/password') and \
+                            open('/etc/streamlink/cda/login','r').read().strip() != '' and open('/etc/streamlink/cda/password','r').read().strip() != '':
+                                Mlist.append(getConfigListEntry( _("Press OK to create bouquet for") + ': cda' , config.plugins.streamlinkSRV.streamlinkDRMconfig))
+                        else:
+                            Mlist.append(getConfigListEntry( _("Missing configs for") + ' cda' , config.plugins.streamlinkSRV.streamlinkconfig))
+                        #playerpl
+                        if os.path.exists('/etc/streamlink/player/login') and os.path.exists('/etc/streamlink/player/password') and \
+                            open('/etc/streamlink/player/login','r').read().strip() != '' and open('/etc/streamlink/player/password','r').read().strip() != '':
+                                Mlist.append(getConfigListEntry( _("Press OK to create bouquet for") + ': player' , config.plugins.streamlinkSRV.streamlinkDRMconfig))
+                        else:
+                            Mlist.append(getConfigListEntry( _("Missing configs for") + ' playerpl' , config.plugins.streamlinkSRV.streamlinkconfig))
+                        #polsatgo
+                        if os.path.exists('/etc/streamlink/polsatgo/login') and os.path.exists('/etc/streamlink/polsatgo/password'):
+                            if open('/etc/streamlink/polsatgo/login','r').read().strip() != '' and open('/etc/streamlink/polsatgo/password','r').read().strip() != '':
+                                Mlist.append(getConfigListEntry( _("Press OK to create bouquet for") + ': polsatgo' , config.plugins.streamlinkSRV.streamlinkDRMconfig))
+                        else:
+                            Mlist.append(getConfigListEntry( _("Missing configs for") + ' polsatgo' , config.plugins.streamlinkSRV.streamlinkconfig))
+                        #canal+
+                        if os.path.exists('/etc/streamlink/canalplus/login') and os.path.exists('/etc/streamlink/canalplus/password') and os.path.exists('/etc/streamlink/canal+_token'):
+                            if open('/etc/streamlink/canalplus/login','r').read().strip() != '' and open('/etc/streamlink/canalplus/password','r').read().strip() != '':
+                                Mlist.append(getConfigListEntry( _("Press OK to create bouquet for") + ': canal+' , config.plugins.streamlinkSRV.streamlinkDRMconfig))
+                        else:
+                            Mlist.append(getConfigListEntry( _("Missing configs for") + ' canal+', config.plugins.streamlinkSRV.streamlinkconfig))
+                        
             else:
                 Mlist.append(getConfigListEntry(""))
                 Mlist.append(getConfigListEntry('\c00981111' + _("*** not compliant Deamon found ***")))
@@ -423,6 +444,11 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                                                                                                                                 (_("Change Streamlink connection type"),"sl")
                                                                                                                                 ])
                     return
+                elif currItem == config.plugins.streamlinkSRV.streamlinkDRMconfig: #generate bouqets for drm services': canal+' , config.plugins.streamlinkSRV.
+                    DBGlog('currItem == config.plugins.streamlinkSRV.streamlinkDRMconfig')
+                    #wybrany dostawca
+                    providerName = currInfo.split(': ')[1].strip().replace('+','plus')
+                    self.doAction = ('%sBouquet.py' % providerName, '/etc/enigma2/userbouquet.%s.tv' % providerName)
                 ####
                 DBGlog('%s' % str(self.doAction))
                 if not self.doAction is None:

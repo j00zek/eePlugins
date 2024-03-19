@@ -67,9 +67,8 @@ config.plugins.streamlinkSRV.Recorder = ConfigEnableDisable(default = False)
 config.plugins.streamlinkSRV.RecordMaxTime = ConfigSelection(default = "120", choices = [("120", _("2h")), ("180", _("3h")),])
 
 config.plugins.streamlinkSRV.StandbyMode = ConfigEnableDisable(default = False)
-config.plugins.streamlinkSRV.streamlinkProxy1 = ConfigText(default = readCFG('streamlinkProxy1'), fixed_size = False)
 
-config.plugins.streamlinkSRV.useWrappers = ConfigSelection(default = "n", choices = [("n", _("No")), ("m", _("Yes, try modify bouquets")), ("y", _("Yes, don't modify bouquets")),])
+config.plugins.streamlinkSRV.useWrappers = ConfigSelection(default = "n", choices = [("n", _("No")), ("m", mygettext("Yes, try modify bouquets")), ("y", mygettext("Yes, don't modify bouquets")),])
 config.plugins.streamlinkSRV.Verify4Wrappers = ConfigSelection(default = "n", choices = [("n", _("No")), ("y", _("Yes")),])
 config.plugins.streamlinkSRV.IPTVExtMoviePlayer = ConfigText(readCFG('IPTVExtMoviePlayer'), fixed_size = False)
 

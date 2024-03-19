@@ -29,21 +29,9 @@ def runCMD(myCMD):
     else:
         Console().ePopen(myCMD + " &")
 
-def initProxy():
-    if config.plugins.streamlinkSRV.streamlinkProxy1.value != '':
-        _cmd = []
-        _cmd.append('/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/bin/streamlinkProxy.py')
-        _cmd.append(' -l %s ' % config.plugins.streamlinkSRV.logLevel.value)
-        _cmd.append('--player-external-http --player-external-http-port 8818')
-        _cmd.append(config.plugins.streamlinkSRV.streamlinkProxy1.value)
-        _cmd.append('best')
-        DBGlog('runCMD(%s)' % " ".join(_cmd))
-        runCMD(" ".join(_cmd))
-
 def SLconfigLeaveStandbyInitDaemon():
     DBGlog('LeaveStandbyInitDaemon() >>>')
     runCMD('streamlinkSRV restart')
-    initProxy()
 
 def SLconfigStandbyCounterChanged(configElement):
     DBGlog('standbyCounterChanged() >>>')
@@ -69,7 +57,6 @@ def sessionstart(reason, session = None):
     if reason == 0 and config.plugins.streamlinkSRV.StandbyMode.value == True or config.plugins.streamlinkSRV.RefreshGeneratedBouquets.value == True:
         DBGlog('reason == 0 and StandbyMode enabled')
         config.misc.standbyCounter.addNotifier(SLconfigStandbyCounterChanged, initial_call=False)
-        initProxy()
 
 def timermenu(menuid, **kwargs):
     DBGlog("timermenu(%s)" % str(menuid))
