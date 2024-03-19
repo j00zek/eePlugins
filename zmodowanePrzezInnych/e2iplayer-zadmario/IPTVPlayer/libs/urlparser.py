@@ -15575,14 +15575,26 @@ class pageParser(CaptchaHelper):
             ciphertext = base64.b64decode(edata.get('ct', False))
             iv = a2b_hex(edata.get('iv'))
             salt = a2b_hex(edata.get('s'))
-            data = cryptoJS_AES_decrypt(ciphertext, key, salt).replace('\\', '')
+            data = cryptoJS_AES_decrypt(ciphertext, key, salt).replace('\\t', '').replace('\\n', '').replace('\\', '')
             #printDBG("parserCHILLXTOP data[%s]" % data)
+
+        data = self.cm.ph.getSearchGroups(data, '''new\sPlayerjs\(((.+?}))\)''')[0]
+        subTracks = []
+        srtUrl = self.cm.ph.getSearchGroups(data, '''\ssubtitle[^'^"]*?['"]([^'^"]+?)['"]''')[0]
+        if srtUrl != '':
+            printDBG("parserCHILLXTOP srtUrl[%s]" % srtUrl)
+            srtLabel = self.cm.ph.getSearchGroups(srtUrl, '''\[(.+?)\]''')[0]
+            srtUrl = srtUrl.replace('[%s]' % srtLabel, '')
+            if srtLabel == '':
+                srtLabel = 'UNK'
+            params = {'title': srtLabel, 'url': srtUrl, 'lang': srtLabel.lower()[:3], 'format': srtUrl[-3:]}
+            subTracks.append(params)
 
         url = self.cm.ph.getSearchGroups(data, '''source[^'^"]*?['"]([^'^"]+?)['"]''')[0]
         if url == '':
             url = self.cm.ph.getSearchGroups(data, '''file[^'^"]*?['"]([^'^"]+?)['"]''')[0]
         urlTab = []
-        url = urlparser.decorateUrl(url, {'iptv_proto': 'm3u8', 'User-Agent': urlParams['header']['User-Agent'], 'Referer': cUrl, 'Origin': urlparser.getDomain(cUrl, False)})
+        url = urlparser.decorateUrl(url, {'iptv_proto': 'm3u8', 'external_sub_tracks': subTracks, 'User-Agent': urlParams['header']['User-Agent'], 'Referer': cUrl, 'Origin': urlparser.getDomain(cUrl, False)})
         if url != '':
             urlTab.extend(getDirectM3U8Playlist(url, cookieParams={'header': urlParams['header']}))
 

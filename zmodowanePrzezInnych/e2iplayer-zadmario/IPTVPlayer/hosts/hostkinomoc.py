@@ -157,25 +157,33 @@ class Kinomoc(CBaseHostClass):
 
         if '?story=' in cItem['url']:
             data = self.cm.ph.getAllItemsBeetwenNodes(data, ('<article', '>', 'movie-box'), ('</article', '>'))
+        elif '/serials/' in cItem['url']:
+            data = self.cm.ph.getAllItemsBeetwenNodes(data, ('<article', '>', 'movie-box movie-tablet'), ('</article', '>'))
         else:
             data = self.cm.ph.getAllItemsBeetwenNodes(data, ('<article', '>', 'movie-box m-info'), ('</article', '>'))
 
         for item in data:
 #            printDBG("Kinomoc.listItems item %s" % item)
             item = item.replace(',Online za darmo', '')
-            url = self.getFullUrl(self.cm.ph.getSearchGroups(item, '''href=['"]([^"^']+?)['"]''')[0])
+            tmp = self.cm.ph.getDataBeetwenNodes(item, ('<div', '>', 'movie-details'), ('</a', '>'), False)[1]
+            if tmp == '':
+                url = self.getFullUrl(self.cm.ph.getSearchGroups(item, '''href=['"]([^"^']+?)['"]''')[0])
+            else:
+                url = self.getFullUrl(self.cm.ph.getSearchGroups(tmp, '''href=['"]([^"^']+?)['"]''')[0])
             if url == '':
                 continue
             icon = self.getFullIconUrl(self.cm.ph.getSearchGroups(item, '''data-src=['"]([^"^']+?)['"]''')[0])
             tmp = ' [' + self.cleanHtmlStr(self.cm.ph.getDataBeetwenNodes(item, ('<span', '>', 'icon-hd'), ('</span', '>'), False)[1]) + ']'
             title = self.cleanHtmlStr(self.cm.ph.getDataBeetwenNodes(item, ('<div', '>', 'name'), ('</div', '>'), False)[1]) + tmp
             desc = self.cm.ph.getDataBeetwenNodes(item, ('<div', '>', 'dtinfo right'), ('</article', '>'), False)[1]
+            if desc == '':
+                desc = self.cm.ph.getDataBeetwenNodes(item, ('<div', '>', 'texto'), ('</article', '>'), False)[1]
             desc = '[/br]'.join(desc.split('</div>'))
             if title == '':
                 title = self.cleanHtmlStr(self.cm.ph.getDataBeetwenNodes(desc, ('<div', '>', 'title'), ('</div', '>'), False)[1]).replace(',Online za darmo', '')
             desc = self.cleanHtmlStr(desc)
             category = self.cleanHtmlStr(self.cm.ph.getDataBeetwenNodes(item, ('<div', '>', 'category'), ('</div', '>'), False)[1])
-            if 'Serial' in category:
+            if '>Serial</a>' in item or 'Serial' in category:
                 params = {'good_for_fav': True, 'category': 'list_seasons', 'url': url, 'title': title, 'desc': desc, 'icon': icon}
                 self.addDir(params)
             else:
@@ -203,6 +211,8 @@ class Kinomoc(CBaseHostClass):
         data = data.get('response', '')
         tmp = self.cm.ph.getDataBeetwenNodes(data, ('<div', '>', 'playlists-lists'), ('</div', '>'))[1]
         tmp = self.cm.ph.getAllItemsBeetwenNodes(tmp, ('<li', '>'), ('</li', '>'))
+        if len(tmp) == 0:
+            tmp = ['<li data-id="%s">Sezon</li>' % self.cm.ph.getSearchGroups(data, '''\sdata-id=['"]([^'^"]+?)['"]''')[0]]
 
         data = self.cm.ph.getDataBeetwenNodes(data, ('<div', '>', 'playlists-videos'), ('</div', '>'))[1]
         data = self.cm.ph.getAllItemsBeetwenNodes(data, ('<li', '>'), ('</li', '>'))
