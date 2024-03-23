@@ -234,6 +234,7 @@ class urlparser:
                        'compensationcoincide.net': self.pp.parserONLYSTREAMTV,
                        'content.peteava.ro': self.pp.parserPETEAVA,
                        'coolcast.eu': self.pp.parserCOOLCASTEU,
+                       'coolrea.link': self.pp.parserSPORTSONLINETO,
                        'crichd.tv': self.pp.parserCRICHDTV,
                        'cricplay2.xyz': self.pp.parserASSIAORG,
                        'cryptodialynews.com': self.pp.parserTXNEWSNETWORK,
@@ -324,6 +325,7 @@ class urlparser:
                        'freedisc.pl': self.pp.parserFREEDISC,
                        'freefeds.click': self.pp.parserASSIAORG,
                        'fslinks.org': self.pp.parserVIDGUARDTO,
+                       'fullassia.com': self.pp.parserASSIAORG,
                        'furher.in': self.pp.parserONLYSTREAMTV,
                        'fviplions.com': self.pp.parserONLYSTREAMTV,
                        'fxstream.biz': self.pp.parserFXSTREAMBIZ,
@@ -564,6 +566,7 @@ class urlparser:
                        'soundcloud.com': self.pp.parserSOUNDCLOUDCOM,
                        'speedvid.net': self.pp.parserSPEEDVIDNET,
                        'speedvideo.net': self.pp.parserSPEEDVICEONET,
+                       'sportsonline.si': self.pp.parserSPORTSONLINETO,
                        'sportsonline.to': self.pp.parserSPORTSONLINETO,
                        'sportstream365.com': self.pp.parserSPORTSTREAM365,
                        'sprocked.com': self.pp.parserSPROCKED,
@@ -14533,7 +14536,7 @@ class pageParser(CaptchaHelper):
             return False
         cUrl = self.cm.meta['url']
 
-        _url = self.cm.ph.getSearchGroups(data, '''<iframe[^>]+?src=['"]([^"^']+?)['"]''', 1, True)[0]
+        _url = self.cm.ph.getSearchGroups(data, '''<iframe[^>]+?src=['"](http[^"^']+?)['"]''', 1, True)[0]
         HTTP_HEADER['Referer'] = cUrl
         urlParams = {'header': HTTP_HEADER}
         sts, data = self.cm.getPage(_url, urlParams)
