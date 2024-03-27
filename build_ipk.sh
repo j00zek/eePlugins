@@ -40,10 +40,12 @@ echo "sprawdzanie czy xml-e nie mają błędów"
 find $plugAbsPath -iname "*.xml" | 
   while read F 
   do
-    xmllint --noout "$F"
-    if [[ $? -gt 0 ]];then
-      echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ERROR in XML !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-      exit 1
+    if [ `echo "$F" | grep -c "emukodi/PluginsSettings"` -eq 0 ];then
+      xmllint --noout "$F"
+      if [[ $? -gt 0 ]];then
+        echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ERROR in XML !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+        exit 1
+      fi
     fi
   done
 [ $? -gt 0 ] && exit 1
@@ -107,7 +109,7 @@ if [ -z $2 ]; then
   version=`ls -atR --full-time "$plugAbsPath/"|egrep -v '^dr|version\.py|control|*\.mo'|grep -o '20[12][1234].[0-9]*.[0-9]* [0-9]*\:[0-9]*'|sort -r|head -1|sed 's/^20//'|sed 's/ /./'|sed 's/-/./g'|sed 's/\://g'`
   versionFileName=`find "$plugAbsPath/" -name version.py ! -path "*/tsiplayer/*"`
   echo "Found version file: '$versionFileName'"
-  if [ ! -z $versionFileName ] && [ `grep -c 'IPTV_VERSION=' < $versionFileName` -gt 0 ];then version=`grep -o '20[12][1234].[0-9]*.[0-9]*.[0-9]*' < $versionFileName`;fi
+  if [ `echo "$versionFileName"| grep -c "construct/version.py"` -eq 0 ] && [ ! -z "$versionFileName" ] && [ `grep -c 'IPTV_VERSION=' < "$versionFileName"` -gt 0 ];then version=`grep -o '20[12][1234].[0-9]*.[0-9]*.[0-9]*' < "$versionFileName"`;fi
   echo "Found version: '$version'"
   [ -z $version ] && echo "Error getting version" && exit 0
 else

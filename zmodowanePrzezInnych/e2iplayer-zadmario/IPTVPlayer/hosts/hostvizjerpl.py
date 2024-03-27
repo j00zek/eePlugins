@@ -40,7 +40,7 @@ class Vizjer(CBaseHostClass):
         self.USER_AGENT = config.plugins.iptvplayer.cloudflare_user.value
         self.MAIN_URL = None
 #        self.DEFAULT_ICON_URL = 'https://vizjer.pl/public/dist/images/logo.png'
-        self.HTTP_HEADER = {'User-Agent': self.USER_AGENT, 'DNT': '1', 'Accept': 'text/html', 'Accept-Encoding': 'gzip, deflate', 'Referer': self.getMainUrl(), 'Origin': self.getMainUrl()}
+        self.HTTP_HEADER = {'User-Agent': self.USER_AGENT, 'DNT': '1', 'Accept': 'text/html', 'Accept-Encoding': 'gzip, deflate'}
         self.AJAX_HEADER = dict(self.HTTP_HEADER)
         self.AJAX_HEADER.update({'X-Requested-With': 'XMLHttpRequest', 'Accept-Encoding': 'gzip, deflate', 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8', 'Accept': 'application/json, text/javascript, */*; q=0.01'})
 
