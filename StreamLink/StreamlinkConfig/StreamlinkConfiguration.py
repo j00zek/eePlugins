@@ -44,6 +44,7 @@ def getStreamlinkConfig():
 
 config.plugins.streamlinkSRV.streamlinkconfig = NoSave(ConfigNothing())
 config.plugins.streamlinkSRV.streamlinkDRMconfig = NoSave(ConfigNothing())
+config.plugins.streamlinkSRV.streamlinkEMUKODIconfig = NoSave(ConfigNothing())
 config.plugins.streamlinkSRV.streamlinkconfigFFMPEG = NoSave(ConfigSelection(default = getCurrFF(), choices = getFFlist()))
 
 
@@ -186,34 +187,36 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                         Mlist.append(getConfigListEntry('\c00289496' + _("*** Full DRM support enabled ***"), config.plugins.streamlinkSRV.Five))
                     else:
                         Mlist.append(getConfigListEntry('\c00289496' + _("*** Limited DRM support enabled ***"), config.plugins.streamlinkSRV.Five))
-                    for cfgFile in ['cda/password','cda/login','player/login','player/password']:
+                    for cfgFile in ['playermb']:
                         if not os.path.exists('/etc/streamlink/%s' % cfgFile):
-                            os.system('mkdir -p /etc/streamlink/%s; touch /etc/streamlink/%s' % (cfgFile.split('/')[0],cfgFile))
+                            os.system('mkdir -p /etc/streamlink/%s' % cfgFile)
                     if self.VisibleSection == 5:
-                        #cda
-                        if os.path.exists('/etc/streamlink/cda/login') and os.path.exists('/etc/streamlink/cda/password') and \
-                            open('/etc/streamlink/cda/login','r').read().strip() != '' and open('/etc/streamlink/cda/password','r').read().strip() != '':
-                                Mlist.append(getConfigListEntry( _("Press OK to create bouquet for") + ': cda' , config.plugins.streamlinkSRV.streamlinkDRMconfig))
-                        else:
-                            Mlist.append(getConfigListEntry( _("Missing configs for") + ' cda' , config.plugins.streamlinkSRV.streamlinkconfig))
+                        cda
+                        Mlist.append(getConfigListEntry('\c00981111' + _("*** cda not finished - no access anymore  ***")))
+                        #if os.path.exists('/etc/streamlink/cdaplmb/login') and os.path.exists('/etc/streamlink/cdaplmb/password') and \
+                        #    open('/etc/streamlink/cdaplmb/login','r').read().strip() != '' and open('/etc/streamlink/cdaplmb/password','r').read().strip() != '':
+                        #        Mlist.append(getConfigListEntry( _("Press OK to create bouquet for") + ': cda' , config.plugins.streamlinkSRV.streamlinkDRMconfig))
+                        #else:
+                        #    Mlist.append(getConfigListEntry( _("Missing configs for") + ' cda' , config.plugins.streamlinkSRV.streamlinkconfig))
                         #playerpl
-                        if os.path.exists('/etc/streamlink/player/login') and os.path.exists('/etc/streamlink/player/password') and \
-                            open('/etc/streamlink/player/login','r').read().strip() != '' and open('/etc/streamlink/player/password','r').read().strip() != '':
-                                Mlist.append(getConfigListEntry( _("Press OK to create bouquet for") + ': player' , config.plugins.streamlinkSRV.streamlinkDRMconfig))
+                        if not os.path.exists('/etc/streamlink/playermb/refresh_token') or os.path.exists('/etc/streamlink/playermb/logged')) \
+                                    or open('/etc/streamlink/playermb/refresh_token','r').read().strip() == '': \
+                                    or open('/etc/streamlink/playermb/logged','r').read().strip() != 'true': \
+                            Mlist.append(getConfigListEntry('Logowanie do playerpl (w przeglądarce)' , config.plugins.streamlinkSRV.streamlinkEMUKODIconfig))
                         else:
-                            Mlist.append(getConfigListEntry( _("Missing configs for") + ' playerpl' , config.plugins.streamlinkSRV.streamlinkconfig))
+                            Mlist.append(getConfigListEntry( _("create %s bouquet") % "userbouquet.playerpl.tv" , config.plugins.streamlinkSRV.streamlinkEMUKODIconfig))
                         #polsatgo
-                        if os.path.exists('/etc/streamlink/polsatgo/login') and os.path.exists('/etc/streamlink/polsatgo/password'):
-                            if open('/etc/streamlink/polsatgo/login','r').read().strip() != '' and open('/etc/streamlink/polsatgo/password','r').read().strip() != '':
-                                Mlist.append(getConfigListEntry( _("Press OK to create bouquet for") + ': polsatgo' , config.plugins.streamlinkSRV.streamlinkDRMconfig))
-                        else:
-                            Mlist.append(getConfigListEntry( _("Missing configs for") + ' polsatgo' , config.plugins.streamlinkSRV.streamlinkconfig))
+                        #if os.path.exists('/etc/streamlink/polsatgo/login') and os.path.exists('/etc/streamlink/polsatgo/password'):
+                        #    if open('/etc/streamlink/polsatgo/login','r').read().strip() != '' and open('/etc/streamlink/polsatgo/password','r').read().strip() != '':
+                        #        Mlist.append(getConfigListEntry( _("Press OK to create bouquet for") + ': polsatgo' , config.plugins.streamlinkSRV.streamlinkDRMconfig))
+                        #else:
+                        #    Mlist.append(getConfigListEntry( _("Missing configs for") + ' polsatgo' , config.plugins.streamlinkSRV.streamlinkconfig))
                         #canal+
-                        if os.path.exists('/etc/streamlink/canalplus/login') and os.path.exists('/etc/streamlink/canalplus/password') and os.path.exists('/etc/streamlink/canal+_token'):
-                            if open('/etc/streamlink/canalplus/login','r').read().strip() != '' and open('/etc/streamlink/canalplus/password','r').read().strip() != '':
-                                Mlist.append(getConfigListEntry( _("Press OK to create bouquet for") + ': canal+' , config.plugins.streamlinkSRV.streamlinkDRMconfig))
-                        else:
-                            Mlist.append(getConfigListEntry( _("Missing configs for") + ' canal+', config.plugins.streamlinkSRV.streamlinkconfig))
+                        #if os.path.exists('/etc/streamlink/canalplus/login') and os.path.exists('/etc/streamlink/canalplus/password') and os.path.exists('/etc/streamlink/canal+_token'):
+                        #    if open('/etc/streamlink/canalplus/login','r').read().strip() != '' and open('/etc/streamlink/canalplus/password','r').read().strip() != '':
+                        #        Mlist.append(getConfigListEntry( _("Press OK to create bouquet for") + ': canal+' , config.plugins.streamlinkSRV.streamlinkDRMconfig))
+                        #else:
+                        #    Mlist.append(getConfigListEntry( _("Missing configs for") + ' canal+', config.plugins.streamlinkSRV.streamlinkconfig))
                         
             else:
                 Mlist.append(getConfigListEntry(""))
@@ -457,6 +460,13 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                     #wybrany dostawca
                     providerName = currInfo.split(': ')[1].strip().replace('+','plus')
                     self.doAction = ('drmBouquet.py', '/etc/enigma2/userbouquet.%s.tv' % providerName, providerName)
+                elif currItem == config.plugins.streamlinkSRV.streamlinkEMUKODIconfig: #bouquets based on KODI plugins
+                    DBGlog('currItem == config.plugins.streamlinkSRV.streamlinkEMUKODIconfig')
+                    if 'userbouquet.' in currInfo:
+                        providername = currInfo.split('userbouquet.')[1].split('.tv')[0]
+                        self.doAction = ('emukodiBouquets.py', '/etc/enigma2/userbouquet.%s.tv' % providername, currInfo)
+                    else:
+                        self.doAction = ('emukodiBouquets.py', 'LOGIN', currInfo.replace(' ','_'))
                 ####
                 DBGlog('%s' % str(self.doAction))
                 if not self.doAction is None:
@@ -472,6 +482,12 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                     elif cmd == 'downloadBouquet.py':
                         self.cmdTitle = _('Downloading %s...') % bfn
                         self.session.openWithCallback(self.OkbuttonConfirmed, MessageBox, _("Do you want to download '%s' file?") % bfn, MessageBox.TYPE_YESNO, default = False)
+                    elif cmd == 'emukodiBouquets.py':
+                        self.cmdTitle = self.doAction[2]
+                        if bfn == 'LOGIN':
+                            self.session.openWithCallback(self.OkbuttonConfirmed2, MessageBox, "%s?" % self.cmdTitle, MessageBox.TYPE_YESNO, default = False)
+                        else:
+                            self.session.openWithCallback(self.OkbuttonConfirmed, MessageBox, "%s?" % self.cmdTitle, MessageBox.TYPE_YESNO, default = False)
                     else:
                         self.cmdTitle = _('Creating %s...') % bfn
                         self.session.openWithCallback(self.OkbuttonConfirmed, MessageBox, _("Do you want to create '%s' file?") % bfn, MessageBox.TYPE_YESNO, default = True)
@@ -541,8 +557,20 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         if ret:
             self.session.openWithCallback(self.SelectedFramework, ChoiceBox, title = _("Select Multiframework"), list = self.choicesList)
 
+    def OkbuttonConfirmed2(self, ret = False):
+        if ret:
+            doActionPath = '/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/plugins/'
+            cmd = '/usr/bin/python %s%s %s %s %s' % (doActionPath,
+                                                 ' '.join(self.doAction),
+                                                 config.plugins.streamlinkSRV.PortNumber.value,
+                                                 '4097',
+                                                 config.plugins.streamlinkSRV.useWrappers.value
+                                                )
+            DBGlog('%s' % cmd)
+            self.session.openWithCallback(self.doNothing ,Console, title = "SL %s %s" % (Version, self.cmdTitle), cmdlist = [ cmd ])
+
     def SelectedFramework(self, ret):
-        if not ret or ret == "None":
+        if not ret or ret == "None" or isinstance(ret, (int, float)):
             ret = (None,'4097')
         doActionPath = '/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/plugins/'
         cmd = '/usr/bin/python %s%s %s %s %s' % (doActionPath,
