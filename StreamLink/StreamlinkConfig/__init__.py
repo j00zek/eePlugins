@@ -1,6 +1,4 @@
 #### tlumaczenia
-from __future__ import absolute_import #zmiana strategii ladowanie modulow w py2 z relative na absolute jak w py3
-
 PluginName = 'StreamlinkConfig'
 
 from Components.config import *
@@ -71,6 +69,7 @@ config.plugins.streamlinkSRV.StandbyMode = ConfigEnableDisable(default = False)
 config.plugins.streamlinkSRV.useWrappers = ConfigSelection(default = "n", choices = [("n", _("No")), ("m", mygettext("Yes, try modify bouquets")), ("y", mygettext("Yes, don't modify bouquets")),])
 config.plugins.streamlinkSRV.Verify4Wrappers = ConfigSelection(default = "n", choices = [("n", _("No")), ("y", _("Yes")),])
 config.plugins.streamlinkSRV.IPTVExtMoviePlayer = ConfigText(readCFG('IPTVExtMoviePlayer'), fixed_size = False)
+config.plugins.streamlinkSRV.IPTVdrmMoviePlayer = ConfigText(default = "?")
 
 config.plugins.streamlinkSRV.RefreshGeneratedBouquets = ConfigEnableDisable(default = False)
 
