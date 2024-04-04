@@ -601,25 +601,27 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
             pythonRunner = '/usr/bin/python'
             #ustawienie skryptu uruchomienia
             if dostawca == 'playerpl':
-                runAddon = '%s %s' % (pythonRunner, os.path.join(addons_path, 'plugin.video.playermb/main.py'))
+                addonScript = 'plugin.video.playermb/main.py'
+                runAddon = '%s %s' % (pythonRunner, os.path.join(addons_path, addonScript))
             #ustawienie parametrow w zaleznoci od akcji
             if akcja == 'LOGIN':
+                autoClose = True
                 if dostawca == 'playerpl':
                     self.emuKodiCmdsList.append(runAddon + " '1' '?mode=login' 'resume:false'") #ustawienie flagi logged, wymagane przez wtyczke
                     self.emuKodiCmdsList.append(runAddon + " '1' ' ' 'resume:false'")
             elif akcja == 'userbouquet':
+                autoClose = False
                 plikBukietu = '/etc/enigma2/userbouquet.%s.tv' % dostawca
                 if dostawca == 'playerpl':
                     self.emuKodiCmdsList.append(runAddon + " '1' '?mode=listcategContent&url=%3alive' 'resume:false'")
-                self.emuKodiCmdsList.append('%s %s %s %s' % (pythonRunner, os.path.join(emukodi_path, 'e2Bouquets.py'), plikBukietu, 
-                                                               config.plugins.streamlinkSRV.PortNumber.value))
+                self.emuKodiCmdsList.append('%s %s %s "emukodi/Plugins/%s"' % (pythonRunner, os.path.join(emukodi_path, 'e2Bouquets.py'), plikBukietu, addonScript))
             
             #uruchomienie lancucha komend
             if len(self.emuKodiCmdsList):
                 cleanWorkingDir()
                 log("===== %s - %s ====" % (dostawca, akcja))
                 self.session.openWithCallback(self.emuKodiConsoleCallback ,emukodiConsole, title = "SL %s %s-%s" % (Version, 'EmuKodi', dostawca), 
-                                                cmdlist = self.emuKodiCmdsList, closeOnSuccess = True)
+                                                cmdlist = self.emuKodiCmdsList, closeOnSuccess = autoClose)
             
     def emuKodiActions(self, selectedItem):
         DBGlog('emuKodiActions(%s)' % str(selectedItem))
@@ -631,7 +633,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
             dostawca = self.emuKodiAction[0]
             akcja = self.emuKodiAction[1]
             if dostawca == 'playerpl' and akcja == 'LOGIN':
-                MsgInfo = "Zostaniesz poproszony o podanie kodu w przeglądarce.\nBędziesz mieć na to maksimum 340 sekund i nie będziesz mógł rzerwać.\n\nJesteś gotowy?"
+                MsgInfo = "Zostaniesz poproszony o podanie kodu w przeglądarce.\nBędziesz mieć na to maksimum 340 sekund i nie będziesz mógł przerwać.\n\nJesteś gotowy?"
                 self.session.openWithCallback(self.emuKodiActionConfirmed, MessageBox, MsgInfo, MessageBox.TYPE_YESNO, default = False, timeout = 15)
                 return
             elif dostawca == 'playerpl' and akcja == 'userbouquet':
