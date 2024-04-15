@@ -341,16 +341,27 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         self.refreshBuildList()
     
     def _isCDM(self):
+        print('config.plugins.streamlinkSRV.IPTVdrmMoviePlayer.value',config.plugins.streamlinkSRV.IPTVdrmMoviePlayer.value)
         if config.plugins.streamlinkSRV.IPTVdrmMoviePlayer.value in ('?', 'L'):
-            try:
-                from  pywidevinecdm.checkCDMvalidity import testDevice
-                retVal = testDevice()
-                if retVal is None: config.plugins.streamlinkSRV.IPTVdrmMoviePlayer.value = 'N'
-                elif retVal: config.plugins.streamlinkSRV.IPTVdrmMoviePlayer.value = 'Y'
-                else: config.plugins.streamlinkSRV.IPTVdrmMoviePlayer.value = 'L'
-            except Exception: config.plugins.streamlinkSRV.IPTVdrmMoviePlayer.value = 'N'
+            if not os.path.exists('/usr/lib/python3.12/site-packages/emukodi/ExtPlayer/'):
+                config.plugins.streamlinkSRV.IPTVdrmMoviePlayer.value = 'N'
+            else:
+                try:
+                    from  pywidevine.cdmdevice.checkCDMvalidity import testDevice
+                    retVal = testDevice()
+                    if retVal is None: config.plugins.streamlinkSRV.IPTVdrmMoviePlayer.value = 'N'
+                    elif retVal: config.plugins.streamlinkSRV.IPTVdrmMoviePlayer.value = 'Y'
+                    else: config.plugins.streamlinkSRV.IPTVdrmMoviePlayer.value = 'L'
+                    configfile.save()
+                except Exception as e: 
+                    DBGlog(str(e))
+                    config.plugins.streamlinkSRV.IPTVdrmMoviePlayer.value = 'N'
+                    configfile.save()
+            config.plugins.streamlinkSRV.IPTVdrmMoviePlayer.save()
+            configfile.save()
 
     def layoutFinished(self):
+        print('layoutFinished')
         self._isCDM()
         self.VisibleSection = 0
         self.DoBuildList.start(10, True)
@@ -591,7 +602,8 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         self.session.openWithCallback(self.refreshBuildList,MessageBox, msg, MessageBox.TYPE_INFO, timeout = 5)
 
     def emuKodiConsoleCallback(self, ret = False):
-        self.refreshBuildList()
+        if self.emuKodiAction[1] == 'userbouquet': #akcja
+            self.retFromCMD(ret)
     
     def emuKodiActionConfirmed(self, ret = False):
         self.emuKodiCmdsList = []
@@ -614,7 +626,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                 plikBukietu = '/etc/enigma2/userbouquet.%s.tv' % dostawca
                 if dostawca == 'playerpl':
                     self.emuKodiCmdsList.append(runAddon + " '1' '?mode=listcategContent&url=%3alive' 'resume:false'")
-                self.emuKodiCmdsList.append('%s %s %s "emukodi/Plugins/%s"' % (pythonRunner, os.path.join(emukodi_path, 'e2Bouquets.py'), plikBukietu, addonScript))
+                self.emuKodiCmdsList.append('%s %s %s "%s"' % (pythonRunner, os.path.join(emukodi_path, 'e2Bouquets.py'), plikBukietu, addonScript))
             
             #uruchomienie lancucha komend
             if len(self.emuKodiCmdsList):

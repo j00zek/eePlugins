@@ -112,9 +112,30 @@ name2service4wpDict = {
                       }
 
 
-name2serviceDict = {    'tvp3warszawa':     '1:0:1:113B:2AF8:13E:820000:0:0:0',
-                        'radionowyswiat':   '1:0:1:513D:DFC5:EC:0:0:0:0',
-                        'tvpgdansk':        '1:0:1:9:0:48:0:0:0:0',
+name2serviceDict = {'tvp3warszawa':     '1:0:1:113B:2AF8:13E:820000:0:0:0',
+                    'radionowyswiat':   '1:0:1:513D:DFC5:EC:0:0:0:0',
+                    'tvpgdansk':        '1:0:1:9:0:48:0:0:0:0',
+                    #tvn fast
+                    'tvn-kultowe-seriale-online'     : '1:0:1:2BC:A11A:2268:0:0:0:0',
+                    'tvn-kryminalnie-online'         : '1:0:1:2BD:A11A:2268:0:0:0:0',
+                    'tvn-moto-online'                : '1:0:1:2BE:A11A:2268:0:0:0:0',
+                    'tvn-telenowele-online'          : '1:0:1:2BF:A11A:2268:0:0:0:0',
+                    'tvn-rewolucje-w-kuchni-online'  : '1:0:1:2C0:A11A:2268:0:0:0:0',
+                    'tvn-rajska-milosc-online'       : '1:0:1:2C1:A11A:2268:0:0:0:0',
+                    'tvn-talk-show-online'           : '1:0:1:2C2:A11A:2268:0:0:0:0',
+                    'tvn-momenty-prawdy-online'      : '1:0:1:2C3:A11A:2268:0:0:0:0',
+                    'tvn-zycie-jak-w-bajce-online'   : '1:0:1:2C4:A11A:2268:0:0:0:0',
+                    'tvn-szpitalne-historie-online'  : '1:0:1:2C5:A11A:2268:0:0:0:0',
+                    'tvn-seriale-o-kobietach-online' : '1:0:1:2C6:A11A:2268:0:0:0:0',
+                    'tvn-szkola-zycia-online'        : '1:0:1:2C7:A11A:2268:0:0:0:0',
+                    'tvn-w-domu-online'              : '1:0:1:2C8:A11A:2268:0:0:0:0',
+                    'tvn-usterka-online'             : '1:0:1:2C9:A11A:2268:0:0:0:0',
+                    'tvn-prawo-i-zycie-online'       : '1:0:1:2CA:A11A:2268:0:0:0:0',
+                    'tvn-milionerzy-online'          : '1:0:1:2CB:A11A:2268:0:0:0:0',
+                    'tvn-hd'                         : '1:0:1:3DCD:640:13E:820000:0:0:0',
+                    'tvn-7-hd'                       : '1:0:1:3DD3:640:13E:820000:0:0:0',
+                    'ttv-hd'                         : '1:0:1:3DD7:640:13E:820000:0:0:0',
+                    'metro'                          : '1:0:1:3DD4:640:13E:820000:0:0:0',
                     }
 
 def updateDict():
