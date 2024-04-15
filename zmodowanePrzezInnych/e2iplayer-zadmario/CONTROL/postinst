@@ -10,11 +10,11 @@ elif [ -e /hdd/IPTVCache/ ];then
 #kopiowanie struktury katalogów do wtyczki. UWAGA: struktura katalogów musi być taka sama jak we wtyczce
 if [ -e /hdd/IPTVCache/UserAddons/icons ];then
   echo Kopiowanie własnych ikon do katalogu icons
-  cp -rf /hdd/IPTVCache/UserAddons/icons/* /usr/lib/enigma2/python/Plugins/Extensions/IPTVPlayer/icons/
+  cp -rf /hdd/IPTVCache/UserAddons/icons/* /usr/lib/enigma2/python/Plugins/Extensions/IPTVPlayerMario/icons/
 fi
 if [ -e /hdd/IPTVCache/UserAddons/hosts ];then
-  echo Kopiowanie własnych hostów do katalogu hostss
-  cp -rf /hdd/IPTVCache/UserAddons/hosts/* /usr/lib/enigma2/python/Plugins/Extensions/IPTVPlayer/hosts/
+  echo Kopiowanie własnych hostów do katalogu hosts
+  cp -rf /hdd/IPTVCache/UserAddons/hosts/* /usr/lib/enigma2/python/Plugins/Extensions/IPTVPlayerMario/hosts/
 fi
 " > /hdd/IPTVCache/UserAddons/opkg-postinst.sh
 chmod 775 /hdd/IPTVCache/UserAddons/opkg-postinst.sh
