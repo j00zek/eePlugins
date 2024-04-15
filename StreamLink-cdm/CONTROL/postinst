@@ -1,0 +1,4 @@
+#!/bin/sh
+ln -sf /usr/lib/python3.12/site-packages/emukodi/ExtPlayer /usr/lib/enigma2/python/Plugins/Extensions/ExtPlayer
+
+exit 0

@@ -1,0 +1,5 @@
+#!/bin/sh
+if ! [ -e /usr/lib/python3.12/site-packages ];then
+  echo "Instalacja możliwa TYLKO na python 3.12"
+  exit 1
+fi
