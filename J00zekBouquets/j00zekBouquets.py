@@ -134,11 +134,11 @@ class j00zekBouquets(Screen, ConfigListScreen):
         self.list.append(getConfigListEntry('--- Synchronizacja z satelity ---', j00zekConfig.BouquetsEnabled))
         if j00zekConfig.BouquetsEnabled.value == True:
             self["key_yellow"].setText('Pobierz z satelity')
-            self.list.append(getConfigListEntry('nc+:', j00zekConfig.BouquetsNC))
+            self.list.append(getConfigListEntry('Platforma Canal+:', j00zekConfig.BouquetsNC))
             if j00zekConfig.BouquetsNC.value == '49188PL':
                 self.list.append(getConfigListEntry('Synchronizuj listę TR,SID z web:', j00zekConfig.syncPLtransponders))
             self.list.append(getConfigListEntry(' '))
-            self.list.append(getConfigListEntry('Cyfrowy Polsat:', j00zekConfig.BouquetsCP))
+            self.list.append(getConfigListEntry('Polsat Box:', j00zekConfig.BouquetsCP))
             if j00zekConfig.BouquetsNC.value != 'NA' or j00zekConfig.BouquetsCP.value != 'NA':
                 self.list.append(getConfigListEntry('Akcja:', j00zekConfig.BouquetsAction))
                 if j00zekConfig.BouquetsAction.value == '1st' or j00zekConfig.BouquetsAction.value == 'all':
