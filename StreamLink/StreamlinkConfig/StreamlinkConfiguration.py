@@ -3,7 +3,6 @@ from __future__ import absolute_import #zmiana strategii ladowanie modulow w py2
 from Plugins.Extensions.StreamlinkConfig.__init__ import mygettext as _ , readCFG , DBGlog
 from Plugins.Extensions.StreamlinkConfig.version import Version
 from Plugins.Extensions.StreamlinkConfig.plugins.azmanIPTVsettings import get_azmanIPTVsettings
-from emukodi.e2Console import emukodiConsole
 import os, time, sys
 # GUI (Screens)
 from Components.ActionMap import ActionMap
@@ -188,6 +187,8 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                     Mlist.append(getConfigListEntry('\c00ff9400' + "*** Sprawdź dostępność wsparcia DRM ***", config.plugins.streamlinkSRV.Five))
                 elif config.plugins.streamlinkSRV.IPTVdrmMoviePlayer.value == 'N':
                     Mlist.append(getConfigListEntry('\c00981111' + "*** Brak wsparcia DRM dla tej wersji pythona ***", config.plugins.streamlinkSRV.Five))
+                elif config.plugins.streamlinkSRV.IPTVdrmMoviePlayer.value == 'K':
+                    Mlist.append(getConfigListEntry('\c00981111' + "*** Brak wsparcia DRM, moduł emukodi nie zainstalowany ***", config.plugins.streamlinkSRV.Five))
                 else:
                     if config.plugins.streamlinkSRV.IPTVdrmMoviePlayer.value == 'L':
                         Mlist.append(getConfigListEntry('\c00289496' + "*** Limitowane wsparcie DRM ***", config.plugins.streamlinkSRV.Five))
@@ -341,10 +342,11 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         self.refreshBuildList()
     
     def _isCDM(self):
-        print('config.plugins.streamlinkSRV.IPTVdrmMoviePlayer.value',config.plugins.streamlinkSRV.IPTVdrmMoviePlayer.value)
         if config.plugins.streamlinkSRV.IPTVdrmMoviePlayer.value in ('?', 'L'):
-            if not os.path.exists('/usr/lib/python3.12/site-packages/emukodi/ExtPlayer/'):
+            if not os.path.exists('/usr/lib/python3.12/site-packages/'):
                 config.plugins.streamlinkSRV.IPTVdrmMoviePlayer.value = 'N'
+            elif not os.path.exists('/usr/lib/python3.12/site-packages/emukodi/ExtPlayer/'):
+                config.plugins.streamlinkSRV.IPTVdrmMoviePlayer.value = 'K'
             else:
                 try:
                     from  pywidevine.cdmdevice.checkCDMvalidity import testDevice
@@ -606,6 +608,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
             self.retFromCMD(ret)
     
     def emuKodiActionConfirmed(self, ret = False):
+        from emukodi.e2Console import emukodiConsole
         self.emuKodiCmdsList = []
         if ret:
             dostawca = self.emuKodiAction[0]
