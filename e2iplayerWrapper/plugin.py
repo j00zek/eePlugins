@@ -9,21 +9,27 @@
 #
 
 from Plugins.Plugin import PluginDescriptor
+import os
 
 def Plugins(**kwargs):
-    try:
-        if 1:
-            return [PluginDescriptor(name="StreamlinkExtWrapper", description="StreamlinkExtWrapper", where=PluginDescriptor.WHERE_CHANNEL_ZAP, needsRestart = False, fnc=zap)]
-        else:
-            return []
-    except Exception:
-        pass
+    e2iBatchCMD()
+    return [PluginDescriptor(name="StreamlinkExtWrapper", description="StreamlinkExtWrapper", where=PluginDescriptor.WHERE_CHANNEL_ZAP, needsRestart = False, fnc=zap)]
 
 MYe2iPlayer = None
 
+def e2iBatchCMD(batchCMD = ''):
+    if batchCMD == '':
+        if os.path.exists('/tmp/e2i_batch_cmd'):
+            os.remove('/tmp/e2i_batch_cmd')
+    else:
+        print('MYe2iPlayer, batchCMD:',batchCMD)
+        with open('/tmp/e2i_batch_cmd', 'w') as f:
+            f.write(batchCMD)
+            f.close()
+
 def zap(session, service, **kwargs):
     def END_e2iplayer(answer=None, lastPosition=None, clipLength=None, *args, **kwargs):
-        pass
+        e2iBatchCMD()
     
     errormsg = None
     if service:
@@ -34,10 +40,7 @@ def zap(session, service, **kwargs):
                 global MYe2iPlayer
                 batchCMD = url[len('http%3a//e2iplayer/'):] # expected result: "canalplus%3aTelewizja na żywo/Wszystkie kanały/CANAL+ DOMO HD"
                 batchCMD = batchCMD.replace('%3a', ':')
-                print('MYe2iPlayer, batchCMD:',batchCMD)
-                with open('/tmp/e2i_batch_cmd', 'w') as f:
-                    f.write(batchCMD)
-                    f.close()
+                e2iBatchCMD(batchCMD)
                 if MYe2iPlayer is None:
                     try:
                         from Components.PluginComponent import pluginComponent
@@ -50,8 +53,6 @@ def zap(session, service, **kwargs):
                         print("[ChannelSelection] zap > MYe2iPlayer importing IPTVPlayer component error '%s'" % str(e))
                 if MYe2iPlayer:
                     MYe2iPlayer(session)
-                    if os.path.exists('/tmp/e2i_batch_cmd'):
-                        os.remove('/tmp/e2i_batch_cmd')
         except Exception as e:
             print("[ChannelSelection] zap > MYe2iPlayer failed %s" % str(e))
     return (None, errormsg) 
