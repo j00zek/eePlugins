@@ -62,7 +62,7 @@ class Favourites(CBaseHostClass):
         if hostName == self.hostName:
             return True
         try:
-            _temp = __import__('Plugins.Extensions.IPTVPlayer.hosts.host' + hostName, globals(), locals(), ['IPTVHost'], 0) #absolute import for P3 compatybility
+            _temp = __import__('Plugins.Extensions.IPTVPlayerMario.hosts.host' + hostName, globals(), locals(), ['IPTVHost'], 0) #absolute import for P3 compatybility
             host = _temp.IPTVHost()
             if isinstance(host, IHost):
                 self.hostName = hostName

@@ -31,14 +31,24 @@ find $myAbsPath/../IPTVPlayerMario/ -iname "*.py" |
 
     sed "s/['\"]IPTVPlayer['\"]/'IPTVPlayerMario'/g" -i "$F"
     sed "s;Extensions/IPTVPlayer/;Extensions/IPTVPlayerMario/;g" -i "$F"
+    sed "s/Extensions\.IPTVPlayer\./Extensions.IPTVPlayerMario./g" -i "$F"
 
   done
-#poprawa innych pierdół
+#poprawki w plugin.py
 sed "s/['\"]E2iPlayer['\"]/'E2iPlayerMario'/g" -i "$myAbsPath/../IPTVPlayerMario/plugin.py"
 sed "s/['\"]iptv_config['\"]/'iptvMario_config'/g" -i "$myAbsPath/../IPTVPlayerMario/plugin.py"
 sed "s/['\"]iptv_main['\"]/'iptvMario_main'/g" -i "$myAbsPath/../IPTVPlayerMario/plugin.py"
 
+sed "s;\(.*\)\(screenwidth = getDesktop\);\1os.system('/usr/lib/enigma2/python/Plugins/Extensions/IPTVPlayerMario/tools/pathsPatcher.sh \&')\n\1\2;g" -i "$myAbsPath/../IPTVPlayerMario/plugin.py"
+
+#poprawa innych pierdół
 sed "s/config.plugins.iptvplayer =/config.plugins.IPTVPlayerMario =/g" -i "$myAbsPath/../IPTVPlayerMario/components/iptvconfigmenu.py"
+
+sed "s/config.plugins.iptvplayer, 'host' + hostName/config.plugins.IPTVPlayerMario, 'host' + hostName/g" -i "$myAbsPath/../IPTVPlayerMario/tools/iptvtools.py"
+
+#do patchowania hostow
+cp -f $myAbsPath/pathsPatcher.sh $myAbsPath/../IPTVPlayerMario/tools/
+chmod 755 $myAbsPath/../IPTVPlayerMario/tools/pathsPatcher.sh
 #infoversion
 #rm -rf ~/infoversion-master* 2 >/dev/null
 #wget -q https://gitlab.com/mosz_nowy/infoversion/-/archive/master/infoversion-master.zip -O ~/infoversion-master.zip

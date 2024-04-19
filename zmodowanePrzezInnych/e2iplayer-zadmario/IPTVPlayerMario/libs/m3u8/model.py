@@ -4,7 +4,7 @@ import errno
 import math
 import re
 
-import Plugins.Extensions.IPTVPlayer.libs.m3u8.parser
+import Plugins.Extensions.IPTVPlayerMario.libs.m3u8.parser
 from Plugins.Extensions.IPTVPlayerMario.p2p3.UrlParse import urlparse, urljoin
 
 
@@ -89,7 +89,7 @@ class M3U8(object):
 
     def __init__(self, content=None, base_path=None, base_uri=None):
         if content is not None:
-            self.data = Plugins.Extensions.IPTVPlayer.libs.m3u8.parser.parse(content)
+            self.data = Plugins.Extensions.IPTVPlayerMario.libs.m3u8.parser.parse(content)
         else:
             self.data = {}
         self._base_uri = base_uri
@@ -193,7 +193,7 @@ class BasePathMixin(object):
 
     @property
     def absolute_uri(self):
-        if Plugins.Extensions.IPTVPlayer.libs.m3u8.parser.is_url(self.uri):
+        if Plugins.Extensions.IPTVPlayerMario.libs.m3u8.parser.is_url(self.uri):
             uri = self.uri
         else:
             if self.base_uri is None:
@@ -408,9 +408,9 @@ def quoted(string):
 
 
 def _urijoin(base_uri, path):
-    if Plugins.Extensions.IPTVPlayer.libs.m3u8.parser.is_url(path):
+    if Plugins.Extensions.IPTVPlayerMario.libs.m3u8.parser.is_url(path):
         return path
-    elif Plugins.Extensions.IPTVPlayer.libs.m3u8.parser.is_url(base_uri):
+    elif Plugins.Extensions.IPTVPlayerMario.libs.m3u8.parser.is_url(base_uri):
         if path.startswith('/'):
             return urljoin(base_uri, path)
 
@@ -418,7 +418,7 @@ def _urijoin(base_uri, path):
         prefix = parsed_url.scheme + '://' + parsed_url.netloc
         new_path = os.path.normpath(parsed_url.path + '/' + path)
         full_uri = urljoin(prefix, new_path.strip('/'))
-        if not Plugins.Extensions.IPTVPlayer.libs.m3u8.parser.is_url(full_uri):
+        if not Plugins.Extensions.IPTVPlayerMario.libs.m3u8.parser.is_url(full_uri):
             full_uri = urljoin(prefix, '/' + new_path.strip('/'))
         return full_uri
     else:

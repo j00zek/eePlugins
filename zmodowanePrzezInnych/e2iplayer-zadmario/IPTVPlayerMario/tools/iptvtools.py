@@ -895,7 +895,7 @@ def GetSkinsList():
 def IsHostEnabled(hostName):
     hostEnabled = False
     try:
-        if getattr(config.plugins.iptvplayer, 'host' + hostName).value:
+        if getattr(config.plugins.IPTVPlayerMario, 'host' + hostName).value:
             hostEnabled = True
     except Exception:
         hostEnabled = False
@@ -1904,6 +1904,8 @@ def is_port_in_use(pIP, pPORT):
 def isOPKGinstall():
     if os.path.exists('/var/lib/opkg/info/enigma2-plugin-extensions--j00zeks-e2iplayer-mod-zadmario.control'):
         return True
+    elif os.path.exists('/var/lib/opkg/info/enigma2-plugin-extensions--j00zeks-e2iplayer-zadmario-fork.control'):
+        return True
     else:
         return False
 
@@ -1923,6 +1925,7 @@ def getIPTVplayerOPKGVersion():
             CACHED_DATA_DICT['IPTVplayerOPKGVersion'] = ''
         else:
             for controlFile in ('/var/lib/opkg/info/enigma2-plugin-extensions--j00zeks-e2iplayer-mod-zadmario.control',
+                                '/var/lib/opkg/info/enigma2-plugin-extensions--j00zeks-e2iplayer-zadmario-fork.control',
                                 '/var/lib/opkg/info/enigma2-plugin-extensions-e2iplayer.control'):
                 if os.path.exists(controlFile):
                     lines = []

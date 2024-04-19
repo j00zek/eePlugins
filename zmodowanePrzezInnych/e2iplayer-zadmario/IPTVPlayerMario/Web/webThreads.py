@@ -9,7 +9,7 @@ import time
 from webTools import *
 
 from Plugins.Extensions.IPTVPlayerMario.components.iptvconfigmenu import ConfigMenu
-import Plugins.Extensions.IPTVPlayer.components.iptvplayerwidget
+import Plugins.Extensions.IPTVPlayerMario.components.iptvplayerwidget
 
 from Plugins.Extensions.IPTVPlayerMario.iptvdm.iptvdmapi import IPTVDMApi, DMItem
 from Plugins.Extensions.IPTVPlayerMario.iptvdm.iptvdownloadercreator import IsUrlDownloadable
@@ -65,7 +65,7 @@ class buildActiveHostsHTML(threading.Thread):
                 continue
             # column 1 containing logo and link if available
             try:
-                _temp = __import__('Plugins.Extensions.IPTVPlayer.hosts.host' + hostName, globals(), locals(), ['gettytul'], 0) #absolute import for P3 compatybility
+                _temp = __import__('Plugins.Extensions.IPTVPlayerMario.hosts.host' + hostName, globals(), locals(), ['gettytul'], 0) #absolute import for P3 compatybility
                 title = _temp.gettytul()
                 _temp = None
             except Exception:
@@ -193,7 +193,7 @@ class buildConfigsHTML(threading.Thread):
         for hostName in SortHostsList(GetHostsList()):
             # column 1 containing logo and link if available
             try:
-                _temp = __import__('Plugins.Extensions.IPTVPlayer.hosts.host' + hostName, globals(), locals(), ['gettytul'], 0) #absolute import for P3 compatybility
+                _temp = __import__('Plugins.Extensions.IPTVPlayerMario.hosts.host' + hostName, globals(), locals(), ['gettytul'], 0) #absolute import for P3 compatybility
                 title = _temp.gettytul()
             except Exception:
                 continue # we do NOT use broken hosts!!!
@@ -217,7 +217,7 @@ class buildConfigsHTML(threading.Thread):
 
             # Column 4 host configuration options
             try:
-                _temp = __import__('Plugins.Extensions.IPTVPlayer.hosts.host' + hostName, globals(), locals(), ['GetConfigList'], 0) #absolute import for P3 compatybility
+                _temp = __import__('Plugins.Extensions.IPTVPlayerMario.hosts.host' + hostName, globals(), locals(), ['GetConfigList'], 0) #absolute import for P3 compatybility
                 OptionsList = _temp.GetConfigList()
             except Exception:
                 OptionsList = []
@@ -282,10 +282,10 @@ class doUseHostAction(threading.Thread):
             if url != '' and IsUrlDownloadable(url):
                 titleOfMovie = settings.currItem['itemTitle'].replace('/', '-').replace(':', '-').replace('*', '-').replace('?', '-').replace('"', '-').replace('<', '-').replace('>', '-').replace('|', '-')
                 fullFilePath = config.plugins.IPTVPlayerMario.NaszaSciezka.value + '/' + titleOfMovie + '.mp4'
-                if None == Plugins.Extensions.IPTVPlayer.components.iptvplayerwidget.gDownloadManager:
+                if None == Plugins.Extensions.IPTVPlayerMario.components.iptvplayerwidget.gDownloadManager:
                     printDBG('============webThreads.py Initialize Download Manager============')
-                    Plugins.Extensions.IPTVPlayer.components.iptvplayerwidget.gDownloadManager = IPTVDMApi(2, int(config.plugins.IPTVPlayerMario.IPTVDMMaxDownloadItem.value))
-                ret = Plugins.Extensions.IPTVPlayer.components.iptvplayerwidget.gDownloadManager.addToDQueue(DMItem(url, fullFilePath))
+                    Plugins.Extensions.IPTVPlayerMario.components.iptvplayerwidget.gDownloadManager = IPTVDMApi(2, int(config.plugins.IPTVPlayerMario.IPTVDMMaxDownloadItem.value))
+                ret = Plugins.Extensions.IPTVPlayerMario.components.iptvplayerwidget.gDownloadManager.addToDQueue(DMItem(url, fullFilePath))
                 #print ret
         elif self.key == 'ResolveURL' and self.arg.isdigit():
             myID = int(self.arg)
@@ -387,7 +387,7 @@ class doGlobalSearch(threading.Thread):
                 continue
             #print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ---------------- %s ---------------- !!!!!!!!!!!!!!!!!!!!!!!!!" % hostName)
             try:
-                _temp = __import__('Plugins.Extensions.IPTVPlayer.hosts.host' + hostName, globals(), locals(), ['IPTVHost'], 0) #absolute import for P3 compatybility
+                _temp = __import__('Plugins.Extensions.IPTVPlayerMario.hosts.host' + hostName, globals(), locals(), ['IPTVHost'], 0) #absolute import for P3 compatybility
             except Exception:
                 print("doGlobalSearch: Exception importing %s" % hostName)
                 continue

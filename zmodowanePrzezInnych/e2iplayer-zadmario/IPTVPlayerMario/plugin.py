@@ -28,6 +28,7 @@ import os
 
 
 def Plugins(**kwargs):
+    os.system('/usr/lib/enigma2/python/Plugins/Extensions/IPTVPlayerMario/tools/pathsPatcher.sh &')
     screenwidth = getDesktop(0).size().width()
     if screenwidth and screenwidth == 1920:
         iconFile = "icons/iptvlogohd.png"
@@ -180,6 +181,6 @@ def pinCallback(session, callbackFun, pin=None):
 def sessionstart(reason, **kwargs):
     if reason == 0 and 'session' in kwargs:
         try:
-            import Plugins.Extensions.IPTVPlayer.Web.initiator
+            import Plugins.Extensions.IPTVPlayerMario.Web.initiator
         except Exception as e:
             print("EXCEPTION initiating IPTVplayer WebComponent:", str(e))

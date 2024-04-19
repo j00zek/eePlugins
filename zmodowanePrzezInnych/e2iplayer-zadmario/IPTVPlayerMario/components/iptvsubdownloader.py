@@ -46,7 +46,7 @@ from enigma import getDesktop, eTimer
 ####################################################
 from Plugins.Extensions.IPTVPlayerMario.components.iptvplayerinit import TranslateTXT as _, IPTVPlayerNeedInit, GetIPTVPlayerLastHostError
 from Plugins.Extensions.IPTVPlayerMario.tools.iptvtypes import strwithmeta
-import Plugins.Extensions.IPTVPlayer.components.asynccall as asynccall
+import Plugins.Extensions.IPTVPlayerMario.components.asynccall as asynccall
 ###################################################
 
 
@@ -317,7 +317,7 @@ class IPTVSubDownloaderWidget(Screen):
 
     def loadHost(self):
         try:
-            _temp = __import__('Plugins.Extensions.IPTVPlayer.subproviders.subprov_' + self.hostName, globals(), locals(), ['IPTVSubProvider'], 0) #absolute import for P3 compatybility
+            _temp = __import__('Plugins.Extensions.IPTVPlayerMario.subproviders.subprov_' + self.hostName, globals(), locals(), ['IPTVSubProvider'], 0) #absolute import for P3 compatybility
             params = dict(self.params)
             params['confirmed_title'] = self.movieTitle
             self.host = _temp.IPTVSubProvider(params)

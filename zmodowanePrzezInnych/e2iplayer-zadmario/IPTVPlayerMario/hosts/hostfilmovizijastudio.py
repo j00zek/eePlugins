@@ -5,7 +5,7 @@
 from Plugins.Extensions.IPTVPlayerMario.components.iptvplayerinit import TranslateTXT as _
 from Plugins.Extensions.IPTVPlayerMario.components.ihost import CHostBase, CBaseHostClass, CDisplayListItem
 from Plugins.Extensions.IPTVPlayerMario.tools.iptvtools import printDBG, printExc
-import Plugins.Extensions.IPTVPlayer.libs.urlparser as urlparser
+import Plugins.Extensions.IPTVPlayerMario.libs.urlparser as urlparser
 from Plugins.Extensions.IPTVPlayerMario.tools.iptvtypes import strwithmeta
 ###################################################
 from Plugins.Extensions.IPTVPlayerMario.p2p3.UrlLib import urllib_quote, urllib_unquote

@@ -4,7 +4,7 @@ from __init__ import _
 import settings
 import webParts
 import webThreads
-import Plugins.Extensions.IPTVPlayer.components.iptvplayerwidget
+import Plugins.Extensions.IPTVPlayerMario.components.iptvplayerwidget
 
 from Plugins.Extensions.IPTVPlayerMario.p2p3.UrlLib import urllib_quote
 
@@ -400,46 +400,46 @@ class downloaderPage(resource.Resource):
             print('Received: "%s"="%s","%s","%s"' % (key, arg, arg2, arg3))
 
         if key is None or arg is None:
-            if None != Plugins.Extensions.IPTVPlayer.components.iptvplayerwidget.gDownloadManager:
-                DMlist = Plugins.Extensions.IPTVPlayer.components.iptvplayerwidget.gDownloadManager.getList()
+            if None != Plugins.Extensions.IPTVPlayerMario.components.iptvplayerwidget.gDownloadManager:
+                DMlist = Plugins.Extensions.IPTVPlayerMario.components.iptvplayerwidget.gDownloadManager.getList()
         elif key == 'cmd' and arg == 'initDM':
-            if None == Plugins.Extensions.IPTVPlayer.components.iptvplayerwidget.gDownloadManager:
+            if None == Plugins.Extensions.IPTVPlayerMario.components.iptvplayerwidget.gDownloadManager:
                 printDBG('============WebSite.py Initialize Download Manager============')
-                Plugins.Extensions.IPTVPlayer.components.iptvplayerwidget.gDownloadManager = IPTVDMApi(2, int(config.plugins.IPTVPlayerMario.IPTVDMMaxDownloadItem.value))
-                DMlist = Plugins.Extensions.IPTVPlayer.components.iptvplayerwidget.gDownloadManager.getList()
+                Plugins.Extensions.IPTVPlayerMario.components.iptvplayerwidget.gDownloadManager = IPTVDMApi(2, int(config.plugins.IPTVPlayerMario.IPTVDMMaxDownloadItem.value))
+                DMlist = Plugins.Extensions.IPTVPlayerMario.components.iptvplayerwidget.gDownloadManager.getList()
         elif key == 'cmd' and arg == 'runDM':
-            if None != Plugins.Extensions.IPTVPlayer.components.iptvplayerwidget.gDownloadManager:
-                Plugins.Extensions.IPTVPlayer.components.iptvplayerwidget.gDownloadManager.runWorkThread()
-                DMlist = Plugins.Extensions.IPTVPlayer.components.iptvplayerwidget.gDownloadManager.getList()
+            if None != Plugins.Extensions.IPTVPlayerMario.components.iptvplayerwidget.gDownloadManager:
+                Plugins.Extensions.IPTVPlayerMario.components.iptvplayerwidget.gDownloadManager.runWorkThread()
+                DMlist = Plugins.Extensions.IPTVPlayerMario.components.iptvplayerwidget.gDownloadManager.getList()
         elif key == 'cmd' and arg == 'stopDM':
-            if None != Plugins.Extensions.IPTVPlayer.components.iptvplayerwidget.gDownloadManager:
-                Plugins.Extensions.IPTVPlayer.components.iptvplayerwidget.gDownloadManager.stopWorkThread()
-                DMlist = Plugins.Extensions.IPTVPlayer.components.iptvplayerwidget.gDownloadManager.getList()
+            if None != Plugins.Extensions.IPTVPlayerMario.components.iptvplayerwidget.gDownloadManager:
+                Plugins.Extensions.IPTVPlayerMario.components.iptvplayerwidget.gDownloadManager.stopWorkThread()
+                DMlist = Plugins.Extensions.IPTVPlayerMario.components.iptvplayerwidget.gDownloadManager.getList()
                 extraMeta = '<meta http-equiv="refresh" content="10">'
         elif key == 'cmd' and arg == 'downloadsDM':
-            if None != Plugins.Extensions.IPTVPlayer.components.iptvplayerwidget.gDownloadManager:
-                DMlist = Plugins.Extensions.IPTVPlayer.components.iptvplayerwidget.gDownloadManager.getList()
+            if None != Plugins.Extensions.IPTVPlayerMario.components.iptvplayerwidget.gDownloadManager:
+                DMlist = Plugins.Extensions.IPTVPlayerMario.components.iptvplayerwidget.gDownloadManager.getList()
         elif key == 'watchMovie' and os.path.exists(arg):
             return util.redirectTo("/file?action=download&file=%s" % urllib_quote(arg.decode('utf8', 'ignore').encode('utf-8')), req)
         elif key == 'stopDownload' and arg.isdigit():
-            if None != Plugins.Extensions.IPTVPlayer.components.iptvplayerwidget.gDownloadManager:
-                Plugins.Extensions.IPTVPlayer.components.iptvplayerwidget.gDownloadManager.stopDownloadItem(int(arg))
-                DMlist = Plugins.Extensions.IPTVPlayer.components.iptvplayerwidget.gDownloadManager.getList()
+            if None != Plugins.Extensions.IPTVPlayerMario.components.iptvplayerwidget.gDownloadManager:
+                Plugins.Extensions.IPTVPlayerMario.components.iptvplayerwidget.gDownloadManager.stopDownloadItem(int(arg))
+                DMlist = Plugins.Extensions.IPTVPlayerMario.components.iptvplayerwidget.gDownloadManager.getList()
         elif key == 'downloadAgain' and arg.isdigit():
-            if None != Plugins.Extensions.IPTVPlayer.components.iptvplayerwidget.gDownloadManager:
-                Plugins.Extensions.IPTVPlayer.components.iptvplayerwidget.gDownloadManager.continueDownloadItem(int(arg))
-                DMlist = Plugins.Extensions.IPTVPlayer.components.iptvplayerwidget.gDownloadManager.getList()
+            if None != Plugins.Extensions.IPTVPlayerMario.components.iptvplayerwidget.gDownloadManager:
+                Plugins.Extensions.IPTVPlayerMario.components.iptvplayerwidget.gDownloadManager.continueDownloadItem(int(arg))
+                DMlist = Plugins.Extensions.IPTVPlayerMario.components.iptvplayerwidget.gDownloadManager.getList()
         elif key == 'removeMovie' and arg.isdigit():
-            if None != Plugins.Extensions.IPTVPlayer.components.iptvplayerwidget.gDownloadManager:
-                Plugins.Extensions.IPTVPlayer.components.iptvplayerwidget.gDownloadManager.removeDownloadItem(int(arg))
-                DMlist = Plugins.Extensions.IPTVPlayer.components.iptvplayerwidget.gDownloadManager.getList()
+            if None != Plugins.Extensions.IPTVPlayerMario.components.iptvplayerwidget.gDownloadManager:
+                Plugins.Extensions.IPTVPlayerMario.components.iptvplayerwidget.gDownloadManager.removeDownloadItem(int(arg))
+                DMlist = Plugins.Extensions.IPTVPlayerMario.components.iptvplayerwidget.gDownloadManager.getList()
 
         elif key == 'cmd' and arg == 'arvchiveDM':
             if arg2 == 'deleteMovie' and os.path.exists(arg3):
                 os.remove(arg3)
             elif arg2 == 'watchMovie' and os.path.exists(arg3):
                 return util.redirectTo("/file?action=download&file=%s" % urllib_quote(arg3.decode('utf8', 'ignore').encode('utf-8')), req)
-            if os.path.exists(config.plugins.IPTVPlayerMario.NaszaSciezka.value) and None != Plugins.Extensions.IPTVPlayer.components.iptvplayerwidget.gDownloadManager:
+            if os.path.exists(config.plugins.IPTVPlayerMario.NaszaSciezka.value) and None != Plugins.Extensions.IPTVPlayerMario.components.iptvplayerwidget.gDownloadManager:
                 files = os.listdir(config.plugins.IPTVPlayerMario.NaszaSciezka.value)
                 files.sort(key=lambda x: x.lower())
                 for item in files:
@@ -449,7 +449,7 @@ class downloaderPage(resource.Resource):
                         continue
                     fileName = os.path.join(config.plugins.IPTVPlayerMario.NaszaSciezka.value, item)
                     skip = False
-                    for item2 in Plugins.Extensions.IPTVPlayer.components.iptvplayerwidget.gDownloadManager.getList():
+                    for item2 in Plugins.Extensions.IPTVPlayerMario.components.iptvplayerwidget.gDownloadManager.getList():
                         if fileName == item2.fileName.replace('//', '/'):
                             skip = True
                             break
@@ -479,7 +479,7 @@ class downloaderPage(resource.Resource):
         reloadScripts()
         html = '<html lang="%s">' % language.getLanguage()[:2]
         html += webParts.IncludeHEADER(extraMeta)
-        html += webParts.Body().downloaderPageContent(Plugins.Extensions.IPTVPlayer.components.iptvplayerwidget.gDownloadManager, DMlist)
+        html += webParts.Body().downloaderPageContent(Plugins.Extensions.IPTVPlayerMario.components.iptvplayerwidget.gDownloadManager, DMlist)
         return html
 #######################################################
 
