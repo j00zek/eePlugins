@@ -6,7 +6,7 @@
 from Plugins.Extensions.IPTVPlayerMario.components.iptvplayerinit import TranslateTXT as _
 from Plugins.Extensions.IPTVPlayerMario.components.ihost import CHostBase, CBaseHostClass, CDisplayListItem
 from Plugins.Extensions.IPTVPlayerMario.components.captcha_helper import CaptchaHelper
-from Plugins.Extensions.IPTVPlayerMario.tools.iptvtools import GetCookieDir, hasCDM, MergeDicts, printDBG, printExc, readCFG, ReadTextFile, rm, WriteTextFile
+from Plugins.Extensions.IPTVPlayerMario.tools.iptvtools import GetCookieDir, MergeDicts, printDBG, printExc, readCFG, ReadTextFile, rm, WriteTextFile
 from Plugins.Extensions.IPTVPlayerMario.libs.e2ijson import loads as json_loads
 from Plugins.Extensions.IPTVPlayerMario.libs import ph
 ###################################################

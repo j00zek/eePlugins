@@ -46,6 +46,10 @@ sed "s/config.plugins.iptvplayer =/config.plugins.IPTVPlayerMario =/g" -i "$myAb
 
 sed "s/config.plugins.iptvplayer, 'host' + hostName/config.plugins.IPTVPlayerMario, 'host' + hostName/g" -i "$myAbsPath/../IPTVPlayerMario/tools/iptvtools.py"
 
+#poprawki locale
+echo modyfikacja locale
+find $myAbsPath/../IPTVPlayerMario/locale -name 'IPTVPlayer.[pm]o' -exec bash -c 'mv $0 ${0/IPTVPlayer./IPTVPlayerMario.}' {} \;
+  
 #do patchowania hostow
 cp -f $myAbsPath/pathsPatcher.sh $myAbsPath/../IPTVPlayerMario/tools/
 chmod 755 $myAbsPath/../IPTVPlayerMario/tools/pathsPatcher.sh
