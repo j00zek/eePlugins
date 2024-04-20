@@ -13,13 +13,6 @@ fi
 [ -e /etc/rc3.d/S50streamlinkSRV ] && rm -f /etc/rc3.d/S50streamlinkSRV
 [ -e /etc/rc4.d/S50streamlinkSRV ] && rm -f /etc/rc4.d/S50streamlinkSRV
 
-if [ $pythonType != 'unknown' ];then
-  [ -L "/usr/lib/$pythonType/site-packages/streamlink" ] && rm -rf "/usr/lib/$pythonType/site-packages/streamlink"
-  [ -e "/usr/lib/$pythonType/site-packages/streamlink" ] && find -L "/usr/lib/$pythonType/site-packages/streamlink" -name *.py* -type l -exec  rm {} +
-  [ -L "/usr/lib/$pythonType/site-packages/emukodi" ] && rm -rf "/usr/lib/$pythonType/site-packages/emukodi"
-  [ -L "/usr/lib/$pythonType/site-packages/streamlink_cli" ] && rm -rf "/usr/lib/$pythonType/site-packages/streamlink_cli"
-  [ -e "/usr/lib/$pythonType/site-packages/streamlink-fake.dist-info" ] && rm -rf "/usr/lib/$pythonType/site-packages/streamlink-fake.dist-info"
-fi
 if [ `ps -ef 2>&1 |grep -v grep|grep opkg|grep -c remove` -ge 1 ] || [ `ps -l 2>&1 |grep -v grep|grep opkg|grep -c remove` -ge 1 ];then
   rm -rf /usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig
   [ -L /usr/sbin/streamlink ] && rm -f /usr/sbin/streamlink

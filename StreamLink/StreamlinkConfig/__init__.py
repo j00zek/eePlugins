@@ -96,7 +96,7 @@ config.plugins.streamlinkSRV.remoteE2wakeup = ConfigEnableDisable(default = Fals
 config.plugins.streamlinkSRV.support4kodi = ConfigEnableDisable(default = False)
 
 def DBGlog(text):
-    if config.plugins.streamlinkSRV.logLevel.value == 'none':
+    if 0: #config.plugins.streamlinkSRV.logLevel.value == 'none':
         print('StreamlinkConfiguration: %s' % text)
     else:
         print('StreamlinkConfiguration: %s' % text)
