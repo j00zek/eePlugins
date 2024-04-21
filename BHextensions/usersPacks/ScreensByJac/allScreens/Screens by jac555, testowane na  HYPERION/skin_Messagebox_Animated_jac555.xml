@@ -1,8 +1,9 @@
 <skin>
 <screen name="MessageBox" position="center,center" size="790,180" title="Message">
+    <widget name="icon" pixmaps="icons/input_question.png,icons/input_info.png,icons/input_warning.png,icons/input_error.png,icons/input_message.png" position="0,0" size="1,1" alphatest="blend" conditional="icon" scale="1" transparent="1" />
     <widget source="session.CurrentService" render="j00zekPiconAnimation" pixdelay="100" loopdelay="100" loop="True" lockpath="True" pixmaps="BlackHarmony/icons/Confused_Homar80/" position="0,0" zPosition="10" size="140,140" alphatest="blend" />
-    <widget name="text" position="110,8" size="790,0" font="Roboto_HD; 31" halign="center" transparent="1" />
-    <widget name="list" font="Roboto_HD; 27" position="15,70" size="750,0" backgroundColor="background" itemHeight="35" selectionPixmap="BlackHarmony/menu/sel_750_35.png" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" transparent="1"/>
+    <widget name="text" position="0,0" size="0,0" font="Roboto_HD; 31" halign="center" transparent="1" />
+    <widget name="list" font="Roboto_HD; 27" position="0,0" size="0,0" backgroundColor="background" itemHeight="35" selectionPixmap="BlackHarmony/menu/sel_750_35.png" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" transparent="1"/>
     <!-- tylko aby skin sie nie plul, ze brak -->
         <widget name="QuestionPixmap" pixmap="BlackHarmony/icons/transparent.png" position="0,0" size="120,180" alphatest="blend"/>
         <widget name="ErrorPixmap" pixmap="BlackHarmony/icons/transparent.png" position="0,0" size="120,180" alphatest="blend"/>
@@ -16,8 +17,10 @@ from enigma import eSize, ePoint
 if DBG: open("/tmp/MessageBox.log", "w").write('%s\n' % self.text)
 
 animPosition = (0, 0)
-animWidth = self["QuestionPixmap"].instance.size().width()
-animHeight = self["QuestionPixmap"].instance.size().height()
+try: animWidth = self["QuestionPixmap"].instance.size().width()
+except Exception: animWidth = 140
+try: animHeight = self["QuestionPixmap"].instance.size().height()
+except Exception: animHeight = 140
 WindowWidth = self.instance.size().width()
 windowHeight = self.instance.size().height()
 orgWindowPos = self.instance.position()
@@ -42,7 +45,10 @@ else:
 
 AnimEndPosY = animPosition[1] + animHeight + offset
 listPosY = textPos[1] + textHeight + offset
-listHeight = listItemHeight * len(self.list)
+if self.list is None:
+        listHeight = listItemHeight
+else:
+        listHeight = listItemHeight * len(self.list)
 if DBG: open("/tmp/MessageBox.log", "a").write('listHeight=%s\n' % listHeight)
 #
 if (listPosY) > (AnimEndPosY):
@@ -74,9 +80,8 @@ self.instance.move(ePoint(orgWindowPos.x() , orgWindowPos.y() + int((windowHeigh
     </applet>
 </screen>
 
-
-
 <screen name="MessageBoxSimple" zPosition="11" position="center,center" size="790,10" title="Message">
+  <widget name="icon" pixmaps="icons/input_question.png,icons/input_info.png,icons/input_warning.png,icons/input_error.png,icons/input_message.png" position="0,0" size="1,1" alphatest="blend" conditional="icon" scale="1" transparent="1" />
   <widget source="session.CurrentService" render="j00zekPiconAnimation" pixdelay="100" loopdelay="100" loop="True" lockpath="True" pixmaps="BlackHarmony/icons/Confused_Homar80/" position="0,0" zPosition="10" size="140,140" alphatest="blend" />
   <widget name="text" position="110,8" size="790,0" font="Roboto_HD; 31" halign="center" backgroundColor="black" transparent="1" />
   <widget name="list" font="Roboto_HD; 27" position="15,70" size="750,0" itemHeight="35" selectionPixmap="BlackHarmony/menu/sel_750_35.png" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" backgroundColor="black" transparent="1" />
@@ -111,7 +116,7 @@ listheight = 0
 if self.list:
         try:
                 for i in self.list:
-                        if len(i[0]) &gt; listwidth:
+                        if len(i[0]) > listwidth:
                                 listwidth = len(i[0])
                 listwidth = listwidth * offset_listwidth
                 listheight = len(self.list) * offset_listheight
@@ -163,9 +168,8 @@ self.instance.move( ePoint( int((deskwidth - newwidth)/2),int((deskheight - newh
         </applet>
 </screen>
 
-
-
 <screen name="MessageBoxExt" zPosition="11" position="center,center" size="790,10" title="Message">
+  <widget name="icon" pixmaps="icons/input_question.png,icons/input_info.png,icons/input_warning.png,icons/input_error.png,icons/input_message.png" position="0,0" size="1,1" alphatest="blend" conditional="icon" scale="1" transparent="1" />
   <widget source="session.CurrentService" render="j00zekPiconAnimation" pixdelay="100" loopdelay="100" loop="True" lockpath="True" pixmaps="BlackHarmony/icons/Confused_Homar80/" position="0,0" zPosition="10" size="140,140" alphatest="blend" />
   <widget name="text" position="110,8" size="790,0" font="Roboto_HD; 31" halign="center" backgroundColor="black" transparent="1" />
   <widget name="list" font="Roboto_HD; 27" position="15,70" size="750,0" itemHeight="35" selectionPixmap="BlackHarmony/menu/sel_750_35.png" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" backgroundColor="black" transparent="1" />
@@ -200,7 +204,7 @@ listheight = 0
 if self.list:
         try:
                 for i in self.list:
-                        if len(i[0]) &gt; listwidth:
+                        if len(i[0]) > listwidth:
                                 listwidth = len(i[0])
                 listwidth = listwidth * offset_listwidth
                 listheight = len(self.list) * offset_listheight
@@ -253,6 +257,7 @@ self.instance.move( ePoint( int((deskwidth - newwidth)/2) ,int((deskheight - new
 </screen>
 
 <screen name="MessageBoxTemplate" zPosition="11" position="center,center" size="1000,822" title="MessageBox Template">
+    <widget name="icon" pixmaps="icons/input_question.png,icons/input_info.png,icons/input_warning.png,icons/input_error.png,icons/input_message.png" position="0,0" size="1,1" alphatest="blend" conditional="icon" scale="1" transparent="1" />
     <widget source="session.CurrentService" render="j00zekPiconAnimation" pixdelay="100" loopdelay="100" loop="True" lockpath="True" pixmaps="BlackHarmony/icons/Confused_Homar80/" position="0,0" zPosition="10" size="140,140" alphatest="blend" />
     <widget name="text" position="110,8" size="900,0" font="Roboto_HD; 31" halign="center" transparent="1" />
     <widget name="list" font="Roboto_HD; 27" position="15,70" size="750,0" backgroundColor="background" itemHeight="35" selectionPixmap="BlackHarmony/menu/sel_750_35.png" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" transparent="1"/>
