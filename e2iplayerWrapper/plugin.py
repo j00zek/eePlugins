@@ -52,15 +52,7 @@ def zap(session, service, **kwargs):
                     except ImportError as e:
                         print("[ChannelSelection] zap > MYe2iPlayer importing IPTVPlayer component error '%s'" % str(e))
                 if MYe2iPlayer:
-                    from Components.config import config
-                    if batchCMD.startswith('canalplus') and config.plugins.iptvplayer.canalplus_select_default_quality.value == False:
-                        errormsg = 'Musisz włączyć automatyczny wybór jakości w konfiguracji hosta !'
-                    elif batchCMD.startswith('playerpl') and config.plugins.iptvplayer.canalplus_select_default_quality.value == False:
-                        errormsg = 'Musisz włączyć automatyczny wybór jakości w konfiguracji hosta !'
-                    elif batchCMD.startswith('polsatboxgo') and config.plugins.iptvplayer.polsatboxgo_select_default_quality.value == False:
-                        errormsg = 'Musisz włączyć automatyczny wybór jakości w konfiguracji hosta !'
-                    else:
-                        MYe2iPlayer(session)
+                    MYe2iPlayer(session)
         except Exception as e:
             print("[ChannelSelection] zap > MYe2iPlayer failed %s" % str(e))
     return (None, errormsg)
