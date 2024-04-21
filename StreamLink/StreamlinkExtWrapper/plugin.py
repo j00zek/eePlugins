@@ -1,14 +1,9 @@
 from Plugins.Plugin import PluginDescriptor
-from base64 import b64decode as F6236346465636F6465F
 
 IPTVExtMoviePlayer = None
-KodiLauncher = None
 
 def zap(session, service, **kwargs):
     def leaveIPTVExtMoviePlayer(answer=None, lastPosition=None, clipLength=None, *args, **kwargs):
-        pass
-    
-    def leaveKodiLauncher(answer=None, lastPosition=None, clipLength=None, *args, **kwargs):
         pass
     
     errormsg = None
@@ -45,23 +40,6 @@ def zap(session, service, **kwargs):
                             bufferSize = config.plugins.iptvplayer.requestedBuffSize.value * 1024 * 1024
                             from Plugins.Extensions.IPTVPlayer.iptvdm.iptvbuffui import E2iPlayerBufferingWidget
                             session.openWithCallback(leaveIPTVExtMoviePlayer, E2iPlayerBufferingWidget, url, bufferingPath, downloadingPath, titleOfMovie, playerVal, bufferSize, gstAdditionalParams)
-                elif url.startswith("kodi://"):
-                    url = url[7:]
-                    print("[ChannelSelection] zap > StreamlinkExtWrapper:kodi url='%s'" % url)
-                    global KodiLauncher
-                    try:
-                        from Plugins.Extensions.Kodi.plugin import startLauncher
-                        KodiLauncher = startLauncher
-                        session.openWithCallback(leaveKodiLauncher, startLauncher)
-                    except ImportError as e:
-                        print("[ChannelSelection] zap > StreamlinkExtWrapper importing IPTVPlayer component error '%s'" % str(e))
-                elif url.startswith("mpd://"):
-                    url = url[6:]
-                    print("[ChannelSelection] zap > StreamlinkExtWrapper:mpd url='%s'" % url)
-                    try:
-                        return (F6236346465636F6465F(url), errormsg)
-                    except ImportError as e:
-                        print("[ChannelSelection] zap > StreamlinkExtWrapper mpd component error '%s'" % str(e))
                 elif url.startswith("chrome://"):
                     url = url[9:]
                     print("[ChannelSelection] zap > StreamlinkExtWrapper:chrome url='%s'" % url)

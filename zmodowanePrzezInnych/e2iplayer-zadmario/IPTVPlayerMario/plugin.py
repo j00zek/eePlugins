@@ -137,18 +137,21 @@ def doRunMain(session):
 
 def runMain(session, nextFunction=doRunMain):
     def allToolsFromOPKG():
-        toolsList = ['enigma2-plugin-extensions-e2iplayer-deps', 'duktape', 'exteplayer3', 'uchardet', 'gstplayer', 'rtmpdump', 'python3-e2icjson', 'python3-pycurl']
-        for tool in toolsList:
-            tryToInstall = ''
-            if not os.path.exists(os.path.join('/var/lib/opkg/info/', tool) + '.control'):
-                tryToInstall += ' ' + tool
-        if tryToInstall != '':
-            printDBG('allToolsFromOPKG() >>> Trying to install missing packages: %s' % tryToInstall)
-            os.system('(opkg update;opkg install %s)&' % tryToInstall)
-            return False
-        else:
-            printDBG('allToolsFromOPKG() >>> All required packages installed :)')
+        if os.path.exists('/usr/lib/enigma2/python/Plugins/Extensions/IPTVPlayerMario/plugin.pe2i'): #users of private version jave all tools installed by design
             return True
+        else:
+            toolsList = ['enigma2-plugin-extensions-e2iplayer-deps', 'duktape', 'exteplayer3', 'uchardet', 'gstplayer', 'rtmpdump', 'python3-e2icjson', 'python3-pycurl']
+            for tool in toolsList:
+                tryToInstall = ''
+                if not os.path.exists(os.path.join('/var/lib/opkg/info/', tool) + '.control'):
+                    tryToInstall += ' ' + tool
+            if tryToInstall != '':
+                printDBG('allToolsFromOPKG() >>> Trying to install missing packages: %s' % tryToInstall)
+                os.system('(opkg update;opkg install %s)&' % tryToInstall)
+                return False
+            else:
+                printDBG('allToolsFromOPKG() >>> All required packages installed :)')
+                return True
 
     for DBGfile in ['/hdd/iptv.dbg', '/tmp/iptv.dbg', '/home/root/logs/iptv.dbg', '/tmp/print.log']:
         if os.path.exists(DBGfile):
