@@ -20,6 +20,10 @@ fi
 if [ -e /usr/share/enigma2/BlackHarmony/skin_user_buttons ];then
   cp -f /usr/share/enigma2/BlackHarmony/skin_user_buttons/* /usr/share/enigma2/BlackHarmony/buttons/ 2>/dev/null
 fi
+#kopiowanie wybranego stylu przełącznikow onoff
+if [ -e /usr/share/enigma2/BlackHarmony/skin_user_OnOffSwitches ];then
+  cp -f /usr/share/enigma2/BlackHarmony/skin_user_OnOffSwitches/* /usr/share/enigma2/BlackHarmony/icons/ 2>/dev/null
+fi
 #tworzenie skin_user defaults
 [ -e $BHfolder/skin_user_header.xml ] || ln -sf $BHfolder/allFonts/font_default.xml $BHfolder/skin_user_header.xml
 [ -e $BHfolder/skin_user_colors.xml ] || ln -sf $BHfolder/allColors/colors_default.xml $BHfolder/skin_user_colors.xml
