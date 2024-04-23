@@ -528,6 +528,25 @@ class UserSkin_Config(Screen, ConfigListScreen):
             else:
                 currDefault = "default"
             self.myUserSkin_animButtons = NoSave(ConfigSelection(default = currDefault, choices = mylist))
+#### initializing ONOFF SWITCHES ###
+            mylist = []
+            if DBG == True: printDEBUG('#### initializing ONOFF SWITCHES ###')
+            #if DBG == True: printDEBUG('\t' + SkinPath + "allButtons/")
+            for f in sorted(listdir(SkinPath + "allIOnOffSwitches/"), key=str.lower):
+                #if DBG == True: printDEBUG('\t f="%s"' % f)
+                if path.isdir(path.join(SkinPath + "allIOnOffSwitches/", f)):
+                    friendly_name = _(f)
+                    mylist.append((f, _(friendly_name)))
+
+            if len(mylist) == 0:
+                mylist.append(("default", _("default") ))
+                self.myUserSkin_onoffswitches = NoSave(ConfigSelection(default = "default", choices = mylist))
+            else:
+                if path.exists(SkinPath + 'skin_user_onoff switches'):
+                    currDefault = path.basename(path.realpath( SkinPath + 'skin_user_buttons'))
+                else:
+                    currDefault = "Standard"
+                self.myUserSkin_onoffswitches = NoSave(ConfigSelection(default = currDefault, choices = mylist))
 ##########################################################################################################3
         if path.exists(SkinPath + "mySkin"):
             self.myUserSkin_active = NoSave(ConfigYesNo(default= True))
@@ -612,6 +631,7 @@ class UserSkin_Config(Screen, ConfigListScreen):
         self.list.append(getConfigListEntry(_("Selector bar style:"), self.myUserSkin_bar))
         self.list.append(getConfigListEntry(_("Selector buttons style:"), self.myUserSkin_buttons))
         self.list.append(getConfigListEntry(_("Anim buttons (if in skin):"), self.myUserSkin_animButtons))
+        self.list.append(getConfigListEntry(_("On/Off switch style:"), self.myUserSkin_onoffswitches))
         if isSlowCPU() == True:
             self.list.append(getConfigListEntry(_("No JPG previews:"), config.plugins.UserSkin.jpgPreview))
         if self.LCDconfigKey != 'none':
@@ -796,6 +816,7 @@ class UserSkin_Config(Screen, ConfigListScreen):
             printDEBUG("self.myUserSkin_bar.value=" + self.myUserSkin_bar.value)
             printDEBUG("self.myUserSkin_buttons.value=" + self.myUserSkin_buttons.value)
             printDEBUG("self.myUserSkin_buttons.value=" + self.myUserSkin_animButtons.value)
+            printDEBUG("self.myUserSkin_onoffswitches" + self.myUserSkin_onoffswitches.value)
             for x in self["config"].list:
                 if len(x) == 2:
                     x[1].save()
@@ -856,6 +877,12 @@ class UserSkin_Config(Screen, ConfigListScreen):
                     pkgName = self.myUserSkin_animButtons.value.lower().replace('.','-').replace('_','-')
                     system("opkg install --force-reinstall e2-j00zeks-bh-addon-allanimatedbuttons-%s" % pkgName) #instalacja wybranej paczki
             
+            #### ANIM BUTTONS >  self.myUserSkin_onoffswitches.value
+            if path.exists(SkinPath + 'skin_user_onoffswitches') or path.islink(SkinPath + 'skin_user_onoffswitches'):
+                remove(SkinPath + 'skin_user_onoffswitches')
+            if path.exists(SkinPath + "allIOnOffSwitches/" + self.myUserSkin_onoffswitches.value):
+                symlink(SkinPath + "allIOnOffSwitches/" + self.myUserSkin_animButtons.value , 'skin_user_onoffswitches')
+
             #### SCREENS
             if self.myUserSkin_active.value:
                 if not path.exists("mySkin") and path.exists("UserSkin_Selections"):
