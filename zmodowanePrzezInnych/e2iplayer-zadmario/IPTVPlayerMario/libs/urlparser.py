@@ -752,7 +752,7 @@ class urlparser:
                        'vkprime.com': self.pp.parserONLYSTREAMTV,
                        'vod-share.com': self.pp.parserVODSHARECOM,
                        'vodlocker.com': self.pp.parserVODLOCKER,
-                       'voe.sx': self.pp.parserMATCHATONLINE,
+                       'voe.sx': self.pp.parserVOESX,
                        'voodaith7e.com': self.pp.parserYOUWATCH,
                        'voodc.com': self.pp.parserVOODCCOM,
                        'vshare.eu': self.pp.parserVSHAREEU,
@@ -15795,22 +15795,20 @@ class pageParser(CaptchaHelper):
         if not sts:
             return False
 
-        r = re.search(r"let\s[^']*'([^']+)", data)
+        r = re.search(r'''['"]?hls['"]?\s*?:\s*?['"]([^'^"]+?)['"]''', data)
         if r:
-            r = ensure_str(base64.b64decode(r.group(1)))
-            if r.startswith('}'):
-                data = ''
-                for item in reversed(range(len(r))):
-                    data += r[item]
-                r = data
-            r = json_loads(r)
-            hlsUrl = r.get('file')
+            hlsUrl = ensure_str(base64.b64decode(r.group(1)))
             if hlsUrl.startswith('//'):
                 hlsUrl = 'http:' + hlsUrl
             if self.cm.isValidUrl(hlsUrl):
                 params = {'iptv_proto': 'm3u8', 'Referer': baseUrl, 'Origin': urlparser.getDomain(baseUrl, False)}
                 hlsUrl = urlparser.decorateUrl(hlsUrl, params)
                 return getDirectM3U8Playlist(hlsUrl, checkExt=False, checkContent=True, sortWithMaxBitrate=999999999)
+        hlsUrl = self.cm.ph.getSearchGroups(data, '''["'](https?://[^'^"]+?\.m3u8(?:\?[^"^']+?)?)["']''', ignoreCase=True)[0]
+        if self.cm.isValidUrl(hlsUrl):
+            params = {'iptv_proto': 'm3u8', 'Referer': baseUrl, 'Origin': urlparser.getDomain(baseUrl, False)}
+            hlsUrl = urlparser.decorateUrl(hlsUrl, params)
+            return getDirectM3U8Playlist(hlsUrl, checkExt=False, checkContent=True, sortWithMaxBitrate=999999999)
 
         return False
 
