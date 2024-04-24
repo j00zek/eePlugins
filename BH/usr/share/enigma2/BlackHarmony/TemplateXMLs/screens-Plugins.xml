@@ -897,7 +897,7 @@
     <widget source="global.CurrentTime" render="Label" position="129,50" size="460,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
       <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
     </widget>
-    <eLabel text="IPTV Player" position="1030,50" size="420,30" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1"/>
+    <eLabel text="E2iPlayer" position="1030,50" size="420,30" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1"/>
     <widget name="headertext" position="70,170" zPosition="1" size="1100,40" font="Roboto_HD; 32" transparent="1" backgroundColor="background" foregroundColor="light_yellow"/>
     <widget name="statustext" position="415,430" zPosition="1" size="1020,120" font="Regular;20" halign="center" valign="top" transparent="1" backgroundColor="background"/>
     <widget name="list" position="415,230" zPosition="2" size="1020,480" font="Roboto_HD; 26" itemHeight="40" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" scrollbarMode="showOnDemand" backgroundColor="transpBlack" selectionPixmap="BlackHarmony/menu/sel_1020_40.png" transparent="1"/>
@@ -1273,7 +1273,7 @@
   </widget>
   </screen>
   <!-- ########## IPTVplayer akka E2iplayer ########## -->
-  <screen name="IPTVSubDownloaderWidget" position="center,center" size="1090,580" title="IPTV Player v%s">
+  <screen name="IPTVSubDownloaderWidget" position="center,center" size="1090,580" title="E2iPlayer v%s">
     <ePixmap position="5,545" zPosition="4" size="35,27" pixmap="BlackHarmony/buttons/key_red.png" transparent="1" alphatest="on" />
     <widget render="Label" source="key_red" position="59,545" size="210,27" zPosition="5" backgroundColor="black" font="Roboto_HD; 24" halign="left" transparent="1" foregroundColor="white" shadowColor="black" shadowOffset="-1,-1" />
     <widget name="headertext" position="5,15" zPosition="1" size="1080,23" font="Regular;20" transparent="1" backgroundColor="black" />
