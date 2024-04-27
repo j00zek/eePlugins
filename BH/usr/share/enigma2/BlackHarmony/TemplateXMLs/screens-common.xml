@@ -1876,7 +1876,7 @@
       <!-- zamiast elabel - widget source="Title" render="Label"-->
       <convert type="j00zekAlternateTitle">Timer Edit List</convert>
     </widget>  
-    <widget name="timerlist" position="95,175" size="1025,750" itemHeight="125" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_1025_125.png" backgroundColor="black" transparent="1"/>
+    <widget name="timerlist" position="75,175" size="1065,750" enableWrapAround="1" scrollbarWidth="6" scrollbarBorderWidth="1" scrollbarForegroundColor="#e6e6e6" itemHeight="100" scrollbarBorderColor="#3b3e3f" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_1095_100.png" backgroundColor="black" transparent="1" rowSplit="30" iconMargin="8" satPosLeft="315" timerNameFont="Regular;25" statusFont="Regular;23" detailFont="Regular;25" topHeight="50" bottomHeight="50" />
     <widget source="ServiceEvent" render="j00zekPicons" picontype="picon" position="1270,170" size="220,132" zPosition="2" transparent="1" alphatest="blend">
       <convert type="j00zekModServiceName2">Reference</convert>
     </widget>
