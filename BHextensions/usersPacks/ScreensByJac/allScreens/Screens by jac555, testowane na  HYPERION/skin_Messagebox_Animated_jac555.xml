@@ -3,7 +3,7 @@
     <widget name="icon" pixmaps="icons/input_question.png,icons/input_info.png,icons/input_warning.png,icons/input_error.png,icons/input_message.png" position="0,0" size="1,1" alphatest="blend" conditional="icon" scale="1" transparent="1" />
     <widget source="session.CurrentService" render="j00zekPiconAnimation" pixdelay="100" loopdelay="100" loop="True" lockpath="True" pixmaps="BlackHarmony/icons/Confused_Homar80/" position="0,0" zPosition="10" size="140,140" alphatest="blend" />
     <widget name="text" position="0,0" size="0,0" font="Roboto_HD; 31" halign="center" transparent="1" />
-    <widget name="list" font="Roboto_HD; 27" position="0,0" size="0,0" backgroundColor="background" itemHeight="35" selectionPixmap="BlackHarmony/menu/sel_750_35.png" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" transparent="1"/>
+    <widget name="list" font="Roboto_HD; 27" position="0,0" size="0,0" backgroundColor="background" itemHeight="35" selectionPixmap="BlackHarmony/menu/sel_900_35.png" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" transparent="1"/>
     <!-- tylko aby skin sie nie plul, ze brak -->
         <widget name="QuestionPixmap" pixmap="BlackHarmony/icons/transparent.png" position="0,0" size="120,180" alphatest="blend"/>
         <widget name="ErrorPixmap" pixmap="BlackHarmony/icons/transparent.png" position="0,0" size="120,180" alphatest="blend"/>

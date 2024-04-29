@@ -5,7 +5,7 @@
     <widget name="ErrorPixmap" pixmap="BlackHarmony/icons/input_error.png" position="5,5" size="100,100" alphatest="blend"/>
     <widget name="QuestionPixmap" pixmap="BlackHarmony/icons/input_question.png" position="5,5" size="100,100" alphatest="blend"/>
     <widget name="InfoPixmap" pixmap="BlackHarmony/icons/info.png" scale="on" position="5,5" size="100,100" alphatest="blend"/>
-    <widget name="list" font="Roboto_HD; 27" position="0,0" size="0,0"  backgroundColor="background" itemHeight="35" selectionPixmap="BlackHarmony/menu/sel_750_35.png" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" transparent="1"/>
+    <widget name="list" font="Roboto_HD; 27" position="0,0" size="0,0"  backgroundColor="background" itemHeight="35" selectionPixmap="BlackHarmony/menu/sel_900_35.png" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" transparent="1"/>
     <applet type="onLayoutFinish">
 # this should be factored out into some helper code, but currently demonstrates applets.
 

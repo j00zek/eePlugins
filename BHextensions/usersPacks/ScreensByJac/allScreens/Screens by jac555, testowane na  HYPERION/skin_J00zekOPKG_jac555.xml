@@ -1,6 +1,6 @@
 <skin>
 <screen name="Jopkg" position="center,125" size="1200,881" title="J00zek OPKG" >
-    <widget source="list" render="Listbox" position="center,5" size="1095,820" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_1095_75.png" scrollbarWidth="7" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="blue" scrollbarSliderBorderColor="blue">
+    <widget source="list" render="Listbox" position="center,5" size="1095,810" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_1095_75.png" scrollbarWidth="7" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="blue" scrollbarSliderBorderColor="blue">
       <convert type="TemplatedMultiContent" transparent="1">
                                 {"template":
                                         [
@@ -15,32 +15,32 @@
                                 }
                         </convert>
     </widget>
-    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="41,850" zPosition="10" size="35,27" alphatest="blend"
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="41,825" zPosition="10" size="35,27" alphatest="blend"
                         initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0" random="True"
                         pixmaps="BlackHarmony/skin_user_animButtons/key_red"
                         pixalter="BlackHarmony/buttons/key_red.png" />
-    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="328,850" zPosition="10" size="35,27" alphatest="blend"
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="328,825" zPosition="10" size="35,27" alphatest="blend"
                         initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,1" random="True"
                         pixmaps="BlackHarmony/skin_user_animButtons/key_green"
                         pixalter="BlackHarmony/buttons/key_green.png" />
-    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="615,850" zPosition="10" size="35,27" alphatest="blend"
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="615,825" zPosition="10" size="35,27" alphatest="blend"
                         initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,2" random="True"
                         pixmaps="BlackHarmony/skin_user_animButtons/key_yellow"
                         pixalter="BlackHarmony/buttons/key_yellow.png" />
-    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="902,850" zPosition="10" size="35,27" alphatest="blend"
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="902,825" zPosition="10" size="35,27" alphatest="blend"
                         initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,3" random="True"
                         pixmaps="BlackHarmony/skin_user_animButtons/key_blue"
                         pixalter="BlackHarmony/buttons/key_blue.png" />
-    <widget objectTypes="key_red,Label,Button" name="key_red" position="91,849" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
-    <widget objectTypes="key_red,StaticText" source="key_red" render="Label" position="91,849" size="200,27" zPosition="2" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
-    <widget objectTypes="key_green,Label,Button" name="key_green" position="378,849" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
-    <widget objectTypes="key_green,StaticText" source="key_green" render="Label" position="378,849" size="200,27" zPosition="2" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
-    <widget objectTypes="key_yellow,Label,Button" name="key_yellow" position="665,849" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
-    <widget objectTypes="key_yellow,StaticText" source="key_yellow" render="Label" position="665,849" size="200,27" zPosition="2" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
-    <widget objectTypes="key_blue,Label,Button" name="key_blue" position="952,849" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
-    <widget objectTypes="key_blue,StaticText" source="key_blue" render="Label" position="952,849" size="200,27" zPosition="2" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
-    <widget name="whatUPDATED" position="65,80" size="1095,590" font="Roboto_HD; 27" transparent="1"/>
-  </screen>
+    <widget objectTypes="key_red,Label,Button" name="key_red" position="91,824" size="235,65" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget objectTypes="key_red,StaticText" source="key_red" render="Label" position="91,824" size="235,65" zPosition="2" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget objectTypes="key_green,Label,Button" name="key_green" position="378,824" size="235,65" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget objectTypes="key_green,StaticText" source="key_green" render="Label" position="378,824" size="235,65" zPosition="2" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget objectTypes="key_yellow,Label,Button" name="key_yellow" position="665,824" size="235,65" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget objectTypes="key_yellow,StaticText" source="key_yellow" render="Label" position="665,824" size="235,65" zPosition="2" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget objectTypes="key_blue,Label,Button" name="key_blue" position="952,824" size="235,65" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget objectTypes="key_blue,StaticText" source="key_blue" render="Label" position="952,824" size="235,65" zPosition="2" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget name="whatUPDATED" position="65,90" size="1095,700" font="Roboto_HD; 27" transparent="1"/>
+</screen>
 
 <screen name="Jconsole" position="center,125" size="1200,881" title="Command execution...">
     <widget name="text" position="center,5" size="1095,721" font="Roboto_HD; 25" backgroundColor="background" transparent="1"/>
