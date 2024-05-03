@@ -239,6 +239,7 @@ class urlparser:
                        'cricplay2.xyz': self.pp.parserASSIAORG,
                        'cryptodialynews.com': self.pp.parserTXNEWSNETWORK,
                        #d
+                       'd000d.com': self.pp.parserDOOD,
                        'd0000d.com': self.pp.parserDOOD,
                        'daaidaij.com': self.pp.parserMOONWALKCC,
                        'daclips.in': self.pp.parserFASTVIDEOIN,
@@ -564,6 +565,7 @@ class urlparser:
                        'sostart.org': self.pp.parserSOSTARTORG,
                        'sostart.pw': self.pp.parserSOSTARTPW,
                        'soundcloud.com': self.pp.parserSOUNDCLOUDCOM,
+                       'speci4leagle.com': self.pp.parserCASTFREEME,
                        'speedvid.net': self.pp.parserSPEEDVIDNET,
                        'speedvideo.net': self.pp.parserSPEEDVICEONET,
                        'sportsonline.si': self.pp.parserSPORTSONLINETO,
@@ -679,6 +681,7 @@ class urlparser:
                        'veuclipstoday.tk': self.pp.parserVIUCLIPS,
                        'vev.io': self.pp.parserTHEVIDEOME,
                        'vevo.com': self.pp.parserVEVO,
+                       'vectorx.top': self.pp.parserCHILLXTOP,
                        'vgembed.com': self.pp.parserVIDGUARDTO,
                        'vgfplay.com': self.pp.parserVIDGUARDTO,
                        'vid-guard.com': self.pp.parserVIDGUARDTO,
@@ -15571,7 +15574,8 @@ class pageParser(CaptchaHelper):
             cipher = AES_CBC(key=key, keySize=32)
             return cipher.decrypt(encrypted, iv)
 
-        key = '\x61\x37\x69\x67\x62\x70\x49\x41\x70\x61\x6a\x44\x79\x4e\x65'
+#        key = '\x61\x37\x69\x67\x62\x70\x49\x41\x70\x61\x6a\x44\x79\x4e\x65'
+        key = '\x48\x26\x35\x2b\x54\x78\x5f\x6e\x51\x63\x64\x4b\x7b\x55\x2c\x2e'
         edata = re.search("JScripts\s*=\s*'([^']+)", data)
         if edata:
             edata = json_loads(edata.group(1))
