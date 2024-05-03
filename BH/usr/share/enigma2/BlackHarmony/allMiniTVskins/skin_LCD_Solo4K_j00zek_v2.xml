@@ -79,6 +79,11 @@
                 </widget>
     <panel name="SummaryBigClockBottomLeftPanel" />
         </screen>
+
+<!-- LCD screen ExtLiveTVPlayerSummary -->
+    <screen name="ExtLiveTVPlayerSummary" position="0,0" size="480,320">
+        <panel name="InfoBarSummary" />
+    </screen>
         
 <!-- channelselection-->
         <screen name="ChannelSelection_summary" position="0,0" size="480,320">
