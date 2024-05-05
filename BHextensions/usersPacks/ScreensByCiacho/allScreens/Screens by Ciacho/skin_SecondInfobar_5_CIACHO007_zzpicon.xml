@@ -52,19 +52,19 @@
 
 
 
-<widget source="session.Event_Now" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" position="75,615" size="600,36" transparent="1" zPosition="1" font="HD_Thin; 28" halign="left" foregroundColor="green" backgroundColor="black" valign="bottom">
-    <convert type="j00zekModEventName">Genre</convert>
-  </widget>
-<widget source="session.Event_Now" render="Label" position="775,615" size="150,36" transparent="1" zPosition="1" font="HD_Thin; 28" halign="right" foregroundColor="light_red" backgroundColor="black" valign="bottom">
-    <convert type="j00zekModEventName">Rating</convert>
-  </widget>
-
-<widget source="session.Event_Next" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" position="997,615" size="600,36" transparent="1" zPosition="1" font="HD_Thin; 28" halign="left" foregroundColor="green" backgroundColor="black" valign="bottom">
-    <convert type="j00zekModEventName">Genre</convert>
-  </widget>
-<widget source="session.Event_Next" render="Label" position="1697,615" size="150,36" transparent="1" zPosition="1" font="HD_Thin; 28" halign="right" foregroundColor="light_red" backgroundColor="black" valign="bottom">
-    <convert type="j00zekModEventName">Rating</convert>
-  </widget>
+  <widget backgroundColor="background" font="HD_Thin; 30" foregroundColor="green" halign="left" noWrap="1" position="75,615" render="j00zekModTypeLabel" size="600,36" source="session.Event_Now" transparent="1" typeCaret="1" typeRepeats="1" typeSpeed="700" typeStartDelay="2000" zPosition="1">
+      <convert type="j00zekModEventName">Genre</convert>
+    </widget>
+  <widget backgroundColor="background" font="HD_Thin; 30" foregroundColor="red" halign="left" noWrap="1" position="800,615" render="j00zekModTypeLabel" size="130,36" source="session.Event_Now" transparent="1" typeCaret="1" typeRepeats="1" typeSpeed="700" typeStartDelay="2000" zPosition="1">
+      <convert type="j00zekModEventName">Rating</convert>
+    </widget>
+  <widget backgroundColor="background" font="HD_Thin; 30" foregroundColor="green" halign="left" noWrap="1" position="997,615" render="j00zekModTypeLabel" size="600,36" source="session.Event_Next" transparent="1" typeCaret="1" typeRepeats="1" typeSpeed="700" typeStartDelay="2000" zPosition="1">
+      <convert type="j00zekModEventName">Genre</convert>
+    </widget>
+  <widget backgroundColor="background" font="HD_Thin; 30" foregroundColor="red" halign="left" noWrap="1" position="1722,615" render="j00zekModTypeLabel" size="130,36" source="session.Event_Next" transparent="1" typeCaret="1" typeRepeats="1" typeSpeed="700" typeStartDelay="2000" zPosition="1">
+      <convert type="j00zekModEventName">Rating</convert>
+    </widget>
+	
 <widget source="session.CurrentService" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" position="920,845" zPosition="1" size="445,25" font="Roboto_HD; 20" halign="center" backgroundColor="black" transparent="1" foregroundColor="linie">
     <convert type="j00zekModExtraTuner">TunerInfo</convert>
   </widget>
