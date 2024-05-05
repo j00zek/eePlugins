@@ -154,4 +154,4 @@ config.plugins.j00zekCC.ciFormat = ConfigSelection(default = "", choices = [("",
 config.plugins.j00zekCC.iconsANDanims = ConfigYesNo(default = False)
 #ConfigText(default = _("none")) #("", _(""))
 config.plugins.j00zekCC.PiPbackground = ConfigSelection(default = "b", choices = [("n", _("no background")), ("b", _("Bing")), ("u", _("User"))])
-onfig.plugins.j00zekCC.UserBackground = ConfigDirectory(default = _('not set'))
+config.plugins.j00zekCC.UserBackground = ConfigDirectory(default = _('not set'))
