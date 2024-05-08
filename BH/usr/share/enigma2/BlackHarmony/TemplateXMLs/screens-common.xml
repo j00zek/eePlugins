@@ -7272,7 +7272,7 @@
     </widget>
     <widget name="datetime" position="520,30" size="290,30" font="Roboto_HD; 27" transparent="1" noWrap="1" valign="top" halign="left" />
     <widget name="duration" position="820,30" size="200,30" font="Roboto_HD; 27" transparent="1" noWrap="1" valign="top" halign="left" />
-    <widget name="FullDescription" position="45,85" size="1410,210" font="Regular; 26" transparent="1" text="to jest przykladowy tekst do tego co tu bedzie sie wyswietlac" />
+    <widget name="epg_description" position="45,85" size="1410,210" font="Regular; 26" transparent="1"/>
   </screen>
   <screen name="Devices" position="center,center" size="860,850">
     <widget source="TunerHeader" render="Label" position="47,15" size="760,40" font="Bold; 23" transparent="0" zPosition="1" halign="left" foregroundColor="lemon" />

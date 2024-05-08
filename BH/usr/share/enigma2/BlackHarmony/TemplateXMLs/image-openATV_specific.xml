@@ -564,7 +564,7 @@
     </widget>
     <widget name="datetime" position="520,30" size="290,30" font="Roboto_HD; 27" transparent="1" noWrap="1" valign="top" halign="left" />
     <widget name="duration" position="820,30" size="200,30" font="Roboto_HD; 27" transparent="1" noWrap="1" valign="top" halign="left" />
-    <widget name="FullDescription" position="45,85" size="1410,210" font="Regular; 26" transparent="1" text="to jest przykladowy tekst do tego co tu bedzie sie wyswietlac" />
+    <widget name="epg_description" position="45,85" size="1410,210" font="Regular; 26" transparent="1"/>
   </screen>
   <screen name="SystemMemoryInfo" position="center,center" size="560,450">
     <widget source="lab1" render="Label" position="0,0" size="560,25" font="Boldit;24" transparent="0" zPosition="2" />
