@@ -15601,9 +15601,10 @@ class pageParser(CaptchaHelper):
         if url == '':
             url = self.cm.ph.getSearchGroups(data, '''file[^'^"]*?['"]([^'^"]+?)['"]''')[0]
         urlTab = []
+#        url = urlparser.decorateUrl(url, {'iptv_proto': 'm3u8', 'external_sub_tracks': subTracks, 'User-Agent': urlParams['header']['User-Agent'], 'Referer': cUrl, 'Origin': urlparser.getDomain(cUrl, False)})
         url = urlparser.decorateUrl(url, {'iptv_proto': 'm3u8', 'external_sub_tracks': subTracks, 'User-Agent': urlParams['header']['User-Agent'], 'Referer': cUrl, 'Origin': urlparser.getDomain(cUrl, False)})
         if url != '':
-            urlTab.extend(getDirectM3U8Playlist(url, cookieParams={'header': urlParams['header']}))
+            urlTab.extend(getDirectM3U8Playlist(url))
 
         return urlTab
 
