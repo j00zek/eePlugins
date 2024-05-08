@@ -72,6 +72,7 @@ def restart():
 
 def executescript(script):
     """Execute a python script."""
+    log("xbmc.executescript(%s)" % script)
     runScript(script)
 
 def executebuiltinX(function):
@@ -81,8 +82,10 @@ def executebuiltinX(function):
 #plugin://plugin.video.covenant/?action=moviePage&url=http%3A%2F%2Fapi.trakt.tv%2Fsearch%2Fmovie%3Flimit%3D20%26page%3D1%26query%3Dwonder%2Bwoman
 def executebuiltin(function):
     """Execute a built in XBMC function."""
-    if not "Container.Update" in function:
-        log("executebuiltin(%s) missing 'Container.Update' in function")
+    if "Container.Update" in function:
+        log("xbmc.executebuiltin('Container.Update') requested, do nothing")
+    elif "Container.Refresh" in function:
+        log("xbmc.executebuiltin('Container.Refresh') requested, do nothing")
     else:    
         n1 = function.find("(", 0)
         n2 = function.find(")", n1)
@@ -92,8 +95,8 @@ def executebuiltin(function):
         arg1 = sys.argv[0]
         arg2 = sys.argv[1]  
         cmd = "python " + arg1 + " " + arg2 + " '" + arg3 + "' &"
-        log("executebuiltin(%s) cmd = '%s'" % (function, cmd) )
-        os.system(cmd)
+        log("possible... xbmc.executebuiltin(%s) cmd = '%s'" % (function, cmd) )
+        #os.system(cmd)
         
 def executehttpapi(httpcommand):
     """Execute an HTTP API command."""

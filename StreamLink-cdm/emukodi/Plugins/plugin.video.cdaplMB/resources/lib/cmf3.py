@@ -36,12 +36,12 @@ USERAGENT = "Mozilla/5.0 (Windows NT 6.2; Win64; x64; rv:16.0.1) Gecko/20121011 
 if hasattr(sys.modules["__main__"], "xbmc"):
     xbmc = sys.modules["__main__"].xbmc
 else:
-    import xbmc
+    from emukodi import xbmc
 
 if hasattr(sys.modules["__main__"], "xbmcgui"):
     xbmcgui = sys.modules["__main__"].xbmcgui
 else:
-    import xbmcgui
+    from emukodi import xbmcgui
 
 if hasattr(sys.modules["__main__"], "dbg"):
     dbg = sys.modules["__main__"].dbg
@@ -555,4 +555,4 @@ def log(description, level=0):
         try:
             xbmc.log(("[%s] %s : '%s'" % (plugin, inspect.stack()[1][3], description)).decode("utf-8"), xbmc.LOGNOTICE)
         except:
-            xbmc.log("FALLBACK [%s] %s : '%s'" % (plugin, inspect.stack()[1][3], repr(description)), xbmc.LOGNOTICE)
+            xbmc.log("FALLBACK [%s] %s : '%s'" % (plugin, inspect.stack()[1][3], repr(description)), xbmc.LOGNOTICE) 

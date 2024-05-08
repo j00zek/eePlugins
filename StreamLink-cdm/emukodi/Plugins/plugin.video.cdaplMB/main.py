@@ -1,4 +1,8 @@
-# -*- coding: UTF-8 -*-
+#!//usr/bin/python
+# -*- coding: utf-8 -*-
+#
+########## plugin.video.cdaplMB by mbebe licensed under GNU GENERAL PUBLIC LICENSE. Version 2, June 1991 ##########
+# minor changes for emukodi j00zek
 
 import sys, os, re, json, base64, math, random
 
@@ -19,12 +23,13 @@ else:
     from resources.lib.cmf2 import parseDOM
 
 
-import xbmc, xbmcvfs
+from emukodi import xbmc
+from emukodi import xbmcvfs
 
 import requests
-import xbmcgui
-import xbmcplugin
-import xbmcaddon
+from emukodi import xbmcgui
+from emukodi import xbmcplugin
+from emukodi import xbmcaddon
 
 import inputstreamhelper
 
@@ -257,7 +262,10 @@ def home():
         add_item('u', "Wideo użytkowników", 'DefaultMovies.png', "listcontent", True) 
     
         add_item('', '[COLOR lightblue]Szukaj[/COLOR]', 'DefaultAddonsSearch.png', "search", True)    
+
+        addon.setSetting('login_info','cda: zalogowano jako %s'%(str(profil))) #j00zek for SL
     else:
+        addon.setSetting('login_info','zaloguj') #j00zek for SL
         add_item('', 'Zaloguj', 'DefaultMovies.png', "logowanie", False)
     xbmcplugin.endOfDirectory(addon_handle)
  
