@@ -85,13 +85,21 @@ class Addon:
         lines = []
         lines = f.splitlines()
         for line in lines:
-#            pass#print("In xbmcaddon-py line =", line)
+            #print("In xbmcaddon-py line =", line)
             if str(item) in line:
-                pass#print("In xbmcaddon-py line B=", line)
-                n2 = line.find(" default", 0)
+                if 'type="folder"' in line:
+                    if 'source="working_dir"' in line:
+                        xtxt = xbmcE2.working_dir
+                        #print('source=',xtxt)
+                        return str(xtxt)
+                    else:
+                        n2 = line.find(" source=", 0)
+                else:
+                    n2 = line.find(" default", 0)
                 n3 = line.find('"', n2)
                 n4 = line.find('"', (n3+1))
                 xtxt = line[(n3+1):n4]
+                #print("In xbmcaddon-py line B=", line, 'xtxt=', xtxt)
                 break
 
         ##print("In xbmcaddon xtxt B=", xtxt)

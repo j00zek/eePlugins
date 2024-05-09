@@ -119,6 +119,7 @@ class emukodiConsole(Screen):
 
     def dataAvail(self, myText):
         myText =  ensure_str(myText)
+        myText = myText.replace('Dialog().Notification:','').replace(", 'info', None",'')
         #lastpage = self["text"].isAtLastPage()
         tmpText = self["text"].getText()
         #printDBG('>>>>> linii w buforze: %s\n' % tmpText.count('\n'))

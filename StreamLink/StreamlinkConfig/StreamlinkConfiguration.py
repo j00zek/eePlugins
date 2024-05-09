@@ -196,18 +196,20 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                     DBGlog('NO /usr/lib/python3.12/site-packages/emukodi/ExtPlayer/')
                     Mlist.append(getConfigListEntry('\c00981111' + "*** Brak wsparcia DRM, moduł streamlink-cdm nie zainstalowany ***", config.plugins.streamlinkSRV.Five))
                 else:
-                    retVal = None
+                    cdmStatus = None
                     try:
                         from  pywidevine.cdmdevice.checkCDMvalidity import testDevice
-                        retVal = testDevice()
-                        DBGlog('retVal = "%s"' % retVal)
+                        cdmStatus = testDevice()
+                        DBGlog('cdmStatus = "%s"' % cdmStatus)
                     except Exception as e: 
                         DBGlog(str(e))
                         Mlist.append(getConfigListEntry('\c00981111' + "*** Błąd ładowania modułu urządzenia cdm ***", config.plugins.streamlinkSRV.Five))
+                        self.VisibleSection = 0
 
-                    if retVal is None:
+                    if cdmStatus is None:
                         Mlist.append(getConfigListEntry('\c00981111' + "*** Błąd sprawdzania urządzenia cdm ***", config.plugins.streamlinkSRV.Five))
-                    elif not retVal:
+                        self.VisibleSection = 0
+                    elif not cdmStatus:
                         Mlist.append(getConfigListEntry('\c00ff9400' + "*** Limitowane wsparcie DRM ***", config.plugins.streamlinkSRV.Five))
                     else:
                         Mlist.append(getConfigListEntry('\c00289496' + "*** Pełne wsparcie DRM ***", config.plugins.streamlinkSRV.Five))
@@ -216,14 +218,14 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                             os.system('mkdir -p /etc/streamlink/%s' % cfgFile)
                     if self.VisibleSection == 5:
                         # !!!!!!!!!!!!!!!!!!!!!!!!! CDA ############################
-                        if config.plugins.streamlinkSRV.IPTVdrmMoviePlayer.value == 'Y':
+                        if cdmStatus == True:
                             for cfgFile in ['refr_token', 'username', 'password']:
                                 if not os.path.exists('/etc/streamlink/cdaplMB/%s' % cfgFile): os.system('touch /etc/streamlink/cdaplMB/%s' % cfgFile)
                             if open('/etc/streamlink/cdaplMB/username','r').read().strip() == '':
                                 Mlist.append(getConfigListEntry( 'cda: Brak danych w /etc/streamlink/cdaplMB/username' , config.plugins.streamlinkSRV.streamlinkconfig))
                             elif open('/etc/streamlink/cdaplMB/password','r').read().strip() == '':
                                 Mlist.append(getConfigListEntry( 'cda: Brak danych w /etc/streamlink/cdaplMB/password' , config.plugins.streamlinkSRV.streamlinkconfig))
-                            if open('/etc/streamlink/cdaplMB/refr_token','r').read().strip() == '':
+                            elif open('/etc/streamlink/cdaplMB/refr_token','r').read().strip() == '':
                                 emuKodiCmdsList = []
                                 pythonRunner = '/usr/bin/python'
                                 addonScript = 'plugin.video.cdaplMB/main.py'
@@ -242,11 +244,10 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                                 pythonRunner = '/usr/bin/python'
                                 addonScript = 'plugin.video.cdaplMB/main.py'
                                 runAddon = '%s %s' % (pythonRunner, os.path.join(addons_path, addonScript))
-                                emuKodiCmdsList.append(runAddon + " '1' '?mode=listtv' 'resume:false'") #ustawienie flagi logged, wymagane przez wtyczke
-                                #emuKodiCmdsList.append(runAddon + " '1' ' ' 'resume:false'")
+                                emuKodiCmdsList.append(runAddon + " '1' '?image=DefaultMovies.png&mode=listM3U&moviescount=0&page=1&title=CDA%20TV%20-%20Telewizja%20Online&url' 'resume:false'")
                                 autoClose = True #ustawienie parametrow w zaleznoci od akcji
                                 webServer = ''
-                                Mlist.append(getConfigListEntry( _("Press OK to create bouquet for") + ' cda' , config.plugins.streamlinkSRV.streamlinkEMUKODIconfig, ('cdaplMB', 'listtv', emuKodiCmdsList, autoClose, webServer, addonScript)))
+                                Mlist.append(getConfigListEntry( _("Press OK to create bouquet for") + ' cda' , config.plugins.streamlinkSRV.streamlinkEMUKODIconfig, ('cdaplMB', 'userbouquet', emuKodiCmdsList, autoClose, webServer, addonScript)))
                         else:
                             Mlist.append(getConfigListEntry( "cda NIE wspierane na tej wersji DRM", config.plugins.streamlinkSRV.streamlinkconfig))
                         
@@ -274,7 +275,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                                 Mlist.append(getConfigListEntry(_("Press OK to create %s bouquet") % "playerpl" , 
                                             config.plugins.streamlinkSRV.streamlinkEMUKODIconfig, ('playermb', 'userbouquet', emuKodiCmdsList, autoClose, webServer, addonScript)))
                         # !!!!!!!!!!!!!!!!!!!!!!!!! POLSAT ############################
-                        if config.plugins.streamlinkSRV.IPTVdrmMoviePlayer.value == 'Y':
+                        if cdmStatus == True:
                             for cfgFile in ['logged', 'username', 'password']:
                                 if not os.path.exists('/etc/streamlink/pgobox/%s' % cfgFile): os.system('touch /etc/streamlink/pgobox/%s' % cfgFile)
                             if open('/etc/streamlink/pgobox/username','r').read().strip() == '':
@@ -288,7 +289,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                         else:
                             Mlist.append(getConfigListEntry( "polsatgo NIE wspierany na tej wersji DRM", config.plugins.streamlinkSRV.streamlinkconfig))
                         # !!!!!!!!!!!!!!!!!!!!!!!!! canalplus ############################
-                        if config.plugins.streamlinkSRV.IPTVdrmMoviePlayer.value == 'Y':
+                        if cdmStatus == True:
                             for cfgFile in ['passId', 'username', 'password', 'logged']:
                                 if not os.path.exists('/etc/streamlink/canalplusvod/%s' % cfgFile): os.system('touch /etc/streamlink/canalplusvod/%s' % cfgFile)
                             if open('/etc/streamlink/canalplusvod/username','r').read().strip() == '':

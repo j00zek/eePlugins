@@ -74,6 +74,12 @@ librtmp = False
 
 # added functions
 
+def ensure_str(string2decode):
+    if isinstance(string2decode, bytes):
+        return string2decode.decode('utf-8', 'ignore')
+    else:
+        return string2decode
+
 def setargv(argv):
     pass
 
@@ -200,114 +206,98 @@ def addDirectoryItem(handle, url, listitem, totalItems=40, isFolder=True):
     xbmcE2.writeState('xbmcplugin', 'addDirectoryItem', 'append', "&" + getdata(listitem) + "&url=" + url + '\n')
 
 def getdata(listitem):
-              pass#print("Here in getdata 1")
-              dataA = listitem.data
-              thumbnailImage = dataA['thumbnailImage']
-              label = dataA['label']
-              try:
-                  if (label is None) or (label=="0"):
-                     label = dataA['Title']
-              except:       
-                  pass  
-              pass#print("Here in getdata label =", label)
-              path = dataA['path']
-              label2 = dataA['label2']
-              iconImage = dataA['iconImage']
+    dataA = listitem.data
+    thumbnailImage = dataA['thumbnailImage']
+    label = dataA['label']
+    try:
+        if (label is None) or (label=="0"):
+            label = dataA['Title']
+    except:       
+        pass  
+    #print("Here in getdata label =", label, type(label))
+    path = dataA['path']
+    label2 = dataA['label2']
+    iconImage = dataA['iconImage']
               
-              if label is None:
-                      label = " "
-              if thumbnailImage is None:
-                      thumbnailImage = "DefaultFolder.png"
-              if path is None:
-                      path= " "
-              if label2 is None:
-                      label2 = " "
-              if iconImage is None:
-                      iconImage = " "
+    if label is None:
+        label = " "
+    if thumbnailImage is None:
+        thumbnailImage = "DefaultFolder.png"
+    if path is None:
+        path= " "
+    if label2 is None:
+        label2 = " "
+    if iconImage is None:
+        iconImage = " "
 
-              if (".jpg" not in thumbnailImage) and (".png" not in thumbnailImage):
-                      thumbnailImage = "DefaultFolder.png"
+    if (".jpg" not in thumbnailImage) and (".png" not in thumbnailImage):
+        thumbnailImage = "DefaultFolder.png"
               
-              if thumbnailImage is not None:
-                      thumbnailImage = thumbnailImage.replace(" ", "%20")
-                      thumbnailImage = thumbnailImage.replace("&", "AxNxD")
-                      thumbnailImage = thumbnailImage.replace("=", "ExQ")
-              if label is None:
-                      label = label2        
-              if label is not None:
-                      label = label.replace(" ", "-")
-                      label = label.replace("&", "AxNxD")
-                      label = label.replace("=", "ExQ")
-              if path is not None:
-                  if '|' in path:
-                      path,headers = path.split('|')
-#                      path = path.replace(" ", "-")
-                      path = path.replace("&", "AxNxD")
-                      path = path.replace("=", "ExQ")
-#              pass#print("path =", path)
-#              pass#print("label =", label)
-              i = 0
-              col = ""
-              while i < 4:
-                     n1 = path.find("[COLOR", 0)
-                     if n1 > -1:
-                            n2 = path.find("]", n1)
-                            col = path[n1:(n2+1)]
-                            path = path.replace(col, "")
-                            i = i+1
-                     else:
-                            i = i+1
-                            continue 
-              path = path.replace("[/COLOR]", "")
-              path = path.replace("[B]", "")                
-              path = path.replace("[/B]", "")
-              path = path.replace(">", "")
+    if thumbnailImage is not None:
+        thumbnailImage = thumbnailImage.replace(" ", "%20")
+        thumbnailImage = thumbnailImage.replace("&", "AxNxD")
+        thumbnailImage = thumbnailImage.replace("=", "ExQ")
+    if label is None:
+        label = label2        
+    else:
+        label = ensure_str(label)
+        label = label.replace(" ", "-")
+        label = label.replace("&", "AxNxD")
+        label = label.replace("=", "ExQ")
+    if path is not None:
+        if '|' in path:
+            path,headers = path.split('|')
+            path = path.replace("&", "AxNxD")
+            path = path.replace("=", "ExQ")
+    i = 0
+    col = ""
+    while i < 4:
+        n1 = path.find("[COLOR", 0)
+        if n1 > -1:
+            n2 = path.find("]", n1)
+            col = path[n1:(n2+1)]
+            path = path.replace(col, "")
+            i = i+1
+        else:
+            i = i+1
+            continue 
+    path = path.replace("[/COLOR]", "")
+    path = path.replace("[B]", "")                
+    path = path.replace("[/B]", "")
+    path = path.replace(">", "")
                                                     
-              i = 0
-              col = ""
-              while i < 4:
-                     n1 = label.find("[COLOR", 0)
-                     if n1 > -1:
-                            n2 = label.find("]", n1)
-                            col = label[n1:(n2+1)]
-                            label = label.replace(col, "")
-                            i = i+1
-                     else:
-                            i = i+1
-                            continue 
-              label = label.replace("[/COLOR]", "")
-              label = label.replace("[B]", "")                
-              label = label.replace("[/B]", "")
-              label = label.replace(">", "")               
-#              pass#print("path B=", path)
-#              pass#print("label B=", label)
-#              if "plugin://" in path:
-              path = path.replace("plugin://", "/usr/lib/enigma2/python/Plugins/Extensions/KodiLite/plugins/")
-              path = path.replace("?", "default.py?")  
-              if label is None:
-                      label = "Video"                                          
-              if (path != "path"):
-                      data = "name=" + str(label) + "&url=" + str(path) + "&thumbnailImage=" + str(thumbnailImage) + "&iconlImage=" + str(iconImage)
-              else:
-                      data = "name=" + str(label) + "&thumbnailImage=" + str(thumbnailImage) + "&iconImage=" + str(iconImage)
-              i = 0
-              col = ""
+    i = 0
+    col = ""
+    while i < 4:
+        n1 = label.find("[COLOR", 0)
+        if n1 > -1:
+            n2 = label.find("]", n1)
+            col = label[n1:(n2+1)]
+            label = label.replace(col, "")
+            i = i+1
+        else:
+            i = i+1
+            continue 
+    label = label.replace("[/COLOR]", "")
+    label = label.replace("[B]", "")                
+    label = label.replace("[/B]", "")
+    label = label.replace(">", "")               
+    path = path.replace("plugin://", xbmcE2.emukodi_path)
+    path = path.replace("?", "default.py?")  
+    if label is None:
+        label = "Video"                                          
+    if (path != "path"):
+        data = "name=" + str(label) + "&url=" + str(path) + "&thumbnailImage=" + str(thumbnailImage) + "&iconlImage=" + str(iconImage)
+    else:
+        data = "name=" + str(label) + "&thumbnailImage=" + str(thumbnailImage) + "&iconImage=" + str(iconImage)
+    i = 0
+    col = ""
 
-              data = data.replace("[/COLOR]", "")
-              data = data.replace("[B]", "")                
-              data = data.replace("[/B]", "")
-              data = data.replace("\n", "")
-              if os.path.exists("/etc/debugxb"):
-                  try:
-                      pass#print("In xbmcgui Kodi data =", data)
-                      pass#print("<<<")
-                  except:        
-                      pass
-#              file = open("/tmp/data.txt", "a")
-#              file.write(data)
-#              file.close()
-#              self.data = data
-              return data
+    data = data.replace("[/COLOR]", "")
+    data = data.replace("[B]", "")                
+    data = data.replace("[/B]", "")
+    data = data.replace("\n", "")
+    return data
               
 
 def addDirectoryItems(handle, items, totalItems=40):

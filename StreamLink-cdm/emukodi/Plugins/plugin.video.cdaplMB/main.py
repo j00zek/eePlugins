@@ -3,6 +3,8 @@
 #
 ########## plugin.video.cdaplMB by mbebe licensed under GNU GENERAL PUBLIC LICENSE. Version 2, June 1991 ##########
 # minor changes for emukodi j00zek
+import warnings
+warnings.filterwarnings('ignore', message='Unverified HTTPS request')
 
 import sys, os, re, json, base64, math, random
 
@@ -507,6 +509,7 @@ def listM3U():
     response = getJson(url=url, auth=True)
     channels = response.get("channels",None)
     data = '#EXTM3U\n'
+    dataE2 = '' #j00zek for E2 bouquets
     for c in channels:
         manifest_dash = c.get("manifest_dash",None)
         if not manifest_dash:
@@ -515,11 +518,16 @@ def listM3U():
         cid=c['number']
         img=c['logo_light']
         data += '#EXTINF:0 tvg-id="%s" tvg-logo="%s" group-title="CDA" ,%s\nplugin://plugin.video.cdaplMB?mode=play_tv&cid=%s\n' %(chName,img,chName,cid)
-    
-    f = xbmcvfs.File(path_m3u + file_name, 'w')
+        dataE2 += 'http%3a//plugin.video.cdaplMB%3fmode=play_tv&cid=' + '%s:%s\n' % (cid, chName) #j00zek for E2 bouquets
+    f = xbmcvfs.File(os.path.join(path_m3u, file_name), 'w') #j00zek use join instead of +
     f.write(data)
     f.close()
     xbmcgui.Dialog().notification('CDA', 'Wygenerowano listę M3U', xbmcgui.NOTIFICATION_INFO)
+
+    f = xbmcvfs.File(os.path.join(path_m3u, 'iptv.e2b'), 'w') #j00zek for E2 bouquets
+    f.write(dataE2)
+    f.close()
+    xbmcgui.Dialog().notification('CDA', 'Wygenerowano listę E2B', xbmcgui.NOTIFICATION_INFO)
 
 def play_tv(cid):
     url = 'https://api.cda.pl/tv/channels'
