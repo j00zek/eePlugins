@@ -1730,17 +1730,19 @@
     <widget name="menu" position="65,140" size="1095,640" font="Roboto_HD; 27" itemHeight="40" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_1095_40.png" backgroundColor="black" transparent="1" />
   </screen>
 <!--s4aUpdater-->
-  <screen name="s4aUpdater" position="345,93" size="1232,908" title="s4aUpdater" flags="wfNoBorder" backgroundColor="transparent">
+    <screen name="s4aUpdater" position="center,center" size="1232,908" title="s4aUpdater" flags="wfNoBorder" backgroundColor="black">
     <ePixmap position="0,0" zPosition="-10" size="1232,908" pixmap="BlackHarmony/bg_design/mainbg.png" />
-    <widget source="global.CurrentTime" render="Label" position="40,28" size="110,60" font="Cyfry; 50" backgroundColor="font_light_grey" transparent="1" foregroundColor="font_1">
+    <widget source="global.CurrentTime" render="Label" position="40,25" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <widget source="global.CurrentTime" render="Label" position="140,22" size="200,60" font="Cyfry; 50" foregroundColor="data" backgroundColor="font_light_grey" transparent="1" valign="center">
-      <convert type="ClockToText">Format:%d.%m.%Y</convert>
+    <widget source="global.CurrentTime" render="Label" position="125,25" size="460,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
     </widget>
-    <widget source="Title" render="Label" position="560,30" size="620,60" font="Roboto_HD; 34" halign="right" backgroundColor="font_light_grey" transparent="1" foregroundColor="dark_grey" />
+    <widget source="Title" render="Label" position="560,30" size="620,60" font="Roboto_HD; 34" halign="right" backgroundColor="black" transparent="1" foregroundColor="lemon" />
     <widget name="menu" position="65,140" size="1095,640" font="Roboto_HD; 27" itemHeight="40" enableWrapAround="1" scrollbarWidth="10" scrollbarBorderWidth="1" scrollbarForegroundColor="#e6e6e6" scrollbarBorderColor="#3b3e3f" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_1095_40.png" backgroundColor="black" transparent="1" />
-  </screen>
+    <ePixmap pixmap="BlackHarmony/buttons/key_ok.png" position="1050,849" size="60,30" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_exit.png" position="1127,849" size="60,30" alphatest="blend"/>
+ </screen>
   <!--NewVirtualKeyBoard by jac555-->
 <screen name="NewVirtualKeyBoard" position="center,476" size="1920,630" title="NewVirtualKeyBoard" backgroundColor="#34000000" flags="wfNoBorder">
         <eLabel position="450,21" size="1020,72" backgroundColor="#16000000" transparent="0"/>
