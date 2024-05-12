@@ -1,58 +1,26 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.module.inputstreamhelper" name="InputStream Helper" version="0.6.1+matrix.1" provider-name="emilsvennesson, dagwieers, mediaminister, horstle">
-  <requires>
-    <!--py3 compliant-->
-    <import addon="xbmc.python" version="3.0.0"/>
-    <import addon="script.module.pysocks" version="1.6.8" optional="true"/>
-  </requires>
-  <!-- This is needed to get an add-on icon -->
-  <extension point="xbmc.python.script" library="default.py">
-    <provides>executable</provides>
-  </extension>
-  <extension point="xbmc.python.module" library="lib"/>
-  <extension point="xbmc.addon.metadata">
-    <summary lang="de_DE">Kodi InputStream und DRM Wiedergabe einfach gemacht</summary>
-    <summary lang="el_GR">Βοηθός Inputstream για το Kodi και εύκολη αναπαραγωγή DRM</summary>
-    <summary lang="en_GB">Kodi InputStream and DRM playback made easy</summary>
-    <summary lang="es_ES">Kodi InputStream y reproducción DRM echa fácil</summary>
-    <summary lang="fr_FR">La lecture Kodi InputStream et DRM en toute simplicité</summary>
-    <summary lang="hr_HR">Kodi InputStream olakšava reprodukciju DRM zaštićenog sadržaja</summary>
-    <description lang="de_DE">Dieses einfache Kodi-Modul macht das Leben für Addon Entwickler einfacher, die auf InputStream basierte Addons und DRM Wiedergabe angewiesen sind.</description>
-    <description lang="el_GR">Μία απλή μονάδα για το Kodi η οποία διευκολύνει την ζωή των προγραμματιστών οι οποίοι εξαρτώνται από τα πρόσθετσ InputStream και αναπαραγωγή τύπου DRM.</description>
-    <description lang="en_GB">A simple Kodi module that makes life easier for add-on developers relying on InputStream based add-ons and DRM playback.</description>
-    <description lang="es_ES">Un módulo Kodi simple que hace la vida más fácil para los desarrolladores de complementos que dependen de complementos basados en InputStream y reproducción de DRM.</description>
-    <description lang="fr_FR">Un simple module Kodi qui simplifie la vie des développeurs de modules complémentaires en s’appuyant sur des modules complémentaires basés sur InputStream et sur la lecture de DRM.</description>
-    <description lang="hr_HR">Jednostavan Kodi modul koji olakšava razvijanje dodataka koji se temelje na InputStream dodatku i reprodukciji DRM zaštićenog sadržaja.</description>
-    <description lang="ru_RU">Простой модуль для Kodi, который облегчает жизнь разработчикам дополнений, с использованием InputStream дополнений и воспроизведения DRM контента.</description>
-    <news>
-v0.6.1 (2023-05-30)
-- Performance improvements on Linux ARM
-- This will be the last release for Python 2 i.e. Kodi 18 (Leia) and below. The next release will require Python 3 and Kodi 19 (Matrix) or higher.
-
-v0.6.0 (2023-05-03)
-- Initial support for AARCH64 Linux
-- Initial support for AARCH64 Macs
-- New option to install a specific version on most platforms
-
-v0.5.10 (2022-04-18)
-- Fix automatic submission of release
-- Update German translation
-- Fix update_frequency setting
-- Fix install_from
-- Improve/Fix Widevine extraction from Chrome OS images
-
-v0.5.9 (2022-03-22)
-- Update Croatian translation
-- Replace deprecated LooseVersion
-- Fix http_get decode error
-- Option to install Widevine from specified source
-    </news>
-    <platform>all</platform>
-    <license>MIT</license>
-    <website>https://github.com/emilsvennesson/script.module.inputstreamhelper/wiki</website>
-    <source>https://github.com/emilsvennesson/script.module.inputstreamhelper</source>
-    <assets>
-      <icon>resources/icon.png</icon>
-    </assets>
-  </extension>
-</addon>
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+    <category label="30900"> <!-- Expert -->
+        <setting id="disabled" type="bool" default="false"/>
+        <setting id="last_modified" default="0.0" visible="false"/>
+        <setting id="last_check" default="0.0" visible="false"/>
+        <setting id="update_declined_at" default="0.0" visible="false"/>
+        <setting id="version" default="" visible="false"/>
+        <setting label="30901" help="30902" type="action" action="RunScript(script.module.inputstreamhelper, info)"/>
+        <setting type="sep"/>
+        <setting label="30903" help="30904" type="bool" id="disabled" default="false" visible="false"/>
+        <setting label="30905" help="30906" type="slider" id="update_frequency" default="31" range="1,3,90" option="int" enable="eq(-1,false)" visible="![System.Platform.Android | String.StartsWith(System.BuildVersion, 17)]"/>
+        <setting label="30907" help="30908" type="folder" id="temp_path" source="" option="writeable" default="special://masterprofile/addon_data/script.module.inputstreamhelper" visible="![System.Platform.Android | String.StartsWith(System.BuildVersion, 17)]"/>
+        <setting label="30913" help="30914" type="slider" id="backups" default="4" range="0,1,20" option="int" visible="![System.Platform.Android | String.StartsWith(System.BuildVersion, 17)]"/>
+        <setting type="sep" visible="![System.Platform.Android | String.StartsWith(System.BuildVersion, 17)]"/>
+        <setting label="30909" help="30910" type="action" action="RunScript(script.module.inputstreamhelper, widevine_install, True)" enable="String.StartsWith(System.BuildVersion,18) + System.HasAddon(inputstream.adaptive) | System.AddonIsEnabled(inputstream.adaptive)" visible="![System.Platform.Android | String.StartsWith(System.BuildVersion, 17)]"/>
+        <setting label="30911" help="30912" type="action" action="RunScript(script.module.inputstreamhelper, widevine_remove)" enable="String.StartsWith(System.BuildVersion,18) + System.HasAddon(inputstream.adaptive) | System.AddonIsEnabled(inputstream.adaptive)" visible="![System.Platform.Android | String.StartsWith(System.BuildVersion, 17)]"/>
+        <setting label="30915" help="30916" type="action" action="RunScript(script.module.inputstreamhelper, rollback)" enable="String.StartsWith(System.BuildVersion,18) + System.HasAddon(inputstream.adaptive) | System.AddonIsEnabled(inputstream.adaptive)" visible="![System.Platform.Android | String.StartsWith(System.BuildVersion, 17)]"/>
+    </category>
+    <category label="30950"> <!-- Debug -->
+        <setting label="30903" help="30904" type="bool" id="disabled" default="false"/>
+        <setting label="30904" type="text" enable="false"/> <!-- disabled_warning -->
+        <setting label="30955" help="30956" type="action" action="RunScript(script.module.inputstreamhelper, widevine_install_from)" enable="String.StartsWith(System.BuildVersion,18) + System.HasAddon(inputstream.adaptive) | System.AddonIsEnabled(inputstream.adaptive)" visible="![System.Platform.Android | String.StartsWith(System.BuildVersion, 17)]"/>
+        <setting label="30953" help="30954" type="text" id="image_url" subsetting="true" option="urlencoded" default="https://dl.google.com/dl/edgedl/chromeos/recovery/chromeos_14092.77.0_veyron-fievel_recovery_stable-channel_fievel-mp.bin.zip"/>
+    </category>
+</settings>

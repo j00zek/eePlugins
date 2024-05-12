@@ -29,7 +29,7 @@ import json
 
 version = "2.5.1"
 plugin = "CommonFunctions-" + version
-print(plugin)
+#print(plugin)
 
 USERAGENT = "Mozilla/5.0 (Windows NT 6.2; Win64; x64; rv:16.0.1) Gecko/20121011 Firefox/16.0.1"
 
@@ -318,7 +318,7 @@ def extractJS(data, function=False, variable=False, match=False, evaluate=False,
     for script in scripts:
         tmp_lst = []
         if function:
-            tmp_lst = re.compile(function + '\(.*?\).*?;', re.M | re.S).findall(script)
+            tmp_lst = re.compile(function + r'\(.*?\).*?;', re.M | re.S).findall(script)
         elif variable:
             tmp_lst = re.compile(variable + '[ ]+=.*?;', re.M | re.S).findall(script)            
         else:
@@ -348,9 +348,9 @@ def extractJS(data, function=False, variable=False, match=False, evaluate=False,
             log("Getting values %s" % lst[i])
             if function:
                 if evaluate: # include the ( ) for evaluation
-                    data = re.compile("(\(.*?\))", re.M | re.S).findall(lst[i])
+                    data = re.compile(r"(\(.*?\))", re.M | re.S).findall(lst[i])
                 else:
-                    data = re.compile("\((.*?)\)", re.M | re.S).findall(lst[i])
+                    data = re.compile(r"\((.*?)\)", re.M | re.S).findall(lst[i])
             elif variable:
                 tlst = re.compile(variable +".*?=.*?;", re.M | re.S).findall(lst[i])
                 data = []

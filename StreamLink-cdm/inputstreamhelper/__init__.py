@@ -47,15 +47,17 @@ class Helper:
         self.drm = drm
 
         from platform import uname
-        log(0, 'Platform information: {uname}', uname=uname())
+        log(4, 'Platform information: {uname}', uname=uname())
 
         if self.protocol not in config.INPUTSTREAM_PROTOCOLS:
+            log(4, 'UnsupportedProtocol')
             raise InputStreamException('UnsupportedProtocol')
 
         self.inputstream_addon = config.INPUTSTREAM_PROTOCOLS[self.protocol]
 
         if self.drm:
             if self.drm not in config.DRM_SCHEMES:
+                log(4, 'UnsupportedDRMScheme')
                 raise InputStreamException('UnsupportedDRMScheme')
 
             self.drm = config.DRM_SCHEMES[drm]
@@ -63,6 +65,7 @@ class Helper:
         # Add proxy support to HTTP requests
         proxies = get_proxies()
         if proxies:
+            log(4, 'if proxies:')
             try:  # Python 3
                 from urllib.request import build_opener, install_opener, ProxyHandler
             except ImportError:  # Python 2
@@ -136,6 +139,7 @@ class Helper:
         return True
 
     def _supports_widevine(self):
+        return True
         """Checks if Widevine is supported on the architecture/operating system/Kodi version."""
         if arch() not in config.WIDEVINE_SUPPORTED_ARCHS:
             log(4, 'Unsupported Widevine architecture found: {arch}', arch=arch())
@@ -413,6 +417,7 @@ class Helper:
             return False
 
     def check_inputstream(self):
+        return True #j00zek
         """Main function. Ensures that all components are available for InputStream add-on playback."""
         if get_setting_bool('disabled', False):  # blindly return True if helper has been disabled
             log(3, 'InputStreamHelper is disabled in its settings.xml.')

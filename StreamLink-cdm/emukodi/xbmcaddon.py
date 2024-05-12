@@ -232,4 +232,4 @@ class Addon:
             elif item == "id":
                 return id
         else:
-            return "xxx"
+            return "UNKNOWN ADDON"

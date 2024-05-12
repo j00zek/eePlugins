@@ -518,7 +518,7 @@ def listM3U():
         cid=c['number']
         img=c['logo_light']
         data += '#EXTINF:0 tvg-id="%s" tvg-logo="%s" group-title="CDA" ,%s\nplugin://plugin.video.cdaplMB?mode=play_tv&cid=%s\n' %(chName,img,chName,cid)
-        dataE2 += 'http%3a//plugin.video.cdaplMB%3fmode=play_tv&cid=' + '%s:%s\n' % (cid, chName) #j00zek for E2 bouquets
+        dataE2 += 'http%3a//plugin.video.cdaplMB/main.py%3fmode=play_tv&cid=' + '%s:%s\n' % (cid, chName) #j00zek for E2 bouquets
     f = xbmcvfs.File(os.path.join(path_m3u, file_name), 'w') #j00zek use join instead of +
     f.write(data)
     f.close()
@@ -834,7 +834,7 @@ def PlayVid(id,tv=False):
     else:
         abn=''
         jsdata=json.loads(id)
-        xbmc.log('AQQ: jsdata %r' % str(jsdata), xbmc.LOGWARNING)
+        xbmc.log('PlayVid: jsdata %r' % str(jsdata), xbmc.LOGWARNING)
         stream_url = jsdata.get('dash',None)
         lic_url = jsdata.get('widevine',None)
         drm_header_value = jsdata.get('drm_header_value',None)
@@ -884,11 +884,11 @@ def PlayVid(id,tv=False):
 
                 play_item.setProperty('inputstream.adaptive.license_key', lic_url+'|' + hea+'|R{SSM}|')
 
-                xbmc.log('AQQ: stream_url %r' % stream_url, xbmc.LOGWARNING)
-                xbmc.log('AQQ: manifest_type %r' % play_item.getProperty('inputstream.adaptive.manifest_type'), xbmc.LOGWARNING)
-                xbmc.log('AQQ: license_type %r' % play_item.getProperty('inputstream.adaptive.license_type'), xbmc.LOGWARNING)
-                xbmc.log('AQQ: license_key %r' % play_item.getProperty('inputstream.adaptive.license_key'), xbmc.LOGWARNING)
-                xbmc.log('AQQ: ==END==', xbmc.LOGWARNING)
+                xbmc.log('PlayVid: stream_url %r' % stream_url, xbmc.LOGWARNING)
+                xbmc.log('PlayVid: manifest_type %r' % play_item.getProperty('inputstream.adaptive.manifest_type'), xbmc.LOGWARNING)
+                xbmc.log('PlayVid: license_type %r' % play_item.getProperty('inputstream.adaptive.license_type'), xbmc.LOGWARNING)
+                xbmc.log('PlayVid: license_key %r' % play_item.getProperty('inputstream.adaptive.license_key'), xbmc.LOGWARNING)
+                xbmc.log('PlayVid: ==END==', xbmc.LOGWARNING)
 
     #xbmc.Player().play(stream_url,play_item)
     
@@ -975,7 +975,7 @@ def router(paramstring):
     
     if args:
         mode = args.get('mode', None)
-
+        
         if 'filtr' in mode:
             ff = mode.split(':')[1]
             if 'wer' in ff:
