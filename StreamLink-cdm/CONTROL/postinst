@@ -1,4 +1,11 @@
 #!/bin/sh
-ln -sf /usr/lib/python3.12/site-packages/emukodi/ExtPlayer /usr/lib/enigma2/python/Plugins/Extensions/ExtPlayer
+[ -e /usr/lib/enigma2/python/Plugins/Extensions/ExtPlayer ] || ln -sf /usr/lib/python3.12/site-packages/emukodi/ExtPlayer /usr/lib/enigma2/python/Plugins/Extensions/ExtPlayer
+chmod 755 /usr/lib/python3.12/site-packages/emukodi/emukodiSRV.py
+if [ ! -e /usr/sbin/emukodiSRV ];then
+  ln -sf /usr/bin/python /usr/sbin/cdsrmv
+  ln -sf /usr/lib/python3.12/site-packages/emukodi/emukodiSRV.py /usr/sbin/emukodiSRV
+  ln -sf /usr/sbin/emukodiSRV /etc/rc3.d/S50emukodiSRV
+  ln -sf /usr/sbin/emukodiSRV /etc/rc4.d/S50emukodiSRV
+fi
 
 exit 0

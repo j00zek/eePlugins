@@ -205,6 +205,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                         DBGlog(str(e))
                         Mlist.append(getConfigListEntry('\c00981111' + "*** Błąd ładowania modułu urządzenia cdm ***", config.plugins.streamlinkSRV.Five))
                         self.VisibleSection = 0
+                    open('/etc/streamlink/cdmStatus','w').write(str(cdmStatus))
 
                     if cdmStatus is None:
                         Mlist.append(getConfigListEntry('\c00981111' + "*** Błąd sprawdzania urządzenia cdm ***", config.plugins.streamlinkSRV.Five))
@@ -218,7 +219,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                             os.system('mkdir -p /etc/streamlink/%s' % cfgFile)
                     if self.VisibleSection == 5:
                         # !!!!!!!!!!!!!!!!!!!!!!!!! CDA ############################
-                        if cdmStatus == True:
+                        if 1: #cdmStatus == True:
                             for cfgFile in ['refr_token', 'username', 'password']:
                                 if not os.path.exists('/etc/streamlink/cdaplMB/%s' % cfgFile): os.system('touch /etc/streamlink/cdaplMB/%s' % cfgFile)
                             if open('/etc/streamlink/cdaplMB/username','r').read().strip() == '':
@@ -235,6 +236,8 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                                 webServer = ''
                                 Mlist.append(getConfigListEntry( "Zaloguj do cda", config.plugins.streamlinkSRV.streamlinkEMUKODIconfig, ('cdaplMB', 'logowanie', emuKodiCmdsList, autoClose, webServer, addonScript)))
                             else:
+                                if cdmStatus != True:
+                                    Mlist.append(getConfigListEntry('Limitowana obsługa CDA kanałów bez DRM'))
                                 if os.path.exists('/etc/streamlink/cdaplMB/login_info'):
                                     login_info = open('/etc/streamlink/cdaplMB/login_info','r').read().strip()
                                     if login_info != '':
