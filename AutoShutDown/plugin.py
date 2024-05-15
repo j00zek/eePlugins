@@ -238,11 +238,34 @@ class AutoShutDownActions:
         else:
             self.startKeyTimer()
     
+    def checkExtPlayer(self, checkOnly = False):
+        print("[AutoShutDown] checkExtPlayer >>>")
+        #czy dziala
+        retVal = False
+        for proc in os.listdir('/proc'):
+            procExe = os.path.join('/proc', proc, 'exe')
+            if os.path.exists(procExe):
+                procRealPath = os.path.realpath(procExe)
+                #if self.DBG: print('AQQ:', 'doJob()', procRealPath)
+                if 'exteplayer3' in procRealPath:
+                    print("[AutoShutDown] checkExtPlayer exteplayer3 found.")
+                    retVal = True
+                    break
+        if retVal and not checkOnly:#ubicie zewnętrznego player-a
+            print("[AutoShutDown] checkExtPlayer exteplayer3 killed. ")
+            self.clearCache()
+            os.system('/usr/bin/killall exteplayer3')
+        return retVal
+
+    def clearCache(self):
+        with open("/proc/sys/vm/drop_caches", "w") as f: f.write("1\n")
+
     def actionEndKeyTimer(self, res):
         if config.autoshutdown.play_media.value and os.path.exists(config.autoshutdown.media_file.value):
             session.nav.playService(self.oldservice)
         
         if res == True:
+            self.checkExtPlayer()
             if config.autoshutdown.inactivityaction.value == "standby":
                 print("[AutoShutDown] inactivity timer end => go to standby")
                 self.enterStandBy()
