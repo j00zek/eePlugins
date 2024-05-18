@@ -143,8 +143,11 @@ def getJson(url,post=None, params=None, auth=None, data=None):
     acc_token = addon.getSetting('acc_token')
     headers = {
     #'User-Agent': 'pl.cda 1.2 (version 1.2.115 build 16083; Android 9; Samsung SM-J330F)',
-    'User-Agent':'pl.cda.tv 1.0 (version 1.2.20 build 10619; Android 8.0.0; Unknown sdk_google_atv_x86)',
-    'Accept': 'application/vnd.cda.public+json',
+    #poniższe generuje jakis dziwny link bez cenc
+    #'User-Agent':'pl.cda.tv 1.0 (version 1.2.20 build 10619; Android 8.0.0; Unknown sdk_google_atv_x86)',
+    #ponizsze dziala popranie
+    'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+    'Accept': 'application/vnd.cda.public+json', #musi byc zeby sie zalogowac
     'Host': 'api.cda.pl',}
 
     if not auth:
