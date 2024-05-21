@@ -499,6 +499,7 @@ def generate_m3u(override=True):
         return
     xbmcgui.Dialog().notification('Player', 'Generuje liste M3U.', xbmcgui.NOTIFICATION_INFO)
     data = '#EXTM3U\n' if override else '\n'
+    dataE2 = '' #j00zek for E2 bouquets
     tvList = playerpl.getTvList()
     for item in tvList:
         if playerpl.is_allowed(item):
@@ -507,10 +508,16 @@ def generate_m3u(override=True):
             img = item['images']['pc'][0]['mainUrl']
             img = 'https:' + img if img.startswith('//') else img
             data += '#EXTINF:-1 tvg-logo="%s",%s\n%s?mode=playm3u&channelid=%s\n' % (img, title, base_url, id)
+            dataE2 += 'http%3a//wvd%3a8078/plugin.video.playermb/main.py%3fmode=playm3u&channelid=' + '%s:%s\n' % (id, title) #j00zek for E2 bouquets
     openMode = 'w' if override else 'a'
     with io.open(M3UPATH + M3UFILE, mode=openMode, encoding="utf-8") as f:
         f.write(data)
     xbmcgui.Dialog().notification('Player', 'Wygenerowano liste M3U.', xbmcgui.NOTIFICATION_INFO)
+    
+    f = xbmcvfs.File(os.path.join(path_m3u, 'iptv.e2b'), 'w') #j00zek for E2 bouquets
+    f.write(dataE2)
+    f.close()
+    xbmcgui.Dialog().notification('CDA', 'Wygenerowano listę E2B', xbmcgui.NOTIFICATION_INFO)
 
 
 class CountSubfolders(object):

@@ -521,7 +521,7 @@ def listM3U():
         cid=c['number']
         img=c['logo_light']
         data += '#EXTINF:0 tvg-id="%s" tvg-logo="%s" group-title="CDA" ,%s\nplugin://plugin.video.cdaplMB?mode=play_tv&cid=%s\n' %(chName,img,chName,cid)
-        dataE2 += 'http%3a//plugin.video.cdaplMB/main.py%3fmode=play_tv&cid=' + '%s:%s\n' % (cid, chName) #j00zek for E2 bouquets
+        dataE2 += 'http%3a//wvd%3a8078/plugin.video.cdaplMB/main.py%3fmode=play_tv&cid=' + '%s:%s\n' % (cid, chName) #j00zek for E2 bouquets
     f = xbmcvfs.File(os.path.join(path_m3u, file_name), 'w') #j00zek use join instead of +
     f.write(data)
     f.close()
