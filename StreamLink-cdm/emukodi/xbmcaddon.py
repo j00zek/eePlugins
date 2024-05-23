@@ -1,5 +1,5 @@
 # coding: utf-8
-import os, os.path, sys
+import os, os.path, sys, re
 import xml.etree.cElementTree 
 from streamlink.e2config import getE2config
 
@@ -78,15 +78,18 @@ class Addon:
             return ''
         
         f = open(xfile, 'r').read()
+        f = f.replace('\n', '').replace('\t', '').replace('<setting', '\n<setting') #usuniecie formatowania
         if item not in f:
             xbmcE2.log('xbmcaddon.getSetting(%s) missing in %s' % (id, xfile))
             return ""
-
+        
+        #testj00zka= self.openSettings()
         lines = []
         lines = f.splitlines()
         for line in lines:
             #print("In xbmcaddon-py line =", line)
             if str(item) in line:
+                #print("In xbmcaddon-py line =", line)
                 if 'type="folder"' in line:
                     if 'source="working_dir"' in line:
                         xtxt = xbmcE2.working_dir
@@ -94,12 +97,19 @@ class Addon:
                         return str(xtxt)
                     else:
                         n2 = line.find(" source=", 0)
+                elif re.findall('<default>[^<]*', line):
+                    retDefault =  re.findall('<default>[^<]*', line)[0].split('>')[1]
+                    if 'type="boolean"' in line and retDefault == 'false':
+                        retDefault = False
+                    elif 'type="boolean"' in line and retDefault == 'true':
+                        retDefault = True
+                    return retDefault
                 else:
                     n2 = line.find(" default", 0)
-                n3 = line.find('"', n2)
-                n4 = line.find('"', (n3+1))
-                xtxt = line[(n3+1):n4]
-                #print("In xbmcaddon-py line B=", line, 'xtxt=', xtxt)
+                    n3 = line.find('"', n2)
+                    n4 = line.find('"', (n3+1))
+                    xtxt = line[(n3+1):n4]
+                    #print("In xbmcaddon-py line B=", line, 'xtxt=', xtxt)
                 break
 
         ##print("In xbmcaddon xtxt B=", xtxt)
@@ -180,25 +190,26 @@ class Addon:
              
     # sometimes called with an arg, e.g veehd
     def openSettings(self, arg=None):
-          """get all settings."""
-          try:    
-                settings_xml=self.path + ".xml" 
-                pass#print("283",settings_xml)
-                tree = xml.etree.cElementTree.parse(settings_xml)
-                root = tree.getroot()
+        #print(self.path)
+        """get all settings."""
+        try:
+            settings_xml= os.path.join(self.path, "resources/settings.xml")
+            #print("283",settings_xml)
+            tree = xml.etree.cElementTree.parse(settings_xml)
+            root = tree.getroot()
                 
-                i=0
-                list=[]
-                for setting in root.iter('setting'):
-                           
-                            list.append((i,setting.attrib))##add dict for all settings in the line,i=line number
-                            i=i+1
-                pass#print("In openSettings list =",list)
-                return list  
-        #pass#print("*** openSettings ***")
-          except:
-                list=[]
-                return list
+            i=0
+            list=[]
+            for setting in root.iter('setting'):
+                #print(setting.tag)
+                list.append((i,setting.attrib))##add dict for all settings in the line,i=line number
+                i=i+1
+                #print("In openSettings list =",list)
+            return list  
+        #print("*** openSettings ***")
+        except:
+            list=[]
+            return list
                 
     def getAddonInfo(self, item):
         xbmcE2.log('xbmcaddon.getAddonInfo(%s)\n' % item)

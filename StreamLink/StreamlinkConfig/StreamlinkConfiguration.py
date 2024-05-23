@@ -278,19 +278,33 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                                 Mlist.append(getConfigListEntry(_("Press OK to create %s bouquet") % "playerpl" , 
                                             config.plugins.streamlinkSRV.streamlinkEMUKODIconfig, ('playermb', 'userbouquet', emuKodiCmdsList, autoClose, webServer, addonScript)))
                         # !!!!!!!!!!!!!!!!!!!!!!!!! POLSAT ############################
-                        if cdmStatus == True:
-                            for cfgFile in ['logged', 'username', 'password']:
+                        if 1:
+                            for cfgFile in ['logged', 'username', 'password', 'klient']:
                                 if not os.path.exists('/etc/streamlink/pgobox/%s' % cfgFile): os.system('touch /etc/streamlink/pgobox/%s' % cfgFile)
-                            if open('/etc/streamlink/pgobox/username','r').read().strip() == '':
+                            if open('/etc/streamlink/pgobox/klient','r').read().strip() == '':
+                                Mlist.append(getConfigListEntry( 'polsatgo: Ustaw typ logowania (polsatbox|iCOK) w /etc/streamlink/pgobox/klient' , config.plugins.streamlinkSRV.streamlinkconfig))
+                            elif open('/etc/streamlink/pgobox/username','r').read().strip() == '':
                                 Mlist.append(getConfigListEntry( 'polsatgo: Brak danych w /etc/streamlink/pgobox/username' , config.plugins.streamlinkSRV.streamlinkconfig))
                             elif open('/etc/streamlink/pgobox/password','r').read().strip() == '':
                                 Mlist.append(getConfigListEntry( 'polsatgo: Brak danych w /etc/streamlink/pgobox/password' , config.plugins.streamlinkSRV.streamlinkconfig))
                             elif open('/etc/streamlink/pgobox/logged','r').read().strip() != 'true':
-                                Mlist.append(getConfigListEntry( "Zaloguj do polsatgo", config.plugins.streamlinkSRV.streamlinkconfig))
+                                emuKodiCmdsList = []
+                                pythonRunner = '/usr/bin/python'
+                                addonScript = 'plugin.video.pgobox/main.py'
+                                runAddon = '%s %s' % (pythonRunner, os.path.join(addons_path, addonScript))
+                                emuKodiCmdsList.append(runAddon + " '1' ' ' 'resume:false'") #logowanie nastepuje bez podania trybu
+                                autoClose = True #ustawienie parametrow w zaleznoci od akcji
+                                webServer = ''
+                                Mlist.append(getConfigListEntry( "Zaloguj do polsatgo", config.plugins.streamlinkSRV.streamlinkEMUKODIconfig, ('pgobox', 'login', emuKodiCmdsList, autoClose, webServer, addonScript)))
                             else:
-                                Mlist.append(getConfigListEntry( _("Press OK to create bouquet for") + ': polsatgo' , config.plugins.streamlinkSRV.streamlinkDRMconfig, ('polsatgo', 'LOGIN')))
-                        else:
-                            Mlist.append(getConfigListEntry( "polsatgo NIE wspierany na tej wersji DRM", config.plugins.streamlinkSRV.streamlinkconfig))
+                                emuKodiCmdsList = []
+                                addonScript = 'plugin.video.pgobox/main.py'
+                                runAddon = '/usr/bin/python %s' % os.path.join(addons_path, addonScript)
+                                emuKodiCmdsList.append(runAddon + " '1' '?mode=build_m3u' 'resume:false'")
+                                autoClose = False #ustawienie parametrow w zaleznoci od akcji
+                                webServer = ''
+                                Mlist.append(getConfigListEntry(_("Press OK to create %s bouquet") % "polsatgo" , 
+                                            config.plugins.streamlinkSRV.streamlinkEMUKODIconfig, ('polsatgo', 'userbouquet', emuKodiCmdsList, autoClose, webServer, addonScript)))
                         # !!!!!!!!!!!!!!!!!!!!!!!!! canalplus ############################
                         if cdmStatus == True:
                             for cfgFile in ['passId', 'username', 'password', 'logged']:

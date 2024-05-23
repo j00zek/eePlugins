@@ -1,5 +1,8 @@
 # -*- coding: UTF-8 -*-
-from __future__ import absolute_import
+# minor changes for emukodi j00zek
+import warnings
+warnings.filterwarnings('ignore', message='Unverified HTTPS request')
+
 import sys, re, os
 
 try:
@@ -25,11 +28,11 @@ except AttributeError:
     # no pyopenssl support used / needed / available
     pass
 '''
-import xbmcgui
-import xbmcplugin
-import xbmcaddon
-import xbmc
-import xbmcvfs
+from emukodi import xbmcgui
+from emukodi import xbmcplugin
+from emukodi import xbmcaddon
+from emukodi import xbmc
+from emukodi import xbmcvfs
 
 import json
 
@@ -660,27 +663,27 @@ class IPLA(object):
         
     def newtime(self,ff):
         #2022-11-15T16:00:00Z
-        '''
-        from datetime import datetime
-        ff=re.sub(':\d+Z','',ff)
-        dd=re.findall('T(\d+)',ff)[0]
-        dzien=re.findall('(\d+)T',ff)[0]
-        dd='{:>02d}'.format(int(dd)+2)
-        if dd=='24':
-            dd='00'
-            dzien='{:>02d}'.format(int(dzien)+1)
-        if dd=='25':
-            dd='01'
-            dzien='{:>02d}'.format(int(dzien)+1)
-        ff=re.sub('(\d+)T(\d+)','%sT%s'%(dzien,int(dd)),ff)
-        
-        import time
-        try:
-            format_date=datetime.strptime(ff, '%Y-%m-%dT%H:%M')
-        except TypeError:
-            format_date=datetime(*(time.strptime(ff, '%Y-%m-%dT%H:%M')[0:6]))
-        dd= int('{:0}'.format(int(time.mktime(format_date.timetuple()))))
-        '''
+        #'''
+        #from datetime import datetime
+        #ff=re.sub(':\d+Z','',ff)
+        #dd=re.findall(r'T(\d+)',ff)[0]
+        #dzien=re.findall('(\d+)T',ff)[0]
+        #dd='{:>02d}'.format(int(dd)+2)
+        #if dd=='24':
+        #    dd='00'
+        #    dzien='{:>02d}'.format(int(dzien)+1)
+        #if dd=='25':
+        #    dd='01'
+        #    dzien='{:>02d}'.format(int(dzien)+1)
+        #ff=re.sub('(\d+)T(\d+)','%sT%s'%(dzien,int(dd)),ff)
+        #
+        #import time
+        #try:
+        #    format_date=datetime.strptime(ff, '%Y-%m-%dT%H:%M')
+        #except TypeError:
+        #    format_date=datetime(*(time.strptime(ff, '%Y-%m-%dT%H:%M')[0:6]))
+        #dd= int('{:0}'.format(int(time.mktime(format_date.timetuple()))))
+        #'''
         from datetime import datetime
         from datetime import timedelta
         import time
@@ -1115,44 +1118,38 @@ class IPLA(object):
             format_date=datetime.strptime(ab, '%Y-%m-%dT%H:%M:%SZ')
         except TypeError:
             format_date=datetime(*(time.strptime(ab, '%Y-%m-%dT%H:%M:%SZ')[0:6]))
-        '''
-        zz= int('{:0}'.format(int(time.mktime(format_date.timetuple()))))
-        
-        items={}
-        for kanal in kanaly:
-            
-            el1=''
-            if kanal in response['result']:
-                
-                dane=response['result'][kanal]
-                for i in range(len(dane)):
-                    try:
-
-                        nowy,format_date=self.newtime(dane[i]["startTime"])
-                        nowy2,format_date2=self.newtime(dane[i+1]["startTime"])
-                        trwa=nowy2-nowy
-                        if nowy<zz and nowy+trwa>zz:
-
-                            tyt=dane[i]["title"]
-                            tyt2=dane[i]["genre"]
-                            cc=re.sub(':\d+$','',str(format_date))
-                            el1+='[COLOR khaki]'+cc+'[/COLOR] - '+tyt+' [COLOR violet]('+tyt2+')[/COLOR][CR]'
-                        elif nowy>zz:
-
-                            tyt=dane[i]["title"]
-                            tyt2=dane[i]["genre"]
-                            cc=re.sub(':\d+$','',str(format_date))
-                            el1+='[COLOR khaki]'+cc+'[/COLOR] - '+tyt+' [COLOR violet]('+tyt2+')[/COLOR][CR]'
-                        
-                    except Exception as e:
-
-                        pass
-
-                    
-            else:
-                continue
-            items[kanal]=el1
-        '''
+        #'''
+        #zz= int('{:0}'.format(int(time.mktime(format_date.timetuple()))))
+        #
+        #items={}
+        #for kanal in kanaly:
+        #    
+        #    el1=''
+        #    if kanal in response['result']:
+        #        
+        #        dane=response['result'][kanal]
+        #        for i in range(len(dane)):
+        #            try:
+        #
+        #                nowy,format_date=self.newtime(dane[i]["startTime"])
+        #                nowy2,format_date2=self.newtime(dane[i+1]["startTime"])
+        #                trwa=nowy2-nowy
+        #                if nowy<zz and nowy+trwa>zz:
+        #                    tyt=dane[i]["title"]
+        #                    tyt2=dane[i]["genre"]
+        #                    cc=re.sub(':\d+$','',str(format_date))
+        #                    el1+='[COLOR khaki]'+cc+'[/COLOR] - '+tyt+' [COLOR violet]('+tyt2+')[/COLOR][CR]'
+        #                elif nowy>zz:
+        #                    tyt=dane[i]["title"]
+        #                    tyt2=dane[i]["genre"]
+        #                    cc=re.sub(':\d+$','',str(format_date))
+        #                    el1+='[COLOR khaki]'+cc+'[/COLOR] - '+tyt+' [COLOR violet]('+tyt2+')[/COLOR][CR]'
+        #            except Exception as e:
+        #                pass
+        #    else:
+        #        continue
+        #    items[kanal]=el1
+        #'''
         items={}
         for kanal in kanaly:
             el1=''
@@ -1163,7 +1160,7 @@ class IPLA(object):
                         tyt=dane[i]["title"]
                         tyt2=dane[i]["genre"]
                         format_date=self.newtime(dane[i]["startTime"])[1]
-                        cc=re.sub(':\d+$','',str(format_date))
+                        cc=re.sub(r':\d+$','',str(format_date))
                         desc=dane[i]["description"]
                         el1+='[COLOR khaki]'+cc+'[/COLOR] - '+tyt+' [COLOR violet]('+tyt2+')[/COLOR]\n[B]OPIS: [/B][I]'+desc+'[/I]\n[CR]'
                     except Exception as e:
@@ -1184,32 +1181,41 @@ class IPLA(object):
         return b
   
     def generate_m3u(self):
-        path = xbmcgui.Dialog().browse(0, 'Wybierz miejsce zapisu playlisty', 'files')
-        if path == '':
-            return
+        if 0: #disable for emukodi
+            path = xbmcgui.Dialog().browse(0, 'Wybierz miejsce zapisu playlisty', 'files')
+            if path == '':
+                return
 
-        filename = xbmcgui.Dialog().input('Ustaw nazwę pliku', type=xbmcgui.INPUT_ALPHANUM)
-        if filename == '':
-            return
+            filename = xbmcgui.Dialog().input('Ustaw nazwę pliku', type=xbmcgui.INPUT_ALPHANUM)
+            if filename == '':
+                return
+        else:
+            path = addon.getSetting('path_m3u')
+            filename = addon.getSetting('m3u_filename')
 
         xbmcgui.Dialog().notification('Polsat GO BOX', 'Generuje liste M3U', xbmcgui.NOTIFICATION_INFO)
         data = '#EXTM3U'
+        dataE2 = '' #j00zek for E2 bouquets
         for item in IPLA().getChannels():
-            
             channelid = item.get('url', None)
             if 'tv' not in channelid:
                 channelid+='%7Ctv'
             list_title = self.decode_byte(item.get('title', '')) + ' PL'
             title = self.decode_byte(item.get('title', ''))
             img = self.decode_byte(item.get('img', ''))
-
             data += '\n#EXTINF:-1,{}\nplugin://plugin.video.pgobox/?mode=playtvs&url={}&page=0&moviescount=0&movie=True&name={}&image={}'.format(list_title, channelid, title, img)
+            dataE2 += 'http%3a//wvd%3a8078/plugin.video.pgobox/main.py%3fmode=playtvs&url=' + '%s:%s\n' % (channelid, title) #j00zek for E2 bouquets
 
-        f = xbmcvfs.File(path+filename+'.m3u', 'w')
+        f = xbmcvfs.File(os.path.join(path, filename+'.m3u'), 'w')
         f.write(data)
         f.close()
         xbmcgui.Dialog().notification('Polsat GO BOX', 'Wygenerowano liste M3U', xbmcgui.NOTIFICATION_INFO)      
-        
+
+        f = xbmcvfs.File(os.path.join(addon.getSetting('path_m3u'), 'iptv.e2b'), 'w') #j00zek for E2 bouquets
+        f.write(dataE2)
+        f.close()
+        xbmcgui.Dialog().notification('Polsat GO BOX', 'Wygenerowano listę E2B', xbmcgui.NOTIFICATION_INFO)
+    
     def PlayIpla(self,id_,cpid=0):
         self.getSesja()
         acc=True
@@ -1338,6 +1344,7 @@ class IPLA(object):
 if __name__ == '__main__':
 
     mode = params.get('mode', None)
+    #print('mode =',mode)
     
     if not mode:
         
@@ -1393,6 +1400,7 @@ if __name__ == '__main__':
     elif mode == 'playtvs':
         if '_tv' in exlink:
             exlink=exlink.replace('_','|')
+        #print('exlink =',exlink)
         IPLA().PlayIpla(exlink)
     elif mode == 'listContent':
         ListContent(exlink,page)
