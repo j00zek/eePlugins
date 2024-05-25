@@ -1,4 +1,4 @@
-# coding: utf-8
+# coding: utf-8 
 import os, os.path, sys, re
 import xml.etree.cElementTree 
 from streamlink.e2config import getE2config
@@ -91,7 +91,7 @@ class Addon:
             if str(item) in line:
                 #print("In xbmcaddon-py line =", line)
                 if 'type="folder"' in line:
-                    if 'source="working_dir"' in line:
+                    if 'source="working_dir"' in line or 'source="auto"':
                         xtxt = xbmcE2.working_dir
                         #print('source=',xtxt)
                         return str(xtxt)

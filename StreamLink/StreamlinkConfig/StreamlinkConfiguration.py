@@ -727,6 +727,8 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
             if dostawca == 'pgobox' and akcja == 'login': pass
             if dostawca == 'pilot.wp' and akcja == 'login': pass
             elif akcja == 'userbouquet':
+                #pobranie swiezych definicji
+                os.system('wget https://raw.githubusercontent.com/azman26/EPGazman/main/azman_channels_mappings.py -O /usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/plugins/azman_channels_mappings.py')
                 plikBukietu = '/etc/enigma2/userbouquet.%s.tv' % dostawca
                 if os.path.exists(plikBukietu): MsgInfo = "Zaktualizować plik %s ?" % plikBukietu
                 else: MsgInfo = "Utworzyć plik %s ?" % plikBukietu
