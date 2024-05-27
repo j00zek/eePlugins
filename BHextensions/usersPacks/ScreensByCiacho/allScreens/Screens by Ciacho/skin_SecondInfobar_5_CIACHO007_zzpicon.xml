@@ -64,13 +64,13 @@
   <widget backgroundColor="background" font="HD_Thin; 30" foregroundColor="red" halign="left" noWrap="1" position="1722,615" render="j00zekModTypeLabel" size="130,36" source="session.Event_Next" transparent="1" typeCaret="1" typeRepeats="1" typeSpeed="700" typeStartDelay="2000" zPosition="1">
       <convert type="j00zekModEventName">Rating</convert>
     </widget>
-	
+        
 <widget source="session.CurrentService" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" position="920,845" zPosition="1" size="445,25" font="Roboto_HD; 20" halign="center" backgroundColor="black" transparent="1" foregroundColor="linie">
     <convert type="j00zekModExtraTuner">TunerInfo</convert>
   </widget>
 
   <!--##########################################-->
-  <ePixmap position="29,735" zPosition="-2" size="1860,298" pixmap="BlackHarmony/bg_design/infobar_zpicon_ciacho_1.png" />
+  <ePixmap position="29,735" zPosition="-2" size="1860,298" pixmap="BlackHarmony/allScreens/Screens by Ciacho/bg_design/infobar_zpicon_ciacho_1.png" />
   <eLabel backgroundColor="border" position="453,882" size="910,6" zPosition="0" />
   <ePixmap position="1400,825" zPosition="10" size="450,1" pixmap="BlackHarmony/gfx/linia_IB.png" />
   <ePixmap position="1400,910" zPosition="10" size="450,1" pixmap="BlackHarmony/gfx/linia_IB.png" />
