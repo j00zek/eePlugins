@@ -218,6 +218,8 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                         if not os.path.exists('/etc/streamlink/%s' % cfgFile):
                             os.system('mkdir -p /etc/streamlink/%s' % cfgFile)
                     if self.VisibleSection == 5:
+                        if os.path.exists('/usr/lib/enigma2/python/Plugins/Extensions/IPTVPlayer/plugin.pe2i'):
+                            Mlist.append(getConfigListEntry(r'\c00ffff00' + '!!!!! ZALECA się korzystanie z zainstalowanego e2iplayer-a autorstwa sss !!!!!'))
                         # !!!!!!!!!!!!!!!!!!!!!!!!! CDA ############################
                         if 1: #cdmStatus == True:
                             for cfgFile in ['refr_token', 'username', 'password']:
@@ -247,6 +249,9 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                                 pythonRunner = '/usr/bin/python'
                                 addonScript = 'plugin.video.cdaplMB/main.py'
                                 runAddon = '%s %s' % (pythonRunner, os.path.join(addons_path, addonScript))
+                                emuKodiCmdsList.append("echo 'Logowanie do serwisu'")
+                                emuKodiCmdsList.append(runAddon + " '1' '' 'resume:false'") #logowanie nastepuje bez podania trybu
+                                emuKodiCmdsList.append("echo 'Pobieranie listy kanałów'")
                                 emuKodiCmdsList.append(runAddon + " '1' '?image=DefaultMovies.png&mode=listM3U&moviescount=0&page=1&title=CDA%20TV%20-%20Telewizja%20Online&url' 'resume:false'")
                                 autoClose = True #ustawienie parametrow w zaleznoci od akcji
                                 webServer = ''
@@ -272,13 +277,14 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                                 emuKodiCmdsList = []
                                 addonScript = 'plugin.video.playermb/main.py'
                                 runAddon = '/usr/bin/python %s' % os.path.join(addons_path, addonScript)
+                                emuKodiCmdsList.append("echo 'Pobieranie listy kanałów'")
                                 emuKodiCmdsList.append(runAddon + " '1' '?mode=listcategContent&url=%3alive' 'resume:false'")
                                 autoClose = False #ustawienie parametrow w zaleznoci od akcji
                                 webServer = ''
                                 Mlist.append(getConfigListEntry(_("Press OK to create %s bouquet") % "playerpl" , 
                                             config.plugins.streamlinkSRV.streamlinkEMUKODIconfig, ('playermb', 'userbouquet', emuKodiCmdsList, autoClose, webServer, addonScript)))
                         # !!!!!!!!!!!!!!!!!!!!!!!!! POLSAT ############################
-                        if 1:
+                        if cdmStatus == True and os.path.exists('/j00zek'):
                             for cfgFile in ['logged', 'username', 'password', 'klient']:
                                 if not os.path.exists('/etc/streamlink/pgobox/%s' % cfgFile): os.system('touch /etc/streamlink/pgobox/%s' % cfgFile)
                             if open('/etc/streamlink/pgobox/klient','r').read().strip() == '':
@@ -306,7 +312,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                                 Mlist.append(getConfigListEntry(_("Press OK to create %s bouquet") % "polsatgo" , 
                                             config.plugins.streamlinkSRV.streamlinkEMUKODIconfig, ('polsatgo', 'userbouquet', emuKodiCmdsList, autoClose, webServer, addonScript)))
                         # !!!!!!!!!!!!!!!!!!!!!!!!! canalplus ############################
-                        if cdmStatus == True:
+                        if cdmStatus == True and os.path.exists('/j00zek'):
                             for cfgFile in ['passId', 'username', 'password', 'logged']:
                                 if not os.path.exists('/etc/streamlink/canalplusvod/%s' % cfgFile): os.system('touch /etc/streamlink/canalplusvod/%s' % cfgFile)
                             if open('/etc/streamlink/canalplusvod/username','r').read().strip() == '':
@@ -319,9 +325,6 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                                 Mlist.append(getConfigListEntry( "Zaloguj do canal+", config.plugins.streamlinkSRV.streamlinkconfig))
                             else:
                                 Mlist.append(getConfigListEntry( _("Press OK to create bouquet for") + ': canal+' , config.plugins.streamlinkSRV.streamlinkDRMconfig, ('canalplus', 'LOGIN')))
-                        else:
-                            Mlist.append(getConfigListEntry( "Canal+ NIE wspierany na tej wersji DRM", config.plugins.streamlinkSRV.streamlinkconfig))
-                        
             else:
                 Mlist.append(getConfigListEntry(""))
                 Mlist.append(getConfigListEntry('\c00981111' + _("*** not compliant Deamon found ***")))
