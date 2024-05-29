@@ -32,6 +32,7 @@ def runCMD(myCMD):
 def SLconfigLeaveStandbyInitDaemon():
     DBGlog('LeaveStandbyInitDaemon() >>>')
     runCMD('streamlinkSRV restart')
+    if os.path.exists('/usr/sbin/emukodiSRV'): runCMD('emukodiSRV restart')
 
 def SLconfigStandbyCounterChanged(configElement):
     DBGlog('standbyCounterChanged() >>>')

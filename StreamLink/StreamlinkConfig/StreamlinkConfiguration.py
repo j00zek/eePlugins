@@ -211,9 +211,9 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                         Mlist.append(getConfigListEntry('\c00981111' + "*** Błąd sprawdzania urządzenia cdm ***", config.plugins.streamlinkSRV.Five))
                         self.VisibleSection = 0
                     elif not cdmStatus:
-                        Mlist.append(getConfigListEntry('\c00ff9400' + "*** Limitowane wsparcie DRM ***", config.plugins.streamlinkSRV.Five))
+                        Mlist.append(getConfigListEntry('\c00ff9400' + "*** Limitowane wsparcie KODI>DRM ***", config.plugins.streamlinkSRV.Five))
                     else:
-                        Mlist.append(getConfigListEntry('\c00289496' + "*** Pełne wsparcie DRM ***", config.plugins.streamlinkSRV.Five))
+                        Mlist.append(getConfigListEntry('\c00289496' + "*** Pełne wsparcie KODI>DRM ***", config.plugins.streamlinkSRV.Five))
                     for cfgFile in ['playermb', 'canalplusvod', 'pgobox', 'cdaplMB']:
                         if not os.path.exists('/etc/streamlink/%s' % cfgFile):
                             os.system('mkdir -p /etc/streamlink/%s' % cfgFile)
@@ -284,7 +284,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                                 Mlist.append(getConfigListEntry(_("Press OK to create %s bouquet") % "playerpl" , 
                                             config.plugins.streamlinkSRV.streamlinkEMUKODIconfig, ('playermb', 'userbouquet', emuKodiCmdsList, autoClose, webServer, addonScript)))
                         # !!!!!!!!!!!!!!!!!!!!!!!!! POLSAT ############################
-                        if cdmStatus == True and os.path.exists('/j00zek'):
+                        if cdmStatus == True:
                             for cfgFile in ['logged', 'username', 'password', 'klient']:
                                 if not os.path.exists('/etc/streamlink/pgobox/%s' % cfgFile): os.system('touch /etc/streamlink/pgobox/%s' % cfgFile)
                             if open('/etc/streamlink/pgobox/klient','r').read().strip() == '':
