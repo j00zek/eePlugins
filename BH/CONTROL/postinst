@@ -50,6 +50,8 @@ elif [ -e /usr/lib/enigma2/python/Blackhole ];then
 elif [ -e /etc/init.d/start_pkt.sh ];then
   if [ -e /etc/image-version ] && [ `egrep -c 'distro=zukonMOD|imageversion=9' < /etc/image-version` -gt 1 ];then
     systemType='zukonMOD'
+  elif [ -e /etc/image-version ] && [ `egrep -c 'distro=zukonMOD Hyperion|imageversion=X' < /etc/image-version` -gt 1 ];then
+    systemType='zukonHYPERIONX'
   else
     systemType='PKT'
   fi
@@ -133,6 +135,10 @@ elif [ "$systemType" == 'zukonMOD' ];then
   cat /usr/share/enigma2/BlackHarmony/TemplateXMLs/image-openATV_specific.xml|grep -v 'skin>' >> $BHfolder/skin.xml
   #cat /usr/share/enigma2/BlackHarmony/TemplateXMLs/image-PKT_specific.xml|grep -v 'skin>' >> $BHfolder/skin.xml
   cat /usr/share/enigma2/BlackHarmony/TemplateXMLs/image-PKT_zukonMOD_specific.xml|grep -v 'skin>' >> $BHfolder/skin.xml
+elif [ "$systemType" == 'zukonHYPERIONX' ];then
+  cat /usr/share/enigma2/BlackHarmony/TemplateXMLs/image-openATV_specific.xml|grep -v 'skin>' >> $BHfolder/skin.xml
+  #cat /usr/share/enigma2/BlackHarmony/TemplateXMLs/image-PKT_specific.xml|grep -v 'skin>' >> $BHfolder/skin.xml
+  cat /usr/share/enigma2/BlackHarmony/TemplateXMLs/image-HYPERIONX_zukonMOD_specific.xml|grep -v 'skin>' >> $BHfolder/skin.xml
 
 elif [ "$systemType" == 'openPLI-7' ];then
   cat /usr/share/enigma2/BlackHarmony/TemplateXMLs/image-openATV_specific.xml|grep -v 'skin>' >> $BHfolder/skin.xml
