@@ -108,7 +108,7 @@
 			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
 		</widget>
 		<widget source="Title" render="Label" position="1381,74" size="420,59" font="Roboto_HD; 40" halign="center" backgroundColor="background" transparent="1" foregroundColor="font_light_grey" />
-		<widget name="EnigmaVersion" position="98,160" size="967,63" font="HD_Thin; 45" halign="center" valign="center" foregroundColor="light_grey" backgroundColor="background" transparent="1" />
+		<widget name="EnigmaVersion" position="98,160" size="967,63" font="HD_Thin; 37" halign="center" valign="center" foregroundColor="red" backgroundColor="background" transparent="1" />
 		<widget name="CPU" position="584,294" size="450,35" font="Roboto_HD; 28" halign="left" foregroundColor="orange" transparent="1" />
 		<widget name="CPUtemp" render="j00zekLabel" noWrap="1" position="180,294" size="220,35" halign="right" font="Roboto_HD;26" foregroundColor="cyan" transparent="1" />
 		<widget name="CPUt" position="414,294" size="180,35" font="Roboto_HD; 26" halign="left" transparent="1" />
@@ -119,7 +119,6 @@
 		<widget name="HDD" position="354,620" size="180,35" font="Roboto_HD;28" halign="right" foregroundColor="cyan" transparent="1" />
 		<widget name="HDDmount" position="550,620" size="230,35" font="Roboto_HD; 28" halign="left" transparent="1" />
 		<widget name="HDDmodel" position="180,580" size="800,35" font="Roboto_HD; 28" halign="center" foregroundColor="orange" transparent="1" />
-
   <widget source="session.CurrentService" render="Pixmap" position="1242,191" zPosition="3" size="20,20" pixmap="BlackHarmony/icons/update.png" alphatest="blend">
     <convert type="j00zekOPKGupgradeCheck" />
     <convert type="ConditionalShowHide">Blink</convert>
@@ -132,10 +131,8 @@
       <convert type="j00zekModRouteInfo">Lan</convert>
       <convert type="ConditionalShowHide" />
     </widget>
-
 		<widget name="NetIP" position="1142,740" size="176,40" font="Roboto_HD; 34" halign="right" foregroundColor="cyan" transparent="1" />
 		<widget name="IP" position="1330,740" size="417,40" font="Roboto_HD; 36" halign="left" transparent="1" />
-
 		<eLabel text="SNR:" position="1108,855" size="80,35" font="Roboto_HD; 28" halign="left" foregroundColor="orange" backgroundColor="background" transparent="1" />
 		<ePixmap position="1200,855" size="473,26" zPosition="1" pixmap="BlackHarmony/gfx/bar_snr_470x25.png" alphatest="blend" transparent="1" />
 		<widget source="session.FrontendStatus" render="Progress" position="1200,855" size="475,32" zPosition="2" pixmap="BlackHarmony/gfx/bar_snr_470x25.png" transparent="0">
@@ -152,7 +149,6 @@
 		<widget source="session.FrontendStatus" render="Progress" position="1198,913" size="478,34" zPosition="2" pixmap="BlackHarmony/gfx/bar_snr_470x25.png" transparent="0">
 			<convert type="FrontendInfo">AGC</convert>
 		</widget>
-
       <widget name="OscamShow" position="1177,560" size="520,126" alphatest="on" transparent="1" zPosition="-1" scale="on" />
       <widget name="_oscam" position="1280,570" size="295,105" font="Roboto_HD; 22" halign="left" noWrap="1" backgroundColor="background" transparent="1" />
 		<widget name="Green" position="1233,992" size="160,35" font="Roboto_HD;30" halign="left" valign="center" foregroundColor="font_green" backgroundColor="background" transparent="1" />
@@ -161,22 +157,20 @@
 		<ePixmap position="1292,161" zPosition="1" size="300,81" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
 		<widget source="session.CurrentService" render="j00zekPiconAnimation" position="1191,998" size="35,27" zPosition="10" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" pixmaps="BlackHarmony/skin_user_animButtons/key_green" pixalter="BlackHarmony/buttons/key_green.png" />
 		<widget source="session.CurrentService" render="j00zekPiconAnimation" position="1404,998" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,2" random="True" pixmaps="BlackHarmony/skin_user_animButtons/key_yellow" pixalter="BlackHarmony/buttons/key_yellow.png" />
-		<widget source="session.CurrentService" render="j00zekPiconAnimation" position="1611,998" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,3" random="True" pixmaps="BlackHarmony/skin_user_animButtons/key_blue" pixalter="BlackHarmony/buttons/key_blue.png" />
-
-		<widget name="BR" position="1150,271" size="600,35" font="Roboto_HD;28" halign="left" foregroundColor="cyan" transparent="1" noWrap="1" render="j00zekLabel" />
-		<widget name="CR" position="1150,311" size="550,35" font="Roboto_HD; 28" halign="left" foregroundColor="cyan" backgroundColor="background" transparent="1" zPosition="1" />
-		<widget name="AR" position="1152,352" size="180,35" font="Roboto_HD; 28" halign="left" foregroundColor="cyan" transparent="1" />
-		<widget name="MAX" position="1153,389" size="180,35" font="Roboto_HD; 28" halign="left" foregroundColor="cyan" transparent="1" />
-		<widget name="MIN" position="1152,426" size="180,35" font="Roboto_HD; 28" halign="left" foregroundColor="cyan" transparent="1" />
-		<widget name="vcur" position="1362,315" size="130,35" font="Cyfry; 28" halign="center" foregroundColor="orange" transparent="1" />
-		<widget name="vavg" position="1363,351" size="130,35" font="Cyfry; 28" halign="center" transparent="1" />
-		<widget name="vmax" position="1363,388" size="130,35" font="Cyfry; 28" halign="center" transparent="1" />
-		<widget name="vmin" position="1363,426" size="130,35" font="Cyfry;28" halign="center" transparent="1" />
-		<widget name="acur" position="1510,315" size="180,35" font="Cyfry; 28" halign="center" foregroundColor="orange" transparent="1" />
-		<widget name="aavg" position="1510,352" size="180,35" font="Cyfry; 28" halign="center" transparent="1" />
-		<widget name="amax" position="1511,389" size="180,35" font="Cyfry; 28" halign="center" transparent="1" />
-		<widget name="amin" position="1512,426" size="180,35" font="Cyfry; 28" halign="center" transparent="1" />
-
+		<widget source="session.CurrentService" render="j00zekPiconAnimation" position="1611,998" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,3" random="True" pixmaps="BlackHarmony/skin_user_animButtons/key_blue" pixalter="BlackHarmony/buttons/key_blue.png" />
+		<widget name="BR" position="1150,270" size="600,35" font="Roboto_HD;28" halign="left" foregroundColor="yellow" transparent="1" noWrap="1" render="j00zekLabel" />
+		<widget name="CR" position="1150,310" size="550,350" font="Roboto_HD; 28" halign="left" foregroundColor="cyan" backgroundColor="background" transparent="1" zPosition="1" />
+		<widget name="AR" position="1150,350" size="180,35" font="Roboto_HD; 28" halign="left" foregroundColor="cyan" transparent="1" />
+		<widget name="MAX" position="1150,390" size="180,35" font="Roboto_HD; 28" halign="left" foregroundColor="cyan" transparent="1" />
+		<widget name="MIN" position="1150,430" size="180,35" font="Roboto_HD; 28" halign="left" foregroundColor="cyan" transparent="1" />
+		<widget name="vcur" position="1360,310" size="130,35" font="Cyfry; 28" halign="center" foregroundColor="cyan" transparent="1" />
+		<widget name="vavg" position="1360,350" size="130,35" font="Cyfry; 28" halign="center" transparent="1" />
+		<widget name="vmax" position="1360,390" size="130,35" font="Cyfry; 28" halign="center" transparent="1" />
+		<widget name="vmin" position="1360,430" size="130,35" font="Cyfry;28" halign="center" transparent="1" />
+		<widget name="acur" position="1510,310" size="180,35" font="Cyfry; 28" halign="center" foregroundColor="orange" transparent="1" />
+		<widget name="aavg" position="1510,350" size="180,35" font="Cyfry; 28" halign="center" transparent="1" />
+		<widget name="amax" position="1510,390" size="180,35" font="Cyfry; 28" halign="center" transparent="1" />
+		<widget name="amin" position="1510,430" size="180,35" font="Cyfry; 28" halign="center" transparent="1" />
   <widget source="session.CurrentService" render="Label" position="180,360" size="800,35" font="Roboto_HD; 28" halign="center" noWrap="1">
     <convert type="CpuUsage">CPU: $0   (c#1:$1 / c#2:$2 / c#3:$3 / c#4:$4)</convert>
   </widget>
@@ -311,38 +305,7 @@
   <widget source="key_red" render="Label" position="169,825" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="black" transparent="1" foregroundColor="white" />
   <widget source="key_green" render="Label" position="488,825" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="black" transparent="1" foregroundColor="white" />
   <ePixmap position="center,745" zPosition="1" size="300,81" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
-</screen>
-
-
-<screen name="InstallIPTV" position="center,center" size="1200,663" title="HYPERION E2iPlayer Installer">
-  <widget name="infoTXT" position="147,270" size="896,35" font="Roboto_HD;28" halign="center" valign="center" foregroundColor="blue" backgroundColor="background" />
-  <widget name="devlist" position="146,367" size="920,40" font="Roboto_HD;30" itemHeight="40" selectionPixmap="BlackHarmony/menu/sel_920_40.png" valign="center" />
-  <ePixmap position="center,86" zPosition="1" size="300,81" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
-  <ePixmap pixmap="BlackHarmony/buttons/key_left.png" position="82,371" size="50,35" alphatest="blend" />
-  <ePixmap pixmap="BlackHarmony/buttons/key_right.png" position="1057,369" size="50,35" alphatest="blend" />
-    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="75,585" zPosition="10" size="35,27" alphatest="blend"
-                        initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0" random="True"
-                        pixmaps="BlackHarmony/skin_user_animButtons/key_red"
-                        pixalter="BlackHarmony/buttons/key_red.png" />
-    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="325,585" zPosition="10" size="35,27" alphatest="blend"
-                        initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,1" random="True"
-                        pixmaps="BlackHarmony/skin_user_animButtons/key_green"
-                        pixalter="BlackHarmony/buttons/key_green.png" />
-    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="565,585" zPosition="10" size="35,27" alphatest="blend"
-                        initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,2" random="True"
-                        pixmaps="BlackHarmony/skin_user_animButtons/key_yellow"
-                        pixalter="BlackHarmony/buttons/key_yellow.png" />
-    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="825,585" zPosition="10" size="35,27" alphatest="blend"
-                        initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,3" random="True"
-                        pixmaps="BlackHarmony/skin_user_animButtons/key_blue"
-                        pixalter="BlackHarmony/buttons/key_blue.png" />
-  <widget source="key_red" render="Label" position="115,585" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" />
-  <widget source="key_green" render="Label" position="365,585" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" />
-  <widget source="key_yellow" render="Label" position="605,585" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" />
-  <widget source="key_blue" render="Label" position="865,585" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="background" transparent="1" foregroundColor="white" />
-</screen>
-
-
+</screen>
 <screen name="MemoryCleaner" position="center,125" size="1133,892" title="HYPERION Memory Cleaner">
   <widget name="config" position="center,21" size="860,684" font="Roboto_HD; 28" itemHeight="45" selectionPixmap="BlackHarmony/menu/sel_860_45.png" scrollbarMode="showOnDemand" enableWrapAround="1" scrollbarWidth="7" scrollbarSliderBorderWidth="1" scrollbarSliderBorderColor="blue" scrollbarSliderForegroundColor="blue" foregroundColor="white" backgroundColor="background" />
     <widget source="session.CurrentService" render="j00zekPiconAnimation" position="75,835" zPosition="10" size="35,27" alphatest="blend"
