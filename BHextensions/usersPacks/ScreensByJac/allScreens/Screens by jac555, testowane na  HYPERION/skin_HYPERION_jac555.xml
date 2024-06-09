@@ -157,7 +157,7 @@
 		<ePixmap position="1292,161" zPosition="1" size="300,81" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
 		<widget source="session.CurrentService" render="j00zekPiconAnimation" position="1191,998" size="35,27" zPosition="10" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" pixmaps="BlackHarmony/skin_user_animButtons/key_green" pixalter="BlackHarmony/buttons/key_green.png" />
 		<widget source="session.CurrentService" render="j00zekPiconAnimation" position="1404,998" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,2" random="True" pixmaps="BlackHarmony/skin_user_animButtons/key_yellow" pixalter="BlackHarmony/buttons/key_yellow.png" />
-		<widget source="session.CurrentService" render="j00zekPiconAnimation" position="1611,998" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,3" random="True" pixmaps="BlackHarmony/skin_user_animButtons/key_blue" pixalter="BlackHarmony/buttons/key_blue.png" />
+		<widget source="session.CurrentService" render="j00zekPiconAnimation" position="1611,998" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,3" random="True" pixmaps="BlackHarmony/skin_user_animButtons/key_blue" pixalter="BlackHarmony/buttons/key_blue.png" />
 		<widget name="BR" position="1150,270" size="600,35" font="Roboto_HD;28" halign="left" foregroundColor="yellow" transparent="1" noWrap="1" render="j00zekLabel" />
 		<widget name="CR" position="1150,310" size="550,350" font="Roboto_HD; 28" halign="left" foregroundColor="cyan" backgroundColor="background" transparent="1" zPosition="1" />
 		<widget name="AR" position="1150,350" size="180,35" font="Roboto_HD; 28" halign="left" foregroundColor="cyan" transparent="1" />
@@ -170,7 +170,7 @@
 		<widget name="acur" position="1510,310" size="180,35" font="Cyfry; 28" halign="center" foregroundColor="orange" transparent="1" />
 		<widget name="aavg" position="1510,350" size="180,35" font="Cyfry; 28" halign="center" transparent="1" />
 		<widget name="amax" position="1510,390" size="180,35" font="Cyfry; 28" halign="center" transparent="1" />
-		<widget name="amin" position="1510,430" size="180,35" font="Cyfry; 28" halign="center" transparent="1" />
+		<widget name="amin" position="1510,430" size="180,35" font="Cyfry; 28" halign="center" transparent="1" />
   <widget source="session.CurrentService" render="Label" position="180,360" size="800,35" font="Roboto_HD; 28" halign="center" noWrap="1">
     <convert type="CpuUsage">CPU: $0   (c#1:$1 / c#2:$2 / c#3:$3 / c#4:$4)</convert>
   </widget>
@@ -305,7 +305,8 @@
   <widget source="key_red" render="Label" position="169,825" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="black" transparent="1" foregroundColor="white" />
   <widget source="key_green" render="Label" position="488,825" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="black" transparent="1" foregroundColor="white" />
   <ePixmap position="center,745" zPosition="1" size="300,81" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
-</screen>
+</screen>
+
 <screen name="MemoryCleaner" position="center,125" size="1133,892" title="HYPERION Memory Cleaner">
   <widget name="config" position="center,21" size="860,684" font="Roboto_HD; 28" itemHeight="45" selectionPixmap="BlackHarmony/menu/sel_860_45.png" scrollbarMode="showOnDemand" enableWrapAround="1" scrollbarWidth="7" scrollbarSliderBorderWidth="1" scrollbarSliderBorderColor="blue" scrollbarSliderForegroundColor="blue" foregroundColor="white" backgroundColor="background" />
     <widget source="session.CurrentService" render="j00zekPiconAnimation" position="75,835" zPosition="10" size="35,27" alphatest="blend"
