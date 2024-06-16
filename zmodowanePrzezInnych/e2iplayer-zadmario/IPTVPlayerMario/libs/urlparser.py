@@ -456,6 +456,7 @@ class urlparser:
                        'netu.tv': self.pp.parserNETUTV,
                        'newassia.com': self.pp.parserASSIAORG,
                        'newtvassia.com': self.pp.parserASSIAORG,
+                       'nflinsider.net': self.pp.parserVIDEOHOUSE,
                        'ninjastream.to': self.pp.parserNINJASTREAMTO,
                        'nonlimit.pl': self.pp.parserIITV,
                        'noob4cast.com': self.pp.parserCASTFREEME,
@@ -612,6 +613,7 @@ class urlparser:
                        'suprafiles.org': self.pp.parserUPLOAD,
                        'suspents.info': self.pp.parserFASTVIDEOIN,
                        'svetacdn.in': self.pp.parserSVETACDNIN,
+                       'swdyu.com': self.pp.parserONLYSTREAMTV,
                        'swirownia.com.usrfiles.com': self.pp.parserSWIROWNIA,
                        #t
                        'talbol.net': self.pp.parserTXNEWSNETWORK,
