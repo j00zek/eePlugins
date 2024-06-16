@@ -151,7 +151,8 @@ def getJson(url,post=None, params=None, auth=None, data=None):
     'Host': 'api.cda.pl',}
 
     if not auth:
-        headers.update({'Authorization': 'Basic YzU3YzBlZDUtYTIzOC00MWQwLWI2NjQtNmZmMWMxY2Y2YzVlOklBTm95QlhRRVR6U09MV1hnV3MwMW0xT2VyNWJNZzV4clRNTXhpNGZJUGVGZ0lWUlo5UGVYTDhtUGZaR1U1U3Q'})
+        #zmiana 2023-06-15 headers.update({'Authorization': 'Basic YzU3YzBlZDUtYTIzOC00MWQwLWI2NjQtNmZmMWMxY2Y2YzVlOklBTm95QlhRRVR6U09MV1hnV3MwMW0xT2VyNWJNZzV4clRNTXhpNGZJUGVGZ0lWUlo5UGVYTDhtUGZaR1U1U3Q'})
+        headers.update({'Authorization': 'Basic YmZjMDYyNDAtOTFkZi00MGYzLWFhMjEtZjc4MTBiZjgxYzYyOldFQ3NSQ0VEY0tLZzVHYkxuTHdiZEppMElQakJkSG45dzlTVUhjbjZsR2t2dU9uN2wya1NiZWhmeVZEWEZwR3c'})
     else:
         headers.update({'Authorization': 'Bearer '+acc_token})
     if not post:

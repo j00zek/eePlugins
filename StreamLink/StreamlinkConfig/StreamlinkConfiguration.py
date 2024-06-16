@@ -222,33 +222,38 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                             Mlist.append(getConfigListEntry(r'\c00ffff00' + '!!!!! ZALECA się korzystanie z zainstalowanego e2iplayer-a autorstwa sss !!!!!'))
                         # !!!!!!!!!!!!!!!!!!!!!!!!! CDA ############################
                         if 1: #cdmStatus == True:
+                            pythonRunner = '/usr/bin/python'
+                            addonScript = 'plugin.video.cdaplMB/main.py'
+                            runAddon = '%s %s' % (pythonRunner, os.path.join(addons_path, addonScript))
+                            webServer = ''
+                            
                             for cfgFile in ['refr_token', 'username', 'password']:
                                 if not os.path.exists('/etc/streamlink/cdaplMB/%s' % cfgFile): os.system('touch /etc/streamlink/cdaplMB/%s' % cfgFile)
+                            
                             if open('/etc/streamlink/cdaplMB/username','r').read().strip() == '':
                                 Mlist.append(getConfigListEntry( 'cda: Brak danych w /etc/streamlink/cdaplMB/username' , config.plugins.streamlinkSRV.streamlinkconfig))
                             elif open('/etc/streamlink/cdaplMB/password','r').read().strip() == '':
                                 Mlist.append(getConfigListEntry( 'cda: Brak danych w /etc/streamlink/cdaplMB/password' , config.plugins.streamlinkSRV.streamlinkconfig))
                             elif open('/etc/streamlink/cdaplMB/refr_token','r').read().strip() == '':
                                 emuKodiCmdsList = []
-                                pythonRunner = '/usr/bin/python'
-                                addonScript = 'plugin.video.cdaplMB/main.py'
-                                runAddon = '%s %s' % (pythonRunner, os.path.join(addons_path, addonScript))
                                 emuKodiCmdsList.append(runAddon + " '1' '' 'resume:false'") #logowanie nastepuje bez podania trybu
                                 autoClose = True #ustawienie parametrow w zaleznoci od akcji
                                 webServer = ''
-                                Mlist.append(getConfigListEntry( "Zaloguj do cda", config.plugins.streamlinkSRV.streamlinkEMUKODIconfig, ('cdaplMB', 'logowanie', emuKodiCmdsList, autoClose, webServer, addonScript)))
+                                Mlist.append(getConfigListEntry( "Zaloguj do cda", config.plugins.streamlinkSRV.streamlinkEMUKODIconfig, ('cdaplMB', 'ActionConfirmed', emuKodiCmdsList, autoClose, webServer, addonScript)))
                             else:
-                                if cdmStatus != True:
-                                    Mlist.append(getConfigListEntry('Limitowana obsługa CDA kanałów bez DRM'))
                                 if os.path.exists('/etc/streamlink/cdaplMB/login_info'):
                                     login_info = open('/etc/streamlink/cdaplMB/login_info','r').read().strip()
                                     if login_info != '':
                                         login_info = login_info.replace('[COLOR gold]','').replace('[/COLOR]','')
-                                        Mlist.append(getConfigListEntry(login_info))
+                                        #wylogowanie
+                                        emuKodiCmdsList = []
+                                        emuKodiCmdsList.append("rm -f /etc/streamlink/cdaplMB/*")
+                                        emuKodiCmdsList.append("echo 'Wylogowano z serwisu cda i usunięto dane tymczasowe'")
+                                        emuKodiCmdsList.append("sleep 2")
+                                        autoClose = True #ustawienie parametrow w zaleznoci od akcji
+                                        Mlist.append(getConfigListEntry( login_info + '\c00981111' + ' WYLOGUJ!!!', config.plugins.streamlinkSRV.streamlinkEMUKODIconfig, ('cdaplMB', 'ActionConfirmed', emuKodiCmdsList, autoClose, webServer, addonScript)))
+                                #pobieranie listy
                                 emuKodiCmdsList = []
-                                pythonRunner = '/usr/bin/python'
-                                addonScript = 'plugin.video.cdaplMB/main.py'
-                                runAddon = '%s %s' % (pythonRunner, os.path.join(addons_path, addonScript))
                                 emuKodiCmdsList.append("echo 'Logowanie do serwisu'")
                                 emuKodiCmdsList.append(runAddon + " '1' '' 'resume:false'") #logowanie nastepuje bez podania trybu
                                 emuKodiCmdsList.append("echo 'Pobieranie listy kanałów'")
@@ -256,8 +261,6 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                                 autoClose = True #ustawienie parametrow w zaleznoci od akcji
                                 webServer = ''
                                 Mlist.append(getConfigListEntry( _("Press OK to create bouquet for") + ' cda' , config.plugins.streamlinkSRV.streamlinkEMUKODIconfig, ('cdaplMB', 'userbouquet', emuKodiCmdsList, autoClose, webServer, addonScript)))
-                        else:
-                            Mlist.append(getConfigListEntry( "cda NIE wspierane na tej wersji DRM", config.plugins.streamlinkSRV.streamlinkconfig))
                         
                         if 1: # !!!!!!!!!!!!!!!!!!!!!!!!! PLAYER ############################
                             for cfgFile in ['refresh_token', 'logged']:
@@ -284,7 +287,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                                 Mlist.append(getConfigListEntry(_("Press OK to create %s bouquet") % "playerpl" , 
                                             config.plugins.streamlinkSRV.streamlinkEMUKODIconfig, ('playermb', 'userbouquet', emuKodiCmdsList, autoClose, webServer, addonScript)))
                         # !!!!!!!!!!!!!!!!!!!!!!!!! POLSAT ############################
-                        if cdmStatus == True:
+                        if 1: #cdmStatus == True:
                             for cfgFile in ['logged', 'username', 'password', 'klient']:
                                 if not os.path.exists('/etc/streamlink/pgobox/%s' % cfgFile): os.system('touch /etc/streamlink/pgobox/%s' % cfgFile)
                             if open('/etc/streamlink/pgobox/klient','r').read().strip() == '':
@@ -687,7 +690,9 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
     def emuKodiConsoleCallback(self, ret = False):
         if self.emuKodiAction[1] == 'userbouquet': #akcja
             self.retFromCMD(ret)
-    
+        else:
+            self.refreshBuildList()
+
     def emuKodiActionConfirmed(self, ret = False):
         if ret:
             curIndex = self["config"].getCurrentIndex()
@@ -725,10 +730,10 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                 MsgInfo = "Zostaniesz poproszony o podanie kodu w przeglądarce.\nBędziesz mieć na to maksimum 340 sekund i nie będziesz mógł przerwać.\n\nJesteś gotowy?"
                 self.session.openWithCallback(self.emuKodiActionConfirmed, MessageBox, MsgInfo, MessageBox.TYPE_YESNO, default = False, timeout = 15)
                 return
-            if dostawca == 'cdaplMB' and akcja == 'logowanie': self.emuKodiActionConfirmed(True)
-            if dostawca == 'canalplusvod' and akcja == 'login': pass
-            if dostawca == 'pgobox' and akcja == 'login': pass
-            if dostawca == 'pilot.wp' and akcja == 'login': pass
+            if dostawca == 'cdaplMB' and akcja == 'ActionConfirmed': self.emuKodiActionConfirmed(True)
+            elif dostawca == 'canalplusvod' and akcja == 'login': pass
+            elif dostawca == 'pgobox' and akcja == 'login': pass
+            elif dostawca == 'pilot.wp' and akcja == 'login': pass
             elif akcja == 'userbouquet':
                 #pobranie swiezych definicji
                 os.system('wget https://raw.githubusercontent.com/azman26/EPGazman/main/azman_channels_mappings.py -O /usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/plugins/azman_channels_mappings.py')
