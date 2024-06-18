@@ -1,5 +1,5 @@
 #!/bin/sh
-#[ -e /usr/lib/enigma2/python/Plugins/Extensions/ExtPlayer ] || ln -sf /usr/lib/python3.12/site-packages/emukodi/ExtPlayer /usr/lib/enigma2/python/Plugins/Extensions/ExtPlayer
+[ -e /usr/lib/enigma2/python/Plugins/Extensions/ExtPlayer ] || ln -sf /usr/lib/python3.12/site-packages/emukodi/ExtPlayer /usr/lib/enigma2/python/Plugins/Extensions/ExtPlayer
 
 chmod 755 /usr/lib/python3.12/site-packages/emukodi/emukodiSRV.py
 if [ ! -e /usr/sbin/emukodiSRV ];then

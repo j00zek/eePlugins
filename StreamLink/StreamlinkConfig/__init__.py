@@ -67,11 +67,7 @@ config.plugins.streamlinkSRV.RecordMaxTime = ConfigSelection(default = "120", ch
 config.plugins.streamlinkSRV.StandbyMode = ConfigEnableDisable(default = False)
 
 config.plugins.streamlinkSRV.useWrappers = ConfigSelection(default = "n", choices = [("n", _("No")), ("m", mygettext("Yes, try modify bouquets")), ("y", mygettext("Yes, don't modify bouquets")),])
-config.plugins.streamlinkSRV.Verify4Wrappers = ConfigSelection(default = "n", choices = [("n", _("No")), ("y", _("Yes")),])
-config.plugins.streamlinkSRV.IPTVExtMoviePlayer = ConfigText(readCFG('IPTVExtMoviePlayer'), fixed_size = False)
-config.plugins.streamlinkSRV.IPTVdrmMoviePlayer = ConfigText(default = "?")
-
-config.plugins.streamlinkSRV.RefreshGeneratedBouquets = ConfigEnableDisable(default = False)
+config.plugins.streamlinkSRV.useExtPlayer = ConfigEnableDisable(default = False)
 
 # pilot.wp.pl
 config.plugins.streamlinkSRV.WPusername = ConfigText(readCFG('WPusername'), fixed_size = False)
@@ -83,17 +79,6 @@ config.plugins.streamlinkSRV.WPdevice = ConfigSelection(default = "androidtv", c
 config.plugins.streamlinkSRV.WPvideoDelay = ConfigSelection(default = "0", choices = [("0", _("don't delay")), ("0.25", _("by %s s." % '0.25')),
                                                                                       ("0.5", _("by %s s." % '0.5')), ("0.75", _("by %s s." % '0.75')),
                                                                                       ("1.0", _("by %s s." % '1.0')), ("5.0", _("by %s s." % '5.0'))])
-
-# remote E2
-config.plugins.streamlinkSRV.remoteE2address = ConfigText(default = "192.168.1.8")
-config.plugins.streamlinkSRV.remoteE2port = ConfigText(default = "8001")
-config.plugins.streamlinkSRV.remoteE2username = ConfigText(default = "root")
-config.plugins.streamlinkSRV.remoteE2password = ConfigPassword(default = "root")
-config.plugins.streamlinkSRV.remoteE2zap = ConfigEnableDisable(default = False)
-config.plugins.streamlinkSRV.remoteE2wakeup = ConfigEnableDisable(default = False)
-
-# kodi
-config.plugins.streamlinkSRV.support4kodi = ConfigEnableDisable(default = False)
 
 def DBGlog(text):
     if 0: #config.plugins.streamlinkSRV.logLevel.value == 'none':

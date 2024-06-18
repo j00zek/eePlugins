@@ -2,4 +2,8 @@
 if ! [ -e /usr/lib/python3.12/site-packages ];then
   echo "Instalacja możliwa TYLKO na python 3.12"
   exit 1
+else
+  rm -f /usr/lib/python3.12/site-packages/pywidevine/cdmdevice/*.pyc
+  rm -f /usr/lib/python3.12/site-packages/emukodi/*.pyc
+  rm -f /usr/lib/python3.12/site-packages/emukodi/ExtPlayer/*.pyc
 fi

@@ -148,17 +148,6 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                                 Mlist.append(getConfigListEntry(_("Press OK to remove: %s") % f[1] , config.plugins.streamlinkSRV.removeBouquet))
                             else:
                                 Mlist.append(getConfigListEntry(_("Press OK to download: %s") % bname , config.plugins.streamlinkSRV.downloadBouquet, fUrl))
-            
-                else:
-                    Mlist.append(getConfigListEntry(""))
-                    Mlist.append(getConfigListEntry('\c00289496' + _("*** remote E2 helper ***"), config.plugins.streamlinkSRV.Three))
-                    if self.VisibleSection == 3:
-                        Mlist.append(getConfigListEntry(_("IP address:"), config.plugins.streamlinkSRV.remoteE2address))
-                        Mlist.append(getConfigListEntry(_("Streaming port:"), config.plugins.streamlinkSRV.remoteE2port))
-                        Mlist.append(getConfigListEntry(_("Username:"), config.plugins.streamlinkSRV.remoteE2username))
-                        Mlist.append(getConfigListEntry(_("Password:"), config.plugins.streamlinkSRV.remoteE2password))
-                        Mlist.append(getConfigListEntry(_("Wakeup if remote E2 in standby:"), config.plugins.streamlinkSRV.remoteE2wakeup))
-                        Mlist.append(getConfigListEntry(_("Zap before stream workarround:"), config.plugins.streamlinkSRV.remoteE2zap))
         
                 Mlist.append(getConfigListEntry(""))
                 Mlist.append(getConfigListEntry('\c00289496' + _("*** Deamon configuration ***"), config.plugins.streamlinkSRV.Four))
@@ -171,7 +160,6 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                     Mlist.append(getConfigListEntry(_("Save log file in:"), config.plugins.streamlinkSRV.logPath))
                     Mlist.append(getConfigListEntry(_("Buffer path:"), config.plugins.streamlinkSRV.bufferPath))
                     Mlist.append(getConfigListEntry(_("Allow Wrappers in lists:"), config.plugins.streamlinkSRV.useWrappers))
-                    #Mlist.append(getConfigListEntry(_("Autocorrect framework for Wrappers:"), config.plugins.streamlinkSRV.Verify4Wrappers))
                     #EXPERIMENTAL OPTIONS
                     #Mlist.append(getConfigListEntry(_(" !!! EXPERIMENTAL OPTION(S) !!!")))
                    
@@ -179,21 +167,16 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                     #if config.plugins.streamlinkSRV.Recorder.value == True:
                     #    Mlist.append(getConfigListEntry(_("Maximum record time:"), config.plugins.streamlinkSRV.RecordMaxTime))
 
-                    #Mlist.append(getConfigListEntry(_("Refresh Generated bouquets in standby:"), config.plugins.streamlinkSRV.RefreshGeneratedBouquets))
-                    
-                    #Mlist.append(getConfigListEntry(_("IPTVExtMoviePlayer:// reacts on URL's with:"), config.plugins.streamlinkSRV.IPTVExtMoviePlayer))
-                    
                     Mlist.append(getConfigListEntry(_("stop deamon on standby:"), config.plugins.streamlinkSRV.StandbyMode))
 
-                    #Mlist.append(getConfigListEntry(_("Support VLC:"), config.plugins.streamlinkSRV.VLCusingLUA))
-                    #Mlist.append(getConfigListEntry(_("Support KODI:"), config.plugins.streamlinkSRV.support4kodi))
+                    Mlist.append(getConfigListEntry("Support VLC: użyj skryptu z folderu wtyczki'bin/E-TV polska mod j00zek.lua'"))
                 Mlist.append(getConfigListEntry(""))
                 
                 if not os.path.exists('/usr/lib/python3.12/site-packages/'):
                     DBGlog('NO /usr/lib/python3.12/site-packages/')
                     Mlist.append(getConfigListEntry('\c00981111' + "*** Brak wsparcia DRM dla tej wersji pythona ***", config.plugins.streamlinkSRV.Five))
-                elif not os.path.exists('/usr/lib/python3.12/site-packages/emukodi/ExtPlayer/'):
-                    DBGlog('NO /usr/lib/python3.12/site-packages/emukodi/ExtPlayer/')
+                elif not os.path.exists('/usr/lib/python3.12/site-packages/emukodi/'):
+                    DBGlog('NO /usr/lib/python3.12/site-packages/emukodi/')
                     Mlist.append(getConfigListEntry('\c00981111' + "*** Brak wsparcia DRM, moduł streamlink-cdm nie zainstalowany ***", config.plugins.streamlinkSRV.Five))
                 else:
                     cdmStatus = None
@@ -220,6 +203,8 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                     if self.VisibleSection == 5:
                         if os.path.exists('/usr/lib/enigma2/python/Plugins/Extensions/IPTVPlayer/plugin.pe2i'):
                             Mlist.append(getConfigListEntry(r'\c00ffff00' + '!!!!! ZALECA się korzystanie z zainstalowanego e2iplayer-a autorstwa sss !!!!!'))
+                        if os.path.exists('/iptvplayer_rootfs/usr/bin/exteplayer3'):
+                            Mlist.append(getConfigListEntry('Użyj zewnętrznego odtwarzacza, gdy możliwe:', config.plugins.streamlinkSRV.useExtPlayer))
                         # !!!!!!!!!!!!!!!!!!!!!!!!! CDA ############################
                         if 1: #cdmStatus == True:
                             pythonRunner = '/usr/bin/python'
