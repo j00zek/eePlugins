@@ -513,7 +513,7 @@ if [ $doOWN -eq 1 ];then
                         [ -f /tmp/.ChannelsNotUpdated ] || (cp -f $myPath/$FirstBouquet /tmp/.ChannelsNotUpdated;sed -i "1s;^;/etc/enigma2/$FirstBouquet\n;" /tmp/.ChannelsNotUpdated)
                 echo "Aktualizowanie bukietu $FirstBouquet"
                 while IFS=";" read -r ID SID NAMESPACE NID TID TYP DVBS2 SATPROVIDER NAZWA; do
-                        ServiceLine="1:0:1:$SID:$TID:$NID:$NAMESPACE:0:0:0:"
+                        ServiceLine="1:0:1:$SID:$TID:$NID:$NAMESPACE:0:0:0::" #drugi dwukropek zeby wykluczyc iptv z podmiany
                         FullServiceLine="1:0:1:$SID:$TID:$NID:$NAMESPACE:0:0:0::$NAZWA"
                         sed -i "s/^\(#SERVICE \)$ServiceLine.*/\1$FullServiceLine/" $myPath/$FirstBouquet 2>/dev/null #updating record
                         sed -i "/^#SERVICE $ServiceLine/d" /tmp/.ChannelsNotUpdated 2>/dev/null #deleting updated record

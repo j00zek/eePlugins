@@ -320,7 +320,9 @@ do
                 sed 's/[,]*SID://;s/TYP://;s/PRO://;s/SNA:"//;s/"\;$//;s/"$//;s/\;$//'>$myPath/sdt.current
                 #struktura sdt.current:SID;TYPE;SAT;ServiceNAME;
                 IFS=";" read -r SDTSID TYP SATPROVIDER NAZWA <$myPath/sdt.current
-                if [ $TYP -eq 1 ];then #tylko TV
+                [ -z $TYP ] && TYP=0
+                                NAZWA=`echo "${NAZWA//[^[:ascii:]]/}"`
+                                if [ $TYP -eq 1 ];then #tylko TV
                         #[ "$SDTSID" == "$SID" ] || echo "Inconsitency $SDTSID<>$SID"
                         #NITLOG=`grep "TID:$TID" $myPath/nit.log`
                         grep "TID:$TID" $myPath/nit.log|\
@@ -407,6 +409,7 @@ if [ $doPROVIDER -eq 1 ];then
         while IFS=";" read -r ID SID NAMESPACE NID TID TYP DVBS2 SATPROVIDER NAZWA; do
                 CurrNumber=$(( 0x$ID ))
                 [ $ExpectedNumber -eq 0 ] && ExpectedNumber=$CurrNumber
+                                NAZWA=`echo "${NAZWA//[^[:ascii:]]/}"`
                 if [ "$ZnacznikPustych" != "skasuj" ] && [ "$ZnacznikPustych" != "sortuj" ]; then
                         until [ $ExpectedNumber -eq $CurrNumber ]; do
                                 echo "$ZnacznikPustych">>$myPath/$BOUQUETFILE.tv
@@ -458,7 +461,8 @@ if [ $doOWN -eq 1 ];then
                         [ -f /tmp/.ChannelsNotUpdated ] || (cp -f $myPath/$FirstBouquet /tmp/.ChannelsNotUpdated;sed -i "1s;^;/etc/enigma2/$FirstBouquet\n;" /tmp/.ChannelsNotUpdated)
                 echo "Aktualizowanie bukietu $FirstBouquet"
                 while IFS=";" read -r ID SID NAMESPACE NID TID TYP DVBS2 SATPROVIDER NAZWA; do
-                        ServiceLine="1:0:1:$SID:$TID:$NID:$NAMESPACE:0:0:0:"
+                                                NAZWA=`echo "${NAZWA//[^[:ascii:]]/}"`
+                        ServiceLine="1:0:1:$SID:$TID:$NID:$NAMESPACE:0:0:0::" #drugi dwukropek zeby wykluczyc iptv z podmiany
                         FullServiceLine="1:0:1:$SID:$TID:$NID:$NAMESPACE:0:0:0::$NAZWA"
                         sed -i "s/^\(#SERVICE \)$ServiceLine.*/\1$FullServiceLine/" $myPath/$FirstBouquet 2>/dev/null #updating record
                         sed -i "/^#SERVICE $ServiceLine/d" /tmp/.ChannelsNotUpdated 2>/dev/null #deleting updated record
