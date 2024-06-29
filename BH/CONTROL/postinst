@@ -63,6 +63,8 @@ elif [ "`cat /etc/opkg/all-feed.conf 2> /dev/null|grep -c 'openpli-8'`" -gt 0 ];
   systemType='openPLI-8'
 #elif [ "`cat /etc/opkg/all-feed.conf 2> /dev/null|grep 'openatv'|grep -c '7.1'`" -gt 0 ];then
 #  systemType='openATV-7.1'
+elif [ "`cat /etc/opkg/all-feed.conf 2> /dev/null|grep 'openatv'|grep -c '7.4'`" -gt 0 ];then
+  systemType='openATV-74'
 elif [ "`cat /etc/opkg/all-feed.conf 2> /dev/null|grep 'openatv'|grep -c '7'`" -gt 0 ];then
   systemType='openATV-7'
 elif [ -e /usr/lib/enigma2/python/Plugins/Extensions/Infopanel ];then
@@ -110,6 +112,11 @@ elif [ "$systemType" == 'openATV' ];then
 elif [ "$systemType" == 'openATV-7' ];then
   cat /usr/share/enigma2/BlackHarmony/TemplateXMLs/image-openATV_specific.xml|grep -v 'skin>' >> $BHfolder/skin.xml
   cat /usr/share/enigma2/BlackHarmony/TemplateXMLs/image-openATV7_specific.xml|grep -v 'skin>' >> $BHfolder/skin.xml
+
+elif [ "$systemType" == 'openATV-74' ];then
+  cat /usr/share/enigma2/BlackHarmony/TemplateXMLs/image-openATV_specific.xml|grep -v 'skin>' >> $BHfolder/skin.xml
+  cat /usr/share/enigma2/BlackHarmony/TemplateXMLs/image-openATV7_specific.xml|grep -v 'skin>' >> $BHfolder/skin.xml
+  cat /usr/share/enigma2/BlackHarmony/TemplateXMLs/image-openATV74_specific.xml|grep -v 'skin>' >> $BHfolder/skin.xml
   
 elif [ "$systemType" == 'BlackHole' ];then
   cat /usr/share/enigma2/BlackHarmony/TemplateXMLs/image-BlackHole_specific.xml|grep -v 'skin>' >> /$BHfolder/skin.xml
