@@ -606,6 +606,7 @@ class urlparser:
                        'streamvid.net': self.pp.parserONLYSTREAMTV,
                        'streamwire.net': self.pp.parserONLYSTREAMTV,
                        'streamzz.to': self.pp.parserSTREAMZZ,
+                       'strwish.com': self.pp.parserONLYSTREAMTV,
                        'superfastvideos.xyz': self.pp.parserTXNEWSNETWORK,
                        'superfilm.pl': self.pp.parserSUPERFILMPL,
                        'supergoodtvlive.com': self.pp.parserTXNEWSNETWORK,
@@ -15804,6 +15805,13 @@ class pageParser(CaptchaHelper):
             return False
 
         r = re.search(r'''['"]?hls['"]?\s*?:\s*?['"]([^'^"]+?)['"]''', data)
+        if not r:
+            url = ph.search(data, '''window.location.href\s*=\s*['"]([^"^']+?)['"]''')[0]
+            sts, data = self.cm.getPage(url)
+            if not sts:
+                return False
+            r = re.search(r'''['"]?hls['"]?\s*?:\s*?['"]([^'^"]+?)['"]''', data)
+
         if r:
             hlsUrl = ensure_str(base64.b64decode(r.group(1)))
             if hlsUrl.startswith('//'):
@@ -15812,6 +15820,7 @@ class pageParser(CaptchaHelper):
                 params = {'iptv_proto': 'm3u8', 'Referer': baseUrl, 'Origin': urlparser.getDomain(baseUrl, False)}
                 hlsUrl = urlparser.decorateUrl(hlsUrl, params)
                 return getDirectM3U8Playlist(hlsUrl, checkExt=False, checkContent=True, sortWithMaxBitrate=999999999)
+
         hlsUrl = self.cm.ph.getSearchGroups(data, '''["'](https?://[^'^"]+?\.m3u8(?:\?[^"^']+?)?)["']''', ignoreCase=True)[0]
         if self.cm.isValidUrl(hlsUrl):
             params = {'iptv_proto': 'm3u8', 'Referer': baseUrl, 'Origin': urlparser.getDomain(baseUrl, False)}
