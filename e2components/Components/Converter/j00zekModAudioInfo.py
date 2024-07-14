@@ -33,6 +33,7 @@ class j00zekModAudioInfo(Poll, Converter, object):
                    "08_dts-hd": ("dts-hd", ),
                    "09_dts": ("dts", ),
                    "10_pcm": ("pcm", ),
+                   "11_aac": ("aac", ),
                 }
         self.codec_info = { "dolbydigitalplus" : ("51", "20", "71"),
                     "dolbydigital" : ("51", "20", "71"),
