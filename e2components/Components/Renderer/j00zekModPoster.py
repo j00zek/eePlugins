@@ -9,7 +9,9 @@
 from enigma import ePixmap, ePicLoad, eTimer
 from Components.AVSwitch import AVSwitch
 from Components.Pixmap import Pixmap
-from urllib2 import urlopen, quote
+from Components.Renderer.Renderer import Renderer
+from urllib.request import urlopen
+from urllib.parse import quote
 import json
 import re
 import os
