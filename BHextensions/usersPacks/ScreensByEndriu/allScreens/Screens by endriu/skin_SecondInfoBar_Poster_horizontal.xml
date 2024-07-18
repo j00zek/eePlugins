@@ -96,7 +96,7 @@
     <convert type="ClockToText">Format:- %H:%M</convert>
      </widget>
 	 <eLabel backgroundColor="linie"  position="1387,519" size="266,1" zPosition="1" />
-  <widget source="session.Event_Now" render="Progress" position="1387,513" zPosition="2" size="266,12" pixmap="BlackHarmony/gfx/Progress_color_dots_266x12.png" transparent="2">
+  <widget source="session.Event_Now" render="Progress" position="1387,513" zPosition="2" size="266,12" pixmap="BlackHarmony/gfx/Progress_color_dots_266x12.png" transparent="1">
       <convert type="EventTime">Progress</convert>
       </widget>
   <widget pointer="BlackHarmony/gfx/seekbutton.png:14,1" position="1387,512" render="j00zekModPositionGauge" size="266,14" source="session.Event_Now" transparent="1" zPosition="3">
