@@ -249,39 +249,39 @@
     <convert type="ConditionalShowHide" />
   </widget>
   <ePixmap alphatest="blend" source="session.CurrentService" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/ico_wifi1_on_ciacho.png" position="1153,750" size="104,64" zPosition="1" />
-  <widget alphatest="blend" pixmap="BlackHarmony/piconCam/Biss.png" position="289,752" render="Pixmap" size="100,60" source="session.CurrentService" zPosition="1">
+  <widget alphatest="blend" pixmap="piconCam/Biss.png" position="289,752" render="Pixmap" size="100,60" source="session.CurrentService" zPosition="1">
     <convert type="j00zekModCaidInfo2">BisEcm</convert>
     <convert type="ConditionalShowHide" />
   </widget>
-  <widget alphatest="blend" pixmap="BlackHarmony/piconCam/Conax.png" position="289,752" render="Pixmap" size="100,60" source="session.CurrentService" zPosition="1">
+  <widget alphatest="blend" pixmap="piconCam/Conax.png" position="289,752" render="Pixmap" size="100,60" source="session.CurrentService" zPosition="1">
     <convert type="j00zekModCaidInfo2">ConaxEcm</convert>
     <convert type="ConditionalShowHide" />
   </widget>
-  <widget alphatest="blend" pixmap="BlackHarmony/piconCam/Cryptoworks.png" position="289,752" render="Pixmap" size="100,60" source="session.CurrentService" zPosition="1">
+  <widget alphatest="blend" pixmap="piconCam/Cryptoworks.png" position="289,752" render="Pixmap" size="100,60" source="session.CurrentService" zPosition="1">
     <convert type="j00zekModCaidInfo2">CrwEcm</convert>
     <convert type="ConditionalShowHide" />
   </widget>
-  <widget alphatest="blend" pixmap="BlackHarmony/piconCam/Irdeto.png" position="289,752" render="Pixmap" size="100,60" source="session.CurrentService" zPosition="1">
+  <widget alphatest="blend" pixmap="piconCam/Irdeto.png" position="289,752" render="Pixmap" size="100,60" source="session.CurrentService" zPosition="1">
     <convert type="j00zekModCaidInfo2">IrdEcm</convert>
     <convert type="ConditionalShowHide" />
   </widget>
-  <widget alphatest="blend" pixmap="BlackHarmony/piconCam/Nagravision.png" position="289,752" render="Pixmap" size="100,60" source="session.CurrentService" zPosition="1">
+  <widget alphatest="blend" pixmap="piconCam/Nagravision.png" position="289,752" render="Pixmap" size="100,60" source="session.CurrentService" zPosition="1">
     <convert type="j00zekModCaidInfo2">NagraEcm</convert>
     <convert type="ConditionalShowHide" />
   </widget>
-  <widget alphatest="blend" pixmap="BlackHarmony/piconCam/Videoguard.png" position="289,752" render="Pixmap" size="100,60" source="session.CurrentService" zPosition="1">
+  <widget alphatest="blend" pixmap="piconCam/Videoguard.png" position="289,752" render="Pixmap" size="100,60" source="session.CurrentService" zPosition="1">
     <convert type="j00zekModCaidInfo2">NdsEcm</convert>
     <convert type="ConditionalShowHide" />
   </widget>
-  <widget alphatest="blend" pixmap="BlackHarmony/piconCam/Seca.png" position="289,752" render="Pixmap" size="100,60" source="session.CurrentService" zPosition="1">
+  <widget alphatest="blend" pixmap="piconCam/Seca.png" position="289,752" render="Pixmap" size="100,60" source="session.CurrentService" zPosition="1">
     <convert type="j00zekModCaidInfo2">SecaEcm</convert>
     <convert type="ConditionalShowHide" />
   </widget>
-  <widget alphatest="blend" pixmap="BlackHarmony/piconCam/Viaccess.png" position="289,752" render="Pixmap" size="100,60" source="session.CurrentService" zPosition="1">
+  <widget alphatest="blend" pixmap="piconCam/Viaccess.png" position="289,752" render="Pixmap" size="100,60" source="session.CurrentService" zPosition="1">
     <convert type="j00zekModCaidInfo2">ViaEcm</convert>
     <convert type="ConditionalShowHide" />
   </widget>
-  <widget alphatest="blend" pixmap="BlackHarmony/piconCam/Fta.png" position="289,752" render="Pixmap" size="100,60" source="session.CurrentService" zPosition="1">
+  <widget alphatest="blend" pixmap="piconCam/Fta.png" position="289,752" render="Pixmap" size="100,60" source="session.CurrentService" zPosition="1">
     <convert type="j00zekModServiceInfoEX">IsFta</convert>
     <convert type="ConditionalShowHide" />
   </widget>
