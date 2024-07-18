@@ -14,7 +14,7 @@
 	<widget source="session.CurrentService" render="Label"  backgroundColor="black" font="Regular; 40" foregroundColor="blue" position="65,122" size="110,60" halign="left" valign="center" transparent="1" >
       <convert type="j00zekTranslator">Now</convert>
       </widget>
-    <widget source="session.Event_Now" render="j00zekLabel" backgroundColor="background" foregroundColor="#66cc99" font="Regular; 40" noWrap="1" halign="left" valign="center" position="190,122" size="910,60" transparent="1">
+    <widget source="session.Event_Now" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=90,repeat=99,startdelay=2000" backgroundColor="background" foregroundColor="#66cc99" font="Regular; 40" noWrap="1" halign="left" valign="center" position="200,122" size="660,60" transparent="1">
       <convert type="j00zekModEventName">Name</convert>
       </widget>
     <ePixmap position="110,185" zPosition="10" size="680,1" pixmap="BlackHarmony/gfx/linia_md1.png" />
@@ -29,14 +29,16 @@
     <widget source="session.Event_Now" backgroundColor="background" font="Regular;30" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=top,steptime=100,repeat=3,startdelay=11000,wrap" position="65,235"  size="770,310" transparent="1">
       <convert type="j00zekModEventName">ExtendedDescription</convert>
     </widget>
-   <widget source="session.Event_Now" render="j00zekModPoster" borderColor="linie" borderWidth="2" position="860,187" size="240,360" zPosition="10" />
+   <ePixmap pixmap="BlackHarmony/icons/starsbar_empty.png" position="875,580" size="210,21" alphatest="blend" zPosition="10" transparent="1" />
+    <widget source="session.Event_Now" render="j00zekModStars" pixmap="BlackHarmony/icons/starsbar_filled.png" position="875,580" size="210,21" alphatest="blend" transparent="1" zPosition="3" />
+    <widget source="session.Event_Now" render="j00zekModPoster" borderColor="linie" borderWidth="2" position="860,187" size="240,360" zPosition="10" />
    
    <!--potem-->
     <ePixmap position="115,553" zPosition="10" size="870,1" pixmap="BlackHarmony/gfx/linia_md.png" />
     <widget source="session.CurrentService" render="Label" backgroundColor="black" font="Regular; 40" foregroundColor="blue" position="65,555" size="115,60" halign="left" valign="center" transparent="1" >
       <convert type="j00zekTranslator">later</convert>
       </widget>
-	<widget source="session.Event_Next" render="j00zekLabel" backgroundColor="black" foregroundColor="yellow" font="Regular; 40" noWrap="1" position="200,555" size="900,60" halign="left" valign="center" transparent="1">
+	<widget source="session.Event_Next" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=90,repeat=99,startdelay=2000" backgroundColor="black" foregroundColor="yellow" font="Regular; 40" noWrap="1" position="200,555" size="660,60" halign="left" valign="center" transparent="1">
     <convert type="j00zekModEventName">Name</convert>
   </widget> 
 	<ePixmap position="110,615" zPosition="10" size="680,1" pixmap="BlackHarmony/gfx/linia_md1.png" />
@@ -50,6 +52,8 @@
 	<widget source="session.Event_Next" backgroundColor="background" font="Regular;30" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=top,steptime=100,repeat=3,startdelay=11000,wrap" position="65,665"  size="770,315" transparent="1">
       <convert type="j00zekModEventName">ExtendedDescription</convert>
     </widget>
+	<ePixmap pixmap="BlackHarmony/icons/starsbar_empty.png" position="875,149" size="210,21" alphatest="blend" zPosition="10" transparent="1" />
+    <widget source="session.Event_Next" render="j00zekModStars" pixmap="BlackHarmony/icons/starsbar_filled.png" position="875,149" size="210,21" alphatest="blend" transparent="1" zPosition="3" />
 	<widget source="session.Event_Next" render="j00zekModPoster" borderColor="linie" borderWidth="2" position="860,620" size="240,360" zPosition="10" />
   
     <eLabel backgroundColor="linie"  position="1110,138" size="2,830" zPosition="1" />
