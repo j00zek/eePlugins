@@ -40,7 +40,7 @@
     <convert type="j00zekModEventName">Rating</convert>
     </widget>
    <eLabel backgroundColor="linie"  position="108,220" size="800,1" zPosition="1" />
-    <widget source="session.Event_Now" backgroundColor="transpBlack" font="Regular;32" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=top,steptime=100,repeat=2,startdelay=11000,wrap" position="58,235"  size="885,320" transparent="2">
+    <widget source="session.Event_Now" backgroundColor="transpBlack" font="Regular;32" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=top,steptime=100,repeat=2,startdelay=11000,wrap" position="58,235"  size="885,320" transparent="1">
       <convert type="j00zekModEventName">ExtendedDescription</convert>
     </widget>
   
@@ -74,7 +74,7 @@
     <convert type="j00zekModEventName">Rating</convert>
     </widget>
    <eLabel backgroundColor="linie"  position="1020,220" size="800,1" zPosition="1" />
-     <widget source="session.Event_Next" render="j00zekModRunningText" backgroundColor="transpBlack" font="Regular;32" options="movetype=running,startpoint=0,direction=top,steptime=100,repeat=2,startdelay=11000,wrap" position="980,235"  size="890,320" transparent="2">
+     <widget source="session.Event_Next" render="j00zekModRunningText" backgroundColor="transpBlack" font="Regular;32" options="movetype=running,startpoint=0,direction=top,steptime=100,repeat=2,startdelay=11000,wrap" position="980,235"  size="890,320" transparent="1">
       <convert type="j00zekModEventName">ExtendedDescription</convert>
     </widget> 
 	 
