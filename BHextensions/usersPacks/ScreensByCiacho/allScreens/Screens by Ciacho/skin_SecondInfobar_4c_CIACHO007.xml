@@ -1,62 +1,87 @@
 <skin>
 <screen name="SecondInfoBar" backgroundColor="transparent" flags="wfNoBorder" position="0,52" size="1920,1080">
-  <ePixmap position="10,0" zPosition="-2" size="1920,699" pixmap="BlackHarmony/bg_design/secondinfobar.png" />
-  <widget source="session.CurrentService" render="j00zekLabel" backgroundColor="black" font="HD_Thin; 27" foregroundColor="green" position="75,55" size="90,40" transparent="1">
+  <ePixmap position="9,-2" zPosition="-2" size="1920,699" pixmap="BlackHarmony/allScreens/Screens by Ciacho/bg_design/secondinfobar_ciacho_1.png" />
+  <widget source="session.CurrentService" render="j00zekLabel" backgroundColor="black" font="HD_Thin; 27" foregroundColor="green" position="75,35" size="90,40" transparent="1">
     <convert type="j00zekTranslator">Now:</convert>
   </widget>
-  <widget backgroundColor="black" font="HD_Thin; 27" foregroundColor="white" halign="right" position="165,55" render="Label" size="90,40" source="session.Event_Now" transparent="1">
+  <widget backgroundColor="black" font="HD_Thin; 27" foregroundColor="white" halign="right" position="165,35" render="Label" size="90,40" source="session.Event_Now" transparent="1">
     <convert type="EventTime">StartTime</convert>
     <convert type="ClockToText">Default</convert>
   </widget>
-  <widget backgroundColor="black" font="HD_Thin; 27" foregroundColor="white" halign="left" position="266,55" render="Label" size="105,40" source="session.Event_Now" transparent="1">
+  <widget backgroundColor="black" font="HD_Thin; 27" foregroundColor="white" halign="left" position="266,35" render="Label" size="105,40" source="session.Event_Now" transparent="1">
     <convert type="EventTime">EndTime</convert>
     <convert type="ClockToText">Format:- %H:%M</convert>
   </widget>
-  <widget backgroundColor="black" font="HD_Thin; 27" foregroundColor="white" halign="right" position="745,55" render="Label" size="180,40" source="session.Event_Now" transparent="1">
+  <widget backgroundColor="black" font="HD_Thin; 27" foregroundColor="white" halign="right" position="745,35" render="Label" size="180,40" source="session.Event_Now" transparent="1">
     <convert type="EventTime">Remaining</convert>
     <convert type="RemainingToText">InMinutes</convert>
   </widget>
-  <widget backgroundColor="background" font="HD_Thin; 32" foregroundColor="light_yellow" position="75,123" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" size="850,40" source="session.Event_Now" transparent="0">
+  <widget backgroundColor="background" font="HD_Thin; 32" foregroundColor="light_yellow" position="75,90" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" size="850,40" source="session.Event_Now" halign="center" transparent="1">
     <convert type="j00zekModEventName">Name</convert>
   </widget>
-  <widget backgroundColor="black" font="Roboto_HD; 28" foregroundColor="white" position="75,190" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=top,steptime=100,startdelay=4000,wrap,always=0" size="850,360" source="session.Event_Now" transparent="1">
+  <widget backgroundColor="black" font="Roboto_HD; 28" foregroundColor="white" position="75,150" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=top,steptime=100,startdelay=4000,wrap,always=0" size="510,440" source="session.Event_Now" transparent="1">
     <convert type="j00zekModEventName">ExtendedDescription</convert>
   </widget>
-  <widget source="session.CurrentService" render="j00zekLabel" backgroundColor="black" font="HD_Thin; 27" foregroundColor="blue" position="997,55" size="100,40" transparent="1">
+  <widget source="session.CurrentService" render="j00zekLabel" backgroundColor="black" font="HD_Thin; 27" foregroundColor="blue" position="997,35" size="100,40" transparent="1">
     <convert type="j00zekTranslator">Next:</convert>
   </widget>
-  <widget backgroundColor="black" font="HD_Thin; 27" halign="right" position="1097,55" render="Label" size="90,40" source="session.Event_Next" transparent="1">
+  <widget backgroundColor="black" font="HD_Thin; 27" halign="right" position="1097,35" render="Label" size="90,40" source="session.Event_Next" transparent="1">
     <convert type="EventTime">StartTime</convert>
     <convert type="ClockToText">Default</convert>
   </widget>
-  <widget backgroundColor="black" font="HD_Thin; 27" halign="left" position="1197,55" render="Label" size="105,40" source="session.Event_Next" transparent="1">
+  <widget backgroundColor="black" font="HD_Thin; 27" halign="left" position="1197,35" render="Label" size="105,40" source="session.Event_Next" transparent="1">
     <convert type="EventTime">EndTime</convert>
     <convert type="ClockToText">Format:- %H:%M</convert>
   </widget>
-  <widget backgroundColor="black" font="HD_Thin; 27" halign="right" position="1668,55" render="Label" size="180,40" source="session.Event_Next" transparent="1">
+  <widget backgroundColor="black" font="HD_Thin; 27" halign="right" position="1668,35" render="Label" size="180,40" source="session.Event_Next" transparent="1">
     <convert type="EventTime">Remaining</convert>
     <convert type="RemainingToText">InMinutes</convert>
   </widget>
-  <widget backgroundColor="black" font="HD_Thin; 32" foregroundColor="light_yellow" position="997,123" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" size="850,40" source="session.Event_Next" transparent="1">
+  <widget backgroundColor="black" font="HD_Thin; 32" foregroundColor="light_yellow" position="997,90" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" size="850,40" source="session.Event_Next" halign="center" transparent="1">
     <convert type="j00zekModEventName">Name</convert>
   </widget>
-  <widget backgroundColor="black" font="Roboto_HD; 28" position="997,190" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=top,steptime=100,startdelay=4000,wrap,always=0" size="850,360" source="session.Event_Next" transparent="1">
+  <widget backgroundColor="black" font="Roboto_HD; 28" position="997,150" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=top,steptime=100,startdelay=4000,wrap,always=0" size="510,440" source="session.Event_Next" transparent="1">
     <convert type="j00zekModEventName">ExtendedDescription</convert>
   </widget>
-  <widget source="session.CurrentService" render="Label" position="center,611" zPosition="1" size="1800,30" font="Roboto_HD; 26" halign="center" backgroundColor="black" transparent="1" foregroundColor="linie">
+  <ePixmap position="63,140" zPosition="10" size="870,1" pixmap="BlackHarmony/gfx/linia_md.png" />
+  <ePixmap position="987,80" zPosition="10" size="870,1" pixmap="BlackHarmony/gfx/linia_md.png" />
+  <ePixmap position="63,80" zPosition="10" size="870,1" pixmap="BlackHarmony/gfx/linia_md.png" />
+  <ePixmap position="987,140" zPosition="10" size="870,1" pixmap="BlackHarmony/gfx/linia_md.png" />
+  <widget backgroundColor="background" font="HD_Thin; 30" foregroundColor="green" halign="left" noWrap="1" position="75,615" render="j00zekModTypeLabel" size="600,36" source="session.Event_Now" transparent="1" typeCaret="1" typeRepeats="1" typeSpeed="700" typeStartDelay="2000" zPosition="1">
+    <convert type="j00zekModEventName">Genre</convert>
+  </widget>
+  <widget backgroundColor="background" font="HD_Thin; 30" foregroundColor="red" halign="left" noWrap="1" position="800,615" render="j00zekModTypeLabel" size="130,36" source="session.Event_Now" transparent="1" typeCaret="1" typeRepeats="1" typeSpeed="700" typeStartDelay="2000" zPosition="1">
+    <convert type="j00zekModEventName">Rating</convert>
+  </widget>
+  <widget backgroundColor="background" font="HD_Thin; 30" foregroundColor="green" halign="left" noWrap="1" position="997,615" render="j00zekModTypeLabel" size="600,36" source="session.Event_Next" transparent="1" typeCaret="1" typeRepeats="1" typeSpeed="700" typeStartDelay="2000" zPosition="1">
+    <convert type="j00zekModEventName">Genre</convert>
+  </widget>
+  <widget backgroundColor="background" font="HD_Thin; 30" foregroundColor="red" halign="left" noWrap="1" position="1722,615" render="j00zekModTypeLabel" size="130,36" source="session.Event_Next" transparent="1" typeCaret="1" typeRepeats="1" typeSpeed="700" typeStartDelay="2000" zPosition="1">
+    <convert type="j00zekModEventName">Rating</convert>
+  </widget>
+  <widget source="session.CurrentService" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" position="820,842" zPosition="1" size="525,25" font="Roboto_HD; 20" halign="right" backgroundColor="black" transparent="1" foregroundColor="linie">
     <convert type="j00zekModExtraTuner">TunerInfo</convert>
   </widget>
-  <!--##########################################-->
+  <widget source="session.Event_Now" render="j00zekModPoster" position="593,150" size="330,440" zPosition="10" alphatest="blend" />
+  <widget source="session.Event_Next" render="j00zekModPoster" position="1515,150" size="330,440" zPosition="10" alphatest="blend" />
+  <ePixmap position="1543,170" zPosition="1" size="274,397" pixmap="BlackHarmony/gfx/No-Cover_1.png" transparent="0" alphatest="on" />
+  <ePixmap position="624,170" zPosition="1" size="274,397" pixmap="BlackHarmony/gfx/No-Cover_1.png" transparent="0" alphatest="on" />
+  <widget source="session.Event_Now" render="j00zekModStars" position="526,39" size="210,21" pixmap="BlackHarmony/icons/starsbar_filled.png" zPosition="3" transparent="1" />
+  <ePixmap pixmap="BlackHarmony/icons/starsbar_empty.png" position="526,39" size="210,21" zPosition="2" alphatest="blend" />
+ <widget source="session.Event_Next" render="j00zekModStars" position="1454,39" size="210,21" pixmap="BlackHarmony/icons/starsbar_filled.png" zPosition="3" transparent="1" />
+  <ePixmap pixmap="BlackHarmony/icons/starsbar_empty.png" position="1454,39" size="210,21" zPosition="2" alphatest="blend" />
+
+<!--##########################################-->
   <ePixmap position="29,721" zPosition="-2" size="1900,300" pixmap="BlackHarmony/bg_design/infobar.png" />
   <ePixmap position="120,825" zPosition="10" size="1200,1" pixmap="BlackHarmony/gfx/line.png" />
-  <widget source="session.CurrentService" render="Pixmap" position="70,794" zPosition="3" size="20,20" pixmap="BlackHarmony/icons/update.png" alphatest="blend">
+  <widget source="session.CurrentService" render="Pixmap" position="45,794" zPosition="3" size="20,20" pixmap="BlackHarmony/icons/update.png" alphatest="blend">
     <convert type="j00zekOPKGupgradeCheck" />
     <convert type="ConditionalShowHide">Blink</convert>
   </widget>
   <ePixmap position="400,938" zPosition="10" size="870,1" pixmap="BlackHarmony/gfx/linia_md.png" />
   <ePixmap position="1410,950" zPosition="10" size="450,1" pixmap="BlackHarmony/gfx/linia_IB.png" />
   <ePixmap position="1410,912" zPosition="10" size="450,1" pixmap="BlackHarmony/gfx/linia_IB.png" />
-  <widget source="session.RecordState" render="Pixmap" position="70,750" size="20,20" zPosition="2" pixmap="BlackHarmony/icons/ico_rec_on2.png" alphatest="blend">
+  <widget source="session.RecordState" render="Pixmap" position="45,750" size="20,20" zPosition="2" pixmap="BlackHarmony/icons/ico_rec_on2.png" alphatest="blend">
     <convert type="ConditionalShowHide">Blink</convert>
   </widget>
   <eLabel text="BTR:" position="1655,958" size="65,25" font="Roboto_HD; 22" backgroundColor="black" halign="left" transparent="1" foregroundColor="light_red" />
@@ -90,7 +115,7 @@
     <convert type="j00zekModFrontendInfo2">AGC</convert>
   </widget>
   <ePixmap position="1410,825" zPosition="10" size="450,1" pixmap="BlackHarmony/gfx/linia_IB.png" />
-  <widget source="session.Event_Now" render="Progress" position="313,880" zPosition="1" size="1032,6" pixmap="BlackHarmony/gfx/progress_emc_rec.png" transparent="1">
+  <widget source="session.Event_Now" render="Progress" position="313,880" zPosition="1" size="1032,6" pixmap="BlackHarmony/allScreens/Screens by Ciacho/gfx/progress_1140_25_ciacho_1.png" transparent="1">
     <convert type="EventTime">Progress</convert>
   </widget>
   <widget source="session.Event_Now" render="Label" position="310,895" size="105,36" font="HD_Thin; 32" halign="left" backgroundColor="black" transparent="1">
@@ -103,12 +128,6 @@
   </widget>
   <widget source="session.Event_Now" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" position="436,895" size="700,36" font="HD_Thin; 32" halign="left" backgroundColor="black" transparent="1">
     <convert type="j00zekModEventName">Name</convert>
-  </widget>
-  <widget source="session.Event_Now" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=5,startdelay=2000,always=0" position="820,838" size="370,36" transparent="1" zPosition="1" font="HD_Thin; 28" halign="right" foregroundColor="green" backgroundColor="black" valign="bottom">
-    <convert type="j00zekModEventName">Genre</convert>
-  </widget>
-  <widget source="session.Event_Now" render="Label" position="1193,838" size="150,36" transparent="1" zPosition="1" font="HD_Thin; 28" halign="right" foregroundColor="light_red" backgroundColor="black" valign="bottom">
-    <convert type="j00zekModEventName">Rating</convert>
   </widget>
   <widget source="session.Event_Now" render="Label" position="1143,895" size="200,36" font="HD_Thin; 32" halign="right" backgroundColor="black" transparent="1">
     <convert type="EventTime">Remaining</convert>
@@ -156,126 +175,130 @@
     <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
   </widget>
   <!-- wykorzystanie glowic -->
-  <ePixmap alphatest="blend" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/czarne104_64_ciacho.png" position="117,750" size="104,64" zPosition="4" />
-  <widget source="session.CurrentService" render="j00zekPicons" picontype="piconSat" position="119,752" zPosition="5" size="100,60" alphatest="blend">
+  <ePixmap alphatest="blend" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/czarne104_64_ciacho.png" position="73,750" size="104,64" zPosition="4" />
+  <widget source="session.CurrentService" render="j00zekPicons" picontype="piconSat" position="75,752" zPosition="5" size="100,60" alphatest="blend">
     <convert type="j00zekModServiceName2">OrbitalPos</convert>
   </widget>
-  <ePixmap alphatest="blend" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/czarne104_64_ciacho.png" position="226,750" size="104,64" zPosition="4" />
-  <widget source="session.CurrentService" render="j00zekPicons" picontype="piconProv" position="229,752" size="100,60" zPosition="5" transparent="1" alphatest="blend">
+  <ePixmap alphatest="blend" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/czarne104_64_ciacho.png" position="180,750" size="104,64" zPosition="4" />
+  <widget source="session.CurrentService" render="j00zekPicons" picontype="piconProv" position="182,752" size="100,60" zPosition="5" transparent="1" alphatest="blend">
     <convert type="j00zekModServiceName2">Provider</convert>
   </widget>
-  <widget position="227,750" size="104,64" source="session.CurrentService" render="Pixmap" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/ico_iptv_on_ciacho.png" alphatest="blend" zPosition="6">
+  <widget position="180,750" size="104,64" source="session.CurrentService" render="Pixmap" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/ico_iptv_on_ciacho.png" alphatest="blend" zPosition="6">
     <convert type="j00zekModServiceInfoEX">IsStreamTV</convert>
     <convert type="ConditionalShowHide" />
   </widget>
-  <ePixmap position="441,750" size="104,64" zPosition="1" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/tunera_ciacho.png" alphatest="blend" />
-  <widget alphatest="blend" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/tunera_ciacho.png" position="441,750" render="Pixmap" size="104,64" source="session.FrontendInfo" zPosition="2">
+  <ePixmap position="395,750" size="104,64" zPosition="1" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/tunera_ciacho.png" alphatest="blend" />
+  <widget alphatest="blend" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/tunera_ciacho.png" position="395,750" render="Pixmap" size="104,64" source="session.FrontendInfo" zPosition="2">
     <convert type="j00zekModFrontendInfo">NUMBER</convert>
     <convert type="ValueRange">0,0</convert>
     <convert type="ConditionalShowHide" />
   </widget>
-  <widget alphatest="blend" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/tunerb_ciacho.png" position="441,750" render="Pixmap" size="104,64" source="session.FrontendInfo" zPosition="2">
+  <widget alphatest="blend" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/tunerb_ciacho.png" position="395,750" render="Pixmap" size="104,64" source="session.FrontendInfo" zPosition="2">
     <convert type="j00zekModFrontendInfo">NUMBER</convert>
     <convert type="ValueRange">1,1</convert>
     <convert type="ConditionalShowHide" />
   </widget>
-  <widget alphatest="blend" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/tunerc_ciacho.png" position="441,750" render="Pixmap" size="104,64" source="session.FrontendInfo" zPosition="2">
+  <widget alphatest="blend" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/tunerc_ciacho.png" position="395,750" render="Pixmap" size="104,64" source="session.FrontendInfo" zPosition="2">
     <convert type="j00zekModFrontendInfo">NUMBER</convert>
     <convert type="ValueRange">2,2</convert>
     <convert type="ConditionalShowHide" />
   </widget>
-  <widget alphatest="blend" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/tunerd_ciacho.png" position="441,750" render="Pixmap" size="104,64" source="session.FrontendInfo" zPosition="2">
+  <widget alphatest="blend" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/tunerd_ciacho.png" position="395,750" render="Pixmap" size="104,64" source="session.FrontendInfo" zPosition="2">
     <convert type="j00zekModFrontendInfo">NUMBER</convert>
     <convert type="ValueRange">3,3</convert>
     <convert type="ConditionalShowHide" />
   </widget>
-  <widget source="session.CurrentService" render="Pixmap" position="548,750" size="104,64" zPosition="2" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/ico_format_on_ciacho.png" alphatest="blend">
+  <widget source="session.CurrentService" render="Pixmap" position="504,750" size="104,64" zPosition="2" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/ico_format_on_ciacho.png" alphatest="blend">
     <convert type="j00zekModServiceInfoEX">IsWidescreen</convert>
     <convert type="ConditionalShowHide" />
   </widget>
-  <ePixmap position="548,750" size="104,64" zPosition="1" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/ico_format_off_ciacho.png" alphatest="blend" />
-  <widget alphatest="blend" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/ico_uhd_on_ciacho.png" position="655,750" render="Pixmap" size="104,64" source="session.CurrentService" zPosition="4">
+  <ePixmap position="504,750" size="104,64" zPosition="1" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/ico_format_off_ciacho.png" alphatest="blend" />
+  <widget alphatest="blend" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/ico_uhd_on_ciacho.png" position="613,750" render="Pixmap" size="104,64" source="session.CurrentService" zPosition="4">
     <convert type="j00zekModServiceInfoEX">VideoHeight</convert>
     <convert type="ValueRange">1921,2160</convert>
     <convert type="ConditionalShowHide" />
   </widget>
-  <widget alphatest="blend" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/ico_fhd_on_1080_ciacho.png" position="655,750" render="Pixmap" size="104,64" source="session.CurrentService" zPosition="3">
+  <widget alphatest="blend" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/ico_fhd_on_1080_ciacho.png" position="613,750" render="Pixmap" size="104,64" source="session.CurrentService" zPosition="3">
     <convert type="j00zekModServiceInfoEX">VideoHeight</convert>
     <convert type="ValueRange">1001,1080</convert>
     <convert type="ConditionalShowHide" />
   </widget>
-  <widget alphatest="blend" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/ico_hd_on_720_ciacho.png" position="655,750" render="Pixmap" size="104,64" source="session.CurrentService" zPosition="2">
+  <widget alphatest="blend" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/ico_hd_on_720_ciacho.png" position="613,750" render="Pixmap" size="104,64" source="session.CurrentService" zPosition="2">
     <convert type="j00zekModServiceInfoEX">VideoHeight</convert>
     <convert type="ValueRange">720,1000</convert>
     <convert type="ConditionalShowHide" />
   </widget>
-  <widget alphatest="blend" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/ico_sd_on_576_ciacho.png" position="655,750" render="Pixmap" size="104,64" source="session.CurrentService" zPosition="1">
+  <widget alphatest="blend" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/ico_sd_on_576_ciacho.png" position="613,750" render="Pixmap" size="104,64" source="session.CurrentService" zPosition="1">
     <convert type="j00zekModServiceInfoEX">VideoWidth</convert>
     <convert type="ValueRange">0,1279</convert>
     <convert type="ConditionalShowHide" />
   </widget>
-  <widget source="session.CurrentService" render="Pixmap" position="762,750" size="104,64" zPosition="2" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/ico_dolby_on_ciacho.png" alphatest="blend">
+  <widget source="session.CurrentService" render="Pixmap" position="829,750" size="104,64" zPosition="2" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/ico_dolby_on_ciacho.png" alphatest="blend">
     <convert type="j00zekModServiceInfoEX">IsMultichannel</convert>
     <convert type="ConditionalShowHide" />
   </widget>
-  <ePixmap position="762,750" size="104,64" zPosition="1" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/ico_dolby_off_ciacho.png" alphatest="blend" />
-  <widget alphatest="blend" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/sub_on_ciacho.png" position="869,750" render="Pixmap" size="104,64" source="session.CurrentService" zPosition="2">
+  <ePixmap alphatest="blend" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/czarne104_64_ciacho.png" position="721,750" size="104,64" zPosition="4" />
+  <ePixmap alphatest="blend" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/ramkaszara.png" position="725,752" size="95,55" zPosition="5" />
+  <widget source="session.CurrentService" render="j00zekModAudioIcon" path="allScreens/Screens by Ciacho/icons" position="730,766" size="85,28" zPosition="6" alphatest="blend">
+    <convert type="j00zekModAudioInfo">AudioIcon</convert>
+  </widget>
+  <ePixmap position="829,750" size="104,64" zPosition="1" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/ico_dolby_off_ciacho.png" alphatest="blend" />
+  <widget alphatest="blend" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/sub_on_ciacho.png" position="937,750" render="Pixmap" size="104,64" source="session.CurrentService" zPosition="2">
     <convert type="j00zekModServiceInfoEX">SubtitlesAvailable</convert>
     <convert type="ConditionalShowHide" />
   </widget>
-  <ePixmap alphatest="blend" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/sub_off_ciacho.png" position="869,750" size="104,64" zPosition="1" />
-  <widget alphatest="blend" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/ico_txt_on_ciacho.png" position="977,750" render="Pixmap" size="104,64" source="session.CurrentService" zPosition="3">
+  <ePixmap alphatest="blend" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/sub_off_ciacho.png" position="937,750" size="104,64" zPosition="1" />
+  <widget alphatest="blend" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/ico_txt_on_ciacho.png" position="1045,750" render="Pixmap" size="104,64" source="session.CurrentService" zPosition="3">
     <convert type="j00zekModServiceInfoEX">HasTelext</convert>
     <convert type="ConditionalShowHide" />
   </widget>
-  <ePixmap alphatest="blend" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/ico_txt_off_ciacho.png" position="977,750" size="104,64" zPosition="1" />
-  <widget alphatest="blend" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/ico_lan_on_ciacho.png" position="1084,750" render="Pixmap" size="104,64" source="session.CurrentService" transparent="2" zPosition="3">
+  <ePixmap alphatest="blend" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/ico_txt_off_ciacho.png" position="1045,750" size="104,64" zPosition="1" />
+  <widget alphatest="blend" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/ico_lan_on_ciacho.png" position="1153,750" render="Pixmap" size="104,64" source="session.CurrentService" transparent="2" zPosition="3">
     <convert type="j00zekModRouteInfo">Lan</convert>
     <convert type="ConditionalShowHide" />
   </widget>
-  <ePixmap alphatest="blend" source="session.CurrentService" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/ico_wifi1_on_ciacho.png" position="1084,750" size="104,64" zPosition="1" />
-  <widget alphatest="blend" pixmap="piconCam/Biss.png" position="336,752" render="Pixmap" size="100,60" source="session.CurrentService" zPosition="1">
+  <ePixmap alphatest="blend" source="session.CurrentService" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/ico_wifi1_on_ciacho.png" position="1153,750" size="104,64" zPosition="1" />
+  <widget alphatest="blend" pixmap="piconCam/Biss.png" position="289,752" render="Pixmap" size="100,60" source="session.CurrentService" zPosition="1">
     <convert type="j00zekModCaidInfo2">BisEcm</convert>
     <convert type="ConditionalShowHide" />
   </widget>
-  <widget alphatest="blend" pixmap="piconCam/Conax.png" position="336,752" render="Pixmap" size="100,60" source="session.CurrentService" zPosition="1">
+  <widget alphatest="blend" pixmap="piconCam/Conax.png" position="289,752" render="Pixmap" size="100,60" source="session.CurrentService" zPosition="1">
     <convert type="j00zekModCaidInfo2">ConaxEcm</convert>
     <convert type="ConditionalShowHide" />
   </widget>
-  <widget alphatest="blend" pixmap="piconCam/Cryptoworks.png" position="336,752" render="Pixmap" size="100,60" source="session.CurrentService" zPosition="1">
+  <widget alphatest="blend" pixmap="piconCam/Cryptoworks.png" position="289,752" render="Pixmap" size="100,60" source="session.CurrentService" zPosition="1">
     <convert type="j00zekModCaidInfo2">CrwEcm</convert>
     <convert type="ConditionalShowHide" />
   </widget>
-  <widget alphatest="blend" pixmap="piconCam/Irdeto.png" position="336,752" render="Pixmap" size="100,60" source="session.CurrentService" zPosition="1">
+  <widget alphatest="blend" pixmap="piconCam/Irdeto.png" position="289,752" render="Pixmap" size="100,60" source="session.CurrentService" zPosition="1">
     <convert type="j00zekModCaidInfo2">IrdEcm</convert>
     <convert type="ConditionalShowHide" />
   </widget>
-  <widget alphatest="blend" pixmap="piconCam/Nagravision.png" position="336,752" render="Pixmap" size="100,60" source="session.CurrentService" zPosition="1">
+  <widget alphatest="blend" pixmap="piconCam/Nagravision.png" position="289,752" render="Pixmap" size="100,60" source="session.CurrentService" zPosition="1">
     <convert type="j00zekModCaidInfo2">NagraEcm</convert>
     <convert type="ConditionalShowHide" />
   </widget>
-  <widget alphatest="blend" pixmap="piconCam/Videoguard.png" position="336,752" render="Pixmap" size="100,60" source="session.CurrentService" zPosition="1">
+  <widget alphatest="blend" pixmap="piconCam/Videoguard.png" position="289,752" render="Pixmap" size="100,60" source="session.CurrentService" zPosition="1">
     <convert type="j00zekModCaidInfo2">NdsEcm</convert>
     <convert type="ConditionalShowHide" />
   </widget>
-  <widget alphatest="blend" pixmap="piconCam/Seca.png" position="336,752" render="Pixmap" size="100,60" source="session.CurrentService" zPosition="1">
+  <widget alphatest="blend" pixmap="piconCam/Seca.png" position="289,752" render="Pixmap" size="100,60" source="session.CurrentService" zPosition="1">
     <convert type="j00zekModCaidInfo2">SecaEcm</convert>
     <convert type="ConditionalShowHide" />
   </widget>
-  <widget alphatest="blend" pixmap="piconCam/Viaccess.png" position="336,752" render="Pixmap" size="100,60" source="session.CurrentService" zPosition="1">
+  <widget alphatest="blend" pixmap="piconCam/Viaccess.png" position="289,752" render="Pixmap" size="100,60" source="session.CurrentService" zPosition="1">
     <convert type="j00zekModCaidInfo2">ViaEcm</convert>
     <convert type="ConditionalShowHide" />
   </widget>
-  <widget alphatest="blend" pixmap="piconCam/Fta.png" position="336,752" render="Pixmap" size="100,60" source="session.CurrentService" zPosition="1">
+  <widget alphatest="blend" pixmap="piconCam/Fta.png" position="289,752" render="Pixmap" size="100,60" source="session.CurrentService" zPosition="1">
     <convert type="j00zekModServiceInfoEX">IsFta</convert>
     <convert type="ConditionalShowHide" />
   </widget>
-  <ePixmap alphatest="blend" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/czarne104_64_ciacho.png" position="334,750" size="104,64" zPosition="0" />
-  <widget source="session.CurrentService" render="Pixmap" position="1191,750" size="104,64" zPosition="10" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/ico_hbbtv_on_ciacho.png" alphatest="blend">
+  <ePixmap alphatest="blend" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/czarne104_64_ciacho.png" position="287,750" size="104,64" zPosition="0" />
+  <widget source="session.CurrentService" render="Pixmap" position="1261,750" size="104,64" zPosition="10" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/ico_hbbtv_on_ciacho.png" alphatest="blend">
     <convert type="j00zekModServiceInfoEX">HasHBBTV</convert>
     <convert type="ConditionalShowHide" />
   </widget>
-  <ePixmap position="1191,750" size="104,64" zPosition="1" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/ico_hbbtv_off_ciacho.png" alphatest="blend" />
- 
+  <ePixmap position="1261,750" size="104,64" zPosition="1" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/ico_hbbtv_off_ciacho.png" alphatest="blend" />
 </screen>
 </skin>
