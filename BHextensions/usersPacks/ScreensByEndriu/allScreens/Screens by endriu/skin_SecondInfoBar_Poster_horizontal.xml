@@ -11,7 +11,7 @@
     </widget>
 	
 <!--info teraz-->
-	<widget source="session.CurrentService" render="Label"  backgroundColor="black" font="Regular; 40" foregroundColor="blue" position="65,122" size="110,60" halign="left" valign="center" transparent="1" >
+	<widget source="session.CurrentService" render="Label"  backgroundColor="black" font="Regular; 39" foregroundColor="blue" position="65,122" size="130,60" halign="left" valign="center" transparent="1" >
       <convert type="j00zekTranslator">Now</convert>
       </widget>
     <widget source="session.Event_Now" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=90,repeat=99,startdelay=2000" backgroundColor="background" foregroundColor="#66cc99" font="Regular; 40" noWrap="1" halign="left" valign="center" position="200,122" size="660,60" transparent="1">
@@ -35,7 +35,7 @@
    
    <!--potem-->
     <ePixmap position="115,553" zPosition="10" size="870,1" pixmap="BlackHarmony/gfx/linia_md.png" />
-    <widget source="session.CurrentService" render="Label" backgroundColor="black" font="Regular; 40" foregroundColor="blue" position="65,555" size="115,60" halign="left" valign="center" transparent="1" >
+    <widget source="session.CurrentService" render="Label" backgroundColor="black" font="Regular; 39" foregroundColor="blue" position="65,555" size="130,60" halign="left" valign="center" transparent="1" >
       <convert type="j00zekTranslator">later</convert>
       </widget>
 	<widget source="session.Event_Next" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=90,repeat=99,startdelay=2000" backgroundColor="black" foregroundColor="yellow" font="Regular; 40" noWrap="1" position="200,555" size="660,60" halign="left" valign="center" transparent="1">
@@ -186,7 +186,7 @@
     </widget>
 	
 	<widget noWrap="1" backgroundColor="black" font="Regular; 30" render="Label" position="1635,785" size="220,35" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1" foregroundColor="lemon" >
-      <convert type="j00zekMSNWeather">RUN|['currentData']['temperature']['name']|   |['currentData']['temperature']['valInfo']</convert>
+      <convert type="j00zekMSNWeather">RUN|Temp.  |['currentData']['temperature']['valInfo']</convert>
     </widget>
 	<ePixmap pixmap="BlackHarmony/weather_icons/wiatr.png" position="1666,830" size="30,30" zPosition="3" transparent="1" alphatest="blend" />
   <ePixmap pixmap="BlackHarmony/weather_icons/deszcz.png" position="1666,865" size="28,30" zPosition="4" transparent="1" alphatest="blend" />
