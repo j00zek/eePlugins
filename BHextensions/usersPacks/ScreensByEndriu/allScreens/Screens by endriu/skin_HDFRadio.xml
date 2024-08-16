@@ -1,0 +1,430 @@
+<skin>
+   
+<!--HDFRadio-->   
+   <screen name="HDFRadio" position="0,0" size="1920,1080" title="HDFRadio" flags="wfNoBorder" backgroundColor="black">
+   <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" zPosition="-10" size="1920,1080">
+   <convert type="j00zekRefreshBingPicOfTheDay">/usr/share/enigma2/BlackHarmony/bg_design/bg_1920x1080.png</convert>
+    </widget>
+<!--godzina,data-->
+    <widget source="global.CurrentTime" render="Label" position="85,70" size="80,35" font="Regular; 27" backgroundColor="black" transparent="1">
+    <convert type="ClockToText">Default</convert>
+        </widget>
+    <widget source="global.CurrentTime" render="Label" position="170,70" size="460,35" font="Regular; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+    <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+        </widget>
+	<widget source="listversion" position="550,70" size="1000,35" backgroundColor="black" render="Label" font="Regular;27" halign="right" transparent="1" />	
+	<widget source="Title" render="Label" position="1395,70" size="420,35" font="Roboto_HD; 27" halign="right" backgroundColor="black" transparent="1" />	
+<!--stacja,tytuł-->   
+	<widget backgroundColor="black" source="station" render="j00zekModRunningText" options="movetype=running,direction=left,startpoint=0,startdelay=4000,wrap=1,always=0,repeat=2,oneshot=1" font="Regular;40" foregroundColor="#66CCCC" position="90,120" size="835,50" halign="center" valign="center" transparent="1" />
+	<widget backgroundColor="black" source="songtitle" render="j00zekLabel" font="Regular;35" foregroundColor="#00FFFFFF" position="95,180" size="830,115" halign="center" valign="center" transparent="1" />
+<!--okładka-->	
+	<widget backgroundColor="black" name="cover" position="219,298" size="600,600" zPosition="1" />
+	<widget backgroundColor="black" name="record" font="Regular;32" foregroundColor="#00FF3D3D" position="219,900" size="600,50" halign="left" valign="center" transparent="1" />
+	<widget backgroundColor="black" name="recinfos" font="Regular;32" foregroundColor="#00FF3D3D" position="219,900" size="600,50" halign="right" valign="center" transparent="1" />
+<!--lista-->
+    <eLabel backgroundColor="linie" position="945,210" size="2,710" />
+	<widget backgroundColor="black" name="favoritesname" font="Regular;35" foregroundColor="#00FFC000" position="955,126" size="860,48" valign="top" noWrap="1" transparent="1" />
+	<widget name="stations" font="Regular;28" backgroundColor="black" foregroundColor="#00FFFFFF" itemHeight="45" selectionPixmap="BlackHarmony/menu/sel_860_45.png" backgroundColorSelected="#00892E13" foregroundColorSelected="#00FFFFFF" position="955,199" size="860,720" scrollbarMode="showOnDemand" scrollbarSliderBorderWidth="1" scrollbarWidth="10" enableWrapAround="1" transparent="1"/>
+	<widget name="favorites" font="Regular;28" backgroundColor="black" foregroundColor="#00FFFFFF" itemHeight="45" selectionPixmap="BlackHarmony/menu/sel_860_45.png" backgroundColorSelected="#00892E13" foregroundColorSelected="#00FFFFFF" position="955,199" size="860,720" scrollbarMode="showOnDemand" scrollbarSliderBorderWidth="1" scrollbarWidth="10" enableWrapAround="1" transparent="1"/>
+	<widget name="quickmenu" font="Regular;30" backgroundColor="black" foregroundColor="#00FFFFFF" itemHeight="45" selectionPixmap="BlackHarmony/menu/sel_860_45.png" backgroundColorSelected="#00892E13" foregroundColorSelected="#00FFFFFF" position="955,199" size="860,720" scrollbarMode="showOnDemand" scrollbarSliderBorderWidth="1" scrollbarWidth="10" enableWrapAround="1" transparent="1"/>
+<!--przyciski-->        
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="80,980" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0" pixmaps="BlackHarmony/skin_user_animButtons/key_red" pixalter="BlackHarmony/buttons/key_red.png" />
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="460,980" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,1" pixmaps="BlackHarmony/skin_user_animButtons/key_green" pixalter="BlackHarmony/buttons/key_green.png" />
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="840,980" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,2" pixmaps="BlackHarmony/skin_user_animButtons/key_yellow" pixalter="BlackHarmony/buttons/key_yellow.png" />
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="1220,980" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,3" pixmaps="BlackHarmony/skin_user_animButtons/key_blue" pixalter="BlackHarmony/buttons/key_blue.png" />  
+    <widget source="key_red" render="Label" position="120,958" size="350,70" font="Roboto_HD; 24" backgroundColor="black" valign="center" transparent="1"/>
+	<widget source="key_green" render="Label" position="500,958" size="350,70" font="Roboto_HD; 24" backgroundColor="black" valign="center" transparent="1"/>
+    <widget source="key_yellow" render="Label" position="880,980" size="350,35" font="Roboto_HD; 24" backgroundColor="black" transparent="1"/>
+    <widget source="key_blue" render="Label" position="1260,980" size="350,35" font="Roboto_HD; 24" backgroundColor="black" transparent="1"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_ok.png" position="1510,980" size="60,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="1575,980" size="60,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_exit.png" position="1640,980" size="60,27" alphatest="blend"/>
+	<ePixmap pixmap="BlackHarmony/buttons/key_text.png" position="1705,980" size="60,27" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_infoo.png" position="1770,980" size="60,27" alphatest="blend" />
+</screen>
+
+<!--HDFRadioConfig-->    
+	<screen name="HDFRadioConfig" position="0,0" size="1920,1080" title="HDFRadioConfig" flags="wfNoBorder" backgroundColor="transparent">
+   <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" zPosition="-10" size="1920,1080">
+   <convert type="j00zekRefreshBingPicOfTheDay">/usr/share/enigma2/BlackHarmony/bg_design/bg_1920x1080.png</convert>
+    </widget>
+<!--godzina,data-->
+    <widget source="global.CurrentTime" render="Label" position="85,70" size="80,35" font="Regular; 27" backgroundColor="black" transparent="1">
+    <convert type="ClockToText">Default</convert>
+        </widget>
+    <widget source="global.CurrentTime" render="Label" position="170,70" size="460,35" font="Regular; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+    <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+        </widget>
+	<widget source="Title" render="Label" position="1395,70" size="420,35" font="Roboto_HD; 27" halign="right" backgroundColor="black" transparent="1" />	
+<!--logo,wersja-->   
+	<ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/HDFRadio/graphics/logo.jpg" position="210,300" size="400,400" transparent="1" />
+	<widget backgroundColor="black" source="version" render="Label" font="Regular;40" foregroundColor="#00FFFFFF" position="100,745" size="627,80" halign="center" valign="center" transparent="1" />
+<!--lista-->
+	<eLabel backgroundColor="linie" position="730,210" size="2,710" />
+    <widget name="config" position="740,199" size="1080,630" font="Regular;30" backgroundColor="black" foregroundColor="#00FFFFFF" itemHeight="45" selectionPixmap="BlackHarmony/menu/sel_1140_45.png" backgroundColorSelected="#00892E13" foregroundColorSelected="#00FFFFFF" scrollbarMode="showOnDemand" scrollbarSliderBorderWidth="1" scrollbarWidth="10" enableWrapAround="1" transparent="1"/>
+	<widget source="instruction" render="j00zekLabel" font="Regular;32" position="740,830" size="1080,115" backgroundColor="black" foregroundColor="#66CCCC" halign="center" valign="center" transparent="1"/>
+<!--przyciski-->        
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="80,980" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0" pixmaps="BlackHarmony/skin_user_animButtons/key_red" pixalter="BlackHarmony/buttons/key_red.png" />
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="460,980" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,1" pixmaps="BlackHarmony/skin_user_animButtons/key_green" pixalter="BlackHarmony/buttons/key_green.png" />
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="840,980" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,2" pixmaps="BlackHarmony/skin_user_animButtons/key_yellow" pixalter="BlackHarmony/buttons/key_yellow.png" />
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="1220,980" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,3" pixmaps="BlackHarmony/skin_user_animButtons/key_blue" pixalter="BlackHarmony/buttons/key_blue.png" />  
+    <widget source="key_red" render="Label" position="120,958" size="350,70" font="Roboto_HD; 24" backgroundColor="black" valign="center" transparent="1"/>
+	<widget source="key_green" render="Label" position="500,958" size="350,70" font="Roboto_HD; 24" backgroundColor="black" valign="center" transparent="1"/>
+    <widget source="key_yellow" render="Label" position="880,980" size="350,35" font="Roboto_HD; 24" backgroundColor="black" transparent="1"/>
+    <widget source="key_blue" render="Label" position="1260,980" size="350,35" font="Roboto_HD; 24" backgroundColor="black" transparent="1"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_ok.png" position="1510,980" size="60,27" alphatest="blend"/>
+    <!--ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="1575,980" size="60,27" alphatest="blend"/-->
+    <ePixmap pixmap="BlackHarmony/buttons/key_exit.png" position="1640,980" size="60,27" alphatest="blend"/>
+	<!--ePixmap pixmap="BlackHarmony/buttons/key_text.png" position="1705,980" size="60,27" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_infoo.png" position="1770,980" size="60,27" alphatest="blend" /-->
+</screen>
+  
+<!--HDFRadioHelp-->    
+	<screen name="HDFRadioHelp" position="0,0" size="1920,1080" title="HDFRadioHelp" flags="wfNoBorder" backgroundColor="transparent">
+   <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" zPosition="-10" size="1920,1080">
+   <convert type="j00zekRefreshBingPicOfTheDay">/usr/share/enigma2/BlackHarmony/bg_design/bg_1920x1080.png</convert>
+    </widget>
+<!--godzina,data-->
+    <widget source="global.CurrentTime" render="Label" position="85,70" size="80,35" font="Regular; 27" backgroundColor="black" transparent="1">
+    <convert type="ClockToText">Default</convert>
+        </widget>
+    <widget source="global.CurrentTime" render="Label" position="170,70" size="460,35" font="Regular; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+    <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+        </widget>
+	<widget source="Title" render="Label" position="1395,70" size="420,35" font="Roboto_HD; 27" halign="right" backgroundColor="black" transparent="1" />	
+<!--logo,wersja-->   
+	<ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/HDFRadio/graphics/logo.jpg" position="210,300" size="400,400" transparent="1" />
+	<widget backgroundColor="black" source="version" render="Label" font="Regular;40" foregroundColor="#00FFFFFF" position="100,745" size="627,80" halign="center" valign="center" transparent="1" />
+<!--lista-->
+	<eLabel backgroundColor="linie" position="730,210" size="2,710" />
+    <widget backgroundColor="black" name="help" position="740,199" size="1080,720" font="Regular;30" transparent="1"/>
+<!--przyciski-->        
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="80,980" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0" pixmaps="BlackHarmony/skin_user_animButtons/key_red" pixalter="BlackHarmony/buttons/key_red.png" />
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="460,980" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,1" pixmaps="BlackHarmony/skin_user_animButtons/key_green" pixalter="BlackHarmony/buttons/key_green.png" />
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="840,980" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,2" pixmaps="BlackHarmony/skin_user_animButtons/key_yellow" pixalter="BlackHarmony/buttons/key_yellow.png" />
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="1220,980" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,3" pixmaps="BlackHarmony/skin_user_animButtons/key_blue" pixalter="BlackHarmony/buttons/key_blue.png" />  
+    <widget source="key_red" render="Label" position="120,958" size="350,70" font="Roboto_HD; 24" backgroundColor="black" valign="center" transparent="1"/>
+	<widget source="key_green" render="Label" position="500,958" size="350,70" font="Roboto_HD; 24" backgroundColor="black" valign="center" transparent="1"/>
+    <widget source="key_yellow" render="Label" position="880,980" size="350,35" font="Roboto_HD; 24" backgroundColor="black" transparent="1"/>
+    <widget source="key_blue" render="Label" position="1260,980" size="350,35" font="Roboto_HD; 24" backgroundColor="black" transparent="1"/>
+    <!--ePixmap pixmap="BlackHarmony/buttons/key_ok.png" position="1510,980" size="60,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="1575,980" size="60,27" alphatest="blend"/-->
+    <ePixmap pixmap="BlackHarmony/buttons/key_exit.png" position="1640,980" size="60,27" alphatest="blend"/>
+	<!--ePixmap pixmap="BlackHarmony/buttons/key_text.png" position="1705,980" size="60,27" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_infoo.png" position="1770,980" size="60,27" alphatest="blend" /-->
+</screen> 
+
+<!--HDFRadioFavorites-->   
+   <screen name="HDFRadioFavorites" position="0,0" size="1920,1080" title="HDFRadioFavorites" flags="wfNoBorder" backgroundColor="black">
+   <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" zPosition="-10" size="1920,1080">
+   <convert type="j00zekRefreshBingPicOfTheDay">/usr/share/enigma2/BlackHarmony/bg_design/bg_1920x1080.png</convert>
+    </widget>
+<!--godzina,data-->
+    <widget source="global.CurrentTime" render="Label" position="85,70" size="80,35" font="Regular; 27" backgroundColor="black" transparent="1">
+    <convert type="ClockToText">Default</convert>
+        </widget>
+    <widget source="global.CurrentTime" render="Label" position="170,70" size="460,35" font="Regular; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+    <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+        </widget>
+	<widget source="Title" render="Label" position="1395,70" size="420,35" font="Roboto_HD; 27" halign="right" backgroundColor="black" transparent="1" />	
+<!--lista lewo-->   
+	<widget name="mainlistname" backgroundColor="black" font="Regular;35" foregroundColor="#00FFC000" position="93,125" size="855,50" transparent="1"/>
+	<widget name="stations" backgroundColor="black" font="Regular;28" foregroundColor="#00FFFFFF" itemHeight="45" selectionPixmap="BlackHarmony/menu/sel_860_45.png" backgroundColorSelected="#00892E13" foregroundColorSelected="#00FFFFFF" position="93,200" size="855,630" scrollbarMode="showOnDemand" scrollbarSliderBorderWidth="1" scrollbarWidth="8" enableWrapAround="1" transparent="1"/>
+<!--lista prawo-->
+	<eLabel backgroundColor="linie" position="957,200" size="2,625" />
+	<widget name="favoritesname" backgroundColor="black" foregroundColor="#00FFC000" font="Regular;35" position="967,125" size="855,50" transparent="1" />
+	<widget name="favorites" backgroundColor="black" font="Regular;28" foregroundColor="#00FFFFFF" itemHeight="45" selectionPixmap="BlackHarmony/menu/sel_860_45.png" backgroundColorSelected="#00892E13" foregroundColorSelected="#00FFFFFF" position="967,200" size="855,630" scrollbarMode="showOnDemand" scrollbarSliderBorderWidth="1" scrollbarWidth="8" enableWrapAround="1" transparent="1"/>
+	<widget source="instruction" render="j00zekLabel" backgroundColor="black" font="Regular;32" foregroundColor="#66CCCC" position="93,837" size="1728,105" halign="center" valign="center" transparent="1" />
+
+<!--przyciski-->        
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="80,980" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0" pixmaps="BlackHarmony/skin_user_animButtons/key_red" pixalter="BlackHarmony/buttons/key_red.png" />
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="460,980" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,1" pixmaps="BlackHarmony/skin_user_animButtons/key_green" pixalter="BlackHarmony/buttons/key_green.png" />
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="840,980" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,2" pixmaps="BlackHarmony/skin_user_animButtons/key_yellow" pixalter="BlackHarmony/buttons/key_yellow.png" />
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="1220,980" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,3" pixmaps="BlackHarmony/skin_user_animButtons/key_blue" pixalter="BlackHarmony/buttons/key_blue.png" />  
+    <widget source="key_red" render="Label" position="120,958" size="350,70" font="Roboto_HD; 24" backgroundColor="black" valign="center" transparent="1"/>
+	<widget source="key_green" render="Label" position="500,958" size="350,70" font="Roboto_HD; 24" backgroundColor="black" valign="center" transparent="1"/>
+    <widget source="key_yellow" render="Label" position="880,980" size="350,35" font="Roboto_HD; 24" backgroundColor="black" transparent="1"/>
+    <widget source="key_blue" render="Label" position="1260,980" size="350,35" font="Roboto_HD; 24" backgroundColor="black" transparent="1"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_ok.png" position="1510,980" size="60,27" alphatest="blend"/>
+    <!--ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="1575,980" size="60,27" alphatest="blend"/-->
+    <ePixmap pixmap="BlackHarmony/buttons/key_exit.png" position="1640,980" size="60,27" alphatest="blend"/>
+	<!--ePixmap pixmap="BlackHarmony/buttons/key_text.png" position="1705,980" size="60,27" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_infoo.png" position="1770,980" size="60,27" alphatest="blend" /-->
+</screen>
+
+<!--HDFRadioEditPlaylist-->   
+   <screen name="HDFRadioEditPlaylist" position="0,0" size="1920,1080" title="HDFRadioEditPlaylist" flags="wfNoBorder" backgroundColor="black">
+   <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" zPosition="-10" size="1920,1080">
+   <convert type="j00zekRefreshBingPicOfTheDay">/usr/share/enigma2/BlackHarmony/bg_design/bg_1920x1080.png</convert>
+    </widget>
+<!--godzina,data-->
+    <widget source="global.CurrentTime" render="Label" position="85,70" size="80,35" font="Regular; 27" backgroundColor="black" transparent="1">
+    <convert type="ClockToText">Default</convert>
+        </widget>
+    <widget source="global.CurrentTime" render="Label" position="170,70" size="460,35" font="Regular; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+    <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+        </widget>
+	<widget source="Title" render="Label" position="1395,70" size="420,35" font="Roboto_HD; 27" halign="right" backgroundColor="black" transparent="1" />	
+<!--lista lewo-->   
+	<widget name="directoriesname" backgroundColor="black" font="Regular;35" foregroundColor="#00FFC000" position="93,125" size="855,50" transparent="1"/>
+	<widget name="ownlist" backgroundColor="black" font="Regular;28" foregroundColor="#00FFFFFF" itemHeight="45" selectionPixmap="BlackHarmony/menu/sel_860_45.png" backgroundColorSelected="#00892E13" foregroundColorSelected="#00FFFFFF" position="93,200" size="855,630" scrollbarMode="showOnDemand" scrollbarSliderBorderWidth="1" scrollbarWidth="8" enableWrapAround="1" transparent="1"/>
+<!--lista prawo-->
+	<eLabel backgroundColor="linie" position="957,200" size="2,625" />
+	<widget name="playlistname" backgroundColor="black" foregroundColor="#00FFC000" font="Regular;35" position="967,125" size="855,50" transparent="1" />
+	<widget name="playlis" backgroundColor="black" font="Regular;28" foregroundColor="#00FFFFFF" itemHeight="45" selectionPixmap="BlackHarmony/menu/sel_860_45.png" backgroundColorSelected="#00892E13" foregroundColorSelected="#00FFFFFF" position="967,200" size="855,630" scrollbarMode="showOnDemand" scrollbarSliderBorderWidth="1" scrollbarWidth="8" enableWrapAround="1" transparent="1"/>
+	<widget source="instruction" render="j00zekLabel" backgroundColor="black" font="Regular;32" foregroundColor="#66CCCC" position="93,837" size="1728,105" halign="center" valign="center" transparent="1" />
+<!--przyciski-->        
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="80,980" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0" pixmaps="BlackHarmony/skin_user_animButtons/key_red" pixalter="BlackHarmony/buttons/key_red.png" />
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="460,980" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,1" pixmaps="BlackHarmony/skin_user_animButtons/key_green" pixalter="BlackHarmony/buttons/key_green.png" />
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="840,980" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,2" pixmaps="BlackHarmony/skin_user_animButtons/key_yellow" pixalter="BlackHarmony/buttons/key_yellow.png" />
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="1220,980" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,3" pixmaps="BlackHarmony/skin_user_animButtons/key_blue" pixalter="BlackHarmony/buttons/key_blue.png" />  
+    <widget source="key_red" render="Label" position="120,958" size="350,70" font="Roboto_HD; 24" backgroundColor="black" valign="center" transparent="1"/>
+	<widget source="key_green" render="Label" position="500,958" size="350,70" font="Roboto_HD; 24" backgroundColor="black" valign="center" transparent="1"/>
+    <widget source="key_yellow" render="Label" position="880,980" size="350,35" font="Roboto_HD; 24" backgroundColor="black" transparent="1"/>
+    <widget source="key_blue" render="Label" position="1260,980" size="350,35" font="Roboto_HD; 24" backgroundColor="black" transparent="1"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_ok.png" position="1510,980" size="60,27" alphatest="blend"/>
+    <!--ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="1575,980" size="60,27" alphatest="blend"/-->
+    <ePixmap pixmap="BlackHarmony/buttons/key_exit.png" position="1640,980" size="60,27" alphatest="blend"/>
+	<!--ePixmap pixmap="BlackHarmony/buttons/key_text.png" position="1705,980" size="60,27" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_infoo.png" position="1770,980" size="60,27" alphatest="blend" /-->
+</screen>
+
+<!--HDFRadioLyrics-->   
+   <screen name="HDFRadioLyrics" position="0,0" size="1920,1080" title="HDFRadio Lyrics" flags="wfNoBorder" backgroundColor="black">
+   <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" zPosition="-10" size="1920,1080">
+   <convert type="j00zekRefreshBingPicOfTheDay">/usr/share/enigma2/BlackHarmony/bg_design/bg_1920x1080.png</convert>
+    </widget>
+<!--godzina,data-->
+    <widget source="global.CurrentTime" render="Label" position="85,70" size="80,35" font="Regular; 27" backgroundColor="black" transparent="1">
+    <convert type="ClockToText">Default</convert>
+        </widget>
+    <widget source="global.CurrentTime" render="Label" position="170,70" size="460,35" font="Regular; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+    <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+        </widget>
+	<widget source="Title" render="Label" position="1395,70" size="420,35" font="Roboto_HD; 27" halign="right" backgroundColor="black" transparent="1" />	
+<!--okładka--> 
+    <widget name="cover" position="210,300" size="400,400" backgroundColor="black" transparent="1" />
+	<widget source="recording" render="Label" backgroundColor="black" font="Regular;35" foregroundColor="#00FF0000" position="120,887" size="582,60" halign="center" valign="center"  transparent="1" /> 
+<!--text-->
+    <eLabel backgroundColor="linie" position="730,210" size="2,710" />
+    <widget source="songtitle" render="j00zekLabel" backgroundColor="black" font="Regular;35" foregroundColor="#00FFC000" position="740,126" size="1080,48" valign="top" noWrap="1" transparent="1" />
+	<widget source="lyrics" render="j00zekModRunningText" options="movetype=running,direction=top,startpoint=0,startdelay=4000,steptime=50,wrap=1,always=0,repeat=5,oneshot=1" font="Regular;35" position="740,199" foregroundColor="#00FFFFFF" backgroundColor="black" size="1080,685" transparent="1" />
+	<widget name="lyrics2" backgroundColor="black" font="Regular;35" foregroundColor="#00FFFFFF" position="740,199" size="1080,685" scrollbarWidth="8" transparent="1" />
+	<widget source="source" render="Label" backgroundColor="black" font="Regular;32" foregroundColor="#66CCCC" position="750,885" size="1080,60" valign="center" transparent="1" />
+<!--przyciski-->        
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="80,980" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0" pixmaps="BlackHarmony/skin_user_animButtons/key_red" pixalter="BlackHarmony/buttons/key_red.png" />
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="460,980" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,1" pixmaps="BlackHarmony/skin_user_animButtons/key_green" pixalter="BlackHarmony/buttons/key_green.png" />
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="840,980" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,2" pixmaps="BlackHarmony/skin_user_animButtons/key_yellow" pixalter="BlackHarmony/buttons/key_yellow.png" />
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="1220,980" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,3" pixmaps="BlackHarmony/skin_user_animButtons/key_blue" pixalter="BlackHarmony/buttons/key_blue.png" />  
+    <widget source="key_red" render="Label" position="120,958" size="350,70" font="Roboto_HD; 24" backgroundColor="black" valign="center" transparent="1"/>
+	<widget source="key_green" render="Label" position="500,958" size="350,70" font="Roboto_HD; 24" backgroundColor="black" valign="center" transparent="1"/>
+    <widget source="key_yellow" render="Label" position="880,980" size="350,35" font="Roboto_HD; 24" backgroundColor="black" transparent="1"/>
+    <widget source="key_blue" render="Label" position="1260,980" size="350,35" font="Roboto_HD; 24" backgroundColor="black" transparent="1"/>
+    <!--ePixmap pixmap="BlackHarmony/buttons/key_ok.png" position="1510,980" size="60,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="1575,980" size="60,27" alphatest="blend"/-->
+    <ePixmap pixmap="BlackHarmony/buttons/key_exit.png" position="1640,980" size="60,27" alphatest="blend"/>
+	<!--ePixmap pixmap="BlackHarmony/buttons/key_text.png" position="1705,980" size="60,27" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_infoo.png" position="1770,980" size="60,27" alphatest="blend" /-->
+</screen>
+
+<!--HDFRadioLyricsBrowser-->   
+   <screen name="HDFRadioLyricsBrowser" position="0,0" size="1920,1080" title=" " flags="wfNoBorder" backgroundColor="black">
+   <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" zPosition="-10" size="1920,1080">
+   <convert type="j00zekRefreshBingPicOfTheDay">/usr/share/enigma2/BlackHarmony/bg_design/bg_1920x1080.png</convert>
+    </widget>
+<!--godzina,data-->
+    <widget source="global.CurrentTime" render="Label" position="85,70" size="80,35" font="Regular; 27" backgroundColor="black" transparent="1">
+    <convert type="ClockToText">Default</convert>
+        </widget>
+    <widget source="global.CurrentTime" render="Label" position="170,70" size="460,35" font="Regular; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+    <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+        </widget>
+	<widget source="Title" render="Label" position="1395,70" size="420,35" font="Roboto_HD; 27" halign="right" backgroundColor="black" transparent="1" />	
+<!--tytuł-->
+    <widget source="song" render="j00zekLabel" backgroundColor="black" font="Regular;35" foregroundColor="#00FFC000" position="120,120" size="1690,57" noWrap="1" valign="center" transparent="1" />
+	<widget name="list" position="95,199" size="620,685" font="Regular;30" backgroundColor="black" foregroundColor="#00FFFFFF" itemHeight="45" selectionPixmap="BlackHarmony/menu/sel_675_45.png" backgroundColorSelected="#00892E13" foregroundColorSelected="#00FFFFFF" scrollbarMode="showOnDemand" scrollbarSliderBorderWidth="1" scrollbarWidth="8" enableWrapAround="1" transparent="1"/>
+    <widget source="recording" render="Label" backgroundColor="black" font="Regular;35" foregroundColor="#00FF0000" position="120,887" size="582,60" halign="center" valign="center"  transparent="1" /> 
+<!--text-->
+    <eLabel backgroundColor="linie" position="730,210" size="2,710" />
+    <widget backgroundColor="black" name="lyrics" font="Regular;35" foregroundColor="#00FFFFFF" position="740,199" size="1080,720" scrollbarWidth="12" transparent="1" />
+	<widget backgroundColor="black" source="running" render="j00zekModRunningText" options="movetype=running,direction=top,startpoint=0,startdelay=4000,steptime=50,wrap=1,always=0,repeat=5,oneshot=1" font="Regular;35" foregroundColor="#00FFFFFF" position="740,199" size="1080,720" transparent="1" />
+<!--przyciski-->        
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="80,980" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0" pixmaps="BlackHarmony/skin_user_animButtons/key_red" pixalter="BlackHarmony/buttons/key_red.png" />
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="460,980" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,1" pixmaps="BlackHarmony/skin_user_animButtons/key_green" pixalter="BlackHarmony/buttons/key_green.png" />
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="840,980" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,2" pixmaps="BlackHarmony/skin_user_animButtons/key_yellow" pixalter="BlackHarmony/buttons/key_yellow.png" />
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="1220,980" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,3" pixmaps="BlackHarmony/skin_user_animButtons/key_blue" pixalter="BlackHarmony/buttons/key_blue.png" />  
+    <widget source="key_red" render="Label" position="120,958" size="350,70" font="Roboto_HD; 24" backgroundColor="black" valign="center" transparent="1"/>
+	<widget source="key_green" render="Label" position="500,958" size="350,70" font="Roboto_HD; 24" backgroundColor="black" valign="center" transparent="1"/>
+    <widget source="key_yellow" render="Label" position="880,980" size="350,35" font="Roboto_HD; 24" backgroundColor="black" transparent="1"/>
+    <widget source="key_blue" render="Label" position="1260,980" size="350,35" font="Roboto_HD; 24" backgroundColor="black" transparent="1"/>
+    <!--ePixmap pixmap="BlackHarmony/buttons/key_ok.png" position="1510,980" size="60,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="1575,980" size="60,27" alphatest="blend"/-->
+    <ePixmap pixmap="BlackHarmony/buttons/key_exit.png" position="1640,980" size="60,27" alphatest="blend"/>
+	<!--ePixmap pixmap="BlackHarmony/buttons/key_text.png" position="1705,980" size="60,27" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_infoo.png" position="1770,980" size="60,27" alphatest="blend" /-->
+</screen>
+
+<!--HDFRadioPlayer -->    
+   <screen name="HDFRadioPlayer" position="0,0" size="1920,1080" title="HDFRadio Player" flags="wfNoBorder" backgroundColor="black">
+   <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" zPosition="-10" size="1920,1080">
+   <convert type="j00zekRefreshBingPicOfTheDay">/usr/share/enigma2/BlackHarmony/bg_design/bg_1920x1080.png</convert>
+    </widget>
+<!--godzina,data-->
+    <widget source="global.CurrentTime" render="Label" position="85,70" size="80,35" font="Regular; 27" backgroundColor="black" transparent="1">
+    <convert type="ClockToText">Default</convert>
+        </widget>
+    <widget source="global.CurrentTime" render="Label" position="170,70" size="460,35" font="Regular; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+    <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+        </widget>
+	<widget name="playermode" position="610,70" size="870,35" font="Regular;27" halign="right" backgroundColor="black" transparent="1" />	
+	<widget source="Title" render="Label" position="1395,70" size="420,35" font="Roboto_HD; 27" halign="right" backgroundColor="black" transparent="1" />	
+<!--wykonawca,tytuł-->	
+	<widget source="artist" render="j00zekLabel" font="Regular;40" position="110,180" size="1280,55" backgroundColor="black" foregroundColor="#66CCCC" noWrap="1" valign="center" transparent="1" />
+	<widget source="songtitle" render="j00zekLabel" font="Regular;35" position="110,235" size="1280,50" backgroundColor="black" foregroundColor="#00FFFFFF" noWrap="1" valign="top" transparent="1" />
+	<widget name="albumname" font="Regular;32" position="100,300" size="201,45" backgroundColor="black" foregroundColor="#00FFC000" noWrap="1" valign="top" transparent="1"/>
+	<widget name="album" font="Regular;32" position="313,300" size="1060,45" backgroundColor="black" foregroundColor="#00FFFFFF" noWrap="1" valign="top" transparent="1" />
+	<widget name="genrename" font="Regular;32" position="100,348" size="201,45" backgroundColor="black" foregroundColor="#00FFC000" noWrap="1" valign="top" transparent="1"/>
+	<widget name="genre" font="Regular;32" position="313,348" size="1060,45" backgroundColor="black" foregroundColor="#00FFFFFF" noWrap="1" valign="top" transparent="1" />
+	<widget name="yearname" font="Regular;32" position="100,396" size="201,45" backgroundColor="black" foregroundColor="#00FFC000" noWrap="1" valign="top" transparent="1"/>
+	<widget name="year" font="Regular;32" position="313,396" size="1060,45" backgroundColor="black" foregroundColor="#00FFFFFF" noWrap="1" valign="top" transparent="1" />
+	<widget name="trackname" font="Regular;32" position="100,444" size="201,45" backgroundColor="black" foregroundColor="#00FFC000" noWrap="1" valign="top" transparent="1"/>
+	<widget name="track" font="Regular;32" position="313,444" size="1060,45" backgroundColor="black" foregroundColor="#00FFFFFF" noWrap="1" valign="top" transparent="1" />
+<!--lista,menu-->	
+	<widget name="playlistname" font="Regular;35" backgroundColor="black" foregroundColor="#00FFC000" position="100,300" size="920,45" valign="center" transparent="1"/>
+	<widget name="playlist" font="Regular;28" position="100,351" size="930,540" backgroundColor="black" foregroundColor="#00FFFFFF" itemHeight="45" selectionPixmap="BlackHarmony/menu/sel_1055_45.png" backgroundColorSelected="#00892E13" foregroundColorSelected="#00FFFFFF" scrollbarMode="showOnDemand" scrollbarSliderBorderWidth="1" scrollbarWidth="8" enableWrapAround="1" transparent="1"/>
+	<widget name="quickmenu" font="Regular;32" position="100,306" size="930,585" backgroundColor="black" foregroundColor="#00FFFFFF" itemHeight="45" selectionPixmap="BlackHarmony/menu/sel_1055_45.png" backgroundColorSelected="#00892E13" foregroundColorSelected="#00FFFFFF" scrollbarMode="showOnDemand" scrollbarSliderBorderWidth="1" scrollbarWidth="8" enableWrapAround="1" transparent="1"/>
+<!--play,stop,pasek postępu,czas-->
+    <widget name="statepixmap" position="110,905" size="37,37" pixmaps="allScreens/Screens by endriu/icons/stop.png,allScreens/Screens by endriu/icons/play.png,allScreens/Screens by endriu/icons/pause.png" alphatest="blend" />
+	<widget name="shuffle" position="170,905" size="47,37" pixmaps="allScreens/Screens by endriu/icons/sorted.png,allScreens/Screens by endriu/icons/shuffle.png" alphatest="blend" />
+	<eLabel position="250,925" size="380,1" backgroundColor="linie" zPosition="1" />
+	<widget source="session.CurrentService" render="Progress" position="250,920" size="380,12" pixmap="BlackHarmony/gfx/Progress_color_dots_380x12.png" zPosition="2" transparent="1">
+		<convert type="ServicePosition">Position</convert>
+	</widget>
+	<widget backgroundColor="#1700002F" source="session.CurrentService" render="Label" font="Regular;35" foregroundColor="#00FFFFFF" position="637,905" size="120,45" halign="right" valign="center" transparent="1">
+		<convert type="ServicePosition">Position</convert>
+	</widget>
+	<eLabel backgroundColor="black" text="/" font="Regular;35" foregroundColor="#00FFFFFF" position="765,905" size="15,45" halign="center" valign="center" transparent="1" />
+	<widget backgroundColor="#1700002F" source="session.CurrentService" render="Label" font="Regular;35" foregroundColor="#00FFFFFF" position="790,905" size="105,45" valign="center" transparent="1">
+		<convert type="ServicePosition">Length</convert>
+	</widget>	
+<!--okładka-->	
+	<widget backgroundColor="black" name="cover" position="1420,190" size="400,400" />
+<!--lista plików-->	
+    <eLabel backgroundColor="linie" position="1038,560" size="2,370" />
+	<widget name="directoriesname" position="1050,555" size="365,45" font="Regular;32" backgroundColor="black" foregroundColor="#00FFC000" valign="center" transparent="1"/>
+	<widget name="recorddirs" position="1050,607" size="770,315" font="Regular;30" backgroundColor="black" foregroundColor="#00FFFFFF" itemHeight="45" selectionPixmap="BlackHarmony/menu/sel_860_45.png" backgroundColorSelected="#00892E13" foregroundColorSelected="#00FFFFFF" scrollbarMode="showOnDemand" scrollbarSliderBorderWidth="1" scrollbarWidth="12" enableWrapAround="1" transparent="1"/>
+	<widget name="localdirs" position="1050,607" size="770,315" font="Regular;30" backgroundColor="black" foregroundColor="#00FFFFFF" itemHeight="45" selectionPixmap="BlackHarmony/menu/sel_860_45.png" backgroundColorSelected="black" foregroundColorSelected="#00FFFFFF" scrollbarMode="showOnDemand" scrollbarSliderBorderWidth="1" scrollbarWidth="12" enableWrapAround="1" transparent="1"/>
+	<widget name="ownlist" position="1050,607" size="770,315" font="Regular;30" backgroundColor="black" foregroundColor="#00FFFFFF" itemHeight="45" selectionPixmap="BlackHarmony/menu/sel_860_45.png" backgroundColorSelected="#00892E13" foregroundColorSelected="#00FFFFFF" scrollbarMode="showOnDemand" scrollbarSliderBorderWidth="1" scrollbarWidth="12" enableWrapAround="1" transparent="1"/>
+<!--przyciski-->        
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="80,980" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0" pixmaps="BlackHarmony/skin_user_animButtons/key_red" pixalter="BlackHarmony/buttons/key_red.png" />
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="460,980" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,1" pixmaps="BlackHarmony/skin_user_animButtons/key_green" pixalter="BlackHarmony/buttons/key_green.png" />
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="840,980" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,2" pixmaps="BlackHarmony/skin_user_animButtons/key_yellow" pixalter="BlackHarmony/buttons/key_yellow.png" />
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="1220,980" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,3" pixmaps="BlackHarmony/skin_user_animButtons/key_blue" pixalter="BlackHarmony/buttons/key_blue.png" />  
+    <widget source="key_red" render="Label" position="120,958" size="350,70" font="Roboto_HD; 24" backgroundColor="black" valign="center" transparent="1"/>
+	<widget source="key_green" render="Label" position="500,958" size="350,70" font="Roboto_HD; 24" backgroundColor="black" valign="center" transparent="1"/>
+    <widget source="key_yellow" render="Label" position="880,980" size="350,35" font="Roboto_HD; 24" backgroundColor="black" transparent="1"/>
+    <widget source="key_blue" render="Label" position="1260,980" size="350,35" font="Roboto_HD; 24" backgroundColor="black" transparent="1"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_ok.png" position="1510,980" size="60,27" alphatest="blend"/>
+    <!--ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="1575,980" size="60,27" alphatest="blend"/-->
+    <ePixmap pixmap="BlackHarmony/buttons/key_exit.png" position="1640,980" size="60,27" alphatest="blend"/>
+	<!--ePixmap pixmap="BlackHarmony/buttons/key_text.png" position="1705,980" size="60,27" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_info.png" position="1770,980" size="60,27" alphatest="blend" /-->
+</screen>
+
+<!--HDFRadioScreenSaver-->
+   <screen name="HDFRadioScreenSaver" position="0,0" size="1920,1080" flags="wfNoBorder" backgroundColor="transparent">
+   <widget name="saverbg" position="0,0" size="1920,1080" zPosition="-1" />
+   <ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/HDFRadio/graphics/background1.jpg" position="0,0" size="1920,1080" zPosition="-2" />
+   <widget source="recording" render="Label" font="Regular;40" position="center,30" size="1800,50" backgroundColor="black" foregroundColor="#00ff3d3d" halign="center" valign="center" transparent="1" />
+   <widget source="songtitle" render="j00zekModRunningText" options="movetype=running,direction=top,startpoint=0,steptime=50,wrap=0,always=1,repeat=-1,oneshot=15000" backgroundColor="#0A000000" font="Regular;44" foregroundColor="#00ffffff" position="60,975" size="1800,75" noWrap="1" halign="center" valign="center" transparent="1" />
+   <widget name="cover" position="219,120" size="450,450" zPosition="1" />
+   <widget name="background" position="1005,120" size="891,840" backgroundColor="#454545" zPosition="2" transparent="0" />
+   <widget name="favorites" font="Regular;28" position="1020,135" size="860,810" backgroundColor="#1700002F" itemHeight="45" selectionPixmap="BlackHarmony/menu/sel_860_45.png" backgroundColorSelected="#00892E13" foregroundColorSelected="#00FFFFFF" scrollbarMode="showOnDemand" scrollbarSliderBorderWidth="1" scrollbarWidth="8" enableWrapAround="1" zPosition="3" transparent="1"/>
+   <widget name="stations" font="Regular;28" position="1020,135" size="860,810" backgroundColor="#1700002F" itemHeight="45" selectionPixmap="BlackHarmony/menu/sel_860_45.png" backgroundColorSelected="#00892E13" foregroundColorSelected="#00FFFFFF"  scrollbarMode="showOnDemand" scrollbarSliderBorderWidth="1" scrollbarWidth="8" enableWrapAround="1" zPosition="3" transparent="1"/>
+	
+</screen>
+
+<!--HDFRadioInfo-->   
+   <screen name="HDFRadioInfo" position="0,0" size="1920,1080" title=" " flags="wfNoBorder" backgroundColor="black">
+   <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" zPosition="-10" size="1920,1080">
+   <convert type="j00zekRefreshBingPicOfTheDay">/usr/share/enigma2/BlackHarmony/bg_design/bg_1920x1080.png</convert>
+    </widget>
+<!--godzina,data-->
+    <widget source="global.CurrentTime" render="Label" position="85,70" size="80,35" font="Regular; 27" backgroundColor="black" transparent="1">
+    <convert type="ClockToText">Default</convert>
+        </widget>
+    <widget source="global.CurrentTime" render="Label" position="170,70" size="460,35" font="Regular; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+    <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+        </widget>
+	<widget source="Title" render="Label" position="1395,70" size="420,35" font="Roboto_HD; 27" halign="right" backgroundColor="black" transparent="1" />	
+<!--wykonawca,tytuł,album,kanał-->
+	<widget name="artistname" render="Label" font="Regular;32" position="100,187" size="240,45" backgroundColor="black" foregroundColor="#00FFC000" noWrap="1" valign="center" transparent="1" />
+	<widget name="artist" render="Label" font="Regular;32" position="340,187" size="1554,45" backgroundColor="black" foregroundColor="#00FFFFFF" noWrap="1" valign="center" transparent="1" />
+	<widget name="songname" render="Label" font="Regular;32" position="100,232" size="240,45" backgroundColor="black" foregroundColor="#00FFC000" noWrap="1" valign="center" transparent="1" />
+	<widget name="song" render="Label" font="Regular;32" position="340,232" size="1554,45" backgroundColor="black" foregroundColor="#00FFFFFF" noWrap="1" valign="center" transparent="1" />
+	<widget name="albumname" render="Label" font="Regular;32" position="100,277" size="240,45" backgroundColor="black" foregroundColor="#00FFC000" noWrap="1" valign="center" transparent="1" />
+	<widget name="album" render="Label" font="Regular;32" position="340,277" size="1554,45" backgroundColor="black" foregroundColor="#00FFFFFF" noWrap="1" valign="center" transparent="1" />
+	<widget name="stationname" render="Label" font="Regular;32" position="100,322" size="240,45" backgroundColor="black" foregroundColor="#00FFC000" noWrap="1" valign="center" transparent="1" />
+	<widget name="station" render="Label" font="Regular;32" position="340,322" size="1554,45" backgroundColor="black" foregroundColor="#00FFFFFF" noWrap="1" valign="center" transparent="1" />
+<!--info-->	
+	<widget name="description" font="Regular;35" position="100,385" size="1400,490" backgroundColor="black" foregroundColor="#00FFFFFF" transparent="1" />
+	<widget source="source" render="Label" font="Regular;32" position="100,885" size="660,50" backgroundColor="black" foregroundColor="#66CCCC" valign="center" transparent="1" />
+    <widget name="record" position="820,885" size="440,50" font="Regular;33" backgroundColor="black" foregroundColor="#00FF0000" halign="center" valign="center"  transparent="1" />   
+<!--okładka-->	
+	<widget name="cover" position="1520,385" size="300,300" backgroundColor="black" zPosition="1" />
+	<widget name="bitratename" position="1370,885" size="440,50" font="Regular;32" backgroundColor="black" foregroundColor="#66CCCC" halign="left" valign="center" transparent="1" />
+	<widget name="bitrate" position="1370,885" size="440,50" font="Regular;32" backgroundColor="black" foregroundColor="#00FFFFFF" halign="right" valign="center" transparent="1" />  
+<!--przyciski-->        
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="80,980" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0" pixmaps="BlackHarmony/skin_user_animButtons/key_red" pixalter="BlackHarmony/buttons/key_red.png" />
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="460,980" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,1" pixmaps="BlackHarmony/skin_user_animButtons/key_green" pixalter="BlackHarmony/buttons/key_green.png" />
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="840,980" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,2" pixmaps="BlackHarmony/skin_user_animButtons/key_yellow" pixalter="BlackHarmony/buttons/key_yellow.png" />
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="1220,980" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,3" pixmaps="BlackHarmony/skin_user_animButtons/key_blue" pixalter="BlackHarmony/buttons/key_blue.png" />  
+    <widget source="key_red" render="Label" position="120,958" size="350,70" font="Roboto_HD; 24" backgroundColor="black" valign="center" transparent="1"/>
+	<widget source="key_green" render="Label" position="500,958" size="350,70" font="Roboto_HD; 24" backgroundColor="black" valign="center" transparent="1"/>
+    <widget source="key_yellow" render="Label" position="880,980" size="350,35" font="Roboto_HD; 24" backgroundColor="black" transparent="1"/>
+    <widget source="key_blue" render="Label" position="1260,980" size="350,35" font="Roboto_HD; 24" backgroundColor="black" transparent="1"/>
+    <!--ePixmap pixmap="BlackHarmony/buttons/key_ok.png" position="1510,980" size="60,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="1575,980" size="60,27" alphatest="blend"/-->
+    <ePixmap pixmap="BlackHarmony/buttons/key_exit.png" position="1640,980" size="60,27" alphatest="blend"/>
+	<!--ePixmap pixmap="BlackHarmony/buttons/key_text.png" position="1705,980" size="60,27" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_infoo.png" position="1770,980" size="60,27" alphatest="blend" /-->
+</screen>
+
+<!--HDFRadioBrowser-->    
+	<screen name="HDFRadioBrowser" position="0,0" size="1920,1080" title="HDFRadioBrowser" flags="wfNoBorder" backgroundColor="transparent">
+   <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" zPosition="-10" size="1920,1080">
+   <convert type="j00zekRefreshBingPicOfTheDay">/usr/share/enigma2/BlackHarmony/bg_design/bg_1920x1080.png</convert>
+    </widget>
+<!--godzina,data-->
+    <widget source="global.CurrentTime" render="Label" position="85,70" size="80,35" font="Regular; 27" backgroundColor="black" transparent="1">
+    <convert type="ClockToText">Default</convert>
+        </widget>
+    <widget source="global.CurrentTime" render="Label" position="170,70" size="460,35" font="Regular; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+    <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+        </widget>
+	<widget source="Title" render="Label" position="1395,70" size="420,35" font="Roboto_HD; 27" halign="right" backgroundColor="black" transparent="1" />	
+<!--logo,wersja-->   
+	<ePixmap pixmap="/usr/lib/enigma2/python/Plugins/Extensions/HDFRadio/graphics/logo.jpg" position="210,300" size="400,400" transparent="1" />
+	<widget backgroundColor="black" source="version" render="Label" font="Regular;40" foregroundColor="#00FFFFFF" position="100,745" size="627,80" halign="center" valign="center" transparent="1" />
+<!--lista-->
+    <eLabel backgroundColor="linie" position="730,210" size="2,710" />
+	<widget source="info" render="Label" position="740,120" size="1080,45" font="Regular;35" backgroundColor="black" foregroundColor="#0065c4ff" noWrap="1" valign="center" transparent="1" />
+    <widget name="list" position="740,199" size="1080,630" itemHeight="45" font="Regular;28" foregroundColor="#00FFFFFF" selectionPixmap="BlackHarmony/menu/sel_1140_45.png" backgroundColorSelected="#00892E13" foregroundColorSelected="#00FFFFFF" scrollbarMode="showOnDemand" scrollbarSliderBorderWidth="1" scrollbarWidth="8" enableWrapAround="1" backgroundColor="black" transparent="1" />
+    <widget source="instruction" render="j00zekLabel" font="Regular;32" position="740,830" size="1080,115" backgroundColor="black" foregroundColor="#66CCCC" halign="center" valign="center" transparent="1"/>
+<!--przyciski-->        
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="80,980" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0" pixmaps="BlackHarmony/skin_user_animButtons/key_red" pixalter="BlackHarmony/buttons/key_red.png" />
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="460,980" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,1" pixmaps="BlackHarmony/skin_user_animButtons/key_green" pixalter="BlackHarmony/buttons/key_green.png" />
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="840,980" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,2" pixmaps="BlackHarmony/skin_user_animButtons/key_yellow" pixalter="BlackHarmony/buttons/key_yellow.png" />
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="1220,980" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,3" pixmaps="BlackHarmony/skin_user_animButtons/key_blue" pixalter="BlackHarmony/buttons/key_blue.png" />  
+    <widget source="key_red" render="Label" position="120,958" size="350,70" font="Roboto_HD; 24" backgroundColor="black" valign="center" transparent="1"/>
+	<widget source="key_green" render="Label" position="500,958" size="350,70" font="Roboto_HD; 24" backgroundColor="black" valign="center" transparent="1"/>
+    <widget source="key_yellow" render="Label" position="880,980" size="350,35" font="Roboto_HD; 24" backgroundColor="black" transparent="1"/>
+    <widget source="key_blue" render="Label" position="1260,980" size="350,35" font="Roboto_HD; 24" backgroundColor="black" transparent="1"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_ok.png" position="1510,980" size="60,27" alphatest="blend"/>
+    <!--ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="1575,980" size="60,27" alphatest="blend"/-->
+    <ePixmap pixmap="BlackHarmony/buttons/key_exit.png" position="1640,980" size="60,27" alphatest="blend"/>
+	<!--ePixmap pixmap="BlackHarmony/buttons/key_text.png" position="1705,980" size="60,27" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_infoo.png" position="1770,980" size="60,27" alphatest="blend" /-->
+</screen>
+  
+  </skin>
