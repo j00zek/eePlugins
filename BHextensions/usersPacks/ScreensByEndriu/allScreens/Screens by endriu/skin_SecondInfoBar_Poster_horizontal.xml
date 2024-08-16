@@ -198,17 +198,17 @@
     <convert type="j00zekMSNWeather">RUN|['currentData']['humidity']['valInfo']</convert>
        </widget>
    
-    <widget source="session.CurrentService" render="Label" font="Regular; 25" foregroundColor="light_yellow" halign="left" position="1635,900" size="220,35"  transparent="1" zPosition="2" backgroundColor="black" >
+    <widget source="session.CurrentService" render="Label" font="Regular; 23" foregroundColor="light_yellow" halign="left" position="1635,900" size="220,35"  transparent="1" zPosition="2" backgroundColor="black" >
     <convert type="j00zekTranslator">FeelsLike</convert>
        </widget>
-   <widget noWrap="1" backgroundColor="black" font="Regular; 25" render="Label" position="1635,900" size="220,35" source="session.j00zekMSNWeather" zPosition="3" halign="right" transparent="1" foregroundColor="podsw" >
+   <widget noWrap="1" backgroundColor="black" font="Regular; 23" render="Label" position="1635,900" size="220,35" source="session.j00zekMSNWeather" zPosition="3" halign="right" transparent="1" foregroundColor="podsw" >
       <convert type="j00zekMSNWeather">RUN|['currentData']['feelslike']['valInfo']</convert>
        </widget> 
    
-    <widget source="session.CurrentService" render="Label" font="Regular; 25" foregroundColor="green" halign="left" position="1635,937" size="220,35"  transparent="1" zPosition="2" backgroundColor="black" >
+    <widget source="session.CurrentService" render="Label" font="Regular; 23" foregroundColor="green" halign="left" position="1635,937" size="220,35"  transparent="1" zPosition="2" backgroundColor="black" >
      <convert type="j00zekTranslator">Pressure</convert>
         </widget>
-	<widget source="session.j00zekMSNWeather" render="Label" position="1635,937" size="220,35" font="Regular;25" zPosition="2" halign="right" foregroundColor="lemon" backgroundColor="background" transparent="1" noWrap="1">
+	<widget source="session.j00zekMSNWeather" render="Label" position="1635,937" size="220,35" font="Regular;23" zPosition="2" halign="right" foregroundColor="lemon" backgroundColor="background" transparent="1" noWrap="1">
      <convert type="j00zekMSNWeather">RUN|['currentData']['pressure']['valInfo']</convert>
      </widget>
 	  
@@ -228,7 +228,7 @@
     <convert type="RemainingToText">InMinutes</convert>
       </widget>
 	
-	<widget source="session.FrontendInfo" render="Label" position="790,1015" size="400,40" zPosition="3" font="Regular; 30" halign="left" valign="center" backgroundColor="black" transparent="1">
+	<widget source="session.FrontendInfo" render="Label" position="750,1015" size="430,40" zPosition="3" font="Regular; 30" halign="left" valign="center" backgroundColor="black" transparent="1">
     <convert type="j00zekModFrontendInfo2">ACTIVE_BUSY_AVAILABLE_TUNER_COLORS,0x0000FF00,0x00FFFF00,0x007F7F7F</convert>
         </widget>
     
