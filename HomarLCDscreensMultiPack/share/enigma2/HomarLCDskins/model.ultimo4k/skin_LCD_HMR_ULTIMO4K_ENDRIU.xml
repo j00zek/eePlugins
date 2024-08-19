@@ -606,7 +606,7 @@ options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=0,start
   <widget source="global.CurrentTime" render="Label" position="160,0" size="200,200" font="DIGI;195" transparent="1" halign="left" foregroundColor="#001BA1E3" >
   <convert type="ClockToText">Format:%H</convert>
   </widget>
-  <widget source="global.CurrentTime" render="FixedLabel" text=":" font="DIGI; 190" position="360,80" size="30,100" halign="center" zPosition="3" valign="center" transparent="1" foregroundColor="#001BA1E3" >
+  <widget source="global.CurrentTime" render="FixedLabel" text=":" font="DIGI; 195" position="360,0" size="30,200" halign="center" zPosition="3" valign="center" transparent="1" foregroundColor="#001BA1E3" >
     <convert type="j00zekShareBlinkingClock" />
     <convert type="ConditionalShowHide">Blink</convert>
   </widget>
