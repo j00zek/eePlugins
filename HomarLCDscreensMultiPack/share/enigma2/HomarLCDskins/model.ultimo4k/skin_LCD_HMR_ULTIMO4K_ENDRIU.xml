@@ -780,5 +780,21 @@ options="movetype=running,startpoint=0,direction=left,steptime=20,repeat=0,start
     </widget>
 </screen>
 
+ <!-- HDF Radio -->
+  <screen name="HDFRadioLCDScreen" position="0,0" size="800,480" >
+  <widget source="session.CurrentService" render="j00zekPiconAnimation" pixmaps="HomarLCDskins/common/animated_1" position="0,0" size="800,480" zPosition="5" transparent="1" alphatest="blend" />
+  <ePixmap pixmap="HomarLCDskins/Homar/music.png" position="0,0" size="800,480" zPosition="-1" alphatest="blend" />
+  <widget source="artist" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=0,startdelay=200,always=0,oneshot=0" noWrap="1" position="0,5" size="650,70" font="VFD;69" transparent="1" halign="center" valign="center" foregroundColor="#84aaf7" />
+  <widget source="song" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=40,repeat=0,startdelay=200,always=0,oneshot=0" noWrap="1" position="0,75" size="650,70" font="VFD;65" transparent="1" halign="center" valign="center" foregroundColor="HMRname" />
+  <widget source="global.CurrentTime" render="Label" position="340,326" size="450,75" font="RegularLCD;65" transparent="1" halign="center" valign="center" foregroundColor="HMRname"  >
+    <convert type="ClockToText">Format:%a, %d.%m.%Y</convert>
+  </widget>
+  <widget source="global.CurrentTime" render="Label" position="340,390" size="450,75" font="VFD;77" transparent="1" halign="center" valign="center">
+  <convert type="ClockToText">Format:%H:%M:%S</convert>
+  </widget>
+  <widget name="cover" position="2,147" zPosition="4" size="330,330" />
+  <widget source="rec" render="Label" position="350,260 " size="190,60" font="VFD;55" foregroundColor="red" halign="center" valign="center" transparent="1"/>
+</screen>
+
 </skin>
 
