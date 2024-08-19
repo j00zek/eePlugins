@@ -16,6 +16,7 @@ from Plugins.Extensions.IPTVPlayerMario.libs.youtube_dl.utils import clean_html
 
 from Plugins.Extensions.IPTVPlayerMario.components.ihost import CDisplayListItem, RetHost
 from Plugins.Extensions.IPTVPlayerMario.p2p3.UrlLib import urllib_quote_plus, urllib_unquote
+from Plugins.Extensions.IPTVPlayerMario.p2p3.manipulateStrings import ensure_binary, strEncode
 
 import re
 from os import listdir as os_listdir, path as os_path
@@ -511,7 +512,7 @@ class CBaseSubProviderClass:
         printDBG("isubprovider.py CBaseSubProviderClass.writeFile path='%s'" % filePath)
         try:
             with open(filePath, 'wb') as f:
-                f.write(data)
+                f.write(strEncode(data)) #p3 needs bytes, for p2 no oncoding
             return True
         except Exception:
             printExc()

@@ -9,6 +9,7 @@ from Plugins.Extensions.IPTVPlayerMario.tools.iptvtools import printDBG, printEx
 from Plugins.Extensions.IPTVPlayerMario.libs.urlparserhelper import hex_md5
 ###################################################
 from Plugins.Extensions.IPTVPlayerMario.p2p3.UrlLib import urllib_quote
+from Plugins.Extensions.IPTVPlayerMario.p2p3.pVer import isPY2
 ###################################################
 # FOREIGN import
 ###################################################
@@ -18,10 +19,13 @@ try:
 except Exception:
     import simplejson as json
 try:
-    try:
-        from cStringIO import StringIO
-    except Exception:
-        from StringIO import StringIO
+    if isPY2():
+        try:
+            from cStringIO import StringIO
+        except Exception:
+            from StringIO import StringIO
+    else:
+        from io import BytesIO
     import gzip
 except Exception:
     pass
@@ -285,7 +289,10 @@ class OpenSubtitlesRest(CBaseSubProviderClass):
             return retData
 
         try:
-            buf = StringIO(data)
+            if isPY2():
+                buf = StringIO(data)
+            else:
+                buf = BytesIO(data)
             f = gzip.GzipFile(fileobj=buf)
             data = f.read()
         except Exception:

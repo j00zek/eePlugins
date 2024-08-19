@@ -16,7 +16,7 @@
 from __future__ import absolute_import #zmiana strategii ladowanie modulow w py2 z relative na absolute jak w py3
 
 DBG = True
-FullDBG = False
+FullDBG = True
 
 from Plugins.Extensions.UserSkin.debug import printDEBUG
 from Plugins.Extensions.UserSkin.inits import *

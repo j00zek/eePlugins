@@ -14,6 +14,7 @@ from Plugins.Extensions.IPTVPlayerMario.tools.iptvtypes import strwithmeta
 from Plugins.Extensions.IPTVPlayerMario.libs.urlparserhelper import hex_md5
 ###################################################
 from Plugins.Extensions.IPTVPlayerMario.p2p3.UrlLib import urllib_quote_plus, urllib_quote
+from Plugins.Extensions.IPTVPlayerMario.p2p3.pVer import isPY2
 ###################################################
 # FOREIGN import
 ###################################################
@@ -27,10 +28,11 @@ try:
 except Exception:
     import simplejson as json
 try:
-    try:
-        from cStringIO import StringIO
-    except Exception:
-        from StringIO import StringIO
+    # not used
+    #try:
+    #    from cStringIO import StringIO
+    #except Exception:
+    #    from StringIO import StringIO
     import gzip
 except Exception:
     pass
