@@ -1737,10 +1737,10 @@
     </widget>
     <widget name="network" position="150,140" size="750,32" font="Roboto_HD; 26" backgroundColor="black" transparent="1" foregroundColor="green"/>
     <widget name="transponder" position="150,190" size="750,32" font="Roboto_HD; 26" backgroundColor="black" transparent="1"/>
-    <widget name="scan_state" position="150,240" size="750,32" zPosition="2" font="Roboto_HD; 26" backgroundColor="black" transparent="1" foregroundColor="light_yellow"/>
+    <widget name="scan_state" position="150,296" size="750,32" zPosition="2" font="Roboto_HD; 26" backgroundColor="black" transparent="1" foregroundColor="light_yellow"/>
     <widget name="pass" position="150,240" size="750,32" font="Roboto_HD; 26" backgroundColor="black" transparent="1"/>
-    <widget name="scan_progress" position="150,305" size="750,15" borderWidth="1" borderColor="dark_grey"/>
-    <widget name="servicelist" position="150,339" size="750,360" selectionDisabled="1" transparent="1"/>
+    <widget name="scan_progress" position="145,347" size="750,15" borderWidth="1" borderColor="dark_grey"/>
+    <widget name="servicelist" position="146,368" size="750,350" selectionDisabled="1" transparent="1"/>
   </screen>
   <screen name="ScanSetup" position="462,128" size="1000,820" title=" " flags="wfNoBorder" backgroundColor="transparent">
     <ePixmap position="0,0" zPosition="-10" size="1000,820" pixmap="BlackHarmony/bg_design/small.png"/>

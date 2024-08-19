@@ -1,4 +1,4 @@
-  <screen name="MessageBox" position="center,center" size="790,10" title="Message">
+ <screen name="MessageBox" position="center,center" size="790,10" title="Message">
     <widget name="text" position="110,8" size="680,0" font="Roboto_HD; 25" transparent="1" />
     <widget name="ErrorPixmap" pixmap="BlackHarmony/icons/error.png" position="5,5" size="100,100" alphatest="blend"/>
     <widget name="QuestionPixmap" pixmap="BlackHarmony/icons/question.png" position="5,5" size="100,100" alphatest="blend"/>
