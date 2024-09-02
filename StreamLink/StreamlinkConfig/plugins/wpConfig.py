@@ -13,10 +13,11 @@ params = { 'login_url'        : 'https://pilot.wp.pl/api/v1/user_auth/login?devi
            'close_stream_url' : 'https://pilot.wp.pl/api/v1/channels/close?device_type=android_tv',
           }
 
-headers = { 'user-agent': 'ExoMedia 4.3.0 (43000) / Android 8.0.0 / foster_e',
-            'accept': 'application/json',
-            'x-version': 'pl.videostar|3.53.0-gms|Android|26|foster_e',
-            'content-type': 'application/json; charset=UTF-8'
+headers = { 'User-Agent':   'ExoMedia 4.3.0 (43000) / Android 8.0.0 / foster_e',
+            'Accept':       'application/json',
+            'x-version':    'pl.videostar|3.53.0-gms|Android|26|foster_e',
+            'content-type': 'application/json; charset=UTF-8',
+            'Referer':      'https://pilot.wp.pl/login'
           }
 
 data = {'device': 'android_tv', 

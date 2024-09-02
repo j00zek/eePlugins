@@ -9,6 +9,8 @@ import os
 
 import warnings
 warnings.filterwarnings('ignore', message='Unverified HTTPS request')
+from urllib.request import Request, urlopen
+import json
 
 from wpConfig import headers
 from wpConfig import params #'login_url', 'main_url', 'video_url', 'close_stream_url'
@@ -26,7 +28,7 @@ def _generate_E2bouquet():
         return
 
     #login
-    StoredCookie = getCookie()
+    StoredCookie = _login()#getCookie()
     if not StoredCookie:
         StoredCookie = _login()
         if not StoredCookie:
@@ -34,15 +36,22 @@ def _generate_E2bouquet():
             return
 
     #get channels list
-    import requests
-    headers.update({'Cookie': StoredCookie})
-    response = requests.get(
-            params['main_url'],
-            verify=False,
-            headers=headers,
-          ).json()
+    if 0:
+        import requests
+        headers.update({'Cookie': StoredCookie})
+        response = requests.get(params['main_url'],verify=False,headers=headers,).json()
     
-    channelsList = response.get('data', [])
+        channelsList = response.get('data', [])
+    else:
+        from urllib.request import Request, urlopen
+        import json
+        pageUrl = params['main_url']
+        req = Request(pageUrl)
+        req.add_header('Cookie', StoredCookie)
+        response = urlopen(req)
+        response_data = response.read().decode()
+        response.close()
+        channelsList = json.loads(response_data).get('data', [])
 
     #generate bouquet
     from channelsMappings import name2serviceDict, name2service4wpDict, name2nameDict
@@ -93,21 +102,35 @@ def _login():
             print(str(e))
         return None
       
-    import requests
         
-    response = requests.post(
-            params['login_url'],
-            json=data,
-            verify=False,
-            headers=headers
-        )
+    if 0:
+        import requests
+        response = requests.post( params['login_url'], json=data, verify=False, headers=headers)
 
-    meta = response.json().get('_meta', None)
-    if meta is not None:
-        if meta.get('error', {}).get('name', None) is not None:
-            return None
+        meta = response.json().get('_meta', None)
+        if meta is not None:
+            if meta.get('error', {}).get('name', None) is not None:
+                return None
         
-    saveCookie(cookiesToString(response.cookies))
+        saveCookie(cookiesToString(response.cookies))
+    else:
+        from urllib.request import Request, urlopen
+        import json
+        pageUrl = 'https://pilot.wp.pl/api/v1/user_auth/login?device_type=android_tv'
+        dataPost = json.dumps(data).encode()
+        req = Request(pageUrl, dataPost, headers)
+        response = urlopen(req)
+        response_data = response.read().decode()
+        response_info = str(response.info())
+        response.close()
+        for item in response_info.split('\n'):
+            if item.startswith('set-cookie'):
+                if item.find('netviapisessid=') > 0:
+                    netviapisessid = item.split('netviapisessid=')[1].split(';')[0]
+                elif item.find('netviapisessval=') > 0:
+                    netviapisessval = item.split('netviapisessval=')[1].split(';')[0]
+        saveCookie("netviapisessid=%s; netviapisessval=%s" % (netviapisessid,netviapisessval))
+
     return getCookie()
 
 if __name__ == '__main__':
