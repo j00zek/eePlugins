@@ -10,23 +10,6 @@ else
       else
         /etc/init.d/streamlinkSRV start
       fi
-#      if [ -e /var/run/streamlink.pid ];then
-#        if `grep -q 'osd.language=pl_PL' </etc/enigma2/settings`; then
-#          echo "Serwer streamlinka uruchomiony"
-#          echo ""
-#        else
-#          echo "streamlink server started"
-#          echo ""
-#        fi 
-#      else
-#        if `grep -q 'osd.language=pl_PL' </etc/enigma2/settings`; then
-#          echo "BŁĄD uruchamiania serwera streamlink !!!"
-#          echo ""
-#        else
-#          echo "ERROR starting streamlink server !!!"
-#          echo ""
-#        fi
-#      fi
     fi
   else
     if `grep -q 'osd.language=pl_PL' </etc/enigma2/settings`; then

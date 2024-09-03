@@ -12,6 +12,20 @@ from streamlink.stream.dash import DASHStream
 from streamlink.stream.file import FileStream
 from streamlink.utils import update_scheme
 
+#>>> zeby rozwiazac problem error 449
+import ssl
+from streamlink.session.http import SSLContextAdapter
+
+class WPplAdapter(SSLContextAdapter):
+    def get_ssl_context(self):
+        ctx = super().get_ssl_context()
+        ctx.check_hostname = False
+        ctx.options &= ~ssl.OP_NO_TICKET
+        ctx.options &= ssl.OP_NO_TLSv1 | ssl.OP_NO_TLSv1_1
+
+        return ctx
+#<<<
+
 log = logging.getLogger(__name__)
 
 import sys
@@ -32,6 +46,10 @@ from wpBouquet import _login
 
 class PilotWPpl(Plugin):
     _url_re = re.compile(r"https?://pilot.wp.pl/api/v1/channel/")
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.session.http.mount("https://pilot.wp.pl/", WPplAdapter())
 
     @classmethod
     def can_handle_url(cls, url):
@@ -62,11 +80,11 @@ class PilotWPpl(Plugin):
         if not cookies:
             cookies = _login()
           
-        data = {'format_id': '2', 'device_type': 'android'}
+        data = {'format_id': '2', 'device_type': 'android_tv'}
         
         #print headers
-        self.session.http.headers.update({'user-agent': headers['user-agent']})
-        self.session.http.headers.update({'accept': headers['accept']})
+        self.session.http.headers.update({'User-Agent': headers['User-Agent']})
+        self.session.http.headers.update({'Accept': headers['Accept']})
         self.session.http.headers.update({'x-version': headers['x-version']})
         self.session.http.headers.update({'content-type': headers['content-type']})
         self.session.http.headers.update({'Cookie': cookies})
@@ -121,7 +139,7 @@ class PilotWPpl(Plugin):
             return HLSStream.parse_variant_playlist(self.session,
                                                     update_scheme(self.url, hlsUrl),
                                                     headers={'Referer': self.url, 
-                                                             'user-agent': headers['user-agent'],
+                                                             'User-Agent': headers['User-Agent'],
 #                                                            'accept': 'application/json', 
                                                              'x-version': headers['x-version'],
 #                                                            'content-type': 'application/json; charset=UTF-8',

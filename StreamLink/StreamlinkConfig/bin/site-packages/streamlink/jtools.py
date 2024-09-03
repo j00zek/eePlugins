@@ -37,6 +37,7 @@ def killSRVprocess(KeepPID):
 def cleanCMD(forceKill = True): #czyszczenie smieci
     clearCache()
     CMDs = []
+    CMDs.append(r'/usr/bin/killall exteplayer3 2>/dev/null;/usr/bin/killall -9 exteplayer3 2>/dev/null') #close external player when used
     if forceKill == True:
         CMDs.append(r"[ `ps -ef|grep -v grep|grep -c ffmpeg` -gt 0 ] && (ps -ef|grep -v grep|grep ffmpeg|awk '{print $2}'|xargs kill)")
     CMDs.append(r"kill `netstat -peanut|grep 8808|grep -oE 'LISTEN[ ]+[0-9]+'|grep -oE '[0-9]+'` 2>/dev/null")

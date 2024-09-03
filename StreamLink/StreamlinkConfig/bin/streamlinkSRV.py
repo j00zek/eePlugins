@@ -129,20 +129,17 @@ def sendCachedFile(http, send_headers=True, pid=0, file2send=None, maxWaitTime =
         else:
             LOGGER.debug("pid {0} has been killed".format(pid))
 
-def useCL2(http, url, argstr, quality):
-    LOGGER.debug("useCL2(%s,%s,%s) >>>" %(url,argstr,quality))
-    import streamlink
-    streams = streamlink.streams(url)
-    if streams:
-        url = streams["best"].to_url()
-        LOGGER.info("Found url: %s" % url)
-    else:
-        LOGGER.info("NO streams found")
-        sendOfflineMP4(http)
-
 def useCLI(http, url, argstr, quality, useAddr):
     LOGGER.debug("useCLI(url=%s, argstr=%s, quality=%s, useAddr=%s) >>>" %(url,argstr,quality,useAddr))
     _cmd = ['/usr/sbin/streamlink'] 
+    if 1:
+        _cmd.extend(['-l', LOGLEVEL,  '-p', '/usr/bin/exteplayer3', '--player-http', '--verbose-player', url, quality])
+        LOGGER.debug('SUBPROCESS:', _cmd)
+        jtools.clearCache()
+        subprocess.Popen(_cmd)
+        return
+    #standard SRV for different pythons.
+    
     _cmd.extend(['-l', LOGLEVEL, '--player-external-http', '--player-external-http-port', str(streamCLIport) , url, quality])
     LOGGER.debug("run command: %s" % ' '.join(_cmd))
     try:

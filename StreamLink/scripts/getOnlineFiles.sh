@@ -62,9 +62,10 @@ fi
 
 rm -rf ~/streamlink-master*
 
-wget -q https://raw.githubusercontent.com/openatv/enigma2/7.1/lib/python/Plugins/Extensions/StreamlinkWrapper/plugin.py -O $myAbsPath/../StreamlinkWrapper/plugin.py
-wget -q https://raw.githubusercontent.com/openatv/enigma2/7.1/lib/python/Plugins/Extensions/YTDLPWrapper/plugin.py -O $myAbsPath/../YTDLPWrapper/plugin.py
-wget -q https://raw.githubusercontent.com/openatv/enigma2/7.1/lib/python/Plugins/Extensions/YTDLWrapper/plugin.py -O $myAbsPath/../YTDLWrapper/plugin.py
+#2024-09-03 eliminacja wrapperów
+#wget -q https://raw.githubusercontent.com/openatv/enigma2/7.1/lib/python/Plugins/Extensions/StreamlinkWrapper/plugin.py -O $myAbsPath/../StreamlinkWrapper/plugin.py
+#wget -q https://raw.githubusercontent.com/openatv/enigma2/7.1/lib/python/Plugins/Extensions/YTDLPWrapper/plugin.py -O $myAbsPath/../YTDLPWrapper/plugin.py
+#wget -q https://raw.githubusercontent.com/openatv/enigma2/7.1/lib/python/Plugins/Extensions/YTDLWrapper/plugin.py -O $myAbsPath/../YTDLWrapper/plugin.py
 
 wget https://raw.githubusercontent.com/azman26/EPGazman/main/azman_channels_mappings.py -O $myAbsPath/../StreamlinkConfig/plugins/azman_channels_mappings.py
 
