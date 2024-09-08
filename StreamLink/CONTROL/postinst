@@ -2,24 +2,6 @@
 /usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/bin/re-initiate.sh
 if [ $? -gt 0 ];then
   exit 1
-else
-  if [ `grep 'config.plugins.streamlinkSRV.enabled=' < /etc/enigma2/settings|egrep -c 'true|True'` -gt 0 ];then
-    if [ -e /etc/init.d/streamlinkSRV ];then
-      if [ -e /var/run/streamlink.pid ];then
-        /etc/init.d/streamlinkSRV restart
-      else
-        /etc/init.d/streamlinkSRV start
-      fi
-    fi
-  else
-    if `grep -q 'osd.language=pl_PL' </etc/enigma2/settings`; then
-      echo "Aktywuj serwer streamlinka w konfiguratorze"
-      echo ""
-    else
-      echo "Enable streamlink server in Configurator"
-      echo ""
-    fi
-  fi
 fi
 rm -rf /usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/scripts 2 > /dev/null
 rm -f /usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/bin/site-packages/streamlink/plugins/vtvgo.* 2 > /dev/null

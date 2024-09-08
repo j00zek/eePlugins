@@ -24,9 +24,18 @@ from http.server import HTTPServer, BaseHTTPRequestHandler
 from six.moves.urllib_parse import unquote
 from socketserver import ForkingMixIn #ThreadingMixIn as ForkingMixIn
 from streamlink import jtools
+from streamlink import Streamlink
+from streamlink.options import Options
+from streamlink.utils.parse import parse_qsd
+from streamlink._version import __version__ as streamlink_ver
 
 jtools.killSRVprocess(os.getpid())
 jtools.cleanCMD(forceKill = True)
+
+from streamlink import Streamlink
+from streamlink.options import Options
+from streamlink.utils.parse import parse_qsd
+from streamlink._version import __version__ as streamlink_ver
 
 PORT_NUMBER = jtools.GetPortNumber()
 _loglevel = LOGLEVEL = jtools.GetLogLevel()
@@ -132,14 +141,7 @@ def sendCachedFile(http, send_headers=True, pid=0, file2send=None, maxWaitTime =
 def useCLI(http, url, argstr, quality, useAddr):
     LOGGER.debug("useCLI(url=%s, argstr=%s, quality=%s, useAddr=%s) >>>" %(url,argstr,quality,useAddr))
     _cmd = ['/usr/sbin/streamlink'] 
-    if 1:
-        _cmd.extend(['-l', LOGLEVEL,  '-p', '/usr/bin/exteplayer3', '--player-http', '--verbose-player', url, quality])
-        LOGGER.debug('SUBPROCESS:', _cmd)
-        jtools.clearCache()
-        subprocess.Popen(_cmd)
-        return
     #standard SRV for different pythons.
-    
     _cmd.extend(['-l', LOGLEVEL, '--player-external-http', '--player-external-http-port', str(streamCLIport) , url, quality])
     LOGGER.debug("run command: %s" % ' '.join(_cmd))
     try:
@@ -238,15 +240,22 @@ class StreamHandler(BaseHTTPRequestHandler):
         LOGGER.debug("Analiza URL: {0}".format(url[0].strip()))
         if 1:
             useCLI(s, url[0].strip(), url[1:2], quality, calledAddr)
-        else:
+        elif jtools.GetSRVtype() == 'e':#wybrano tryb zewnętrznego exteplayer-a
+            _cmd = ['/usr/sbin/streamlink'] 
+            _cmd.extend(['-l', LOGLEVEL,  '-p', '/usr/bin/exteplayer3', '--player-http', '--verbose-player', url, quality])
+            LOGGER.debug('SUBPROCESS:', _cmd)
+            jtools.clearCache()
+            subprocess.Popen(_cmd)
+            return
+        else: #old quite often not working way
             LOGGER.debug("useSL(%s,%s,%s) >>>" %(url,argstr,quality))
-            from streamlink import Streamlink
             session = Streamlink()
             session.set_option("stream-timeout", timeout)
-            session.set_option("stream-segment-timeout", 6)
-            session.set_option("stream-segment-threads", 8)
+            session.set_option("stream-segment-threads", 6)
             session.set_option("hls-segment-stream-data", True)
             session.set_option("ringbuffer-size", 1024 * 1024 * 32)
+            session.set_option("hls-audio-select", "*")
+            session.set_option("ffmpeg-no-validation", True)
             try:
                 streams = session.streams(url)
                 if not streams:

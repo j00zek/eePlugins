@@ -152,14 +152,20 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                 Mlist.append(getConfigListEntry(""))
                 Mlist.append(getConfigListEntry('\c00289496' + _("*** Deamon configuration ***"), config.plugins.streamlinkSRV.Four))
                 if self.VisibleSection == 4 or config.plugins.streamlinkSRV.enabled.value == False:
+                    if not os.path.exists('/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/NoZapWrappers'):
+                        Mlist.append(getConfigListEntry('\c00289496' + "*** Ten system WSPIERA wrappery :) ***"))
+                    else:
+                        Mlist.append(getConfigListEntry('\c00981111' + "*** Ten system NIE wspiera wrapperów, korzystaj TYLKO z demona (127.0.0.1 w liście)!!! ***"))
                     Mlist.append(getConfigListEntry(_("Enable deamon:"), config.plugins.streamlinkSRV.enabled))
-                    Mlist.append(getConfigListEntry(_("Port number (127.0.0.1:X):"), config.plugins.streamlinkSRV.PortNumber))
-                    Mlist.append(getConfigListEntry(_("Log level:"), config.plugins.streamlinkSRV.logLevel))
-                    Mlist.append(getConfigListEntry(_("Log to file:"), config.plugins.streamlinkSRV.logToFile))
-                    Mlist.append(getConfigListEntry(_("Clear log on each start:"), config.plugins.streamlinkSRV.ClearLogFile))
-                    Mlist.append(getConfigListEntry(_("Save log file in:"), config.plugins.streamlinkSRV.logPath))
-                    Mlist.append(getConfigListEntry(_("Buffer path:"), config.plugins.streamlinkSRV.bufferPath))
-                    Mlist.append(getConfigListEntry(_("Allow Wrappers in lists:"), config.plugins.streamlinkSRV.useWrappers))
+                    #Mlist.append(getConfigListEntry(_("Port number (127.0.0.1:X):"), config.plugins.streamlinkSRV.PortNumber))
+                    #Mlist.append(getConfigListEntry(_("Log level:"), config.plugins.streamlinkSRV.logLevel))
+                    #Mlist.append(getConfigListEntry(_("Log to file:"), config.plugins.streamlinkSRV.logToFile))
+                    #Mlist.append(getConfigListEntry(_("Clear log on each start:"), config.plugins.streamlinkSRV.ClearLogFile))
+                    #Mlist.append(getConfigListEntry(_("Save log file in:"), config.plugins.streamlinkSRV.logPath))
+                    #Mlist.append(getConfigListEntry(_("Buffer path:"), config.plugins.streamlinkSRV.bufferPath))
+                    Mlist.append(getConfigListEntry("Tryb pracy:", config.plugins.streamlinkSRV.binName))
+                    
+                    #END OF SUPPORT Mlist.append(getConfigListEntry(_("Allow Wrappers in lists:"), config.plugins.streamlinkSRV.useWrappers))
                     #EXPERIMENTAL OPTIONS
                     #Mlist.append(getConfigListEntry(_(" !!! EXPERIMENTAL OPTION(S) !!!")))
                    
@@ -169,7 +175,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
 
                     Mlist.append(getConfigListEntry(_("stop deamon on standby:"), config.plugins.streamlinkSRV.StandbyMode))
 
-                    Mlist.append(getConfigListEntry("Support VLC: użyj skryptu z folderu wtyczki'bin/E-TV polska mod j00zek.lua'"))
+                    #Mlist.append(getConfigListEntry("Support VLC: użyj skryptu z folderu wtyczki'bin/E-TV polska mod j00zek.lua'"))
                 Mlist.append(getConfigListEntry(""))
                 
                 if not os.path.exists('/usr/lib/python3.12/site-packages/'):
@@ -250,27 +256,25 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                         if 1: # !!!!!!!!!!!!!!!!!!!!!!!!! PLAYER ############################
                             for cfgFile in ['refresh_token', 'logged']:
                                 if not os.path.exists('/etc/streamlink/playermb/%s' % cfgFile): os.system('touch /etc/streamlink/playermb/%s' % cfgFile)
-                            if open('/etc/streamlink/playermb/refresh_token','r').read().strip() == '' or open('/etc/streamlink/playermb/logged','r').read().strip() != 'true':
-                                emuKodiCmdsList = []
-                                pythonRunner = '/usr/bin/python'
-                                addonScript = 'plugin.video.playermb/main.py'
-                                runAddon = '%s %s' % (pythonRunner, os.path.join(addons_path, addonScript))
-                                emuKodiCmdsList.append(runAddon + " '1' '?mode=login' 'resume:false'") #ustawienie flagi logged, wymagane przez wtyczke
-                                emuKodiCmdsList.append(runAddon + " '1' ' ' 'resume:false'")
-                                autoClose = True #ustawienie parametrow w zaleznoci od akcji
-                                webServer = ''
-                                Mlist.append(getConfigListEntry('Logowanie do playerpl (w przeglądarce)' , 
-                                            config.plugins.streamlinkSRV.streamlinkEMUKODIconfig, ('playermb', 'login', emuKodiCmdsList, autoClose, webServer, addonScript)))
-                            else:
-                                emuKodiCmdsList = []
-                                addonScript = 'plugin.video.playermb/main.py'
-                                runAddon = '/usr/bin/python %s' % os.path.join(addons_path, addonScript)
-                                emuKodiCmdsList.append("echo 'Pobieranie listy kanałów'")
-                                emuKodiCmdsList.append(runAddon + " '1' '?mode=listcategContent&url=%3alive' 'resume:false'")
-                                autoClose = False #ustawienie parametrow w zaleznoci od akcji
-                                webServer = ''
-                                Mlist.append(getConfigListEntry(_("Press OK to create %s bouquet") % "playerpl" , 
-                                            config.plugins.streamlinkSRV.streamlinkEMUKODIconfig, ('playermb', 'userbouquet', emuKodiCmdsList, autoClose, webServer, addonScript)))
+                            emuKodiCmdsList = []
+                            pythonRunner = '/usr/bin/python'
+                            addonScript = 'plugin.video.playermb/main.py'
+                            runAddon = '%s %s' % (pythonRunner, os.path.join(addons_path, addonScript))
+                            emuKodiCmdsList.append(runAddon + " '1' '?mode=login' 'resume:false'") #ustawienie flagi logged, wymagane przez wtyczke
+                            emuKodiCmdsList.append(runAddon + " '1' ' ' 'resume:false'")
+                            autoClose = True #ustawienie parametrow w zaleznoci od akcji
+                            webServer = ''
+                            Mlist.append(getConfigListEntry('Logowanie do playerpl (w przeglądarce)' , 
+                                         config.plugins.streamlinkSRV.streamlinkEMUKODIconfig, ('playermb', 'login', emuKodiCmdsList, autoClose, webServer, addonScript)))
+                            emuKodiCmdsList = []
+                            addonScript = 'plugin.video.playermb/main.py'
+                            runAddon = '/usr/bin/python %s' % os.path.join(addons_path, addonScript)
+                            emuKodiCmdsList.append("echo 'Pobieranie listy kanałów'")
+                            emuKodiCmdsList.append(runAddon + " '1' '?mode=listcategContent&url=%3alive' 'resume:false'")
+                            autoClose = False #ustawienie parametrow w zaleznoci od akcji
+                            webServer = ''
+                            Mlist.append(getConfigListEntry(_("Press OK to create %s bouquet") % "playerpl" , 
+                                         config.plugins.streamlinkSRV.streamlinkEMUKODIconfig, ('playermb', 'userbouquet', emuKodiCmdsList, autoClose, webServer, addonScript)))
                         # !!!!!!!!!!!!!!!!!!!!!!!!! POLSAT ############################
                         if 1: #cdmStatus == True:
                             for cfgFile in ['logged', 'username', 'password', 'klient']:
@@ -281,7 +285,8 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                                 Mlist.append(getConfigListEntry( 'polsatgo: Brak danych w /etc/streamlink/pgobox/username' , config.plugins.streamlinkSRV.streamlinkconfig))
                             elif open('/etc/streamlink/pgobox/password','r').read().strip() == '':
                                 Mlist.append(getConfigListEntry( 'polsatgo: Brak danych w /etc/streamlink/pgobox/password' , config.plugins.streamlinkSRV.streamlinkconfig))
-                            elif open('/etc/streamlink/pgobox/logged','r').read().strip() != 'true':
+                            else:
+                                #logowanie
                                 emuKodiCmdsList = []
                                 pythonRunner = '/usr/bin/python'
                                 addonScript = 'plugin.video.pgobox/main.py'
@@ -290,7 +295,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                                 autoClose = True #ustawienie parametrow w zaleznoci od akcji
                                 webServer = ''
                                 Mlist.append(getConfigListEntry( "Zaloguj do polsatgo", config.plugins.streamlinkSRV.streamlinkEMUKODIconfig, ('pgobox', 'login', emuKodiCmdsList, autoClose, webServer, addonScript)))
-                            else:
+                                #pobieranie listy
                                 emuKodiCmdsList = []
                                 addonScript = 'plugin.video.pgobox/main.py'
                                 runAddon = '/usr/bin/python %s' % os.path.join(addons_path, addonScript)
@@ -298,9 +303,9 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                                 autoClose = False #ustawienie parametrow w zaleznoci od akcji
                                 webServer = ''
                                 Mlist.append(getConfigListEntry(_("Press OK to create %s bouquet") % "polsatgo" , 
-                                            config.plugins.streamlinkSRV.streamlinkEMUKODIconfig, ('polsatgo', 'userbouquet', emuKodiCmdsList, autoClose, webServer, addonScript)))
+                                             config.plugins.streamlinkSRV.streamlinkEMUKODIconfig, ('polsatgo', 'userbouquet', emuKodiCmdsList, autoClose, webServer, addonScript)))
                         # !!!!!!!!!!!!!!!!!!!!!!!!! canalplus ############################
-                        if cdmStatus == True and os.path.exists('/j00zek'):
+                        if 0:
                             for cfgFile in ['passId', 'username', 'password', 'logged']:
                                 if not os.path.exists('/etc/streamlink/canalplusvod/%s' % cfgFile): os.system('touch /etc/streamlink/canalplusvod/%s' % cfgFile)
                             if open('/etc/streamlink/canalplusvod/username','r').read().strip() == '':
@@ -309,10 +314,19 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                                 Mlist.append(getConfigListEntry( 'canal+: Brak danych w /etc/streamlink/canalplusvod/password' , config.plugins.streamlinkSRV.streamlinkconfig))
                             elif open('/etc/streamlink/canalplusvod/passId','r').read().strip() == '':
                                 Mlist.append(getConfigListEntry( 'canal+: Brak danych w /etc/streamlink/canalplusvod/passId' , config.plugins.streamlinkSRV.streamlinkconfig))
-                            elif open('/etc/streamlink/canalplusvod/logged','r').read().strip() != 'true':
-                                Mlist.append(getConfigListEntry( "Zaloguj do canal+", config.plugins.streamlinkSRV.streamlinkconfig))
                             else:
-                                Mlist.append(getConfigListEntry( _("Press OK to create bouquet for") + ': canal+' , config.plugins.streamlinkSRV.streamlinkDRMconfig, ('canalplus', 'LOGIN')))
+                                #logowanie
+                                Mlist.append(getConfigListEntry( "Zaloguj do canal+ (NP)", config.plugins.streamlinkSRV.streamlinkconfig))
+                                Mlist.append(getConfigListEntry( _("Press OK to create bouquet for") + ': ' , config.plugins.streamlinkSRV.streamlinkDRMconfig, ('canalplus', 'LOGIN')))
+                                #pobieranie listy
+                                emuKodiCmdsList = []
+                                addonScript = 'plugin.video.canalplusvod/main.py'
+                                runAddon = '/usr/bin/python %s' % os.path.join(addons_path, addonScript)
+                                emuKodiCmdsList.append(runAddon + " '1' '?mode=listkanaly' 'resume:false'")
+                                autoClose = False #ustawienie parametrow w zaleznoci od akcji
+                                webServer = ''
+                                Mlist.append(getConfigListEntry(_("Press OK to create %s bouquet") % "canal+" , 
+                                            config.plugins.streamlinkSRV.streamlinkEMUKODIconfig, ('polsatgo', 'userbouquet', emuKodiCmdsList, autoClose, webServer, addonScript)))
             else:
                 Mlist.append(getConfigListEntry(""))
                 Mlist.append(getConfigListEntry('\c00981111' + _("*** not compliant Deamon found ***")))
@@ -387,10 +401,9 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
     def save(self):
         if self.mySL == True:
             self.saveConfig()
-            if os.path.exists('/var/run/streamlink.pid'):
-                os.system('/etc/init.d/streamlinkSRV stop')
+            os.system('%s stop' % config.plugins.streamlinkSRV.binName.value)
             if config.plugins.streamlinkSRV.enabled.value:
-                os.system('/etc/init.d/streamlinkSRV start')
+                os.system('%s start' % config.plugins.streamlinkSRV.binName.value)
             self.VisibleSection = 0
             self.close(None)
         
@@ -411,7 +424,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
     def blue(self):
         if self.mySL == True:
             mtitle = _('Restarting daemon')
-            cmd = '/usr/sbin/streamlinkSRV restart'
+            cmd = '/usr/sbin/%s restart' % config.plugins.streamlinkSRV.binName.value
             self.session.openWithCallback(self.doNothing ,Console, title = mtitle, cmdlist = [ cmd ])
         
     def exit(self):

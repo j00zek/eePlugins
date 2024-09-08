@@ -37,12 +37,20 @@ fi
 
 if [ ! -f /usr/sbin/streamlinkSRV ];then
   ln -sf $plugBinDir/bin/streamlinkSRV.py /usr/sbin/streamlinkSRV
-  ln -sf $plugBinDir/bin/streamlinkSRV.py /etc/init.d/streamlinkSRV
-  ln -sf /usr/sbin/streamlinkSRV /etc/rc3.d/S50streamlinkSRV
-  ln -sf /usr/sbin/streamlinkSRV /etc/rc4.d/S50streamlinkSRV
+  #ln -sf $plugBinDir/bin/streamlinkSRV.py /etc/init.d/streamlinkSRV
+  ln -sf $plugBinDir/bin/streamlinkSRV.py streamlinkproxySRV.py /usr/sbin/streamlinkproxySRV
+  #ln -sf /usr/sbin/streamlinkSRV /etc/rc3.d/S50streamlinkSRV
+  #ln -sf /usr/sbin/streamlinkSRV /etc/rc4.d/S50streamlinkSRV
   echo "Mod j00zka serwera streamlink zainstalowany"
   mkdir -p /etc/streamlink
   [ ! -f /etc/streamlink/config ] && cp $plugBinDir/bin/etc_streamlink_config.template /etc/streamlink/config
 fi
+
+[ ! -e /usr/sbin/streamlinkSRV ] && ln -sf $plugBinDir/bin/streamlinkSRV.py /usr/sbin/streamlinkSRV
+[ ! -e /usr/sbin/streamlinkproxySRV ] &&   ln -sf $plugBinDir/bin/streamlinkproxySRV.py /usr/sbin/streamlinkproxySRV
+mkdir -p /etc/streamlink
+[ ! -f /etc/streamlink/config ] && cp $plugBinDir/bin/etc_streamlink_config.template /etc/streamlink/config
+
+[ `grep -c 'WHERE_CHANNEL_ZAP' < /usr/lib/enigma2/python/Plugins/Plugin.pyc` -eq 0 ] && touch /usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/NoZapWrappers
 
 exit 0

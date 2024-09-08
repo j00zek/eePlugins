@@ -47,7 +47,7 @@ config.plugins.streamlinkSRV.Five  = NoSave(ConfigNothing())
 config.plugins.streamlinkSRV.Six   = NoSave(ConfigNothing())
 
 config.plugins.streamlinkSRV.enabled = ConfigYesNo(default = False)
-config.plugins.streamlinkSRV.logLevel = ConfigSelection(default = "info", choices = [("none", _("none")),
+config.plugins.streamlinkSRV.logLevel = ConfigSelection(default = "debug", choices = [("none", _("none")),
                                                                                     ("info", _("info")),
                                                                                     ("warning", _("warning")),
                                                                                     ("error", _("error")),
@@ -60,13 +60,15 @@ config.plugins.streamlinkSRV.ClearLogFile = ConfigEnableDisable(default = True)
 config.plugins.streamlinkSRV.logPath = ConfigSelection(default = "/tmp", choices = [("/home/root", "/home/root"), ("/tmp", "/tmp"), ("/hdd", "/hdd"), ])
 config.plugins.streamlinkSRV.PortNumber = ConfigSelection(default = "8088", choices = [("8088", "8088"), ("88", "88"), ])
 config.plugins.streamlinkSRV.bufferPath = ConfigText(default = "/tmp", fixed_size = False)
+config.plugins.streamlinkSRV.binName = ConfigSelection(default = "streamlinkSRV", choices = [("streamlinkSRV", "Standardowy"), ("streamlinkproxySRV", "Serwer Proxy"),])
 
 config.plugins.streamlinkSRV.Recorder = ConfigEnableDisable(default = False)
 config.plugins.streamlinkSRV.RecordMaxTime = ConfigSelection(default = "120", choices = [("120", _("2h")), ("180", _("3h")),])
 
-config.plugins.streamlinkSRV.StandbyMode = ConfigEnableDisable(default = False)
+config.plugins.streamlinkSRV.StandbyMode = ConfigEnableDisable(default = True)
 
 config.plugins.streamlinkSRV.useWrappers = ConfigSelection(default = "n", choices = [("n", _("No")), ("m", mygettext("Yes, try modify bouquets")), ("y", mygettext("Yes, don't modify bouquets")),])
+config.plugins.streamlinkSRV.useWrappers.value = 'y'
 config.plugins.streamlinkSRV.useExtPlayer = ConfigEnableDisable(default = False)
 
 # pilot.wp.pl
