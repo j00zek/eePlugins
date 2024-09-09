@@ -50,6 +50,7 @@ def sessionstart(reason, session = None):
     DBGlog("autostart")
     cmds = []
     cmds.append("[ `grep -c 'WHERE_CHANNEL_ZAP' < /usr/lib/enigma2/python/Plugins/Plugin.pyc` -eq 0 ] && touch /usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/NoZapWrappers")
+    cmds.append("streamlinkproxy stop 2>/dev/null")
     cmds.append("/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/bin/re-initiate.sh")
     cmds.append("killall -9 streamlinkProxy.py")
     cmds.append("%s restart" % config.plugins.streamlinkSRV.binName.value)
@@ -116,6 +117,7 @@ def SLzapWrapper(session, service, **kwargs):
     errormsg = None
     if service:
         try:
+            safeSubprocessCMD('/usr/bin/killall exteplayer3;/usr/bin/killall -9 exteplayer3')
             serviceString = service.toString()
             print("[SLzapWrapper] serviceString = %s" % serviceString)
             url = serviceString.split(":")
@@ -252,3 +254,4 @@ class SLeventsWrapper:
         print("[SLzapWrapper] self.isExternalPlayerRunning=%s" % str(self.isExternalPlayerRunning))
         if self.isExternalPlayerRunning:
             safeSubprocessCMD('/usr/bin/killall exteplayer3;/usr/bin/killall -9 exteplayer3')
+            self.isExternalPlayerRunning = False
