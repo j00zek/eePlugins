@@ -36,7 +36,7 @@ def SLconfigLeaveStandbyInitDaemon():
 def SLconfigStandbyCounterChanged(configElement):
     DBGlog('standbyCounterChanged() >>>')
     if config.plugins.streamlinkSRV.StandbyMode.value == True:
-        runCMD('%s stop;killall -9 streamlinkProxy.py' % config.plugins.streamlinkSRV.binName.value)
+        runCMD('streamlinkproxySRV stop;streamlinkproxySRV stop')
     try:
         if SLconfigLeaveStandbyInitDaemon not in Screens.Standby.inStandby.onClose:
             Screens.Standby.inStandby.onClose.append(SLconfigLeaveStandbyInitDaemon)
@@ -52,7 +52,8 @@ def sessionstart(reason, session = None):
     cmds.append("[ `grep -c 'WHERE_CHANNEL_ZAP' < /usr/lib/enigma2/python/Plugins/Plugin.pyc` -eq 0 ] && touch /usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/NoZapWrappers")
     cmds.append("streamlinkproxy stop 2>/dev/null")
     cmds.append("/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/bin/re-initiate.sh")
-    cmds.append("killall -9 streamlinkProxy.py")
+    cmds.append("streamlinkproxySRV stop")
+    cmds.append("streamlinkSRV stop")
     cmds.append("%s restart" % config.plugins.streamlinkSRV.binName.value)
     runCMD(';'.join(cmds))
     from Screens.Standby import inStandby
@@ -78,9 +79,9 @@ def mainRecorder(session, **kwargs):
 
 def main(session, **kwargs):
     DBGlog("main")
-    import Plugins.Extensions.StreamlinkConfig.StreamlinkConfiguration
-    reload(Plugins.Extensions.StreamlinkConfig.StreamlinkConfiguration)
-    session.open(Plugins.Extensions.StreamlinkConfig.StreamlinkConfiguration.StreamlinkConfiguration)
+    #import Plugins.Extensions.StreamlinkConfig.StreamlinkConfiguration
+    #reload(Plugins.Extensions.StreamlinkConfig.StreamlinkConfiguration)
+    session.open(SLK_Menu)
 
 def Plugins(path, **kwargs):
     myList = [PluginDescriptor(name=_("Streamlink Configuration"), where = PluginDescriptor.WHERE_PLUGINMENU, icon="logo.png", fnc = main, needsRestart = False),
@@ -92,6 +93,158 @@ def Plugins(path, **kwargs):
     if config.plugins.streamlinkSRV.Recorder.value == True:
         myList.append(PluginDescriptor(name="StreamlinkRecorder", description=_("StreamlinkRecorder"), where = [PluginDescriptor.WHERE_MENU], fnc=timermenu))
     return myList
+
+####MENU
+from Screens.Screen import Screen
+from Components.Pixmap import Pixmap
+from Components.Sources.List import List
+from Components.ActionMap import ActionMap
+from Plugins.Extensions.StreamlinkConfig.version import Version
+from Components.MenuList import MenuList
+from Tools.LoadPixmap import LoadPixmap
+
+class SLK_Menu(Screen):
+    skin = """
+<screen position="center,center" size="880,500">
+        <widget source="list" render="Listbox" position="0,0" size="880,500" scrollbarMode="showOnDemand">
+                <convert type="TemplatedMultiContent">
+                        {"template": [
+                                MultiContentEntryPixmapAlphaTest(pos = (12, 2), size = (120, 40), png = 0),
+                                MultiContentEntryText(pos = (138, 2), size = (760, 40), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 1),
+                                ],
+                                "fonts": [gFont("Regular", 24)],
+                                "itemHeight": 44
+                        }
+                </convert>
+        </widget>
+</screen>"""
+
+    def __init__(self, session):
+        Screen.__init__(self, session)
+        self.setup_title = "SLK menu v. %s" % Version
+        Screen.setTitle(self, self.setup_title)
+        self["list"] = List()
+        self["setupActions"] = ActionMap(["SetupActions", "MenuActions"],
+            {
+                    "cancel": self.quit,
+                    "ok": self.openSelected,
+                    "menu": self.quit,
+                    #"down": self.down,
+                    #"up": self.up
+            }, -2)
+        self.setTitle("SLK menu v. %s" % Version)
+        self["list"].list = []
+        self.createsetup()
+
+    def createsetup(self):
+        Mlist = []
+        if not os.path.exists('/usr/sbin/streamlinkSRV'):
+            Mlist.append(self.buildListEntry("Demon nie zainstalowany", "info.png",'doNothing'))
+        elif os.path.exists('/usr/sbin/streamlinkproxy'):
+            Mlist.append(self.buildListEntry("streamlinkproxy nie wspierany", "info.png",'doNothing'))
+        else:
+            Mlist.append(self.buildListEntry("Zaprogramuj nagranie", "config.png",'menuRecorderConfig'))
+            Mlist.append(self.buildListEntry("Konfiguracja demona", "config.png",'menuDaemonConfig'))
+            Mlist.append(self.buildListEntry("Dodaj/Usuń bukiet IPTV", "iptv.png",'menuAvailableIPTVbouquets'))
+            Mlist.append(self.buildListEntry("Pobierz/Usuń bukiet IPTV kolegi Azman", "azman.png",'menuIPTVazman'))
+            Mlist.append(self.buildListEntry("Zmień framework w serwisach IPTV", "folder.png",'menuIPTVframework'))
+            Mlist.append(self.buildListEntry("Zmień wrapper na serwer 127.0.0.1 w serwisach IPTV", "folder.png",'menuIPTVwrappersrv'))
+            Mlist.append(self.buildListEntry("Konfiguacja pilot.wp.pl", "wptv.png",'menuPilotWPpl'))
+            if not os.path.exists('/usr/lib/python3.12/site-packages/'):
+                Mlist.append(self.buildListEntry('\c00981111' + "*** Brak wsparcia DRM dla tej wersji pythona ***", "remove.png",'doNothing'))
+            elif not os.path.exists('/usr/lib/python3.12/site-packages/emukodi/'):
+                Mlist.append(self.buildListEntry('\c00981111' + "*** Brak wsparcia DRM, moduł streamlink-cdm nie zainstalowany ***", "remove.png",'doNothing'))
+            else:
+                if os.path.exists('/usr/lib/enigma2/python/Plugins/Extensions/IPTVPlayer/plugin.pe2i') and not os.path.exists('/j00zek'):
+                    Mlist.append(self.buildListEntry(r'\c00ffff00' + 'Obsługa DRM poprzez zainstalowany e2iplayer autorstwa sss !!!!!', "info.png",'doNothing'))
+                else:
+                    cdmStatus = None
+                    try:
+                        from  pywidevine.cdmdevice.checkCDMvalidity import testDevice
+                        cdmStatus = testDevice()
+                        print('cdmStatus = "%s"' % cdmStatus)
+                    except Exception as e: 
+                        print(str(e))
+                        Mlist.append(self.buildListEntry('\c00981111' + "*** Błąd ładowania modułu urządzenia cdm ***", "info.png",'doNothing'))
+                    open('/etc/streamlink/cdmStatus','w').write(str(cdmStatus))
+                    if cdmStatus is None:
+                        Mlist.append(self.buildListEntry('\c00981111' + "*** Błąd sprawdzania urządzenia cdm ***", "info.png",'doNothing'))
+                        self.VisibleSection = 0
+                    elif not cdmStatus:
+                        Mlist.append(self.buildListEntry('\c00ff9400' + "*** Limitowane wsparcie KODI>DRM ***", "info.png",'doNothing'))
+                    else:
+                        Mlist.append(self.buildListEntry('\c00289496' + "*** Pełne wsparcie KODI>DRM ***", "info.png",'doNothing'))
+                    for cfgFile in ['playermb', 'canalplusvod', 'pgobox', 'cdaplMB']:
+                        if not os.path.exists('/etc/streamlink/%s' % cfgFile):
+                            os.system('mkdir -p /etc/streamlink/%s' % cfgFile)
+
+                    Mlist.append(self.buildListEntry("Konfiguacja player.pl", "playerpl.png",'menuDRMplayerpl'))
+                    Mlist.append(self.buildListEntry("Konfiguacja cda", "cdapl.png",'menuDRMcda'))
+                    Mlist.append(self.buildListEntry("Konfiguacja posatbox", "polsatboxgo.png",'menuDRMpolsatbox'))
+        self["list"].list = Mlist
+
+    def buildListEntry(self, description, image, optionname):
+            image = '/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/pic/%s' % image
+            if os.path.exists(image):
+                pixmap = LoadPixmap(image)
+            else:
+                pixmap = LoadPixmap('/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/pic/config.png')
+            return((pixmap, description, optionname))
+
+    def openSelected(self):
+        selected = str(self["list"].getCurrent()[2])
+        if selected == 'menuDaemonConfig':
+            import Plugins.Extensions.StreamlinkConfig.menuDaemonConfig
+            reload(Plugins.Extensions.StreamlinkConfig.menuDaemonConfig)
+            self.session.openWithCallback(self.doNothing,Plugins.Extensions.StreamlinkConfig.menuDaemonConfig.StreamlinkConfiguration)
+            return
+        elif selected == 'menuAvailableIPTVbouquets':
+            import Plugins.Extensions.StreamlinkConfig.menuAvailableIPTVbouquets
+            reload(Plugins.Extensions.StreamlinkConfig.menuAvailableIPTVbouquets)
+            self.session.openWithCallback(self.doNothing,Plugins.Extensions.StreamlinkConfig.menuAvailableIPTVbouquets.StreamlinkConfiguration)
+            return
+        elif selected == 'menuIPTVazman':
+            import Plugins.Extensions.StreamlinkConfig.menuIPTVazman
+            reload(Plugins.Extensions.StreamlinkConfig.menuIPTVazman)
+            self.session.openWithCallback(self.doNothing,Plugins.Extensions.StreamlinkConfig.menuIPTVazman.StreamlinkConfiguration)
+            return
+        elif selected == 'menuIPTVframework':
+            import Plugins.Extensions.StreamlinkConfig.menuIPTVframework
+            reload(Plugins.Extensions.StreamlinkConfig.menuIPTVframework)
+            self.session.openWithCallback(self.doNothing,Plugins.Extensions.StreamlinkConfig.menuIPTVframework.StreamlinkConfiguration)
+            return
+        elif selected == 'menuIPTVwrappersrv':
+            import Plugins.Extensions.StreamlinkConfig.menuIPTVwrappersrv
+            reload(Plugins.Extensions.StreamlinkConfig.menuIPTVwrappersrv)
+            self.session.openWithCallback(self.doNothing,Plugins.Extensions.StreamlinkConfig.menuIPTVwrappersrv.StreamlinkConfiguration)
+            return
+        elif selected == 'menuPilotWPpl':
+            import Plugins.Extensions.StreamlinkConfig.menuPilotWPpl
+            reload(Plugins.Extensions.StreamlinkConfig.menuPilotWPpl)
+            self.session.openWithCallback(self.doNothing,Plugins.Extensions.StreamlinkConfig.menuPilotWPpl.StreamlinkConfiguration)
+            return
+        elif selected == 'menuDRMplayerpl':
+            import Plugins.Extensions.StreamlinkConfig.menuDRMplayerpl
+            reload(Plugins.Extensions.StreamlinkConfig.menuDRMplayerpl)
+            self.session.openWithCallback(self.doNothing,Plugins.Extensions.StreamlinkConfig.menuDRMplayerpl.StreamlinkConfiguration)
+            return
+        elif selected == 'menuDRMcda':
+            import Plugins.Extensions.StreamlinkConfig.menuDRMcda
+            reload(Plugins.Extensions.StreamlinkConfig.menuDRMcda)
+            self.session.openWithCallback(self.doNothing,Plugins.Extensions.StreamlinkConfig.menuDRMcda.StreamlinkConfiguration)
+            return
+        elif selected == 'menuDRMpolsatbox':
+            import Plugins.Extensions.StreamlinkConfig.menuDRMpolsatbox
+            reload(Plugins.Extensions.StreamlinkConfig.menuDRMpolsatbox)
+            self.session.openWithCallback(self.doNothing,Plugins.Extensions.StreamlinkConfig.menuDRMpolsatbox.StreamlinkConfiguration)
+            return
+
+    def doNothing(self, retVal = None):
+        return
+                
+    def quit(self):
+        self.close()
+
 ############################################# SLzapWrapper #################################
 ####### logika E2: zap(tylko na kanałach iptv?) > __evEnd > __evStart
 
@@ -252,6 +405,6 @@ class SLeventsWrapper:
     def __evEnd(self):
         print("[SLeventsWrapper.__evEnd] >>>")
         print("[SLzapWrapper] self.isExternalPlayerRunning=%s" % str(self.isExternalPlayerRunning))
-        if self.isExternalPlayerRunning:
+        if 1:#self.isExternalPlayerRunning:
             safeSubprocessCMD('/usr/bin/killall exteplayer3;/usr/bin/killall -9 exteplayer3')
             self.isExternalPlayerRunning = False

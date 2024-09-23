@@ -61,14 +61,14 @@ config.plugins.streamlinkSRV.logPath = ConfigSelection(default = "/tmp", choices
 config.plugins.streamlinkSRV.PortNumber = ConfigSelection(default = "8088", choices = [("8088", "8088"), ("88", "88"), ])
 config.plugins.streamlinkSRV.bufferPath = ConfigText(default = "/tmp", fixed_size = False)
 config.plugins.streamlinkSRV.binName = ConfigSelection(default = "streamlinkSRV", choices = [("streamlinkSRV", "Standardowy"), ("streamlinkproxySRV", "Serwer Proxy"),])
+config.plugins.streamlinkSRV.SRVmode = ConfigSelection(default = "serviceapp", choices = [("serviceapp", "Standardowo korzysta z serviceapp"), ("exteplayer3", "Korzytsta z zewnętrznego odtwarzacza exteplayer3"),])
+config.plugins.streamlinkSRV.DRMmode = ConfigSelection(default = "serviceapp", choices = [("serviceapp", "Standardowo korzysta z serviceapp"), ("exteplayer3", "Korzytsta z zewnętrznego odtwarzacza exteplayer3"),])
 
 config.plugins.streamlinkSRV.Recorder = ConfigEnableDisable(default = False)
 config.plugins.streamlinkSRV.RecordMaxTime = ConfigSelection(default = "120", choices = [("120", _("2h")), ("180", _("3h")),])
 
 config.plugins.streamlinkSRV.StandbyMode = ConfigEnableDisable(default = True)
 
-config.plugins.streamlinkSRV.useWrappers = ConfigSelection(default = "n", choices = [("n", _("No")), ("m", mygettext("Yes, try modify bouquets")), ("y", mygettext("Yes, don't modify bouquets")),])
-config.plugins.streamlinkSRV.useWrappers.value = 'y'
 config.plugins.streamlinkSRV.useExtPlayer = ConfigEnableDisable(default = False)
 
 # pilot.wp.pl
@@ -83,8 +83,5 @@ config.plugins.streamlinkSRV.WPvideoDelay = ConfigSelection(default = "0", choic
                                                                                       ("1.0", _("by %s s." % '1.0')), ("5.0", _("by %s s." % '5.0'))])
 
 def DBGlog(text):
-    if 0: #config.plugins.streamlinkSRV.logLevel.value == 'none':
-        print('StreamlinkConfiguration: %s' % text)
-    else:
-        print('StreamlinkConfiguration: %s' % text)
-        open("/tmp/StreamlinkConfig.log", "a").write('%s\n' % str(text))
+    print('StreamlinkConfiguration: %s' % text)
+    open("/tmp/StreamlinkConfig.log", "a").write('%s\n' % str(text))
