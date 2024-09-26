@@ -1,4 +1,5 @@
 #!/bin/sh
+echo "(Re)inicjacja komponentów"
 plugBinDir='/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig'
 
 pythonType='unknown'

@@ -76,15 +76,18 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
             Mlist.append(getConfigListEntry('\c00289496' + "*** Ten system WSPIERA wrappery :) ***"))
         else:
             Mlist.append(getConfigListEntry('\c00981111' + "*** Ten system NIE wspiera wrapperów, korzystaj TYLKO z demona (127.0.0.1 w liście)!!! ***"))
+        if not config.plugins.serviceapp.servicemp3.replace.value:
+            Mlist.append(getConfigListEntry('\c00F08080' + "serviceApp jest wyłączony, SL może NIE działać poprawnie!!!"))
         Mlist.append(getConfigListEntry("Aktywacja:", config.plugins.streamlinkSRV.enabled))
-        Mlist.append(getConfigListEntry("Tryb pracy streamlinka:", config.plugins.streamlinkSRV.binName))
-        if config.plugins.streamlinkSRV.binName.value == 'streamlinkSRV':
-            Mlist.append(getConfigListEntry("Aktywny odtwarzacz streamlinka:", config.plugins.streamlinkSRV.SRVmode))
-        Mlist.append(getConfigListEntry("Aktywny odtwarzacz materiałów DRM:", config.plugins.streamlinkSRV.DRMmode))
+        if config.plugins.streamlinkSRV.enabled.value:
+            Mlist.append(getConfigListEntry("Tryb pracy streamlinka:", config.plugins.streamlinkSRV.binName))
+            if config.plugins.streamlinkSRV.binName.value == 'streamlinkSRV':
+                Mlist.append(getConfigListEntry("Aktywny odtwarzacz streamlinka:", config.plugins.streamlinkSRV.SRVmode))
+            Mlist.append(getConfigListEntry("Aktywny odtwarzacz materiałów DRM:", config.plugins.streamlinkSRV.DRMmode))
                     
-        Mlist.append(getConfigListEntry(_("stop deamon on standby:"), config.plugins.streamlinkSRV.StandbyMode))
-        Mlist.append(getConfigListEntry(" "))
-        Mlist.append(getConfigListEntry("Support VLC: użyj skryptu z folderu wtyczki 'bin/E-TV polska mod j00zek.lua'"))
+            Mlist.append(getConfigListEntry(_("stop deamon on standby:"), config.plugins.streamlinkSRV.StandbyMode))
+            Mlist.append(getConfigListEntry(" "))
+            Mlist.append(getConfigListEntry("Support VLC: użyj skryptu z folderu wtyczki 'bin/E-TV polska mod j00zek.lua'"))
             
         return Mlist
     

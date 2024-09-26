@@ -24,6 +24,9 @@ except Exception as e:
     addons_path = 'ERROR'
     emukodi_path = 'ERROR'
     emukodiConsole = Console
+
+config.plugins.streamlinkSRV.streamlinkconfig = NoSave(ConfigNothing())
+config.plugins.streamlinkSRV.streamlinkEMUKODIconfig = NoSave(ConfigNothing())
     
 class StreamlinkConfiguration(Screen, ConfigListScreen):
     from enigma import getDesktop

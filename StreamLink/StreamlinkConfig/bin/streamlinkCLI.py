@@ -1,10 +1,10 @@
 #!/usr/bin/python3
+import os, sys
 from streamlink.jtools import *
 
 print('PRZYKLAD: streamlink -l debug [ -o /tmp/fileName] "url" best')
-cleanCMD(forceKill = True)
+cleanCMD(forceKill = True, KeepPID = os.getpid())
 
-import sys
 idx = 0
 for argument in sys.argv:
     if argument.startswith('http%3a//127.0.0.1%3a8088/'):

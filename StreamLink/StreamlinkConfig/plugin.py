@@ -49,12 +49,13 @@ def sessionstart(reason, session = None):
         os.remove("/tmp/StreamlinkConfig.log")
     DBGlog("autostart")
     cmds = []
-    cmds.append("[ `grep -c 'WHERE_CHANNEL_ZAP' < /usr/lib/enigma2/python/Plugins/Plugin.pyc` -eq 0 ] && touch /usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/NoZapWrappers")
+    #cmds.append("[ `grep -c 'WHERE_CHANNEL_ZAP' < /usr/lib/enigma2/python/Plugins/Plugin.pyc` -eq 0 ] && touch /usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/NoZapWrappers")
     cmds.append("streamlinkproxy stop 2>/dev/null")
-    cmds.append("/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/bin/re-initiate.sh")
+    #cmds.append("/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/bin/re-initiate.sh")
     cmds.append("streamlinkproxySRV stop")
     cmds.append("streamlinkSRV stop")
-    cmds.append("%s restart" % config.plugins.streamlinkSRV.binName.value)
+    if config.plugins.streamlinkSRV.enabled.value:
+        cmds.append("%s restart" % config.plugins.streamlinkSRV.binName.value)
     runCMD(';'.join(cmds))
     from Screens.Standby import inStandby
     if reason == 0 and config.plugins.streamlinkSRV.StandbyMode.value == True:
@@ -142,6 +143,8 @@ class SLK_Menu(Screen):
             Mlist.append(self.buildListEntry("Demon nie zainstalowany", "info.png",'doNothing'))
         elif os.path.exists('/usr/sbin/streamlinkproxy'):
             Mlist.append(self.buildListEntry("streamlinkproxy nie wspierany", "info.png",'doNothing'))
+        elif not os.path.exists("/usr/lib/enigma2/python/Plugins/SystemPlugins/ServiceApp/serviceapp.so"):
+            Mlist.append(self.buildListEntry("Brak zainstalowanego serviceapp", "info.png",'doNothing'))
         else:
             Mlist.append(self.buildListEntry("Zaprogramuj nagranie", "config.png",'menuRecorderConfig'))
             Mlist.append(self.buildListEntry("Konfiguracja demona", "config.png",'menuDaemonConfig'))

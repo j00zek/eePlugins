@@ -34,11 +34,13 @@ def killSRVprocess(KeepPID):
     CMDs.append('fi')
     os.system('\n'.join(CMDs))
 
-def cleanCMD(forceKill = True): #czyszczenie smieci
+def cleanCMD(forceKill = True, KeepPID = 0): #czyszczenie smieci
     clearCache()
     CMDs = []
     CMDs.append(r'/usr/bin/killall exteplayer3 2>/dev/null') #close external player when used
     CMDs.append(r'/usr/bin/killall -9 exteplayer3 2>/dev/null') #close external player when used
+    if KeepPID != 0:
+        CMDs.append(r"[ `ps -ef|grep -v grep|grep -v %s|grep -c exteplayer3` -gt 0 ] && (ps -ef|grep -v grep|grep -v %s|grep exteplayer3|awk '{print $2}'|xargs kill)" % (KeepPID,KeepPID))
     if forceKill == True:
         CMDs.append(r"[ `ps -ef|grep -v grep|grep -c ffmpeg` -gt 0 ] && (ps -ef|grep -v grep|grep ffmpeg|awk '{print $2}'|xargs kill)")
     CMDs.append(r"kill `netstat -peanut|grep 8808|grep -oE 'LISTEN[ ]+[0-9]+'|grep -oE '[0-9]+'` 2>/dev/null")
@@ -52,8 +54,11 @@ def cleanCMD(forceKill = True): #czyszczenie smieci
     CMDs.append(r"find /tmp/ -maxdepth 1 -mmin +180 -name 'streamlinkpipe-*' -exec rm -- '{}' \;")
     os.system('\n'.join(CMDs))
 
-def GetSRVtype():
-    return getE2config('type', 's')
+def GetSRVmode():
+    return getE2config('SRVmode', 'serviceapp')
+
+def GetDRMmode():
+    return getE2config('type', 'serviceapp')
 
 def GetBufferPath():
     return getE2config('bufferPath', '/tmp')
