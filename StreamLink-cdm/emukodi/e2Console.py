@@ -95,10 +95,14 @@ class emukodiConsole(Screen):
         else:
             #lastpage = self["text"].isAtLastPage()
             myText = self["text"].getText()
-            myText += self.endText;
+            if not self.errorOcurred:
+                myText += self.endText;
+            else:
+                myText += '\nWystąpił Błąd, jeśli potrzebujesz pomocy załącz log systemowy w wątku na forum !!!';
             self["text"].setText(myText)
             #if lastpage:
             self["text"].lastPage()
+            print('[emukodiConsole.runFinished(errorOcurred=%s)] displayed text:\n %s' % (self.errorOcurred, myText) )
             if self.finishedCallback is not None:
                 self.finishedCallback()
             if not self.errorOcurred and self.closeOnSuccess:

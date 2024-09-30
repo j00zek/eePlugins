@@ -5,7 +5,7 @@ Depends: python3-core, python3-ctypes, python3-futures3, python3-isodate, python
 Description: rozszerzenie cdm do streamlinka
 Maintainer: j00zek
 Source: http://github.com/j00zek/eePlugins
-Version: 24.09.26.1204
+Version: 24.09.30.1534
 Architecture: all
 DestinationPath: /usr/lib/python3.12/site-packages
 ExcludeFolder: 
