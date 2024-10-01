@@ -11,7 +11,7 @@ import gettext, os
 #### get user configs ####
 def readCFG(cfgName, defVal = ''):
     retValue = defVal
-    for cfgPath in ['/j00zek/streamlink_defaults/','/hdd/User_Configs']:
+    for cfgPath in ['/j00zek/streamlink_defaults/','/hdd/User_Configs', '/etc/streamlink/']:
         if os.path.exists(os.path.join(cfgPath, cfgName)):
             retValue = open(os.path.join(cfgPath, cfgName), 'r').readline().strip()
             break

@@ -33,7 +33,7 @@ __author_email__ = 'pepsik@ukr.net'
 __license__ = 'GNU GENERAL PUBLIC LICENSE version 3'
 
 
-srvname = 'streamlinkproxy'
+srvname = 'streamlinkproxySRV'
 logger.root.name = srvname
 logger.basicConfig()
 timeout = 20
@@ -46,14 +46,15 @@ class RequestHandler(SimpleHTTPServer.BaseHTTPRequestHandler):
     server_version = f'{srvname[:10].capitalize()} {srvname[10:]}'
     protocol_version = 'HTTP/1.1'
     ### initiate a streamlink session with the specified parameters most suitable for Enigma2 "media players"
+    ### to krytyczne, jak sie wywala wpada w petle!!!!!
     streamlink: Streamlink = Streamlink({
-                        "stream-timeout": timeout,
-                        "stream-segment-threads": 6,
-                        "hls-segment-stream-data": True,
-                        "hls-audio-select": "*",
-                        "ringbuffer-size": 1024 * 1024 * 32,
-                        "ffmpeg-no-validation": True,
-                    }, plugins_builtin=True)
+                            "stream-timeout": timeout,
+                            "stream-segment-threads": 6,
+                            "hls-segment-stream-data": True,
+                            "hls-audio-select": "*",
+                            "ringbuffer-size": 1024 * 1024 * 32,
+                            "ffmpeg-no-validation": True,
+                        }, plugins_builtin=True)
 
     default_options = deepcopy(streamlink.options)
 
@@ -222,17 +223,23 @@ def start():
         ip = 'localhost'
     socketserver.ForkingTCPServer.allow_reuse_address = True
     with socketserver.ForkingTCPServer(("", 8088), RequestHandler) as server:
-        logger.root.info(f"{srvname.capitalize()} server ver {__version__} started - {ip}:{server.server_address[1]}")
-        logger.root.debug(f'Steamlink library version used: {streamlink_ver}')
+        logger.root.info(f"{srvname.capitalize()} wersja serwera {__version__}, zasób - {ip}:{server.server_address[1]}")
+        logger.root.debug(f'Biblioteka Steamlink w wersji: {streamlink_ver}')
         try:
             server.serve_forever()
         except KeyboardInterrupt:
-            logger.root.info(f"{srvname.capitalize()} server stoped")
+            logger.root.info(f"{srvname.capitalize()} serwer zatrzymany")
         except Exception as err:
-            logger.root.error(f"{srvname.capitalize()} unexpected error occurs: {err}")
+            logger.root.error(f"{srvname.capitalize()} wystąpił nieznany błąd: {err}")
 
 if __name__ == "__main__":
     daemon = StreamlinkDaemon("/var/run/%s.pid" % srvname)
+    print('Sprawdzam czy streamlink ma wszystkie niezbędne moduły...')
+    try:
+        result = subprocess.check_output('/usr/sbin/streamlink', shell=True, text=True)
+    except subprocess.CalledProcessError as e:
+        print('!!!!!!!!!!! Błąd uruchamiania streamlinka:', e)
+        exit(0)
     if len(sys.argv) in (2,3):
         if "start" == sys.argv[1]:
             daemon.start()
@@ -258,7 +265,7 @@ if __name__ == "__main__":
             if not daemon.is_running():
                 start()
         else:
-            print("Unknown command")
+            print("Nieznana komenda")
             sys.exit(2)
         sys.exit(0)
     else:

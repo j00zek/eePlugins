@@ -59,6 +59,14 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         elif open('/etc/streamlink/pgobox/password','r').read().strip() == '':
             Mlist.append(getConfigListEntry( 'polsatgo: Brak danych w /etc/streamlink/pgobox/password' , config.plugins.streamlinkSRV.streamlinkconfig))
         else:
+            Mlist.append(getConfigListEntry("Wpisana w pliku '/etc/streamlink/pgobox/username' nazwa użytkownika: '%s'" % readCFG('pgobox/username')))
+            Mlist.append(getConfigListEntry("Wpisane w pliku '/etc/streamlink/pgobox/password' hasło: '%s'" % readCFG('pgobox/password')))
+            if readCFG('pgobox/klient') == 'iCOK':
+                Mlist.append(getConfigListEntry("Wpisany typ klienta iCOK (konto w iPolsat Box)"))
+            elif readCFG('pgobox/klient') == 'polsatbox':
+                Mlist.append(getConfigListEntry("Wpisany w pliku '/etc/streamlink/pgobox/klient' typ klienta polsatbox (konto w Polsat Box Go)"))
+            else:
+                Mlist.append(getConfigListEntry("Wpisana w pliku '/etc/streamlink/pgobox/klient' zła wartość, tylko iCOK/polsatbox są poprawne"))
             #logowanie
             emuKodiCmdsList = []
             pythonRunner = '/usr/bin/python'
