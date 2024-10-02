@@ -60,9 +60,10 @@ config.plugins.streamlinkSRV.ClearLogFile = ConfigEnableDisable(default = True)
 config.plugins.streamlinkSRV.logPath = ConfigSelection(default = "/tmp", choices = [("/home/root", "/home/root"), ("/tmp", "/tmp"), ("/hdd", "/hdd"), ])
 config.plugins.streamlinkSRV.PortNumber = ConfigSelection(default = "8088", choices = [("8088", "8088"), ("88", "88"), ])
 config.plugins.streamlinkSRV.bufferPath = ConfigText(default = "/tmp", fixed_size = False)
-config.plugins.streamlinkSRV.binName = ConfigSelection(default = "streamlinkSRV", choices = [("streamlinkSRV", "Standardowy"), ("streamlinkproxySRV", "Serwer Proxy"),])
-config.plugins.streamlinkSRV.SRVmode = ConfigSelection(default = "serviceapp", choices = [("serviceapp", "Standardowo korzysta z serviceapp"), ("exteplayer3", "Korzytsta z zewnętrznego odtwarzacza exteplayer3"),])
-config.plugins.streamlinkSRV.DRMmode = ConfigSelection(default = "serviceapp", choices = [("serviceapp", "Standardowo korzysta z serviceapp"), ("exteplayer3", "Korzytsta z zewnętrznego odtwarzacza exteplayer3"),])
+#Tryb pracy streamlinka
+config.plugins.streamlinkSRV.binName = ConfigSelection(default = "streamlinkSRV", choices = [("streamlinkSRV", "W 100% zgodny ze streamlinkiem, ale wolniejszy"), ("streamlinkproxySRV", "Korzysta ze streamlinka, szybszy ale niektóre adresy mogą nie działać"),])
+config.plugins.streamlinkSRV.SRVmode = ConfigSelection(default = "serviceapp", choices = [("serviceapp", "Standardowo korzysta z odtwarzacza E2"), ("exteplayer3", "Korzysta z zewnętrznego odtwarzacza exteplayer3"),])
+config.plugins.streamlinkSRV.DRMmode = ConfigSelection(default = "serviceapp", choices = [("serviceapp", "Standardowo korzysta z odtwarzacza E2"), ("exteplayer3", "Korzysta z zewnętrznego odtwarzacza exteplayer3"),])
 
 config.plugins.streamlinkSRV.Recorder = ConfigEnableDisable(default = False)
 config.plugins.streamlinkSRV.RecordMaxTime = ConfigSelection(default = "120", choices = [("120", _("2h")), ("180", _("3h")),])

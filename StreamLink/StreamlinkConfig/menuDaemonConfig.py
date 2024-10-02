@@ -2,7 +2,6 @@
 from __future__ import absolute_import #zmiana strategii ladowanie modulow w py2 z relative na absolute jak w py3
 from Plugins.Extensions.StreamlinkConfig.__init__ import mygettext as _ , readCFG , DBGlog
 from Plugins.Extensions.StreamlinkConfig.version import Version
-from Plugins.Extensions.StreamlinkConfig.plugins.azmanIPTVsettings import get_azmanIPTVsettings
 import os, time, sys
 # GUI (Screens)
 from Components.ActionMap import ActionMap
@@ -17,39 +16,7 @@ from Screens.Console import Console
 from Screens.MessageBox import MessageBox
 from Screens.Screen import Screen
 from Screens.Setup import SetupSummary
-
-try:
-    from emukodi.xbmcE2 import *
-    from emukodi.e2Console import emukodiConsole
-except Exception as e:
-    print('AQQ ERROR', str(e))
-    addons_path = 'ERROR'
-    emukodi_path = 'ERROR'
-    emukodiConsole = Console
-    
-#### streamlink config /etc/streamlink/config ####
-def getFFlist():
-    ffList = []
-    for f in sorted(os.listdir("/usr/bin"), key=str.lower):
-        if f.startswith('ffmpeg'):
-            ffList.append(("/usr/bin/%s" % f, f ))
-    return ffList
-
-def getCurrFF():
-    ff = '/usr/bin/ffmpeg'
-    for c in getStreamlinkConfig():
-        if c.startswith('ffmpeg-ffmpeg='):
-            tmp = c.split('=')[1].strip()
-            if os.path.exists(tmp):
-                ff = tmp
-    return ff
-    
-def getStreamlinkConfig():
-    try:
-        cfg = open('/etc/streamlink/config', 'r').read().splitlines()
-    except Exception:
-        cfg = []
-    return cfg
+from Screens.Standby import TryQuitMainloop
 
 class StreamlinkConfiguration(Screen, ConfigListScreen):
     from enigma import getDesktop
@@ -76,18 +43,28 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
             Mlist.append(getConfigListEntry('\c00289496' + "*** Ten system WSPIERA wrappery :) ***"))
         else:
             Mlist.append(getConfigListEntry('\c00981111' + "*** Ten system NIE wspiera wrapperów, korzystaj TYLKO z demona (127.0.0.1 w liście)!!! ***"))
-        if not config.plugins.serviceapp.servicemp3.replace.value:
-            Mlist.append(getConfigListEntry('\c00F08080' + "serviceApp jest wyłączony, SL może NIE działać poprawnie!!!"))
-        Mlist.append(getConfigListEntry("Aktywacja:", config.plugins.streamlinkSRV.enabled))
-        if config.plugins.streamlinkSRV.enabled.value:
-            Mlist.append(getConfigListEntry("Tryb pracy streamlinka:", config.plugins.streamlinkSRV.binName))
-            if config.plugins.streamlinkSRV.binName.value == 'streamlinkSRV':
-                Mlist.append(getConfigListEntry("Aktywny odtwarzacz streamlinka:", config.plugins.streamlinkSRV.SRVmode))
-            Mlist.append(getConfigListEntry("Aktywny odtwarzacz materiałów DRM:", config.plugins.streamlinkSRV.DRMmode))
+        Mlist.append(getConfigListEntry("Aktywacja:", config.plugins.streamlinkSRV.enabled, 'streamlinkSRV.enabled'))
+        Mlist.append(getConfigListEntry("Tryb pracy streamlinka:", config.plugins.streamlinkSRV.binName, 'streamlinkSRV.binName'))
+        Mlist.append(getConfigListEntry("Aktywny odtwarzacz streamlinka:", config.plugins.streamlinkSRV.SRVmode, 'streamlinkSRV.SRVmode'))
+        Mlist.append(getConfigListEntry("Aktywny odtwarzacz materiałów DRM:", config.plugins.streamlinkSRV.DRMmode, 'streamlinkSRV.DRMmode'))
                     
-            Mlist.append(getConfigListEntry(_("stop deamon on standby:"), config.plugins.streamlinkSRV.StandbyMode))
-            Mlist.append(getConfigListEntry(" "))
-            Mlist.append(getConfigListEntry("Support VLC: użyj skryptu z folderu wtyczki 'bin/E-TV polska mod j00zek.lua'"))
+        Mlist.append(getConfigListEntry(_("stop deamon on standby:"), config.plugins.streamlinkSRV.StandbyMode))
+        #KONFIGURACJA SERVICEAPP
+        Mlist.append(getConfigListEntry(" "))
+        Mlist.append(getConfigListEntry('\c00689496' + "*** Konfiguracja ServiceApp ***"))
+        Mlist.append(getConfigListEntry("System odtwarzania wewnętrzny E2/ServiceApp (wył/wł)", config.plugins.serviceapp.servicemp3.replace))
+        Mlist.append(getConfigListEntry("Odtwarzacz systemu ServiceApp", config.plugins.serviceapp.servicemp3.player))
+        #KONFIGURACJA LOGOWANIA
+        Mlist.append(getConfigListEntry(" "))
+        Mlist.append(getConfigListEntry('\c00489496' + "*** Konfiguracja logowania - WŁĄCZ wszystko ***"))
+        Mlist.append(getConfigListEntry("Włącz dziennik debugowania", config.crash.enabledebug))
+        Mlist.append(getConfigListEntry("Lokalizacja logów", config.crash.debug_path))
+        Mlist.append(getConfigListEntry("Awaria obsługi pythona", config.crash.bsodpython))
+        Mlist.append(getConfigListEntry("Dołącz dane ładowania ekranu", config.crash.debugScreens))
+        Mlist.append(getConfigListEntry("Debuguj główną przyczynę błędu", config.crash.pystackonspinner))
+        #info o vlc
+        Mlist.append(getConfigListEntry(" "))
+        Mlist.append(getConfigListEntry("Support VLC: użyj skryptu z folderu wtyczki 'bin/E-TV polska mod j00zek.lua'"))
             
         return Mlist
     
@@ -114,15 +91,10 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         
         if self.mySL == True:
             self["key_green"] = Label(_("Save"))
-            self["key_blue"] = Label(_("Restart daemon"))
-            if os.path.exists('/usr/lib/python2.7'):
-                self["key_yellow"] = Label()
-            elif os.path.exists('/tmp/streamlinkSRV.log'):
-                self["key_yellow"] = Label(_("Show log"))
         else:
             self["key_green"] = Label()
-            self["key_blue"] = Label()
-            self["key_yellow"] = Label()
+        self["key_blue"] = Label()
+        self["key_yellow"] = Label()
 
         # Define Actions
         self["actions"] = ActionMap(["StreamlinkConfiguration"],
@@ -145,6 +117,13 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
             for x in self["config"].list:
                 if len(x) >= 2:
                     x[1].save()
+                    try:
+                        if len(x) > 2:
+                            with open(os.path.join('/etc/streamlink/',x[2]), 'w') as f:
+                                f.write(str(x[1].value))
+                                f.close()
+                    except Exception:
+                        pass
             configfile.save()
         except Exception:
             pass
@@ -152,21 +131,28 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
     def save(self):
         if self.mySL == True:
             self.saveConfig()
-            os.system('%s stop' % config.plugins.streamlinkSRV.binName.value)
-            if config.plugins.streamlinkSRV.enabled.value:
-                os.system('%s start' % config.plugins.streamlinkSRV.binName.value)
+            if 0:
+                os.system('%s stop' % config.plugins.streamlinkSRV.binName.value)
+                if config.plugins.streamlinkSRV.enabled.value:
+                    os.system('%s start' % config.plugins.streamlinkSRV.binName.value)
+            self.session.openWithCallback(self.rebootTunercb,MessageBox, "Zmiany wymagają restartu systemu.\nZrestartować teraz?", MessageBox.TYPE_YESNO, default = True)
+
+    def rebootTunercb(self,answer):
+        if answer is True:
+            self.session.open(TryQuitMainloop, 2)
+        else:
             self.close(None)
         
     def doNothing(self, ret = False):
         return
       
     def yellow(self):
-        if self.mySL == True:
+        if 0: #self.mySL == True:
             if os.path.exists('/tmp/streamlinkSRV.log'):
                 self.session.openWithCallback(self.doNothing ,Console, title = '/tmp/streamlinkSRV.log', cmdlist = [ 'cat /tmp/streamlinkSRV.log' ])
         
     def blue(self):
-        if self.mySL == True:
+        if 0: #if self.mySL == True:
             mtitle = _('Restarting daemon')
             cmd = '/usr/sbin/%s restart' % config.plugins.streamlinkSRV.binName.value
             self.session.openWithCallback(self.doNothing ,Console, title = mtitle, cmdlist = [ cmd ])
