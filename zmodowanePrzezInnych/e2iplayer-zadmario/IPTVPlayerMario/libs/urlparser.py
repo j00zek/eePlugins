@@ -601,6 +601,7 @@ class urlparser:
                        'streamplay.me': self.pp.parserSTREAMPLAYTO,
                        'streamplay.to': self.pp.parserSTREAMPLAYTO,
                        'streamsb.net': self.pp.parserSTREAMSB,
+                       'streamsilk.com': self.pp.parserSTREAMSILKCOM,
                        'streamtape.com': self.pp.parserSTREAMTAPE,
                        'streamtape.to': self.pp.parserSTREAMTAPE,
                        'streamvid.net': self.pp.parserONLYSTREAMTV,
@@ -15861,5 +15862,35 @@ class pageParser(CaptchaHelper):
         if hlsUrl != '':
             hlsUrl = strwithmeta(hlsUrl, HTTP_HEADER)
             urlTab.extend(getDirectM3U8Playlist(hlsUrl, checkExt=False, variantCheck=True, checkContent=True, sortWithMaxBitrate=99999999))
+
+        return urlTab
+
+    def parserSTREAMSILKCOM(self, baseUrl):
+        printDBG("parserSTREAMSILKCOM baseUrl[%s]" % baseUrl)
+
+        HTTP_HEADER = self.cm.getDefaultHeader(browser='chrome')
+        referer = baseUrl.meta.get('Referer')
+        if referer:
+            HTTP_HEADER['Referer'] = referer
+        urlParams = {'header': HTTP_HEADER}
+        sts, data = self.cm.getPage(baseUrl, urlParams)
+        if not sts:
+            return []
+
+        if 'function(h,u,n,t,e,r)' in data:
+            ff = re.findall('function\(h,u,n,t,e,r\).*?}\((".+?)\)\)', data, re.DOTALL)[0]
+            ff = ff.replace('"', '')
+            h, u, n, t, e, r = ff.split(',')
+            data = dehunt(h, int(u), n, int(t), int(e), int(r))
+
+#        printDBG("parserSTREAMSILKCOM data[%s]" % data)
+        urlTab = []
+        url = self.cm.ph.getSearchGroups(data, '''urlPlay\s*=\s*"\s*([^"^\s]+)''')[0]
+        url = strwithmeta(url, {'Origin': urlparser.getDomain(baseUrl, False), 'Referer': baseUrl})
+        if url != '':
+            if 'm3u8' in url:
+                urlTab.extend(getDirectM3U8Playlist(url, checkExt=False, variantCheck=True, checkContent=True, sortWithMaxBitrate=99999999))
+            else:
+                urlTab.append({'name': 'mp4', 'url': url})
 
         return urlTab

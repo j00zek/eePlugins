@@ -1045,7 +1045,10 @@ class common:
                 params['header']['User-Agent'] = cf_user
 
                 cookies = r.get('cookie', '')
-                params['cookie_items'] = {'cf_clearance': cookies['value']}
+                try:
+                    params['cookie_items'] = {'cf_clearance': cookies[0]['value']}
+                except Exception:
+                    params['cookie_items'] = {'cf_clearance': cookies['value']} # mye2i < 1.7
                 sts, data = self.getPage(baseUrl, params, post_data)
                 if not sts:
                     printDBG('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')

@@ -20,6 +20,7 @@ try:
     import json
 except Exception:
     import simplejson as json
+from Components.config import config, ConfigText
 ###################################################
 
 
@@ -36,7 +37,8 @@ class Zaluknij(CBaseHostClass):
 
     def __init__(self):
         CBaseHostClass.__init__(self, {'history': 'zaluknij.cc', 'cookie': 'zaluknij.cc.cookie'})
-        self.USER_AGENT = 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.0'
+        config.plugins.IPTVPlayerMario.cloudflare_user = ConfigText(default='Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.0', fixed_size=False)
+        self.USER_AGENT = config.plugins.IPTVPlayerMario.cloudflare_user.value
         self.MAIN_URL = 'https://zaluknij.cc/'
         self.DEFAULT_ICON_URL = 'https://zaluknij.cc/public/dist/images/logozaluknijcccc.png'
         self.HTTP_HEADER = {'User-Agent': self.USER_AGENT, 'DNT': '1', 'Accept': 'text/html', 'Accept-Encoding': 'gzip, deflate', 'Referer': self.getMainUrl(), 'Origin': self.getMainUrl()}
@@ -47,11 +49,23 @@ class Zaluknij(CBaseHostClass):
         self.cacheLinks = {}
         self.defaultParams = {'header': self.HTTP_HEADER, 'with_metadata': True, 'use_cookie': True, 'load_cookie': True, 'save_cookie': True, 'cookiefile': self.COOKIE_FILE}
 
-    def getPage(self, url, addParams={}, post_data=None):
+    def getPage(self, baseUrl, addParams={}, post_data=None):
         if addParams == {}:
             addParams = dict(self.defaultParams)
-        baseUrl = self.cm.iriToUri(url)
-        return self.cm.getPage(baseUrl, addParams, post_data)
+        origBaseUrl = baseUrl
+        baseUrl = self.cm.iriToUri(baseUrl)
+
+        sts, data = self.cm.getPageCFProtection(baseUrl, addParams, post_data)
+        if data.meta.get('cf_user', self.USER_AGENT) != self.USER_AGENT:
+            self.__init__()
+        return sts, data
+
+    def getFullIconUrl(self, url):
+        url = CBaseHostClass.getFullIconUrl(self, url.strip())
+        if url == '':
+            return ''
+        cookieHeader = self.cm.getCookieHeader(self.COOKIE_FILE, ['cf_clearance'])
+        return strwithmeta(url, {'Cookie': cookieHeader, 'User-Agent': self.USER_AGENT})
 
     def setMainUrl(self, url):
         if self.cm.isValidUrl(url):
