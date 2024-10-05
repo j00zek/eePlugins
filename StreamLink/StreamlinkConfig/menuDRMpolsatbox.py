@@ -50,41 +50,57 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         self.DoBuildList.stop()
         Mlist = []
         # !!!!!!!!!!!!!!!!!!!!!!!!! POLSAT ############################
+        Mlist.append(getConfigListEntry('\c00289496' +  'Katalog z plikami konfiguracyjnymi: /etc/streamlink/pgobox'))
+        Mlist.append(getConfigListEntry( ' '))
         for cfgFile in ['logged', 'username', 'password', 'klient']:
             if not os.path.exists('/etc/streamlink/pgobox/%s' % cfgFile): os.system('touch /etc/streamlink/pgobox/%s' % cfgFile)
-        if open('/etc/streamlink/pgobox/klient','r').read().strip() == '':
-            Mlist.append(getConfigListEntry( 'polsatgo: Ustaw typ logowania (polsatbox|iCOK) w /etc/streamlink/pgobox/klient' , config.plugins.streamlinkSRV.streamlinkconfig))
-        elif open('/etc/streamlink/pgobox/username','r').read().strip() == '':
-            Mlist.append(getConfigListEntry( 'polsatgo: Brak danych w /etc/streamlink/pgobox/username' , config.plugins.streamlinkSRV.streamlinkconfig))
+        if open('/etc/streamlink/pgobox/username','r').read().strip() == '':
+            Mlist.append(getConfigListEntry('\c00981111' + 'Nie wpisano nazwy użytkownika w pliku username' , config.plugins.streamlinkSRV.streamlinkconfig))
         elif open('/etc/streamlink/pgobox/password','r').read().strip() == '':
-            Mlist.append(getConfigListEntry( 'polsatgo: Brak danych w /etc/streamlink/pgobox/password' , config.plugins.streamlinkSRV.streamlinkconfig))
+            Mlist.append(getConfigListEntry('\c00981111' + 'Nie wpisano hasła w pliku password' , config.plugins.streamlinkSRV.streamlinkconfig))
         else:
-            Mlist.append(getConfigListEntry("Wpisana w pliku '/etc/streamlink/pgobox/username' nazwa użytkownika: '%s'" % readCFG('pgobox/username')))
-            Mlist.append(getConfigListEntry("Wpisane w pliku '/etc/streamlink/pgobox/password' hasło: '%s'" % readCFG('pgobox/password')))
+            Mlist.append(getConfigListEntry("Wpisana w pliku 'username' nazwa użytkownika: '%s'" % readCFG('pgobox/username')))
+            Mlist.append(getConfigListEntry("Wpisane w pliku 'password' hasło: '%s'" % readCFG('pgobox/password')))
             if readCFG('pgobox/klient') == 'iCOK':
                 Mlist.append(getConfigListEntry("Wpisany typ klienta iCOK (konto w iPolsat Box)"))
             elif readCFG('pgobox/klient') == 'polsatbox':
-                Mlist.append(getConfigListEntry("Wpisany w pliku '/etc/streamlink/pgobox/klient' typ klienta polsatbox (konto w Polsat Box Go)"))
+                Mlist.append(getConfigListEntry("Wpisany w pliku 'klient' typ klienta polsatbox (konto w Polsat Box Go)"))
+            elif readCFG('pgobox/klient') == '':
+                Mlist.append(getConfigListEntry("Brak zdefiniowanego typu klienta, włączono automatyczne wykrywanie"))
             else:
-                Mlist.append(getConfigListEntry("Wpisana w pliku '/etc/streamlink/pgobox/klient' zła wartość, tylko iCOK/polsatbox są poprawne"))
+                Mlist.append(getConfigListEntry("Wpisany w pliku 'klient' typ klienta jest niepoprawny, włączono automatyczne wykrywanie"))
             #logowanie
             emuKodiCmdsList = []
             pythonRunner = '/usr/bin/python'
             addonScript = 'plugin.video.pgobox/main.py'
             runAddon = '%s %s' % (pythonRunner, os.path.join(addons_path, addonScript))
-            emuKodiCmdsList.append(runAddon + " '1' ' ' 'resume:false'") #logowanie nastepuje bez podania trybu
-            autoClose = True #ustawienie parametrow w zaleznoci od akcji
+            emuKodiCmdsList.append(runAddon + " '1' '?mode=login' 'resume:false'") #logowanie nastepuje bez podania trybu
+            autoClose = False #ustawienie parametrow w zaleznoci od akcji
             webServer = ''
             Mlist.append(getConfigListEntry( "Zaloguj do polsatgo", config.plugins.streamlinkSRV.streamlinkEMUKODIconfig, ('pgobox', 'login', emuKodiCmdsList, autoClose, webServer, addonScript)))
             #pobieranie listy
+            if open('/etc/streamlink/pgobox/client_id','r').read().strip() != '' and \
+               open('/etc/streamlink/pgobox/device_id','r').read().strip() != '' and \
+               open('/etc/streamlink/pgobox/sesstoken','r').read().strip() != '' and \
+               open('/etc/streamlink/pgobox/sessexpir','r').read().strip() != '' and \
+               open('/etc/streamlink/pgobox/id_','r').read().strip() != '':
+                emuKodiCmdsList = []
+                addonScript = 'plugin.video.pgobox/main.py'
+                runAddon = '/usr/bin/python %s' % os.path.join(addons_path, addonScript)
+                emuKodiCmdsList.append(runAddon + " '1' '?mode=build_m3u' 'resume:false'")
+                autoClose = False #ustawienie parametrow w zaleznoci od akcji
+                webServer = ''
+                Mlist.append(getConfigListEntry(_("Press OK to create %s bouquet") % "polsatgo" , 
+                        config.plugins.streamlinkSRV.streamlinkEMUKODIconfig, ('polsatgo', 'userbouquet', emuKodiCmdsList, autoClose, webServer, addonScript)))
+            #wylogowanie
             emuKodiCmdsList = []
+            pythonRunner = '/usr/bin/python'
             addonScript = 'plugin.video.pgobox/main.py'
-            runAddon = '/usr/bin/python %s' % os.path.join(addons_path, addonScript)
-            emuKodiCmdsList.append(runAddon + " '1' '?mode=build_m3u' 'resume:false'")
+            runAddon = '%s %s' % (pythonRunner, os.path.join(addons_path, addonScript))
+            emuKodiCmdsList.append(runAddon + " '1' '?mode=logout' 'resume:false'") #logowanie nastepuje bez podania trybu
             autoClose = False #ustawienie parametrow w zaleznoci od akcji
             webServer = ''
-            Mlist.append(getConfigListEntry(_("Press OK to create %s bouquet") % "polsatgo" , 
-                    config.plugins.streamlinkSRV.streamlinkEMUKODIconfig, ('polsatgo', 'userbouquet', emuKodiCmdsList, autoClose, webServer, addonScript)))
+            Mlist.append(getConfigListEntry( "Wyloguj z polsatgo", config.plugins.streamlinkSRV.streamlinkEMUKODIconfig, ('pgobox', 'login', emuKodiCmdsList, autoClose, webServer, addonScript)))
         return Mlist
     
     def __init__(self, session, args=None):

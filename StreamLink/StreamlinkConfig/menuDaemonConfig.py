@@ -44,19 +44,20 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         else:
             Mlist.append(getConfigListEntry('\c00981111' + "*** Ten system NIE wspiera wrapperów, korzystaj TYLKO z demona (127.0.0.1 w liście)!!! ***"))
         Mlist.append(getConfigListEntry("Aktywacja:", config.plugins.streamlinkSRV.enabled, 'streamlinkSRV.enabled'))
-        Mlist.append(getConfigListEntry("Tryb pracy streamlinka:", config.plugins.streamlinkSRV.binName, 'streamlinkSRV.binName'))
-        Mlist.append(getConfigListEntry("Aktywny odtwarzacz streamlinka:", config.plugins.streamlinkSRV.SRVmode, 'streamlinkSRV.SRVmode'))
-        Mlist.append(getConfigListEntry("Aktywny odtwarzacz materiałów DRM:", config.plugins.streamlinkSRV.DRMmode, 'streamlinkSRV.DRMmode'))
-                    
-        Mlist.append(getConfigListEntry(_("stop deamon on standby:"), config.plugins.streamlinkSRV.StandbyMode))
+        if config.plugins.streamlinkSRV.enabled.value:
+            Mlist.append(getConfigListEntry("Tryb pracy streamlinka:", config.plugins.streamlinkSRV.binName, 'streamlinkSRV.binName'))
+            if config.plugins.streamlinkSRV.binName.value == 'streamlinkSRV':
+                Mlist.append(getConfigListEntry("Aktywny odtwarzacz streamlinka:", config.plugins.streamlinkSRV.SRVmode, 'streamlinkSRV.SRVmode'))
+            Mlist.append(getConfigListEntry("Aktywny odtwarzacz materiałów DRM:", config.plugins.streamlinkSRV.DRMmode, 'streamlinkSRV.DRMmode'))
+            Mlist.append(getConfigListEntry(_("stop deamon on standby:"), config.plugins.streamlinkSRV.StandbyMode))
         #KONFIGURACJA SERVICEAPP
         Mlist.append(getConfigListEntry(" "))
-        Mlist.append(getConfigListEntry('\c00689496' + "*** Konfiguracja ServiceApp ***"))
+        Mlist.append(getConfigListEntry('\c00f83426' + "*** Konfiguracja ServiceApp ***"))
         Mlist.append(getConfigListEntry("System odtwarzania wewnętrzny E2/ServiceApp (wył/wł)", config.plugins.serviceapp.servicemp3.replace))
         Mlist.append(getConfigListEntry("Odtwarzacz systemu ServiceApp", config.plugins.serviceapp.servicemp3.player))
         #KONFIGURACJA LOGOWANIA
         Mlist.append(getConfigListEntry(" "))
-        Mlist.append(getConfigListEntry('\c00489496' + "*** Konfiguracja logowania - WŁĄCZ wszystko ***"))
+        Mlist.append(getConfigListEntry('\c00489426' + "*** Konfiguracja logowania - WŁĄCZ wszystko ***"))
         Mlist.append(getConfigListEntry("Włącz dziennik debugowania", config.crash.enabledebug))
         Mlist.append(getConfigListEntry("Lokalizacja logów", config.crash.debug_path))
         Mlist.append(getConfigListEntry("Awaria obsługi pythona", config.crash.bsodpython))
@@ -65,12 +66,13 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         #info o vlc
         Mlist.append(getConfigListEntry(" "))
         Mlist.append(getConfigListEntry("Support VLC: użyj skryptu z folderu wtyczki 'bin/E-TV polska mod j00zek.lua'"))
+        self["config"].list = Mlist
+        self["config"].l.setList(Mlist)
             
         return Mlist
     
     def __init__(self, session, args=None):
         DBGlog('%s' % '__init__')
-        self.doAction = None
         if os.path.exists('/usr/sbin/streamlinkSRV') and os.path.islink('/usr/sbin/streamlinkSRV') and 'StreamlinkConfig/' in os.readlink('/usr/sbin/streamlinkSRV'):
             self.mySL = True
         else:
@@ -109,8 +111,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
             }, -2)
         
         self.onLayoutFinish.append(self.layoutFinished)
-        self.doAction = None
-        ConfigListScreen.__init__(self, self.buildList(), on_change = self.changedEntry)
+        ConfigListScreen.__init__(self, [], on_change = self.changedEntry)
 
     def saveConfig(self):
         try:
@@ -172,17 +173,17 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                 x()
         except Exception as e:
             DBGlog('%s' % str(e))
+        self.buildList()
 
-    def selectionChanged(self):
-        if 0:
-            DBGlog('%s' % 'selectionChanged(%s)' % self["config"].getCurrent()[0])
+    #def selectionChanged(self):
+    #    self.DoBuildList.start(10, True)
 
-    def getCurrentEntry(self):
-        return self["config"].getCurrent()[0]
+    #def getCurrentEntry(self):
+    #    return self["config"].getCurrent()[0]
 
-    def getCurrentValue(self):
-        if len(self["config"].getCurrent()) >= 2:
-            return str(self["config"].getCurrent()[1].getText())
+    #def getCurrentValue(self):
+    #    if len(self["config"].getCurrent()) >= 2:
+    #        return str(self["config"].getCurrent()[1].getText())
 
     def createSummary(self):
         return SetupSummary
@@ -190,7 +191,6 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
     def Okbutton(self):
         DBGlog('%s' % 'Okbutton')
         try:
-            self.doAction = None
             curIndex = self["config"].getCurrentIndex()
             selectedItem = self["config"].list[curIndex]
             if len(selectedItem) >= 2:

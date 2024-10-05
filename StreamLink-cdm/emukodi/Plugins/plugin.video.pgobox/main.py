@@ -45,7 +45,7 @@ addon_handle = int(sys.argv[1])
 params = dict(parse_qsl(sys.argv[2][1:]))
 addon = xbmcaddon.Addon(id='plugin.video.pgobox')
 
-PATH            = addon.getAddonInfo('path')
+PATH = addon.getAddonInfo('path')
 if sys.version_info[0] > 2:
     DATAPATH        = xbmcvfs.translatePath(addon.getAddonInfo('profile'))#.decode('utf-8')
 else:
@@ -469,8 +469,7 @@ class IPLA(object):
         if self.DEVICE_ID == '' or self.CLIENT_ID == '' or self.ID_ == '':
             self.createDatas()
 
-        print('LOGGED')
-        print(self.LOGGED)
+        print('logowanie() LOGGED="%s", klient="%s"' % (str(self.LOGGED), addon.getSetting('klient')))
 
 
         if self.LOGGED == 'true':
@@ -491,8 +490,8 @@ class IPLA(object):
 
 
                 data = getRequests(self.AUTH, data = POST_DATA, headers=self.HEADERS)
-                print('login_response')
-                print(data)
+                #print('login_response')
+                #print(data)
                 self.DATA = data
 
                 try:
@@ -650,14 +649,19 @@ class IPLA(object):
         
     def sesja(self,data):
 
-        sesja=data['result']['session']
-        self.SESSTOKEN=sesja['id']
-        self.SESSEXPIR=str(sesja['keyExpirationTime'])
-        self.SESSKEY=sesja['key']
+        if data.get('result', []) == []:
+            print('!!!!! POBRANE DANE NIE ZAWIERAJĄ NIEZBĘDNYCH KOMPONENTÓW !!!!!')
+            print(str(data))
+            #sesja=data['result']['session']
+        else:
+            sesja=data['result']['session']
+            self.SESSTOKEN=sesja['id']
+            self.SESSEXPIR=str(sesja['keyExpirationTime'])
+            self.SESSKEY=sesja['key']
         
-        addon.setSetting('sesstoken', self.SESSTOKEN)
-        addon.setSetting('sessexpir', str(self.SESSEXPIR))
-        addon.setSetting('sesskey', self.SESSKEY)
+            addon.setSetting('sesstoken', self.SESSTOKEN)
+            addon.setSetting('sessexpir', str(self.SESSEXPIR))
+            addon.setSetting('sesskey', self.SESSKEY)
         return self.SESSTOKEN+'|'+self.SESSEXPIR+'|{0}|{1}'
         
         
@@ -1044,11 +1048,12 @@ class IPLA(object):
         POST_DATA ={"id":1,"jsonrpc":"2.0","method":"getSession","params":{"userAgentData":{"portal":"pbg","deviceType":"pc","application":"firefox","os":"windows","build":1,"osInfo":OSINFO},"ua":UAIPLA,"authData":{"sessionToken":authdata},"clientId":self.CLIENT_ID}}
 
         data = getRequests(self.AUTH, data=POST_DATA, headers=self.HEADERS)
-
+        
         if not retry:
             error = data.get('error', None)
 
             if error:
+                print('UWAGA error w pobranych danych', str(data))                
                 if IPLA().LOGGED == 'true':
                     IPLA().logowanie()
                     IPLA().getSesja(True)
@@ -1339,6 +1344,11 @@ class IPLA(object):
 
         else:
             xbmcgui.Dialog().notification('[B]Uwaga[/B]', 'Nie masz dostępu do tego materiału.',xbmcgui.NOTIFICATION_INFO, 6000)
+            #j00zek: wysłanie informacji do serwera o braku kanalu w pakiecie
+            if 1:
+                play_item = xbmcgui.ListItem(path='')
+                play_item.setProperty('error', "BrakwPakiecie.mp4")
+                xbmcplugin.setResolvedUrl(addon_handle, True, listitem=play_item)
             sys.exit(0)
     
 if __name__ == '__main__':
@@ -1347,7 +1357,6 @@ if __name__ == '__main__':
     #print('mode =',mode)
     
     if not mode:
-        
         home()
         #xbmcplugin.setContent(addon_handle, 'videos')  
         xbmcplugin.endOfDirectory(addon_handle)  
@@ -1367,6 +1376,16 @@ if __name__ == '__main__':
 
     elif mode=='login':
         set_setting('logged', 'true')
+        klient = addon.getSetting('klient')
+        if klient == '' or (klient != 'polsatbox' and klient != 'iCOK'):
+            set_setting('klient', 'polsatbox')
+            IPLA().logowanie()
+            if addon.getSetting('sesskey') == '':
+                set_setting('klient', 'iCOK')
+                IPLA().logowanie()
+        else:
+            IPLA().logowanie()
+            
         addon.openSettings()
         xbmc.executebuiltin('Container.Refresh') 
 
