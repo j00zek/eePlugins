@@ -21,6 +21,7 @@
 	<widget backgroundColor="black" name="cover" position="219,298" size="600,600" zPosition="1" />
 	<widget backgroundColor="black" name="record" font="Regular;32" foregroundColor="#00FF3D3D" position="219,900" size="600,50" halign="left" valign="center" transparent="1" />
 	<widget backgroundColor="black" name="recinfos" font="Regular;32" foregroundColor="#00FF3D3D" position="219,900" size="600,50" halign="right" valign="center" transparent="1" />
+	<widget name="waiting" position="219,900" size="600,50" font="Regular;32" backgroundColor="black" transparent="1" halign="left" valign="center" foregroundColor="#1ebf28" />   
 <!--lista-->
     <eLabel backgroundColor="linie" position="945,210" size="2,710" />
 	<widget backgroundColor="black" name="favoritesname" font="Regular;35" foregroundColor="#00FFC000" position="955,126" size="860,48" valign="top" noWrap="1" transparent="1" />
@@ -204,7 +205,7 @@
 	<widget source="Title" render="Label" position="1395,70" size="420,35" font="Roboto_HD; 27" halign="right" backgroundColor="black" transparent="1" />	
 <!--okładka--> 
     <widget name="cover" position="210,300" size="400,400" backgroundColor="black" transparent="1" />
-	<widget source="recording" render="Label" backgroundColor="black" font="Regular;35" foregroundColor="#00FF0000" position="120,887" size="582,60" halign="center" valign="center"  transparent="1" /> 
+	<widget name="waiting" backgroundColor="black" font="Regular;35" foregroundColor="#1ebf28" position="120,887" size="582,60" halign="center" valign="center"  transparent="1" />  
 <!--text-->
     <eLabel backgroundColor="linie" position="730,210" size="2,710" />
     <widget source="songtitle" render="j00zekLabel" backgroundColor="black" font="Regular;35" foregroundColor="#00FFC000" position="740,126" size="1080,48" valign="top" noWrap="1" transparent="1" />
@@ -369,7 +370,8 @@
 <!--info-->	
 	<widget name="description" font="Regular;35" position="100,385" size="1400,490" backgroundColor="black" foregroundColor="#00FFFFFF" transparent="1" />
 	<widget source="source" render="Label" font="Regular;32" position="100,885" size="660,50" backgroundColor="black" foregroundColor="#66CCCC" valign="center" transparent="1" />
-    <widget name="record" position="820,885" size="440,50" font="Regular;33" backgroundColor="black" foregroundColor="#00FF0000" halign="center" valign="center"  transparent="1" />   
+    <widget name="record" position="820,885" size="440,50" font="Regular;33" backgroundColor="black" foregroundColor="#00FF0000" halign="center" valign="center"  transparent="1" />
+    <widget name="waiting" position="820,885" size="440,50" font="Regular;33" backgroundColor="black" foregroundColor="#1ebf28" halign="center" valign="center"  transparent="1" />   
 <!--okładka-->	
 	<widget name="cover" position="1520,385" size="300,300" backgroundColor="black" zPosition="1" />
 	<widget name="bitratename" position="1370,885" size="440,50" font="Regular;32" backgroundColor="black" foregroundColor="#66CCCC" halign="left" valign="center" transparent="1" />
@@ -425,6 +427,61 @@
     <ePixmap pixmap="BlackHarmony/buttons/key_exit.png" position="1640,980" size="60,27" alphatest="blend"/>
 	<!--ePixmap pixmap="BlackHarmony/buttons/key_text.png" position="1705,980" size="60,27" alphatest="blend" />
     <ePixmap pixmap="BlackHarmony/buttons/key_infoo.png" position="1770,980" size="60,27" alphatest="blend" /-->
+</screen>
+<!--HDFRadioYTPlayer--> 
+  <screen name="HDFRadioYTPlayer" position="0,0" size="1920,1080" flags="wfNoBorder" title="InfoBar" backgroundColor="#ffffffff">
+  <ePixmap position="292,890" zPosition="-1" size="1529,253" pixmap="BlackHarmony/bg_design/infobarmovie.png"/>
+  <widget name="cover" position="20,790" size="280,280" backgroundColor="black" zPosition="2" />
+  <widget source="session.CurrentService" render="Label" position="385,930" size="1055,57" backgroundColor="black" font="Regular;38" foregroundColor="#65c4ff" noWrap="1" transparent="1">
+	<convert type="ServiceName">Name</convert>
+	</widget>
+  <widget source="session.CurrentService" render="Label" position="1345,943" size="150,39" backgroundColor="black" font="Regular;30" foregroundColor="#ffffff" halign="right" transparent="1">
+	<convert type="ServicePosition">Position</convert>
+	</widget>
+  <widget source="session.CurrentService" render="Progress" pixmap="BlackHarmony/gfx/progress_emc.png" position="356,992" size="1139,8" zPosition="2" transparent="1">
+		<convert type="ServicePosition">Position</convert>
+	</widget>
+  <widget source="session.CurrentService" render="Label" position="1345,1014" size="150,39" backgroundColor="black" font="Regular;30" foregroundColor="#ffffff" halign="right" transparent="1">
+	<convert type="ServicePosition">Length</convert>
+	</widget>
+  <widget source="session.CurrentService" render="Pixmap" position="385,1024" size="36,20" pixmap="BlackHarmony/icons/ico_format_on.png" zPosition="2" alphatest="blend">
+		<convert type="ServiceInfo">IsWidescreen</convert>
+		<convert type="ConditionalShowHide" />
+	</widget>
+	<widget source="session.CurrentService" position="460,1014" size="37,20" render="Pixmap" pixmap="BlackHarmony/icons/ico_sd_on_576.png" zPosition="1" alphatest="blend" >
+		<convert type="ServiceInfo">VideoHeight</convert>
+		<convert type="ValueRange">0,719</convert>
+		<convert type="ConditionalShowHide" />
+	</widget>
+	<widget source="session.CurrentService" position="460,1024" size="37,20" render="Pixmap" pixmap="BlackHarmony/icons/ico_hd_on_720.png" zPosition="1" alphatest="blend" >
+		<convert type="ServiceInfo">VideoHeight</convert>
+		<convert type="ValueRange">720,1079</convert>
+		<convert type="ConditionalShowHide" />
+	</widget>
+    <widget source="session.CurrentService" position="460,1024" size="37,20" render="Pixmap" pixmap="BlackHarmony/icons/ico_hd_on_1080.png" zPosition="2" alphatest="blend" >
+		<convert type="ServiceInfo">VideoHeight</convert>
+		<convert type="ValueRange">720,1080</convert>
+		<convert type="ConditionalShowHide" />
+	</widget>
+    <widget source="session.CurrentService" position="460,1024" size="37,20" render="Pixmap" pixmap="BlackHarmony/icons/ico_uhd_on.png" zPosition="1" alphatest="blend" >
+		<convert type="ServiceInfo">VideoHeight</convert>
+		<convert type="ValueRange">1081,5000</convert>
+		<convert type="ConditionalShowHide" />
+	</widget>
+	<widget backgroundColor="black" source="session.CurrentService" render="Label" font="Regular;30" foregroundColor="#ffffff" position="535,1014" size="84,39" halign="right" transparent="1">
+		<convert type="ServiceInfo">VideoWidth</convert>
+	</widget>
+	<eLabel backgroundColor="black" text="x" font="Regular;30" foregroundColor="#ffffff" position="619,1014" size="21,39" halign="center" transparent="1" />
+	<widget backgroundColor="black" source="session.CurrentService" render="Label" font="Regular;30" foregroundColor="#ffffff" position="640,1014" size="84,39" transparent="1">
+		<convert type="ServiceInfo">VideoHeight</convert>
+	</widget>
+    <widget backgroundColor="black" text="Dolby Digital" source="session.CurrentService" render="FixedLabel" font="Regular;30" foregroundColor="#ffffff" position="736,1024" size="180,39" transparent="1">
+		<convert type="ServiceInfo">IsMultichannel</convert>
+		<convert type="ConditionalShowHide" />
+    </widget>
+	<widget source="global.CurrentTime" render="Label" position="950,1020" size="400,40" font="Roboto_HD; 28" backgroundColor="black" foregroundColor="lemon" halign="center" valign="center" transparent="1">
+      <convert type="ClockToText">Format: %a, %d.%m.%Y  %H:%M:%S</convert>
+    </widget>
 </screen>
   
   </skin>
