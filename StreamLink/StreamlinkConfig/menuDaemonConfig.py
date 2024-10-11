@@ -48,7 +48,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
             Mlist.append(getConfigListEntry("Tryb pracy streamlinka:", config.plugins.streamlinkSRV.binName, 'streamlinkSRV.binName'))
             if config.plugins.streamlinkSRV.binName.value == 'streamlinkSRV':
                 Mlist.append(getConfigListEntry("Aktywny odtwarzacz streamlinka:", config.plugins.streamlinkSRV.SRVmode, 'streamlinkSRV.SRVmode'))
-            Mlist.append(getConfigListEntry("Aktywny odtwarzacz materiałów DRM:", config.plugins.streamlinkSRV.DRMmode, 'streamlinkSRV.DRMmode'))
+            #Mlist.append(getConfigListEntry("Aktywny odtwarzacz materiałów DRM:", config.plugins.streamlinkSRV.DRMmode, 'streamlinkSRV.DRMmode'))
             Mlist.append(getConfigListEntry(_("stop deamon on standby:"), config.plugins.streamlinkSRV.StandbyMode))
         #KONFIGURACJA SERVICEAPP
         Mlist.append(getConfigListEntry(" "))

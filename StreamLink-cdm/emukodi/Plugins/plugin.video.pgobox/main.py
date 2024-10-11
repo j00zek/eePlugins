@@ -1347,7 +1347,7 @@ class IPLA(object):
             #j00zek: wysłanie informacji do serwera o braku kanalu w pakiecie
             if 1:
                 play_item = xbmcgui.ListItem(path='')
-                play_item.setProperty('error', "BrakwPakiecie.mp4")
+                play_item.setProperty('error', "BrakwPakiecie.m2ts")
                 xbmcplugin.setResolvedUrl(addon_handle, True, listitem=play_item)
             sys.exit(0)
     

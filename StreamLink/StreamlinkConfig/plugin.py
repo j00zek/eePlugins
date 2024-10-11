@@ -88,11 +88,13 @@ def Plugins(path, **kwargs):
     myList = [PluginDescriptor(name=_("Streamlink Configuration"), where = PluginDescriptor.WHERE_PLUGINMENU, icon="logo.png", fnc = main, needsRestart = False),
             PluginDescriptor(name="StreamlinkConfig", where = PluginDescriptor.WHERE_SESSIONSTART, fnc = sessionstart, needsRestart = False, weight = -1)
            ]
-    if not os.path.exists('/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/NoZapWrappers'):
-        print('system wspiera wrappery :)')
+    if os.path.exists('/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/NoZapWrappers'):
+        print('[SLK] system NIE wspiera wrapperów :)')
+    else:
+        print('[SLK] system wspiera wrappery :)')
         myList.append(PluginDescriptor(name="StreamlinkZapWrapper", description="StreamlinkZapWrapper", where=PluginDescriptor.WHERE_CHANNEL_ZAP, needsRestart = False, fnc=SLzapWrapper))
     if config.plugins.streamlinkSRV.Recorder.value == True:
-        myList.append(PluginDescriptor(name="StreamlinkRecorder", description=_("StreamlinkRecorder"), where = [PluginDescriptor.WHERE_MENU], fnc=timermenu))
+        myList.append(PluginDescriptor(name="StreamlinkRecorder", description="StreamlinkRecorder", where = [PluginDescriptor.WHERE_MENU], fnc=timermenu))
     return myList
 
 ####MENU
@@ -158,32 +160,32 @@ class SLK_Menu(Screen):
             elif not os.path.exists('/usr/lib/python3.12/site-packages/emukodi/'):
                 Mlist.append(self.buildListEntry('\c00981111' + "*** Brak wsparcia DRM, moduł streamlink-cdm nie zainstalowany ***", "remove.png",'doNothing'))
             else:
-                if os.path.exists('/usr/lib/enigma2/python/Plugins/Extensions/IPTVPlayer/plugin.pe2i') and not os.path.exists('/j00zek'):
-                    Mlist.append(self.buildListEntry(r'\c00ffff00' + 'Obsługa DRM poprzez zainstalowany e2iplayer autorstwa sss !!!!!', "info.png",'doNothing'))
+                #if os.path.exists('/usr/lib/enigma2/python/Plugins/Extensions/IPTVPlayer/plugin.pe2i'):
+                #    Mlist.append(self.buildListEntry(r'\c00ffff00' + 'Zalecane korzystanie z e2iplayer-a SSS do oglądania materiałów DRM !!!!', "info.png",'doNothing'))
+                cdmStatus = None
+                try:
+                    from  pywidevine.cdmdevice.checkCDMvalidity import testDevice
+                    cdmStatus = testDevice()
+                    print('cdmStatus = "%s"' % cdmStatus)
+                except Exception as e: 
+                    print(str(e))
+                    Mlist.append(self.buildListEntry('\c00981111' + "*** Błąd ładowania modułu urządzenia cdm ***", "info.png",'doNothing'))
+                open('/etc/streamlink/cdmStatus','w').write(str(cdmStatus))
+                if cdmStatus is None:
+                    Mlist.append(self.buildListEntry('\c00981111' + "*** Błąd sprawdzania urządzenia cdm ***", "info.png",'doNothing'))
+                elif not cdmStatus:
+                    Mlist.append(self.buildListEntry('\c00ff9400' + "*** Limitowane wsparcie KODI>DRM ***", "info.png",'doNothing'))
                 else:
-                    cdmStatus = None
-                    try:
-                        from  pywidevine.cdmdevice.checkCDMvalidity import testDevice
-                        cdmStatus = testDevice()
-                        print('cdmStatus = "%s"' % cdmStatus)
-                    except Exception as e: 
-                        print(str(e))
-                        Mlist.append(self.buildListEntry('\c00981111' + "*** Błąd ładowania modułu urządzenia cdm ***", "info.png",'doNothing'))
-                    open('/etc/streamlink/cdmStatus','w').write(str(cdmStatus))
-                    if cdmStatus is None:
-                        Mlist.append(self.buildListEntry('\c00981111' + "*** Błąd sprawdzania urządzenia cdm ***", "info.png",'doNothing'))
-                        self.VisibleSection = 0
-                    elif not cdmStatus:
-                        Mlist.append(self.buildListEntry('\c00ff9400' + "*** Limitowane wsparcie KODI>DRM ***", "info.png",'doNothing'))
-                    else:
-                        Mlist.append(self.buildListEntry('\c00289496' + "*** Pełne wsparcie KODI>DRM ***", "info.png",'doNothing'))
+                    Mlist.append(self.buildListEntry('\c00289496' + "*** Pełne wsparcie KODI>DRM ***", "info.png",'doNothing'))
+
+                if not cdmStatus is None:
                     for cfgFile in ['playermb', 'canalplusvod', 'pgobox', 'cdaplMB']:
                         if not os.path.exists('/etc/streamlink/%s' % cfgFile):
                             os.system('mkdir -p /etc/streamlink/%s' % cfgFile)
-
                     Mlist.append(self.buildListEntry("Konfiguacja player.pl", "playerpl.png",'menuDRMplayerpl'))
                     Mlist.append(self.buildListEntry("Konfiguacja cda", "cdapl.png",'menuDRMcda'))
                     Mlist.append(self.buildListEntry("Konfiguacja posatbox", "polsatboxgo.png",'menuDRMpolsatbox'))
+
         self["list"].list = Mlist
 
     def buildListEntry(self, description, image, optionname):
@@ -273,7 +275,7 @@ def SLzapWrapper(session, service, **kwargs):
     errormsg = None
     if service:
         try:
-            safeSubprocessCMD('/usr/bin/killall exteplayer3;/usr/bin/killall -9 exteplayer3')
+            killExternalPlayer(False)
             serviceString = service.toString()
             print("[SLzapWrapper] serviceString = %s" % serviceString)
             url = serviceString.split(":")
@@ -371,6 +373,13 @@ def safeSubprocessCMD(myCommand):
     with open("/proc/sys/vm/drop_caches", "w") as f: f.write("1\n") #for safety to not get GS due to lack of memory
     subprocess.Popen(myCommand, shell=True)
     
+def killExternalPlayer(isExternalPlayerRunning, forceKill = False):
+    cmd = '/usr/bin/killall exteplayer3;/usr/bin/killall -9 exteplayer3;'
+    if isExternalPlayerRunning or forceKill:
+        cmd += '/usr/bin/killall cdmeplayer3;/usr/bin/killall -9 cdmeplayer3'
+        isExternalPlayerRunning = False
+    safeSubprocessCMD(cmd)
+
 class SLeventsWrapper:
     def __init__(self, session):
         print("[SLeventsWrapper.__init__] >>>")
@@ -381,8 +390,10 @@ class SLeventsWrapper:
         self.isExternalPlayerRunning = False
         self.__event_tracker = ServiceEventTracker(screen=self, eventmap={iPlayableService.evStart: self.__evStart, iPlayableService.evEnd: self.__evEnd})
         return
+
     def __evStart(self):
         print("[SLeventsWrapper.__evStart] >>>")
+        killExternalPlayer(self.isExternalPlayerRunning)
         if self.myCDM is None:
             try:
                 import pywidevine.cdmdevice.privatecdm
@@ -400,14 +411,16 @@ class SLeventsWrapper:
                     print("[SLeventsWrapper]__evStart serviceList=", serviceList)
                     if len(serviceList) > 10:
                         url = serviceList[10].strip().lower()
-                        if url != '' and self.myCDM.doWhatYouMustDo(url):
-                            self.isExternalPlayerRunning = True
+                        if url != '':
+                            if self.myCDM.doWhatYouMustDo(url):
+                                self.isExternalPlayerRunning = True
+                            else:
+                                killExternalPlayer(self.isExternalPlayerRunning, True)
             except Exception as e:
                 print('[SLeventsWrapper] __evStart() exception:', str(e))
 
     def __evEnd(self):
-        print("[SLeventsWrapper.__evEnd] >>>")
-        print("[SLzapWrapper] self.isExternalPlayerRunning=%s" % str(self.isExternalPlayerRunning))
-        if 1:#self.isExternalPlayerRunning:
-            safeSubprocessCMD('/usr/bin/killall exteplayer3;/usr/bin/killall -9 exteplayer3')
-            self.isExternalPlayerRunning = False
+        print("[SLeventsWrapper.__evEnd] >>>\n\t self.isExternalPlayerRunning=%s" % str(self.isExternalPlayerRunning))
+        killExternalPlayer(self.isExternalPlayerRunning)
+        if not self.myCDM is None and self.myCDM != False:
+            self.myCDM.doWhatYouCanDo()
