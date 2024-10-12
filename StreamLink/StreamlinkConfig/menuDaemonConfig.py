@@ -58,7 +58,10 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         #KONFIGURACJA LOGOWANIA
         Mlist.append(getConfigListEntry(" "))
         Mlist.append(getConfigListEntry('\c00489426' + "*** Konfiguracja logowania - WŁĄCZ wszystko ***"))
-        Mlist.append(getConfigListEntry("Włącz dziennik debugowania", config.crash.enabledebug))
+        try:
+            Mlist.append(getConfigListEntry("Włącz gadatliwy dziennik debugowania", config.crash.debugLevel))
+        except Exception:
+            Mlist.append(getConfigListEntry("Włącz dziennik debugowania", config.crash.enabledebug))
         Mlist.append(getConfigListEntry("Lokalizacja logów", config.crash.debug_path))
         Mlist.append(getConfigListEntry("Awaria obsługi pythona", config.crash.bsodpython))
         Mlist.append(getConfigListEntry("Dołącz dane ładowania ekranu", config.crash.debugScreens))
@@ -114,6 +117,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         ConfigListScreen.__init__(self, [], on_change = self.changedEntry)
 
     def saveConfig(self):
+        print('SLK saveConfig >>>')
         try:
             for x in self["config"].list:
                 if len(x) >= 2:
@@ -126,8 +130,8 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                     except Exception:
                         pass
             configfile.save()
-        except Exception:
-            pass
+        except Exception as e:
+            print('SLK saveConfig exception:', str(e))
 
     def save(self):
         if self.mySL == True:

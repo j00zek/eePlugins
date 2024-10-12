@@ -1,11 +1,11 @@
 Package: enigma2-plugin-extensions--j00zeks-streamlink-configurator
 Priority: optional
 Section: utils
-Depends: python3-core, python3-ctypes, python3-futures3, python3-isodate, python3-lxml, python3-misc, python3-pkgutil, python3-pycountry, python3-pycryptodome, python3-pysocks, python3-requests, python3-shell, python3-singledispatch, python3-websocket-client 
+Depends: python3-core, python3-ctypes, python3-futures3, python3-isodate, python3-lxml, python3-misc, python3-pkgutil, python3-pycountry, python3-pycryptodome, python3-pysocks, python3-requests, python3-shell, python3-singledispatch, python3-websocket-client, python3-trio
 Description: konfigurator SL, wp, kamer internetowcyh i innych
 Maintainer: j00zek
 Source: http://github.com/j00zek/eePlugins
-Version: 24.10.11.0745
+Version: 24.10.12.0729
 Architecture: all
 DestinationPath: /usr/lib/enigma2/python/Plugins/Extensions
 ExcludeFolder: usr/lib/enigma2/python/Plugins/Extensions/scripts

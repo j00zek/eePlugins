@@ -52,7 +52,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         # !!!!!!!!!!!!!!!!!!!!!!!!! POLSAT ############################
         Mlist.append(getConfigListEntry('\c00289496' +  'Katalog z plikami konfiguracyjnymi: /etc/streamlink/pgobox'))
         Mlist.append(getConfigListEntry( ' '))
-        for cfgFile in ['logged', 'username', 'password', 'klient']:
+        for cfgFile in ['logged', 'username', 'password', 'klient', 'client_id', 'device_id', 'sesstoken', 'sessexpir', 'id_']:
             if not os.path.exists('/etc/streamlink/pgobox/%s' % cfgFile): os.system('touch /etc/streamlink/pgobox/%s' % cfgFile)
         if open('/etc/streamlink/pgobox/username','r').read().strip() == '':
             Mlist.append(getConfigListEntry('\c00981111' + 'Nie wpisano nazwy użytkownika w pliku username' , config.plugins.streamlinkSRV.streamlinkconfig))

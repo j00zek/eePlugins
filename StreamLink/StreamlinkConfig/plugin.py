@@ -50,7 +50,7 @@ def sessionstart(reason, session = None):
     DBGlog("autostart")
     cmds = []
     #cmds.append("[ `grep -c 'WHERE_CHANNEL_ZAP' < /usr/lib/enigma2/python/Plugins/Plugin.pyc` -eq 0 ] && touch /usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/NoZapWrappers")
-    cmds.append("streamlinkproxy stop 2>/dev/null")
+    cmds.append("killall streamlinkproxy >/dev/null")
     #cmds.append("/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/bin/re-initiate.sh")
     cmds.append("streamlinkproxySRV stop")
     cmds.append("streamlinkSRV stop")
@@ -275,7 +275,6 @@ def SLzapWrapper(session, service, **kwargs):
     errormsg = None
     if service:
         try:
-            killExternalPlayer(False)
             serviceString = service.toString()
             print("[SLzapWrapper] serviceString = %s" % serviceString)
             url = serviceString.split(":")
@@ -283,6 +282,7 @@ def SLzapWrapper(session, service, **kwargs):
             url = url[10].strip()
             print("[SLzapWrapper] url='%s'" % url)
             if url == '':
+                killExternalPlayer()
                 return (None, errormsg)
             elif len(url) < 11:
                 return (None, errormsg)
@@ -374,11 +374,21 @@ def safeSubprocessCMD(myCommand):
     subprocess.Popen(myCommand, shell=True)
     
 def killExternalPlayer(isExternalPlayerRunning, forceKill = False):
-    cmd = '/usr/bin/killall exteplayer3;/usr/bin/killall -9 exteplayer3;'
+    cmd = ''
+    try:
+        for proc in os.listdir('/proc'):
+            procExe = os.path.join('/proc', proc, 'exe')
+            if os.path.exists(procExe):
+                procRealPath = os.path.realpath(procExe)
+                if 'exteplayer3' in procRealPath:
+                    cmd = '/usr/bin/killall exteplayer3;'
+    except Exception:
+        pass
     if isExternalPlayerRunning or forceKill:
-        cmd += '/usr/bin/killall cdmeplayer3;/usr/bin/killall -9 cdmeplayer3'
+        cmd += '/usr/bin/killall cdmeplayer3'
         isExternalPlayerRunning = False
-    safeSubprocessCMD(cmd)
+    if cmd != '':
+        safeSubprocessCMD(cmd)
 
 class SLeventsWrapper:
     def __init__(self, session):
@@ -393,7 +403,7 @@ class SLeventsWrapper:
 
     def __evStart(self):
         print("[SLeventsWrapper.__evStart] >>>")
-        killExternalPlayer(self.isExternalPlayerRunning)
+        #killExternalPlayer(self.isExternalPlayerRunning)
         if self.myCDM is None:
             try:
                 import pywidevine.cdmdevice.privatecdm
@@ -421,6 +431,7 @@ class SLeventsWrapper:
 
     def __evEnd(self):
         print("[SLeventsWrapper.__evEnd] >>>\n\t self.isExternalPlayerRunning=%s" % str(self.isExternalPlayerRunning))
-        killExternalPlayer(self.isExternalPlayerRunning)
-        if not self.myCDM is None and self.myCDM != False:
-            self.myCDM.doWhatYouCanDo()
+        if self.isExternalPlayerRunning:
+            killExternalPlayer(self.isExternalPlayerRunning)
+        #if not self.myCDM is None and self.myCDM != False:
+        #    self.myCDM.doWhatYouCanDo()
