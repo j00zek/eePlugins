@@ -111,15 +111,18 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         autoClose = True #ustawienie parametrow w zaleznoci od akcji
         webServer = ''
         Mlist.append(getConfigListEntry('Wylogowane z playerpl (spowoduje konieczność ponownego wpisania kodu na stronie)' , 
-            config.plugins.streamlinkSRV.streamlinkEMUKODIconfig, ('playermb', 'login', emuKodiCmdsList, autoClose, webServer, addonScript)))
+            config.plugins.streamlinkSRV.streamlinkEMUKODIconfig, ('playermb', 'logout', emuKodiCmdsList, autoClose, webServer, addonScript)))
+        #usunięcie wszystkich danych
+        CmdsList = []
+        addonScript = ''
+        CmdsList.append("rm -f /etc/streamlink/playermb/*")
+        autoClose = False #ustawienie parametrow w zaleznoci od akcji
+        webServer = ''
+        Mlist.append(getConfigListEntry( "Kasuj wszystkie dane", config.plugins.streamlinkSRV.streamlinkEMUKODIconfig, ('playermb', 'clear', CmdsList, autoClose, webServer, addonScript)))
         return Mlist
     
-    def getAddonsRunPath(self, addonName):
-        runAddon = '/usr/bin/python plugin.video.%s/main.py' % os.path.join(addons_path, addonName)
-
     def __init__(self, session, args=None):
         DBGlog('%s' % '__init__')
-        self.doAction = None
         self.wybranyFramework = '4097'
         if os.path.exists('/usr/sbin/streamlinkSRV') and os.path.islink('/usr/sbin/streamlinkSRV') and 'StreamlinkConfig/' in os.readlink('/usr/sbin/streamlinkSRV'):
             self.mySL = True
@@ -138,18 +141,13 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
 
         # Buttons
         self["key_red"] = Label(_("Cancel"))
+        self["key_yellow"] = Label()
+        self["key_blue"] = Label()
         
         if self.mySL == True:
             self["key_green"] = Label(_("Save"))
-            self["key_blue"] = Label(_("Restart daemon"))
-            if os.path.exists('/usr/lib/python2.7'):
-                self["key_yellow"] = Label()
-            elif os.path.exists('/tmp/streamlinkSRV.log'):
-                self["key_yellow"] = Label(_("Show log"))
         else:
             self["key_green"] = Label()
-            self["key_blue"] = Label()
-            self["key_yellow"] = Label()
 
         # Define Actions
         self["actions"] = ActionMap(["StreamlinkConfiguration"],
@@ -166,7 +164,6 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
             }, -2)
         
         self.onLayoutFinish.append(self.layoutFinished)
-        self.doAction = None
         ConfigListScreen.__init__(self, self.buildList(), on_change = self.changedEntry)
 
     def saveConfig(self):
@@ -188,16 +185,11 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         return
       
     def yellow(self):
-        if self.mySL == True:
-            if os.path.exists('/tmp/streamlinkSRV.log'):
-                self.session.openWithCallback(self.doNothing ,Console, title = '/tmp/streamlinkSRV.log', cmdlist = [ 'cat /tmp/streamlinkSRV.log' ])
+        pass
         
     def blue(self):
-        if self.mySL == True:
-            mtitle = _('Restarting daemon')
-            cmd = '/usr/sbin/%s restart' % config.plugins.streamlinkSRV.binName.value
-            self.session.openWithCallback(self.doNothing ,Console, title = mtitle, cmdlist = [ cmd ])
-        
+        pass
+
     def exit(self):
         self.close(None)
         
@@ -242,7 +234,6 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
     def Okbutton(self):
         DBGlog('%s' % 'Okbutton')
         try:
-            self.doAction = None
             curIndex = self["config"].getCurrentIndex()
             selectedItem = self["config"].list[curIndex]
             if len(selectedItem) >= 2:
@@ -344,7 +335,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                 self.session.openWithCallback(self.userbouquetConfirmed, MessageBox, MsgInfo, MessageBox.TYPE_YESNO, default = False, timeout = 15)
                 return
             else:
-                self.doAction = ('emukodiBouquets.py', 'UNKNOWN', "'%s'" % selectedAction.replace(' ','_'))
+                self.emuKodiActionConfirmed(True)
         return
 
     def userbouquetConfirmed(self, ret = False):

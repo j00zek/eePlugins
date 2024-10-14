@@ -1,42 +1,29 @@
 from Components.config import config
-from Components.Console import Console
+from importlib import reload
 from Plugins.Plugin import PluginDescriptor
 from . import mygettext as _ , DBGlog
 
-import os, sys
+import os, sys, subprocess
 
-if sys.version_info.major > 2: #PyMajorVersion
-    from importlib import reload
 
 import Screens.Standby
 
 DBG = True
 
-def runCMD(myCMD):
-    DBGlog('CMD: %s' % myCMD)
-    with open("/proc/sys/vm/drop_caches", "w") as f: f.write("1\n")
-    if ';' in myCMD:
-        myCMDs = myCMD.split(';')
-        CMDsCount = len(myCMDs)
-        curCount = 1
-        for curCMD in myCMDs:
-            if curCount == CMDsCount:
-                Console().ePopen(curCMD + " &")
-            else:
-                Console().ePopen(curCMD)
-            curCount += 1
-    else:
-        Console().ePopen(myCMD + " &")
+def safeSubprocessCMD(myCommand):
+    if DBG: DBGlog('safeSubprocessCMD() running: %s' % myCommand)
+    with open("/proc/sys/vm/drop_caches", "w") as f: f.write("1\n") #for safety to not get GS due to lack of memory
+    subprocess.Popen(myCommand, shell=True)
 
 def SLconfigLeaveStandbyInitDaemon():
     DBGlog('LeaveStandbyInitDaemon() >>>')
-    runCMD('%s restart' % config.plugins.streamlinkSRV.binName.value)
-    if os.path.exists('/usr/sbin/emukodiSRV'): runCMD('emukodiSRV restart')
+    safeSubprocessCMD('%s restart' % config.plugins.streamlinkSRV.binName.value)
+    if os.path.exists('/usr/sbin/emukodiSRV'): safeSubprocessCMD('emukodiSRV restart')
 
 def SLconfigStandbyCounterChanged(configElement):
     DBGlog('standbyCounterChanged() >>>')
     if config.plugins.streamlinkSRV.StandbyMode.value == True:
-        runCMD('streamlinkproxySRV stop;streamlinkproxySRV stop')
+        safeSubprocessCMD('streamlinkproxySRV stop;streamlinkproxySRV stop')
     try:
         if SLconfigLeaveStandbyInitDaemon not in Screens.Standby.inStandby.onClose:
             Screens.Standby.inStandby.onClose.append(SLconfigLeaveStandbyInitDaemon)
@@ -50,13 +37,13 @@ def sessionstart(reason, session = None):
     DBGlog("autostart")
     cmds = []
     #cmds.append("[ `grep -c 'WHERE_CHANNEL_ZAP' < /usr/lib/enigma2/python/Plugins/Plugin.pyc` -eq 0 ] && touch /usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/NoZapWrappers")
-    cmds.append("killall streamlinkproxy >/dev/null")
+    cmds.append("[ `ps -ef|grep -v grep|grep -c streamlinkproxy` -gt 0 ] && killall streamlinkproxy >/dev/null")
     #cmds.append("/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/bin/re-initiate.sh")
-    cmds.append("streamlinkproxySRV stop")
-    cmds.append("streamlinkSRV stop")
+    cmds.append("[ `ps -ef|grep -v grep|grep -c streamlinkproxySRV` -gt 0 ] && streamlinkproxySRV stop")
+    cmds.append("[ `ps -ef|grep -v grep|grep -c streamlinkSRV` -gt 0 ] && streamlinkSRV stop")
     if config.plugins.streamlinkSRV.enabled.value:
         cmds.append("%s restart" % config.plugins.streamlinkSRV.binName.value)
-    runCMD(';'.join(cmds))
+    safeSubprocessCMD(';'.join(cmds))
     from Screens.Standby import inStandby
     if reason == 0 and config.plugins.streamlinkSRV.StandbyMode.value == True:
         DBGlog('reason == 0 and StandbyMode enabled')
@@ -281,10 +268,8 @@ def SLzapWrapper(session, service, **kwargs):
             print("[SLzapWrapper] urlparts = %s" % len(url))
             url = url[10].strip()
             print("[SLzapWrapper] url='%s'" % url)
-            if url == '':
+            if url == '' or len(url) < 11:
                 killExternalPlayer()
-                return (None, errormsg)
-            elif len(url) < 11:
                 return (None, errormsg)
             #YT-DLP
             elif url.startswith("YT-DLP%3a//"): #YT-DLP
@@ -367,11 +352,6 @@ SLeventsWrapperInstance = None
 from Components.ServiceEventTracker import ServiceEventTracker#, InfoBarBase
 from enigma import iPlayableService#, eServiceCenter, iServiceInformation
 #import ServiceReference
-import subprocess
-
-def safeSubprocessCMD(myCommand):
-    with open("/proc/sys/vm/drop_caches", "w") as f: f.write("1\n") #for safety to not get GS due to lack of memory
-    subprocess.Popen(myCommand, shell=True)
     
 def killExternalPlayer(isExternalPlayerRunning, forceKill = False):
     cmd = ''

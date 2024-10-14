@@ -100,7 +100,14 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
             emuKodiCmdsList.append(runAddon + " '1' '?mode=logout' 'resume:false'") #logowanie nastepuje bez podania trybu
             autoClose = False #ustawienie parametrow w zaleznoci od akcji
             webServer = ''
-            Mlist.append(getConfigListEntry( "Wyloguj z polsatgo", config.plugins.streamlinkSRV.streamlinkEMUKODIconfig, ('pgobox', 'login', emuKodiCmdsList, autoClose, webServer, addonScript)))
+            Mlist.append(getConfigListEntry( "Wyloguj z polsatgo", config.plugins.streamlinkSRV.streamlinkEMUKODIconfig, ('pgobox', 'logout', emuKodiCmdsList, autoClose, webServer, addonScript)))
+            #usunięcie wszystkich danych
+            CmdsList = []
+            addonScript = ''
+            CmdsList.append("rm -f /etc/streamlink/pgobox/*")
+            autoClose = False #ustawienie parametrow w zaleznoci od akcji
+            webServer = ''
+            Mlist.append(getConfigListEntry( "Kasuj wszystkie dane", config.plugins.streamlinkSRV.streamlinkEMUKODIconfig, ('pgobox', 'clear', CmdsList, autoClose, webServer, addonScript)))
         return Mlist
     
     def __init__(self, session, args=None):
@@ -124,18 +131,14 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
 
         # Buttons
         self["key_red"] = Label(_("Cancel"))
+        self["key_yellow"] = Label()
+        self["key_blue"] = Label()
         
         if self.mySL == True:
             self["key_green"] = Label(_("Save"))
-            self["key_blue"] = Label(_("Restart daemon"))
-            if os.path.exists('/usr/lib/python2.7'):
-                self["key_yellow"] = Label()
-            elif os.path.exists('/tmp/streamlinkSRV.log'):
-                self["key_yellow"] = Label(_("Show log"))
         else:
             self["key_green"] = Label()
-            self["key_blue"] = Label()
-            self["key_yellow"] = Label()
+
 
         # Define Actions
         self["actions"] = ActionMap(["StreamlinkConfiguration"],
@@ -178,15 +181,10 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         return
       
     def yellow(self):
-        if self.mySL == True:
-            if os.path.exists('/tmp/streamlinkSRV.log'):
-                self.session.openWithCallback(self.doNothing ,Console, title = '/tmp/streamlinkSRV.log', cmdlist = [ 'cat /tmp/streamlinkSRV.log' ])
+        pass
         
     def blue(self):
-        if self.mySL == True:
-            mtitle = _('Restarting daemon')
-            cmd = '/usr/sbin/%s restart' % config.plugins.streamlinkSRV.binName.value
-            self.session.openWithCallback(self.doNothing ,Console, title = mtitle, cmdlist = [ cmd ])
+        pass
         
     def exit(self):
         self.close(None)
@@ -321,9 +319,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
             self.emuKodiAction = selectedItem[2] #('playermb', 'login', emuKodiCmdsList, autoClose, webServer, addonScript)
             dostawca = self.emuKodiAction[0]
             akcja = self.emuKodiAction[1]
-            if akcja == 'login':
-                self.emuKodiActionConfirmed(True)
-            elif akcja == 'userbouquet':
+            if akcja == 'userbouquet':
                 #pobranie swiezych definicji
                 os.system('wget https://raw.githubusercontent.com/azman26/EPGazman/main/azman_channels_mappings.py -O /usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/plugins/azman_channels_mappings.py')
                 plikBukietu = '/etc/enigma2/userbouquet.%s.tv' % dostawca
@@ -331,6 +327,8 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                 else: MsgInfo = "Utworzyć plik %s ?" % plikBukietu
                 self.session.openWithCallback(self.userbouquetConfirmed, MessageBox, MsgInfo, MessageBox.TYPE_YESNO, default = False, timeout = 15)
                 return
+            else:
+                self.emuKodiActionConfirmed(True)
         return
 
     def userbouquetConfirmed(self, ret = False):

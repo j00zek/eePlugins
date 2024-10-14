@@ -234,12 +234,6 @@ def start():
 
 if __name__ == "__main__":
     daemon = StreamlinkDaemon("/var/run/%s.pid" % srvname)
-    print('Sprawdzam czy streamlink ma wszystkie niezbędne moduły...')
-    try:
-        result = subprocess.check_output('/usr/sbin/streamlink', shell=True, text=True)
-    except subprocess.CalledProcessError as e:
-        print('!!!!!!!!!!! Błąd uruchamiania streamlinka:', e)
-        exit(0)
     if len(sys.argv) in (2,3):
         if "start" == sys.argv[1]:
             daemon.start()

@@ -93,7 +93,6 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
     
     def __init__(self, session, args=None):
         DBGlog('%s' % '__init__')
-        self.doAction = None
         self.wybranyFramework = '4097'
         if os.path.exists('/usr/sbin/streamlinkSRV') and os.path.islink('/usr/sbin/streamlinkSRV') and 'StreamlinkConfig/' in os.readlink('/usr/sbin/streamlinkSRV'):
             self.mySL = True
@@ -112,18 +111,13 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
 
         # Buttons
         self["key_red"] = Label(_("Cancel"))
+        self["key_yellow"] = Label()
+        self["key_blue"] = Label()
         
         if self.mySL == True:
             self["key_green"] = Label(_("Save"))
-            self["key_blue"] = Label(_("Restart daemon"))
-            if os.path.exists('/usr/lib/python2.7'):
-                self["key_yellow"] = Label()
-            elif os.path.exists('/tmp/streamlinkSRV.log'):
-                self["key_yellow"] = Label(_("Show log"))
         else:
             self["key_green"] = Label()
-            self["key_blue"] = Label()
-            self["key_yellow"] = Label()
 
         # Define Actions
         self["actions"] = ActionMap(["StreamlinkConfiguration"],
@@ -143,7 +137,6 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                 self["config"].onSelectionChanged.append(self.selectionChanged)
         
         self.onLayoutFinish.append(self.layoutFinished)
-        self.doAction = None
         ConfigListScreen.__init__(self, self.buildList(), on_change = self.changedEntry)
 
     def saveConfig(self):
@@ -170,15 +163,10 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         return
       
     def yellow(self):
-        if self.mySL == True:
-            if os.path.exists('/tmp/streamlinkSRV.log'):
-                self.session.openWithCallback(self.doNothing ,Console, title = '/tmp/streamlinkSRV.log', cmdlist = [ 'cat /tmp/streamlinkSRV.log' ])
+        pass
         
     def blue(self):
-        if self.mySL == True:
-            mtitle = _('Restarting daemon')
-            cmd = '/usr/sbin/%s restart' % config.plugins.streamlinkSRV.binName.value
-            self.session.openWithCallback(self.doNothing ,Console, title = mtitle, cmdlist = [ cmd ])
+        pass
         
     def exit(self):
         self.close(None)
@@ -224,7 +212,6 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
     def Okbutton(self):
         DBGlog('%s' % 'Okbutton')
         try:
-            self.doAction = None
             curIndex = self["config"].getCurrentIndex()
             selectedItem = self["config"].list[curIndex]
             if len(selectedItem) >= 2:
@@ -312,8 +299,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
             self.emuKodiAction = selectedItem[2] #('playermb', 'login', emuKodiCmdsList, autoClose, webServer, addonScript)
             dostawca = self.emuKodiAction[0]
             akcja = self.emuKodiAction[1]
-            if akcja == 'ActionConfirmed': self.emuKodiActionConfirmed(True)
-            elif akcja == 'userbouquet':
+            if akcja == 'userbouquet':
                 #pobranie swiezych definicji
                 os.system('wget https://raw.githubusercontent.com/azman26/EPGazman/main/azman_channels_mappings.py -O /usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/plugins/azman_channels_mappings.py')
                 plikBukietu = '/etc/enigma2/userbouquet.%s.tv' % dostawca
@@ -322,7 +308,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                 self.session.openWithCallback(self.userbouquetConfirmed, MessageBox, MsgInfo, MessageBox.TYPE_YESNO, default = False, timeout = 15)
                 return
             else:
-                self.doAction = ('emukodiBouquets.py', 'UNKNOWN', "'%s'" % selectedAction.replace(' ','_'))
+                self.emuKodiActionConfirmed(True)
         return
 
     def userbouquetConfirmed(self, ret = False):
