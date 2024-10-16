@@ -11,9 +11,10 @@ import Screens.Standby
 DBG = True
 
 def safeSubprocessCMD(myCommand):
-    if DBG: DBGlog('safeSubprocessCMD() running: %s' % myCommand)
+    if DBG: DBGlog('safeSubprocessCMD(%s)' % myCommand)
     with open("/proc/sys/vm/drop_caches", "w") as f: f.write("1\n") #for safety to not get GS due to lack of memory
     subprocess.Popen(myCommand, shell=True)
+    with open("/proc/sys/vm/drop_caches", "w") as f: f.write("1\n") #for safety to not get GS due to lack of memory
 
 def SLconfigLeaveStandbyInitDaemon():
     DBGlog('LeaveStandbyInitDaemon() >>>')
@@ -362,10 +363,12 @@ def killExternalPlayer(isExternalPlayerRunning, forceKill = False):
                 procRealPath = os.path.realpath(procExe)
                 if 'exteplayer3' in procRealPath:
                     cmd = '/usr/bin/killall exteplayer3;'
+                #elif 'cdmeplayer3' in procRealPath:
+                #    cmd = '/usr/bin/killall cdmeplayer3;'
     except Exception:
         pass
     if isExternalPlayerRunning or forceKill:
-        cmd += '/usr/bin/killall cdmeplayer3'
+        cmd += '/usr/bin/killall -q cdmeplayer3'
         isExternalPlayerRunning = False
     if cmd != '':
         safeSubprocessCMD(cmd)
@@ -377,7 +380,9 @@ class SLeventsWrapper:
         self.service = None
         self.onClose = []
         self.myCDM = None
+        self.deviceCDM = None
         self.isExternalPlayerRunning = False
+        self.skipKillAt__evEnd = False
         self.__event_tracker = ServiceEventTracker(screen=self, eventmap={iPlayableService.evStart: self.__evStart, iPlayableService.evEnd: self.__evEnd})
         return
 
@@ -390,28 +395,58 @@ class SLeventsWrapper:
                 self.myCDM = pywidevine.cdmdevice.privatecdm.privatecdm()
             except ImportError:
                 self.myCDM = False
-        if self.myCDM != False:
-            self.serviceName = ""
-            try:
-                service = self.session.nav.getCurrentlyPlayingServiceReference()
-                if not service is None:
-                    serviceString = service.toString()
-                    #print("[SLeventsWrapper]__evStart serviceString=", serviceString)
-                    serviceList = serviceString.split(":")
-                    print("[SLeventsWrapper]__evStart serviceList=", serviceList)
-                    if len(serviceList) > 10:
-                        url = serviceList[10].strip().lower()
-                        if url != '':
-                            if self.myCDM.doWhatYouMustDo(url):
+        
+        self.serviceName = ""
+        try:
+            service = self.session.nav.getCurrentlyPlayingServiceReference()
+            if self.isExternalPlayerRunning:
+                killExternalPlayer(self.isExternalPlayerRunning)
+            if not service is None:
+                serviceString = service.toString()
+                #print("[SLeventsWrapper]__evStart serviceString=", serviceString)
+                serviceList = serviceString.split(":")
+                print("[SLeventsWrapper]__evStart serviceList=", serviceList)
+                if len(serviceList) > 10:
+                    url = serviceList[10].strip().lower()
+                    if url != '':
+                        if self.myCDM != False and self.myCDM.doWhatYouMustDo(url):
+                            self.isExternalPlayerRunning = True
+                        elif url.startswith('http%3a//cdmplayer/'):
+                            if self.deviceCDM is None: #tutaj, zeby bez sensu nie ladować jak ktos nie uzywa
+                                try:
+                                    import pywidevine.cdmdevice.cdmDevice
+                                    self.deviceCDM = pywidevine.cdmdevice.cdmDevice.cdmDevice()
+                                except ImportError:
+                                    self.deviceCDM = False
+                            if self.deviceCDM != False and self.deviceCDM.tryToDoSomething(url):
                                 self.isExternalPlayerRunning = True
-                            else:
-                                killExternalPlayer(self.isExternalPlayerRunning, True)
-            except Exception as e:
-                print('[SLeventsWrapper] __evStart() exception:', str(e))
+                                #tryToDoSomething take time to proceed and initiate player.
+                                # so we need to ...
+                                #   - mark this to properly manage __evEnd eventmap (if not managed, killed process & black screen)
+                                #   - stop enigma player (if not stopped only back screen)
+                                if 1:
+                                    self.skipKillAt__evEnd = True #tryToDoSomethingbelow is delayed, we need skip it
+                                    self.session.nav.stopService() #this initiates false/positive __evEnd
+                        elif url.startswith('http%3a//slplayer/'):
+                            cmd2run = []
+                            cmd2run.extend(['/usr/bin/killall -q cdmeplayer3;'])
+                            cmd2run.extend(['/usr/bin/killall -q exteplayer3;'])
+                            cmd2run.extend(['/usr/sbin/streamlink'])
+                            cmd2run.extend(['-l','none','-p','/usr/bin/exteplayer3','--player-http','--verbose-player',"'%s'" % url.replace('http%3a//slplayer/',''), 'best'])
+                            safeSubprocessCMD(' '.join(cmd2run))
+                            if 1: # see comments above
+                                self.skipKillAt__evEnd = True
+                                self.session.nav.stopService()
+                        else:
+                            killExternalPlayer(self.isExternalPlayerRunning, True)
+        except Exception as e:
+            print('[SLeventsWrapper] __evStart() exception:', str(e))
 
     def __evEnd(self):
-        print("[SLeventsWrapper.__evEnd] >>>\n\t self.isExternalPlayerRunning=%s" % str(self.isExternalPlayerRunning))
-        if self.isExternalPlayerRunning:
+        print("[SLeventsWrapper.__evEnd] >>> self.isExternalPlayerRunning=%s" % str(self.isExternalPlayerRunning))
+        print("[SLeventsWrapper.__evEnd] >>> self.skipKillAt__evEnd=%s" % str(self.skipKillAt__evEnd))
+        if not self.skipKillAt__evEnd and self.isExternalPlayerRunning:
+            print("[SLeventsWrapper.__evEnd] >>> killExternalPlayer run")
             killExternalPlayer(self.isExternalPlayerRunning)
-        #if not self.myCDM is None and self.myCDM != False:
-        #    self.myCDM.doWhatYouCanDo()
+            self.isExternalPlayerRunning = False
+            self.skipKillAt__evEnd = False

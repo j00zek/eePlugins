@@ -202,7 +202,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         self.setTitle(self.setup_title)
         
         if os.path.exists("/usr/lib/enigma2/python/Plugins/SystemPlugins/ServiceApp/serviceapp.so"):
-            self.choicesList = [(_("Don't change"),"0"),("gstreamer (root 4097)","4097"),("ServiceApp gstreamer (root 5001)","5001"), ("ServiceApp ffmpeg (root 5002)","5002"),("Hardware (root 1) wymagany do PIP","1")]
+            self.choicesList = [(_("Don't change"),"0"),("gstreamer (root 4097)","4097"),("ServiceApp gstreamer (root 5001)","5001"), ("ServiceApp ffmpeg (root 5002)","5002"), ("Odtwarzacz zewnętrzny","4097e")]
         else:
             self.choicesList = [(_("Don't change"),"0"),("gstreamer (root 4097)","4097"),("Hardware (root 1) wymagany do PIP","1"),(_("ServiceApp not installed!"), None)]
         
@@ -305,17 +305,6 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
     def OkbuttonConfirmed(self, ret = False):
         if ret:
             self.session.openWithCallback(self.SelectedFramework, ChoiceBox, title = _("Select Multiframework"), list = self.choicesList)
-
-    def OkbuttonConfirmed2(self, ret = False):
-        if ret:
-            doActionPath = '/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/plugins/'
-            cmd = '/usr/bin/python %s%s %s %s %s' % (doActionPath,
-                                                 ' '.join(self.doAction),
-                                                 config.plugins.streamlinkSRV.PortNumber.value,
-                                                 '4097', 'y'
-                                                )
-            DBGlog('%s' % cmd)
-            self.session.openWithCallback(self.doNothing ,Console, title = "SL %s %s" % (Version, self.cmdTitle), cmdlist = [ cmd ])
 
     def SelectedFramework(self, ret):
         if not ret or ret == "None" or isinstance(ret, (int, float)):
