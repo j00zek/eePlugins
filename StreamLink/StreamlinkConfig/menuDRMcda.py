@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
-from Plugins.Extensions.StreamlinkConfig.__init__ import mygettext as _ , readCFG , DBGlog
+from Plugins.Extensions.StreamlinkConfig.__init__ import mygettext as _ , DBGlog
 from Plugins.Extensions.StreamlinkConfig.version import Version
-from Plugins.Extensions.StreamlinkConfig.plugins.azmanIPTVsettings import get_azmanIPTVsettings
 import os, time, sys
 # GUI (Screens)
 from Components.ActionMap import ActionMap
@@ -58,10 +57,18 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         for cfgFile in ['refr_token', 'username', 'password']:
             if not os.path.exists('/etc/streamlink/cdaplMB/%s' % cfgFile): os.system('touch /etc/streamlink/cdaplMB/%s' % cfgFile)
                             
+        #info
+        if os.path.exists('/etc/enigma2/userbouquet.cdaplMB.tv'):
+            fc = open('/etc/enigma2/userbouquet.cdaplMB.tv','r').read()
+            if 'http%3a//cdmplayer' in fc:
+                Mlist.append(getConfigListEntry('\c00f2ec73' + "Obecnie kanały bukietu cdaplMB korzystają z odtwarzacza zewnętrznego"))
+            else:
+                Mlist.append(getConfigListEntry('\c00f2ec73' + "Obecnie kanały bukietu cdaplMB korzystają z serviceapp"))
+
         if open('/etc/streamlink/cdaplMB/username','r').read().strip() == '':
-            Mlist.append(getConfigListEntry( 'cda: Brak danych w /etc/streamlink/cdaplMB/username' , config.plugins.streamlinkSRV.streamlinkconfig))
+            Mlist.append(getConfigListEntry( 'Brak danych w /etc/streamlink/cdaplMB/username' , config.plugins.streamlinkSRV.streamlinkconfig))
         elif open('/etc/streamlink/cdaplMB/password','r').read().strip() == '':
-            Mlist.append(getConfigListEntry( 'cda: Brak danych w /etc/streamlink/cdaplMB/password' , config.plugins.streamlinkSRV.streamlinkconfig))
+            Mlist.append(getConfigListEntry( 'Brak danych w /etc/streamlink/cdaplMB/password' , config.plugins.streamlinkSRV.streamlinkconfig))
         elif open('/etc/streamlink/cdaplMB/refr_token','r').read().strip() == '':
             emuKodiCmdsList = []
             emuKodiCmdsList.append(runAddon + " '1' '' 'resume:false'") #logowanie nastepuje bez podania trybu
@@ -183,9 +190,9 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         self.setTitle(self.setup_title)
         
         if os.path.exists("/usr/lib/enigma2/python/Plugins/SystemPlugins/ServiceApp/serviceapp.so"):
-            self.choicesList = [(_("Don't change"),"0"),("gstreamer (root 4097)","4097"),("ServiceApp gstreamer (root 5001)","5001"), ("ServiceApp ffmpeg (root 5002)","5002"), ("Odtwarzacz zewnętrzny","4097e")]
+            self.choicesList = [("Odtwarzacz zewnętrzny (zalecany)","1e"), (_("Don't change"),"0"),("gstreamer (root 4097)","4097"),("ServiceApp gstreamer (root 5001)","5001"), ("ServiceApp ffmpeg (root 5002)","5002")]
         else:
-            self.choicesList = [("gstreamer (root 4097)","4097"),(_("ServiceApp not installed!"), None)]
+            self.choicesList = [("Odtwarzacz zewnętrzny (zalecany)","1e"), ("gstreamer (root 4097)","4097"),(_("ServiceApp not installed!"), None)]
         
     def changedEntry(self):
         DBGlog('%s' % 'changedEntry()')

@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
-from __future__ import absolute_import #zmiana strategii ladowanie modulow w py2 z relative na absolute jak w py3
-from Plugins.Extensions.StreamlinkConfig.__init__ import mygettext as _ , readCFG , DBGlog
+from Plugins.Extensions.StreamlinkConfig.__init__ import mygettext as _ , DBGlog
 from Plugins.Extensions.StreamlinkConfig.version import Version
-from Plugins.Extensions.StreamlinkConfig.plugins.azmanIPTVsettings import get_azmanIPTVsettings
 import os, time, sys
 # GUI (Screens)
 from Components.ActionMap import ActionMap
@@ -18,39 +16,7 @@ from Screens.MessageBox import MessageBox
 from Screens.Screen import Screen
 from Screens.Setup import SetupSummary
 
-try:
-    from emukodi.xbmcE2 import *
-    from emukodi.e2Console import emukodiConsole
-except Exception as e:
-    print('AQQ ERROR', str(e))
-    addons_path = 'ERROR'
-    emukodi_path = 'ERROR'
-    emukodiConsole = Console
-    
-#### streamlink config /etc/streamlink/config ####
-def getFFlist():
-    ffList = []
-    for f in sorted(os.listdir("/usr/bin"), key=str.lower):
-        if f.startswith('ffmpeg'):
-            ffList.append(("/usr/bin/%s" % f, f ))
-    return ffList
-
-def getCurrFF():
-    ff = '/usr/bin/ffmpeg'
-    for c in getStreamlinkConfig():
-        if c.startswith('ffmpeg-ffmpeg='):
-            tmp = c.split('=')[1].strip()
-            if os.path.exists(tmp):
-                ff = tmp
-    return ff
-    
-def getStreamlinkConfig():
-    try:
-        cfg = open('/etc/streamlink/config', 'r').read().splitlines()
-    except Exception:
-        cfg = []
-    return cfg
-
+   
 class StreamlinkConfiguration(Screen, ConfigListScreen):
     from enigma import getDesktop
     if getDesktop(0).size().width() == 1920: #definicja skin-a musi byc tutaj, zeby vti sie nie wywalalo na labelach, inaczej trzeba uzywasc zrodla statictext
@@ -74,7 +40,12 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         self.DoBuildList.stop()
         Mlist = []
         # pilot.wp.pl
-        Mlist.append(getConfigListEntry('\c00289496' + _("*** %s configuration ***") % 'pilot.wp.pl', config.plugins.streamlinkSRV.Two))
+        if os.path.exists('/etc/enigma2/userbouquet.WPPL.tv'):
+            fc = open('/etc/enigma2/userbouquet.WPPL.tv','r').read()
+            if 'http%3a//slplayer' in fc:
+                Mlist.append(getConfigListEntry('\c00f2ec73' + "Obecnie kanały bukietu WPPL korzystają z odtwarzacza zewnętrznego"))
+            else:
+                Mlist.append(getConfigListEntry('\c00f2ec73' + "Obecnie kanały bukietu WPPL korzystają z serviceapp"))
         Mlist.append(getConfigListEntry(_("Username:"), config.plugins.streamlinkSRV.WPusername))
         Mlist.append(getConfigListEntry(_("Password:"), config.plugins.streamlinkSRV.WPpassword))
         Mlist.append(getConfigListEntry(_("Check login credentials"), config.plugins.streamlinkSRV.WPlogin))
@@ -84,9 +55,6 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         Mlist.append(getConfigListEntry(_("Press OK to create %s bouquet") % "userbouquet.WPPL.tv", config.plugins.streamlinkSRV.WPbouquet))
         return Mlist
     
-    def getAddonsRunPath(self, addonName):
-        runAddon = '/usr/bin/python plugin.video.%s/main.py' % os.path.join(addons_path, addonName)
-
     def __init__(self, session, args=None):
         DBGlog('%s' % '__init__')
         self.doAction = None
@@ -103,7 +71,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         self.session = session
 
         # Summary
-        self.setup_title = _("Streamlink Configuration" + ' v.' + Version)
+        self.setup_title = 'Konfiguracja pilot.wp.pl'
         self.onChangedEntry = []
 
         # Buttons
@@ -202,9 +170,9 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         self.setTitle(self.setup_title)
         
         if os.path.exists("/usr/lib/enigma2/python/Plugins/SystemPlugins/ServiceApp/serviceapp.so"):
-            self.choicesList = [(_("Don't change"),"0"),("gstreamer (root 4097)","4097"),("ServiceApp gstreamer (root 5001)","5001"), ("ServiceApp ffmpeg (root 5002)","5002"), ("Odtwarzacz zewnętrzny","4097e")]
+            self.choicesList = [("Odtwarzacz zewnętrzny (zalecany)","1e"), ("gstreamer (root 4097)","4097"), ("ServiceApp gstreamer (root 5001)","5001"), ("ServiceApp ffmpeg (root 5002)","5002")]
         else:
-            self.choicesList = [(_("Don't change"),"0"),("gstreamer (root 4097)","4097"),("Hardware (root 1) wymagany do PIP","1"),(_("ServiceApp not installed!"), None)]
+            self.choicesList = [("Odtwarzacz zewnętrzny (zalecany)","1e"), ("gstreamer (root 4097)","4097"), (_("ServiceApp not installed!"), None)]
         
     def changedEntry(self):
         DBGlog('%s' % 'changedEntry()')

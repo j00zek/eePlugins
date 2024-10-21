@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import #zmiana strategii ladowanie modulow w py2 z relative na absolute jak w py3
-from Plugins.Extensions.StreamlinkConfig.__init__ import mygettext as _ , readCFG , DBGlog
+from Plugins.Extensions.StreamlinkConfig.__init__ import mygettext as _ , DBGlog
 from Plugins.Extensions.StreamlinkConfig.version import Version
-from Plugins.Extensions.StreamlinkConfig.plugins.azmanIPTVsettings import get_azmanIPTVsettings
 import os, time, sys
 # GUI (Screens)
 from Components.ActionMap import ActionMap
@@ -27,34 +26,8 @@ except Exception as e:
     emukodi_path = 'ERROR'
     emukodiConsole = Console
     
-#### streamlink config /etc/streamlink/config ####
-def getFFlist():
-    ffList = []
-    for f in sorted(os.listdir("/usr/bin"), key=str.lower):
-        if f.startswith('ffmpeg'):
-            ffList.append(("/usr/bin/%s" % f, f ))
-    return ffList
-
-def getCurrFF():
-    ff = '/usr/bin/ffmpeg'
-    for c in getStreamlinkConfig():
-        if c.startswith('ffmpeg-ffmpeg='):
-            tmp = c.split('=')[1].strip()
-            if os.path.exists(tmp):
-                ff = tmp
-    return ff
-    
-def getStreamlinkConfig():
-    try:
-        cfg = open('/etc/streamlink/config', 'r').read().splitlines()
-    except Exception:
-        cfg = []
-    return cfg
-
 config.plugins.streamlinkSRV.streamlinkconfig = NoSave(ConfigNothing())
-config.plugins.streamlinkSRV.streamlinkDRMconfig = NoSave(ConfigNothing())
 config.plugins.streamlinkSRV.streamlinkEMUKODIconfig = NoSave(ConfigNothing())
-config.plugins.streamlinkSRV.streamlinkconfigFFMPEG = NoSave(ConfigSelection(default = getCurrFF(), choices = getFFlist()))
 
 
 class StreamlinkConfiguration(Screen, ConfigListScreen):
@@ -81,6 +54,13 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         # !!!!!!!!!!!!!!!!!!!!!!!!! PLAYER ############################
         for cfgFile in ['refresh_token', 'logged']:
             if not os.path.exists('/etc/streamlink/playermb/%s' % cfgFile): os.system('touch /etc/streamlink/playermb/%s' % cfgFile)
+        #info
+        if os.path.exists('/etc/enigma2/userbouquet.playermb.tv'):
+            fc = open('/etc/enigma2/userbouquet.playermb.tv','r').read()
+            if 'http%3a//cdmplayer' in fc:
+                Mlist.append(getConfigListEntry('\c00f2ec73' + "Obecnie kanały bukietu playermb korzystają z odtwarzacza zewnętrznego"))
+            else:
+                Mlist.append(getConfigListEntry('\c00f2ec73' + "Obecnie kanały bukietu playermb korzystają z serviceapp"))
         #login
         emuKodiCmdsList = []
         pythonRunner = '/usr/bin/python'
@@ -205,9 +185,9 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         self.setTitle(self.setup_title)
         
         if os.path.exists("/usr/lib/enigma2/python/Plugins/SystemPlugins/ServiceApp/serviceapp.so"):
-            self.choicesList = [("gstreamer (root 4097)","4097"),("ServiceApp gstreamer (root 5001)","5001"), ("ServiceApp ffmpeg (root 5002)","5002"), ("Odtwarzacz zewnętrzny","4097e")]
+            self.choicesList = [("Odtwarzacz zewnętrzny (zalecany)","1e"), ("gstreamer (root 4097)","4097"),("ServiceApp gstreamer (root 5001)","5001"), ("ServiceApp ffmpeg (root 5002)","5002")]
         else:
-            self.choicesList = [("gstreamer (root 4097)","4097"),(_("ServiceApp not installed!"), None)]
+            self.choicesList = [("Odtwarzacz zewnętrzny (zalecany)","1e"), ("gstreamer (root 4097)","4097"),(_("ServiceApp not installed!"), None)]
         
     def changedEntry(self):
         DBGlog('%s' % 'changedEntry()')

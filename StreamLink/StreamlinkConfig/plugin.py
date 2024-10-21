@@ -77,10 +77,23 @@ def Plugins(path, **kwargs):
             PluginDescriptor(name="StreamlinkConfig", where = PluginDescriptor.WHERE_SESSIONSTART, fnc = sessionstart, needsRestart = False, weight = -1)
            ]
     if os.path.exists('/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/NoZapWrappers'):
-        print('[SLK] system NIE wspiera wrapperów :)')
+        wrapperInfo = '[SLK] system NIE wspiera wrapperów'
     else:
-        print('[SLK] system wspiera wrappery :)')
-        myList.append(PluginDescriptor(name="StreamlinkZapWrapper", description="StreamlinkZapWrapper", where=PluginDescriptor.WHERE_CHANNEL_ZAP, needsRestart = False, fnc=SLzapWrapper))
+        wrapperInfo = '[SLK] system wspiera wrappery'
+        if os.path.exists('/usr/lib/enigma2/python/Plugins/Extensions/YTDLPWrapper'):
+            wrapperInfo += ', YTDLPWrapper zainstalowany'
+        else:
+            wrapperInfo += ', YTDLPWrapper nie zainstalowany'
+        if os.path.exists('/usr/lib/enigma2/python/Plugins/Extensions/YTDLWrapper'):
+            wrapperInfo += ', YTDLWrapper zainstalowany'
+        else:
+            wrapperInfo += ', YTDLWrapper nie zainstalowany'
+        if os.path.exists('/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkWrapper'):
+            wrapperInfo += ', StreamlinkWrapper zainstalowany'
+        else:
+            wrapperInfo += ', StreamlinkWrapper nie zainstalowany'
+    print(wrapperInfo)
+    wrapperInfo = None
     if config.plugins.streamlinkSRV.Recorder.value == True:
         myList.append(PluginDescriptor(name="StreamlinkRecorder", description="StreamlinkRecorder", where = [PluginDescriptor.WHERE_MENU], fnc=timermenu))
     return myList
@@ -238,140 +251,13 @@ class SLK_Menu(Screen):
     def quit(self):
         self.close()
 
-############################################# SLzapWrapper #################################
-####### logika E2: zap(tylko na kanałach iptv?) > __evEnd > __evStart
-
-#jest zainstalowane oryginalne, olewamy
-if os.path.exists('/usr/lib/enigma2/python/Plugins/Extensions/YTDLPWrapper'):
-    SLzapWrapper_YT_DLP = False
-else:
-    SLzapWrapper_YT_DLP = None
-
-if os.path.exists('/usr/lib/enigma2/python/Plugins/Extensions/YTDLWrapper'):
-    SLzapWrapper_YT_DL = False
-else:
-    SLzapWrapper_YT_DL = None
-
-if os.path.exists('/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkWrapper'):
-    SLzapWrapper_Streamlink = False
-else:
-    SLzapWrapper_Streamlink = None
-
-def SLzapWrapper(session, service, **kwargs):
-    print("[SLzapWrapper] >>>")
-    global SLzapWrapper_YT_DLP, SLzapWrapper_YT_DL, SLzapWrapper_Streamlink
-    errormsg = None
-    if service:
-        try:
-            serviceString = service.toString()
-            print("[SLzapWrapper] serviceString = %s" % serviceString)
-            url = serviceString.split(":")
-            print("[SLzapWrapper] urlparts = %s" % len(url))
-            url = url[10].strip()
-            print("[SLzapWrapper] url='%s'" % url)
-            if url == '' or len(url) < 11:
-                killExternalPlayer()
-                return (None, errormsg)
-            #YT-DLP
-            elif url.startswith("YT-DLP%3a//"): #YT-DLP
-                if SLzapWrapper_YT_DLP is None:
-                    try:
-                        from yt_dlp import YoutubeDL as SLzapWrapper_YT_DLP
-                    except ImportError:
-                        SLzapWrapper_YT_DLP = False
-                if SLzapWrapper_YT_DLP == False:
-                    return (None, errormsg)
-                url = url.replace("YT-DLP%3a//", "").replace("%3a", ":")
-                try:
-                    ydl = SLzapWrapper_YT_DLP({"format": "b", "no_color": True, "usenetrc": True})
-                    result = ydl.extract_info(url, download=False)
-                    result = ydl.sanitize_info(result)
-                    if result and result.get("url"):
-                        url = result["url"]
-                        print("[SLzapWrapper] SLzapWrapper_YT_DLP result url %s" % url)
-                        return (url, errormsg)
-                    else:
-                        errormsg = "No Link found!"
-                        print("[SLzapWrapper] SLzapWrapper_YT_DLP no streams")
-                except Exception as e:
-                    errormsg = str(e)
-                    print("[SLzapWrapper] SLzapWrapper_YT_DLP failed %s" % str(e))
-            #YT-DL
-            elif url.startswith("YT-DL%3a//"):#YT-DL
-                if SLzapWrapper_YT_DL is None:
-                    try:
-                        from youtube_dl import YoutubeDL as SLzapWrapper_YT_DL
-                    except ImportError:
-                        SLzapWrapper_YT_DL = False
-                if SLzapWrapper_YT_DL == False:
-                    return (None, errormsg)
-                url = url.replace("YT-DL%3a//", "").replace("%3a", ":")
-                try:
-                    ydl = SLzapWrapper_YT_DL({'format': 'best'})
-                    result = ydl.extract_info(url, download=False)
-                    if result and hasattr(result, "url"):
-                        url = result['url']
-                        print("[SLzapWrapper] SLzapWrapper_YT_DL result url %s" % url)
-                        return (url, errormsg)
-                    else:
-                        errormsg = "No Link found!"
-                        print("[SLzapWrapper] SLzapWrapper_YT_DL no streams")
-                except Exception as e:
-                    errormsg = str(e)
-                    print("[SLzapWrapper] SLzapWrapper_YT_DL failed %s" % str(e))
-            #streamlink
-            elif url.startswith("streamlink%3a//"):# or url.startswith("http%3a//127.0.0.1%3a8088/"):#streamlink
-                if SLzapWrapper_Streamlink is None:
-                    try:
-                        import streamlink as SLzapWrapper_Streamlink
-                    except ImportError:
-                        SLzapWrapper_Streamlink = False
-                if SLzapWrapper_Streamlink == False:
-                    return (None, errormsg)
-                url = url.replace("streamlink%3a//", "").replace('http%3a//127.0.0.1%3a8088/','').replace("%3a", ":")
-                print("[SLzapWrapper] streamlink calling url %s" % url)
-                try:
-                    streams = SLzapWrapper_Streamlink.streams(url)
-                    if streams:
-                        url = streams["best"].to_url()
-                        print("[SLzapWrapper] streamlink result url %s" % url)
-                        return (url, errormsg)
-                    else:
-                        errormsg = "No Link found!"
-                        print("[SLzapWrapper] streamlink no streams")
-                except Exception as e:
-                    errormsg = str(e)
-                    print("[SLzapWrapper] streamlink failed %s" % str(e))
-        except Exception as e:
-            errormsg = str(e)
-            print("[SLzapWrapper] exception %s" % str(e))
-    return (None, errormsg)
-
 ############################################# SLeventsWrapper #################################
 SLeventsWrapperInstance = None
 
 from Components.ServiceEventTracker import ServiceEventTracker#, InfoBarBase
 from enigma import iPlayableService#, eServiceCenter, iServiceInformation
 #import ServiceReference
-    
-def killExternalPlayer(isExternalPlayerRunning, forceKill = False):
-    cmd = ''
-    try:
-        for proc in os.listdir('/proc'):
-            procExe = os.path.join('/proc', proc, 'exe')
-            if os.path.exists(procExe):
-                procRealPath = os.path.realpath(procExe)
-                if 'exteplayer3' in procRealPath:
-                    cmd = '/usr/bin/killall exteplayer3;'
-                #elif 'cdmeplayer3' in procRealPath:
-                #    cmd = '/usr/bin/killall cdmeplayer3;'
-    except Exception:
-        pass
-    if isExternalPlayerRunning or forceKill:
-        cmd += '/usr/bin/killall -q cdmeplayer3'
-        isExternalPlayerRunning = False
-    if cmd != '':
-        safeSubprocessCMD(cmd)
+from enigma import eTimer
 
 class SLeventsWrapper:
     def __init__(self, session):
@@ -382,13 +268,76 @@ class SLeventsWrapper:
         self.myCDM = None
         self.deviceCDM = None
         self.isExternalPlayerRunning = False
+        self.ActiveExternalPlayer = ''
         self.skipKillAt__evEnd = False
+        self.LastManagedServiceString = ""
+        self.RestartServiceTimer = eTimer()
+        self.RestartServiceTimer.callback.append(self.__restartServiceTimerCB)
+        self.LastPlayedService = None
         self.__event_tracker = ServiceEventTracker(screen=self, eventmap={iPlayableService.evStart: self.__evStart, iPlayableService.evEnd: self.__evEnd})
         return
+    
+    def __killExternalPlayer(self, isExternalPlayerRunning, forceKill = False):
+        cmd = ''
+        try:
+            for proc in os.listdir('/proc'):
+                procExe = os.path.join('/proc', proc, 'exe')
+                if os.path.exists(procExe):
+                    procRealPath = os.path.realpath(procExe)
+                    if 'exteplayer3' in procRealPath:
+                        cmd = '/usr/bin/killall exteplayer3;'
+                    #elif 'cdmeplayer3' in procRealPath:
+                    #    cmd = '/usr/bin/killall cdmeplayer3;'
+        except Exception:
+            pass
+        if isExternalPlayerRunning or forceKill:
+            cmd += '/usr/bin/killall -q cdmeplayer3'
+            isExternalPlayerRunning = False
+        if cmd != '':
+            safeSubprocessCMD(cmd)
 
+    def __restartServiceTimerCB(self):
+        #print("[SLeventsWrapper.__restartServiceTimerCB] >>>")
+        self.RestartServiceTimer.stop()
+        if self.LastPlayedService is None:
+            print("[SLeventsWrapper.__restartServiceTimerCB] self.LastPlayedService is None, stopping currently playing service")
+            self.skipKillAt__evEnd = True
+            self.LastPlayedService = self.session.nav.getCurrentlyPlayingServiceReference()
+            self.session.nav.stopService()
+            self.restartServiceTimerCBCounter = 0
+            self.ExtPlayerStarted = False
+            self.RestartServiceTimer.start(1000, True)
+        else:
+            #print("[SLeventsWrapper.__restartServiceTimerCB] self.LastPlayedService is NOT None")
+            #waiting for exteplayer3 to start
+            for proc in os.listdir('/proc'):
+                try:
+                    procExe = os.path.join('/proc', proc, 'exe')
+                    if os.path.exists(procExe):
+                        procRealPath = os.path.realpath(procExe)
+                        #print("[SLeventsWrapper.__restartServiceTimerCB]", procRealPath)
+                        if 'exteplayer3' in procRealPath:
+                            self.ExtPlayerStarted = True
+                            #print('[SLeventsWrapper.__restartServiceTimerCB] Found in',procRealPath)
+                            break
+                except Exception as e:
+                    print("[SLeventsWrapper.__restartServiceTimerCB]  exception", str(e))
+            if self.ExtPlayerStarted == False and self.restartServiceTimerCBCounter < 21:
+                print("[SLeventsWrapper.__restartServiceTimerCB] waiting %s seconds for %s to start" % (self.restartServiceTimerCBCounter, self.ActiveExternalPlayer))
+                self.restartServiceTimerCBCounter += 1
+                self.RestartServiceTimer.start(1000, True)
+            elif self.ExtPlayerStarted == True and self.restartServiceTimerCBCounter < 21:
+                print("[SLeventsWrapper.__restartServiceTimerCB] %s started, waiting another second to enable E2 player to see EPG data" % self.ActiveExternalPlayer)
+                self.restartServiceTimerCBCounter += 222
+                self.RestartServiceTimer.start(1000, True)
+            else:
+                print("[SLeventsWrapper.__restartServiceTimerCB] %s started, enabling E2 player to see EPG data" % self.ActiveExternalPlayer)
+                self.session.nav.playService(self.LastPlayedService)
+                self.LastPlayedService = None
+    
     def __evStart(self):
         print("[SLeventsWrapper.__evStart] >>>")
-        #killExternalPlayer(self.isExternalPlayerRunning)
+        #self.__killExternalPlayer(self.isExternalPlayerRunning)
         if self.myCDM is None:
             try:
                 import pywidevine.cdmdevice.privatecdm
@@ -396,19 +345,24 @@ class SLeventsWrapper:
             except ImportError:
                 self.myCDM = False
         
-        self.serviceName = ""
         try:
             service = self.session.nav.getCurrentlyPlayingServiceReference()
-            if self.isExternalPlayerRunning:
-                killExternalPlayer(self.isExternalPlayerRunning)
             if not service is None:
-                serviceString = service.toString()
-                #print("[SLeventsWrapper]__evStart serviceString=", serviceString)
-                serviceList = serviceString.split(":")
-                print("[SLeventsWrapper]__evStart serviceList=", serviceList)
+                CurrentserviceString = service.toString()
+                #print("[SLeventsWrapper]__evStart CurrentserviceString=", CurrentserviceString)
+                serviceList = CurrentserviceString.split(":")
+                print("[SLeventsWrapper.__evStart] serviceList=", serviceList)
                 if len(serviceList) > 10:
                     url = serviceList[10].strip().lower()
-                    if url != '':
+                    if url == '':
+                        self.LastManagedServiceString = ""
+                        if self.isExternalPlayerRunning:
+                            self.__killExternalPlayer(self.isExternalPlayerRunning)
+                    else:
+                        if self.LastManagedServiceString == CurrentserviceString:
+                            print('[SLeventsWrapper.__evStart] LastManagedServiceString = CurrentserviceString, nothing to do')
+                            return
+                        self.LastManagedServiceString = CurrentserviceString
                         if self.myCDM != False and self.myCDM.doWhatYouMustDo(url):
                             self.isExternalPlayerRunning = True
                         elif url.startswith('http%3a//cdmplayer/'):
@@ -419,34 +373,33 @@ class SLeventsWrapper:
                                 except ImportError:
                                     self.deviceCDM = False
                             if self.deviceCDM != False and self.deviceCDM.tryToDoSomething(url):
+                                self.ActiveExternalPlayer = 'cdmeplayer3'
                                 self.isExternalPlayerRunning = True
                                 #tryToDoSomething take time to proceed and initiate player.
                                 # so we need to ...
                                 #   - mark this to properly manage __evEnd eventmap (if not managed, killed process & black screen)
                                 #   - stop enigma player (if not stopped only back screen)
-                                if 1:
-                                    self.skipKillAt__evEnd = True #tryToDoSomethingbelow is delayed, we need skip it
-                                    self.session.nav.stopService() #this initiates false/positive __evEnd
+                                self.RestartServiceTimer.start(100, True)
                         elif url.startswith('http%3a//slplayer/'):
+                            self.ActiveExternalPlayer = 'exteplayer3'
                             cmd2run = []
                             cmd2run.extend(['/usr/bin/killall -q cdmeplayer3;'])
                             cmd2run.extend(['/usr/bin/killall -q exteplayer3;'])
                             cmd2run.extend(['/usr/sbin/streamlink'])
                             cmd2run.extend(['-l','none','-p','/usr/bin/exteplayer3','--player-http','--verbose-player',"'%s'" % url.replace('http%3a//slplayer/',''), 'best'])
                             safeSubprocessCMD(' '.join(cmd2run))
-                            if 1: # see comments above
-                                self.skipKillAt__evEnd = True
-                                self.session.nav.stopService()
+                            self.RestartServiceTimer.start(100, True)
                         else:
-                            killExternalPlayer(self.isExternalPlayerRunning, True)
+                            self.__killExternalPlayer(self.isExternalPlayerRunning, True)
         except Exception as e:
-            print('[SLeventsWrapper] __evStart() exception:', str(e))
+            print('[SLeventsWrapper.__evStart] exception:', str(e))
 
     def __evEnd(self):
         print("[SLeventsWrapper.__evEnd] >>> self.isExternalPlayerRunning=%s" % str(self.isExternalPlayerRunning))
         print("[SLeventsWrapper.__evEnd] >>> self.skipKillAt__evEnd=%s" % str(self.skipKillAt__evEnd))
         if not self.skipKillAt__evEnd and self.isExternalPlayerRunning:
-            print("[SLeventsWrapper.__evEnd] >>> killExternalPlayer run")
-            killExternalPlayer(self.isExternalPlayerRunning)
+            print("[SLeventsWrapper.__evEnd] >>> __killExternalPlayer run")
+            self.RestartServiceTimer.stop()
+            self.__killExternalPlayer(self.isExternalPlayerRunning)
             self.isExternalPlayerRunning = False
             self.skipKillAt__evEnd = False

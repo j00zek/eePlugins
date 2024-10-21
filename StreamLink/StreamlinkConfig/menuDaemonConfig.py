@@ -40,14 +40,27 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         self.DoBuildList.stop()
         Mlist = []
         if not os.path.exists('/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/NoZapWrappers'):
-            Mlist.append(getConfigListEntry('\c00289496' + "*** Ten system WSPIERA wrappery :) ***"))
+            wrapperInfo = ''
+            if not os.path.exists('/usr/lib/enigma2/python/Plugins/Extensions/YTDLPWrapper'):
+                wrapperInfo += ' - brak YTDLPWrapper'
+            if not os.path.exists('/usr/lib/enigma2/python/Plugins/Extensions/YTDLWrapper'):
+                if wrapperInfo == '':
+                    wrapperInfo += ' - brak YTDLWrapper'
+                else:
+                    wrapperInfo += ', YTDLWrapper'
+            if not os.path.exists('/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkWrapper'):
+                if wrapperInfo == '':
+                    wrapperInfo += ' - brak StreamlinkWrapper'
+                else:
+                    wrapperInfo += ', StreamlinkWrapper'
+            Mlist.append(getConfigListEntry('\c00289496' + "*** Ten system WSPIERA wrappery" + wrapperInfo + " ***"))
         else:
             Mlist.append(getConfigListEntry('\c00981111' + "*** Ten system NIE wspiera wrapperów, korzystaj TYLKO z demona (127.0.0.1 w liście)!!! ***"))
         Mlist.append(getConfigListEntry("Aktywacja:", config.plugins.streamlinkSRV.enabled, 'streamlinkSRV.enabled'))
         if config.plugins.streamlinkSRV.enabled.value:
             Mlist.append(getConfigListEntry("Tryb pracy streamlinka:", config.plugins.streamlinkSRV.binName, 'streamlinkSRV.binName'))
-            if config.plugins.streamlinkSRV.binName.value == 'streamlinkSRV':
-                Mlist.append(getConfigListEntry("Aktywny odtwarzacz streamlinka:", config.plugins.streamlinkSRV.SRVmode, 'streamlinkSRV.SRVmode'))
+            #if config.plugins.streamlinkSRV.binName.value == 'streamlinkSRV':
+            #    Mlist.append(getConfigListEntry("Aktywny odtwarzacz streamlinka:", config.plugins.streamlinkSRV.SRVmode, 'streamlinkSRV.SRVmode'))
             #Mlist.append(getConfigListEntry("Aktywny odtwarzacz materiałów DRM:", config.plugins.streamlinkSRV.DRMmode, 'streamlinkSRV.DRMmode'))
             Mlist.append(getConfigListEntry(_("stop deamon on standby:"), config.plugins.streamlinkSRV.StandbyMode))
         #KONFIGURACJA SERVICEAPP
@@ -58,10 +71,11 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         #KONFIGURACJA LOGOWANIA
         Mlist.append(getConfigListEntry(" "))
         Mlist.append(getConfigListEntry('\c00489426' + "*** Konfiguracja logowania - WŁĄCZ wszystko ***"))
+        Mlist.append(getConfigListEntry("Włącz dziennik debugowania", config.crash.enabledebug))
         try:
             Mlist.append(getConfigListEntry("Włącz gadatliwy dziennik debugowania", config.crash.debugLevel))
         except Exception:
-            Mlist.append(getConfigListEntry("Włącz dziennik debugowania", config.crash.enabledebug))
+            pass
         Mlist.append(getConfigListEntry("Lokalizacja logów", config.crash.debug_path))
         Mlist.append(getConfigListEntry("Awaria obsługi pythona", config.crash.bsodpython))
         Mlist.append(getConfigListEntry("Dołącz dane ładowania ekranu", config.crash.debugScreens))

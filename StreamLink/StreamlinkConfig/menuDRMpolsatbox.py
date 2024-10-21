@@ -59,6 +59,15 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         elif open('/etc/streamlink/pgobox/password','r').read().strip() == '':
             Mlist.append(getConfigListEntry('\c00981111' + 'Nie wpisano hasła w pliku password' , config.plugins.streamlinkSRV.streamlinkconfig))
         else:
+            #info
+            if os.path.exists('/etc/enigma2/userbouquet.polsatgo.tv'):
+                fc = open('/etc/enigma2/userbouquet.polsatgo.tv','r').read()
+                if 'http%3a//cdmplayer' in fc:
+                    Mlist.append(getConfigListEntry('\c00f2ec73' + "Obecnie kanały bukietu polsatgo korzystają z odtwarzacza zewnętrznego"))
+                else:
+                    Mlist.append(getConfigListEntry('\c00f2ec73' + "Obecnie kanały bukietu polsatgo korzystają z serviceapp"))
+
+
             Mlist.append(getConfigListEntry("Wpisana w pliku 'username' nazwa użytkownika: '%s'" % readCFG('pgobox/username')))
             Mlist.append(getConfigListEntry("Wpisane w pliku 'password' hasło: '%s'" % readCFG('pgobox/password')))
             if readCFG('pgobox/klient') == 'iCOK':
@@ -201,9 +210,9 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         self.setTitle(self.setup_title)
         
         if os.path.exists("/usr/lib/enigma2/python/Plugins/SystemPlugins/ServiceApp/serviceapp.so"):
-            self.choicesList = [("gstreamer (root 4097)","4097"),("ServiceApp gstreamer (root 5001)","5001"), ("ServiceApp ffmpeg (root 5002)","5002"), ("Odtwarzacz zewnętrzny","4097e")]
+            self.choicesList = [("Odtwarzacz zewnętrzny (zalecany)","1e"), ("gstreamer (root 4097)","4097"),("ServiceApp gstreamer (root 5001)","5001"), ("ServiceApp ffmpeg (root 5002)","5002")]
         else:
-            self.choicesList = [("gstreamer (root 4097)","4097"),(_("ServiceApp not installed!"), None)]
+            self.choicesList = [("Odtwarzacz zewnętrzny (zalecany)","1e"), ("gstreamer (root 4097)","4097"),(_("ServiceApp not installed!"), None)]
         
     def changedEntry(self):
         DBGlog('%s' % 'changedEntry()')

@@ -1209,7 +1209,7 @@ class IPLA(object):
             title = self.decode_byte(item.get('title', ''))
             img = self.decode_byte(item.get('img', ''))
             data += '\n#EXTINF:-1,{}\nplugin://plugin.video.pgobox/?mode=playtvs&url={}&page=0&moviescount=0&movie=True&name={}&image={}'.format(list_title, channelid, title, img)
-            dataE2 += 'http%3a//wvd%3a8078/plugin.video.pgobox/main.py%3fmode=playtvs&url=' + '%s:%s\n' % (channelid, title) #j00zek for E2 bouquets
+            dataE2 += 'plugin.video.pgobox/main.py%3fmode=playtvs&url=' + '%s:%s\n' % (channelid, title) #j00zek for E2 bouquets
 
         f = xbmcvfs.File(os.path.join(path, filename+'.m3u'), 'w')
         f.write(data)
