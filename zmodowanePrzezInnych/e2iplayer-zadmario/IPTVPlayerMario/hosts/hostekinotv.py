@@ -476,7 +476,7 @@ class EkinoTv(CBaseHostClass, CaptchaHelper):
             printDBG("#################################################################")
 
         if self.cm.isValidUrl(url):
-            urlTab = self.up.getVideoLinkExt(url)
+            urlTab = self.up.getVideoLinkExt(strwithmeta(url, {'Referer': baseUrl}))
         return urlTab
 
     def getLinksForFavourite(self, favData):
