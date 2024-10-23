@@ -267,34 +267,31 @@ class SLeventsWrapper:
         self.onClose = []
         self.myCDM = None
         self.deviceCDM = None
-        self.isExternalPlayerRunning = False
         self.ActiveExternalPlayer = ''
         self.skipKillAt__evEnd = False
-        self.LastManagedServiceString = ""
+        self.LastServiceString = ""
         self.RestartServiceTimer = eTimer()
         self.RestartServiceTimer.callback.append(self.__restartServiceTimerCB)
         self.LastPlayedService = None
         self.__event_tracker = ServiceEventTracker(screen=self, eventmap={iPlayableService.evStart: self.__evStart, iPlayableService.evEnd: self.__evEnd})
         return
     
-    def __killExternalPlayer(self, isExternalPlayerRunning, forceKill = False):
+    def __killExternalPlayer(self, ExternalPlayerToKill = ''):
         cmd = ''
-        try:
-            for proc in os.listdir('/proc'):
-                procExe = os.path.join('/proc', proc, 'exe')
-                if os.path.exists(procExe):
-                    procRealPath = os.path.realpath(procExe)
-                    if 'exteplayer3' in procRealPath:
-                        cmd = '/usr/bin/killall exteplayer3;'
-                    #elif 'cdmeplayer3' in procRealPath:
-                    #    cmd = '/usr/bin/killall cdmeplayer3;'
-        except Exception:
-            pass
-        if isExternalPlayerRunning or forceKill:
-            cmd += '/usr/bin/killall -q cdmeplayer3'
-            isExternalPlayerRunning = False
-        if cmd != '':
-            safeSubprocessCMD(cmd)
+        if ExternalPlayerToKill == '': 
+            try:
+                for proc in os.listdir('/proc'):
+                    procExe = os.path.join('/proc', proc, 'exe')
+                    if os.path.exists(procExe):
+                        procRealPath = os.path.realpath(procExe)
+                        if 'exteplayer3' in procRealPath:
+                            safeSubprocessCMD('/usr/bin/killall -q exteplayer3')
+                            break
+            except Exception:
+                pass
+        else:
+            safeSubprocessCMD('/usr/bin/killall -q %s' % ExternalPlayerToKill)
+            self.ActiveExternalPlayer = ''
 
     def __restartServiceTimerCB(self):
         #print("[SLeventsWrapper.__restartServiceTimerCB] >>>")
@@ -337,7 +334,6 @@ class SLeventsWrapper:
     
     def __evStart(self):
         print("[SLeventsWrapper.__evStart] >>>")
-        #self.__killExternalPlayer(self.isExternalPlayerRunning)
         if self.myCDM is None:
             try:
                 import pywidevine.cdmdevice.privatecdm
@@ -355,16 +351,19 @@ class SLeventsWrapper:
                 if len(serviceList) > 10:
                     url = serviceList[10].strip().lower()
                     if url == '':
-                        self.LastManagedServiceString = ""
-                        if self.isExternalPlayerRunning:
-                            self.__killExternalPlayer(self.isExternalPlayerRunning)
+                        self.__killExternalPlayer(self.ActiveExternalPlayer)
+                        self.LastServiceString = ''
                     else:
-                        if self.LastManagedServiceString == CurrentserviceString:
-                            print('[SLeventsWrapper.__evStart] LastManagedServiceString = CurrentserviceString, nothing to do')
+                        if self.LastServiceString == CurrentserviceString:
+                            print('[SLeventsWrapper.__evStart] LastServiceString = CurrentserviceString, nothing to do')
                             return
-                        self.LastManagedServiceString = CurrentserviceString
-                        if self.myCDM != False and self.myCDM.doWhatYouMustDo(url):
-                            self.isExternalPlayerRunning = True
+                        self.LastServiceString = CurrentserviceString
+                        if url.startswith('http%3a//127.0.0.1'):
+                            print('[SLeventsWrapper.__evStart] local URL (127.0.0.1), nothing to do')
+                            return
+                        elif self.myCDM != False and self.myCDM.doWhatYouMustDo(url):
+                                self.ActiveExternalPlayer = 'exteplayer3'
+                                return
                         elif url.startswith('http%3a//cdmplayer/'):
                             if self.deviceCDM is None: #tutaj, zeby bez sensu nie ladować jak ktos nie uzywa
                                 try:
@@ -374,32 +373,38 @@ class SLeventsWrapper:
                                     self.deviceCDM = False
                             if self.deviceCDM != False and self.deviceCDM.tryToDoSomething(url):
                                 self.ActiveExternalPlayer = 'cdmeplayer3'
-                                self.isExternalPlayerRunning = True
                                 #tryToDoSomething take time to proceed and initiate player.
                                 # so we need to ...
                                 #   - mark this to properly manage __evEnd eventmap (if not managed, killed process & black screen)
                                 #   - stop enigma player (if not stopped only back screen)
                                 self.RestartServiceTimer.start(100, True)
+                            return
                         elif url.startswith('http%3a//slplayer/'):
                             self.ActiveExternalPlayer = 'exteplayer3'
                             cmd2run = []
                             cmd2run.extend(['/usr/bin/killall -q cdmeplayer3;'])
                             cmd2run.extend(['/usr/bin/killall -q exteplayer3;'])
                             cmd2run.extend(['/usr/sbin/streamlink'])
-                            cmd2run.extend(['-l','none','-p','/usr/bin/exteplayer3','--player-http','--verbose-player',"'%s'" % url.replace('http%3a//slplayer/',''), 'best'])
+                            cmd2run.extend(['-l','none'])
+                            if os.path.exists('/iptvplayer_rootfs/usr/bin/exteplayer3'): #wersja sss jest chyba lepsza, jak mamy to ją użyjmy
+                                cmd2run.extend(['-p','/iptvplayer_rootfs/usr/bin/exteplayer3'])
+                            else:
+                                cmd2run.extend(['-p','/usr/bin/exteplayer3'])
+                            cmd2run.extend(['--player-http','--verbose-player',"'%s'" % url.replace('http%3a//slplayer/',''), 'best'])
                             safeSubprocessCMD(' '.join(cmd2run))
                             self.RestartServiceTimer.start(100, True)
+                            return
                         else:
-                            self.__killExternalPlayer(self.isExternalPlayerRunning, True)
+                            self.__killExternalPlayer(self.ActiveExternalPlayer)
         except Exception as e:
             print('[SLeventsWrapper.__evStart] exception:', str(e))
 
     def __evEnd(self):
-        print("[SLeventsWrapper.__evEnd] >>> self.isExternalPlayerRunning=%s" % str(self.isExternalPlayerRunning))
-        print("[SLeventsWrapper.__evEnd] >>> self.skipKillAt__evEnd=%s" % str(self.skipKillAt__evEnd))
-        if not self.skipKillAt__evEnd and self.isExternalPlayerRunning:
-            print("[SLeventsWrapper.__evEnd] >>> __killExternalPlayer run")
-            self.RestartServiceTimer.stop()
-            self.__killExternalPlayer(self.isExternalPlayerRunning)
-            self.isExternalPlayerRunning = False
-            self.skipKillAt__evEnd = False
+        if 0:
+            print("[SLeventsWrapper.__evEnd] >>> self.skipKillAt__evEnd=%s" % str(self.skipKillAt__evEnd))
+            if not self.skipKillAt__evEnd:
+                print("[SLeventsWrapper.__evEnd] >>> __killExternalPlayer run")
+                self.RestartServiceTimer.stop()
+                self.__killExternalPlayer(self.ActiveExternalPlayer)
+                self.skipKillAt__evEnd = False
+        return
