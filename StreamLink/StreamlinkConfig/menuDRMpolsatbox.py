@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from Plugins.Extensions.StreamlinkConfig.__init__ import mygettext as _ , readCFG , DBGlog
+from Plugins.Extensions.StreamlinkConfig.__init__ import mygettext as _ , readCFG
 from Plugins.Extensions.StreamlinkConfig.version import Version
 from Plugins.Extensions.StreamlinkConfig.plugins.azmanIPTVsettings import get_azmanIPTVsettings
 import os, time, sys
@@ -20,7 +20,7 @@ try:
     from emukodi.xbmcE2 import *
     from emukodi.e2Console import emukodiConsole
 except Exception as e:
-    print('AQQ ERROR', str(e))
+    print('[SLK] błąd ładowania emukodi', str(e))
     addons_path = 'ERROR'
     emukodi_path = 'ERROR'
     emukodiConsole = Console
@@ -70,6 +70,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
 
             Mlist.append(getConfigListEntry("Wpisana w pliku 'username' nazwa użytkownika: '%s'" % readCFG('pgobox/username')))
             Mlist.append(getConfigListEntry("Wpisane w pliku 'password' hasło: '%s'" % readCFG('pgobox/password')))
+            #
             if readCFG('pgobox/klient') == 'iCOK':
                 Mlist.append(getConfigListEntry("Wpisany typ klienta iCOK (konto w iPolsat Box)"))
             elif readCFG('pgobox/klient') == 'polsatbox':
@@ -120,7 +121,6 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         return Mlist
     
     def __init__(self, session, args=None):
-        DBGlog('%s' % '__init__')
         self.doAction = None
         self.wybranyFramework = '4097'
         if os.path.exists('/usr/sbin/streamlinkSRV') and os.path.islink('/usr/sbin/streamlinkSRV') and 'StreamlinkConfig/' in os.readlink('/usr/sbin/streamlinkSRV'):
@@ -182,7 +182,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
             self.close(None)
         
     def refreshBuildList(self, ret = False):
-        DBGlog('refreshBuildList >>>')
+        #print('refreshBuildList >>>')
         self["config"].list = self.buildList()
         self.DoBuildList.start(50, True)
         
@@ -215,16 +215,15 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
             self.choicesList = [("Odtwarzacz zewnętrzny (zalecany)","1e"), ("Odtwarzacz zewnętrzny (Vu+)","4097e"), ("gstreamer (root 4097)","4097"),(_("ServiceApp not installed!"), None)]
         
     def changedEntry(self):
-        DBGlog('%s' % 'changedEntry()')
+        #print('%s' % 'changedEntry()')
         try:
             for x in self.onChangedEntry:
                 x()
         except Exception as e:
-            DBGlog('%s' % str(e))
+            print('[SLK] %s' % str(e))
 
     def selectionChanged(self):
-        if 0:
-            DBGlog('%s' % 'selectionChanged(%s)' % self["config"].getCurrent()[0])
+        pass
 
     def getCurrentEntry(self):
         return self["config"].getCurrent()[0]
@@ -237,7 +236,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         return SetupSummary
 
     def Okbutton(self):
-        DBGlog('%s' % 'Okbutton')
+        #print('%s' % 'Okbutton')
         try:
             self.doAction = None
             curIndex = self["config"].getCurrentIndex()
@@ -249,11 +248,11 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                     from Screens.VirtualKeyBoard import VirtualKeyBoard
                     self.session.openWithCallback(self.OkbuttonTextChangedConfirmed, VirtualKeyBoard, title=(currInfo), text = currItem.value)
                 elif currItem == config.plugins.streamlinkSRV.streamlinkEMUKODIconfig: #bouquets based on KODI plugins
-                    DBGlog('currItem == config.plugins.streamlinkSRV.streamlinkEMUKODIconfig')
+                    #print('currItem == config.plugins.streamlinkSRV.streamlinkEMUKODIconfig')
                     self.emuKodiActions(selectedItem)
                     return
         except Exception as e:
-            DBGlog('%s' % str(e))
+            print('[SLK] %s' % str(e))
         
     def cleanBouquets_tvradio(self): #clean bouquets.tv from non existing files
         for TypBukietu in('/etc/enigma2/bouquets.tv','/etc/enigma2/bouquets.radio'):
@@ -269,20 +268,20 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
             
     def OkbuttonTextChangedConfirmed(self, ret ):
         if ret is None:
-            DBGlog("OkbuttonTextChangedConfirmed(ret ='%s')" % str(ret))
+            print("[SLK] OkbuttonTextChangedConfirmed(ret ='%s')" % str(ret))
         else:
             try:
                 curIndex = self["config"].getCurrentIndex()
                 self["config"].list[curIndex][1].value = ret
             except Exception as e:
-                DBGlog('%s' % str(e))
+                print('[SLK] %s' % str(e))
 
     def reloadBouquets(self):
         from enigma import eDVBDB
         eDVBDB.getInstance().reloadBouquets()
         
     def retFromCMD(self, ret = False):
-        DBGlog('retFromCMD >>>')
+        #print('[SLK] retFromCMD >>>')
         self.cleanBouquets_tvradio()
         self.reloadBouquets()
         msg = _("Bouquets has been reloaded")
@@ -315,12 +314,12 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
             if len(emuKodiCmdsList) > 0:
                 cleanWorkingDir()
                 log("===== %s - %s ====" % (dostawca, akcja))
-                DBGlog('\n'.join(emuKodiCmdsList))
+                print('[SLK]', '\n'.join(emuKodiCmdsList))
                 self.session.openWithCallback(self.emuKodiConsoleCallback ,emukodiConsole, title = "SL %s %s-%s" % (Version, 'EmuKodi', dostawca), 
                                                 cmdlist = emuKodiCmdsList, closeOnSuccess = autoClose)
 
     def emuKodiActions(self, selectedItem):
-        DBGlog('emuKodiActions(%s)' % str(selectedItem))
+        print('[SLK] emuKodiActions(%s)' % str(selectedItem))
         if len(selectedItem) < 3:
             self.session.openWithCallback(self.doNothing,MessageBox, 'Nie wiem co zrobić ;)', MessageBox.TYPE_INFO, timeout = 5)
             return

@@ -39,13 +39,6 @@ config.plugins.streamlinkSRV.downloadBouquet  = NoSave(ConfigNothing())
 config.plugins.streamlinkSRV.unmanagedBouquet = NoSave(ConfigNothing())
 config.plugins.streamlinkSRV.VLCusingLUA      = NoSave(ConfigNothing())
 
-config.plugins.streamlinkSRV.One   = NoSave(ConfigNothing())
-config.plugins.streamlinkSRV.Two   = NoSave(ConfigNothing())
-config.plugins.streamlinkSRV.Three = NoSave(ConfigNothing())
-config.plugins.streamlinkSRV.Four  = NoSave(ConfigNothing())
-config.plugins.streamlinkSRV.Five  = NoSave(ConfigNothing())
-config.plugins.streamlinkSRV.Six   = NoSave(ConfigNothing())
-
 config.plugins.streamlinkSRV.enabled = ConfigYesNo(default = False)
 config.plugins.streamlinkSRV.logLevel = ConfigSelection(default = "debug", choices = [("none", _("none")),
                                                                                     ("info", _("info")),
@@ -84,5 +77,5 @@ config.plugins.streamlinkSRV.WPvideoDelay = ConfigSelection(default = "0", choic
                                                                                       ("1.0", _("by %s s." % '1.0')), ("5.0", _("by %s s." % '5.0'))])
 
 def DBGlog(text):
-    print('StreamlinkConfiguration: %s' % text)
-    open("/tmp/StreamlinkConfig.log", "a").write('%s\n' % str(text))
+    print('[SLK]', str(text))
+    #open("/tmp/StreamlinkConfig.log", "a").write('%s\n' % str(text))

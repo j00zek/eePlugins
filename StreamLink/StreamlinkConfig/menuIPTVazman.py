@@ -18,15 +18,6 @@ from Screens.MessageBox import MessageBox
 from Screens.Screen import Screen
 from Screens.Setup import SetupSummary
 
-try:
-    from emukodi.xbmcE2 import *
-    from emukodi.e2Console import emukodiConsole
-except Exception as e:
-    print('AQQ ERROR', str(e))
-    addons_path = 'ERROR'
-    emukodi_path = 'ERROR'
-    emukodiConsole = Console
-    
 #### streamlink config /etc/streamlink/config ####
 def getFFlist():
     ffList = []
@@ -76,7 +67,6 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                     <widget name="key_blue"   position="500,350" zPosition="2" size="150,30" foregroundColor="blue" valign="center" halign="left" font="Regular;22" transparent="1" />
                   </screen>"""
     def buildList(self):
-        DBGlog('buildList >>> self.VisibleSection = %s' % self.VisibleSection )
         self.DoBuildList.stop()
         Mlist = []
         # https://github.com/azman26
@@ -98,7 +88,6 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
     def __init__(self, session, args=None):
         DBGlog('%s' % '__init__')
         self.doAction = None
-        self.VisibleSection = 0
         if os.path.exists('/usr/sbin/streamlinkSRV') and os.path.islink('/usr/sbin/streamlinkSRV') and 'StreamlinkConfig/' in os.readlink('/usr/sbin/streamlinkSRV'):
             self.mySL = True
         else:
@@ -162,7 +151,6 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
             os.system('%s stop' % config.plugins.streamlinkSRV.binName.value)
             if config.plugins.streamlinkSRV.enabled.value:
                 os.system('%s start' % config.plugins.streamlinkSRV.binName.value)
-            self.VisibleSection = 0
             self.close(None)
         
     def refreshBuildList(self, ret = False):
@@ -186,26 +174,16 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
             self.session.openWithCallback(self.doNothing ,Console, title = mtitle, cmdlist = [ cmd ])
         
     def exit(self):
-        self.VisibleSection = 0
         self.close(None)
         
     def prevConf(self):
-        DBGlog('prevConf >>> VisibleSection = %s' % self.VisibleSection)
-        self.VisibleSection -= 1
-        if self.VisibleSection < 1:
-            self.VisibleSection = 5
         self.refreshBuildList()
         
     def nextConf(self):
-        DBGlog('nextConf >>> VisibleSection = %s' % self.VisibleSection)
-        self.VisibleSection += 1
-        if self.VisibleSection > 5:
-            self.VisibleSection = 1
         self.refreshBuildList()
     
     def layoutFinished(self):
         print('layoutFinished')
-        self.VisibleSection = 0
         self.DoBuildList.start(10, True)
         self.setTitle(self.setup_title)
         
@@ -248,26 +226,6 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                 if isinstance(currItem, ConfigText):
                     from Screens.VirtualKeyBoard import VirtualKeyBoard
                     self.session.openWithCallback(self.OkbuttonTextChangedConfirmed, VirtualKeyBoard, title=(currInfo), text = currItem.value)
-                elif currItem == config.plugins.streamlinkSRV.One:
-                    if self.VisibleSection == 1: self.VisibleSection = 0
-                    else: self.VisibleSection = 1
-                    self.refreshBuildList()
-                elif currItem == config.plugins.streamlinkSRV.Two:
-                    if self.VisibleSection == 2: self.VisibleSection = 0
-                    else: self.VisibleSection = 2
-                    self.refreshBuildList()
-                elif currItem == config.plugins.streamlinkSRV.Three:
-                    if self.VisibleSection == 3: self.VisibleSection = 0
-                    else: self.VisibleSection = 3
-                    self.refreshBuildList()
-                elif currItem == config.plugins.streamlinkSRV.Four:
-                    if self.VisibleSection == 4: self.VisibleSection = 0
-                    else: self.VisibleSection = 4
-                    self.refreshBuildList()
-                elif currItem == config.plugins.streamlinkSRV.Five:
-                    if self.VisibleSection == 5: self.VisibleSection = 0
-                    else: self.VisibleSection = 5
-                    self.refreshBuildList()
                 elif currItem == config.plugins.streamlinkSRV.WPbouquet:
                     if config.plugins.streamlinkSRV.WPusername.value == '' or config.plugins.streamlinkSRV.WPpassword.value == '':
                         self.session.openWithCallback(self.doNothing,MessageBox, _("Username & Password are required!"), MessageBox.TYPE_INFO, timeout = 5)

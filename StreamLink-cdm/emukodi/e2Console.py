@@ -102,7 +102,7 @@ class emukodiConsole(Screen):
             self["text"].setText(myText)
             #if lastpage:
             self["text"].lastPage()
-            print('[emukodiConsole.runFinished(errorOcurred=%s)] displayed text:\n %s' % (self.errorOcurred, myText) )
+            print('[SLK]>[emukodiConsole.runFinished(errorOcurred=%s)] displayed text:\n %s' % (self.errorOcurred, myText) )
             if self.finishedCallback is not None:
                 self.finishedCallback()
             if not self.errorOcurred and self.closeOnSuccess:

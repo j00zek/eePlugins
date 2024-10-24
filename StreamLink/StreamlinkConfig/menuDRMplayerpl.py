@@ -21,7 +21,7 @@ try:
     from emukodi.xbmcE2 import *
     from emukodi.e2Console import emukodiConsole
 except Exception as e:
-    print('AQQ ERROR', str(e))
+    print('[SLK] błąd ładowania emukodi', str(e))
     addons_path = 'ERROR'
     emukodi_path = 'ERROR'
     emukodiConsole = Console
