@@ -300,8 +300,8 @@ class ListItem:
 
 # xbmc/interfaces/python/xbmcmodule/dialog.cpp
 class Dialog:
-    def notification(self, heading, line1, line2=None, line3=None):
-        print("Dialog().Notification: %s\n" % [heading, line1, line2, line3])
+    def notification(self, heading, message, icon=None, time=None, sound=None):
+        print("Dialog().Notification: %s\n" % [heading, message, icon])
         
     def ok(self, heading, line1, line2=None, line3=None):
         """Show a dialog 'OK'."""

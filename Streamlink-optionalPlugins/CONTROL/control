@@ -1,0 +1,13 @@
+Package: enigma2-plugin-extensions--j00zeks-streamlink-optional-plugins
+Priority: optional
+Section: utils
+Depends: enigma2-plugin-extensions--j00zeks-streamlink-configurator
+Description: Dodatkowe wtyczki streamlinka raczej nie uzywane w Polsce
+Maintainer: j00zek
+Source: http://github.com/j00zek/eePlugins
+Version: 24.10.29.1914
+Architecture: all
+DestinationPath: /usr/lib/enigma2/python/Plugins/Extensions
+ExcludeFolder: usr/lib/enigma2/python/Plugins/Extensions/scripts
+RunScriptBeforeBuild: 
+BuildType: python310

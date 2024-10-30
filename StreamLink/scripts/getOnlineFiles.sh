@@ -2,6 +2,7 @@
 myPath=$(dirname $0)
 myAbsPath=$(readlink -fn "$myPath")
 SLpath=$myAbsPath/../StreamlinkConfig
+SLoptionalPluginsPath=$myAbsPath/../../Streamlink-optionalPlugins/StreamlinkConfig/bin/site-packages/streamlink/plugins
 #echo $myAbsPath
 
 rm -rf ~/streamlink-master* 2 >/dev/null
@@ -9,6 +10,23 @@ rm -rf ~/streamlink-master* 2 >/dev/null
 wget -q https://github.com/streamlink/streamlink/archive/refs/heads/master.zip -O ~/streamlink-master.zip
 [ $? -gt 0 ] && exit 0
 unzip -q ~/streamlink-master.zip
+#usuniecie gowna
+rm -f ~/streamlink-master/src/streamlink/plugins/vtvgo.* 2 > /dev/null
+#przeniesienie plugins do opcjonalnych
+rm -f $SLoptionalPluginsPath/*
+mv -f ~/streamlink-master/src/streamlink/plugins/* $SLoptionalPluginsPath
+#niektóre są potrzebne, więc z powrotem
+mv -f $SLoptionalPluginsPath/__init__.py ~/streamlink-master/src/streamlink/plugins/
+mv -f $SLoptionalPluginsPath/dash.py ~/streamlink-master/src/streamlink/plugins/
+mv -f $SLoptionalPluginsPath/hls.py ~/streamlink-master/src/streamlink/plugins/
+mv -f $SLoptionalPluginsPath/http.py ~/streamlink-master/src/streamlink/plugins/
+mv -f $SLoptionalPluginsPath/okru.py ~/streamlink-master/src/streamlink/plugins/
+mv -f $SLoptionalPluginsPath/tvp.py ~/streamlink-master/src/streamlink/plugins/
+mv -f $SLoptionalPluginsPath/tvtoya.py ~/streamlink-master/src/streamlink/plugins/
+mv -f $SLoptionalPluginsPath/vk.py ~/streamlink-master/src/streamlink/plugins/
+mv -f $SLoptionalPluginsPath/youtube.py ~/streamlink-master/src/streamlink/plugins/
+#mv -f $SLoptionalPluginsPath/ ~/streamlink-master/src/streamlink/plugins/
+$myAbsPath/../../build_ipk.sh "$myAbsPath/../../Streamlink-optionalPlugins" #> /dev/null
 
 mkdir -p $SLpath/bin/site-packages/streamlink/
 rm -rf $SLpath/bin/site-packages/streamlink/*
@@ -95,7 +113,7 @@ rm -rf ~/streamlink-drm-master* 2 >/dev/null
     sed -i 's/\(^except ImportError\)\(:.*\)/\1 as e\2\n    print(str(e))\n/' $SLpath/bin/site-packages/streamlink/utils/l10n.py
   fi
 
-  #fix for DRM
+#fix for DRM
 echo "Modyfikacje do obsługi DRM..."
 sed -i 's/raise PluginError\(.*DRM"\)/log.debug\1/' $SLpath/bin/site-packages/streamlink/stream/dash/dash.py
 

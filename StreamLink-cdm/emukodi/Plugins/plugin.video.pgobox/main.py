@@ -469,7 +469,7 @@ class IPLA(object):
         if self.DEVICE_ID == '' or self.CLIENT_ID == '' or self.ID_ == '':
             self.createDatas()
 
-        print('logowanie() LOGGED="%s", klient="%s"' % (str(self.LOGGED), addon.getSetting('klient')))
+        print('logowanie() LOGGED="%s", wybrany klient="%s"' % (str(self.LOGGED), addon.getSetting('klient')))
 
 
         if self.LOGGED == 'true':
@@ -1377,14 +1377,19 @@ if __name__ == '__main__':
     elif mode=='login':
         set_setting('logged', 'true')
         klient = addon.getSetting('klient')
-        if klient == '' or (klient != 'polsatbox' and klient != 'iCOK'):
-            set_setting('klient', 'polsatbox')
-            IPLA().logowanie()
-            if addon.getSetting('sesskey') == '':
-                set_setting('klient', 'iCOK')
-                IPLA().logowanie()
+        if klient == 'iCOK' or klient == 'polsatbox':
+            pass
+        elif klient.lower().strip() == 'icok':
+            klient = 'iCOK'
+            set_setting('klient', klient)
+        elif klient.lower().strip() == 'polsatbox':
+            klient = 'polsatbox'
+            set_setting('klient', klient)
         else:
-            IPLA().logowanie()
+            klient = 'polsatbox'
+            set_setting('klient', klient)
+
+        IPLA().logowanie()
             
         addon.openSettings()
         xbmc.executebuiltin('Container.Refresh') 
