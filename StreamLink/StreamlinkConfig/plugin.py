@@ -3,7 +3,7 @@ from importlib import reload
 from Plugins.Plugin import PluginDescriptor
 from . import mygettext as _ , DBGlog
 
-import os, sys, subprocess
+import os, sys, subprocess, time
 
 
 import Screens.Standby
@@ -14,7 +14,6 @@ def safeSubprocessCMD(myCommand):
     if DBG: DBGlog('safeSubprocessCMD(%s)' % myCommand)
     with open("/proc/sys/vm/drop_caches", "w") as f: f.write("1\n") #for safety to not get GS due to lack of memory
     subprocess.Popen(myCommand, shell=True)
-    with open("/proc/sys/vm/drop_caches", "w") as f: f.write("1\n") #for safety to not get GS due to lack of memory
 
 def SLconfigLeaveStandbyInitDaemon():
     DBGlog('LeaveStandbyInitDaemon() >>>')
@@ -42,6 +41,12 @@ def sessionstart(reason, session = None):
     #cmds.append("/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/bin/re-initiate.sh")
     cmds.append("[ `ps -ef|grep -v grep|grep -c streamlinkproxySRV` -gt 0 ] && streamlinkproxySRV stop")
     cmds.append("[ `ps -ef|grep -v grep|grep -c streamlinkSRV` -gt 0 ] && streamlinkSRV stop")
+    cmds.append('killall -q streamlink')
+    cmds.append('killall -q exteplayer3')
+    cmds.append('killall -q ffmpeg')
+    cmds.append('rm -f /tmp/ffmpeg-*')
+    cmds.append('rm -f /tmp/streamlinkpipe-*')
+    cmds.append('[ -e /tmp/stream.ts ] && rm -f /tmp/stream.ts')
     if config.plugins.streamlinkSRV.enabled.value:
         cmds.append("%s restart" % config.plugins.streamlinkSRV.binName.value)
     safeSubprocessCMD(';'.join(cmds))
@@ -258,82 +263,114 @@ from Components.ServiceEventTracker import ServiceEventTracker#, InfoBarBase
 from enigma import iPlayableService#, eServiceCenter, iServiceInformation
 #import ServiceReference
 from enigma import eTimer
+import traceback
 
 class SLeventsWrapper:
     def __init__(self, session):
-        print("[SLeventsWrapper.__init__] >>>")
+        #print("[SLK][SLeventsWrapper.__init__] >>>")
         self.session = session
         self.service = None
         self.onClose = []
         self.myCDM = None
         self.deviceCDM = None
-        self.ActiveExternalPlayer = ''
-        self.skipKillAt__evEnd = False
+        self.runningProcessName = ''
+        self.runningPlayer = None
+        self.ExtPlayerPID = 0
         self.LastServiceString = ""
         self.RestartServiceTimer = eTimer()
         self.RestartServiceTimer.callback.append(self.__restartServiceTimerCB)
         self.LastPlayedService = None
-        self.__event_tracker = ServiceEventTracker(screen=self, eventmap={iPlayableService.evStart: self.__evStart, iPlayableService.evEnd: self.__evEnd})
+        self.__event_tracker = ServiceEventTracker(screen=self, eventmap={iPlayableService.evStart: self.__evStart})
         return
+
+    def __findProcessRunningPID(self, ProcessName):
+        PID = 0
+        if ProcessName != '':
+            for procPID in os.listdir('/proc'):
+                procCMDline = os.path.join('/proc', procPID, 'cmdline')
+                if os.path.exists(procCMDline):
+                    if ProcessName in open(procCMDline, 'r').read():
+                        PID = procPID
+                        break
+        return int(PID)
     
-    def __killExternalPlayer(self, ExternalPlayerToKill = ''):
-        cmd = ''
-        if ExternalPlayerToKill == '': 
-            try:
-                for proc in os.listdir('/proc'):
-                    procExe = os.path.join('/proc', proc, 'exe')
-                    if os.path.exists(procExe):
-                        procRealPath = os.path.realpath(procExe)
-                        if 'exteplayer3' in procRealPath:
-                            safeSubprocessCMD('/usr/bin/killall -q exteplayer3')
-                            break
-            except Exception:
-                pass
+    def __getProcessRunningPID(self, ProcessName):
+        PID = 0
+        pname = '/var/run/%s.pid' % ProcessName
+        if os.path.exists(pname):
+            PID = open(pname , 'r').read().strip()
         else:
-            safeSubprocessCMD('/usr/bin/killall -q %s' % ExternalPlayerToKill)
-            self.ActiveExternalPlayer = ''
+            PID = self.__findProcessRunningPID(ProcessName)
+        return int(PID)
+    
+    def __killRunningPlayer(self):
+        # poniższe wyłącza playera i czyści bufor dvb, bez tego  mamy 5s opóźnienia
+        if not self.runningPlayer is None:
+            print('[SLeventsWrapper.__killRunningPlayer] self.runningPlayer is not None')
+            if self.runningPlayer.poll() is None: 
+                print('[SLeventsWrapper.__killRunningPlayer] sending play_stop to player')
+                self.runningPlayer.communicate(input="q\n")[0]
+                time.sleep(0.2)
+            if self.runningPlayer.poll() is None: 
+                print('[SLeventsWrapper.__killRunningPlayer] terminating player')
+                self.runningPlayer.terminate()
+                time.sleep(0.2)
+            if self.runningPlayer.poll() is None:
+                print('[SLeventsWrapper.__killRunningPlayer] player still running')
+            else:
+                self.runningPlayer = None
+
+    def __killRunningProcess(self):
+        #print('[SLK][SLeventsWrapper]__killRunningProcess self.runningProcessName="%s"' % self.runningProcessName)
+        self.__killRunningPlayer()
+        cmd2run = []
+        if self.runningProcessName != '':
+            slPID = self.__getProcessRunningPID(self.runningProcessName)
+            if slPID > 0:
+                cmd2run.append('kill %s' % slPID)
+                cmd2run.append('sleep 0.2') #wait sl to terminate subprocesses
+                #cmd2run.append('rm -f /tmp/streamlinkpipe-%s-*' % slPID)
+                safeSubprocessCMD(';'.join(cmd2run))
+            slPID = self.__findProcessRunningPID(self.runningProcessName)
+            if slPID == 0:
+                if os.path.exists('/var/run/%s.pid' % self.runningProcessName):
+                    os.remove('/var/run/%s.pid' % self.runningProcessName)
+                self.runningProcessName = ''
 
     def __restartServiceTimerCB(self):
         #print("[SLeventsWrapper.__restartServiceTimerCB] >>>")
         self.RestartServiceTimer.stop()
         if self.LastPlayedService is None:
             print("[SLeventsWrapper.__restartServiceTimerCB] self.LastPlayedService is None, stopping currently playing service")
-            self.skipKillAt__evEnd = True
             self.LastPlayedService = self.session.nav.getCurrentlyPlayingServiceReference()
             self.session.nav.stopService()
             self.restartServiceTimerCBCounter = 0
-            self.ExtPlayerStarted = False
-            self.RestartServiceTimer.start(1000, True)
+            self.ExtPlayerPID = 0
+            self.RestartServiceTimer.start(2000, True)
         else:
             #print("[SLeventsWrapper.__restartServiceTimerCB] self.LastPlayedService is NOT None")
             #waiting for exteplayer3 to start
-            for proc in os.listdir('/proc'):
-                try:
-                    procExe = os.path.join('/proc', proc, 'exe')
-                    if os.path.exists(procExe):
-                        procRealPath = os.path.realpath(procExe)
-                        #print("[SLeventsWrapper.__restartServiceTimerCB]", procRealPath)
-                        if 'exteplayer3' in procRealPath:
-                            self.ExtPlayerStarted = True
-                            #print('[SLeventsWrapper.__restartServiceTimerCB] Found in',procRealPath)
-                            break
-                except Exception as e:
-                    print("[SLeventsWrapper.__restartServiceTimerCB]  exception", str(e))
-            if self.ExtPlayerStarted == False and self.restartServiceTimerCBCounter < 21:
-                print("[SLeventsWrapper.__restartServiceTimerCB] waiting %s seconds for %s to start" % (self.restartServiceTimerCBCounter, self.ActiveExternalPlayer))
+            ExtPlayerPID = self.__findProcessRunningPID('exteplayer3')
+            if self.ExtPlayerPID == 0 and ExtPlayerPID > 0:
+                self.ExtPlayerPID = ExtPlayerPID
+            elif self.ExtPlayerPID > 0 and ExtPlayerPID == 0:
+                print("[SLK][SLeventsWrapper.__restartServiceTimerCB] running exteplayer3 exited unexpectly, end of waiting :(" )
+                return
+            if self.ExtPlayerPID == 0 and self.restartServiceTimerCBCounter < 21:
+                print("[SLK][SLeventsWrapper.__restartServiceTimerCB] waiting %s seconds for %s to start" % (self.restartServiceTimerCBCounter, self.runningProcessName))
                 self.restartServiceTimerCBCounter += 1
                 self.RestartServiceTimer.start(1000, True)
-            elif self.ExtPlayerStarted == True and self.restartServiceTimerCBCounter < 21:
-                print("[SLeventsWrapper.__restartServiceTimerCB] %s started, waiting another second to enable E2 player to see EPG data" % self.ActiveExternalPlayer)
+            elif self.ExtPlayerPID != 0 and self.restartServiceTimerCBCounter < 21:
+                print("[SLK][SLeventsWrapper.__restartServiceTimerCB] %s started, waiting another second to enable E2 player to see EPG data" % self.runningProcessName)
                 self.restartServiceTimerCBCounter += 222
                 self.RestartServiceTimer.start(1000, True)
             else:
-                print("[SLeventsWrapper.__restartServiceTimerCB] %s started, enabling E2 player to see EPG data" % self.ActiveExternalPlayer)
+                print("[SLeventsWrapper.__restartServiceTimerCB] %s started, enabling E2 player to see EPG data" % self.runningProcessName)
                 self.session.nav.playService(self.LastPlayedService)
                 self.LastPlayedService = None
     
     def __evStart(self):
-        print("[SLeventsWrapper.__evStart] >>>")
+        #print("[SLK][SLeventsWrapper.__evStart] >>>")
         if self.myCDM is None:
             try:
                 import pywidevine.cdmdevice.privatecdm
@@ -349,30 +386,36 @@ class SLeventsWrapper:
                 serviceList = CurrentserviceString.split(":")
                 print("[SLeventsWrapper.__evStart] serviceList=", serviceList)
                 if len(serviceList) > 10:
-                    url = serviceList[10].strip().lower()
+                    url = serviceList[10].strip()
                     if url == '':
-                        self.__killExternalPlayer(self.ActiveExternalPlayer)
+                        #print('[SLeventsWrapper.__evStart] url == ""')
+                        self.__killRunningProcess()
                         self.LastServiceString = ''
                     else:
                         if self.LastServiceString == CurrentserviceString:
-                            print('[SLeventsWrapper.__evStart] LastServiceString = CurrentserviceString, nothing to do')
+                            print('[SLK][SLeventsWrapper.__evStart] LastServiceString = CurrentserviceString, nothing to do')
                             return
                         self.LastServiceString = CurrentserviceString
                         if url.startswith('http%3a//127.0.0.1'):
-                            print('[SLeventsWrapper.__evStart] local URL (127.0.0.1), nothing to do')
+                            print('[SLK][SLeventsWrapper.__evStart] local URL (127.0.0.1), nothing to do')
                             return
-                        elif self.myCDM != False and self.myCDM.doWhatYouMustDo(url):
-                                self.ActiveExternalPlayer = 'exteplayer3'
+                        if self.myCDM != False and url.startswith('http%3a//cdm/') and self.myCDM.doWhatYouMustDo(url):
+                                self.runningPlayer = self.myCDM.player
+                                self.runningProcessName = 'streamlink'
                                 return
-                        elif url.startswith('http%3a//cdmplayer/'):
-                            if self.deviceCDM is None: #tutaj, zeby bez sensu nie ladować jak ktos nie uzywa
+                        self.__killRunningPlayer()#zatrzymuje uruchomiony z kontrolą podprocess, czyli de facto powyższe
+                        self.__killRunningProcess()
+                        if url.startswith('http%3a//cdmplayer/'):
+                            print("[SLeventsWrapper.__evStart] url.startswith('http%3a//cdmplayer/')")
+                            if self.deviceCDM is None: #tutaj, zeby bez sensu nie ladować jak ktos nie ma/nie uzywa
                                 try:
                                     import pywidevine.cdmdevice.cdmDevice
                                     self.deviceCDM = pywidevine.cdmdevice.cdmDevice.cdmDevice()
                                 except ImportError:
                                     self.deviceCDM = False
                             if self.deviceCDM != False and self.deviceCDM.tryToDoSomething(url):
-                                self.ActiveExternalPlayer = 'cdmeplayer3'
+                                self.runningPlayer = self.deviceCDM.player
+                                self.runningProcessName = 'streamlink'
                                 #tryToDoSomething take time to proceed and initiate player.
                                 # so we need to ...
                                 #   - mark this to properly manage __evEnd eventmap (if not managed, killed process & black screen)
@@ -380,11 +423,20 @@ class SLeventsWrapper:
                                 self.RestartServiceTimer.start(100, True)
                             return
                         elif url.startswith('http%3a//slplayer/'):
-                            self.ActiveExternalPlayer = 'exteplayer3'
+                            print("[SLeventsWrapper.__evStart] url.startswith('http%3a//slplayer/')")
+                            self.runningProcessName = 'streamlink'
                             cmd2run = []
-                            cmd2run.extend(['/usr/bin/killall -q cdmeplayer3;'])
-                            cmd2run.extend(['/usr/bin/killall -q exteplayer3;'])
-                            cmd2run.extend(['/usr/sbin/streamlink'])
+                            slPID = self.__getProcessRunningPID('streamlink')
+                            if slPID > 0:
+                                cmd2run.append('kill %s;' % slPID)
+                                cmd2run.append('sleep 0.2;') #wait sl to terminate subprocesses
+                                cmd2run.append('rm -f /var/run/%s.pid;' % slPID)
+                                #cmd2run.append('/usr/bin/killall -q exteplayer3;')
+                                #cmd2run.append('/usr/bin/killall -q ffmpeg;')
+                                #cmd2run.append('rm -f /tmp/streamlinkpipe-%s-*;' % slPID)
+                            if os.path.exists('/tmp/stream.ts'):
+                                cmd2run.append('rm -f /tmp/stream.ts;')
+                            cmd2run.append('/usr/sbin/streamlink')
                             cmd2run.extend(['-l','none'])
                             if os.path.exists('/iptvplayer_rootfs/usr/bin/exteplayer3'): #wersja sss jest chyba lepsza, jak mamy to ją użyjmy
                                 cmd2run.extend(['-p','/iptvplayer_rootfs/usr/bin/exteplayer3'])
@@ -394,17 +446,6 @@ class SLeventsWrapper:
                             safeSubprocessCMD(' '.join(cmd2run))
                             self.RestartServiceTimer.start(100, True)
                             return
-                        else:
-                            self.__killExternalPlayer(self.ActiveExternalPlayer)
         except Exception as e:
             print('[SLeventsWrapper.__evStart] exception:', str(e))
-
-    def __evEnd(self):
-        if 0:
-            print("[SLeventsWrapper.__evEnd] >>> self.skipKillAt__evEnd=%s" % str(self.skipKillAt__evEnd))
-            if not self.skipKillAt__evEnd:
-                print("[SLeventsWrapper.__evEnd] >>> __killExternalPlayer run")
-                self.RestartServiceTimer.stop()
-                self.__killExternalPlayer(self.ActiveExternalPlayer)
-                self.skipKillAt__evEnd = False
-        return
+            print(traceback.format_exc())

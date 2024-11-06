@@ -1,9 +1,6 @@
 #!/usr/bin/python3
-import os, sys
-from streamlink.jtools import *
-
+import os, subprocess, sys
 print('PRZYKLAD: streamlink -l debug [ -o /tmp/fileName] "url" best')
-cleanCMD(forceKill = True, KeepPID = os.getpid())
 
 idx = 0
 for argument in sys.argv:
@@ -18,8 +15,16 @@ for argument in sys.argv:
     argument = argument.replace('%3a',':')
     sys.argv[idx] = argument
     idx += 1
-#print sys.argv
+
+pid = os.getpid()
+fname = '/var/run/%s.pid' % os.path.basename(__file__).replace('.pyc', '').replace('.pyo', '').replace('.py', '')
+if os.path.exists(fname):
+    print('[%s] found, killing process' % fname )
+    pid2del = open(fname , 'r').read().strip()
+    subprocess.Popen('kill %s;sleep 0.3;rm -f /tmp/streamlinkpipe-%s-*' % (pid2del,pid2del), shell=True)
+    os.remove(fname)
+with open(fname , 'w') as f:
+    f.write(str(pid))
+    f.close()
 import streamlink_cli.main
 streamlink_cli.main.main()
-
-cleanCMD(forceKill = True)

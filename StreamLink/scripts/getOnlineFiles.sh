@@ -126,3 +126,10 @@ sed -i '/"hls_audio_select", "hls-audio-select", None),/a\    ("decryption_key",
 sed -i '/"ffmpeg-ffmpeg":.*/a\            "decryption_key": None,\n            "decryption_key_2": None,\n' $SLpath/bin/site-packages/streamlink/session/options.py
 
 sed -i 's/^\(import exceptiongroup.*\)/try: \1\nexcept Exception: pass\n/' $SLpath/bin/site-packages/streamlink/compat.py
+
+#fix for exeplayer3
+echo "Modyfikacje lepszej obsługi exeplayer3..."
+stdin=subprocess.PIPE
+sed -i 's/stdin=self\.stdin/stdin=subprocess.PIPE/' $SLpath/bin/site-packages/streamlink_cli/output/player.py
+sed -i '/stderr=self\.stderr,/a\            universal_newlines=True' $SLpath/bin/site-packages/streamlink_cli/output/player.py
+sed -i '/self\.http\.shutdown/i\            if self.player.poll() is None: self.player.communicate(input="q\\n")[0] # j00zek to flush dvb buffer' $SLpath/bin/site-packages/streamlink_cli/output/player.py
