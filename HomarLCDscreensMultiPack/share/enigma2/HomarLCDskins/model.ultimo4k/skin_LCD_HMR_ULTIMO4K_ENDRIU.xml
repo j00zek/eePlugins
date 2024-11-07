@@ -796,5 +796,145 @@ options="movetype=running,startpoint=0,direction=left,steptime=20,repeat=0,start
   <widget source="rec" render="Label" position="350,260 " size="190,60" font="VFD;55" foregroundColor="red" halign="center" valign="center" transparent="1"/>
 </screen>
 
+  <!-- QuickMenu -->
+<screen name="QuickMenuSummary" position="0,0" size="800,480" >
+<ePixmap position="0,0" zPosition="-10" size="800,480" pixmap="HomarLCDskins/Homar/Homar_1.png" transparent="1" alphatest="blend"/>
+  <ePixmap pixmap="lcd_icons/icon_time.png" position="545,35"  size="36,36" alphatest="blend" />
+  <widget source="global.CurrentTime" render="Label" position="598,8" size="100,72" font="DIGI; 72" transparent="1" halign="left">
+      <convert type="ClockToText">Format:%H</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="FixedLabel" text=":" font="DIGI; 72" position="676,20" size="16,72" halign="center" zPosition="3" valign="center" transparent="1">
+      <convert type="j00zekShareBlinkingClock" />
+      <convert type="ConditionalShowHide">Blink</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="667,8" size="100,72" font="DIGI; 72" transparent="1" halign="right">
+      <convert type="ClockToText">Format:%M</convert>
+    </widget>
+
+  <widget source="session.RecordState" render="FixedLabel" position="35,32" zPosition="3" size="74,44" text=" ">
+  <convert type="ConfigEntryTest">config.usage.during_recording,True,CheckSourceBoolean</convert>
+  <convert type="ConditionalShowHide" />
+  </widget>
+  <widget source="session.RecordState" render="Pixmap" pixmap="lcd_icons/icon_REC_red.png" position="35,32"  size="74,44" alphatest="blend">
+  <convert type="ConditionalShowHide" />
+  </widget>
+  <widget source="session.CurrentService" render="Pixmap" pixmap="lcd_icons/icon_CRYPT_orange.png" position="135,32"  size="60,44" alphatest="blend">
+  <convert type="ServiceInfo">IsCrypted</convert>
+  <convert type="ConditionalShowHide" />
+  </widget>
+  <widget source="session.CurrentService" render="Pixmap" pixmap="lcd_icons/icon_TELETEXT_yellow.png" position="220,32" size="66,52" alphatest="blend">
+  <convert type="ServiceInfo">HasTelext</convert>
+  <convert type="ConditionalShowHide" />
+  </widget>
+  <widget source="session.CurrentService" render="Pixmap" pixmap="lcd_icons/icon_16x9_blue.png" position="311,32" size="66,51" alphatest="blend">
+  <convert type="ServiceInfo">IsWidescreen</convert>
+  <convert type="ConditionalShowHide" />
+  </widget>
+  <widget source="session.CurrentService" render="Pixmap" pixmap="lcd_icons/icon_DOLBY_green.png" position="402,32" size="68,44" alphatest="blend">
+  <convert type="ServiceInfo">IsMultichannel</convert>
+  <convert type="ConditionalShowHide" />
+  </widget>
+  <widget source="parent.mainlist" render="j00zekLabel" position="20,75" size="760,180" font="Junegull;72" transparent="1" halign="center" valign="center" >
+  <convert type="StringListSelection" />
+  </widget>
+  <widget source="parent.sublist" render="j00zekLabel" position="20,220" size="760,180" font="Junegull;72" transparent="1" halign="center" valign="center" foregroundColor="HMRname" >
+  <convert type="StringListSelection" />
+  </widget>
+  <widget source="session.FrontendInfo" render="j00zekLabel" position="0,400" size="800,60" zPosition="3" font="Junegull;60" halign="center" valign="center" backgroundColor="black" transparent="1">
+    <convert type="j00zekModFrontendInfo2">ACTIVE_BUSY_AVAILABLE_TUNER_COLORS,0x0000FF00,0x00FFFF00,0x007F7F7F</convert>
+	</widget>
+	
+</screen>	
+
+<!-- SoftwareUpdate -->
+<screen name="SoftwareUpdateSummary" position="0,0" size="800,480" >
+<ePixmap position="0,0" zPosition="-10" size="800,480" pixmap="HomarLCDskins/Homar/Homar_1.png" transparent="1" alphatest="blend"/>
+  <ePixmap pixmap="lcd_icons/icon_time.png" position="545,35"  size="36,36" alphatest="blend" />
+  <widget source="global.CurrentTime" render="Label" position="598,8" size="100,72" font="DIGI; 72" transparent="1" halign="left">
+      <convert type="ClockToText">Format:%H</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="FixedLabel" text=":" font="DIGI; 72" position="676,20" size="16,72" halign="center" zPosition="3" valign="center" transparent="1">
+      <convert type="j00zekShareBlinkingClock" />
+      <convert type="ConditionalShowHide">Blink</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="667,8" size="100,72" font="DIGI; 72" transparent="1" halign="right">
+      <convert type="ClockToText">Format:%M</convert>
+    </widget>
+	<widget name="parent.title" position="20,75" size="760,180" font="Junegull;72" transparent="1" halign="center" valign="center" >
+	<convert type="StringListSelection" />
+  </widget>
+	<widget name="parent.list" position="20,220" size="760,180" font="Junegull;72" transparent="1" halign="center" valign="center" >
+	<convert type="StringListSelection" />
+  </widget>
+    <widget source="session.FrontendInfo" render="j00zekLabel" position="0,400" size="800,60" zPosition="3" font="Junegull;60" halign="center" valign="center" backgroundColor="black" transparent="1">
+    <convert type="j00zekModFrontendInfo2">ACTIVE_BUSY_AVAILABLE_TUNER_COLORS,0x0000FF00,0x00FFFF00,0x007F7F7F</convert>
+	</widget>
+	
+	</screen>
+	
+<!-- MSNweatherNP -->
+  <screen name="MSNweatherNPSummary" position="0,0" size="800,480" >
+  <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" zPosition="-10" size="800,480" pixmap="BlackHarmony/icons/BingPicOfTheDay.jpg" alphatest="blend">
+   <convert type="j00zekRefreshBingPicOfTheDay"></convert>
+    </widget>
+   <ePixmap position="0,0" zPosition="-10" size="800,480" pixmap="HomarLCDskins/Homar/Homar_8.png" transparent="1" alphatest="blend"/>
+   <widget source="session.j00zekMSNWeather" render="j00zekMSNWeatherPixmap" position="5,5" size="260,260" transparent="1" alphatest="blend" zPosition="5" >
+    <convert type="j00zekMSNWeather">weathericon,current</convert>
+    </widget>
+	<eLabel text="Temp." font="VFD3;85" halign="left" valign="center" position="280,10" size="505,85"  transparent="1" zPosition="5" foregroundColor="HMRname"/>
+	<widget source="session.j00zekMSNWeather" render="Label" position="280,10" size="505,85" foregroundColor="lemon" font="VFD3;98" halign="right" valign="center" noWrap="1" transparent="1" zPosition="5">
+ 		<convert type="j00zekMSNWeather">RUN|['currentData']['temperature']['valInfo']</convert>
+     </widget>
+	<eLabel text="Odcz." font="VFD3;73" halign="left" valign="center" position="280,100" size="505,85"  transparent="1" zPosition="5" foregroundColor="HMRname"/>
+	<widget source="session.j00zekMSNWeather" position="280,100" size="505,85" font="VFD3;78" render="Label" halign="right" valign="center" noWrap="1" transparent="1" zPosition="5">
+ 	<convert type="j00zekMSNWeather">RUN|['currentData']['feelslike']['valInfo']</convert>
+   </widget>
+   <eLabel text="Ciśni." position="280,180" size="505,85"  font="VFD3;73" halign="left" valign="center" transparent="1" zPosition="5" foregroundColor="HMRname"/>
+   <widget source="session.j00zekMSNWeather" render="Label" position="280,180" size="505,85" font="VFD3;78" zPosition="5" halign="right" valign="center" foregroundColor="green" transparent="1" noWrap="1">
+     <convert type="j00zekMSNWeather">RUN|['currentData']['pressure']['valInfo']</convert>
+     </widget>
+	<widget source="session.j00zekMSNWeather" render="j00zekModRunningText" 
+   options="movetype=running,startpoint=0,direction=left,steptime=70,repeat=0,startdelay=2000,always=0,oneshot=0" noWrap="1"  position="10,280" size="780,85" font="VFD;78" transparent="1" halign="center" valign="center" foregroundColor="#84aaf7"  zPosition="5">
+  <convert type="j00zekMSNWeather">temperature_text,current</convert>
+   </widget>
+   <widget source="session.j00zekMSNWeather" render="j00zekModRunningText" 
+   options="movetype=running,startpoint=0,direction=left,steptime=70,repeat=0,startdelay=2000,always=0,oneshot=0" noWrap="1" position="10,380" size="780,85" font="VFD3;75" transparent="1" halign="center" valign="center"   zPosition="5">
+    <convert type="j00zekMSNWeather">city</convert>
+   </widget>
+   
+ </screen>
+ 
+ <!-- MSNweatherNP advDailyDetails-->
+  <screen name="advDailyDetailsSummary" position="0,0" size="800,480" >
+  <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" zPosition="-10" size="800,480" pixmap="BlackHarmony/icons/BingPicOfTheDay.jpg" alphatest="blend">
+   <convert type="j00zekRefreshBingPicOfTheDay"></convert>
+    </widget>
+   <ePixmap position="0,0" zPosition="-10" size="800,480" pixmap="HomarLCDskins/Homar/Homar_8.png" transparent="1" alphatest="blend"/>
+   <widget source="session.j00zekMSNWeather" render="j00zekMSNWeatherPixmap" position="5,5" size="260,260" transparent="1" alphatest="blend" zPosition="5" >
+    <convert type="j00zekMSNWeather">weathericon,current</convert>
+    </widget>
+	<eLabel text="Temp." font="VFD3;85" halign="left" valign="center" position="280,10" size="505,85"  transparent="1" zPosition="5" foregroundColor="HMRname"/>
+	<widget source="session.j00zekMSNWeather" render="Label" position="280,10" size="505,85" foregroundColor="lemon" font="VFD3;98" halign="right" valign="center" noWrap="1" transparent="1" zPosition="5">
+ 		<convert type="j00zekMSNWeather">RUN|['currentData']['temperature']['valInfo']</convert>
+     </widget>
+	<eLabel text="Odcz." font="VFD3;73" halign="left" valign="center" position="280,100" size="505,85"  transparent="1" zPosition="5" foregroundColor="HMRname"/>
+	<widget source="session.j00zekMSNWeather" position="280,100" size="505,85" font="VFD3;78" render="Label" halign="right" valign="center" noWrap="1" transparent="1" zPosition="5">
+ 	<convert type="j00zekMSNWeather">RUN|['currentData']['feelslike']['valInfo']</convert>
+   </widget>
+   <eLabel text="Ciśni." position="280,180" size="505,85"  font="VFD3;73" halign="left" valign="center" transparent="1" zPosition="5" foregroundColor="HMRname"/>
+   <widget source="session.j00zekMSNWeather" render="Label" position="280,180" size="505,85" font="VFD3;78" zPosition="5" halign="right" valign="center" foregroundColor="green" transparent="1" noWrap="1">
+     <convert type="j00zekMSNWeather">RUN|['currentData']['pressure']['valInfo']</convert>
+     </widget>
+	<widget source="session.j00zekMSNWeather" render="j00zekModRunningText" 
+   options="movetype=running,startpoint=0,direction=left,steptime=70,repeat=0,startdelay=2000,always=0,oneshot=0" noWrap="1"  position="10,280" size="780,85" font="VFD;78" transparent="1" halign="center" valign="center" foregroundColor="#84aaf7"  zPosition="5">
+  <convert type="j00zekMSNWeather">temperature_text,current</convert>
+   </widget>
+   <widget source="session.j00zekMSNWeather" render="j00zekModRunningText" 
+   options="movetype=running,startpoint=0,direction=left,steptime=70,repeat=0,startdelay=2000,always=0,oneshot=0" noWrap="1" position="10,380" size="780,85" font="VFD3;75" transparent="1" halign="center" valign="center"   zPosition="5">
+    <convert type="j00zekMSNWeather">city</convert>
+   </widget>
+  
+  </screen>
+
 </skin>
 
