@@ -1000,7 +1000,7 @@ class UserSkin_Config(Screen, ConfigListScreen):
                 myFile.close()
             return screencontent
         
-        def readParametersContent(XMLfilename):
+        def readSectionNameContent(XMLfilename, parameterName):
             myPath=path.realpath(XMLfilename)
             if not path.exists(myPath):
                 remove(XMLfilename)
@@ -1011,10 +1011,10 @@ class UserSkin_Config(Screen, ConfigListScreen):
                 for line in myFile:
                     if line.find('<skin>') >= 0 or line.find('</skin>') >= 0:
                         continue
-                    if line.find('<parameters>') >= 0 and sectionmarker == False:
+                    if line.find('<%s>' % parameterName) >= 0 and sectionmarker == False:
                         sectionmarker = True
                         continue
-                    elif line.find('</parameters>') >= 0 and sectionmarker == True:
+                    elif line.find('</%s>' % parameterName) >= 0 and sectionmarker == True:
                         sectionmarker = False
                         break
                     if sectionmarker == True:
@@ -1039,7 +1039,7 @@ class UserSkin_Config(Screen, ConfigListScreen):
                 self.widgets_selected = True
             if self.widgets_selected and self.LCD_widgets_selected:
                 break
-        printDEBUG("self.LCD_widgets_selected = %s\nself.widgets_selected = %s" % (str(self.LCD_widgets_selected), str(self.widgets_selected)))
+        printDEBUG("self.LCD_widgets_selected = %s, self.widgets_selected = %s" % (str(self.LCD_widgets_selected), str(self.widgets_selected)))
         
         user_skin_file = SkinPath + 'mySkin/skin_user' + self.currentSkin + '.xml' #standardowo zapisujemy gotowa skorke w katalogu BH
         if path.exists(user_skin_file):
@@ -1048,7 +1048,9 @@ class UserSkin_Config(Screen, ConfigListScreen):
         if self.myUserSkin_active.value:
             if DBG: printDEBUG("update_user_skin.self.myUserSkin_active.value=True")
             user_skin = ""
-            user_parameters = ""
+            section_parameters = ""
+            section_screens = ""
+            section_menus = ""
             if FullDBG: printDEBUG("############################################# Initial skin:\n" + user_skin + "\n#############################################\n")        
             if isImageType('vti') == False or isImageType('openatv') == False:
                 if path.exists(SkinPath + 'skin_user_header.xml'):
@@ -1065,13 +1067,16 @@ class UserSkin_Config(Screen, ConfigListScreen):
                     user_screens = []
                     for f in listdir(SkinPath + "UserSkin_Selections/"):
                         printDEBUG("reading file %smySkin/%s" % (SkinPath,f))
-                        user_parameters += readParametersContent(SkinPath + "UserSkin_Selections/" + f)
+                        section_parameters += readSectionNameContent(SkinPath + "UserSkin_Selections/" + f, 'parameters')
+                        section_screens += readSectionNameContent(SkinPath + "UserSkin_Selections/" + f, 'screens')
+                        section_menus += readSectionNameContent(SkinPath + "UserSkin_Selections/" + f, 'menus')
                         for screen in getScreenNames(SkinPath + "UserSkin_Selections/" + f):
                             if screen != [] and screen.find('name="') > 0 :
                                 screenName = re.findall(' name="([^\s]*)"', screen, re.S)[0]
                                 user_screens.append([screenName, screen, f])
                     # get screens content
                     screen_name = ""
+                    #if FullDBG: printDEBUG('!!!!! user_screens !!!!!\n' + '\n'.join(user_screens))
                     for screen in sorted(user_screens):
                         if screen[0] != screen_name:
                             if screen_name != "":
@@ -1084,7 +1089,7 @@ class UserSkin_Config(Screen, ConfigListScreen):
                     printDEBUG("separate Screens mode !!!")
                     for f in listdir(SkinPath + "UserSkin_Selections/"):
                         printDEBUG( "- appending " + "UserSkin_Selections/" + f )
-                        user_skin = user_skin + "<!--" + f + "-->\n" + self.readXMLfile(SkinPath + "UserSkin_Selections/" + f, 'screen')
+                        user_skin = user_skin + "<!--" + f + "-->\n" + self.readXMLfile(SkinPath + "UserSkin_Selections/" + f, 'ALLSECTIONS') #zmiana 2024-11-07, 'screen')
                         
             if path.exists('/etc/enigma2/skin_user.xml'): #czyszczenie
                 with open ('/etc/enigma2/skin_user.xml', "r") as myFile:
@@ -1094,9 +1099,10 @@ class UserSkin_Config(Screen, ConfigListScreen):
                         remove('/etc/enigma2/skin_user.xml')
                     
             if user_skin != '':
-                if user_parameters != '':
-                     user_parameters = "  <parameters>\n" + user_parameters + "\n  </parameters>\n"
-                user_skin = "<skin><!--UserSkin-->\n" + user_parameters + user_skin + "</skin>\n"
+                if section_parameters != '': section_parameters = "  <parameters>\n" + section_parameters + "\n  </parameters>\n"
+                if section_screens != '': section_screens = "  <screens>\n" + section_screens + "\n  </screens>\n"
+                if section_menus != '': section_menus = "  <menus>\n" + section_menus + "\n  </menus>\n"
+                user_skin = "<skin><!--UserSkin-->\n" + section_parameters + section_screens + section_menus + user_skin + "</skin>\n"
                 with open (user_skin_file, "w") as myFile:
                     printDEBUG("update_user_skin.self.myUserSkin_active.value write myFile")
                     myFile.write(user_skin)
