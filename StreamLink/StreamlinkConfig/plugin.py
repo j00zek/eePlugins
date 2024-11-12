@@ -160,7 +160,7 @@ class SLK_Menu(Screen):
             Mlist.append(self.buildListEntry("Pobierz/Usuń bukiet IPTV kolegi Azman", "azman.png",'menuIPTVazman'))
             Mlist.append(self.buildListEntry("Zmień framework w serwisach IPTV", "folder.png",'menuIPTVframework'))
             Mlist.append(self.buildListEntry("Zmień wrapper na serwer 127.0.0.1 w serwisach IPTV", "folder.png",'menuIPTVwrappersrv'))
-            Mlist.append(self.buildListEntry("Konfiguacja pilot.wp.pl", "wptv.png",'menuPilotWPpl'))
+            #Mlist.append(self.buildListEntry("Konfiguacja pilot.wp.pl", "wptv.png",'menuPilotWPpl'))
             if not os.path.exists('/usr/lib/python3.12/site-packages/'):
                 Mlist.append(self.buildListEntry('\c00981111' + "*** Brak wsparcia DRM dla tej wersji pythona ***", "remove.png",'doNothing'))
             elif not os.path.exists('/usr/lib/python3.12/site-packages/emukodi/'):

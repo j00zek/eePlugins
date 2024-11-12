@@ -64,6 +64,13 @@ config.plugins.streamlinkSRV.RecordMaxTime = ConfigSelection(default = "120", ch
 config.plugins.streamlinkSRV.StandbyMode = ConfigEnableDisable(default = True)
 
 config.plugins.streamlinkSRV.useExtPlayer = ConfigEnableDisable(default = False)
+if os.path.exists('/iptvplayer_rootfs/usr/bin/exteplayer3'):
+    config.plugins.streamlinkSRV.ActiveExtPlayer = ConfigSelection(default = "sl+sss", choices = [("sl+sss", "sl i exteplayer3 od SSS"), ("sl+sys", "sl i exteplayer3 z OPKG"), ("sss", "exteplayer3 od SSS"), ("sys", "exteplayer3 z OPKG")])
+else:
+    config.plugins.streamlinkSRV.ActiveExtPlayer = ConfigSelection(default = "sl+sys", choices = [("sl+sys", "sl i exteplayer3 z OPKG"), ("sys", "exteplayer3 z OPKG"),])
+
+if not os.path.exists('/etc/streamlink/ActiveExtPlayer'):
+    open('/etc/streamlink/ActiveExtPlayer', 'w').write(config.plugins.streamlinkSRV.ActiveExtPlayer.value)
 
 # pilot.wp.pl
 config.plugins.streamlinkSRV.WPusername = ConfigText(readCFG('WPusername'), fixed_size = False)

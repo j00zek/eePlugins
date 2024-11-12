@@ -56,6 +56,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
             Mlist.append(getConfigListEntry('\c00289496' + "*** Ten system WSPIERA wrappery" + wrapperInfo + " ***"))
         else:
             Mlist.append(getConfigListEntry('\c00981111' + "*** Ten system NIE wspiera wrapperów, korzystaj TYLKO z demona (127.0.0.1 w liście)!!! ***"))
+        Mlist.append(getConfigListEntry(" "))
         Mlist.append(getConfigListEntry("Aktywacja:", config.plugins.streamlinkSRV.enabled, 'streamlinkSRV.enabled'))
         if config.plugins.streamlinkSRV.enabled.value:
             Mlist.append(getConfigListEntry("Tryb pracy streamlinka:", config.plugins.streamlinkSRV.binName, 'streamlinkSRV.binName'))
@@ -63,6 +64,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
             #    Mlist.append(getConfigListEntry("Aktywny odtwarzacz streamlinka:", config.plugins.streamlinkSRV.SRVmode, 'streamlinkSRV.SRVmode'))
             #Mlist.append(getConfigListEntry("Aktywny odtwarzacz materiałów DRM:", config.plugins.streamlinkSRV.DRMmode, 'streamlinkSRV.DRMmode'))
             Mlist.append(getConfigListEntry(_("stop deamon on standby:"), config.plugins.streamlinkSRV.StandbyMode))
+        #Mlist.append(getConfigListEntry("Zewnętrzny odtwarzacz DRM poprzez:", config.plugins.streamlinkSRV.ActiveExtPlayer, 'ActiveExtPlayer'))
         #KONFIGURACJA SERVICEAPP
         Mlist.append(getConfigListEntry(" "))
         Mlist.append(getConfigListEntry('\c00f83426' + "*** Konfiguracja ServiceApp ***"))
