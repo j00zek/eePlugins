@@ -13,4 +13,11 @@
              label="Utwórz listę m3u"
              option="close" />
   </category>
+  <setting id="netviapisessid" value="" default=""/>  
+  <setting id="netviapisessval" value="" default=""/>  
+  <setting id="remote_cookies" value="" default=""/>  
+  <setting id="mode" value="0" default="0"/>  
+  <setting id="sessionid" value="" default=""/>  
+  <setting id="path_m3u" value="" default="/tmp/.emukodi"/>  
+  <setting id="m3u_filename" value="" default="pilotwp"/>  
 </settings>

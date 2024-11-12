@@ -9,14 +9,67 @@ except:
     pass
 import urllib
 import requests
-import xbmcgui
-import xbmcplugin
-import xbmcaddon
-import xbmcvfs
+from emukodi import xbmcgui
+from emukodi import xbmcplugin
+from emukodi import xbmcaddon
+#from emukodi import xbmc
+from emukodi import xbmcvfs
 import urllib3
 from urllib import parse
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+from urllib.request import Request as urllib_request, urlopen as urllib_urlopen
+
+#>>> zeby rozwiazac problem error 449
+from requests.adapters import HTTPAdapter
+import ssl
+
+try:
+    from urllib3.util import create_urllib3_context  # type: ignore[attr-defined]
+except ImportError:  # pragma: no cover
+    # urllib3 <2.0.0 compat import
+    from urllib3.util.ssl_ import create_urllib3_context
+
+class SSLContextAdapter(HTTPAdapter):
+    # noinspection PyMethodMayBeStatic
+    def get_ssl_context(self) -> ssl.SSLContext:
+        ctx = create_urllib3_context()
+        ctx.load_default_certs()
+
+        # disable weak digest ciphers by default
+        ciphers = ":".join(cipher["name"] for cipher in ctx.get_ciphers())
+        ciphers += ":!SHA1"
+        ctx.set_ciphers(ciphers)
+
+        return ctx
+
+    def init_poolmanager(self, *args, **kwargs):
+        kwargs["ssl_context"] = self.get_ssl_context()
+        return super().init_poolmanager(*args, **kwargs)
+
+    def proxy_manager_for(self, *args, **kwargs):
+        kwargs["ssl_context"] = self.poolmanager.connection_pool_kw["ssl_context"]
+        return super().proxy_manager_for(*args, **kwargs)
+
+    def send(self, *args, verify=True, **kwargs):
+        # Always update the `check_hostname` and `verify_mode` attributes of our custom `SSLContext` before sending a request:
+        # If `verify` is `False`, then `requests` will set `cert_reqs=ssl.CERT_NONE` on the `HTTPSConnectionPool` object,
+        # which leads to `SSLContext` incompatibilities later on in `urllib3.connection._ssl_wrap_socket_and_match_hostname()`
+        # due to the default values of our `SSLContext`, namely `check_hostname=True` and `verify_mode=ssl.CERT_REQUIRED`.
+        if ssl_context := self.poolmanager.connection_pool_kw.get("ssl_context"):  # pragma: no branch
+            ssl_context.check_hostname = bool(verify)
+            ssl_context.verify_mode = ssl.CERT_NONE if not verify else ssl.CERT_REQUIRED
+        return super().send(*args, verify=verify, **kwargs)
+
+class WPplAdapter(SSLContextAdapter):
+    def get_ssl_context(self):
+        ctx = super().get_ssl_context()
+        ctx.check_hostname = False
+        ctx.options &= ~ssl.OP_NO_TICKET
+        ctx.options &= ssl.OP_NO_TLSv1 | ssl.OP_NO_TLSv1_1
+
+        return ctx
+#<<<
 
 base_url = sys.argv[0]
 addon_handle = int(sys.argv[1])
@@ -45,8 +98,8 @@ mode = addon.getSetting('mode')
 path = addon.getSetting('path')
 sessionid = params.get('sessionid', '')
 
-addonInfo = xbmcaddon.Addon().getAddonInfo
-dataPath = xbmcvfs.translatePath(addonInfo('profile'))
+addonInfo = addon.getAddonInfo
+dataPath = '/etc/streamlink/pilot.wp/' #xbmcvfs.translatePath(addonInfo('profile'))
 cacheFile = os.path.join(dataPath, 'cache.db')
 
 
@@ -77,6 +130,7 @@ def saveToDB(table_name, value):
     import sqlite3
     import os
     if os.path.exists(cacheFile):
+        #print('Zapisuję do:', cacheFile)
         os.remove(cacheFile)
     else:
         print('File does not exists')
@@ -114,28 +168,53 @@ def login():
                     'login': username,
                     'password': password}
 
-            response = requests.post(
-                login_url,
-                json=data,
-                verify=False,
-                headers=headers
-            )
+            if 0: #j00zek: nie dziala
+                response = requests.post(
+                    login_url,
+                    json=data,
+                    verify=False,
+                    headers=headers
+                )
 
-            meta = response.json().get('_meta', None)
-            if meta is not None:
-                if meta.get('error', {}).get('name', None) is not None:
-                    xbmcgui.Dialog().notification('Nieudane logowanie', 'Sprawdź login i hasło w ustawieniach wtyczki.',
+                meta = response.json().get('_meta', None)
+                if meta is not None:
+                    if meta.get('error', {}).get('name', None) is not None:
+                        xbmcgui.Dialog().notification('Nieudane logowanie', 'Sprawdź login i hasło w ustawieniach wtyczki.',
                                                   xbmcgui.NOTIFICATION_ERROR, 5000)
-                    return ''
-
-            saveToDB('wppilot_cache', cookiesToString(response.cookies))
-            return cookiesToString(response.cookies)
+                        return ''
+                saveToDB('wppilot_cache', cookiesToString(response.cookies))
+            else:
+                dataPost = json.dumps(data).encode()
+                req = urllib_request(login_url, dataPost, headers)
+                response = urllib_urlopen(req)
+                response_data = response.read().decode()
+                response_info = str(response.info())
+                response.close()
+                #print(response_data)
+                #print(response_info)
+                netviapisessid = ''
+                netviapisessval = ''
+                for item in response_info.split('\n'):
+                    if item.startswith('set-cookie'):
+                        if item.find('netviapisessid=') > 0:
+                            netviapisessid = item.split('netviapisessid=')[1].split(';')[0]
+                            addon.setSetting('netviapisessid',netviapisessid)
+                        elif item.find('netviapisessval=') > 0:
+                            netviapisessval = item.split('netviapisessval=')[1].split(';')[0]
+                            addon.setSetting('netviapisessval',netviapisessval)
+            
+                if len(netviapisessval) > 0 and len(netviapisessid) > 0:
+                    cookies = {'netviapisessid': netviapisessid, 'netviapisessval': netviapisessval}
+                    saveToDB('wppilot_cache', cookiesToString(cookies))
+            return cookiesToString(cookies)
 
         else:
             xbmcgui.Dialog().notification('Nieudane logowanie', 'Sprawdź login i hasło w ustawieniach wtyczki.',
                                           xbmcgui.NOTIFICATION_ERROR, 5000)
             return ''
     else:
+        netviapisessid = addon.getSetting('netviapisessid')
+        netviapisessval = addon.getSetting('netviapisessval')
         if len(netviapisessval) > 0 and len(netviapisessid) > 0:
             cookies = {'netviapisessid': netviapisessid, 'netviapisessval': netviapisessval}
             saveToDB('wppilot_cache', cookiesToString(cookies))
@@ -158,32 +237,34 @@ def stream_url(video_id, retry=False):
         return ''
 
     url = video_url + video_id + '?format_id=2&device_type=android_tv'
-    data = {'format_id': '2', 'device_type': 'android'}
+    data = {'format_id': '2', 'device_type': 'android_tv'}
 
-    headers.update({'Cookie': cookies})
-    response = requests.get(
-        url,
-        params=data,
-        verify=False,
-        headers=headers,
-    ).json()
-
-    meta = response.get('_meta', None)
-    if meta is not None:
-        token = meta.get('error', {}).get('info', {}).get('stream_token', None)
-        if token is not None:
-            json = {'channelId': video_id, 't': token}
-            response = requests.post(
-                close_stream_url,
-                json=json,
-                verify=False,
-                headers=headers
-            ).json()
-            if response.get('data', {}).get('status', '') == 'ok' and not retry:
-                return stream_url(video_id, True)
-            else:
-                return
-
+    session = requests.Session()
+    session.mount("https://pilot.wp.pl/", WPplAdapter())
+    if 1: #j00zek, ie dziala
+        headers.update({'Cookie': cookies})
+        response = session.get(
+            url,
+            params=data,
+            verify=False,
+            headers=headers,
+        ).json()
+        #print('response:',response)
+        meta = response.get('_meta', None)
+        if meta is not None:
+            token = meta.get('error', {}).get('info', {}).get('stream_token', None)
+            if token is not None:
+                json = {'channelId': video_id, 't': token}
+                response = requests.post(
+                    close_stream_url,
+                    json=json,
+                    verify=False,
+                    headers=headers
+                ).json()
+                if response.get('data', {}).get('status', '') == 'ok' and not retry:
+                    return stream_url(video_id, True)
+                else:
+                    return
     if 'hls@live:abr' in response[u'data'][u'stream_channel'][u'streams'][0][u'type']:
         return response[u'data'][u'stream_channel'][u'streams'][0][u'url'][0]
     else:
@@ -192,6 +273,8 @@ def stream_url(video_id, retry=False):
 
 def play(id):
     manifest = stream_url(id)
+    #print('manifest:', manifest)
+    #print('headers:', headers)
     if len(manifest) == 0:
         return
     manifest = manifest + '|user-agent=' + headers['user-agent']
@@ -203,10 +286,20 @@ def channels():
     if not sessionid:
         return []
     cookies = readFromDB()
-    headers.update({
-        'Cookie': cookies})
-    response = requests.get(main_url, verify=False, headers=headers, ).json()
-    return response.get('data', [])
+    if 0: #j00zek, ie dziala
+        headers.update({
+            'Cookie': cookies})
+        response = requests.get(main_url, verify=False, headers=headers, ).json()
+        return response.get('data', [])
+    else:
+        req = urllib_request(main_url)
+        req.add_header('Cookie', cookies)
+        response = urllib_urlopen(req)
+        response_data = response.read().decode()
+        response.close()
+        channelsList = json.loads(response_data).get('data', [])
+        return channelsList
+    
 
 
 def home():
@@ -235,16 +328,23 @@ def generate_m3u():
         return
     xbmcgui.Dialog().notification('WP Pilot', 'Generuje liste M3U.', xbmcgui.NOTIFICATION_INFO)
     data = '#EXTM3U\n'
+    dataE2 = '' #j00zek for E2 bouquets
     for item in channels():
         if item.get('access_status', '') != 'unsubscribed':
             channelid = item.get('id', None)
             title = item.get('name', '')
             data += '#EXTINF:-1,%s\nplugin://plugin.video.pilot.wp?action=PLAY&channel=%s\n' % (title, channelid)
+            dataE2 += 'plugin.video.pilot.wp/addon.py%3faction=PLAY&channel=' + '%s:%s\n' % (channelid, title) #j00zek for E2 bouquets
 
-    f = xbmcvfs.File(path + file_name, 'w')
+    f = xbmcvfs.File(os.path.join(addon.getSetting('path_m3u'), addon.getSetting('m3u_filename')), 'w')
     f.write(data)
     f.close()
     xbmcgui.Dialog().notification('WP Pilot', 'Wygenerowano liste M3U.', xbmcgui.NOTIFICATION_INFO)
+    
+    f = xbmcvfs.File(os.path.join(addon.getSetting('path_m3u'), 'iptv.e2b'), 'w') #j00zek for E2 bouquets
+    f.write(dataE2)
+    f.close()
+    xbmcgui.Dialog().notification('WP Pilot', 'Wygenerowano listę E2B', xbmcgui.NOTIFICATION_INFO)
 
 
 def route():
