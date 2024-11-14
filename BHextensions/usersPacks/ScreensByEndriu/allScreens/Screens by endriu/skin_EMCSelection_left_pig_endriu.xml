@@ -4,13 +4,13 @@
 	 <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" zPosition="-10" size="1920,1080">
       <convert type="j00zekRefreshBingPicOfTheDay">/usr/share/enigma2/BlackHarmony/bg_design/EPGPig.png</convert>
     </widget>
-	<widget source="global.CurrentTime" render="Label" position="75,25" size="80,35" font="Roboto_HD;27" backgroundColor="black" transparent="1">
+	<widget source="global.CurrentTime" render="Label" position="75,25" size="80,40" font="Roboto_HD;28" backgroundColor="black" transparent="1">
         <convert type="ClockToText">Default</convert>
         </widget>
-    <widget source="global.CurrentTime" render="Label" position="160,25" size="660,35" font="Roboto_HD;27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+    <widget source="global.CurrentTime" render="Label" position="160,25" size="660,40" font="Roboto_HD;28" foregroundColor="lemon" backgroundColor="black" transparent="1">
         <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
         </widget>
-    <widget source="Title" render="Label" position="600,25" size="1277,35" font="Roboto_HD; 27" backgroundColor="black" transparent="1" halign="right">
+    <widget source="Title" render="Label" position="600,25" size="1277,40" font="Roboto_HD; 28" backgroundColor="black" transparent="1" halign="right">
         <convert type="j00zekAlternateTitle">EMC Selection</convert>
         </widget>  
     
@@ -90,83 +90,87 @@
     </screen>
 
 <!-- Event View Context Menu FHD -->	
-	 <screen name="EventViewSimple" position="204,135" size="1522,850" title="EventviewSimple" backgroundColor="transparent" flags="wfNoBorder">
-    <ePixmap position="0,0" zPosition="-5" size="1920,1080" pixmap="BlackHarmony/bg_design/skin_conf.png"/>
-    <widget source="global.CurrentTime" render="Label" position="45,50" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+	 <screen name="EventViewSimple" position="0,0" size="1920,1080" title="EventviewSimple" backgroundColor="transparent" flags="wfNoBorder">
+    <ePixmap position="0,0" zPosition="-5" size="1920,1080" pixmap="BlackHarmony/bg_design/emc.png" />
+    <widget source="global.CurrentTime" render="Label" position="75,55" size="100,40" font="Roboto_HD; 28" backgroundColor="black" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
-    <widget source="global.CurrentTime" render="Label" position="130,50" size="460,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+    <widget source="global.CurrentTime" render="Label" position="160,55" size="660,40" font="Roboto_HD; 28" foregroundColor="lemon" backgroundColor="black" transparent="1">
       <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
     </widget>
-    <!--widget source="Title" render="Label" position="633,50" size="820,30" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1"/-->
-<!-- opis -->	
-	<widget name="epg_description" position="70,170" size="764,568" font="Regular;32" backgroundColor="background" foregroundColor="white" transparent="1" />
+	<widget source="Title" render="Label" position="700,55" zPosition="2" size="1160,40" font="Roboto_HD; 28" halign="right" backgroundColor="dark_grey" transparent="1"/>
+    
+<!-- opis -->
+ <widget name="epg_description" position="85,150" size="1045,800" font="Regular;32" backgroundColor="background" foregroundColor="white" transparent="1" />
 <!-- picon -->   
-	<widget source="Service" render="Picon" position="1000,172" size="300,180" zPosition="5" transparent="1" alphatest="blend">
+	<widget source="Service" render="Picon" position="1365,185" size="300,180" zPosition="5" transparent="1" alphatest="blend">
       <convert type="MovieInfo">RecordServiceRef</convert>
     </widget>
 <!-- kanał -->	
-	<widget name="channel" position="875,370" size="578,130" font="Regular;32" halign="center" valign="center" backgroundColor="background" foregroundColor="white" transparent="1" />
+	<widget name="channel" position="1200,400" size="625,140" font="Regular;36" halign="center" valign="center" backgroundColor="background" foregroundColor="white" transparent="1" />
 <!-- pasek postępu -->   
-	<eLabel position="970,521" size="380,2" backgroundColor="linie" zPosition="1" />
-	<widget source="session.CurrentService" render="Progress" pixmap="BlackHarmony/gfx/Progress_color_dots_380x12.png" position="970,516" size="380,12" zPosition="2" transparent="1" >
+	<eLabel position="1320,555" size="380,2" backgroundColor="linie" zPosition="1" />
+	<widget source="session.CurrentService" render="Progress" pixmap="BlackHarmony/gfx/Progress_color_dots_380x12.png" position="1320,550" size="380,12" zPosition="2" transparent="1" >
       <convert type="ServicePosition">Position</convert>
     </widget>
 <!-- data godzina -->	
-    <widget name="datetime" position="875,550" size="578,60" font="Regular;32" halign="center" backgroundColor="background" foregroundColor="lemon" transparent="1" />
+    <widget name="datetime" position="1215,590" size="585,60" font="Regular;34" halign="center" backgroundColor="background" foregroundColor="lemon" transparent="1" />
 <!-- czas, rozmiar -->	
-    <widget name="duration" position="930,595" size="480,60" font="Regular;32" halign="left" backgroundColor="background" transparent="1" />
-	<widget source="Service" render="Label" position="930,595" size="480,60" font="Regular;32" halign="right" backgroundColor="background" foregroundColor="#66CCCC" transparent="1">
+    <eLabel text="Time" backgroundColor="background" noWrap="1" font="Regular;32" halign="left" position="1310,680" size="400,60" transparent="1" /> 
+    <widget name="duration" position="1310,680" size="400,60" font="Regular;32" halign="right" backgroundColor="background" transparent="1" />
+<!-- -->
+	<eLabel text="Rozmiar" backgroundColor="background" noWrap="1" font="Regular;32" halign="left" position="1310,770" size="400,60" transparent="1" />
+	<widget source="Service" render="Label" position="1310,770" size="400,60" font="Regular;32" halign="right" backgroundColor="background" foregroundColor="#66CCCC" transparent="1">
       <convert type="MovieInfo">FileSize</convert>
     </widget>
 <!-- ikony -->	
-	<widget source="session.CurrentService" render="Pixmap" pixmap="BlackHarmony/icons/ico_format_off.png" position="920,665" size="36,20" zPosition="1" alphatest="blend">
+	<widget source="session.CurrentService" render="Pixmap" pixmap="BlackHarmony/icons/ico_format_off.png" position="1220,880" size="36,20" zPosition="1" alphatest="blend">
       <convert type="ServiceInfo">IsNotWidescreen</convert>
       <convert type="ConditionalShowHide" />
     </widget>
-    <widget source="session.CurrentService" render="Pixmap" pixmap="BlackHarmony/icons/ico_format_on.png" position="921,665" size="36,20" zPosition="1" alphatest="blend">
+    <widget source="session.CurrentService" render="Pixmap" pixmap="BlackHarmony/icons/ico_format_on.png" position="1221,880" size="36,20" zPosition="1" alphatest="blend">
       <convert type="ServiceInfo">IsWidescreen</convert>
       <convert type="ConditionalShowHide" />
     </widget>
-    <widget source="session.CurrentService" render="Pixmap" pixmap="BlackHarmony/icons/ico_dolby_off.png" position="980,665" size="57,20" zPosition="1" alphatest="blend">
+    <widget source="session.CurrentService" render="Pixmap" pixmap="BlackHarmony/icons/ico_dolby_off.png" position="1280,880" size="57,20" zPosition="1" alphatest="blend">
       <convert type="ServiceInfo">IsStereo</convert>
       <convert type="ConditionalShowHide" />
     </widget>
-    <widget source="session.CurrentService" render="Pixmap" pixmap="BlackHarmony/icons/ico_dolby_on.png" position="980,665" size="57,20" zPosition="1" alphatest="blend">
+    <widget source="session.CurrentService" render="Pixmap" pixmap="BlackHarmony/icons/ico_dolby_on.png" position="1280,880" size="57,20" zPosition="1" alphatest="blend">
       <convert type="ServiceInfo">IsMultichannel</convert>
       <convert type="ConditionalShowHide" />
     </widget>
-	<widget source="session.CurrentService" position="1060,665" size="37,20" render="Pixmap" pixmap="BlackHarmony/icons/ico_sd_on_576.png" zPosition="1" alphatest="blend">
+	<widget source="session.CurrentService" position="1360,880" size="37,20" render="Pixmap" pixmap="BlackHarmony/icons/ico_sd_on_576.png" zPosition="1" alphatest="blend">
       <convert type="ServiceInfo">VideoHeight</convert>
       <convert type="ValueRange">0,719</convert>
       <convert type="ConditionalShowHide" />
     </widget>
-    <widget source="session.CurrentService" position="1060,665" size="37,20" render="Pixmap" pixmap="BlackHarmony/icons/ico_hd_off.png" zPosition="1" alphatest="blend">
+    <widget source="session.CurrentService" position="1360,880" size="37,20" render="Pixmap" pixmap="BlackHarmony/icons/ico_hd_off.png" zPosition="1" alphatest="blend">
       <convert type="ServiceInfo">VideoHeight</convert>
       <convert type="ValueRange">720,1079</convert>
       <convert type="ConditionalShowHide" />
     </widget>
-    <widget source="session.CurrentService" position="1060,665" size="37,20" render="Pixmap" pixmap="BlackHarmony/icons/ico_hd_on.png" zPosition="1" alphatest="blend">
+    <widget source="session.CurrentService" position="1360,880" size="37,20" render="Pixmap" pixmap="BlackHarmony/icons/ico_hd_on.png" zPosition="1" alphatest="blend">
       <convert type="ServiceInfo">VideoHeight</convert>
       <convert type="ValueRange">720,1080</convert>
       <convert type="ConditionalShowHide" />
     </widget>
-    <widget source="session.CurrentService" position="1060,665" size="37,20" render="Pixmap" pixmap="BlackHarmony/icons/ico_uhd_on.png" zPosition="1" alphatest="blend">
+    <widget source="session.CurrentService" position="1360,880" size="37,20" render="Pixmap" pixmap="BlackHarmony/icons/ico_uhd_on.png" zPosition="1" alphatest="blend">
       <convert type="ServiceInfo">VideoHeight</convert>
       <convert type="ValueRange">1081,5000</convert>
       <convert type="ConditionalShowHide" />
     </widget>
-    <ePixmap position="1110,665" size="60,20" pixmap="BlackHarmony/icons/audio/unbekannt.png" zPosition="1" alphatest="blend"/>
-	<widget source="session.CurrentService" render="j00zekModAudioIcon" path="icons/audio" position="1110,665" size="60,20" zPosition="2" alphatest="blend">
+    <ePixmap position="1410,880" size="60,20" pixmap="BlackHarmony/icons/audio/unbekannt.png" zPosition="1" alphatest="blend"/>
+	<widget source="session.CurrentService" render="j00zekModAudioIcon" path="icons/audio" position="1410,880" size="60,20" zPosition="2" alphatest="blend">
      <convert type="j00zekModAudioInfo">AudioIcon</convert>
       </widget>
 <!-- rozdzielczość -->	  
-	 <widget backgroundColor="black" font="Roboto_HD; 26" halign="right" position="1210,660" render="Label" size="200,30" source="session.CurrentService"  transparent="1">
+	 <widget backgroundColor="black" font="Roboto_HD; 28" halign="left" position="1550,873" render="Label" size="300,40" source="session.CurrentService"  transparent="1">
     <convert type="j00zekModCodecInfoColors">Resolution</convert>
         </widget> 
 <!-- przyciski -->	
-    <ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="1323,778" size="60,30" zPosition="10" transparent="1" alphatest="blend" />
-    <ePixmap pixmap="BlackHarmony/buttons/key_exit.png" position="1395,778" size="60,30" zPosition="10" transparent="1" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="1680,989" size="60,30" zPosition="10" transparent="1" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_exit.png" position="1780,989" size="60,30" zPosition="10" transparent="1" alphatest="blend" />
 	
   </screen>
   
