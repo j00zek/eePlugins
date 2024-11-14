@@ -7,13 +7,13 @@
  <!--tmdbScreen-->
  <screen name="tmdbScreen" position="0,0" size="1920,1080" title="TMDb - The Movie Database" flags="wfNoBorder" backgroundColor="transparent">
     <ePixmap position="0,0" zPosition="-5" size="1920,1080" pixmap="BlackHarmony/bg_design/emc.png" />
-    <widget source="global.CurrentTime" render="Label" position="75,55" size="100,35" font="Roboto_HD; 28" backgroundColor="black" transparent="1">
+    <widget source="global.CurrentTime" render="Label" position="75,55" size="100,40" font="Roboto_HD; 28" backgroundColor="black" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
     <widget source="global.CurrentTime" render="Label" position="160,55" size="660,40" font="Roboto_HD; 28" foregroundColor="lemon" backgroundColor="black" transparent="1">
       <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
     </widget>
-	<widget source="Title" render="Label" position="1017,55" zPosition="2" size="840,40" font="Roboto_HD; 28" halign="right" backgroundColor="dark_grey" transparent="1"/>
+	<widget source="Title" render="Label" position="700,55" zPosition="2" size="1160,40" font="Roboto_HD; 28" halign="right" backgroundColor="dark_grey" transparent="1"/>
 	
     <widget name="searchinfo" position="85,170" size="1044,40" font="Regular; 34" foregroundColor="#00fff000" transparent="1" backgroundColor="black" />
 	<widget name="list" position="85,230" size="1045,720" itemHeight="45" font="Roboto_HD; 30" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_1055_45.png" backgroundColor="black" transparent="1"/>
@@ -47,13 +47,13 @@
  <!--tmdbScreenMovie-->
   <screen name="tmdbScreenMovie" position="0,0" size="1920,1080" title="TMDb - The Movie Database" flags="wfNoBorder" backgroundColor="transparent">
   <ePixmap position="0,0" zPosition="-5" size="1920,1080" pixmap="BlackHarmony/bg_design/emc.png" />
-    <widget source="global.CurrentTime" render="Label" position="75,55" size="100,35" font="Roboto_HD; 28" backgroundColor="black" transparent="1">
+    <widget source="global.CurrentTime" render="Label" position="75,55" size="100,40" font="Roboto_HD; 28" backgroundColor="black" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
     <widget source="global.CurrentTime" render="Label" position="160,55" size="660,40" font="Roboto_HD; 28" foregroundColor="lemon" backgroundColor="black" transparent="1">
       <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
     </widget>
-	<widget source="Title" render="Label" position="1017,55" zPosition="2" size="840,40" font="Roboto_HD; 28" halign="right" backgroundColor="dark_grey" transparent="1"/>
+	<widget source="Title" render="Label" position="700,55" zPosition="2" size="1160,40" font="Roboto_HD; 28" halign="right" backgroundColor="dark_grey" transparent="1"/>
 	
 	<widget name="searchinfo" position="85,170" size="1044,40" font="Regular; 34" foregroundColor="#00fff000" transparent="1" backgroundColor="black" />
 	<widget name="fulldescription" position="85,230" size="1045,720" font="Regular; 30" backgroundColor="black"  transparent="1"/>
@@ -112,13 +112,13 @@
  <!--tmdbScreenSeason-->
  <screen name="tmdbScreenSeason" position="0,0" size="1920,1080" title="TMDb - The Movie Database" flags="wfNoBorder" backgroundColor="transparent">
   <ePixmap position="0,0" zPosition="-5" size="1920,1080" pixmap="BlackHarmony/bg_design/emc.png" />
-    <widget source="global.CurrentTime" render="Label" position="75,55" size="100,35" font="Roboto_HD; 28" backgroundColor="black" transparent="1">
+    <widget source="global.CurrentTime" render="Label" position="75,55" size="100,40" font="Roboto_HD; 28" backgroundColor="black" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
     <widget source="global.CurrentTime" render="Label" position="160,55" size="660,40" font="Roboto_HD; 28" foregroundColor="lemon" backgroundColor="black" transparent="1">
       <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
     </widget>
-	<widget source="Title" render="Label" position="1017,55" zPosition="2" size="840,40" font="Roboto_HD; 28" halign="right" backgroundColor="dark_grey" transparent="1"/>
+	<widget source="Title" render="Label" position="700,55" zPosition="2" size="1160,40" font="Roboto_HD; 28" halign="right" backgroundColor="dark_grey" transparent="1"/>
 	<!-- -->
 	<widget name="searchinfo" position="85,170" size="1044,40" font="Regular; 34" foregroundColor="#00fff000" transparent="1" backgroundColor="black" />
 	<widget name="list" position="85,230" size="1045,720" itemHeight="45" font="Roboto_HD; 30" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_1055_45.png" backgroundColor="black" transparent="1"/>
@@ -153,13 +153,13 @@
  <!--tmdbScreenPeople-->
  <screen name="tmdbScreenPeople" position="0,0" size="1920,1080" title="TMDb - The Movie Database" flags="wfNoBorder" backgroundColor="transparent">
   <ePixmap position="0,0" zPosition="-5" size="1920,1080" pixmap="BlackHarmony/bg_design/emc.png" />
-    <widget source="global.CurrentTime" render="Label" position="75,55" size="100,35" font="Roboto_HD; 28" backgroundColor="black" transparent="1">
+    <widget source="global.CurrentTime" render="Label" position="75,55" size="100,40" font="Roboto_HD; 28" backgroundColor="black" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
     <widget source="global.CurrentTime" render="Label" position="160,55" size="660,40" font="Roboto_HD; 28" foregroundColor="lemon" backgroundColor="black" transparent="1">
       <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
     </widget>
-	<widget source="Title" render="Label" position="1017,55" zPosition="2" size="840,40" font="Roboto_HD; 28" halign="right" backgroundColor="dark_grey" transparent="1"/>
+	<widget source="Title" render="Label" position="700,55" zPosition="2" size="1160,40" font="Roboto_HD; 28" halign="right" backgroundColor="dark_grey" transparent="1"/>
 	<!-- -->
 	<widget name="searchinfo" position="85,170" size="1044,40" font="Regular; 34" foregroundColor="#00fff000" transparent="1" backgroundColor="black" />
 	<widget name="list" position="85,230" size="1045,720" itemHeight="45" font="Roboto_HD; 30" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_1055_45.png" backgroundColor="black" transparent="1"/>
@@ -193,13 +193,13 @@
  <!--tmdbScreenPerson-->
  <screen name="tmdbScreenPerson" position="0,0" size="1920,1080" title="TMDb - The Movie Database" flags="wfNoBorder" backgroundColor="transparent">
   <ePixmap position="0,0" zPosition="-5" size="1920,1080" pixmap="BlackHarmony/bg_design/emc.png" />
-    <widget source="global.CurrentTime" render="Label" position="75,55" size="100,35" font="Roboto_HD; 28" backgroundColor="black" transparent="1">
+    <widget source="global.CurrentTime" render="Label" position="75,55" size="100,40" font="Roboto_HD; 28" backgroundColor="black" transparent="1">
       <convert type="ClockToText">Default</convert>
     </widget>
     <widget source="global.CurrentTime" render="Label" position="160,55" size="660,40" font="Roboto_HD; 28" foregroundColor="lemon" backgroundColor="black" transparent="1">
       <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
     </widget>
-	<widget source="Title" render="Label" position="1017,55" zPosition="2" size="840,40" font="Roboto_HD; 28" halign="right" backgroundColor="dark_grey" transparent="1"/>
+	<widget source="Title" render="Label" position="700,55" zPosition="2" size="1160,40" font="Roboto_HD; 28" halign="right" backgroundColor="dark_grey" transparent="1"/>
 	<!-- -->
 	<widget name="searchinfo" position="85,170" size="1044,40" font="Regular; 34" foregroundColor="#00fff000" transparent="1" backgroundColor="black" />
 	<widget name="fulldescription" position="85,230" size="1045,720" font="Regular; 30" backgroundColor="black"  transparent="1"/>
@@ -230,4 +230,50 @@
     <widget name="key_blue" position="1300,990" size="280,32" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
 	<ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="1780,989" zPosition="1" size="60,30" alphatest="on"/>
  </screen>
+
+	<!-- MovieInfoTMDb FHD-->
+ <screen name="MovieInfoTMDb" position="0,0" size="1920,1080" title="Movie Information TMDb" flags="wfNoBorder" backgroundColor="transparent">
+ <ePixmap position="0,0" zPosition="-5" size="1920,1080" pixmap="BlackHarmony/bg_design/emc.png" />
+    <widget source="global.CurrentTime" render="Label" position="75,55" size="100,40" font="Roboto_HD; 28" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="160,55" size="660,40" font="Roboto_HD; 28" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+	<widget source="Title" render="Label" position="700,55" zPosition="2" size="1160,40" font="Roboto_HD; 28" halign="right" backgroundColor="dark_grey" transparent="1"/>
+
+<!-- tytuł opis -->
+<widget name="movie_name" position="85,150" size="1045,50" font="Regular; 34" foregroundColor="#00fff000" transparent="1" backgroundColor="black" />
+<eLabel backgroundColor="#818181" position="85,210" size="1045,2" />
+<widget name="previewlist" position="85,220" size="1045,590" font="Regular; 30" backgroundColor="black" transparent="1" itemHeight="45" selectionPixmap="BlackHarmony/menu/sel_1055_45.png" scrollbarMode="showOnDemand" />
+<widget name="contenttxt" position="85,230" size="1045,590" font="Regular;30" backgroundColor="black" transparent="1" />
+<eLabel backgroundColor="#818181" position="85,820" size="1045,2" />
+<!-- info lewe -->
+<widget name="runtime" position="85,830" size="150,35" font="Regular;25" foregroundColor="#000066FF" backgroundColor="black" transparent="1"  />
+<widget name="runtimetxt" position="220,830" size="350,35" font="Regular;25" backgroundColor="black" transparent="1" />
+<widget name="genre" position="85,870" size="150,35" font="Regular;25" foregroundColor="#000066FF" backgroundColor="black"  transparent="1" />
+<widget name="genretxt" position="220,870" size="350,35" font="Regular;25" backgroundColor="black" transparent="1" />
+<widget name="rating" position="85,910" size="150,35" font="Regular;25" foregroundColor="#000066FF" backgroundColor="black" transparent="1" />
+<widget name="ratingtxt" position="220,910" size="350,35" font="Regular;25" backgroundColor="black" transparent="1" />
+<!-- info prawe -->
+<widget name="country" position="590,830" size="200,35" font="Regular;25" foregroundColor="#000066FF" backgroundColor="black" transparent="1" />
+<widget name="countrytxt" position="790,830" size="350,35" font="Regular;25" backgroundColor="black" transparent="1" />
+<widget name="release" position="590,870" size="200,35" font="Regular;25" foregroundColor="#000066FF" />
+<widget name="releasetxt" position="790,870" size="350,35" font="Regular;25" backgroundColor="black" transparent="1" />
+
+<widget name="starsbg" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/EnhancedMovieCenter/img_fhd/starsbar_empty.png" position="590,910" size="300,30" alphatest="blend"/>
+<widget name="stars" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/EnhancedMovieCenter/img_fhd/starsbar_filled.png" position="590,910" size="300,30" transparent="1" zPosition="1"/>
+
+<!-- okładka -->
+<widget name="previewcover" position="1270,180" size="500,750" alphatest="blend"/>
+	
+<!--przyciski-->	
+<widget source="session.CurrentService" render="j00zekPiconAnimation" position="470,991" zPosition="10" size="35,27" alphatest="blend"
+ initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,1" random="True"
+ pixmaps="BlackHarmony/skin_user_animButtons/key_green"
+ pixalter="BlackHarmony/buttons/key_green.png" />
+ <widget name="key_green" position="520,990" size="280,32" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+ <widget name="save" position="520,990" size="280,32" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+  <ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="1780,989" zPosition="1" size="60,30" alphatest="on"/>
+ </screen> 
  </skin>
