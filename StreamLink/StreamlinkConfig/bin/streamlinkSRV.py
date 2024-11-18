@@ -46,12 +46,12 @@ if jtools.LogToFile():
                             format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
                             datefmt='%H:%M:%S',
                             level=logging.NOTSET)
-    
+else:
+    logging.basicConfig(format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
+                        datefmt='%H:%M:%S',
+                        level=logging.NOTSET)
 # do not change
 LOGGER = logging.getLogger('streamlinkSRV')
-
-def doLOG():
-    print(text)
 
 def redirectToStreamlinkCLI(http, useAddr):
     LOGGER.debug("redirectToStreamlinkCLI to http://%s:%s/" % (useAddr,streamCLIport))
@@ -71,7 +71,8 @@ def sendOfflineMP4(http, send_headers=True, file2send="offline.mp4"):
     print("Send Offline clip: %s" % file2send)
     if send_headers:
         sendHeaders(http, type="video/mp4")
-    http.wfile.write(open(file2send, "rb").read())
+    infile = open(file2send, "rb").read()
+    http.wfile.write(infile)
     http.wfile.close()
 
 def sendCachedFile(http, send_headers=True, pid=0, file2send=None, maxWaitTime = 10 ):
@@ -130,9 +131,8 @@ def sendCachedFile(http, send_headers=True, pid=0, file2send=None, maxWaitTime =
             os.system('kill -s 9 %s;killall hlsdl' % pid)
             return
     http.wfile.close()
-    #LOGGER.debug('aqq')
     if int(pid) > 1000:
-        os.system('kill -s 9 %s;killall hlsdl' % pid)
+        os.system('kill -s 9 %s 2>/dev/null;killall hlsdl 2>/dev/null' % pid)
         if os.path.exists('/proc/%s') % str(pid):
             LOGGER.debug("Error killing pid {0}".format(pid))
         else:
@@ -240,13 +240,6 @@ class StreamHandler(BaseHTTPRequestHandler):
         LOGGER.debug("Analiza URL: {0}".format(url[0].strip()))
         if 1:
             useCLI(s, url[0].strip(), url[1:2], quality, calledAddr)
-        elif jtools.GetSRVtype() == 'e':#wybrano tryb zewnętrznego exteplayer-a
-            _cmd = ['/usr/sbin/streamlink'] 
-            _cmd.extend(['-l', LOGLEVEL,  '-p', '/usr/bin/exteplayer3', '--player-http', '--verbose-player', url, quality])
-            LOGGER.debug('SUBPROCESS:', _cmd)
-            jtools.clearCache()
-            subprocess.Popen(_cmd)
-            return
         else: #old quite often not working way
             LOGGER.debug("useSL(%s,%s,%s) >>>" %(url,argstr,quality))
             session = Streamlink()
@@ -489,6 +482,8 @@ if __name__ == "__main__":
             daemon.stop()
             if len(sys.argv) > 2 and sys.argv[2] in ("debug", "trace"):
                 _loglevel = LOGLEVEL = sys.argv[2]
+            else:
+                _loglevel = LOGLEVEL = "debug"
             start()
         else:
             print("Unknown command")

@@ -21,7 +21,7 @@ fname = '/var/run/%s.pid' % os.path.basename(__file__).replace('.pyc', '').repla
 if os.path.exists(fname):
     print('[%s] found, killing process' % fname )
     pid2del = open(fname , 'r').read().strip()
-    subprocess.Popen('kill %s;sleep 0.3;rm -f /tmp/streamlinkpipe-%s-*' % (pid2del,pid2del), shell=True)
+    subprocess.Popen('kill %s 2>/dev/null;sleep 0.3;rm -f /tmp/streamlinkpipe-%s-* 2>/dev/null' % (pid2del,pid2del), shell=True)
     os.remove(fname)
 with open(fname , 'w') as f:
     f.write(str(pid))
