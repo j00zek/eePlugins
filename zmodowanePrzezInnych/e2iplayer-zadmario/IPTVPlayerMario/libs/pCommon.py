@@ -972,6 +972,8 @@ class common:
                     return self.getPage(e.fp.info().get('Location', ''), addParams, post_data)
                 status = False
                 response = e
+                if e.code == 403:
+                    return (status, _('Access Forbidden'))
                 if addParams.get('return_data', False):
                     self.meta = {}
                     metadata = self.meta

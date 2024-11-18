@@ -29,9 +29,9 @@ class SuggestionsProvider:
 #            printDBG(data)
             data = json.loads(data)['searchHits']
             for item in data:
-                if item.get('matchedName', '') == '':
-                    retList.append(ensure_str(item['matchedTitle']))
-                else:
+                if item.get('matchedName', '') != '':
                     retList.append(ensure_str(item['matchedName']))
+                elif item.get('matchedTitle', '') != '':
+                    retList.append(ensure_str(item['matchedTitle']))
             return retList
         return None
