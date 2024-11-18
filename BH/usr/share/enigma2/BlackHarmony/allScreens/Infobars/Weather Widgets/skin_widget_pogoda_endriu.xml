@@ -48,7 +48,7 @@
  <widget backgroundColor="background" font="Regular;22" halign="center" valign="center" position="550,0" render="j00zekLabel" size="180,55" source="global.CurrentTime" transparent="1" zPosition="1">
  <convert type="j00zekMoon">faza</convert>
    </widget> 
- <widget backgroundColor="background" font="Regular;21" halign="left" valign="top" position="560,55" render="Label" size="100,22" source="global.CurrentTime" transparent="1" zPosition="1">
+ <widget backgroundColor="background" font="Regular;21" halign="left" valign="top" position="560,55" render="Label" size="100,27" source="global.CurrentTime" transparent="1" zPosition="1">
  <convert type="j00zekMoon">oswietlenie</convert>
  </widget>
  
