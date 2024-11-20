@@ -18,15 +18,6 @@ from Screens.MessageBox import MessageBox
 from Screens.Screen import Screen
 from Screens.Setup import SetupSummary
 
-try:
-    from emukodi.xbmcE2 import *
-    from emukodi.e2Console import emukodiConsole
-except Exception as e:
-    print('AQQ ERROR', str(e))
-    addons_path = 'ERROR'
-    emukodi_path = 'ERROR'
-    emukodiConsole = Console
-    
 class StreamlinkConfiguration(Screen, ConfigListScreen):
     from enigma import getDesktop
     if getDesktop(0).size().width() == 1920: #definicja skin-a musi byc tutaj, zeby vti sie nie wywalalo na labelach, inaczej trzeba uzywasc zrodla statictext
@@ -45,6 +36,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                     <widget name="key_yellow" position="360,350" zPosition="2" size="150,30" foregroundColor="yellow" valign="center" halign="left" font="Regular;22" transparent="1" />
                     <widget name="key_blue"   position="500,350" zPosition="2" size="150,30" foregroundColor="blue" valign="center" halign="left" font="Regular;22" transparent="1" />
                   </screen>"""
+
     def buildList(self):
         self.DoBuildList.stop()
         Mlist = []
@@ -72,10 +64,9 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
                                                         )
                                     )
         return Mlist
-    
+
     def __init__(self, session, args=None):
         self.doAction = None
-        self.VisibleSection = 0
         if os.path.exists('/usr/sbin/streamlinkSRV') and os.path.islink('/usr/sbin/streamlinkSRV') and 'StreamlinkConfig/' in os.readlink('/usr/sbin/streamlinkSRV'):
             self.mySL = True
         else:
@@ -92,19 +83,10 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         self.onChangedEntry = []
 
         # Buttons
+        self["key_green"] = Label(_("Save"))
         self["key_red"] = Label(_("Cancel"))
-        
-        if self.mySL == True:
-            self["key_green"] = Label(_("Save"))
-            self["key_blue"] = Label(_("Restart daemon"))
-            if os.path.exists('/usr/lib/python2.7'):
-                self["key_yellow"] = Label()
-            elif os.path.exists('/tmp/streamlinkSRV.log'):
-                self["key_yellow"] = Label(_("Show log"))
-        else:
-            self["key_green"] = Label()
-            self["key_blue"] = Label()
-            self["key_yellow"] = Label()
+        self["key_blue"] = Label()
+        self["key_yellow"] = Label()
 
         # Define Actions
         self["actions"] = ActionMap(["StreamlinkConfiguration"],
@@ -139,7 +121,6 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
             os.system('%s stop' % config.plugins.streamlinkSRV.binName.value)
             if config.plugins.streamlinkSRV.enabled.value:
                 os.system('%s start' % config.plugins.streamlinkSRV.binName.value)
-            self.VisibleSection = 0
             self.close(None)
         
     def refreshBuildList(self, ret = False):
@@ -151,32 +132,18 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
         return
       
     def yellow(self):
-        if self.mySL == True:
-            if os.path.exists('/tmp/streamlinkSRV.log'):
-                self.session.openWithCallback(self.doNothing ,Console, title = '/tmp/streamlinkSRV.log', cmdlist = [ 'cat /tmp/streamlinkSRV.log' ])
+        return
         
     def blue(self):
-        if self.mySL == True:
-            mtitle = _('Restarting daemon')
-            cmd = '/usr/sbin/%s restart' % config.plugins.streamlinkSRV.binName.value
-            self.session.openWithCallback(self.doNothing ,Console, title = mtitle, cmdlist = [ cmd ])
+        return
         
     def exit(self):
-        self.VisibleSection = 0
         self.close(None)
         
     def prevConf(self):
-        DBGlog('prevConf >>> VisibleSection = %s' % self.VisibleSection)
-        self.VisibleSection -= 1
-        if self.VisibleSection < 1:
-            self.VisibleSection = 5
         self.refreshBuildList()
         
     def nextConf(self):
-        DBGlog('nextConf >>> VisibleSection = %s' % self.VisibleSection)
-        self.VisibleSection += 1
-        if self.VisibleSection > 5:
-            self.VisibleSection = 1
         self.refreshBuildList()
     
     def layoutFinished(self):
@@ -197,8 +164,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
             DBGlog('%s' % str(e))
 
     def selectionChanged(self):
-        if 0:
-            DBGlog('%s' % 'selectionChanged(%s)' % self["config"].getCurrent()[0])
+        return
 
     def getCurrentEntry(self):
         return self["config"].getCurrent()[0]

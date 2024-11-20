@@ -23,7 +23,9 @@ def SLconfigLeaveStandbyInitDaemon():
 def SLconfigStandbyCounterChanged(configElement):
     DBGlog('standbyCounterChanged() >>>')
     if config.plugins.streamlinkSRV.StandbyMode.value == True:
-        safeSubprocessCMD('streamlinkproxySRV stop;streamlinkproxySRV stop')
+        safeSubprocessCMD('streamlinkproxySRV stop;streamlinkproxySRV stop;killall -q exteplayer3')
+    else:
+        safeSubprocessCMD('killall -q exteplayer3')
     try:
         if SLconfigLeaveStandbyInitDaemon not in Screens.Standby.inStandby.onClose:
             Screens.Standby.inStandby.onClose.append(SLconfigLeaveStandbyInitDaemon)
