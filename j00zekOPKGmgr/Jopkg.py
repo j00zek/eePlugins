@@ -712,6 +712,8 @@ class Jopkg(Screen):
                 self['key_green'].setText(_("Install"))
                 self.actionInfo = _("install %s" ) % current[0]
                 self.keyGreenAction = 'opkg install %s' % current[0]
+                self['key_blue'].setText(_("(Re)install"))
+                self.keyBlueAction ='opkg install --force-reinstall %s' % current[0]
             elif current[3] == 'upgradeable':
                 self['key_green'].setText(_("Upgrade"))
                 self.actionInfo = _("upgrade %s") % current[0]
