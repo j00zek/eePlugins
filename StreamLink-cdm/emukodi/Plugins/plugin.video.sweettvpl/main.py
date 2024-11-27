@@ -20,6 +20,7 @@ if __name__ == '__main__':
     mode = params.get('mode')
     name = 'plugin.video.sweettvpl'
     xbmc.log('sweettvpl ENTER: mode=%r, name=%r, exlink=%r' % (mode, name, exlink), xbmc.LOGWARNING)
+    CreateDatas()
     if mode == 'loginTV':
         loginTV()
     elif mode == 'logout':
