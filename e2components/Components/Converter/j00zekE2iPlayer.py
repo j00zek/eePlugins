@@ -38,12 +38,22 @@ class j00zekE2iPlayer(Poll, Converter, object):
         self.poll_enabled = True
         self.playback = None
 
+    def importExtPlayer(self):
+        if self.playback is None:
+            try:
+                from Plugins.Extensions.IPTVPlayer.components.iptvextmovieplayer import IPTVExtMoviePlayer
+                self.playback = IPTVExtMoviePlayer.playback
+            except Exception:
+                try:
+                    from Plugins.Extensions.IPTVPlayerMario.components.iptvextmovieplayer import IPTVExtMoviePlayer
+                    self.playback = IPTVExtMoviePlayer.playback
+                except Exception:
+                    self.playback = False
+
     @cached
     def getText(self):
         try:
-            if self.playback is None:
-                from Plugins.Extensions.IPTVPlayer.components.iptvextmovieplayer import IPTVExtMoviePlayer
-                self.playback = IPTVExtMoviePlayer.playback
+            self.importExtPlayer()
             if self.type == 'AllTimes': return  '%s -%s %s' %(str(timedelta(seconds=self.playback['CurrentTime'])),
                                                                 str(timedelta(seconds=self.playback['Length']-self.playback['CurrentTime']))[:-3],
                                                                 str(timedelta(seconds=self.playback['Length']))[:-3])
@@ -67,9 +77,7 @@ class j00zekE2iPlayer(Poll, Converter, object):
     @cached
     def getValue(self):
         try:
-            if self.playback is None:
-                from Plugins.Extensions.IPTVPlayer.components.iptvextmovieplayer import IPTVExtMoviePlayer
-                self.playback = IPTVExtMoviePlayer.playback
+            self.importExtPlayer()
             if self.type == 'Progress': return int(float(self.playback['CurrentTime']) / float(self.playback['Length']) * 100)
         except Exception: return 0
         return 0
