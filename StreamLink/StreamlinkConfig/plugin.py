@@ -187,12 +187,13 @@ class SLK_Menu(Screen):
                     Mlist.append(self.buildListEntry('\c00289496' + "*** Pełne wsparcie KODI>DRM ***", "info.png",'doNothing'))
 
                 if not cdmStatus is None:
-                    for cfgFile in ['playermb', 'canalplusvod', 'pgobox', 'cdaplMB']:
+                    for cfgFile in ['playermb', 'canalplusvod', 'pgobox', 'cdaplMB', 'sweettvpl']:
                         if not os.path.exists('/etc/streamlink/%s' % cfgFile):
                             os.system('mkdir -p /etc/streamlink/%s' % cfgFile)
-                    Mlist.append(self.buildListEntry("Konfiguacja player.pl", "playerpl.png",'menuDRMplayerpl'))
                     Mlist.append(self.buildListEntry("Konfiguacja cda", "cdapl.png",'menuDRMcda'))
+                    Mlist.append(self.buildListEntry("Konfiguacja player.pl", "playerpl.png",'menuDRMplayerpl'))
                     Mlist.append(self.buildListEntry("Konfiguacja posatbox", "polsatboxgo.png",'menuDRMpolsatbox'))
+                    Mlist.append(self.buildListEntry("Konfiguacja sweet.tv", "sweettv.png",'menuDRMsweettv'))
 
         self["list"].list = Mlist
 
@@ -250,6 +251,11 @@ class SLK_Menu(Screen):
             import Plugins.Extensions.StreamlinkConfig.menuDRMpolsatbox
             reload(Plugins.Extensions.StreamlinkConfig.menuDRMpolsatbox)
             self.session.openWithCallback(self.doNothing,Plugins.Extensions.StreamlinkConfig.menuDRMpolsatbox.StreamlinkConfiguration)
+            return
+        elif selected == 'menuDRMsweettv':
+            import Plugins.Extensions.StreamlinkConfig.menuDRMsweettv
+            reload(Plugins.Extensions.StreamlinkConfig.menuDRMsweettv)
+            self.session.openWithCallback(self.doNothing,Plugins.Extensions.StreamlinkConfig.menuDRMsweettv.StreamlinkConfiguration)
             return
 
     def doNothing(self, retVal = None):

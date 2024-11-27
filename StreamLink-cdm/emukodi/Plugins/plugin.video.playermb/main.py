@@ -508,7 +508,7 @@ def generate_m3u(override=True):
             img = item['images']['pc'][0]['mainUrl']
             img = 'https:' + img if img.startswith('//') else img
             data += '#EXTINF:-1 tvg-logo="%s",%s\n%s?mode=playm3u&channelid=%s\n' % (img, title, base_url, id)
-            dataE2 += 'http%3a//wvd%3a8078/plugin.video.playermb/main.py%3fmode=playm3u&channelid=' + '%s:%s\n' % (id, title) #j00zek for E2 bouquets
+            dataE2 += 'plugin.video.playermb/main.py%3fmode=playm3u&channelid=' + '%s:%s\n' % (id, title) #j00zek for E2 bouquets
     openMode = 'w' if override else 'a'
     with io.open(M3UPATH + M3UFILE, mode=openMode, encoding="utf-8") as f:
         f.write(data)
@@ -517,7 +517,7 @@ def generate_m3u(override=True):
     f = xbmcvfs.File(os.path.join(path_m3u, 'iptv.e2b'), 'w') #j00zek for E2 bouquets
     f.write(dataE2)
     f.close()
-    xbmcgui.Dialog().notification('CDA', 'Wygenerowano listę E2B', xbmcgui.NOTIFICATION_INFO)
+    xbmcgui.Dialog().notification('Player', 'Wygenerowano listę E2B', xbmcgui.NOTIFICATION_INFO)
 
 
 class CountSubfolders(object):
@@ -817,8 +817,8 @@ class PLAYERPL(object):
             data = getRequests(self.GETTOKEN, data = POST_DATA, headers=self.HEADERS3)
             kod = data.get('code')
             dg = dialog_progress()
-            dg.create('Uwaga','Przepisz kod: [B]%s[/B]\n Na stronie https://player.pl/zaloguj-tv'%kod)
-            xbmc.log('\t!!!!!! Przepisz kod: [%s] na stronie https://player.pl/zaloguj-tv'%kod, xbmc.LOGWARNING)
+            dg.create('Uwaga','Przepisz kod: [B]%s[/B]\n Na stronie https://player.pl/zaloguj-tv' % kod)
+            xbmc.log('\t!!!!!! Przepisz kod: [%s] na stronie https://player.pl/zaloguj-tv' % kod, xbmc.LOGWARNING)
 
             time_to_wait=340
             secs = 0
