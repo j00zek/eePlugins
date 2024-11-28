@@ -22,7 +22,7 @@ class StreamlinkConfiguration(Screen, ConfigListScreen):
     from enigma import getDesktop
     if getDesktop(0).size().width() == 1920: #definicja skin-a musi byc tutaj, zeby vti sie nie wywalalo na labelach, inaczej trzeba uzywasc zrodla statictext
         skin = """<screen name="StreamlinkConfiguration" position="center,center" size="1200,700" title="Streamlink configuration">
-                    <widget name="config"     position="20,20"   zPosition="1" size="160,600" scrollbarMode="showOnDemand" />
+                    <widget name="config"     position="20,20"   zPosition="1" size="1160,600" scrollbarMode="showOnDemand" />
                     <widget name="key_red"    position="20,630"  zPosition="2" size="240,30" foregroundColor="red"    valign="center" halign="left" font="Regular;22" transparent="1" />
                     <widget name="key_green"  position="260,630" zPosition="2" size="240,30" foregroundColor="green"  valign="center" halign="left" font="Regular;22" transparent="1" />
                     <widget name="key_yellow" position="500,630" zPosition="2" size="240,30" foregroundColor="yellow" valign="center" halign="left" font="Regular;22" transparent="1" />
