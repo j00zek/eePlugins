@@ -4,8 +4,7 @@ import re
 from streamlink.plugin import Plugin, PluginError, pluginmatcher
 from streamlink.plugin.api import useragents
 from streamlink.utils import update_scheme
-#from streamlink.stream._ffmpegmux import FFMPEGMuxer #20230223
-from streamlink.stream.ffmpegmux import FFMPEGMuxer #20230223
+from streamlink.stream.hls import HLSStream
 
 log = logging.getLogger(__name__)
 
@@ -28,8 +27,9 @@ class rtspme(Plugin):
         playlist_m = self._playlist_re.search(res.text)
 
         if playlist_m:
-            log.debug("Found: '%s'" % playlist_m.group(1))
-            return {"rtsp_stream": FFMPEGMuxer(self.session, *(playlist_m.group(1),), is_muxed=False)}
+            address = playlist_m.group(1)
+            log.debug("Found: '%s'" % address)
+            return {"hls": HLSStream(self.session, *(address,))}
         else:
             log.debug("Could not find stream data")
 

@@ -4,8 +4,7 @@ import re
 from streamlink.plugin import Plugin, PluginError, pluginmatcher
 from streamlink.plugin.api import useragents
 from streamlink.utils import update_scheme
-#from streamlink.stream._ffmpegmux import FFMPEGMuxer #20230223
-from streamlink.stream.ffmpegmux import FFMPEGMuxer #20230223
+from streamlink.stream.hls import HLSStream
 
 log = logging.getLogger(__name__)
 
@@ -40,12 +39,14 @@ class skylinewebcams(Plugin):
         
         try:
             address = self._addr_re.search(res.text).group(1)
+            if address.startswith('livee.m3u8'):
+                address = 'https://hd-auth.skylinewebcams.com/' + address.replace('livee', 'live')
             log.debug("Found address: %s" % address)
         except Exception as e:
             log.debug(str(e))
             log.debug("For responce:\n %s" % res.text)
             return
         
-        return {"rtsp_stream": FFMPEGMuxer(self.session, *(address,), is_muxed=False, format='mpegts', vcodec = 'copy', acodec = 'copy' )}
+        return {"hls": HLSStream(self.session, *(address,))}
 
 __plugin__ = skylinewebcams

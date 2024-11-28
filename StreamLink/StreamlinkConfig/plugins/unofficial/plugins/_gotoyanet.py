@@ -4,10 +4,8 @@ import re
 from streamlink.plugin import Plugin, PluginError, pluginmatcher
 from streamlink.plugin.api import useragents
 from streamlink.utils import update_scheme
-#from streamlink.stream._ffmpegmux import FFMPEGMuxer #20230223
-from streamlink.stream.ffmpegmux import FFMPEGMuxer #20230223
 #from streamlink.stream._hlsdl import HLSDL #20230223
-from streamlink.stream.file import FileStream
+from streamlink.stream.hls import HLSStream
 
 log = logging.getLogger(__name__)
 
@@ -46,7 +44,7 @@ class gotoyanet(Plugin):
             log.debug(str(e))
             return
 
-        if 1 == 1: #a workarround for now because I don't know how to make it happen in stream
+        if 0: #a workarround for now because I don't know how to make it happen in stream
             CacheFileName = '/tmp/stream.ts'
             _cmd = ['/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/bin/hlsdl'] 
             _cmd.extend([address])
@@ -64,6 +62,6 @@ class gotoyanet(Plugin):
                 raise Exception('ERROR initiating processHLSDL')
                 return
         else:
-            return {"rtsp_stream": HLSDL(self.session, *(address,), is_muxed=False, format='mpegts', vcodec = 'copy', acodec = 'copy')} 
+            return {"hls": HLSStream(self.session, *(address,))}
 
 __plugin__ = gotoyanet

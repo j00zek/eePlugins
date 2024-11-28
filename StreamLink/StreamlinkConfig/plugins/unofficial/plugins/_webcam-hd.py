@@ -4,8 +4,7 @@ import re
 from streamlink.plugin import Plugin, PluginError, pluginmatcher
 from streamlink.plugin.api import useragents
 from streamlink.utils import update_scheme
-#from streamlink.stream._ffmpegmux import FFMPEGMuxer #20230223
-from streamlink.stream.ffmpegmux import FFMPEGMuxer #20230223
+from streamlink.stream.hls import HLSStream
 
 log = logging.getLogger(__name__)
 
@@ -41,6 +40,6 @@ class webcamHD(Plugin):
             log.debug(str(e))
             return
         
-        return {"rtsp_stream": FFMPEGMuxer(self.session, *(address,), is_muxed=False, format='mpegts', vcodec = 'copy', acodec = 'copy' )}
+        return {"hls": HLSStream(self.session, *(address,))}
 
 __plugin__ = webcamHD

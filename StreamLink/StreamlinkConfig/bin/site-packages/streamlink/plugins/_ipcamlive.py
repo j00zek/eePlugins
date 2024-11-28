@@ -4,8 +4,7 @@ import re
 from streamlink.plugin import Plugin, PluginError, pluginmatcher
 from streamlink.plugin.api import useragents
 from streamlink.utils import update_scheme
-#from streamlink.stream._ffmpegmux import FFMPEGMuxer #20230223
-from streamlink.stream.ffmpegmux import FFMPEGMuxer #20230223
+from streamlink.stream.hls import HLSStream
 
 log = logging.getLogger(__name__)
 
@@ -15,6 +14,7 @@ log = logging.getLogger(__name__)
 ))
 
 class ipcamlive(Plugin):
+    #g0.ipcamlive.com/player/player.php?alias=kadan&autoplay=1
     _url_re = re.compile(r"https?:\/\/(g[0-9]\.|)ipcamlive\.com\/player\/player\.php")
     _addr_re = re.compile(r"[ ]*var address = '([^']+)';")
     _stID_re = re.compile(r"[ ]*var streamid = '([^']+)';")
@@ -41,6 +41,6 @@ class ipcamlive(Plugin):
             log.debug(str(e))
             return
         
-        return {"rtsp_stream": FFMPEGMuxer(self.session, *(fullURL,), is_muxed=False)}
+        return {"hls": HLSStream(self.session, *(fullURL,))} 
 
 __plugin__ = ipcamlive
