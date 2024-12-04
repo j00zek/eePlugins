@@ -116,8 +116,8 @@ from Tools.LoadPixmap import LoadPixmap
 
 class SLK_Menu(Screen):
     skin = """
-<screen position="center,center" size="880,500">
-        <widget source="list" render="Listbox" position="0,0" size="880,500" scrollbarMode="showOnDemand">
+<screen position="center,center" size="880,600">
+        <widget source="list" render="Listbox" position="0,0" size="880,600" scrollbarMode="showOnDemand">
                 <convert type="TemplatedMultiContent">
                         {"template": [
                                 MultiContentEntryPixmapAlphaTest(pos = (12, 2), size = (120, 40), png = 0),
