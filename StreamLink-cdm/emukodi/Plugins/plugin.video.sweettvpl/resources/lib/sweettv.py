@@ -24,6 +24,8 @@ try:
     # Python 3
     from urllib.parse import quote_plus, unquote_plus, quote, unquote,parse_qsl,urlencode
     to_unicode = str
+    import urllib3
+    urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 except:
     # Python 2.7
     from urllib import quote_plus, unquote_plus, quote, unquote,urlencode
@@ -74,7 +76,7 @@ def channelList():
 @plugin.route('/')
 def root():
     CreateDatas()
-	
+        
     if helper.logged:
         startwt()
 
@@ -165,7 +167,7 @@ def getEPG(id):
     acx2 = helper.get_setting('refresh_token')
 
     jsdata = helper.request_sess(url, 'post', headers=headers, data = json_data, json=True, json_data = True)
-
+    print(jsdata)
     if jsdata.get("code", None) == 16:
         if jsdata.get("message", None) == 'token is expired':
             helper.set_setting('bearer', '')
@@ -485,31 +487,39 @@ def listM3U():
         dataE2 = '' #j00zek for E2 bouquets
         channels=channelList()
         if channels.get("code", None) == 16:
-            if channels.get("message", None) == 'token is expired':
+            if channels.get("message", None) == 'token is expired' or channels.get("message", None) == 'Bearer realm="auth"':
+                xbmcgui.Dialog().notification('Sweet tv', 'Token już wygasł, próbuję odświerzyć', xbmcgui.NOTIFICATION_INFO)
                 helper.set_setting('bearer', '')
                 refr = refreshToken()
                 if refr:
                     channels=channelList()
                 else:
+                    xbmcgui.Dialog().notification('Sweet tv', 'Próba odświerzenia tokena nieudana, koniec  :(', xbmcgui.NOTIFICATION_INFO)
                     return
+        channelsCount = 0
         if 'list' in channels:
             for c in channels['list']:
                 if c.get('available',None):
                     img=c.get('icon_v2_url',None)
                     cName=c.get('name',None)
                     cid=c.get('id',None)
-                    data += '#EXTINF:0 tvg-id="%s" tvg-logo="%s" group-title="Sweet.tv" ,%s\nplugin://plugin.video.sweettvpl/playvid/%s|null\n' %(cName,img,cName,cid)
-                    dataE2 += 'plugin.video.pgobox/main.py%3fmode=playtvs&url=' + '%s:%s\n' % (cid, cName) #j00zek for E2 bouquets
-            f = xbmcvfs.File(path_m3u + file_name, 'w')
-            f.write(data)
-            f.close()
-            xbmcgui.Dialog().notification('Sweet.tv', 'Wygenerowano listę M3U', xbmcgui.NOTIFICATION_INFO)
+                    if cid is not None and cid != '':
+                        channelsCount += 1
+                        data += '#EXTINF:0 tvg-id="%s" tvg-logo="%s" group-title="Sweet.tv" ,%s\nplugin://plugin.video.sweettvpl/playvid/%s|null\n' %(cName,img,cName,cid)
+                        dataE2 += 'plugin.video.sweettvpl/main.py%3fmode=playtvs&url=' + '%s:%s\n' % (cid, cName) #j00zek for E2 bouquets
+            if channelsCount > 0:
+                f = xbmcvfs.File(path_m3u + file_name, 'w')
+                f.write(data)
+                f.close()
+                xbmcgui.Dialog().notification('Sweet.tv', 'Wygenerowano listę M3U', xbmcgui.NOTIFICATION_INFO)
 
-            f = xbmcvfs.File(os.path.join(path_m3u, 'iptv.e2b'), 'w') #j00zek for E2 bouquets
-            f.write(dataE2)
-            f.close()
-            xbmcgui.Dialog().notification('Sweet.tv', 'Wygenerowano listę E2B', xbmcgui.NOTIFICATION_INFO)
-
+                f = xbmcvfs.File(os.path.join(path_m3u, 'iptv.e2b'), 'w') #j00zek for E2 bouquets
+                f.write(dataE2)
+                f.close()
+                xbmcgui.Dialog().notification('Sweet.tv', 'Wygenerowano listę E2B', xbmcgui.NOTIFICATION_INFO)
+            else:
+                xbmcgui.Dialog().notification('Sweet.tv', 'System zwrócił pustą listę kanałów', xbmcgui.NOTIFICATION_INFO)
+            
     else:
         xbmcgui.Dialog().notification('Sweet.tv', 'Zaloguj się we wtyczce', xbmcgui.NOTIFICATION_INFO)
 
