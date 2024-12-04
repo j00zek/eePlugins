@@ -1035,7 +1035,7 @@ class common:
             token = recaptcha.processCaptcha(start_time, baseUrl, captchaType='CF')
             if token != '':
                 r = json_loads(base64.b64decode(token))
-                printDBG('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
+                printDBG('>>>>>>>>>>>>>>>>>>>>> CF token >>>>>>>>>>>>>>>>>>>>>>')
                 printDBG(r)
                 printDBG('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<')
                 if cf_user != r.get('user_agent', ''):
@@ -1046,14 +1046,18 @@ class common:
                     configfile.save()
                 params['header']['User-Agent'] = cf_user
 
-                cookies = r.get('cookie', '')
-                try:
-                    params['cookie_items'] = {'cf_clearance': cookies[0]['value']}
-                except Exception:
-                    params['cookie_items'] = {'cf_clearance': cookies['value']} # mye2i < 1.7
+                cookies = r.get('cookie', [])
+                if len(cookies) > 0:
+                    try:
+                        params['cookie_items'] = {'cf_clearance': cookies[0]['value']}
+                    except Exception:
+                        try:
+                            params['cookie_items'] = {'cf_clearance': cookies['value']} # mye2i < 1.7
+                        except Exception:
+                            printDBG('missing cf_clearance value in received token')
                 sts, data = self.getPage(baseUrl, params, post_data)
                 if not sts:
-                    printDBG('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
+                    printDBG('>>>>>>>>>>>>>>>> not sts returned data >>>>>>>>>>>>>>')
                     printDBG(data)
                     printDBG('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<')
 
