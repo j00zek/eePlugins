@@ -1,0 +1,120 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: tuxbox-enigma 0.0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-09-30 13:01+0000\n"
+"PO-Revision-Date: 2020-09-30 14:30+0100\n"
+"Last-Translator: \n"
+"Language-Team: j00zek\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: polish\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 1.5.5\n"
+
+msgid "Go to standby"
+msgstr "Uśpij tuner"
+
+msgid "Power off STB"
+msgstr "Wyłącz tuner"
+
+msgid "AutoShutDown: %s ?"
+msgstr "Auto wyłączenie: %s ?"
+
+msgid "AutoShutDown settings"
+msgstr "Ustawienia automatycznego wyłączania"
+
+msgid "AutoShutDown Setup"
+msgstr "Ustawienia automatycznego wyłączania"
+
+msgid "configure automated power off / standby"
+msgstr " "
+
+msgid "Exit"
+msgstr "Wyjście"
+
+msgid "OK"
+msgstr "OK"
+
+msgid "Default"
+msgstr "Ustaw standardowe"
+
+msgid "Choose media file"
+msgstr "Wybierz plik video"
+
+msgid "*** Configuration for automatic power off in standby ***"
+msgstr "*** Automatyczne wyłączenie w uśpieniu ***"
+
+msgid "Enable automatic power off in standby:"
+msgstr "Włącz automatyczne wyłączanie w uśpieniu:"
+
+msgid "Time in standby for power off (min):"
+msgstr "Czas w uspieniu do wyłączenia (min):"
+
+msgid "Disable power off for given interval:"
+msgstr "Zablokuj wyłączanie w przedziale czasu:"
+
+msgid "Begin of excluded interval (hh:mm):"
+msgstr "Początek przedziału czasu (hh:mm):"
+
+msgid "End of excluded interval (hh:mm):"
+msgstr "Koniec przedziału czasu (hh:mm):"
+
+msgid "*** Configuration for inactivity actions ***"
+msgstr "*** Brak aktywności ***"
+
+msgid "Enable action after inactivity:"
+msgstr "Włącz obsługę braku aktywności:"
+
+msgid "Time for inactivity (min):"
+msgstr "Czas braku aktywności (min):"
+
+msgid "Action for inactivity:"
+msgstr "Akcja dla braku aktywności:"
+
+msgid "Disable inactivity action at timeshift:"
+msgstr "Zablokuj obsługę braku aktywności gdy jest włączony timeshift:"
+
+msgid "Show message before inactivity action:"
+msgstr "Wyświetl informację przed wykonaniem akcji:"
+
+msgid "Message timeout (sec):"
+msgstr "Czas wyświetlania informacji (s):"
+
+msgid "Play media file before inactivity action:"
+msgstr "Odtwórz plik przed wykonaniem akcji:"
+
+msgid "Disable inactivity action for given interval:"
+msgstr "Zablokuj obsługę braku aktywności w przedziale czasu:"
+
+msgid "*** Common configuration ***"
+msgstr "*** Inne ustawienia ***"
+
+msgid "Disable power off in EPGRefresh interval:"
+msgstr "Wyłącz automatyczne wyłączanie gdy działa EPGRefresh:"
+
+msgid "Disable power off until a hard disk is active:"
+msgstr "Wyłącz automatyczne wyłączanie gdy działa dysk:"
+
+msgid "Disable power off until a given device is pingable:"
+msgstr "Wyłącz automatyczne wyłączanie gdy działa urządzenie sieciowe (ping):"
+
+msgid "IP address of network device:"
+msgstr "Adres IP urządzenia siecioego:"
+
+msgid "Show in Extensions/Plugins:"
+msgstr "Pokaż jako wtyczkę w Rozszerzeniach i Menadżerze wtyczek"
+
+msgid "Really close without saving settings?"
+msgstr "Wyjść bez zapisu ustawień?"
+
+msgid "Reset AutoShutDown settings to defaults?"
+msgstr "Zresetować ustawienia do standardowych?"
+
+msgid "Select a media file for AutoShutDown"
+msgstr "Wybierz plik video do odtworzenia"
+
+msgid "Invalid Choice"
+msgstr "Zły wybór"

@@ -1,0 +1,15 @@
+Czasami się zdarza, że nie można namierzyć oryginalnej definicji skórki zaszystej w sofcie/wtyczce. 
+W takim przypadku pomocna może być poniższa procedura:
+
+1. skopiować na PC plik skin.pyc, lub zmienić mu nazwę na skin.pyc.org
+2. Skopiować na PC plik <nazwa softu>-skin.zip i rozpakować go. Jeśli brak można spróbować z innym.
+3. Skopiować znajdujący się w pobranym zip-e plik skin.py do /usr/lib/enigma2/python/
+4. zrestartować e2
+5. wejść do ekranu którego definicji szukamy
+6. Przez TC wejść do /tmp/missingSkins/
+7. Znaleźć plik z definicją. <embedded-in-*********>.xml oznacza, że to skórka zaszysta w kodzie
+
+UWAGA!!!
+  W przypadku wystąpienia GS-a:
+    - skanować pliki /usr/lib/enigma2/python/skin.py /usr/lib/enigma2/python/skin.pyc
+    - przywrócić orygnialny plik zachowany w punkcie 1

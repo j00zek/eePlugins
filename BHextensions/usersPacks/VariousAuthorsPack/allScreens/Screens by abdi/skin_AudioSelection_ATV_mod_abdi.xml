@@ -1,0 +1,53 @@
+<screen name="AudioSelection" position="462,128" size="1000,820" title=" " flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="0,0" zPosition="-10" size="1000,820" pixmap="BlackHarmony/bg_design/small.png"/>
+    <widget source="Title" render="Label" position="560,30" size="380,35" zPosition="1" halign="right" valign="bottom" font="Roboto_HD; 27" foregroundColor="white" backgroundColor="black" transparent="1" />
+    <widget source="global.CurrentTime" render="Label" position="45,30" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="130,30" size="360,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+    <ePixmap position="80,125" size="60,30" pixmap="BlackHarmony/buttons/left.png" alphatest="blend" />
+	<ePixmap position="860,125" size="60,30" pixmap="BlackHarmony/buttons/right.png" alphatest="blend" />
+    <widget name="switchdescription" position="230,125" size="530,30" font="Roboto_HD; 26" halign="center" foregroundColor="white" backgroundColor="black" transparent="1"/>
+    <widget name="config" position="120,200" size="800,210" font="Roboto_HD; 26" itemHeight="35" scrollbarMode="showOnDemand" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" selectionPixmap="BlackHarmony/menu/sel_860_40.png" backgroundColor="black" transparent="1"/>
+    <widget source="key_red" render="Pixmap" pixmap="BlackHarmony/buttons/key_red.png" position="90,205" size="35,25" alphatest="blend">
+      <convert type="ConditionalShowHide"/>
+    </widget>
+    <widget source="key_green" render="Pixmap" pixmap="BlackHarmony/buttons/key_green.png" position="90,240" size="35,25" alphatest="blend">
+      <convert type="ConditionalShowHide"/>
+    </widget>
+    <widget source="key_yellow" render="Pixmap" pixmap="BlackHarmony/buttons/key_yellow.png" position="90,275" size="35,25" alphatest="blend">
+      <convert type="ConditionalShowHide"/>
+    </widget>
+    <widget source="key_blue" render="Pixmap" pixmap="BlackHarmony/buttons/key_blue.png" position="90,310" size="35,25" alphatest="blend">
+      <convert type="ConditionalShowHide"/>
+    </widget>
+    <ePixmap position="60,420" zPosition="10" size="985,1" pixmap="BlackHarmony/gfx/linia_md.png" />
+    <widget source="streams" render="Listbox" position="55,430" size="860,280" zPosition="3" scrollbarMode="showOnDemand" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" selectionPixmap="BlackHarmony/menu/sel_860_40.png" backgroundColor="black" transparent="1">
+      <convert type="TemplatedMultiContent">
+				                   {"templates":
+											{"default": (40,[
+													MultiContentEntryText(pos = (0, 5), size = (40, 30), font = 0, flags = RT_HALIGN_LEFT, text = 1), # key,
+													MultiContentEntryText(pos = (45, 5), size = (65, 30), font = 0, flags = RT_HALIGN_LEFT, text = 2), # number,
+													MultiContentEntryText(pos = (115, 5), size = (130, 30), font = 0, flags = RT_HALIGN_LEFT, text = 3), # description,
+													MultiContentEntryText(pos = (250, 5), size = (300, 35), font = 0, flags = RT_HALIGN_LEFT, text = 4), # language,
+													MultiContentEntryText(pos = (640, 7), size = (20, 25), font = 1, flags = RT_HALIGN_RIGHT, text = 5), # selection,
+											], True, "showOnDemand"),
+											"notselected": (40,[
+													MultiContentEntryText(pos = (0, 5), size = (40, 30), font = 0, flags = RT_HALIGN_LEFT, text = 1), # key,
+													MultiContentEntryText(pos = (45, 5), size = (65, 30), font = 0, flags = RT_HALIGN_LEFT, text = 2), # number,
+													MultiContentEntryText(pos = (115, 5), size = (130, 30), font = 0, flags = RT_HALIGN_LEFT, text = 3), # description,
+													MultiContentEntryText(pos = (250, 5), size = (300, 35), font = 0, flags = RT_HALIGN_LEFT, text = 4), # language,
+													MultiContentEntryText(pos = (640, 7), size = (20, 25), font = 1, flags = RT_HALIGN_RIGHT, text = 5), # selection,
+											], False, "showOnDemand")
+											},
+									"fonts": [gFont("Roboto_HD",27), gFont("Roboto_HD",22)],
+									"itemHeight": 40
+									}
+      </convert>
+    </widget>
+    <ePixmap position="745,750" size="60,30" pixmap="BlackHarmony/buttons/key_ok.png" alphatest="blend" />
+    <ePixmap position="820,750" size="60,30" pixmap="BlackHarmony/buttons/key_menu.png" alphatest="blend" />
+    <ePixmap position="895,750" size="60,30" pixmap="BlackHarmony/buttons/key_exit.png" alphatest="blend" />
+</screen>

@@ -1,0 +1,122 @@
+  <screen name="MSNweatherNP" position="204,34" size="1522,1022" title=" " flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="0,0" zPosition="-10" size="1522,1022" pixmap="BlackHarmony/bg_design/pogoda.png"/>
+    <!-- header -->
+    <widget source="global.CurrentTime" render="Label" position="75,50" size="80,30" font="robotoMSN; 27" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="160,50" size="360,30" font="robotoMSN; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+    <widget source="Title" render="Label" position="900,50" size="540,35" font="robotoMSN; 27" halign="right" backgroundColor="dark_grey" transparent="1"/>
+    <!-- top left corner -->
+    <ePixmap pixmap="BlackHarmony/icons/Weather/wsch.png" position="100,160" zPosition="1" size="99,50" alphatest="blend" />
+    <widget source="global.CurrentTime" render="Label" position="100,230" size="99,35" font="HD_Thin; 22" halign="center" valign="center" transparent="1" backgroundColor="black">
+      <convert type="j00zekSun">wschod</convert>
+    </widget>
+    <ePixmap pixmap="BlackHarmony/icons/Weather/zach.png" position="222,160" zPosition="1" size="99,50" alphatest="blend" />
+    <widget source="global.CurrentTime" render="Label" position="222,230" size="99,35" font="HD_Thin; 22" halign="center" valign="center" transparent="1" backgroundColor="black" foregroundColor="grey">
+      <convert type="j00zekSun">zachod</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="j00zekPicons" position="369,160" size="50,50" path="/usr/share/enigma2/BlackHarmony/icons" picontype="MoonPhase" showdefaultpic="no" zPosition="8"  alphatest="blend">
+      <convert type="j00zekMoon">obraz</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="359,230" size="70,35" zPosition="1" font="HD_Thin;22" halign="center" valign="center" backgroundColor="black" transparent="1" foregroundColor="grey">
+      <convert type="j00zekMoon">oswietlenie</convert>
+    </widget>
+    <widget render="Label" source="currentData_temperature" font="robotoMSN; 40" position="370,280" size="100,128" backgroundColor="black" zPosition="3" transparent="1" halign="left" valign="center" foregroundColor="light_yellow"/>
+    <widget name="currenticon" position="208,280" size="128,128" zPosition="1" alphatest="blend"/>
+    <!-- top right corner -->
+    <widget render="Label" source="currentData_skytext" font="robotoMSN; 26" position="100,420" size="330,70" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="center" foregroundColor="green"/>
+    <!-- top middle -->
+	<widget source="currentData_WeatherinfoList" render="Listbox" position="500,280" size="400,300" scrollbarMode="showOnDemand" transparent="1" backgroundColor="black">
+		<convert type="TemplatedMultiContent">
+                    {"template": [
+                        MultiContentEntryText(pos = (2, 2), size = (396, 28), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 0),
+                        MultiContentEntryText(pos = (2, 2), size = (396, 28), font=1, flags = RT_HALIGN_RIGHT|RT_VALIGN_CENTER, text = 1),
+                        ],
+                        "fonts": [gFont("regularMSN", 24), gFont("regularMSN", 24)],
+                        "itemHeight": 28,
+						"selectionEnabled": False
+                    }
+        </convert>
+	</widget>
+    <widget alphatest="blend" name="currentAirQualityIcon" position="970,170" size="90,90" transparent="1" zPosition="3"/>
+	<widget source="currentData_airlyInfo"   render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=90,repeat=99,startdelay=2000" foregroundColor="light_yellow" backgroundColor="black" font="robotoMSN; 32" position="1070,170" size="360,90" zPosition="5" halign="left" valign="center" transparent="1" />
+	<widget source="currentData_infoList" render="Listbox" position="970,280" size="460,300" scrollbarMode="showOnDemand" transparent="1" backgroundColor="black">
+		<convert type="TemplatedMultiContent">
+                    {"template": [
+                        MultiContentEntryText(pos = (2, 2), size = (456, 28), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 0),
+                        MultiContentEntryText(pos = (2, 2), size = (456, 28), font=1, flags = RT_HALIGN_RIGHT|RT_VALIGN_CENTER, text = 1),
+                        ],
+                        "fonts": [gFont("regularMSN", 24), gFont("regularMSN", 24)],
+                        "itemHeight": 28,
+						"selectionEnabled": False
+                    }
+        </convert>
+	</widget>
+    <!--TODAY-->
+    <widget source="session.j00zekMSNWeather" render="Label" font="robotoMSN; 26" position="90,600" size="210,30" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="center">
+      <convert type="j00zekMSNWeather">DailyRecord=0,date</convert>
+    </widget>
+    <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="128,650" size="128,128" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
+        <convert type="j00zekMSNWeather">DailyRecord=0</convert>
+    </widget>
+    <widget source="session.j00zekMSNWeather" render="Label" font="robotoMSN; 26" position="90,780" size="210,130" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="top">
+      <convert type="j00zekMSNWeather">DailyRecord=0,info</convert>
+    </widget>
+    <!--DAY1-->
+    <widget source="session.j00zekMSNWeather" render="Label" font="robotoMSN; 26" position="360,600" size="210,30" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="center">
+      <convert type="j00zekMSNWeather">DailyRecord=1,date</convert>
+    </widget>
+    <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="378,650" size="128,128" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
+        <convert type="j00zekMSNWeather">DailyRecord=1</convert>
+    </widget>
+    <widget source="session.j00zekMSNWeather" render="Label" font="robotoMSN; 26" position="360,780" size="210,130" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="top">
+      <convert type="j00zekMSNWeather">DailyRecord=1,info</convert>
+    </widget>
+    <!--DAY2-->
+    <widget source="session.j00zekMSNWeather" render="Label" font="robotoMSN; 26" position="610,600" size="210,30" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="center">
+      <convert type="j00zekMSNWeather">DailyRecord=2,date</convert>
+    </widget>
+    <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="668,650" size="128,128" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
+        <convert type="j00zekMSNWeather">DailyRecord=2</convert>
+    </widget>
+    <widget source="session.j00zekMSNWeather" render="Label" font="robotoMSN; 26" position="610,780" size="210,130" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="top">
+      <convert type="j00zekMSNWeather">DailyRecord=2,info</convert>
+    </widget>
+    <!--DAY3-->
+    <widget source="session.j00zekMSNWeather" render="Label" font="robotoMSN; 26" position="900,600" size="210,30" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="center">
+      <convert type="j00zekMSNWeather">DailyRecord=3,date</convert>
+    </widget>
+    <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="938,650" size="128,128" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
+        <convert type="j00zekMSNWeather">DailyRecord=3</convert>
+    </widget>
+    <widget source="session.j00zekMSNWeather" render="Label" font="robotoMSN; 26" position="900,780" size="210,130" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="top">
+      <convert type="j00zekMSNWeather">DailyRecord=3,info</convert>
+    </widget>
+    <!--DAY4-->
+    <widget source="session.j00zekMSNWeather" render="Label" font="robotoMSN; 26" position="1175,600" size="210,30" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="center">
+      <convert type="j00zekMSNWeather">DailyRecord=4,date</convert>
+    </widget>
+    <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="1218,650" size="128,128" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
+        <convert type="j00zekMSNWeather">DailyRecord=4</convert>
+    </widget>
+    <widget source="session.j00zekMSNWeather" render="Label" font="robotoMSN; 26" position="1175,780" size="210,130" backgroundColor="black" zPosition="3" transparent="1" halign="center" valign="top">
+      <convert type="j00zekMSNWeather">DailyRecord=4,info</convert>
+    </widget>
+    <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="80,960" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="360,960" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="600,960" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="980,960" size="35,27" alphatest="blend"/>
+    <eLabel text="Close" position="120,959" size="150,35" font="robotoMSN; 24" backgroundColor="dark_grey" transparent="1"/>
+    <widget source="session.CurrentService" render="Label" position="400,959" size="150,35" font="robotoMSN; 24" backgroundColor="dark_grey" transparent="1">
+		<convert type="j00zekTranslator">Show Maps</convert>
+    </widget>
+    <widget source="session.CurrentService" render="Label" position="640,959" size="380,35" font="robotoMSN; 24" backgroundColor="dark_grey" transparent="1">
+		<convert type="j00zekTranslator">Show Histograms</convert>
+    </widget>
+    <!--eLabel text="" position="1020,959" size="1000,55" font="robotoMSN; 24" backgroundColor="dark_grey" transparent="1"/-->
+    <ePixmap pixmap="BlackHarmony/buttons/key_left.png" position="1210,960" size="40,30" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_right.png" position="1300,960" size="40,30" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="1380,960" size="60,30" alphatest="blend"/>
+  </screen>

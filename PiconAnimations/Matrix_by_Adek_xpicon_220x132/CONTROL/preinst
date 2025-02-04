@@ -1,0 +1,14 @@
+#!/bin/sh
+if [[ `df -k /usr/share/enigma2|grep -v 'Filesystem'|sed 's/  */ /g'|cut -d ' ' -f4` -lt 10240 ]];then
+  if `grep -q 'osd.language=pl_PL' </etc/enigma2/settings`; then
+    echo ""
+    echo "BLAD: brak miejsca we flashu."
+    echo ""
+  else
+    echo ""
+    echo "ERROR: no free space in flash."
+    echo ""
+  fi 
+  exit 1
+fi
+exit 0

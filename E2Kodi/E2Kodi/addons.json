@@ -1,0 +1,117 @@
+{
+    "Canal+ v. 1.7.5.9 by mbebe, mariusz89b, hevet": {
+        "enabled": true,
+        "icon": "canalplusvod.png",
+        "cfgDir": "canalplusvod",
+        "cfgFiles": [],
+        "cfgValues": [],
+        "addonScript": "plugin.video.canalplusvod/main.py",
+        "login": [],
+        "loginTV": ["'1' '?mode=loginTV' 'resume:false'", "'1' ' ' 'resume:false'"],
+        "userbouquet": [],
+        "logout": [],
+        "webServer": "plugin.video.canalplusvod/serverHTTP.py"
+    },
+    "cda v. 1.13 by mbebe": {
+        "enabled": true,
+        "icon": "cdapl.png",
+        "cfgDir": "cdaplMB",
+        "cfgFiles": ["refr_token", "username", "password", "login_info"],
+        "cfgValues": ["username", "password"],
+        "addonScript": "plugin.video.cdaplMB/main.py",
+        "login": ["'1' '' 'resume:false'"],
+        "userbouquet": ["'1' '?image=DefaultMovies.png&mode=listM3U&moviescount=0&page=1&title=CDA%20TV%20-%20Telewizja%20Online&url' 'resume:false'"],
+        "logout": [],
+        "webServer": "plugin.video.cdaplMB/serverHTTP.py"
+    },
+    "Play now v. 1.0.0 by lg": {
+        "enabled": false,
+        "icon": "playnow.png",
+        "cfgDir": "play_now",
+        "cfgFiles": [],
+        "cfgValues": [],
+        "addonScript": "plugin.video.play_now/addon.py",
+        "loginTV": ["'1' '?mode=login' 'resume:false'", "'1' ' ' 'resume:false'"],
+        "userbouquet": ["'1' '?mode=listcategContent&url=%3alive' 'resume:false'"],
+        "logout": ["'1' '?mode=logout' 'resume:false'"]
+    },
+    "player.pl v. 1.12.3 by mbebe, m1992, rysson": {
+        "enabled": true,
+        "icon": "playerpl.png",
+        "cfgDir": "playermb",
+        "cfgFiles": ["refresh_token", "logged"],
+        "cfgValues": [],
+        "addonScript": "plugin.video.playermb/main.py",
+        "loginTV": ["'1' '?mode=login' 'resume:false'", "'1' ' ' 'resume:false'"],
+        "userbouquet": [" '1' '?mode=listcategContent&url=%3alive' 'resume:false'"],
+        "logout": ["'1' '?mode=logout' 'resume:false'"]
+    },
+    "Polsat Go Box v. 1.102 by mbebe, mariusz89b, mtr81": {
+        "enabled": true,
+        "icon": "polsatboxgo.png",
+        "cfgDir": "pgobox",
+        "cfgFiles": ["logged", "username", "password", "klient=iCOK", "client_id", "device_id", "sesstoken", "sessexpir", "id_"],
+        "cfgValues": ["username", "password", "klient"],
+        "addonScript": "plugin.video.pgobox/main.py",
+        "login": ["'1' '?mode=login' 'resume:false'"],
+        "userbouquet": ["'1' '?mode=build_m3u' 'resume:false'"],
+        "logout": ["'1' '?mode=logout' 'resume:false'"]
+    },
+    "spotify v. 1.2.3 by LdSz": {
+        "enabled": false,
+        "icon": "spotify.png",
+        "cfgDir": "spotify",
+        "cfgFiles": [],
+        "cfgValues": [],
+        "addonScript": "plugin.audio.spotify/plugin.py",
+        "login": [],
+        "userbouquet": [],
+        "logout": [],
+        "webServer": "plugin.audio.spotify/service.py"
+    },
+    "sweet.tv v. 0.7 by mbebe,mtr81": {
+        "enabled": true,
+        "icon": "sweettv.png",
+        "cfgDir": "sweettvpl",
+        "cfgFiles": ["refresh_token", "logged", "uuid", "username", "password"],
+        "cfgValues": [],
+        "addonScript": "plugin.video.sweettvpl/main.py",
+        "loginTV": ["'1' '?mode=loginTV' 'resume:false'"],
+        "userbouquet": ["'1' '?mode=listM3U' 'resume:false'"],
+        "logout": ["'1' '?mode=logout' 'resume:false'"]
+    },
+    "UPC Go v. 1.0.1 by lg": {
+        "enabled": false,
+        "icon": "upcgo.png",
+        "cfgDir": "upcgo",
+        "cfgFiles": ["username", "password"],
+        "cfgValues": ["username", "password"],
+        "addonScript": "plugin.video.upcgo/addon.py",
+        "login": ["'1' '?mode=logIn' 'resume:false'"],
+        "userbouquet": ["'1' '?mode=liveTV' 'resume:false'"],
+        "logout": []
+    },
+    "TVP VOD v. 1.2.11 by lg, mtr81": {
+        "enabled": true,
+        "icon": "tvpvod.png",
+        "cfgDir": "TVP_VOD",
+        "cfgFiles": ["logged", "LoginCode"],
+        "cfgValues": ["LoginCode"],
+        "addonScript": "plugin.video.TVP_VOD/addon.py",
+        "login": ["'1' '?mode=logIn' 'resume:false'"],
+        "userbouquet": ["'1' '?mode=M3U_live' 'resume:false'"],
+        "logout": ["'1'  '?mode=logout' 'resume:false'"]
+    },
+    "WP pilot v. 1.0.5 by c0d34fun": {
+        "enabled": true,
+        "icon": "wptv.png",
+        "cfgDir": "pilot.wp",
+        "cfgFiles": ["username", "password","netviapisessid", "netviapisessval", "mode=0"],
+        "cfgValues": ["username", "password"],
+        "addonScript": "plugin.video.pilot.wp/addon.py",
+        "login": ["'1' '' 'resume:false'"],
+        "userbouquet": ["'1' '?action=BUILD_M3U' 'resume:false'"],
+        "logout": []
+    }
+
+}

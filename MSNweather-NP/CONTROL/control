@@ -1,0 +1,10 @@
+Package: enigma2-plugin-extensions--j00zeks-msnweather-np
+Priority: optional
+Section: utils
+Depends: enigma2---j00zeks-components
+Description: Pogoda i dane o jakosci powietrza z MSN, airly, GIOS, looko2 i innych
+Maintainer: j00zek
+Source: 
+Version: 25.01.11.0840
+Architecture: all
+DestinationPath: /usr/lib/enigma2/python/

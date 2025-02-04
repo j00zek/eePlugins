@@ -1,0 +1,30 @@
+<keymap>
+  <map context="E2KodiConfiguration">
+    <key id="KEY_RED" mapto="red" flags="b"/>
+    <key id="KEY_GREEN" mapto="green" flags="b"/>
+    <key id="KEY_YELLOW" mapto="keyYellow" flags="b"/>
+    <key id="KEY_EXIT" mapto="cancel" flags="m" />
+    <key id="KEY_ESC" mapto="cancel" flags="m" />
+    <key id="KEY_ENTER" mapto="ok" flags="m" />
+    <key id="KEY_OK" mapto="ok" flags="m" /> 
+  </map>
+  <map context="E2KodiMenu">
+    <key id="KEY_RED" mapto="cancel" flags="b"/>
+    <key id="KEY_ESC" mapto="cancel" flags="m" />
+    <key id="KEY_EXIT" mapto="cancel" flags="m" />
+    <key id="KEY_GREEN" mapto="play" flags="b"/>
+    <key id="KEY_YELLOW" mapto="keyYellow" flags="b"/>
+    <key id="KEY_ENTER" mapto="play" flags="m" />
+    <key id="KEY_OK" mapto="config" flags="m" />
+    <key id="KEY_MENU" mapto="config" flags="m" />
+  </map>
+  <map context="E2KodiPlayer">
+    <key id="KEY_RED" mapto="cancel" flags="b"/>
+    <key id="KEY_ESC" mapto="cancel" flags="m" />
+    <key id="KEY_EXIT" mapto="cancel" flags="m" />
+    <key id="KEY_GREEN" mapto="ok" flags="b"/>
+    <key id="KEY_ENTER" mapto="ok" flags="m" />
+    <key id="KEY_OK" mapto="ok" flags="m" />
+    <key id="KEY_MENU" mapto="menu" flags="m" />
+  </map>
+</keymap>

@@ -1,0 +1,22 @@
+#!/bin/sh
+if [ -e /usr/lib/python3.12 ]; then
+  pythonType='python3.12'
+elif [ -e /usr/lib/python3.9 ]; then
+  pythonType='python3.9'
+else
+  exit 1
+fi
+
+[ -e /usr/lib/enigma2/python/Plugins/Extensions/E2Kodi/ ] && rm -rf /usr/lib/enigma2/python/Plugins/Extensions/E2Kodi/
+[ -e /usr/lib/$pythonType/site-packages/pywidevine/cdmdevice/ ] && rm -rf /usr/lib/$pythonType/site-packages/pywidevine/cdmdevice/
+[ -e /usr/lib/$pythonType/site-packages/construct ] && rm -rf /usr/lib/$pythonType/site-packages/construct
+[ -e /usr/lib/$pythonType/site-packages/emukodi/ ] && rm -rf /usr/lib/$pythonType/site-packages/emukodi/
+[ -e /usr/lib/$pythonType/site-packages/google ] && rm -rf /usr/lib/$pythonType/site-packages/google
+[ -e /usr/lib/$pythonType/site-packages/inputstreamhelper ] && rm -rf /usr/lib/$pythonType/site-packages/inputstreamhelper
+[ -e /usr/lib/$pythonType/site-packages/pymp4 ] && rm -rf /usr/lib/$pythonType/site-packages/pymp4
+[ -e /usr/lib/$pythonType/site-packages/pyplayready ] && rm -rf /usr/lib/$pythonType/site-packages/pyplayready
+[ -e /usr/lib/$pythonType/site-packages/pywidevine ] && rm -rf /usr/lib/$pythonType/site-packages/pywidevine
+[ -e /usr/lib/$pythonType/site-packages/unidecode ] && rm -rf /usr/lib/$pythonType/site-packages/unidecode
+[ -e /usr/lib/$pythonType/site-packages/emukodislink_cli ] && rm -rf /usr/lib/$pythonType/site-packages/emukodislink_cli
+[ -e /usr/lib/$pythonType/site-packages/emukodislink ] && rm -rf /usr/lib/$pythonType/site-packages/emukodislink
+exit 0

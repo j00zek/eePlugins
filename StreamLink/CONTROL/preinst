@@ -1,0 +1,36 @@
+#!/bin/sh
+[ -e /usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig ] && rm -rf /usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig
+[ -e /usr/lib/enigma2/python/Plugins/Extensions/StreamLinkConfigurator ] && rm -rf /usr/lib/enigma2/python/Plugins/Extensions/StreamLinkConfigurator
+
+pythonType='unknown'
+if [ -e /usr/lib/python3.12 ]; then
+  pythonType='python3.12'
+elif [ -e /usr/lib/python3.11 ]; then
+  pythonType='python3.11'
+elif [ -e /usr/lib/python3.10 ]; then
+  pythonType='python3.10'
+elif [ -e /usr/lib/python3.9 ]; then
+  pythonType='python3.9'
+else
+  [ -e /etc/opkg/opkg-j00zka.conf ] && rm -f /etc/opkg/opkg-j00zka.conf
+  exit 1
+fi
+
+if [ -e /usr/lib/$pythonType/site-packages/streamlink ] && [ ! -L /usr/sbin/streamlink ];then
+  echo
+  echo "BŁĄD: Wykryto system z $pythonType z zainstalowanym JAKIMŚ streamlinkiem!!!"
+  echo
+  exit 1
+fi
+if [ -f /usr/sbin/streamlink ] && [ ! -L /usr/sbin/streamlink ];then
+  echo
+  echo "BŁĄD: Wykryto zainstalowaną NIEZNANĄ wersję klienta streamlinka!!!"
+  echo
+  exit 1
+fi
+if [ -f /usr/sbin/streamlinkSRV ] && [ ! -L /usr/sbin/streamlinkSRV ];then
+  echo
+  echo "Wykryto zainstalowaną NIEZNANĄ wersję serwera streamlinka COŚ MOŻE NIE DZIAŁAĆ!!!"
+  echo
+  exit 1
+fi

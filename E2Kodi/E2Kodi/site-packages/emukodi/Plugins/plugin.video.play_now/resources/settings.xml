@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+	<category label="Dane logowania">
+		<setting type="lsep" label="Dane logowania" />
+		<setting id="phone"  type="text" label="Nr telefonu lub nr zarządzania usługą" default="" />
+	</category>
+	<category label="Kreator listy m3u">
+        <setting label="Lista m3u (Nazwa Pliku oraz Katalog Docelowy)" type="lsep"/>
+        <setting label="Nazwa" type="text" id="fname" default="iptv.m3u"/>
+        <setting label="Katalog" type="folder" id="path_m3u" source="auto" option="writeable"/>
+        <setting type="action" action="RunPlugin(plugin://plugin.video.play_now?mode=listM3U)" label="Utwórz listę m3u" option="close"/>
+	</category>
+	<category label="Ogólne">
+		<setting id="cuOffset" type="slider" label="Różnica czasowa - catchup (Simple Client) [w godz.]" range="-10,1,10" default="0" option='int'/>
+		<setting id="cuAll" type="bool" label="Pokaż wszystkie kanały w sekcji Archiwum programów" default="false" />
+	</category>
+
+	<category label="Dane - DEV">
+		<setting id="logged" type="text" label='logged' default="false"/>
+		<setting id="uid" type="text" label='uid' default=""/>
+		<setting id="cook_auth" type="text" label='cook_auth' default=""/>
+		<setting id="rememberMe" type="text" label='rememberMe' default=""/>
+		<setting id="token" type="text" label='token' default=""/>
+		<setting id="priceStrategyIds" type="text" label='priceStrategyIds' default=""/>
+		<setting id="availableProductIds" type="text" label='availableProductIds' default=""/>
+		<setting id="tenant" type="text" label='tenant' default=""/>
+	</category>
+</settings>

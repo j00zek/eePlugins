@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+    <category label="Ogólne" >
+        <setting id="avaliable_only" type="bool" label="Wyświetlaj tylko materiały dostępne w Twoim pakiecie" default="false" enable="true"/>
+        <setting id="auto-view" type="bool" label="Automatyczny widok" default="false" enable="true"/>
+        <setting label="Kategorie" type="lsep"/>
+        <setting id="auto_categories" type="bool" label="Automatyczne kategorie" default="true" enable="true"/>
+        <setting id="categories_without_genres_call" type="action" label="Ustaw gatunki w kategoriach"
+            action="RunPlugin(plugin://$ID?mode=settings&amp;name=categories_without_genres)"
+            enable="eq(-1,true)" />
+        <setting id="categories_without_genres" type="text" label="Ignoruj gatunki w kategoriach" visible="false"
+            default="live,big-brother,motortrend,hotel-paradise"/>
+        <setting label="Napisy" type="lsep"/>
+        <setting id="subtitles" type="bool" label="Wybór napisów" default="false" enable="true"/>
+        <setting id="subtitles_lang_default" type="text" label="Domyślny język napisów" default="" enable="true"/>
+        <setting label="Eurosport" type="lsep"/>
+        <setting id="days_ahead" type="number" label="Liczba dni w przód" default="7" enable="true"/>
+        <setting id="days_ago" type="number" label="Liczba dni wstecz" default="31" enable="true"/>
+        <setting id="hide_soon" type="bool" label="Ukrywaj przyszłe transmisje" default="true" enable="true"/>
+    </category>
+    <category label="Kreator listy m3u">
+        <setting label="Lista m3u (Nazwa Pliku oraz Katalog Docelowy)" type="lsep"/>
+        <setting label="Nazwa" type="text" id="m3u_fname" default="playermb.m3u" />
+        <setting label="Katalog" type="folder" id="m3u_path" source="auto" option="writeable"/>
+        <setting label="Utwórz nową listę m3u" type="action" option="close"
+            action="RunPlugin(plugin://$ID?mode=buildm3u)" />
+        <setting label="Dołącz do istniejącej listy m3u" type="action" option="close"
+            action="RunPlugin(plugin://$ID?mode=appendm3u)" />
+    </category>
+    <category label="Zaawansowane" >
+        <setting id="use_urllib3" type="bool" label="Ekperymentalne szybsze połączenie" default="true" enable="true"/>
+        <setting id="verify_ssl" type="bool" label="Bezpieczne połączenie SSL" default="true" enable="true"/>
+        <setting id="partial_size" type="number" label="Wielkość porcji danych" default="1000" enable="true"/>
+        <setting id="fix_api" type="bool" label="Naprawiaj zepsute API" default="true" enable="true"/>
+        <setting id="remove_duplicates" type="bool" label="Usuwaj duplikaty" default="true" enable="true"/>
+    </category>
+</settings>
+
+

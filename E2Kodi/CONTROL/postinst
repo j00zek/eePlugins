@@ -1,0 +1,51 @@
+#!/bin/sh
+plugBinDir='/usr/lib/enigma2/python/Plugins/Extensions/E2Kodi'
+pythonType='unknown'
+if [ -e /usr/lib/python3.12 ]; then
+  pythonType='python3.12'
+  FileExtension='p312'
+elif [ -e /usr/lib/python3.9 ]; then
+  pythonType='python3.9'
+  FileExtension='p39'
+else
+  exit 1
+fi
+
+mkdir -p /etc/E2Kodi
+if [ -e /etc/EmuKodi ];then
+  cp -rf /etc/EmuKodi/* /etc/E2Kodi/
+  rm -rf /etc/EmuKodi
+fi
+
+cd /usr/lib/enigma2/python/Plugins/Extensions/E2Kodi/site-packages
+find /usr/lib/enigma2/python/Plugins/Extensions/E2Kodi/site-packages -iname *.$FileExtension|while read f; do
+    #echo "$f"
+    f2=`echo "$f"|sed "s;$FileExtension;py;"`
+    ln -sf "$f" "$f2"
+  done
+
+for entry in "$plugBinDir/site-packages"/*
+  do
+    entryName=`basename "$entry"`
+    destEntry="/usr/lib/$pythonType/site-packages/$entryName"
+    if [ -e "$destEntry" ] && [ ! -L "$destEntry" ];then
+      echo "Paczkę $entryName zainstalowao już z nieznanego źródła."
+    elif [ ! -e $destEntry ];then
+      echo "Instaluję paczkę $entryName"
+      ln -sf "$entry" "$destEntry"
+    #else
+    #  echo "Paczka $entryName jest już zainstalowana."
+    fi
+  done
+
+chmod 755 /usr/lib/$pythonType/site-packages/emukodi/emukodiSRV.py
+chmod 755 /usr/lib/$pythonType/site-packages/emukodislink_cli/emukodiCLI.py
+if [ ! -e /usr/sbin/emukodiSRV ];then
+  ln -sf /usr/bin/python /usr/sbin/cdsrmv
+  ln -sf /usr/lib/$pythonType/site-packages/emukodi/emukodiSRV.py /usr/sbin/emukodiSRV
+  ln -sf /usr/lib/$pythonType/site-packages/emukodislink_cli/emukodiCLI.py /usr/sbin/emukodiCLI
+  ln -sf /usr/sbin/emukodiSRV /etc/rc3.d/S50emukodiSRV
+  ln -sf /usr/sbin/emukodiSRV /etc/rc4.d/S50emukodiSRV
+fi
+
+exit 0

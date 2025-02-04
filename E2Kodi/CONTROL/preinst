@@ -1,0 +1,18 @@
+#!/bin/sh
+if [ -e /usr/lib/python3.12/site-packages ];then
+  rm -f /usr/lib/python3.12/site-packages/pywidevine/cdmdevice/*.pyc
+  rm -f /usr/lib/python3.12/site-packages/emukodi/*.pyc
+elif [ -e /usr/lib/python3.9/site-packages ];then
+  rm -f /usr/lib/python3.9/site-packages/pywidevine/cdmdevice/*.pyc
+  rm -f /usr/lib/python3.9/site-packages/emukodi/*.pyc
+else
+  echo "Instalacja możliwa TYLKO na python 3.12/3.9"
+  exit 1
+fi
+
+if [ -e /var/lib/opkg/info/enigma2-plugin-extensions--j00zeks-emukodi.control ];then
+  echo "--------------------------------------------------------------------------------"
+  echo "!!!!! Najpierw odinstaluj pakiet emukodi a potem wymuś reinstalację e2kodi !!!!!"
+  echo "--------------------------------------------------------------------------------"
+  exit 1
+fi

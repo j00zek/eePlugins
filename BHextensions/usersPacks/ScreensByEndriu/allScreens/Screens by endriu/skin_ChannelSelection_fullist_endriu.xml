@@ -1,0 +1,52 @@
+<skin>
+   <screen backgroundColor="transparent" flags="wfNoBorder" name="ChannelSelection" position="center,center" size="1920,1080" title="Channel Selection">
+    <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" zPosition="-10" size="1920,1080">
+      <convert type="j00zekRefreshBingPicOfTheDay">/usr/share/enigma2/BlackHarmony/bg_design/EPGPig.png</convert>
+    </widget>
+   
+     <!--data, godzina--> 
+	 
+   <widget backgroundColor="black" font="Roboto_HD; 32" halign="right" foregroundColor="lemon" position="1320,25" render="Label" size="411,40" source="global.CurrentTime" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+	<widget backgroundColor="black" font="Roboto_HD; 32" position="1790,25" render="Label" size="100,40" source="global.CurrentTime" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+	 
+	<widget name="list" position="55,135" size="1810,840" colorEventProgressbarBorder="border" colorEventProgressbarBorderSelected="border" colorServiceDescription="blue" colorServiceDescriptionSelected="white" enableWrapAround="1" foregroundColorSelected="blue" foregroundColorServiceNotAvail="#777777"  picServiceEventProgressbar="BlackHarmony/gfx/progcl_mario.png" scrollbarWidth="6" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_1808_60.png" serviceInfoFont="Roboto_HD;50" serviceItemHeight="60" serviceNameFont="Roboto_HD;40" serviceNumberFont="Roboto_HD;40"  transparent="1" />
+	
+ <!--przyciski-->
+	
+	<widget source="session.CurrentService" render="j00zekPiconAnimation" position="35,1016" zPosition="10" size="35,27" alphatest="blend"
+		initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0"
+		pixmaps="BlackHarmony/skin_user_animButtons/key_red"
+		pixalter="BlackHarmony/buttons/key_red.png" />
+	<widget objectTypes="key_red,Label,Button" name="key_red" position="80,1015" size="240,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" valign="bottom"/>
+    <widget objectTypes="key_red,StaticText" source="key_red" render="Label" position="80,1015" size="240,27" zPosition="2" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" valign="bottom"/>
+	
+	<widget source="session.CurrentService" render="j00zekPiconAnimation" position="325,1016" zPosition="10" size="35,27" alphatest="blend"
+		initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,1" random="True"
+		pixmaps="BlackHarmony/skin_user_animButtons/key_green"
+		pixalter="BlackHarmony/buttons/key_green.png" />
+ <widget objectTypes="key_green,Label,Button" name="key_green" position="370,1015" size="240,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget objectTypes="key_green,StaticText" source="key_green" render="Label" position="370,1015" size="240,27" zPosition="2" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    
+	<widget source="session.CurrentService" render="j00zekPiconAnimation" position="620,1016" zPosition="10" size="35,27" alphatest="blend"
+		initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,2" random="True"
+		pixmaps="BlackHarmony/skin_user_animButtons/key_yellow"
+		pixalter="BlackHarmony/buttons/key_yellow.png" />
+ <widget objectTypes="key_yellow,Label,Button" name="key_yellow" position="670,1015" size="240,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget objectTypes="key_yellow,StaticText" source="key_yellow" render="Label" position="670,1015" size="240,27" zPosition="2" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+	
+	<widget source="session.CurrentService" render="j00zekPiconAnimation" position="930,1016" zPosition="10" size="35,27" alphatest="blend"
+		initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,3" random="True"
+		pixmaps="BlackHarmony/skin_user_animButtons/key_blue"
+		pixalter="BlackHarmony/buttons/key_blue.png" />
+  <widget objectTypes="key_blue,Label,Button" name="key_blue" position="980,1015" size="240,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget objectTypes="key_blue,StaticText" source="key_blue" render="Label" position="980,1015" size="240,27" zPosition="2" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <ePixmap alphatest="blend" pixmap="BlackHarmony/buttons/key_ok.png" position="1650,1014" size="60,30" />
+    <ePixmap alphatest="blend" pixmap="BlackHarmony/buttons/key_menu.png" position="1730,1014" size="60,30" />
+    <ePixmap alphatest="blend" pixmap="BlackHarmony/buttons/key_info.png" position="1810,1014" size="60,30" />
+	
+  </screen>
+</skin>

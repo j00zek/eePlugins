@@ -1,0 +1,10 @@
+Package: enigma2-plugin-picons--j00zeks-animated-matrix-by-adek-xpicon
+Priority: optional
+Section: utils
+Depends: 
+Description: Animacja Matrix-a kolegi Adek o wielkości 220x132
+Maintainer: j00zek
+Source: http://github.com/j00zek/eePlugins
+Version: 18.10.07.1009
+Architecture: all
+DestinationPath: /usr/share/enigma2/animatedPicons

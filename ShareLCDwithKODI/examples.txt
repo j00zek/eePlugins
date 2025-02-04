@@ -1,0 +1,91 @@
+<!-- STATEICON -->
+        <widget position="20,130" size="64,64" source="session.CurrentService" render="j00zekPicons" path="/usr/lib/enigma2/python/Plugins/Extensions/ShareLCDwithKODI"  picontype="icons" showdefaultpic="no" zPosition="5" alphatest="blend"> 
+            <convert type="j00zekLCD4KODI">stateicon</convert>
+        </widget>
+<!-- FULL INFO -->
+        <widget position="140,200" size="600,24" font="Regular;22" zPosition="5" transparent="1" foregroundColor="white" render="Label" source="session.CurrentService" valign="center">
+            <convert type="j00zekLCD4KODI">fullInfo</convert>
+        </widget>
+<!-- TITLE -->
+        <widget position="140,240" size="600,24" font="Regular;22" zPosition="5" transparent="1" foregroundColor="white" render="Label" source="session.CurrentService" valign="center">
+            <convert type="j00zekLCD4KODI">title</convert>
+        </widget>
+<!-- Movie Length/DURATION -->
+        <widget position="140,280" size="600,24" font="Regular;22" zPosition="5" transparent="1" foregroundColor="white" render="Label" source="session.CurrentService" valign="center">
+            <convert type="j00zekLCD4KODI">duration</convert>
+        </widget>
+<!-- PLAYED TIME -->
+        <widget position="140,320" size="600,24" font="Regular;22" zPosition="5" transparent="1" foregroundColor="white" render="Label" source="session.CurrentService" valign="center">
+            <convert type="j00zekLCD4KODI">playedtime</convert>
+        </widget>
+<!-- LEFT TIME -->
+        <widget position="140,360" size="600,24" font="Regular;22" zPosition="5" transparent="1" foregroundColor="white" render="Label" source="session.CurrentService" valign="center">
+            <convert type="j00zekLCD4KODI">lefttime</convert>
+        </widget>
+<!-- LEFT MINS -->
+        <widget position="320,360" size="600,24" font="Regular;22" zPosition="5" transparent="1" foregroundColor="white" render="Label" source="session.CurrentService" valign="center">
+            <convert type="j00zekLCD4KODI">leftmins</convert>
+        </widget>
+<!-- ON/OFF icon -->
+        <widget source="session.CurrentService" render="Pixmap" position="530,130" size="100,40" zPosition="2" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/ShareLCDwithKODI/logo.png" alphatest="blend">
+            <convert type="j00zekLCD4KODI">showWhenKODIplaying</convert>
+            <convert type="ConditionalShowHide"/>
+        </widget>
+<!-- NICE Progress using pixmap -->
+        <widget position="140,417" size="480,6" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/ShareLCDwithKODI/icons/progress_infobar.png" zPosition="5" source="session.CurrentService" render="Progress" transparent="1">
+            <convert type="j00zekLCD4KODI">progress</convert>
+        </widget>
+<!-- Progress background pic on/off-->
+        <widget source="session.CurrentService" render="Pixmap" position="140,417" size="480,6" zPosition="2" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/ShareLCDwithKODI/icons/progress_gray.png" alphatest="blend">
+            <convert type="j00zekLCD4KODI">showWhenKODIplaying</convert>
+            <convert type="ConditionalShowHide"/>
+        </widget>
+<!-- Standard Progress ON/OFF -->
+        <widget position="140,415" size="480,10" zPosition="5" source="session.CurrentService" render="Progress" borderWidth="2" transparent="1">
+            <convert type="j00zekLCD4KODI">progress,hideWhenKODInotPlaying</convert>
+        </widget>
+<!-- UserQuery for available values explanation and examples
+  data is in the python dictionary called KODIstateTable.it has the following structure
+  
+    for PlayerItem:
+      {u'item': {u'album': u'', u'tvshowid': -1, u'episode': -1, u'artist': [], u'fanart': u'', u'season': -1, u'title': u'', u'label': u'',
+       u'file': u'', u'type': u'unknown', u'thumbnail': u'', u'showtitle': u'', 
+       u'streamdetails': {u'video': [{u'language': u'und', u'stereomode': u'', u'width': 640, u'codec': u'h264', u'aspect': 2.3529410362243652, u'duration': 5793, u'height': 272}],
+                          u'audio': [{u'channels': 2, u'codec': u'aac', u'language': u'und'}],
+                          u'subtitle': []}},
+       'isError': False, 'ErrorDescr': 'OK-dict'
+      }
+
+    for PlayerProperties:
+      {u'videostreams': [{u'index': 0, u'name': u'', u'language': u'und', u'height': 272, u'width': 640, u'codec': u'h264'}],
+       u'currentvideostream': {u'index': 0, u'name': u'', u'language': u'und', u'height': 272, u'width': 640, u'codec': u'h264'},
+       u'audiostreams': [{u'index': 0, u'name': u'Stereo', u'language': u'und', u'channels': 2, u'codec': u'aac', u'bitrate': 64575}],
+       u'currentaudiostream': {u'index': 0, u'name': u'Stereo', u'language': u'und', u'channels': 2, u'codec': u'aac', u'bitrate': 64575},
+       u'subtitles': [],
+       u'currentsubtitle': {},
+       u'subtitleenabled': True, u'percentage': 21.477985382080078,
+       'isError': False, 'ErrorDescr': 'OK-dict'
+      }
+
+  query option simply queries this dictionary in python like on examples. All attirbutes from above dictionary are accessible when correctly requested
+-->
+        <eLabel position="20,440" size="160,40" font="HD_Thin; 27" zPosition="5" transparent="1" foregroundColor="yellow" text="video:"/> 
+        <widget position="140,440" size="120,24" font="Regular;22" zPosition="5" transparent="1" foregroundColor="white" render="Label" source="session.CurrentService" valign="center">
+            <convert type="j00zekLCD4KODI">query,KODIstateTable['PlayerItem']['item']['streamdetails']['video'][0]['codec']</convert>
+        </widget>
+        <widget position="240,440" size="120,24" font="Regular;22" zPosition="5" transparent="1" foregroundColor="white" render="Label" source="session.CurrentService" valign="center">
+            <convert type="j00zekLCD4KODI">query,KODIstateTable['PlayerItem']['item']['streamdetails']['video'][0]['width']</convert>
+        </widget>
+        <eLabel position="290,440" size="160,40" font="HD_Thin; 27" zPosition="5" transparent="1" foregroundColor="yellow" text="x"/> 
+        <widget position="310,440" size="120,24" font="Regular;22" zPosition="5" transparent="1" foregroundColor="white" render="Label" source="session.CurrentService" valign="center">
+            <convert type="j00zekLCD4KODI">query,KODIstateTable['PlayerItem']['item']['streamdetails']['video'][0]['height']</convert>
+        </widget>
+<!-- current audio codec -->
+        <eLabel position="300,440" size="160,40" font="HD_Thin; 27" zPosition="5" transparent="1" foregroundColor="yellow" text="Audio:"/> 
+        <widget position="460,440" size="120,24" font="Regular;22" zPosition="5" transparent="1" foregroundColor="white" render="Label" source="session.CurrentService" valign="center">
+            <convert type="j00zekLCD4KODI">query,KODIstateTable['PlayerProperties']['currentaudiostream']['codec']</convert>
+        </widget>
+<!-- current Time -->
+        <widget source="global.CurrentTime" render="Label" position="10,10" size="160,25" font="Regular;22" halign="center" valign="center" noWrap="1">
+            <convert type="j00zekLCD4KODI">currentTime,hideWhenKODInotPlaying</convert>
+        </widget>
