@@ -140,7 +140,7 @@ class HasBahCa(CBaseHostClass):
                         {'alias_id': 'wiziwig1.eu', 'name': 'wiziwig1.eu', 'title': 'http://wiziwig1.eu/', 'url': '', 'icon': 'http://i.imgur.com/yBX7fZA.jpg'},
                         {'alias_id': 'djing.com', 'name': 'djing.com', 'title': 'https://djing.com/', 'url': 'https://djing.com/', 'icon': 'https://www.djing.com/newimages/content/c01.jpg'},
                         {'alias_id': 'nhl66.ir', 'name': 'nhl66.ir', 'title': 'https://nhl66.ir', 'url': 'https://api.nhl66.ir/api/sport/schedule', 'icon': 'https://nhl66.ir/cassets/logo.png'},
-                        {'alias_id': 'strims.in', 'name': 'strims.in', 'title': 'http://strims.in/', 'url': 'http://strims.in/', 'icon': ''},
+                        {'alias_id': 'strimsy.top', 'name': 'strimsy.top', 'title': 'http://strimsy.top/', 'url': 'http://strimsy.top/', 'icon': ''},
                        ]
 
     def __init__(self):
@@ -770,7 +770,7 @@ class HasBahCa(CBaseHostClass):
         for item in data:
             linkVideo = self.cm.ph.getSearchGroups(item, '''\shref=['"]([^"^']+?)['"]''')[0]
             if len(linkVideo) and not linkVideo.startswith('http'):
-                linkVideo = 'http://strims.in' + linkVideo
+                linkVideo = 'http://strimsy.top' + linkVideo
             if linkVideo.endswith('/') and 'class="f1' not in item:
                 params = {'name': "strumyk_cat"}
             else:
@@ -793,7 +793,7 @@ class HasBahCa(CBaseHostClass):
             linkVideo = self.cm.ph.getSearchGroups(item, '''\shref=['"]([^"^']+?)['"]''')[0]
             if len(linkVideo):
                 if not linkVideo.startswith('http'):
-                    linkVideo = 'http://strims.in' + linkVideo
+                    linkVideo = 'http://strimsy.top' + linkVideo
                 params['url'] = urlparser.decorateUrl(linkVideo, {'Referer': url})
 #                params['icon'] = self.cm.ph.getSearchGroups(item, '''\ssrc=['"]([^"^']+?)['"]''')[0]
                 self.addDir(params)
@@ -814,13 +814,13 @@ class HasBahCa(CBaseHostClass):
             linkVideo = self.cm.ph.getSearchGroups(tmp, '''src=['"]([^"^']+?)['"]''')[0]
             linkVideo = linkVideo.strip(' \n\t\r')
             if linkVideo.startswith('/live/'):
-                sts, tmp = self.cm.getPage('http://strims.in' + linkVideo)
+                sts, tmp = self.cm.getPage('http://strimsy.top' + linkVideo)
                 if not sts:
                     return []
                 linkVideo = self.cm.ph.getSearchGroups(tmp, '''src=['"]([^"^']+?)['"]''')[0]
                 linkVideo = linkVideo.strip(' \n\t\r')
             if len(linkVideo):
-                params = {'name': "strims.in"}
+                params = {'name': "strimsy.top"}
                 params['url'] = urlparser.decorateUrl(linkVideo, {'Referer': url})
                 params['title'] = self.up.getDomain(linkVideo)
                 self.addVideo(params)
@@ -832,7 +832,7 @@ class HasBahCa(CBaseHostClass):
             if _url.startswith('?'):
                 _url = url + _url
             if not _url.startswith('http'):
-                _url = 'http://strims.in' + _url
+                _url = 'http://strimsy.top' + _url
             sts, data = self.cm.getPage(_url)
             if sts:
                 tmp = CParsingHelper.getDataBeetwenNodes(data, ('<iframe', '>', 'allowfullscreen'), ('</iframe', '>'))[1]
@@ -846,7 +846,7 @@ class HasBahCa(CBaseHostClass):
                 if len(linkVideo) and linkVideo.startswith('//'):
                     linkVideo = 'http:' + linkVideo
                 if len(linkVideo) and not linkVideo.startswith('http'):
-                    linkVideo = 'http://strims.in' + linkVideo
+                    linkVideo = 'http://strimsy.top' + linkVideo
                     sts, data = self.cm.getPage(linkVideo)
                     tmp = CParsingHelper.getDataBeetwenNodes(data, ('<iframe', '>', 'src'), ('</iframe', '>'))[1]
                     if len(tmp):
@@ -863,7 +863,7 @@ class HasBahCa(CBaseHostClass):
                 linkVideo = linkVideo.replace('https://href.li/', '')
                 if '' == linkVideo:
                     continue
-                params = {'name': "strims.in"}
+                params = {'name': "strimsy.top"}
                 params['url'] = urlparser.decorateUrl(linkVideo, {'Referer': url})
                 params['title'] = self.cleanHtmlStr(item) + ' - ' + self.up.getDomain(linkVideo)
                 printDBG("StrumykTvDir params [%s]" % params)
@@ -938,7 +938,7 @@ class HasBahCa(CBaseHostClass):
             self.getWiziwig1List(self.currItem)
         elif name == 'nhl66.ir':
             self.getNhl66List(url)
-        elif name == 'strims.in':
+        elif name == 'strimsy.top':
             self.getStrumykTvList(url)
         elif name == 'strumyk_tv':
             self.getStrumykTvDir(url)
@@ -1010,7 +1010,7 @@ class IPTVHost(CHostBase):
             urlList = self.host.getMLBStreamTVLink(cItem)
         elif name == "wiziwig1.eu":
             urlList = self.host.getWiziwig1Link(cItem)
-        elif name == "strims.in":
+        elif name == "strimsy.top":
             urlList = self.host.getStrumykTvLink(url)
 
         if isinstance(urlList, list):
