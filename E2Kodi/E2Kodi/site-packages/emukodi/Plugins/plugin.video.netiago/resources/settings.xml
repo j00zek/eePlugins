@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+    <category label="30005">
+        <setting id="username"  type="text" label="30000" default="" />
+        <setting id="password"  type="text" label="30001" option="hidden"  default="" />
+        <setting id="logowanie" type="bool" label="30002" default="false" />
+    </category>	
+    <category label="30006" >
+        <setting id="auto-view" type="bool" label="30003" default="false" />
+		<setting id="sort" type="bool" label="30012" default="false" />
+    	<setting label="30004" type="labelenum" id="ilosc" values="65|150" default="65" />
+    </category>  
+    <category label="30008" >
+        <setting id="drmcert" type="bool" label="30009" default="false" />
+    </category> 
+	<category label="30010">
+        <setting type="action"
+                 action="RunPlugin(plugin://plugin.video.netiago?mode=build_m3u)"
+                 label="30011"
+                 option="close"/>
+    </category>
+</settings>
+
+

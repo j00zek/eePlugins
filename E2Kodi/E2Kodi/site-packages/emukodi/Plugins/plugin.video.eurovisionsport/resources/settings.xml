@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+	<category label="Dane logowania">
+		<setting type="lsep" label="Account data" />
+		<setting id="username"  type="text" label="Username" default="" />
+		<setting id="password"  type="text" label="Password" option="hidden"  default="" />
+	</category>
+	<category label="Playback">
+		<setting id="cert"  type="bool" label="Use server certificate" default="false" />
+	</category>
+	
+</settings>
