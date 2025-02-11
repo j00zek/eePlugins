@@ -11,27 +11,36 @@ def safeSubprocessCMD(myCommand):
     with open("/proc/sys/vm/drop_caches", "w") as f: f.write("1\n") #for safety to not get GS due to lack of memory
     subprocess.Popen(myCommand, shell=True)
 
-def E2KodiConfigLeaveStandbyInitDaemon():
-    print('E2KodiConfigLeaveStandbyInitDaemon() >>>')
-    if os.path.exists('/usr/sbin/emukodiSRV'): safeSubprocessCMD('emukodiSRV restart')
+E2KodiLeaveStandbyEvent = False
+
+def E2KodiLeaveStandbyActions():
+    print('E2KodiLeaveStandbyActions() >>>')
+    global E2KodiLeaveStandbyEvent
+    E2KodiLeaveStandbyEvent = True
 
 def E2KodiConfigStandbyCounterChanged(configElement):
-    print('E2KodiConfigStandbyCounterChanged() >>>')
+    #print('E2KodiConfigStandbyCounterChanged() >>>')
     killCdmDevicePlayer()
     try:
-        if E2KodiConfigLeaveStandbyInitDaemon not in Screens.Standby.inStandby.onClose:
-            Screens.Standby.inStandby.onClose.append(E2KodiConfigLeaveStandbyInitDaemon)
+        if E2KodiLeaveStandbyActions not in Screens.Standby.inStandby.onClose:
+            Screens.Standby.inStandby.onClose.append(E2KodiLeaveStandbyActions)
     except Exception as e:
         print('E2KodiConfigStandbyCounterChanged EXCEPTION: %s' % str(e))
 
 def killCdmDevicePlayer():
-    if os.path.exists('/var/run/cdmDevicePlayer.pid'): 
-        try:
-            pid = open('/var/run/cdmDevicePlayer.pid', 'r').readline().strip()
-            os.kill(pid, signal.SIGTERM) #or signal.SIGKILL
-            os.remove('/var/run/cdmDevicePlayer.pid')
-        except Exception:
-            pass
+    print('E2Kodi.killCdmDevicePlayer() >>>')
+    retVal = False
+    for pidFile in ['/var/run/cdmDevicePlayer.pid', '/var/run/emukodiCLI.pid', '/var/run/exteplayer3.pid']:
+        if os.path.exists(pidFile):
+            retVal = True
+            pid = open(pidFile, 'r').readline().strip()
+            try:
+                if os.path.exists('/proc/%s' % pid):
+                    os.kill(int(pid), signal.SIGTERM) #or signal.SIGKILL
+                os.remove(pidFile)
+            except Exception:
+                safeSubprocessCMD('kill %s' % str(pid))
+    return retVal
 
 # sessionstart
 def sessionstart(reason, session = None):
@@ -40,7 +49,7 @@ def sessionstart(reason, session = None):
         config.misc.standbyCounter.addNotifier(E2KodiConfigStandbyCounterChanged, initial_call=False)
         killCdmDevicePlayer()
         cmds = ''
-        if os.path.exists('/usr/sbin/emukodiSRV'): cmds = 'emukodiSRV restart;\n'
+        #if os.path.exists('/usr/sbin/emukodiSRV'): cmds = 'emukodiSRV restart;\n'
         cmds += 'wget -q https://raw.githubusercontent.com/azman26/EPGazman/main/azman_channels_mappings.py -O /usr/lib/enigma2/python/Plugins/Extensions/E2Kodi/azman_channels_mappings.py'
         safeSubprocessCMD(cmds)
     global E2KodiEventsInstance
@@ -85,31 +94,13 @@ class E2KodiEvents:
         self.__event_tracker = ServiceEventTracker(screen=self, eventmap={iPlayableService.evStart: self.__evStart})
         return
 
-    def __findProcessRunningPID(self, ProcessName):
-        PID = 0
-        if ProcessName != '':
-            ProcessName += ' '
-            for procPID in os.listdir('/proc'):
-                procCMDline = os.path.join('/proc', procPID, 'cmdline')
-                if os.path.exists(procCMDline):
-                    #print('[E2KodiEvents]__findProcessRunningPID procCMDline="%s"\n' % open(procCMDline, 'r').read())
-                    if ProcessName in open(procCMDline, 'r').read():
-                        PID = procPID
-                        break
-        return int(PID)
-    
     def __killRunningPlayer(self):
         print("[E2KodiEvents.__killRunningPlayer] >>>")
         self.RestartServiceTimer.stop()
         self.LastPlayedService = None
         if not self.deviceCDM is None:
             self.deviceCDM.stopPlaying() #wyłącza playera i czyści bufor dvb, bez tego  mamy 5s opóźnienia
-        for pidFile in ['/var/run/cdmDevicePlayer.pid', '/var/run/emukodiCLI.pid', '/var/run/exteplayer3.pid']:
-            if os.path.exists(pidFile):
-                pid = open(pidFile, 'r').readline().strip()
-                if os.path.exists('/proc/%s' % pid):
-                    os.kill(int(pid), signal.SIGTERM) #or signal.SIGKILL
-                os.remove(pidFile)
+        killCdmDevicePlayer()
 
     def __restartServiceTimerCB(self):
         #print("[E2KodiEvents.__restartServiceTimerCB] >>>")
@@ -155,19 +146,23 @@ class E2KodiEvents:
             if not service is None:
                 CurrentserviceString = service.toString()
                 print("[E2KodiEvents]__evStart CurrentserviceString=", CurrentserviceString)
-                if self.LastServiceString == CurrentserviceString:
-                    print('[E2KodiEvents.__evStart] LastServiceString = CurrentserviceString, nothing to do')
+                global E2KodiLeaveStandbyEvent
+                if E2KodiLeaveStandbyEvent:
+                    E2KodiLeaveStandbyEvent = False
+                elif self.LastServiceString == CurrentserviceString:
+                    #print('[E2KodiEvents.__evStart] LastServiceString = CurrentserviceString, nothing to do')
                     return
                 self.LastServiceString = CurrentserviceString
                 self.__killRunningPlayer()#zatrzymuje uruchomiony z kontrolą podprocess odtwarzacza
                 if not ':http%3a//cdmplayer' in CurrentserviceString:
-                    print('[E2KodiEvents.__evStart] no http%3a//cdmplayer service, nothing to do')
+                    #print('[E2KodiEvents.__evStart] no http%3a//cdmplayer service, nothing to do')
+                    return
                 else:
                     serviceList = CurrentserviceString.split(":")
-                    print("[E2KodiEvents.__evStart] serviceList=", serviceList)
+                    #print("[E2KodiEvents.__evStart] serviceList=", serviceList)
                     url = serviceList[10].strip()
                     if url.startswith('http%3a//cdmplayer/'):
-                        print("[E2KodiEvents.__evStart] url.startswith('http%3a//cdmplayer/')")
+                        print("[E2KodiEvents.__evStart] url = '%s'" % url)
                         if self.deviceCDM is None: #tutaj, zeby bez sensu nie ladować jak ktos nie ma/nie uzywa
                             try:
                                 import pywidevine.cdmdevice.cdmDevice

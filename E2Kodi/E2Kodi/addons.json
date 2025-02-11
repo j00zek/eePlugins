@@ -39,8 +39,8 @@
         "enabled": true,
         "icon": "playerpl.png",
         "cfgDir": "playermb",
-        "cfgFiles": ["refresh_token", "logged"],
-        "cfgValues": [],
+        "cfgFiles": ["refresh_token", "logged", "avaliable_only"],
+        "cfgValues": ["avaliable_only"],
         "addonScript": "plugin.video.playermb/main.py",
         "loginTV": ["'1' '?mode=login' 'resume:false'", "'1' ' ' 'resume:false'"],
         "userbouquet": [" '1' '?mode=listcategContent&url=%3alive' 'resume:false'"],
@@ -80,7 +80,7 @@
         "userbouquet": ["'1' '?mode=listM3U' 'resume:false'"],
         "logout": ["'1' '?mode=logout' 'resume:false'"]
     },
-    "UPC Go v. 1.0.1 by lg": {
+    "UPC Go v. 1.0.1 by lg EOL 01-03-2025": {
         "enabled": false,
         "icon": "upcgo.png",
         "cfgDir": "upcgo",

@@ -12,10 +12,6 @@ else
 fi
 
 mkdir -p /etc/E2Kodi
-if [ -e /etc/EmuKodi ];then
-  cp -rf /etc/EmuKodi/* /etc/E2Kodi/
-  rm -rf /etc/EmuKodi
-fi
 
 cd /usr/lib/enigma2/python/Plugins/Extensions/E2Kodi/site-packages
 find /usr/lib/enigma2/python/Plugins/Extensions/E2Kodi/site-packages -iname *.$FileExtension|while read f; do
@@ -38,14 +34,37 @@ for entry in "$plugBinDir/site-packages"/*
     fi
   done
 
-chmod 755 /usr/lib/$pythonType/site-packages/emukodi/emukodiSRV.py
+#chmod 755 /usr/lib/$pythonType/site-packages/emukodi/emukodiSRV.py
 chmod 755 /usr/lib/$pythonType/site-packages/emukodislink_cli/emukodiCLI.py
-if [ ! -e /usr/sbin/emukodiSRV ];then
-  ln -sf /usr/bin/python /usr/sbin/cdsrmv
-  ln -sf /usr/lib/$pythonType/site-packages/emukodi/emukodiSRV.py /usr/sbin/emukodiSRV
-  ln -sf /usr/lib/$pythonType/site-packages/emukodislink_cli/emukodiCLI.py /usr/sbin/emukodiCLI
-  ln -sf /usr/sbin/emukodiSRV /etc/rc3.d/S50emukodiSRV
-  ln -sf /usr/sbin/emukodiSRV /etc/rc4.d/S50emukodiSRV
-fi
+#if [ ! -e /usr/sbin/emukodiSRV ];then
+#  ln -sf /usr/bin/python /usr/sbin/cdsrmv
+#  ln -sf /usr/lib/$pythonType/site-packages/emukodi/emukodiSRV.py /usr/sbin/emukodiSRV
+#  ln -sf /usr/lib/$pythonType/site-packages/emukodislink_cli/emukodiCLI.py /usr/sbin/emukodiCLI
+#  ln -sf /usr/sbin/emukodiSRV /etc/rc3.d/S50emukodiSRV
+#  ln -sf /usr/sbin/emukodiSRV /etc/rc4.d/S50emukodiSRV
+#fi
 
+[ -e /usr/sbin/cdsrmv ] && rm -f /usr/sbin/cdsrmv
+[ -e /usr/sbin/emukodiSRV ] && rm -f /usr/sbin/emukodiSRV
+[ -e /etc/rc3.d/S50emukodiSRV ] && rm -f /etc/rc3.d/S50emukodiSRV
+[ -e /etc/rc4.d/S50emukodiSRV ] && rm -f /etc/rc4.d/S50emukodiSRV
+
+ln -sf /usr/lib/$pythonType/site-packages/emukodislink_cli/emukodiCLI.py /usr/sbin/emukodiCLI
+
+if [ ! -e /usr/lib/enigma2/python/Plugins/Extensions/IPTVPlayer/plugin.pe2i ];then
+  wget -q http://e2iplayer.github.io/www/ffinstall.py -O /tmp/ffinstall.py
+  sed -i 's/hasFFmpeg = True/hasFFmpeg = False/g' /tmp/ffinstall.py
+  sed -i 's/answer = ask.*/answer = True/g' /tmp/ffinstall.py
+  sed -i 's;-xvf;-xf;g' /tmp/ffinstall.py
+  sed -i "s;printFatal.'Installed ffmpeg is NOT working correctly.*;printMSG('ffmpeg zainstalowany');" /tmp/ffinstall.py
+  /usr/bin/python3 /tmp/ffinstall.py
+  rm -f  /tmp/ffinstall.py
+  if [ `cat /proc/cpuinfo|grep -c ARMv7` -gt 0 ]; then
+    wget -q 'http://www.e2iplayer.gitlab.io/resources/packages/bin/public/armv7/exteplayer3_fpu_hard_ffmpeg4.2' -O /iptvplayer_rootfs/usr/bin/exteplayer3
+  elif [ `cat /proc/cpuinfo|grep -c mipsel` -gt 0 ]; then
+    wget -q 'http://www.e2iplayer.gitlab.io/resources/packages/bin/public/mipsel/exteplayer3_fpu_hard_ffmpeg4.2' -O /iptvplayer_rootfs/usr/bin/exteplayer3
+  fi
+  chmod 755 /iptvplayer_rootfs/usr/bin/exteplayer3
+  echo "exteplayer3 zainstalowany"
+fi
 exit 0
