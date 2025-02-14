@@ -77,8 +77,8 @@
   <widget source="session.Event_Now" render="Label" position="1300,1010" size="125,32" transparent="1" zPosition="3" font="HD_Thin; 28" halign="right" foregroundColor="linie" backgroundColor="black" valign="center">
     <convert type="j00zekModEventName">Rating</convert>
   </widget>
-  <ePixmap position="1554,785" zPosition="1" size="170,245" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/No-Cover_ciacho.png" transparent="0" alphatest="on" />
-  <widget source="session.CurrentService" render="j00zekModCover" position="1543,782" size="190,250" zPosition="3" alphatest="blend" transparent="1" />
+  <ePixmap position="1556,786" zPosition="1" size="165,240" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/No-Cover_ciacho.png" transparent="0" alphatest="on" />
+  <widget source="session.CurrentService" render="j00zekModCover" position="1538,778" size="200,254" zPosition="3" alphatest="blend" transparent="1" />
   <ePixmap position="1,734" zPosition="-3" size="1920,348" pixmap="BlackHarmony/allScreens/Screens by Ciacho/bg_design/move4.png" transparent="1" />
 </screen>
   </skin>
