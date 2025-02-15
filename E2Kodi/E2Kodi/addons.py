@@ -42,6 +42,8 @@ config.plugins.E2Kodi.LoginCode  = NoSave(ConfigText(default = '', fixed_size = 
 config.plugins.E2Kodi.avaliable_only = NoSave(ConfigSelection(default = "false", choices = [("false", "wszystkie materiały"), 
                                                             ("true", "tylko materiały dostępne w Twoim pakiecie"), ]))
 
+FrameworksList = [("Odtwarzacz zewnętrzny, framework 1 (zalecany)","1e"), ("Odtwarzacz zewnętrzny, framework 4097 (zalecany dla Vu+)","4097e"), ("Odtwarzacz zewnętrzny, framework 5002","5002e")]
+
 if not os.path.exists('/etc/E2Kodi'):
     os.mkdir('/etc/E2Kodi')
 
@@ -83,7 +85,8 @@ class E2Kodi_Menu(Screen):
         <widget name="key_red"    position="20,510" zPosition="2" size="150,30" foregroundColor="red" valign="center" halign="left" font="Regular;22" transparent="1" />
         <widget name="key_green"  position="170,510" zPosition="2" size="150,30" foregroundColor="green" valign="center" halign="left" font="Regular;22" transparent="1" />
         <widget name="key_yellow"  position="360,510" zPosition="2" size="250,30" foregroundColor="yellow" valign="center" halign="left" font="Regular;22" transparent="1" />
-        <widget name="key_ok"  position="490,510" zPosition="2" size="350,30" foregroundColor="gray" valign="center" halign="left" font="Regular;22" transparent="1" />
+        <widget name="key_blue"  position="490,510" zPosition="2" size="200,30" foregroundColor="blue" valign="center" halign="left" font="Regular;22" transparent="1" />
+        <widget name="key_ok"  position="690,510" zPosition="2" size="350,30" foregroundColor="gray" valign="center" halign="left" font="Regular;22" transparent="1" />
 </screen>"""
 
     def __init__(self, session):
@@ -96,15 +99,16 @@ class E2Kodi_Menu(Screen):
         self["key_red"] = Label("Anuluj")
         self.ShowAllServices = False
         self["key_green"] = Label('Pokaż wszystkie')
-        self["key_ok"] = Label('') #OK - Konfiguracja')
+        self["key_ok"] = Label() #OK - Konfiguracja')
         self["key_yellow"] = Label('Wejdź do wtyczki')
-
+        self["key_blue"] = Label('wł/wył')
         self["setupActions"] = ActionMap(["E2KodiMenu"],
             {
                     "cancel": self.quit,
                     "config": self.configSelected,
                     "keyGreen": self.keyGreen,
                     "keyYellow": self.keyYellow,
+                    "keyBlue": self.keyBlue,
             }, -2)
         self.setTitle(self.setup_title)
         try:
@@ -114,6 +118,23 @@ class E2Kodi_Menu(Screen):
             print('E2Kodi_Menu', str(e))
             self.addonsDict = {'Błąd ładowania danych :(': {"enabled": None, "error": True}}
         self["list"].list = []
+        self.createsetup()
+
+    def keyBlue(self):
+        SelectedAddonKey = str(self["list"].getCurrent()[2])
+        SelectedAddonDef = self.addonsDict.get(SelectedAddonKey, None)
+        if SelectedAddonDef is None:
+            return
+        elif SelectedAddonDef.get('addonScript', None) is None:
+            return
+        isHiddenFile = SelectedAddonDef['addonScript'].split('/')[0] + '.ukryty'
+        isHiddenFile = os.path.join('/etc/E2Kodi/',isHiddenFile)
+        if os.path.exists(isHiddenFile):
+            os.remove(isHiddenFile)
+        elif SelectedAddonDef.get('enabled', False) == False:
+            return
+        else:
+            open(isHiddenFile, "w").write('')
         self.createsetup()
 
     def keyGreen(self):
@@ -129,12 +150,12 @@ class E2Kodi_Menu(Screen):
         SelectedAddonKey = str(self["list"].getCurrent()[2])
         SelectedAddonDef = self.addonsDict.get(SelectedAddonKey, None)
         if SelectedAddonDef is None or SelectedAddonDef.get('enabled', False) == False:
-            print('E2Kodi_Menu.playSelected(%s) addon not existing or not enabled, exiting' % SelectedAddonKey)
+            print('[E2Kodi_Menu.keyYellow] %s addon not existing or not enabled, exiting' % SelectedAddonKey)
             return
         else:
             self.storeselectedMenuIndex()
             #tworzenie katalogu konfiguracyjnego
-            cfgDir = SelectedAddonDef['cfgDir']
+            cfgDir = SelectedAddonDef.get('cfgDir', '')
             if not os.path.exists('/etc/E2Kodi/%s' % cfgDir):
                 os.system('mkdir -p /etc/E2Kodi/%s' % cfgDir)
             #uruchamianie ekranu konfiguracyjnego
@@ -143,7 +164,7 @@ class E2Kodi_Menu(Screen):
             except Exception as e:
                 import traceback
                 exc_formatted = traceback.format_exc().strip()
-                print('E2Kodi_Menu.playSelected exception:', exc_formatted)
+                print('[E2Kodi_Menu.keyYellow] exception:', exc_formatted)
                 self.session.openWithCallback(self.doNothing,MessageBox, '...' + '\n'.join(exc_formatted.splitlines()[-6:]), MessageBox.TYPE_INFO)
             return
 
@@ -174,15 +195,21 @@ class E2Kodi_Menu(Screen):
             else:
                 ActiveExtPlayer = 'BRAK doinstaluj pakiet exteplayer3, lub serviceapp !!!'
                 listAddons = False
-            Mlist.append(self.buildListEntry(None, "Aktywny odtwarzacz: %s" % ActiveExtPlayer, "ActiveServiceappPlayer.cfg"))
+            Mlist.append(self.buildListEntry(None, "Aktywny odtwarzacz: %s" % ActiveExtPlayer, "noCover.png"))
             addonKeysList = []
             if listAddons:
                 for addonKey in sorted(self.addonsDict, key=str.casefold):
                     addonDef = self.addonsDict[addonKey]
+                    isHiddenFile = addonDef['addonScript'].split('/')[0] + '.ukryty'
+                    isHiddenFile = os.path.join('/etc/E2Kodi/',isHiddenFile)
+                    if os.path.exists(isHiddenFile):
+                        addonDef['UserHidden'] = True
+                    else:
+                        addonDef['UserHidden'] = False
                     if addonDef.get('error', False):
                         Mlist = []
                         Mlist.append(self.buildListEntry(addonKey))
-                    elif addonDef.get('enabled', False) or self.ShowAllServices:
+                    elif (addonDef.get('enabled', False) and addonDef['UserHidden'] == False) or self.ShowAllServices:
                         Mlist.append(self.buildListEntry(addonKey))
 
         self["list"].list = Mlist
@@ -194,8 +221,10 @@ class E2Kodi_Menu(Screen):
             addonDef = self.addonsDict[addonKey]
             image = addonDef.get('icon', 'config.png')
             #opis
-            if addonDef.get('enabled', False) == False:
-                description = "!!! BEZ WSPARCIA %s" % addonKey
+            if addonDef['UserHidden']:
+                description = r'\c00ffa500' + "!!! WYłĄCZONA: " + r'\c00ffffff' + addonKey
+            elif addonDef.get('enabled', False) == False:
+                description = r'\c00ff0000' + "!!! BEZ WSPARCIA: " + r'\c00ffffff' + addonKey
             else:
                 description = addonKey
         #ladowanie loga
@@ -225,22 +254,33 @@ class E2Kodi_Menu(Screen):
             else:
                 open("/etc/E2Kodi/ActiveServiceappPlayer", "w").write('')
             self.createsetup()
-        elif SelectedAddonDef is None or SelectedAddonDef.get('enabled', False) == False:
-            print('E2Kodi_Menu.configSelected(%s) addon not existing or not enabled, exiting' % SelectedAddonKey)
+        elif SelectedAddonDef is None:
+            print('E2Kodi_Menu.configSelected(%s) addon not existing, exiting' % SelectedAddonKey)
+            return
+        elif os.path.exists(os.path.join('/etc/E2Kodi/',SelectedAddonDef['addonScript'].split('/')[0] + '.ukryty')):
+            print('E2Kodi_Menu.configSelected(%s) addon disabled by user, exiting' % SelectedAddonKey)
+            self.session.openWithCallback(self.doNothing,MessageBox, "Najpierw włącz dodatek!", MessageBox.TYPE_INFO, timeout = 5)
             return
         else:
             self.storeselectedMenuIndex()
             #tworzenie katalogu konfiguracyjnego
-            cfgDir = SelectedAddonDef['cfgDir']
-            if not os.path.exists('/etc/E2Kodi/%s' % cfgDir):
-                os.system('mkdir -p /etc/E2Kodi/%s' % cfgDir)
-            #uruchamianie ekranu konfiguracyjnego
-            try:
-                self.session.openWithCallback(self.doNothing, E2KodiConfiguration, SelectedAddonDef)
-            except Exception as e:
-                exc_formatted = traceback.format_exc().strip()
-                print('E2Kodi_Menu.configSelected exception:', exc_formatted)
-                self.session.openWithCallback(self.doNothing,MessageBox, '...' + '\n'.join(exc_formatted.splitlines()[-6:]), MessageBox.TYPE_INFO)
+            cfgDir = SelectedAddonDef.get('cfgDir', None)
+            if cfgDir is None:
+                self.keyYellow()
+                return
+            else:
+                if not os.path.exists('/etc/E2Kodi/%s' % cfgDir):
+                    os.system('mkdir -p /etc/E2Kodi/%s' % cfgDir)
+                if len(SelectedAddonDef.get('cfgValues', [])) == 0 and len(SelectedAddonDef.get('cfgFiles', [])) == 0:
+                    self.keyYellow()
+                    return
+                else: #uruchamianie ekranu konfiguracyjnego
+                    try:
+                        self.session.openWithCallback(self.doNothing, E2KodiConfiguration, SelectedAddonDef)
+                    except Exception as e:
+                        exc_formatted = traceback.format_exc().strip()
+                        print('E2Kodi_Menu.configSelected exception:', exc_formatted)
+                        self.session.openWithCallback(self.doNothing,MessageBox, '...' + '\n'.join(exc_formatted.splitlines()[-6:]), MessageBox.TYPE_INFO)
             return
 
     def doNothing(self, retVal = None):
@@ -390,11 +430,6 @@ class E2KodiConfiguration(Screen, ConfigListScreen):
     def layoutFinished(self):
         self.setTitle(self.setup_title)
         
-        if 0: #os.path.exists("/usr/lib/enigma2/python/Plugins/SystemPlugins/ServiceApp/serviceapp.so"):
-            self.choicesList = [("Odtwarzacz zewnętrzny (zalecany)","1e"), ("Odtwarzacz zewnętrzny (zalecany dla Vu+)","4097e"), ("gstreamer (root 4097)","4097"),("ServiceApp gstreamer (root 5001)","5001"), ("ServiceApp ffmpeg (root 5002)","5002")]
-        else:
-            self.choicesList = [("Odtwarzacz zewnętrzny, framework 1 (zalecany)","1e"), ("Odtwarzacz zewnętrzny, framework 4097 (zalecany dla Vu+)","4097e"), ("Odtwarzacz zewnętrzny, framework 5002","5002e")]
-        
     def changedEntry(self):
         print('E2KodiConfiguration.changedEntry() >>>')
         try:
@@ -478,7 +513,7 @@ class E2KodiConfiguration(Screen, ConfigListScreen):
 
     def userbouquetConfirmed(self, ret = False):
         if ret:
-            self.session.openWithCallback(self.SelectedFramework, ChoiceBox, title = _("Select Multiframework"), list = self.choicesList)
+            self.session.openWithCallback(self.SelectedFramework, ChoiceBox, title = _("Select Multiframework"), list = FrameworksList)
 
     def SelectedFramework(self, ret):
         if not ret or ret == "None" or isinstance(ret, (int, float)):
@@ -534,7 +569,13 @@ class E2KodiPlayer(Screen):
                 </convert>
         </widget>
         <eLabel position="0,550" size="1200,2"  backgroundColor="#aaaaaa" />
-        <widget name="KodiNotificationsAndStatus" position="5,560" size="1190,135" font="Regular;18" halign="left" noWrap="0" transparent="1" backgroundColor="#aa000000"/>
+        <widget name="KodiNotificationsAndStatus" position="5,560" size="1190,100" font="Regular;18" halign="left" noWrap="0" transparent="1" backgroundColor="#aa000000"/>
+
+        <widget name="key_red"    position="20,665" zPosition="2" size="150,30" foregroundColor="red" valign="center" halign="left" font="Regular;22" transparent="1" />
+        <widget name="key_green"  position="200,665" zPosition="2" size="250,30" foregroundColor="green" valign="center" halign="left" font="Regular;22" transparent="1" />
+        <widget name="key_yellow"  position="500,665" zPosition="2" size="350,30" foregroundColor="yellow" valign="center" halign="left" font="Regular;22" transparent="1" />
+        <widget name="key_ok"  position="800,665" zPosition="2" size="400,30" foregroundColor="gray" valign="center" halign="left" font="Regular;22" transparent="1" />
+
 </screen>"""
 
     def __init__(self, session, SelectedAddonDef):
@@ -559,6 +600,12 @@ class E2KodiPlayer(Screen):
 
         Screen.__init__(self, session)
         self.setup_title = "%s Player" % self.addonName
+
+        self["key_red"] = Label("Wyjdź")
+        self["key_green"] = Label('')
+        self["key_ok"] = Label('OK-Wybierz')
+        self["key_yellow"] = Label('')
+
         self["KodiNotificationsAndStatus"] = Label()
         self["Title"] = Label(self.setup_title)
         self["list"] = List()
@@ -568,6 +615,7 @@ class E2KodiPlayer(Screen):
                     "ok": self.openSelectedMenuItem,
                     "menu": self.quit,
                     "keyYellow": self.keyYellow,
+                    "keyGreen": self.keyGreen,
             }, -2)
         
         self["list"].list = []
@@ -593,6 +641,48 @@ class E2KodiPlayer(Screen):
         self.infoTimer.start(100)
         self.isShown = True
 
+    def keyGreen(self):
+        self.selectedBouquet = None
+
+        def UserbouquetSelected( ret = False): #bukiet wybrany, wybór frameworka
+            if ret:
+                self.selectedBouquet = ret[1]
+                print('UserbouquetSelected', self.selectedBouquet)
+                self.session.openWithCallback(SelectedFramework, ChoiceBox, title = _("Select Multiframework"), list = FrameworksList)
+
+        def SelectedFramework(ret = (None,'4097')): #bukiet wybrany, framework wybrany, dodanie do bukietu i odswierzenie
+            if not ret or ret == "None":
+                ret = (None,'4097')
+            wybranyFramework = str(ret[1]).replace('e','')
+            refPart = '1:0:0:0:0:0:0:0:0:0:'
+            lineToAdd = '#SERVICE %s:0:0:0:0:0:0:0:0:0:' % wybranyFramework
+            lineToAdd += 'http%3a//cdmplayer/'
+            lineDict = self["list"].getCurrent()[2]
+            AddonCmd = str(lineDict.get('url'))
+            AddonCmd = AddonCmd.split('Plugins/')[1]
+            lineToAdd += AddonCmd
+            lineToAdd += ':'
+            lineToAdd += self.cleanKodiText(lineDict.get('label', lineDict.get('Title', 'Nieznane wideo')), True)
+            print('[E2KodiPlayer.keyGreen] lineToAdd',lineToAdd)
+            with open(os.path.join('/etc/enigma2', self.selectedBouquet), 'a') as File:
+                File.write(lineToAdd+'\n')
+                File.close()
+            #przeladowanie bukietow
+            eDVBDB.getInstance().reloadBouquets()
+            self.session.openWithCallback(self.doNothing,MessageBox, "Material dodany do bukietu i bukiety zostały przeładowane", MessageBox.TYPE_INFO, timeout = 5)
+        
+        #wybor bukietu
+        currItem = self["list"].getCurrent()[2]
+        if currItem.get('isPlayable', False):
+            listaBukietow = []
+            with open('/etc/enigma2/bouquets.tv', 'r') as inFile:
+                for line in inFile:
+                    if line.startswith('#SERVICE'):
+                        line = line.split('"')[1]
+                        listaBukietow.append((line.replace('userbouquet.','').replace('.tv',''), line))
+            print('listaBukietow', listaBukietow)
+            self.session.openWithCallback(UserbouquetSelected, ChoiceBox, title = "Wybierz bukiet", list = listaBukietow)
+
     def keyYellow(self):
         if self.isShown:
             self.hide()
@@ -603,23 +693,30 @@ class E2KodiPlayer(Screen):
     def showKodiNotificationAndStatus(self):
         self["Title"].setText(self.setup_title + self.headerStatus)
 
-    def cleanKodiText(self, textToClean):
+    def cleanKodiText(self, textToClean, doRemove = False):
         #https://html-color.codes/
-        colorCodes = [('[/COLOR]',r'\c00ffffff'),
-                      ('[B]',''), ('[/B]',''),
+        colorCodes = [('[B]',''), ('[/B]',''),
                       ('[I]',''), ('[/I]',''),
                       ('[CR]',' \n'),
                       ('()',''),
+                      ('[/COLOR]',           r'\c00ffffff'),
                       ('[COLOR blue]',       r'\c000000ff'),
+                      ('[COLOR cyan]',       r'\c0000ffff'),
                       ('[COLOR gold]',       r'\c00ffd700'),
                       ('[COLOR khaki]',      r'\c00C3B091'),
                       ('[COLOR lightblue]',  r'\c00add8e6'),
+                      ('[COLOR lime]',       r'\c0000ff00'),
+                      ('[COLOR orange]',     r'\c00ffa500'),
                       ('[COLOR red]',        r'\c00ff0000'),
                       ('[COLOR violet]',     r'\c00ee82ee'),
+                      ('[COLOR white]',      r'\c00ffffff'),
                       ('[COLOR yellowgreen]',r'\c00adff2f'),
                     ]
         for colorCode in colorCodes:
-            textToClean = textToClean.replace(colorCode[0],colorCode[1])
+            if doRemove:
+                textToClean = textToClean.replace(colorCode[0],'')
+            else:
+                textToClean = textToClean.replace(colorCode[0],colorCode[1])
         return textToClean
     
     def selectionChanged(self):
@@ -628,6 +725,12 @@ class E2KodiPlayer(Screen):
             currItem = self["list"].getCurrent()[2]
             if currItem.get('plot', None) is not None:
                 self["KodiNotificationsAndStatus"].setText(self.cleanKodiText(currItem.get('plot', '')))
+            else:
+                self["KodiNotificationsAndStatus"].setText(' ')
+            if currItem.get('isPlayable', False):
+                self["key_green"].setText('Dodaj do bukietu')
+            else:
+                self["key_green"].setText('')
         except Exception as e:
             print('E2KodiPlayer.selectionChanged()', str(e))
 
@@ -655,7 +758,7 @@ class E2KodiPlayer(Screen):
         if retval == 'Mlist':
             self.AddonCmdsDict.get(self.AddonCmd, {})
         elif os.path.exists(self.KodiVideoInfoPath):
-            self.headerStatus = ' - odtwarzanie materiału (' + r'\c00ffcc00' + 'ŻÓŁTY' + r'\c00ffffff' + ' - ukryj/pokaż GUI)'
+            self.headerStatus = ' - odtwarzanie materiału'
             self.playVideo()
         else:
             self.createTree()
@@ -713,6 +816,7 @@ class E2KodiPlayer(Screen):
         if lineDict.get('isFolder', False):
             image = 'folder.png'
         elif lineDict.get('isPlayable', False) == True or lineDict.get('IsPlayable', '') == 'true':
+            lineDict['isPlayable'] = True
             image = 'movie.png'
         elif not lineDict.get('thumbnailImage', None) is None:
             image = lineDict.get('thumbnailImage')
@@ -729,6 +833,7 @@ class E2KodiPlayer(Screen):
 
     def stopVideo(self):
         print("[E2KodiPlayer.stopVideo] >>>")
+        self["key_yellow"].setText('')
         if not self.deviceCDM is None:
             self.deviceCDM.stopPlaying() #wyłącza playera i czyści bufor dvb, bez tego  mamy 5s opóźnienia
         for pidFile in ['/var/run/cdmDevicePlayer.pid', '/var/run/emukodiCLI.pid', '/var/run/exteplayer3.pid']:
@@ -739,6 +844,7 @@ class E2KodiPlayer(Screen):
                 os.remove(pidFile)
 
     def playVideo(self, url = ''):
+        self["key_yellow"].setText('ukryj/pokaż GUI')
         if self.deviceCDM is None: #tutaj, zeby bez sensu nie ladować jak ktos nie ma/nie uzywa
             try:
                 import pywidevine.cdmdevice.cdmDevice

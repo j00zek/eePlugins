@@ -14,21 +14,21 @@ def safeSubprocessCMD(myCommand):
 E2KodiLeaveStandbyEvent = False
 
 def E2KodiLeaveStandbyActions():
-    print('E2KodiLeaveStandbyActions() >>>')
+    print('[E2KodiLeaveStandbyActions] >>>')
     global E2KodiLeaveStandbyEvent
     E2KodiLeaveStandbyEvent = True
 
 def E2KodiConfigStandbyCounterChanged(configElement):
-    #print('E2KodiConfigStandbyCounterChanged() >>>')
+    #print('[E2KodiConfigStandbyCounterChanged] >>>')
     killCdmDevicePlayer()
     try:
         if E2KodiLeaveStandbyActions not in Screens.Standby.inStandby.onClose:
             Screens.Standby.inStandby.onClose.append(E2KodiLeaveStandbyActions)
     except Exception as e:
-        print('E2KodiConfigStandbyCounterChanged EXCEPTION: %s' % str(e))
+        print('[E2KodiConfigStandbyCounterChanged] EXCEPTION: %s' % str(e))
 
 def killCdmDevicePlayer():
-    print('E2Kodi.killCdmDevicePlayer() >>>')
+    print('[E2Kodi.killCdmDevicePlayer] >>>')
     retVal = False
     for pidFile in ['/var/run/cdmDevicePlayer.pid', '/var/run/emukodiCLI.pid', '/var/run/exteplayer3.pid']:
         if os.path.exists(pidFile):
@@ -91,7 +91,10 @@ class E2KodiEvents:
         self.RestartServiceTimer = eTimer()
         self.RestartServiceTimer.callback.append(self.__restartServiceTimerCB)
         self.LastPlayedService = None
-        self.__event_tracker = ServiceEventTracker(screen=self, eventmap={iPlayableService.evStart: self.__evStart})
+        self.Disable__evEnd = False
+        self.__event_tracker = ServiceEventTracker(screen=self, eventmap={iPlayableService.evStart: self.__evStart,
+                                                                          iPlayableService.evEnd: self.__evEnd
+                                                                          })
         return
 
     def __killRunningPlayer(self):
@@ -112,6 +115,7 @@ class E2KodiEvents:
             self.restartServiceTimerCBCounter = 20
             self.ExtPlayerPID = 0
             self.RestartServiceTimer.start(2000, True)
+            self.Disable__evEnd = False
         else:
             #waiting for exteplayer3 to start
             if os.path.exists('/var/run/cdmDevicePlayer.pid'):
@@ -138,9 +142,17 @@ class E2KodiEvents:
                     self.LastPlayedService = None
             else:
                 print("[E2KodiEvents.__restartServiceTimerCB] emukodiCLI niespodziewanie wyłączony")
-    
+
+    def __evEnd(self):
+        if self.Disable__evEnd:
+            print("[E2KodiEvents.__evEnd] disabled")
+        else:
+            print("[E2KodiEvents.__evEnd] >>>")
+            self.__killRunningPlayer()#zatrzymuje uruchomiony z kontrolą podprocess odtwarzacza
+            self.LastServiceString = ''
+        
     def __evStart(self):
-        #print("[E2KodiEvents.__evStart] >>>")
+        print("[E2KodiEvents.__evStart] >>>")
         try:
             service = self.session.nav.getCurrentlyPlayingServiceReference()
             if not service is None:
@@ -178,6 +190,7 @@ class E2KodiEvents:
                                 #   - mark this to properly manage __evEnd eventmap (if not managed, killed process & black screen)
                                 #   - stop enigma player (if not stopped only back screen)
                                 self.deviceCDM.tryToDoSomething(url)
+                                self.Disable__evEnd = True
                                 self.RestartServiceTimer.start(100, True)
         except Exception as e:
             print('[E2KodiEvents.__evStart] EXCEPTION:', str(e))

@@ -1,4 +1,21 @@
 {
+    "spotify v. 1.2.3 by LdSz": {
+        "enabled": false,
+        "icon": "spotify.png",
+        "cfgDir": "spotify",
+        "cfgFiles": [],
+        "cfgValues": [],
+        "addonScript": "plugin.audio.spotify/plugin.py",
+        "login": [],
+        "userbouquet": [],
+        "logout": [],
+        "webServer": "plugin.audio.spotify/service.py"
+    },
+    "CAM v. 1.4 by SPA": {
+        "enabled": true,
+        "icon": "CamLive.png",
+        "addonScript": "plugin.video.CAMLIVE/main.py"
+    },
     "Canal+ v. 1.7.5.9 by mbebe, mariusz89b, hevet": {
         "enabled": true,
         "icon": "canalplusvod.png",
@@ -10,7 +27,7 @@
         "loginTV": ["'1' '?mode=loginTV' 'resume:false'", "'1' ' ' 'resume:false'"],
         "userbouquet": [],
         "logout": [],
-        "webServer": "plugin.video.canalplusvod/serverHTTP.py"
+        "webServer": "serverHTTP.py"
     },
     "cda v. 1.13 by mbebe": {
         "enabled": true,
@@ -22,7 +39,84 @@
         "login": ["'1' '' 'resume:false'"],
         "userbouquet": ["'1' '?image=DefaultMovies.png&mode=listM3U&moviescount=0&page=1&title=CDA%20TV%20-%20Telewizja%20Online&url' 'resume:false'"],
         "logout": [],
-        "webServer": "plugin.video.cdaplMB/serverHTTP.py"
+        "webServer": "serverHTTP.py"
+    },
+    "Eleven Sports PL v. 1.0.1 by lg": {
+        "enabled": false,
+        "icon": "elevens.png",
+        "cfgDir": "elevens",
+        "cfgFiles": ["logged", "username", "password"],
+        "cfgValues": ["username", "password"],
+        "addonScript": "plugin.video.elevens/addon.py",
+        "login": [],
+        "userbouquet": [],
+        "logout": []
+    },
+    "Eurovision Sport v. 1.0.2 by lg": {
+        "enabled": false,
+        "icon": "eurovisionsport.png",
+        "cfgDir": "eurovisionsport",
+        "cfgFiles": ["username", "password"],
+        "cfgValues": ["username", "password"],
+        "addonScript": "plugin.video.eurovisionsport/addon.py",
+        "login": [],
+        "userbouquet": [],
+        "logout": []
+    },
+    "Megogo Bezpłatna TV v. 1.0.10 by lg": {
+        "enabled": false,
+        "icon": "megogo.png",
+        "cfgDir": "megogo",
+        "cfgFiles": [],
+        "cfgValues": [],
+        "addonScript": "plugin.video.megogo/addon.py",
+        "login": [],
+        "userbouquet": [],
+        "logout": []
+    },
+    "Netia Go v. 1.4 by mbebe": {
+        "enabled": false,
+        "icon": "netiago.png",
+        "cfgDir": "netiago",
+        "cfgFiles": ["username", "password"],
+        "cfgValues": ["username", "password"],
+        "addonScript": "plugin.video.netiago/main.py",
+        "login": [],
+        "userbouquet": [],
+        "logout": []
+    },
+    "Orange TV Go v. 1.2 by mbebe,mtr81,spliner21": {
+        "enabled": false,
+        "icon": "orangetvgo.png",
+        "cfgDir": "orangetvgo",
+        "cfgFiles": ["login", "password"],
+        "cfgValues": ["login", "password"],
+        "addonScript": "plugin.video.orangetvgo/main.py",
+        "login": [],
+        "userbouquet": [],
+        "logout": []
+    },
+    "Polsat Go Box v. 1.102 by mbebe, mariusz89b, mtr81": {
+        "enabled": true,
+        "icon": "polsatboxgo.png",
+        "cfgDir": "pgobox",
+        "cfgFiles": ["logged", "username", "password", "klient=iCOK", "client_id", "device_id", "sesstoken", "sessexpir", "id_"],
+        "cfgValues": ["username", "password", "klient"],
+        "addonScript": "plugin.video.pgobox/main.py",
+        "login": ["'1' '?mode=login' 'resume:false'"],
+        "userbouquet": ["'1' '?mode=build_m3u' 'resume:false'"],
+        "logout": ["'1' '?mode=logout' 'resume:false'"]
+    },
+    "WP pilot v. 1.0.5 by c0d34fun": {
+        "enabled": true,
+        "icon": "wptv.png",
+        "cfgDir": "pilot.wp",
+        "cfgFiles": ["username", "password","netviapisessid", "netviapisessval", "mode=0"],
+        "cfgValues": ["username", "password"],
+        "addonScript": "plugin.video.pilot.wp/addon.py",
+        "login": ["'1' '' 'resume:false'"],
+        "userbouquet": ["'1' '?action=BUILD_M3U' 'resume:false'"],
+        "logout": []
     },
     "Play now v. 1.0.0 by lg": {
         "enabled": false,
@@ -46,28 +140,21 @@
         "userbouquet": [" '1' '?mode=listcategContent&url=%3alive' 'resume:false'"],
         "logout": ["'1' '?mode=logout' 'resume:false'"]
     },
-    "Polsat Go Box v. 1.102 by mbebe, mariusz89b, mtr81": {
+    "Rakuten TV v. 1.0.3 by lg": {
         "enabled": true,
-        "icon": "polsatboxgo.png",
-        "cfgDir": "pgobox",
-        "cfgFiles": ["logged", "username", "password", "klient=iCOK", "client_id", "device_id", "sesstoken", "sessexpir", "id_"],
-        "cfgValues": ["username", "password", "klient"],
-        "addonScript": "plugin.video.pgobox/main.py",
-        "login": ["'1' '?mode=login' 'resume:false'"],
-        "userbouquet": ["'1' '?mode=build_m3u' 'resume:false'"],
-        "logout": ["'1' '?mode=logout' 'resume:false'"]
-    },
-    "spotify v. 1.2.3 by LdSz": {
-        "enabled": false,
-        "icon": "spotify.png",
-        "cfgDir": "spotify",
-        "cfgFiles": [],
+        "icon": "rakuten_tv.png",
+        "cfgDir": "rakuten_tv",
+        "cfgFiles": ["device_uid"],
         "cfgValues": [],
-        "addonScript": "plugin.audio.spotify/plugin.py",
+        "addonScript": "plugin.video.rakuten_tv/addon.py",
         "login": [],
-        "userbouquet": [],
-        "logout": [],
-        "webServer": "plugin.audio.spotify/service.py"
+        "userbouquet": [" '1' '?mode=create_m3u' 'resume:false'"],
+        "logout": []
+    },
+    "Skyline WebCams v. 0.2.3 by Bugatsinho": {
+        "enabled": true,
+        "icon": "skylinecctv.png",
+        "addonScript": "plugin.video.skylinecctv/default.py"
     },
     "sweet.tv v. 0.7 by mbebe,mtr81": {
         "enabled": true,
@@ -80,17 +167,6 @@
         "userbouquet": ["'1' '?mode=listM3U' 'resume:false'"],
         "logout": ["'1' '?mode=logout' 'resume:false'"]
     },
-    "UPC Go v. 1.0.1 by lg EOL 01-03-2025": {
-        "enabled": false,
-        "icon": "upcgo.png",
-        "cfgDir": "upcgo",
-        "cfgFiles": ["username", "password"],
-        "cfgValues": ["username", "password"],
-        "addonScript": "plugin.video.upcgo/addon.py",
-        "login": ["'1' '?mode=logIn' 'resume:false'"],
-        "userbouquet": ["'1' '?mode=liveTV' 'resume:false'"],
-        "logout": []
-    },
     "TVP VOD v. 1.2.11 by lg, mtr81": {
         "enabled": true,
         "icon": "tvpvod.png",
@@ -102,15 +178,15 @@
         "userbouquet": ["'1' '?mode=M3U_live' 'resume:false'"],
         "logout": ["'1'  '?mode=logout' 'resume:false'"]
     },
-    "WP pilot v. 1.0.5 by c0d34fun": {
-        "enabled": true,
-        "icon": "wptv.png",
-        "cfgDir": "pilot.wp",
-        "cfgFiles": ["username", "password","netviapisessid", "netviapisessval", "mode=0"],
+    "UPC Go v. 1.0.1 by lg EOL 01-03-2025": {
+        "enabled": false,
+        "icon": "upcgo.png",
+        "cfgDir": "upcgo",
+        "cfgFiles": ["username", "password"],
         "cfgValues": ["username", "password"],
-        "addonScript": "plugin.video.pilot.wp/addon.py",
-        "login": ["'1' '' 'resume:false'"],
-        "userbouquet": ["'1' '?action=BUILD_M3U' 'resume:false'"],
+        "addonScript": "plugin.video.upcgo/addon.py",
+        "login": ["'1' '?mode=logIn' 'resume:false'"],
+        "userbouquet": ["'1' '?mode=liveTV' 'resume:false'"],
         "logout": []
     }
 

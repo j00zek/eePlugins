@@ -14,6 +14,7 @@
     <key id="KEY_EXIT" mapto="cancel" flags="m" />
     <key id="KEY_GREEN" mapto="keyGreen" flags="b"/>
     <key id="KEY_YELLOW" mapto="keyYellow" flags="b"/>
+    <key id="KEY_BLUE" mapto="keyBlue" flags="b"/>
     <key id="KEY_OK" mapto="config" flags="m" />
     <key id="KEY_MENU" mapto="config" flags="m" />
   </map>
@@ -21,7 +22,7 @@
     <key id="KEY_RED" mapto="cancel" flags="b"/>
     <key id="KEY_ESC" mapto="cancel" flags="m" />
     <key id="KEY_EXIT" mapto="cancel" flags="m" />
-    <key id="KEY_GREEN" mapto="ok" flags="b"/>
+    <key id="KEY_GREEN" mapto="keyGreen" flags="b"/>
     <key id="KEY_ENTER" mapto="ok" flags="m" />
     <key id="KEY_OK" mapto="ok" flags="m" />
     <key id="KEY_MENU" mapto="menu" flags="m" />
