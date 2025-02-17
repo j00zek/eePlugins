@@ -616,17 +616,23 @@ class E2KodiPlayer(Screen):
                     "menu": self.quit,
                     "keyYellow": self.keyYellow,
                     "keyGreen": self.keyGreen,
+                    "keyPlay": self.keyPlay,
             }, -2)
         
         self["list"].list = []
-        self.infoTimer = eTimer()
-        self.infoTimer.callback.append(self.showKodiNotificationAndStatus)
-        self.timer = eTimer()
-        self.timer.callback.append(self.E2KodiCmdRun)
+        self.cmdRunTimer = eTimer()
+        self.cmdRunTimer.callback.append(self.E2KodiCmdRun)
         self.onShown.append(self._onShown)
         self.E2KodiCmd = eConsoleAppContainer()
         self.E2KodiCmd.appClosed.append(self.E2KodiCmdClosed)
         self.E2KodiCmd.dataAvail.append(self.E2KodiCmdAvail)
+
+        self.infoPixmap = LoadPixmap('/usr/lib/enigma2/python/Plugins/Extensions/E2Kodi/pic/info.png')
+        self.noCoverPixmap = LoadPixmap('/usr/lib/enigma2/python/Plugins/Extensions/E2Kodi/pic/noCover.png')
+        self.configPixmap = LoadPixmap('/usr/lib/enigma2/python/Plugins/Extensions/E2Kodi/pic/config.png')
+        self.folderPixmap = LoadPixmap('/usr/lib/enigma2/python/Plugins/Extensions/E2Kodi/pic/folder.png')
+        self.moviePixmap = LoadPixmap('/usr/lib/enigma2/python/Plugins/Extensions/E2Kodi/pic/movie.png')
+
         try: self.LastPlayedService = self.session.nav.getCurrentlyPlayingServiceReference()
         except Exception: self.LastPlayedService = None
         if not self.selectionChanged in self["list"].onSelectionChanged:
@@ -635,13 +641,15 @@ class E2KodiPlayer(Screen):
     def _onShown(self):
         self.prev_running_service = self.session.nav.getCurrentlyPlayingServiceReference()
         self.AddonCmd = self.InitAddonCmd
-        self.headerStatus = ' - inicjalizacja'
+        self["Title"].setText(self.setup_title + ' - inicjalizacja')
         self.LastAddonCmd = ''
-        self.timer.start(1000,True) # True=singleshot
-        self.infoTimer.start(100)
+        self.cmdRunTimer.start(1000,True) # True=singleshot
         self.isShown = True
 
-    def keyGreen(self):
+    def keyPlay(self):
+        print('[E2KodiPlayer.keyPlay] >>>')
+
+    def keyGreen(self): #dodaj material do bukietu
         self.selectedBouquet = None
 
         def UserbouquetSelected( ret = False): #bukiet wybrany, wybór frameworka
@@ -683,15 +691,12 @@ class E2KodiPlayer(Screen):
             print('listaBukietow', listaBukietow)
             self.session.openWithCallback(UserbouquetSelected, ChoiceBox, title = "Wybierz bukiet", list = listaBukietow)
 
-    def keyYellow(self):
+    def keyYellow(self): #pokaz/ukryj GUI
         if self.isShown:
             self.hide()
             self.isShown = False
         else:
             self.show()
-
-    def showKodiNotificationAndStatus(self):
-        self["Title"].setText(self.setup_title + self.headerStatus)
 
     def cleanKodiText(self, textToClean, doRemove = False):
         #https://html-color.codes/
@@ -720,7 +725,7 @@ class E2KodiPlayer(Screen):
         return textToClean
     
     def selectionChanged(self):
-        print('E2KodiPlayer.selectionChanged()')
+        print('[E2KodiPlayer.selectionChanged] >>>')
         try:
             currItem = self["list"].getCurrent()[2]
             if currItem.get('plot', None) is not None:
@@ -735,16 +740,17 @@ class E2KodiPlayer(Screen):
             print('E2KodiPlayer.selectionChanged()', str(e))
 
     def E2KodiCmdRun(self):
-        self.timer.stop()
+        self.cmdRunTimer.stop()
         if self.AddonCmd == '':
             print('E2KodiPlayer.E2KodiCmdRun() - nie podano komendy :(')
         elif 0: #self.AddonCmdsDict.get(self.AddonCmd, None) is not None:
             self.E2KodiCmdClosed('Mlist')
         else:
-            self.headerStatus = ' - ładowanie danych'
+            self["Title"].setText(self.setup_title + ' - czekam na dane z Kodi')
             cleanWorkingDir()
             cmd2run = '%s %s ' % (self.runAddon, self.AddonCmd)
             print('E2KodiPlayer.E2KodiCmdRun() cmd2run "%s"' % cmd2run)
+            open(os.path.join(working_dir,'lastCmd.log'),'w').write(cmd2run)
             self.E2KodiCmd.execute(cmd2run)
 
     def E2KodiCmdAvail(self, text = ''):
@@ -758,15 +764,16 @@ class E2KodiPlayer(Screen):
         if retval == 'Mlist':
             self.AddonCmdsDict.get(self.AddonCmd, {})
         elif os.path.exists(self.KodiVideoInfoPath):
-            self.headerStatus = ' - odtwarzanie materiału'
+            self["Title"].setText(self.setup_title + ' - odtwarzanie materiału')
             self.playVideo()
         else:
+            self["Title"].setText(self.setup_title + ' - budowanie listy')
             self.createTree()
-            self.headerStatus = ' - oczekiwanie'
+            self["Title"].setText(self.setup_title + ' - oczekiwanie')
             self.LastAddonCmd = self.AddonCmd
 
     def createTree(self):
-        print('E2KodiPlayer.createTree() >>>')
+        print('[E2KodiPlayer.createTree] >>>')
         Mlist = []
         
         if self.AddonCmd != self.InitAddonCmd:
@@ -789,7 +796,6 @@ class E2KodiPlayer(Screen):
                 for line in inFile:
                     try:
                         lineDict = json.loads(line)
-                        #print(lineDict)
                         Mlist.append(self.buildListEntry(lineDict))
                     except Exception as e:
                         exc_formatted = traceback.format_exc().strip()
@@ -800,6 +806,7 @@ class E2KodiPlayer(Screen):
         self.setTitle(self.setup_title + ' - oczekiwanie')
 
     def buildListEntry(self, lineDict): #&name=...&url=...&thumbnailImage=...&iconlImage=...&url=...
+        #print('[E2KodiPlayer.buildListEntry] title >', lineDict)
         title = self.cleanKodiText(lineDict.get('label', ''))
         if lineDict.get('label2', None) is not None:
             if lineDict.get('label2') != lineDict.get('label'):
@@ -812,39 +819,52 @@ class E2KodiPlayer(Screen):
         if len(title) > 90:
             title = title[:90] + '...'
         #ladowanie image
-        #print(lineDict.get('IsPlayable', 'AQQ'))
         if lineDict.get('isFolder', False):
-            image = 'folder.png'
-        elif lineDict.get('isPlayable', False) == True or lineDict.get('IsPlayable', '') == 'true':
+            print('[E2KodiPlayer.buildListEntry] folderPixmap')
+            return((self.folderPixmap, title, lineDict))
+        elif lineDict.get('isPlayable', False) == True:
+            print('[E2KodiPlayer.buildListEntry] moviePixmap')
+            return((self.moviePixmap, title, lineDict))
+        elif lineDict.get('isPlayable', '').lower() == 'true':
+            print('[E2KodiPlayer.buildListEntry] moviePixmap')
             lineDict['isPlayable'] = True
-            image = 'movie.png'
+            return((self.moviePixmap, title, lineDict))
         elif not lineDict.get('thumbnailImage', None) is None:
-            image = lineDict.get('thumbnailImage')
+            print('[E2KodiPlayer.buildListEntry] folderPixmap')
         elif not lineDict.get('iconImage', None) is None:
             image = lineDict.get('iconImage')
         else:
-            image = 'noCover.png'
+            print('[E2KodiPlayer.buildListEntry] noCoverPixmap')
+            return((self.noCoverPixmap, title, lineDict))
+
         if len(image) > 4 and image[-4:] in ('.png','.jpg', '.svg'):
             image = '/usr/lib/enigma2/python/Plugins/Extensions/E2Kodi/pic/%s' % image
             if not os.path.exists(image):
                 image = '/usr/lib/enigma2/python/Plugins/Extensions/E2Kodi/pic/noCover.png'
         pixmap = LoadPixmap(image)
+        print('[E2KodiPlayer.buildListEntry] pixmap')
         return((pixmap, title, lineDict))
 
     def stopVideo(self):
         print("[E2KodiPlayer.stopVideo] >>>")
         self["key_yellow"].setText('')
+        retVal = False
         if not self.deviceCDM is None:
             self.deviceCDM.stopPlaying() #wyłącza playera i czyści bufor dvb, bez tego  mamy 5s opóźnienia
+            retVal = True
         for pidFile in ['/var/run/cdmDevicePlayer.pid', '/var/run/emukodiCLI.pid', '/var/run/exteplayer3.pid']:
             if os.path.exists(pidFile):
                 pid = open(pidFile, 'r').readline().strip()
                 if os.path.exists('/proc/%s' % pid):
                     os.kill(int(pid), signal.SIGTERM) #or signal.SIGKILL
+                    retVal = True
                 os.remove(pidFile)
-
+        self["key_ok"].setText('OK-Wybierz')
+        return retVal
+        
     def playVideo(self, url = ''):
         self["key_yellow"].setText('ukryj/pokaż GUI')
+        self["key_ok"].setText('OK-Stop')
         if self.deviceCDM is None: #tutaj, zeby bez sensu nie ladować jak ktos nie ma/nie uzywa
             try:
                 import pywidevine.cdmdevice.cdmDevice
@@ -863,7 +883,8 @@ class E2KodiPlayer(Screen):
                 self.deviceCDM.tryToDoSomething(url)
     
     def openSelectedMenuItem(self):
-        self.stopVideo()
+        if self.stopVideo():
+            return
         lineDict = self["list"].getCurrent()[2]
         print('E2KodiPlayer.openSelectedMenuItem',lineDict)
         self["KodiNotificationsAndStatus"].setText(str(lineDict))
@@ -887,16 +908,19 @@ class E2KodiPlayer(Screen):
                 return
             elif self.AddonCmd.startswith('/usr/') and "?" in self.AddonCmd:
                 self.AddonCmd = "'1' '?" + self.AddonCmd.split('?')[1] + "' 'resume:false'"
+            else:
+                self.AddonCmd = "'1' '" + self.AddonCmd.strip() + "' 'resume:false'"
             
-            self["KodiNotificationsAndStatus"].setText(self.AddonCmd)
-            self.headerStatus = ' - ładowanie %s' % lineDict.get('label', "?")
-            self.E2KodiCmdRun()
+            self["KodiNotificationsAndStatus"].setText(self.AddonCmd + '\n')
+            self["Title"].setText(self.setup_title + ' - ładowanie %s' % lineDict.get('label', "?"))
+            self.cmdRunTimer.start(500,True)
         
     def doNothing(self, retVal = None):
         return
                 
     def quit(self):
         self.stopVideo()
+        self.cmdRunTimer.stop()
         if self.prev_running_service:
             self.session.nav.playService(self.prev_running_service)
         self.close()
