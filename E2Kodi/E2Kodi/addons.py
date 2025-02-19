@@ -85,7 +85,7 @@ class E2Kodi_Menu(Screen):
         <widget name="key_red"    position="20,510" zPosition="2" size="150,30" foregroundColor="red" valign="center" halign="left" font="Regular;22" transparent="1" />
         <widget name="key_green"  position="170,510" zPosition="2" size="150,30" foregroundColor="green" valign="center" halign="left" font="Regular;22" transparent="1" />
         <widget name="key_yellow"  position="360,510" zPosition="2" size="250,30" foregroundColor="yellow" valign="center" halign="left" font="Regular;22" transparent="1" />
-        <widget name="key_blue"  position="490,510" zPosition="2" size="200,30" foregroundColor="blue" valign="center" halign="left" font="Regular;22" transparent="1" />
+        <widget name="key_blue"  position="590,510" zPosition="2" size="200,30" foregroundColor="blue" valign="center" halign="left" font="Regular;22" transparent="1" />
         <widget name="key_ok"  position="690,510" zPosition="2" size="350,30" foregroundColor="gray" valign="center" halign="left" font="Regular;22" transparent="1" />
 </screen>"""
 

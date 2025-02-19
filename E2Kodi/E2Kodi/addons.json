@@ -20,7 +20,7 @@
         "enabled": true,
         "icon": "canalplusvod.png",
         "cfgDir": "canalplusvod",
-        "cfgFiles": [],
+        "cfgFiles": ["passId"],
         "cfgValues": [],
         "addonScript": "plugin.video.canalplusvod/main.py",
         "login": [],
