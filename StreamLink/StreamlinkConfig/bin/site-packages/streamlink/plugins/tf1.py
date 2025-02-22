@@ -21,11 +21,11 @@ log = logging.getLogger(__name__)
 
 @pluginmatcher(
     name="live",
-    pattern=re.compile(r"https?://(?:www\.)?tf1\.fr/(?P<live>[\w-]+)/direct/?"),
+    pattern=re.compile(r"https?://(?:www\.)?tf1\.fr/(?P<live>(?![\w-]+-\d+)[^/?#]+)/direct/?"),
 )
 @pluginmatcher(
     name="stream",
-    pattern=re.compile(r"https?://(?:www\.)?tf1\.fr/stream/(?P<stream>[\w-]+)"),
+    pattern=re.compile(r"https?://(?:www\.)?tf1\.fr/(?P<stream>[\w-]+-\d+)/direct/?"),
 )
 @pluginmatcher(
     name="lci",
@@ -41,7 +41,7 @@ log = logging.getLogger(__name__)
     "password",
     sensitive=True,
     metavar="PASSWORD",
-    help="A tf1.fr account password to use with --tf1-username.",
+    help="A tf1.fr account password to use with --tf1-email.",
 )
 @pluginargument(
     "purge-credentials",
