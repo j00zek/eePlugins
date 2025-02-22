@@ -1,7 +1,7 @@
 {
     "spotify v. 1.2.3 by LdSz": {
         "enabled": false,
-        "icon": "spotify.png",
+        "icon": "site-packages/emukodi/Plugins/plugin.video.spotify/logo.png",
         "cfgDir": "spotify",
         "cfgFiles": [],
         "cfgValues": [],
@@ -13,12 +13,12 @@
     },
     "CAM v. 1.4 by SPA": {
         "enabled": true,
-        "icon": "CamLive.png",
+        "icon": "site-packages/emukodi/Plugins/plugin.video.CAMLIVE/logo.png",
         "addonScript": "plugin.video.CAMLIVE/main.py"
     },
     "Canal+ v. 1.7.5.9 by mbebe, mariusz89b, hevet": {
         "enabled": true,
-        "icon": "canalplusvod.png",
+        "icon": "site-packages/emukodi/Plugins/plugin.video.canalplusvod/logo.png",
         "cfgDir": "canalplusvod",
         "cfgFiles": ["passId"],
         "cfgValues": [],
@@ -31,7 +31,7 @@
     },
     "cda v. 1.13 by mbebe": {
         "enabled": true,
-        "icon": "cdapl.png",
+        "icon": "site-packages/emukodi/Plugins/plugin.video.cdaplMB/logo.png",
         "cfgDir": "cdaplMB",
         "cfgFiles": ["refr_token", "username", "password", "login_info"],
         "cfgValues": ["username", "password"],
@@ -43,7 +43,7 @@
     },
     "Eleven Sports PL v. 1.0.1 by lg": {
         "enabled": true,
-        "icon": "elevens.png",
+        "icon": "site-packages/emukodi/Plugins/plugin.video.elevens/logo.png",
         "cfgDir": "elevens",
         "cfgFiles": ["logged", "username", "password"],
         "cfgValues": ["username", "password"],
@@ -54,7 +54,7 @@
     },
     "Eurovision Sport v. 1.0.2 by lg": {
         "enabled": false,
-        "icon": "eurovisionsport.png",
+        "icon": "site-packages/emukodi/Plugins/plugin.video.eurovisionsport/logo.png",
         "cfgDir": "eurovisionsport",
         "cfgFiles": ["username", "password"],
         "cfgValues": ["username", "password"],
@@ -63,9 +63,15 @@
         "userbouquet": [],
         "logout": []
     },
+    "Interia.tv v. 1.0.1 by lg": {
+        "enabled": true,
+        "icon": "site-packages/emukodi/Plugins/plugin.video.interia_tv/logo.png",
+        "cfgDir": "interia_tv",
+        "addonScript": "plugin.video.interia_tv/addon.py"
+    },
     "Megogo Bezpłatna TV v. 1.0.10 by lg": {
         "enabled": false,
-        "icon": "megogo.png",
+        "icon": "site-packages/emukodi/Plugins/plugin.video.megogo/megogo.png",
         "cfgDir": "megogo",
         "cfgFiles": [],
         "cfgValues": [],
@@ -76,7 +82,7 @@
     },
     "Netia Go v. 1.4 by mbebe": {
         "enabled": false,
-        "icon": "netiago.png",
+        "icon": "site-packages/emukodi/Plugins/plugin.video.netiago/logo.png",
         "cfgDir": "netiago",
         "cfgFiles": ["username", "password"],
         "cfgValues": ["username", "password"],
@@ -87,7 +93,7 @@
     },
     "Orange TV Go v. 1.2 by mbebe,mtr81,spliner21": {
         "enabled": false,
-        "icon": "orangetvgo.png",
+        "icon": "site-packages/emukodi/Plugins/plugin.video.orangetvgo/logo.png",
         "cfgDir": "orangetvgo",
         "cfgFiles": ["login", "password"],
         "cfgValues": ["login", "password"],
@@ -98,7 +104,7 @@
     },
     "Polsat Go Box v. 1.102 by mbebe, mariusz89b, mtr81": {
         "enabled": true,
-        "icon": "polsatboxgo.png",
+        "icon": "site-packages/emukodi/Plugins/plugin.video.pgobox/logo.png",
         "cfgDir": "pgobox",
         "cfgFiles": ["logged", "username", "password", "klient=iCOK", "client_id", "device_id", "sesstoken", "sessexpir", "id_"],
         "cfgValues": ["username", "password", "klient"],
@@ -109,7 +115,7 @@
     },
     "WP pilot v. 1.0.5 by c0d34fun": {
         "enabled": true,
-        "icon": "wptv.png",
+        "icon": "site-packages/emukodi/Plugins/plugin.video.pilot.wp/logo.png",
         "cfgDir": "pilot.wp",
         "cfgFiles": ["username", "password","netviapisessid", "netviapisessval", "mode=0"],
         "cfgValues": ["username", "password"],
@@ -120,7 +126,7 @@
     },
     "Play now v. 1.0.0 by lg": {
         "enabled": false,
-        "icon": "playnow.png",
+        "icon": "site-packages/emukodi/Plugins/plugin.video.play_now/logo.png",
         "cfgDir": "play_now",
         "cfgFiles": [],
         "cfgValues": [],
@@ -131,7 +137,7 @@
     },
     "player.pl v. 1.12.3 by mbebe, m1992, rysson": {
         "enabled": true,
-        "icon": "playerpl.png",
+        "icon": "site-packages/emukodi/Plugins/plugin.video.playermb/logo.png",
         "cfgDir": "playermb",
         "cfgFiles": ["refresh_token", "logged", "avaliable_only"],
         "cfgValues": ["avaliable_only"],
@@ -142,7 +148,7 @@
     },
     "Rakuten TV v. 1.0.3 by lg": {
         "enabled": true,
-        "icon": "rakuten_tv.png",
+        "icon": "site-packages/emukodi/Plugins/plugin.video.rakuten_tv/logo.png",
         "cfgDir": "rakuten_tv",
         "cfgFiles": ["device_uid"],
         "cfgValues": [],
@@ -153,12 +159,12 @@
     },
     "Skyline WebCams v. 0.2.3 by Bugatsinho": {
         "enabled": true,
-        "icon": "skylinecctv.png",
+        "icon": "site-packages/emukodi/Plugins/plugin.video.skylinecctv/logo.png",
         "addonScript": "plugin.video.skylinecctv/default.py"
     },
     "sweet.tv v. 0.7 by mbebe,mtr81": {
         "enabled": true,
-        "icon": "sweettv.png",
+        "icon": "site-packages/emukodi/Plugins/plugin.video.sweettvpl/logo.png",
         "cfgDir": "sweettvpl",
         "cfgFiles": ["refresh_token", "logged", "uuid", "username", "password"],
         "cfgValues": [],
@@ -169,7 +175,7 @@
     },
     "TVP VOD v. 1.2.11 by lg, mtr81": {
         "enabled": true,
-        "icon": "tvpvod.png",
+        "icon": "site-packages/emukodi/Plugins/plugin.video.TVP_VOD/logo.png",
         "cfgDir": "TVP_VOD",
         "cfgFiles": ["logged", "LoginCode"],
         "cfgValues": ["LoginCode|Kod ze strony https://vod.tvp.pl/logowanie-tv"],
@@ -180,7 +186,7 @@
     },
     "UPC Go v. 1.0.1 by lg EOL 01-03-2025": {
         "enabled": false,
-        "icon": "upcgo.png",
+        "icon": "site-packages/emukodi/Plugins/plugin.video.upcgo/logo.png",
         "cfgDir": "upcgo",
         "cfgFiles": ["username", "password"],
         "cfgValues": ["username", "password"],

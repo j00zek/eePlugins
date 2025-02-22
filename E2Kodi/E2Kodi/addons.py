@@ -195,7 +195,7 @@ class E2Kodi_Menu(Screen):
             else:
                 ActiveExtPlayer = 'BRAK doinstaluj pakiet exteplayer3, lub serviceapp !!!'
                 listAddons = False
-            Mlist.append(self.buildListEntry(None, "Aktywny odtwarzacz: %s" % ActiveExtPlayer, "noCover.png"))
+            Mlist.append(self.buildListEntry(None, "Aktywny odtwarzacz: %s" % ActiveExtPlayer, "/usr/lib/enigma2/python/Plugins/Extensions/E2Kodi/pic/noCover.png"))
             addonKeysList = []
             if listAddons:
                 for addonKey in sorted(self.addonsDict, key=str.casefold):
@@ -230,8 +230,8 @@ class E2Kodi_Menu(Screen):
         #ladowanie loga
         if image.endswith('.cfg'):
             addonKey = image
-            image = 'config.png'
-        image = '/usr/lib/enigma2/python/Plugins/Extensions/E2Kodi/pic/%s' % image
+            image = 'pic/config.png'
+        image = os.path.join('/usr/lib/enigma2/python/Plugins/Extensions/E2Kodi', image)
         if os.path.exists(image):
             pixmap = LoadPixmap(image)
         else:
