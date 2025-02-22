@@ -323,6 +323,13 @@ class E2KodiConfiguration(Screen, ConfigListScreen):
             #info
             Mlist.append(getConfigListEntry(r'\c00f2ec73' + "Możesz też wpisać dane bezpośrednio w /etc/E2Kodi/%s" % self.addonName))
             for cfgValue in self.SelectedAddonDef.get('cfgValues',[]):
+                #info do listyjesli istnieje
+                if '|' in cfgValue:
+                    cfgValueInfo = cfgValue.split('|')[1]
+                    cfgValue = cfgValue.split('|')[0]
+                else:
+                    cfgValueInfo = cfgValue
+                #pobranie aktualnej wartosci
                 actVal = readCFG('%s/%s' % (self.addonName, cfgValue), defVal = '')
                 if cfgValue == 'username':
                     config.plugins.E2Kodi.username.value = actVal
@@ -338,7 +345,7 @@ class E2KodiConfiguration(Screen, ConfigListScreen):
                     self.cfgValues2Configs.append(('klient', config.plugins.E2Kodi.PBGOklient))
                 elif cfgValue == 'LoginCode':
                     config.plugins.E2Kodi.LoginCode.value = actVal
-                    Mlist.append(getConfigListEntry( 'LoginCode' , config.plugins.E2Kodi.LoginCode))
+                    Mlist.append(getConfigListEntry( cfgValueInfo , config.plugins.E2Kodi.LoginCode))
                     self.cfgValues2Configs.append(('LoginCode', config.plugins.E2Kodi.LoginCode))
                 elif cfgValue == 'avaliable_only':
                     config.plugins.E2Kodi.avaliable_only.value = actVal
@@ -592,6 +599,7 @@ class E2KodiPlayer(Screen):
         self.AddonCmdsDict = {}
         self.InitAddonCmd = "'1' ' '"
         self.LastAddonCmd = ''
+        self.LastlineDict = ''
         self.headerStatus = ''
         self.deviceCDM = None
         
@@ -601,7 +609,7 @@ class E2KodiPlayer(Screen):
         Screen.__init__(self, session)
         self.setup_title = "%s Player" % self.addonName
 
-        self["key_red"] = Label("Wyjdź")
+        self["key_red"] = Label("Cofnij")
         self["key_green"] = Label('')
         self["key_ok"] = Label('OK-Wybierz')
         self["key_yellow"] = Label('')
@@ -614,8 +622,9 @@ class E2KodiPlayer(Screen):
                     "cancel": self.quit,
                     "ok": self.openSelectedMenuItem,
                     "menu": self.quit,
-                    "keyYellow": self.keyYellow,
+                    "keyRed": self.keyRed,
                     "keyGreen": self.keyGreen,
+                    "keyYellow": self.keyYellow,
                     "keyPlay": self.keyPlay,
             }, -2)
         
@@ -648,6 +657,14 @@ class E2KodiPlayer(Screen):
 
     def keyPlay(self):
         print('[E2KodiPlayer.keyPlay] >>>')
+
+    def keyRed(self):
+        self.stopVideo()
+        self.keyYellow(assureIsShown = True)
+        self.AddonCmd = self.InitAddonCmd
+        self["KodiNotificationsAndStatus"].setText(self.AddonCmd + '\n')
+        self["Title"].setText(self.setup_title + ' - cofanie')
+        self.cmdRunTimer.start(500,True)
 
     def keyGreen(self): #dodaj material do bukietu
         self.selectedBouquet = None
@@ -691,8 +708,10 @@ class E2KodiPlayer(Screen):
             print('listaBukietow', listaBukietow)
             self.session.openWithCallback(UserbouquetSelected, ChoiceBox, title = "Wybierz bukiet", list = listaBukietow)
 
-    def keyYellow(self): #pokaz/ukryj GUI
-        if self.isShown:
+    def keyYellow(self, assureIsShown = False): #pokaz/ukryj GUI
+        if assureIsShown:
+            self.show()
+        elif self.isShown:
             self.hide()
             self.isShown = False
         else:
@@ -806,7 +825,7 @@ class E2KodiPlayer(Screen):
         self.setTitle(self.setup_title + ' - oczekiwanie')
 
     def buildListEntry(self, lineDict): #&name=...&url=...&thumbnailImage=...&iconlImage=...&url=...
-        #print('[E2KodiPlayer.buildListEntry] title >', lineDict)
+        print('[E2KodiPlayer.buildListEntry] title >', lineDict)
         title = self.cleanKodiText(lineDict.get('label', ''))
         if lineDict.get('label2', None) is not None:
             if lineDict.get('label2') != lineDict.get('label'):
@@ -819,13 +838,13 @@ class E2KodiPlayer(Screen):
         if len(title) > 90:
             title = title[:90] + '...'
         #ladowanie image
-        if lineDict.get('isFolder', False):
+        if lineDict.get('isFolder', False) or lineDict.get('IsFolder', False):
             print('[E2KodiPlayer.buildListEntry] folderPixmap')
             return((self.folderPixmap, title, lineDict))
-        elif lineDict.get('isPlayable', False) == True:
+        elif lineDict.get('isPlayable', False) or lineDict.get('IsPlayable', False):
             print('[E2KodiPlayer.buildListEntry] moviePixmap')
             return((self.moviePixmap, title, lineDict))
-        elif lineDict.get('isPlayable', '').lower() == 'true':
+        elif lineDict.get('isPlayable', '').lower() == 'true' or lineDict.get('IsPlayable', '').lower() == 'true':
             print('[E2KodiPlayer.buildListEntry] moviePixmap')
             lineDict['isPlayable'] = True
             return((self.moviePixmap, title, lineDict))
@@ -850,16 +869,20 @@ class E2KodiPlayer(Screen):
         self["key_yellow"].setText('')
         retVal = False
         if not self.deviceCDM is None:
+            print("[E2KodiPlayer.stopVideo] self.deviceCDM is not None")
             self.deviceCDM.stopPlaying() #wyłącza playera i czyści bufor dvb, bez tego  mamy 5s opóźnienia
             retVal = True
         for pidFile in ['/var/run/cdmDevicePlayer.pid', '/var/run/emukodiCLI.pid', '/var/run/exteplayer3.pid']:
             if os.path.exists(pidFile):
                 pid = open(pidFile, 'r').readline().strip()
                 if os.path.exists('/proc/%s' % pid):
+                    print("[E2KodiPlayer.stopVideo] pid file exists")
                     os.kill(int(pid), signal.SIGTERM) #or signal.SIGKILL
                     retVal = True
                 os.remove(pidFile)
         self["key_ok"].setText('OK-Wybierz')
+        if self.prev_running_service:
+            self.session.nav.playService(self.prev_running_service)
         return retVal
         
     def playVideo(self, url = ''):
@@ -883,37 +906,40 @@ class E2KodiPlayer(Screen):
                 self.deviceCDM.tryToDoSomething(url)
     
     def openSelectedMenuItem(self):
-        if self.stopVideo():
-            return
+        self.stopVideo()
+        self.keyYellow(assureIsShown = True)
         lineDict = self["list"].getCurrent()[2]
+        if lineDict == self.LastlineDict:
+            print('[E2KodiPlayer.openSelectedMenuItem] nic do roboty, OK na tym samym elemencie')
+            return
+        self.LastlineDict = lineDict
         print('E2KodiPlayer.openSelectedMenuItem',lineDict)
         self["KodiNotificationsAndStatus"].setText(str(lineDict))
         
-        if 1: #lineDict.get('isFolder', False):
-            self.AddonCmd = str(lineDict.get('url', "?"))
-            if self.AddonCmd == "?":
-                self["KodiNotificationsAndStatus"].setText("Nie zdefinowana komenda :( ")
-                return
-            elif self.AddonCmd == "plikBukietu":
-                self["KodiNotificationsAndStatus"].setText("ładuje plik bukietu")
-                self.createTree()
-                return
-            elif self.AddonCmd.startswith('http%3a//cdmplayer/'):
-                self["KodiNotificationsAndStatus"].setText(self.AddonCmd)
-                self.playVideo(self.AddonCmd)
-                return
-            elif 0: #str(lineDict.get('IsPlayable', '?')) in ['true','True'] or 'playvid' in self.AddonCmd:
-                self["KodiNotificationsAndStatus"].setText('Play')
-                self.playVideo(self.AddonCmd)
-                return
-            elif self.AddonCmd.startswith('/usr/') and "?" in self.AddonCmd:
-                self.AddonCmd = "'1' '?" + self.AddonCmd.split('?')[1] + "' 'resume:false'"
-            else:
-                self.AddonCmd = "'1' '" + self.AddonCmd.strip() + "' 'resume:false'"
+        self.AddonCmd = str(lineDict.get('url', "?"))
+        if self.AddonCmd == "?":
+            self["KodiNotificationsAndStatus"].setText("Nie zdefinowana komenda :( ")
+            return
+        elif self.AddonCmd == "plikBukietu":
+            self["KodiNotificationsAndStatus"].setText("ładuje plik bukietu")
+            self.createTree()
+            return
+        elif self.AddonCmd.startswith('http%3a//cdmplayer/'):
+            self["KodiNotificationsAndStatus"].setText(self.AddonCmd)
+            self.playVideo(self.AddonCmd)
+            return
+        elif 0: #str(lineDict.get('IsPlayable', '?')) in ['true','True'] or 'playvid' in self.AddonCmd:
+            self["KodiNotificationsAndStatus"].setText('Play')
+            self.playVideo(self.AddonCmd)
+            return
+        elif self.AddonCmd.startswith('/usr/') and "?" in self.AddonCmd:
+            self.AddonCmd = "'1' '?" + self.AddonCmd.split('?')[1] + "' 'resume:false'"
+        else:
+            self.AddonCmd = "'1' '" + self.AddonCmd.strip() + "' 'resume:false'"
             
-            self["KodiNotificationsAndStatus"].setText(self.AddonCmd + '\n')
-            self["Title"].setText(self.setup_title + ' - ładowanie %s' % lineDict.get('label', "?"))
-            self.cmdRunTimer.start(500,True)
+        self["KodiNotificationsAndStatus"].setText(self.AddonCmd + '\n')
+        self["Title"].setText(self.setup_title + ' - ładowanie %s' % lineDict.get('label', "?"))
+        self.cmdRunTimer.start(500,True)
         
     def doNothing(self, retVal = None):
         return

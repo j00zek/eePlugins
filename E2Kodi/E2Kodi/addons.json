@@ -42,15 +42,15 @@
         "webServer": "serverHTTP.py"
     },
     "Eleven Sports PL v. 1.0.1 by lg": {
-        "enabled": false,
+        "enabled": true,
         "icon": "elevens.png",
         "cfgDir": "elevens",
         "cfgFiles": ["logged", "username", "password"],
         "cfgValues": ["username", "password"],
         "addonScript": "plugin.video.elevens/addon.py",
-        "login": [],
-        "userbouquet": [],
-        "logout": []
+        "login": ["'1' '?mode=logIn' 'resume:false'"],
+        "userbouquet": ["'1' '?mode=listM3U' 'resume:false'"],
+        "logout": ["'1' '?mode=logOut' 'resume:false'"]
     },
     "Eurovision Sport v. 1.0.2 by lg": {
         "enabled": false,
@@ -172,7 +172,7 @@
         "icon": "tvpvod.png",
         "cfgDir": "TVP_VOD",
         "cfgFiles": ["logged", "LoginCode"],
-        "cfgValues": ["LoginCode"],
+        "cfgValues": ["LoginCode|Kod ze strony https://vod.tvp.pl/logowanie-tv"],
         "addonScript": "plugin.video.TVP_VOD/addon.py",
         "login": ["'1' '?mode=logIn' 'resume:false'"],
         "userbouquet": ["'1' '?mode=M3U_live' 'resume:false'"],
