@@ -62,7 +62,7 @@ def main(session, **kwargs):
     session.open(Plugins.Extensions.E2Kodi.addons.E2Kodi_Menu)
 
 def Plugins(path, **kwargs):
-    myList = [PluginDescriptor(name="E2Kodi", where = PluginDescriptor.WHERE_PLUGINMENU, icon="logo.png", fnc = main, needsRestart = False),
+    myList = [PluginDescriptor(name="E2Kodi", description="Oglądaj serwisy online", where = PluginDescriptor.WHERE_PLUGINMENU, icon="logo.png", fnc = main, needsRestart = False),
               PluginDescriptor(name="E2Kodi", where = PluginDescriptor.WHERE_EXTENSIONSMENU, icon="logo.png", fnc = main, needsRestart = False),
               PluginDescriptor(name="E2Kodi", where = PluginDescriptor.WHERE_SESSIONSTART, fnc = sessionstart, needsRestart = False, weight = -1)
             ]
