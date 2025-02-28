@@ -689,7 +689,7 @@ class CBaseHostClass:
                 return
         except Exception:
             self.isGeoBlockingChecked = False
-        sts, data = self.cm.getPage('https://dcinfos.abtasty.com/geolocAndWeather.php')
+        sts, data = self.cm.getPage('http://ip-api.com/json/')
         if not sts:
             return
         try:
@@ -699,7 +699,7 @@ class CBaseHostClass:
             except Exception:
                 data = json_loads(data)
             try:
-                data['country'] = data.get('country', 'N/A') #to avoid exceptions when something went wrong
+                data['country'] = data.get('countryCode', 'N/A') #to avoid exceptions when something went wrong
             except Exception:
                 printDBG(str(data))
                 data = {"country": "N/A"}
