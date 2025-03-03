@@ -116,7 +116,7 @@ class E2Kodi_Menu(Screen):
                 self.addonsDict = json.load(jf)
         except Exception as e:
             print('E2Kodi_Menu', str(e))
-            self.addonsDict = {'Błąd ładowania danych :(': {"enabled": None, "error": True}}
+            self.addonsDict = {'Błąd ładowania danych :(': {"enabled": None, "error": True, 'addonScript': 'Fake'}}
         self["list"].list = []
         self.createsetup()
 
@@ -199,7 +199,10 @@ class E2Kodi_Menu(Screen):
             addonKeysList = []
             if listAddons:
                 for addonKey in sorted(self.addonsDict, key=str.casefold):
+                    #print('addonKey', addonKey)
                     addonDef = self.addonsDict[addonKey]
+                    if addonDef.get('disabled4ever', False):
+                        continue
                     isHiddenFile = addonDef['addonScript'].split('/')[0] + '.ukryty'
                     isHiddenFile = os.path.join('/etc/E2Kodi/',isHiddenFile)
                     if os.path.exists(isHiddenFile):

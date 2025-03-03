@@ -16,18 +16,17 @@
         "icon": "site-packages/emukodi/Plugins/plugin.video.CAMLIVE/logo.png",
         "addonScript": "plugin.video.CAMLIVE/main.py"
     },
-    "Canal+ v. 1.7.5.9 by mbebe, mariusz89b, hevet": {
+    "Canal+ v. 0.2 by ja :P": {
         "enabled": true,
         "icon": "site-packages/emukodi/Plugins/plugin.video.canalplusvod/logo.png",
         "cfgDir": "canalplusvod",
-        "cfgFiles": ["passId"],
+        "cfgFiles": ["logged"],
         "cfgValues": [],
-        "addonScript": "plugin.video.canalplusvod/main.py",
-        "login": [],
-        "loginTV": ["'1' '?mode=loginTV' 'resume:false'", "'1' ' ' 'resume:false'"],
-        "userbouquet": [],
-        "logout": [],
-        "webServer": "serverHTTP.py"
+        "addonScript": "plugin.video.canalplusvod/myWorkingCanalPlus.py",
+        "loginTV": ["'1' '?mode=loginTV'"],
+        "userbouquet": ["'1' '?mode=listE2B'"],
+        "logout": ["'1' '?mode=logout'"],
+        "webServer": ""
     },
     "cda v. 1.13 by mbebe": {
         "enabled": true,
