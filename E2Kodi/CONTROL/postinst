@@ -67,4 +67,6 @@ if [ ! -e /usr/lib/enigma2/python/Plugins/Extensions/IPTVPlayer/plugin.pe2i ];th
   chmod 755 /iptvplayer_rootfs/usr/bin/exteplayer3
   echo "exteplayer3 zainstalowany"
 fi
+#pobieranie mapowania
+wget -q https://raw.githubusercontent.com/azman26/EPGazman/main/azman_channels_mappings.py -O /usr/lib/enigma2/python/Plugins/Extensions/E2Kodi/azman_channels_mappings.py
 exit 0
