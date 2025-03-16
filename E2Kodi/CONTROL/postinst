@@ -13,8 +13,12 @@ fi
 
 mkdir -p /etc/E2Kodi
 
-cd /usr/lib/enigma2/python/Plugins/Extensions/E2Kodi/site-packages
-find /usr/lib/enigma2/python/Plugins/Extensions/E2Kodi/site-packages -iname *.$FileExtension|while read f; do
+cd $plugBinDir
+ln -sf plugin.$FileExtension plugin.py
+ln -sf addons.$FileExtension addons.py
+
+cd $plugBinDir/site-packages
+find $plugBinDir/site-packages -iname *.$FileExtension|while read f; do
     #echo "$f"
     f2=`echo "$f"|sed "s;$FileExtension;py;"`
     ln -sf "$f" "$f2"
