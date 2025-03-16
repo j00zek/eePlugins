@@ -18,7 +18,7 @@
     <widget source="caption" render="Label" position="1395,120" size="420,30" font="HD_Thin; 26" halign="right" valign="center" transparent="1" backgroundColor="black" foregroundColor="green"/>
 <!-- CURRENT TOP -->
     <widget source="currentData_WeatherPixmap" render="j00zekMSNWeatherPixmap" alphatest="blend" position="243,212" size="128,128" transparent="1" zPosition="5"/>
-    <widget source="currentData_temperature" render="Label" font="robotoMSN; 40" position="370,244" size="140,45" backgroundColor="black" zPosition="3" transparent="1" valign="center" foregroundColor="light_yellow"/>
+    <widget source="currentData_temperature" render="Label" font="robotoMSN; 40" position="370,244" size="140,45" backgroundColor="black" zPosition="3" transparent="1" valign="center" foregroundColor="#00fffe9e"/>
     <widget source="currentData_skytext"     render="j00zekLabel" position="120,340" size="400,60" font="HD_Thin; 26" halign="center" valign="center" transparent="1" backgroundColor="black"/>
 <!-- top second from left -->
         <widget source="currentData_WeatherinfoList" render="Listbox" position="620,180" size="400,270" scrollbarMode="showNever" transparent="1" backgroundColor="black">
@@ -33,9 +33,9 @@
                     }
         </convert>
         </widget>
-    <!--widget source="airQualityTitle" render="Label" position="1240,180" size="320,30" font="robotoMSN; 27" halign="center" valign="center" foregroundColor="light_yellow" backgroundColor="dark_grey" transparent="1" /-->
+    <!--widget source="airQualityTitle" render="Label" position="1240,180" size="320,30" font="robotoMSN; 27" halign="center" valign="center" foregroundColor="#00fffe9e" backgroundColor="dark_grey" transparent="1" /-->
     <widget source="currentData_airQualityAccellPixmap" render="j00zekPixmap" alphatest="blend" position="1140,170" size="55,55" transparent="1" zPosition="3"/>
-        <widget source="currentData_airIndexInfo" render="j00zekModRunningText" position="1200,170" size="440,55"  options="movetype=running,startpoint=0,direction=left,steptime=90,repeat=99,startdelay=2000" foregroundColor="light_yellow" backgroundColor="black" font="robotoMSN; 30" zPosition="5" halign="left" valign="center" transparent="1" />
+        <widget source="currentData_airIndexInfo" render="j00zekModRunningText" position="1200,170" size="440,55"  options="movetype=running,startpoint=0,direction=left,steptime=90,repeat=99,startdelay=2000" foregroundColor="#00fffe9e" backgroundColor="black" font="robotoMSN; 30" zPosition="5" halign="left" valign="center" transparent="1" />
         <widget source="currentData_infoList" render="Listbox" position="1140,225" size="520,225" scrollbarMode="showNever" transparent="1" backgroundColor="black">
                 <convert type="TemplatedMultiContent">
                     {"template": [
