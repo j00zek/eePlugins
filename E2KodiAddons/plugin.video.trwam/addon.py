@@ -1,0 +1,627 @@
+# -*- coding: utf-8 -*-
+import os
+import sys
+
+import requests
+from emukodi import xbmc
+from emukodi import xbmcgui
+from emukodi import xbmcplugin
+from emukodi import xbmcaddon
+from emukodi import xbmcvfs
+import re
+import base64
+import json
+import random
+import time
+import datetime
+import math
+import urllib
+from urllib.request import Request, urlopen
+from urllib.parse import urlencode, quote_plus, quote, unquote, parse_qsl
+
+base_url = sys.argv[0]
+addon_handle = int(sys.argv[1])
+params = dict(parse_qsl(sys.argv[2][1:]))
+addon = xbmcaddon.Addon(id='plugin.video.trwam')
+
+PATH=addon.getAddonInfo('path')
+PATH_profile=xbmcvfs.translatePath(addon.getAddonInfo('profile'))
+if not xbmcvfs.exists(PATH_profile):
+    xbmcvfs.mkdir(PATH_profile)
+
+img_path=PATH+'/resources/img/'
+img_empty=img_path+'empty.png'
+fanart=img_path+'fanart.jpg'
+img_addon=PATH+'/icon.png'
+
+UA='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36'
+heaUA={'User-Agent':UA}
+
+#trwam
+baseurl='https://tv-trwam.pl/'
+apiURL='https://api-trwam.app.insysgo.pl/'
+platform='www'
+
+hea={
+    'User-Agent':UA,
+    'Referer':baseurl,
+    'Origin':baseurl[:-1]
+}
+URLparams={
+    '$headers':'{"Content-Type":"application/json;charset=utf-8","X-Api-Date-Format":"iso","X-Api-Camel-Case":true}'
+}
+
+chCodes=['tv-trwam-cvk']
+
+channels={
+    'trwam':['TV TRWAM','450',img_addon,'c',7],
+    'ewtn':['EWTN Polska','',img_path+'ewtn.png','',0],
+    'ewtn24':['EWTN Adoracja','',img_path+'ewtn.png','',0],
+    'jasna_gora':['Jasna Góra','',img_path+'jasna_gora.jpg','',0],
+    'republika':['Republika','617',img_path+'republika.png','',0],
+    'republikatv':['TV Republika','',img_path+'republikatv.png','',0],
+    'wpolsce':['wPolsce','810',img_path+'wpolsce.png','',0],
+    'mn':['TV Media Narodowe','',img_path+'tv_mn.png','',0],
+    'polska360':['Polska360 TV','',img_path+'polska360.png','',0],
+    'polonico':['Polonico TV','',img_path+'polonico.png','',0],
+    'rm':['Radio Maryja','',img_path+'rm.png','',0],
+    'wnet':['Radio Wnet','',img_path+'wnet.png','',0],
+}
+
+def build_url(query):
+    return base_url + '?' + urlencode(query)
+
+def addItemList(url, name, setArt, medType=False, infoLab={}, isF=True, isPla='false', contMenu=False, cmItems=[]):
+    li=xbmcgui.ListItem(name)
+    li.setProperty("IsPlayable", isPla)
+    if medType:
+        kodiVer=xbmc.getInfoLabel('System.BuildVersion')
+        if kodiVer.startswith('19.'):
+            li.setInfo(type=medType, infoLabels=infoLab)
+        else:
+            types={'video':'getVideoInfoTag','music':'getMusicInfoTag'}
+            if medType!=False:
+                setMedType=getattr(li,types[medType])
+                vi=setMedType()
+            
+                labels={
+                    'year':'setYear', #int
+                    'episode':'setEpisode', #int
+                    'season':'setSeason', #int
+                    'rating':'setRating', #float
+                    'mpaa':'setMpaa',
+                    'plot':'setPlot',
+                    'plotoutline':'setPlotOutline',
+                    'title':'setTitle',
+                    'originaltitle':'setOriginalTitle',
+                    'sorttitle':'setSortTitle',
+                    'genre':'setGenres', #list
+                    'country':'setCountries', #list
+                    'director':'setDirectors', #list
+                    'studio':'setStudios', #list
+                    'writer':'setWriters',#list
+                    'duration':'setDuration', #int (in sec)
+                    'tag':'setTags', #list
+                    'trailer':'setTrailer', #str (path)
+                    'mediatype':'setMediaType',
+                    'cast':'setCast', #list        
+                }
+                
+                if 'cast' in infoLab:
+                    if infoLab['cast']!=None:
+                        cast=[xbmc.Actor(c) for c in infoLab['cast']]
+                        infoLab['cast']=cast
+                
+                for i in list(infoLab):
+                    if i in list(labels):
+                        setLab=getattr(vi,labels[i])
+                        setLab(infoLab[i])
+    li.setArt(setArt) 
+    if contMenu:
+        li.addContextMenuItems(cmItems, replaceItems=False)
+    xbmcplugin.addDirectoryItem(handle=addon_handle, url=url, listitem=li, isFolder=isF)
+    
+def ISAplayer(protocol,stream_url, playHea, isDRM=False, licURL=False):
+    import inputstreamhelper
+    
+    PROTOCOL = protocol
+    DRM = 'com.widevine.alpha'
+    is_helper = inputstreamhelper.Helper(PROTOCOL, drm=DRM)
+    
+    if is_helper.check_inputstream():
+        play_item = xbmcgui.ListItem(path=stream_url)                     
+        play_item.setMimeType('application/xml+dash')
+        play_item.setContentLookup(False)
+        play_item.setProperty('inputstream', is_helper.inputstream_addon)        
+        play_item.setProperty("IsPlayable", "true")
+        play_item.setProperty('inputstream.adaptive.manifest_type', PROTOCOL)
+        play_item.setProperty('inputstream.adaptive.stream_headers', playHea)
+        play_item.setProperty('inputstream.adaptive.manifest_headers', playHea)
+        if isDRM:
+            play_item.setProperty('inputstream.adaptive.license_type', DRM)
+            play_item.setProperty('inputstream.adaptive.license_key', licURL)        
+    
+    xbmcplugin.setResolvedUrl(addon_handle, True, listitem=play_item)
+
+def directPlayer(stream_url,heaP):
+    stream_url+='|'+heaP
+    play_item = xbmcgui.ListItem(path=stream_url)
+    play_item.setProperty("IsPlayable", "true")
+    xbmcplugin.setResolvedUrl(addon_handle, True, listitem=play_item)
+
+def getS(c):
+    s='ewogICAgICAgICdwb2xvbmljbyc6J2h0dHBzOi8vdGduLmJvenp0di5jb20vZ2FtYS9pdHYwNDAwNi1wb2xvbmljby9wbGF5bGlzdC5tM3U4JywKICAgICAgICAnZXd0bic6J2h0dHA6Ly9yci5jZG4uZW1pdGVsLnBsL2Jway10di9FV1ROMUhEL2hiYnR2LWRhc2gvaW5kZXgubXBkJywKICAgICAgICAnZXd0bjI0JzonaHR0cDovL3JyLmNkbi5lbWl0ZWwucGwvYnBrLXR2L0VXVE4ySEQvaGJidHYtZGFzaC9pbmRleC5tcGQnLAogICAgICAgICdwb2xza2EzNjAnOidodHRwczovL3MtcGwtMDEubWVkaWF0b29sLnR2L3BsYXlvdXQvcDM2MC1oZC9pbmRleC5tM3U4JywKICAgICAgICAnbW4nOidodHRwczovL3IuZS5ibHVlb25saW5lLnR2L25iL3ZpZGVva2FkcmFici9saXZlMS9wbGF5bGlzdC5tM3U4JywKICAgICAgICAncm0nOidodHRwOi8vNTEuNjguMTM1LjE1NTo4MC9zdHJlYW0nLAogICAgICAgICd3bmV0JzonaHR0cDovL21lZGlhLnduZXQuZm0vcmFkaW9fd25ldC5tcDMnCn0='
+    return eval(base64.b64decode(s).decode())[c]
+    
+def code_gen(x):
+    base='0123456789abcdef'
+    code=''
+    for i in range(0,x):
+        code+=base[random.randint(0,15)]
+    return code
+
+def getTime(x):#WP
+    diff=(datetime.datetime.now()-datetime.datetime.utcnow())
+    t_utc=datetime.datetime(*(time.strptime(x,'%Y-%m-%dT%H:%M:%SZ')[0:6]))
+    t_loc=t_utc+diff+datetime.timedelta(seconds=1)
+    return t_loc
+
+def timeToStr(x,y):#WP
+    return x.strftime(y)
+    
+def strToTime(x):#WP
+    return datetime.datetime(*(time.strptime(x,'%Y-%m-%d')[0:6]))
+
+def main_menu():
+    items=[
+        ['Na żywo','live','DefaultTVShows.png'],
+        ['Archiwum','replay','DefaultYear.png']
+    ]
+    for i in items:
+        setArt={'thumb': '', 'poster': '', 'banner': '', 'icon': i[2], 'fanart': fanart}
+        url=build_url({'mode':i[1]})
+        addItemList(url, i[0], setArt)
+    xbmcplugin.endOfDirectory(addon_handle)
+
+
+def getEPG(c): #WP
+    today=datetime.datetime.now()
+    yest=datetime.datetime.now()-datetime.timedelta(days=1)
+    t=timeToStr(today,'%Y-%m-%d')
+    y=timeToStr(yest,'%Y-%m-%d')
+    progs=[]
+    url='https://tv.wp.pl/api/v1/program/'+y+'/'+c
+    resp=requests.get(url,headers=heaUA).json()
+    progs=resp['data'][0]['entries']
+    url='https://tv.wp.pl/api/v1/program/'+t+'/'+c
+    resp=requests.get(url,headers=heaUA).json()
+    progs+=resp['data'][0]['entries']
+    epg=''
+    for r in progs:
+        if getTime(r['end'])>datetime.datetime.now():
+            title=r['title']
+            if 'episode_title' in r:
+                title+=' - ' + r['episode_title']
+            if 'genre' in r:
+                title+=' [I]('+ r['genre']+')[/I]'
+            ts=timeToStr(getTime(r['start']),'%H:%M')
+            epg+='[B]%s[/B] %s\n'%(ts,title)
+    
+    return epg
+
+def tvList(t):
+    for c in list(channels.keys()):
+        cData=channels[c]
+        if (t=='replay' and cData[3]=='c') or t=='live':
+            cName=cData[0]
+            img=cData[2]
+            
+            if t=='replay':
+                isF=True
+                isP='false'
+                url=build_url({'mode':'calendar','chan':c})
+                if c=='rm':
+                    url=build_url({'mode':'programList','chan':c})
+            elif t=='live':
+                isF=False
+                isP='true'
+                url=build_url({'mode':'playLive','chan':c})
+                if cData[1]!='':
+                    try:
+                        epg=getEPG(cData[1])
+                    
+                    except:
+                        epg='Brak danych EPG'
+                    
+                else:
+                    epg='Brak danych EPG'
+            
+            plot=epg if t=='live' else cName
+            
+            iL={'plot':plot}
+            setArt={'thumb': img, 'poster': img, 'banner': img, 'icon': img, 'fanart': fanart}
+            addItemList(url, cName, setArt, 'video', iL, isF, isP )
+    xbmcplugin.endOfDirectory(addon_handle)
+
+def calendar(c):
+    cuDays=channels[c][4]
+    now=datetime.datetime.now()
+    for i in range(0,cuDays+1):
+        date=(now-datetime.timedelta(days=i*1)).strftime('%Y-%m-%d')
+        
+        setArt={'thumb': '', 'poster': '', 'banner': '', 'icon': 'DefaultYear.png', 'fanart':fanart}
+        url=build_url({'mode':'programList','chan':c,'date':date})
+        addItemList(url, date, setArt)
+    xbmcplugin.endOfDirectory(addon_handle)
+
+def deltaDate(x,y): #helper
+    d=datetime.datetime(*(time.strptime(x,'%Y-%m-%d')[0:6]))
+    dd=d+datetime.timedelta(days=y)
+    ds=dd.strftime('%Y-%m-%d')
+    return ds
+
+def programList(c,d,p):
+    global hea
+    if c=='trwam':
+        d0=deltaDate(d,-1)
+        d1=deltaDate(d,1)
+        url=apiURL+'v1/EpgTile/FilterProgramTiles'
+        data={
+            "from": d0+'T23:00:00.000Z',#"2023-12-10T23:00:00.000Z",
+            "orChannelCodenames": chCodes,
+            "platformCodename": platform,
+            "to": d1+'T00:00:00.000Z'#"2023-12-12T04:00:00.000Z"
+        }
+
+        resp=requests.post(url,headers=hea,json=data,params=URLparams).json()
+        progsIDs=[p['id'] for p in resp['programs'][chCodes[0]]]
+        ar_pr=[]
+        for i,p in enumerate(progsIDs):
+            an=int(i/10)
+            if len(ar_pr)!=an+1:
+                ar_pr.append([])
+            pn=i%10
+            ar_pr[an].append({'id':p})
+        
+        progs=[]
+        for pi in ar_pr:
+            url=apiURL+'v2/Tile/GetTiles'
+            data={
+                'platformCodename':platform,
+                'requestedTiles':pi
+            }
+            resp=requests.post(url,headers=hea,json=data,params=URLparams).json()
+            progs+=resp['tiles']
+            
+        now=int(time.time())
+        for p in progs:
+            cS=datetime.datetime(*(time.strptime(p['catchupAvailableFrom'],'%Y-%m-%dT%H:%M:%S%z')[0:6])).timestamp()
+            cE=datetime.datetime(*(time.strptime(p['catchupAvailableTo'],'%Y-%m-%dT%H:%M:%S%z')[0:6])).timestamp()
+            dStart=datetime.datetime(*(time.strptime(p['start'],'%Y-%m-%dT%H:%M:%S%z')[0:6])).strftime('%Y-%m-%d')
+            if now>=cS and now<=cE and dStart==d:
+                codename=p['codename']
+                title=p['title']
+                subtitle=p['subtitle'] if 'subtitle' in p else ''
+                if subtitle!='':
+                    title+=' - '+subtitle
+                desc=p['description'] if 'description' in p else ''
+                year=p['date'] if 'date' in p else 0
+                dur=p['durationSeconds'] if 'durationSeconds' in p else 0
+                countries=[c['name'] for c in p['countries']]
+                genres=[c['name'] for c in p['categories']]
+                try:
+                    img=p['images'][0]['url']
+                except:
+                    img=img_addon
+                        
+                ts=p['start']
+                te=p['stop']
+                start=datetime.datetime(*(time.strptime(ts,'%Y-%m-%dT%H:%M:%S%z')[0:6])).strftime('%H:%M')
+                end=datetime.datetime(*(time.strptime(te,'%Y-%m-%dT%H:%M:%S%z')[0:6])).strftime('%H:%M')
+                
+                titleToList='[B]%s - %s[/B] %s'%(start,end,title)
+                
+                iL={'title': title,'sorttitle': '','plot': desc,'year':year,'duration':dur,'genre':genres,'country':countries,'mediatype':'movie'}#'director':directors,'cast':actors,
+                setArt={'thumb': img, 'poster': img, 'banner': img, 'icon': img, 'fanart':fanart}
+                url=build_url({'mode':'playReplay','chan':c,'code':codename})
+
+                addItemList(url, titleToList, setArt, 'video', iL, False, 'true')
+           
+        
+    xbmcplugin.setContent(addon_handle, 'videos') 
+    xbmcplugin.endOfDirectory(addon_handle)
+    
+def ytWatch(v):
+    stream_url = ''
+    url = 'https://www.youtube.com/watch?v=' + v
+    resp = urllib.request.urlopen(Request(url, headers=heaUA))
+    rf = resp.read().decode('utf-8')
+    # Zmiana: użyj regex do wyciągnięcia różnych strumieni
+    u = re.compile('\"hlsManifestUrl\":\"([^\"]+?)\"').findall(rf)
+    
+    # Zmiana: jeśli są dostępne różne strumienie, wybierz ten o najwyższej jakości
+    if len(u) > 0:
+        stream_url = max(u, key=lambda x: int(re.search(r'(?<=quality=)\d+', x).group(0)))  # Zakładając, że można to wyciągnąć
+    if stream_url != '':
+        heaPlay = 'User-Agent=' + UA
+        ISAplayer('hls', stream_url, heaPlay)
+    else:
+        xbmcgui.Dialog().notification('TV TRWAM', 'Brak transmisji', xbmcgui.NOTIFICATION_INFO)
+        xbmcplugin.setResolvedUrl(addon_handle, False, xbmcgui.ListItem())
+
+def yt(c):    
+    
+    def isLive(x): #helper
+        result=False
+        labels=x['richItemRenderer']['content']['videoRenderer']['thumbnailOverlays']
+        for l in labels:
+            if 'thumbnailOverlayTimeStatusRenderer' in l:
+                if l['thumbnailOverlayTimeStatusRenderer']['style']=='LIVE':
+                    result=True
+        
+        return result
+    
+    liveList=[]
+    stream_url=''
+    
+    '''Sprawdzenie ilości live streams'''
+    url='https://youtube.com/channel/'+c+'/streams'
+    resp = urllib.request.urlopen(Request(url,headers=heaUA))
+    rf = resp.read().decode('utf-8')
+    
+    jsn=re.compile('ytInitialData = (.*);</script>').findall(rf)[0]
+    jsn=jsn.split(';</script')[0]
+    j=json.loads(jsn)
+    sections=j['contents']['twoColumnBrowseResultsRenderer']['tabs']
+    streamSect0=[s for s in sections if 'tabRenderer' in s]
+    streamSect=[s['tabRenderer']['content']['richGridRenderer']['contents'] for s in streamSect0 if s['tabRenderer']['title']=='Na żywo']
+    if len(streamSect)==1:
+        liveItems=streamSect[0]
+        for i in liveItems:
+            if 'richItemRenderer' in i:
+                if isLive(i):
+                    vidID=i['richItemRenderer']['content']['videoRenderer']['videoId']
+                    vidTitle=i['richItemRenderer']['content']['videoRenderer']['title']['runs'][0]['text']
+                    liveList.append([vidID,vidTitle])
+                
+    '''Wybór transmisji (użytkownik)'''
+    if len(liveList)>1:
+        liveLabels=[l[1] for l in liveList]
+        select=xbmcgui.Dialog().select('Transmisje', liveLabels)
+        if select>-1:
+            url='https://www.youtube.com/watch?v='+liveList[select][0]
+            resp = urllib.request.urlopen(Request(url,headers=heaUA))
+            rf = resp.read().decode('utf-8')
+            u=re.compile('\"hlsManifestUrl\":\"([^\"]+?)\"').findall(rf)
+            if len(u)>0:
+                stream_url=u[0]
+    
+    '''Z zakładki live'''
+    if stream_url=='':
+        url='https://youtube.com/channel/'+c+'/live'
+        resp = urllib.request.urlopen(Request(url,headers=heaUA))
+        rf = resp.read().decode('utf-8')
+        u=re.compile('\"hlsManifestUrl\":\"([^\"]+?)\"').findall(rf)
+        if len(u)>0:
+            stream_url=u[0]
+    if stream_url!='':
+        heaPlay='User-Agent='+UA
+        ISAplayer('hls',stream_url,heaPlay)
+    else:
+        xbmcgui.Dialog().notification('TV TRWAM', 'Brak transmisji', xbmcgui.NOTIFICATION_INFO)
+        xbmcplugin.setResolvedUrl(addon_handle, False, xbmcgui.ListItem())
+
+def trwam(c,s=None,e=None):
+    stream_url=''
+    protocol=''
+    url=apiURL+'v1/Player/AcquireContent'
+    paramsPlay={
+        'platformCodename':platform,
+        'deviceKey':addon.getSetting('deviceKey'),
+        'codename':c,
+        't':str(time.time()*1000)    
+    }
+    resp=requests.get(url,headers=hea,params=paramsPlay).json()
+    streams=[s['Url'] for s in resp['MediaFiles'][0]['Formats']]
+    if len(streams)>0:
+        stream_url=streams[0]
+        if '.m3u' in stream_url:
+            protocol='hls'
+        elif '.mpd' in stream_url:
+            protocol='mpd'
+        else:
+            protocol=None
+    
+        if protocol !=None:
+            heaPlay=urlencode(hea)
+    
+    if stream_url !='' and protocol !='':
+        if s!=None and e!=None:
+            co=int(addon.getSetting('cuOffset'))
+            ts=(datetime.datetime(*(time.strptime(s, "%Y-%m-%dT%H:%M:%S")[0:6]))+datetime.timedelta(hours=co)).strftime('%Y-%m-%dT%H:%M:%S')
+            te=(datetime.datetime(*(time.strptime(e, "%Y-%m-%dT%H:%M:%S")[0:6]))+datetime.timedelta(hours=co)).strftime('%Y-%m-%dT%H:%M:%S')
+            stream_url=stream_url.split('?')[0]+'?start=%s&end=%s'%(ts,te) #for catchup SC
+        else:
+            if len(stream_url.split('?'))==2:
+                prms=dict(parse_qsl(stream_url.split('?')[1]))
+                if 'start' in prms: 
+                    start=prms['start']
+                    new_start=(datetime.datetime(*(time.strptime(start,'%Y-%m-%dT%H:%M:%S')[0:6]))-datetime.timedelta(seconds=120)).strftime('%Y-%m-%dT%H:%M:%S')
+                    prms['start']=new_start
+                if 'end' in prms: 
+                    end=prms['end']
+                    new_end=(datetime.datetime(*(time.strptime(end,'%Y-%m-%dT%H:%M:%S')[0:6]))+datetime.timedelta(seconds=600)).strftime('%Y-%m-%dT%H:%M:%S')
+                    prms['end']=new_end
+                stream_url=stream_url.split('?')[0]+'?'+urlencode(prms)    
+        
+        ISAplayer(protocol,stream_url,heaPlay)
+    else:
+        if streams=='': 
+            info='Brak źródła'
+        elif protocol=='':
+            info='Nieznany protokół strumienia'
+        
+        xbmcgui.Dialog().notification('TV TRWAM', info, xbmcgui.NOTIFICATION_INFO)
+        xbmcplugin.setResolvedUrl(addon_handle, False, xbmcgui.ListItem())
+        
+def ewtn():
+    url='https://ewtn.pl/na-zywo/'
+    resp=requests.get(url,headers=heaUA).text
+    ifr=re.compile('<iframe[^>]+?src=\"([^\"]+?)\"').findall(resp)
+    try:
+        vidYT=re.compile(r'embed/(.*)\?').findall(ifr[0])[0]
+        ytWatch(vidYT)   
+    except:
+        xbmcgui.Dialog().notification('TV TRWAM', 'Brak źródła', xbmcgui.NOTIFICATION_INFO)
+        xbmcplugin.setResolvedUrl(addon_handle, False, xbmcgui.ListItem())
+        
+def ewtnDir(c):
+    stream_url=getS(c)
+    heaPlay=urlencode(heaUA)
+    ISAplayer('mpd',stream_url,heaPlay)
+
+def tvmn():
+    isPlaying=False
+    
+    def playMNstream(resp):
+        stream_url=resp['videoUrlDash']
+        hp={'Referer':'https://player.restream.io/','Origin':'https://player.restream.io'}
+        hp.update(heaUA)
+        heaPlay=urlencode(hp)
+        ISAplayer('mpd',stream_url,heaPlay)
+    
+    url='https://player-backend.restream.io/public/videos/51619566036a48398b9c8b4e22b6774e?instant=true'
+    h={'Referer':'https://player.restream.io/','player-version':'0.24.3','content-type':'application/json','Origin':'https://player.restream.io'}
+    h.update(heaUA)
+    resp=requests.get(url,headers=h).json()
+    if 'videoUrlDash' in resp:
+        isPlaying=True
+        playMNstream(resp)
+    else:
+        url='https://player-backend.restream.io/public/status-connection-data/51619566036a48398b9c8b4e22b6774e'
+        resp=requests.get(url,headers=h).json()
+        if 'eventsInProgress' in resp:
+            if len(resp['eventsInProgress'])>0:
+                event_id=resp['eventsInProgress'][0]['id']
+                url='https://player-backend.restream.io/public/videos/51619566036a48398b9c8b4e22b6774e?event-id='+event_id
+                resp=requests.get(url,headers=h).json()
+                if 'videoUrlDash' in resp:
+                    isPlaying=True
+                    playMNstream(resp)
+    
+    if not isPlaying:
+        xbmcgui.Dialog().notification('TV MN', 'Brak źródła', xbmcgui.NOTIFICATION_INFO)
+        xbmcplugin.setResolvedUrl(addon_handle, False, xbmcgui.ListItem())
+   
+def playTVisa(protocol,st):
+    stream_url=getS(st)
+    heaPlay=urlencode(heaUA)
+    ISAplayer(protocol,stream_url,heaPlay)
+
+def rm(c):
+    url='https://www.radiomaryja.pl/wp-json/wp/v2/posts/'+c
+    resp=requests.get(url,headers=heaUA).json()
+    data=resp['content']['rendered']
+    streams=re.compile('audio/mpeg\" src=\"([^"]+?)\"').findall(data)
+    if len(streams)>0:
+        stream_url=streams[0]+'|User-Agent='+UA
+        directPlayer(stream_url)
+    else:
+        xbmcgui.Dialog().notification('TV TRWAM', 'Brak źródła', xbmcgui.NOTIFICATION_INFO)
+        xbmcplugin.setResolvedUrl(addon_handle, False, xbmcgui.ListItem())
+    
+def listM3U():
+    file_name = addon.getSetting('fname')
+    path_m3u = addon.getSetting('path_m3u')
+    if file_name == '' or path_m3u == '':
+        xbmcgui.Dialog().notification('TV TRWAM', 'Podaj nazwę pliku oraz katalog docelowy.', xbmcgui.NOTIFICATION_ERROR)
+        return
+    xbmcgui.Dialog().notification('TV TRWAM', 'Generuję listę M3U.', xbmcgui.NOTIFICATION_INFO)
+    data = '#EXTM3U\n'
+    dataE2 = '' #j00zek for E2 bouquets
+    for c in list(channels.keys()):
+        cData=channels[c]
+        name=cData[0]
+        img=cData[2]
+        cu=cData[3]
+        cuTime=str(cData[4])
+        if cu=='c':
+            data += '#EXTINF:0 tvg-id="%s" tvg-logo="%s" group-title="TV TRWAM" catchup="append" catchup-source="&s={utc:Y-m-dTH:M:S}&e={utcend:Y-m-dTH:M:S}" catchup-days="%s",%s\nplugin://plugin.video.trwam?mode=playLive&chan=%s\n' %(name,img,cuTime,name,c)
+        else:
+            data += '#EXTINF:0 tvg-id="%s" tvg-logo="%s" group-title="TV TRWAM" ,%s\nplugin://plugin.video.trwam?mode=playLive&chan=%s\n' %(name,img,name,c)
+            dataE2 += 'plugin.video.trwam/addon.py%3fmode=playLive&chan=' + '%s:%s\n' % (c, name) #j00zek for E2 bouquets
+        
+        f = xbmcvfs.File(path_m3u + file_name, 'w')
+        f.write(data)
+        f.close()
+        xbmcgui.Dialog().notification('TV TRWAM', 'Wygenerowano listę M3U', xbmcgui.NOTIFICATION_INFO)
+
+        f = xbmcvfs.File(os.path.join(addon.getSetting('path_m3u'), 'iptv.e2b'), 'w') #j00zek for E2 bouquets
+        f.write(dataE2)
+        f.close()
+        xbmcgui.Dialog().notification('TV TRWAM', 'Wygenerowano listę E2B', xbmcgui.NOTIFICATION_INFO)
+    else:
+        xbmcgui.Dialog().notification('TV TRWAM', 'Błąd przy generowaniu listy M3U', xbmcgui.NOTIFICATION_INFO)
+  
+
+mode = params.get('mode', None)
+
+if not mode:
+
+    if addon.getSetting('deviceKey')=='' or addon.getSetting('deviceKey')==None:
+        addon.setSetting('deviceKey',code_gen(32))
+
+    main_menu()
+else:
+    if mode=='live' or mode=='replay':
+        tvList(mode)
+    
+    if mode=='playLive':
+        chan=params.get('chan')
+        if chan=='trwam':
+            s=params.get('s')
+            e=params.get('e')
+            trwam(chCodes[0],s,e)
+        elif chan=='ewtn' or chan=='ewtn24':
+            ewtnDir(chan)
+        elif chan=='republika':
+            yt('UCc282c_TN8xIba_Z6GaDnQw')
+        elif chan=='republikatv':
+            yt('UCZGrD2wCJ7mxgZ2ps2RNKoQ')
+        elif chan=='polska360':
+            playTVisa('hls','polska360')
+        elif chan=='polonico':
+            playTVisa('hls','polonico')
+        elif chan=='mn':
+            tvmn()
+        elif chan=='wpolsce':
+            yt('UCPiu4CZlknkTworskK79CPg')
+        elif chan=='jasna_gora':
+            yt('UCKAtPxfE2RAHSCwDABMMeAg')
+        elif chan=='rm' or chan=='wnet':
+            hp=urlencode(heaUA)
+            directPlayer(getS(chan),hp)
+    
+    if mode=='calendar':
+        chan=params.get('chan')
+        calendar(chan)
+    
+    if mode=='programList':
+        chan=params.get('chan')
+        date=params.get('date')
+        page=params.get('page')
+        programList(chan,date,page)
+        
+    if mode=='playReplay':
+        chan=params.get('chan')
+        if chan=='trwam':
+            code=params.get('code')
+            trwam(code)
+        elif chan=='rm':
+            code=params.get('code')
+            rm(code)
+            
+        
+    if mode=='listM3U':
+        listM3U()#
+        
