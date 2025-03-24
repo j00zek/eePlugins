@@ -612,6 +612,7 @@ class urlparser:
                        'streamsilk.com': self.pp.parserSTREAMSILKCOM,
                        'streamtape.com': self.pp.parserSTREAMTAPE,
                        'streamtape.to': self.pp.parserSTREAMTAPE,
+                       'streamtp3.com': self.pp.parserONLYSTREAMTV,
                        'streamvid.net': self.pp.parserONLYSTREAMTV,
                        'streamwire.net': self.pp.parserONLYSTREAMTV,
                        'streamzz.to': self.pp.parserSTREAMZZ,

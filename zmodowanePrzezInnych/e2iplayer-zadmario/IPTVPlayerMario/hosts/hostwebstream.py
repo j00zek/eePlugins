@@ -770,7 +770,7 @@ class HasBahCa(CBaseHostClass):
         for item in data:
             linkVideo = self.cm.ph.getSearchGroups(item, '''\shref=['"]([^"^']+?)['"]''')[0]
             if len(linkVideo) and not linkVideo.startswith('http'):
-                linkVideo = 'http://strimsy.top' + linkVideo
+                linkVideo = self.cm.getFullUrl(linkVideo, url)
             if linkVideo.endswith('/') and 'class="f1' not in item:
                 params = {'name': "strumyk_cat"}
             else:
@@ -785,15 +785,18 @@ class HasBahCa(CBaseHostClass):
         sts, data = self.cm.getPage(url)
         if not sts:
             return
-        data = CParsingHelper.getDataBeetwenNodes(data, ('<table', '>', '-table'), ('</table', '>'))[1]
-        data = self.cm.ph.getAllItemsBeetwenNodes(data, ('<tr', '>'), ('</tr', '>'))
-        for item in data:
+        tmp = CParsingHelper.getDataBeetwenNodes(data, ('<table', '>', '-table'), ('</table', '>'))[1]
+        tmp = self.cm.ph.getAllItemsBeetwenNodes(tmp, ('<tr', '>'), ('</tr', '>'))
+        if len(tmp) < 1:
+            tmp = CParsingHelper.getDataBeetwenNodes(data, ('<span', '>', 'style='), ('</span', '>'))[1]
+            tmp = self.cm.ph.getAllItemsBeetwenNodes(tmp, ('<a', '>'), ('</a', '>'))
+        for item in tmp:
             params = {'name': "strumyk_tv"}
             params['title'] = self.cleanHtmlStr(item)
             linkVideo = self.cm.ph.getSearchGroups(item, '''\shref=['"]([^"^']+?)['"]''')[0]
             if len(linkVideo):
                 if not linkVideo.startswith('http'):
-                    linkVideo = 'http://strimsy.top' + linkVideo
+                    linkVideo = self.cm.getFullUrl(linkVideo, url)
                 params['url'] = urlparser.decorateUrl(linkVideo, {'Referer': url})
 #                params['icon'] = self.cm.ph.getSearchGroups(item, '''\ssrc=['"]([^"^']+?)['"]''')[0]
                 self.addDir(params)
