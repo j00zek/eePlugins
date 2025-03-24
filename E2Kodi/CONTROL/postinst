@@ -7,6 +7,9 @@ if [ -e /usr/lib/python3.12 ]; then
 elif [ -e /usr/lib/python3.9 ]; then
   pythonType='python3.9'
   FileExtension='p39'
+elif [ -e /usr/lib/python3.13 ]; then
+  pythonType='python3.13'
+  FileExtension='p313'
 else
   exit 1
 fi
