@@ -6,9 +6,9 @@ if [ -e /usr/lib/python3.12/site-packages ];then
 elif [ -e /usr/lib/python3.9/site-packages ];then
   rm -f /usr/lib/python3.9/site-packages/pywidevine/cdmdevice/*.pyc
   rm -f /usr/lib/python3.9/site-packages/emukodi/*.pyc
-elif [ -e /usr/lib/python3.9/site-packages ];then
-  rm -f /usr/lib/python3.9/site-packages/pywidevine/cdmdevice/*.pyc
-  rm -f /usr/lib/python3.9/site-packages/emukodi/*.pyc
+elif [ -e /usr/lib/python3.13/site-packages ];then
+  rm -f /usr/lib/python3.13/site-packages/pywidevine/cdmdevice/*.pyc
+  rm -f /usr/lib/python3.13/site-packages/emukodi/*.pyc
 else
   echo "Instalacja możliwa TYLKO na python 3.12/3.9/3.13 (bez wsparcia)"
   exit 1

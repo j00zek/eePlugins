@@ -1,0 +1,13 @@
+Package: e2kodi-addon-tv-smart-go
+Priority: optional
+Section: utils
+Depends: enigma2-plugin-extensions--j00zeks-e2kodi
+Description: Dodatek do e2Kodi TV SMART GO: Vectra, Multimedia, JAMBOX, Elsat, tvsmart.pl
+Maintainer: j00zek
+Source: http://github.com/j00zek/eePlugins
+Version: 25.03.27.1615
+Architecture: all
+DestinationPath:  /usr/lib/enigma2/python/Plugins/Extensions/E2Kodi/site-packages/emukodi/Plugins/plugin.video.tv_smart_go
+ExcludeFolder: 
+RunScriptBeforeBuild:
+BuildType: python310
