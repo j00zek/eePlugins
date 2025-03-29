@@ -3,7 +3,9 @@ echo "(Re)inicjacja komponentów"
 plugBinDir='/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig'
 
 pythonType='unknown'
-if [ -e /usr/lib/python3.12 ]; then
+if [ -e /usr/lib/python3.13 ]; then
+  pythonType='python3.13'
+elif [ -e /usr/lib/python3.12 ]; then
   pythonType='python3.12'
 elif [ -e /usr/lib/python3.11 ]; then
   pythonType='python3.11'
@@ -12,7 +14,6 @@ elif [ -e /usr/lib/python3.10 ]; then
 elif [ -e /usr/lib/python3.9 ]; then
   pythonType='python3.9'
 else
-  [ -e /etc/opkg/opkg-j00zka.conf ] && rm -f /etc/opkg/opkg-j00zka.conf
   exit 1
 fi
 

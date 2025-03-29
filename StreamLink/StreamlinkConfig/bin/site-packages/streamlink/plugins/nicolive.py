@@ -9,6 +9,8 @@ $account Required by some streams
 $notes Timeshift is supported
 """
 
+from __future__ import annotations
+
 import logging
 import re
 from threading import Event
@@ -17,7 +19,7 @@ from urllib.parse import urljoin
 from streamlink.plugin import Plugin, pluginargument, pluginmatcher
 from streamlink.plugin.api import useragents, validate
 from streamlink.plugin.api.websocket import WebsocketClient
-from streamlink.stream.hls import HLSStream, HLSStreamReader
+from streamlink.stream.hls import HLSSegment, HLSStream, HLSStreamReader, HLSStreamWriter
 from streamlink.utils.parse import parse_json
 from streamlink.utils.url import update_qsd
 
@@ -31,6 +33,18 @@ class NicoLiveWsClient(WebsocketClient):
     ready: Event
     opened: Event
     hls_stream_url: str
+
+    _SCHEMA_COOKIES = validate.Schema(
+        [
+            {
+                "domain": str,
+                "path": str,
+                "name": str,
+                "value": str,
+                "secure": bool,
+            },
+        ],
+    )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -48,22 +62,39 @@ class NicoLiveWsClient(WebsocketClient):
         msgtype = message.get("type")
         msgdata = message.get("data", {})
 
-        if msgtype == "ping":
-            self.send_pong()
+        if handler := self._MESSAGE_HANDLERS.get(msgtype):
+            handler(self, msgdata)
 
-        elif msgtype == "stream" and msgdata.get("protocol") == "hls" and msgdata.get("uri"):
-            self.hls_stream_url = msgdata.get("uri")
-            self.ready.set()
-            if self.opened.wait(self.STREAM_OPENED_TIMEOUT):
-                log.debug("Stream opened, keeping websocket connection alive")
-            else:
-                log.info("Closing websocket connection")
-                self.close()
+    def on_message_ping(self, _data):
+        self.send_pong()
 
-        elif msgtype == "disconnect":
-            reason = msgdata.get("reason", "Unknown reason")
-            log.info(f"Received disconnect message: {reason}")
+    def on_message_disconnect(self, data):
+        reason = data.get("reason", "Unknown reason")
+        log.info(f"Received disconnect message: {reason}")
+        self.close()
+
+    def on_message_stream(self, data):
+        if data.get("protocol") != "hls" or not data.get("uri"):
+            return
+
+        # cookies may be required by some HLS multivariant playlists
+        if cookies := data.get("cookies", []):
+            for cookie in self._SCHEMA_COOKIES.validate(cookies):
+                self.session.http.cookies.set(**cookie)
+
+        self.hls_stream_url = data.get("uri")
+        self.ready.set()
+        if self.opened.wait(self.STREAM_OPENED_TIMEOUT):
+            log.debug("Stream opened, keeping websocket connection alive")
+        else:
+            log.info("Closing websocket connection")
             self.close()
+
+    _MESSAGE_HANDLERS = {
+        "ping": on_message_ping,
+        "disconnect": on_message_disconnect,
+        "stream": on_message_stream,
+    }
 
     def send_playerversion(self):
         self.send_json({
@@ -96,8 +127,22 @@ class NicoLiveWsClient(WebsocketClient):
         self.send_json({"type": "keepSeat"})
 
 
+class NicoLiveHLSStreamWriter(HLSStreamWriter):
+    reader: NicoLiveHLSStreamReader
+    stream: NicoLiveHLSStream
+
+    def should_filter_segment(self, segment: HLSSegment) -> bool:
+        if "/blank/" in segment.uri:
+            return True
+
+        return super().should_filter_segment(segment)
+
+
 class NicoLiveHLSStreamReader(HLSStreamReader):
-    stream: "NicoLiveHLSStream"
+    __writer__ = NicoLiveHLSStreamWriter
+
+    writer: NicoLiveHLSStreamWriter
+    stream: NicoLiveHLSStream
 
     def open(self):
         self.stream.wsclient.opened.set()
@@ -112,7 +157,8 @@ class NicoLiveHLSStream(HLSStream):
     __reader__ = NicoLiveHLSStreamReader
     wsclient: NicoLiveWsClient
 
-    def set_wsclient(self, wsclient: NicoLiveWsClient):
+    def __init__(self, *args, wsclient: NicoLiveWsClient, **kwargs):
+        super().__init__(*args, **kwargs)
         self.wsclient = wsclient
 
 
@@ -204,9 +250,12 @@ class NicoLive(Plugin):
         if offset and "timeshift" in wss_api_url:
             hls_stream_url = update_qsd(hls_stream_url, {"start": offset})
 
-        for quality, stream in NicoLiveHLSStream.parse_variant_playlist(self.session, hls_stream_url).items():
-            stream.set_wsclient(self.wsclient)
-            yield quality, stream
+        return NicoLiveHLSStream.parse_variant_playlist(
+            self.session,
+            hls_stream_url,
+            wsclient=self.wsclient,
+            ffmpeg_options={"copyts": True},
+        )
 
     def _get_hls_stream_url(self):
         log.debug(f"Waiting for permit (for at most {self.STREAM_READY_TIMEOUT} seconds)...")
