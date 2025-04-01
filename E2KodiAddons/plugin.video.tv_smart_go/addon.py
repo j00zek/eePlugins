@@ -257,15 +257,26 @@ def login():
                         resp2=requests.get(url,headers=hea2,params=params_url).json()
                         devices=resp2['data']
                         labels=['[B]%s[/B] | Ostatnie logowanie: %s'%(d['device_name'],d['last_login_date']) for d in devices]
+                        if 1: #emukodi
+                            print('Zarejestrowanee urządzenia:')
+                            id = 0
+                            for d in devices:
+                                print('\t',id, d['device_name'], d['last_login_date'])
+                                id += 1
+                            print('\nPierwsze zostanie zastąpione')
                         uids=[d['device_id'] for d in devices]
                         
-                        select=xbmcgui.Dialog().select('Urządzenie do usunięcia', labels)
+                        #select=xbmcgui.Dialog().select('Urządzenie do usunięcia', labels)
+                        select=0 #<< e2kodi: wymuszamy pierwsze urządzenie
                         if select>-1:
                             #zastąpienie urządzenia
                             url=apiURL+'subscriber/device/toggle'
                             
-                            deviceName = xbmcgui.Dialog().input('Określ nazwę nowego urządzenia:', type=xbmcgui.INPUT_ALPHANUM)
-                            if deviceName=='':
+                            if 0: #oryginal
+                                deviceName = xbmcgui.Dialog().input('Określ nazwę nowego urządzenia:', type=xbmcgui.INPUT_ALPHANUM)
+                                if deviceName=='':
+                                    deviceName='AVT_'+code_gen(4)
+                            else: #emukodi
                                 deviceName='AVT_'+code_gen(4)
                             
                             data={
@@ -294,8 +305,11 @@ def login():
             
             elif 'deviceName' in resp['status']:
                 if resp['status']['deviceName']==None:
-                    deviceName = xbmcgui.Dialog().input('Określ nazwę nowego urządzenia:', type=xbmcgui.INPUT_ALPHANUM)
-                    if deviceName=='':
+                    if 0: #oryginal
+                        deviceName = xbmcgui.Dialog().input('Określ nazwę nowego urządzenia:', type=xbmcgui.INPUT_ALPHANUM)
+                        if deviceName=='':
+                            deviceName='AVT_'+code_gen(4)
+                    else: #emukodi
                         deviceName='AVT_'+code_gen(4)
                     url=apiURL+'subscriber/device/name'
                     hea2=genHea()
@@ -679,6 +693,8 @@ def generate_m3u():
         return
     xbmcgui.Dialog().notification('TV SMART GO', 'Generuję liste M3U.', xbmcgui.NOTIFICATION_INFO)
     data = '#EXTM3U\n'
+    dataE2 = '' #j00zek for E2 bouquets
+    
     channels=channelsGen()
     if channels!=None:
         for c in channels:
@@ -688,15 +704,22 @@ def generate_m3u():
             cuTime=int(c['context']['catch_up_time']/(24*60*60))
             cu=c['context']['catch_up_active']
             if cu==1:
-                
                 data += '#EXTINF:0 tvg-id="%s" tvg-logo="%s" group-title="TV Smart Go" catchup="append" catchup-source="&s={utc:Y-m-dTH:M:S}&e={utcend:Y-m-dTH:M:S}" catchup-days="%s",%s\nplugin://plugin.video.tv_smart_go?mode=tv&cid=%s\n' %(name,img,str(cuTime),name,cid)
+                dataE2 += 'plugin.video.tv_smart_go/addon.py%3fmode=tv&cid=' + '%s:%s\n' % (cid, name) #j00zek for E2 bouquets
             else:
                 data += '#EXTINF:0 tvg-id="%s" tvg-logo="%s" group-title="TV Smart Go" ,%s\nplugin://plugin.video.tv_smart_go?mode=playTV&cid=%s\n' %(name,img,name,cid)
+                dataE2 += 'plugin.video.tv_smart_go/addon.py%3fmode=playTV&cid=' + '%s:%s\n' % (cid, name) #j00zek for E2 bouquets
 
-        f = xbmcvfs.File(path_m3u + file_name, 'w')
+        f = xbmcvfs.File(os.path.join(path_m3u, file_name), 'w')
         f.write(data)
         f.close()
         xbmcgui.Dialog().notification('TV SMART GO', 'Wygenerowano listę M3U.', xbmcgui.NOTIFICATION_INFO)
+
+        f = xbmcvfs.File(os.path.join(path_m3u, 'iptv.e2b'), 'w') #j00zek for E2 bouquets
+        f.write(dataE2)
+        f.close()
+        xbmcgui.Dialog().notification('TV SMART GO', 'Wygenerowano listę E2B', xbmcgui.NOTIFICATION_INFO)
+
     else:
         toMainMenu()
 
