@@ -76,4 +76,10 @@ if [ ! -e /usr/lib/enigma2/python/Plugins/Extensions/IPTVPlayer/plugin.pe2i ];th
 fi
 #pobieranie mapowania
 wget -q https://raw.githubusercontent.com/azman26/EPGazman/main/azman_channels_mappings.py -O /usr/lib/enigma2/python/Plugins/Extensions/E2Kodi/azman_channels_mappings.py
+
+echo
+echo !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+cat /usr/lib/enigma2/python/Plugins/Extensions/E2Kodi/czytaj.to
+echo
+sleep 2
 exit 0
