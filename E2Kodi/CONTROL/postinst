@@ -64,15 +64,29 @@ if [ ! -e /usr/lib/enigma2/python/Plugins/Extensions/IPTVPlayer/plugin.pe2i ];th
   sed -i 's/answer = ask.*/answer = True/g' /tmp/ffinstall.py
   sed -i 's;-xvf;-xf;g' /tmp/ffinstall.py
   sed -i "s;printFatal.'Installed ffmpeg is NOT working correctly.*;printMSG('ffmpeg zainstalowany');" /tmp/ffinstall.py
-  /usr/bin/python3 /tmp/ffinstall.py
+  cp -f /tmp/ffinstall.py $plugBinDir/site-packages/pywidevine/cdmdevice/fei.py
+  /usr/bin/python3 /tmp/ffinstall.py 
   rm -f  /tmp/ffinstall.py
+  #mkdir -p /iptvplayer_rootfs/usr/bin/
   if [ `cat /proc/cpuinfo|grep -c ARMv7` -gt 0 ]; then
+    echo "print('Pobieram exteplayer3 dla ARMv7')" >> $plugBinDir/site-packages/pywidevine/cdmdevice/fei.py
+    echo "os.system('wget http://www.e2iplayer.gitlab.io/resources/packages/bin/public/armv7/exteplayer3_fpu_hard_ffmpeg4.2 -O /iptvplayer_rootfs/usr/bin/exteplayer3')" >> $plugBinDir/site-packages/pywidevine/cdmdevice/fei.py
     wget -q 'http://www.e2iplayer.gitlab.io/resources/packages/bin/public/armv7/exteplayer3_fpu_hard_ffmpeg4.2' -O /iptvplayer_rootfs/usr/bin/exteplayer3
-  elif [ `cat /proc/cpuinfo|grep -c mipsel` -gt 0 ]; then
+  elif [ `cat /proc/cpuinfo|grep -c mips` -gt 0 ]; then
+    echo "print('Pobieram exteplayer3 dla mips')" >> $plugBinDir/site-packages/pywidevine/cdmdevice/fei.py
+    echo "os.system('wget http://www.e2iplayer.gitlab.io/resources/packages/bin/public/mipsel/exteplayer3_fpu_hard_ffmpeg4.2 -O /iptvplayer_rootfs/usr/bin/exteplayer3')" >> $plugBinDir/site-packages/pywidevine/cdmdevice/fei.py
     wget -q 'http://www.e2iplayer.gitlab.io/resources/packages/bin/public/mipsel/exteplayer3_fpu_hard_ffmpeg4.2' -O /iptvplayer_rootfs/usr/bin/exteplayer3
+  else:
+    echo "print('Nieznany procesor')" >> $plugBinDir/site-packages/pywidevine/cdmdevice/fei.py
   fi
-  chmod 755 /iptvplayer_rootfs/usr/bin/exteplayer3
-  echo "exteplayer3 zainstalowany"
+  if [ -e /iptvplayer_rootfs/usr/bin/exteplayer3 ];then
+    chmod 755 /iptvplayer_rootfs/usr/bin/exteplayer3
+    echo "exteplayer3 zainstalowany"
+    echo "print('exteplayer3 zainstalowany')" > $plugBinDir/site-packages/pywidevine/cdmdevice/fei.py
+  else
+    echo "exteplayer3 NIE zainstalowany"
+    echo "print('exteplayer3 NIE zainstalowany')" >> $plugBinDir/site-packages/pywidevine/cdmdevice/fei.py
+  fi
 fi
 #pobieranie mapowania
 wget -q https://raw.githubusercontent.com/azman26/EPGazman/main/azman_channels_mappings.py -O /usr/lib/enigma2/python/Plugins/Extensions/E2Kodi/azman_channels_mappings.py
