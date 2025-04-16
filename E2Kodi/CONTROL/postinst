@@ -96,4 +96,5 @@ echo !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 cat /usr/lib/enigma2/python/Plugins/Extensions/E2Kodi/czytaj.to
 echo
 sleep 2
+sed -i 's/DEBUG_LVL=3/DEBUG_LVL=4/g' /usr/bin/enigma2.sh #automagiczne włączenie debugu
 exit 0
