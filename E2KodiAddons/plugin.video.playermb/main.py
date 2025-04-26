@@ -943,6 +943,9 @@ class PLAYERPL(object):
             if vidsesid:
                 widev += '&videoSessionId=%s' % vidsesid
             src = vid['video']['sources']['dash']['url']
+            #print(src)
+            src = sess.get(src, verify=goptions.verify_ssl).url
+            #print(src)
             xbmc.log('PLAYER.PL: widevine src: %r' % (src), xbmc.LOGWARNING)
         else:
             src = vid['video']['sources']['hls']['url']
