@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from __future__ import absolute_import #zmiana strategii ladowanie modulow w py2 z relative na absolute jak w py3
 from . import _
 from Plugins.Extensions.MSNweather.MSNcomponents.GetAsyncWebDataNP import IMGtoICON
 from Plugins.Extensions.MSNweather.MSNcomponents.mappings import *
@@ -20,7 +19,7 @@ from os import path
 from Screens.Screen import Screen
 from Tools.Directories import resolveFilename, SCOPE_SKIN
 from Tools.LoadPixmap import LoadPixmap
-import json, os, time, sys
+import json, os, time, sys, traceback
 
 PyMajorVersion = sys.version_info.major
 
@@ -267,7 +266,10 @@ class advDailyDetails(Screen):
             dayLenghtMins = sunsetMins - sunriseMins
             
 
-            dictTrend = self.dailyTrendDict["value"][0]["responses"][0]["average"][0]["days"][self.dayIDX]
+            try:
+                dictTrend = self.dailyTrendDict["value"][0]["responses"][0]["average"][0]["days"][self.dayIDX]
+            except Exception:
+                dictTrend = {} #2025-05-11 brak juz opisów :(
 
             dayLengthH = int(dayLenghtMins / 60.0)
             dayLengthM = dayLenghtMins - dayLengthH * 60
@@ -302,8 +304,9 @@ class advDailyDetails(Screen):
             if DayDiffTimesDict['diffToLongestHours'] == 0:
                 summaryDayInfo += ' i ' + self.infoSekund(DayDiffTimesDict['diffToLongestSeconds'])
             
-            summaryDayInfo += clr['Gray'] + '\n' + _('In last %s days, this day...') % str(int(dictTrend['aggYears']))
-            for condition in dictTrend['conditions']:
+            if dictTrend.get('aggYears', None) is not None:
+                summaryDayInfo += clr['Gray'] + '\n' + _('In last %s days, this day...') % str(int(dictTrend['aggYears']))
+            for condition in dictTrend.get('conditions', {}):
                 if condition['days'] > 0:
                     if condition['type'] == 'Rain':
                         summaryDayInfo += clr['Gray'] + '\n' + _('- was raining %s days, in average %s') % (str(int(condition['days'])), str(dictTrend['avgPrecip']))
@@ -320,15 +323,19 @@ class advDailyDetails(Screen):
                         summaryDayInfo += clr['Gray'] + '\n- ' + _(str(condition['type'])) + ' padal ' + str(int(condition['days'])) + ' dni, '
             if summaryDayInfo[:-2] == ', ':
                 summaryDayInfo = summaryDayInfo[:-2]
-            summaryDayInfo += clr['Gray'] + '\n' + _('- Average highest temperature was ') + clr['R'] + str(int(dictTrend['tempHi'])) + '°C'
-            summaryDayInfo += clr['Gray'] + _(', highest observed ') + clr['R'] + str(int(dictTrend['recHi'])) + '°C' + clr['Gray'] + _(' in %s%s') % (clr['Y'],
+            if dictTrend.get('tempHi', None) is not None:
+                summaryDayInfo += clr['Gray'] + '\n' + _('- Average highest temperature was ') + clr['R'] + str(int(dictTrend['tempHi'])) + '°C'
+            if dictTrend.get('recHi', None) is not None:
+                summaryDayInfo += clr['Gray'] + _(', highest observed ') + clr['R'] + str(int(dictTrend['recHi'])) + '°C' + clr['Gray'] + _(' in %s%s') % (clr['Y'],
                                                                                                                                                        str(dictTrend['hiDate'])[:4])
-            summaryDayInfo += clr['Gray'] + '\n' + _('- Average lowest temperature was ') + clr['B'] + str(int(dictTrend['tempLo'])) + '°C'
-            summaryDayInfo += clr['Gray'] + _(', lowest observed ') + clr['B'] + str(int(dictTrend['recLo'])) + '°C' + clr['Gray'] + _(' in %s%s') % (clr['Y'],
+            if dictTrend.get('tempLo', None) is not None:
+                summaryDayInfo += clr['Gray'] + '\n' + _('- Average lowest temperature was ') + clr['B'] + str(int(dictTrend['tempLo'])) + '°C'
+            if dictTrend.get('recLo', None) is not None:
+                summaryDayInfo += clr['Gray'] + _(', lowest observed ') + clr['B'] + str(int(dictTrend['recLo'])) + '°C' + clr['Gray'] + _(' in %s%s') % (clr['Y'],
                                                                                                                                                     str(dictTrend['loDate'])[:4])
             self['day_length_summary'].text = summaryDayInfo
         except Exception as e:
-            self.DEBUG('\t', 'Exception: %s' % str(e))
+            self.DEBUG('\t', 'Exception: %s\n%s' % (str(e), str(traceback.format_exc())))
 
         try: #dicthourly
             self.DEBUG('\t', 'pobieram dicthourly')

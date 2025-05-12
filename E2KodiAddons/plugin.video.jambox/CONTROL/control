@@ -1,13 +1,13 @@
-Package: e2kodi-addon-upcgo
+Package: e2kodi-addon-tv-jambox-go
 Priority: optional
 Section: utils
 Depends: enigma2-plugin-extensions--j00zeks-e2kodi
-Description: Dodatek upcgo do e2Kodi
+Description: Dodatek do e2Kodi JAMBOX GO
 Maintainer: j00zek
 Source: http://github.com/j00zek/eePlugins
-Version: 25.04.16.1158
+Version: 25.05.12.0700
 Architecture: all
-DestinationPath:  /usr/lib/enigma2/python/Plugins/Extensions/E2Kodi/site-packages/emukodi/Plugins/plugin.video.upcgo
+DestinationPath:  /usr/lib/enigma2/python/Plugins/Extensions/E2Kodi/site-packages/emukodi/Plugins/plugin.video.jambox
 ExcludeFolder: 
 RunScriptBeforeBuild:
 BuildType: python310

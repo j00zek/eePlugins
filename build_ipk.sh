@@ -107,7 +107,7 @@ if [ -z $2 ]; then
   echo "Info: no version provided, date &time of last modification will be used"
   #version=`ls -atR --full-time "$plugAbsPath/"|egrep -v '^dr|version.py|control|*.mo'|grep -m 1 -o '20[12][5678].[0-9]*.[0-9]* [0-9]*\:[0-9]*'|sed 's/^20//'|sed 's/ /./'|sed 's/-/./g'|sed 's/\://g'`
   version=`ls -atR --full-time "$plugAbsPath/"|egrep -v '^dr|version\.py|control|*\.mo'|grep -o '20[12][12345].[0-9]*.[0-9]* [0-9]*\:[0-9]*'|sort -r|head -1|sed 's/^20//'|sed 's/ /./'|sed 's/-/./g'|sed 's/\://g'`
-  versionFileName=`find "$plugAbsPath/" -name version.py ! -path "*/construct/*"`
+  versionFileName=`find "$plugAbsPath/" -name version.py ! -path "*/construct/*" ! -path "*/site-packages/*"`
   echo "Found version file: '$versionFileName'"
   if [ ! -z "$versionFileName" ] && [ `grep -c 'IPTV_VERSION=' < "$versionFileName"` -gt 0 ];then version=`grep -o '20[12][12345].[0-9]*.[0-9]*.[0-9]*' < "$versionFileName"`;fi
   echo "Found version: '$version'"

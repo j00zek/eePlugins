@@ -1,12 +1,9 @@
-# -*- coding: utf-8 -*-
-#
 #  CaidInfo2 - Converter
-#  ver 1.2.5 02.06.2021
+#  ver 1.2.6 02.06.2025
 #
 #  Coded by bigroma & 2boom & j00zek
 #
 
-from __future__ import absolute_import #zmiana strategii ladowanie modulow w py2 z relative na absolute jak w py3
 from Components.config import config
 from Components.Converter.Converter import Converter
 from Components.Converter.Poll import Poll
@@ -16,7 +13,7 @@ from enigma import iServiceInformation, iPlayableService, eDVBCI_UI, eDVBCIInter
 from Tools.Directories import fileExists
 import os
 
-DBG = False
+DBG = True
 if DBG: 
     try: from Components.j00zekComponents import j00zekDEBUG
     except Exception: DBG = False
@@ -393,7 +390,7 @@ class j00zekModCaidInfo2(Poll, Converter, object):
                     if DBG: j00zekDEBUG('\t Exception trying to analyze %s : %s' % (os.path.join("/proc", f), str(e) )) 
         return _('None SoftCam is running')
 
-    def getCIdata(self, allVisible, showNameOfActive = True):
+    def getCIdata(self, allVisible, showNameOfActive = False):
         #CI data
         CIstring = ""
         appname = ""
@@ -412,11 +409,13 @@ class j00zekModCaidInfo2(Poll, Converter, object):
                                 CIstring += ""
                                 add_num = False
                             else:
-                                CIstring += "\c007?7?7?"
+                                CIstring += r"\c007?7?7?"
                         elif state == 1:
-                            CIstring += "\c00????00"
+                            CIstring += r'\c00ffa500' #pomaranczowy
                         elif state == 2:
-                            CIstring += "\c0000??00"
+                            CIstring += r'\c0000ff00' #jasno zielony
+                            if showNameOfActive:
+                                return r'\c0000ff00'+ CIname
                     else: #empty slot
                         if not allVisible:
                             CIstring += ""
@@ -465,9 +464,9 @@ class j00zekModCaidInfo2(Poll, Converter, object):
                 if self.NUM_CI and self.NUM_CI > 0:
                     CIinfo = self.getCIdata(False)
                     if CIinfo == '' and softCamName == '':
-                        return _("no data from CI")
-                    elif CIinfo == '':
                         return _("no data from CI and emulator")
+                    elif CIinfo == '':
+                        return _("no data from CI")
                     else:
                         return _(CIinfo)
                 else:
