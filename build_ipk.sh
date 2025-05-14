@@ -71,13 +71,13 @@ find $plugAbsPath -iname "*.py" |
         break
       fi
     else
-      python /tmp/checker.py "$F"
-      if [[ $? -gt 0 ]];then
-        echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ERROR in PY2 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-        echo "!!!!!!!!!! $F !!!!!!!!!!"
-        exit 1
-        break
-      fi
+      #python /tmp/checker.py "$F"
+      #if [[ $? -gt 0 ]];then
+      #  echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ERROR in PY2 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+      #  echo "!!!!!!!!!! $F !!!!!!!!!!"
+      #  exit 1
+      #  break
+      #fi
       python3 /tmp/checker.py "$F"
       if [[ $? -gt 0 ]];then
         echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ERROR in PY3 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"

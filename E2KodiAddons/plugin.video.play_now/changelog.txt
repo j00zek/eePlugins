@@ -1,3 +1,32 @@
+1.0.9
+- [Archiwum TV] poprawka dot. wnawiania odtwarzania (2)
+1.0.8
+- [Archiwum TV] poprawka dot. wnawiania odtwarzania
+- [Archiwum TV][metoda:time] poprawka odtwarzanie obecnie trwającego programu
+- [TV] uwzględnienie strumieni zewnętrznych w funkcji odtwarzania (POLSAT)
+1.0.7
+- [WIDEO] poprawka listowania treści
+- [Ulubione] zmiana struktury tytułu programów z Archiwum TV
+1.0.6
+- dodanie możliwości zlecania (sekcja Program TV) i kasowania nagrań
+1.0.5
+- dodanie zakładki nagrania (dostępne funkcjonalności: odtwarzanie)
+- możliwość wyboru trybu odtwarzania programów z zakładki Archiwum TV
+- dostosowanie wtyczki dla użytkowników posiadających pakiety UPC
+- korekty ram czasowych EPG / okresu archiwum TV
+1.0.4
+- dodanie wyszukiwarki
+- dodanie obsługi ulubionych (bez synchronizacji z serwisem)
+- dodanie inf. o programach w sekcji "Archiwum programów" (gatunek, nr sezonu, nr odcinka) 
+- poprawki odtwarzania TV poprzez plugin OPTV Simple Client (usunięcie bufora z trybu LIVE, odtwarzanie bieżącego programu w trybie catch-up)
+1.0.3
+- możliwość wyboru urządzenia/systemu
+1.0.2
+- poprawka odtwarzania niektórych kanałów TV
+- zmiana trybu wyświetlania list w zakładce Archiwum programów
+1.0.1
+- dodanie zakładki Wideo
+- filtrowanie kanałów wg rodzaju
 1.0.0
 - przystosowanie do obsługi infoTagVideo (od Kodi ver 20)
 - alfabetyczne sortowanie kanałów TV (opcja / Kodi tools)
