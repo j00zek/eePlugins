@@ -398,7 +398,7 @@ def getEPG(cid,ts,te):
     hea_.update({'Sync-With-Server':'true'})
     cookies=cookiesGen()
     tenant=addon.getSetting('tenant')
-    url=apiURL+	'products/lives/epgs'
+    url=apiURL+ 'products/lives/epgs'
     par=paramsGen()
     par.update({
         'liveId[]':cid,
@@ -690,7 +690,7 @@ def playSource(c,tsDur,contType='LIVE',ts=None,te=None):
             
             cdnType=resp['sources']['DASH'][0]['cdnType']
             
-            if 'drm' in resp and cdnType not in ['POLSAT']:
+            if 'drm' in resp:# and cdnType not in ['POLSAT']:
                 if 'WIDEVINE' in resp['drm']:
                     licURL=resp['drm']['WIDEVINE']['src']
                     cookies=cookiesGen()
