@@ -16,7 +16,7 @@
     <key id="KEY_YELLOW" mapto="keyYellow" flags="b"/>
     <key id="KEY_BLUE" mapto="keyBlue" flags="b"/>
     <key id="KEY_OK" mapto="config" flags="m" />
-    <key id="KEY_MENU" mapto="config" flags="m" />
+    <key id="KEY_MENU" mapto="keyMenu" flags="m" />
   </map>
   <map context="E2KodiPlayer">
     <key id="KEY_ESC" mapto="cancel" flags="m" />
@@ -28,5 +28,12 @@
     <key id="KEY_GREEN" mapto="keyGreen" flags="b"/>
     <key id="KEY_YELLOW" mapto="keyYellow" flags="b"/>
     <key id="KEY_PLAY" mapto="keyPlay" flags="b" />
+  </map>
+  <map context="E2KodiEventsConfig">
+    <key id="KEY_RED" mapto="cancel" flags="b"/>
+    <key id="KEY_ESC" mapto="cancel" flags="b" />
+    <key id="KEY_EXIT" mapto="cancel" flags="b" />
+    <key id="KEY_GREEN" mapto="save" flags="b"/>
+    <key id="KEY_OK" mapto="save" flags="b" />
   </map>
 </keymap>

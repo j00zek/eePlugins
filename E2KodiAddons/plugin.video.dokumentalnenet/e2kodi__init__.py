@@ -1,1 +1,0 @@
-/DuckboxDisk/github/eePlugins/E2KodiAddons/plugin.video.dokumentalnenet/own_e2kodi__init__.py
