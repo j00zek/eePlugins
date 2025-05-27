@@ -112,6 +112,7 @@ def j00zekDEBUG(myText = None, Append = True, myDEBUG = '/tmp/j00zekComponents.l
     if myText is None:
         return
     try:
+        print(myText) #chwilowo do prac na CI
         if append2file == False or Append == False:
             append2file = True
             f = open(myDEBUG, 'w')
@@ -124,7 +125,6 @@ def j00zekDEBUG(myText = None, Append = True, myDEBUG = '/tmp/j00zekComponents.l
         f.close()        
         if path.getsize(myDEBUG) > 100000:
             system('sed -i -e 1,10d %s' % myDEBUG)
-        #print(myText)
     except Exception as e:
         system('echo "Exception:%s" >> %s' %( str(e), myDEBUG ))
     return

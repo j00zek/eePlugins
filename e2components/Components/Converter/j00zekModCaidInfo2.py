@@ -1,13 +1,17 @@
+                       
+ 
 #  CaidInfo2 - Converter
-#  ver 1.2.6 02.06.2025
+#  ver 1.2.7 2025-05-19
 #
-#  Coded by bigroma & 2boom & j00zek
+#  Coded by bigroma & 2boom & j00zek & madhouse
 #
 
+                                                                                                                   
 from Components.config import config
 from Components.Converter.Converter import Converter
 from Components.Converter.Poll import Poll
 from Components.Element import cached
+from Components.SystemInfo import SystemInfo
 from Components.j00zekSkinTranslatedLabels import translate as _
 from enigma import iServiceInformation, iPlayableService, eDVBCI_UI, eDVBCIInterfaces
 from Tools.Directories import fileExists
@@ -15,11 +19,14 @@ import os
 
 DBG = True
 if DBG: 
+        
     try: from Components.j00zekComponents import j00zekDEBUG
-    except Exception: DBG = False
+    except Exception: j00zekDEBUG = print
+                   
 
 info = {}
 old_ecm_mtime = None
+
 
 class j00zekModCaidInfo2(Poll, Converter, object):
     CAID = 0
@@ -50,7 +57,7 @@ class j00zekModCaidInfo2(Poll, Converter, object):
     SECA_C = 25
     VIA_C = 26
     PWR_C = 27
-    VERI_C = 28    
+    VERI_C = 28
     BISS = 29
     BISS_C = 30
     EXS = 31
@@ -81,54 +88,103 @@ class j00zekModCaidInfo2(Poll, Converter, object):
         self.eDVBCIUIInstance = eDVBCI_UI.getInstance()
         self.eDVBCIUIInstance and self.eDVBCIUIInstance.ciStateChanged.get().append(self.ciModuleStateChanged)
         self.NUM_CI = eDVBCIInterfaces.getInstance() and eDVBCIInterfaces.getInstance().getNumOfSlots()
+               
         if DBG: j00zekDEBUG('[j00zekModCaidInfo2:__init__] self.NUM_CI = %s' % str(self.NUM_CI))
+                          
         if type == "CAID": self.type = self.CAID
+                           
         elif type == "PID": self.type = self.PID
         elif type == "ProvID": self.type = self.PROV
+                                 
+                             
         elif type == "Delay": self.type = self.DELAY
+                            
         elif type == "Host": self.type = self.HOST
+                           
         elif type == "Net": self.type = self.IS_NET
+                           
         elif type == "Emu": self.type = self.IS_EMU
         elif type == "CryptInfo": self.type = self.CRYPT
+                                  
         elif type == "CryptInfo2": self.type = self.CRYPT2
+                                   
         elif type == "BetaCrypt": self.type = self.BETA
+                                 
         elif type == "ConaxCrypt": self.type = self.CONAX
+                                  
         elif type == "CrwCrypt": self.type = self.CRW
+                                
         elif type == "DreamCrypt": self.type = self.DRE
+                                
         elif type == "ExsCrypt": self.type = self.EXS
+                                
         elif type == "IrdCrypt": self.type = self.IRD
+                                
         elif type == "NagraCrypt": self.type = self.NAGRA
+                                  
         elif type == "NdsCrypt": self.type = self.NDS
+                                
         elif type == "SecaCrypt": self.type = self.SECA
+                                 
         elif type == "ViaCrypt": self.type = self.VIA
+                                
         elif type == "PwuCrypt": self.type = self.PWR
+                                
         elif type == "VrmCrypt": self.type = self.VERI
+                                 
+                               
         elif type == "BetaEcm": self.type = self.BETA_C
+                                
         elif type == "ConaxEcm": self.type = self.CONAX_C
+                              
         elif type == "CrwEcm": self.type = self.CRW_C
         elif type == "DreamEcm": self.type = self.DRE_C
+                                  
+                              
         elif type == "ExsEcm": self.type = self.EXS_C
+                              
         elif type == "IrdEcm": self.type = self.IRD_C
+                                
         elif type == "NagraEcm": self.type = self.NAGRA_C
+                              
         elif type == "NdsEcm": self.type = self.NDS_C
+                               
         elif type == "SecaEcm": self.type = self.SECA_C
+                              
         elif type == "ViaEcm": self.type = self.VIA_C
+                              
         elif type == "PwuEcm": self.type = self.PWR_C
+                              
         elif type == "VrmEcm": self.type = self.VERI_C
         elif type == "TanCrypt": self.type = self.TAN
+                                
+                              
         elif type == "TanEcm": self.type = self.TAN_C
         elif type == "BisCrypt": self.type = self.BISS
+                                 
+                              
         elif type == "BisEcm": self.type = self.BISS_C
+                           
         elif type == "Crd": self.type = self.CRD
+                              
         elif type == "CrdTxt": self.type = self.CRDTXT
+                             
         elif type == "IsFta": self.type = self.IS_FTA
+                                 
         elif type == "IsCrypted": self.type = self.IS_CRYPTED
+                             
         elif type == "Short": self.type = self.SHORT
         elif type == "Default" or type == "" or type == None or type == "%": self.type = self.ALL
+                                
+                               
         elif type == "emuname": self.type = self.SOFTCAMNAME
+                                   
         elif type == "emuFullName": self.type = self.SOFTCAMFULLNAME
+                             
         elif type == "caids": self.type = self.CAIDS
+                              
         elif type == "UseCFG": self.type = self.USE_CFG
+                               
         elif type == "ecmfile": self.type = self.ECMFILECONTENT
         
         else:
@@ -136,43 +192,43 @@ class j00zekModCaidInfo2(Poll, Converter, object):
             self.sfmt = type[:]
 
         self.systemTxtCaids = {
-            "26" : "BiSS",
-            "01" : "Seca Mediaguard",
-            "06" : "Irdeto",
-            "17" : "BetaCrypt",
-            "55" : "BulCrypt",
-            "05" : "Viaccess",
-            "18" : "Nagravision",
-            "09" : "NDS-Videoguard",
-            "0B" : "Conax",
-            "0D" : "Cryptoworks",
-            "4A" : "DRE-Crypt",
-            "27" : "ExSet",
-            "0E" : "PowerVu",
-            "10" : "Tandberg",
-            "22" : "Codicrypt",
-            "07" : "DigiCipher",
-            "56" : "Verimatrix",
-            "4B" : "DG-Crypt",
-            "A1" : "Rosscrypt"}
+            "26": "BiSS",
+            "01": "Seca Mediaguard",
+            "06": "Irdeto",
+            "17": "BetaCrypt",
+            "55": "BulCrypt",
+            "05": "Viaccess",
+            "18": "Nagravision",
+            "09": "NDS-Videoguard",
+            "0B": "Conax",
+            "0D": "Cryptoworks",
+            "4A": "DRE-Crypt",
+            "27": "ExSet",
+            "0E": "PowerVu",
+            "10": "Tandberg",
+            "22": "Codicrypt",
+            "07": "DigiCipher",
+            "56": "Verimatrix",
+            "4B": "DG-Crypt",
+            "A1": "Rosscrypt"}
 
         self.systemCaids = {
-            "26" : "BiSS",
-            "01" : "SEC",
-            "06" : "IRD",
-            "55" : "BET",
-            "17" : "BET",
-            "05" : "VIA",
-            "18" : "NAG",
-            "09" : "NDS",
-            "0B" : "CON",
-            "0D" : "CRW",
-            "27" : "EXS",
-            "4B" : "DRE",
-            "4A" : "DRE",
-            "0E" : "PWR",
-            "10" : "TAN",
-            "56" : "VERI" }
+            "26": "BiSS",
+            "01": "SEC",
+            "06": "IRD",
+            "55": "BET",
+            "17": "BET",
+            "05": "VIA",
+            "18": "NAG",
+            "09": "NDS",
+            "0B": "CON",
+            "0D": "CRW",
+            "27": "EXS",
+            "4B": "DRE",
+            "4A": "DRE",
+            "0E": "PWR",
+            "10": "TAN",
+            "56": "VERI"}
 
     @cached
     def getBoolean(self):
@@ -198,7 +254,7 @@ class j00zekModCaidInfo2(Poll, Converter, object):
                 return False
             if self.type == self.BETA:
                 for caid in caids:
-                    if ("%0.4X" % int(caid))[:2] == "55" or ("%0.4X" % int(caid))[:2] == "17" :
+                    if ("%0.4X" % int(caid))[:2] == "55" or ("%0.4X" % int(caid))[:2] == "17":
                         return True
                 return False
             if self.type == self.CONAX:
@@ -213,7 +269,7 @@ class j00zekModCaidInfo2(Poll, Converter, object):
                 return False
             if self.type == self.DRE:
                 for caid in caids:
-                    if ("%0.4X" % int(caid))[:2] == "4B" or ("%0.4X" % int(caid))[:2] == "4A" :
+                    if ("%0.4X" % int(caid))[:2] == "4B" or ("%0.4X" % int(caid))[:2] == "4A":
                         return True
                 return False
             if self.type == self.EXS:
@@ -265,7 +321,7 @@ class j00zekModCaidInfo2(Poll, Converter, object):
             ecm_info = self.ecmfile()
             if ecm_info:
                 try:
-                    caid = ("%0.4X" % int(ecm_info.get("caid", ""),16))[:2]
+                    caid = ("%0.4X" % int(ecm_info.get("caid", ""), 16))[:2]
                 except Exception:
                     return False
                 if self.type == self.SECA_C:
@@ -357,9 +413,11 @@ class j00zekModCaidInfo2(Poll, Converter, object):
     boolean = property(getBoolean)
 
     def runningSoftCamName(self, fullName = False):
+               
         if DBG: j00zekDEBUG('[j00zekModCaidInfo2:runningSoftCamName] >>> fullName="%s"' % str(fullName) )
+
         def checkCam(txt):
-            for scName in ('oscam_emu','oscam', 'cccam', 'mgcam'):
+            for scName in ('oscam_emu', 'oscam', 'cccam', 'mgcam'):
                 if scName in procStat.lower():
                     if fullName:
                         return procStat
@@ -369,11 +427,12 @@ class j00zekModCaidInfo2(Poll, Converter, object):
           
         #trying to use last PID
         try:
-            procStat = open(os.path.join("/proc", str(self.currPID),'stat'), "r").read().split('(')[1].split(')')[0]
+            procStat = open(os.path.join("/proc", str(self.currPID), 'stat'), "r").read().split('(')[1].split(')')[0]
             foundSC = checkCam(procStat)
             if not foundSC is None:
                 return foundSC
         except Exception as e:
+                   
             if DBG: j00zekDEBUG('\t Exception trying to get name of curr.PID= %s : %s' % (os.path.join("/proc", str(self.currPID)), str(e) )) 
         #searching for new PID
         for f in os.listdir("/proc"):
@@ -381,47 +440,101 @@ class j00zekModCaidInfo2(Poll, Converter, object):
                 try:
                     pid = int(f)
                     if pid > self.currPID:
-                        procStat = open(os.path.join("/proc", f,'stat'), "r").read().split('(')[1].split(')')[0]
+                        procStat = open(os.path.join("/proc", f, 'stat'), "r").read().split('(')[1].split(')')[0]
                         foundSC = checkCam(procStat)
                         if not foundSC is None:
                             self.currPID = pid
                             return foundSC
                 except Exception as e:
+                           
                     if DBG: j00zekDEBUG('\t Exception trying to analyze %s : %s' % (os.path.join("/proc", f), str(e) )) 
         return _('None SoftCam is running')
 
-    def getCIdata(self, allVisible, showNameOfActive = False):
-        #CI data
+    def GetSlotCi(self): #by madhouse
+        NUM_CI = SystemInfo["CommonInterface"]
+        if NUM_CI and NUM_CI > 0:
+            found_caid = False
+            service_caids = []
+            service_caid_list = []
+            caid = '0x0'
+            active_slot = -1
+            service = self.source.service
+            info = service and service.info()
+            if info:
+                service_caids = info.getInfoObject(iServiceInformation.sCAIDs)
+                if service_caids:
+                    for service_caid in service_caids:
+                        service_caid_list.append((str(hex(int(service_caid)))))
+                    for act_slot in range(NUM_CI):
+                        ci_caids = []
+                        ci_caid_list = []
+                        ci_caids = eDVBCIInterfaces.getInstance().readCICaIds(act_slot)
+                        if ci_caids:
+                            for ci_caid in ci_caids:
+                                ci_caid_list.append(str(hex(int(ci_caid))))
+                            for service_caid in service_caid_list:
+                                if service_caid in ci_caid_list:
+                                    found_caid = True
+                                    caid = service_caid
+                                    active_slot = act_slot
+                                    appname = eDVBCI_UI.getInstance().getAppName(act_slot)
+                                    break
+                            if found_caid:
+                                break
+
+            if found_caid:
+                appname = str(appname)
+            else:
+                appname = ""
+            ecmline = appname
+        return ecmline
+
+    def getCIdata(self, allVisible, showNameOfActive, service_caid_list): #CI data
         CIstring = ""
         appname = ""
+        if DBG: j00zekDEBUG('\t service_caid_list="%s"' % str(service_caid_list))
         if self.NUM_CI and self.NUM_CI > 0:
             if self.eDVBCIUIInstance:
                 for slot in range(self.NUM_CI):
+                    if showNameOfActive:
+                        ci_caids = []
+                        ci_caid_list = []
+                        ci_caids = eDVBCIInterfaces.getInstance().readCICaIds(slot)
+                        if ci_caids:
+                            for ci_caid in ci_caids:
+                                ci_caid_list.append(str(hex(int(ci_caid))))
+                        if DBG: j00zekDEBUG('\t ci_caid_list="%s"' % str(ci_caid_list))
+                        for service_caid in service_caid_list:
+                            if service_caid in ci_caid_list:
+                                return r'\c0000ff00' + eDVBCI_UI.getInstance().getAppName(slot)
                     add_num = True
                     if CIstring:
                         CIstring += " "
                     state = self.eDVBCIUIInstance.getState(slot)
-                    if DBG: j00zekDEBUG('\t slot=%s, state=%s' % (slot,state))
-                    if state != -1: #there is something in the slot
+                    if state == -1: # EMPTY slot
+                        if DBG: j00zekDEBUG('\t slot=%s, state=%s => empty' % (slot,state))
+                        if not allVisible:
+                            CIstring += ""
+                            add_num = False
+                        else:
+                            CIstring += "\c00??2525"
+                    else: #there is something in the slot
                         CIname = eDVBCI_UI.getInstance().getAppName(slot)
-                        if state == 0:
+                        if state == 0: #reset
+                            if DBG: j00zekDEBUG('\t slot=%s, state=%s => reset' % (slot,state))
                             if not allVisible:
                                 CIstring += ""
                                 add_num = False
                             else:
                                 CIstring += r"\c007?7?7?"
                         elif state == 1:
+                            if DBG: j00zekDEBUG('\t slot=%s, state=%s => init' % (slot,state))
                             CIstring += r'\c00ffa500' #pomaranczowy
                         elif state == 2:
+                            if DBG: j00zekDEBUG('\t slot=%s, state=%s => ready' % (slot,state))
                             CIstring += r'\c0000ff00' #jasno zielony
                             if showNameOfActive:
                                 return r'\c0000ff00'+ CIname
-                    else: #empty slot
-                        if not allVisible:
-                            CIstring += ""
-                            add_num = False
-                        else:
-                            CIstring += "\c00??2525"
                     if add_num:
                         CIstring += "%d" % (slot + 1)
                 if CIstring:
@@ -434,6 +547,7 @@ class j00zekModCaidInfo2(Poll, Converter, object):
             
     @cached
     def getText(self):
+               
         if DBG: j00zekDEBUG('[j00zekModCaidInfo2:getText] >>>self.type="%s", ciFormat.value="%s"' % (self.type, config.plugins.j00zekCC.ciFormat.value ) ) 
         textvalue = ""
         server = ""
@@ -444,9 +558,13 @@ class j00zekModCaidInfo2(Poll, Converter, object):
             if config.plugins.j00zekCC.ciFormat.value == '':
                 return self.runningSoftCamName(True)
             elif   '%SCN'  in config.plugins.j00zekCC.ciFormat.value: softCamName = self.runningSoftCamName(False)
+                                                            
             elif '%SCFN' in config.plugins.j00zekCC.ciFormat.value: softCamName = self.runningSoftCamName(True)
+                                                           
         elif self.type == self.FORMAT:
+                                   
             if   '%SCN'  in self.sfmt: softCamName = self.runningSoftCamName(False)
+                                      
             elif '%SCFN' in self.sfmt: softCamName = self.runningSoftCamName(True)
         elif self.type == self.SOFTCAMNAME:
             return self.runningSoftCamName()
@@ -458,20 +576,33 @@ class j00zekModCaidInfo2(Poll, Converter, object):
         else:
             info = service and service.info()
             ecm_info = self.ecmfile()
+                        
             if not info: return softCamName
             elif not info.getInfoObject(iServiceInformation.sCAIDs): return _('Free-to-air')
+                                       
             elif not ecm_info:
                 if self.NUM_CI and self.NUM_CI > 0:
-                    CIinfo = self.getCIdata(False)
+                    if 1: #mod by madhouse
+                        CIinfo = self.GetSlotCi()
+                    else:
+                        service_caid_list = []
+                        service_caids = info.getInfoObject(iServiceInformation.sCAIDs)
+                        if service_caids:
+                            for service_caid in service_caids:
+                                service_caid_list.append(str(hex(int(service_caid))))
+                        CIinfo = self.getCIdata(allVisible = False, showNameOfActive = True, service_caid_list = service_caid_list)
                     if CIinfo == '' and softCamName == '':
                         return _("no data from CI and emulator")
                     elif CIinfo == '':
                         return _("no data from CI")
+                                      
+                                                                
                     else:
                         return _(CIinfo)
                 else:
                     return _("no data from the emulator")
             elif  self.type == self.ECMFILECONTENT: return self.ecmfileContent()
+                                            
             elif  self.type == self.CAIDS:
                 return '?'
             elif self.type == self.CRYPT2:
@@ -551,38 +682,56 @@ class j00zekModCaidInfo2(Poll, Converter, object):
                     for param in params:
                         if param != '':
                             if param[0] != '%': textvalue += param
+                                                  
                             #server
+                                               
                             elif param == "%S": textvalue += server
                             #hops
                             elif param == "%H": textvalue += hops
+                                                 
                             #system
                             elif param == "%SY": textvalue += system
+                                                   
                             #provider
+                                                
                             elif param == "%PV": textvalue += provider
                             #port
                             elif param == "%SP": textvalue += port
+                                                 
                             #protocol
+                                                
                             elif param == "%PR": textvalue += protocol
                             #caid
                             elif param == "%C": textvalue += caid
+                                                 
                             #Pid
                             elif param == "%P": textvalue += pid
+                                                
                             #prov
                             elif param == "%p": textvalue += prov
+                                                 
                             #sOurce
+                                               
                             elif param == "%O": textvalue += source
                             #Reader
+                                               
                             elif param == "%R": textvalue += reader
                             #ECM Time
+                                               
                             elif param == "%T": textvalue += ecm_time
                             #SoftCamName
+                                                 
                             elif param == "%SCN": textvalue += softCamName
                             #SoftCamFullName
+                                                  
                             elif param == "%SCFN": textvalue += softCamName
                             #tabulator
                             elif param == "%t": textvalue += "\t"
+                                                 
                             #new line
                             elif param == "%n": textvalue += "\n"
+                                                 
+                                                     
                             elif param[1:].isdigit(): textvalue=textvalue.ljust(len(textvalue)+int(param[1:]))
                             
                             if len(textvalue) > 0:
@@ -623,6 +772,7 @@ class j00zekModCaidInfo2(Poll, Converter, object):
     text = property(getText)
 
     def ecmfileContent(self):
+               
         if DBG: j00zekDEBUG('[j00zekModCaidInfo2:ecmfileContent] >>>')
         self.poll_interval = self.my_interval
         self.poll_enabled = True
@@ -649,6 +799,7 @@ class j00zekModCaidInfo2(Poll, Converter, object):
                             ecminfo += line
                     ecmfiles.close()
         except Exception as e:
+                   
             if DBG: j00zekDEBUG('\t Exception analyzing content of /tmp/ecm.info : %s' % str(e) )
         return ecminfo
         
@@ -777,5 +928,6 @@ class j00zekModCaidInfo2(Poll, Converter, object):
         Converter.changed(self, (self.CHANGED_POLL,))
 
     def ciModuleStateChanged(self, slot):
+               
         if DBG: j00zekDEBUG('[j00zekModCaidInfo2:getText] >>>')
         self.changed(True)
