@@ -36,4 +36,18 @@
     <key id="KEY_GREEN" mapto="save" flags="b"/>
     <key id="KEY_OK" mapto="save" flags="b" />
   </map>
+  <map context="E2KodiGridSelector">
+    <key id="KEY_RED"   mapto="cancel" flags="b"/>
+    <key id="KEY_ESC"   mapto="cancel" flags="b" />
+    <key id="KEY_EXIT"  mapto="cancel" flags="b" />
+    <key id="KEY_GREEN" mapto="keyGreen" flags="b"/>
+    <key id="KEY_YELLOW" mapto="keyYellow" flags="b"/>
+    <key id="KEY_BLUE"  mapto="keyBlue" flags="b"/>
+    <key id="KEY_OK"    mapto="config" flags="b" />
+    <key id="KEY_MENU"  mapto="keyMenu" flags="b" />
+    <key id="KEY_LEFT"  mapto="keyLeft"   flags="m" />
+    <key id="KEY_RIGHT" mapto="keyRight"  flags="m" />
+    <key id="KEY_UP"    mapto="keyUp"     flags="m" />
+    <key id="KEY_DOWN"  mapto="keyDown"  flags="m" />
+  </map>
 </keymap>

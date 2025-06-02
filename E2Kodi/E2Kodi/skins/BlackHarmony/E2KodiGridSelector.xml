@@ -1,0 +1,56 @@
+<screen name="E2KodiGridSelector" position="0,0" size="1920,1080" title="Wybór dodatku E2Kodi">
+    <!-- header --> 
+    <ePixmap position="0,0" zPosition="-10" size="1920,1080" pixmap="BlackHarmony/bg_design/bg_1920x1080.png"/>
+    <widget source="global.CurrentTime" render="Label" position="85,80" size="80,35" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="170,80" size="460,35" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+    <widget source="Title" render="Label" position="995,70" size="755,80" font="Roboto_HD; 27" halign="right" foregroundColor="white" backgroundColor="dark_grey" transparent="1"/>
+
+	<!-- definicja szachownicy -->
+    <widget name="marker_0x0" position="120,200" size="290,340" alphatest="blend" />
+    <widget name="logo_0x0"   position="140,220" size="250,300" alphatest="blend" />
+
+    <widget name="marker_0x1" position="470,200" size="290,340" alphatest="blend" />
+    <widget name="logo_0x1"   position="490,220" size="250,300" alphatest="blend" />
+
+    <widget name="marker_0x2" position="820,200" size="290,340" alphatest="blend" />
+    <widget name="logo_0x2"   position="840,220" size="250,300" alphatest="blend" />
+
+    <widget name="marker_0x3" position="1170,200" size="290,340" alphatest="blend" />
+    <widget name="logo_0x3"   position="1190,220" size="250,300" alphatest="blend" />
+
+    <widget name="marker_0x4" position="1520,200" size="290,340" alphatest="blend" />
+    <widget name="logo_0x4"   position="1540,220" size="250,300" alphatest="blend" />
+
+    <widget name="marker_1x0" position="120,600" size="290,340" alphatest="blend" />
+    <widget name="logo_1x0"   position="140,620" size="250,300" alphatest="blend" />
+
+    <widget name="marker_1x1" position="470,600" size="290,340" alphatest="blend" />
+    <widget name="logo_1x1"   position="490,620" size="250,300" alphatest="blend" />
+
+    <widget name="marker_1x2" position="820,600" size="290,340" alphatest="blend" />
+    <widget name="logo_1x2"   position="840,620" size="250,300" alphatest="blend" />
+
+    <widget name="marker_1x3" position="1170,600" size="290,340" alphatest="blend" />
+    <widget name="logo_1x3"   position="1190,620" size="250,300" alphatest="blend" />
+
+    <widget name="marker_1x4" position="1520,600" size="290,340" alphatest="blend" />
+    <widget name="logo_1x4"   position="1540,620" size="250,300" alphatest="blend" />
+
+	<!-- przyciski -->     
+	<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="100,980" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="500,980" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="900,980" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="1300,980" size="35,27" alphatest="blend"/>
+    <widget name="key_red" position="150,980" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget name="key_green" position="550,980" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget name="key_yellow" position="950,980" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget name="key_blue" position="1350,980" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_ok.png" position="1610,980" size="60,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="1680,980" size="60,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_exit.png" position="1750,980" size="60,27" alphatest="blend"/>
+    
+</screen>
