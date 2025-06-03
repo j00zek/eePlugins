@@ -1,0 +1,31 @@
+<screen name="E2KodiPlayer" position="0,0" size="850,1080" title=" " flags="wfNoBorder" backgroundColor="transparent">
+ <ePixmap position="0,0" zPosition="-10" size="850,1080" pixmap="BlackHarmony/bg_design/zap_history.png"/>
+ <widget source="global.CurrentTime" render="Label" position="30,20" size="80,32" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+   <convert type="ClockToText">Default</convert>
+   </widget>
+ <widget source="global.CurrentTime" render="Label" position="110,20" size="460,32" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+   <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+   </widget>
+ <widget name="Title" position="15,70" size="810,46" font="Roboto_HD; 32" halign="center" backgroundColor="black" transparent="1"/>
+ <widget source="list" render="Listbox" position="28,133" size="790,720" selectionPixmap="BlackHarmony/menu/sel_920_45.png" scrollbarMode="showOnDemand" scrollbarWidth="6" backgroundColor="transpBlack" transparent="1">
+     <convert type="TemplatedMultiContent">
+     {"template": [
+     MultiContentEntryPixmapAlphaTest(pos = (10, 2), size = (40, 40), png = 0),
+     MultiContentEntryText(pos = (70, 2), size = (750, 40), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 1),
+        ],
+     "fonts": [gFont("Regular", 28)],
+     "itemHeight": 45
+                        }
+      </convert>
+       </widget>
+ <eLabel backgroundColor="linie"  position="35,857" size="775,1" zPosition="4" /> 
+ <widget name="KodiNotificationsAndStatus" position="30,863" size="785,153" font="Regular;27" halign="center" valign="center" transparent="1" backgroundColor="black" foregroundColor="#000090e6"/>   
+ <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="20,1035" size="35,27" alphatest="on"/>
+ <widget name="key_red" position="55,1032" size="205,30" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+ <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="210,1035" size="35,27" alphatest="on"/>
+ <widget name="key_green" position="245,1032" size="205,30" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/> 
+ <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="490,1035" size="35,27" alphatest="on"/>
+ <widget name="key_yellow" position="525,1032" size="205,30" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+ <ePixmap alphatest="blend" pixmap="BlackHarmony/buttons/key_ok.png" position="760,1035" size="60,30" />
+    
+  </screen>
