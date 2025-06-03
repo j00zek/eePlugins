@@ -7,10 +7,10 @@ while read F
 do
   if [ -e "$F/CONTROL/control" ];then
     #ewentualna korekta DestinationPath
-    pkgPathFolderName=`echo "$F"|sed "s;$extensionsPath; /usr/lib/enigma2/python/Plugins/Extensions/E2Kodi/site-packages/emukodi/Plugins;"`
-    echo $extensionsPath
-    echo $pkgPathFolderName
-    sed -i "s;DestinationPath:.*$;DestinationPath: $pkgPathFolderName;" "$F/CONTROL/control"
+    #pkgPathFolderName=`echo "$F"|sed "s;$extensionsPath; /usr/lib/enigma2/python/Plugins/Extensions/E2Kodi/site-packages/emukodi/Plugins;"`
+    #echo $extensionsPath
+    #echo $pkgPathFolderName
+    #sed -i "s;DestinationPath:.*$;DestinationPath: $pkgPathFolderName;" "$F/CONTROL/control"
     
    
     #nazwa paczki
@@ -20,6 +20,19 @@ do
     pkgPathName=`basename $pathName| tr '[:upper:]' '[:lower:]'|sed -r 's/[_\.]+/-/g'`
     #sed -i "s;\(Package:\).*;\1 e2-j00zeks-bh-addon-$pkgPathName-$pkgName;" "$F/CONTROL/control"
 
+
+    #opis
+    if [ `grep -c 'Description: $' < "$F/CONTROL/control"` -gt 0 ];then
+      sed -i "s;\(Description:\).*;\1 $pkgPathName;" "$F/CONTROL/control"
+    fi
+    grep "Package:" < "$F/CONTROL/control"
+    
+    /DuckboxDisk/github/eePlugins/build_ipk.sh "$F" #> /dev/null
+  fi
+done
+exit 0
+
+#nie uzywane na razie
   if [ -e $extensionsPath/$pkgFolderName/e2kodi__init__.py ];then
     echo "e2kodi__init__.py już dodany"
   elif [ -e $extensionsPath/$pkgFolderName/own_e2kodi__init__.py ];then
@@ -35,15 +48,3 @@ for pTa in ['/usr/lib/enigma2/python/Plugins/Extensions/E2Kodi/site-packages/emu
   if pTa not in sys.path:
     sys.path.append(pTa)" > $extensionsPath/$pkgFolderName/e2kodi__init__.py
   fi
-
-    #opis
-    if [ `grep -c 'Description: $' < "$F/CONTROL/control"` -gt 0 ];then
-      sed -i "s;\(Description:\).*;\1 $pkgPathName;" "$F/CONTROL/control"
-    fi
-    grep "Package:" < "$F/CONTROL/control"
-    
-    /DuckboxDisk/github/eePlugins/build_ipk.sh "$F" #> /dev/null
-  fi
-done
-exit 0
-

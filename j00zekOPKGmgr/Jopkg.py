@@ -555,7 +555,7 @@ class Jopkg(Screen):
             if self.packages2upgrade > 0:
                 self.list.append((_("Upgrade packages" ), '', _("Recommended update installed packages"), 'UpgradeAll', self.upgradeablepng, self.divpng))
             #lista statyczna
-            self.list.append((_("Show E2Kodi only") , '' , '', ['-j00zeks-e2kodi','e2kodi-addon-', 'e2kodi-script-'], LoadPixmap(cached=True, path=PluginPath + 'icons/opkg_plugin.png'), self.divpng))
+            self.list.append((_("Show E2Kodi only") , '' , '', ['-j00zeks-e2kodi','e2kodi-addon-', 'e2kodi-script-', 'e2kodi-skin-'], LoadPixmap(cached=True, path=PluginPath + 'icons/opkg_plugin.png'), self.divpng))
             self.list.append((_("Show Black Harmony only") , '' , '', ['enigma2-plugin-skins--j00zeks-','e2-j00zeks-bh-addon-'], LoadPixmap(cached=True, path=PluginPath + 'icons/opkg_plugin.png'), self.divpng))
             self.list.append((_("Show j00zek's plugins only") , '' , '', ['enigma2-plugin-extensions--j00zeks-','enigma2-plugin-systemplugins--j00zeks-','system-addon--j00zeks-',], LoadPixmap(cached=True, path=PluginPath + 'icons/opkg_plugin.png'), self.divpng))
             self.list.append((_("Show system plugins only") , '' , '', ['-systemplugins-',], LoadPixmap(cached=True, path=PluginPath + 'icons/opkg_plugin.png'), self.divpng))
