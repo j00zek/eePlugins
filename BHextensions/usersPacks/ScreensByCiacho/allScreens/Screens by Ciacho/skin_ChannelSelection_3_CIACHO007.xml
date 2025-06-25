@@ -6,7 +6,7 @@
   <widget source="global.CurrentTime" render="Label" position="95,76" size="120,40" font="Roboto_HD; 35" backgroundColor="black" transparent="1">
     <convert type="ClockToText">Default</convert>
   </widget>
-  <widget source="global.CurrentTime" render="Label" position="157,71" size="90,30" font="Roboto_HD; 27" halign="center" backgroundColor="black" transparent="1" valign="center" foregroundColor="light_red" zPosition="7">
+  <widget source="global.CurrentTime" render="Label" position="165,71" size="90,30" font="Roboto_HD; 27" halign="center" backgroundColor="black" transparent="1" valign="center" foregroundColor="light_red" zPosition="7">
     <convert type="ClockToText">Format: :%S</convert>
   </widget>
   <widget source="global.CurrentTime" render="Label" position="94,150" size="1025,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1" halign="right">
@@ -59,14 +59,14 @@
   <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="430,1001" size="35,27" alphatest="blend" />
   <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="760,1001" size="35,27" alphatest="blend" />
   <ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="1090,1001" size="35,27" alphatest="blend" />
-    <widget objectTypes="key_red,Label,Button" name="key_red" position="150,1000" size="240,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" valign="bottom"/>
-    <widget objectTypes="key_red,StaticText" source="key_red" render="Label" position="150,1000" size="240,27" zPosition="2" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" valign="bottom"/>
-    <widget objectTypes="key_green,Label,Button" name="key_green" position="480,1000" size="240,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
-    <widget objectTypes="key_green,StaticText" source="key_green" render="Label" position="480,1000" size="240,27" zPosition="2" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
-    <widget objectTypes="key_yellow,Label,Button" name="key_yellow" position="810,1000" size="240,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
-    <widget objectTypes="key_yellow,StaticText" source="key_yellow" render="Label" position="810,1000" size="240,27" zPosition="2" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
-    <widget objectTypes="key_blue,Label,Button" name="key_blue" position="1140,1000" size="240,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
-    <widget objectTypes="key_blue,StaticText" source="key_blue" render="Label" position="1140,1000" size="240,27" zPosition="2" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget objectTypes="key_red,Label,Button" name="key_red" position="150,1000" size="240,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" valign="bottom" />
+    <widget objectTypes="key_red,StaticText" source="key_red" render="Label" position="150,1000" size="240,27" zPosition="2" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" valign="bottom" />
+    <widget objectTypes="key_green,Label,Button" name="key_green" position="480,1000" size="240,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <widget objectTypes="key_green,StaticText" source="key_green" render="Label" position="480,1000" size="240,27" zPosition="2" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <widget objectTypes="key_yellow,Label,Button" name="key_yellow" position="810,1000" size="240,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <widget objectTypes="key_yellow,StaticText" source="key_yellow" render="Label" position="810,1000" size="240,27" zPosition="2" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <widget objectTypes="key_blue,Label,Button" name="key_blue" position="1140,1000" size="240,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <widget objectTypes="key_blue,StaticText" source="key_blue" render="Label" position="1140,1000" size="240,27" zPosition="2" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
   <ePixmap position="1360,998" size="60,30" pixmap="BlackHarmony/buttons/key_ok.png" alphatest="blend" />
   <ePixmap position="1540,998" size="60,30" pixmap="BlackHarmony/buttons/key_menu.png" alphatest="blend" />
   <ePixmap position="1720,998" size="60,30" pixmap="BlackHarmony/buttons/key_info.png" alphatest="blend" />
@@ -115,7 +115,8 @@
     <convert type="j00zekModServiceInfoEX">IsWidescreen</convert>
     <convert type="ConditionalShowHide" />
   </widget>
-  <ePixmap position="723,56" size="104,64" zPosition="1" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/ico_format_off_ciacho.png" alphatest="blend" />
+<ePixmap alphatest="blend" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/nodetected1.png" position="832,56" size="104,64" zPosition="0" />
+  <ePixmap position="723,56" size="104,64" zPosition="1" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/ico_format_off_ciacho2.png" alphatest="blend" />
   <widget alphatest="blend" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/ico_uhd_on_ciacho.png" position="832,56" render="Pixmap" size="104,64" source="session.CurrentService" zPosition="4">
     <convert type="j00zekModServiceInfoEX">VideoHeight</convert>
     <convert type="ValueRange">1921,2160</convert>
