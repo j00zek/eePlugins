@@ -5,7 +5,7 @@ Depends: python3-core, python3-ctypes, python3-futures3, python3-isodate, python
 Description: obsługa wtyczek Kodi-drm pod E2
 Maintainer: j00zek
 Source: http://github.com/j00zek/eePlugins
-Version: 25.06.25.1123
+Version: 25.06.26.0928
 Architecture: all
 DestinationPath: /usr/lib/enigma2/python/Plugins/Extensions
 ExcludeFolder: scripts
