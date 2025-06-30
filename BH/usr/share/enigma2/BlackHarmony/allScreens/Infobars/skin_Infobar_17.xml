@@ -1,0 +1,294 @@
+<skin>
+<screen backgroundColor="transparent" flags="wfNoBorder" name="InfoBar" position="0,0" size="1920,1080" title="InfoBar">
+  <ePixmap pixmap="BlackHarmony/bg_design/infobar_weather.png" position="25,761" size="1928,300" zPosition="-2" />
+  <widget alphatest="blend" pixmap="BlackHarmony/icons/update.png" position="775,805" render="Pixmap" size="20,20" source="session.CurrentService" zPosition="3">
+      <convert type="j00zekOPKGupgradeCheck"/>
+      <convert type="ConditionalShowHide" >Blink</convert>
+  </widget>
+  <widget alphatest="blend" pixmap="BlackHarmony/icons/ico_lan_on.png" position="1175,805" render="Pixmap" size="17,20" source="session.CurrentService" transparent="1" zPosition="2">
+    <convert type="j00zekModRouteInfo">Lan</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <ePixmap alphatest="blend" pixmap="BlackHarmony/icons/ico_dolby_off.png" position="1003,805" size="57,20" zPosition="1" />
+  <widget alphatest="blend" pixmap="BlackHarmony/icons/ico_dolby_on.png" position="1004,805" render="Pixmap" size="57,20" source="session.CurrentService" zPosition="2">
+    <convert type="ServiceInfo">IsMultichannel</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <ePixmap alphatest="blend" pixmap="BlackHarmony/icons/ico_format_off.png" position="898,805" size="36,20" zPosition="1" />
+  <widget alphatest="blend" pixmap="BlackHarmony/icons/ico_format_on.png" position="898,805" render="Pixmap" size="36,20" source="session.CurrentService" zPosition="2">
+    <convert type="ServiceInfo">IsWidescreen</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <ePixmap alphatest="blend" pixmap="BlackHarmony/icons/ico_hd_off.png" position="854,805" size="29,20" zPosition="1" />
+  <widget alphatest="blend" pixmap="BlackHarmony/icons/ico_hd_on.png" position="854,805" render="Pixmap" size="29,20" source="session.CurrentService" zPosition="2">
+    <convert type="ServiceInfo">VideoWidth</convert>
+    <convert type="ValueRange">721,1980</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <ePixmap alphatest="blend" pixmap="BlackHarmony/icons/ico_crypt_off.png" position="1075,805" size="26,20" zPosition="1" />
+  <widget alphatest="blend" pixmap="BlackHarmony/icons/ico_crypt_on.png" position="1075,805" render="Pixmap" size="26, 20" source="session.CurrentService" zPosition="2">
+    <convert type="ServiceInfo">IsCrypted</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget backgroundColor="black" font="HD_Thin; 42" halign="left" noWrap="1" position="65,797" render="Label" size="700,48" source="session.CurrentService" transparent="1" valign="top">
+    <convert type="j00zekModExtraTuner">ServiceNumberName</convert>
+  </widget>
+  <widget pixmap="BlackHarmony/gfx/progress_weather.png" position="308,918" render="Progress" size="1304,6" source="session.Event_Now" transparent="1" zPosition="1">
+    <convert type="EventTime">Progress</convert>
+  </widget>
+  <widget backgroundColor="black" font="HD_Thin; 33" halign="left" position="310,864" render="Label" size="105,38" source="session.Event_Now" transparent="1">
+    <convert type="EventTime">StartTime</convert>
+    <convert type="ClockToText">Default</convert>
+  </widget>
+  <eLabel backgroundColor="black" font="HD_Thin; 33" foregroundColor="light_grey" halign="left" position="412,864" size="20,38" text="-" transparent="1" />
+  <widget backgroundColor="black" font="HD_Thin; 33" halign="left" position="436,864" render="Label" size="1025,38" source="session.Event_Now" transparent="1">
+    <convert type="j00zekModEventName">Name</convert>
+  </widget>
+  <widget backgroundColor="black" font="HD_Thin; 33" halign="right" position="1468,864" render="Label" size="150,38" source="session.Event_Now" transparent="1">
+    <convert type="EventTime">Remaining</convert>
+    <convert type="RemainingToText">InMinutes</convert>
+  </widget>
+  <widget backgroundColor="black" font="HD_Thin; 33" foregroundColor="light_grey" halign="left" position="310,939" render="Label" size="105,38" source="session.Event_Next" transparent="1">
+    <convert type="EventTime">StartTime</convert>
+    <convert type="ClockToText">Default</convert>
+  </widget>
+  <eLabel backgroundColor="black" font="HD_Thin; 33" foregroundColor="light_grey" halign="left" position="412,939" size="20,38" text="-" transparent="1" />
+  <widget backgroundColor="black" font="HD_Thin; 33" foregroundColor="light_grey" halign="left" position="436,939" render="Label" size="1025,38" source="session.Event_Next" transparent="1">
+    <convert type="j00zekModEventName">Name</convert>
+  </widget>
+  <widget backgroundColor="black" font="HD_Thin; 33" foregroundColor="light_grey" halign="right" position="1468,939" render="Label" size="150,38" source="session.Event_Next" transparent="1">
+    <convert type="EventTime">Duration</convert>
+    <convert type="ClockToText">InMinutes</convert>
+  </widget>
+  <ePixmap alphatest="blend" pixmap="BlackHarmony/icons/ico_hbbtv_on.png" position="1116,805" size="44,20" zPosition="1" />
+  <widget alphatest="blend" pixmap="BlackHarmony/icons/ico_hbbtv_off.png" position="1116,805" render="Pixmap" size="44,20" source="session.CurrentService" zPosition="2">
+    <convert type="j00zekModServiceInfoEX">HasHBBTV</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget backgroundColor="black" font="HD_Thin; 42" halign="right" position="1720,797" render="Label" size="140,48" source="global.CurrentTime" transparent="1" valign="center">
+    <convert type="ClockToText">Default</convert>
+  </widget>
+  <widget alphatest="blend" position="65,853" render="j00zekPicons" picontype="picon" size="220,132" source="session.CurrentService" transparent="1" zPosition="4">
+    <convert type="ServiceName">Reference</convert>
+  </widget>
+  <widget backgroundColor="black" font="HD_Thin; 26" foregroundColor="light_yellow" halign="center" noWrap="1" position="1646,858" render="Label" size="205,45" source="global.CurrentTime" transparent="1" valign="center">
+    <convert type="ClockToText">Format:%d %b. %Y </convert>
+  </widget>
+  <eLabel backgroundColor="black" font="Roboto_HD; 22" foregroundColor="green" name="new eLabel" position="868,997" size="60,25" text="CAID:" transparent="1" />
+  <widget backgroundColor="black" font="Roboto_HD; 22" halign="left" position="934,997" render="Label" size="70,25" source="session.CurrentService" transparent="1" valign="top" zPosition="2">
+    <convert type="j00zekModExtraInfo">CaidID</convert>
+  </widget>
+  <widget backgroundColor="black" font="Roboto_HD; 22" halign="left" position="997,997" render="Label" size="865,25" source="session.CurrentService" transparent="1" valign="top" zPosition="2">
+    <convert type="j00zekModExtraInfo">Source</convert>
+  </widget>
+  <eLabel backgroundColor="black" font="Roboto_HD; 22" foregroundColor="white" halign="center" position="757,997" size="20,25" text="A" transparent="1" zPosition="1" />
+  <eLabel backgroundColor="black" font="Roboto_HD; 22" foregroundColor="white" halign="center" position="782,997" size="20,25" text="B" transparent="1" zPosition="1" />
+  <eLabel backgroundColor="black" font="Roboto_HD; 22" foregroundColor="white" halign="center" position="807,997" size="20,25" text="C" transparent="1" zPosition="1" />
+  <eLabel backgroundColor="black" font="Roboto_HD; 22" foregroundColor="white" halign="center" position="832,997" size="20,25" text="D" transparent="1" zPosition="1" />
+  <widget backgroundColor="black" font="Roboto_HD; 22" foregroundColor="yellow" halign="center" position="757,997" render="FixedLabel" size="20,25" source="session.TunerInfo" text="A" transparent="1" zPosition="2">
+    <convert type="TunerInfo">TunerUseMask</convert>
+    <convert type="ValueBitTest">1</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget backgroundColor="dark_blue" font="Roboto_HD; 22" foregroundColor="blue" halign="center" position="757,997" render="FixedLabel" size="20,25" source="session.FrontendInfo" text="A" transparent="1" zPosition="3">
+    <convert type="FrontendInfo">NUMBER</convert>
+    <convert type="ValueRange">0,0</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget backgroundColor="black" font="Roboto_HD; 22" foregroundColor="yellow" halign="center" position="782,997" render="FixedLabel" size="20,25" source="session.TunerInfo" text="B" transparent="1" zPosition="2">
+    <convert type="TunerInfo">TunerUseMask</convert>
+    <convert type="ValueBitTest">2</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget backgroundColor="dark_blue" font="Roboto_HD; 22" foregroundColor="blue" halign="center" position="782,997" render="FixedLabel" size="20,25" source="session.FrontendInfo" text="B" transparent="1" zPosition="3">
+    <convert type="FrontendInfo">NUMBER</convert>
+    <convert type="ValueRange">1,1</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget backgroundColor="black" font="Roboto_HD; 22" foregroundColor="yellow" halign="center" position="807,997" render="FixedLabel" size="20,25" source="session.TunerInfo" text="C" transparent="1" zPosition="2">
+    <convert type="TunerInfo">TunerUseMask</convert>
+    <convert type="ValueBitTest">4</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget backgroundColor="dark_blue" font="Roboto_HD; 22" foregroundColor="blue" halign="center" position="807,997" render="FixedLabel" size="20,25" source="session.FrontendInfo" text="C" transparent="1" zPosition="3">
+    <convert type="FrontendInfo">NUMBER</convert>
+    <convert type="ValueRange">2,2</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget backgroundColor="black" font="Roboto_HD; 22" foregroundColor="yellow" halign="center" position="832,997" render="FixedLabel" size="20,25" source="session.TunerInfo" text="D" transparent="1" zPosition="2">
+    <convert type="TunerInfo">TunerUseMask</convert>
+    <convert type="ValueBitTest">8</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget backgroundColor="dark_blue" font="Roboto_HD; 22" foregroundColor="blue" halign="center" position="832,997" render="FixedLabel" size="20,25" source="session.FrontendInfo" text="D" transparent="1" zPosition="3">
+    <convert type="FrontendInfo">NUMBER</convert>
+    <convert type="ValueRange">3,3</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget alphatest="blend" pixmap="BlackHarmony/icons/ico_rec_on.png" position="815,804" render="Pixmap" size="20,20" source="session.RecordState" zPosition="2">
+    <convert type="ConditionalShowHide">Blink</convert>
+  </widget>
+  <eLabel backgroundColor="black" font="Roboto_HD; 22" foregroundColor="white" halign="center" position="640,997" size="40,25" text="EX" transparent="1" valign="center" zPosition="1" />
+  <widget backgroundColor="black" font="Roboto_HD; 22" foregroundColor="yellow" halign="center" position="640,997" render="FixedLabel" size="40,25" source="session.CurrentService" text="EX" transparent="1" valign="center" zPosition="2">
+    <convert type="j00zekModCaidInfo2">ExsCrypt</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget backgroundColor="black" font="Roboto_HD; 22" foregroundColor="blue" halign="center" position="640,997" render="FixedLabel" size="40,25" source="session.CurrentService" text="EX" transparent="1" valign="center" zPosition="3">
+    <convert type="j00zekModCaidInfo2">ExsEcm</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <eLabel backgroundColor="black" font="Roboto_HD; 22" foregroundColor="white" halign="center" position="310,997" size="40,25" text="BE" transparent="1" valign="center" zPosition="1" />
+  <widget backgroundColor="black" font="Roboto_HD; 22" foregroundColor="yellow" halign="center" position="310,997" render="FixedLabel" size="40,25" source="session.CurrentService" text="BE" transparent="1" valign="center" zPosition="2">
+    <convert type="j00zekModCaidInfo2">BetaCrypt</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget backgroundColor="black" font="Roboto_HD; 22" foregroundColor="blue" halign="center" position="310,997" render="FixedLabel" size="40,25" source="session.CurrentService" text="BE" transparent="1" valign="center" zPosition="3">
+    <convert type="j00zekModCaidInfo2">BetaEcm</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <eLabel backgroundColor="black" font="Roboto_HD; 22" foregroundColor="white" halign="center" position="350,997" size="40,25" text="DR" transparent="1" valign="center" zPosition="1" />
+  <widget backgroundColor="black" font="Roboto_HD; 22" foregroundColor="yellow" halign="center" position="350,997" render="FixedLabel" size="40,25" source="session.CurrentService" text="DR" transparent="1" valign="center" zPosition="2">
+    <convert type="j00zekModCaidInfo2">DreamCrypt</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget backgroundColor="black" font="Roboto_HD; 22" foregroundColor="blue" halign="center" position="350,997" render="FixedLabel" size="40,25" source="session.CurrentService" text="DR" transparent="1" valign="center" zPosition="3">
+    <convert type="j00zekModCaidInfo2">DreamEcm</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <eLabel backgroundColor="black" font="Roboto_HD; 22" foregroundColor="white" halign="center" position="390,997" size="25,25" text="I" transparent="1" valign="center" zPosition="1" />
+  <widget backgroundColor="black" font="Roboto_HD; 22" foregroundColor="yellow" halign="center" position="390,997" render="FixedLabel" size="25,25" source="session.CurrentService" text="I" transparent="1" valign="center" zPosition="2">
+    <convert type="j00zekModCaidInfo2">IrdCrypt</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget backgroundColor="black" font="Roboto_HD; 22" foregroundColor="blue" halign="center" position="390,997" render="FixedLabel" size="25,25" source="session.CurrentService" text="I" transparent="1" valign="center" zPosition="3">
+    <convert type="j00zekModCaidInfo2">IrdEcm</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <eLabel backgroundColor="black" font="Roboto_HD; 22" foregroundColor="white" halign="center" position="415,997" size="25,25" text="S" transparent="1" valign="center" zPosition="1" />
+  <widget backgroundColor="black" font="Roboto_HD; 22" foregroundColor="yellow" halign="center" position="415,997" render="FixedLabel" size="25,25" source="session.CurrentService" text="S" transparent="1" valign="center" zPosition="2">
+    <convert type="j00zekModCaidInfo2">SecaCrypt</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget backgroundColor="black" font="Roboto_HD; 22" foregroundColor="blue" halign="center" position="415,997" render="FixedLabel" size="25,25" source="session.CurrentService" text="S" transparent="1" valign="center" zPosition="3">
+    <convert type="j00zekModCaidInfo2">SecaEcm</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <eLabel backgroundColor="black" font="Roboto_HD; 22" foregroundColor="white" halign="center" position="440,997" size="25,25" text="V" transparent="1" valign="center" zPosition="1" />
+  <widget backgroundColor="black" font="Roboto_HD; 22" foregroundColor="yellow" halign="center" position="440,997" render="FixedLabel" size="25,25" source="session.CurrentService" text="V" transparent="1" valign="center" zPosition="2">
+    <convert type="j00zekModCaidInfo2">ViaCrypt</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget backgroundColor="black" font="Roboto_HD; 22" foregroundColor="blue" halign="center" position="440,997" render="FixedLabel" size="25,25" source="session.CurrentService" text="V" transparent="1" valign="center" zPosition="3">
+    <convert type="j00zekModCaidInfo2">ViaEcm</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <eLabel backgroundColor="black" font="Roboto_HD; 22" foregroundColor="white" halign="center" position="465,997" size="25,25" text="N" transparent="1" valign="center" zPosition="1" />
+  <widget backgroundColor="black" font="Roboto_HD; 22" foregroundColor="yellow" halign="center" position="465,997" render="FixedLabel" size="25,25" source="session.CurrentService" text="N" transparent="1" valign="center" zPosition="2">
+    <convert type="j00zekModCaidInfo2">NagraCrypt</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget backgroundColor="black" font="Roboto_HD; 22" foregroundColor="blue" halign="center" position="465,997" render="FixedLabel" size="25,25" source="session.CurrentService" text="N" transparent="1" valign="center" zPosition="3">
+    <convert type="j00zekModCaidInfo2">NagraEcm</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <eLabel backgroundColor="black" font="Roboto_HD; 22" foregroundColor="white" halign="center" position="490,997" size="45,25" text="CW" transparent="1" valign="center" zPosition="1" />
+  <widget backgroundColor="black" font="Roboto_HD; 22" foregroundColor="yellow" halign="center" position="490,997" render="FixedLabel" size="45,25" source="session.CurrentService" text="CW" transparent="1" valign="center" zPosition="2">
+    <convert type="j00zekModCaidInfo2">CrwCrypt</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget backgroundColor="black" font="Roboto_HD; 22" foregroundColor="blue" halign="center" position="490,997" render="FixedLabel" size="45,25" source="session.CurrentService" text="CW" transparent="1" valign="center" zPosition="3">
+    <convert type="j00zekModCaidInfo2">CrwEcm</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <eLabel backgroundColor="black" font="Roboto_HD; 22" foregroundColor="white" halign="center" position="535,997" size="40,25" text="ND" transparent="1" valign="center" zPosition="1" />
+  <widget backgroundColor="black" font="Roboto_HD; 22" foregroundColor="yellow" halign="center" position="535,997" render="FixedLabel" size="40,25" source="session.CurrentService" text="ND" transparent="1" valign="center" zPosition="2">
+    <convert type="j00zekModCaidInfo2">NdsCrypt</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget backgroundColor="black" font="Roboto_HD; 22" foregroundColor="blue" halign="center" position="535,997" render="FixedLabel" size="40,25" source="session.CurrentService" text="ND" transparent="1" valign="center" zPosition="3">
+    <convert type="j00zekModCaidInfo2">NdsEcm</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <eLabel backgroundColor="black" font="Roboto_HD; 22" foregroundColor="white" halign="center" position="575,997" size="40,25" text="CO" transparent="1" valign="center" zPosition="1" />
+  <widget backgroundColor="black" font="Roboto_HD; 22" foregroundColor="yellow" halign="center" position="575,997" render="FixedLabel" size="40,25" source="session.CurrentService" text="CO" transparent="1" valign="center" zPosition="2">
+    <convert type="j00zekModCaidInfo2">ConaxCrypt</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget backgroundColor="black" font="Roboto_HD; 22" foregroundColor="blue" halign="center" position="575,997" render="FixedLabel" size="40,25" source="session.CurrentService" text="CO" transparent="1" valign="center" zPosition="3">
+    <convert type="j00zekModCaidInfo2">ConaxEcm</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <eLabel backgroundColor="black" font="Roboto_HD; 22" foregroundColor="white" halign="center" position="615,997" size="25,25" text="B" transparent="1" valign="center" zPosition="1" />
+  <widget backgroundColor="black" font="Roboto_HD; 22" foregroundColor="yellow" halign="center" position="615,997" render="FixedLabel" size="25,25" source="session.CurrentService" text="B" transparent="1" valign="center" zPosition="2">
+    <convert type="j00zekModCaidInfo2">BisCrypt</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget backgroundColor="black" font="Roboto_HD; 22" foregroundColor="blue" halign="center" position="615,997" render="FixedLabel" size="25,25" source="session.CurrentService" text="B" transparent="1" valign="center" zPosition="3">
+    <convert type="j00zekModCaidInfo2">BisEcm</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget backgroundColor="black" font="Roboto_HD; 22" foregroundColor="yellow" halign="center" position="687,997" render="FixedLabel" size="60,25" source="session.CurrentService" text="FTA" transparent="1" valign="center" zPosition="1">
+    <convert type="j00zekModServiceInfoEX">IsFta</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget backgroundColor="black" font="Roboto_HD; 22" foregroundColor="green" halign="center" position="687,997" render="FixedLabel" size="60,25" source="session.CurrentService" text="NET" transparent="1" valign="center" zPosition="2">
+    <convert type="j00zekModCaidInfo2">Net</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget backgroundColor="black" font="Roboto_HD; 22" foregroundColor="blue" halign="center" position="687,997" render="FixedLabel" size="60,25" source="session.CurrentService" text="CRD" transparent="1" valign="center" zPosition="3">
+    <convert type="j00zekModCaidInfo2">Crd</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget backgroundColor="black" font="Roboto_HD; 22" foregroundColor="orange" halign="center" position="687,997" render="FixedLabel" size="60,25" source="session.CurrentService" text="EMU" transparent="1" valign="center" zPosition="4">
+    <convert type="j00zekModCaidInfo2">Emu</convert>
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget backgroundColor="background" font="HD_Thin; 23" foregroundColor="light_yellow" halign="right" noWrap="1" position="1204,807" render="Label" size="70,30" source="session.j00zekMSNWeather" transparent="0" zPosition="3">
+    <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
+  </widget>
+  <widget alphatest="blend" position="1296,799" render="j00zekMSNWeatherPixmap" size="50,50" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
+    <convert type="j00zekMSNWeather">weathericon,current</convert>
+  </widget>
+  <ePixmap alphatest="blend" pixmap="BlackHarmony/weather_icons/wiatr.png" position="1585,807" size="30,30" transparent="1" zPosition="3" />
+  <ePixmap alphatest="blend" pixmap="BlackHarmony/weather_icons/deszcz.png" position="1465,807" size="28,30" transparent="1" zPosition="4" />
+  <ePixmap alphatest="blend" pixmap="BlackHarmony/weather_icons/temp.png" position="1423,797" size="20,50" transparent="1" zPosition="3" />
+  <widget backgroundColor="black" font="Roboto_HD; 21" halign="right" position="1345,797" render="Label" size="65,25" source="session.j00zekMSNWeather" transparent="1" valign="center" zPosition="3">
+    <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=0']['temp_high']|C</convert>
+  </widget>
+  <widget backgroundColor="black" font="Roboto_HD; 21" halign="right" position="1345,822" render="Label" size="65,25" source="session.j00zekMSNWeather" transparent="1" valign="center" zPosition="3">
+    <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=0']['temp_low']|C</convert>
+  </widget>
+  <widget backgroundColor="black" font="Roboto_HD; 21" foregroundColor="white" halign="left" position="1633,812" render="Label" size="100,25" source="session.j00zekMSNWeather" transparent="1" zPosition="3">
+    <convert type="j00zekMSNWeather">RUN|['currentData']['wind_speed']['valInfo']</convert>
+  </widget>
+  <widget backgroundColor="black" font="Roboto_HD; 21" foregroundColor="white" halign="left" position="1510,810" render="Label" size="90,25" source="session.j00zekMSNWeather" transparent="1" zPosition="3">
+    <convert type="j00zekMSNWeather">RUN|['currentData']['humidity']['valInfo']</convert>
+  </widget>
+  <widget backgroundColor="black" font="Roboto_HD; 22" halign="left" noWrap="1" position="1700,917" render="Label" size="50,25" source="session.FrontendStatus" transparent="1">
+    <convert type="j00zekModFrontendInfo">SNR</convert>
+  </widget>
+  <widget backgroundColor="black" font="Roboto_HD; 22" halign="left" position="1700,957" render="Label" size="50,25" source="session.CurrentService" transparent="1" zPosition="3">
+    <convert type="j00zekModCpuUsage">Total</convert>
+  </widget>
+  <widget backgroundColor="background" font="Roboto_HD; 22" halign="left" noWrap="1" position="1817,957" render="Label" size="106,25" source="session.CurrentService" transparent="1">
+  <convert type="j00zekModFanTempInfo">TempInfo</convert>
+  </widget>
+  <widget backgroundColor="black" font="Roboto_HD; 22" halign="left" position="1817,917" render="Label" size="60,25" source="session.FrontendStatus" transparent="1" zPosition="1">
+    <convert type="FrontendInfo">AGC</convert>
+  </widget>
+  <widget source="session.CurrentService" render="Label" position="1734,997" size="150,25" font="Roboto_HD; 22" halign="left" zPosition="3" backgroundColor="black" transparent="1">
+    <convert type="j00zekBitrate_BH">VideoBitrateUnits</convert>
+  </widget>
+  <eLabel backgroundColor="black" font="Roboto_HD; 22" foregroundColor="yellow" halign="left" position="1757,917" size="65,25" text="AGC:" transparent="1" />
+  <eLabel backgroundColor="black" font="Roboto_HD; 22" foregroundColor="red" halign="left" position="1757,957" size="65,25" text="TMP:" transparent="1" />
+  <eLabel backgroundColor="black" font="Roboto_HD; 22" foregroundColor="green" halign="left" position="1643,917" size="65,25" text="SNR:" transparent="1" />
+  <eLabel backgroundColor="black" font="Roboto_HD; 22" foregroundColor="blue" halign="left" position="1643,957" size="65,25" text="CPU:" transparent="1" />
+  <eLabel text="BTR:" position="1670,997" size="65,25" font="Roboto_HD; 22" backgroundColor="black" halign="left" transparent="1" foregroundColor="orange" />
+  <widget source="session.CurrentService" render="j00zekVideoResolutionIcon" position="950,805" size="37,20" zPosition="4" alphatest="blend"/>  
+  <ePixmap alphatest="blend" pixmap="BlackHarmony/icons/ico_sd_off_576.png" position="950,805" size="37,20" zPosition="0" />
+  <!-- emuname info -->
+  <widget source="session.CurrentService" render="Label" position="60,997" size="235,25" font="HD_Thin; 22" halign="right" foregroundColor="light_grey" backgroundColor="Background" transparent="1" noWrap="1"  valign="center" zPosition="3">
+      <convert type="j00zekModEmuName">camd</convert>
+  </widget>  
+</screen>
+</skin>

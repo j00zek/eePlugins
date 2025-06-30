@@ -1,0 +1,35 @@
+ <skin>
+  <screen name="AdvancedMovieSelection_Rename" position="345,93" size="1232,908" title="CrossEPG Configuration" flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="0,0" zPosition="-10" size="1232,908" pixmap="BlackHarmony/bg_design/mainbg.png" />
+    <eLabel text="AdvancedMovieSelection-Rename "  position="560,25" size="620,45" font="Roboto_HD; 32" halign="right" backgroundColor="dark_grey" transparent="1" />
+    <widget source="global.CurrentTime" render="Label" position="40,25" size="100,35" font="Roboto_HD; 28" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="140,25" size="460,40" font="Roboto_HD; 28" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+    <widget name="HelpWindow" pixmap="skin_default/vkey_icon.png" position="520,750" zPosition="1" size="1,1" transparent="1" alphatest="on" />
+    <widget name="Path" position="500,130" size="770,28" font="Regular;24" halign="left" transparent="1" />
+    <widget name="config"  position="65,250" size="1095,640" font="Roboto_HD; 28" itemHeight="40" enableWrapAround="1"    scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_1095_40.png" backgroundColor="black" transparent="1" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="41,850" size="35,27" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="328,850" size="35,27" alphatest="blend" />
+    <widget source="key_red" render="Label"  position="91,849" size="200,32" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <widget source="key_green" render="Label" position="378,849" size="200,32" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+  </screen>
+  <screen name="YoutubeTVSettings" position="465,135" size="1000,500" title=" " flags="wfNoBorder" backgroundColor="transparent">
+    <eLabel text="YouTube TV Settings" position="561,30" size="380,35" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1" />
+    <ePixmap position="0,0" zPosition="-10" size="1000,820" pixmap="BlackHarmony/bg_design/short.png" />
+    <widget source="global.CurrentTime" render="Label" position="45,30" size="100,35" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="160,30" size="360,35" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+    <widget name="config" font="Roboto_HD; 27" position="73,140" size="850,240" itemHeight="35" enableWrapAround="1"  scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_845_35.png" backgroundColor="transpBlack" transparent="1" />
+	 <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="47,440" size="35,27" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="273,440" size="35,27" alphatest="blend" />
+
+    <widget source="key_red" render="Label" position="87,439" size="180,32" zPosition="1" font="Roboto_HD; 24" halign="left" foregroundColor="white" backgroundColor="dark_grey" transparent="1" />
+    <widget source="key_green" render="Label" position="313,439" size="180,32" zPosition="1" font="Roboto_HD; 24" halign="left" foregroundColor="white" backgroundColor="dark_grey" transparent="1" />
+  </screen>
+</skin>

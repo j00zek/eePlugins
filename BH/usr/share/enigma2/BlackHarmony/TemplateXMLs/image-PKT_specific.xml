@@ -1,0 +1,643 @@
+<skin>
+	<!-- >>>>>>>>>> PKT SPECIFIC SCREENS <<<<<<<<<< -->
+	<screen name="PluginBrowser" position="345,93" size="1232,908" title=" " flags="wfNoBorder" backgroundColor="transparent">
+		<ePixmap position="0,0" zPosition="-10" size="1232,908" pixmap="BlackHarmony/bg_design/mainbg.png" />
+		<widget source="global.CurrentTime" render="Label" position="40,25" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="125,25" size="460,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<widget source="session.CurrentService" render="Label" position="860,25" size="320,30" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1" foregroundColor="green">
+			<convert type="j00zekAlternateTitle">Plugin browser</convert>
+		</widget>
+		<!-- Na openPLi i openVix nie dziala skalowanie pluginlist wiec nzawy sa ucinane na 440 pikselach -->
+		<widget name="list" position="65,147" scrollbarMode="showOnDemand" size="1095,630" itemHeight="70" zPosition="3" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" selectionPixmap="BlackHarmony/menu/sel_1095_70.png" backgroundColor="background" transparent="1">
+			<!--convert type="TemplatedMultiContent">{"template": 
+                        [
+                            MultiContentEntryText(pos = (55, 8), size = (1020, 35), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 0),
+                            MultiContentEntryText(pos = (55, 45), size = (1020, 35), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 2),
+                            MultiContentEntryPixmapAlphaTest(pos = (5, 20), size = (48, 48), png = 4), # index 4 is the status pixmap
+                        ],
+                        "fonts": [gFont("Regular", 26),gFont("Regular", 22)],
+                        "itemHeight": 70
+                    }</convert-->
+		</widget>
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="41,850" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="348,850" size="35,27" alphatest="blend" />
+		<!--ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="615,850" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="902,850" size="35,27" alphatest="blend"/-->
+		<widget objectTypes="key_red,Label,Button" name="key_red" position="91,849" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+		<widget objectTypes="key_red,StaticText" source="key_red" render="Label" position="91,849" size="250,27" zPosition="2" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+		<widget objectTypes="key_green,Label,Button" name="key_green" position="400,850" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+		<widget objectTypes="key_green,StaticText" source="key_green" render="Label" position="400,851" size="250,27" zPosition="2" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+		<!--widget name="yellow" position="665,849" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget name="blue" position="952,849" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/-->
+	</screen>
+	<!-- About -->
+	<screen name="About" position="345,93" size="1232,908" title="About" flags="wfNoBorder" backgroundColor="transparent">
+		<eLabel text="About" position="960,26" size="220,30" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1" />
+		<ePixmap position="0,0" zPosition="-10" size="1232,908" pixmap="BlackHarmony/bg_design/mainbg.png" />
+		<ePixmap position="885,584" zPosition="1" size="280,210" pixmap="BlackHarmony/prev.png" alphatest="blend" />
+		<widget source="global.CurrentTime" render="Label" position="44,26" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="129,26" size="460,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<widget name="AboutScrollLabel" font="Regular; 25" position="66,122" size="750,625" zPosition="2" halign="left" />
+		<!--eLabel backgroundColor="black" font="Roboto_HD; 26" foregroundColor="lemon" position="65,760" size="210,32" text="Support for skin:" transparent="1" />
+    <eLabel backgroundColor="black" font="Roboto_HD; 26" foregroundColor="white" position="285,759" size="430,32" text="www.sat-4-all.com" transparent="1" /-->
+		<widget source="session.CurrentService" render="Label" position="885,741" size="280,30" font="HD_Thin; 28" halign="center" backgroundColor="background" transparent="1" zPosition="5" foregroundColor="light_yellow">
+			<convert type="j00zekOPKGversionBHcheck" />
+		</widget>
+	</screen>
+	<!-- PKT BluePanel -->
+	<screen name="BPanel" position="365,145" size="1200,881" title="PKTeam BluePanel" backgroundColor="transpBlack">
+		<widget name="Level" position="223,1" size="675,45" font="Roboto_HD; 34" halign="center" valign="center" foregroundColor="blue" backgroundColor="transpBlack_1" />
+		<widget name="Opis" position="29,751" size="1110,40" font="Roboto_HD; 28" halign="center" valign="center" foregroundColor="green" backgroundColor="transpBlack_1" />
+		<widget source="global.Immidiet" render="Pixmap" position="44,55" size="230,160" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/frame.png" alphatest="blend" zPosition="-1">
+			<convert type="BP_PKT">frame</convert>
+			<convert type="ValueRange">0,0</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="global.Immidiet" render="Pixmap" position="333,54" size="230,160" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/frame.png" alphatest="blend" zPosition="-1">
+			<convert type="BP_PKT">frame</convert>
+			<convert type="ValueRange">1,1</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="global.Immidiet" render="Pixmap" position="622,54" size="230,160" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/frame.png" alphatest="blend" zPosition="-1">
+			<convert type="BP_PKT">frame</convert>
+			<convert type="ValueRange">2,2</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="global.Immidiet" render="Pixmap" position="903,54" size="230,160" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/frame.png" alphatest="blend" zPosition="-1">
+			<convert type="BP_PKT">frame</convert>
+			<convert type="ValueRange">3,3</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="global.Immidiet" render="Pixmap" position="44,277" size="230,160" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/frame.png" alphatest="blend" zPosition="-1">
+			<convert type="BP_PKT">frame</convert>
+			<convert type="ValueRange">4,4</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="global.Immidiet" render="Pixmap" position="334,279" size="230,160" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/frame.png" alphatest="blend" zPosition="-1">
+			<convert type="BP_PKT">frame</convert>
+			<convert type="ValueRange">5,5</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="global.Immidiet" render="Pixmap" position="623,277" size="230,160" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/frame.png" alphatest="blend" zPosition="-1">
+			<convert type="BP_PKT">frame</convert>
+			<convert type="ValueRange">6,6</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="global.Immidiet" render="Pixmap" position="903,277" size="230,160" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/frame.png" alphatest="blend" zPosition="-1">
+			<convert type="BP_PKT">frame</convert>
+			<convert type="ValueRange">7,7</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="global.Immidiet" render="Pixmap" position="44,526" size="230,160" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/frame.png" alphatest="blend" zPosition="-1">
+			<convert type="BP_PKT">frame</convert>
+			<convert type="ValueRange">8,8</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="global.Immidiet" render="Pixmap" position="333,522" size="230,160" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/frame.png" alphatest="blend" zPosition="-1">
+			<convert type="BP_PKT">frame</convert>
+			<convert type="ValueRange">9,9</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="global.Immidiet" render="Pixmap" position="628,520" size="230,160" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/frame.png" alphatest="blend" zPosition="-1">
+			<convert type="BP_PKT">frame</convert>
+			<convert type="ValueRange">10,10</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="global.Immidiet" render="Pixmap" position="910,517" size="230,161" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/frame.png" alphatest="blend" zPosition="-1">
+			<convert type="BP_PKT">frame</convert>
+			<convert type="ValueRange">11,11</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget name="0" position="29,220" size="260,53" font="Roboto_HD; 26" halign="center" valign="top" foregroundColor="green" />
+		<widget name="1" position="313,220" size="260,53" font="Roboto_HD; 26" halign="center" valign="top" foregroundColor="green" />
+		<widget name="2" position="602,218" size="260,55" font="Roboto_HD; 26" halign="center" valign="top" foregroundColor="green" />
+		<widget name="3" position="883,220" size="260,53" font="Roboto_HD; 26" halign="center" valign="top" foregroundColor="green" />
+		<widget name="4" position="30,445" size="260,60" font="Roboto_HD; 26" halign="center" valign="top" foregroundColor="green" />
+		<widget name="5" position="318,445" size="260,60" font="Roboto_HD; 26" halign="center" valign="top" foregroundColor="green" />
+		<widget name="6" position="608,444" size="260,61" font="Roboto_HD; 26" halign="center" valign="top" foregroundColor="green" />
+		<widget name="7" position="888,445" size="260,60" font="Roboto_HD; 26" halign="center" valign="top" foregroundColor="green" />
+		<widget name="8" position="26,689" size="260,60" font="Roboto_HD; 26" halign="center" valign="top" foregroundColor="green" />
+		<widget name="9" position="323,689" size="260,60" font="Roboto_HD; 26" halign="center" valign="top" foregroundColor="green" />
+		<widget name="10" position="615,689" size="260,60" font="Roboto_HD; 26" halign="center" valign="top" foregroundColor="green" />
+		<widget name="11" position="891,689" size="260,60" font="Roboto_HD; 26" halign="center" valign="top" foregroundColor="green" />
+		<widget name="I0" position="72,86" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/hdd.png" alphatest="blend" />
+		<widget name="I1" position="359,86" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/system.png" alphatest="blend" />
+		<widget name="I2" position="649,86" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/multi.png" alphatest="blend" />
+		<widget name="I3" position="933,86" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/plugins.png" alphatest="blend" />
+		<widget name="I4" position="68,308" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/settings.png" alphatest="blend" />
+		<widget name="I5" position="362,308" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/network.png" alphatest="blend" />
+		<widget name="I6" position="650,308" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/actual.png" alphatest="blend" />
+		<widget name="I7" position="929,308" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/info.png" alphatest="blend" />
+		<widget name="I8" position="69,552" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/addons.png" alphatest="blend" />
+		<widget name="I9" position="359,552" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/green.png" alphatest="blend" />
+		<widget name="I10" position="653,552" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/yellow.png" alphatest="blend" />
+		<widget name="I11" position="936,552" size="180,100" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/PKT/icon/blue.png" alphatest="blend" />
+		<ePixmap position="431,796" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
+	</screen>
+	<!-- PKT Console -->
+	<screen name="PKTConsole" position="365,145" size="1200,800" title="Command execution...">
+		<widget name="text" position="19,0" size="1160,800" font="Roboto_HD; 24" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="lemon" scrollbarSliderBorderColor="lemon" backgroundColor="background" transparent="1" foregroundColor="lemon" />
+	</screen>
+	<!-- PKT Ic -->
+	<screen name="PKTinfoCenter" position="0,0" size="1920,1080" title="Infocenter" flags="wfNoBorder" backgroundColor="transparent">
+		<ePixmap position="0,-42" zPosition="-10" size="1920,1070" pixmap="BlackHarmony/bg_design/big.png" />
+		<widget source="Title" render="Label" position="1270,111" size="420,30" font="Roboto_HD; 27" halign="right" backgroundColor="transpBlack_1" transparent="1" foregroundColor="font_green">
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="174,103" size="80,30" font="Roboto_HD; 27" backgroundColor="transpBlack_1" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="261,101" size="460,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="transpBlack_1" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<widget name="EnigmaVersion" position="373,176" size="690,40" font="LCD; 34" halign="center" valign="center" foregroundColor="font_green" backgroundColor="transpBlack_1" />
+		<widget name="CPUus" position="171,230" size="180,35" font="Roboto_HD; 28" halign="left" foregroundColor="lemon" backgroundColor="transpBlack_1" />
+		<widget name="CPUusage" position="373,230" size="180,35" font="Roboto_HD;28" halign="left" />
+		<widget name="CPU" position="610,228" size="450,35" font="LCD; 30" halign="left" foregroundColor="font_green" />
+		<widget name="CPUtemp" position="171,271" size="180,35" font="Roboto_HD;28" foregroundColor="lemon" />
+		<widget name="CPUt" position="373,271" size="180,35" font="Roboto_HD;28" halign="left" />
+		<widget name="MEMus" position="171,308" size="180,35" font="Roboto_HD;28" halign="left" foregroundColor="lemon" />
+		<widget name="MEMusage" position="373,311" size="180,35" font="Roboto_HD;28" halign="left" />
+		<widget name="MEMfr" position="619,293" size="180,35" font="Roboto_HD; 28" halign="left" transparent="1" backgroundColor="transpBlack_1" foregroundColor="lemon" />
+		<widget name="MEMfree" position="840,294" size="180,35" font="Roboto_HD;28" halign="left" />
+		<widget name="SWAPus" position="171,349" size="180,35" font="Roboto_HD; 28" halign="left" foregroundColor="lemon" />
+		<widget name="SWAPused" position="370,353" size="180,35" font="Roboto_HD;28" halign="left" />
+		<widget name="SWAP" position="619,337" size="180,35" font="Roboto_HD; 28" halign="left" transparent="1" backgroundColor="transpBlack_1" foregroundColor="lemon" />
+		<widget name="SWAPsize" position="838,336" size="180,35" font="Roboto_HD; 28" halign="left" />
+		<widget name="Where" position="171,394" size="180,35" font="Roboto_HD; 28" halign="left" foregroundColor="lemon" />
+		<widget name="WhereMod" position="369,393" size="180,35" font="Roboto_HD;28" halign="left" />
+		<widget name="UPt" position="617,380" size="180,35" font="Roboto_HD; 28" halign="left" foregroundColor="lemon" />
+		<widget name="UPtime" position="838,380" size="180,35" font="Roboto_HD; 28" halign="left" />
+		<widget name="SYS" position="171,434" size="180,35" font="Roboto_HD;26" halign="left" foregroundColor="lemon" />
+		<widget name="SYSuse" position="373,435" size="180,35" font="Roboto_HD; 28" halign="left" />
+		<widget name="SYSf" position="617,426" size="180,35" font="Roboto_HD; 28" halign="left" foregroundColor="lemon" />
+		<widget name="SYSfree" position="838,427" size="180,35" font="Roboto_HD; 28" halign="left" />
+		<widget name="HDD" position="171,477" size="180,35" font="Roboto_HD;28" halign="left" foregroundColor="lemon" />
+		<widget name="HDDmount" position="370,479" size="180,35" font="Roboto_HD; 28" halign="left" />
+		<widget name="HDDmodel" position="616,477" size="450,35" font="Roboto_HD; 28" halign="left" foregroundColor="font_green" />
+		<widget name="HDDsi" position="171,522" size="180,35" font="Roboto_HD; 28" halign="left" foregroundColor="lemon" />
+		<widget name="HDDsize" position="374,523" size="180,35" font="Roboto_HD; 28" halign="left" />
+		<widget name="HDDfr" position="615,524" size="180,35" font="Roboto_HD; 28" halign="left" foregroundColor="lemon" />
+		<widget name="HDDfree" position="837,527" size="180,35" font="Roboto_HD; 28" halign="left" />
+		<widget name="HDDt" position="171,525" size="180,35" font="Roboto_HD; 28" halign="left" foregroundColor="lemon" />
+		<widget name="HDDtemp" position="373,524" size="180,35" font="Roboto_HD; 28" halign="left" />
+		<widget name="Movie" position="165,611" size="220,35" font="Roboto_HD; 28" halign="left" foregroundColor="lemon" />
+		<widget name="MovieFr" position="391,611" size="180,35" font="Roboto_HD; 28" halign="left" />
+		<widget name="MovieFree" position="617,612" size="180,35" font="Roboto_HD; 28" halign="left" foregroundColor="lemon" backgroundColor="transpBlack_1" />
+		<widget name="MovieT" position="165,659" size="180,35" font="Roboto_HD; 28" halign="left" foregroundColor="lemon" backgroundColor="transpBlack_1" />
+		<widget name="MovieTemp" position="389,657" size="180,35" font="Roboto_HD; 28" halign="left" backgroundColor="transpBlack_1" />
+		<widget name="NetIP" position="169,567" size="180,35" font="Roboto_HD; 28" halign="left" foregroundColor="lemon" />
+		<widget name="IP" position="373,566" size="221,35" font="Roboto_HD; 28" halign="left" />
+		<eLabel text="SNR:" position="176,746" size="80,35" font="Roboto_HD; 28" halign="left" foregroundColor="green" backgroundColor="transpBlack_1" />
+		<widget source="session.FrontendStatus" render="Label" position="265,744" size="100,35" font="Roboto_HD; 28" halign="left" backgroundColor="transpBlack_1">
+			<convert type="FrontendInfo">SNR</convert>
+		</widget>
+		<eLabel text="AGC:" position="404,744" size="80,35" font="Roboto_HD; 28" halign="left" foregroundColor="green" backgroundColor="transpBlack_1" />
+		<widget source="session.FrontendStatus" render="Label" position="486,745" size="100,35" font="Roboto_HD; 28" halign="left" backgroundColor="transpBlack_1">
+			<convert type="FrontendInfo">AGC</convert>
+		</widget>
+		<widget name="BR" position="1167,255" size="550,35" font="Roboto_HD;28" halign="left" foregroundColor="font_green" />
+		<widget name="CR" position="1171,306" size="550,320" font="Roboto_HD; 28" halign="left" foregroundColor="lemon" backgroundColor="transpBlack_1" transparent="1" zPosition="1" />
+		<widget name="AR" position="1176,353" size="180,35" font="Roboto_HD; 28" halign="left" foregroundColor="lemon" />
+		<widget name="MAX" position="1176,391" size="180,35" font="Roboto_HD; 28" halign="left" foregroundColor="lemon" />
+		<widget name="MIN" position="1177,428" size="180,35" font="Roboto_HD; 28" halign="left" foregroundColor="lemon" />
+		<widget name="vcur" position="1389,314" size="130,35" font="Roboto_HD; 28" halign="center" foregroundColor="lemon" />
+		<widget name="vavg" position="1388,354" size="130,35" font="Roboto_HD; 28" halign="center" />
+		<widget name="vmax" position="1388,391" size="130,35" font="Roboto_HD; 28" halign="center" />
+		<widget name="vmin" position="1389,424" size="130,35" font="Roboto_HD;26" halign="center" />
+		<widget name="acur" position="1535,313" size="180,35" font="Roboto_HD; 28" halign="center" foregroundColor="lemon" />
+		<widget name="aavg" position="1535,350" size="180,35" font="Roboto_HD; 28" halign="center" />
+		<widget name="amax" position="1534,388" size="180,35" font="Roboto_HD; 28" halign="center" />
+		<widget name="amin" position="1533,425" size="180,35" font="Roboto_HD; 28" halign="center" />
+		<widget name="OscamShow" position="1177,677" size="530,126" alphatest="on" transparent="1" zPosition="-1" scale="on" />
+		<widget name="_oscam" position="1280,687" size="295,105" font="Roboto_HD; 22" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" />
+		<widget name="Green" position="362,859" size="300,35" font="Roboto_HD;30" halign="left" valign="center" foregroundColor="green" backgroundColor="transpBlack_1" />
+		<eLabel text="Processes" position="729,858" size="300,35" font="Roboto_HD;30" halign="left" valign="center" foregroundColor="yellow" backgroundColor="transpBlack_1" />
+		<widget name="Blue" position="1106,858" size="300,35" font="Roboto_HD;30" halign="left" valign="center" foregroundColor="blue" backgroundColor="transpBlack_1" />
+		<ePixmap position="732,722" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
+	</screen>
+	<!-- PKT Yellow -->
+	<screen name="PKTinfoCenterYellow" position="center,center" size="743,916" title="IC_Proc">
+		<widget name="Proc" position="23,11" size="690,895" font="Roboto_HD;28" itemHeight="40" halign="left" foregroundColor="lemon" backgroundColor="transpBlack_1" />
+	</screen>
+	<!-- PKT Flashext -->
+	<screen name="FlashExtender" position="363,132" size="1200,687" title="PKT Flash Extender">
+		<widget name="infoTXT" position="45,105" size="1110,40" font="Roboto_HD;30" halign="center" valign="center" foregroundColor="lemon" backgroundColor="transpBlack_1" />
+		<widget name="devlist" position="115,179" size="500,35" font="Roboto_HD;28" itemHeight="35" />
+		<ePixmap pixmap="BlackHarmony/gfx/hyperion-logo.png" position="422,378" size="324,68" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/left.png" position="45,185" size="63,30" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/right.png" position="635,184" size="61,31" alphatest="blend" />
+		<widget name="freeS" position="705,180" size="200,35" font="Roboto_HD; 28" halign="right" valign="center" foregroundColor="lemon" backgroundColor="transpBlack_1" />
+		<widget name="freespace" position="920,180" size="220,35" font="Roboto_HD; 28" halign="left" valign="center" backgroundColor="transpBlack_1" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="85,620" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="348,620" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="615,620" size="35,27" alphatest="blend" />
+		<widget source="key_red" render="Label" position="131,620" size="200,40" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<widget source="key_green" render="Label" position="398,620" size="200,40" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<widget source="key_yellow" render="Label" position="663,620" size="400,40" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+	</screen>
+	<!-- PKT Dlna -->
+	<screen name="DlnaSetup" position="363,132" size="1200,892" title="PKTeam DLNA Manager">
+		<widget name="config" position="115,62" size="943,731" font="Roboto_HD; 28" itemHeight="45" scrollbarMode="showOnDemand" scrollbarWidth="7" scrollbarSliderBorderColor="lemon" scrollbarSliderForegroundColor="lemon" foregroundColor="lemon" backgroundColor="transpBlack_1" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="78,833" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="323,834" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="566,833" size="35,27" alphatest="blend" />
+		<widget source="key_red" render="Label" position="115,832" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<widget source="key_green" render="Label" position="363,831" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<widget source="key_yellow" render="Label" position="603,828" size="400,35" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+	</screen>
+	<!-- PKT Install Manager - Disk Manager -->
+	<screen name="DiskManager" position="363,132" size="1206,705" title="PKT Install Manager - Disk Manager">
+		<widget name="config" position="114,62" size="963,502" font="Roboto_HD; 28" itemHeight="45" scrollbarMode="showOnDemand" scrollbarWidth="7" scrollbarSliderBorderColor="lemon" scrollbarSliderForegroundColor="lemon" foregroundColor="lemon" backgroundColor="transpBlack_1" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="23,618" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="218,619" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="499,620" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="797,622" size="35,27" alphatest="blend" />
+		<widget source="key_red" render="Label" position="61,621" size="147,40" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<widget source="key_green" render="Label" position="256,621" size="239,40" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<widget source="key_yellow" render="Label" position="538,622" size="256,40" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<widget source="key_blue" render="Label" position="835,620" size="268,40" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<ePixmap pixmap="BlackHarmony/buttons/menu.png" position="1131,623" size="65,38" alphatest="blend" />
+	</screen>
+	<!-- PKTeam Samba Server Manager -->
+	<screen name="SmbSetup" position="363,132" size="1200,892" title="PKTeam Samba Server Manager">
+		<widget name="config" position="114,42" size="971,668" font="Roboto_HD; 28" itemHeight="45" scrollbarMode="showOnDemand" scrollbarWidth="7" scrollbarSliderBorderColor="lemon" scrollbarSliderForegroundColor="lemon" foregroundColor="lemon" backgroundColor="transpBlack_1" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="78,833" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="323,834" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="566,833" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="826,828" size="35,27" alphatest="blend" />
+		<widget source="key_red" render="Label" position="115,832" size="200,39" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<widget source="key_green" render="Label" position="363,831" size="200,40" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<widget source="key_yellow" render="Label" position="603,828" size="218,43" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<widget source="key_blue" render="Label" position="865,829" size="218,42" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<ePixmap position="431,734" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
+	</screen>
+	<!-- PKT Auto Standby -->
+	<screen name="AutoStandby" position="363,132" size="1200,884" title="PKT Auto Standby">
+		<widget name="config" position="115,17" size="970,576" font="Roboto_HD; 28" itemHeight="45" scrollbarMode="showOnDemand" scrollbarWidth="7" scrollbarSliderBorderColor="lemon" scrollbarSliderForegroundColor="lemon" foregroundColor="lemon" backgroundColor="transpBlack_1" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="78,833" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="323,834" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="566,833" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="826,828" size="35,27" alphatest="blend" />
+		<widget source="key_red" render="Label" position="115,832" size="200,39" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<widget source="key_green" render="Label" position="363,831" size="200,40" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<widget source="key_yellow" render="Label" position="603,828" size="218,43" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<widget source="key_blue" render="Label" position="865,829" size="218,42" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<ePixmap position="425,657" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
+	</screen>
+	<!-- PKTeam FrontPanel Setup 2.6 -->
+	<screen name="FPSetup" position="363,132" size="1200,720" title="PKTeam FrontPanel Setup 2.6">
+		<widget name="config" position="112,30" size="970,489" font="Roboto_HD; 28" itemHeight="45" scrollbarMode="showOnDemand" scrollbarWidth="7" scrollbarSliderBorderColor="lemon" scrollbarSliderForegroundColor="lemon" foregroundColor="lemon" backgroundColor="transpBlack_1" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="86,622" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="329,626" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="578,627" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="840,627" size="35,27" alphatest="blend" />
+		<widget source="key_red" render="Label" position="125,624" size="200,39" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<widget source="key_green" render="Label" position="372,624" size="200,40" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<widget source="key_yellow" render="Label" position="618,628" size="218,43" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<widget source="key_blue" render="Label" position="882,627" size="218,42" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<ePixmap position="449,535" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
+	</screen>
+	<!-- PKT Sync Time -->
+	<screen name="MakeSync" position="363,132" size="1200,853" title="PKT Sync Time">
+		<widget name="config" position="173,17" size="850,614" font="Roboto_HD; 28" itemHeight="45" scrollbarMode="showOnDemand" scrollbarWidth="7" scrollbarSliderBorderColor="lemon" scrollbarSliderForegroundColor="lemon" foregroundColor="lemon" backgroundColor="transpBlack_1" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="183,778" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="458,780" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="729,781" size="35,27" alphatest="blend" />
+		<widget source="key_red" render="Label" position="224,782" size="200,44" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="black" transparent="1" />
+		<widget source="key_green" render="Label" position="501,781" size="200,45" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="black" transparent="1" />
+		<widget source="key_blue" render="Label" position="771,784" size="218,47" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="black" transparent="1" />
+		<ePixmap position="421,655" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
+	</screen>
+	<!-- PKT Speed Test -->
+	<screen name="SpeedTest" position="363,132" size="1017,677" title="PKT Speed Test">
+		<widget name="obrazek" position="204,34" size="580,400" font="Roboto_HD; 30" halign="center" valign="center" alphatest="blend" scale="on" foregroundColor="lemon" backgroundColor="transpBlack_1" />
+		<widget name="tekst" position="140,455" size="690,40" font="Roboto_HD;28" halign="center" valign="center" foregroundColor="lemon" backgroundColor="transpBlack_1" />
+		<ePixmap position="322,517" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="182,617" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="521,621" size="35,27" alphatest="blend" />
+		<widget source="key_red" render="Label" position="225,617" size="200,44" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<widget source="key_green" render="Label" position="570,619" size="200,45" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+	</screen>
+	<!-- PKT Set Password -->
+	<screen name="SetPasswd" position="363,122" size="1144,698" title="PKT Set Password">
+		<widget name="passwordstatus" position="77,317" size="974,35" font="Roboto_HD; 28" itemHeight="40" scrollbarMode="showOnDemand" />
+		<ePixmap position="379,121" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="32,603" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="286,602" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="552,606" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="827,606" size="35,27" alphatest="blend" />
+		<widget source="key_red" render="Label" position="78,603" size="200,39" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="black" transparent="1" />
+		<widget source="key_green" render="Label" position="339,604" size="200,40" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="black" transparent="1" />
+		<widget source="key_yellow" render="Label" position="599,604" size="218,43" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="black" transparent="1" />
+		<widget source="key_blue" render="Label" position="870,601" size="218,42" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="black" transparent="1" />
+	</screen>
+	<!-- PKT JDownloader Setup v1.4 -->
+	<screen name="JDownloaderSetup" position="363,132" size="1158,705" title="PKT JDownloader Setup v1.4">
+		<widget name="config" position="78,17" size="1004,435" font="Roboto_HD; 28" itemHeight="45" scrollbarMode="showOnDemand" scrollbarWidth="7" scrollbarSliderBorderColor="lemon" scrollbarSliderForegroundColor="lemon" foregroundColor="lemon" backgroundColor="transpBlack_1" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="62,590" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="308,592" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="555,591" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="818,595" size="35,27" alphatest="blend" />
+		<widget source="key_red" render="Label" position="103,593" size="200,39" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<widget source="key_green" render="Label" position="350,592" size="200,40" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<widget source="key_yellow" render="Label" position="593,594" size="218,43" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<widget source="key_blue" render="Label" position="862,594" size="218,42" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<ePixmap position="413,490" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
+	</screen>
+	<!-- PKTeam OpenVPN Manager v1.5 -->
+	<screen name="VpnSetup" position="363,132" size="1168,892" title="PKTeam OpenVPN Manager v1.5">
+		<widget name="config" position="75,17" size="1011,796" font="Roboto_HD; 28" itemHeight="45" scrollbarMode="showOnDemand" scrollbarWidth="7" scrollbarSliderBorderColor="lemon" scrollbarSliderForegroundColor="lemon" foregroundColor="lemon" backgroundColor="transpBlack_1" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="78,833" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="323,834" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="566,833" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="826,828" size="35,27" alphatest="blend" />
+		<widget source="key_red" render="Label" position="115,832" size="200,39" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<widget source="key_green" render="Label" position="363,831" size="200,40" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<widget source="key_yellow" render="Label" position="603,828" size="218,43" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<widget source="key_blue" render="Label" position="865,829" size="218,42" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+	</screen>
+	<!-- PKT E2iPlayer Installer v1.0 -->
+	<screen name="InstallIPTV" position="363,132" size="1200,663" title="PKT E2iPlayer Installer v1.0">
+		<widget name="infoTXT" position="147,270" size="896,35" font="Roboto_HD;28" halign="center" valign="center" foregroundColor="lemon" backgroundColor="transpBlack_1" />
+		<widget name="devlist" position="146,367" size="900,40" font="Roboto_HD;30" itemHeight="40" valign="center" />
+		<ePixmap position="433,86" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_left.png" position="82,371" size="50,35" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_right.png" position="1057,369" size="50,35" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="52,577" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="321,578" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="591,580" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="854,582" size="35,27" alphatest="blend" />
+		<widget source="key_red" render="Label" position="97,577" size="218,42" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<widget source="key_green" render="Label" position="366,580" size="218,42" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<widget source="key_yellow" render="Label" position="630,583" size="218,42" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<widget source="key_blue" render="Label" position="896,582" size="218,42" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+	</screen>
+	<!-- PKT Entitlements for Internal Cards v1.3 -->
+	<screen name="Entitlements" position="363,132" size="1200,892" title="PKT Entitlements for Internal Cards v1.3">
+		<widget name="EntitlementsScrollLabel" position="61,8" size="1093,822" font="RegularLight; 24" itemHeight="45" scrollbarMode="showOnDemand" scrollbarWidth="7" scrollbarSliderBorderColor="lemon" scrollbarSliderForegroundColor="lemon" foregroundColor="lemon" backgroundColor="transpBlack_1" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="113,858" size="35,27" alphatest="blend" />
+		<widget source="key_red" render="Label" position="154,853" size="200,39" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+	</screen>
+	<!-- PKT EMU manager -->
+	<screen name="ScreenEmu" position="center,center" size="1200,892" title="EMU manager">
+		<widget name="selectCAM" position="896,30" size="150,40" font="Roboto_HD;30" foregroundColor="lemon" backgroundColor="transpBlack_1" />
+		<widget name="Mlist" position="109,30" size="710,40" font="Roboto_HD; 28" itemHeight="40" />
+		<widget name="counter" position="1055,30" size="100,40" font="Roboto_HD; 30" foregroundColor="lemon" backgroundColor="transpBlack_1" />
+		<ePixmap pixmap="BlackHarmony/allBars/bar_standard.menu/sel_310_50.png" position="304,105" size="600,50" alphatest="on" zPosition="-1" scale="on" />
+		<widget name="actifcam" position="308,110" size="590,40" font="Roboto_HD; 30" backgroundColor="transpBlack_1" foregroundColor="green" halign="center" valign="center" transparent="1" />
+		<widget name="Autorestart" position="373,249" size="225,44" font="Regular; 24" backgroundColor="black" foregroundColor="lemon" halign="center" valign="center" transparent="1" />
+		<ePixmap pixmap="BlackHarmony/allBars/bar_standard.menu/sel_310_50.png" position="304,302" size="600,50" alphatest="on" zPosition="-1" scale="on" />
+		<widget name="actnewcs" position="309,308" size="590,40" font="Roboto_HD; 30" backgroundColor="transpBlack_1" foregroundColor="green" halign="center" valign="center" transparent="1" />
+		<widget name="Svr" position="371,363" size="186,44" font="Roboto_HD; 24" backgroundColor="black" foregroundColor="green" halign="center" valign="center" transparent="1" />
+		<widget name="ecminfo" position="302,425" size="620,323" font="Roboto_HD; 22" halign="center" valign="center" foregroundColor="lemon" backgroundColor="transpBlack_1" />
+		<ePixmap pixmap="BlackHarmony/buttons/left.png" position="45,33" size="56,35" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/right.png" position="827,33" size="58,35" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="430,181" size="130,50" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="626,181" size="130,50" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="627,247" size="130,50" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="631,360" size="130,50" alphatest="blend" />
+		<widget source="key_red" render="Label" position="430,189" size="130,50" zPosition="1" font="Roboto_HD; 22" halign="center" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="font_ciemny" />
+		<widget source="key_green" render="Label" position="626,190" size="130,50" zPosition="1" font="Roboto_HD; 22" halign="center" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="font_ciemny" />
+		<widget source="key_yellow" render="Label" position="628,255" size="130,50" zPosition="1" font="Roboto_HD; 22" halign="center" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="font_ciemny" />
+		<widget source="key_blue" render="Label" position="632,368" size="130,50" zPosition="1" font="Roboto_HD; 22" halign="center" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="green" />
+		<ePixmap position="453,768" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
+	</screen>
+	<!-- PKT Memory Cleaner -->
+	<screen name="MemoryCleaner" position="center,center" size="1133,892" title="PKT Memory Cleaner">
+		<widget name="config" position="130,21" size="869,684" font="Roboto_HD; 28" itemHeight="45" scrollbarMode="showOnDemand" scrollbarWidth="7" scrollbarSliderBorderColor="lemon" scrollbarSliderForegroundColor="lemon" foregroundColor="lemon" backgroundColor="transpBlack_1" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="127,829" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="444,826" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="733,824" size="35,27" alphatest="blend" />
+		<widget source="key_red" render="Label" position="169,828" size="200,39" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<widget source="key_green" render="Label" position="488,828" size="200,40" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<widget source="key_yellow" render="Label" position="776,824" size="218,43" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<ePixmap position="427,711" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
+	</screen>
+	<!-- PKT Backup Manager -->
+	<screen name="MakeBackup" position="363,132" size="1200,892" title="PKT Backup Manager">
+		<widget name="config" position="50,17" size="1110,796" font="Roboto_HD; 24" itemHeight="45" scrollbarMode="showOnDemand" scrollbarWidth="7" scrollbarSliderBorderColor="lemon" scrollbarSliderForegroundColor="lemon" foregroundColor="lemon" backgroundColor="transpBlack_1" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="127,829" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="444,826" size="35,27" alphatest="blend" />
+		<widget source="key_red" render="Label" position="169,828" size="200,39" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<widget source="key_green" render="Label" position="488,828" size="200,40" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+	</screen>
+	<!-- PKT Skin Setup -->
+	<screen name="PKTinforBarSetup" position="363,132" size="1200,892" title="PKT Skin Setup">
+		<widget name="config" position="40,5" size="1110,721" font="Roboto_HD; 26" itemHeight="40" scrollbarMode="showOnDemand" backgroundColor="transpBlack_1" foregroundColor="lemon" transparent="1" />
+		<widget name="bootlogo" position="728,633" size="424,250" zPosition="2" alphatest="on" />
+		<widget name="obrazek" position="726,634" size="423,250" alphatest="on" backgroundColor="transpBlack_1" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="127,829" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="444,826" size="35,27" alphatest="blend" />
+		<widget source="key_red" render="Label" position="169,828" size="200,39" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="black" transparent="1" foregroundColor="lemon" />
+		<widget source="key_green" render="Label" position="488,828" size="200,40" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="black" transparent="1" foregroundColor="lemon" />
+		<ePixmap position="388,742" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
+	</screen>
+	<!-- PKTinfo -->
+	<screen name="PKTinfo" position="363,132" size="1200,892" title="PKTinfo">
+		<widget source="Naglowek" render="Label" position="225,10" size="690,50" font="Roboto_HD; 30" foregroundColor="green" halign="center" valign="center" backgroundColor="transpBlack_1" />
+		<widget source="wersja" render="Label" position="225,73" size="690,50" font="Roboto_HD; 22" halign="center" valign="center" foregroundColor="lemon" backgroundColor="transpBlack_1" />
+		<widget source="rev" render="Label" position="226,136" size="690,50" font="Roboto_HD; 26" halign="center" valign="center" foregroundColor="lemon" backgroundColor="transpBlack_1" />
+		<widget source="kontakt" render="Label" position="229,195" size="690,280" font="Roboto_HD; 24" halign="center" valign="center" foregroundColor="lemon" backgroundColor="transpBlack_1" />
+		<widget source="licence" render="Label" position="232,486" size="690,401" font="Roboto_HD; 24" halign="center" valign="center" foregroundColor="lemon" backgroundColor="transpBlack_1" />
+	</screen>
+	<!-- PKT PKT Install Manager -->
+	<screen name="InstallManager" position="317,130" size="1201,897" title="PKT Install Manager">
+		<widget name="device_note" position="41,46" size="1110,40" font="Roboto_HD;28" halign="center" valign="center" foregroundColor="green" backgroundColor="transpBlack_1" />
+		<widget name="devlist" position="121,129" size="260,45" font="Roboto_HD;30" itemHeight="45" halign="center" valign="center" />
+		<ePixmap pixmap="BlackHarmony/buttons/left.png" position="62,134" size="50,35" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/right.png" position="388,135" size="50,35" alphatest="blend" />
+		<widget name="image_note" position="52,641" size="1110,40" font="Roboto_HD;28" halign="center" valign="center" foregroundColor="lemon" backgroundColor="transpBlack_1" />
+		<widget name="imagelist" position="50,215" size="1110,406" font="Roboto_HD;28" itemHeight="45" halign="center" valign="center" scrollbarMode="showOnDemand" scrollbarWidth="7" scrollbarSliderBorderColor="lemon" scrollbarSliderForegroundColor="lemon" />
+		<widget name="imgName" position="501,131" size="550,40" font="Roboto_HD; 28" halign="right" valign="center" foregroundColor="red" />
+		<ePixmap pixmap="BlackHarmony/gfx/linia_md.png" position="195,190" size="875,2" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="78,833" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="323,834" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="566,833" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="826,828" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="1109,840" size="61,30" alphatest="blend" />
+		<widget source="key_red" render="Label" position="115,832" size="200,39" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<widget source="key_green" render="Label" position="363,831" size="200,40" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<widget source="key_yellow" render="Label" position="603,828" size="218,43" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<widget source="key_blue" render="Label" position="865,829" size="218,42" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<ePixmap position="427,711" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
+	</screen>
+	<!-- PKT AboutOE -->
+	<screen name="AboutOE" position="345,93" size="1232,908" title="Image info" flags="wfNoBorder" backgroundColor="transparent">
+		<eLabel text="Image info" position="960,26" size="220,30" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1" foregroundColor="lemon" />
+		<ePixmap position="0,2" zPosition="-10" size="1226,908" pixmap="BlackHarmony/bg_design/mainbg.png" />
+		<ePixmap position="855,473" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
+		<widget source="global.CurrentTime" render="Label" position="44,26" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="129,26" size="460,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<widget source="lab1" render="Label" position="180,110" size="652,50" halign="left" font="Roboto_HD; 32" foregroundColor="font_green" />
+		<widget source="lab2" render="Label" position="180,165" size="650,40" font="Roboto_HD; 26" halign="left" foregroundColor="lemon" />
+		<widget source="lab3" render="Label" position="180,208" size="650,40" font="Roboto_HD; 34" halign="left" foregroundColor="lemon" />
+		<widget name="AboutScrollLabel" font="Roboto_HD; 25" position="180,249" size="651,516" zPosition="2" halign="left" foregroundColor="lemon" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="179,778" size="35,27" alphatest="blend" />
+		<widget source="key_green" render="Label" position="239,775" size="200,40" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="black" transparent="1" foregroundColor="lemon" />
+	</screen>
+	<!-- PKT PKT Set Disk Label -->
+	<screen name="SetDiskLabel" position="center,center" size="1280,614" title="PKT Set Disk Label">
+		<ePixmap position="465,460" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
+		<widget name="devlist" position="727,109" size="400,35" font="Roboto_HD;28" itemHeight="35" />
+		<ePixmap pixmap="BlackHarmony/buttons/arrow2.png" position="641,108" size="60,60" alphatest="blend" />
+		<widget name="listlabel" position="735,374" size="400,35" font="Roboto_HD;28" itemHeight="35" foregroundColor="lemon" backgroundColor="transpBlack_1" />
+		<ePixmap pixmap="BlackHarmony/buttons/arrow1.png" position="643,367" size="60,60" alphatest="blend" />
+		<widget name="infoTXT" position="22,110" size="600,35" font="Roboto_HD;28" halign="left" valign="center" foregroundColor="lemon" backgroundColor="transpBlack_1" />
+		<widget name="labelname" position="20,236" size="600,35" font="Roboto_HD; 28" halign="left" valign="center" foregroundColor="lemon" backgroundColor="transpBlack_1" />
+		<widget name="disklabel" position="733,231" size="400,40" font="Roboto_HD; 30" halign="center" valign="center" foregroundColor="lemon" backgroundColor="transpBlack_1" />
+		<widget name="labeltoset" position="16,378" size="600,35" font="Roboto_HD; 28" halign="left" valign="center" foregroundColor="lemon" backgroundColor="transpBlack_1" />
+	</screen>
+	<!-- PKT device info -->
+	<screen name="Devices" position="center,center" size="860,920" title="PKT device info">
+		<widget source="TunerHeader" render="Label" position="147,1" size="560,47" font="Bold; 30" transparent="0" zPosition="1" halign="left" foregroundColor="lemon" />
+		<widget source="nims" render="Label" position="107,47" size="631,466" font="Regular; 24" transparent="0" zPosition="1" noWrap="1" foregroundColor="lemon" />
+		<widget source="HDDHeader" render="Label" position="147,517" size="560,40" font="Bold; 30" transparent="0" zPosition="1" halign="left" foregroundColor="lemon" />
+		<widget source="hdd" render="Label" position="53,561" size="744,141" font="Regular; 24" transparent="0" zPosition="1" foregroundColor="lemon" />
+		<widget source="MountsHeader" render="Label" position="149,704" size="560,40" font="Bold; 30" transparent="0" zPosition="1" halign="left" foregroundColor="lemon" />
+		<widget source="mounts" render="Label" position="151,745" size="560,118" font="Regular; 24" transparent="0" zPosition="1" noWrap="1" foregroundColor="lemon" />
+		<ePixmap position="281,866" zPosition="1" size="311,49" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
+	</screen>
+	<!-- PKT SystemMemoryInfo -->
+	<screen name="SystemMemoryInfo" position="center,center" size="860,750">
+		<widget source="lab1" render="Label" position="155,108" size="560,45" font="Bold; 30" transparent="0" zPosition="2" foregroundColor="lemon" />
+		<widget source="lab2" render="Label" position="154,180" size="560,45" font="Roboto_HD; 26" transparent="0" zPosition="2" foregroundColor="lemon" />
+		<widget name="AboutScrollLabel" position="154,241" size="560,490" font="Regular; 26" transparent="0" zPosition="1" scrollbarMode="showOnDemand" foregroundColor="lemon" />
+	</screen>
+	<!-- PKT SystemNetworkInfo -->
+	<screen name="SystemNetworkInfo" position="515,140" size="860,800">
+		<widget name="AboutScrollLabel" position="121,87" size="606,410" valign="left" font="Regular; 26" transparent="1" foregroundColor="lemon" />
+		<eLabel name="" position="149,627" size="562, 2" backgroundColor="light_grey" />
+		<widget source="IFtext" render="Label" position="135,668" size="158,45" zPosition="10" font="Regular; 24" halign="left" transparent="1" backgroundColor="transpBlack_1" foregroundColor="lemon" />
+		<widget source="IF" render="Label" position="306,667" size="430,45" zPosition="10" font="Regular; 26" halign="left" transparent="1" backgroundColor="transpBlack_1" foregroundColor="lemon" />
+		<widget source="Statustext" render="Label" position="133,723" size="161,45" zPosition="10" font="Regular;24" halign="left" transparent="1" backgroundColor="transpBlack_1" foregroundColor="lemon" />
+		<widget name="statuspic" pixmaps="buttons/green.png,buttons/red.png" position="313,735" zPosition="10" size="31,28" transparent="1" alphatest="on" />
+	</screen>
+	<!-- PKTeam FilmWebReader v1.1 -->
+	<screen name="FilmwebReader" position="center,center" size="1920,1080" title="PKTeam FilmWebReader v1.1" flags="wfNoBorder" backgroundColor="transparent">
+		<ePixmap position="0,1" zPosition="-10" size="1929,1080" pixmap="BlackHarmony/bg_design/big.png" />
+		<widget source="global.CurrentTime" render="Label" position="157,87" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="243,87" size="660,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<widget name="infoTXT" position="178,194" size="150,40" font="Regular; 32" halign="left" valign="center" foregroundColor="cyan" />
+		<widget name="eventName" position="339,193" size="1060,40" font="Roboto_HD; 32" halign="left" valign="center" />
+		<widget name="listaFilmow" position="174,276" size="1104,598" font="Roboto_HD; 30" itemHeight="40" scrollbarMode="showOnDemand" scrollbarWidth="7" scrollbarSliderBorderColor="description" scrollbarSliderForegroundColor="description" />
+		<widget name="picture" position="1323,277" size="400,600" zPosition="1" font="Roboto_HD; 16" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="158,950" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="557,950" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="961,950" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="1338,949" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="1688,948" size="61,30" alphatest="blend" />
+		<widget source="key_red" render="Label" position="209,949" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+		<widget source="key_green" render="Label" position="607,949" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+		<widget source="key_yellow" render="Label" position="1011,949" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+		<widget source="key_blue" render="Label" position="1389,949" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+	</screen>
+	<screen name="ShowFilmweb" position="center,center" size="1920,1080" title="PKTeam FilmwebReader Show v1.1" flags="wfNoBorder" backgroundColor="transparent">
+		<ePixmap position="0,5" zPosition="-10" size="1917,1076" pixmap="BlackHarmony/bg_design/big.png" />
+		<widget source="global.CurrentTime" render="Label" position="157,87" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="243,87" size="660,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<widget name="okladka" position="1349,279" size="388,590" zPosition="1" font="Roboto_HD; 16" />
+		<widget name="filmInfo" position="193,179" size="1250,45" font="Roboto_HD; 34" halign="center" valign="center" foregroundColor="cyan" />
+		<widget name="filmInfo2" position="191,228" size="1250,40" font="Roboto_HD; 26" halign="center" valign="center" foregroundColor="cyan" />
+		<widget source="description" render="RunningText" position="190,635" size="622,230" font="Roboto_HD; 26" backgroundColor="background" foregroundColor="cyan" options="movetype=running,direction=top,step=1,oneshot=1200,always=0,steptime=150,startpoint=2,wrap" />
+		<widget source="ekipa" render="RunningText" position="845,635" size="450,233" font="Roboto_HD; 26" backgroundColor="background" foregroundColor="cyan" options="movetype=running,direction=top,step=1,oneshot=1200,always=0,steptime=150,startpoint=2,wrap" />
+		<widget name="obsada0" position="194,272" size="180,240" />
+		<widget name="obsada0n" position="192,524" size="180,99" font="Roboto_HD; 22" halign="center" valign="center" backgroundColor="background" />
+		<widget name="obsada1" position="436,274" size="180,240" />
+		<widget name="obsada1n" position="436,524" size="180,99" font="Roboto_HD; 22" halign="center" valign="center" backgroundColor="background" />
+		<widget name="obsada2" position="666,276" size="180,240" />
+		<widget name="obsada2n" position="665,525" size="180,97" font="Roboto_HD; 22" halign="center" valign="center" backgroundColor="background" />
+		<widget name="obsada3" position="887,276" size="180,240" />
+		<widget name="obsada3n" position="892,525" size="180,97" font="Roboto_HD; 22" halign="center" valign="center" backgroundColor="background" />
+		<widget name="obsada4" position="1116,277" size="180,240" />
+		<widget name="obsada4n" position="1115,525" size="180,93" font="Roboto_HD; 22" halign="center" valign="center" backgroundColor="background" />
+		<widget name="filmInfo3" position="214,876" size="1171,40" font="Roboto_HD; 26" halign="center" valign="center" foregroundColor="cyan" />
+	</screen>
+	<screen name="FWSetup" position="363,132" size="1200,892" title="PKTeam FilmwebReader Config v1.1">
+		<widget name="config" position="114,42" size="971,668" font="Roboto_HD; 28" itemHeight="45" scrollbarMode="showOnDemand" scrollbarWidth="7" scrollbarSliderBorderColor="lemon" scrollbarSliderForegroundColor="lemon" foregroundColor="lemon" backgroundColor="transpBlack_1" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="78,833" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="323,834" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="566,833" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="826,828" size="35,27" alphatest="blend" />
+		<widget source="key_red" render="Label" position="115,832" size="200,39" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<widget source="key_green" render="Label" position="363,831" size="200,40" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<widget source="key_yellow" render="Label" position="603,828" size="218,43" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<widget source="key_blue" render="Label" position="865,829" size="218,42" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<ePixmap position="431,734" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
+	</screen>
+	<!-- PKT Channel List Updater v1.7 -->
+	<screen name="ChannelListUpdate" position="center,center" size="1920,1080" title="PKT Channel List Updater v1.7" flags="wfNoBorder" backgroundColor="transparent">
+		<ePixmap position="0,0" zPosition="-10" size="1920,1080" pixmap="BlackHarmony/bg_design/big.png" />
+		<widget source="global.CurrentTime" render="Label" position="157,87" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="247,86" size="660,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<widget name="chlist" font="Roboto_HD; 26" position="178,273" size="1555,593" scrollbarMode="showOnDemand" itemHeight="35" selectionPixmap="BlackHarmony/menu/sel_1555_35.png" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" backgroundColor="transpBlack" transparent="1" />
+		<widget name="infoTXT" position="422,205" size="1110,40" font="Roboto_HD; 30" halign="center" valign="center" foregroundColor="lemon" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="158,950" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="557,950" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="961,950" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="1361,950" size="35,27" alphatest="blend" />
+		<widget source="key_red" render="Label" position="209,949" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+		<widget source="key_green" render="Label" position="607,949" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+		<widget source="key_yellow" render="Label" position="1011,949" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+		<widget source="key_blue" render="Label" position="1411,949" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="1688,948" size="61,30" alphatest="blend" />
+	</screen>
+	<!-- PKTeam NTC v1.1 -->
+	<screen name="NTC" position="center,center" size="1920,1080" title="PKTeam NTC v1.1" flags="wfNoBorder" backgroundColor="transparent">
+		<ePixmap position="0,0" zPosition="-10" size="1920,1080" pixmap="BlackHarmony/bg_design/big.png" />
+		<widget source="global.CurrentTime" render="Label" position="157,87" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Default</convert>
+		</widget>
+		<widget source="global.CurrentTime" render="Label" position="247,86" size="660,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+			<convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+		</widget>
+		<widget name="config" font="Roboto_HD; 26" position="177,189" size="1555,205" scrollbarMode="showOnDemand" itemHeight="35" selectionPixmap="BlackHarmony/menu/sel_1555_35.png" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" backgroundColor="transpBlack" transparent="1" />
+		<widget name="MUXlist" font="Roboto_HD; 26" position="179,421" size="1555,416" scrollbarMode="showOnDemand" itemHeight="35" selectionPixmap="BlackHarmony/menu/sel_1555_35.png" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" backgroundColor="transpBlack" transparent="1" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="158,950" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="557,950" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="961,950" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="1361,950" size="35,27" alphatest="blend" />
+		<widget source="key_red" render="Label" position="209,949" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+		<widget source="key_green" render="Label" position="607,949" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+		<widget source="key_yellow" render="Label" position="1011,949" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+		<widget source="key_blue" render="Label" position="1411,949" size="250,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="1688,948" size="61,30" alphatest="blend" />
+		<ePixmap position="782,842" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
+	</screen>
+	<screen name="ntcSetup" position="363,132" size="1200,892" title="PKTeam NTC Config v1.1">
+		<widget name="config" position="114,42" size="971,668" font="Roboto_HD; 28" itemHeight="45" scrollbarMode="showOnDemand" scrollbarWidth="7" scrollbarSliderBorderColor="lemon" scrollbarSliderForegroundColor="lemon" foregroundColor="lemon" backgroundColor="transpBlack_1" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="78,833" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="323,834" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="566,833" size="35,27" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="826,828" size="35,27" alphatest="blend" />
+		<widget source="key_red" render="Label" position="115,832" size="200,39" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<widget source="key_green" render="Label" position="363,831" size="200,40" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<widget source="key_yellow" render="Label" position="603,828" size="218,43" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<widget source="key_blue" render="Label" position="865,829" size="218,42" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="transpBlack_1" transparent="1" foregroundColor="lemon" />
+		<ePixmap position="431,734" zPosition="1" size="311,74" pixmap="BlackHarmony/gfx/hyperion-logo.png" alphatest="blend" />
+		<ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="1116,837" size="61,30" alphatest="blend" />
+	</screen>
+</skin>

@@ -1,0 +1,53 @@
+  <screen name="GraphicalEPG" position="center,center" size="1920,1080" title="Electronic Program Guide" flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="0,1" zPosition="-7" size="1920,1080" pixmap="BlackHarmony/bg_design/cool.png" />
+    <widget source="global.CurrentTime" render="Label" position="75,55" size="80,35" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="160,55" size="360,35" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+    <eLabel text="Graphical EPG" position="1180,55" size="670,35" font="Roboto_HD; 27" halign="right" foregroundColor="white" backgroundColor="black" transparent="1" />
+    <widget source="Title" render="Label" position="500,90" size="900,40" font="Roboto_HD; 32" halign="center" valign="center" foregroundColor="light_yellow" backgroundColor="black" transparent="1"/>
+    <widget name="bouquetlist" position="500,90" size="900,40"/>
+    <ePixmap position="500,95" size="60,30" pixmap="BlackHarmony/buttons/left.png" alphatest="blend" />
+	<ePixmap position="1340,95" size="60,30" pixmap="BlackHarmony/buttons/right.png" alphatest="blend" />
+    <eLabel name="timeline_background" position="80,142" size="1750,30" backgroundColor="#1A000000" transparent="0"/>
+    <widget name="timeline_text" position="80,142" size="1750,40" TimelineFont="Roboto_HD; 27" TimelineAlignment="left" zPosition="1" itemHeight="40" borderColor="#3b3e3f" borderWidth="1" backgroundColorSelected="green" foregroundColorSelected="blue" foregroundColor="#00F0A30A" backgroundColor="black" transparent="1"/>
+    <widget name="list" position="84,200" size="1758,470" ServiceBorderColor="white" ServiceBorderWidth="1" ServiceNamePadding="3" EventBorderWidth="1" EventNamePadding="3" itemHeight="40" zPosition="3" EntryNowBackgroundColor="red" EntryBorderColor="#3b3e3f" EntryBackgroundColor="background" EntryBackgroundColorSelected="#00A693" EntryNowBackgroundColorSelected="#ffd200" scrollbarMode="showOnDemand" EntryRecColor="red" foregroundColorSelected="white" enableWrapAround="1" scrollbarWidth="15" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" backgroundColor="black" transparent="1" />
+    <widget name="timeline_now" position="80,200" zPosition="4" size="15,463" pixmap="BlackHarmony/gfx/timeline-ct1.png" alphatest="blend" />
+    <widget source="Event" render="Label" position="330,678" size="1200,35" font="Roboto_HD; 30" halign="left" foregroundColor="light_yellow" backgroundColor="black" transparent="1">
+      <convert type="j00zekModEventName">Name</convert>
+    </widget>
+    <ePixmap position="290,687" zPosition="3" size="20,20" pixmap="BlackHarmony/icons/now.png"/>
+    <widget source="Event" render="Label" position="70,680" size="90,35" font="Roboto_HD; 28" halign="right" foregroundColor="green" backgroundColor="black" transparent="1">
+      <convert type="EventTime">StartTime</convert>
+      <convert type="ClockToText">
+    </convert>
+    </widget>
+    <widget source="Event" render="Label" position="170,680" size="110,35" font="Roboto_HD; 28" foregroundColor="green" backgroundColor="black" transparent="1">
+      <convert type="EventTime">EndTime</convert>
+      <convert type="ClockToText">Format:- %H:%M</convert>
+    </widget>
+    <widget source="Event" render="Label" position="1640,680" size="200,35" font="Roboto_HD; 28" halign="right" foregroundColor="green" backgroundColor="black" transparent="1">
+      <convert type="EventTime">Remaining</convert>
+      <convert type="RemainingToText">InMinutes</convert>
+    </widget>
+    <widget source="Event" render="Progress" position="84,723" size="1760,10" foregroundColor="#1A27408B" borderColor="#00bbbbbb" borderWidth="1" zPosition="1" backgroundColor="black" transparent="1">
+	  <convert type="EventTime">Progress</convert>
+	</widget>
+    <widget render="j00zekModRunningText" source="Event" options="movetype=running,startpoint=0,direction=top,steptime=100,repeat=scroll,startdelay=8000,oneshot=5000,wrap" position="84,739" size="1762,216" font="Roboto_HD; 27" foregroundColor="white" backgroundColor="black" transparent="1">
+      <convert type="j00zekModEventName">ExtendedDescription</convert>
+    </widget>
+    <widget name="JumpInterval" position="978,148" size="200,25" zPosition="5" halign="right" font="Roboto_HD; 22" foregroundColor="green" backgroundColor="black" transparent="1" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="95,1001" size="35,27" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="430,1001" size="35,27" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="760,1001" size="35,27" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="1090,1001" size="35,27" alphatest="blend" />
+    <widget name="key_red" position="150,1000" size="240,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" valign="bottom" />
+    <widget name="key_green" position="480,1000" size="240,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <widget name="key_yellow" position="810,983" size="240,55" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <widget name="key_blue" position="1140,983" size="480,55" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <ePixmap position="1789,999" size="60,30" pixmap="BlackHarmony/buttons/key_menu.png" alphatest="blend" />
+    <ePixmap position="1650,999" size="60,30" pixmap="BlackHarmony/buttons/key_help.png" alphatest="blend" />
+    <ePixmap position="1720,999" size="60,30" pixmap="BlackHarmony/buttons/key_infoo.png" alphatest="blend" />
+  </screen>

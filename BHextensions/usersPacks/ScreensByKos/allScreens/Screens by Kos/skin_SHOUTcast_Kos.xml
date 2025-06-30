@@ -1,0 +1,71 @@
+<skin>
+  <screen name="SHOUTcastWidget" position="204,34" size="1522,1022" title=" " flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="0,0" zPosition="-5" size="1522,1022" pixmap="BlackHarmony/bg_design/shoutcast.png"/>
+    <widget source="global.CurrentTime" render="Label" position="45,50" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="130,50" size="360,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+    <widget objectTypes="headertext,Label" name="headertext" position="80,170" size="740,39" zPosition="1" font="Roboto_HD; 27" halign="center" foregroundColor="#00F0A30A" backgroundColor="black" transparent="1"/>
+    <widget objectTypes="headertext,StaticText" source="headertext" render="j00zekLabel" position="80,170" size="740,39" zPosition="2" font="Roboto_HD; 27" halign="center" foregroundColor="#00F0A30A" backgroundColor="black" transparent="1"/>
+    <widget source="Title" render="Label" position="1030,50" zPosition="2" size="420,35" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1"/>
+    <widget name="list" position="80,222" font="Roboto_HD; 27" size="740,690" enableWrapAround="1" scrollbarMode="showOnDemand" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" selectionPixmap="BlackHarmony/menu/sel_850_110.png" backgroundColor="black" transparent="1"/>
+    <widget objectTypes="station,Label" name="station" position="879,526" size="560,30" zPosition="1" font="Roboto_HD; 27" halign="center" foregroundColor="#00F0A30A" backgroundColor="black" transparent="1"/>
+    <widget objectTypes="station,StaticText" source="station" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=left,steptime=50,repeat=2,startdelay=10000" position="879,526" size="560,30" zPosition="2" font="Roboto_HD; 27" halign="center" foregroundColor="#00F0A30A" backgroundColor="black" transparent="1"/>
+    <widget objectTypes="titel,Label" name="titel" position="882,586" size="560,130" zPosition="1" font="Roboto_HD; 27" halign="center" foregroundColor="white" backgroundColor="black" transparent="1"/>
+    <widget objectTypes="titel,StaticText" source="titel" render="j00zekLabel" position="882,586" size="560,130" zPosition="2" font="Roboto_HD; 27" halign="center" foregroundColor="white" backgroundColor="black" transparent="1"/>
+    <widget objectTypes="statustext,Label" name="statustext" position="882,734" size="560,60" zPosition="1" font="Roboto_HD; 26" halign="center" foregroundColor="light_yellow" backgroundColor="black" transparent="1"/>
+    <widget objectTypes="statustext,StaticText" source="statustext" render="j00zekLabel" position="882,734" size="560,60" zPosition="2" font="Roboto_HD; 27" halign="center" foregroundColor="light_yellow" backgroundColor="black" transparent="1"/>
+    <widget source="session.CurrentService" render="Label" position="882,820" size="140,30" zPosition="1" font="Roboto_HD; 24" halign="left" foregroundColor="white" backgroundColor="black" transparent="1" >
+      <convert type="j00zekTranslator">Connected:</convert>
+    </widget>
+	<widget source="session.CurrentService" render="Label" position="1030,820" size="130,30" font="Roboto_HD; 25" zPosition="2" foregroundColor="light_yellow" backgroundColor="black" transparent="1">
+	  <convert type="ServicePosition">Remaining</convert>
+	</widget>
+    <widget name="console" position="882,865" zPosition="1" size="560,50" font="Roboto_HD; 18" halign="left" backgroundColor="black" transparent="1"/>
+    <widget name="cover" zPosition="2" position="930,190" size="450,320" alphatest="blend" backgroundColor="transparent"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="65,955" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="389,955" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="734,955" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="1074,955" size="35,27" alphatest="blend"/>
+    <widget source="key_red" render="Label" position="116,954" size="240,30" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget source="key_green" render="Label" position="443,954" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget source="key_yellow" render="Label" position="789,954" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget source="key_blue" render="Label" position="1129,954" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="1348,952" zPosition="1" size="60,30" alphatest="on"/>
+  </screen>
+  <screen name="SHOUTcastSetup" position="345,93" size="1232,908" title="Channel Selection" flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="0,0" zPosition="-10" size="1232,908" pixmap="BlackHarmony/bg_design/mainbg.png"/>
+    <widget source="global.CurrentTime" render="Label" position="40,25" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="125,25" size="360,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+    <widget name="description" position="65,627" size="1095,160" font="Roboto_HD; 27" zPosition="2" halign="center" valign="center" foregroundColor="light_yellow" backgroundColor="black" transparent="1"/>
+    <widget name="descriptionn" position="65,720" size="1095,160" font="Roboto_HD; 27" zPosition="3" halign="left" valign="center" foregroundColor="#FFFFFF" backgroundColor="black" transparent="1"/>
+    <widget source="Title" render="Label" position="860,25" size="320,35" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1"/>
+    <widget name="config" itemHeight="35" font="Roboto_HD; 26" position="65,140" size="1095,640" scrollbarMode="showOnDemand" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" selectionPixmap="BlackHarmony/menu/sel_1095_35.png" backgroundColor="black" transparent="1"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="41,850" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="328,850" size="35,27" alphatest="blend"/>
+    <widget source="key_red" render="Label" position="91,849" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget source="key_green" render="Label" position="378,849" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+  </screen>
+  <screen name="SHOUTcastStreamripperRecordingPath" position="345,93" size="1232,908" title="Channel Selection" flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="0,0" zPosition="-10" size="1232,908" pixmap="BlackHarmony/bg_design/mainbg.png"/>
+    <widget source="global.CurrentTime" render="Label" position="40,25" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="125,25" size="360,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+    <widget source="Title" render="Label" position="665,25" size="520,35" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1"/>
+    <widget name="target" position="65,130" size="1095,34" font="Roboto_HD; 30" backgroundColor="background" transparent="1" foregroundColor="light_yellow"/>
+    <widget name="filelist" itemHeight="35" font="Roboto_HD; 26" position="65,188" size="1095,600" scrollbarMode="showOnDemand" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" selectionPixmap="BlackHarmony/menu/sel_1095_35.png" backgroundColor="black" transparent="1"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="41,850" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="328,850" size="35,27" alphatest="blend"/>
+    <widget source="key_red" render="Label" position="91,849" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget source="key_green" render="Label" position="378,849" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+  </screen>
+</skin>

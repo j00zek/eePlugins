@@ -1,0 +1,10 @@
+Package: kodi-addon--j00zeks-repository.kodiwpigulce.pl.k19
+Priority: optional
+Section: utils
+Depends: enigma2---j00zeks-components
+Description: Repozytorium Kodi w pigułce dla Kodi 19.x
+Maintainer: j00zek
+Source: http://github.com/j00zek/eePlugins
+Version: 22.04.07.0809
+Architecture: all
+DestinationPath: /usr/share/kodi/addons/repository.kodiwpigulce.pl.k19

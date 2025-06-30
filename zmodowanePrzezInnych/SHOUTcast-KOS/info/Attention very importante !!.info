@@ -1,0 +1,37 @@
+SHOUTcast mod @Kos - www.sat-4-all.com
+
+Fix'e
+Zmiana z "name=" na "source=" wszystko po to by 'SHOUTcast' mógł obsługiwać 'Renderer'
+
+Lista favorites.user znajduję się w folderze (lists) i tam nią zarządzamy nie jak dotychczas w /etc/enigma2/
+
+new.
+/usr/lib/enigma2/python/Plugins/Extensions/SHOUTcast/lists/favorites.user
+
+old.
+/etc/enigma2/favorites.user
+
+W okładce można dowolnie zmieniać rozmiar i położenie, testowane tylko w oryginalnej skórce wtyczki.
+
+Info dla tworzących skórki, ekrany.
+
+<widget source="statustext" render="Label"
+<widget source="headertext" render="Label"
+<widget source="station" render="Label"
+<widget source="titel" render="Label"
+<widget source="console" render="Label"
+
+
+<!-- Shoutcast skin_display VFD-->
+
+	<screen name="SHOUTcastLCDScreen" size="132,64">
+		 <widget source="text2" render="RollerCharLCD" position="0,0" size="120,20" font="Regular;18" halign="left" noWrap="1"  />
+	</screen>
+	
+<!-- Shoutcast skin_display LCD-->	
+	
+	<widget source="text1" render="Label" position="20,30" size="380,60" font="FdLcD;40" halign="left" valign="center" foregroundColor="#FFFFFF" transparent="1"/>
+    <widget source="text2" render="Label" position="20,180" size="380,60" font="FdLcD;40" halign="left" valign="center" foregroundColor="#FFFFFF" transparent="1"/>
+    
+<!-- Shoutcast skin_xml-->    
+    <widget name="cover" size="%d,%d" position="%d,%d" zPosition="2" alphatest="blend" />

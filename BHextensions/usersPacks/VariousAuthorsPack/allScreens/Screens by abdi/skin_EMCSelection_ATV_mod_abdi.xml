@@ -1,0 +1,55 @@
+<screen name="EMCSelection" position="center,center" size="1920,1080" title=" " flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="1,1" zPosition="-5" size="1920,1080" pixmap="BlackHarmony/bg_design/info.png"/>
+    <eLabel text="EMC Selection" position="992,88" size="820,30" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1"/>
+    <widget source="global.CurrentTime" render="Label" position="110,80" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="195,80" size="660,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+    <widget source="Title" render="Label" position="1550,355" size="250,30" font="Roboto_HD; 26" halign="center" valign="center" backgroundColor="black" transparent="1"/>
+    <eLabel position="1113,410" size="675,1" backgroundColor="linie" foregroundColor="linie"/>
+    <widget source="Service" render="Label" position="1544,195" size="150,30" font="Roboto_HD; 26" backgroundColor="background" halign="right" transparent="1" zPosition="1" foregroundColor="green">
+      <convert type="ServiceTime">StartTime</convert>
+      <convert type="ClockToText">Format:%d.%m.%Y</convert>
+    </widget>
+    <widget source="Service" render="Label" position="1695,195" size="80,30" font="Roboto_HD; 26" backgroundColor="background" halign="right" transparent="1" zPosition="1">
+      <convert type="ServiceTime">StartTime</convert>
+      <convert type="ClockToText">Format:%H:%M </convert>
+    </widget>
+    <widget source="Service" render="Label" position="1625,303" zPosition="1" size="150,30" font="Roboto_HD; 26" foregroundColor="yellow" backgroundColor="background" halign="right" transparent="1">
+      <convert type="ServiceTime">Duration</convert>
+      <convert type="ClockToText">InMinutes</convert>
+    </widget>
+    <widget source="Service" render="Label" position="1585,250" zPosition="1" size="190,30" font="Roboto_HD; 26" halign="right" foregroundColor="blue" backgroundColor="background" transparent="1">
+      <convert type="MovieInfo">FileSize</convert>
+    </widget>
+	<widget source="Title" render="Label" position="800,80" size="700,30" font="Roboto_HD; 27" noWrap="1" halign="left" foregroundColor="white" backgroundColor="background" transparent="1" >
+	<convert type="j00zekModEMCinfo">emc_pathinfo</convert>
+	</widget>
+    <widget name="list" position="124,190" size="920,740" itemHeight="70" CoolFont="Roboto_HD;27" CoolSelectFont="Roboto_HD;27" CoolDateFont="Roboto_HD;20" WatchingColor="white" FinishedColor="white" RecordingColor="white" CoolFolderSize="545" CoolMovieSize="545" CoolMoviePos="35" CoolDatePos="960" scrollbarMode="showOnDemand" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" selectionPixmap="BlackHarmony/menu/sel_920_70.png" transparent="1"/>
+    <widget source="Service" render="Label" position="1113,480" size="675,60" font="HD_Thin; 28" backgroundColor="black" valign="center" halign="left" transparent="1" foregroundColor="light_yellow">
+      <convert type="EMCEventName">Name</convert>
+    </widget>
+    <widget source="Service" render="Label" position="1113,560" size="675,380" font="Roboto_HD; 26" backgroundColor="background" halign="left" valign="top">
+      <convert type="EMCEventName">ExtendedDescription</convert>
+    </widget>
+    <widget source="Service" render="Label" position="1113,430" size="675,32" font="HD_Thin; 30" halign="left" backgroundColor="black" transparent="1" foregroundColor="green">
+      <convert type="EMCMovieInfo">RecordServiceName</convert>
+    </widget>
+    <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="110,991" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="500,991" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="890,991" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="1280,991" size="35,27" alphatest="blend"/>
+    <widget name="key_red" position="160,990" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget name="key_green" position="550,990" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget name="key_yellow" position="940,990" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget name="key_blue" position="1330,990" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <ePixmap position="1553,988" size="60,30" pixmap="BlackHarmony/buttons/key_exit.png" alphatest="blend"/>
+    <ePixmap position="1653,988" size="60,30" pixmap="BlackHarmony/buttons/key_menu.png" alphatest="blend"/>
+    <ePixmap position="1753,988" size="60,30" pixmap="BlackHarmony/buttons/key_infoo.png" alphatest="blend"/>
+    <widget name="Cover" position="1113,185" size="130,200" zPosition="2" alphatest="on" transparent="1"/>
+    <widget source="Service" render="j00zekPicons" picontype="picon" position="1295,222" zPosition="10" size="220,132" transparent="1" alphatest="blend">
+      <convert type="j00zekModMovieReference"/>
+    </widget>
+  </screen>

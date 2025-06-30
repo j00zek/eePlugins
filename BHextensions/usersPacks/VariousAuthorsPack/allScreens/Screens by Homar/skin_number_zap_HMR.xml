@@ -1,0 +1,17 @@
+<skin>
+<screen name="NumberZapWithName" position="0,0" size="1920,1080" title=" " flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap alphatest="blend" pixmap="BlackHarmony/bg_design/zap400x170.png" position="12,866" size="400,170" zPosition="3" />
+    <eLabel backgroundColor="black" position="0,850" size="1060,200" zPosition="-1" />
+
+<widget source="Service" render="j00zekPicons" picontype="zzpicon" position="12,866" size="400,170" zPosition="5" alphatest="blend">
+      <convert type="ServiceName">Reference</convert>
+    </widget>
+<ePixmap alphatest="blend" pixmap="BlackHarmony/bg_design/linie1000_3.png" position="5,1042" size="1000,3" zPosition="1" />
+<ePixmap alphatest="blend" pixmap="BlackHarmony/bg_design/linie1000_3.png" position="5,855" size="1000,3" zPosition="1" />
+<ePixmap alphatest="blend" pixmap="BlackHarmony/bg_design/linie260_3.png" position="674,951" size="260,3" zPosition="1" />
+
+    <widget name="servicenumber" position="421,920" size="130,60" halign="center" valign="center" font="HD_Thin; 50" foregroundColor="light_yellow" backgroundColor="background" transparent="1" />
+    <widget name="servicebouquet" position="565,965" size="480,60" font="HD_Thin; 35" halign="center" valign="center" foregroundColor="white" backgroundColor="background" transparent="1" />
+    <widget name="servicename" position="565,865" size="480,80" font="HD_Thin; 40" halign="center" valign="center" foregroundColor="cyan" backgroundColor="background" transparent="1" />
+  </screen>
+</skin>

@@ -1,0 +1,29 @@
+<skin>
+<screen name="HistoryZapSelector" position="0,0" size="850,1080" title=" " backgroundColor="transparent" flags="wfNoBorder">
+<ePixmap position="0,0" zPosition="-10" size="850,1080" pixmap="BlackHarmony/bg_design/zap_history.png"/>
+	<widget source="global.CurrentTime" render="Label" position="16,20" size="90,40" font="Roboto_HD; 32" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="470,20" size="360,40" font="Roboto_HD; 32" halign="right" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+	<eLabel text="Historia przełączania" position="16,70" size="810,40" font="Roboto_HD; 32" halign="center" backgroundColor="dark_grey" transparent="1"/>
+    
+	<widget source="menu" render="Listbox" position="28,133" size="792,880" selectionPixmap="BlackHarmony/menu/sel_850_110.png" scrollbarMode="showOnDemand">
+      <convert type="TemplatedMultiContent">
+        {"template": [
+          MultiContentEntryText(pos = (130, 33), size = (15, 33), font = 1, flags = RT_HALIGN_CENTER | RT_VALIGN_CENTER, text = 1), # Current Service
+          MultiContentEntryText(pos = (163, 2), size = (628, 35), font = 1, flags = RT_HALIGN_LEFT | RT_VALIGN_TOP, text = 2), # Servicename
+          MultiContentEntryText(pos = (163, 39), size = (628, 32), font = 2, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER | RT_WRAP, text = 3), # Eventname
+          MultiContentEntryText(pos = (163, 73), size = (628, 29), font = 3, flags = RT_HALIGN_LEFT, text = 5), # Eventtime
+          MultiContentEntryPixmapAlphaBlend(pos = (15, 14), size = (110, 66), png=6, flags = BT_SCALE) # picon
+        ],
+        "fonts": [gFont("Regular", 33), gFont("Regular", 30), gFont("Regular", 27), gFont("Regular", 22)],
+        "itemHeight": 110
+        }
+      </convert>
+    </widget>
+	<ePixmap alphatest="blend" pixmap="BlackHarmony/buttons/key_ok.png" position="28,1033" size="60,30" />
+    <ePixmap alphatest="blend" pixmap="BlackHarmony/buttons/key_exit.png" position="754,1033" size="60,30" />
+  </screen>
+</skin>

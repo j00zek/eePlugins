@@ -1,0 +1,10 @@
+Package: kodi-addon--j00zeks-repository.castagnait
+Priority: optional
+Section: utils
+Depends: enigma2---j00zeks-components
+Description: Repozytorium CastagnaIT dla Kodi 19.x
+Maintainer: j00zek
+Source: http://github.com/j00zek/eePlugins
+Version: 22.04.07.0809
+Architecture: all
+DestinationPath: /usr/share/kodi/addons/repository.castagnait

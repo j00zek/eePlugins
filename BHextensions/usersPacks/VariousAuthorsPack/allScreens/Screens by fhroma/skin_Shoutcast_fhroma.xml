@@ -1,0 +1,30 @@
+<skin>
+ <screen name="SHOUTcastWidget" position="center,center" size="1920,1080" title=" " flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="1,0" zPosition="-5" size="1920,1080" pixmap="BlackHarmony/bg_design/info.png" />
+    <eLabel text="SHOUTCAST" position="980,88" size="820,40" font="Roboto_HD; 26" halign="right" backgroundColor="dark_grey" transparent="1" />
+
+    <widget source="global.CurrentTime" render="Label" position="110,80" size="100,35" font="Roboto_HD; 28" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="220,80" size="660,40" font="Roboto_HD; 28" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+	  <widget name="statustext" position="1122,774" zPosition="1" size="560,120" font="Regular;20" halign="center" valign="center" transparent="1" backgroundColor="transpBlack" />
+	<widget name="headertext" position="150,180" size="760,35" zPosition="4" font="Roboto_HD;30" halign="center" valign="center" foregroundColor="#66CC99"  transparent="1" />
+		<widget name="list"  position="140,250" size="910,610" font="Roboto_HD;48" itemHeight="70"  scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_1095_70.png"  transparent="1" />
+		<ePixmap position="1025,240" zPosition="2" size="35,645" pixmap="BlackHarmony/gfx/scroll.png" alphatest="blend" transparent="1" />
+    <widget name="titel" position="1202,866" zPosition="1" size="560,126" font="Roboto_HD; 26" transparent="1" backgroundColor="black" halign="center" foregroundColor="green" />
+    <widget name="station" position="1190,816" zPosition="1" size="560,40" font="Roboto_HD; 26" transparent="1" backgroundColor="black" foregroundColor="#66CC99" halign="center" />
+    <widget name="console" position="1282,1157" zPosition="1" size="560,40" font="Roboto_HD; 18" transparent="1" backgroundColor="black" halign="left" />
+	
+		<widget name="cover" position="1220,150" size="520,620" zPosition="3" alphatest="blend" />
+	<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="110,991" size="35,27" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="500,991" size="35,27" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="890,991" size="35,27" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="1280,991" size="35,27" alphatest="blend" />
+    <widget source="key_red" render="Label" position="160,990" size="200,32" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <widget source="key_green" render="Label" position="550,990" size="300,32" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <widget source="key_yellow" render="Label" position="940,990" size="200,32" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <widget source="key_blue" render="Label" position="1330,990" size="200,32" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+  </screen>
+  </skin>

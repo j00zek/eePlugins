@@ -1,0 +1,64 @@
+<skin>
+<screen name="DreamExplorerII" position="345,93" size="1232,908" title=" " flags="wfNoBorder" backgroundColor="transparent">
+  <ePixmap position="0,0" zPosition="-10" size="1232,908" pixmap="BlackHarmony/bg_design/mainbg.png" />
+  <widget source="global.CurrentTime" render="Label" position="40,25" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+    <convert type="ClockToText">Default</convert>
+  </widget>
+  <widget source="global.CurrentTime" render="Label" position="125,25" size="460,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+    <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+  </widget>
+  <widget source="session.CurrentService" render="Label" position="960,25" size="220,30" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1">
+    <convert type="j00zekAlternateTitle">DreamExplorer II</convert>
+  </widget>
+  <widget name="filelist" itemHeight="40" valign="center" position="65,110" size="1095,635" enableWrapAround="1" scrollbarWidth="7" scrollbarSliderBorderWidth="1" scrollbarSliderBorderColor="blue" scrollbarSliderForegroundColor="blue" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_1095_40.png" backgroundColor="black" transparent="1" />
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="41,853" zPosition="10" size="35,27" alphatest="blend"
+                        initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0" random="True"
+                        pixmaps="BlackHarmony/skin_user_animButtons/key_red"
+                        pixalter="BlackHarmony/buttons/key_red.png" />
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="328,853" zPosition="10" size="35,27" alphatest="blend"
+                        initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,1" random="True"
+                        pixmaps="BlackHarmony/skin_user_animButtons/key_green"
+                        pixalter="BlackHarmony/buttons/key_green.png" />
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="615,853" zPosition="10" size="35,27" alphatest="blend"
+                        initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True"  chainid="BTN,2" random="True"
+                        pixmaps="BlackHarmony/skin_user_animButtons/key_yellow"
+                        pixalter="BlackHarmony/buttons/key_yellow.png" />
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="902,853" zPosition="10" size="35,27" alphatest="blend"
+                        initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,3" random="True"
+                        pixmaps="BlackHarmony/skin_user_animButtons/key_blue"
+                        pixalter="BlackHarmony/buttons/key_blue.png" />
+  <eLabel text="Options" position="854,775" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="black" transparent="1" />
+  <eLabel text="Info" position="567,775" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="black" transparent="1" />
+  <eLabel text="DMnapi" position="280,775" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="black" transparent="1" />
+  <ePixmap position="210,774" size="60,30" zPosition="10" pixmap="BlackHarmony/buttons/key_text.png" transparent="1" alphatest="blend" />
+  <ePixmap position="784,774" size="60,30" zPosition="10" pixmap="BlackHarmony/buttons/key_menu.png" transparent="1" alphatest="blend" />
+  <ePixmap position="499,774" size="60,30" zPosition="10" pixmap="BlackHarmony/buttons/key_info.png" transparent="1" alphatest="blend" />
+  <eLabel text="Delete" position="91,853" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+  <eLabel text="Rename" position="378,853" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+  <eLabel text="Move / Copy" position="665,853" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+  <eLabel text="Bookmarks" position="952,853" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+  <ePixmap position="40,754" zPosition="10" size="1148,1" pixmap="BlackHarmony/gfx/linia.png" />
+</screen>
+
+<screen name="CPmaniger" position="345,93" size="1232,908" title="Select Copy/Move location..." flags="wfNoBorder" backgroundColor="transparent">
+  <ePixmap position="0,0" zPosition="-10" size="1232,908" pixmap="BlackHarmony/bg_design/mainbg.png" />
+  <widget source="global.CurrentTime" render="Label" position="40,25" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+  <convert type="ClockToText">Default</convert>
+  </widget>
+  <widget source="global.CurrentTime" render="Label" position="125,25" size="460,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+  <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+  </widget>
+  <widget name="File" position="65,60" size="1090,80" font="Regular;21" halign="center" valign="center" foregroundColor="white" backgroundColor="background" />
+  <widget name="CPto" itemHeight="40" valign="center" position="65,160" size="1095,635" enableWrapAround="1" scrollbarWidth="7" scrollbarSliderBorderWidth="1" scrollbarSliderBorderColor="blue" scrollbarSliderForegroundColor="blue" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_1095_40.png" backgroundColor="black" transparent="1" />
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="41,853" zPosition="10" size="35,27" alphatest="blend"
+                        initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0" random="True"
+                        pixmaps="BlackHarmony/skin_user_animButtons/key_red"
+                        pixalter="BlackHarmony/buttons/key_red.png" />
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" position="615,853" zPosition="10" size="35,27" alphatest="blend"
+                        initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True"  chainid="BTN,1" random="True"
+                        pixmaps="BlackHarmony/skin_user_animButtons/key_yellow"
+                        pixalter="BlackHarmony/buttons/key_yellow.png" />
+  <eLabel text="Move" position="91,852" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="white" transparent="1" />
+  <eLabel text="Copy" position="665,852" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="white" transparent="1" />
+</screen>
+</skin>

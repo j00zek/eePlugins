@@ -1,0 +1,10 @@
+<skin>
+<screen name="InfoBar" backgroundColor="transparent" flags="wfNoBorder" position="0,0" size="1920,1080">
+    <widget source="session.CurrentService" render="j00zekPixmap" position="1520,240" size="400,400" alphatest="off">
+      <convert type="j00zekUserDailyInfo">retPic</convert>
+    </widget>
+    <widget position="1520,640" size="400,50" zPosition="3" halign="center" valign="top" render="j00zekLabel" source="session.CurrentService" font="Roboto_HD; 24" backgroundColor="black" foregroundColor="green">
+      <convert type="j00zekUserDailyInfo">retInfo</convert>
+    </widget>
+</screen>
+</skin>

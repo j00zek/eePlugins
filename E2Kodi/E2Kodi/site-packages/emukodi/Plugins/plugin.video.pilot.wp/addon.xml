@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<addon id="plugin.video.pilot.wp" name="WP Pilot" version="1.0.5" provider-name="c0d34fun">
+    <requires>
+        <import addon="xbmc.python" version="3.0.0"/>
+        <import addon="script.module.requests" version="2.12.4"/>
+        <import addon="script.module.inputstreamhelper" version="0.3.3"/>
+        <import addon="service.cronxbmc" optional="true"/>
+        <import addon="script.module.future"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="addon.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <description lang="pl">Oglądaj WP Pilot w Kodi!</description>
+        <disclaimer lang="pl">Quickfix 07.2021 - dodane logowanie przez cookies jak w wersji 0.1.1. This is not an
+            official plugin! If the official application is available for your
+            platform, use it instead of this plugin. All rights to the content are reserved by wp.pl.
+        </disclaimer>
+        <summary lang="en">Watch WP Pilot in Kodi!</summary>
+        <description lang="en">Watch WP Pilot in Kodi!</description>
+        <disclaimer lang="en">This is not an official plugin! If the official application is available for your
+            platform, use it instead of this plugin. All rights to the content are reserved by wp.pl.
+        </disclaimer>
+        <language>pl</language>
+        <platform>all</platform>
+        <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
+        <website>https://pilot.wp.pl</website>
+        <assets>
+            <icon>resources/icon.png</icon>
+        </assets>
+        <reuselanguageinvoker>true</reuselanguageinvoker>
+    </extension>
+</addon>

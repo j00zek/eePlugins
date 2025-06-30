@@ -1,0 +1,88 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: AlternativeSoftCam Manager\n"
+"POT-Creation-Date: 2015-08-16 12:00+0100\n"
+"PO-Revision-Date: 2016-01-05 12:00+0100\n"
+"Last-Translator: j00zek\n"
+"Language-Team: j00zek 4 Graterlia\n"
+"Language: PL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+msgid "No /tmp/ecm.info file!!!"
+msgstr "Brak pliku /tmp/ecm.info !!!"
+
+msgid "Stopping %s"
+msgstr "Zatrzymuję %s"
+
+msgid "Restarting %s"
+msgstr "Restart %s"
+
+msgid "Activate Alternative Softam Manager"
+msgstr "Aktywuj Alternative Softcam Manager"
+
+msgid "Manage oscam only?"
+msgstr "Zarządzanie tylko oscam-em"
+
+msgid "SoftCam config directory (press OK)"
+msgstr "Katalog z plikami konfiguracyjnymi (naciśnij OK)"
+
+msgid "SoftCam directory (press OK)"
+msgstr "Katalog z cam-em (naciśnij OK)"
+
+msgid "Are you sure you want to save this configuration?\n\n"
+msgstr "Czy na pewno zapisać konfigurację\n\n"
+
+msgid "Directory %s does not exist!\nPlease set the correct directorypath!"
+msgstr "Katalog %s nie istnieje!\nProszę wybrać poprawną ścieżkę!"
+
+msgid "Alternative SoftCam Manager"
+msgstr "Alternatywny menadżer SoftCamów"
+
+msgid "SoftCam Manager"
+msgstr "Zarządzanie SoftCam-ami"
+
+msgid "Start, stop, restart SoftCams, change settings."
+msgstr "Uruchamianie, restartowanie i zatrzymywanie Cam-a"
+
+msgid "Setup"
+msgstr "Ustawienia"
+
+msgid "Exit"
+msgstr "Wyjdź"
+
+msgid "New directory"
+msgstr "Nowy katalog"
+
+msgid "SoftCam configuration"
+msgstr "Konfiguracja SoftCam-a"
+
+msgid "Select directory with binaries"
+msgstr "Wybierz katalog z binarkami"
+
+msgid "Select directory with configs"
+msgstr "Wybierz katalog z plikami konfiguracyjnymi"
+
+msgid "Select directory"
+msgstr "Wybierz katalog"
+
+msgid "Cancel"
+msgstr "Anuluj"
+
+msgid "Select"
+msgstr "Wybierz"
+
+msgid "none"
+msgstr "brak"
+
+msgid "Starting %s"
+msgstr "Uruchamiam %s"
+
+msgid "sync time from Transponders (NOT recommended)"
+msgstr "Pobierz czas z transponderów (NIE zalecane)"

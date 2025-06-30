@@ -1,0 +1,42 @@
+  <!-- ExtLiveTVPlayer-->
+  <screen backgroundColor="transparent" flags="wfNoBorder" name="ExtLiveTVPlayer" position="0,0" size="1920,1080" title="InfoBar" >
+    <ePixmap pixmap="BlackHarmony/bg_design/infobarTransparent1800x196.png" position="60,850" size="1800,196" zPosition="-10" />
+    <!-- Pikona -->
+    <widget alphatest="blend" position="90,880" render="j00zekPicons" picontype="picon" size="220,132" source="session.CurrentService" transparent="1" zPosition="4">
+      <convert type="ServiceName">Reference</convert>
+    </widget>
+    <!-- czas -->
+    <widget source="global.CurrentTime" render="Label" position="1660,908" size="170,60" valign="center" halign="right" font="HD_Thin;55" foregroundColor="light_yellow" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <!-- Obecny program -->
+    <widget source="session.Event_Now" render="Label" position="340,889" size="115,120" font="HD_Thin; 32" valign="top" halign="left" backgroundColor="black" transparent="1">
+      <convert type="EventTime">StartTime</convert>
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <eLabel text="-" position="340,889" size="115,120" font="HD_Thin; 30" valign="top" halign="right" backgroundColor="black" transparent="1" foregroundColor="light_grey" />
+    <widget source="session.Event_Now" render="j00zekLabel" position="470,889" size="780,120" font="HD_Thin; 32" valign="top" halign="left" backgroundColor="black" transparent="1"  noWrap="1">
+      <convert type="j00zekModEventName">Name</convert>
+    </widget>
+    <widget source="session.Event_Now" render="Label" position="1210,889" size="230,120" font="HD_Thin; 32" valign="top" halign="right" backgroundColor="black" transparent="1"  noWrap="1">
+      <convert type="EventTime">Remaining</convert>
+      <convert type="RemainingToText">InMinutes</convert>
+    </widget>
+    <ePixmap pixmap="BlackHarmony/gfx/progress_gray.png" position="340,945" size="1100,6" zPosition="-5" alphatest="blend" />
+    <widget source="session.Event_Now" render="Progress" position="340,945" size="1100,6" zPosition="1" pixmap="BlackHarmony/gfx/progress_ib.png" transparent="1">
+      <convert type="EventTime">Progress</convert>
+    </widget>
+    <!-- Nastepny program -->
+    <widget source="session.Event_Next" render="Label" position="340,970" size="115,35" font="HD_Thin; 32" valign="bottom" halign="left" foregroundColor="light_grey" backgroundColor="black" transparent="1">
+      <convert type="EventTime">StartTime</convert>
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <eLabel text="-" position="340,970" size="115,120" font="HD_Thin; 30" valign="bottom" halign="right" foregroundColor="light_grey" backgroundColor="black" transparent="1" />
+    <widget source="session.Event_Next" render="j00zekLabel" cfgContext="EN" position="470,970" size="780,35" font="HD_Thin; 32" valign="bottom" halign="left" backgroundColor="black" transparent="1" foregroundColor="light_grey"  noWrap="1">
+      <convert type="j00zekModEventName">Name</convert>
+    </widget>
+    <widget source="session.Event_Next" render="Label" position="1210,970" size="230,35" font="HD_Thin; 32" valign="bottom" halign="right" foregroundColor="light_grey" backgroundColor="black" transparent="1"  noWrap="1">
+      <convert type="EventTime">Duration</convert>
+      <convert type="ClockToText">InMinutes</convert>
+    </widget>
+  </screen>

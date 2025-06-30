@@ -1,0 +1,7 @@
+#!/bin/sh
+/usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/bin/re-initiate.sh
+if [ $? -gt 0 ];then
+  exit 1
+fi
+rm -f /usr/lib/enigma2/python/Plugins/Extensions/StreamlinkConfig/bin/site-packages/streamlink/plugins/vtvgo.* 2 > /dev/null
+exit 0

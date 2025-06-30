@@ -1,0 +1,29 @@
+<skin>
+    <screen name="StandbySummary" position="0,0" size="100%,100%"> <!-- org resolution 480x320 -->
+    <!-- ON/OFF icon -->
+        <widget source="session.CurrentService" render="Pixmap" zPosition="10" position="0%,0%" size="100%,100%" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/ShareLCDwithKODI/icons/kodiplaybackground.png" alphatest="blend">
+            <convert type="j00zekLCD4KODI">showWhenKODIplaying</convert>
+            <convert type="ConditionalShowHide"/>
+        </widget>
+    <!-- current audio codec -->
+        <widget position="50%,15%" size="50%,44" font="BHfDlcD;44" zPosition="15" transparent="1" foregroundColor="yellow"  halign="center" render="Label" source="session.CurrentService" valign="center" noWrap="1">
+            <convert type="j00zekLCD4KODI">query,KODIstateTable['PlayerProperties']['currentaudiostream']['codec']</convert>
+        </widget>
+    <!-- TITLE -->
+        <widget position="2%,30%" size="96%,45%" font="BHfDlcD;50" zPosition="15" transparent="1" foregroundColor="#FFFF00" render="Label" source="session.CurrentService" halign="center" valign="center">
+            <convert type="j00zekLCD4KODI">title</convert>
+        </widget>
+    <!-- Standard Progress ON/OFF -->
+        <widget position="2%,77%" size="96%,3%" zPosition="15" source="session.CurrentService" render="Progress" borderWidth="2" transparent="1">
+            <convert type="j00zekLCD4KODI">progress,hideWhenKODInotPlaying</convert>
+        </widget>
+    <!-- current Time -->
+        <widget source="global.CurrentTime" render="Label" zPosition="15" position="2%,82%" size="48%,55" font="BHfDlcD;50" halign="left" valign="center" noWrap="1">
+            <convert type="j00zekLCD4KODI">currentTime,hideWhenKODInotPlaying</convert>
+        </widget>
+    <!-- LEFT MINS -->
+        <widget position="50%,82%" size="48%,55" font="BHfDlcD;50" zPosition="15" transparent="1" foregroundColor="white" render="Label" source="session.CurrentService" halign="right" valign="center" noWrap="1">
+            <convert type="j00zekLCD4KODI">leftmins</convert>
+        </widget>
+    </screen>
+</skin>

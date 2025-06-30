@@ -1,0 +1,68 @@
+<skin>
+<screen name="InfoBar" position="0,0" size="1920,1080" title="InfoBar" flags="wfNoBorder" backgroundColor="transparent">
+  <ePixmap position="0,810" zPosition="-2" size="1922,255" pixmap="BlackHarmony/bg_design/infobar4jac.png" />
+  <ePixmap position="323,952" zPosition="-2" size="1130,3" pixmap="BlackHarmony/bg_design/1200_4.png" />
+  <widget source="session.CurrentService" render="Label" position="85,820" size="1175,58" font="HD_Thin; 45" valign="top" noWrap="1" foregroundColor="blue" backgroundColor="black" transparent="1" halign="left">
+    <convert type="j00zekModExtraTuner">ServiceNumberName</convert>
+  </widget>
+      <widget pixmap="BlackHarmony/gfx/progress_mario.png" position="323,952" render="Progress" size="1130,3" source="session.Event_Now" transparent="1" zPosition="3">
+  <convert type="EventTime">Progress</convert>
+</widget>
+  <widget source="session.Event_Now" render="Label" position="320,889" size="105,36" font="HD_Thin; 32" halign="left" backgroundColor="black" transparent="1">
+    <convert type="EventTime">StartTime</convert>
+    <convert type="ClockToText">Default</convert>
+  </widget>
+  <eLabel text="-" position="420,889" size="20,36" font="HD_Thin; 30" halign="left" backgroundColor="black" transparent="1" foregroundColor="light_grey" />
+
+   <widget render="Label" source="session.Event_Now" position="960,927" size="550,25" transparent="1" zPosition="1" font="HD_Thin; 19" halign="right" foregroundColor="green" backgroundColor="black">
+      <convert type="j00zekModEventName">ExtendedDescription</convert>
+    </widget>
+    <widget render="Label" source="session.Event_Next" position="960,1020" size="550,45" transparent="1" zPosition="1" font="HD_Thin; 18" halign="right" foregroundColor="#c9c9c9" backgroundColor="black">
+      <convert type="j00zekModEventName">ExtendedDescription</convert>
+    </widget>
+	
+  <widget source="session.Event_Now" render="Label" position="446,869" size="900,76" font="HD_Thin; 32" halign="left" valign="center" backgroundColor="black" transparent="1">
+    <convert type="j00zekModEventName">Name</convert>
+  </widget>
+  <widget source="session.Event_Now" render="Label" position="1350,889" size="170,36" font="RegularLight; 32" halign="right" backgroundColor="black" transparent="1">
+    <convert type="EventTime">Remaining</convert>
+    <convert type="RemainingToText">InMinutes</convert>
+  </widget>
+  <widget source="session.Event_Next" render="Label" position="320,970" size="105,36" font="RegularLight; 30" halign="left" foregroundColor="#c9c9c9" backgroundColor="black" transparent="1">
+    <convert type="EventTime">StartTime</convert>
+    <convert type="ClockToText">Default</convert>
+  </widget>
+  <eLabel text="-" position="420,970" size="20,36" font="RegularLight; 30" halign="left" foregroundColor="#808080" backgroundColor="black" transparent="1" />
+  <widget source="session.Event_Next" render="Label" position="446,969" size="900,80" font="RegularLight; 30" halign="left" backgroundColor="black" transparent="1" foregroundColor="#c9c9c9">
+    <convert type="j00zekModEventName">Name</convert>
+  </widget>
+  <widget source="session.Event_Next" render="Label" position="1350,970" size="170,36" font="RegularLight; 30" halign="right" valign="top" foregroundColor="#c9c9c9" backgroundColor="black" transparent="1">
+    <convert type="EventTime">Duration</convert>
+    <convert type="ClockToText">InMinutes</convert>
+  </widget>
+  <widget source="global.CurrentTime" render="Label" position="1720,817" size="150,52" font="HD_Thin; 50" halign="left" backgroundColor="black" transparent="1" valign="center">
+    <convert type="ClockToText">Default</convert>
+  </widget>
+  <widget alphatest="blend" position="70,880" render="j00zekPicons" picontype="picon" size="220,132" source="session.CurrentService" transparent="1" zPosition="4">
+    <convert type="ServiceName">Reference</convert>
+  </widget>
+  <widget backgroundColor="black" font="HD_Thin; 26" halign="right" position="1259,840" render="Label" size="431,30" source="global.CurrentTime" transparent="1" valign="center" noWrap="1" foregroundColor="blue">
+    <convert type="ClockToText">Format:%A %d %B %Y </convert>
+  </widget>
+  <!-- POGODA -->
+    <widget source="session.j00zekMSNWeather" render="Label" position="1691,940" size="178,84" font="HD_Thin; 23" halign="center" valign="center" transparent="1" foregroundColor="podsw" backgroundColor="black">
+  <convert type="j00zekMSNWeather">temperature_text,current</convert>
+</widget>
+    <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="1528,871" size="170,170" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
+      <convert type="j00zekMSNWeather">weathericon,current</convert>
+    </widget>
+    <eLabel font="Roboto_HD; 18" foregroundColor="yellow" halign="center" name="new eLabel" position="1613,1035" size="180,20" text="Temp. odczuwalna:" transparent="1" zPosition="2" valign="center" backgroundColor="black" /> 
+    <widget noWrap="1" backgroundColor="black" font="HD_Thin; 27" render="Label" position="1795,1026" size="100,35" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1" foregroundColor="podsw" valign="center">
+      <convert type="j00zekMSNWeather">GET|['currentData']['feelslike']['valInfo']</convert>
+    </widget>
+    <eLabel text="Pogoda teraz:" position="1701,879" size="200,28" font="Roboto_HD; 22" backgroundColor="black" halign="center" transparent="1" foregroundColor="lemon" />
+    <widget noWrap="1" backgroundColor="black" font="HD_Thin; 36" render="Label" position="1740,901" size="109,59" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1" valign="center">
+      <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
+    </widget>
+</screen>
+</skin>

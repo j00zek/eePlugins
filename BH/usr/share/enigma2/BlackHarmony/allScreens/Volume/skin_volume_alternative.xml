@@ -1,0 +1,6 @@
+<skin>
+  <screen name="Volume" position="center,65" size="473,49" title="Volume" zPosition="1" flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="0,0" zPosition="1" size="473,49" pixmap="BlackHarmony/gfx/vol_b_a.png" transparent="1" />
+    <widget name="Volume" position="60,22" zPosition="2" size="394,6" pixmap="BlackHarmony/gfx/vol_a.png" transparent="1" />
+  </screen>
+</skin>

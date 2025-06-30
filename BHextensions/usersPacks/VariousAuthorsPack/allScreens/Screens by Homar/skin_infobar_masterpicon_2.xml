@@ -1,0 +1,200 @@
+<skin>
+    <screen name="InfoBar" position="0,0" size="1920,1080" title="InfoBar" flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="-1,0" zPosition="-2" size="1920,1080" pixmap="BlackHarmony/bg_design/infobar-HMR33_1920x1080x24.png" />
+    <widget pixmap="BlackHarmony/gfx/progress_mario.png" position="600,1057" render="Progress" size="880,4" source="session.Event_Now" transparent="1" zPosition="3">
+      <convert type="EventTime">Progress</convert>
+    </widget>
+    <eLabel backgroundColor="cyan" position="600,1057" size="880,4" transparent="0" zPosition="2" foregroundColor="black" />
+    <widget backgroundColor="black" font="HD_Thin; 28" halign="center" position="252,997" foregroundColor="red" render="Label" size="300,30" source="global.CurrentTime" transparent="1" valign="center" noWrap="1">
+      <convert type="ClockToText">Format:%d %B %Y </convert>
+    </widget>
+    <widget source="session.CurrentService" render="Label" position="25,892" size="150,100" font="HD_Thin; 50" foregroundColor="white" valign="center" noWrap="1" backgroundColor="black" transparent="1" text="1224" halign="center">
+      <convert type="j00zekModExtraTuner">ServiceNumber</convert>
+    </widget>
+    <widget source="session.CurrentService" render="j00zekPiconAnimation" pixmaps="animatedZZPicons" position="0,0" size="1920,150" zPosition="5" transparent="1" alphatest="blend" />
+    <widget source="session.CurrentService" render="j00zekPicons" picontype="masterpicon" position="0,0" size="1920,150" transparent="1" alphatest="blend">
+      <convert type="j00zekModServiceName2">Reference</convert>
+    </widget>
+    <widget source="session.Event_Now" render="Label" position="633,965" size="120,35" font="HD_Thin; 32" halign="left" backgroundColor="black" transparent="1" text="17:30" foregroundColor="cyan">
+      <convert type="EventTime">StartTime</convert>
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <eLabel text="-" position="744,965" size=" 20,28" font="HD_Thin; 28" halign="left" backgroundColor="black" transparent="1" foregroundColor="cyan" />
+    <widget source="session.Event_Now" render="Label" position="754,965" size="120,35" font="HD_Thin; 32" halign="right" backgroundColor="black" transparent="1" text="19:00" foregroundColor="cyan">
+      <convert type="EventTime">EndTime</convert>
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="session.Event_Now" render="Label" position="633,910" size="850,45" font="HD_Thin; 40" halign="left" backgroundColor="black" transparent="1" valign="top">
+      <convert type="j00zekModEventName">Name</convert>
+    </widget>
+    <widget source="session.Event_Now" render="Label" position="896,965" size="170,35" font="HD_Thin; 32" halign="right" backgroundColor="black" transparent="1" foregroundColor="red">
+      <convert type="EventTime">Remaining</convert>
+      <convert type="RemainingToText">InMinutes</convert>
+    </widget>
+    <widget source="session.FrontendInfo" render="FixedLabel" text="A" position="1818,1030" zPosition="3" size="18,30" font="Regular;24" halign="center" foregroundColor="cyan" backgroundColor="black" transparent="1">
+      <convert type="FrontendInfo">NUMBER</convert>
+      <convert type="ValueRange">0,0</convert>
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="session.FrontendInfo" render="FixedLabel" text="B" position="1841,1030" zPosition="3" size="18,30" font="Regular;24" halign="center" foregroundColor="cyan" backgroundColor="black" transparent="1">
+      <convert type="FrontendInfo">NUMBER</convert>
+      <convert type="ValueRange">1,1</convert>
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="session.FrontendInfo" render="FixedLabel" text="C" position="1865,1030" zPosition="3" size="18,30" font="Regular;24" halign="center" foregroundColor="cyan" backgroundColor="black" transparent="1">
+      <convert type="FrontendInfo">NUMBER</convert>
+      <convert type="ValueRange">2,2</convert>
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="session.FrontendInfo" render="FixedLabel" text="D" position="1889,1030" zPosition="3" size="18,30" font="Regular;24" halign="center" foregroundColor="cyan" backgroundColor="black" transparent="1">
+      <convert type="FrontendInfo">NUMBER</convert>
+      <convert type="ValueRange">3,3</convert>
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <eLabel text="TUNER:" position="1710,1030" size="100,30" font="HD_Thin; 24" halign="right" backgroundColor="black" transparent="1" foregroundColor="red" />
+    <eLabel text="A" position="1818,1030" zPosition="1" size="18,30" font="Regular;24" halign="center" foregroundColor="white" backgroundColor="black" transparent="1" />
+    <eLabel text="B" position="1841,1030" zPosition="1" size="18,30" font="Regular;24" halign="center" foregroundColor="white" backgroundColor="black" transparent="1" />
+    <eLabel text="C" position="1865,1030" zPosition="1" size="18,30" font="Regular;24" halign="center" foregroundColor="white" backgroundColor="black" transparent="1" />
+    <eLabel text="D" position="1889,1030" zPosition="1" size="18,30" font="Regular;24" halign="center" foregroundColor="white" backgroundColor="black" transparent="1" />
+    <widget source="session.TunerInfo" render="FixedLabel" text="A" position="1818,1030" zPosition="2" size="18,30" font="Regular;24" halign="center" foregroundColor="white" backgroundColor="black" transparent="1">
+      <convert type="TunerInfo">TunerUseMask</convert>
+      <convert type="ValueBitTest">1</convert>
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="session.TunerInfo" render="FixedLabel" text="B" position="1841,1030" zPosition="2" size="18,30" font="Regular;24" halign="center" foregroundColor="white" backgroundColor="black" transparent="1">
+      <convert type="TunerInfo">TunerUseMask</convert>
+      <convert type="ValueBitTest">2</convert>
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="session.TunerInfo" render="FixedLabel" text="C" position="1865,1030" zPosition="2" size="18,30" font="Regular;24" halign="center" foregroundColor="white" backgroundColor="black" transparent="1">
+      <convert type="TunerInfo">TunerUseMask</convert>
+      <convert type="ValueBitTest">3</convert>
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="session.TunerInfo" render="FixedLabel" text="D" position="1889,1030" zPosition="2" size="18,30" font="Regular;24" halign="center" foregroundColor="white" backgroundColor="black" transparent="1">
+      <convert type="TunerInfo">TunerUseMask</convert>
+      <convert type="ValueBitTest">4</convert>
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <eLabel text="SNR:" position="1749,950" size="70,30" font="Regular; 23" halign="right" foregroundColor="red" backgroundColor="black" transparent="1" />
+    <widget source="session.FrontendStatus" render="Label" position="1826,950" size="82,30" font="Regular; 24" halign="right" foregroundColor="cyan" backgroundColor="black" transparent="1">
+      <convert type="FrontendInfo">SNR</convert>
+    </widget>
+    <eLabel text="AGC:" position="1749,990" size="70,30" font="Regular; 23" backgroundColor="black" halign="right" transparent="1" foregroundColor="red" />
+    <widget source="session.FrontendStatus" render="Label" position="1826,990" size="82,30" font="Regular; 24" halign="right" backgroundColor="black" transparent="1" zPosition="1" foregroundColor="cyan">
+      <convert type="FrontendInfo">AGC</convert>
+    </widget>
+    <widget source="session.CurrentService" render="Label" position="235,778" size="400,80" font="HD_Thin; 25" valign="center" noWrap="1" backgroundColor="black" transparent="1" halign="center" text="Polsat Sport Premium PPV5" foregroundColor="cyan">
+      <convert type="j00zekModServiceName2">Name</convert>
+    </widget>
+    <widget source="session.CurrentService" render="Label" position="640,802" zPosition="1" size="760,30" font="HD_Thin; 24" halign="left" backgroundColor="black" transparent="1" foregroundColor="cyan" valign="top" text="Cyfrowy Polsat S.A. / 13E / 12345/V/27500 3/4">
+      <convert type="j00zekModServiceName2">%P / %O / %F %p %Y %f</convert>
+    </widget>
+    <widget source="session.Event_Next" render="Label" position="770,1010" size="700,35" font="HD_Thin; 30" halign="left" foregroundColor="grey" backgroundColor="black" transparent="1">
+      <convert type="j00zekModEventName">Name</convert>
+    </widget>
+    <eLabel text="Następny:" position="632,1010" size="150,35" font="HD_Thin; 28" halign="left" foregroundColor="grey" backgroundColor="black" transparent="1" />
+    <widget source="session.CurrentService" render="Label" position="261,1054" size="200,25" font="HD_Thin; 20" halign="center" backgroundColor="black" transparent="1" foregroundColor="cyan">
+      <convert type="j00zekVideoResolution">VideoResolution</convert>
+    </widget>
+    <ePixmap position="1088,850" size="75,35" zPosition="1" pixmap="BlackHarmony/icons/ico_format_off.png" alphatest="blend" />
+    <widget source="session.CurrentService" render="Pixmap" pixmap="BlackHarmony/icons/ico_format_on.png" position="1088,850" zPosition="5" size="75,35" alphatest="blend">
+      <convert type="ServiceInfo">IsWidescreen</convert>
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <ePixmap position="1242,850" size="75,35" zPosition="1" pixmap="BlackHarmony/icons/ico_txt_off.png" alphatest="blend" />
+    <widget source="session.CurrentService" render="Pixmap" pixmap="BlackHarmony/icons/ico_txt_on.png" position="1242,850" zPosition="5" size="75,35" alphatest="blend">
+      <convert type="ServiceInfo">HasTelext</convert>
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <ePixmap position="1011,850" size="75,35" zPosition="1" pixmap="BlackHarmony/icons/ico_crypt_off.png" alphatest="blend" />
+    <widget source="session.CurrentService" render="Pixmap" pixmap="BlackHarmony/icons/ico_crypt_on.png" position="1011,850" zPosition="3" size="75,35" alphatest="blend">
+      <convert type="ServiceInfo">IsCrypted</convert>
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="session.CurrentService" render="Pixmap" pixmap="BlackHarmony/icons/ico_sd_on_576.png" position="1165,850" size="75,35" zPosition="5" alphatest="blend">
+      <convert type="j00zekModServiceInfoEX">VideoWidth</convert>
+      <convert type="ValueRange">0,720</convert>
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="session.CurrentService" render="Pixmap" pixmap="BlackHarmony/icons/ico_hd_on_720.png" position="1165,850" size="75,35" zPosition="5" alphatest="blend">
+      <convert type="j00zekModServiceInfoEX">VideoWidth</convert>
+      <convert type="ValueRange">721,1000</convert>
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="session.CurrentService" render="Pixmap" pixmap="BlackHarmony/icons/ico_hd_on_1080.png" position="1165,850" size="75,35" zPosition="5" alphatest="blend">
+      <convert type="j00zekModServiceInfoEX">VideoWidth</convert>
+      <convert type="ValueRange">1001,1920</convert>
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="session.CurrentService" render="Pixmap" position="1165,850" size="75,35" zPosition="5" pixmap="BlackHarmony/icons/ico_uhd_on.png" alphatest="blend">
+      <convert type="j00zekModServiceInfoEX">VideoWidth</convert>
+      <convert type="ValueRange">1921,3840</convert>
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <ePixmap alphatest="blend" pixmap="BlackHarmony/icons/ico_sub_off.png" position="1319,850" size="75,35" zPosition="1" />
+    <widget source="session.CurrentService" render="Pixmap" pixmap="BlackHarmony/icons/ico_sub_on.png" position="1319,850" zPosition="20" size="75,35" alphatest="blend">
+      <convert type="ServiceInfo">SubservicesAvailable</convert>
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <ePixmap alphatest="blend" pixmap="BlackHarmony/icons/ico_wifi_on.png" position="934,850" size="75,35" zPosition="1" />
+    <widget alphatest="blend" pixmap="BlackHarmony/icons/ico_lan_on.png" position="934,850" render="Pixmap" size="75,35" source="session.CurrentService" transparent="3" zPosition="3">
+      <convert type="j00zekModRouteInfo">Lan</convert>
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <ePixmap position="857,850" size="75,35" zPosition="1" pixmap="BlackHarmony/icons/ico_iptv_off.png" alphatest="blend" />
+    <widget source="session.CurrentService" render="Pixmap" position="857,850" size="75,35" zPosition="2" pixmap="BlackHarmony/icons/ico_iptv_on.png" alphatest="blend">
+      <convert type="ServiceInfo">IsIPStream</convert>
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <ePixmap pixmap="BlackHarmony/icons/ico_hbbtv_off.png" position="780,850" zPosition="1" size="75,35" alphatest="blend" />
+    <widget source="session.CurrentService" render="Pixmap" pixmap="BlackHarmony/icons/ico_hbbtv_on.png" position="780,850" size="75,35" zPosition="2" alphatest="blend">
+      <convert type="ServiceInfo">HasHBBTV</convert>
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <ePixmap alphatest="blend" pixmap="BlackHarmony/icons/ico_rec_off2.png" position="713,850" size="75,35" zPosition="1" />
+    <widget alphatest="blend" pixmap="BlackHarmony/icons/ico_rec_on2.png" position="713,850" render="Pixmap" size="75,35" source="session.RecordState" zPosition="3">
+      <convert type="ConditionalShowHide">Blink</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="1474,802" size="450,30" font="HD_Thin; 26" halign="center" transparent="1" backgroundColor="black" foregroundColor="cyan" zPosition="1" noWrap="1">
+  <convert type="j00zekModimieniny" />
+</widget>
+    <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="1477,896" size="150,150" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
+      <convert type="j00zekMSNWeather">weathericon,current</convert>
+    </widget>
+    <widget noWrap="1" backgroundColor="black" font="HD_Thin; 30" render="Label" position="1633,894" size="100,35" source="session.j00zekMSNWeather" zPosition="3" halign="right" transparent="1" valign="top">
+      <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
+    </widget>
+    <eLabel font="HD_Thin; 20" foregroundColor="yellow" halign="center" name="new eLabel" position="1627,939" size="120,46" text="temperatura odczuwalna" transparent="1" zPosition="2" valign="center" backgroundColor="black" />
+    <widget noWrap="1" backgroundColor="black" font="HD_Thin; 30" render="Label" position="1637,992" size="90,35" source="session.j00zekMSNWeather" zPosition="3" halign="right" transparent="1" foregroundColor="white" valign="top">
+      <convert type="j00zekMSNWeather">GET|['currentData']['feelslike']['valInfo']</convert>
+    </widget>
+    <ePixmap alphatest="blend" pixmap="BlackHarmony/allScreens/Screens by Homar/clock/flip/default.png" position="288,871" size="360,200" zPosition="1" />
+    <widget source="global.CurrentTime" render="j00zekModFlipClock" position="307,889" zPosition="2" size="57,107" alphatest="blend" transparent="1">
+      <convert type="ClockToText">Format:H1 %H</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="j00zekModFlipClock" position="353,889" zPosition="2" size="57,107" alphatest="blend" transparent="1">
+      <convert type="ClockToText">Format:H2 %H</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="j00zekModFlipClock" position="417,889" zPosition="2" size="57,107" alphatest="blend" transparent="1">
+      <convert type="ClockToText">Format:M1 %M</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="j00zekModFlipClock" position="465,889" zPosition="2" size="57,107" alphatest="blend" transparent="1">
+  <convert type="ClockToText">Format:M2 %M</convert>
+</widget>
+    <widget source="session.CurrentService" render="Label" font="Regular; 24" position="1850,910" size="130,25" halign="left" backgroundColor="background" foregroundColor="cyan" transparent="1" noWrap="1">
+      <convert type="j00zekModFanTempInfo">TempInfo</convert>
+    </widget>
+    <eLabel text="TMP:" position="1749,910" size="70,30" font="Regular; 24" backgroundColor="black" halign="right" transparent="1" foregroundColor="red" />
+
+
+<widget noWrap="1" backgroundColor="background" font="HD_Thin; 28" render="Label" position="1414,849" size="500,40" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1">
+  <convert type="j00zekMSNWeather">temperature_text,current</convert>
+</widget>
+
+
+  </screen>
+
+
+
+</skin>

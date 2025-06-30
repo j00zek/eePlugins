@@ -1,0 +1,9 @@
+# Katalogi Vu.<nazwa tunera> zawierają definicje ekranów. Instalator paczki tworzy linki w zależności od używanego tunera i softu.
+# Aby widziec wszystkie skorki w UserSkin przestaw ponizsza opcje na On
+# Aby zobaczyć jak działa obsługa duo4k, przestaw ponizsza opcje na duo4k
+# Dodatkowo, jeśli chcesz zobaczyć logo wpisz w konsoli:
+# ln -sf /usr/share/enigma2/HomarLCDskins/Homar/vuduo4k.png /usr/share/enigma2/HomarLCDskins/Homar/currentBoxLogo.png
+#
+trybDevelopera=Off
+
+#definiowanie LCD_kolory

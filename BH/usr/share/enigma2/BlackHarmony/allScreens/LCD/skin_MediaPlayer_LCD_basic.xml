@@ -1,0 +1,7 @@
+<skin>
+  <screen name="MediaPlayerLCDScreen" position="0,0" size="100%,100%"> <!-- org resolution 132x64 -->
+    <widget name="text1" position="2%,10" size="96%,50" font="Regular;40"/>
+    <widget name="text3" position="2%,70" size="96%,50" font="Regular;40"/>
+    <widget name="text4" position="2%,130" size="96%,50" font="Regular;40"/>
+  </screen>
+</skin>

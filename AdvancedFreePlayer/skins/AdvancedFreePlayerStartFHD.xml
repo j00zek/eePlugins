@@ -1,0 +1,35 @@
+<screen name="AdvancedFreePlayerStart" position="0,0" size="1920,1080" title=" " flags="wfNoBorder" backgroundColor="transparent">
+  <!-- Template -->
+  <eLabel position="0,0" size="1920,1080" zPosition="-15" backgroundColor="#20000000" />
+  <eLabel position="83,122" size="1090,812" zPosition="-10" backgroundColor="#20606060" />
+  <eLabel position="1178,370" size="668,564" zPosition="-10" backgroundColor="#20606060" />
+  <eLabel position="1178,122" size="176,248" zPosition="-10" backgroundColor="#20606060" />
+  <eLabel position="1177,121" size="668,248" zPosition="-10" backgroundColor="#20606060" />
+  <!-- red button -->
+  <eLabel position="85,960" size="310,80" zPosition="-10" backgroundColor="#20b81c46" />
+  <widget position="85,960" size="310,80" source="key_red" render="Label" zPosition="1" font="Regular;24" halign="center" valign="center" transparent="1" />
+  <!-- green button -->
+  <eLabel position="510,960" size="310,80" zPosition="-10" backgroundColor="#20009f3c" />
+  <widget position="510,960" size="310,80" source="key_green" render="Label" zPosition="1" font="Regular;24" halign="center" valign="center" transparent="1" />
+  <!-- yellow button -->
+  <eLabel position="940,960" size="310,80" zPosition="-10" backgroundColor="#209ca81b" />
+  <widget position="940,960" size="310,80" source="key_yellow" render="Label" zPosition="1" font="Regular;24" halign="center" valign="center" transparent="1" />
+  <!-- blue button -->
+  <eLabel position="1370,960" size="310,80" zPosition="-10" backgroundColor="#202673ec" />
+  <widget position="1370,960" size="310,80" source="key_blue" render="Label" zPosition="1" font="Regular;24" halign="center" valign="center" transparent="1" />
+  <!-- MENU button -->
+  <eLabel text="MENU" position="1780,960" font="Regular;20" size="70,80" zPosition="-10" backgroundColor="#00595959" halign="center" valign="center" />
+  <!-- Selected movie -->
+  <eLabel position=" 84,859" size="1088, 30" zPosition="-10" backgroundColor="#20606060" />
+  <widget name="filemovie" position="90,859" size="1077,30" font="Regular; 24" transparent="1" valign="center" noWrap="1" />
+  <!-- Selected subtitle -->
+  <eLabel position="84,900" size="1088, 30" zPosition="-10" backgroundColor="#20606060" />
+  <widget name="filesubtitle" position="90,900" size="1077,30" font="Regular; 24" transparent="1" valign="center" noWrap="1" />
+  
+  <widget name="info" position="80,65" size="1766,30" font="Regular; 27" backgroundColor="#20606060" transparent="1" />
+  <widget name="myPath" position="90,126" size="1075,25" font="Regular;20" foregroundColor="#00ffffff" backgroundColor="#004e4e4e" transparent="1" />
+  <widget name="filelist" position="90,156" size="1074,694" zPosition="1" font="Regular;24" transparent="1" scrollbarMode="showOnDemand" />
+
+  <widget name="Description" position="1182,376" size="659,552" font="Regular;20" zPosition="1" transparent="1" />
+  <widget name="Cover" position="1177,122" size="175,246" alphatest="blend" />
+</screen>

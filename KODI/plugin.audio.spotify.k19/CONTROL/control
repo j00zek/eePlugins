@@ -1,0 +1,11 @@
+Package: kodi-addon--j00zeks-plugin.audio.spotify.k19
+Priority: optional
+Section: utils
+Depends: enigma2---j00zeks-components
+Description: Unofficial Spotify plugin for Kodi 19 based on the opensource Librespot client.
+Maintainer: ldsz
+Source: https://github.com/ldsz/plugin.audio.spotify
+Version: 22.07.15.1452
+Architecture: all
+DestinationPath: /usr/share/kodi/addons/plugin.audio.spotify.k19
+BuildType: python310

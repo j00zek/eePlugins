@@ -1,0 +1,39 @@
+<skin>
+  <screen name="ServiceScan" position="462,128" size="1000,820" title=" " flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="0,0" zPosition="-10" size="1000,820" pixmap="BlackHarmony/bg_design/small.png"/>
+    <widget source="global.CurrentTime" render="Label" position="45,30" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="130,30" size="360,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget> 
+    <widget source="Title" render="Label" position="560,30" size="380,30" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1"/>
+    <widget source="FrontendInfo" render="Pixmap" pixmap="BlackHarmony/icons/scan-s.png" position="60,150" size="64,64" transparent="1" alphatest="on">
+      <convert type="FrontendInfo">TYPE</convert>
+      <convert type="ValueRange">0,0</convert>
+      <convert type="ConditionalShowHide"/>
+    </widget>
+    <widget source="FrontendInfo" render="Pixmap" pixmap="BlackHarmony/icons/scan-c.png" position="60,150" size="64,64" transparent="1" alphatest="on">
+      <convert type="FrontendInfo">TYPE</convert>
+      <convert type="ValueRange">1,1</convert>
+      <convert type="ConditionalShowHide"/>
+    </widget>
+    <widget source="FrontendInfo" render="Pixmap" pixmap="BlackHarmony/icons/scan-t.png" position="60,150" size="64,64" transparent="1" alphatest="on">
+      <convert type="FrontendInfo">TYPE</convert>
+      <convert type="ValueRange">2,2</convert>
+      <convert type="ConditionalShowHide"/>
+    </widget>
+    <eLabel text="Orbital position" position="150,120" zPosition="1" size="220,30" font="Roboto_HD; 27" halign="left" foregroundColor="white" backgroundColor="black" transparent="1" />
+    <widget name="network" position="380,120" size="560,32" font="Roboto_HD; 27" foregroundColor="#00F0A30A" backgroundColor="black" transparent="1"/>
+    <eLabel text="Transponder" position="150,170" zPosition="1" size="160,30" font="Roboto_HD; 27" halign="left" foregroundColor="white" backgroundColor="black" transparent="1" />
+    <widget name="transponder" position="320,170" size="620,32" font="Roboto_HD; 27" backgroundColor="black" transparent="1"/>
+    <widget name="scan_state" position="150,220" size="750,32" zPosition="2" font="Roboto_HD; 27" foregroundColor="light_yellow" backgroundColor="black" transparent="1"/>
+    <widget name="pass" position="150,265" size="750,32" font="Roboto_HD; 27" backgroundColor="black" transparent="1"/>
+    <widget name="scan_progress" position="150,310" size="750,20" borderWidth="2" borderColor="dark_grey" foregroundColor="lemon" backgroundColor="black"/>
+    <widget name="servicelist" position="150,350" size="750,350" itemHeight="35" font="Roboto_HD; 27" selectionDisabled="1" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_860_35.png" backgroundColor="black" transparent="1"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="70,750" size="35,27" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="270,750" size="35,27" alphatest="blend" />
+    <widget source="key_red" render="Label" position="120,750" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="dark_grey" transparent="1" />
+    <widget source="key_green" render="Label" position="320,750" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="dark_grey" transparent="1" />
+  </screen>
+</skin>

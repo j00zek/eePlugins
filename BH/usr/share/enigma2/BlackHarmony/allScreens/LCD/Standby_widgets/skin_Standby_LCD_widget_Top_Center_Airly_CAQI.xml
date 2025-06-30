@@ -1,0 +1,7 @@
+<skin>
+  <screen name="StandbySummary" position="0,0" size="100%,100%">
+    <widget backgroundColor="#000000" font="BHfDlcD;50" foregroundColor="white" halign="center" position="center,2%" render="Label" size="52%,48%" source="global.CurrentTime" noWrap="1" transparent="1" zPosition="2">
+      <convert type="j00zekModABTCAirlyWidget">caqi</convert>
+    </widget>
+  </screen>
+</skin>

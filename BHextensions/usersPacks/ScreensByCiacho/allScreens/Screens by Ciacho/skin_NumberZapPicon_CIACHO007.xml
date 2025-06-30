@@ -1,0 +1,10 @@
+<skin>
+<screen name="NumberZapPicon" position="525,397" size="860,200" title=" " flags="wfNoBorder" backgroundColor="transparent">
+  <ePixmap position="0,0" zPosition="-2" size="860,200" pixmap="BlackHarmony/bg_design/zap.png" />
+  <widget source="Service" render="j00zekPicons" picontype="picon" position="25,33" size="220,132" zPosition="5" alphatest="blend">
+    <convert type="ServiceName">Reference</convert>
+  </widget>
+  <widget name="servicenumber" position="258,33" size="130,132" halign="center" valign="center" font="Roboto_HD; 35" foregroundColor="light_yellow" backgroundColor="transpBlack_1" />
+  <widget name="servicename" position="400,33" size="430,132" font="Roboto_HD; 35" halign="left" valign="center" foregroundColor="white" backgroundColor="transpBlack_1" />
+</screen>
+  </skin>

@@ -1,0 +1,18 @@
+<skin>
+  <screen name="NumberZapWithName" backgroundColor="transparent" flags="wfNoBorder"  position="525,397" size="860,200" title=" ">
+    <ePixmap pixmap="BlackHarmony/bg_design/zap.png" position="0,0" size="860,200" zPosition="-2" />
+    <widget alphatest="blend" picontype="picon" position="25,33" render="j00zekPicons" size="220,132" source="Service" zPosition="5">
+    <convert type="ServiceName">Reference</convert>
+    </widget>
+    <widget backgroundColor="transpBlack_1" font="Roboto_HD; 35" foregroundColor="yellow" halign="center" name="servicenumber" position="259,33" size="130,60" valign="center" />
+    <widget backgroundColor="transpBlack_1" font="Roboto_HD; 28" foregroundColor="green" halign="left" name="servicebouquet" position="480,77" size="130,60" valign="center" />
+    <widget backgroundColor="transpBlack_1" font="Roboto_HD; 35" foregroundColor="light_yellow" halign="left" name="servicename" position="370,33" size="430,60" valign="center" />
+  <eLabel backgroundColor="black" font="Roboto_HD; 25" foregroundColor="blue" position="330,140" size="180,30" text="Pogoda teraz:" transparent="1" />
+  <widget alphatest="blend" position="490,135" render="j00zekMSNWeatherPixmap" size="50,50" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
+  <convert type="j00zekMSNWeather">weathericon,current</convert>
+  </widget>
+  <widget backgroundColor="black" font="HD_Thin; 24" halign="left" noWrap="1" position="550,140" render="Label" size="60,26" source="session.j00zekMSNWeather" transparent="1" zPosition="3">
+    <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
+  </widget> 
+  </screen>
+ </skin>

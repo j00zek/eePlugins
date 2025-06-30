@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="repository.kodiwpigulce.pl.k19" name="Kodiwpigulce.pl K19 repository" version="1.0" provider-name="www.kodiwpigulce.pl">
+	<extension point="xbmc.addon.repository" name="Kodiwpigulce.pl K19 repository">
+		<info compressed="true">https://kodiwpigulce.pl/zip/k19/addons.xml</info>
+		<checksum>https://kodiwpigulce.pl/zip/k19/addons.xml.md5</checksum>
+		<datadir zip="true">https://kodiwpigulce.pl/zip/k19/</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Repozytorium wtyczek www.kodiwpigulce.pl dla Kodi 19.</summary>
+        <description>Zapraszamy po więcej wtyczek na www.kodiwpigulce.pl</description>
+		<platform>all</platform>
+	</extension>
+</addon>

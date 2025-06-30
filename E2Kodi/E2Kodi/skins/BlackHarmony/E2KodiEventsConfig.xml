@@ -1,0 +1,19 @@
+  <screen name="E2KodiEventsConfig" position="462,128" size="1000,820" title="E2Kodi Events Config" flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="0,0" zPosition="-10" size="1000,820" pixmap="BlackHarmony/bg_design/small.png"/>
+    <widget source="global.CurrentTime" render="Label" position="45,35" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="130,35" size="260,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+    <widget source="Title" render="Label" position="460,30" size="480,35" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1"/>
+    <widget name="config" position="68,150" size="860,540" itemHeight="45" font="Roboto_HD; 28" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_860_45.png" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" backgroundColor="black" transparent="1"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="47,760" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="310,760" size="35,27" alphatest="blend"/>
+    <!--ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="573,760" size="35,27" alphatest="blend"/-->
+    <!--ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="836,760" size="35,27" alphatest="blend"/-->
+    <widget name="key_red" position="87,759" size="180,27" zPosition="1" font="Roboto_HD; 24" halign="left" foregroundColor="white" backgroundColor="dark_grey" transparent="1"/>
+    <widget name="key_green" position="350,759" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" foregroundColor="white" backgroundColor="dark_grey" transparent="1"/>
+    <!--widget name="key_yellow" position="613,759" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" foregroundColor="white" backgroundColor="dark_grey" transparent="1"/-->
+    <!--widget name="key_blue" position="876,759" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" foregroundColor="white" backgroundColor="dark_grey" transparent="1"/-->
+  </screen>

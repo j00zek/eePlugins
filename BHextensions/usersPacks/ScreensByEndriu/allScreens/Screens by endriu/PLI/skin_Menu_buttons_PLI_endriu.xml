@@ -1,0 +1,149 @@
+<skin>
+
+<screen name="menu_mainmenu" position="70,30" size="1920,1080" title="Main menu" flags="wfNoBorder" NoAnimationAfter="1" backgroundColor="transparent">
+    <ePixmap position="0,0" zPosition="-10" size="710,1020" pixmap="BlackHarmony/bg_design/menubg_menu.png" />
+  <widget source="global.CurrentTime" render="Label" position="55,50" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+    <convert type="ClockToText">Default</convert>
+  </widget>
+  <widget source="global.CurrentTime" render="Label" position="142,50" size="360,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+    <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+  </widget>
+  <widget source="menu" render="Listbox" position="70,227" size="565,450" selectionPixmap="BlackHarmony/menu/sel_565_45.png" scrollbarMode="showNever" enableWrapAround="1" transparent="0">
+    <convert type="TemplatedMultiContent">
+				{"template": [ MultiContentEntryText(pos = (15,5),size = (565,35),flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER,text = 0) ],
+				"fonts": [gFont("Roboto_HD",31)],
+				"itemHeight": 45
+				}
+			</convert>
+  </widget>
+  <widget source="title" render="Label" position="85,140" size="370,40" font="HD_Thin; 36" halign="left" foregroundColor="light_yellow" backgroundColor="black" transparent="1" />
+  <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="70,708" size="135,135" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
+    <convert type="j00zekMSNWeather">weathericon,current</convert>
+  </widget>
+  <widget noWrap="1" backgroundColor="background" font="HD_Thin; 24" render="Label" position="215,728" size="110,30" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1" foregroundColor="lemon">
+    <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
+  </widget>
+  <widget noWrap="1" backgroundColor="background" font="HD_Thin; 24" render="Label" position="239,796" size="400,32" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1">
+    <convert type="j00zekMSNWeather">temperature_text,current</convert>
+  </widget>
+  <eLabel name="new eLabel" position="335,728" size="80,30" font="HD_Thin; 24" foregroundColor="white" backgroundColor="black" transparent="1" halign="left" text="maks." />
+  <widget noWrap="1" backgroundColor="black" font="HD_Thin; 24" render="Label" position="409,728" size="70,30" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1" foregroundColor="yellow">
+    <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=0']['temp_high']|C</convert>
+  </widget>
+  <eLabel name="new eLabel" position="495,728" size="63,30" font="HD_Thin; 24" foregroundColor="white" backgroundColor="black" transparent="1" halign="left" text="min." />
+  <widget noWrap="1" backgroundColor="black" font="HD_Thin; 24" render="Label" position="553,7258" size="70,30" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1" foregroundColor="blue">
+    <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=0']['temp_low']|C</convert>
+  </widget>
+  <ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="454,871" size="35,27" alphatest="blend" />
+  <widget source="key_blue" render="Label" position="496,854" size="171,61" zPosition="2" font="Roboto_HD;24" halign="left" valign="center" backgroundColor="dark_grey" transparent="1"/>
+	
+</screen>
+	
+ <screen name="Menu" position="70,30" size="1920,1080" title="Main menu" flags="wfNoBorder" backgroundColor="transparent">
+  <ePixmap position="0,0" zPosition="-10" size="710,1020" pixmap="BlackHarmony/bg_design/menubg_menu.png" />
+  <widget source="global.CurrentTime" render="Label" position="55,50" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+    <convert type="ClockToText">Default</convert>
+  </widget>
+  <widget source="global.CurrentTime" render="Label" position="142,50" size="360,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+    <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+  </widget>
+  <widget source="menu" render="Listbox" position="70,227" size="565,450" selectionPixmap="BlackHarmony/menu/sel_565_45.png" scrollbarMode="showNever" enableWrapAround="1" transparent="0">
+    <convert type="TemplatedMultiContent">
+				{"template": [ MultiContentEntryText(pos = (15,5),size = (565,35),flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER,text = 0) ],
+				"fonts": [gFont("Roboto_HD",31)],
+				"itemHeight": 45
+				}
+			</convert>
+  </widget>
+  <widget source="title" render="Label" position="85,140" size="370,40" font="HD_Thin; 36" halign="left" foregroundColor="light_yellow" backgroundColor="black" transparent="1" />
+  <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="70,708" size="135,135" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
+    <convert type="j00zekMSNWeather">weathericon,current</convert>
+  </widget>
+  <widget noWrap="1" backgroundColor="background" font="HD_Thin; 24" render="Label" position="215,728" size="110,30" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1" foregroundColor="lemon">
+    <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
+  </widget>
+  <widget noWrap="1" backgroundColor="background" font="HD_Thin; 24" render="Label" position="239,796" size="400,32" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1">
+    <convert type="j00zekMSNWeather">temperature_text,current</convert>
+  </widget>
+  <eLabel name="new eLabel" position="335,728" size="80,30" font="HD_Thin; 24" foregroundColor="white" backgroundColor="black" transparent="1" halign="left" text="maks." />
+  <widget noWrap="1" backgroundColor="black" font="HD_Thin; 24" render="Label" position="409,728" size="70,30" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1" foregroundColor="yellow">
+    <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=0']['temp_high']|C</convert>
+  </widget>
+  <eLabel name="new eLabel" position="495,728" size="63,30" font="HD_Thin; 24" foregroundColor="white" backgroundColor="black" transparent="1" halign="left" text="min." />
+  <widget noWrap="1" backgroundColor="black" font="HD_Thin; 24" render="Label" position="553,7258" size="70,30" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1" foregroundColor="blue">
+    <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=0']['temp_low']|C</convert>
+  </widget>
+  <ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="454,871" size="35,27" alphatest="blend" />
+  <widget source="key_blue" render="Label" position="496,854" size="171,61" zPosition="2" font="Roboto_HD;24" halign="left" valign="center" backgroundColor="dark_grey" transparent="1"/>
+ </screen>
+  
+  <screen name="menu_information" position="70,30" size="1920,1080" title="YYY" flags="wfNoBorder" NoAnimationAfter="1" backgroundColor="transparent">
+	<panel name="menu_mainmenu" /> 
+  </screen>
+  <screen name="menu_scan" position="70,30" size="1920,1080" title="YYY" flags="wfNoBorder" NoAnimationAfter="1" backgroundColor="transparent">
+	<panel name="menu_mainmenu" /> 
+  </screen>
+  <screen name="menu_setup" position="70,30" size="1920,1080" title="YYY" flags="wfNoBorder" NoAnimationAfter="1" backgroundColor="transparent">
+	<panel name="menu_mainmenu" /> 
+  </screen>
+  <screen name="menu_shutdown" position="70,30" size="1920,1080" title="YYY" flags="wfNoBorder" NoAnimationAfter="1" backgroundColor="transparent">
+	<panel name="menu_mainmenu" /> 
+  </screen>
+  <screen name="menu_system" position="70,30" size="1920,1080" title="YYY" flags="wfNoBorder" NoAnimationAfter="1" backgroundColor="transparent">
+	<panel name="menu_mainmenu" /> 
+  </screen>
+  <screen name="menu_extended" position="70,30" size="1920,1080" title="YYY" flags="wfNoBorder" NoAnimationAfter="1" backgroundColor="transparent">
+	<panel name="menu_mainmenu" /> 
+  </screen>
+  <screen name="menu_network" position="70,30" size="1920,1080" title="YYY" flags="wfNoBorder" NoAnimationAfter="1" backgroundColor="transparent">
+	<panel name="menu_mainmenu" /> 
+  </screen>
+  <screen name="menu_video_menu" position="70,30" size="1920,1080" title="YYY" flags="wfNoBorder" NoAnimationAfter="1" backgroundColor="transparent">
+	<panel name="menu_mainmenu" /> 
+  </screen>
+  <screen name="menu_audio_menu" position="70,30" size="1920,1080" title="YYY" flags="wfNoBorder" NoAnimationAfter="1" backgroundColor="transparent">
+	<panel name="menu_mainmenu" /> 
+  </screen>
+  <screen name="menu_rec" position="70,30" size="1920,1080" title="YYY" flags="wfNoBorder" NoAnimationAfter="1" backgroundColor="transparent">
+	<panel name="menu_mainmenu" /> 
+  </screen>
+  <screen name="menu_epg" position="70,30" size="1920,1080" title="YYY" flags="wfNoBorder" NoAnimationAfter="1" backgroundColor="transparent">
+	<panel name="menu_mainmenu" /> 
+  </screen>
+  <screen name="menu_cam" position="70,30" size="1920,1080" title="YYY" flags="wfNoBorder" NoAnimationAfter="1" backgroundColor="transparent">
+	<panel name="menu_mainmenu" /> 
+  </screen>
+  <screen name="menu_display" position="70,30" size="1920,1080" title="YYY" flags="wfNoBorder" NoAnimationAfter="1" backgroundColor="transparent">
+	<panel name="menu_mainmenu" /> 
+  </screen>
+
+  <screen name="MenuSort" position="462,128" size="1000,820" title=" " flags="wfNoBorder" backgroundColor="transparent">
+   <ePixmap position="0,0" zPosition="-10" size="1000,820" pixmap="BlackHarmony/bg_design/small.png"/>
+   <widget source="global.CurrentTime" render="Label" position="45,30" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="130,30" size="260,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+	<widget source="Title" render="j00zekLabel" position="390,30" size="565,60" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1" />
+   <widget source="menu" render="Listbox" position="75,140" size="850,560" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_850_35.png" backgroundColor="transpBlack" transparent="1">
+      <convert type="TemplatedMultiContent" transparent="0">
+				{"template": [
+						MultiContentEntryText(pos = (5, 2), size = (800, 35), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 0),
+					],
+				"fonts": [gFont("Roboto_HD", 26)],
+				"itemHeight": 35
+				}
+			</convert>
+     </widget>
+    <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="47,760" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="273,760" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="499,760" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="723,760" size="35,27" alphatest="blend"/>
+    <widget source="key_red" render="Label" position="87,759" size="180,27" zPosition="2" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <widget source="key_green" render="Label" position="313,759" size="180,27" zPosition="2" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget source="key_yellow" render="Label" position="538,759" size="180,26" zPosition="2" font="Roboto_HD;24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+	<widget source="key_blue" render="Label" position="763,759" size="180,26" zPosition="2" font="Roboto_HD;24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+	
+  </screen>
+</skin>

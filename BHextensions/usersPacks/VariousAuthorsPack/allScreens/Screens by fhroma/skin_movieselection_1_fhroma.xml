@@ -1,0 +1,46 @@
+<skin>
+ <screen name="MovieSelection" position="center,center" size="1920,1080" title=" " flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="1,0" zPosition="-5" size="1920,1080" pixmap="BlackHarmony/bg_design/afp1.png" />
+  <widget source="Title" render="Label"  position="980,70" size="820,40" font="Roboto_HD; 26" halign="right" backgroundColor="dark_grey" transparent="1" />
+
+    <widget source="global.CurrentTime" render="Label" position="110,70" size="100,35" font="Roboto_HD; 28" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="220,70" size="660,40" font="Roboto_HD; 28" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+	<widget name="waitingtext" position="80,400" size="760,35" zPosition="4" font="Roboto_HD;30" halign="center" valign="center" transparent="1" />
+		
+		<widget name="list" font="Regular;22" position="100,210" size="1150,540"    zPosition="2" scrollbarMode="showOnDemand" enableWrapAround="1" selectionPixmap="BlackHarmony/menu/sel_1140_45.png" transparent="1"/>
+ 
+		
+		<widget name="freeDiskSpace" position="318,150" zPosition="4" size="660,40" font="Roboto_HD;24" halign="left" foregroundColor="#66CC99" backgroundColor="transpBlack" transparent="1"/>
+			<widget source="Service" render="Label" position="1300,920" zPosition="4" size="550,35" font="Roboto_HD;26" halign="center" foregroundColor="#66CC99" backgroundColor="transpBlack" transparent="1" >
+			<convert type="MovieInfo">RecordServiceName</convert>
+		</widget>
+		   <widget source="Service" render="Label" position="1250,150" size="620,70" font="Regular; 32"  backgroundColor="black" valign="center" halign="center" transparent="1" foregroundColor="lemon">
+      <convert type="j00zekModEventName">Name</convert>
+    </widget>
+		<widget source="Service" render="Label" position="1320,920" size="140,30" font="Roboto_HD;26" foregroundColor="#66CC99" transparent="1">
+			<convert type="MovieInfo">FileSize</convert>
+		</widget>
+		<widget source="Service" render="Label" position="1600,920" zPosition="4" size="350,26" font="Roboto_HD;26" halign="center" foregroundColor="#66CC99" backgroundColor="transpBlack" transparent="1" >
+			<convert type="ServiceTime">Duration</convert>
+			<convert type="ClockToText">AsLength</convert>
+		</widget>
+		 <widget render="j00zekModRunningText" source="Service" options="movetype=running,startpoint=0,direction=top,steptime=90,repeat=2,startdelay=6000,wrap" halign="left" backgroundColor="background" position="90,795" size="1150,170" font="Roboto_HD; 24" transparent="1">
+    <convert type="j00zekModEventName">ExtendedDescription</convert>
+  </widget>
+
+		<widget source="Service" render="j00zekModCover" position="1270,240" size="600,650" zPosition="3" alphatest="blend" />
+			   <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="110,991" size="35,27" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="500,991" size="35,27" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="890,991" size="35,27" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="1280,991" size="35,27" alphatest="blend" />
+    <widget name="key_red" position="160,990" size="200,32" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <widget name="key_green" position="550,990" size="300,32" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <widget name="key_yellow" position="940,990" size="200,32" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <widget name="key_blue" position="1330,990" size="300,32" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+ 
+  </screen>
+</skin>

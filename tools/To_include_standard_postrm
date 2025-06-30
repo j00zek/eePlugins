@@ -1,0 +1,13 @@
+#!/bin/sh
+if [ `ps -ef 2>&1 |grep -v grep|grep opkg|grep -c remove` -ge 1 ] || [ `ps -l 2>&1 |grep -v grep|grep opkg|grep -c remove` -ge 1 ];then
+  if `grep -q 'osd.language=pl_PL' </etc/enigma2/settings`; then
+    echo ""
+    echo "Wtyczka skasowana. Przeładuj teraz GUI!"
+    echo ""
+  else
+    echo ""
+    echo "Plugin removed. You should restart GUI!"
+    echo ""
+  fi
+fi
+exit 0

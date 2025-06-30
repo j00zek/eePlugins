@@ -1,0 +1,24 @@
+#!/bin/sh
+if [ `ps -ef 2>&1 |grep -v grep|grep opkg|grep -c remove` -ge 1 ] || [ `ps -l 2>&1 |grep -v grep|grep opkg|grep -c remove` -ge 1 ];then
+  #czyszczenie ewentualnych pozostalosci, ale tylko, jak ktos wywala calkowicie skorke
+  rm -f /etc/enigma2/*BlackHarmony* 2 > /dev/null
+  rm -rf /usr/lib/enigma2/python/Plugins/SystemPlugins/BlackHarmonyWeatherComponentHandler 2 > /dev/null
+  rm -f /usr/lib/enigma2/python/Tools/BlackHarmony*.py* 2 > /dev/null
+  rm -f /usr/lib/enigma2/python/Components/BlackHarmony*.py* 2 > /dev/null
+  rm -f /usr/lib/enigma2/python/Components/Converter/BlackHarmony*.py* 2 > /dev/null
+  rm -f /usr/lib/enigma2/python/Components/Renderer/BlackHarmony*.py* 2 > /dev/null
+  rm -f /usr/lib/enigma2/python/Components/Sources/BlackHarmony*.py* 2 > /dev/null
+
+  rm -rf /usr/share/enigma2/BlackHarmony 2 > /dev/null
+  rm -rf /usr/share/enigma2/display/BlackHarmony 2 > /dev/null
+  if `grep -q 'osd.language=pl_PL' </etc/enigma2/settings`; then
+    echo ""
+    echo "skórka skasowana. Przeładuj teraz GUI!"
+    echo ""
+  else
+    echo ""
+    echo "Skin removed. You should restart GUI!"
+    echo ""
+  fi
+fi
+exit 0

@@ -1,0 +1,18 @@
+<screen position="center,center" size="880,540">
+    <widget source="list" render="Listbox" position="0,0" size="880,500" scrollbarMode="showOnDemand">
+        <convert type="TemplatedMultiContent">
+                {"template": [
+                              MultiContentEntryPixmapAlphaTest(pos = (2, 2), size = (120, 40), png = 0),
+                              MultiContentEntryText(pos = (138, 2), size = (760, 40), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 1),
+                             ],
+                             "fonts": [gFont("Regular", 24)],
+                             "itemHeight": 45
+                }
+        </convert>
+    </widget>
+    <widget name="key_red"    position="20,510" zPosition="2" size="150,30" foregroundColor="red" valign="center" halign="left" font="Regular;22" transparent="1" />
+    <widget name="key_green"  position="170,510" zPosition="2" size="150,30" foregroundColor="green" valign="center" halign="left" font="Regular;22" transparent="1" />
+    <widget name="key_yellow"  position="360,510" zPosition="2" size="250,30" foregroundColor="yellow" valign="center" halign="left" font="Regular;22" transparent="1" />
+    <widget name="key_blue"  position="590,510" zPosition="2" size="200,30" foregroundColor="blue" valign="center" halign="left" font="Regular;22" transparent="1" />
+    <widget name="key_ok"  position="690,510" zPosition="2" size="350,30" foregroundColor="gray" valign="center" halign="left" font="Regular;22" transparent="1" />
+</screen>

@@ -1,0 +1,7 @@
+<skin>
+  
+<screen name="InfoBar" position="0,0" size="1920,1080" title="InfoBar" flags="wfNoBorder" backgroundColor="transparent">
+ <widget source="session.Event_Now" render="j00zekModPoster" borderColor="linie" borderWidth="3" position="38,250" size="342,514" zPosition="10" />
+</screen>
+</skin>
+ 

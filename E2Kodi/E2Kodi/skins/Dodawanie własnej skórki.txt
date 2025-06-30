@@ -1,0 +1,12 @@
+- utwórz katalog /etc/E2Kodi/userSkins
+- w tym katalogu utwórz nowy z nazwą skórki (mp. "moja skórka")
+- skopiuj do tego katalogu zawartość katalogu ".../E2Kodi/skins/standardowa"
+- zrestartuj enigmę
+- wybierz w konfiguracji "swoją" skórkę
+- zrestartuj enigmę.
+
+Jak wszystko ozrobiłeś poprawnie, wszystko się uruchomi poprawnie i możesz modyfikowac definicje według swoich widzimisię.
+
+Swoje loga do dodatków należy umieszczać w katalogu swoje skórki pod nazwą <nazwa katalogu konfiguracyjnego>.png (np. playermb.png)
+
+UWAGA: tylko tak stworzona własna skórka nie będzie kasowana przy aktualizacji!!!

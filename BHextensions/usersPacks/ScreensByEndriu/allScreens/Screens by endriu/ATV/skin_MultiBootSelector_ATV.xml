@@ -1,0 +1,25 @@
+<skin>
+	<screen name="MultiBootSelector" position="460,130" size="1000,820" backgroundColor="transparent" flags="wfNoBorder">
+	<ePixmap position="-2,0" zPosition="-10" size="1000,820" pixmap="BlackHarmony/bg_design/small.png"/>
+	<widget source="global.CurrentTime" render="Label" position="45,40" size="90,40" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="150,40" size="460,40" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+	<eLabel text="Multiboot" position="622,40" size="320,40" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1"/>
+	<widget source="description" render="Label" position="center,132" size=" 690,70" font="Regular; 25" halign="center" valign="center" foregroundColor="#58ccff" backgroundColor="transpBlack" transparent="1" />
+	<eLabel  position="100,230" size="805,1" backgroundColor="#00ffffd8"/>
+	<widget name="config" position="61,252" size="877,350" scrollbarMode="showOnDemand" itemHeight="40" font="Regular; 30" selectionPixmap="BlackHarmony/menu/sel_920_40.png" enableWrapAround="1" transparent="1"/>
+    <eLabel  position="100,604" size="805,1" backgroundColor="#00ffffd8"/>
+	<widget source="options" render="Label" position="center,620" size="530,62" font="Regular;25" backgroundColor="black" foregroundColor="#58ccff"  halign="center" valign="center"  transparent="1" >
+	<convert type="j00zekTranslator">Mode 1 supports Kodi, PIP may not work. Mode 12 supports PIP, Kodi may not work</convert>
+        </widget>
+    <ePixmap alphatest="blend" pixmap="BlackHarmony/buttons/key_red.png" position="35,752" size="35,27" />
+    <ePixmap alphatest="blend" pixmap="BlackHarmony/buttons/key_green.png" position="260,752" size="35,27" />
+    <eLabel text="Cancel" position="75,752" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <eLabel text="Reboot" position="300,752" size="240,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <ePixmap alphatest="blend" pixmap="BlackHarmony/buttons/key_ok.png" position="800,752" size="60,30" />
+    <ePixmap alphatest="blend" pixmap="BlackHarmony/buttons/key_exit.png" position="898,752" size="60,30" />
+	</screen>
+</skin>

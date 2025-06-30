@@ -1,0 +1,10 @@
+Package: enigma2-plugin-picons--j00zeks-animated-flara-by-adek-xsize
+Priority: optional
+Section: utils
+Depends: 
+Description: Flara by Adek is an animation displayed over the picon
+Maintainer: j00zek
+Source: http://github.com/j00zek/eePlugins
+Version: 18.10.02.0739
+Architecture: all
+DestinationPath: /usr/share/enigma2/animatedPicons

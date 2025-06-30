@@ -1,0 +1,13 @@
+Package: e2kodi-script-resolveurl
+Priority: optional
+Section: utils
+Depends: enigma2-plugin-extensions--j00zeks-e2kodi
+Description: Resolve common video host URL's to be playable in XBMC/Kodi.
+Maintainer: j00zek
+Source: http://github.com/j00zek/eePlugins
+Version: 25.03.20.0802
+Architecture: all
+DestinationPath:  /usr/lib/enigma2/python/Plugins/Extensions/E2Kodi/site-packages/emukodi/Plugins/script.module.resolveurl
+ExcludeFolder: 
+RunScriptBeforeBuild:
+BuildType: python310

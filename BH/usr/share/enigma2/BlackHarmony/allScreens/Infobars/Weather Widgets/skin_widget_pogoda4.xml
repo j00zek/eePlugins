@@ -1,0 +1,28 @@
+<skin>
+<screen name="InfoBar" position="0,0" size="1920,1080" title="InfoBar" flags="wfNoBorder" backgroundColor="transparent">
+<ePixmap position="1595,130" zPosition="-2" size="300,550" pixmap="BlackHarmony/bg_design/infobar_kpogoda1.png" />
+
+<widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="1695,200" size="140,140" source="session.j00zekMSNWeather" transparent="1" zPosition="3">
+      <convert type="j00zekMSNWeather">DailyRecord=1</convert>
+    </widget>
+	
+	 <ePixmap pixmap="BlackHarmony/weather_icons/temp-.png" position="1820,322" size="20,50" zPosition="3" transparent="1" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/weather_icons/temp-.png" position="1820,590" size="20,50" zPosition="3" transparent="1" alphatest="blend" />
+   
+    <ePixmap pixmap="BlackHarmony/weather_icons/temp+.png" position="1660,610" size="20,50" zPosition="3" transparent="1" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/weather_icons/temp+.png" position="1660,342" size="20,50" zPosition="3" transparent="1" alphatest="blend" />
+    <eLabel name="new eLabel" position="1720,150" size="120,30" text="Jutro" font="HD_Thin; 24" transparent="1" zPosition="3" foregroundColor="lemon" backgroundColor="black" />
+    <widget source="session.j00zekMSNWeather" render="Label" position="1680,342" size="140,30" font="Roboto_HD; 22" halign="center" valign="center" transparent="1" zPosition="3">
+      <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=1']['temp_high']|C|     |['dailyData']['Record=1']['temp_low']|C</convert>
+    </widget>
+   <eLabel name="new eLabel" position="1705,420" size="130,30" text="Pojutrze" font="HD_Thin; 24" transparent="1" zPosition="3" foregroundColor="green" backgroundColor="black" />
+    <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="1695,460" size="140,140" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
+      <convert type="j00zekMSNWeather">DailyRecord=2</convert>
+    </widget>
+    <widget source="session.j00zekMSNWeather" render="Label" position="1680,610" size="140,30" font="Roboto_HD; 22" halign="center" valign="center" transparent="1" zPosition="3">
+      <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=2']['temp_high']|C|     |['dailyData']['Record=2']['temp_low']|C</convert>
+    </widget>
+
+  
+</screen>
+</skin>

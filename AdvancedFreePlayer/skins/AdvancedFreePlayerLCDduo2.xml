@@ -1,0 +1,38 @@
+<!--screen position="0,0" size="132,64" title="AFP">
+	<widget source="session.CurrentService" render="Label" position="0,0" size="6,30" font="Regular;22" halign="center" valign="center" >
+		<convert type="ServicePosition">Position</convert>
+    </widget>
+    <widget source="session.CurrentService" render="Label" position="6,0" size="6,30" font="Regular;22" valign="center" halign="center" >
+        <convert type="ServicePosition">Remaining</convert> 
+    </widget>
+</screen-->
+<screen name="AdvancedFreePlayerLCD" position="0,0" size="132,32" title="AFP">
+    <widget source="session.CurrentService" render="Label" position="2,13" size="140,14" font="Arial;13" valign="center" noWrap="1">
+      <convert type="ServiceName">Name</convert>
+    </widget>
+    <widget source="session.CurrentService" render="Pixmap" pixmap="vfd_icons/teletext.png" position="5,0" size="8,7">
+      <convert type="ServiceInfo">HasTelext</convert>
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="session.CurrentService" render="Pixmap" pixmap="vfd_icons/crypt.png" position="15,0" size="8,7">
+      <convert type="ServiceInfo">IsCrypted</convert>
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="session.CurrentService" render="Pixmap" pixmap="vfd_icons/dolby.png" position="25,0" size="10,7">
+      <convert type="ServiceInfo">IsMultichannel</convert>
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="session.CurrentService" render="Pixmap" pixmap="vfd_icons/format.png" position="37,0" size="15,7">
+      <convert type="ServiceInfo">IsWidescreen</convert>
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="session.RecordState" render="Pixmap" pixmap="vfd_icons/rec.png" position="54,0" size="12,7">
+      <convert type="ConditionalShowHide" />
+    </widget>
+    <widget source="session.CurrentService" render="Label" position="70,0" size="60,12" font="Arial; 14" valign="center" halign="right">
+      <convert type="ServicePosition">Remaining</convert>
+    </widget>
+    <widget source="session.CurrentService" render="Progress" position="2,28" size="130,4" borderWidth="1">
+      <convert type="ServicePosition">Position</convert>
+    </widget>
+</screen>

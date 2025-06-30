@@ -1,0 +1,10 @@
+<skin>
+  <screen name="NumberZapExt" position="center,center" size="860,200" title=" " flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="0,0" zPosition="-10" size="860,200" pixmap="BlackHarmony/bg_design/zap.png" />
+    <widget name="chPicon" position="600,35" size="220,132" transparent="1" alphatest="blend" />
+    <widget name="chNum" position="17,65" size="150,100" halign="center" font="Regular; 60" valign="center" transparent="1" alphatest="blend" />
+    <widget name="chName" position="175,65" size="420,56" halign="left" font="Roboto_HD; 42" noWrap="1" valign="center" transparent="1" alphatest="blend" />
+    <widget name="chBouq" position="175,125" size="400,40" halign="left" font="Roboto_HD; 28" noWrap="1" valign="center" transparent="1" alphatest="blend" foregroundColor="light_yellow" />
+    <eLabel name="" position="30,16" size="400,45" text="Switch to ..." font="Roboto_HD; 36" valign="center" halign="left" transparent="1" alphatest="blend" />
+  </screen> 
+ </skin>

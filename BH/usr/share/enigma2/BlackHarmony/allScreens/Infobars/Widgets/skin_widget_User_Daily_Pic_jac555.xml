@@ -1,0 +1,7 @@
+<skin>
+<screen name="InfoBar" backgroundColor="transparent" flags="wfNoBorder" position="0,0" size="1920,1080">
+    <widget source="session.CurrentService" render="j00zekPixmap" position="0,0" size="1920,150" alphatest="blend" transparent="1">
+      <convert type="j00zekUserDailyInfo">retPic</convert>
+    </widget>
+</screen>
+</skin>

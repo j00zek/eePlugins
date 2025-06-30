@@ -1,0 +1,32 @@
+#!/bin/sh
+[ -d /usr/share/enigma2/BlackHarmony/skin_default/buttons ] && rm -rf /usr/share/enigma2/BlackHarmony/skin_default/buttons 
+[ -d /usr/share/enigma2/BlackHarmony/skin_default/icons ] && rm -rf /usr/share/enigma2/BlackHarmony/skin_default/icons 
+[ -d /usr/share/enigma2/BlackHarmony/BlackHarmony/buttons ] && rm -rf /usr/share/enigma2/BlackHarmony/BlackHarmony/buttons 
+[ -d /usr/share/enigma2/BlackHarmony/BlackHarmony/icons ] && rm -rf /usr/share/enigma2/BlackHarmony/BlackHarmony/icons 
+
+if [ -e /etc/opkg/opkg-j00zka.conf ]; then
+  if [ -e /usr/lib/python2.7 ]; then
+    echo "Python 2.7 NOT supported"
+  fi
+fi
+
+if `grep -q 'osd.language=pl_PL' </etc/enigma2/settings`; then
+  Tekst='BLAD: Wykryto instalację pakietów tar.gz, które zamazują oryginalne komponenty systemu co w konsekwencji prowadzi do jego niestabilności. Skórka NIE będzie działać'
+else
+  Tekst="ERROR: incompatible environment found, skin won't work"
+fi
+if [ `ls /usr/share/enigma2/|grep -c "Pingu-NavyBlue"` -gt 0 ] ; then
+  echo "$Tekst !!"
+  exit 1
+elif [ `ls /usr/share/enigma2/|grep -c 'GoldenNight'` -gt 0 ] ; then
+  echo "$Tekst !!!"
+  exit 1
+elif [ `ls /usr/share/enigma2/|grep -c 'NexGenGradient'` -gt 0 ] ; then
+  echo "$Tekst !!!!"
+  exit 1
+elif [ `ls /usr/share/enigma2/|grep -c 'PLi-FullNightHD-Mod-M'` -gt 0 ] ; then
+  echo "$Tekst !!!!!"
+  exit 1
+else
+  exit 0
+fi

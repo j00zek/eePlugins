@@ -1,0 +1,32 @@
+<skin>
+<screen name="YouTubeMain" position="204,34" size="1522,1022" title=" " flags="wfNoBorder" backgroundColor="transparent">
+  <ePixmap position="0,0" zPosition="-10" size="1522,1022" pixmap="BlackHarmony/bg_design/wizard.png" />
+  <widget source="global.CurrentTime" render="Label" position="44,50" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+    <convert type="ClockToText">Default</convert>
+  </widget>
+  <widget source="global.CurrentTime" render="Label" position="129,50" size="460,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+    <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+  </widget>
+  <eLabel text="YouTube" position="1030,50" size="420,30" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1" />
+  
+  <widget source="list" render="Listbox" valign="center" font="Roboto_HD; 29" position="87,173" size="1340,729" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_1390_100.png" enableWrapAround="1" scrollbarWidth="7" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="blue" scrollbarSliderBorderColor="blue" transparent="1">
+  <convert type="TemplatedMultiContent">
+						{"template": [
+							MultiContentEntryPixmapAlphaTest(pos=(0,0), size=(137,100), png=2), # Thumbnail
+							MultiContentEntryText(pos=(185,1), size=(1095,78), font=0, flags=RT_HALIGN_LEFT|RT_VALIGN_CENTER|RT_WRAP, text=3), # Title
+							MultiContentEntryText(pos=(800, 75), size=(300,33), font=1, flags=RT_HALIGN_LEFT, text=4), # Views
+							MultiContentEntryText(pos=(1090,75), size=(300,33), font=1, flags=RT_HALIGN_LEFT, text=5), # Duration
+							],
+						"fonts": [gFont("Roboto_HD",29), gFont("Roboto_HD",24)],
+						"itemHeight": 100}
+					</convert>
+</widget>
+  <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="80,955" size="35,27" alphatest="blend" />
+  <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="360,955" size="35,27" alphatest="blend" />
+  <eLabel text="Exit" position="130,955" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+  <eLabel text="OK" position="410,955" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+  <widget name="thumbnail" position="0,0" size="137,100" />
+  
+  <ePixmap pixmap="BlackHarmony/buttons/menu.png" position="632,955" size="60,30" alphatest="blend" />
+</screen>
+</skin>

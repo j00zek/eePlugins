@@ -1,0 +1,3 @@
+#!/bin/sh
+[ -e /etc/init.d/streamlinkSRV ] && [ -e /var/run/streamlink.pid ] && /etc/init.d/streamlinkSRV stop
+exit 0

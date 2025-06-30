@@ -1,0 +1,49 @@
+﻿<skin>
+  <screen name="InfoBar" position="0,0" size="1920,1080" title="InfoBar" flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="1176,11" zPosition="-2" size="720,120" pixmap="BlackHarmony/bg_design/infobar_pogodam.png" />
+	<widget noWrap="1" backgroundColor="background" font="HD_Thin; 42" render="Label" position="1185,48" size="119,48" source="session.j00zekMSNWeather" zPosition="3" halign="center" transparent="1" foregroundColor="lemon">
+      <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
+    </widget>
+    <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="1305,36" size="75,75" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
+      <convert type="j00zekMSNWeather">DailyRecord=0</convert>
+    </widget>
+    <ePixmap pixmap="BlackHarmony/weather_icons/temp.png" position="1837,60" size="20,50" zPosition="3" transparent="1" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/weather_icons/temp.png" position="1457,60" size="20,50" zPosition="3" transparent="1" alphatest="blend" />
+    <widget source="session.CurrentService" render="Label" position="1389,28" size="75,25" font="Roboto_HD; 21" backgroundColor="black" halign="center" transparent="1" foregroundColor="light_yellow"  >
+      <convert type="j00zekTranslator">Today</convert>
+    </widget>
+    <widget source="session.j00zekMSNWeather" render="Label" font="Roboto_HD; 21" position="1379,60" size="65,25" backgroundColor="black" zPosition="3" transparent="1" valign="center" halign="right">
+      <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=0']['temp_high']|C</convert>
+    </widget>
+    <widget source="session.j00zekMSNWeather" render="Label" font="Roboto_HD; 21" position="1379,85" size="65,25" backgroundColor="black" zPosition="3" transparent="1" valign="center" halign="right">
+      <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=0']['temp_low']|C</convert>
+    </widget>
+	<ePixmap pixmap="BlackHarmony/weather_icons/wiatr.png" position="1490,36" size="30,30" zPosition="3" transparent="1" alphatest="blend" />
+    <widget backgroundColor="black" font="Roboto_HD; 22" foregroundColor="white" render="j00zekLabel" position="1525,38" size="95,25" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1">
+      <convert type="j00zekMSNWeather">RUN|['currentData']['wind_speed']['valInfo']</convert>
+    </widget>
+	<widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="1620,36" size="30,30" source="session.j00zekMSNWeather" zPosition="3" transparent="1">
+    <convert type="j00zekMSNWeather">RUN|['currentData']['wind_dir']['valInfo']</convert>
+  </widget>
+	<ePixmap pixmap="BlackHarmony/weather_icons/deszcz.png" position="1490,79" size="28,30" zPosition="4" transparent="1" alphatest="blend" />
+    <widget backgroundColor="black" font="Roboto_HD; 22" foregroundColor="white" render="Label" position="1525,82" size="90,25" source="session.j00zekMSNWeather" zPosition="3" halign="left" transparent="1">
+      <convert type="j00zekMSNWeather">RUN|['currentData']['humidity']['valInfo']</convert>
+    </widget>
+	
+	<!--jutro-->
+ 
+    <eLabel position="1658,40" size="1,60" backgroundColor="linie" foregroundColor="grey" />
+    <widget source="session.CurrentService" render="Label" position="1760,28" size="75,25" font="Roboto_HD; 21" backgroundColor="black" halign="center" transparent="1" foregroundColor="light_yellow"  >
+      <convert type="j00zekTranslator">Tomorrow</convert>
+    </widget>
+    <widget alphatest="blend" render="j00zekMSNWeatherPixmap" position="1670,35" size="85,85" source="session.j00zekMSNWeather" transparent="1" zPosition="5">
+      <convert type="j00zekMSNWeather">DailyRecord=1</convert>
+    </widget>
+    <widget noWrap="1" backgroundColor="black" font="Roboto_HD; 21" render="Label" position="1760,60" size="65,25" source="session.j00zekMSNWeather" zPosition="3" halign="right" transparent="1">
+      <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=1']['temp_high']|C</convert>
+    </widget>
+    <widget noWrap="1" backgroundColor="black" font="Roboto_HD; 21" render="Label" position="1760,85" size="65,25" source="session.j00zekMSNWeather" zPosition="3" halign="right" transparent="1" valign="center">
+      <convert type="j00zekMSNWeather">RUN|['dailyData']['Record=1']['temp_low']|C</convert>
+    </widget>
+    </screen>
+</skin>

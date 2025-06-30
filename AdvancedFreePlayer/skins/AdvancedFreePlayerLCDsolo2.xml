@@ -1,0 +1,5 @@
+<screen name="AdvancedFreePlayerLCD" position="0,0" size="132,32" title="AFP">
+    <widget source="session.CurrentService" render="Label" position="60,0" size="132,1">
+      <convert type="ServicePosition">Remaining</convert>
+    </widget>  
+</screen>

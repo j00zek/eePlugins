@@ -1,0 +1,4 @@
+  <!-- Ekrany testowe -->
+  <screen name="VideoFinetune" position="0,0" size="1920,1080" backgroundColor="transparent" flags="wfNoBorder">
+    <widget source="Canvas" render="Canvas" position="600,200" size="1920,1080"/>
+  </screen>

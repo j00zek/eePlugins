@@ -1,0 +1,45 @@
+<screen position="70,75" size="710,950" title=" " flags="wfNoBorder" backgroundColor="transparent" >
+<!-- header -->
+    <ePixmap position="0,0" zPosition="-5" size="710,950" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/aircon_data/bg_710x950.png" />
+    <widget source="global.CurrentTime" render="Label" position="45,30" size="80,35" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="145,30" size="460,35" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+<!-- Top part -->
+    <ePixmap position="40,120" zPosition="-4" size="105,105" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/aircon_data/icon_daikin_105x105.png" alphatest="blend"/>
+    <widget name="ac_config_info" position="130,130" size="490,30" font="Roboto_HD; 24" backgroundColor="black" transparent="1"/>
+    <widget name="ac_name" position="130,160" size="490,30" font="Roboto_HD; 24" backgroundColor="black" transparent="1"/>
+<!-- Middle part -->
+    <ePixmap position="80,236"  zPosition="-4" size="48,48" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/aircon_data/co_idtemp_eu.png" alphatest="blend"/>
+    <widget name="indoor_temp"  position="140,236" size="200,48" font="Roboto_HD; 27" valign="center" backgroundColor="black" transparent="1"/>
+    <ePixmap position="331,236" zPosition="-4" size="48,48" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/MSNweather/aircon_data/co_odtemp_eu.png" alphatest="blend"/>
+    <widget name="outdoor_temp" position="391,236" size="200,48" font="Roboto_HD; 27" valign="center" backgroundColor="black" transparent="1"/>
+    <widget name="on_off_icon"  position="570,230" zPosition="-4" size="60,60" alphatest="blend"/>
+    <!-- modes -->
+    <widget name="auto_icon" position="155,376" zPosition="-3" size="72,96" alphatest="blend"/>
+    <widget name="cool_icon" position="218,303" zPosition="-3" size="72,96" alphatest="blend"/>
+
+    <widget name="heat_icon" position="319,280" zPosition="-3" size="72,96" alphatest="blend"/>
+
+    <widget name="fan_icon" position="420,303" zPosition="-3" size="72,96" alphatest="blend"/>
+    <widget name="dry_icon" position="485,376" zPosition="-3" size="72,96" alphatest="blend"/>
+    <!-- Wheel -->
+    <widget name="back_wheel" position="220,370" zPosition="-4" size="270,270" alphatest="blend"/>
+    <widget name="set_temp" position="270,480" zPosition="-3" size="170,50" font="Roboto_HD; 48" valign="center" halign="center" backgroundColor="black" foregroundColor="black" transparent="1"/>
+    <widget name="temp_button" position="220,370" zPosition="-3" size="44,44" alphatest="blend"/>
+        
+<!-- Bottom part -->
+    <widget name="fan_speed_icon" position="145,740" zPosition="-4" size="184,96" alphatest="blend"/>
+    <widget name="fan_dir_icon" position="381,740" zPosition="-4" size="184,96" alphatest="blend"/>
+<!-- bottom menu -->
+    <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="47,880" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="201,880" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="355,880" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="509,880" size="35,27" alphatest="blend"/>
+    <widget name="key_red" position="87,880" size="150,27" zPosition="1" font="Roboto_HD; 24" halign="left" foregroundColor="white" backgroundColor="dark_grey" transparent="1"/>
+    <widget name="key_green" position="241,880" size="150,27" zPosition="1" font="Roboto_HD; 24" halign="left" foregroundColor="white" backgroundColor="dark_grey" transparent="1"/>
+    <widget name="key_yellow" position="395,880" size="150,27" zPosition="1" font="Roboto_HD;24" halign="left" foregroundColor="white" backgroundColor="dark_grey" transparent="1"/>
+    <widget name="key_blue" position="549,880" size="150,27" zPosition="1" font="Roboto_HD;24" halign="left" foregroundColor="white" backgroundColor="dark_grey" transparent="1"/>
+</screen>

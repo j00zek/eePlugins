@@ -1,0 +1,22 @@
+ <skin>
+ <screen name="HelpMenu" position="462,128" size="1000,820" title=" " flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="0,0" zPosition="-10" size="1000,820" pixmap="BlackHarmony/bg_design/small.png"/>
+    <widget source="global.CurrentTime" render="Label" position="45,30" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="130,30" size="460,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+    <widget source="session.CurrentService" render="Label" position="40,70" size="920,30" font="Roboto_HD; 27" halign="center" foregroundColor="#00FFFF" backgroundColor="black" transparent="1">
+      <convert type="j00zekModBoxInfo">Boxtype</convert>
+    </widget> 
+    <eLabel text="Help" position="660,30" size="280,30" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1"/>
+    <widget name="rc" position="90,150" size="154,500" pixmaps="BlackHarmony/skin_default/rc1.png,BlackHarmony/skin_default/rc2.png,BlackHarmony/skin_default/rc3.png,BlackHarmony/skin_default/rc4.png,BlackHarmony/skin_default/rc5.png" zPosition="10" alphatest="blend"/>
+    <widget name="long_key" position="45,666" size="240,30" font="Roboto_HD; 24" halign="center" backgroundColor="black" transparent="1" foregroundColor="light_yellow"/>
+    <widget name="list" position="290,140" size="650,560" itemHeight="40" scrollbarMode="showOnDemand" enableWrapAround="1" scrollbarWidth="6" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" selectionPixmap="BlackHarmony/menu/sel_660_40.png" backgroundColor="transpBlack" transparent="1"/>
+    <widget name="arrowdown" position="-100,-100" size="42,70" pixmap="BlackHarmony/skin_default/arrowdown.png" zPosition="11" alphatest="blend"/>
+    <widget name="arrowdown2" position="-100,-100" size="42,70" pixmap="BlackHarmony/skin_default/arrowdown.png" zPosition="11" alphatest="blend"/>
+    <widget name="arrowup" position="-100,-100" size="42,70" pixmap="BlackHarmony/skin_default/arrowup.png" zPosition="11" alphatest="blend"/>
+    <widget name="arrowup2" position="-100,-100" size="42,70" pixmap="BlackHarmony/skin_default/arrowup.png" zPosition="11" alphatest="blend"/>
+  </screen>
+  </skin>

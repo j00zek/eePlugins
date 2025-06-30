@@ -1,0 +1,7 @@
+<skin>
+  <screen name="InfoBarSummary" position="0,0" size="132,64">
+    <widget source="session.CurrentService" render="Label" position="0,0" size="120,64" font="HD_Thin; 42" noWrap="1" halign="right">
+      <convert type="j00zekModExtraTuner">ServiceNumber</convert>
+    </widget>
+  </screen>
+</skin>

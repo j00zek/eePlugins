@@ -1,0 +1,98 @@
+<keymap>
+  <map context="MSNweatherMapsActions">
+    <key id="KEY_ESC" mapto="keyCancel" flags="m" />
+    <key id="KEY_EXIT" mapto="keyCancel" flags="m" />
+    <key id="KEY_HOME" mapto="keyCancel" flags="m" />
+    <key id="KEY_STOP" mapto="keyCancel" flags="m" />
+    <key id="KEY_OK" mapto="keyOk" flags="m" />
+    <key id="KEY_RED" mapto="keyRed" flags="m" />
+    <key id="KEY_GREEN" mapto="keyGreen" flags="m" />
+    <key id="KEY_YELLOW" mapto="keyYellow" flags="m" />
+    <key id="KEY_BLUE" mapto="keyBlue" flags="m" />
+    <key id="KEY_9" mapto="key9" flags="m" />
+    <key id="KEY_1" mapto="key1" flags="m" />
+  </map>
+  <map context="MSNweatherNP">
+    <key id="KEY_ESC" mapto="keyCancel" flags="m" />
+    <key id="KEY_EXIT" mapto="keyCancel" flags="m" />
+    <key id="KEY_HOME" mapto="keyCancel" flags="m" />
+    <key id="KEY_STOP" mapto="keyCancel" flags="m" />
+    <key id="KEY_OK" mapto="keyOk" flags="b" />
+    <key id="KEY_OK" mapto="keyOkLong" flags="l" />
+    <key id="KEY_RED" mapto="keyRed" flags="m" />
+    <key id="KEY_GREEN" mapto="keyGreen" flags="m" />
+    <key id="KEY_YELLOW" mapto="keyYellow" flags="m" />
+    <key id="KEY_BLUE" mapto="keyBlue" flags="m" />
+    <key id="KEY_LEFT" mapto="keyLeft" flags="m" />
+    <key id="KEY_RIGHT" mapto="keyRight" flags="m" />
+    <key id="KEY_MENU" mapto="keyMenu" flags="m" /> 
+    <key id="KEY_1" mapto="current_up" flags="m" />
+    <key id="KEY_2" mapto="hourly_up" flags="m" />
+    <key id="KEY_3" mapto="daily_up" flags="m" />
+    <key id="KEY_7" mapto="current_down" flags="m" />
+    <key id="KEY_8" mapto="hourly_down" flags="m" />
+    <key id="KEY_9" mapto="daily_down" flags="m" />
+    <key id="KEY_UP" mapto="hourly_up" flags="m" />
+    <key id="KEY_DOWN" mapto="hourly_down" flags="m" /> 
+    <key id="KEY_PAGEUP" mapto="daily_up" flags="m" />
+    <key id="KEY_PAGEDOWN" mapto="daily_down" flags="m" /> 
+  </map>
+  <map context="MSNweatherNPacControllers">
+    <key id="KEY_ESC" mapto="keyCancel" flags="m" />
+    <key id="KEY_EXIT" mapto="keyCancel" flags="m" />
+    <key id="KEY_HOME" mapto="keyCancel" flags="m" />
+    <key id="KEY_STOP" mapto="keyCancel" flags="m" />
+    <key id="KEY_OK" mapto="keyOk" flags="m" />
+    <key id="KEY_RED" mapto="keyRed" flags="m" />
+    <key id="KEY_GREEN" mapto="keyGreen" flags="m" />
+    <key id="KEY_YELLOW" mapto="keyYellow" flags="m" />
+    <key id="KEY_BLUE" mapto="keyBlue" flags="m" />
+    <key id="KEY_LEFT" mapto="keyLeft" flags="m" />
+    <key id="KEY_RIGHT" mapto="keyRight" flags="m" />
+  </map>
+  <map context="MSNweatherDailyDetails">
+    <key id="KEY_ESC"   mapto="keyCancel" flags="m" />
+    <key id="KEY_EXIT"  mapto="keyCancel" flags="m" />
+    <key id="KEY_HOME"  mapto="keyCancel" flags="m" />
+    <key id="KEY_STOP"  mapto="keyCancel" flags="m" />
+    <!--key id="KEY_OK"   mapto="keyOk" flags="m" /-->
+    <key id="KEY_RED"   mapto="keyCancel" flags="m" />
+    <!--key id="KEY_GREEN" mapto="keyGreen" flags="m" />
+    <key id="KEY_YELLOW" mapto="keyYellow" flags="m" />
+    <key id="KEY_BLUE" mapto="keyBlue" flags="m" /-->
+    <key id="KEY_UP"    mapto="keyNextDay" flags="m" />
+    <key id="KEY_DOWN"  mapto="keyPreviousDay" flags="m" /> 
+    <key id="KEY_LEFT"  mapto="keyHourLeft" flags="m" />
+    <key id="KEY_RIGHT" mapto="keyHourRight" flags="m" />
+  </map>
+  <map context="advDailyDetails">
+    <key id="KEY_ESC"   mapto="keyCancel" flags="m" />
+    <key id="KEY_EXIT"  mapto="keyCancel" flags="m" />
+    <key id="KEY_HOME"  mapto="keyCancel" flags="m" />
+    <key id="KEY_STOP"  mapto="keyCancel" flags="m" />
+    <!--key id="KEY_OK"   mapto="keyOk" flags="m" /-->
+    <key id="KEY_RED"   mapto="keyCancel" flags="m" />
+    <!--key id="KEY_GREEN" mapto="keyGreen" flags="m" />
+    <key id="KEY_YELLOW" mapto="keyYellow" flags="m" />
+    <key id="KEY_BLUE" mapto="keyBlue" flags="m" /-->
+    <key id="KEY_UP"    mapto="keyNextDay" flags="m" />
+    <key id="KEY_DOWN"  mapto="keyPreviousDay" flags="m" /> 
+    <key id="KEY_LEFT"  mapto="keyHourLeft" flags="m" />
+    <key id="KEY_RIGHT" mapto="keyHourRight" flags="m" />
+  </map>
+  <map context="MonthlyForecast">
+    <key id="KEY_ESC"   mapto="keyCancel" flags="m" />
+    <key id="KEY_EXIT"  mapto="keyCancel" flags="m" />
+    <key id="KEY_HOME"  mapto="keyCancel" flags="m" />
+    <key id="KEY_STOP"  mapto="keyCancel" flags="m" />
+    <!--key id="KEY_OK"   mapto="keyOk" flags="m" /-->
+    <key id="KEY_RED"   mapto="keyCancel" flags="m" />
+    <!--key id="KEY_GREEN" mapto="keyGreen" flags="m" />
+    <key id="KEY_YELLOW" mapto="keyYellow" flags="m" />
+    <key id="KEY_BLUE" mapto="keyBlue" flags="m" /-->
+    <key id="KEY_UP"    mapto="keyUp" flags="m" />
+    <key id="KEY_DOWN"  mapto="keyDown" flags="m" /> 
+    <key id="KEY_LEFT"  mapto="keyLeft" flags="m" />
+    <key id="KEY_RIGHT" mapto="keyRight" flags="m" />
+  </map>
+</keymap>

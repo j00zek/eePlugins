@@ -1,0 +1,11 @@
+<skin>
+<screen name="InfoBar" backgroundColor="transparent" flags="wfNoBorder" position="0,0" size="1920,1080">
+  <ePixmap position="40,400" size="175,280" zPosition="-10" pixmap="BlackHarmony/bg_design/bg_175x280.png" />
+  <widget position="50,410" size="155,30"  source="session.CurrentService" render="Label" halign="center" valign="center" zPosition="1" font="Regular; 24" foregroundColor="foreground" backgroundColor="background" transparent="1" noWrap="1">
+    <convert type="j00zekModCaidInfo2">emuname</convert>
+  </widget> 
+  <widget position="50,450" size="155,230"  source="session.CurrentService" render="Label" halign="right" valign="top" zPosition="1" font="Regular; 22" foregroundColor="foreground" backgroundColor="background" transparent="1" noWrap="1">
+    <convert type="j00zekModCaidInfo2">ecmfile</convert>
+  </widget> 
+</screen>
+</skin>

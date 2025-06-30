@@ -1,0 +1,13 @@
+#NAME Testy wtyczek i przykłady wywołania
+#SERVICE 1:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.liveincam.com/en/cam/nosy-be-nosy-be-andilana:Test serwisu liveincam.com
+#DESCRIPTION Test serwisu liveincam.com
+#SERVICE 1:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//lookcam.live/warszawa-plac-zamkowy/:Test serwisu lookcam.pl
+#DESCRIPTION Test serwisu lookcam.pl
+#SERVICE 1:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//webcam-hd.fr/webcam?id=146&camera=la-sauzaie--bretignolles-sur-mer:Test serwisu webcam-hd.fr
+#DESCRIPTION Test serwisu webcam-hd.fr
+#SERVICE 1:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.skylinewebcams.com/pl/webcam/italia/lazio/roma/piazza-navona.html:Test serwisu Skyline Webcams
+#DESCRIPTION Test serwisu Skyline Webcams
+#SERVICE 1:0:1:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//www.wetter.com/hd-live-webcams/schweiz/paradiso-monte-san-salvatore/5785fdbee1618/:Test serwisu wetter.com
+#DESCRIPTION Test serwisu wetter.com
+#SERVICE 1:0:0:0:0:0:0:0:0:0:http%3a//127.0.0.1%3a8088/https%3a//go.toya.net.pl/25-kamery/13758-lodz/444413758155-piotrkowska-narutowicza/play:EKSPERYMENT toya go przez hlsdl
+#DESCRIPTION EKSPERYMENT toya go przez hlsdl

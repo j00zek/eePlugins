@@ -1,0 +1,6 @@
+<screen position="0,0" size="480,320" title="AFP" id="1">
+    <widget name="text1" position="10,10"  size="460,50" font="Regular;40" halign="center" valign="center" foregroundColor="#05F7F3" noWrap="1"/>
+    <widget name="text2" position="10,70" size="460,40" font="Regular;32" halign="center" valign="center" foregroundColor="#FFFF00"/>
+    <!--widget name="LCDpic" position="10,10" size="321,465" alphatest="blend" /-->
+    <widget name="AFPlogo" position="40,150" size="400,160" alphatest="blend" />
+</screen>

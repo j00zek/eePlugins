@@ -1,0 +1,63 @@
+#!/bin/sh
+instDir='/usr/share/enigma2/HomarLCDskins'
+skinsDir='/usr/share/enigma2'
+
+if `grep -q 'osd.language=pl_PL' </etc/enigma2/settings`; then
+ lang='PL'
+else
+ lang='EN'
+fi
+
+#check tuner model
+if [ -e /proc/stb/info/vumodel ];then
+  model=`cat /proc/stb/info/vumodel`
+fi
+
+#check image type
+if [ -e $skinsDir/vfd_skin ];then
+  systemType='VTI'
+  #find $instDir/model.$model -iname skin_LCD_*.xml|while read f; do
+  #  nf=`basename $f|sed 's/skin_LCD_/skin_vfd_/g'`
+  #  ln -sf "$f" "$skinsDir/$nf"
+  #done
+elif [ -d $skinsDir/display ];then
+  systemType='openATV'
+elif [ "`cat /etc/opkg/all-feed.conf 2> /dev/null|grep -c 'openpli-7'`" -gt 0 ];then
+  systemType='openPLI-7'
+else
+  systemType='UNKNOWN'
+fi
+
+doRefresh=0
+for LCDskin in 'display/skin_LCD_UserSkin.xml' 'skin_LCD_UserSkin.xml' 
+do
+  mySkin=$skinsDir/$LCDskin
+  if [ -e $mySkin ];then
+    doRefresh=0
+    if [ 1 -ge `grep -c "<!-- Transformed by UserSkin from file='.*'" <  $mySkin` ];then
+      UserSkinDate=`date -r $mySkin +"%s"`
+      orgSkin=`cat $mySkin|grep '<!-- Transformed by UserSkin'|grep -o "'.*'"|cut -d "'" -f2`
+      #echo $orgSkin
+      orgSkinDate=`date -r $skinsDir/$orgSkin +"%s"`
+      if [ $orgSkinDate -lt $orgSkinDate ];then doRefresh=1;fi
+    else
+      doRefresh=1
+    fi
+    if [ $doRefresh -eq 1 ];then rm -f $skinsDir/display/$LCDskin;fi
+  fi  
+done
+
+[ -e /usr/share/enigma2/HomarLCDskins/Homar/vu$model.png ] && ln -sf /usr/share/enigma2/HomarLCDskins/Homar/vu$model.png /usr/share/enigma2/HomarLCDskins/Homar/currentBoxLogo.png
+#info
+echo "$systemType" > /usr/share/enigma2/BlackHarmony/image.info
+if [ $lang == 'PL' ]; then
+  echo
+  echo "Konfiguracja skórki LCD dla $systemType $model"
+  if [ $doRefresh -eq 1 ]; then echo "Nie zapomnij ponownie wybrac skórki LCD w UserSkin"; fi
+else
+  echo
+  echo "Configuring LCD skin for $systemType $model"
+  if [ $doRefresh -eq 1 ]; then echo "Don't forget to reselect LCD skin in UserSkin"; fi
+fi
+
+exit 0

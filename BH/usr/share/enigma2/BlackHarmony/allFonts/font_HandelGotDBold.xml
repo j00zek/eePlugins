@@ -1,0 +1,31 @@
+<skin>
+  <fonts>
+    <font filename="lcd.ttf" name="LCD" scale="100" />
+    <font filename="ae_AlMateen.ttf" name="Replacement" scale="100" replacement="1" />
+    <font filename="tuxtxt.ttf" name="Console" scale="100" />
+    <font filename="/usr/share/enigma2/BlackHarmony/fonts/nmsbd.ttf" name="Arial" scale="100" />
+    <font filename="/usr/share/enigma2/BlackHarmony/fonts/nmsbd.ttf" name="BHfDlcD" scale="100"/>
+    <font filename="/usr/share/enigma2/BlackHarmony/fonts/HandelGotDBol.ttf" name="Bold" scale="100" />
+    <font filename="/usr/share/enigma2/BlackHarmony/fonts/HandelGotDBol.ttf" name="Regular" scale="110" />
+    <font filename="/usr/share/enigma2/BlackHarmony/fonts/HandelGotDBol.ttf" name="Roboto_HD" scale="100" />
+    <font filename="/usr/share/enigma2/BlackHarmony/fonts/hd_thin.ttf" name="HD_Thin" scale="100" />
+    <font filename="/usr/share/enigma2/BlackHarmony/fonts/Roboto-Light.ttf" name="RegularLight" scale="100" />
+    
+    <alias name="PluginBrowser0" font="Regular" size="25" height="70" />
+    <alias name="PluginBrowser1" font="Regular" size="20" />
+    <alias name="VirtualKeyBoard" font="Regular" size="30" height="65"/>
+    <alias name="HelpMenuList" font="Regular" size="26" height="40" />
+    <alias name="ChoiceList" font="Roboto_HD" size="27" height="40"/>
+    <alias name="FileList" font="Roboto_HD" size="24" height="45"/>
+    <alias name="SetList" font="Roboto_HD" size="27" height="40"/>
+    <alias name="FileListMulti" font="Roboto_HD" size="24" height="45"/>
+    <alias name="SelectionList" font="Roboto_HD" size="27" height="45" />
+    <alias name="PlayList" font="Roboto_HD" size="26" height="40"/>
+    <alias name="ServiceInfo" font="Roboto_HD" size="27" height="40" />
+    <alias name="ChoiceBoxDescription" font="Roboto_HD" size="26" height="40"/>
+    <alias name="TextNormal" font="Roboto_HD" size="26" height="40"/>
+    <alias name="SHOUTcastListItem" font="Roboto_HD" size="25" height="110"/>
+    <alias name="iptvupdatelistitem_0" font="Roboto_HD" size="24" height="35"/>
+    <alias name="iptvupdatelistitem_1" font="Roboto_HD" size="27" height="35"/>
+  </fonts>
+</skin>

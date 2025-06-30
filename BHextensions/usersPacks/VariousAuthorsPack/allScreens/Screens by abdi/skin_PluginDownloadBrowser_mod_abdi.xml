@@ -1,0 +1,53 @@
+<skin>
+  <screen name="PluginBrowser" position="345,93" size="1920,1080" title=" " flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="0,0" zPosition="-10" size="1920,1080" pixmap="BlackHarmony/bg_design/mainbg.png"/>
+    <widget source="global.CurrentTime" render="Label" position="40,25" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="125,25" size="360,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+    <eLabel text="Plugin browser" position="860,25" size="320,35" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1"/>
+    <!-- Na openPLi i openVix nie dziala skalowanie pluginlist wiec nzawy sa ucinane na 440 pikselach -->
+    <widget name="list" position="65,147" size="1095,630" itemHeight="90" scrollbarMode="showOnDemand" zPosition="1" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" selectionPixmap="BlackHarmony/menu/sel_1095_100.png" backgroundColor="black" foregroundColor="white" foregroundColorSelected="lemon" transparent="1">
+      <convert type="TemplatedMultiContent">
+                    {"template": 
+                        [
+                            MultiContentEntryText(pos = (55, 8), size = (1020, 35), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 0),
+                            MultiContentEntryText(pos = (55, 45), size = (1020, 35), font=1, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 2),
+                            MultiContentEntryPixmapAlphaTest(pos = (5, 20), size = (48, 48), png = 4), # index 4 is the status pixmap
+                        ],
+                        "fonts": [gFont("Regular", 26),gFont("Regular", 22)],
+                        "itemHeight": 70
+                    }
+      </convert>
+    </widget> 
+    <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="41,850" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="328,850" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="615,850" size="35,27" alphatest="blend"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="902,850" size="35,27" alphatest="blend"/>
+    <widget name="key_red" position="91,849" size="250,30" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget name="key_green" position="378,849" size="250,30" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget name="key_yellow" position="665,849" size="250,30" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <widget name="key_blue" position="952,849" size="250,30" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <ePixmap position="1140,849" size="60,30" pixmap="BlackHarmony/buttons/key_menu.png" alphatest="blend"/>
+  </screen>
+  <screen name="PluginDownloadBrowser" position="345,93" size="1232,908" title=" " flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="0,0" zPosition="-10" size="1232,908" pixmap="BlackHarmony/bg_design/mainbg.png"/>
+    <widget source="global.CurrentTime" render="Label" position="40,25" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="125,25" size="360,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+    <widget source="Title" render="Label" position="860,25" size="320,35" font="Roboto_HD;27" halign="right" backgroundColor="dark_grey" transparent="1"/>
+    <widget name="list" font="Roboto_HD; 27" position="65,125" size="1095,675" itemHeight="70" scrollbarMode="showOnDemand" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" selectionPixmap="BlackHarmony/menu/sel_1095_70.png" backgroundColor="background" foregroundColor="white" foregroundColorSelected="lemon" />
+    <widget name="text" position="70,500" size="1090,80" font="Roboto_HD; 30" halign="center" zPosition="-1" foregroundColor="#58ccff" backgroundColor="black" transparent="1" />
+    <widget source="session.Event_Now" render="Progress" pixmap="BlackHarmony/gfx/progress_scan.png" position="350,840" size="525,20" borderWidth="2" borderColor="dark_grey" zPosition="1" transparent="0">
+      <convert type="j00zekModpliLayoutInfo">FleshInfo</convert>
+    </widget>
+    <widget source="session.CurrentService" render="Label" position="350,870" size="700,30" zPosition="1" font="Roboto_HD;25" halign="left" valign="center" noWrap="0" foregroundColor="white" backgroundColor="black" transparent="1">
+      <convert type="j00zekModpliLayoutInfo">FleshInfo,Full</convert>
+    </widget>
+  </screen>
+</skin>

@@ -1,0 +1,31 @@
+<skin>
+<!-- Submenu napisow -->
+  <screen name="QuickSubtitlesConfigMenu" position="462,128" size="1000,820" title="Subtitle Settings" flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="0,0" zPosition="-10" size="1000,820" pixmap="BlackHarmony/bg_design/small.png"/>
+    <widget source="global.CurrentTime" render="Label" position="45,30" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="129,30" size="360,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+    <eLabel text="Subtitle settings" position="661,30" size="280,35" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1"/>
+    <widget name="config" position="60,120" size="880,510" font="Roboto_HD; 27" itemHeight="40" selectionPixmap="BlackHarmony/menu/sel_860_40.png" scrollbarMode="showOnDemand" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" backgroundColor="black" transparent="1"/>
+    <applet type="onLayoutFinish">
+from enigma import eSize
+wsizex = 1920
+wsizey = 1080
+wsize = (wsizex, wsizey)
+self.instance.resize(eSize(*wsize))
+    </applet>
+    <widget name="videofps" position="60,650" size="880,50" zPosition="2" font="Roboto_HD; 24" valign="center" halign="center" foregroundColor="light_yellow" backgroundColor="black" transparent="1"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="70,750" size="35,27" alphatest="blend" />
+    <ePixmap pixmap="BlackHarmony/buttons/key_ok.png" position="270,750" size="60,40" alphatest="blend" />
+    <widget source="session.CurrentService" render="j00zekLabel" position="120,749" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="dark_grey" transparent="1" >
+      <convert type="j00zekTranslator">Exit</convert>
+    </widget> 
+    <widget source="session.CurrentService" render="j00zekLabel" position="350,750" size="200,30" zPosition="1" font="Roboto_HD; 24" halign="left" noWrap="1" backgroundColor="dark_grey" transparent="1" >
+      <convert type="j00zekTranslator">Save</convert>
+    </widget> 
+    </screen>
+</skin>
+

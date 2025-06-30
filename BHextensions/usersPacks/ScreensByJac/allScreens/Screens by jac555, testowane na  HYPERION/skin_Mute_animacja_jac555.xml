@@ -1,0 +1,7 @@
+<skin>
+<screen name="Mute" position="100,100" size="100,100" zPosition="10" flags="wfNoBorder" backgroundColor="transparent">
+      <widget source="session.CurrentService" render="j00zekPiconAnimation" position="0,0" zPosition="10" size="100,100" alphatest="blend"
+                        initdelay="50" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True"
+                        pixmaps="BlackHarmony/icons/mute/" />
+</screen>
+</skin>

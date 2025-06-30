@@ -1,0 +1,7 @@
+<skin>
+	<screen name="StandbySummary" position="0,0" size="100%,100%">
+                <widget source="session.RecordState" render="Pixmap" pixmap="BlackHarmony/icons/record.png" position="75%,90%" size="111,30" zPosition="3" alphatest="blend">
+                        <convert type="ConditionalShowHide">Blink</convert>
+                </widget>
+	</screen>
+</skin>

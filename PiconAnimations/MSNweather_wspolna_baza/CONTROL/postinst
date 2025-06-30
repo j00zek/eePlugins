@@ -1,0 +1,11 @@
+#!/bin/sh
+if `grep -q 'osd.language=pl_PL' </etc/enigma2/settings`; then
+  echo ""
+  echo "Paczka zainstalowana."
+  echo ""
+else
+  echo ""
+  echo "Package has been installed."
+  echo ""
+fi 
+exit 0

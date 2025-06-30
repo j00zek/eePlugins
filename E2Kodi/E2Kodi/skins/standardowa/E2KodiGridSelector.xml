@@ -1,0 +1,57 @@
+<screen name="E2KodiGridSelector" position="center,center" size="700,400" title="Wybór dodatku E2Kodi">
+
+    <widget name="marker_0x0" position="10,10" size="140,60" alphatest="blend" />
+    <widget name="logo_0x0" position="20,20" size="120,40" alphatest="blend" />
+
+    <widget name="marker_0x1" position="180,10" size="140,60" alphatest="blend" />
+    <widget name="logo_0x1" position="190,20" size="120,40" alphatest="blend" />
+
+    <widget name="marker_0x2" position="350,10" size="140,60" alphatest="blend" />
+    <widget name="logo_0x2" position="360,20" size="120,40" alphatest="blend" />
+
+    <widget name="marker_0x3" position="520,10" size="140,60" alphatest="blend" />
+    <widget name="logo_0x3" position="530,20" size="120,40" alphatest="blend" />
+
+    <widget name="marker_1x0" position="10,100" size="140,60" alphatest="blend" />
+    <widget name="logo_1x0" position="20,110" size="120,40" alphatest="blend" />
+
+    <widget name="marker_1x1" position="180,100" size="140,60" alphatest="blend" />
+    <widget name="logo_1x1" position="190,110" size="120,40" alphatest="blend" />
+
+    <widget name="marker_1x2" position="350,100" size="140,60" alphatest="blend" />
+    <widget name="logo_1x2" position="360,110" size="120,40" alphatest="blend" />
+
+    <widget name="marker_1x3" position="520,100" size="140,60" alphatest="blend" />
+    <widget name="logo_1x3" position="530,110" size="120,40" alphatest="blend" />
+
+    <widget name="marker_2x0" position="10,190" size="140,60" alphatest="blend" />
+    <widget name="logo_2x0" position="20,200" size="120,40" alphatest="blend" />
+
+    <widget name="marker_2x1" position="180,190" size="140,60" alphatest="blend" />
+    <widget name="logo_2x1" position="190,200" size="120,40" alphatest="blend" />
+
+    <widget name="marker_2x2" position="350,190" size="140,60" alphatest="blend" />
+    <widget name="logo_2x2" position="360,200" size="120,40" alphatest="blend" />
+
+    <widget name="marker_2x3" position="520,190" size="140,60" alphatest="blend" />
+    <widget name="logo_2x3" position="530,200" size="120,40" alphatest="blend" />
+
+    <widget name="marker_3x0" position="10,280" size="140,60" alphatest="blend" />
+    <widget name="logo_3x0" position="20,290" size="120,40" alphatest="blend" />
+
+    <widget name="marker_3x1" position="180,280" size="140,60" alphatest="blend" />
+    <widget name="logo_3x1" position="190,290" size="120,40" alphatest="blend" />
+
+    <widget name="marker_3x2" position="350,280" size="140,60" alphatest="blend" />
+    <widget name="logo_3x2" position="360,290" size="120,40" alphatest="blend" />
+
+    <widget name="marker_3x3" position="520,280" size="140,60" alphatest="blend" />
+    <widget name="logo_3x3" position="530,290" size="120,40" alphatest="blend" />
+
+    <widget name="key_red"    position="20,370" zPosition="2" size="150,30" foregroundColor="red" valign="center" halign="left" font="Regular;22" transparent="1" />
+    <widget name="key_green"  position="120,370" zPosition="2" size="350,30" foregroundColor="green" valign="center" halign="left" font="Regular;22" transparent="1" />
+    <widget name="key_yellow"  position="360,370" zPosition="2" size="250,30" foregroundColor="yellow" valign="center" halign="left" font="Regular;22" transparent="1" />
+    <widget name="key_blue"  position="590,370" zPosition="2" size="200,30" foregroundColor="blue" valign="center" halign="left" font="Regular;22" transparent="1" />
+    <widget name="key_ok"  position="690,370" zPosition="2" size="350,30" foregroundColor="gray" valign="center" halign="left" font="Regular;22" transparent="1" />
+    
+</screen>

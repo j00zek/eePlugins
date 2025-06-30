@@ -1,0 +1,440 @@
+<skin>
+	<screens>
+		<screen key="LocationBox" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/setup.png" />
+		<screen key="DistributionInformation" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_information_about.png" />
+		<screen key="Information" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_information.png" />
+		<screen key="NetworkInformation" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_network_info.png" />
+		<screen key="ReceiverInformation" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_receiver_info.png" />
+		<screen key="TunerInformation" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_tuner_info.png" />
+		<screen key="StorageInformation" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_storage_info.png" />
+		<screen key="MemoryInformation" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_memory_info.png" />
+		<screen key="MultiBootInformation" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_multiboot_info.png" />
+		<screen key="StreamingInformation" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_streaming_clients_info.png" />
+		<screen key="GeolocationInformation" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_geolocation_info.png" />
+		<screen key="ServiceInformation" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_service_info.png" />
+		<screen key="PictureInformation" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_images_info.png" />
+		<screen key="AdapterSetup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/net.png" />
+		<screen key="AdapterSetupConfiguration" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/net.png" />
+		<screen key="NetworkMacSetup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/net.png" />
+		<screen key="NetworkMountsMenu" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_network_netmounts_setup.png" />
+		<screen key="NameserverSetup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/net.png" />
+		<screen key="NetworkAdapterSelection" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/net.png" />
+		<screen key="NetworkAdapterTest" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/net.png" />
+		<screen key="WlanStatus" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/wlan.png" />
+		<screen key="WlanScan" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/wlan.png" />
+		<screen key="QuickMenuDevices" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/info.png" />
+		<screen key="SoftcamPanel" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/softcam.png" />
+		<screen key="VideoSetup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/service_info.png" />
+		<screen key="VideoEnhancementSetup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_system_videoenhancement_setup.png" />
+		<screen key="LocaleSelection" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_system_language_setup.png" />
+		<screen key="InputDeviceSelection" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_extended_input_device_setup.png" />
+		<screen key="IceTVUserTypeScreen" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/icetv.png" />
+		<screen key="IceTVServerSetup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/icetv.png" />
+		<screen key="IceTVNewUserSetup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/icetv.png" />
+		<screen key="IceTVRegionSetup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/icetv.png" />
+		<screen key="IceTVLogin" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/icetv.png" />
+		<screen key="IceTVNeedPassword" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/icetv.png" />
+		<screen key="IceTVMain" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/icetv.png" />
+		<screen key="uShareSelection" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_network_netnfs_setup.png" />
+	</screens>
+	<menus>
+		<menu key="default" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/default.png" />
+		<menu key="animation_setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/usage_setup.png" />
+		<menu key="audio_menu" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_setup_audio.png" />
+		<menu key="audio_setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_setup_audio.png" />
+		<menu key="auto_scan" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_scan_auto_scan.png" />
+		<menu key="autobouquetsmakermaker" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_scan_autobouquetsmakermaker.png" />
+		<menu key="autolanguage_setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_system_autolanguage_setup.png" />
+		<menu key="AutomaticVolumeAdjustment" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_system_AutomaticVolumeAdjustment.png" />
+		<menu key="autores_setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_system_autores_setup.png" />
+		<menu key="autotimer_setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_timermenu_autotimers.png" />
+		<menu key="av_setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_system_av_setup.png" />
+		<menu key="blindscan" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_scan_blindscan.png" />
+		<menu key="bluetooth_setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/bluetooth.png" />
+		<menu key="build_info_screen" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_information_device.png" />
+		<menu key="buttonsetup_setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_osd_menu_buttonsetup.png" />
+		<menu key="cablescan" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/search.png" />
+		<menu key="channelselection_setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_system_channelselection_setup.png" />
+		<menu key="Chromium Plugin" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/browser.png" />
+		<menu key="ci_assign" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_setup_ci.png" />
+		<menu key="ci_setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_setup_ci.png" />
+		<menu key="crontimer_edit" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_timermenu_crontimers.png" />
+		<menu key="Dazn" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/dazn.png" />
+		<menu key="deep_standby" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/power_off.png" />
+		<menu key="deleteepgcache" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_epgloadsave_menu_deleteepgcache.png" />
+		<menu key="device_screen" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_information_device.png" />
+		<menu key="device_setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_network_device_setup.png" />
+		<menu key="Disney Plugin" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/disney.png" />
+		<menu key="display_setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_display_display_setup.png" />
+		<menu key="dmc_mainmenu" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_mainmenu_dmc_mainmenu.png" />
+		<menu key="dreamplex" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/plex.png" />
+		<menu key="dual_mode" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/dualmode.png" />
+		<menu key="dvd_player" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/dvd.png" />
+		<menu key="dvdplayer_setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_extended_dvdplayer_setup.png" />
+		<menu key="emc" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/emc.png" />
+		<menu key="epg_setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_epg_epg_setup.png" />
+		<menu key="epgimporter" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_epgloadsave_menu_loadepgcache.png" />
+		<menu key="epgloadsave_menu" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_epg_epgloadsave_menu.png" />
+		<menu key="epgrefresh" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_epg_refresh.png" />
+		<menu key="factory_reset" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_setup_reset.png" />
+		<menu key="fansetup_config" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/fan.png" />
+		<menu key="fastscan" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_scan_fast_scan.png" />
+		<menu key="FCCSetup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/fcc.png" />
+		<menu key="filecommand" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/filecom.png" />
+		<menu key="googlemaps" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/google.png" />
+		<menu key="harddisk_check" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_harddisk_harddisk_check.png" />
+		<menu key="harddisk_convert" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_harddisk_harddisk_convert.png" />
+		<menu key="harddisk_init" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_harddisk_harddisk_init.png" />
+		<menu key="harddisk_setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_harddisk_harddisk_setup.png" />
+		<menu key="Hardreset" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/restart.png" />
+		<menu key="hdmicec" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_extended_hdmicec.png" />
+		<menu key="hdmirecord_setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_extended_hdmirecord_setup.png" />
+		<menu key="Inadyn_setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_network_Inadyn_setup.png" />
+		<menu key="Infopanel" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_information_about.png" />
+		<menu key="input_device_setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_extended_input_device_setup.png" />
+		<menu key="ipbox_client_Start" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_scan_streamconvert.png" />
+		<menu key="IPTV Bouquet Maker" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_mainmenu_pluginmanager.png" />
+		<menu key="iptv_config" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/setup.png" />
+		<menu key="iptv_main" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/pplayer.png" />
+		<menu key="keyboard" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_extended_keyboard.png" />
+		<menu key="keymap" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_extended_input_device_setup.png" />
+		<menu key="lcd4linux" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_display_lcd_skin_setup.png" />
+		<menu key="lcd_skin_setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_display_lcd_skin_setup.png" />
+		<menu key="LED_Giga" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_display_LED_Giga.png" />
+		<menu key="ledManager" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/led.png" />
+		<menu key="loadepgcache" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_epgloadsave_menu_loadepgcache.png" />
+		<menu key="locale_setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_system_language_setup.png" />
+		<menu key="logs_setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_extended_logs_setup.png" />
+		<menu key="maintenance_mode" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/usage_setup.png" />
+		<menu key="manual_scan" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_scan_manual_scan.png" />
+		<menu key="media_player" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/media.png" />
+		<menu key="merlin_music_player" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/music.png" />
+		<menu key="minidlna_setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_network_minidlna_setup.png" />
+		<menu key="mount_manager" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_extended_hardisk_selection.png" />
+		<menu key="moviebrowser" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/service_info.png" />
+		<menu key="multi_quick" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/remotecontrol.png" />
+		<menu key="multiboot" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/restart.png" />
+		<menu key="Netflix Plugin" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_mainmenu_netflix.png" />
+		<menu key="netmounts_setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_network_netmounts_setup.png" />
+		<menu key="netushare_setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_network_netushare_setup.png" />
+		<menu key="numzapext_setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_numzapext_setup.png" />
+		<menu key="OpenStore" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_mainmenu_openstore.png" />
+		<menu key="openwebif" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_network_webif.png" />
+		<menu key="osdsetup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_osd_menu_osdsetup.png" />
+		<menu key="parental_setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_setup_parental.png" />
+		<menu key="password_setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_network_passwd_setup.png" />
+		<menu key="permanent_clock" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_extended_time_setup.png" />
+		<menu key="pip_setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/setup.png" />
+		<menu key="play_cd" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/dvd.png" />
+		<menu key="playback_setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_extended_playback_setup.png" />
+		<menu key="plugin_selection" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_mainmenu_pluginmanager.png" />
+		<menu key="pluginhider_setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_mainmenu_pluginhider.png" />
+		<menu key="positioner_setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_scan_positioner_setup.png" />
+		<menu key="powertimer_edit" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_timermenu_powertimers.png" />
+		<menu key="PrimeVideo" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/prime.png" />
+		<menu key="pvmc_mainmenu" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/pvmc.png" />
+		<menu key="RCU Select" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/remotecontrol.png" />
+		<menu key="recording_setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_extended_recording_setup.png" />
+		<menu key="remote_setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_system_remote_setup.png" />
+		<menu key="remotecode" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_extended_remotecode.png" />
+		<menu key="remotecontrolcode" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/remotecontrol.png" />
+		<menu key="remotetimer" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_timermenu_timers.png" />
+		<menu key="restart" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/restart.png" />
+		<menu key="restart_enigma" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/reboot.png" />
+		<menu key="rfmod_setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_extended_rfmod_setup.png" />
+		<menu key="run_kodi" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_kodi.png" />
+		<menu key="sat_ip_client" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_scan_satip.png" />
+		<menu key="satellite_equipment_setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/setup.png" />
+		<menu key="satfinder" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_scan_satfinder.png" />
+		<menu key="saveepgcache" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_epgloadsave_menu_saveepgcache.png" />
+		<menu key="scart_switch" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_mainmenu_scart.png" />
+		<menu key="script_manager" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_setup_software_manager.png" />
+		<menu key="serviceapp_setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/pplayer.png" />
+		<menu key="setup_epgenhanced" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_epg_setup_epgenhanced.png" />
+		<menu key="setup_epggraphical" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_epg_setup_epggraphical.png" />
+		<menu key="setup_epginfobar" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_epg_setup_epginfobar.png" />
+		<menu key="setup_epginfobargraphical" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_epg_setup_epginfobargraphical.png" />
+		<menu key="setup_epgmulti" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_epg_setup_epgmulti.png" />
+		<menu key="setup_epgvertical" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_epg_setup_epgmulti.png" />
+		<menu key="setup_osd3d" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_osd_menu_osd3dsetup.png" />
+		<menu key="shutdown" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/power_off.png" />
+		<menu key="skin_setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_osd_menu_skin_setup.png" />
+		<menu key="sleep" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/power_timer.png" />
+		<menu key="specialfeatures_menu" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_extended_specialfeatures_menu.png" />
+		<menu key="Stalker Plugin" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/portal.png" />
+		<menu key="standby" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/power.png" />
+		<menu key="start_kodi" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_kodi.png" />
+		<menu key="startimport" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/iptvimport.png" />
+		<menu key="startsetup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/alexa.png" />
+		<menu key="streamconvert" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_scan_streamconvert.png" />
+		<menu key="subtitle_selection" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/sub.png" />
+		<menu key="subtitle_setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_extended_subtitle_setup.png" />
+		<menu key="sundtek_control_enter" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_mainmenu_pluginmanager.png" />
+		<menu key="supportchannel_YTChannel" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_information_supportchannel.png" />
+		<menu key="swap_manager" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_harddisk_ram.png" />
+		<menu key="tempfancontrol" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/fan.png" />
+		<menu key="time_setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_extended_time_setup.png" />
+		<menu key="timer_edit" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_timermenu_timers.png" />
+		<menu key="timshift_setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_extended_timshift_setup.png" />
+		<menu key="tuner_screen" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_information_device.png" />
+		<menu key="tuner_setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_scan_tuner_setup.png" />
+		<menu key="usage_setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_system_usage_setup.png" />
+		<menu key="user_interface" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_osd_menu_user_interface.png" />
+		<menu key="vfd_ew" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_system_VFD_INI.png" />
+		<menu key="VFD_INI" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_system_VFD_INI.png" />
+		<menu key="video_clipping" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/service_info.png" />
+		<menu key="video_finetune" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_system_videofinetune_setup.png" />
+		<menu key="video_menu" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/service_info.png" />
+		<menu key="video_setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/service_info.png" />
+		<menu key="videoenhancement_setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_system_videoenhancement_setup.png" />
+		<menu key="vmc_init_setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_setup_vmc_setup.png" />
+		<menu key="vmc_init_startvmc" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_mainmenu_vmc.png" />
+		<menu key="volume_adjust" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_system_AutomaticVolumeAdjustment.png" />
+		<menu key="vps" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_scan_streamconvert.png" />
+		<menu key="Weather_MSN" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/weather.png" />
+		<menu key="webradioFS" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/webradioFS.png" />
+		<menu key="wol_standby" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/power_off.png" />
+		<menu key="XCplugin" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_mainmenu_pluginmanager.png" />
+		<menu key="XStreamity" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_mainmenu_pluginmanager.png" />
+		<menu key="youtubetv" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/youtube.png" />
+        <menu key="software_manager" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_setup_software_manager.png" />
+		<menu key="manage_extensions" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_manage_extensions.png" />
+		<menu key="software_update" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_software_update.png" />
+		<menu key="software_restore" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_software_restore.png" />
+		<menu key="flash_online" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_flash_online.png" />
+		<menu key="backup_image_dflash" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_backup_image.png" />
+		<menu key="backup_image_dbackup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_backup_image.png" />
+		<menu key="backup_image" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_backup_image.png" />
+		<menu key="multiboot" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_multiboot.png" />
+		<menu key="backup_system" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_backup_system.png" />
+		<menu key="restore_system" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_restore_system.png" />
+		<menu key="install_local" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_install_local.png" />
+		<menu key="advanced_software" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_advanced_software.png" />
+		<menu key="advanced_restore" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_advanced_restore.png" />
+		<menu key="backup_location" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_backup_location.png" />
+		<menu key="backup_default" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_backup_default.png" />
+		<menu key="backup_additional" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_backup_additional.png" />
+		<menu key="backup_excluded" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_backup_excluded.png" />
+		<menu key="package_manager" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_package_manager.png" />
+		<menu key="upgrade_source" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_upgrade_source.png" />
+        <menu key="timermenu" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_mainmenu_timer.png" />
+		<menu key="setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/setup.png" />
+		<menu key="rec" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_extended_recording_setup.png" />
+		<menu key="display" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_extended_display_selection.png" />
+		<menu key="osd_menu" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_extended_osd_setup.png" />
+		<menu key="scan" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_setup_tuner.png" />
+		<menu key="cam" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_setup_ci.png" />
+		<menu key="extended" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_system_extended_selection.png" />
+		<menu key="harddisk" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_extended_hardisk_selection.png" />
+		<menu key="network" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_system_network_menu.png" />
+		<menu key="shutdown" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/reset.png" />
+		<menu key="epg" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_epg_epg_setup.png" />
+		<menu key="system" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_setup_setup.png" />
+        <menu key="information" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/info.png" />
+		<menu key="distribution_info_screen" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_information_about.png" />
+		<menu key="receiver_info_screen" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_receiver_info.png" />
+		<menu key="images_info_screen" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_images_info.png" />
+		<menu key="tuner_info_screen" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_tuner_info.png" />
+		<menu key="network_info_screen" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_network_info.png" />
+		<menu key="storage_info_screen" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_storage_info.png" />
+		<menu key="memory_info_screen" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_memory_info.png" />
+		<menu key="multiboot_info_screen" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_multiboot_info.png" />
+		<menu key="streaming_info_screen" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_streaming_clients_info.png" />
+		<menu key="geolocation_info_screen" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_geolocation_info.png" />
+		<menu key="service_info_screen" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_service_info.png" />
+        <menu key="softcam_settings" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_softcam_settings.png" />
+		<menu key="cardserver_settings" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_softcam_settings.png" />
+		<menu key="autocam_settings" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_softcam_settings.png" />
+		<menu key="oscam_info" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_oscam_info.png" />
+		<menu key="cccam_info" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_cccam_info.png" />
+        <menu key="ci_settings" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_ci_settings.png" />
+		<menu key="ci_selection" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_ci_selection.png" />
+		<menu key="tuner_basic_settings" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_tuner_basic_settings.png" />
+		<menu key="networkservices_setup" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/net.png" />
+        <menu key="netmounts_manager" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_network_netmounts_setup.png" />
+		<menu key="netmounts_browser" image="/usr/share/enigma2/BlackHarmony/allScreens/Screens by endriu/menuicons/menu_network_netmounts_setup.png" />
+	</menus>
+<screen name="Menu" position="0,0" size="1920,1080" title="Main menu" flags="wfNoBorder" NoAnimationAfter="1" backgroundColor="transparent">
+  <ePixmap position="0,0" zPosition="-10" size="1920,1080" pixmap="BlackHarmony/bg_design/menu_icon.png" />
+  
+  <widget source="Title" render="j00zekLabel" position="285,130" size="705,104" font="HD_Thin; 40" halign="center" valign="center" foregroundColor="light_yellow" backgroundColor="black" transparent="1" />
+  <widget source="menu" render="Listbox" position="285,250" size="705,700" selectionPixmap="BlackHarmony/menu/sel_735_50.png" scrollbarSliderForegroundColor="blue" scrollbarSliderBorderColor="blue" scrollbarMode="showOnDemand" enableWrapAround="1" transparent="1" scrollbarWidth="6">
+    <convert type="TemplatedMultiContent">
+					{"templates":
+						{"default": (50,[
+							MultiContentEntryText(pos = (10, 0), size = (695, 50), flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 0)
+							]),
+						"text": (50,[
+							MultiContentEntryText(pos = (10, 0), size = (695, 50), flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 3)
+							]),
+						"number": (50,[
+							MultiContentEntryText(pos = (10, 0), size = (45, 50), font = 1, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 2),
+							MultiContentEntryText(pos = (70, 0), size = (635, 50), font = 1, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 3),
+							]),
+						"image": (50,[
+							MultiContentEntryPixmapAlphaBlend(pos = (10, 1), size = (48, 48), png = 1, flags = BT_SCALE | BT_KEEP_ASPECT_RATIO),
+							MultiContentEntryText(pos = (70, 0), size = (635, 50), font = 1, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 3),
+							]),
+						"both": (50,[
+							MultiContentEntryPixmapAlphaBlend(pos = (10, 1), size = (48, 48), png = 1, flags = BT_SCALE | BT_KEEP_ASPECT_RATIO),
+							MultiContentEntryText(pos = (70, 0), size = (45, 50), font = 2, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 2),
+							MultiContentEntryText(pos = (115, 0), size = (590, 50), font = 2, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 3),
+							])
+						},
+					"fonts": [gFont("Regular", 31),gFont("Regular", 31),gFont("Regular", 31)],
+					"itemHeight": 50,
+					"scrollbarMode": "showOnDemand"
+					}
+			</convert>
+  </widget>
+  <widget source="global.CurrentTime" render="j00zekLabel" position="1125,245" size="405,40" font="HD_Thin; 30" foregroundColor="lemon" backgroundColor="black" transparent="1" halign="left" valign="center">
+    <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+  </widget>
+  <widget source="global.CurrentTime" render="Label" position="1470,239" size="170,42" font="LCD; 40" backgroundColor="black" transparent="1" halign="right" foregroundColor="white">
+    <convert type="ClockToText">Default</convert>
+  </widget>
+  <ePixmap position="1165,310" zPosition="5" size="450,1" pixmap="BlackHarmony/gfx/linia_IB.png" />
+  <widget source="description" render="j00zekLabel" conditional="description" position="1130,320" size="515,130" font="Roboto_HD; 34" halign="center" valign="center" foregroundColor="blue" backgroundColor="black" transparent="1" />
+  <ePixmap position="1165,460" zPosition="5" size="450,1" pixmap="BlackHarmony/gfx/linia_IB.png" />
+  
+  <!--eLabel text="Brak opisu" position="1130,320" size="515,130" font="Regular;34" transparent="1" zPosition="1" valign="center" halign="center" foregroundColor="cyan" backgroundColor="background" /-->
+  <widget name="menuimage" position="1258,490" size="256,256" zPosition="3" alphatest="blend" />
+  <eLabel backgroundColor="black" font="HD_Thin; 35" foregroundColor="light_yellow" position="1137,797" size="493,50" text="Support for skin:" transparent="1" halign="center" />
+  <eLabel backgroundColor="black" font="Roboto_HD; 29" foregroundColor="white" position="1137,845" size="493,50" text="www.sat-4-all.com" transparent="1" halign="center" />
+  
+
+<!--przyciski-->
+  
+  <widget source="session.CurrentService" render="j00zekPiconAnimation" position="274,987" zPosition="10" size="35,27" alphatest="blend"
+			initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="MNU,0" random="True"
+			pixmaps="BlackHarmony/skin_user_animButtons/key_green"
+			pixalter="BlackHarmony/buttons/key_green.png" />
+  <widget source="session.CurrentService" render="j00zekPiconAnimation" position="538,987" zPosition="10" size="35,27" alphatest="blend"
+			initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="MNU,1" random="True"
+			pixmaps="BlackHarmony/skin_user_animButtons/key_yellow"
+			pixalter="BlackHarmony/buttons/key_yellow.png" />
+  <widget source="session.CurrentService" render="j00zekPiconAnimation" position="803,987" zPosition="10" size="35,27" alphatest="blend"
+			initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="MNU,2" random="True"
+			pixmaps="BlackHarmony/skin_user_animButtons/key_blue"
+			pixalter="BlackHarmony/buttons/key_blue.png" />
+  
+  <widget source="key_green" render="Label" position="320,968" size="210,60" zPosition="2" font="Roboto_HD; 24" halign="left" valign="center" backgroundColor="dark_grey" transparent="1" />
+  <widget source="key_yellow" render="Label" position="585,968" size="210,60" zPosition="2" font="Roboto_HD; 24" halign="left" valign="center" backgroundColor="dark_grey" transparent="1" />
+  <widget source="key_blue" render="Label" position="844,968" size="185,60" zPosition="2" font="Roboto_HD;24" halign="left" valign="center" backgroundColor="dark_grey" transparent="1"/>
+  <ePixmap pixmap="BlackHarmony/buttons/menu.png" position="1730,988" size="60,30" alphatest="blend" />
+
+</screen>
+
+  <screen name="menu_mainmenu" position="0,0" size="1920,1080" title="Main menu" flags="wfNoBorder" NoAnimationAfter="1" backgroundColor="transparent">
+  <ePixmap position="0,0" zPosition="-10" size="1920,1080" pixmap="BlackHarmony/bg_design/menu_icon.png" />
+  <widget source="Title" render="j00zekLabel" position="285,130" size="705,104" font="HD_Thin; 40" halign="center" valign="center" foregroundColor="light_yellow" backgroundColor="black" transparent="1" />
+  <widget source="menu" render="Listbox" position="285,250" size="705,700" selectionPixmap="BlackHarmony/menu/sel_735_50.png" scrollbarSliderForegroundColor="blue" scrollbarSliderBorderColor="blue" scrollbarMode="showOnDemand" enableWrapAround="1" transparent="1" scrollbarWidth="6">
+    <convert type="TemplatedMultiContent">
+					{"templates":
+						{"default": (50,[
+							MultiContentEntryText(pos = (10, 0), size = (695, 50), flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 0)
+							]),
+						"text": (50,[
+							MultiContentEntryText(pos = (10, 0), size = (695, 50), flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 3)
+							]),
+						"number": (50,[
+							MultiContentEntryText(pos = (10, 0), size = (45, 50), font = 1, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 2),
+							MultiContentEntryText(pos = (70, 0), size = (635, 50), font = 1, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 3),
+							]),
+						"image": (50,[
+							MultiContentEntryPixmapAlphaBlend(pos = (10, 1), size = (48, 48), png = 1, flags = BT_SCALE | BT_KEEP_ASPECT_RATIO),
+							MultiContentEntryText(pos = (70, 0), size = (635, 50), font = 1, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 3),
+							]),
+						"both": (50,[
+							MultiContentEntryPixmapAlphaBlend(pos = (10, 1), size = (48, 48), png = 1, flags = BT_SCALE | BT_KEEP_ASPECT_RATIO),
+							MultiContentEntryText(pos = (70, 0), size = (45, 50), font = 2, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 2),
+							MultiContentEntryText(pos = (115, 0), size = (590, 50), font = 2, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER, text = 3),
+							])
+						},
+					"fonts": [gFont("Regular", 31),gFont("Regular", 31),gFont("Regular", 31)],
+					"itemHeight": 50,
+					"scrollbarMode": "showOnDemand"
+					}
+			</convert>
+  </widget>
+  <widget source="global.CurrentTime" render="j00zekLabel" position="1125,245" size="405,40" font="HD_Thin; 30" foregroundColor="lemon" backgroundColor="black" transparent="1" halign="left" valign="center">
+    <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+  </widget>
+  <widget source="global.CurrentTime" render="Label" position="1470,239" size="170,42" font="LCD; 40" backgroundColor="black" transparent="1" halign="right" foregroundColor="white">
+    <convert type="ClockToText">Default</convert>
+  </widget>
+  <ePixmap position="1165,310" zPosition="5" size="450,1" pixmap="BlackHarmony/gfx/linia_IB.png" />
+  <widget source="description" render="j00zekLabel" conditional="description" position="1130,320" size="515,130" font="Roboto_HD; 34" halign="center" valign="center" foregroundColor="blue" backgroundColor="black" transparent="1" />
+  <ePixmap position="1165,460" zPosition="5" size="450,1" pixmap="BlackHarmony/gfx/linia_IB.png" />
+  
+  <!--eLabel text="Brak opisu" position="1130,320" size="515,130" font="Regular;34" transparent="1" zPosition="1" valign="center" halign="center" foregroundColor="cyan" backgroundColor="background" /-->
+  <widget name="menuimage" position="1258,490" size="256,256" zPosition="3" alphatest="blend" />
+  <eLabel backgroundColor="black" font="HD_Thin; 35" foregroundColor="light_yellow" position="1137,797" size="493,50" text="Support for skin:" transparent="1" halign="center" />
+  <eLabel backgroundColor="black" font="Roboto_HD; 29" foregroundColor="white" position="1137,845" size="493,50" text="www.sat-4-all.com" transparent="1" halign="center" />
+  
+
+<!--przyciski-->
+  
+  <widget source="session.CurrentService" render="j00zekPiconAnimation" position="274,987" zPosition="10" size="35,27" alphatest="blend"
+			initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="MNU,0" random="True"
+			pixmaps="BlackHarmony/skin_user_animButtons/key_green"
+			pixalter="BlackHarmony/buttons/key_green.png" />
+  <widget source="session.CurrentService" render="j00zekPiconAnimation" position="538,987" zPosition="10" size="35,27" alphatest="blend"
+			initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="MNU,1" random="True"
+			pixmaps="BlackHarmony/skin_user_animButtons/key_yellow"
+			pixalter="BlackHarmony/buttons/key_yellow.png" />
+  <widget source="session.CurrentService" render="j00zekPiconAnimation" position="803,987" zPosition="10" size="35,27" alphatest="blend"
+			initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="MNU,2" random="True"
+			pixmaps="BlackHarmony/skin_user_animButtons/key_blue"
+			pixalter="BlackHarmony/buttons/key_blue.png" />
+  <widget source="key_green" render="Label" position="320,968" size="210,60" zPosition="2" font="Roboto_HD; 24" halign="left" valign="center" backgroundColor="dark_grey" transparent="1" />
+  <widget source="key_yellow" render="Label" position="585,968" size="210,60" zPosition="2" font="Roboto_HD; 24" halign="left" valign="center" backgroundColor="dark_grey" transparent="1" />
+  <widget source="key_blue" render="Label" position="844,968" size="185,60" zPosition="2" font="Roboto_HD;24" halign="left" valign="center" backgroundColor="dark_grey" transparent="1"/>
+  <ePixmap pixmap="BlackHarmony/buttons/menu.png" position="1730,988" size="60,30" alphatest="blend" />
+
+</screen>
+  
+  <screen name="menu_information" position="0,0" size="1920,1080" title="YYY" flags="wfNoBorder" NoAnimationAfter="1" backgroundColor="transparent">
+        <panel name="menu_mainmenu" /> 
+  </screen>
+  <screen name="menu_setup" position="0,0" size="1920,1080" title="YYY" flags="wfNoBorder" NoAnimationAfter="1" backgroundColor="transparent">
+        <panel name="menu_mainmenu" /> 
+  </screen>
+  <screen name="menu_shutdown" position="0,0" size="1920,1080" title="YYY" flags="wfNoBorder" NoAnimationAfter="1" backgroundColor="transparent">
+        <panel name="menu_mainmenu" /> 
+  </screen>
+  <screen name="menu_harddisk" position="0,0" size="1920,1080" title="YYY" flags="wfNoBorder" NoAnimationAfter="1" backgroundColor="transparent">
+        <panel name="menu_mainmenu" /> 
+  </screen>
+  <screen name="menu_scan" position="0,0" size="1920,1080" title="YYY" flags="wfNoBorder" NoAnimationAfter="1" backgroundColor="transparent">
+        <panel name="menu_mainmenu" /> 
+  </screen>
+  <screen name="menu_system" position="0,0" size="1920,1080" title="YYY" flags="wfNoBorder" NoAnimationAfter="1" backgroundColor="transparent">
+        <panel name="menu_mainmenu" /> 
+  </screen>
+  <screen name="menu_extended" position="0,0" size="1920,1080" title="YYY" flags="wfNoBorder" NoAnimationAfter="1" backgroundColor="transparent">
+        <panel name="menu_mainmenu" /> 
+  </screen>
+  <screen name="menu_network" position="0,0" size="1920,1080" title="YYY" flags="wfNoBorder" NoAnimationAfter="1" backgroundColor="transparent">
+        <panel name="menu_mainmenu" /> 
+  </screen>
+  <screen name="menu_video_menu" position="0,0" size="1920,1080" title="YYY" flags="wfNoBorder" NoAnimationAfter="1" backgroundColor="transparent">
+        <panel name="menu_mainmenu" /> 
+  </screen>
+  <screen name="menu_audio_menu" position="0,0" size="1920,1080" title="YYY" flags="wfNoBorder" NoAnimationAfter="1" backgroundColor="transparent">
+        <panel name="menu_mainmenu" /> 
+  </screen>
+  <screen name="menu_rec" position="0,0" size="1920,1080" title="YYY" flags="wfNoBorder" NoAnimationAfter="1" backgroundColor="transparent">
+        <panel name="menu_mainmenu" /> 
+  </screen>
+  <screen name="menu_epg" position="0,0" size="1920,1080" title="YYY" flags="wfNoBorder" NoAnimationAfter="1" backgroundColor="transparent">
+        <panel name="menu_mainmenu" /> 
+  </screen>
+  <screen name="menu_cam" position="0,0" size="1920,1080" title="YYY" flags="wfNoBorder" NoAnimationAfter="1" backgroundColor="transparent">
+        <panel name="menu_mainmenu" /> 
+  </screen>
+  <screen name="menu_display" position="0,0" size="1920,1080" title="YYY" flags="wfNoBorder" NoAnimationAfter="1" backgroundColor="transparent">
+        <panel name="menu_mainmenu" /> 
+  </screen>
+  
+  </skin>

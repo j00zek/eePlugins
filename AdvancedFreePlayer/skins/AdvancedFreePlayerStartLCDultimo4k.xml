@@ -1,0 +1,12 @@
+<screen position="0,0" size="800,480" title="AFP" id="1">
+ <widget source="global.CurrentTime" render="Label" position="330,20" size="450,75" font="RegularLCD;66" transparent="1" halign="center" valign="center" foregroundColor="#ffff00" >
+ <convert type="ClockToText">Format:%a, %d.%m.%Y</convert>
+ </widget>
+ <widget source="global.CurrentTime" render="Label" position="390,80" size="300,75" font="VFD;76" transparent="1" halign="right" valign="center" foregroundColor="#ffff00" >
+ <convert type="ClockToText">Format:%H:%M:%S</convert>
+ </widget>
+ <widget name="text1" position="320,340"  size="460,50" font="VFD;46" transparent="1" halign="center" valign="center" foregroundColor="#05F7F3" noWrap="1"/>
+ <widget name="text2" position="320,410" size="460,40" font="VFD;38" transparent="1" halign="center" valign="center" foregroundColor="#FFFF00"/>
+ <widget name="LCDpic" position="10,10" size="321,465" alphatest="blend" />
+ <widget name="AFPlogo" position="360,160" size="400,160" alphatest="blend"/>
+ </screen> 

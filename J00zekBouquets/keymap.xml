@@ -1,0 +1,12 @@
+<keymap>
+	<map context="j00zekBouquets">
+		<key id="KEY_RED" mapto="red" flags="b"/>
+		<key id="KEY_GREEN" mapto="green" flags="b"/>
+		<key id="KEY_YELLOW" mapto="yellow" flags="b"/>
+		<key id="KEY_BLUE" mapto="blue" flags="b"/>
+		<key id="KEY_EXIT" mapto="cancel" flags="m" />
+		<key id="KEY_ESC" mapto="cancel" flags="m" />
+		<key id="KEY_ENTER" mapto="ok" flags="m" />
+		<key id="KEY_OK" mapto="ok" flags="m" /> 
+	</map>
+</keymap>
