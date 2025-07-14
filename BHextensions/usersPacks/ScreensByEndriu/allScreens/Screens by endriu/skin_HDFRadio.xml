@@ -151,6 +151,7 @@
 	<eLabel backgroundColor="linie" position="957,200" size="2,625" />
 	<widget name="favoritesname" backgroundColor="black" foregroundColor="#00FFC000" font="Regular;35" position="967,125" size="855,50" transparent="1" />
 	<widget name="favorites" backgroundColor="black" font="Regular;28" foregroundColor="#00FFFFFF" itemHeight="45" selectionPixmap="BlackHarmony/menu/sel_860_45.png" backgroundColorSelected="#00892E13" foregroundColorSelected="#00FFFFFF" position="967,200" size="855,630" scrollbarMode="showOnDemand" scrollbarSliderBorderWidth="1" scrollbarWidth="8" enableWrapAround="1" transparent="1"/>
+	<widget name="sort" backgroundColor="black" font="Regular;28" foregroundColor="#00FFFFFF" itemHeight="45" selectionPixmap="BlackHarmony/menu/sel_860_45.png" backgroundColorSelected="#00892E13" foregroundColorSelected="#0070ad11" position="967,200" size="855,630" scrollbarMode="showOnDemand" scrollbarSliderBorderWidth="1" scrollbarWidth="8" enableWrapAround="1" transparent="1"/>
 	<widget source="instruction" render="j00zekLabel" backgroundColor="black" font="Regular;32" foregroundColor="#66CCCC" position="93,837" size="1728,105" halign="center" valign="center" transparent="1" />
 
 <!--przyciski-->        
@@ -188,7 +189,8 @@
 <!--lista prawo-->
 	<eLabel backgroundColor="linie" position="957,200" size="2,625" />
 	<widget name="playlistname" backgroundColor="black" foregroundColor="#00FFC000" font="Regular;35" position="967,125" size="855,50" transparent="1" />
-	<widget name="playlis" backgroundColor="black" font="Regular;28" foregroundColor="#00FFFFFF" itemHeight="45" selectionPixmap="BlackHarmony/menu/sel_860_45.png" backgroundColorSelected="#00892E13" foregroundColorSelected="#00FFFFFF" position="967,200" size="855,630" scrollbarMode="showOnDemand" scrollbarSliderBorderWidth="1" scrollbarWidth="8" enableWrapAround="1" transparent="1"/>
+	<widget name="playlist" backgroundColor="black" font="Regular;28" foregroundColor="#00FFFFFF" itemHeight="45" selectionPixmap="BlackHarmony/menu/sel_860_45.png" backgroundColorSelected="#00892E13" foregroundColorSelected="#00FFFFFF" position="967,200" size="855,630" scrollbarMode="showOnDemand" scrollbarSliderBorderWidth="1" scrollbarWidth="8" enableWrapAround="1" transparent="1"/>
+	<widget name="sort" backgroundColor="black" font="Regular;28" foregroundColor="#00FFFFFF" itemHeight="45" selectionPixmap="BlackHarmony/menu/sel_860_45.png" backgroundColorSelected="#00892E13" foregroundColorSelected="#0070ad11" position="967,200" size="855,630" scrollbarMode="showOnDemand" scrollbarSliderBorderWidth="1" scrollbarWidth="8" enableWrapAround="1" transparent="1"/>
 	<widget source="instruction" render="j00zekLabel" backgroundColor="black" font="Regular;32" foregroundColor="#66CCCC" position="93,837" size="1728,105" halign="center" valign="center" transparent="1" />
 <!--przyciski-->        
     <widget source="session.CurrentService" render="j00zekPiconAnimation" position="80,980" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0" pixmaps="BlackHarmony/skin_user_animButtons/key_red" pixalter="BlackHarmony/buttons/key_red.png" />
