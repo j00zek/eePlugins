@@ -1,26 +1,39 @@
 <skin>
-	<!-- OVERWRITING PARAMETERS -->
-	<parameters>
-		<parameter name="EPGSingleColumnScales" value="5.7,7.0,1.5"/>
-		<parameter name="FcFileListName" value="70,0,1030,45"/>
-		<parameter name="FcFileListIcon" value="5,5,48,35" scale="fill"/>
-		<parameter name="FcFileListMultiName" value="110,0,990,45"/>
-		<parameter name="FcFileListMultiIcon" value="57,5,48,35" scale="fill"/>
-		<parameter name="FcFileListMultiLock" value="5,5,48,35" scale="fill"/>
-		<parameter name="FileListName" value="70,0,1030,45"/>
-		<parameter name="FileListIcon" value="0,5,60,35" scale="fill"/>
-		<parameter name="FileListMultiName" value="110,0,990,45"/>
-		<parameter name="FileListMultiIcon" value="30,5,60,35" scale="fill"/>
-		<parameter name="ChoicelistDash" value="10,5,1000,45"/>
-		<parameter name="ChoicelistName" value="67,2,1150,40"/>
-		<parameter name="ChoicelistNameSingle" value="10,2,1040,45"/>
-		<parameter name="ChoicelistIcon" value="5,5,60,30"/>
-	</parameters>
-	<switchpixmap>
-		<pixmap name="menu_on" filename="/usr/share/enigma2/BlackHarmony/icons/menu_on.png"/>
-		<pixmap name="menu_off" filename="/usr/share/enigma2/BlackHarmony/icons/menu_off.png"/>
-	</switchpixmap>
-	<!-- >>>>>>>>>> HYPERION_zukonMOD_specific <<<<<<<<<< -->
+        <!-- OVERWRITING PARAMETERS -->
+        <parameters>
+                <parameter name="EPGSingleColumnScales" value="5.7,7.0,1.5"/>
+                <parameter name="FcFileListName" value="70,0,1030,45"/>
+                <parameter name="FcFileListIcon" value="5,5,48,35" scale="fill"/>
+                <parameter name="FcFileListMultiName" value="110,0,990,45"/>
+                <parameter name="FcFileListMultiIcon" value="57,5,48,35" scale="fill"/>
+                <parameter name="FcFileListMultiLock" value="5,5,48,35" scale="fill"/>
+                <parameter name="FileListName" value="70,0,1030,45"/>
+                <parameter name="FileListIcon" value="0,5,60,35" scale="fill"/>
+                <parameter name="FileListMultiName" value="110,0,990,45"/>
+                <parameter name="FileListMultiIcon" value="30,5,60,35" scale="fill"/>
+                <parameter name="ChoicelistDash" value="10,5,1000,45"/>
+                <parameter name="ChoicelistName" value="67,2,1150,40"/>
+                <parameter name="ChoicelistNameSingle" value="10,2,1040,45"/>
+                <parameter name="ChoicelistIcon" value="5,5,60,30"/>
+                <!--             HyperionParameter                      -->
+                <parameter name="ConfigListSlider" value="22,3"/>
+                <parameter name="ConfigListSeperator" value="800"/>
+                <parameter name="PluginBrowserName" value="190,8,38"/>
+                <parameter name="PluginBrowserDescr" value="190,48,30"/>
+                <parameter name="PluginBrowserIcon" value="15,14,150,60" scale="on"/>
+                <parameter name="PluginBrowserDownloadName" value="120,6,38"/>
+                <parameter name="PluginBrowserDownloadDescr" value="120,45,25"/>
+                <parameter name="PluginBrowserDownloadIcon" value="15,2,91,76"/>
+                <parameter name="ChoicelistDash" value="10,7,1000,49"/>
+                <parameter name="ChoicelistName" value="80,7,1040,49"/>
+                <parameter name="ChoicelistNameSingle" value="10,7,1040,49"/>
+                <parameter name="ChoicelistIcon" value="10,7,53,38"/>
+        </parameters>
+        <switchpixmap>
+                <pixmap name="menu_on" filename="/usr/share/enigma2/BlackHarmony/icons/menu_on.png"/>
+                <pixmap name="menu_off" filename="/usr/share/enigma2/BlackHarmony/icons/menu_off.png"/>
+        </switchpixmap>
+        <!-- >>>>>>>>>> HYPERION_zukonMOD_specific <<<<<<<<<< -->
   <!-- PKT BluePanel -->
   <screen name="BPanel" position="0,0" size="1920,1080" title="HYPERION BluePanel" flags="wfNoBorder" backgroundColor="black">
     <ePixmap position="0,0" zPosition="-10" size="1920,1080" pixmap="BlackHarmony/bg_design/bg_1920x1080.png" />
@@ -1165,19 +1178,19 @@
     </widget>
     <widget source="pluginGrid" render="Listbox" position="center,175" size="1600,736" conditional="pluginGrid" listOrientation="grid" scrollbarMode="showOnDemand" scrollbarWidth="6" scrollbarBorderWidth="1" scrollbarForegroundColor="blue" scrollbarBorderColor="blue" selectionPixmap="BlackHarmony/allScreens/Screens by jac555, testowane na  HYPERION/icons/marker320x184.png" moveBackgroundColor="#000000">
       <convert type="TemplatedMultiContent">
-				{
-				"template":
-					[
-					MultiContentEntryText(pos=(0, 0), size=(320, 184), font=0),
-					MultiContentEntryText(pos=(10, 10), size=(300, 168), font=0, backcolor=0x000000),
-					MultiContentEntryPixmapAlphaBlend(pos=(100, 30), size=(120, 48), png=3, flags=BT_SCALE),
-					MultiContentEntryText(pos=(10, 78), size=(300, 100), font=0, flags=RT_VALIGN_CENTER | RT_HALIGN_CENTER | RT_WRAP, text=1)
-					],
-				"fonts": [parseFont("HD_Thin;27")],
-				"itemWidth": 320,
-				"itemHeight": 184
-				}
-			</convert>
+                                {
+                                "template":
+                                        [
+                                        MultiContentEntryText(pos=(0, 0), size=(320, 184), font=0),
+                                        MultiContentEntryText(pos=(10, 10), size=(300, 168), font=0, backcolor=0x000000),
+                                        MultiContentEntryPixmapAlphaBlend(pos=(100, 30), size=(120, 48), png=3, flags=BT_SCALE),
+                                        MultiContentEntryText(pos=(10, 78), size=(300, 100), font=0, flags=RT_VALIGN_CENTER | RT_HALIGN_CENTER | RT_WRAP, text=1)
+                                        ],
+                                "fonts": [parseFont("HD_Thin;27")],
+                                "itemWidth": 320,
+                                "itemHeight": 184
+                                }
+                        </convert>
     </widget>
     <widget name="description" render="j00zekLabel" noWrap="1" position="center,125" size="1600,43" font="Regular;33" halign="center" backgroundColor="black" transparent="1" foregroundColor="lemon" />
     <widget name="quickselect" position="160,175" size="1600,740" font="Regular;30" halign="center" valign="center" backgroundColor="black" zPosition="5" />
@@ -1247,20 +1260,20 @@
     <widget source="Title" render="Label" position="860,25" size="320,30" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1" />
     <widget source="plugins" render="Listbox" position="63,126" scrollbarMode="showOnDemand" size="1095,770" zPosition="3" itemHeight="75" enableWrapAround="1" scrollbarWidth="6" scrollbarBorderWidth="1" scrollbarForegroundColor="blue" scrollbarBorderColor="blue" selectionPixmap="BlackHarmony/menu/sel_1095_75.png" backgroundColor="background" transparent="1">
       <convert type="TemplatedMultiContent">
-				{
-				"template":
-					[
-					MultiContentEntryPixmapAlphaBlend(pos=(0, 0), size=(88, 75), png=6, flags=BT_SCALE),
-					MultiContentEntryText(pos=(88, 12), size=(810, 50), font=0, flags=RT_VALIGN_CENTER, text=2),
-					MultiContentEntryText(pos=(93, 10), size=(630, 34), font=1, flags=RT_VALIGN_CENTER, text=3),
-					MultiContentEntryText(pos=(640, 10), size=(350, 30), font=1, flags=RT_VALIGN_CENTER | RT_HALIGN_RIGHT, text=5),
-					MultiContentEntryText(pos=(95, 44), size=(930, 30), font=2, flags=RT_VALIGN_CENTER, text=4, color=0x00b0b0b0),
-					MultiContentEntryPixmapAlphaBlend(pos=(1010, 10), size=(55, 55), png=7, flags=BT_SCALE)
-					],
-				"fonts": [parseFont("Regular;27"), parseFont("Regular;24"), parseFont("Regular;20")],
-				"itemHeight": 75
-				}
-			</convert>
+                                {
+                                "template":
+                                        [
+                                        MultiContentEntryPixmapAlphaBlend(pos=(0, 0), size=(88, 75), png=6, flags=BT_SCALE),
+                                        MultiContentEntryText(pos=(88, 12), size=(810, 50), font=0, flags=RT_VALIGN_CENTER, text=2),
+                                        MultiContentEntryText(pos=(93, 10), size=(630, 34), font=1, flags=RT_VALIGN_CENTER, text=3),
+                                        MultiContentEntryText(pos=(640, 10), size=(350, 30), font=1, flags=RT_VALIGN_CENTER | RT_HALIGN_RIGHT, text=5),
+                                        MultiContentEntryText(pos=(95, 44), size=(930, 30), font=2, flags=RT_VALIGN_CENTER, text=4, color=0x00b0b0b0),
+                                        MultiContentEntryPixmapAlphaBlend(pos=(1010, 10), size=(55, 55), png=7, flags=BT_SCALE)
+                                        ],
+                                "fonts": [parseFont("Regular;27"), parseFont("Regular;24"), parseFont("Regular;20")],
+                                "itemHeight": 75
+                                }
+                        </convert>
     </widget>
     <widget name="description" position="65,885" size="1100,59" render="j00zekLabel" font="Regular;23" halign="center" backgroundColor="black" foregroundColor="lemon" valign="center" transparent="1" conditional="description" />
     <widget name="quickselect" position="39,123" size="1150,847" font="Regular;100" foregroundColor="blue" halign="center" transparent="1" valign="center" zPosition="+1" />
@@ -1954,4 +1967,48 @@ self.instance.move(ePoint(orgpos.x() + int((orgwidth - newwidth)/2),orgpos.y()))
     <widget objectTypes="key_blue,StaticText" source="key_blue" render="Label" position="952,1019" size="250,30" zPosition="2" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
     <ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="1127,1019" size="60,30" alphatest="blend" />
   </screen>
+    <screen name="ConfigEPGImport" position="345,93" size="1232,908" title=" " flags="wfNoBorder" backgroundColor="transparent">
+                <ePixmap position="0,0" zPosition="-10" size="1232,908" pixmap="BlackHarmony/bg_design/mainbg.png"/>
+                <widget source="global.CurrentTime" render="Label" position="40,25" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+                        <convert type="ClockToText">Default</convert>
+                </widget>
+                <widget source="global.CurrentTime" render="Label" position="125,25" size="360,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+                        <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+                </widget>
+                <widget source="Title" render="Label" position="660,25" size="520,30" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1"/>
+                <widget name="config" itemHeight="40" font="Roboto_HD; 27" position="65,140" size="1095,540" scrollbarMode="showOnDemand" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" selectionPixmap="BlackHarmony/menu/sel_1095_40.png" backgroundColor="black" transparent="1"/>
+                <widget name="statusbar" position="66,771" size="1095,35" font="Roboto_HD; 26" foregroundColor="green" backgroundColor="black" transparent="1"/>
+                <widget name="status" position="65,700" size="1095,60" font="Roboto_HD; 26" foregroundColor="light_yellow" backgroundColor="black" transparent="1"/>
+                <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="41,850" size="35,27" alphatest="blend"/>
+                <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="328,850" size="35,27" alphatest="blend"/>
+                <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="615,850" size="35,27" alphatest="blend"/>
+                <ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="902,850" size="35,27" alphatest="blend"/>
+                <widget objectTypes="key_red,Label,Button" name="key_red" position="91,849" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+                <widget objectTypes="key_red,StaticText" source="key_red" render="Label" position="91,849" size="200,27" zPosition="2" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+                <widget objectTypes="key_green,Label,Button" name="key_green" position="378,849" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+                <widget objectTypes="key_green,StaticText" source="key_green" render="Label" position="378,849" size="200,27" zPosition="2" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+                <widget objectTypes="key_yellow,Label,Button" name="key_yellow" position="665,849" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+                <widget objectTypes="key_yellow,StaticText" source="key_yellow" render="Label" position="665,849" size="200,27" zPosition="2" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+                <widget objectTypes="key_blue,Label,Button" name="key_blue" position="952,849" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+                <widget objectTypes="key_blue,StaticText" source="key_blue" render="Label" position="952,849" size="200,27" zPosition="2" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+        </screen>
+        <screen name="OSDCalibration" position="center,center" size="1920,1080" title="OSD Calibration" flags="wfNoBorder" backgroundColor="transparent">
+                <widget source="text" render="Label" position="135,100" zPosition="4" size="1650,250" font="Roboto_HD;35" halign="center" valign="center" foregroundColor="lemon" backgroundColor="background" transparent="1"/>
+                <widget name="config" position="358,374" zPosition="4" size="1200,320" font="Roboto_HD;30" itemHeight="40" valign="center"/>
+                <widget name="description" position="135,720" zPosition="4" size="1650,140" font="Roboto_HD;35" halign="center" valign="center" foregroundColor="lemon" backgroundColor="background" transparent="1"/>
+                <eRectangle position="0,0" size="e,e" backgroundColor="background" borderColor="red" borderWidth="1" zPosition="0" foregroundColor="white"/>
+                <eRectangle position="25,25" size="e-50,e-50" backgroundColor="background" borderColor="green" borderWidth="1" zPosition="1" foregroundColor="white"/>
+                <eRectangle position="50,50" size="e-100,e-100" backgroundColor="background" borderColor="#ffff00" borderWidth="1" zPosition="2" foregroundColor="white"/>
+                <eRectangle position="75,75" size="e-150,e-150" backgroundColor="background" borderColor="red" borderWidth="1" zPosition="3" foregroundColor="white"/>
+                <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="280,900" size="50,40" zPosition="4" alphatest="blend"/>
+                <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="644,900" size="50,40" zPosition="4" alphatest="blend"/>
+                <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="1027,900" size="50,40" zPosition="4" alphatest="blend"/>
+                <widget source="key_red" render="Label" position="340,900" zPosition="4" size="210,30" font="Roboto_HD; 27" halign="left" backgroundColor="white" transparent="1"/>
+                <widget source="key_green" render="Label" position="710,900" zPosition="4" size="210,30" font="Roboto_HD; 27" halign="left" backgroundColor="white" transparent="1"/>
+                <widget source="key_yellow" render="Label" position="1090,900" zPosition="4" size="210,30" font="Roboto_HD; 27" halign="left" backgroundColor="white" transparent="1"/>
+                <ePixmap pixmap="BlackHarmony/buttons/key_ok.png" position="1761,959" size="60,31" zPosition="4" alphatest="blend"/>
+                <ePixmap pixmap="BlackHarmony/buttons/key_exit.png" position="1697,960" size="56,30" zPosition="4" alphatest="blend"/>
+                <ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="1628,961" size="60,29" zPosition="4" alphatest="blend"/>
+                <widget name="footnote" position="600,949" size="500,30" zPosition="4" font="Regular; 25" halign="left" valign="top" backgroundColor="background" transparent="1"/>
+        </screen>
 </skin>
