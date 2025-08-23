@@ -3,6 +3,7 @@
     <widget name="config" position="20,20" size="660,345" zPosition="1" scrollbarMode="showOnDemand" />
     <eLabel position="85,380" size="166,2" backgroundColor="#00ff2525" />
     <eLabel position="455,380" size="166,2" backgroundColor="#00389416" />
-    <widget name="key_red" position="85,350" zPosition="2" size="170,30" valign="center" halign="center" font="Regular;22" transparent="1" />
-    <widget name="key_green" position="455,350" zPosition="2" size="170,30" valign="center" halign="center" font="Regular;22" transparent="1" />
+    <widget name="key_red" position="20,350" zPosition="2" size="150,30" valign="center" halign="center" font="Regular;22" transparent="1" />
+    <widget name="key_green" position="180,350" zPosition="2" size="150,30" valign="center" halign="center" font="Regular;22" transparent="1" />
+    <widget name="key_yellow" position="330,350" zPosition="2" size="150,30" valign="center" halign="center" font="Regular;22" transparent="1" />
 </screen>
