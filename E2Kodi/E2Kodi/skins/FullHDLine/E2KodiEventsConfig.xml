@@ -1,0 +1,7 @@
+<screen name="E2KodiEventsConfig" position="center,center" size="1680,1080" title="E2KodiEventsConfig" flags="wfNoBorder">
+	<panel name="Menu_setup"/>
+	<panel name="Buttons_setup"/>
+	<panel name="Panel_conf856"/>
+	<ePixmap pixmap="FullHDLine/buttons/key_ok.png" position="1542,1010" size="50,40" zPosition="4" alphatest="blend"/>
+	<ePixmap pixmap="FullHDLine/menu/netdlna_setup.png" position="1265,408" size="300,300" scale="on" alphatest="blend"/>
+</screen>

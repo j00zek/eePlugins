@@ -1,0 +1,21 @@
+<screen position="center,center" size="1820,980">
+    <panel name="PKTeamClock" />
+    <panel name="PKTeamKey" />
+    <panel name="PKTeamKeyRedFull" />
+    <panel name="PKTeamKeyGreenFull" />
+    <panel name="PKTeamKeyYellFull" />
+    <widget source="list" render="Listbox" position="40,70" size="1120,605" scrollbarMode="showOnDemand" transparent="1">
+      <convert type="TemplatedMultiContent">
+                {"template": [
+                              MultiContentEntryPixmapAlphaTest(pos = (10, 10), size = (40, 40), png = 0),
+                              MultiContentEntryText(pos = (60, 2), size = (1110, 40), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 1),
+                             ],
+                             "fonts": [gFont("Regular", 26)],
+                             "itemHeight": 45
+                        }
+        </convert>
+    </widget>
+    <widget name="KodiNotificationsAndStatus" position="40,711" size="1120,200" font="Regular;24" halign="left" noWrap="0" transparent="1" backgroundColor="background" />
+    <widget name="key_ok" position="28,934" zPosition="-1" size="50,30" foregroundColor="white" valign="center" halign="left" font="Regular;22" transparent="1" />
+    <ePixmap pixmap="PLi-FullNightHD-Mod-M-PY3/logo/logo_hyper.png" position="1234,494" size="519,91" alphatest="on" transparent="0" />
+  </screen>
