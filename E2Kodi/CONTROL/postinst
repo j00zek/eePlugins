@@ -130,15 +130,7 @@ cat /usr/lib/enigma2/python/Plugins/Extensions/E2Kodi/czytaj.to
 echo
 #instalacja skórek
 [ -e /usr/share/enigma2/BlackHarmony/ ] && [ ! -e /usr/lib/enigma2/python/Plugins/Extensions/E2Kodi/skins/BlackHarmony/ ] && (sleep 5;opkg install e2kodi-skin-blackharmony) &
-[ -e /usr/share/enigma2/PLi-FullNightHD-Mod-M-PY3/ ] && [ ! -e /usr/lib/enigma2/python/Plugins/Extensions/E2Kodi/skins/PLi-FullNightHD-Mod-M-PY3/ ] && (sleep 5;opkg install e2kodi-skin-blackharmony) &
-[ -e /usr/share/enigma2/FullHDLine/ ] && [ ! -e /usr/lib/enigma2/python/Plugins/Extensions/E2Kodi/skins/FullHDLine/ ] && (sleep 5;opkg install e2kodi-skin-blackharmony) &
+[ -e /usr/share/enigma2/PLi-FullNightHD-Mod-M-PY3/ ] && [ ! -e /usr/lib/enigma2/python/Plugins/Extensions/E2Kodi/skins/PLi-FullNightHD-Mod-M-PY3/ ] && (sleep 6;opkg install e2kodi-skin-blackharmony) &
+[ -e /usr/share/enigma2/FullHDLine/ ] && [ ! -e /usr/lib/enigma2/python/Plugins/Extensions/E2Kodi/skins/FullHDLine/ ] && (sleep 7;opkg install e2kodi-skin-blackharmony) &
 sleep 2
 exit 0
-#pobranie standardowej
-if not os_path_exists(os_path_join(obf_pluginPath, 'skins', config.skin.primary_skin.value.split('/')[0])):
-    if config.skin.primary_skin.value.split('/')[0] == 'BlackHarmony':
-        eConsoleAppContainer().execute('opkg install e2kodi-skin-blackharmony')
-    elif config.skin.primary_skin.value.split('/')[0] == 'FullHDLine':
-        eConsoleAppContainer().execute('opkg install e2kodi-skin-sq9-fullhdline')
-    elif config.skin.primary_skin.value.split('/')[0] == 'PLi-FullNightHD-Mod-M-PY3':
-        eConsoleAppContainer().execute('opkg install e2kodi-skin-sq9-pli-fullnighthd-mod-m-py3')
