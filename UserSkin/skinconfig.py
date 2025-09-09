@@ -369,14 +369,8 @@ class UserSkin_Config(Screen, ConfigListScreen):
                 self.desktopType = 'vfd'
             if DBG == True: printDEBUG('#### initializing %s skins ###' % self.desktopType.upper() )
             self.LCDscreensList = []
-            self.LCDLinuxEnabled = False
             if path.exists('/usr/lib/enigma2/python/Plugins/Extensions/LCDlinux') or path.exists('/usr/lib/enigma2/python/Plugins/Extensions/LCD4linux'):
                 self.LCDscreensList.append(("LCDLinux", "LCDLinux"))
-                if path.exists('/etc/enigma2/lcd4config'):
-                    with open('/etc/enigma2/lcd4config','r') as f:
-                        if 'config.Enable=true' in f.read():
-                            self.LCDLinuxEnabled = True
-                        f.close()
             
             if 1:
                 filterVFDskins4model = False
@@ -413,9 +407,6 @@ class UserSkin_Config(Screen, ConfigListScreen):
             self.LCDscreensList.insert(0,("system", "system"))
             config.plugins.UserSkin.LCDmode = ConfigSelection(default="system", choices = self.LCDscreensList)
             
-            if self.LCDLinuxEnabled == True:
-                config.plugins.UserSkin.LCDmode.value = 'LCDLinux'
-              
 #### initializing FONTS ###
             if DBG == True: printDEBUG('#### initializing FONTS ###')
             if not path.exists(SkinPath + "allFonts/font_default.xml"):
@@ -1046,13 +1037,14 @@ class UserSkin_Config(Screen, ConfigListScreen):
             remove(user_skin_file)
             
         if self.myUserSkin_active.value:
-            if DBG: printDEBUG("update_user_skin.self.myUserSkin_active.value=True")
+            if DBG: printDEBUG('update_user_skin.self.myUserSkin_active.value=True, LCDmode="%s" % config.plugins.UserSkin.LCDmode.value')
+
             user_skin = ""
             section_parameters = ""
             section_screens = ""
             section_menus = ""
             if FullDBG: printDEBUG("############################################# Initial skin:\n" + user_skin + "\n#############################################\n")        
-            if isImageType('vti') == False or isImageType('openatv') == False:
+            if isImageType('vti') == False or isImageType('openatv') == False or isImageType('pkt') == False:
                 if path.exists(SkinPath + 'skin_user_header.xml'):
                     printDEBUG("- appending skin_user_header.xml")
                     user_skin = user_skin + self.readXMLfile(SkinPath + 'skin_user_header.xml' , 'fonts')
@@ -1109,18 +1101,12 @@ class UserSkin_Config(Screen, ConfigListScreen):
                     myFile.flush()
                     myFile.close()
                     
-                    if (isImageType('vti') == True or isImageType('openatv') == True) and \
-                          (self.LCD_widgets_selected == False or self.LCDLinuxEnabled == True): #VTI i openATV czytaja, to nie musimy robic pliku
-                        #VTI/openatv standardowo laduja pliki z SkinPath + 'mySkin/skin_user' + self.currentSkin + '.xml'
-                        printDEBUG("Tryb bezplikowy VTI, ATV")
+                    if (isImageType('openatv') == True or isImageType('pkt') == True) and \
+                          (self.LCD_widgets_selected == False or config.plugins.UserSkin.LCDmode.value == 'LCDLinux'): #openATV podobne czytaja, to nie musimy robic pliku
+                        #openatv podobne standardowo laduja pliki z SkinPath + 'mySkin/skin_user' + self.currentSkin + '.xml'
+                        printDEBUG("Tryb bezplikowy ATV, pkt")
                         if path.exists(resolveFilename(SCOPE_CONFIG, 'skin_user' + self.currentSkin + '.xml')):
                             remove(resolveFilename(SCOPE_CONFIG, 'skin_user' + self.currentSkin + '.xml'))
-                    elif (isImageType('vti') == True and self.LCD_widgets_selected) or \
-                          isImageType('blackhole') == True or isImageType('vuplus') == True: #BlackHole,vuplus korzystają jedynie ze standardowego mechanizmu
-                        printDEBUG("Tryb pliku skin_user.xml")
-                        #system('ln -sf %s /etc/enigma2/skin_user.xml' % user_skin_file)
-                        system('mv -f %s /etc/enigma2/skin_user.xml' % user_skin_file)
-                        self.LCDLinuxEnabled == False
                     else: # inne oparte o pli obsluguja skorki spersonalizowane dla kazdej wybranej osobno
                         printDEBUG("Tryb pliku skin_user<nazwa_skorki>.xml")
                         #system('ln -sf %s %s' % (user_skin_file, resolveFilename(SCOPE_CONFIG, 'skin_user' + self.currentSkin + '.xml')))
@@ -1137,9 +1123,9 @@ class UserSkin_Config(Screen, ConfigListScreen):
             if config.plugins.UserSkin.LCDmode.value in ("HomarLCDskinsFromOPKG"):
                 os.system('opkg update;opkg install enigma2-plugin-skins--j00zeks-homar;sync')
             
+            if DBG == True: printDEBUG('config.plugins.UserSkin.LCDmode.value =  "%s"' % config.plugins.UserSkin.LCDmode.value)
             if config.plugins.UserSkin.LCDmode.value not in ('LCDLinux',"system", "HomarLCDskinsFromOPKG"):
-            ##### VTI style #####
-                if self.LCDconfigKey == 'primary_vfdskin':
+                if self.LCDconfigKey == 'primary_vfdskin': ##### VTI style #####
                     if os.path.exists(config.plugins.UserSkin.LCDcolors.value):
                         if DBG: printDEBUG("primary_vfdskin (VTI) with colors mode")
                         self.generateLCDskin('/usr/share/enigma2/%s' % config.plugins.UserSkin.LCDmode.value , '/usr/share/enigma2/skin_LCD_UserSkin.xml')
@@ -1149,8 +1135,7 @@ class UserSkin_Config(Screen, ConfigListScreen):
                     config.skin.primary_vfdskin.save()
                     configfile.save()
                     printDEBUG("Set config.skin.primary_vfdskin.value='%s'" % config.skin.primary_vfdskin.value)
-            ##### openATV style #####
-                elif self.LCDconfigKey == 'display_skin':
+                elif self.LCDconfigKey == 'display_skin': ##### openATV style #####
                     config.skin.display_skin.value = "skin_LCD_UserSkin.xml"
                     config.skin.display_skin.save()
                     configfile.save()
@@ -1169,16 +1154,27 @@ class UserSkin_Config(Screen, ConfigListScreen):
                     os.system('ln -sf /usr/share/enigma2/skin_LCD_UserSkin.xml /usr/share/enigma2/skin_box.xml' )
                     printDEBUG('linking /usr/share/enigma2/%s to /usr/share/enigma2/skin_box.xml' % (config.plugins.UserSkin.LCDmode.value))
             ##### obejscia LCDLINUX #####
-            elif self.LCDLinuxEnabled == True and os.path.isfile('/etc/enigma2/skin_user.xml') and self.LCDconfigKey == 'skin_display.xml': #openPLi style:
+            elif config.plugins.UserSkin.LCDmode.value == 'LCDLinux' and os.path.isfile('/etc/enigma2/skin_user.xml') and self.LCDconfigKey == 'skin_display.xml': #openPLi style:
+                printDEBUG('obejście dla openPLi + LCDLINUX > ln -sf /etc/enigma2/skin_user.xml /usr/share/enigma2/skin_display.xml')
                 os.system('ln -sf /etc/enigma2/skin_user.xml /usr/share/enigma2/skin_display.xml' )
-            elif self.LCDLinuxEnabled == True and os.path.isfile('/etc/enigma2/skin_user.xml') and self.LCDconfigKey == 'skin_box.xml': #openPLi 2nd style:
+            elif config.plugins.UserSkin.LCDmode.value == 'LCDLinux' and os.path.isfile('/etc/enigma2/skin_user.xml') and self.LCDconfigKey == 'skin_box.xml': #openPLi 2nd style:
+                printDEBUG('obejście2 dla openPLi + LCDLINUX > ln -sf /etc/enigma2/skin_user.xml /usr/share/enigma2/skin_box.xml')
                 os.system('ln -sf /etc/enigma2/skin_user.xml /usr/share/enigma2/skin_box.xml' )
               
             ##### ALL disabled #####
             else:
                 if os.path.isfile('/usr/share/enigma2/skin_display.xml.org'):
                     os.system('cp -f /usr/share/enigma2/skin_display.xml.org /usr/share/enigma2/skin_display.xml')
-                
+            #poprawianie lcdlinux
+            if  config.plugins.UserSkin.LCDmode.value != 'LCDLinux':
+                if path.exists('/usr/lib/enigma2/python/Plugins/Extensions/LCDlinux') or path.exists('/usr/lib/enigma2/python/Plugins/Extensions/LCD4linux'):
+                    if path.exists('/etc/enigma2/skin_user.xml'):
+                        os.system('rm -f /etc/enigma2/skin_user.xml')
+                    if path.exists('/etc/enigma2/lcd4config'):
+                        os.system("sed -i 's/config.Enable=true/config.Enable=false/g' /etc/enigma2/lcd4config;[ `grep -c 'config.Enable=false' < /etc/enigma2/lcd4config` -eq 0 ] && echo 'config.Enable=false' >> /etc/enigma2/lcd4config")
+                elif path.exists('/etc/enigma2/lcd4config'):
+                    os.system('rm -f /etc/enigma2/lcd4config')
+                  
             #checking if all scripts are in the system
             if FullDBG: printDEBUG("########################### Final User Skin\n%s\n##############################################\n" % user_skin)
             self.checkComponent(user_skin, 'render' , '/usr/lib/enigma2/python/Components/Renderer/' )
