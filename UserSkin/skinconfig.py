@@ -1171,10 +1171,13 @@ class UserSkin_Config(Screen, ConfigListScreen):
                     if path.exists('/etc/enigma2/skin_user.xml'):
                         os.system('rm -f /etc/enigma2/skin_user.xml')
                     if path.exists('/etc/enigma2/lcd4config'):
-                        os.system("sed -i 's/config.Enable=true/config.Enable=false/g' /etc/enigma2/lcd4config;[ `grep -c 'config.Enable=false' < /etc/enigma2/lcd4config` -eq 0 ] && echo 'config.Enable=false' >> /etc/enigma2/lcd4config")
+                        os.system("sed -i 's/config.Enable=true/config.Enable=false/g' /etc/enigma2/lcd4config;[ `grep -c 'config.Enable=' < /etc/enigma2/lcd4config` -eq 0 ] && echo 'config.Enable=false' >> /etc/enigma2/lcd4config")
                 elif path.exists('/etc/enigma2/lcd4config'):
                     os.system('rm -f /etc/enigma2/lcd4config')
-                  
+            else:
+                if path.exists('/etc/enigma2/lcd4config'):
+                    os.system("sed -i 's/config.Enable=false/config.Enable=true/g' /etc/enigma2/lcd4config;[ `grep -c 'config.Enable=' < /etc/enigma2/lcd4config` -eq 0 ] && echo 'config.Enable=true' >> /etc/enigma2/lcd4config")
+              
             #checking if all scripts are in the system
             if FullDBG: printDEBUG("########################### Final User Skin\n%s\n##############################################\n" % user_skin)
             self.checkComponent(user_skin, 'render' , '/usr/lib/enigma2/python/Components/Renderer/' )
