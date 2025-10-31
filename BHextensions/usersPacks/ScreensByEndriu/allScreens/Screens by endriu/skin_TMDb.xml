@@ -1,0 +1,279 @@
+ <skin>
+ 
+ <parameters>
+    <parameter name="TMDbListFont" value="Regular;30" />
+    <parameter name="TMDbListName" value="15,1,1032,44" />
+ </parameters>
+ <!--tmdbScreen-->
+ <screen name="tmdbScreen" position="0,0" size="1920,1080" title="TMDb - The Movie Database" flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="0,0" zPosition="-5" size="1920,1080" pixmap="BlackHarmony/bg_design/emc.png" />
+    <widget source="global.CurrentTime" render="Label" position="75,55" size="100,40" font="Roboto_HD; 28" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="160,55" size="660,40" font="Roboto_HD; 28" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+	<widget source="Title" render="Label" position="700,55" zPosition="2" size="1160,40" font="Roboto_HD; 28" halign="right" backgroundColor="dark_grey" transparent="1"/>
+	
+    <widget name="searchinfo" position="85,170" size="1044,40" font="Regular; 34" foregroundColor="#00fff000" transparent="1" backgroundColor="black" />
+	<widget name="list" position="85,230" size="1045,720" itemHeight="45" font="Roboto_HD; 30" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_1055_45.png" backgroundColor="black" transparent="1"/>
+	<widget name="cover" position="1270,180" size="500,750" alphatest="blend" />
+	
+	<!--przyciski-->	
+	
+   <widget source="session.CurrentService" render="j00zekPiconAnimation" position="80,991" zPosition="10" size="35,27" alphatest="blend"
+	initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0" random="True"
+	pixmaps="BlackHarmony/skin_user_animButtons/key_red"
+	pixalter="BlackHarmony/buttons/key_red.png" />
+  <widget source="session.CurrentService" render="j00zekPiconAnimation" position="470,991" zPosition="10" size="35,27" alphatest="blend"
+	initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,1" random="True"
+	pixmaps="BlackHarmony/skin_user_animButtons/key_green"
+	pixalter="BlackHarmony/buttons/key_green.png" />
+  <widget source="session.CurrentService" render="j00zekPiconAnimation" position="860,991" zPosition="10" size="35,27" alphatest="blend"
+	initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,2" random="True"
+	pixmaps="BlackHarmony/skin_user_animButtons/key_yellow"
+	pixalter="BlackHarmony/buttons/key_yellow.png" />
+  <widget source="session.CurrentService" render="j00zekPiconAnimation" position="1250,991" zPosition="10" size="35,27" alphatest="blend"
+	initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,3" random="True"
+	pixmaps="BlackHarmony/skin_user_animButtons/key_blue"
+	pixalter="BlackHarmony/buttons/key_blue.png" />	
+    <widget name="key_red" position="130,990" size="280,32" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <widget name="key_green" position="520,990" size="280,32" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <widget name="key_yellow" position="910,990" size="280,32" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <widget name="key_blue" position="1300,990" size="280,32" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+	<ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="1780,989" zPosition="1" size="60,30" alphatest="on"/>
+  </screen>
+
+ <!--tmdbScreenMovie-->
+  <screen name="tmdbScreenMovie" position="0,0" size="1920,1080" title="TMDb - The Movie Database" flags="wfNoBorder" backgroundColor="transparent">
+  <ePixmap position="0,0" zPosition="-5" size="1920,1080" pixmap="BlackHarmony/bg_design/emc.png" />
+    <widget source="global.CurrentTime" render="Label" position="75,55" size="100,40" font="Roboto_HD; 28" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="160,55" size="660,40" font="Roboto_HD; 28" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+	<widget source="Title" render="Label" position="700,55" zPosition="2" size="1160,40" font="Roboto_HD; 28" halign="right" backgroundColor="dark_grey" transparent="1"/>
+	
+	<widget name="searchinfo" position="85,170" size="1044,40" font="Regular; 34" foregroundColor="#00fff000" transparent="1" backgroundColor="black" />
+	<widget name="fulldescription" position="85,230" size="1045,720" font="Regular; 30" backgroundColor="black"  transparent="1"/>
+	<!-- -->
+	<ePixmap position="1250,170" size="150,150" zPosition="0" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/tmdb/pic/star.png" transparent="1" alphatest="blend"/>
+	<widget name="rating" position="1250,170" size="150,150" zPosition="2" font="Regular;35" halign="center" valign="center" foregroundColor="black" backgroundColor="#00ffba00" transparent="1"/>
+	<widget name="votes_brackets" position="1250,320" size="150,30" zPosition="2" font="Regular;27" halign="center" transparent="1"/>
+	<widget name="fsk" position="0,0" size="0,0" zPosition="2" font="Regular;27" halign="center" transparent="1"/>
+	<widget name="fsklogo" position="1250,440" size="150,150" zPosition="2" alphatest="blend"/>
+	<widget name="cover" position="1500,170" size="320,480" alphatest="blend" />
+	<!-- -->
+	<widget name="year_txt" position="1185,670" size="160,35" zPosition="2" font="Regular;28" foregroundColor="#00ffffff" backgroundColor="black" transparent="1"/>
+	<widget name="year" position="1345,670" size="500,35" zPosition="2" font="Regular;28" foregroundColor="#00ffffff" backgroundColor="black" transparent="1"/>
+	<widget name="country_txt" position="1185,705" size="160,35" zPosition="2" font="Regular;28" foregroundColor="#00ffffff" backgroundColor="black" transparent="1"/>
+	<widget name="country" position="1345,705" size="500,35" zPosition="2" font="Regular;28" foregroundColor="#00ffffff" backgroundColor="black" transparent="1"/>
+	<widget name="runtime_txt" position="1185,740" size="160,35" zPosition="2" font="Regular;28" foregroundColor="#00ffffff" backgroundColor="black" transparent="1"/>
+	<widget name="runtime" position="1345,740" size="500,35" zPosition="2" font="Regular;28" foregroundColor="#00ffffff" backgroundColor="black" transparent="1"/>
+	<widget name="votes_txt" position="1185,775" size="160,35" zPosition="2" font="Regular;28" foregroundColor="#00ffffff" backgroundColor="black" transparent="1"/>
+	<widget name="votes" position="1345,775" size="500,35" zPosition="2" font="Regular;28" foregroundColor="#00ffffff" backgroundColor="black" transparent="1"/>
+	<widget name="director_txt" position="1185,810" size="160,35" zPosition="2" font="Regular;28" foregroundColor="#00ffffff" backgroundColor="black" transparent="1"/>
+	<widget name="director" position="1345,810" size="500,35" zPosition="2" font="Regular;28" foregroundColor="#00ffffff" backgroundColor="black" transparent="1"/>
+	<widget name="author_txt" position="1185,845" size="160,35" zPosition="2" font="Regular;28" foregroundColor="#00ffffff" backgroundColor="black" transparent="1"/>
+	<widget name="author" position="1345,845" size="500,35" zPosition="2" font="Regular;28" foregroundColor="#00ffffff" backgroundColor="black" transparent="1"/>
+	<widget name="genre_txt" position="1185,880" size="160,35" font="Regular;28" foregroundColor="#00ffffff" backgroundColor="black" transparent="1"/>
+	<widget name="genre" position="1345,880" size="500,35" zPosition="2" font="Regular;28" foregroundColor="#00ffffff" backgroundColor="black" transparent="1"/>
+	<widget name="studio_txt" position="1185,915" size="160,35" font="Regular;28" foregroundColor="#00ffffff" backgroundColor="black" transparent="1"/>
+	<widget name="studio" position="1345,915" size="500,35" zPosition="2" font="Regular;28" foregroundColor="#00ffffff" backgroundColor="black" transparent="1"/>
+	<widget name="subtitle" position="0,0" size="0,0" zPosition="2" font="Regular;28" foregroundColor="#00ffffff" backgroundColor="black" transparent="1"/>
+	<widget name="description" position="0,0" size="0,0" zPosition="2" font="Regular;28" foregroundColor="#00ffffff" backgroundColor="black" transparent="1"/>
+	
+	<!--przyciski-->	
+	
+  <widget source="session.CurrentService" render="j00zekPiconAnimation" position="80,991" zPosition="10" size="35,27" alphatest="blend"
+	initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0" random="True"
+	pixmaps="BlackHarmony/skin_user_animButtons/key_red"
+	pixalter="BlackHarmony/buttons/key_red.png" />
+  <widget source="session.CurrentService" render="j00zekPiconAnimation" position="470,991" zPosition="10" size="35,27" alphatest="blend"
+	initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,1" random="True"
+	pixmaps="BlackHarmony/skin_user_animButtons/key_green"
+	pixalter="BlackHarmony/buttons/key_green.png" />
+  <widget source="session.CurrentService" render="j00zekPiconAnimation" position="860,991" zPosition="10" size="35,27" alphatest="blend"
+	initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,2" random="True"
+	pixmaps="BlackHarmony/skin_user_animButtons/key_yellow"
+	pixalter="BlackHarmony/buttons/key_yellow.png" />
+  <widget source="session.CurrentService" render="j00zekPiconAnimation" position="1250,991" zPosition="10" size="35,27" alphatest="blend"
+	initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,3" random="True"
+	pixmaps="BlackHarmony/skin_user_animButtons/key_blue"
+	pixalter="BlackHarmony/buttons/key_blue.png" />	
+    <widget name="key_red" position="130,990" size="280,32" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <widget name="key_green" position="520,990" size="280,32" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <widget name="key_yellow" position="910,990" size="280,32" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <widget name="key_blue" position="1300,990" size="280,32" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+	<ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="1780,989" zPosition="1" size="60,30" alphatest="on"/>
+ </screen>
+ 
+ <!--tmdbScreenSeason-->
+ <screen name="tmdbScreenSeason" position="0,0" size="1920,1080" title="TMDb - The Movie Database" flags="wfNoBorder" backgroundColor="transparent">
+  <ePixmap position="0,0" zPosition="-5" size="1920,1080" pixmap="BlackHarmony/bg_design/emc.png" />
+    <widget source="global.CurrentTime" render="Label" position="75,55" size="100,40" font="Roboto_HD; 28" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="160,55" size="660,40" font="Roboto_HD; 28" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+	<widget source="Title" render="Label" position="700,55" zPosition="2" size="1160,40" font="Roboto_HD; 28" halign="right" backgroundColor="dark_grey" transparent="1"/>
+	<!-- -->
+	<widget name="searchinfo" position="85,170" size="1044,40" font="Regular; 34" foregroundColor="#00fff000" transparent="1" backgroundColor="black" />
+	<widget name="list" position="85,230" size="1045,720" itemHeight="45" font="Roboto_HD; 30" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_1055_45.png" backgroundColor="black" transparent="1"/>
+	<widget name="cover" position="1270,180" size="500,750" alphatest="blend" />
+	<widget name="data" position="0,0" size="0,0" font="Regular;21" />
+	
+	<!--przyciski-->	
+	
+   <widget source="session.CurrentService" render="j00zekPiconAnimation" position="80,991" zPosition="10" size="35,27" alphatest="blend"
+	initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0" random="True"
+	pixmaps="BlackHarmony/skin_user_animButtons/key_red"
+	pixalter="BlackHarmony/buttons/key_red.png" />
+  <widget source="session.CurrentService" render="j00zekPiconAnimation" position="470,991" zPosition="10" size="35,27" alphatest="blend"
+	initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,1" random="True"
+	pixmaps="BlackHarmony/skin_user_animButtons/key_green"
+	pixalter="BlackHarmony/buttons/key_green.png" />
+  <widget source="session.CurrentService" render="j00zekPiconAnimation" position="860,991" zPosition="10" size="35,27" alphatest="blend"
+	initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,2" random="True"
+	pixmaps="BlackHarmony/skin_user_animButtons/key_yellow"
+	pixalter="BlackHarmony/buttons/key_yellow.png" />
+  <widget source="session.CurrentService" render="j00zekPiconAnimation" position="1250,991" zPosition="10" size="35,27" alphatest="blend"
+	initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,3" random="True"
+	pixmaps="BlackHarmony/skin_user_animButtons/key_blue"
+	pixalter="BlackHarmony/buttons/key_blue.png" />	
+    <widget name="key_red" position="130,990" size="280,32" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <widget name="key_green" position="520,990" size="280,32" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <widget name="key_yellow" position="910,990" size="280,32" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <widget name="key_blue" position="1300,990" size="280,32" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+	<ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="1780,989" zPosition="1" size="60,30" alphatest="on"/>
+ </screen>
+ 
+ <!--tmdbScreenPeople-->
+ <screen name="tmdbScreenPeople" position="0,0" size="1920,1080" title="TMDb - The Movie Database" flags="wfNoBorder" backgroundColor="transparent">
+  <ePixmap position="0,0" zPosition="-5" size="1920,1080" pixmap="BlackHarmony/bg_design/emc.png" />
+    <widget source="global.CurrentTime" render="Label" position="75,55" size="100,40" font="Roboto_HD; 28" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="160,55" size="660,40" font="Roboto_HD; 28" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+	<widget source="Title" render="Label" position="700,55" zPosition="2" size="1160,40" font="Roboto_HD; 28" halign="right" backgroundColor="dark_grey" transparent="1"/>
+	<!-- -->
+	<widget name="searchinfo" position="85,170" size="1044,40" font="Regular; 34" foregroundColor="#00fff000" transparent="1" backgroundColor="black" />
+	<widget name="list" position="85,230" size="1045,720" itemHeight="45" font="Roboto_HD; 30" enableWrapAround="1" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_1055_45.png" backgroundColor="black" transparent="1"/>
+	<widget name="cover" position="1270,180" size="500,750" alphatest="blend" />
+	<widget name="data" position="0,0" size="0,0" font="Regular;21" />
+	
+<!--przyciski-->	
+	<widget source="session.CurrentService" render="j00zekPiconAnimation" position="80,991" zPosition="10" size="35,27" alphatest="blend"
+	initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0" random="True"
+	pixmaps="BlackHarmony/skin_user_animButtons/key_red"
+	pixalter="BlackHarmony/buttons/key_red.png" />
+  <widget source="session.CurrentService" render="j00zekPiconAnimation" position="470,991" zPosition="10" size="35,27" alphatest="blend"
+	initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,1" random="True"
+	pixmaps="BlackHarmony/skin_user_animButtons/key_green"
+	pixalter="BlackHarmony/buttons/key_green.png" />
+  <widget source="session.CurrentService" render="j00zekPiconAnimation" position="860,991" zPosition="10" size="35,27" alphatest="blend"
+	initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,2" random="True"
+	pixmaps="BlackHarmony/skin_user_animButtons/key_yellow"
+	pixalter="BlackHarmony/buttons/key_yellow.png" />
+  <widget source="session.CurrentService" render="j00zekPiconAnimation" position="1250,991" zPosition="10" size="35,27" alphatest="blend"
+	initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,3" random="True"
+	pixmaps="BlackHarmony/skin_user_animButtons/key_blue"
+	pixalter="BlackHarmony/buttons/key_blue.png" />	
+    <widget name="key_red" position="130,990" size="280,32" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <widget name="key_green" position="520,990" size="280,32" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <widget name="key_yellow" position="910,990" size="280,32" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <widget name="key_blue" position="1300,990" size="280,32" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+	<ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="1780,989" zPosition="1" size="60,30" alphatest="on"/>
+ </screen>
+ 
+ <!--tmdbScreenPerson-->
+ <screen name="tmdbScreenPerson" position="0,0" size="1920,1080" title="TMDb - The Movie Database" flags="wfNoBorder" backgroundColor="transparent">
+  <ePixmap position="0,0" zPosition="-5" size="1920,1080" pixmap="BlackHarmony/bg_design/emc.png" />
+    <widget source="global.CurrentTime" render="Label" position="75,55" size="100,40" font="Roboto_HD; 28" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="160,55" size="660,40" font="Roboto_HD; 28" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+	<widget source="Title" render="Label" position="700,55" zPosition="2" size="1160,40" font="Roboto_HD; 28" halign="right" backgroundColor="dark_grey" transparent="1"/>
+	<!-- -->
+	<widget name="searchinfo" position="85,170" size="1044,40" font="Regular; 34" foregroundColor="#00fff000" transparent="1" backgroundColor="black" />
+	<widget name="fulldescription" position="85,230" size="1045,720" font="Regular; 30" backgroundColor="black"  transparent="1"/>
+	<widget name="cover" position="1270,180" size="500,750" alphatest="blend" />
+	<widget name="data" position="0,0" size="0,0" font="Regular;21" />
+	
+<!--przyciski-->	
+	
+  <widget source="session.CurrentService" render="j00zekPiconAnimation" position="80,991" zPosition="10" size="35,27" alphatest="blend"
+	initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0" random="True"
+	pixmaps="BlackHarmony/skin_user_animButtons/key_red"
+	pixalter="BlackHarmony/buttons/key_red.png" />
+  <widget source="session.CurrentService" render="j00zekPiconAnimation" position="470,991" zPosition="10" size="35,27" alphatest="blend"
+	initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,1" random="True"
+	pixmaps="BlackHarmony/skin_user_animButtons/key_green"
+	pixalter="BlackHarmony/buttons/key_green.png" />
+  <widget source="session.CurrentService" render="j00zekPiconAnimation" position="860,991" zPosition="10" size="35,27" alphatest="blend"
+	initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,2" random="True"
+	pixmaps="BlackHarmony/skin_user_animButtons/key_yellow"
+	pixalter="BlackHarmony/buttons/key_yellow.png" />
+  <widget source="session.CurrentService" render="j00zekPiconAnimation" position="1250,991" zPosition="10" size="35,27" alphatest="blend"
+	initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,3" random="True"
+	pixmaps="BlackHarmony/skin_user_animButtons/key_blue"
+	pixalter="BlackHarmony/buttons/key_blue.png" />	
+    <widget name="key_red" position="130,990" size="280,32" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <widget name="key_green" position="520,990" size="280,32" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <widget name="key_yellow" position="910,990" size="280,32" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+    <widget name="key_blue" position="1300,990" size="280,32" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+	<ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="1780,989" zPosition="1" size="60,30" alphatest="on"/>
+ </screen>
+
+	<!-- MovieInfoTMDb FHD-->
+ <screen name="MovieInfoTMDb" position="0,0" size="1920,1080" title="Movie Information TMDb" flags="wfNoBorder" backgroundColor="transparent">
+ <ePixmap position="0,0" zPosition="-5" size="1920,1080" pixmap="BlackHarmony/bg_design/emc.png" />
+    <widget source="global.CurrentTime" render="Label" position="75,55" size="100,40" font="Roboto_HD; 28" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="160,55" size="660,40" font="Roboto_HD; 28" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+	<widget source="Title" render="Label" position="700,55" zPosition="2" size="1160,40" font="Roboto_HD; 28" halign="right" backgroundColor="dark_grey" transparent="1"/>
+
+<!-- tytuł opis -->
+<widget name="movie_name" position="85,150" size="1045,50" font="Regular; 34" foregroundColor="#00fff000" transparent="1" backgroundColor="black" />
+<eLabel backgroundColor="#818181" position="85,210" size="1045,2" />
+<widget name="previewlist" position="85,220" size="1045,590" font="Regular; 30" backgroundColor="black" transparent="1" itemHeight="45" selectionPixmap="BlackHarmony/menu/sel_1055_45.png" scrollbarMode="showOnDemand" />
+<widget name="contenttxt" position="85,230" size="1045,590" font="Regular;30" backgroundColor="black" transparent="1" />
+<eLabel backgroundColor="#818181" position="85,820" size="1045,2" />
+<!-- info lewe -->
+<widget name="runtime" position="85,830" size="150,35" font="Regular;25" foregroundColor="#000066FF" backgroundColor="black" transparent="1"  />
+<widget name="runtimetxt" position="220,830" size="350,35" font="Regular;25" backgroundColor="black" transparent="1" />
+<widget name="genre" position="85,870" size="150,35" font="Regular;25" foregroundColor="#000066FF" backgroundColor="black"  transparent="1" />
+<widget name="genretxt" position="220,870" size="350,35" font="Regular;25" backgroundColor="black" transparent="1" />
+<widget name="rating" position="85,910" size="150,35" font="Regular;25" foregroundColor="#000066FF" backgroundColor="black" transparent="1" />
+<widget name="ratingtxt" position="220,910" size="350,35" font="Regular;25" backgroundColor="black" transparent="1" />
+<!-- info prawe -->
+<widget name="country" position="590,830" size="200,35" font="Regular;25" foregroundColor="#000066FF" backgroundColor="black" transparent="1" />
+<widget name="countrytxt" position="790,830" size="350,35" font="Regular;25" backgroundColor="black" transparent="1" />
+<widget name="release" position="590,870" size="200,35" font="Regular;25" foregroundColor="#000066FF" />
+<widget name="releasetxt" position="790,870" size="350,35" font="Regular;25" backgroundColor="black" transparent="1" />
+
+<widget name="starsbg" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/EnhancedMovieCenter/img_fhd/starsbar_empty.png" position="590,910" size="300,30" alphatest="blend"/>
+<widget name="stars" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/EnhancedMovieCenter/img_fhd/starsbar_filled.png" position="590,910" size="300,30" transparent="1" zPosition="1"/>
+
+<!-- okładka -->
+<widget name="previewcover" position="1270,180" size="500,750" alphatest="blend"/>
+	
+<!--przyciski-->	
+<widget source="session.CurrentService" render="j00zekPiconAnimation" position="470,991" zPosition="10" size="35,27" alphatest="blend"
+ initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,1" random="True"
+ pixmaps="BlackHarmony/skin_user_animButtons/key_green"
+ pixalter="BlackHarmony/buttons/key_green.png" />
+ <widget name="key_green" position="520,990" size="280,32" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+ <widget name="save" position="520,990" size="280,32" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+  <ePixmap pixmap="BlackHarmony/buttons/key_menu.png" position="1780,989" zPosition="1" size="60,30" alphatest="on"/>
+ </screen> 
+ </skin>

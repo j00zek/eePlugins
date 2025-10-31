@@ -1,0 +1,33 @@
+<screen name="E2Kodi_Menu" position="0,0" size="1232,1080" title=" " flags="wfNoBorder" backgroundColor="transparent">
+    <ePixmap position="0,0" zPosition="-10" size="1232,1080" pixmap="BlackHarmony/bg_design/setup.png"/>
+    <widget source="global.CurrentTime" render="Label" position="40,25" size="80,32" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="125,25" size="460,32" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+    <widget source="Title" render="Label" position="400,25" size="800,30" font="Roboto_HD; 27" halign="right" backgroundColor="dark_grey" transparent="1"/>
+
+    <widget source="list" render="Listbox" position="50,135" size="1130,840" scrollbarMode="showOnDemand" selectionPixmap="BlackHarmony/menu/sel_1300_70.png" scrollbarWidth="8" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f">
+      <convert type="TemplatedMultiContent" transparent="1">
+     {"template": [
+     MultiContentEntryPixmapAlphaTest(pos = (8, 5), size = (120, 60), png = 0, flags = BT_SCALE),
+     MultiContentEntryText(pos = (155, 0), size = (970, 70), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 1),
+        ],
+     "fonts": [gFont("Regular", 35)],
+     "itemHeight": 70
+                        }
+      </convert>
+    </widget>
+	  
+    <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="30,1019" size="35,27" alphatest="blend"/>
+	<widget source="key_red" render="Label" position="80,1019" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="330,1019" size="35,27" alphatest="blend"/>
+	<widget source="key_green" render="Label" position="380,1019" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="660,1019" size="35,27" alphatest="blend"/>
+	<widget source="key_yellow" render="Label" position="710,1019" size="300,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="990,1019" size="35,27" alphatest="blend"/>
+    <widget source="key_blue" render="Label" position="1040,1019" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+	<ePixmap alphatest="blend" pixmap="BlackHarmony/buttons/key_ok.png" position="1135,1005" size="60,30" />
+	<ePixmap alphatest="blend" pixmap="BlackHarmony/buttons/key_menu.png" position="1135,1037" size="60,30" />
+  </screen>

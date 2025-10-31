@@ -1,0 +1,11 @@
+#!/bin/sh
+killall -q exteplayer3
+if [ -e /usr/lib/python3.9/site-packages ];then
+  rm -f /usr/lib/python3.9/site-packages/pywidevine/cdmdevice/*.pyc
+  rm -f /usr/lib/python3.9/site-packages/emukodi/*.pyc
+else
+  echo "Instalacja możliwa TYLKO na python 3.9"
+  exit 1
+fi
+
+exit 0

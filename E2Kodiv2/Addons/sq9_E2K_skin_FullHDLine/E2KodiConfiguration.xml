@@ -1,0 +1,10 @@
+<screen name="E2KodiConfiguration" position="center,center" size="1680,1080" title="E2KodiConfiguration" flags="wfNoBorder">
+	<panel name="Menu_setup"/>
+	<panel name="Buttons_setup"/>
+	<panel name="Panel_conf856"/>
+	<ePixmap pixmap="FullHDLine/buttons/yellow.png" position="756,1014" size="25,25" alphatest="blend" scale="on"/>
+	<widget objectTypes="key_yellow,Label,Button" name="key_yellow" conditional="key_yellow" position="790,1009" size="300,35" font="Regular; 28" halign="left" valign="center" noWrap="1"/>
+	<widget objectTypes="key_yellow,StaticText" source="key_yellow" conditional="key_yellow" render="Label" position="791,1008" size="300,35" font="Regular; 28" halign="left" valign="center" noWrap="1"/>
+	<ePixmap pixmap="FullHDLine/buttons/key_ok.png" position="1542,1010" size="50,40" zPosition="4" alphatest="blend"/>
+	<ePixmap pixmap="FullHDLine/menu/netdlna_setup.png" position="1265,408" size="300,300" scale="on" alphatest="blend"/>
+</screen>

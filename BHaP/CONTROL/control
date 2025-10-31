@@ -1,0 +1,10 @@
+Package: enigma2-plugin-skins--j00zeks-blackharmony-screens-previews
+Priority: optional
+Section: utils
+Depends: enigma2-plugin-skins--j00zeks-blackharmonyfhd
+Description: all screens previews for BlackHarmony skin
+Maintainer: j00zek
+Source: NA
+Version: 20.02.15.0733
+Architecture: all
+DestinationPath: /usr/share/enigma2/BlackHarmony/allPreviews/

@@ -1,0 +1,26 @@
+<skin>
+<screen name="HistoryZapSelector" position="70,75" size="1920,1080" title=" " backgroundColor="transparent" flags="wfNoBorder">
+  <ePixmap position="0,0" zPosition="-10" size="710,950" pixmap="BlackHarmony/bg_design/menubg.png" />
+  
+  
+  <widget source="Title" render="Label" position="44,40" size="620,50" font="Roboto_HD; 40" halign="center" backgroundColor="black" foregroundColor="light_grey" transparent="1">
+    <convert type="j00zekAlternateTitle">History Zap</convert>
+  </widget>
+  <widget source="menu" render="Listbox" position="45,122" size="620,720" selectionPixmap="BlackHarmony/menu/sel_1095_135.png" scrollbarBorderWidth="1" scrollbarWidth="6" scrollbarForegroundColor="grey" scrollbarBorderColor="grey" scrollbarMode="showOnDemand" transparent="0" foregroundColor="light_yellow">
+    <convert type="TemplatedMultiContent">
+        {"template": [
+          MultiContentEntryText(pos = (130, 33), size = (15, 33), font = 1, flags = RT_HALIGN_CENTER | RT_VALIGN_CENTER, text = 1), # Current Service
+          MultiContentEntryText(pos = (163, 2), size = (628, 35), font = 1, flags = RT_HALIGN_LEFT | RT_VALIGN_TOP, text = 2), # Servicename
+          MultiContentEntryText(pos = (163, 39), size = (450, 64), font = 2, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER | RT_WRAP, text = 3, color = 0x00ffc000), # Eventname
+          MultiContentEntryText(pos = (163, 105), size = (628, 29), font = 3, flags = RT_HALIGN_LEFT, text = 5, color = 0x00999999), # Eventtime
+          MultiContentEntryPixmapAlphaBlend(pos = (15, 40), size = (110, 66), png=6, flags = BT_SCALE) # picon
+        ],
+        "fonts": [gFont("Regular", 34), gFont("Regular", 30), gFont("Regular", 25), gFont("Regular", 22)],
+        "itemHeight": 140
+        }
+      </convert>
+  </widget>
+  
+  
+</screen>
+</skin>

@@ -1,0 +1,7 @@
+<skin>
+	<screen name="StandbySummary" position="0,0" size="100%,100%">
+        <widget position="67%,2%" size="31%,16%" font="BHfDlcD;50" noWrap="1" foregroundColor="#ccffff" backgroundColor="#000000" render="Label" source="session.j00zekMSNWeather" zPosition="3" halign="right" transparent="1">
+            <convert type="j00zekMSNWeather">GET|['currentData']['temperature']['valInfo']</convert>
+        </widget>
+	</screen>
+</skin>

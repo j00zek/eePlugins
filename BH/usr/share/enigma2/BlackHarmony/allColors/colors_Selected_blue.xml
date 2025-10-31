@@ -1,0 +1,94 @@
+<skin>
+  <colors>
+    <color name="background" value="#18000000" />
+    <color name="backtop" value="#001b2c47" />
+    <color name="black" value="#00000000" />
+    <color name="Black" value="#00000000"/>
+    <color name="blue" value="#2eafff" />
+    <color name="blue_epg" value="#15091d37" />
+    <color name="border" value="#00292929" />
+    <color name="dark" value="#00294a6b" />
+    <color name="dark_blue" value="#00005ea0" />
+    <color name="dark_grey" value="#00595959" />
+    <color name="data" value="#000383c5" />
+    <color name="font_0" value="#00454545" />
+    <color name="font_1" value="#00292929" />
+    <color name="font_ciemny" value="#00292929" />
+    <color name="font_green" value="#0045b701" />
+    <color name="font_grey" value="#006a6a6a" />
+    <color name="font_light_grey" value="#00b5b5b5" />
+    <color name="font_szary" value="#00595959" />
+    <color name="font_tlo_ciemny" value="#00aaaaaa" />
+    <color name="font_tlo_szary" value="#00dddddd" />
+    <color name="foreground" value="#edf5ff" />
+    <color name="green" value="#007ad927" />
+    <color name="green_epg" value="#1800851f" />
+    <color name="grey" value="#00dcdcdc" />
+    <color name="lemon" value="#1e8ef7" />
+    <color name="light_grey" value="#00bababa" />
+    <color name="light_yellow" value="#007bff" />
+    <color name="linie" value="#00828282" />
+    <color name="orange" value="#00ff6000" />
+    <color name="pastel" value="#00ffffd8" />
+    <color name="picture" value="#ff000000" />
+    <color name="podsw" value="#00ffffd1" />
+    <color name="red" value="#00f50000" />
+    <color name="selected" value="#043575" />
+    <color name="transparent" value="#ffffffff" />
+    <color name="transparent2" value="#ff000000"/>
+    <color name="transpBlack" value="#19000000" />
+    <color name="transpBlack_1" value="#25000000" />
+    <color name="transpWhite" value="#77d4d4d4" />
+    <color name="transpyellow" value="#33bab329" />
+    <color name="white" value="#e8efff" />
+    <color name="yellow" value="#00ffcc00" />
+    <!-- kolory metrixa dla lepszej kompatybilności z niektórymi wtyczkami -->
+    <color name="unffffff" value="#00ffffff" />
+  </colors>
+  <windowstyle type="skinned" id="0">
+    <title offset="33,22" font="Roboto_HD;26" />
+    <configList entryFont="Roboto_HD;22" valueFont="Roboto_HD;22" /> <!-- dodano 2023-02-19 -->
+    <color name="Background" color="background" />
+    <color name="LabelForeground" color="white" />
+    <color name="ListboxBackground" color="background" />
+    <color name="ListboxForeground" color="white" />
+    <color name="ListboxSelectedBackground" color="selected" />
+    <color name="ListboxSelectedForeground" color="blue" />
+    <color name="ListboxMarkedBackground" color="black" />
+    <color name="ListboxMarkedForeground" color="lemon" />
+    <color name="ListboxMarkedAndSelectedBackground" color="black" />
+    <color name="ListboxMarkedAndSelectedForeground" color="blue" />
+    <color name="WindowTitleForeground" color="white" />
+    <color name="WindowTitleBackground" color="dark_grey" />
+    <borderset name="bsWindow">
+      <pixmap pos="bpTopLeft" filename="BlackHarmony/bg_design/bs_tl.png" />
+      <pixmap pos="bpTop" filename="BlackHarmony/bg_design/bs_t.png" />
+      <pixmap pos="bpTopRight" filename="BlackHarmony/bg_design/bs_tr.png" />
+      <pixmap pos="bpLeft" filename="BlackHarmony/bg_design/bs_l.png" />
+      <pixmap pos="bpRight" filename="BlackHarmony/bg_design/bs_r.png" />
+      <pixmap pos="bpBottomLeft" filename="BlackHarmony/bg_design/bs_bl.png" />
+      <pixmap pos="bpBottom" filename="BlackHarmony/bg_design/bs_b.png" />
+      <pixmap pos="bpBottomRight" filename="BlackHarmony/bg_design/bs_br.png" />
+    </borderset>
+  </windowstyle>
+    <fonts>
+    <alias name="PluginBrowser0" font="Regular" size="25" height="70" />
+    <alias name="PluginBrowser1" font="Regular" size="20" />
+    <alias name="VirtualKeyBoard" font="Regular" size="30" height="65"/>
+    <alias name="HelpMenuList" font="Regular" size="26" height="40" />
+    <alias name="ChoiceList" font="Roboto_HD" size="27" height="40"/>
+    <alias name="FileList" font="Roboto_HD" size="24" height="45"/>
+    <alias name="SetList" font="Roboto_HD" size="27" height="40"/>
+    <alias name="FileListMulti" font="Roboto_HD" size="24" height="45"/>
+    <alias name="SelectionList" font="Roboto_HD" size="27" height="45" />
+    <alias name="PlayList" font="Roboto_HD" size="26" height="40"/>
+    <alias name="ServiceInfo" font="Roboto_HD" size="27" height="40" />
+    <alias name="ChoiceBoxDescription" font="Roboto_HD" size="26" height="40"/>
+    <alias name="TextNormal" font="Roboto_HD" size="26" height="40"/>
+    <alias name="SHOUTcastListItem" font="Roboto_HD" size="25" height="110"/>
+    <alias name="iptvupdatelistitem_0" font="Roboto_HD" size="24" height="35"/>
+    <alias name="iptvupdatelistitem_1" font="Roboto_HD" size="27" height="35"/>
+    <alias name="iptvlistitem" font="HD_Thin" size="26" height="40"/>
+    <alias name="Dreamexplorer" font="Regular" size="24" height="40" />
+  </fonts>
+</skin>

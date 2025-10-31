@@ -1,0 +1,11 @@
+#!/bin/sh
+killall -q exteplayer3
+if [ -e /usr/lib/python3.12/site-packages ];then
+  rm -f /usr/lib/python3.12/site-packages/pywidevine/cdmdevice/*.py*
+  rm -f /usr/lib/python3.12/site-packages/emukodi/*.py*
+else
+  echo "Instalacja możliwa TYLKO na python 3.12"
+  exit 1
+fi
+
+exit 0

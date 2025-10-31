@@ -1,0 +1,54 @@
+<screen name="E2KodiGridSelector" position="center,center" size="1920,1080" title="Wybór dodatku E2Kodi" flags="wfNoBorder">
+	<panel name="Mov_menu"/>
+	<panel name="Buttons_all_rgyb"/>
+	<widget name="marker_0x0" render="Pixmap" position="160,120" size="230,160"  alphatest="on" zPosition="-1" />
+	<widget name="marker_0x1" render="Pixmap" position="449,120" size="230,160"  alphatest="on" zPosition="-1" />
+	<widget name="marker_0x2" render="Pixmap" position="726,120" size="230,160"  alphatest="on" zPosition="-1" />
+	<widget name="marker_0x3" render="Pixmap" position="1017,120" size="230,160"  alphatest="on" zPosition="-1" />
+	<widget name="marker_0x4" render="Pixmap" position="1293,120" size="230,160"  alphatest="on" zPosition="-1" />
+	<widget name="marker_0x5" render="Pixmap" position="1561,120" size="230,160"  alphatest="on" zPosition="-1" />
+	<widget name="marker_1x0" render="Pixmap" position="160,320" size="230,160"  alphatest="on" zPosition="-1" />
+	<widget name="marker_1x1" render="Pixmap" position="447,320" size="230,160"  alphatest="on" zPosition="-1" />
+	<widget name="marker_1x2" render="Pixmap" position="725,320" size="230,160"  alphatest="on" zPosition="-1" />
+	<widget name="marker_1x3" render="Pixmap" position="1018,320" size="230,160"  alphatest="on" zPosition="-1" />
+	<widget name="marker_1x4" render="Pixmap" position="1293,320" size="230,160"  alphatest="on" zPosition="-1" />
+	<widget name="marker_1x5" render="Pixmap" position="1561,320" size="230,161"  alphatest="on" zPosition="-1" />
+	<widget name="marker_2x0" render="Pixmap" position="160,520" size="230,160"  alphatest="on" zPosition="-1" />
+	<widget name="marker_2x1" render="Pixmap" position="447,520" size="230,160"  alphatest="on" zPosition="-1" />
+	<widget name="marker_2x2" render="Pixmap" position="725,520" size="230,160"  alphatest="on" zPosition="-1" />
+	<widget name="marker_2x3" render="Pixmap" position="1018,520" size="230,160"  alphatest="on" zPosition="-1" />
+	<widget name="marker_2x4" render="Pixmap" position="1293,520" size="230,160"  alphatest="on" zPosition="-1" />
+	<widget name="marker_2x5" render="Pixmap" position="1561,520" size="230,160"  alphatest="on" zPosition="-1" />
+	<widget name="marker_3x0" render="Pixmap" position="160,720" size="230,160"  alphatest="on" zPosition="-1" />
+	<widget name="marker_3x1" render="Pixmap" position="447,720" size="230,160"  alphatest="on" zPosition="-1" />
+	<widget name="marker_3x2" render="Pixmap" position="725,720" size="230,160"  alphatest="on" zPosition="-1" />
+	<widget name="marker_3x3" render="Pixmap" position="1018,720" size="230,160"  alphatest="on" zPosition="-1" />
+	<widget name="marker_3x4" render="Pixmap" position="1293,720" size="230,160"  alphatest="on" zPosition="-1" />
+	<widget name="marker_3x5" render="Pixmap" position="1561,720" size="230,160"  alphatest="on" zPosition="-1" />
+	<widget name="logo_0x0" position="185,156" size="180,100" alphatest="blend" scale="on"/>
+	<widget name="logo_0x1" position="473,156" size="180,100" alphatest="blend" scale="on"/>
+	<widget name="logo_0x2" position="750,156" size="180,100" alphatest="blend" scale="on"/>
+	<widget name="logo_0x3" position="1046,156" size="180,100" alphatest="blend" scale="on"/>
+	<widget name="logo_0x4" position="1314,156" size="180,100" alphatest="blend" scale="on"/>
+	<widget name="logo_0x5" position="1589,156" size="180,100" alphatest="blend" scale="on"/>
+	<widget name="logo_1x0" position="178,347" size="180,100" alphatest="blend" scale="on"/>
+	<widget name="logo_1x1" position="466,346" size="180,100" alphatest="blend" scale="on"/>
+	<widget name="logo_1x2" position="752,350" size="180,100" alphatest="blend" scale="on"/>
+	<widget name="logo_1x3" position="1040,354" size="180,100" alphatest="blend" scale="on"/>
+	<widget name="logo_1x4" position="1313,351" size="180,100" alphatest="blend" scale="on"/>
+	<widget name="logo_1x5" position="1591,349" size="180,100" alphatest="blend" scale="on"/>
+	<widget name="logo_2x0" position="185,553" size="180,100" alphatest="blend" scale="on"/>
+	<widget name="logo_2x1" position="469,553" size="180,100" alphatest="blend" scale="on"/>
+	<widget name="logo_2x2" position="750,553" size="180,100" alphatest="blend" scale="on"/>
+	<widget name="logo_2x3" position="1046,553" size="180,100" alphatest="blend" scale="on"/>
+	<widget name="logo_2x4" position="1314,553" size="180,100" alphatest="blend" scale="on"/>
+	<widget name="logo_2x5" position="1591,553" size="180,100" alphatest="blend" scale="on"/>
+	<widget name="logo_3x0" position="185,753" size="180,100" alphatest="blend" scale="on"/>
+	<widget name="logo_3x1" position="469,753" size="180,100" alphatest="blend" scale="on"/>
+	<widget name="logo_3x2" position="750,753" size="180,100" alphatest="blend" scale="on"/>
+	<widget name="logo_3x3" position="1046,753" size="180,100" alphatest="blend" scale="on"/>
+	<widget name="logo_3x4" position="1314,753" size="180,100" alphatest="blend" scale="on"/>
+	<widget name="logo_3x5" position="1591,753" size="180,100" alphatest="blend" scale="on"/>
+	<widget name="key_ok" position="1702,1022" size="35,25" zPosition="1" font="Regular; 24" halign="left" foregroundColor="white" backgroundColor="dark_grey" transparent="1"/>
+	<ePixmap pixmap="FullHDLine/buttons/key_ok.png" position="1694,1013" size="50,40" zPosition="4" alphatest="blend"/>
+</screen>

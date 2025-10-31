@@ -1,0 +1,585 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: tuxbox-enigma 0.0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-11-01 13:01+0000\n"
+"PO-Revision-Date: 2020-09-17 11:28+0100\n"
+"Last-Translator: \n"
+"Language-Team: j00zek\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n"
+"%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 1.7.6\n"
+
+msgid "Auto Mount Manager"
+msgstr "Manadżer automatycznego montowania"
+
+msgid "Current"
+msgstr "Aktualna"
+
+msgid "CPU temperature:"
+msgstr "Temperatura procesora:"
+
+msgid "Data update:"
+msgstr "Aktualizcja danych:"
+
+msgid "Box Type:"
+msgstr "Typ tunera:"
+
+msgid "Connected:"
+msgstr "Połączony:"
+
+msgid "Channel Selection"
+msgstr "Lista kanałów"
+
+msgid "CleanupWizard settings"
+msgstr "Ustawienia pomocnika czyszczenia"
+
+msgid "day after tomorrow"
+msgstr "Pojutrze"
+
+msgid "EMC Selection"
+msgstr "Wybór EMC"
+
+msgid "EMC Menu"
+msgstr "Lista EMC"
+
+msgid "Free-to-air"
+msgstr "Niekodowane TV (FTA)"
+
+msgid "Flash Free:"
+msgstr "Wolne:"
+
+msgid "Flash:"
+msgstr "Pamięć Flash:"
+
+msgid "File Browser"
+msgstr "Przeglądarka plików"
+
+msgid "FeelsLike"
+msgstr "Odczuwalna"
+
+msgid "Installing Software..."
+msgstr "Instalacja oprogramowania..."
+
+msgid "IPKG Menu"
+msgstr "Menu IPKG"
+
+msgid "Input"
+msgstr "Wejście"
+
+msgid "Load Avg:"
+msgstr "Obciążenie CPU:"
+
+msgid "Memory:"
+msgstr "Pamięć RAM:"
+
+msgid "Mount Edit"
+msgstr "Edycja montowania"
+
+msgid "Mount View"
+msgstr "Pokaż montowania"
+
+msgid "No info"
+msgstr "Brak informacji"
+
+msgid "N/A"
+msgstr "Niedostępne"
+
+msgid "n/A"
+msgstr "Niedostępne"
+
+msgid "no data from the emulator"
+msgstr "brak danych z emulatora"
+
+msgid "Network Setup"
+msgstr "Ustawienia sieci"
+
+msgid "Network Configuration..."
+msgstr "Konfiguracja sieci..."
+
+msgid "Nameserver Setup"
+msgstr "Ustawienia serwera nazw"
+
+msgid "Network Adapter Selection"
+msgstr "Wybór adaptera sieciowego"
+
+msgid "Network Adapter Test"
+msgstr "Test aaptera sieciowego"
+
+msgid "OpenWebiF Configuration"
+msgstr "Konfiguracja interfejsu Web"
+
+msgid "Online update OpenATV"
+msgstr "Aktualizacja Online OpenATV"
+
+msgid "pressure"
+msgstr "ciśnienie"
+
+msgid "Pressure:"
+msgstr "Ciśnienie:"
+
+msgid "Weather now"
+msgstr "Pogoda teraz"
+
+msgid "Packet Manager"
+msgstr "Manadżer pakietów"
+
+msgid "Plugin Manager"
+msgstr "Manadżer wtyczek"
+
+msgid "Playing since:"
+msgstr "Gramy od:"
+
+msgid "Radio"
+msgstr "Radio"
+
+msgid "Sensed temperature"
+msgstr "Temperatura odczuwalna"
+
+msgid "Support for skin:"
+msgstr "Wsparcie:"
+
+msgid "Support for Skin:"
+msgstr "Wsparcie dla skóry:"
+
+msgid "Show Maps"
+msgstr "Pokaż mapy"
+
+msgid "Show Histograms"
+msgstr "Pokaż histogramy"
+
+msgid "Softwaremanager..."
+msgstr "Manadżer oprogramowania..."
+
+msgid "Softwaremanager Setup"
+msgstr "Ustawienia manadżera oprogramowania"
+
+msgid "Software Update..."
+msgstr "Aktualizacja oprogramowania..."
+
+msgid "Select files/folders to backup..."
+msgstr "Wybierz pliki/katalogi dla kopii bezpieczeństwa..."
+
+msgid "Timer Edit List"
+msgstr "Lista edycji timera"
+
+msgid "Tomorrow"
+msgstr "Jutro"
+
+msgid "Uptime:"
+msgstr "Czas pracy:"
+
+msgid "User Manager"
+msgstr "Menedżer użytkownika"
+
+msgid "Video Enhancement Preview"
+msgstr "Podgląd rozszerzeń video"
+
+msgid "Video Enhancement Setup"
+msgstr "Ustawienia rozszerzeń video"
+
+msgid "%s: Not Available"
+msgstr "%s: Niedostępne"
+
+msgid "%s: %s, in use: %s%%"
+msgstr "%s: %s, w użyciu: %s%%"
+
+msgid "%s: %s Free: %s Used: %s (%s%%)"
+msgstr "%s: %s Wolne: %s Użyte: %s (%s%%)"
+
+msgid "%s: %s Used: %s Free: %s"
+msgstr "%s: %s Użyte: %s Wolne: %s"
+
+msgid "Audio PID"
+msgstr "PID dźwięku"
+
+msgid "Audio PID, codec & lang"
+msgstr "Audio PID, kodek i język"
+
+msgid "Audio PID%s, codec & lang"
+msgstr "Audio PID%s, kodek i język"
+
+msgid "Basic PID info"
+msgstr "Podstawowe inf. PID"
+
+msgid "Bandwidth"
+msgstr "Przepustowość(szer.pasma)"
+
+msgid "Channel"
+msgstr "Kanał"
+
+msgid "Constellation"
+msgstr "Konstelacja"
+
+msgid "Code rate LP"
+msgstr "Wskaźnik kodowania LP"
+
+msgid "Code rate HP"
+msgstr "Wskaźnik kodowania HP"
+
+msgid "DVB Subtitles PID & lang"
+msgstr "Napisy DVB PID i język"
+
+msgid "ECM Info"
+msgstr "Informacje ECM"
+
+msgid "English"
+msgstr "Angielski"
+
+msgid "Extended PID info"
+msgstr "Rozszerzone inf. PID"
+
+msgid "Embedded"
+msgstr "Wbudowany"
+
+msgid "Exit"
+msgstr "Wyjdź"
+
+msgid "filename"
+msgstr "nazwa pliku"
+
+msgid "FEC"
+msgstr "FEC"
+
+msgid "Frequency"
+msgstr "Częstotliwość"
+
+msgid "French"
+msgstr "Francuski"
+
+msgid "German"
+msgstr "Niemiecki"
+
+msgid "Guard interval"
+msgstr "Przedział ochrony"
+
+msgid "Hierarchy info"
+msgstr "Info hierarchii"
+
+msgid "Input Stream ID"
+msgstr "ID Strumienia Wejściowego"
+
+msgid "Inversion"
+msgstr "Odwracanie"
+
+msgid "Namespace & Orbital pos."
+msgstr "Nazwa miejsca i pozycja orb."
+
+msgid "Miscellaneous languages"
+msgstr "Różne języki"
+
+msgid "NIM"
+msgstr "Tuner"
+
+msgid "Modulation"
+msgstr "Modulacja"
+
+msgid "Orbital position"
+msgstr "Pozycja orbitalna"
+
+msgid "Original"
+msgstr "Oryginalny"
+
+msgid "Other Subtitles & lang"
+msgstr "Inne napisy i język"
+
+msgid "Polish"
+msgstr "Polski"
+
+msgid "Polarization"
+msgstr "Polaryzacja"
+
+msgid "Provider"
+msgstr "Prowider"
+
+msgid "Pilot"
+msgstr "Pilot"
+
+msgid "PMT PID"
+msgstr "PMT PID"
+
+msgid "PLS Mode"
+msgstr "Tryb PLS"
+
+msgid "PLS Code"
+msgstr "Kod PLS"
+
+msgid "Roll-off"
+msgstr "Pasmo przepustowe i zaporowe"
+
+msgid "Reserved"
+msgstr "Zarezerwowany"
+
+msgid "System"
+msgstr "System"
+
+msgid "Symbol rate"
+msgstr "Wartość SR"
+
+msgid "Service info"
+msgstr "Info. o kanale"
+
+msgid "Service Name"
+msgstr "Nazwa Kanału"
+
+msgid "Service reference"
+msgstr "Referencje Kanału"
+
+msgid "Service & PIDs"
+msgstr "Serwis i PID"
+
+msgid "Service info - ECM Info"
+msgstr "Informacje serwisowe - Informacje ECM"
+
+msgid "Service info - Tuner status"
+msgstr "Informacje serwisowe - Status tunera"
+
+msgid "Service info - Transponder"
+msgstr "Informacje serwisowe - transponder"
+
+msgid "Service info - service & PIDs"
+msgstr "Informacje serwisowe - usługa i PID"
+
+msgid "Service info - service & Basic PID Info"
+msgstr "Informacje serwisowe - serwis i podstawowe inf. o PID"
+
+msgid "Service info - service & Extended PID Info"
+msgstr "Informacje serwisowe - serwis i rozszerzone inf. o PID"
+
+msgid "Transmission mode"
+msgstr "Tryb transmisji"
+
+msgid "Type"
+msgstr "Typ"
+
+msgid "TXT PID"
+msgstr "TXT PID"
+
+msgid "TXT Subtitles page & lang"
+msgstr "Strona napisów TXT i język"
+
+msgid "Unencrypted"
+msgstr "Nieszyfrowane"
+
+msgid "Undetermined"
+msgstr "Nieokreślony"
+
+msgid "unavailable"
+msgstr "niedostępny"
+
+msgid "Unknown"
+msgstr "Nieznany"
+
+msgid "Videocodec, size & format"
+msgstr "Wideokodek, rozmiar i format"
+
+msgid "Pressure"
+msgstr "Ciśnienie"
+
+msgid "Felt temperature"
+msgstr "Temp. odczuwalna"
+
+msgid "Day after tomorrow"
+msgstr "Pojutrze"
+
+msgid "Now"
+msgstr "Teraz"
+
+msgid "Today"
+msgstr "Dzisiaj"
+
+msgid "name day"
+msgstr "Imieniny:"
+
+msgid "later"
+msgstr "Potem"
+
+msgid "East"
+msgstr "Wschód"
+
+msgid "West"
+msgstr "Zachód"
+
+msgid "Mode 1 supports Kodi, PIP may not work. Mode 12 supports PIP, Kodi may not work"
+msgstr "Tryb 1 Wspiera Kodi, PIP może nie działać. Tryb 12 Wspiera PIP, Kodi może nie działać"
+
+msgid "Resolution:"
+msgstr "Rozdzielczość:"
+
+msgid "VideoCodec:"
+msgstr "Kodek wideo:"
+
+msgid "AudioCodec:"
+msgstr "Kodek audio:"
+
+msgid "HDD Temperature:"
+msgstr "Temperatura HDD:"
+
+msgid "CPU Temperature:"
+msgstr "Temperatura CPU:"
+
+msgid "Works:"
+msgstr "Pracuje:"
+
+msgid "You are in WRONG PLACE, use UserSkin to configure BlackHarmony instead !!!"
+msgstr "Jesteś w ZŁYM miejscu, użyj UserSkin aby ustawić skórkę BlackHarmony !!!"
+
+msgid "Tuner/System"
+msgstr "Odbiornik/System"
+
+msgid "Plugin browser"
+msgstr "Przeglądarka wtyczek"
+
+msgid "Subtitles"
+msgstr "Napisy"
+
+msgid "Green Panel"
+msgstr "Zielony panel"
+
+msgid "MSN weather config"
+msgstr "Konfiguracja pogody MSN"
+
+msgid "MSN weather"
+msgstr "Pogoda MSN"
+
+msgid "J00zekMenuChannels"
+msgstr "Menu kanałów j00zka"
+
+msgid "AdvancedMovieSelection"
+msgstr "Zaawansowany wybór filmów"
+
+msgid "AdvancedMovieSelection Button Setup"
+msgstr "Konfiguracja klawiszy zaawansowanego wyboru filmów"
+
+msgid "Weather Widgets"
+msgstr "Widżety pogody"
+
+msgid "WebCam Widgets"
+msgstr "Widżety kamer internetowych"
+
+msgid "Now:"
+msgstr "Teraz:"
+
+msgid "Next:"
+msgstr "Potem:"
+
+msgid "Sunrise:"
+msgstr "Wschód:"
+
+msgid "Sunset:"
+msgstr "Zachód:"
+
+msgid "Air pressure:"
+msgstr "ciśnienie atmosferyczne:"
+
+msgid "Current weather:"
+msgstr "Pogoda teraz:"
+
+msgid "Feeling temp."
+msgstr "temp.odczuwalna"
+
+msgid "Name-day:"
+msgstr "Imieniny:"
+
+msgid "Service Info"
+msgstr "Info o serwisie"
+
+msgid "Select HDD"
+msgstr "Wybór dysku"
+
+msgid "Harddisk Setup"
+msgstr "Konfiguracja dysku"
+
+msgid "Harddisk Wait"
+msgstr "Oczekiwanie na dysk"
+
+msgid "Setup"
+msgstr "Konfiguracja"
+
+msgid "Timer entry"
+msgstr "Wpis timera"
+
+msgid "Timer Log"
+msgstr "Log timera"
+
+msgid "Timer Selection"
+msgstr "Wybór timera"
+
+msgid "CD Info"
+msgstr "Info o CD"
+
+msgid "Webinterface"
+msgstr "Interfejs Web"
+
+msgid "Restore Menu"
+msgstr "Menu odzyskiwania"
+
+msgid "DreamExplorer II"
+msgstr "DreamExplorer II"
+
+msgid "CoverFind"
+msgstr "Szukanie okładek"
+
+msgid "CrossEPG Setup"
+msgstr "Konfiguracja CrossEPG"
+
+msgid "Changes"
+msgstr "Zmiany"
+
+msgid "Diagnostic"
+msgstr "Diagnostyka"
+
+msgid "VTI Update Info"
+msgstr "Informacja o aktualizacjach VTI"
+
+msgid "Air quality"
+msgstr "Jakość powietrza"
+
+msgid "Test again"
+msgstr "Testuj ponownie"
+
+msgid "Detailed forecast"
+msgstr "Prognoza szczegółowa"
+
+msgid "Source:"
+msgstr "Źródło:"
+
+msgid "no data from CI"
+msgstr "brak danych z CI"
+
+msgid "no data from CI and emulator"
+msgstr "brak danych z CI i emulatora"
+
+msgid "Rating undefined"
+msgstr "+ 0 lat"
+
+msgid "Rating defined by broadcaster - %d"
+msgstr "+ %d lat"
+
+msgid "Minimum age %d years"
+msgstr "+ %d lat"
+
+msgid "All ages"
+msgstr "+ 0 lat"
+
+msgid "Change channels"
+msgstr "Zmień kanał"
+
+msgid "Change bouquet"
+msgstr "Zmień listę kanałów"
+
+msgid "direct IPTV stream"
+msgstr "Bezpośredni strumień IPTV"
+
+msgid "wrapped IPTV stream"
+msgstr "Strumień IPTV przez 'wrapper'"
+
+msgid "Streamlink IPTV stream"
+msgstr "Strumień IPTV przez Streamlink"
+
+msgid "wrapped YT-IPTV stream"
+msgstr "Strumień YoutTube przez 'wrapper'"

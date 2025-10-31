@@ -1,0 +1,13 @@
+Package: e2kodi-skin-sq9-fullhdline
+Priority: optional
+Section: utils
+Depends:
+Description: Standardowa skorka do e2Kodi
+Maintainer: j00zek
+Source: http://github.com/j00zek/eePlugins
+Version: 25.09.02.1051
+Architecture: all
+DestinationPath: /usr/lib/enigma2/python/Plugins/Extensions/E2Kodi/skins/FullHDLine
+ExcludeFolder: 
+RunScriptBeforeBuild:
+BuildType: python310

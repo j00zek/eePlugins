@@ -1,0 +1,9 @@
+<screen name="E2KodiEventsConfig" position="center,center" size="700,450" title="Konfiguracja E2Kodi">
+    <eLabel position="5,0" size="690,2" backgroundColor="#aaaaaa" />
+    <widget name="config" position="20,20" size="660,395" zPosition="1" scrollbarMode="showOnDemand" />
+    <eLabel position="85,430" size="166,2" backgroundColor="#00ff2525" />
+    <eLabel position="455,430" size="166,2" backgroundColor="#00389416" />
+    <widget name="key_red" position="20,400" zPosition="2" size="150,30" valign="center" halign="center" font="Regular;22" transparent="1" />
+    <widget name="key_green" position="180,400" zPosition="2" size="150,30" valign="center" halign="center" font="Regular;22" transparent="1" />
+    <widget name="key_yellow" position="330,400" zPosition="2" size="150,30" valign="center" halign="center" font="Regular;22" transparent="1" />
+</screen>

@@ -1,0 +1,358 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: j00zekOPKGmanager\n"
+"POT-Creation-Date: 2016-01-07 12:00+0100\n"
+"PO-Revision-Date: 2020-02-16 06:33+0100\n"
+"Last-Translator: j00zek\n"
+"Language-Team: j00zek\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.6\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+# init.py
+msgid "AUTO"
+msgstr "Automatycznie"
+
+msgid "All info in a line"
+msgstr "Wszystkie informacje w jednej lini"
+
+msgid "All info in a column"
+msgstr "Wszystkie informacje w kolumnie"
+
+msgid "Active & Busy & Available"
+msgstr "Aktywna, zajęta, lub wolna"
+
+msgid "Active & Busy"
+msgstr "Aktywna, lub zajęta"
+
+msgid "Don't show FE state"
+msgstr "Nie pokazuj stanu głowic"
+
+msgid "center"
+msgstr "Centralnie"
+
+msgid "Coded program %SY"
+msgstr "Program zakodowany w %SY"
+
+msgid "Chanel name"
+msgstr "Nazwę kanału"
+
+msgid "Channel number - Channel name"
+msgstr "Numer kanału - nazwę kanału"
+
+msgid "Chanel name - Sat name"
+msgstr "Nazwę kanału - nazwę satelity"
+
+msgid "CHname - EVname"
+msgstr "Nazwę kanału i wydarzenie"
+
+msgid "CHnumber - CHname - EVname"
+msgstr "Numer kanału - nazwę kanału i wydarzenie"
+
+msgid "CHname - EVname (progress %)"
+msgstr "Nazwę kanału i wydarzenie oraz postęp w ( % )"
+
+msgid "CHnumber -CHname - EVname (progress %)"
+msgstr "Numer kanału - nazwę kanału - wydarzenie oraz postęp w ( % )"
+
+msgid "don't move"
+msgstr "Nie przewijaj ( Stop )"
+
+msgid "Defined in skin"
+msgstr "Zdefiniowane w skórce"
+
+msgid "Event name"
+msgstr "Nazwę wydarzenia"
+
+msgid "Extended or Short"
+msgstr "Rozszerzony lub krótki"
+
+msgid "Extended and short (if different)"
+msgstr "Rozszerzony i krótki (jeśli inny)"
+
+msgid "fast"
+msgstr "Szybko"
+
+msgid "FE's in use:"
+msgstr "Używane głowice:"
+
+msgid "FE's"
+msgstr "Głowice:"
+
+msgid "FULL_DESCRIPTION"
+msgstr "Pełny opis"
+
+msgid "if defined in skin"
+msgstr "Jeśli zdefiniowano w skórce"
+
+msgid "Infobar summary"
+msgstr "Pokaż na wyświetlaczu:"
+
+msgid "left"
+msgstr "Lewa"
+
+msgid "No Title"
+msgstr "Bez tytułu"
+
+msgid "never stop"
+msgstr "Przewijaj ciągle ( Pętla )"
+
+msgid "normal"
+msgstr "Normalny"
+
+msgid "none"
+msgstr "Brak"
+
+msgid "NONE"
+msgstr "Brak"
+
+msgid "not set"
+msgstr "Nie zdefiniowana"
+
+msgid "one time"
+msgstr "Jeden raz"
+
+msgid "Provider"
+msgstr "„Dostawca”"
+
+msgid "right"
+msgstr "Prawa"
+
+msgid "RUNNING"
+msgstr "Przewijaj ( Włączone )"
+
+msgid "Running Softcam name"
+msgstr "Nazwę \"Emulatora\""
+
+msgid "Running Softcam file name "
+msgstr "Nazwę pliku \"Emulatora\" "
+
+msgid "Running Softcam file name, READER"
+msgstr "Nazwę pliku \"Emulatora\"  oraz czytnik"
+
+msgid "READER"
+msgstr "oraz czytnik"
+
+msgid "Running Softcam file name"
+msgstr "Nazwę pliku \"Emulatora\""
+
+msgid "slow"
+msgstr "Wolno"
+
+msgid "same as defined font"
+msgstr "100% zdefiniowanej czcionki"
+
+msgid "Short"
+msgstr "Krótki"
+
+msgid "Short and Extended"
+msgstr "Krótkie i rozszerzone"
+
+msgid "same as max font"
+msgstr "Taka sama jak maksymalna czcionka"
+
+msgid "SWIMMING"
+msgstr "Przewiń długość tekstu i wróć ( Odbijanie )"
+
+msgid "SHORT_DESCRIPTION"
+msgstr "Krótki opis"
+
+msgid "Show when FE is:"
+msgstr "Pokaż, gdy głowica jest:"
+
+msgid "Signal type"
+msgstr "„Rodzaj sygnału”"
+
+msgid "Sat name"
+msgstr "„Nazwa satelity”"
+
+msgid "Bouquet name"
+msgstr "„Nazwa bukietu”"
+
+msgid "Transponder info"
+msgstr "„Informacje o transponderze”"
+
+msgid "Title:"
+msgstr "Tytuł sekcji:"
+
+msgid "TXT PROVIDER"
+msgstr "Nazwę tekstową dostawcy systemu kodowania"
+
+msgid "HH:MM day.month.year"
+msgstr "HH:MM dzień. Miesiąc. Rok"
+
+msgid "HH:MM Weekday Day MonthName"
+msgstr "HH:MM Dzień tygodnia. Dzień. Nazwa miesiąca"
+
+msgid "75%% of defined font"
+msgstr "75% zdefiniowanej czcionki"
+
+msgid "67%% of defined font"
+msgstr "67% zdefiniowanej czcionki"
+
+msgid "50%% of defined font"
+msgstr "50% zdefiniowanej czcionki"
+
+msgid "5 times"
+msgstr "Pięć razy"
+
+msgid "+/- 10%%"
+msgstr "+/- 10%"
+
+# buildList
+msgid "Alternate user icons path:"
+msgstr "Do alternatywnych ikon:"
+
+msgid "Ammend Font size"
+msgstr "Zmień rozmiar czcionki:"
+
+msgid "Delay"
+msgstr "Opóźnienie:"
+
+msgid "---Dynamic Font Size---"
+msgstr "*** Dynamiczna zmiana czcionki ***"
+
+msgid "Event Name minimum font size"
+msgstr "Min. wielkość tytułu audycji:"
+
+msgid "---Event description (EventName)---"
+msgstr "*** Nazwa zdarzenia (EventName) ***"
+
+msgid "---Frontend information---"
+msgstr "*** Informacja o głowicach tunera ***"
+
+msgid "Initial delay"
+msgstr "Początkowe opóźnienie:"
+
+msgid "Information presented"
+msgstr "Informacje przedstawione:"
+
+msgid "Picons animations user path:"
+msgstr "Do animacji pikon:"
+
+msgid "Repeats"
+msgstr "Powtórzyć przewijany tekst:"
+
+msgid "Show TMDB rating at the begining (when available)"
+msgstr "Pokaż ocenę IMDB na początku (gdy jest dostępna):"
+
+msgid "Speed"
+msgstr "Prędkość przewijania:"
+
+msgid "Show:"
+msgstr "Pokaż w infobarze:"
+
+msgid "---SoftCam/CI information---"
+msgstr "*** Informacje SoftCam/CI ***"
+
+msgid "Scroll speed"
+msgstr "Prędkość przewijania:"
+
+msgid "Scrolling delay (rollerCharVFD)"
+msgstr "Opóźnienie przewijania:"
+
+msgid "Scrolling speed (rollerCharVFD)"
+msgstr "Prędkość przewijania:"
+
+msgid "Standby clock"
+msgstr "Wyświetl w czuwaniu:"
+
+msgid "Service info:"
+msgstr "Informacje serwisowe:"
+
+msgid "Standby clock position"
+msgstr "Ustaw położenie zegara:"
+
+msgid "---Scrolling text---"
+msgstr "*** Przewijanie tekstu ***"
+
+msgid "Service Name minimum font size"
+msgstr "Min. wielkość nazwy kanału:"
+
+msgid "Type"
+msgstr "Typ przewijania:"
+
+msgid "---User paths---"
+msgstr "*** Ścieżki użytkownika ***"
+
+msgid "---VFD settings---"
+msgstr "*** Ustawienia VFD ***"
+
+# other def
+msgid "Are you sure you want to save this configuration?"
+msgstr "Na pewno zapisać tą konfigurację?"
+
+msgid "Cancel"
+msgstr "Anuluj"
+
+msgid "e2components @j00zek %s"
+msgstr "Menu komponentów wersja: %s"
+
+msgid "Exit"
+msgstr "Wyjście"
+
+msgid "j00zek e2components configuration"
+msgstr "Konfiguracja komponentów enigmy j00zka"
+
+msgid "Refresh"
+msgstr "Odśwież"
+
+msgid "Set Default value"
+msgstr "Zresetuj ustawienie"
+
+msgid "Select"
+msgstr "Wybierz"
+
+msgid "Save"
+msgstr "Zapisz"
+
+msgid "--- zet71 Picons ---"
+msgstr "--- Pikony zet71 ---"
+
+msgid "Automatically download missing picon:"
+msgstr "Pobierz brakującą pikonę z sieci:"
+
+msgid "Main path for all picons folders:"
+msgstr "Główna ścieżka dla katalogów pikon:"
+
+msgid "Picons style:"
+msgstr "Styl pikon:"
+
+msgid "zzPicons style:"
+msgstr "Styl zzpikon:"
+
+msgid "Delete old picons:"
+msgstr "Skasuj stare pikony"
+
+msgid "Active reader name"
+msgstr "Nazwa aktywnego czytnika"
+
+msgid "Mask picon with:"
+msgstr "Maskuj pikonę:"
+
+msgid "Ads info in first line"
+msgstr "Info o reklamie w 1 linii"
+
+msgid "don't mask"
+msgstr "nie maskuj"
+
+msgid "ads sign"
+msgstr "pikoną reklam"
+
+msgid "ads sign on top of picon"
+msgstr "znakiem reklam na pikonie"
+
+msgid "Ads main path:"
+msgstr "Główna ścieżka dla katalogów reklam:"
+
+msgid "--- Picons ---"
+msgstr "--- Pikony ---"
+
+msgid "No picons on /hdd or /media/hdd:"
+msgstr "Brak pikon na /hdd lub /media/hdd:"

@@ -1,0 +1,13 @@
+Package: e2kodi-skin-endriu-blackharmony-player-pig
+Priority: optional
+Section: utils
+Depends: 
+Description: Dodatkowa skorka do e2Kodi
+Maintainer: j00zek
+Source: http://github.com/j00zek/eePlugins
+Version: 25.06.03.0652
+Architecture: all
+DestinationPath:  /etc/E2Kodi/userSkins/endriu_E2K_skin_BH_playerPIG
+ExcludeFolder: 
+RunScriptBeforeBuild:
+BuildType: python310

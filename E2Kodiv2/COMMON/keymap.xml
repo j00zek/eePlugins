@@ -1,0 +1,57 @@
+<keymap>
+  <map context="E2KodiConfiguration">
+    <key id="KEY_RED"    mapto="red" flags="b"/>
+    <key id="KEY_GREEN"  mapto="green" flags="b"/>
+    <key id="KEY_YELLOW" mapto="keyYellow" flags="b"/>
+    <key id="KEY_EXIT"   mapto="cancel" flags="m" />
+    <key id="KEY_ESC"    mapto="cancel" flags="m" />
+    <key id="KEY_ENTER"  mapto="ok" flags="m" />
+    <key id="KEY_OK"     mapto="ok" flags="m" /> 
+    <key id="KEY_OK"     mapto="keyYellow" flags="l" /> 
+  </map>
+  <map context="E2KodiMenu">
+    <key id="KEY_RED"    mapto="cancel" flags="b"/>
+    <key id="KEY_ESC"    mapto="cancel" flags="m" />
+    <key id="KEY_EXIT"   mapto="cancel" flags="m" />
+    <key id="KEY_GREEN"  mapto="keyGreen" flags="b"/>
+    <key id="KEY_YELLOW" mapto="keyYellow" flags="b"/>
+    <key id="KEY_BLUE"   mapto="keyBlue" flags="b"/>
+    <key id="KEY_OK"     mapto="config" flags="m" />
+    <key id="KEY_OK"     mapto="keyYellow" flags="l" /> 
+    <key id="KEY_MENU"   mapto="keyMenu" flags="m" />
+  </map>
+  <map context="E2KodiPlayer">
+    <key id="KEY_ESC"    mapto="cancel" flags="m" />
+    <key id="KEY_EXIT"   mapto="cancel" flags="m" />
+    <key id="KEY_ENTER"  mapto="ok" flags="m" />
+    <key id="KEY_OK"     mapto="ok" flags="m" />
+    <key id="KEY_MENU"   mapto="menu" flags="m" />
+    <key id="KEY_RED"    mapto="keyRed" flags="b"/>
+    <key id="KEY_GREEN"  mapto="keyGreen" flags="b"/>
+    <key id="KEY_YELLOW" mapto="keyYellow" flags="b"/>
+    <key id="KEY_PLAY"   mapto="keyPlay" flags="b" />
+  </map>
+  <map context="E2KodiEventsConfig">
+    <key id="KEY_RED"    mapto="cancel" flags="b"/>
+    <key id="KEY_ESC"    mapto="cancel" flags="b" />
+    <key id="KEY_EXIT"   mapto="cancel" flags="b" />
+    <key id="KEY_GREEN"  mapto="save" flags="b"/>
+    <key id="KEY_OK"     mapto="save" flags="b" />
+    <key id="KEY_YELLOW" mapto="keyYellow" flags="b"/>
+  </map>
+  <map context="E2KodiGridSelector">
+    <key id="KEY_RED"    mapto="cancel" flags="b"/>
+    <key id="KEY_ESC"    mapto="cancel" flags="b" />
+    <key id="KEY_EXIT"   mapto="cancel" flags="b" />
+    <key id="KEY_GREEN"  mapto="keyGreen" flags="b"/>
+    <key id="KEY_YELLOW" mapto="keyYellow" flags="b"/>
+    <key id="KEY_BLUE"   mapto="keyBlue" flags="b"/>
+    <key id="KEY_OK"     mapto="config" flags="b" />
+    <key id="KEY_OK"     mapto="keyYellow" flags="l" /> 
+    <key id="KEY_MENU"   mapto="keyMenu" flags="b" />
+    <key id="KEY_LEFT"   mapto="keyLeft"   flags="m" />
+    <key id="KEY_RIGHT"  mapto="keyRight"  flags="m" />
+    <key id="KEY_UP"     mapto="keyUp"     flags="m" />
+    <key id="KEY_DOWN"   mapto="keyDown"  flags="m" />
+  </map>
+</keymap>

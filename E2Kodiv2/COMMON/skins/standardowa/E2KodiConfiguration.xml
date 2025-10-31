@@ -1,0 +1,6 @@
+<screen name="E2KodiConfiguration" position="center,center" size="700,300" title="E2Kodi configuration">
+	<widget name="config"     position="20,20" size="640,225" zPosition="1" scrollbarMode="showOnDemand" />
+    <widget name="key_red"    position="20,250" zPosition="2" size="150,30" foregroundColor="red" valign="center" halign="left" font="Regular;22" transparent="1" />
+    <widget name="key_green"  position="170,250" zPosition="2" size="150,30" foregroundColor="green" valign="center" halign="left" font="Regular;22" transparent="1" />
+    <widget name="key_yellow"  position="360,250" zPosition="2" size="240,30" foregroundColor="yellow" valign="center" halign="left" font="Regular;22" transparent="1" />
+</screen>

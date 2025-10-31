@@ -1,0 +1,11 @@
+<!-- E2KodiEventsConfig -->
+    <screen name="E2KodiEventsConfig" position="0,0" size="1920,1080" title="E2Kodi Events Config" flags="wfNoBorder" backgroundColor="transparent">
+    <widget source="global.CurrentTime" render="Label" position="740,23" size="450,40" font="Regular; 32" halign="right" foregroundColor="white" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%a, %d.%m.%Y   %H:%M</convert>
+    </widget>
+    <widget source="Title" render="Label" position="10,15" size="900,50" font="Regular; 36" halign="left" valign="center" foregroundColor="white" backgroundColor="black" transparent="1" zPosition="1" />
+    <ePixmap pixmap="menu/bg1280.png" position="0,0" zPosition="-20" size="1280,1080" />
+    <widget name="config" position="31,130" size="1210,820" itemHeight="45" font="Regular;30" scrollbarMode="showOnDemand" enableWrapAround="1" transparent="1" />
+    <panel name="TemplateAllColorButtons_Automatic" />
+    <ePixmap position="1180,1011" size="60,50" zPosition="10" pixmap="buttons/key_ok.png" transparent="1" alphatest="blend" />
+</screen>

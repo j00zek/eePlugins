@@ -1,0 +1,59 @@
+<skin>
+<screen name="ChannelSelection" position="center,center" size="1920,1080" title="Channel Selection" flags="wfNoBorder" backgroundColor="transparent">
+  <ePixmap position="0,1" zPosition="-7" size="1920,1080" pixmap="BlackHarmony/bg_design/cs_full.png" />
+  <widget source="global.CurrentTime" render="Label" position="55,45" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+    <convert type="ClockToText">Default</convert>
+  </widget>
+  <widget source="global.CurrentTime" render="Label" position="140,45" size="660,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+    <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+  </widget>
+  <widget source="Title" render="Label" position="54,160" size="675,35" font="Roboto_HD; 28" backgroundColor="black" transparent="1" halign="center" foregroundColor="light_yellow" />
+  <!--eLabel name="new eLabel" position="1460,80" size="365,30" font="Roboto_HD; 27" foregroundColor="white" backgroundColor="dark_grey" transparent="1" halign="right" text="Channel Selection" /-->
+  <widget name="list" position="57,205" size="675,765" serviceItemHeight="45" selectionPixmap="BlackHarmony/menu/sel_675_45.png" scrollbarMode="showNever" enableWrapAround="1" colorServiceDescription="pastel" colorServiceDescriptionSelected="lemon" colorEventProgressbarBorder="border" colorEventProgressbarBorderSelected="border" picServiceEventProgressbar="BlackHarmony/gfx/progcl.png" foregroundColorServiceNotAvail="#777777" serviceNumberFont="Roboto_HD;26" serviceNameFont="Roboto_HD;26" serviceInfoFont="Roboto_HD;26" scrollbarWidth="10" scrollbarSliderBorderWidth="1" scrollbarSliderForegroundColor="#e6e6e6" scrollbarSliderBorderColor="#3b3e3f" transparent="0" />
+  <widget font="Roboto_HD; 26" position="1173,940" render="Label" size="90,30" source="ServiceEvent" transparent="1" zPosition="2" halign="left" backgroundColor="black" foregroundColor="green">
+    <convert type="EventTime">Remaining</convert>
+    <convert type="RemainingToText">NoSeconds</convert>
+  </widget>
+  <widget source="ServiceEvent" render="Label" position="770,940" size="80,30" font="Roboto_HD; 26" backgroundColor="background" transparent="1">
+    <convert type="EventTime">StartTime</convert>
+    <convert type="ClockToText" />
+  </widget>
+  <widget source="ServiceEvent" render="Label" position="840,940" size="105,30" font="Roboto_HD; 26" backgroundColor="background" transparent="1">
+    <convert type="EventTime">EndTime</convert>
+    <convert type="ClockToText">Format:- %H:%M</convert>
+  </widget>
+  <widget source="ServiceEvent" render="Label" position="1225,45" size="635,30" font="Roboto_HD; 25" backgroundColor="dark_grey" transparent="1" halign="right" noWrap="1" valign="center" text="19.2E  DVB-S2  10627 27500 3/4 8PSK" zPosition="3">
+    <convert type="j00zekModServiceName2">%O  %s  %F %p %Y %f %M %b</convert>
+  </widget>
+  <widget render="j00zekModRunningText" source="ServiceEvent" options="movetype=running,startpoint=0,direction=top,steptime=90,repeat=2,startdelay=6000,wrap" halign="left" font="Roboto_HD; 25" backgroundColor="background" position="770,505" size="480,405" transparent="1">
+    <convert type="j00zekModEventName">ExtendedDescription</convert>
+  </widget>
+  <widget source="ServiceEvent" render="Progress" position="939,952" size="220,6" pixmap="BlackHarmony/gfx/progress_cs.png" transparent="1">
+    <convert type="EventTime">Progress</convert>
+  </widget>
+  <widget source="ServiceEvent" render="Label" position="770,420" size="480,70" font="HD_Thin; 30" backgroundColor="black" transparent="1" halign="center" foregroundColor="light_yellow">
+    <convert type="j00zekModEventName">Name</convert>
+  </widget>
+  <widget source="ServiceEvent" render="j00zekPicons" picontype="zzpicon" position="810,171" size="400,170" zPosition="2" transparent="1" alphatest="blend">
+    <convert type="ServiceName">Reference</convert>
+  </widget>
+  <widget backgroundColor="background" font="HD_Thin; 34" halign="center" position="770,365" render="Label" size="480,38" source="ServiceEvent" transparent="1" valign="center" foregroundColor="green">
+    <convert type="ServiceName">Name</convert>
+  </widget>
+  <ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="95,1016" size="35,27" alphatest="blend" />
+  <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="430,1016" size="35,27" alphatest="blend" />
+  <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="760,1016" size="35,27" alphatest="blend" />
+  <ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="1090,1016" size="35,27" alphatest="blend" />
+  <widget name="key_red" position="150,1015" size="240,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" valign="bottom" />
+  <widget name="key_green" position="480,1015" size="240,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+  <widget name="key_yellow" position="810,1015" size="240,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+  <widget name="key_blue" position="1140,1015" size="240,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1" />
+  <ePixmap position="1360,1014" size="60,30" pixmap="BlackHarmony/buttons/key_ok.png" alphatest="blend" />
+  <ePixmap position="1540,1014" size="60,30" pixmap="BlackHarmony/buttons/key_menu.png" alphatest="blend" />
+  <ePixmap position="1720,1014" size="60,30" pixmap="BlackHarmony/buttons/key_info.png" alphatest="blend" />
+  <widget source="ServiceEvent" render="j00zekModSingleEpgListNobile" position="1290,215" size="575,749" font="Roboto_HD; 26" foregroundColor="white" backgroundColor="background" noWrap="1" transparent="1" zPosition="2" />
+  <widget position="1290,163" size="575,40" source="ServiceEvent" noWrap="1" render="Label" font="Roboto_HD; 26" halign="left" backgroundColor="black" zPosition="2" transparent="1" foregroundColor="green">
+    <convert type="j00zekModEventName2">NextName</convert>
+  </widget>
+</screen>
+  </skin>

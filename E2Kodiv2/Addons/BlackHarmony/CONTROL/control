@@ -1,0 +1,13 @@
+Package: e2kodi-skin-blackharmony
+Priority: optional
+Section: utils
+Depends:
+Description: Standardowa skorka do e2Kodi
+Maintainer: j00zek
+Source: http://github.com/j00zek/eePlugins
+Version: 25.08.28.0956
+Architecture: all
+DestinationPath: /usr/lib/enigma2/python/Plugins/Extensions/E2Kodi/skins/BlackHarmony
+ExcludeFolder: 
+RunScriptBeforeBuild:
+BuildType: python310

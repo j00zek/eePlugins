@@ -1,0 +1,12 @@
+Package: enigma2-plugin-skins--j00zeks-homar
+Priority: optional
+Section: utils
+Depends: enigma2---j00zeks-components
+Description: skórki LCD dla tuneróœ Utimo4K,Solo4K,Duo4K,Uno4KSE pod różne systemy kolegi homar80
+Maintainer: j00zek
+Source: NA
+Version: 25.01.15.1339
+Architecture: all
+DestinationPath: /usr
+ExcludeFolder: scripts
+RunScriptBeforeBuild: scripts/cleanUp.sh

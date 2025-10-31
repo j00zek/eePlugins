@@ -1,0 +1,11 @@
+Package: enigma2-plugin-extensions--j00zeks-hddsleep-by-ims
+Priority: optional
+Section: utils
+Depends: 
+Description: Alternatywne zarzadzanie usypianiem dysku autorstwa ims i dima
+Maintainer: j00zeks
+Source: 
+Version: 24.05.22.1115
+Architecture: all
+DestinationPath: /usr/lib/enigma2/python/Plugins/Extensions
+ExcludeFolder: usr/lib/enigma2/python/Plugins/Extensions/scripts

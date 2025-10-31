@@ -1,0 +1,14 @@
+<setupxml>
+	<setup key="autoshutdown" showOpenWebIF="1" title="AutoShutDown">
+		<item level="0" text="Enable automatic power off in standby:">config.autoshutdown.autostart</item>
+		<item level="0" text="Time in standby for power off (min):">config.autoshutdown.time</item>
+		<item level="0" text="Enable action after inactivity:">config.autoshutdown.enableinactivity</item>
+		<item level="0" text="Time for inactivity (min):">config.autoshutdown.inactivetime</item>
+		<item level="0" text="Action for inactivity:">config.autoshutdown.inactivityaction</item>
+		<item level="0" text="Disable inactivity action at timeshift:">config.autoshutdown.disable_at_ts</item>
+		<item level="0" text="Show message before inactivity action:">config.autoshutdown.inactivitymessage</item>
+		<item level="0" text="Message timeout (sec):">config.autoshutdown.messagetimeout</item>
+		<item level="0" text="Disable power off in EPGRefresh interval:">config.autoshutdown.epgrefresh</item>
+		<item level="0" text="Show in Extensions/Plugins:">config.autoshutdown.plugin</item>
+	</setup>
+</setupxml>

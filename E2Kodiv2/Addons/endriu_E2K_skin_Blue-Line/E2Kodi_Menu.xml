@@ -1,0 +1,22 @@
+<screen name="E2Kodi_Menu" position="0,0" size="1920,1080" title="E2Kodi Menu" flags="wfNoBorder" backgroundColor="transparent">
+    <widget source="global.CurrentTime" render="Label" position="740,23" size="450,40" font="Regular; 32" halign="right" foregroundColor="white" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%a, %d.%m.%Y   %H:%M</convert>
+    </widget>
+    <widget source="Title" render="Label" position="10,15" size="900,50" font="Regular; 36" halign="left" valign="center" foregroundColor="white" backgroundColor="black" transparent="1" zPosition="1" />
+    <ePixmap pixmap="menu/bg1280.png" position="0,0" zPosition="-20" size="1280,1080" />
+    <widget source="list" render="Listbox" position="31,120" size="1210,840" scrollbarMode="showOnDemand" enableWrapAround="1" transparent="1">
+    <convert type="TemplatedMultiContent">
+     {"template": [
+     MultiContentEntryPixmapAlphaTest(pos = (12, 5), size = (120, 60), png = 0, flags = BT_SCALE),
+     MultiContentEntryText(pos = (158, 0), size = (1030, 70), font=0, flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 1),
+        ],
+     "fonts": [gFont("Regular", 40)],
+     "itemHeight": 70
+                        }
+      </convert>
+       </widget>
+	<panel name="TemplateAllColorButtons_Automatic" /> 
+	<ePixmap position="1180,994" size="60,50" zPosition="10" pixmap="buttons/key_ok.png" transparent="1" alphatest="blend" />
+	<ePixmap position="1180,1033" size="60,50" zPosition="10" pixmap="buttons/key_menu.png" transparent="1" alphatest="blend" />
+	
+	</screen>

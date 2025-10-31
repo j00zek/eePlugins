@@ -1,0 +1,56 @@
+<screen name="EMCSelection" position="center,center" size="1920,1080" title=" " flags="wfNoBorder" backgroundColor="transparent">
+  <ePixmap pixmap="BlackHarmony/bg_design/EPGPig.png" position="0,0" size="1920,1080" zPosition="-7" />
+  <widget source="global.CurrentTime" render="Label" position="75,25" size="80,35" font="Roboto_HD;27" backgroundColor="black" transparent="1">
+    <convert type="ClockToText">Default</convert>
+  </widget>
+  <widget source="global.CurrentTime" render="Label" position="160,25" size="660,35" font="Roboto_HD;27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+    <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+  </widget>
+  <widget source="Title" render="Label" position="600,25" size="1277,35" font="Roboto_HD; 27" backgroundColor="black" transparent="1" halign="right">
+    <convert type="j00zekAlternateTitle">EMC Selection</convert>
+  </widget>
+  <!--lista-->
+  <eLabel backgroundColor="grey" position="584,140" size="2,810" />
+  <widget name="list" position="595,120" size="1273,855" CoolCSPos="950" CoolBarHPos="16" CoolBarPos="925" CoolBarSizeSa="90,12" CoolDateColor="1" CoolDateFont="Regular;25" CoolDateHPos="7" CoolDatePos="1015" CoolDateWidth="235" CoolDirInfoWidth="300" CoolFolderSize="800" CoolFont="Regular;27" CoolHighlightColor="1" CoolIconPos="5" CoolIconSize="50,40" CoolMovieHPos="6" CoolMoviePiconPos="143" CoolMoviePiconSize="765" CoolMoviePos="65" CoolMovieSize="850" CoolPiconHPos="5" CoolPiconHeight="40" CoolPiconPos="50" CoolProgressPos="935" CoolSelNumTxtWidth="50" CoolSelectFont="Regular;29" CoolTitleColor="1" DefaultColor="foreground" itemHeight="45" enableWrapAround="1" scrollbarMode="showOnDemand" scrollbarWidth="10" selectionPixmap="BlackHarmony/menu/sel_1340_45.png" />
+  <!--okładka/picona-->
+<ePixmap position="230,157" zPosition="1" size="170,245" pixmap="BlackHarmony/allScreens/Screens by Ciacho/icons/No-Cover_ciacho.png" transparent="1" alphatest="blend" />
+  <widget source="Service" render="j00zekPicons" picontype="picon" position="208,583" zPosition="2" size="210,122" transparent="1" alphatest="blend" backgroundColor="black">
+    <convert type="j00zekModMovieReference" />
+  </widget>
+  <widget name="Cover" position="171,134" size="287,287" alphatest="blend" zPosition="4" />
+  <widget name="CoverBgLbl" backgroundColor="background" position="55,128" size="520,300" zPosition="2" />
+  <!--tytuł/opis-->
+  <widget font="Regular;23" position="55,435" render="Label" size="510,35" halign="left" source="Service" backgroundColor="background">
+    <convert type="ServiceTime">StartTime</convert>
+    <convert type="ClockToText">Format:%d. %b. %y</convert>
+  </widget>
+  <widget font="Regular;23" halign="center" position="230,435" render="Label" size="160,35" source="Service" backgroundColor="background" foregroundColor="yellow">
+    <convert type="ServiceTime">Duration</convert>
+    <convert type="ClockToText">InMinutes</convert>
+  </widget>
+  <widget font="Regular;23" position="389,435" halign="right" render="Label" size="185,35" source="Service" backgroundColor="background" foregroundColor="light_red">
+    <convert type="MovieInfo">FileSize</convert>
+  </widget>
+  <widget font="Regular;31" position="55,467" render="Label" size="510,35" source="Service" backgroundColor="background" foregroundColor="blue" halign="center" zPosition="1">
+    <convert type="EMCMovieInfo">RecordServiceName</convert>
+  </widget>
+  <widget font="Regular;35" position="55,510" render="j00zekLabel" size="510,60" source="Service" backgroundColor="background" foregroundColor="green" halign="center" valign="center" zPosition="1">
+    <convert type="EMCEventName">Name</convert>
+  </widget>
+  <eLabel backgroundColor="grey" position="55,575" size="510,2" />
+  <eLabel backgroundColor="grey" position="55,710" size="510,2" />
+  <widget font="Regular;23" position="55,725" size="510,250" source="Service" backgroundColor="background" render="j00zekModRunningText" options="movetype=running,startpoint=0,direction=top,steptime=100,repeat=scroll,startdelay=8000,oneshot=5000,wrap">
+    <convert type="EMCEventName">ExtendedDescription</convert>
+  </widget>
+  <!--buttony-->
+  <widget source="session.CurrentService" render="j00zekPiconAnimation" position="45,1015" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,0" random="True" pixmaps="BlackHarmony/skin_user_animButtons/key_red" pixalter="BlackHarmony/buttons/key_red.png" />
+  <widget name="key_red" position="85,1001" size="350,56" font="Roboto_HD; 24" backgroundColor="black" transparent="1" halign="left" valign="center" />
+  <widget source="session.CurrentService" render="j00zekPiconAnimation" position="445,1015" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,1" random="True" pixmaps="BlackHarmony/skin_user_animButtons/key_green" pixalter="BlackHarmony/buttons/key_green.png" />
+  <widget name="key_green" position="485,1001" size="360,56" font="Roboto_HD; 24" backgroundColor="black" transparent="1" halign="left" valign="center" />
+  <widget source="session.CurrentService" render="j00zekPiconAnimation" position="845,1015" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,2" random="True" pixmaps="BlackHarmony/skin_user_animButtons/key_yellow" pixalter="BlackHarmony/buttons/key_yellow.png" />
+  <widget name="key_yellow" position="885,1001" size="360,56" font="Roboto_HD; 24" backgroundColor="black" transparent="1" halign="left" valign="center" />
+  <widget source="session.CurrentService" render="j00zekPiconAnimation" position="1245,1015" zPosition="10" size="35,27" alphatest="blend" initdelay="150" pixdelay="150" loopdelay="150" loop="True" lockpath="True" dontcache="True" chainid="BTN,3" random="True" pixmaps="BlackHarmony/skin_user_animButtons/key_blue" pixalter="BlackHarmony/buttons/key_blue.png" />
+  <widget name="key_blue" position="1285,1001" size="360,56" font="Roboto_HD; 24" backgroundColor="black" transparent="1" halign="left" valign="center" />
+  <ePixmap position="1720,1013" size="60,30" pixmap="BlackHarmony/buttons/key_menu.png" alphatest="blend" />
+  <ePixmap position="1810,1013" size="60,30" pixmap="BlackHarmony/buttons/key_info.png" alphatest="blend" />
+</screen>

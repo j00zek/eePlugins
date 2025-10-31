@@ -1,0 +1,103 @@
+<screen name="E2KodiGridSelector" position="0,0" size="1232,1080" title="Wybór dodatku E2Kodi" flags="wfNoBorder" backgroundColor="transparent">
+  <ePixmap position="0,0" zPosition="-10" size="1232,1080" pixmap="BlackHarmony/bg_design/setup.png"/>
+    <widget source="global.CurrentTime" render="Label" position="40,25" size="80,30" font="Roboto_HD; 27" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Default</convert>
+    </widget>
+    <widget source="global.CurrentTime" render="Label" position="125,25" size="460,30" font="Roboto_HD; 27" foregroundColor="lemon" backgroundColor="black" transparent="1">
+      <convert type="ClockToText">Format:%A %d.%m.%Y</convert>
+    </widget>
+    <widget source="Title" render="Label" position="440,25" size="755,30" font="Roboto_HD; 27" halign="right" foregroundColor="white" backgroundColor="dark_grey" transparent="1"/>
+ 
+ <!-- 1 -->   
+	<widget name="marker_0x0" position="33,117" size="240,156" alphatest="blend" />
+    <widget name="logo_0x0" position="48,132" size="210,126" alphatest="blend" />
+
+    <widget name="marker_0x1" position="263,117" size="240,156" alphatest="blend" />
+    <widget name="logo_0x1" position="278,132" size="210,126" alphatest="blend" />
+
+    <widget name="marker_0x2" position="494,117" size="240,156" alphatest="blend" />
+    <widget name="logo_0x2" position="509,132" size="210,126" alphatest="blend" />
+
+    <widget name="marker_0x3" position="724,117" size="240,156" alphatest="blend" />
+    <widget name="logo_0x3" position="739,132" size="210,126" alphatest="blend" />
+
+    <widget name="marker_0x4" position="955,117" size="240,156" alphatest="blend" />
+    <widget name="logo_0x4" position="970,132" size="210,126" alphatest="blend" />
+
+<!-- 2 -->
+    <widget name="marker_1x0" position="33,293" size="240,156" alphatest="blend" />
+    <widget name="logo_1x0" position="48,308" size="210,126" alphatest="blend" />
+
+    <widget name="marker_1x1" position="263,293" size="240,156" alphatest="blend" />
+    <widget name="logo_1x1" position="278,308" size="210,126" alphatest="blend" />
+
+    <widget name="marker_1x2" position="494,293" size="240,156" alphatest="blend" />
+    <widget name="logo_1x2" position="509,308" size="210,126" alphatest="blend" />
+
+    <widget name="marker_1x3" position="724,293" size="240,156" alphatest="blend" />
+    <widget name="logo_1x3" position="739,308" size="210,126" alphatest="blend" />
+
+    <widget name="marker_1x4" position="955,293" size="240,156" alphatest="blend" />
+    <widget name="logo_1x4" position="970,308" size="210,126" alphatest="blend" />
+
+<!-- 3 -->   
+	<widget name="marker_2x0" position="33,471" size="240,156" alphatest="blend" />
+    <widget name="logo_2x0" position="48,486" size="210,126" alphatest="blend" />
+
+    <widget name="marker_2x1" position="263,471" size="240,156" alphatest="blend" />
+    <widget name="logo_2x1" position="278,486" size="210,126" alphatest="blend" />
+
+    <widget name="marker_2x2" position="494,471" size="240,156" alphatest="blend" />
+    <widget name="logo_2x2" position="509,486" size="210,126" alphatest="blend" />
+
+    <widget name="marker_2x3" position="724,471" size="240,156" alphatest="blend" />
+    <widget name="logo_2x3" position="739,486" size="210,126" alphatest="blend" />
+
+    <widget name="marker_2x4" position="955,471" size="240,156" alphatest="blend" />
+    <widget name="logo_2x4" position="970,486" size="210,126" alphatest="blend" />
+
+<!-- 4 -->
+    <widget name="marker_3x0" position="33,649" size="240,156" alphatest="blend" />
+    <widget name="logo_3x0" position="48,663" size="210,126" alphatest="blend" />
+
+    <widget name="marker_3x1" position="263,649" size="240,156" alphatest="blend" />
+    <widget name="logo_3x1" position="278,663" size="210,126" alphatest="blend" />
+
+    <widget name="marker_3x2" position="494,649" size="240,156" alphatest="blend" />
+    <widget name="logo_3x2" position="509,663" size="210,126" alphatest="blend" />
+
+    <widget name="marker_3x3" position="724,649" size="240,156" alphatest="blend" />
+    <widget name="logo_3x3" position="739,663" size="210,126" alphatest="blend" />
+
+    <widget name="marker_3x4" position="955,649" size="240,156" alphatest="blend" />
+    <widget name="logo_3x4" position="970,663" size="210,126" alphatest="blend" />
+	
+<!-- 5 -->
+    <widget name="marker_4x0" position="33,825" size="240,156" alphatest="blend" />
+    <widget name="logo_4x0" position="48,840" size="210,126" alphatest="blend" />
+
+    <widget name="marker_4x1" position="263,825" size="240,156" alphatest="blend" />
+    <widget name="logo_4x1" position="278,840" size="210,126" alphatest="blend" />
+
+    <widget name="marker_4x2" position="494,825" size="240,156" alphatest="blend" />
+    <widget name="logo_4x2" position="509,840" size="210,126" alphatest="blend" />
+
+    <widget name="marker_4x3" position="724,825" size="240,156" alphatest="blend" />
+    <widget name="logo_4x3" position="739,840" size="210,126" alphatest="blend" />
+
+    <widget name="marker_4x4" position="955,825" size="240,156" alphatest="blend" />
+    <widget name="logo_4x4" position="970,840" size="210,126" alphatest="blend" />	
+
+<!-- przyciski -->     
+	<ePixmap pixmap="BlackHarmony/buttons/key_red.png" position="30,1019" size="35,27" alphatest="blend"/>
+	<widget source="key_red" render="Label" position="80,1019" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_green.png" position="330,1019" size="35,27" alphatest="blend"/>
+	<widget source="key_green" render="Label" position="380,1019" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_yellow.png" position="660,1019" size="35,27" alphatest="blend"/>
+	<widget source="key_yellow" render="Label" position="710,1019" size="300,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+    <ePixmap pixmap="BlackHarmony/buttons/key_blue.png" position="990,1019" size="35,27" alphatest="blend"/>
+    <widget source="key_blue" render="Label" position="1040,1019" size="200,27" zPosition="1" font="Roboto_HD; 24" halign="left" backgroundColor="dark_grey" transparent="1"/>
+	<ePixmap alphatest="blend" pixmap="BlackHarmony/buttons/key_ok.png" position="1135,1003" size="60,30" />
+	<ePixmap alphatest="blend" pixmap="BlackHarmony/buttons/key_menu.png" position="1135,1037" size="60,30" />
+    
+    </screen>
