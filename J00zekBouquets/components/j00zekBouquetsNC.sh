@@ -457,7 +457,7 @@ if [ $doPROVIDER -eq 1 ];then
                         fi
                 fi
                 if [ "$TYP" == '1' ] ; then
-                        echo "#SERVICE 1:0:1:$SID:$TID:$NID:$NAMESPACE:0:0:0::$NAZWA">>$myPath/$BOUQUETFILE.tv
+                        echo "#SERVICE 1:0:1:$SID:$TID:$NID:$NAMESPACE:0:0:0::$NAZWA!#DESCRIPTION $NAZWA">>$myPath/$BOUQUETFILE.tv
                 fi
                 let ExpectedNumber=CurrNumber+1
                 let loopsDone=loopsDone+1
@@ -466,13 +466,18 @@ if [ $doPROVIDER -eq 1 ];then
                         break
                 fi
         done <$myPath/batnit.log
-        if [ "$ZnacznikPustych" == "sortuj" ]; then
+                
+                if [ "$ZnacznikPustych" == "sortuj" ]; then
         echo "Sortowanie kanałów"
                 sort -t ':' -k12 < $myPath/$BOUQUETFILE.tv > /etc/enigma2/$BOUQUETFILE.tv
         else
                 cp -f $myPath/$BOUQUETFILE.tv /etc/enigma2/
         fi
         [ $DEBUG -eq 0 ] && rm -f $myPath/$BOUQUETFILE.tv
+
+        tr '!#DESCRIPTION' '\n#DESCRIPTION' < /etc/enigma2/$BOUQUETFILE.tv > /etc/enigma2/$BOUQUETFILE.tv1
+                mv -f /etc/enigma2/$BOUQUETFILE.tv1 /etc/enigma2/$BOUQUETFILE.tv
+
         #RADIO
         echo "Tworzenie pliku $BOUQUETFILE.radio"
         echo "#NAME $PROVIDER">$myPath/$BOUQUETFILE.radio
@@ -488,11 +493,14 @@ if [ $doPROVIDER -eq 1 ];then
                         done
                 fi
                 if [ "$TYP" == '2' ] ; then
-                        echo "#SERVICE 1:0:1:$SID:$TID:$NID:$NAMESPACE:0:0:0::$NAZWA">>$myPath/$BOUQUETFILE.radio
+                        echo "#SERVICE 1:0:1:$SID:$TID:$NID:$NAMESPACE:0:0:0::$NAZWA!#DESCRIPTION $NAZWA">>$myPath/$BOUQUETFILE.radio
                 fi
                 let ExpectedNumber=CurrNumber+1
         done <$myPath/batnit2.log
         [ $DEBUG -eq 0 ] && mv -f $myPath/$BOUQUETFILE.radio /etc/enigma2/ || cp -f $myPath/$BOUQUETFILE.radio /etc/enigma2/
+
+        tr '!#DESCRIPTION' '\n#DESCRIPTION' < /etc/enigma2/$BOUQUETFILE.radio > /etc/enigma2/$BOUQUETFILE.radio1
+                mv -f /etc/enigma2/$BOUQUETFILE.radio1 /etc/enigma2/$BOUQUETFILE.radio
 fi
 #################### UPDATING 1ST bouquet ####################
 #struktura batnit.log:ID;SID=3dcd;NAM=0640;NID;NID=013e;FRQ;TID=0640;TYP=1;DS2=TID;PRO="nc+";SNA="TVN HD"; 
@@ -518,10 +526,12 @@ if [ $doOWN -eq 1 ];then
                         sed -i "s/^\(#SERVICE \)$ServiceLine.*/\1$FullServiceLine/" $myPath/$FirstBouquet 2>/dev/null #updating record
                         sed -i "/^#SERVICE $ServiceLine/d" /tmp/.ChannelsNotUpdated 2>/dev/null #deleting updated record
                         if ! `grep -q "$FullServiceLine" $myPath/$FirstBouquet`; then
-                                echo "#SERVICE $FullServiceLine" >>$myPath/$FirstBouquet
+                                echo "#SERVICE $FullServiceLine!#DESCRIPTION $NAZWA" >>$myPath/$FirstBouquet
                         fi
                 done <$myPath/batnit.log
                 sed -i "s/\(#NAME.*\)/$BouquetName, aktualizacja $UpdateDate/" $myPath/$FirstBouquet
+                                tr '!#DESCRIPTION' '\n#DESCRIPTION' < $myPath/$FirstBouquet > $myPath/$FirstBouquet1
+                                mv -f $myPath/$FirstBouquet1 $myPath/$FirstBouquet
                 [ $DEBUG -eq 0 ] && mv -f $myPath/$FirstBouquet /etc/enigma2/$FirstBouquet || cp -f $myPath/$FirstBouquet /etc/enigma2/$FirstBouquet
         fi
 fi
