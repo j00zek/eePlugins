@@ -39,6 +39,7 @@ chmod 755 /usr/lib/$pythonType/site-packages/emukodislink_cli/emukodiCLI.pyc
 [ -e /etc/rc4.d/S50emukodiSRV ] && rm -f /etc/rc4.d/S50emukodiSRV
 
 ln -sf /usr/lib/$pythonType/site-packages/emukodislink_cli/emukodiCLI.pyc /usr/sbin/emukodiCLI
+ln -sf /usr/lib/$pythonType/site-packages/emukodislink_cli/emukodiCLI.pyc /usr/sbin/emukodiREC
 
 if [ `cat /proc/cpuinfo|grep -c ARMv7` -gt 0 ]; then
   procType='ARMv7'
