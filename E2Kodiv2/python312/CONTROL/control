@@ -5,7 +5,7 @@ Depends: libxml2, python3-core, python3-pycountry, python3-pycryptodome, python3
 Description: obsługa wtyczek Kodi-drm pod E2 z python 3.12 jak ATV 7.5.X
 Maintainer: j00zek
 Source: http://github.com/j00zek/eePlugins
-Version: 25.11.02.0744
+Version: 25.11.04.1022
 Architecture: all
 DestinationPath: /usr/lib/enigma2/python/Plugins/Extensions/E2Kodi/
 ExcludeFolder: scripts
