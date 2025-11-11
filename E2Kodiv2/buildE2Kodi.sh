@@ -1,12 +1,21 @@
-echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-echo "            pakowanie rozszerzen"
-echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+myPath=$(dirname $0)
+myAbsPath=$(readlink -fn "$myPath")
 
-/DuckboxDisk/github/eePlugins/build_ipk.sh /DuckboxDisk/github/eePlugins/E2Kodiv2/python39/
-/DuckboxDisk/github/eePlugins/build_ipk.sh /DuckboxDisk/github/eePlugins/E2Kodiv2/python312/
-/DuckboxDisk/github/eePlugins/build_ipk.sh /DuckboxDisk/github/eePlugins/E2Kodiv2/python313/
+#echo $myAbsPath
+echo "!!!!! Kopiowanie COMMON"
 
-extensionsPath=/DuckboxDisk/github/eePlugins/E2Kodiv2/Addons
+#kopiowanie common
+cp -rf $myAbsPath/COMMON/* $myAbsPath/python39/
+cp -rf $myAbsPath/COMMON/* $myAbsPath/python312/
+cp -rf $myAbsPath/COMMON/* $myAbsPath/python313/
+
+echo "!!!!! Bukowanie paczek głównych"
+/DuckboxDisk/github/eePlugins/build_ipk.sh $myAbsPath/python39/
+/DuckboxDisk/github/eePlugins/build_ipk.sh $myAbsPath/python312/
+/DuckboxDisk/github/eePlugins/build_ipk.sh $myAbsPath/python313/
+
+echo "!!!!! Bukowanie paczek z dodatkami"
+extensionsPath=$myAbsPath/Addons
 find "$extensionsPath" -maxdepth 1 -mindepth 1 -type d | 
 while read F 
 do
