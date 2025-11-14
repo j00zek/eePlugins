@@ -1,0 +1,145 @@
+#!/bin/sh
+plugBinDir='/usr/lib/enigma2/python/Plugins/Extensions/E2Kodi'
+
+if [ -e /usr/lib/python3.12 ]; then
+  pythonType='python3.12'
+elif [ -e /usr/lib/python3.9 ]; then
+  pythonType='python3.9'
+elif [ -e /usr/lib/python3.13 ]; then
+  pythonType='python3.13'
+elif [ -e /usr/lib/python3.14 ]; then
+  pythonType='python3.14'
+else
+  exit 1
+fi
+
+mkdir -p /etc/E2Kodi
+
+cd $plugBinDir
+
+
+cd $plugBinDir/site-packages
+
+for entry in "$plugBinDir/site-packages"/*
+  do
+    entryName=`basename "$entry"`
+    destEntry="/usr/lib/$pythonType/site-packages/$entryName"
+    if [ -e "$destEntry" ] && [ ! -L "$destEntry" ];then
+      echo "Paczkę $entryName zainstalowao już z nieznanego źródła."
+    elif [ ! -e $destEntry ];then
+      echo "Instaluję paczkę $entryName"
+      ln -sf "$entry" "$destEntry"
+    #else
+    #  echo "Paczka $entryName jest już zainstalowana."
+    fi
+  done
+
+#chmod 755 /usr/lib/$pythonType/site-packages/emukodi/emukodiSRV.py
+chmod 755 /usr/lib/$pythonType/site-packages/emukodislink_cli/emukodiCLI.pyc
+#if [ ! -e /usr/sbin/emukodiSRV ];then
+#  ln -sf /usr/bin/python /usr/sbin/cdsrmv
+#  ln -sf /usr/lib/$pythonType/site-packages/emukodi/emukodiSRV.py /usr/sbin/emukodiSRV
+#  ln -sf /usr/lib/$pythonType/site-packages/emukodislink_cli/emukodiCLI.py /usr/sbin/emukodiCLI
+#  ln -sf /usr/sbin/emukodiSRV /etc/rc3.d/S50emukodiSRV
+#  ln -sf /usr/sbin/emukodiSRV /etc/rc4.d/S50emukodiSRV
+#fi
+
+[ -e /usr/sbin/cdsrmv ] && rm -f /usr/sbin/cdsrmv
+[ -e /usr/sbin/emukodiSRV ] && rm -f /usr/sbin/emukodiSRV
+[ -e /etc/rc3.d/S50emukodiSRV ] && rm -f /etc/rc3.d/S50emukodiSRV
+[ -e /etc/rc4.d/S50emukodiSRV ] && rm -f /etc/rc4.d/S50emukodiSRV
+
+ln -sf /usr/lib/$pythonType/site-packages/emukodislink_cli/emukodiCLI.pyc /usr/sbin/emukodiCLI
+ln -sf /usr/lib/$pythonType/site-packages/emukodislink_cli/emukodiCLI.pyc /usr/sbin/emukodiREC
+
+if [ `cat /proc/cpuinfo|grep -c ARMv7` -gt 0 ]; then
+  procType='ARMv7'
+elif [ `cat /proc/cpuinfo|grep -c mips` -gt 0 ]; then
+  procType='Mips'
+else
+  procType='Proc?'
+fi
+echo "procType='$procType'" >> $plugBinDir/version.py
+
+#pobieranie instalatorów
+wget http://e2iplayer.github.io/www/sslinstall.py -O /tmp/sslinstall.py
+sed -i 's/if ask/if 1: #ask/g' /tmp/sslinstall.py
+sed -i 's/answer = ask/answer = 1 #ask/g' /tmp/sslinstall.py
+echo "# sslinstall.py ENDS" >> /tmp/sslinstall.py
+
+wget -q http://e2iplayer.github.io/www/xml2install.py -O /tmp/xml2install.py
+sed -i 's/if ask/if 1: #ask/g' /tmp/xml2install.py
+sed -i 's/answer = ask/answer = 1 #ask/g' /tmp/xml2install.py
+echo "# xml2install.py ENDS" >> /tmp/xml2install.py
+
+wget -q http://e2iplayer.github.io/www/ffinstall.py -O /tmp/ffinstall.py
+sed -i 's/hasFFmpeg = True/hasFFmpeg = False/g' /tmp/ffinstall.py
+sed -i 's/answer = ask.*/answer = True/g' /tmp/ffinstall.py
+sed -i 's;-xvf;-xf;g' /tmp/ffinstall.py
+sed -i "s;printFatal.'Installed ffmpeg is NOT working correctly.*;printMSG('ffmpeg zainstalowany');" /tmp/ffinstall.py
+
+cat  /tmp/sslinstall.py /tmp/xml2install.py /tmp/ffinstall.py > $plugBinDir/site-packages/pywidevine/cdmdevice/fei.py
+#cp -f /tmp/ffinstall.py $plugBinDir/site-packages/pywidevine/cdmdevice/fei.py
+#mkdir -p /iptvplayer_rootfs/usr/bin/
+if [ `cat /proc/cpuinfo|grep -c ARMv7` -gt 0 ]; then
+  echo "print('Pobieram exteplayer3 dla ARMv7')" >> $plugBinDir/site-packages/pywidevine/cdmdevice/fei.py
+  echo "os.system('wget http://www.e2iplayer.gitlab.io/resources/packages/bin/public/armv7/exteplayer3_fpu_hard_ffmpeg4.2 -O /iptvplayer_rootfs/usr/bin/exteplayer3')" >> $plugBinDir/site-packages/pywidevine/cdmdevice/fei.py
+elif [ `cat /proc/cpuinfo|grep -c mips` -gt 0 ]; then
+  echo "print('Pobieram exteplayer3 dla mips')" >> $plugBinDir/site-packages/pywidevine/cdmdevice/fei.py
+  echo "os.system('wget http://www.e2iplayer.gitlab.io/resources/packages/bin/public/mipsel/exteplayer3_fpu_hard_ffmpeg4.2 -O /iptvplayer_rootfs/usr/bin/exteplayer3')" >> $plugBinDir/site-packages/pywidevine/cdmdevice/fei.py
+elif [ `cat /proc/cpuinfo|grep -c Amlogic` -gt 0 ]; then
+  echo "print('Pobieram exteplayer3 dla aarch64')" >> $plugBinDir/site-packages/pywidevine/cdmdevice/fei.py
+  echo "os.system('wget http://www.e2iplayer.gitlab.io/resources/packages/bin/public/aarch64/exteplayer3_fpu_hard_ffmpeg4.2 -O /iptvplayer_rootfs/usr/bin/exteplayer3')" >> $plugBinDir/site-packages/pywidevine/cdmdevice/fei.py
+else
+  echo "print('Nieznany procesor')" >> $plugBinDir/site-packages/pywidevine/cdmdevice/fei.py
+fi
+echo "if os.path.exists('/iptvplayer_rootfs/usr/bin/exteplayer3'): print('exteplayer3 zainstalowany')" >> $plugBinDir/site-packages/pywidevine/cdmdevice/fei.py
+echo "else: print('exteplayer3 NIE zainstalowany')" >> $plugBinDir/site-packages/pywidevine/cdmdevice/fei.py
+echo "if os.path.exists('/iptvplayer_rootfs/usr/bin/exteplayer3'): os.system('chmod 755 /iptvplayer_rootfs/usr/bin/exteplayer3')" >> $plugBinDir/site-packages/pywidevine/cdmdevice/fei.py
+echo "if not os.path.exists('/usr/lib/libxml2.so.2 '): os.system('ln -sf /usr/lib/libxml2.so.16.0.3 /usr/lib/libxml2.so.2')" >> $plugBinDir/site-packages/pywidevine/cdmdevice/fei.py
+  
+if [ ! -e /usr/lib/enigma2/python/Plugins/Extensions/IPTVPlayer/plugin.pe2i ];then
+  /usr/bin/python3 /tmp/sslinstall.py 
+  rm -f /tmp/sslinstall.py
+  /usr/bin/python3 /tmp/xml2install.py 
+  rm -f /tmp/xml2install.py
+  /usr/bin/python3 /tmp/ffinstall.py 
+  rm -f /tmp/ffinstall.py
+  if [ `cat /proc/cpuinfo|grep -c ARMv7` -gt 0 ]; then
+    wget -q 'http://www.e2iplayer.gitlab.io/resources/packages/bin/public/armv7/exteplayer3_fpu_hard_ffmpeg4.2' -O /iptvplayer_rootfs/usr/bin/exteplayer3
+  elif [ `cat /proc/cpuinfo|grep -c mips` -gt 0 ]; then
+    wget -q 'http://www.e2iplayer.gitlab.io/resources/packages/bin/public/mipsel/exteplayer3_fpu_hard_ffmpeg4.2' -O /iptvplayer_rootfs/usr/bin/exteplayer3
+  elif [ `cat /proc/cpuinfo|grep -c Amlogic` -gt 0 ]; then
+    wget -q 'http://www.e2iplayer.gitlab.io/resources/packages/bin/public/aarch64/exteplayer3_fpu_hard_ffmpeg4.2' -O /iptvplayer_rootfs/usr/bin/exteplayer3
+  fi
+  if [ -e /iptvplayer_rootfs/usr/bin/exteplayer3 ];then
+    chmod 755 /iptvplayer_rootfs/usr/bin/exteplayer3
+    echo "exteplayer3 zainstalowany"
+  else
+    echo "exteplayer3 NIE zainstalowany"
+  fi
+  #libxml
+  if [ ! -e /usr/lib/libxml2.so.2 ]; then
+    if [ -e /usr/lib/libxml2.so.16 ];then
+      ln -sf /usr/lib/libxml2.so.16 /usr/lib/libxml2.so.2
+    elif [ -e /usr/lib/libxml2.so.16.0.5 ];then
+      ln -sf /usr/lib/libxml2.so.16.0.5 /usr/lib/libxml2.so.2
+    elif [ -e /usr/lib/libxml2.so.16.0.3 ];then
+      ln -sf /usr/lib/libxml2.so.16.0.3 /usr/lib/libxml2.so.2
+    fi
+  fi
+fi
+
+#pobieranie mapowania
+wget -q https://raw.githubusercontent.com/azman26/EPGazman/main/azman_channels_mappings.py -O /usr/lib/enigma2/python/Plugins/Extensions/E2Kodi/azman_channels_mappings.py
+
+echo
+echo !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+cat /usr/lib/enigma2/python/Plugins/Extensions/E2Kodi/czytaj.to
+echo
+#instalacja skórek
+[ -e /usr/share/enigma2/BlackHarmony/ ] && [ ! -e /usr/lib/enigma2/python/Plugins/Extensions/E2Kodi/skins/BlackHarmony/ ] && (sleep 5;opkg install e2kodi-skin-blackharmony) &
+[ -e /usr/share/enigma2/PLi-FullNightHD-Mod-M-PY3/ ] && [ ! -e /usr/lib/enigma2/python/Plugins/Extensions/E2Kodi/skins/PLi-FullNightHD-Mod-M-PY3/ ] && (sleep 6;opkg install e2kodi-skin-blackharmony) &
+[ -e /usr/share/enigma2/FullHDLine/ ] && [ ! -e /usr/lib/enigma2/python/Plugins/Extensions/E2Kodi/skins/FullHDLine/ ] && (sleep 7;opkg install e2kodi-skin-blackharmony) &
+sleep 2
+exit 0

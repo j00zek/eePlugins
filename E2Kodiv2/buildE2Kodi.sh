@@ -9,6 +9,10 @@ cp -rf $myAbsPath/COMMON/* $myAbsPath/python39/
 cp -rf $myAbsPath/COMMON/* $myAbsPath/python312/
 cp -rf $myAbsPath/COMMON/* $myAbsPath/python313/
 
+cp -f $myAbsPath/COMMON_CONTROL/* $myAbsPath/python39/CONTROL/
+cp -f $myAbsPath/COMMON_CONTROL/* $myAbsPath/python312/CONTROL/
+cp -f $myAbsPath/COMMON_CONTROL/* $myAbsPath/python313/CONTROL/
+
 echo "!!!!! Bukowanie paczek głównych"
 /DuckboxDisk/github/eePlugins/build_ipk.sh $myAbsPath/python39/
 /DuckboxDisk/github/eePlugins/build_ipk.sh $myAbsPath/python312/

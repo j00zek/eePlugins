@@ -1,0 +1,29 @@
+#!/bin/sh
+if [ -e /usr/lib/python3.12 ]; then
+  pythonType='python3.12'
+elif [ -e /usr/lib/python3.9 ]; then
+  pythonType='python3.9'
+elif [ -e /usr/lib/python3.13 ]; then
+  pythonType='python3.13'
+elif [ -e /usr/lib/python3.14 ]; then
+  pythonType='python3.14'
+else
+  exit 0
+fi
+
+if [ `ps -ef 2>&1 |grep -v grep|grep opkg|grep -c remove` -ge 1 ] || [ `ps -l 2>&1 |grep -v grep|grep opkg|grep -c remove` -ge 1 ];then
+  [ -e /usr/lib/$pythonType/site-packages/construct ] && rm -f /usr/lib/$pythonType/site-packages/construct 2>/dev/null
+  [ -e /usr/lib/$pythonType/site-packages/emukodi ] && rm -f /usr/lib/$pythonType/site-packages/emukodi 2>/dev/null
+  [ -e /usr/lib/$pythonType/site-packages/google ] && rm -f /usr/lib/$pythonType/site-packages/google 2>/dev/null
+  [ -e /usr/lib/$pythonType/site-packages/inputstreamhelper ] && rm -f /usr/lib/$pythonType/site-packages/inputstreamhelper 2>/dev/null
+  [ -e /usr/lib/$pythonType/site-packages/pymp4 ] && rm -f /usr/lib/$pythonType/site-packages/pymp4 2>/dev/null
+  [ -e /usr/lib/$pythonType/site-packages/pyplayready ] && rm -f /usr/lib/$pythonType/site-packages/pyplayready 2>/dev/null
+  [ -e /usr/lib/$pythonType/site-packages/pywidevine ] && rm -f /usr/lib/$pythonType/site-packages/pywidevine 2>/dev/null
+  [ -e /usr/lib/$pythonType/site-packages/unidecode ] && rm -f /usr/lib/$pythonType/site-packages/unidecode 2>/dev/null
+  [ -e /usr/lib/$pythonType/site-packages/emukodislink_cli ] && rm -f /usr/lib/$pythonType/site-packages/emukodislink_cli 2>/dev/null
+  [ -e /usr/lib/$pythonType/site-packages/emukodislink ] && rm -f /usr/lib/$pythonType/site-packages/emukodislink 2>/dev/null
+
+  rm -rf /usr/lib/enigma2/python/Plugins/Extensions/E2Kodi 2>/dev/null
+fi
+
+exit 0
