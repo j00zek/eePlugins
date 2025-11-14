@@ -5,6 +5,8 @@ elif [ -e /usr/lib/python3.9 ]; then
   pythonType='python3.9'
 elif [ -e /usr/lib/python3.13 ]; then
   pythonType='python3.13'
+elif [ -e /usr/lib/python3.14 ]; then
+  pythonType='python3.14'
 else
   exit 0
 fi

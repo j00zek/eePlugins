@@ -159,6 +159,8 @@ $myAbsPath/tools/ipkg-build.sh $ipkdir
 #ln -sf /repoRealPath/ ~/opkg-repository
 #echo $PluginName_lower
 if [ -d ~/opkg-repository ] && [ ! -z $PluginName_lower ];then
+  rm -f $myAbsPath/opkg-j00zka/$PluginName_lower*
+  cp /tmp/$PluginName_lower* $myAbsPath/opkg-j00zka/
   rm -f ~/opkg-repository/$PluginName_lower*
   mv /tmp/$PluginName_lower* ~/opkg-repository/
 fi

@@ -1,6 +1,17 @@
 #!/bin/sh
 plugBinDir='/usr/lib/enigma2/python/Plugins/Extensions/E2Kodi'
-pythonType='python3.13'
+
+if [ -e /usr/lib/python3.12 ]; then
+  pythonType='python3.12'
+elif [ -e /usr/lib/python3.9 ]; then
+  pythonType='python3.9'
+elif [ -e /usr/lib/python3.13 ]; then
+  pythonType='python3.13'
+elif [ -e /usr/lib/python3.14 ]; then
+  pythonType='python3.14'
+else
+  exit 1
+fi
 
 mkdir -p /etc/E2Kodi
 
@@ -50,6 +61,12 @@ else
 fi
 echo "procType='$procType'" >> $plugBinDir/version.py
 
+#pobieranie instalatorów
+wget http://e2iplayer.github.io/www/sslinstall.py -O /tmp/sslinstall.py
+sed -i 's/if ask/if 1: #ask/g' /tmp/sslinstall.py
+sed -i 's/answer = ask/answer = 1 #ask/g' /tmp/sslinstall.py
+echo "# sslinstall.py ENDS" >> /tmp/sslinstall.py
+
 wget -q http://e2iplayer.github.io/www/xml2install.py -O /tmp/xml2install.py
 sed -i 's/if ask/if 1: #ask/g' /tmp/xml2install.py
 sed -i 's/answer = ask/answer = 1 #ask/g' /tmp/xml2install.py
@@ -61,7 +78,7 @@ sed -i 's/answer = ask.*/answer = True/g' /tmp/ffinstall.py
 sed -i 's;-xvf;-xf;g' /tmp/ffinstall.py
 sed -i "s;printFatal.'Installed ffmpeg is NOT working correctly.*;printMSG('ffmpeg zainstalowany');" /tmp/ffinstall.py
 
-cat  /tmp/xml2install.py /tmp/ffinstall.py > $plugBinDir/site-packages/pywidevine/cdmdevice/fei.py
+cat  /tmp/sslinstall.py /tmp/xml2install.py /tmp/ffinstall.py > $plugBinDir/site-packages/pywidevine/cdmdevice/fei.py
 #cp -f /tmp/ffinstall.py $plugBinDir/site-packages/pywidevine/cdmdevice/fei.py
 #mkdir -p /iptvplayer_rootfs/usr/bin/
 if [ `cat /proc/cpuinfo|grep -c ARMv7` -gt 0 ]; then
@@ -70,6 +87,9 @@ if [ `cat /proc/cpuinfo|grep -c ARMv7` -gt 0 ]; then
 elif [ `cat /proc/cpuinfo|grep -c mips` -gt 0 ]; then
   echo "print('Pobieram exteplayer3 dla mips')" >> $plugBinDir/site-packages/pywidevine/cdmdevice/fei.py
   echo "os.system('wget http://www.e2iplayer.gitlab.io/resources/packages/bin/public/mipsel/exteplayer3_fpu_hard_ffmpeg4.2 -O /iptvplayer_rootfs/usr/bin/exteplayer3')" >> $plugBinDir/site-packages/pywidevine/cdmdevice/fei.py
+elif [ `cat /proc/cpuinfo|grep -c Amlogic` -gt 0 ]; then
+  echo "print('Pobieram exteplayer3 dla aarch64')" >> $plugBinDir/site-packages/pywidevine/cdmdevice/fei.py
+  echo "os.system('wget http://www.e2iplayer.gitlab.io/resources/packages/bin/public/aarch64/exteplayer3_fpu_hard_ffmpeg4.2 -O /iptvplayer_rootfs/usr/bin/exteplayer3')" >> $plugBinDir/site-packages/pywidevine/cdmdevice/fei.py
 else
   echo "print('Nieznany procesor')" >> $plugBinDir/site-packages/pywidevine/cdmdevice/fei.py
 fi
@@ -79,6 +99,8 @@ echo "if os.path.exists('/iptvplayer_rootfs/usr/bin/exteplayer3'): os.system('ch
 echo "if not os.path.exists('/usr/lib/libxml2.so.2 '): os.system('ln -sf /usr/lib/libxml2.so.16.0.3 /usr/lib/libxml2.so.2')" >> $plugBinDir/site-packages/pywidevine/cdmdevice/fei.py
   
 if [ ! -e /usr/lib/enigma2/python/Plugins/Extensions/IPTVPlayer/plugin.pe2i ];then
+  /usr/bin/python3 /tmp/sslinstall.py 
+  rm -f /tmp/sslinstall.py
   /usr/bin/python3 /tmp/xml2install.py 
   rm -f /tmp/xml2install.py
   /usr/bin/python3 /tmp/ffinstall.py 
@@ -87,6 +109,8 @@ if [ ! -e /usr/lib/enigma2/python/Plugins/Extensions/IPTVPlayer/plugin.pe2i ];th
     wget -q 'http://www.e2iplayer.gitlab.io/resources/packages/bin/public/armv7/exteplayer3_fpu_hard_ffmpeg4.2' -O /iptvplayer_rootfs/usr/bin/exteplayer3
   elif [ `cat /proc/cpuinfo|grep -c mips` -gt 0 ]; then
     wget -q 'http://www.e2iplayer.gitlab.io/resources/packages/bin/public/mipsel/exteplayer3_fpu_hard_ffmpeg4.2' -O /iptvplayer_rootfs/usr/bin/exteplayer3
+  elif [ `cat /proc/cpuinfo|grep -c Amlogic` -gt 0 ]; then
+    wget -q 'http://www.e2iplayer.gitlab.io/resources/packages/bin/public/aarch64/exteplayer3_fpu_hard_ffmpeg4.2' -O /iptvplayer_rootfs/usr/bin/exteplayer3
   fi
   if [ -e /iptvplayer_rootfs/usr/bin/exteplayer3 ];then
     chmod 755 /iptvplayer_rootfs/usr/bin/exteplayer3
